@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>加藤友三郎商店 ｜ 成田の街の酒屋</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700&family=Kosugi+Maru&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f6efe3; --bg2:#efe4d2; --cream:#fbf6ec; --brown:#6b4f33; --brown2:#8a6a45;
+    --terra:#c08552; --terra2:#d49a63; --green:#7c8a5a; --ink:#4a3826; --mut:#8c7a64;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:"Zen Maru Gothic",sans-serif;background:var(--bg);color:var(--ink);line-height:1.9;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+  .round{font-family:"Kosugi Maru",sans-serif}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 26px}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(246,239,227,.9);backdrop-filter:blur(8px);border-bottom:2px dotted #d8c5a6}
+  nav{display:flex;align-items:center;justify-content:space-between;height:80px}
+  .logo{font-weight:700;font-size:1.15rem;color:var(--brown);display:flex;align-items:center;gap:10px}
+  .logo .b{width:42px;height:42px;background:var(--terra);border-radius:50%;display:grid;place-items:center;font-size:1.3rem;box-shadow:0 4px 0 #a86c3e}
+  .menu{display:flex;gap:30px;font-size:.92rem;font-weight:500}
+  .menu a{color:var(--brown2);transition:.25s} .menu a:hover{color:var(--terra)}
+  .navcta{background:var(--green);color:#fff;padding:11px 24px;border-radius:30px;font-size:.88rem;box-shadow:0 4px 0 #647149;transition:.2s}
+  .navcta:hover{transform:translateY(2px);box-shadow:0 2px 0 #647149}
+  .burger{display:none;font-size:1.5rem;color:var(--brown);background:none;border:0;cursor:pointer}
+
+  .hero{padding:80px 0 96px;position:relative;background:
+    radial-gradient(60% 70% at 85% 20%,rgba(212,154,99,.22),transparent 60%),
+    radial-gradient(50% 60% at 10% 90%,rgba(124,138,90,.18),transparent 60%)}
+  .hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
+  .pill{display:inline-flex;align-items:center;gap:8px;background:var(--cream);border:2px solid #e4d3b3;color:var(--brown2);
+    padding:7px 18px;border-radius:30px;font-size:.84rem;font-weight:500;margin-bottom:24px;box-shadow:0 3px 0 #e4d3b3}
+  .hero h1{font-size:clamp(2.2rem,5vw,3.5rem);font-weight:700;line-height:1.5;color:var(--brown);letter-spacing:.02em;margin-bottom:22px}
+  .hero h1 .hl{position:relative;color:var(--terra)}
+  .hero h1 .hl::after{content:"";position:absolute;left:-2%;right:-2%;bottom:6px;height:14px;background:rgba(212,154,99,.3);z-index:-1;border-radius:8px}
+  .hero p{color:var(--mut);font-size:1.05rem;margin-bottom:34px;max-width:30em}
+  .btns{display:flex;gap:16px;flex-wrap:wrap}
+  .btn{padding:15px 30px;border-radius:30px;font-weight:500;font-size:.95rem;transition:.2s;display:inline-block}
+  .btn-p{background:var(--terra);color:#fff;box-shadow:0 5px 0 #a86c3e} .btn-p:hover{transform:translateY(2px);box-shadow:0 3px 0 #a86c3e}
+  .btn-o{background:var(--cream);color:var(--brown);border:2px solid #e4d3b3;box-shadow:0 5px 0 #e4d3b3} .btn-o:hover{transform:translateY(2px);box-shadow:0 3px 0 #e4d3b3}
+  .blob{position:relative;aspect-ratio:1;max-width:420px;margin:0 auto;background:linear-gradient(135deg,#f5dfc0,#e9c79d);
+    border-radius:42% 58% 56% 44%/52% 44% 56% 48%;display:grid;place-items:center;box-shadow:inset 0 8px 30px rgba(255,255,255,.5),0 24px 50px rgba(160,110,60,.22)}
+  .blob .big{font-size:clamp(5rem,14vw,9rem)}
+  .deco{position:absolute;font-size:2rem;opacity:.9}
+  .d1{top:8%;left:2%} .d2{bottom:10%;right:0} .d3{top:46%;right:-6%;font-size:2.4rem}
+
+  section{padding:96px 0}
+  .stitle{text-align:center;margin-bottom:54px}
+  .stitle .en{color:var(--terra);font-weight:700;letter-spacing:.2em;font-size:.82rem;font-family:"Kosugi Maru"}
+  .stitle h2{font-size:clamp(1.7rem,4vw,2.4rem);font-weight:700;color:var(--brown);margin-top:8px}
+
+  .svc{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .card{background:var(--cream);border:2px solid #ecddc3;border-radius:26px;padding:38px 28px;text-align:center;transition:.3s}
+  .card:hover{transform:translateY(-6px);box-shadow:0 16px 34px rgba(160,110,60,.16);border-color:var(--terra2)}
+  .card .ic{width:78px;height:78px;border-radius:50%;background:var(--bg2);display:grid;place-items:center;font-size:2.1rem;margin:0 auto 20px}
+  .card h3{font-size:1.18rem;color:var(--brown);margin-bottom:12px}
+  .card p{color:var(--mut);font-size:.92rem}
+
+  .about{background:var(--bg2);border-radius:40px;margin:0 26px;padding:70px 0;position:relative;overflow:hidden}
+  .about::before{content:"🍷";position:absolute;font-size:9rem;opacity:.06;top:-10px;right:30px}
+  .feat{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;text-align:center}
+  .feat .n{font-size:2.6rem;font-weight:700;color:var(--terra)}
+  .feat .l{color:var(--brown2);font-size:.92rem;margin-top:6px}
+
+  .price-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px;max-width:880px;margin:0 auto}
+  .pcard{background:var(--cream);border:2px solid #ecddc3;border-radius:26px;padding:38px 32px}
+  .pcard h3{font-size:1.22rem;color:var(--brown);margin-bottom:6px}
+  .pcard .sub{color:var(--mut);font-size:.86rem;margin-bottom:20px}
+  .pcard ul{list-style:none}
+  .pcard li{padding:10px 0;border-bottom:1px dashed #ddc9a8;font-size:.93rem;display:flex;gap:10px;align-items:flex-start}
+  .pcard li::before{content:"🌿";font-size:.9rem}
+
+  .closer{text-align:center;background:radial-gradient(70% 100% at 50% 0%,rgba(212,154,99,.18),transparent)}
+  .closer h2{font-size:clamp(1.8rem,4vw,2.6rem);color:var(--brown);font-weight:700;margin-bottom:16px}
+  .closer p{color:var(--mut);margin-bottom:34px}
+
+  footer{background:var(--brown);color:#f0e3d0;padding:60px 0 30px;margin-top:30px}
+  .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:36px;margin-bottom:38px}
+  footer h4{color:#fff;font-size:1.05rem;margin-bottom:14px}
+  footer p,footer a{color:#d8c4a9;font-size:.88rem;line-height:2}
+  footer a:hover{color:var(--terra2)}
+  .age{font-size:.78rem;color:#b6a085;margin-top:12px}
+  .fnote{border-top:1px dotted #8a6a45;padding-top:22px;text-align:center;color:#bda788;font-size:.78rem}
+
+  @media(max-width:860px){
+    .menu{display:none}.burger{display:block}
+    .hero-grid{grid-template-columns:1fr;gap:30px}.blob{order:-1;max-width:300px}
+    .svc{grid-template-columns:1fr}.feat{grid-template-columns:1fr;gap:24px}
+    .price-grid{grid-template-columns:1fr}.fgrid{grid-template-columns:1fr;gap:26px}
+    section{padding:64px 0}
+  }
+</style>
+</head>
+<body>
+<header>
+  <nav class="wrap">
+    <a class="logo" href="#top"><span class="b">🍶</span>加藤友三郎商店</a>
+    <div class="menu">
+      <a href="#svc">取扱・サービス</a>
+      <a href="#about">私たちのこと</a>
+      <a href="#price">ご利用案内</a>
+      <a href="#contact">お問い合わせ</a>
+    </div>
+    <a class="navcta" href="#contact">相談してみる</a>
+    <button class="burger" onclick="document.querySelector('.menu').style.display=document.querySelector('.menu').style.display==='flex'?'none':'flex'">☰</button>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="pill">🥂 モエ・エ・シャンドン正規輸入代理店</span>
+      <h1>成田の街の、<br><span class="hl">たよれる酒屋</span>です。</h1>
+      <p>創業半世紀。シャンパーニュから日々の一杯まで、飲食店さまにもご家庭にも、ちょうどいい一本をお届けしてきました。</p>
+      <div class="btns">
+        <a class="btn btn-p" href="#contact">気軽に相談する</a>
+        <a class="btn btn-o" href="#svc">取扱商品を見る</a>
+      </div>
+    </div>
+    <div class="blob">
+      <span class="deco d1">🍇</span><span class="deco d2">🌾</span><span class="deco d3">✨</span>
+      <span class="big">🍾</span>
+    </div>
+  </div>
+</section>
+
+<section id="svc">
+  <div class="wrap">
+    <div class="stitle"><div class="en">OUR SERVICE</div><h2>できること</h2></div>
+    <div class="svc">
+      <div class="card"><div class="ic">🥂</div><h3>シャンパーニュ</h3><p>モエ・エ・シャンドンをはじめ、お祝いの席にふさわしい一本を正規ルートでご用意します。</p></div>
+      <div class="card"><div class="ic">🍶</div><h3>業務用の卸し</h3><p>飲食店さまへ、ワイン・洋酒・日本酒まで。お店の雰囲気に合わせたご提案も承ります。</p></div>
+      <div class="card"><div class="ic">🚚</div><h3>ご家庭へお届け</h3><p>一般・家庭用の配達に対応。ご近所の酒屋として、必要なときにお持ちします。</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="about">
+    <div class="wrap">
+      <div class="stitle"><div class="en">ABOUT US</div><h2>私たちのこと</h2></div>
+      <div class="feat">
+        <div><div class="n">昭和46年〜</div><div class="l">半世紀つづく成田の酒屋</div></div>
+        <div><div class="n">正規代理店</div><div class="l">モエ・エ・シャンドン輸入</div></div>
+        <div><div class="n">地域密着</div><div class="l">飲食店さま・ご家庭の両方へ</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="price">
+  <div class="wrap">
+    <div class="stitle"><div class="en">FOR YOU</div><h2>ご利用案内</h2></div>
+    <div class="price-grid">
+      <div class="pcard">
+        <h3>飲食店さま向け</h3><div class="sub">レストラン・バー・ホテルさまへ</div>
+        <ul>
+          <li>シャンパーニュ・ワインの仕入れ相談</li>
+          <li>メニューやお客様層に合わせた銘柄提案</li>
+          <li>定期・スポット、配送はご都合に合わせて</li>
+        </ul>
+      </div>
+      <div class="pcard">
+        <h3>ご家庭向け</h3><div class="sub">記念日・贈りもの・ふだんの一杯に</div>
+        <ul>
+          <li>お祝いの一本、迷ったらご相談ください</li>
+          <li>贈りもの用途のご案内</li>
+          <li>地域へのお届け対応</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="closer" id="contact">
+  <div class="wrap">
+    <h2>まずは一本のご相談から 🍷</h2>
+    <p>「こんなとき、どれがいい？」そんな小さなことから、お気軽にどうぞ。</p>
+    <div class="btns" style="justify-content:center">
+      <a class="btn btn-p" href="tel:0476352381">📞 0476-35-2381</a>
+      <a class="btn btn-o" href="mailto:info@kato3.jp">✉ info@kato3.jp</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <h4>加藤友三郎商店</h4>
+        <p>株式会社O・N・E が運営する、千葉・成田の街の酒屋。モエ・エ・シャンドン正規輸入代理店です。</p>
+      </div>
+      <div>
+        <h4>所在地</h4>
+        <p>〒286-0116<br>千葉県成田市三里塚御料1-210<br>成田参道店：成田市花崎町839-12</p>
+      </div>
+      <div>
+        <h4>お問い合わせ</h4>
+        <p><a href="tel:0476352381">TEL 0476-35-2381</a><br><a href="mailto:info@kato3.jp">info@kato3.jp</a></p>
+        <p class="age">飲酒は20歳になってから。飲酒運転は法律で禁じられています。</p>
+      </div>
+    </div>
+    <div class="fnote">これは営業提案用のデザインサンプルです。実際の取扱内容・実績とは異なる場合があります。<br>© 加藤友三郎商店 / Design Sample</div>
+  </div>
+</footer>
+</body>
+</html>
