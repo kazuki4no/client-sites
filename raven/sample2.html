@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAVEN ｜ Premium Car Detailing — Narita</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#f3f2ef;        /* オフホワイト基調 */
+    --ink:#16181d;       /* 締め色のチャコール */
+    --ink2:#3a3d44;
+    --mute:#7c7f86;
+    --line:#dcdad4;
+    --accent:#1c1e24;
+    --paper:#ffffff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:"Zen Kaku Gothic New",sans-serif;font-weight:400;background:var(--bg);color:var(--ink2);line-height:1.95;-webkit-font-smoothing:antialiased}
+  .serif{font-family:"Cormorant Garamond",serif}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 32px}
+
+  header{position:fixed;top:0;width:100%;z-index:50;mix-blend-mode:difference}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:92px}
+  .logo{font-family:"Cormorant Garamond";font-weight:600;font-size:1.8rem;letter-spacing:.32em;color:#fff}
+  .nav ul{display:flex;gap:38px;list-style:none}
+  .nav ul a{font-size:.74rem;letter-spacing:.22em;color:#fff;text-transform:uppercase}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+  .burger span{width:24px;height:1px;background:#fff}
+
+  /* hero 左寄せ・余白主役 */
+  .hero{min-height:100vh;display:grid;grid-template-columns:1fr 1fr;align-items:center;background:var(--bg)}
+  .hero-text{padding:120px 0 60px 8%;animation:fade 1.2s ease both}
+  .hero-text .tag{font-size:.72rem;letter-spacing:.36em;color:var(--mute);text-transform:uppercase;margin-bottom:30px}
+  .hero-text h1{font-family:"Cormorant Garamond";font-weight:500;font-size:clamp(2.8rem,5.5vw,4.8rem);line-height:1.08;color:var(--ink);letter-spacing:.01em}
+  .hero-text .jp{font-size:1rem;color:var(--ink2);margin:28px 0 40px;max-width:430px;line-height:2.2;font-weight:300}
+  .hero-text .link{display:inline-flex;align-items:center;gap:14px;font-size:.8rem;letter-spacing:.2em;text-transform:uppercase;color:var(--ink);border-bottom:1px solid var(--ink);padding-bottom:6px;transition:gap .3s}
+  .hero-text .link:hover{gap:24px}
+  .hero-img{height:100vh;position:relative;overflow:hidden}
+  .hero-img img{width:100%;height:100%;object-fit:cover;filter:grayscale(.15) contrast(1.02)}
+  @keyframes fade{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+
+  section{padding:130px 0}
+  .center{max-width:640px;margin:0 auto;text-align:center}
+  .kick{font-size:.72rem;letter-spacing:.34em;text-transform:uppercase;color:var(--mute);margin-bottom:26px}
+  .h2{font-family:"Cormorant Garamond";font-weight:500;font-size:clamp(2rem,4.4vw,3.2rem);color:var(--ink);line-height:1.2;margin-bottom:26px}
+  .body-lead{color:var(--ink2);font-weight:300;font-size:1rem}
+
+  /* philosophy split */
+  .phil{display:grid;grid-template-columns:1fr 1fr;gap:90px;align-items:center;margin-top:30px}
+  .phil .num{font-family:"Cormorant Garamond";font-size:4.4rem;color:var(--line);line-height:1}
+  .phil h3{font-family:"Cormorant Garamond";font-size:1.9rem;color:var(--ink);margin:8px 0 18px;font-weight:500}
+  .phil p{font-weight:300;color:var(--ink2)}
+  .phil img{filter:grayscale(.1)}
+
+  /* services minimal list */
+  .svc{border-top:1px solid var(--line)}
+  .svc-row{display:grid;grid-template-columns:80px 1fr 1.1fr;gap:40px;align-items:center;padding:46px 0;border-bottom:1px solid var(--line);transition:padding .35s}
+  .svc-row:hover{padding-left:18px}
+  .svc-row .idx{font-family:"Cormorant Garamond";font-size:1.6rem;color:var(--mute)}
+  .svc-row h3{font-size:1.35rem;color:var(--ink);font-weight:500;letter-spacing:.02em}
+  .svc-row h3 span{display:block;font-family:"Cormorant Garamond";font-size:.85rem;letter-spacing:.2em;color:var(--mute);text-transform:uppercase;margin-top:6px}
+  .svc-row p{font-weight:300;font-size:.95rem;color:var(--ink2)}
+
+  /* price minimal */
+  .price{background:var(--ink);color:#cfd2d8}
+  .price .h2,.price .kick{color:#fff}
+  .price .kick{color:#9aa0aa}
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:60px;border:1px solid #2c2f36}
+  .pl{padding:46px 36px;border-right:1px solid #2c2f36;text-align:center}
+  .pl:last-child{border-right:none}
+  .pl h4{font-family:"Cormorant Garamond";font-size:1.4rem;letter-spacing:.1em;color:#fff;margin-bottom:18px}
+  .pl .amt{font-family:"Cormorant Garamond";font-size:2.6rem;color:#fff}
+  .pl .amt small{font-size:.9rem;color:#9aa0aa}
+  .pl p{font-weight:300;font-size:.85rem;color:#9aa0aa;margin-top:14px}
+
+  /* image full */
+  .full{height:60vh;overflow:hidden}
+  .full img{width:100%;height:100%;object-fit:cover}
+
+  .closing{text-align:center}
+  .closing a{display:inline-block;margin-top:34px;border:1px solid var(--ink);color:var(--ink);padding:18px 52px;font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;transition:background .3s,color .3s}
+  .closing a:hover{background:var(--ink);color:#fff}
+
+  footer{background:var(--bg);padding:70px 0 36px;border-top:1px solid var(--line)}
+  .foot{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px}
+  .foot .logo{color:var(--ink);margin-bottom:12px}
+  .foot p,.foot a{font-weight:300;font-size:.86rem;color:var(--mute);line-height:2}
+  .note{margin-top:46px;text-align:center;color:#a8a8a2;font-size:.76rem;font-weight:300}
+
+  @media(max-width:860px){
+    .nav ul{display:none}.burger{display:flex}
+    .hero{grid-template-columns:1fr}.hero-img{height:46vh;order:-1}.hero-text{padding:120px 32px 60px}
+    .phil{grid-template-columns:1fr;gap:30px}
+    .svc-row{grid-template-columns:1fr;gap:10px;padding:34px 0}
+    .plans{grid-template-columns:1fr}.pl{border-right:none;border-bottom:1px solid #2c2f36}
+    section{padding:84px 0}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">RAVEN</div>
+    <ul>
+      <li><a href="#phil">Philosophy</a></li>
+      <li><a href="#svc">Service</a></li>
+      <li><a href="#price">Price</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="burger"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<!-- ヒーロー：左テキスト / 右ビジュアル -->
+<section class="hero">
+  <div class="hero-text">
+    <div class="tag">Premium Detailing — Narita, Chiba</div>
+    <h1>The art of<br>deep gloss.</h1>
+    <p class="jp">磨き、洗い、護る。<br>愛車本来の艶を引き出すための、静かで丁寧な仕事。千葉県成田市のカーディテイリング専門店 RAVEN。</p>
+    <a href="#contact" class="link">RESERVE ＆ CONSULT →</a>
+  </div>
+  <div class="hero-img">
+    <!-- 差し替え時: src を images/hero.jpg に変更 -->
+    <img src="https://picsum.photos/seed/ravenmin-hero/1000/1400" alt="艶やかな車体のディテール">
+  </div>
+</section>
+
+<!-- フィロソフィー -->
+<section id="phil">
+  <div class="wrap">
+    <div class="phil">
+      <div>
+        <!-- 差し替え時: src を images/philosophy.jpg に変更 -->
+        <img src="https://picsum.photos/seed/ravenmin-phil/800/640" alt="施工の様子">
+      </div>
+      <div>
+        <div class="num">01</div>
+        <h3>Three pillars</h3>
+        <p>整った施工環境、磨き上げた技術、世界基準のケミカル。仕上がりに直結するこの三つを高い水準で備えています。完全予約制で一台ごとに向き合い、光を遮断した環境で塗装本来の表情を引き出します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- サービス（ミニマルリスト） -->
+<section id="svc">
+  <div class="wrap">
+    <div class="center">
+      <div class="kick">Service</div>
+      <div class="h2">Menu</div>
+      <p class="body-lead">下地から仕上げまで、工程ひとつひとつに理由があります。</p>
+    </div>
+    <div class="svc" style="margin-top:60px">
+      <div class="svc-row">
+        <div class="idx">01</div>
+        <h3>セラミックコーティング<span>Ceramic Coating</span></h3>
+        <p>徹底した下地処理の上に強固な被膜を。深い艶と長期の保護を両立し、洗車のしやすさも向上させます。</p>
+      </div>
+      <div class="svc-row">
+        <div class="idx">02</div>
+        <h3>ポリッシング<span>Polishing</span></h3>
+        <p>専用照明とブラックブースで細かなキズも見極め、塗装状態に応じた最適な磨きを丁寧に施します。</p>
+      </div>
+      <div class="svc-row">
+        <div class="idx">03</div>
+        <h3>手洗い洗車・メンテナンス<span>Hand Wash & Maintenance</span></h3>
+        <p>傷を抑える手洗いと、コーティング車に適したメンテナンスで、整えた美観を長く保ちます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- フルビジュアル -->
+<div class="full">
+  <!-- 差し替え時: src を images/gallery.jpg に変更 -->
+  <img src="https://picsum.photos/seed/ravenmin-full/1600/900" alt="仕上がりの一台">
+</div>
+
+<!-- 料金（反転・締め色） -->
+<section class="price" id="price">
+  <div class="wrap">
+    <div class="center">
+      <div class="kick">Price</div>
+      <div class="h2">料金の目安</div>
+    </div>
+    <div class="plans">
+      <div class="pl"><h4>Wash</h4><div class="amt">¥5,000<small>〜</small></div><p>プレミアム手洗い／ホイール洗浄</p></div>
+      <div class="pl"><h4>Polish</h4><div class="amt">¥33,000<small>〜</small></div><p>状態に応じた磨き工程</p></div>
+      <div class="pl"><h4>Coating</h4><div class="amt">¥55,000<small>〜</small></div><p>下地処理＋セラミック被膜</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- クロージング -->
+<section class="closing" id="contact">
+  <div class="wrap">
+    <div class="kick">Contact</div>
+    <div class="h2">愛車のこと、ご相談ください。</div>
+    <p class="body-lead">完全予約制。お見積り・ご相談は無料で承ります。</p>
+    <a href="#">Reserve via Phone / LINE</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <div class="logo serif">RAVEN</div>
+      <p>カーコーティング・手洗い洗車専門店<br>千葉県成田市 ／ 完全予約制</p>
+    </div>
+    <div>
+      <p><a href="#phil">Philosophy</a><br><a href="#svc">Service</a><br><a href="#price">Price</a><br><a href="#contact">Contact</a></p>
+    </div>
+    <div>
+      <p>TEL 000-000-0000<br>10:00 – 19:00<br>定休日：お問い合わせください</p>
+    </div>
+  </div>
+  <div class="wrap note">これは営業提案用のデザインサンプルです。掲載内容・料金はサンプルであり実在の情報を保証するものではありません。</div>
+</footer>
+
+<script>
+  document.querySelector('.burger').addEventListener('click',function(){
+    const u=document.querySelector('.nav ul');
+    const open = u.style.display==='flex';
+    u.style.display = open ? 'none':'flex';
+    u.style.position='absolute';u.style.flexDirection='column';u.style.top='92px';
+    u.style.right='32px';u.style.background='#16181d';u.style.padding='20px 28px';u.style.gap='16px';
+  });
+</script>
+</body>
+</html>

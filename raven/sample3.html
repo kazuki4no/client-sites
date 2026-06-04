@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAVEN｜成田のカーコーティング・手洗い洗車専門店</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=M+PLUS+1+Code:wght@400;500;700&family=Zen+Maru+Gothic:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0c10;
+    --bg2:#111620;
+    --cyan:#19e3d4;        /* 補色アクセント：コーティングの艶＝水のような輝き */
+    --cyan-d:#0fb9ad;
+    --blue:#2d6cff;
+    --txt:#e6eaf0;
+    --mute:#8b94a3;
+    --line:#222a36;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:"Zen Maru Gothic",sans-serif;font-weight:500;background:var(--bg);color:var(--txt);line-height:1.85;overflow-x:hidden}
+  .mono{font-family:"M PLUS 1 Code",monospace}
+  .display{font-family:"Anton",sans-serif;font-weight:400;letter-spacing:.01em}
+  img{display:block;max-width:100%}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+
+  header{position:fixed;top:0;width:100%;z-index:60;background:rgba(10,12,16,.7);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .logo{font-family:"Anton";font-size:1.7rem;letter-spacing:.18em;color:#fff}
+  .logo b{color:var(--cyan)}
+  .nav ul{display:flex;gap:28px;list-style:none}
+  .nav ul a{font-family:"M PLUS 1 Code";font-size:.82rem;letter-spacing:.05em;color:var(--mute);transition:color .2s}
+  .nav ul a:hover{color:var(--cyan)}
+  .nav .cta{background:var(--cyan);color:#04201d;padding:11px 22px;font-family:"M PLUS 1 Code";font-weight:700;font-size:.82rem;border-radius:40px;box-shadow:0 0 24px rgba(25,227,212,.35)}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+  .burger span{width:26px;height:2px;background:#fff}
+
+  /* hero 斜め・大型タイポ */
+  .hero{position:relative;min-height:100vh;display:flex;align-items:center;padding-top:70px;overflow:hidden}
+  .hero::before{content:"";position:absolute;inset:0;
+    background:radial-gradient(900px 600px at 78% 18%,rgba(25,227,212,.18),transparent 60%),
+              radial-gradient(700px 500px at 10% 90%,rgba(45,108,255,.16),transparent 60%);}
+  .hero-img-wrap{position:absolute;right:-4%;top:0;width:58%;height:100%;clip-path:polygon(18% 0,100% 0,100% 100%,0% 100%);overflow:hidden}
+  .hero-img-wrap::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,var(--bg) 2%,transparent 45%)}
+  .hero-img-wrap img{width:100%;height:100%;object-fit:cover}
+  .hero-inner{position:relative;z-index:3;max-width:640px;animation:pop 1s ease both}
+  .pill-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+  .pill{font-family:"M PLUS 1 Code";font-size:.74rem;border:1px solid var(--cyan);color:var(--cyan);padding:6px 14px;border-radius:30px}
+  .hero h1{font-family:"Anton";font-size:clamp(3rem,9vw,7rem);line-height:.94;color:#fff;text-transform:uppercase}
+  .hero h1 em{font-style:normal;color:var(--cyan);text-shadow:0 0 40px rgba(25,227,212,.5)}
+  .hero .sub{font-size:1.02rem;color:var(--mute);margin:26px 0 38px;max-width:480px}
+  .hero .sub b{color:var(--txt)}
+  .btns{display:flex;gap:14px;flex-wrap:wrap}
+  .b1{background:var(--cyan);color:#04201d;font-family:"M PLUS 1 Code";font-weight:700;padding:17px 38px;border-radius:40px;box-shadow:0 0 30px rgba(25,227,212,.4);transition:transform .25s}
+  .b1:hover{transform:scale(1.05)}
+  .b2{border:1px solid var(--line);color:#fff;padding:17px 34px;border-radius:40px;font-family:"M PLUS 1 Code";transition:border-color .25s}
+  .b2:hover{border-color:var(--cyan)}
+  @keyframes pop{from{opacity:0;transform:translateY(30px) scale(.98)}to{opacity:1;transform:none}}
+
+  section{padding:100px 0;position:relative}
+  .tag{font-family:"M PLUS 1 Code";color:var(--cyan);font-size:.82rem;letter-spacing:.1em}
+  .htitle{font-family:"Anton";font-size:clamp(2rem,5.5vw,3.4rem);color:#fff;text-transform:uppercase;line-height:1;margin:12px 0 14px}
+  .desc{color:var(--mute);max-width:600px}
+
+  /* services tilted cards */
+  .svc{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;margin-top:54px}
+  .scard{position:relative;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:var(--bg2);transition:transform .35s,box-shadow .35s}
+  .scard:hover{transform:translateY(-8px);box-shadow:0 18px 50px rgba(25,227,212,.18);border-color:var(--cyan)}
+  .scard img{height:190px;width:100%;object-fit:cover}
+  .scard .c{padding:26px 24px 30px}
+  .scard .n{font-family:"Anton";font-size:2.4rem;color:var(--line);line-height:1}
+  .scard:hover .n{color:var(--cyan)}
+  .scard h3{font-family:"Zen Maru Gothic";font-weight:700;font-size:1.2rem;color:#fff;margin:6px 0 10px}
+  .scard p{color:var(--mute);font-size:.9rem}
+
+  /* stats strip */
+  .strip{background:linear-gradient(90deg,var(--cyan),var(--blue));margin:0;padding:54px 0}
+  .strip .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:center;color:#04201d}
+  .strip .num{font-family:"Anton";font-size:3rem;line-height:1}
+  .strip .lab{font-family:"M PLUS 1 Code";font-size:.85rem;margin-top:6px}
+
+  /* price */
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:54px}
+  .pcard{background:var(--bg2);border:1px solid var(--line);border-radius:18px;padding:36px 30px;text-align:center;position:relative;transition:border-color .3s}
+  .pcard:hover{border-color:var(--cyan)}
+  .pcard.hot{border-color:var(--cyan);background:linear-gradient(180deg,rgba(25,227,212,.08),var(--bg2))}
+  .pcard.hot::after{content:"おすすめ";position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--cyan);color:#04201d;font-family:"M PLUS 1 Code";font-weight:700;font-size:.72rem;padding:5px 16px;border-radius:30px}
+  .pcard h4{font-family:"Anton";letter-spacing:.08em;color:#fff;font-size:1.5rem;margin-bottom:12px}
+  .pcard .amt{font-family:"Anton";color:var(--cyan);font-size:2.4rem}
+  .pcard .amt small{font-size:.9rem;color:var(--mute);font-family:"Zen Maru Gothic"}
+  .pcard ul{list-style:none;margin-top:18px;text-align:left}
+  .pcard li{font-size:.9rem;padding:8px 0;border-bottom:1px solid var(--line);color:var(--txt)}
+  .pcard li::before{content:"▸ ";color:var(--cyan)}
+
+  /* big CTA */
+  .bigcta{text-align:center;position:relative;overflow:hidden}
+  .bigcta::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 400px at 50% 50%,rgba(25,227,212,.16),transparent 65%)}
+  .bigcta-in{position:relative;z-index:2}
+  .bigcta h2{font-family:"Anton";font-size:clamp(2.2rem,6vw,4rem);color:#fff;text-transform:uppercase;line-height:1.02}
+  .bigcta h2 em{font-style:normal;color:var(--cyan)}
+  .bigcta p{color:var(--mute);margin:18px 0 34px}
+
+  footer{background:#05070a;padding:56px 0 28px;border-top:1px solid var(--line)}
+  .foot{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:30px}
+  .foot .logo{margin-bottom:14px}
+  .foot p,.foot li{color:var(--mute);font-size:.88rem;line-height:2}
+  .foot h4{font-family:"M PLUS 1 Code";color:#fff;margin-bottom:12px;font-size:.9rem}
+  .foot ul{list-style:none}
+  .foot a:hover{color:var(--cyan)}
+  .note{margin-top:40px;padding-top:20px;border-top:1px solid var(--line);text-align:center;color:#5b6472;font-size:.78rem}
+
+  @media(max-width:860px){
+    .nav ul,.nav .cta{display:none}.burger{display:flex}
+    .hero-img-wrap{width:100%;opacity:.28;clip-path:none}
+    .hero-img-wrap::after{background:linear-gradient(180deg,var(--bg),transparent 40%,var(--bg))}
+    .svc,.price-grid,.foot,.strip .wrap{grid-template-columns:1fr}
+    section{padding:72px 0}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <div class="logo">RAVEN<b>.</b></div>
+    <ul>
+      <li><a href="#svc">SERVICE</a></li>
+      <li><a href="#price">PRICE</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+    </ul>
+    <a href="#contact" class="cta">今すぐ予約</a>
+    <div class="burger"><span></span><span></span><span></span></div>
+  </div>
+</header>
+
+<!-- ヒーロー：斜めビジュアル＋特大タイポ -->
+<section class="hero">
+  <div class="hero-img-wrap">
+    <!-- 差し替え時: src を images/hero.jpg に変更 -->
+    <img src="https://picsum.photos/seed/ravenacc-hero/1200/1400" alt="艶めく車体">
+  </div>
+  <div class="wrap">
+    <div class="hero-inner">
+      <div class="pill-row">
+        <span class="pill">CERAMIC COATING</span>
+        <span class="pill">HAND WASH</span>
+        <span class="pill">NARITA / CHIBA</span>
+      </div>
+      <h1>WET<br><em>GLOSS</em><br>FOREVER.</h1>
+      <p class="sub">塗装が、濡れたように光る。<b>成田のカーコーティング・手洗い洗車専門店 RAVEN。</b>世界基準のケミカルと熟練の技術で、その一台を生まれ変わらせます。</p>
+      <div class="btns">
+        <a href="#contact" class="b1">無料見積り・予約する</a>
+        <a href="#svc" class="b2">施工メニュー →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- サービス -->
+<section id="svc">
+  <div class="wrap">
+    <div class="tag">// SERVICE</div>
+    <h2 class="htitle">施工メニュー</h2>
+    <p class="desc">完全予約制。一台ごとに状態を見極め、下地から仕上げまで妥協なく仕上げます。</p>
+    <div class="svc">
+      <div class="scard">
+        <!-- 差し替え時: src を images/service1.jpg に変更 -->
+        <img src="https://picsum.photos/seed/ravenacc-s1/600/400" alt="セラミックコーティング">
+        <div class="c"><div class="n">01</div><h3>セラミックコーティング</h3><p>強固な被膜で深い艶と長期保護を両立。撥水・防汚で日々のケアも楽に。</p></div>
+      </div>
+      <div class="scard">
+        <!-- 差し替え時: src を images/service2.jpg に変更 -->
+        <img src="https://picsum.photos/seed/ravenacc-s2/600/400" alt="ポリッシング">
+        <div class="c"><div class="n">02</div><h3>ポリッシング</h3><p>専用照明とブラックブースで細かなキズを徹底研磨。塗装本来の輝きへ。</p></div>
+      </div>
+      <div class="scard">
+        <!-- 差し替え時: src を images/service3.jpg に変更 -->
+        <img src="https://picsum.photos/seed/ravenacc-s3/600/400" alt="手洗い洗車">
+        <div class="c"><div class="n">03</div><h3>手洗い洗車・メンテ</h3><p>傷を抑える丁寧な手洗いと、コーティング車に最適なメンテナンスを。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ストリップ（特徴） -->
+<div class="strip">
+  <div class="wrap">
+    <div><div class="num">3</div><div class="lab">環境・技術・最新ケミカル</div></div>
+    <div><div class="num">100%</div><div class="lab">完全予約制で一台に集中</div></div>
+    <div><div class="num">AFTER</div><div class="lab">施工後メンテも全力サポート</div></div>
+  </div>
+</div>
+
+<!-- 料金 -->
+<section id="price">
+  <div class="wrap">
+    <div class="tag">// PRICE</div>
+    <h2 class="htitle">料金の目安</h2>
+    <p class="desc">お車のサイズ・状態により変動します。まずは無料見積りからどうぞ。</p>
+    <div class="price-grid">
+      <div class="pcard">
+        <h4>WASH</h4><div class="amt">¥5,000<small> 〜</small></div>
+        <ul><li>プレミアム手洗い</li><li>ホイール洗浄</li><li>簡易コート</li></ul>
+      </div>
+      <div class="pcard hot">
+        <h4>COATING</h4><div class="amt">¥55,000<small> 〜</small></div>
+        <ul><li>下地処理・洗浄</li><li>セラミック被膜</li><li>アフターメンテ付帯</li></ul>
+      </div>
+      <div class="pcard">
+        <h4>POLISH</h4><div class="amt">¥33,000<small> 〜</small></div>
+        <ul><li>磨き工程一式</li><li>スクラッチ除去</li><li>状態別にご提案</li></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ビッグCTA -->
+<section class="bigcta" id="contact">
+  <div class="wrap bigcta-in">
+    <h2>その艶、<em>RAVEN</em>で。</h2>
+    <p>完全予約制 / ご相談・お見積りは無料です。</p>
+    <a href="#" class="b1">電話・LINEで今すぐ予約</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <div class="logo">RAVEN<b style="color:var(--cyan)">.</b></div>
+      <p>カーコーティング・手洗い洗車専門店<br>千葉県成田市 / 完全予約制・駐車場完備</p>
+    </div>
+    <div>
+      <h4>MENU</h4>
+      <ul><li><a href="#svc">施工メニュー</a></li><li><a href="#price">料金</a></li><li><a href="#contact">お問い合わせ</a></li></ul>
+    </div>
+    <div>
+      <h4>CONTACT</h4>
+      <ul><li>TEL：000-000-0000</li><li>10:00 - 19:00</li><li>定休日：お問い合わせください</li></ul>
+    </div>
+  </div>
+  <div class="wrap note">これは営業提案用のデザインサンプルです。掲載内容・料金はサンプルであり実在の情報を保証するものではありません。</div>
+</footer>
+
+<script>
+  document.querySelector('.burger').addEventListener('click',function(){
+    const u=document.querySelector('.nav ul');
+    const open=u.style.display==='flex';
+    u.style.display=open?'none':'flex';
+    u.style.position='absolute';u.style.flexDirection='column';u.style.top='70px';
+    u.style.right='24px';u.style.background='#111620';u.style.padding='18px 26px';u.style.gap='14px';u.style.borderRadius='12px';
+  });
+</script>
+</body>
+</html>
