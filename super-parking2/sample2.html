@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SUPER PARKING｜成田空港 送迎駐車場</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;600;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#16273d;
+    --steel:#3a5675;
+    --muted:#8499af;
+    --mist:#f4f6f9;
+    --line:#e3e8ef;
+    --ink:#2a3645;
+    --gray:#677589;
+    --paper:#fbfcfd;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:"Zen Kaku Gothic New",sans-serif;color:var(--ink);line-height:1.9;background:var(--paper);letter-spacing:.01em}
+  img{display:block;max-width:100%}
+  a{text-decoration:none;color:inherit}
+  .mincho{font-family:"Shippori Mincho",serif}
+  .container{max-width:1180px;margin:0 auto;padding:0 32px}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:50;background:rgba(251,252,253,.9);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:84px}
+  .logo{font-family:"Shippori Mincho",serif;font-weight:700;font-size:1.3rem;color:var(--navy);letter-spacing:.08em}
+  .logo small{display:block;font-family:"Zen Kaku Gothic New";font-size:.62rem;letter-spacing:.34em;color:var(--muted);font-weight:400;margin-top:2px}
+  .nav-links{display:flex;gap:40px;align-items:center}
+  .nav-links a{font-size:.86rem;color:var(--steel);letter-spacing:.06em;transition:color .2s}
+  .nav-links a:hover{color:var(--navy)}
+  .nav-cta{border:1px solid var(--navy);padding:11px 26px;color:var(--navy)!important;letter-spacing:.1em;font-size:.8rem;transition:.25s}
+  .nav-cta:hover{background:var(--navy);color:#fff!important}
+  .burger{display:none;font-size:1.5rem;background:none;border:none;color:var(--navy);cursor:pointer}
+
+  /* Hero — asymmetric, left aligned */
+  .hero{padding:70px 0 90px}
+  .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+  .hero-text{animation:fadeIn 1s ease both}
+  .hero-text .eyebrow{font-size:.72rem;letter-spacing:.36em;color:var(--muted);margin-bottom:28px}
+  .hero-text h1{font-family:"Shippori Mincho",serif;font-weight:600;font-size:clamp(2rem,4.4vw,3.2rem);line-height:1.5;color:var(--navy);letter-spacing:.02em}
+  .hero-text h1 .thin{display:block;font-size:.5em;color:var(--steel);letter-spacing:.1em;margin-top:18px;font-weight:500}
+  .hero-text p{margin-top:30px;color:var(--gray);font-size:1rem;max-width:440px}
+  .hero-actions{margin-top:42px;display:flex;align-items:center;gap:28px;flex-wrap:wrap}
+  .btn-line{display:inline-block;background:var(--navy);color:#fff;padding:16px 40px;letter-spacing:.08em;font-size:.92rem;transition:.25s}
+  .btn-line:hover{background:var(--steel);transform:translateY(-2px)}
+  .link-arrow{font-size:.88rem;color:var(--navy);letter-spacing:.04em;border-bottom:1px solid var(--navy);padding-bottom:3px}
+  .hero-visual{position:relative}
+  .hero-visual .frame{overflow:hidden}
+  .hero-visual img{width:100%;height:520px;object-fit:cover;filter:saturate(.85) brightness(.97)}
+  .hero-visual .tag{position:absolute;left:-26px;bottom:40px;background:#fff;padding:22px 30px;box-shadow:0 24px 50px rgba(22,39,61,.14)}
+  .hero-visual .tag .n{font-family:"Shippori Mincho",serif;font-size:1.9rem;color:var(--navy);line-height:1}
+  .hero-visual .tag .t{font-size:.74rem;letter-spacing:.18em;color:var(--muted);margin-top:8px}
+
+  /* Section base */
+  section{padding:100px 0}
+  .label{display:flex;align-items:center;gap:18px;margin-bottom:48px}
+  .label .en{font-size:.7rem;letter-spacing:.36em;color:var(--muted)}
+  .label .bar{flex:1;height:1px;background:var(--line)}
+  .label h2{font-family:"Shippori Mincho",serif;font-weight:600;font-size:clamp(1.5rem,3vw,2.1rem);color:var(--navy);letter-spacing:.04em}
+
+  /* Services — minimal rows */
+  .services{background:var(--mist)}
+  .srv{display:grid;grid-template-columns:60px 1.2fr 1fr;gap:36px;align-items:center;padding:42px 0;border-top:1px solid var(--line)}
+  .srv:last-child{border-bottom:1px solid var(--line)}
+  .srv .idx{font-family:"Shippori Mincho",serif;font-size:1.5rem;color:var(--muted)}
+  .srv h3{font-size:1.25rem;color:var(--navy);font-weight:700;margin-bottom:10px;letter-spacing:.02em}
+  .srv p{color:var(--gray);font-size:.95rem}
+  .srv .pic{overflow:hidden;height:150px}
+  .srv .pic img{width:100%;height:100%;object-fit:cover;filter:saturate(.85)}
+
+  /* Features */
+  .feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line)}
+  .feat-grid .cell{padding:48px 44px;border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .feat-grid .cell:nth-child(2n){border-right:none}
+  .feat-grid .cell:nth-last-child(-n+2){border-bottom:none}
+  .feat-grid .cell .num{font-family:"Shippori Mincho",serif;font-size:.9rem;color:var(--muted);letter-spacing:.2em;margin-bottom:16px}
+  .feat-grid .cell h4{font-size:1.15rem;color:var(--navy);margin-bottom:12px}
+  .feat-grid .cell p{color:var(--gray);font-size:.92rem}
+
+  /* Price band */
+  .price{display:grid;grid-template-columns:1fr 1fr;align-items:stretch}
+  .price .imgside{overflow:hidden}
+  .price .imgside img{width:100%;height:100%;min-height:380px;object-fit:cover;filter:saturate(.8) brightness(.95)}
+  .price .info{background:var(--navy);color:#fff;padding:70px 60px;display:flex;flex-direction:column;justify-content:center}
+  .price .info .en{font-size:.7rem;letter-spacing:.34em;color:var(--muted);margin-bottom:22px}
+  .price .info h3{font-family:"Shippori Mincho",serif;font-weight:500;font-size:1.5rem;line-height:1.7;margin-bottom:30px}
+  .price .amount{display:flex;align-items:baseline;gap:8px}
+  .price .amount .v{font-family:"Shippori Mincho",serif;font-size:3.4rem;line-height:1}
+  .price .amount .u{color:var(--muted)}
+  .price .note{margin-top:18px;font-size:.82rem;color:var(--muted)}
+
+  /* CTA */
+  .cta{text-align:center;background:var(--paper)}
+  .cta .en{font-size:.7rem;letter-spacing:.36em;color:var(--muted);margin-bottom:24px}
+  .cta h2{font-family:"Shippori Mincho",serif;font-weight:600;font-size:clamp(1.7rem,3.6vw,2.6rem);color:var(--navy);line-height:1.6;margin-bottom:36px}
+  .cta .btn-line{margin-top:8px}
+
+  /* Footer */
+  footer{background:var(--navy);color:#9fb2c9;padding:64px 0 30px;font-size:.86rem}
+  .foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:36px;margin-bottom:40px}
+  .foot-logo{font-family:"Shippori Mincho",serif;color:#fff;font-size:1.3rem;letter-spacing:.1em;margin-bottom:14px}
+  .foot-col h5{color:#fff;font-weight:500;letter-spacing:.1em;margin-bottom:16px;font-size:.82rem}
+  .foot-col a{display:block;padding:5px 0;color:#9fb2c9;transition:.2s}
+  .foot-col a:hover{color:#fff}
+  .foot-note{border-top:1px solid rgba(255,255,255,.12);padding-top:24px;text-align:center;font-size:.78rem;color:#6e83a0;line-height:1.8}
+
+  @keyframes fadeIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+
+  @media(max-width:880px){
+    .hero-grid,.price{grid-template-columns:1fr;gap:44px}
+    .hero-visual img{height:360px}
+    .feat-grid{grid-template-columns:1fr}
+    .feat-grid .cell{border-right:none!important}
+    .srv{grid-template-columns:40px 1fr;gap:20px}
+    .srv .pic{display:none}
+    .nav-links{display:none}
+    .burger{display:block}
+    .price .info{padding:50px 34px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#" class="logo">SUPER PARKING<small>NARITA AIRPORT</small></a>
+    <nav class="nav-links">
+      <a href="#service">サービス</a>
+      <a href="#feature">特徴</a>
+      <a href="#price">料金</a>
+      <a href="#reserve" class="nav-cta">RESERVE</a>
+    </nav>
+    <button class="burger" aria-label="メニュー">☰</button>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <div class="eyebrow">NARITA AIRPORT PARKING</div>
+      <h1>旅のはじまりを、<br>静かに、確かに。<span class="thin">成田空港 第3ターミナル 徒歩5分の送迎駐車場</span></h1>
+      <p>大切なお車を、24時間の見守りと全車保険のもとでお預かり。出発の朝も、帰国の夜も、ただ身軽でいられるように。</p>
+      <div class="hero-actions">
+        <a href="#reserve" class="btn-line">ご予約はこちら</a>
+        <a href="#price" class="link-arrow">料金を見る →</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="frame">
+        <!-- 差し替え時: src を images/hero.jpg に変更 -->
+        <img src="https://picsum.photos/seed/superparking2-hero/800/1000" alt="夜明けの空港">
+      </div>
+      <div class="tag">
+        <div class="n mincho">5min</div>
+        <div class="t">TO TERMINAL 3</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="services" id="service">
+  <div class="container">
+    <div class="label"><span class="en">SERVICE</span><h2>選べる、4つの預け方</h2><span class="bar"></span></div>
+
+    <div class="srv">
+      <div class="idx mincho">01</div>
+      <div><h3>送迎付きプラン</h3><p>お車をお預かりし、各ターミナルまで無料で送迎。荷物の多い日も、身軽に出発できます。</p></div>
+      <div class="pic"><!-- 差し替え時: src を images/service1.jpg に変更 --><img src="https://picsum.photos/seed/superparking2-s1/500/300" alt="送迎"></div>
+    </div>
+    <div class="srv">
+      <div class="idx mincho">02</div>
+      <div><h3>長期専門プラン</h3><p>出張や長期旅行に最適なお得な料金設定。期間が延びても柔軟に対応いたします。</p></div>
+      <div class="pic"><!-- 差し替え時: src を images/service2.jpg に変更 --><img src="https://picsum.photos/seed/superparking2-s2/500/300" alt="長期"></div>
+    </div>
+    <div class="srv">
+      <div class="idx mincho">03</div>
+      <div><h3>洗車オプション</h3><p>お預かり中に洗車を承ります。お戻りの際は、清められたお車でお迎えします。</p></div>
+      <div class="pic"><!-- 差し替え時: src を images/service3.jpg に変更 --><img src="https://picsum.photos/seed/superparking2-s3/500/300" alt="洗車"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section id="feature">
+  <div class="container">
+    <div class="label"><span class="en">FEATURES</span><h2>選ばれる、4つの理由</h2><span class="bar"></span></div>
+    <div class="feat-grid">
+      <div class="cell"><div class="num">— ⅰ</div><h4>24時間の監視と有人管理</h4><p>常時カメラ監視に加え、スタッフが常駐。バッテリー上がりなどの不測の事態にもその場で対応します。</p></div>
+      <div class="cell"><div class="num">— ⅱ</div><h4>全車両に保険を適用</h4><p>入出庫時の車両チェックを徹底。万一に備え、お預かりするすべてのお車に保険を適用しています。</p></div>
+      <div class="cell"><div class="num">— ⅲ</div><h4>LINE・アプリで予約完結</h4><p>スマートフォンひとつで予約から受付まで。急なご予定にも、当日予約で対応いたします。</p></div>
+      <div class="cell"><div class="num">— ⅳ</div><h4>空港まで、いちばん近い</h4><p>第3ターミナルまで徒歩5分、第一・第二へは無料送迎。移動のストレスを最小限に。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Price -->
+<section style="padding:0" id="price">
+  <div class="price">
+    <div class="imgside">
+      <!-- 差し替え時: src を images/lot.jpg に変更 -->
+      <img src="https://picsum.photos/seed/superparking2-lot/800/800" alt="駐車場">
+    </div>
+    <div class="info">
+      <div class="en">PRICE</div>
+      <h3 class="mincho">必要なものだけを、<br>明朗な料金で。</h3>
+      <div class="amount"><span class="v mincho">700</span><span class="u">円〜 / 24時間</span></div>
+      <div class="note">※屋根付きプラン・繁忙期（GW・お盆・年末年始）は料金が異なります。詳細はお問い合わせください。</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="reserve">
+  <div class="container">
+    <div class="en">RESERVATION</div>
+    <h2 class="mincho">出発の朝を、<br>もっと静かに。</h2>
+    <a href="#" class="btn-line">LINEで予約する</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="foot-top">
+      <div>
+        <div class="foot-logo">SUPER PARKING</div>
+        <p>成田空港送迎駐車場<br>千葉県成田市（第3ターミナル徒歩5分）<br>営業時間 5:00〜23:00</p>
+      </div>
+      <div class="foot-col">
+        <h5>SERVICE</h5>
+        <a href="#">送迎付きプラン</a>
+        <a href="#">長期専門プラン</a>
+        <a href="#">洗車オプション</a>
+      </div>
+      <div class="foot-col">
+        <h5>INFORMATION</h5>
+        <a href="#">ご利用の流れ</a>
+        <a href="#">料金表</a>
+        <a href="#">お問い合わせ</a>
+      </div>
+    </div>
+    <div class="foot-note">
+      これは営業提案用のデザインサンプルです。実際のサービス内容・料金とは異なる場合があります。<br>
+      &copy; SUPER PARKING — design sample.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

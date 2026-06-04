@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報｜SUPER PARKING 成田空港送迎駐車場</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0b2c54;
+    --blue:#1565c8;
+    --sky:#3b9be8;
+    --orange:#ff7a1a;
+    --light:#eef4fb;
+    --ink:#1c2a3a;
+    --gray:#5e6e80;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:"Noto Sans JP",sans-serif;color:var(--ink);line-height:1.85;background:#fff}
+  img{display:block;max-width:100%}
+  a{text-decoration:none;color:inherit}
+  .container{max-width:1080px;margin:0 auto;padding:0 24px}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:60;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);box-shadow:0 1px 0 rgba(11,44,84,.08)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:70px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.2rem;color:var(--navy)}
+  .logo .mark{width:32px;height:32px;border-radius:8px;background:linear-gradient(135deg,var(--blue),var(--sky));display:grid;place-items:center;color:#fff;font-size:.9rem}
+  .logo small{font-size:.7rem;color:var(--gray);font-weight:500}
+  .nav-cta{background:var(--orange);color:#fff!important;padding:9px 22px;border-radius:999px;font-weight:700;font-size:.88rem;box-shadow:0 4px 0 #c95400;transition:transform .15s}
+  .nav-cta:hover{transform:translateY(-2px)}
+
+  /* Hero */
+  .hero{position:relative;color:#fff;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;z-index:-2}
+  .hero-bg img{width:100%;height:100%;object-fit:cover}
+  .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(150deg,rgba(11,44,84,.9),rgba(21,101,200,.74))}
+  .hero-inner{padding:110px 24px 120px;text-align:center;animation:fadeUp .9s ease both}
+  .hero .eyebrow{font-size:.86rem;letter-spacing:.2em;opacity:.9;margin-bottom:20px}
+  .hero h1{font-size:clamp(2.1rem,5.6vw,3.6rem);font-weight:900;line-height:1.35}
+  .hero h1 .accent{color:#ffd84d}
+  .hero p{margin:24px auto 0;max-width:580px;opacity:.95}
+  .pills{margin-top:34px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+  .pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);padding:9px 20px;border-radius:999px;font-size:.9rem;font-weight:500}
+  .hero-cta{margin-top:40px}
+  .btn{display:inline-block;padding:16px 40px;border-radius:999px;font-weight:800;font-size:1.05rem;transition:transform .15s}
+  .btn-orange{background:var(--orange);color:#fff;box-shadow:0 6px 0 #c95400}
+  .btn-orange:hover{transform:translateY(-3px)}
+
+  /* Sections */
+  section{padding:88px 0}
+  .head{text-align:center;margin-bottom:50px}
+  .head .tag{display:inline-block;background:var(--light);color:var(--blue);font-weight:700;padding:6px 18px;border-radius:999px;font-size:.85rem;margin-bottom:16px}
+  .head h2{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;color:var(--navy)}
+  .head h2 em{color:var(--orange);font-style:normal}
+  .head p{margin-top:14px;color:var(--gray)}
+
+  /* Charm */
+  .charm{background:var(--light)}
+  .charm-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .charm-card{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 10px 30px rgba(11,44,84,.08)}
+  .charm-card img{width:100%;height:180px;object-fit:cover}
+  .charm-card .body{padding:26px 24px 30px}
+  .charm-card .n{color:var(--orange);font-weight:900;font-size:1.4rem;margin-bottom:6px}
+  .charm-card h3{font-size:1.2rem;font-weight:900;color:var(--navy);margin-bottom:10px}
+  .charm-card p{color:var(--gray);font-size:.94rem}
+
+  /* Voices */
+  .voices-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  .voice{display:flex;gap:20px;background:#fff;border:1px solid var(--light);border-radius:20px;padding:26px;box-shadow:0 8px 24px rgba(11,44,84,.06)}
+  .voice .avatar{flex-shrink:0;width:84px;height:84px;border-radius:50%;overflow:hidden}
+  .voice .avatar img{width:100%;height:100%;object-fit:cover}
+  .voice .who{font-weight:700;color:var(--navy);margin-bottom:4px}
+  .voice .role{font-size:.82rem;color:var(--orange);font-weight:700;margin-bottom:10px}
+  .voice p{font-size:.92rem;color:var(--gray)}
+
+  /* Requirements */
+  .req{background:var(--navy);color:#fff}
+  .req .head h2{color:#fff}
+  .req .head h2 em{color:#ffd84d}
+  .req-table{max-width:760px;margin:0 auto;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.14);border-radius:18px;overflow:hidden}
+  .req-row{display:grid;grid-template-columns:200px 1fr;border-bottom:1px solid rgba(255,255,255,.12)}
+  .req-row:last-child{border-bottom:none}
+  .req-row .k{background:rgba(255,255,255,.06);padding:20px 26px;font-weight:700;color:#ffd84d;font-size:.95rem}
+  .req-row .v{padding:20px 26px;font-size:.95rem}
+
+  /* Apply CTA */
+  .apply{position:relative;text-align:center;color:#fff;overflow:hidden}
+  .apply-bg{position:absolute;inset:0;z-index:-2}
+  .apply-bg img{width:100%;height:100%;object-fit:cover}
+  .apply::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(120deg,rgba(255,122,26,.9),rgba(21,101,200,.8))}
+  .apply-inner{padding:90px 24px}
+  .apply h2{font-size:clamp(1.7rem,4.4vw,2.6rem);font-weight:900;margin-bottom:16px}
+  .apply p{opacity:.95;margin-bottom:32px}
+  .apply .btn-white{background:#fff;color:var(--navy);box-shadow:0 6px 0 rgba(0,0,0,.18)}
+  .apply .btn-white:hover{transform:translateY(-3px)}
+
+  /* Footer */
+  footer{background:#06203f;color:#9fb2c9;padding:50px 0 26px;font-size:.9rem}
+  .foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-bottom:30px}
+  .foot-logo{color:#fff;font-weight:900;font-size:1.2rem;margin-bottom:10px}
+  .foot-note{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;text-align:center;font-size:.82rem;color:#74899f;line-height:1.7}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+  @media(max-width:860px){
+    .charm-grid{grid-template-columns:1fr;max-width:400px;margin:0 auto}
+    .voices-grid{grid-template-columns:1fr}
+    .req-row{grid-template-columns:1fr}
+    .req-row .k{padding-bottom:4px}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#" class="logo"><span class="mark">SP</span>SUPER PARKING <small>採用情報</small></a>
+    <a href="#apply" class="nav-cta">応募する</a>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg">
+    <!-- 差し替え時: src を images/recruit-hero.jpg に変更 -->
+    <img src="https://picsum.photos/seed/superparking-recruit-hero/1600/900" alt="働くスタッフの様子">
+  </div>
+  <div class="hero-inner container">
+    <div class="eyebrow">SUPER PARKING ─ RECRUIT</div>
+    <h1>旅のはじまりを、<br><span class="accent">いちばん近く</span>で支える仕事。</h1>
+    <p>成田空港のすぐそば。お客様の「いってきます」と「ただいま」に立ち会える、やりがいのある職場で、私たちと一緒に働きませんか。</p>
+    <div class="pills">
+      <span class="pill">送迎ドライバー</span>
+      <span class="pill">駐車場スタッフ</span>
+      <span class="pill">受付・予約対応</span>
+      <span class="pill">未経験歓迎</span>
+    </div>
+    <div class="hero-cta"><a href="#apply" class="btn btn-orange">募集要項を見る →</a></div>
+  </div>
+</section>
+
+<!-- Charm -->
+<section class="charm">
+  <div class="container">
+    <div class="head">
+      <span class="tag">OUR CHARM</span>
+      <h2>ここで働く、<em>3つの魅力</em></h2>
+    </div>
+    <div class="charm-grid">
+      <div class="charm-card">
+        <!-- 差し替え時: src を images/charm1.jpg に変更 -->
+        <img src="https://picsum.photos/seed/superparking-charm1/600/400" alt="チームの様子">
+        <div class="body"><div class="n">01</div><h3>未経験から始められる</h3><p>普通自動車免許があればOK。先輩がイチから丁寧に教えるので、はじめての方も安心してスタートできます。</p></div>
+      </div>
+      <div class="charm-card">
+        <!-- 差し替え時: src を images/charm2.jpg に変更 -->
+        <img src="https://picsum.photos/seed/superparking-charm2/600/400" alt="シフト">
+        <div class="body"><div class="n">02</div><h3>シフトの融通がきく</h3><p>早番・遅番を組み合わせた働き方が可能。Wワークや家庭との両立をしているスタッフも多数活躍しています。</p></div>
+      </div>
+      <div class="charm-card">
+        <!-- 差し替え時: src を images/charm3.jpg に変更 -->
+        <img src="https://picsum.photos/seed/superparking-charm3/600/400" alt="お客様対応">
+        <div class="body"><div class="n">03</div><h3>「ありがとう」が近い</h3><p>旅立つお客様、帰ってきたお客様と直接ふれあう仕事。感謝の言葉をもらえる場面が、毎日たくさんあります。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Voices -->
+<section>
+  <div class="container">
+    <div class="head">
+      <span class="tag">STAFF VOICE</span>
+      <h2>先輩スタッフの<em>声</em></h2>
+    </div>
+    <div class="voices-grid">
+      <div class="voice">
+        <div class="avatar"><!-- 差し替え時: src を images/staff1.jpg に変更 --><img src="https://picsum.photos/seed/superparking-staff1/200/200" alt="スタッフ"></div>
+        <div>
+          <div class="who">Aさん</div>
+          <div class="role">送迎ドライバー / 入社2年目</div>
+          <p>運転が好きで応募しました。お客様を空港までお送りして「助かったよ」と言ってもらえる瞬間が、いちばんのやりがいです。</p>
+        </div>
+      </div>
+      <div class="voice">
+        <div class="avatar"><!-- 差し替え時: src を images/staff2.jpg に変更 --><img src="https://picsum.photos/seed/superparking-staff2/200/200" alt="スタッフ"></div>
+        <div>
+          <div class="who">Bさん</div>
+          <div class="role">受付・予約対応 / 入社3年目</div>
+          <p>シフトを相談しながら組めるので、子育てと両立できています。チームの雰囲気が良く、困ったときはすぐ助け合える職場です。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Requirements -->
+<section class="req">
+  <div class="container">
+    <div class="head">
+      <span class="tag" style="background:rgba(255,255,255,.1);color:#ffd84d">REQUIREMENTS</span>
+      <h2>募集<em>要項</em></h2>
+    </div>
+    <div class="req-table">
+      <div class="req-row"><div class="k">募集職種</div><div class="v">送迎ドライバー／駐車場スタッフ／受付・予約対応</div></div>
+      <div class="req-row"><div class="k">雇用形態</div><div class="v">正社員・アルバイト・パート（応相談）</div></div>
+      <div class="req-row"><div class="k">勤務地</div><div class="v">千葉県成田市（成田空港周辺・第3ターミナル徒歩5分）</div></div>
+      <div class="req-row"><div class="k">勤務時間</div><div class="v">5:00〜23:00の間でシフト制（早番・遅番あり）</div></div>
+      <div class="req-row"><div class="k">給与</div><div class="v">経験・能力を考慮のうえ決定（詳細は面接にてご説明します）</div></div>
+      <div class="req-row"><div class="k">応募資格</div><div class="v">普通自動車免許（AT限定可）／未経験者歓迎</div></div>
+      <div class="req-row"><div class="k">待遇</div><div class="v">交通費支給・各種研修あり・シフト相談可</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Apply CTA -->
+<section class="apply" id="apply">
+  <div class="apply-bg">
+    <!-- 差し替え時: src を images/apply.jpg に変更 -->
+    <img src="https://picsum.photos/seed/superparking-apply/1600/700" alt="一緒に働くスタッフ">
+  </div>
+  <div class="apply-inner">
+    <h2>まずは、気軽に話を聞きに来ませんか？</h2>
+    <p>応募フォームやお電話、LINEからご連絡ください。見学だけでも歓迎です。</p>
+    <a href="#" class="btn btn-white">応募・お問い合わせはこちら →</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="foot-top">
+      <div>
+        <div class="foot-logo">SUPER PARKING</div>
+        <p>成田空港送迎駐車場<br>千葉県成田市（第3ターミナル徒歩5分）</p>
+      </div>
+      <div>
+        <p>採用に関するお問い合わせ<br>応募フォーム・お電話・LINEにて受付</p>
+      </div>
+    </div>
+    <div class="foot-note">
+      これは営業提案用の採用LPサンプルです。掲載している「先輩スタッフの声」は架空の例であり、実在の人物・発言ではありません。募集要項・待遇は実際の内容と異なります。<br>
+      &copy; SUPER PARKING — recruit design sample.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

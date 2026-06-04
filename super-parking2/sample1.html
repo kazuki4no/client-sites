@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SUPER PARKING｜成田空港 送迎駐車場</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0a3d7a;
+    --blue:#1769d6;
+    --sky:#3b9be8;
+    --light:#eaf3fc;
+    --ink:#1a2533;
+    --gray:#5b6b7e;
+    --white:#ffffff;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:"Noto Sans JP",sans-serif;color:var(--ink);line-height:1.8;background:var(--white)}
+  img{display:block;max-width:100%}
+  a{text-decoration:none;color:inherit}
+  .container{max-width:1120px;margin:0 auto;padding:0 24px}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.96);backdrop-filter:blur(6px);box-shadow:0 1px 0 rgba(10,61,122,.08)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.25rem;color:var(--navy);letter-spacing:.02em}
+  .logo .mark{width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,var(--blue),var(--sky));display:grid;place-items:center;color:#fff;font-weight:900;font-size:1rem}
+  .nav-links{display:flex;gap:32px;align-items:center}
+  .nav-links a{font-weight:500;font-size:.95rem;color:var(--gray);transition:color .2s}
+  .nav-links a:hover{color:var(--blue)}
+  .nav-cta{background:var(--blue);color:#fff!important;padding:10px 22px;border-radius:999px;font-weight:700;font-size:.9rem;transition:background .2s}
+  .nav-cta:hover{background:var(--navy)}
+  .burger{display:none;font-size:1.6rem;color:var(--navy);background:none;border:none;cursor:pointer}
+
+  /* Hero */
+  .hero{position:relative;text-align:center;color:#fff;overflow:hidden}
+  .hero-bg{position:absolute;inset:0;z-index:-2}
+  .hero-bg img{width:100%;height:100%;object-fit:cover}
+  .hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(160deg,rgba(10,61,122,.88),rgba(23,105,214,.72))}
+  .hero-inner{padding:120px 24px 130px;animation:fadeUp .9s ease both}
+  .hero .badge{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);padding:7px 18px;border-radius:999px;font-size:.85rem;font-weight:500;margin-bottom:26px}
+  .hero h1{font-size:clamp(2rem,5vw,3.4rem);font-weight:900;line-height:1.35;letter-spacing:.01em}
+  .hero h1 .accent{color:#ffd84d}
+  .hero p{margin:24px auto 0;max-width:640px;font-size:1.08rem;font-weight:400;opacity:.95}
+  .hero-btns{margin-top:40px;display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+  .btn{display:inline-block;padding:15px 36px;border-radius:999px;font-weight:700;font-size:1rem;transition:transform .2s,box-shadow .2s}
+  .btn-primary{background:#ffd84d;color:var(--navy);box-shadow:0 10px 24px rgba(0,0,0,.18)}
+  .btn-primary:hover{transform:translateY(-3px);box-shadow:0 16px 30px rgba(0,0,0,.24)}
+  .btn-ghost{background:rgba(255,255,255,.12);color:#fff;border:1.5px solid rgba(255,255,255,.6)}
+  .btn-ghost:hover{background:rgba(255,255,255,.22)}
+
+  /* Trust bar */
+  .trust{background:var(--navy);color:#fff}
+  .trust .container{display:flex;justify-content:space-around;flex-wrap:wrap;padding:26px 24px;gap:18px;text-align:center}
+  .trust .item{flex:1;min-width:140px}
+  .trust .num{font-size:1.8rem;font-weight:900;color:#ffd84d}
+  .trust .lbl{font-size:.85rem;opacity:.9}
+
+  /* Section */
+  section{padding:90px 0}
+  .sec-head{text-align:center;margin-bottom:56px}
+  .sec-head .en{display:block;color:var(--sky);font-weight:700;letter-spacing:.18em;font-size:.8rem;margin-bottom:10px}
+  .sec-head h2{font-size:clamp(1.6rem,3.5vw,2.3rem);font-weight:900;color:var(--navy)}
+  .sec-head p{margin-top:14px;color:var(--gray)}
+
+  /* Services */
+  .services{background:var(--light)}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  .card{background:#fff;border-radius:18px;overflow:hidden;box-shadow:0 8px 28px rgba(10,61,122,.08);transition:transform .25s,box-shadow .25s}
+  .card:hover{transform:translateY(-6px);box-shadow:0 16px 40px rgba(10,61,122,.16)}
+  .card img{width:100%;height:190px;object-fit:cover}
+  .card-body{padding:26px 24px 30px}
+  .card h3{font-size:1.2rem;font-weight:700;color:var(--navy);margin-bottom:12px;display:flex;align-items:center;gap:10px}
+  .card h3 .ico{width:30px;height:30px;border-radius:8px;background:var(--light);display:grid;place-items:center;font-size:1rem}
+  .card p{color:var(--gray);font-size:.95rem}
+
+  /* Features / price */
+  .price-wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:50px;align-items:center}
+  .price-img{border-radius:20px;overflow:hidden;box-shadow:0 16px 40px rgba(10,61,122,.18)}
+  .price-img img{width:100%;height:100%;object-fit:cover;min-height:340px}
+  .feat-list{list-style:none}
+  .feat-list li{display:flex;gap:16px;padding:18px 0;border-bottom:1px dashed #cdddef}
+  .feat-list li:last-child{border-bottom:none}
+  .feat-list .check{flex-shrink:0;width:28px;height:28px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-weight:900;font-size:.9rem}
+  .feat-list h4{font-size:1.05rem;font-weight:700;color:var(--ink)}
+  .feat-list span{font-size:.92rem;color:var(--gray)}
+  .price-box{margin-top:28px;background:var(--light);border-radius:16px;padding:26px 28px;text-align:center}
+  .price-box .small{font-size:.9rem;color:var(--gray)}
+  .price-box .big{font-size:2.4rem;font-weight:900;color:var(--navy)}
+  .price-box .big small{font-size:1rem;font-weight:500}
+
+  /* CTA */
+  .cta{position:relative;color:#fff;text-align:center;overflow:hidden}
+  .cta-bg{position:absolute;inset:0;z-index:-2}
+  .cta-bg img{width:100%;height:100%;object-fit:cover}
+  .cta::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(120deg,rgba(10,61,122,.92),rgba(23,105,214,.82))}
+  .cta-inner{padding:90px 24px}
+  .cta h2{font-size:clamp(1.7rem,4vw,2.6rem);font-weight:900;margin-bottom:18px}
+  .cta p{opacity:.95;margin-bottom:34px}
+
+  /* Footer */
+  footer{background:#071f3d;color:#aebfd4;padding:54px 0 28px;font-size:.9rem}
+  .foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;margin-bottom:34px}
+  .foot-logo{color:#fff;font-weight:900;font-size:1.2rem;margin-bottom:12px}
+  .foot-col h5{color:#fff;font-size:.95rem;margin-bottom:14px}
+  .foot-col a{display:block;color:#aebfd4;padding:5px 0;transition:color .2s}
+  .foot-col a:hover{color:#fff}
+  .foot-note{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;text-align:center;font-size:.82rem;color:#7d92ad;line-height:1.7}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+
+  @media(max-width:860px){
+    .cards{grid-template-columns:1fr;max-width:420px;margin:0 auto}
+    .price-wrap{grid-template-columns:1fr;gap:34px}
+    .nav-links{display:none}
+    .burger{display:block}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#" class="logo"><span class="mark">SP</span>SUPER PARKING</a>
+    <nav class="nav-links">
+      <a href="#service">サービス</a>
+      <a href="#price">料金・特徴</a>
+      <a href="#flow">ご利用の流れ</a>
+      <a href="#reserve" class="nav-cta">かんたん予約</a>
+    </nav>
+    <button class="burger" aria-label="メニュー">☰</button>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg">
+    <!-- 差し替え時: src を images/hero.jpg に変更 -->
+    <img src="https://picsum.photos/seed/superparking-hero1/1600/900" alt="成田空港の駐車場と空">
+  </div>
+  <div class="hero-inner container">
+    <span class="badge">成田空港 第3ターミナル 徒歩5分</span>
+    <h1>空港まで、<span class="accent">いちばん近い</span>。<br>あずけて安心の送迎駐車場。</h1>
+    <p>24時間セキュリティと全車両保険で、旅行も出張もお見送りまで安心。LINE・アプリから当日予約もOK。あなたの大切なお車をプロがお預かりします。</p>
+    <div class="hero-btns">
+      <a href="#reserve" class="btn btn-primary">いますぐ予約する</a>
+      <a href="#price" class="btn btn-ghost">料金をみる</a>
+    </div>
+  </div>
+</section>
+
+<!-- Trust bar -->
+<div class="trust">
+  <div class="container">
+    <div class="item"><div class="num">徒歩5分</div><div class="lbl">第3ターミナルまで</div></div>
+    <div class="item"><div class="num">24h</div><div class="lbl">監視セキュリティ</div></div>
+    <div class="item"><div class="num">全車</div><div class="lbl">保険適用でお預かり</div></div>
+    <div class="item"><div class="num">無料</div><div class="lbl">ターミナル送迎</div></div>
+  </div>
+</div>
+
+<!-- Services -->
+<section class="services" id="service">
+  <div class="container">
+    <div class="sec-head">
+      <span class="en">OUR SERVICE</span>
+      <h2>選べる4つの駐車スタイル</h2>
+      <p>ご利用シーンに合わせて、最適なプランをお選びいただけます。</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <!-- 差し替え時: src を images/service1.jpg に変更 -->
+        <img src="https://picsum.photos/seed/superparking-s1/600/400" alt="送迎付き駐車場">
+        <div class="card-body">
+          <h3><span class="ico">🚐</span>送迎付きプラン</h3>
+          <p>ご到着後はスタッフがお車をお預かり。第一・第二ターミナルまで無料で送迎いたします。荷物が多い旅行も身軽に。</p>
+        </div>
+      </div>
+      <div class="card">
+        <!-- 差し替え時: src を images/service2.jpg に変更 -->
+        <img src="https://picsum.photos/seed/superparking-s2/600/400" alt="長期専門駐車場">
+        <div class="card-body">
+          <h3><span class="ico">🗓️</span>長期専門プラン</h3>
+          <p>海外出張や長期旅行に。お得な長期料金でしっかりお預かり。出発前後の予定変更にも柔軟に対応します。</p>
+        </div>
+      </div>
+      <div class="card">
+        <!-- 差し替え時: src を images/service3.jpg に変更 -->
+        <img src="https://picsum.photos/seed/superparking-s3/600/400" alt="洗車サービス">
+        <div class="card-body">
+          <h3><span class="ico">✨</span>洗車オプション</h3>
+          <p>お預かり中に洗車を承ります。帰国・帰宅時はピカピカのお車でお出迎え。旅の締めくくりをより気持ちよく。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Price / features -->
+<section id="price">
+  <div class="container">
+    <div class="sec-head">
+      <span class="en">PRICE & FEATURES</span>
+      <h2>安心とお手頃を、両立しました</h2>
+    </div>
+    <div class="price-wrap">
+      <div class="price-img">
+        <!-- 差し替え時: src を images/lot.jpg に変更 -->
+        <img src="https://picsum.photos/seed/superparking-lot/800/700" alt="駐車場の様子">
+      </div>
+      <div>
+        <ul class="feat-list">
+          <li><span class="check">✓</span><div><h4>24時間監視カメラ＆有人管理</h4><span>バッテリー上がりなどのトラブルもその場で対応します。</span></div></li>
+          <li><span class="check">✓</span><div><h4>全車両に保険を適用</h4><span>入出庫時には車両チェックを実施。万一にも備えています。</span></div></li>
+          <li><span class="check">✓</span><div><h4>LINE・アプリで簡単予約</h4><span>当日予約もOK。スマホひとつで完結します。</span></div></li>
+        </ul>
+        <div class="price-box">
+          <div class="small">基本料金</div>
+          <div class="big">700円<small>〜 / 24時間</small></div>
+          <div class="small">※屋根付きプラン・繁忙期は料金が異なります</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="reserve">
+  <div class="cta-bg">
+    <!-- 差し替え時: src を images/cta.jpg に変更 -->
+    <img src="https://picsum.photos/seed/superparking-cta/1600/700" alt="空港へ向かう車">
+  </div>
+  <div class="cta-inner">
+    <h2 id="flow">ご予約はかんたん3ステップ</h2>
+    <p>① LINE・アプリで予約　→　② 当日ご来場・お車をお預け　→　③ 無料送迎でターミナルへ</p>
+    <a href="#" class="btn btn-primary">LINEで予約する</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="foot-top">
+      <div>
+        <div class="foot-logo">SUPER PARKING</div>
+        <p>成田空港送迎駐車場<br>千葉県成田市（第3ターミナル徒歩5分）<br>営業時間 5:00〜23:00</p>
+      </div>
+      <div class="foot-col">
+        <h5>サービス</h5>
+        <a href="#">送迎付きプラン</a>
+        <a href="#">長期専門プラン</a>
+        <a href="#">洗車オプション</a>
+        <a href="#">コインパーキング</a>
+      </div>
+      <div class="foot-col">
+        <h5>ご案内</h5>
+        <a href="#">ご利用の流れ</a>
+        <a href="#">料金表</a>
+        <a href="#">よくある質問</a>
+        <a href="#">お問い合わせ</a>
+      </div>
+    </div>
+    <div class="foot-note">
+      これは営業提案用のデザインサンプルです。実際のサービス内容・料金とは異なる場合があります。<br>
+      &copy; SUPER PARKING — design sample.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

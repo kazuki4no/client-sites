@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SUPER PARKING｜成田空港 送迎駐車場</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0b2c54;
+    --blue:#1565c8;
+    --orange:#ff7a1a;
+    --amber:#ffb648;
+    --cream:#fff6ec;
+    --ink:#1c2a3a;
+    --gray:#5e6e80;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{font-family:"M PLUS Rounded 1c",sans-serif;color:var(--ink);line-height:1.8;background:#fff;overflow-x:hidden}
+  img{display:block;max-width:100%}
+  a{text-decoration:none;color:inherit}
+  .container{max-width:1140px;margin:0 auto;padding:0 24px}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:60;background:var(--navy)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:74px}
+  .logo{display:flex;align-items:center;gap:10px;font-weight:900;font-size:1.3rem;color:#fff}
+  .logo .mark{background:var(--orange);color:#fff;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-size:1rem;box-shadow:0 4px 0 #c95400}
+  .nav-links{display:flex;gap:30px;align-items:center}
+  .nav-links a{color:#cdd9e8;font-weight:500;font-size:.92rem;transition:color .2s}
+  .nav-links a:hover{color:#fff}
+  .nav-cta{background:var(--orange);color:#fff!important;padding:10px 24px;border-radius:999px;font-weight:800;box-shadow:0 4px 0 #c95400;transition:transform .15s}
+  .nav-cta:hover{transform:translateY(-2px)}
+  .burger{display:none;font-size:1.6rem;color:#fff;background:none;border:none;cursor:pointer}
+
+  /* Hero */
+  .hero{position:relative;background:var(--navy);color:#fff;overflow:hidden;padding:90px 0 110px}
+  .hero::before{content:"";position:absolute;width:680px;height:680px;background:radial-gradient(circle,rgba(255,122,26,.35),transparent 65%);top:-260px;right:-200px;border-radius:50%}
+  .hero::after{content:"";position:absolute;width:480px;height:480px;background:radial-gradient(circle,rgba(21,101,200,.5),transparent 65%);bottom:-220px;left:-160px;border-radius:50%}
+  .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center}
+  .hero-text{animation:pop .8s cubic-bezier(.2,.8,.2,1) both}
+  .hero .pill{display:inline-block;background:var(--orange);color:#fff;padding:8px 20px;border-radius:999px;font-weight:800;font-size:.85rem;transform:rotate(-2deg);box-shadow:0 5px 0 #c95400;margin-bottom:24px}
+  .hero h1{font-size:clamp(2.1rem,5.6vw,3.7rem);font-weight:900;line-height:1.3}
+  .hero h1 .hi{position:relative;display:inline-block;color:var(--amber)}
+  .hero h1 .hi::after{content:"";position:absolute;left:0;right:0;bottom:6px;height:14px;background:rgba(255,122,26,.4);z-index:-1;border-radius:4px}
+  .hero p{margin-top:24px;font-size:1.08rem;opacity:.94;max-width:480px}
+  .hero-btns{margin-top:38px;display:flex;gap:16px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:16px 34px;border-radius:999px;font-weight:800;font-size:1.02rem;transition:transform .15s}
+  .btn-orange{background:var(--orange);color:#fff;box-shadow:0 6px 0 #c95400}
+  .btn-orange:hover{transform:translateY(-3px)}
+  .btn-line{background:#fff;color:var(--navy);box-shadow:0 6px 0 #b7c4d4}
+  .btn-line:hover{transform:translateY(-3px)}
+  .hero-img{position:relative;z-index:2}
+  .hero-img .ph{border-radius:24px;overflow:hidden;border:5px solid #fff;box-shadow:0 24px 50px rgba(0,0,0,.4);transform:rotate(2deg)}
+  .hero-img .ph img{width:100%;height:380px;object-fit:cover}
+  .hero-img .float{position:absolute;background:#fff;color:var(--navy);border-radius:16px;padding:14px 20px;font-weight:800;box-shadow:0 12px 28px rgba(0,0,0,.25);display:flex;align-items:center;gap:10px}
+  .hero-img .float .big{color:var(--orange);font-size:1.5rem}
+  .hero-img .f1{top:-18px;left:-22px;transform:rotate(-5deg)}
+  .hero-img .f2{bottom:-20px;right:-18px;transform:rotate(4deg)}
+
+  /* Marquee strip */
+  .strip{background:var(--orange);color:#fff;padding:16px 0;overflow:hidden;white-space:nowrap;font-weight:800;letter-spacing:.04em}
+  .strip span{display:inline-block;padding:0 28px}
+
+  /* Sections */
+  section{padding:90px 0}
+  .head{text-align:center;margin-bottom:54px}
+  .head .tag{display:inline-block;background:var(--cream);color:var(--orange);font-weight:800;padding:6px 18px;border-radius:999px;font-size:.85rem;margin-bottom:16px}
+  .head h2{font-size:clamp(1.7rem,4vw,2.5rem);font-weight:900;color:var(--navy)}
+  .head h2 em{color:var(--orange);font-style:normal}
+
+  /* Services */
+  .services{background:var(--cream)}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:26px}
+  .card{background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 10px 0 rgba(11,44,84,.08);transition:transform .2s}
+  .card:hover{transform:translateY(-8px)}
+  .card .imgwrap{position:relative}
+  .card .imgwrap img{width:100%;height:180px;object-fit:cover}
+  .card .imgwrap .no{position:absolute;top:14px;left:14px;background:var(--orange);color:#fff;width:38px;height:38px;border-radius:50%;display:grid;place-items:center;font-weight:900;box-shadow:0 4px 0 #c95400}
+  .card-body{padding:24px}
+  .card h3{font-size:1.2rem;font-weight:900;color:var(--navy);margin-bottom:10px}
+  .card p{color:var(--gray);font-size:.94rem}
+
+  /* Why band */
+  .why{background:var(--navy);color:#fff}
+  .why .head h2{color:#fff}
+  .why .head h2 em{color:var(--amber)}
+  .why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px}
+  .why-item{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:30px 22px;text-align:center}
+  .why-item .ic{font-size:2.2rem;margin-bottom:14px}
+  .why-item h4{font-weight:800;margin-bottom:8px;color:var(--amber)}
+  .why-item p{font-size:.88rem;opacity:.9}
+
+  /* Price big CTA */
+  .price{background:var(--cream)}
+  .price-card{background:#fff;border-radius:28px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;box-shadow:0 18px 0 rgba(11,44,84,.08)}
+  .price-card .pic img{width:100%;height:100%;min-height:330px;object-fit:cover}
+  .price-card .body{padding:50px 46px;display:flex;flex-direction:column;justify-content:center}
+  .price-card .body .tag{display:inline-block;background:var(--cream);color:var(--orange);font-weight:800;padding:6px 16px;border-radius:999px;font-size:.82rem;width:fit-content;margin-bottom:18px}
+  .price-card h3{font-size:1.5rem;font-weight:900;color:var(--navy);margin-bottom:14px}
+  .price-card .amount{font-size:3.4rem;font-weight:900;color:var(--orange);line-height:1}
+  .price-card .amount small{font-size:1.05rem;color:var(--gray);font-weight:700}
+  .price-card .note{font-size:.85rem;color:var(--gray);margin:14px 0 26px}
+
+  /* Final CTA */
+  .final{position:relative;background:var(--navy);color:#fff;text-align:center;overflow:hidden}
+  .final::before{content:"";position:absolute;width:560px;height:560px;background:radial-gradient(circle,rgba(255,122,26,.35),transparent 65%);top:-200px;left:50%;transform:translateX(-50%);border-radius:50%}
+  .final .inner{position:relative;z-index:2;padding:88px 24px}
+  .final h2{font-size:clamp(1.8rem,4.4vw,2.8rem);font-weight:900;margin-bottom:16px}
+  .final h2 em{color:var(--amber);font-style:normal}
+  .final p{opacity:.92;margin-bottom:34px}
+
+  /* Footer */
+  footer{background:#06203f;color:#9fb2c9;padding:54px 0 28px;font-size:.9rem}
+  .foot-top{display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;margin-bottom:34px}
+  .foot-logo{color:#fff;font-weight:900;font-size:1.25rem;margin-bottom:12px}
+  .foot-col h5{color:#fff;margin-bottom:14px;font-size:.95rem}
+  .foot-col a{display:block;color:#9fb2c9;padding:5px 0;transition:.2s}
+  .foot-col a:hover{color:var(--amber)}
+  .foot-note{border-top:1px solid rgba(255,255,255,.12);padding-top:22px;text-align:center;font-size:.82rem;color:#74899f;line-height:1.7}
+
+  @keyframes pop{from{opacity:0;transform:scale(.94) translateY(20px)}to{opacity:1;transform:scale(1) translateY(0)}}
+
+  @media(max-width:880px){
+    .hero-grid{grid-template-columns:1fr;gap:60px}
+    .cards{grid-template-columns:1fr;max-width:400px;margin:0 auto}
+    .why-grid{grid-template-columns:1fr 1fr}
+    .price-card{grid-template-columns:1fr}
+    .price-card .pic{order:-1}
+    .nav-links{display:none}
+    .burger{display:block}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container nav">
+    <a href="#" class="logo"><span class="mark">S</span>SUPER PARKING</a>
+    <nav class="nav-links">
+      <a href="#service">サービス</a>
+      <a href="#why">選ばれる理由</a>
+      <a href="#price">料金</a>
+      <a href="#reserve" class="nav-cta">今すぐ予約</a>
+    </nav>
+    <button class="burger" aria-label="メニュー">☰</button>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-text">
+      <span class="pill">成田空港 第3ターミナル 徒歩5分！</span>
+      <h1>車を停めて、<br><span class="hi">そのまま旅へ。</span></h1>
+      <p>面倒な駐車はぜんぶおまかせ。お預かりから無料送迎まで、SUPER PARKINGがスムーズにお手伝い。LINEで今すぐ予約できます！</p>
+      <div class="hero-btns">
+        <a href="#reserve" class="btn btn-orange">LINEで予約 →</a>
+        <a href="#price" class="btn btn-line">料金を見る</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <div class="ph">
+        <!-- 差し替え時: src を images/hero.jpg に変更 -->
+        <img src="https://picsum.photos/seed/superparking3-hero/700/560" alt="空港へ向かう旅行者">
+      </div>
+      <div class="float f1"><span class="big">5分</span><span>で空港へ</span></div>
+      <div class="float f2"><span class="big">24h</span><span>安心警備</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Strip -->
+<div class="strip">
+  <span>★ 無料送迎つき</span><span>★ 全車保険適用</span><span>★ 当日予約OK</span><span>★ 洗車サービスあり</span><span>★ 24時間セキュリティ</span><span>★ 700円〜/24h</span><span>★ 無料送迎つき</span><span>★ 全車保険適用</span>
+</div>
+
+<!-- Services -->
+<section class="services" id="service">
+  <div class="container">
+    <div class="head">
+      <span class="tag">SERVICE</span>
+      <h2>あなたにぴったりの<em>停め方</em>が選べる</h2>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="imgwrap"><span class="no">1</span><!-- 差し替え時: src を images/service1.jpg に変更 --><img src="https://picsum.photos/seed/superparking3-s1/600/400" alt="送迎付き"></div>
+        <div class="card-body"><h3>送迎付きプラン</h3><p>お車をお預かりして各ターミナルまで無料送迎。荷物が多くても、もう汗だくになりません！</p></div>
+      </div>
+      <div class="card">
+        <div class="imgwrap"><span class="no">2</span><!-- 差し替え時: src を images/service2.jpg に変更 --><img src="https://picsum.photos/seed/superparking3-s2/600/400" alt="長期専門"></div>
+        <div class="card-body"><h3>長期専門プラン</h3><p>出張も長期旅行もおトクな料金で。予定が延びても柔軟対応、帰りまで安心して預けられます。</p></div>
+      </div>
+      <div class="card">
+        <div class="imgwrap"><span class="no">3</span><!-- 差し替え時: src を images/service3.jpg に変更 --><img src="https://picsum.photos/seed/superparking3-s3/600/400" alt="洗車"></div>
+        <div class="card-body"><h3>洗車オプション</h3><p>預けている間にピカピカに。帰ってきたら気持ちのいいキレイな愛車がお出迎えします。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Why -->
+<section class="why" id="why">
+  <div class="container">
+    <div class="head">
+      <span class="tag">WHY US</span>
+      <h2>SUPER PARKINGが<em>選ばれる</em>ワケ</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why-item"><div class="ic">🚐</div><h4>無料送迎</h4><p>第一・第二ターミナルまで無料でお送りします。</p></div>
+      <div class="why-item"><div class="ic">🛡️</div><h4>全車保険</h4><p>入出庫チェック＋保険適用で、もしもにも備え。</p></div>
+      <div class="why-item"><div class="ic">📱</div><h4>LINE予約</h4><p>スマホで完結。当日予約にも対応しています。</p></div>
+      <div class="why-item"><div class="ic">👀</div><h4>24時間監視</h4><p>有人管理＆カメラで大切なお車を見守ります。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Price -->
+<section class="price" id="price">
+  <div class="container">
+    <div class="price-card">
+      <div class="pic"><!-- 差し替え時: src を images/lot.jpg に変更 --><img src="https://picsum.photos/seed/superparking3-lot/700/700" alt="駐車場"></div>
+      <div class="body">
+        <span class="tag">PRICE</span>
+        <h3>わかりやすい、おトク価格</h3>
+        <div class="amount">700円<small>〜 / 24時間</small></div>
+        <p class="note">※屋根付きプランは+300円/24時間。繁忙期（GW・お盆・年末年始）は料金が異なります。</p>
+        <a href="#reserve" class="btn btn-orange">この料金で予約する →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="final" id="reserve">
+  <div class="inner">
+    <h2>次の旅は、<em>SUPER PARKING</em>から。</h2>
+    <p>予約はLINEで30秒。空きが埋まる前に、今すぐ確保しておきましょう！</p>
+    <a href="#" class="btn btn-orange">LINEで予約する →</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="container">
+    <div class="foot-top">
+      <div>
+        <div class="foot-logo">SUPER PARKING</div>
+        <p>成田空港送迎駐車場<br>千葉県成田市（第3ターミナル徒歩5分）<br>営業時間 5:00〜23:00</p>
+      </div>
+      <div class="foot-col">
+        <h5>サービス</h5>
+        <a href="#">送迎付きプラン</a>
+        <a href="#">長期専門プラン</a>
+        <a href="#">洗車オプション</a>
+      </div>
+      <div class="foot-col">
+        <h5>ご案内</h5>
+        <a href="#">ご利用の流れ</a>
+        <a href="#">料金表</a>
+        <a href="#">お問い合わせ</a>
+      </div>
+    </div>
+    <div class="foot-note">
+      これは営業提案用のデザインサンプルです。実際のサービス内容・料金とは異なる場合があります。<br>
+      &copy; SUPER PARKING — design sample.
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
