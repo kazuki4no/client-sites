@@ -14,7 +14,8 @@ html,body{max-width:100%;overflow-x:hidden;}
 img{max-width:100%;height:auto;display:block;}
 :root{
   --cream:#F6F1E9;--ivory:#FBF8F2;--beige:#C9B49A;--beige-d:#B29B7E;
-  --taupe:#8C7B68;--ink:#2A2521;--ink-soft:#4A4239;--line:#E3D9CA;--white:#fff;
+  --taupe:#8C7B68;--ink:#2A2521;--ink2:#332D27;--ink-soft:#4A4239;
+  --line:#E3D9CA;--white:#fff;--gold:#B8995F;
 }
 body{font-family:"Noto Sans JP",sans-serif;color:var(--ink);background:var(--ivory);line-height:1.9;font-weight:300;-webkit-font-smoothing:antialiased;}
 .serif{font-family:"Zen Old Mincho",serif;}
@@ -43,18 +44,23 @@ header{position:fixed;top:0;left:0;width:100%;z-index:100;background:rgba(251,24
   .burger{display:flex;}
 }
 
-/* hero */
-.hero{position:relative;margin-top:70px;min-height:78vh;display:flex;align-items:center;overflow:hidden;}
-.hero-img{position:absolute;inset:0;z-index:0;}
-.hero-img img{width:100%;height:100%;object-fit:cover;}
-.hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(42,37,33,.78),rgba(42,37,33,.3));}
-.hero-in{position:relative;z-index:2;color:var(--cream);width:100%;}
-.hero-ey{font-family:"Cormorant Garamond",serif;font-style:italic;letter-spacing:.3em;color:var(--beige);font-size:1.05rem;margin-bottom:1.4rem;}
-.hero h1{font-family:"Zen Old Mincho",serif;font-weight:500;font-size:clamp(2rem,7vw,3.9rem);line-height:1.45;letter-spacing:.04em;margin-bottom:1.6rem;}
-.hero h1 b{color:var(--beige);font-weight:700;}
-.hero p{max-width:30em;color:#e8ddcb;font-size:clamp(.9rem,2.6vw,1.02rem);margin-bottom:2rem;}
-.pills{display:flex;flex-wrap:wrap;gap:.7rem;}
-.pill{border:1px solid rgba(246,241,233,.6);color:var(--cream);padding:.5rem 1.2rem;border-radius:30px;font-size:.8rem;letter-spacing:.06em;}
+/* split hero */
+.rhero{margin-top:70px;display:grid;grid-template-columns:1fr 1fr;min-height:calc(100vh - 70px);}
+.rhero-txt{background:var(--ink);color:var(--cream);display:flex;flex-direction:column;justify-content:center;padding:clamp(2.5rem,5vw,5rem);position:relative;}
+.rhero-txt::before{content:"";position:absolute;top:0;right:0;width:140px;height:140px;background:radial-gradient(circle at top right,rgba(184,153,95,.22),transparent 70%);}
+.rhero-ey{font-family:"Cormorant Garamond",serif;font-style:italic;letter-spacing:.3em;color:var(--gold);font-size:1.1rem;margin-bottom:1.4rem;}
+.rhero-txt h1{font-family:"Zen Old Mincho",serif;font-weight:500;font-size:clamp(1.9rem,4.6vw,3.3rem);line-height:1.5;letter-spacing:.04em;margin-bottom:1.6rem;}
+.rhero-txt h1 b{color:var(--gold);font-weight:700;}
+.rhero-txt p{color:#e0d6c5;font-size:clamp(.88rem,2.4vw,1rem);margin-bottom:2rem;max-width:26em;}
+.pills{display:flex;flex-wrap:wrap;gap:.6rem;}
+.pill{border:1px solid rgba(201,180,154,.5);color:var(--cream);padding:.45rem 1.1rem;border-radius:30px;font-size:.78rem;letter-spacing:.05em;}
+.rhero-img{position:relative;overflow:hidden;background:#000;}
+.rhero-img img{width:100%;height:100%;object-fit:cover;}
+@media(max-width:768px){
+  .rhero{grid-template-columns:1fr;min-height:auto;}
+  .rhero-txt{padding:3rem 1.3rem;}
+  .rhero-img img{width:100%;height:auto;max-height:78vh;object-fit:cover;}
+}
 
 section{padding:clamp(4rem,9vw,7rem) 0;}
 .sec-head{text-align:center;margin-bottom:3rem;}
@@ -62,11 +68,19 @@ section{padding:clamp(4rem,9vw,7rem) 0;}
 .sec-ttl{font-family:"Zen Old Mincho",serif;font-size:clamp(1.5rem,5vw,2.3rem);font-weight:500;letter-spacing:.06em;}
 .sec-lead{margin-top:1rem;color:var(--ink-soft);font-size:.94rem;}
 
-/* message */
+/* 代表メッセージ */
 .msg{background:var(--cream);}
-.msg-box{max-width:760px;margin:0 auto;text-align:center;}
-.msg-box h2{font-family:"Zen Old Mincho",serif;font-size:clamp(1.4rem,4.6vw,2.1rem);font-weight:500;line-height:1.7;letter-spacing:.05em;margin-bottom:1.6rem;}
-.msg-box p{color:var(--ink-soft);font-size:.95rem;}
+.msg-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,5vw,4rem);align-items:center;}
+.msg-photo{position:relative;}
+.msg-photo img{width:100%;border-radius:3px;}
+.msg-photo .cap{position:absolute;left:1rem;bottom:1rem;background:rgba(42,37,33,.82);color:var(--cream);padding:.5rem 1rem;border-radius:2px;font-size:.78rem;letter-spacing:.06em;}
+.msg-photo .cap b{font-family:"Cormorant Garamond",serif;letter-spacing:.1em;color:var(--gold);}
+.msg-txt .sec-en{text-align:left;}
+.msg-txt h2{font-family:"Zen Old Mincho",serif;font-size:clamp(1.4rem,4.2vw,2rem);font-weight:500;line-height:1.7;letter-spacing:.05em;margin:.3rem 0 1.4rem;}
+.msg-txt p{color:var(--ink-soft);font-size:.94rem;margin-bottom:1rem;}
+.msg-sign{margin-top:1.4rem;font-size:.86rem;color:var(--taupe);}
+.msg-sign b{font-family:"Zen Old Mincho",serif;font-size:1.05rem;color:var(--ink);font-weight:600;}
+@media(max-width:768px){.msg-grid{grid-template-columns:1fr;gap:1.8rem;}}
 
 /* merits */
 .merit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;}
@@ -77,20 +91,20 @@ section{padding:clamp(4rem,9vw,7rem) 0;}
 .merit p{font-size:.86rem;color:var(--ink-soft);}
 @media(max-width:768px){.merit-grid{grid-template-columns:1fr;gap:1.3rem;}}
 
-/* voice */
+/* voice (sample) */
 .voice{background:var(--cream);}
 .voice-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.6rem;}
-.vc{background:var(--white);border-radius:3px;overflow:hidden;display:flex;flex-direction:column;}
-.vc-top{display:flex;gap:1.2rem;align-items:center;padding:1.6rem 1.6rem 0;}
-.vc-top img{width:74px;height:74px;border-radius:50%;object-fit:cover;flex-shrink:0;}
-.vc-top .nm{font-family:"Zen Old Mincho",serif;font-size:1.1rem;font-weight:600;}
-.vc-top .pos{font-size:.78rem;color:var(--taupe);}
-.vc-body{padding:1.4rem 1.6rem 1.8rem;}
+.vc{background:var(--white);border-radius:3px;overflow:hidden;display:flex;flex-direction:column;border:1px solid var(--line);}
+.vc-top{display:flex;gap:1.1rem;align-items:center;padding:1.6rem 1.6rem 0;}
+.avatar{width:64px;height:64px;border-radius:50%;background:var(--beige);color:#fff;display:flex;align-items:center;justify-content:center;font-family:"Cormorant Garamond",serif;font-size:1.5rem;flex-shrink:0;}
+.vc-top .nm{font-family:"Zen Old Mincho",serif;font-size:1.05rem;font-weight:600;}
+.vc-top .pos{font-size:.76rem;color:var(--taupe);}
+.vc-body{padding:1.3rem 1.6rem 1.8rem;}
 .vc-body .q{font-family:"Zen Old Mincho",serif;font-size:1rem;color:var(--beige-d);margin-bottom:.6rem;}
-.vc-body p{font-size:.86rem;color:var(--ink-soft);}
+.vc-body p{font-size:.85rem;color:var(--ink-soft);}
 @media(max-width:768px){.voice-grid{grid-template-columns:1fr;gap:1.3rem;}}
 
-/* requirements table */
+/* requirements */
 .req{max-width:820px;margin:0 auto;border-top:1px solid var(--beige);}
 .req-row{display:grid;grid-template-columns:200px 1fr;gap:1rem;padding:1.4rem .4rem;border-bottom:1px solid var(--line);}
 .req-row dt{font-family:"Zen Old Mincho",serif;font-size:.95rem;font-weight:500;color:var(--taupe);letter-spacing:.04em;}
@@ -98,27 +112,25 @@ section{padding:clamp(4rem,9vw,7rem) 0;}
 @media(max-width:768px){.req-row{grid-template-columns:1fr;gap:.3rem;}.req-row dt{color:var(--beige-d);}}
 
 /* cta */
-.cta{position:relative;text-align:center;color:#fff;overflow:hidden;}
-.cta-img{position:absolute;inset:0;z-index:0;}
-.cta-img img{width:100%;height:100%;object-fit:cover;}
-.cta-img::after{content:"";position:absolute;inset:0;background:rgba(42,37,33,.74);}
+.cta{position:relative;background:var(--ink);color:var(--cream);text-align:center;overflow:hidden;}
+.cta::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(184,153,95,.18),transparent 60%);}
 .cta-in{position:relative;z-index:2;}
-.cta .sec-en{color:var(--beige);}
+.cta .sec-en{color:var(--gold);}
 .cta h2{font-family:"Zen Old Mincho",serif;font-size:clamp(1.5rem,5vw,2.4rem);font-weight:500;margin:.3rem 0 1.2rem;letter-spacing:.05em;}
-.cta p{max-width:30em;margin:0 auto 2.4rem;color:#e8ddcb;font-size:.95rem;}
+.cta p{max-width:30em;margin:0 auto 2.4rem;color:#e0d6c5;font-size:.95rem;}
 .btns{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;}
 .btn{display:inline-flex;align-items:center;padding:1rem 2.2rem;border-radius:2px;font-size:.92rem;letter-spacing:.08em;transition:.3s;}
 .btn-line{background:#06C755;color:#fff;}
 .btn-line:hover{transform:translateY(-2px);}
-.btn-out{border:1px solid rgba(246,241,233,.6);color:var(--cream);}
+.btn-out{border:1px solid rgba(201,180,154,.55);color:var(--cream);}
 .btn-out:hover{background:var(--cream);color:var(--ink);}
 
-footer{background:var(--ink);color:#cabfad;padding:3rem 0 2rem;text-align:center;}
+footer{background:var(--ink2);color:#cabfad;padding:3rem 0 2rem;text-align:center;}
 .f-logo{font-family:"Cormorant Garamond",serif;font-size:1.8rem;letter-spacing:.25em;color:var(--cream);}
 .f-logo small{display:block;font-family:"Noto Sans JP";font-size:.55rem;letter-spacing:.35em;margin-top:2px;}
 .f-link{margin:1.4rem 0;}
 .f-link a{font-size:.82rem;margin:0 .8rem;color:#cabfad;}
-.f-link a:hover{color:var(--beige);}
+.f-link a:hover{color:var(--gold);}
 .f-copy{border-top:1px solid rgba(201,180,154,.2);padding-top:1.4rem;font-size:.74rem;}
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease;}
 .reveal.show{opacity:1;transform:none;}
@@ -140,29 +152,36 @@ footer{background:var(--ink);color:#cabfad;padding:3rem 0 2rem;text-align:center
   </div>
 </header>
 
-<!-- 採用ヒーロー背景（スタッフの働く様子 or スタジオ）を images/recruit-hero.jpg として保存して使用 -->
-<section class="hero">
-  <div class="hero-img"><img src="https://picsum.photos/seed/miraink-recruit/1600/900" alt="MIRA INK 採用"></div>
-  <div class="wrap hero-in">
-    <div class="reveal">
-      <p class="hero-ey">Recruit</p>
-      <h1 class="serif">技術で、<br><b>誰かの自信</b>をつくる。</h1>
-      <p>世界基準の技術が学べる環境で、一緒に成長しませんか。MIRA INK では、新しい仲間を募集しています。</p>
-      <div class="pills">
-        <span class="pill">タトゥーアーティスト</span>
-        <span class="pill">アシスタント</span>
-        <span class="pill">受付・サロンスタッフ</span>
-        <span class="pill">未経験OK</span>
-      </div>
+<!-- ヒーロー右側：女性スタッフの施術カット（images/recruit-hero.jpg） -->
+<section class="rhero">
+  <div class="rhero-txt">
+    <p class="rhero-ey">Recruit</p>
+    <h1 class="serif">技術で、<br><b>誰かの自信</b>をつくる。</h1>
+    <p>眉毛・頭皮・ボディー。世界の舞台で認められた技術を、基礎から学べる環境です。MIRA INK で、一緒に成長しませんか。</p>
+    <div class="pills">
+      <span class="pill">タトゥーアーティスト</span>
+      <span class="pill">アシスタント</span>
+      <span class="pill">受付・サロンスタッフ</span>
+      <span class="pill">未経験OK</span>
     </div>
   </div>
+  <div class="rhero-img"><img src="images/recruit-hero.jpg" alt="MIRA INK の施術風景"></div>
 </section>
 
+<!-- 代表メッセージ：シンゴさんのポートレート（images/daihyo.jpg） -->
 <section class="msg" id="message">
-  <div class="wrap msg-box reveal">
-    <p class="sec-en">Message</p>
-    <h2 class="serif">「ありがとう」が、<br>すぐ目の前にある仕事。</h2>
-    <p>眉毛、頭皮、ボディー。私たちの施術は、お客様の小さな悩みを解決し、自信を取り戻すお手伝いです。技術を磨けば磨くほど、目の前で誰かの表情が変わっていく。そんなやりがいを、一緒に味わいませんか。世界大会で結果を出してきたアーティストが、基礎から丁寧にお伝えします。</p>
+  <div class="wrap msg-grid">
+    <div class="msg-photo reveal">
+      <img src="images/daihyo.jpg" alt="代表 Shingo Kayashima">
+      <span class="cap"><b>Shingo Kayashima</b><br>代表 / Scalp Ink Instructor</span>
+    </div>
+    <div class="msg-txt reveal">
+      <p class="sec-en">Message</p>
+      <h2 class="serif">「ありがとう」が、<br>すぐ目の前にある仕事。</h2>
+      <p>眉毛、頭皮、ボディー。私たちの施術は、お客様の小さな悩みを解決し、自信を取り戻すお手伝いです。技術を磨けば磨くほど、目の前で誰かの表情が変わっていく。そんなやりがいを、一緒に味わいませんか。</p>
+      <p>世界大会で結果を出してきたアーティストが、基礎から丁寧にお伝えします。未経験でも大丈夫。大切なのは「人を喜ばせたい」という気持ちです。</p>
+      <p class="msg-sign">MIRA INK 代表　<b>Shingo Kayashima</b></p>
+    </div>
   </div>
 </section>
 
@@ -192,7 +211,7 @@ footer{background:var(--ink);color:#cabfad;padding:3rem 0 2rem;text-align:center
   </div>
 </section>
 
-<!-- ▼「先輩スタッフの声」は差し替え用のサンプルです。実際のスタッフ情報・写真・コメントに置き換えてください -->
+<!-- ▼「先輩スタッフの声」は差し替え用のサンプルです。実際のスタッフ情報・コメントに置き換えてください -->
 <section class="voice" id="voice">
   <div class="wrap">
     <div class="sec-head reveal">
@@ -203,8 +222,7 @@ footer{background:var(--ink);color:#cabfad;padding:3rem 0 2rem;text-align:center
     <div class="voice-grid">
       <div class="vc reveal">
         <div class="vc-top">
-          <!-- 先輩スタッフ1の写真を images/voice1.jpg として保存して使用（サンプル） -->
-          <img src="https://picsum.photos/seed/miraink-v1/200/200" alt="先輩スタッフ">
+          <div class="avatar">A</div>
           <div>
             <div class="nm serif">スタッフ A</div>
             <div class="pos">アーティスト／入社2年目</div>
@@ -217,8 +235,7 @@ footer{background:var(--ink);color:#cabfad;padding:3rem 0 2rem;text-align:center
       </div>
       <div class="vc reveal">
         <div class="vc-top">
-          <!-- 先輩スタッフ2の写真を images/voice2.jpg として保存して使用（サンプル） -->
-          <img src="https://picsum.photos/seed/miraink-v2/200/200" alt="先輩スタッフ">
+          <div class="avatar">B</div>
           <div>
             <div class="nm serif">スタッフ B</div>
             <div class="pos">受付・サロンスタッフ／入社1年目</div>
@@ -226,7 +243,7 @@ footer{background:var(--ink);color:#cabfad;padding:3rem 0 2rem;text-align:center
         </div>
         <div class="vc-body">
           <p class="q serif">「お客様の変化を、一番近くで。」</p>
-          <p>施術前の不安そうな表情が、終わったあとには笑顔になる。その瞬間に立ち会えるのがこの仕事の魅力です。チームの雰囲気も温かくて働きやすいです。（※サンプルテキスト）</p>
+          <p>施術前の不安そうな表情が、終わったあとには笑顔に。その瞬間に立ち会えるのがこの仕事の魅力です。チームの雰囲気も温かくて働きやすいです。（※サンプルテキスト）</p>
         </div>
       </div>
     </div>
@@ -254,9 +271,7 @@ footer{background:var(--ink);color:#cabfad;padding:3rem 0 2rem;text-align:center
   </div>
 </section>
 
-<!-- 応募CTA背景を images/recruit-cta.jpg として保存して使用 -->
 <section class="cta" id="entry">
-  <div class="cta-img"><img src="https://picsum.photos/seed/miraink-rcta/1600/700" alt=""></div>
   <div class="wrap cta-in reveal">
     <p class="sec-en">Entry</p>
     <h2 class="serif">まずは話を聞いてみたい、でOK。</h2>
