@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<!-- ▼採用ページ（提案サンプル）。会社名「くらしの便利屋」と各項目は実際の情報に差し替えてください -->
+<!-- ▼選ばれたHP案の配色に合わせて --accent を変更すると全体トーンが揃います -->
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報｜くらしの便利屋</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{max-width:100%;overflow-x:hidden;}
+img{max-width:100%;height:auto;display:block;}
+:root{
+  --silver-1:#f3f4f6;
+  --silver-2:#d7dbe0;
+  --silver-3:#9aa1ab;
+  --ink:#2b2e33;
+  --ink-soft:#5a606a;
+  --accent:#2f6690;       /* ← HP案に合わせて変更（例：オレンジ案なら #f5803e） */
+  --accent-dk:#234f6e;
+}
+body{font-family:"Noto Sans JP",sans-serif;color:var(--ink);line-height:1.85;background:#fff;}
+a{text-decoration:none;color:inherit;}
+.wrap{width:100%;max-width:1040px;margin:0 auto;padding:0 1.5rem;}
+
+/* ナビ */
+header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.93);backdrop-filter:blur(6px);border-bottom:1px solid var(--silver-2);}
+.nav{display:flex;align-items:center;justify-content:space-between;height:66px;}
+.logo{font-weight:900;font-size:1.2rem;}
+.logo span{color:var(--accent);}
+.menu{display:flex;gap:1.5rem;list-style:none;align-items:center;}
+.menu a{font-size:.93rem;font-weight:500;color:var(--ink-soft);}
+.menu a:hover{color:var(--accent);}
+.nav-cta{background:var(--accent);color:#fff;padding:.5rem 1.1rem;border-radius:6px;font-weight:700;font-size:.88rem;}
+.hamb{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px;}
+.hamb span{width:25px;height:2px;background:var(--ink);display:block;}
+
+/* ヒーロー */
+.hero{position:relative;color:#fff;}
+.hero img{width:100%;height:clamp(380px,64vh,560px);object-fit:cover;}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(35,79,110,.85),rgba(43,46,51,.45));}
+.hero-inner{position:absolute;inset:0;display:flex;align-items:center;}
+.hero-inner .wrap{width:100%;}
+.eyebrow{display:inline-block;font-size:.82rem;letter-spacing:.2em;font-weight:700;background:rgba(255,255,255,.18);padding:.35rem .9rem;border-radius:4px;margin-bottom:1.1rem;}
+.hero h1{font-size:clamp(1.9rem,6.5vw,3.4rem);font-weight:900;line-height:1.4;text-shadow:0 2px 14px rgba(0,0,0,.3);}
+.hero .sub{margin-top:1.1rem;font-size:clamp(1rem,2.6vw,1.18rem);max-width:36ch;}
+.pills{margin-top:1.8rem;display:flex;flex-wrap:wrap;gap:.7rem;}
+.pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:.5rem 1.1rem;font-size:.9rem;font-weight:500;}
+
+/* セクション共通 */
+section{padding:clamp(3rem,7vw,5rem) 0;}
+.sec-head{text-align:center;margin-bottom:2.6rem;}
+.sec-head h2{font-size:clamp(1.5rem,5vw,2.2rem);font-weight:900;}
+.sec-head .en{display:block;font-size:.78rem;letter-spacing:.22em;color:var(--accent);font-weight:700;margin-top:.5rem;}
+
+/* 働く魅力 */
+.merit-bg{background:var(--silver-1);}
+.merit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;}
+.merit{background:#fff;border:1px solid var(--silver-2);border-radius:14px;padding:2rem 1.6rem;text-align:center;}
+.merit .ico{font-size:2.2rem;margin-bottom:.8rem;}
+.merit h3{font-size:1.18rem;margin-bottom:.6rem;}
+.merit p{font-size:.93rem;color:var(--ink-soft);}
+
+/* スタッフの声 */
+.voice-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.6rem;}
+.voice{display:flex;gap:1.2rem;background:#fff;border:1px solid var(--silver-2);border-radius:14px;padding:1.6rem;}
+.voice .avatar{flex-shrink:0;width:72px;height:72px;border-radius:50%;overflow:hidden;background:var(--silver-2);}
+.voice .avatar img{width:100%;height:100%;object-fit:cover;}
+.voice h4{font-size:1.02rem;margin-bottom:.2rem;}
+.voice .role{font-size:.82rem;color:var(--accent);font-weight:700;margin-bottom:.6rem;}
+.voice p{font-size:.9rem;color:var(--ink-soft);}
+.sample-note{text-align:center;font-size:.83rem;color:var(--silver-3);margin-top:1.4rem;}
+
+/* 募集要項 */
+.req-bg{background:var(--silver-1);}
+.req-table{width:100%;max-width:820px;margin:0 auto;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 18px rgba(43,46,51,.06);}
+.req-table th,.req-table td{padding:1.05rem 1.3rem;border-bottom:1px solid var(--silver-2);text-align:left;vertical-align:top;}
+.req-table th{background:var(--accent);color:#fff;font-weight:700;white-space:nowrap;width:30%;}
+@media(max-width:560px){.req-table th{width:38%;font-size:.9rem;}}
+
+/* CTA */
+.cta{background:linear-gradient(120deg,var(--accent-dk),var(--accent));color:#fff;text-align:center;}
+.cta h2{font-size:clamp(1.5rem,5vw,2.1rem);font-weight:900;}
+.cta p{margin:1rem auto 2rem;max-width:46ch;}
+.cta-box{display:flex;flex-wrap:wrap;gap:1rem;justify-content:center;align-items:center;}
+.btn{display:inline-block;padding:.9rem 1.9rem;border-radius:7px;font-weight:700;}
+.btn-main{background:#fff;color:var(--accent-dk);}
+.btn-main:hover{background:var(--silver-1);}
+.tel{font-size:clamp(1.7rem,6vw,2.4rem);font-weight:900;}
+.tel small{display:block;font-size:.82rem;font-weight:500;letter-spacing:.08em;}
+
+/* フッター */
+footer{background:var(--ink);color:var(--silver-2);padding:2.4rem 0 1.5rem;font-size:.9rem;text-align:center;}
+.footer-logo{font-weight:900;font-size:1.15rem;color:#fff;}
+.footer-logo span{color:#7fb3d5;}
+.copy{margin-top:1.4rem;padding-top:1.2rem;border-top:1px solid #3a3d42;font-size:.78rem;color:var(--silver-3);}
+
+@media(max-width:768px){
+  .menu{display:none;}
+  .nav-cta{display:none;}
+  .hamb{display:flex;}
+  .menu.open{display:flex;position:absolute;top:66px;left:0;right:0;flex-direction:column;background:#fff;border-bottom:1px solid var(--silver-2);padding:1rem 1.5rem;gap:1rem;}
+  .menu.open .nav-cta{display:inline-block;text-align:center;}
+  .merit-grid,.voice-grid{grid-template-columns:1fr;}
+  .wrap{padding:0 1.1rem;}
+}
+</style>
+</head>
+<body>
+<header>
+  <nav class="nav wrap">
+    <a href="#" class="logo">くらしの<span>便利屋</span></a>
+    <ul class="menu" id="menu">
+      <li><a href="#merit">働く魅力</a></li>
+      <li><a href="#voice">スタッフの声</a></li>
+      <li><a href="#req">募集要項</a></li>
+      <li><a href="#entry" class="nav-cta">応募する</a></li>
+    </ul>
+    <button class="hamb" id="hamb" aria-label="メニュー"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <!-- スタッフの集合写真や働く様子を images/recruit-hero.jpg に差し替え -->
+  <img src="https://picsum.photos/seed/benriya-recruit/1600/900" alt="働くスタッフ">
+  <div class="hero-inner">
+    <div class="wrap">
+      <span class="eyebrow">RECRUIT</span>
+      <h1>「ありがとう」が、<br>すぐ目の前にある仕事。</h1>
+      <p class="sub">未経験から始められる、地域のお困りごと解決スタッフを募集しています。</p>
+      <div class="pills">
+        <span class="pill">便利屋スタッフ</span>
+        <span class="pill">正社員／アルバイト</span>
+        <span class="pill">未経験歓迎</span>
+        <span class="pill">普通免許でOK</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 働く魅力 -->
+<section id="merit" class="merit-bg">
+  <div class="wrap">
+    <div class="sec-head"><h2>働く魅力</h2><span class="en">OUR APPEAL</span></div>
+    <div class="merit-grid">
+      <div class="merit"><div class="ico">🙆</div><h3>未経験から活躍できる</h3><p>特別な資格は不要。先輩と一緒に現場を回りながら、少しずつできることを増やせます。</p></div>
+      <div class="merit"><div class="ico">💬</div><h3>感謝が直接届く</h3><p>「助かったよ」の声をその場でいただける仕事。やりがいを実感しやすい環境です。</p></div>
+      <div class="merit"><div class="ico">📅</div><h3>働き方を選べる</h3><p>正社員もアルバイトもOK。シフトの相談にも柔軟に対応します。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- スタッフの声 -->
+<section id="voice">
+  <div class="wrap">
+    <div class="sec-head"><h2>先輩スタッフの声</h2><span class="en">INTERVIEW</span></div>
+    <!-- ▼以下は差し替え用のサンプルです。実際のスタッフ情報・写真に差し替えてください -->
+    <div class="voice-grid">
+      <div class="voice">
+        <div class="avatar"><img src="https://picsum.photos/seed/benriya-staff1/200/200" alt="スタッフ"></div>
+        <div><h4>田中さん</h4><div class="role">入社2年目／正社員</div>
+        <p>毎日違う現場で、いろんな人に出会えるのが楽しいです。最初は不安でしたが、先輩が丁寧に教えてくれました。</p></div>
+      </div>
+      <div class="voice">
+        <div class="avatar"><img src="https://picsum.photos/seed/benriya-staff2/200/200" alt="スタッフ"></div>
+        <div><h4>佐藤さん</h4><div class="role">入社1年目／アルバイト</div>
+        <p>体を動かす仕事が好きで応募しました。お客様に直接「ありがとう」と言ってもらえる瞬間が一番うれしいです。</p></div>
+      </div>
+    </div>
+    <p class="sample-note">※スタッフの声は内容・写真ともに差し替え用のサンプルです。</p>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<!-- ▼以下の募集要項は記入例（サンプル）です。実際の条件に差し替えてください -->
+<section id="req" class="req-bg">
+  <div class="wrap">
+    <div class="sec-head"><h2>募集要項</h2><span class="en">REQUIREMENTS</span></div>
+    <table class="req-table">
+      <tr><th>職種</th><td>便利屋スタッフ（現場作業）</td></tr>
+      <tr><th>雇用形態</th><td>正社員／アルバイト・パート</td></tr>
+      <tr><th>仕事内容</th><td>不用品回収、草刈り、清掃、家具の移動・組立など、暮らしのお困りごと全般の対応</td></tr>
+      <tr><th>給与</th><td>（例）月給 ○○万円〜／時給 ○,○○○円〜 ※経験・能力により優遇</td></tr>
+      <tr><th>勤務時間</th><td>（例）8:00〜18:00 のうちシフト制 ※応相談</td></tr>
+      <tr><th>休日</th><td>（例）週休2日・シフト制</td></tr>
+      <tr><th>応募資格</th><td>未経験歓迎／普通自動車免許（AT可）をお持ちの方歓迎</td></tr>
+      <tr><th>待遇</th><td>（例）各種社会保険、交通費支給、制服貸与</td></tr>
+      <tr><th>勤務地</th><td>○○市および近隣エリア</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 応募CTA -->
+<section id="entry" class="cta">
+  <div class="wrap">
+    <h2>まずは話を聞いてみませんか？</h2>
+    <p>「ちょっと気になる」段階でも大丈夫。お電話・メールでお気軽にご連絡ください。</p>
+    <div class="cta-box">
+      <div class="tel">000-000-0000<small>採用受付 9:00〜18:00</small></div>
+      <a href="mailto:saiyo@example.com" class="btn btn-main">メールで応募・相談する</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-logo">くらしの<span>便利屋</span></div>
+    <p style="margin-top:.6rem;">採用に関するお問い合わせ：000-000-0000（受付 9:00〜18:00）</p>
+    <div class="copy">© くらしの便利屋 All Rights Reserved.</div>
+  </div>
+</footer>
+
+<script>
+  const hamb=document.getElementById('hamb'),menu=document.getElementById('menu');
+  hamb.addEventListener('click',()=>menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+</script>
+</body>
+</html>

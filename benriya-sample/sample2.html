@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<!-- ▼会社名「くらしの便利屋」は実際の社名に差し替えてください -->
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>くらしの便利屋｜暮らしを、軽やかに。</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{max-width:100%;overflow-x:hidden;}
+img{max-width:100%;height:auto;display:block;}
+:root{
+  --base:#f6f7f8;
+  --line:#e2e4e8;
+  --silver:#aeb4bd;
+  --ink:#33373d;
+  --ink-soft:#71777f;
+  --accent:#5b6675;
+}
+body{font-family:"Zen Kaku Gothic New",sans-serif;color:var(--ink);line-height:1.95;background:var(--base);font-weight:400;-webkit-font-smoothing:antialiased;}
+a{text-decoration:none;color:inherit;}
+.mincho{font-family:"Shippori Mincho",serif;}
+.wrap{width:100%;max-width:1000px;margin:0 auto;padding:0 2rem;}
+
+/* ナビ */
+header{position:sticky;top:0;z-index:50;background:rgba(246,247,248,.85);backdrop-filter:blur(8px);}
+.nav{display:flex;align-items:center;justify-content:space-between;height:74px;}
+.logo{font-family:"Shippori Mincho",serif;font-weight:700;font-size:1.2rem;letter-spacing:.06em;}
+.menu{display:flex;gap:2rem;list-style:none;align-items:center;}
+.menu a{font-size:.9rem;letter-spacing:.05em;color:var(--ink-soft);position:relative;padding:.2rem 0;}
+.menu a::after{content:"";position:absolute;left:0;bottom:-2px;width:0;height:1px;background:var(--ink);transition:width .25s;}
+.menu a:hover::after{width:100%;}
+.hamb{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px;}
+.hamb span{width:24px;height:1.5px;background:var(--ink);display:block;}
+
+/* ヒーロー（左右非対称・余白多め） */
+.hero{padding:clamp(3rem,9vw,6.5rem) 0 clamp(3rem,8vw,5rem);}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(2rem,5vw,4rem);align-items:center;}
+.hero-cap{font-size:.78rem;letter-spacing:.35em;color:var(--silver);margin-bottom:1.6rem;}
+.hero h1{font-family:"Shippori Mincho",serif;font-weight:500;font-size:clamp(2rem,6.5vw,3.4rem);line-height:1.55;letter-spacing:.04em;}
+.hero h1 em{font-style:normal;color:var(--accent);}
+.hero p{margin-top:1.8rem;color:var(--ink-soft);font-size:1rem;max-width:36ch;}
+.hero .more{display:inline-flex;align-items:center;gap:.6rem;margin-top:2.2rem;font-size:.9rem;letter-spacing:.08em;border-bottom:1px solid var(--ink);padding-bottom:.3rem;transition:gap .25s;}
+.hero .more:hover{gap:1rem;}
+.hero-visual{position:relative;}
+.hero-visual img{width:100%;height:clamp(320px,52vh,470px);object-fit:cover;filter:grayscale(.15) contrast(.98);}
+.hero-visual .frame{position:absolute;inset:14px -14px -14px 14px;border:1px solid var(--silver);z-index:-1;}
+
+/* セクション共通 */
+section{padding:clamp(3rem,8vw,6rem) 0;}
+.eyebrow{font-size:.75rem;letter-spacing:.3em;color:var(--silver);margin-bottom:1rem;}
+.sec-title{font-family:"Shippori Mincho",serif;font-weight:500;font-size:clamp(1.5rem,5vw,2.3rem);letter-spacing:.05em;line-height:1.5;margin-bottom:.8rem;}
+
+/* 理念・リード */
+.intro{text-align:center;}
+.intro p{color:var(--ink-soft);max-width:48ch;margin:1.5rem auto 0;}
+
+/* サービス：細い罫線リスト */
+.svc-list{border-top:1px solid var(--line);}
+.svc-row{display:grid;grid-template-columns:auto 1fr auto;gap:1.5rem;align-items:center;padding:1.9rem 0;border-bottom:1px solid var(--line);transition:background .2s;}
+.svc-row:hover{background:rgba(255,255,255,.6);}
+.svc-no{font-family:"Shippori Mincho",serif;font-size:1rem;color:var(--silver);letter-spacing:.1em;}
+.svc-main h3{font-size:1.2rem;font-weight:700;letter-spacing:.03em;margin-bottom:.3rem;}
+.svc-main p{font-size:.9rem;color:var(--ink-soft);}
+.svc-arrow{color:var(--silver);font-size:1.2rem;}
+
+/* 画像帯 */
+.band{position:relative;}
+.band img{width:100%;height:clamp(220px,40vh,380px);object-fit:cover;filter:grayscale(.2);}
+.band .label{position:absolute;left:0;bottom:0;background:var(--base);padding:1.1rem 2rem;font-family:"Shippori Mincho",serif;letter-spacing:.08em;font-size:clamp(1.1rem,3vw,1.5rem);}
+
+/* 料金 */
+.price-wrap{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--line);background:#fff;}
+.price-item{padding:1.7rem 1.8rem;border-bottom:1px solid var(--line);border-right:1px solid var(--line);}
+.price-item:nth-child(2n){border-right:0;}
+.price-item h4{font-size:.98rem;font-weight:700;margin-bottom:.4rem;}
+.price-item .val{font-family:"Shippori Mincho",serif;font-size:1.3rem;color:var(--accent);letter-spacing:.04em;}
+.price-item .val small{font-size:.78rem;color:var(--ink-soft);font-family:"Zen Kaku Gothic New",sans-serif;}
+.price-note{font-size:.82rem;color:var(--ink-soft);margin-top:1.2rem;text-align:center;}
+
+/* CTA */
+.cta{background:var(--ink);color:#eef0f2;text-align:center;}
+.cta .sec-title{color:#fff;}
+.cta p{color:#b9bec5;max-width:44ch;margin:0 auto 2.4rem;}
+.cta .tel{font-family:"Shippori Mincho",serif;font-size:clamp(1.7rem,6vw,2.4rem);letter-spacing:.04em;}
+.cta .tel small{display:block;font-family:"Zen Kaku Gothic New",sans-serif;font-size:.8rem;letter-spacing:.1em;color:#9aa1ab;margin-top:.4rem;}
+.cta .mailbtn{display:inline-block;margin-top:1.8rem;border:1px solid #6b727d;color:#fff;padding:.8rem 2rem;font-size:.9rem;letter-spacing:.08em;transition:background .2s;}
+.cta .mailbtn:hover{background:rgba(255,255,255,.08);}
+
+/* フッター */
+footer{padding:3rem 0 1.8rem;}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.5rem;align-items:flex-start;}
+.foot .logo{font-size:1.1rem;}
+.foot ul{list-style:none;font-size:.88rem;line-height:2.2;color:var(--ink-soft);}
+.copy{margin-top:2.4rem;font-size:.78rem;letter-spacing:.05em;color:var(--silver);text-align:center;}
+
+@media(max-width:768px){
+  .menu{display:none;}
+  .hamb{display:flex;}
+  .menu.open{display:flex;position:absolute;top:74px;left:0;right:0;flex-direction:column;background:var(--base);padding:1.2rem 2rem;gap:1.2rem;border-bottom:1px solid var(--line);}
+  .hero-grid{grid-template-columns:1fr;}
+  .hero-visual .frame{inset:10px -10px -10px 10px;}
+  .price-wrap{grid-template-columns:1fr;}
+  .price-item{border-right:0;}
+  .svc-row{grid-template-columns:auto 1fr;gap:1rem;}
+  .svc-arrow{display:none;}
+  .wrap{padding:0 1.3rem;}
+}
+</style>
+</head>
+<body>
+<header>
+  <nav class="nav wrap">
+    <a href="#" class="logo">くらしの便利屋</a>
+    <ul class="menu" id="menu">
+      <li><a href="#about">私たちについて</a></li>
+      <li><a href="#service">サービス</a></li>
+      <li><a href="#price">料金</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+    <button class="hamb" id="hamb" aria-label="メニュー"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-cap">EVERYDAY HELP</div>
+      <h1>暮らしの手間を、<br><em>そっと軽く。</em></h1>
+      <p>片付け、庭仕事、ちょっとした修理。日々の「面倒」を引き受ける、地域の便利屋です。</p>
+      <a href="#service" class="more">できることを見る →</a>
+    </div>
+    <div class="hero-visual">
+      <!-- 静かな雰囲気の作業風景・道具などを images/hero.jpg に差し替え -->
+      <img src="https://picsum.photos/seed/benriya2-hero/900/1100" alt="暮らしのお手伝い">
+      <span class="frame"></span>
+    </div>
+  </div>
+</section>
+
+<!-- 理念 -->
+<section id="about" class="intro">
+  <div class="wrap">
+    <div class="eyebrow">ABOUT</div>
+    <h2 class="sec-title">「誰かに頼める」という、<br>小さな安心を。</h2>
+    <p>高い場所の電球ひとつ、重い家具ひとつ。ささいなことほど、一人では後回しになりがちです。私たちは、その小さな困りごとに丁寧に向き合う、暮らしのいちばん近くにいる存在でありたいと考えています。</p>
+  </div>
+</section>
+
+<!-- 画像帯 -->
+<div class="band">
+  <!-- 雰囲気のある全幅写真を images/band.jpg に差し替え -->
+  <img src="https://picsum.photos/seed/benriya2-band/1600/700" alt="作業の様子">
+  <span class="label">丁寧に、ひとつずつ。</span>
+</div>
+
+<!-- サービス -->
+<section id="service">
+  <div class="wrap">
+    <div class="eyebrow">SERVICES</div>
+    <h2 class="sec-title">できること</h2>
+    <div class="svc-list">
+      <div class="svc-row"><span class="svc-no">01</span><div class="svc-main"><h3>不用品の回収・整理</h3><p>家具・家電の処分から、お部屋まるごとの片付けまで。</p></div><span class="svc-arrow">→</span></div>
+      <div class="svc-row"><span class="svc-no">02</span><div class="svc-main"><h3>庭・草木の手入れ</h3><p>草刈り、剪定、空き地の管理。季節ごとのお手入れも。</p></div><span class="svc-arrow">→</span></div>
+      <div class="svc-row"><span class="svc-no">03</span><div class="svc-main"><h3>家具の移動・組立</h3><p>模様替えや大型家具の設置を、安全に行います。</p></div><span class="svc-arrow">→</span></div>
+      <div class="svc-row"><span class="svc-no">04</span><div class="svc-main"><h3>クリーニング</h3><p>水回り・エアコンなど、気になる場所をすっきりと。</p></div><span class="svc-arrow">→</span></div>
+      <div class="svc-row"><span class="svc-no">05</span><div class="svc-main"><h3>ちょっとした修理</h3><p>電球交換、水漏れ、網戸の張替えなどの小さな作業。</p></div><span class="svc-arrow">→</span></div>
+      <div class="svc-row"><span class="svc-no">06</span><div class="svc-main"><h3>暮らしのお手伝い</h3><p>買い物代行や生活サポートまで、幅広く承ります。</p></div><span class="svc-arrow">→</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 料金 -->
+<!-- ▼料金は差し替え用のサンプルです -->
+<section id="price">
+  <div class="wrap">
+    <div class="eyebrow">PRICE</div>
+    <h2 class="sec-title">料金の目安</h2>
+    <div class="price-wrap">
+      <div class="price-item"><h4>不用品回収（軽トラ1台）</h4><div class="val">○○,○○○円<small>〜</small></div></div>
+      <div class="price-item"><h4>草刈り・庭の手入れ</h4><div class="val">○,○○○円<small>〜／半日</small></div></div>
+      <div class="price-item"><h4>家具の移動・組立</h4><div class="val">○,○○○円<small>〜</small></div></div>
+      <div class="price-item"><h4>その他お困りごと</h4><div class="val">お見積り<small>無料</small></div></div>
+    </div>
+    <p class="price-note">※作業内容・量により変動します。出張・お見積りは無料です。</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact" class="cta">
+  <div class="wrap">
+    <div class="eyebrow" style="color:#8b929b;">CONTACT</div>
+    <h2 class="sec-title">ご相談は、ひと言から。</h2>
+    <p>「これって頼めますか？」という問い合わせだけでも大丈夫です。</p>
+    <div class="tel">000-000-0000<small>受付 8:00〜20:00／年中無休</small></div>
+    <div><a href="mailto:info@example.com" class="mailbtn">メールで問い合わせる</a></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <div>
+      <div class="logo mincho">くらしの便利屋</div>
+      <p style="font-size:.85rem;color:var(--ink-soft);margin-top:.6rem;max-width:28ch;">暮らしのいちばん近くにいる便利屋。</p>
+    </div>
+    <ul>
+      <li>私たちについて</li><li>サービス</li><li>料金</li><li>お問い合わせ</li>
+    </ul>
+    <ul>
+      <li>TEL：000-000-0000</li><li>受付：8:00〜20:00</li><li>対応エリア：○○市および近隣</li>
+    </ul>
+  </div>
+  <div class="copy wrap">© くらしの便利屋</div>
+</footer>
+
+<script>
+  const hamb=document.getElementById('hamb'),menu=document.getElementById('menu');
+  hamb.addEventListener('click',()=>menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+</script>
+</body>
+</html>
