@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>アロハイングリッシュアカデミー｜カフェスタイル英会話</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{max-width:100%;overflow-x:hidden;}
+  img{max-width:100%;height:auto;display:block;}
+  :root{
+    --leaf:#4a7c4e;
+    --leaf-d:#35603a;
+    --matcha:#8fb06a;
+    --coffee:#6b4a32;
+    --cream:#f7f4ea;
+    --cream-d:#efe9d8;
+    --ink:#34302a;
+  }
+  body{font-family:"Zen Kaku Gothic New",sans-serif;color:var(--ink);background:var(--cream);line-height:1.8;font-size:16px;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3,.display{font-family:"Zen Maru Gothic",sans-serif;}
+  .en{font-family:"Outfit",sans-serif;letter-spacing:.08em;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 2rem;}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(247,244,234,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--cream-d);}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px;}
+  .logo{display:flex;align-items:center;gap:.6rem;font-family:"Zen Maru Gothic";font-weight:900;color:var(--leaf-d);font-size:1.1rem;}
+  .logo .mark{width:38px;height:38px;border-radius:50%;background:var(--leaf);color:#fff;display:flex;align-items:center;justify-content:center;font-family:"Outfit";font-weight:700;font-size:1.1rem;flex-shrink:0;}
+  .menu{display:flex;align-items:center;gap:1.8rem;list-style:none;}
+  .menu a{font-weight:500;font-size:.95rem;}
+  .menu a:hover{color:var(--leaf);}
+  .nav-cta{background:var(--coffee);color:#fff;padding:.6rem 1.3rem;border-radius:999px;font-weight:700;font-size:.9rem;}
+  .burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:.3rem;}
+  .burger span{width:26px;height:3px;background:var(--leaf-d);border-radius:3px;}
+
+  .hero{position:relative;}
+  .hero-img{position:relative;height:clamp(420px,70vh,640px);}
+  .hero-img img{width:100%;height:100%;object-fit:cover;}
+  .hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(53,96,58,.78) 0%,rgba(53,96,58,.35) 55%,rgba(53,96,58,.08) 100%);}
+  .hero-copy{position:absolute;inset:0;display:flex;align-items:center;}
+  .hero-copy .wrap{width:100%;}
+  .hero-eyebrow{display:inline-block;background:var(--matcha);color:#27421e;font-weight:700;font-size:.8rem;padding:.35rem 1rem;border-radius:999px;margin-bottom:1.1rem;}
+  .hero h1{color:#fff;font-size:clamp(1.9rem,6vw,3.4rem);font-weight:900;line-height:1.45;text-shadow:0 2px 18px rgba(0,0,0,.25);}
+  .hero p{color:#f3f0e4;font-size:clamp(1rem,2.6vw,1.2rem);margin-top:1.1rem;max-width:34ch;text-shadow:0 1px 10px rgba(0,0,0,.25);}
+  .hero-btns{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:1.8rem;}
+  .btn{display:inline-block;padding:.95rem 1.8rem;border-radius:999px;font-weight:700;font-family:"Zen Maru Gothic";}
+  .btn-main{background:#fff;color:var(--leaf-d);}
+  .btn-main:hover{background:var(--cream-d);}
+  .btn-ghost{border:2px solid #fff;color:#fff;}
+  .btn-ghost:hover{background:rgba(255,255,255,.15);}
+
+  .strip{background:var(--leaf-d);color:#eef3e6;}
+  .strip .wrap{display:flex;flex-wrap:wrap;gap:1rem 2.4rem;justify-content:center;padding:1rem 2rem;font-weight:500;font-size:.95rem;}
+  .strip b{color:var(--matcha);font-family:"Zen Maru Gothic";}
+
+  section{padding:clamp(3.5rem,8vw,6rem) 0;}
+  .eyebrow{color:var(--leaf);font-weight:700;letter-spacing:.12em;font-size:.85rem;font-family:"Outfit";}
+  .s-title{font-size:clamp(1.6rem,5vw,2.5rem);font-weight:900;color:var(--leaf-d);margin:.5rem 0 .8rem;line-height:1.4;}
+  .s-lead{max-width:60ch;color:#5b5347;}
+
+  .about{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center;}
+  .about-img{border-radius:24px;overflow:hidden;box-shadow:0 20px 50px rgba(53,96,58,.18);}
+  .about-img img{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3;}
+
+  .features{background:var(--cream-d);}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;}
+  .card{background:#fff;border-radius:22px;padding:2rem 1.7rem;box-shadow:0 10px 30px rgba(53,96,58,.08);border:1px solid #eadfca;}
+  .card .ico{width:56px;height:56px;border-radius:16px;background:var(--matcha);color:#27421e;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:1.1rem;}
+  .card h3{font-size:1.2rem;color:var(--leaf-d);margin-bottom:.5rem;font-weight:700;}
+  .card p{font-size:.95rem;color:#5b5347;}
+
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem;}
+  .gallery img{width:100%;height:100%;object-fit:cover;aspect-ratio:1/1;border-radius:16px;}
+
+  .trial{background:var(--leaf);color:#fff;}
+  .trial-box{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center;}
+  .price-card{background:#fff;color:var(--ink);border-radius:24px;padding:2.4rem;text-align:center;box-shadow:0 24px 60px rgba(0,0,0,.18);}
+  .price-card .tag{color:var(--coffee);font-weight:700;font-family:"Zen Maru Gothic";}
+  .price-card .num{font-family:"Outfit";font-weight:700;font-size:clamp(2.6rem,9vw,3.6rem);color:var(--leaf-d);line-height:1.1;margin:.3rem 0;}
+  .price-card .num small{font-size:1rem;color:#5b5347;}
+  .price-card .perk{display:inline-block;background:var(--matcha);color:#27421e;font-weight:700;border-radius:999px;padding:.4rem 1.1rem;margin-top:.6rem;font-size:.9rem;}
+  .price-card .note{font-size:.85rem;color:#7a715f;margin-top:1rem;}
+
+  .hours{display:flex;flex-wrap:wrap;gap:1.4rem;margin-top:2rem;}
+  .hours .hbox{flex:1 1 200px;background:#fff;border:1px solid #eadfca;border-radius:18px;padding:1.4rem 1.5rem;}
+  .hours .hbox span{color:var(--leaf);font-weight:700;font-size:.85rem;font-family:"Outfit";}
+  .hours .hbox b{display:block;font-size:1.3rem;color:var(--leaf-d);font-family:"Zen Maru Gothic";margin-top:.2rem;}
+
+  .contact{background:var(--coffee);color:#f3ece1;text-align:center;}
+  .contact p{max-width:48ch;margin:.8rem auto 2rem;color:#e6dccd;}
+  .contact .btn-main{background:var(--matcha);color:#27421e;}
+  .contact-info{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem 2.5rem;margin-top:2rem;font-size:1rem;}
+  .contact-info b{font-family:"Outfit";letter-spacing:.04em;}
+
+  footer{background:#2c2620;color:#cabfae;padding:3rem 0 2rem;}
+  .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.5rem;}
+  .foot .logo{color:#fff;}
+  .foot small{display:block;margin-top:2rem;color:#8a8071;font-size:.82rem;}
+
+  @media(max-width:768px){
+    .wrap{padding:0 1.1rem;}
+    .menu{display:none;}
+    .nav-cta{display:none;}
+    .burger{display:flex;}
+    .mobile-menu{display:none;flex-direction:column;background:var(--cream);border-top:1px solid var(--cream-d);padding:1rem 1.1rem 1.4rem;}
+    .mobile-menu.open{display:flex;}
+    .mobile-menu a{padding:.7rem 0;border-bottom:1px solid var(--cream-d);font-weight:500;}
+    .mobile-menu .nav-cta{display:inline-block;text-align:center;margin-top:1rem;}
+    .about,.trial-box{grid-template-columns:1fr;}
+    .cards{grid-template-columns:1fr;}
+    .gallery{grid-template-columns:1fr 1fr;}
+    section{padding:3.2rem 0;}
+  }
+  @media(max-width:380px){
+    .gallery{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="logo"><span class="mark en">A</span>アロハイングリッシュアカデミー</a>
+    <ul class="menu">
+      <li><a href="#about">教室について</a></li>
+      <li><a href="#features">特徴</a></li>
+      <li><a href="#trial">体験レッスン</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">体験を予約する</a>
+    <button class="burger" id="burger" aria-label="メニュー"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about">教室について</a>
+    <a href="#features">特徴</a>
+    <a href="#trial">体験レッスン</a>
+    <a href="#contact">お問い合わせ</a>
+    <a href="#contact" class="nav-cta">体験を予約する</a>
+  </div>
+</header>
+
+<!-- ヒーロー：明るいカフェ店内の写真を images/hero.jpg として保存して差し替え -->
+<section class="hero">
+  <div class="hero-img">
+    <img src="https://picsum.photos/seed/aloha-hero1/1400/900" alt="光あふれるカフェの店内">
+  </div>
+  <div class="hero-copy">
+    <div class="wrap">
+      <span class="hero-eyebrow">☕ カフェスタイル英会話</span>
+      <h1>週末の朝、光あふれるカフェで<br>新しい自分に出会う。</h1>
+      <p>勉強というより、おしゃべりを楽しみに行く感覚で。アロハイングリッシュアカデミーへ。</p>
+      <div class="hero-btns">
+        <a href="#trial" class="btn btn-main">体験レッスン 1,000円</a>
+        <a href="#about" class="btn btn-ghost">教室を見てみる</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap">
+    <span>🕗 <b>朝8:30〜夜20:00</b> ご希望の時間帯で</span>
+    <span>👥 <b>少人数制</b> 初心者・シニア歓迎</span>
+    <span>🌏 <b>多国籍</b>のゲスト講師</span>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap about">
+    <div>
+      <span class="eyebrow">ABOUT</span>
+      <h2 class="s-title">英会話を、カフェのおしゃべりに。</h2>
+      <p class="s-lead">教室の扉を開けると、そこは清潔感のある居心地のいいカフェ。コーヒーを片手に、ときにはビールやワインを楽しみながら、肩の力を抜いて英語に触れられます。「英会話って難しそう」という方こそ、おしゃべり感覚で一歩を踏み出せる場所です。</p>
+    </div>
+    <!-- 店内・くつろぎの様子を images/cafe1.jpg として保存して差し替え -->
+    <div class="about-img"><img src="https://picsum.photos/seed/aloha-cafe1/900/700" alt="くつろげるカフェ空間"></div>
+  </div>
+</section>
+
+<section id="features" class="features">
+  <div class="wrap">
+    <span class="eyebrow">WHY ALOHA</span>
+    <h2 class="s-title">通いたくなる、3つの理由</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="ico">🛋️</div>
+        <h3>居心地のいいカフェ空間</h3>
+        <p>清潔感のある明るい店内で、緊張せずにリラックス。「行くのが楽しみ」になる空間です。</p>
+      </div>
+      <div class="card">
+        <div class="ico">👥</div>
+        <h3>少人数制・初心者歓迎</h3>
+        <p>一人ひとりのペースに合わせた少人数レッスン。シニアの方も、まったくの初心者も大歓迎です。</p>
+      </div>
+      <div class="card">
+        <div class="ico">🌏</div>
+        <h3>多国籍のゲスト講師</h3>
+        <p>いろいろな国のゲスト講師とおしゃべり。教室にいながら、世界とつながる体験を。</p>
+      </div>
+    </div>
+
+    <!-- ギャラリー：レッスン風景・ドリンク・店内など images/gal1.jpg〜gal3.jpg として保存して差し替え -->
+    <div class="gallery">
+      <img src="https://picsum.photos/seed/aloha-g1/600/600" alt="レッスンの様子">
+      <img src="https://picsum.photos/seed/aloha-g2/600/600" alt="カフェのドリンク">
+      <img src="https://picsum.photos/seed/aloha-g3/600/600" alt="店内の雰囲気">
+    </div>
+  </div>
+</section>
+
+<section id="trial" class="trial">
+  <div class="wrap trial-box">
+    <div>
+      <span class="eyebrow" style="color:#d8e9c2;">FIRST STEP</span>
+      <h2 class="s-title" style="color:#fff;">まずは体験レッスンから。</h2>
+      <p class="s-lead" style="color:#e8f1de;">ドリンク1杯サービス付き。コーヒーでも、アルコールでもお好きな一杯を片手に、教室の雰囲気とレッスンを気軽に体験してください。「合うかな？」を、まず確かめに来てください。</p>
+      <div style="margin-top:1.8rem;"><a href="#contact" class="btn btn-main">体験レッスンを予約する</a></div>
+    </div>
+    <div class="price-card">
+      <div class="tag">体験レッスン</div>
+      <div class="num">¥1,000<small>（税込）</small></div>
+      <div class="perk">＋ ドリンク1杯サービス</div>
+      <p class="note">アルコールもご用意しています。<br>※通常レッスンの料金はお気軽にお問い合わせください。</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">HOURS</span>
+    <h2 class="s-title">あなたの時間に、合わせて。</h2>
+    <p class="s-lead">朝のスタートに、お仕事帰りに。ご希望の時間帯でレッスンを組めます。</p>
+    <div class="hours">
+      <div class="hbox"><span>OPEN</span><b>8:30 - 20:00</b></div>
+      <div class="hbox"><span>WEEKEND</span><b>週末の朝も開講</b></div>
+      <div class="hbox"><span>STYLE</span><b>カフェで少人数</b></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <span class="eyebrow" style="color:#e7c9a8;">CONTACT</span>
+    <h2 class="s-title" style="color:#fff;">お問い合わせはお気軽に。</h2>
+    <p>体験のご予約も、ちょっとした質問も大歓迎です。お電話・メールどちらでもどうぞ。</p>
+    <a href="#" class="btn btn-main">体験レッスンを予約する</a>
+    <!-- 電話番号・メールはお客様の正式な連絡先に差し替え -->
+    <div class="contact-info">
+      <span>📞 <b>000-0000-0000</b></span>
+      <span>✉️ <b>info@aloha-english.example</b></span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <a href="#" class="logo"><span class="mark en">A</span>アロハイングリッシュアカデミー</a>
+    <div style="font-size:.9rem;">営業時間 8:30 - 20:00<br>カフェスタイル英会話教室</div>
+  </div>
+  <div class="wrap"><small>© Aloha English Academy</small></div>
+</footer>
+
+<script>
+  const b=document.getElementById('burger'),m=document.getElementById('mobileMenu');
+  b.addEventListener('click',()=>m.classList.toggle('open'));
+  m.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>m.classList.remove('open')));
+</script>
+</body>
+</html>

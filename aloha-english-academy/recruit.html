@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報｜アロハイングリッシュアカデミー</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@400;500;700;900&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Outfit:wght@500;700&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{max-width:100%;overflow-x:hidden;}
+  img{max-width:100%;height:auto;display:block;}
+  :root{
+    --leaf:#4a7c4e;--leaf-d:#35603a;--matcha:#8fb06a;
+    --coffee:#6b4a32;--cream:#f7f4ea;--cream-d:#efe9d8;--ink:#34302a;
+  }
+  body{font-family:"Zen Kaku Gothic New",sans-serif;color:var(--ink);background:var(--cream);line-height:1.85;font-size:16px;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3,.disp{font-family:"Zen Maru Gothic",sans-serif;}
+  .en{font-family:"Outfit",sans-serif;letter-spacing:.08em;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 2rem;}
+
+  header{position:sticky;top:0;z-index:50;background:rgba(247,244,234,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--cream-d);}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px;}
+  .logo{display:flex;align-items:center;gap:.6rem;font-family:"Zen Maru Gothic";font-weight:900;color:var(--leaf-d);font-size:1.05rem;}
+  .logo .mark{width:38px;height:38px;border-radius:50%;background:var(--leaf);color:#fff;display:flex;align-items:center;justify-content:center;font-family:"Outfit";font-weight:700;font-size:1.1rem;flex-shrink:0;}
+  .menu{display:flex;align-items:center;gap:1.6rem;list-style:none;}
+  .menu a{font-weight:500;font-size:.95rem;}
+  .menu a:hover{color:var(--leaf);}
+  .nav-cta{background:var(--coffee);color:#fff;padding:.6rem 1.3rem;border-radius:999px;font-weight:700;font-size:.9rem;}
+  .burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:.3rem;}
+  .burger span{width:26px;height:3px;background:var(--leaf-d);border-radius:3px;}
+
+  /* hero */
+  .hero{position:relative;}
+  .hero-img{position:relative;height:clamp(420px,68vh,600px);}
+  .hero-img img{width:100%;height:100%;object-fit:cover;}
+  .hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(110deg,rgba(53,96,58,.82),rgba(53,96,58,.3));}
+  .hero-copy{position:absolute;inset:0;display:flex;align-items:center;}
+  .hero-copy .wrap{width:100%;}
+  .hero .eb{display:inline-block;background:var(--matcha);color:#27421e;font-weight:700;font-size:.8rem;padding:.35rem 1rem;border-radius:999px;margin-bottom:1.1rem;}
+  .hero h1{color:#fff;font-size:clamp(1.9rem,6vw,3.3rem);font-weight:900;line-height:1.45;text-shadow:0 2px 18px rgba(0,0,0,.25);}
+  .hero p{color:#f3f0e4;font-size:clamp(1rem,2.6vw,1.18rem);margin-top:1rem;max-width:36ch;text-shadow:0 1px 10px rgba(0,0,0,.25);}
+  .pills{display:flex;flex-wrap:wrap;gap:.7rem;margin-top:1.6rem;}
+  .pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.5);color:#fff;padding:.5rem 1.1rem;border-radius:999px;font-weight:700;font-family:"Zen Maru Gothic";font-size:.9rem;}
+
+  section{padding:clamp(3.5rem,8vw,6rem) 0;}
+  .eyebrow{color:var(--leaf);font-weight:700;letter-spacing:.12em;font-size:.85rem;font-family:"Outfit";}
+  .s-title{font-size:clamp(1.6rem,5vw,2.4rem);font-weight:900;color:var(--leaf-d);margin:.5rem 0 .8rem;line-height:1.4;}
+  .s-lead{max-width:60ch;color:#5b5347;}
+
+  /* message */
+  .msg-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:clamp(2rem,5vw,4rem);align-items:center;}
+  .msg-grid img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:22px;box-shadow:0 18px 44px rgba(53,96,58,.16);}
+
+  /* appeal cards */
+  .appeal{background:var(--cream-d);}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;}
+  .card{background:#fff;border-radius:22px;padding:2rem 1.7rem;border:1px solid #eadfca;box-shadow:0 10px 30px rgba(53,96,58,.07);}
+  .card .ico{width:56px;height:56px;border-radius:16px;background:var(--matcha);color:#27421e;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:1rem;}
+  .card h3{font-size:1.18rem;color:var(--leaf-d);margin-bottom:.4rem;font-weight:700;}
+  .card p{font-size:.95rem;color:#5b5347;}
+
+  /* voices */
+  .voices{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem;}
+  .voice{background:#fff;border-radius:22px;padding:1.8rem;border:1px solid #eadfca;display:flex;gap:1.2rem;align-items:flex-start;}
+  .voice img{width:72px;height:72px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+  .voice .who{font-family:"Zen Maru Gothic";font-weight:700;color:var(--leaf-d);}
+  .voice .who small{display:block;color:var(--coffee);font-weight:500;font-size:.82rem;}
+  .voice p{font-size:.92rem;color:#5b5347;margin-top:.5rem;}
+
+  /* table */
+  .req{background:var(--leaf-d);color:#eef3e6;}
+  .req .s-title{color:#fff;}
+  .req-table{width:100%;border-collapse:collapse;margin-top:2rem;background:#fff;color:var(--ink);border-radius:18px;overflow:hidden;}
+  .req-table th,.req-table td{text-align:left;padding:1.1rem 1.4rem;border-bottom:1px solid #eadfca;vertical-align:top;}
+  .req-table th{background:#f3eee0;width:34%;font-family:"Zen Maru Gothic";font-weight:700;color:var(--leaf-d);white-space:nowrap;}
+  .req-table tr:last-child th,.req-table tr:last-child td{border-bottom:0;}
+  .req-note{margin-top:1rem;font-size:.85rem;color:#cfe0c5;}
+
+  /* cta */
+  .cta{background:var(--coffee);color:#f3ece1;text-align:center;}
+  .cta .s-title{color:#fff;}
+  .cta p{max-width:46ch;margin:.7rem auto 2rem;color:#e6dccd;}
+  .btn{display:inline-block;padding:1rem 2rem;border-radius:999px;font-weight:700;font-family:"Zen Maru Gothic";background:var(--matcha);color:#27421e;}
+  .btn:hover{filter:brightness(1.05);}
+  .cta-info{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem 2.5rem;margin-top:2rem;}
+  .cta-info b{font-family:"Outfit";letter-spacing:.04em;}
+
+  footer{background:#2c2620;color:#cabfae;padding:2.6rem 0 2rem;}
+  .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.2rem;align-items:center;}
+  .foot .logo{color:#fff;}
+  footer small{display:block;margin-top:1.8rem;color:#8a8071;font-size:.82rem;}
+
+  @media(max-width:768px){
+    .wrap{padding:0 1.1rem;}
+    .menu,.nav-cta{display:none;}
+    .burger{display:flex;}
+    .mobile-menu{display:none;flex-direction:column;background:var(--cream);padding:1rem 1.1rem 1.4rem;border-top:1px solid var(--cream-d);}
+    .mobile-menu.open{display:flex;}
+    .mobile-menu a{padding:.7rem 0;font-weight:500;border-bottom:1px solid var(--cream-d);}
+    .msg-grid,.cards,.voices{grid-template-columns:1fr;}
+    .req-table th{width:38%;white-space:normal;}
+    section{padding:3.2rem 0;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="logo"><span class="mark en">A</span>アロハイングリッシュアカデミー</a>
+    <ul class="menu">
+      <li><a href="#message">想い</a></li>
+      <li><a href="#appeal">働く魅力</a></li>
+      <li><a href="#req">募集要項</a></li>
+      <li><a href="#apply">応募</a></li>
+    </ul>
+    <a href="#apply" class="nav-cta">応募・相談する</a>
+    <button class="burger" id="burger" aria-label="メニュー"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#message">想い</a>
+    <a href="#appeal">働く魅力</a>
+    <a href="#req">募集要項</a>
+    <a href="#apply">応募・相談する</a>
+  </div>
+</header>
+
+<!-- ヒーロー：スタッフが働く様子・店内を images/recruit-hero.jpg として保存して差し替え -->
+<section class="hero">
+  <div class="hero-img"><img src="https://picsum.photos/seed/aloha-recruit/1400/900" alt="カフェで働くスタッフ"></div>
+  <div class="hero-copy">
+    <div class="wrap">
+      <span class="eb">RECRUIT ｜ 採用情報</span>
+      <h1>「楽しい」を、<br>一緒につくる仲間を募集中。</h1>
+      <p>カフェの心地よさと、英語のワクワクを届ける場所。あなたらしい関わり方で、働いてみませんか。</p>
+      <!-- ※募集職種はお客様の実際の募集に合わせて差し替えてください -->
+      <div class="pills">
+        <span class="pill">英会話講師</span>
+        <span class="pill">カフェスタッフ</span>
+        <span class="pill">受付・運営スタッフ</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="message">
+  <div class="wrap msg-grid">
+    <!-- スタッフ集合・笑顔の写真を images/recruit-team.jpg として保存して差し替え -->
+    <img src="https://picsum.photos/seed/aloha-team/900/700" alt="スタッフの様子">
+    <div>
+      <span class="eyebrow">OUR MESSAGE</span>
+      <h2 class="s-title">英語が好き。人と話すのが好き。<br>それだけで、十分です。</h2>
+      <p class="s-lead">アロハイングリッシュアカデミーは、勉強というより「おしゃべりを楽しみに行く」場所。だからこそ、スタッフに一番大切にしてほしいのは“居心地のよさ”をつくること。経験よりも、人と関わるのが好きという気持ちを歓迎します。<br><span style="color:#9a8f7c;font-size:.88rem;">※このページの文章・写真はサンプルです。実際の募集内容に差し替えてご利用ください。</span></p>
+    </div>
+  </div>
+</section>
+
+<section id="appeal" class="appeal">
+  <div class="wrap">
+    <span class="eyebrow">WHY WORK HERE</span>
+    <h2 class="s-title">アロハで働く、3つの魅力</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="ico">☕</div>
+        <h3>カフェのような職場</h3>
+        <p>清潔感があって居心地のいい空間。来る人もスタッフも、リラックスして過ごせる場所です。</p>
+      </div>
+      <div class="card">
+        <div class="ico">🌏</div>
+        <h3>多国籍の仲間と</h3>
+        <p>多国籍のゲスト講師との関わりも。働きながら、自然と世界とつながれる環境です。</p>
+      </div>
+      <div class="card">
+        <div class="ico">🕗</div>
+        <h3>柔軟な時間帯</h3>
+        <p>8:30〜20:00の中で、働き方を相談しやすい環境。ライフスタイルに合わせて。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="voices">
+  <div class="wrap">
+    <span class="eyebrow">STAFF VOICE</span>
+    <h2 class="s-title">先輩スタッフの声</h2>
+    <p class="s-lead" style="color:#9a8f7c;font-size:.9rem;">※以下は差し替え用のサンプルです。実際のスタッフの写真・コメントに差し替えてください。</p>
+    <div class="voices">
+      <!-- スタッフ写真を images/staff1.jpg として保存して差し替え -->
+      <div class="voice">
+        <img src="https://picsum.photos/seed/aloha-staff1/200/200" alt="スタッフ">
+        <div>
+          <div class="who">A.K.<small>英会話講師 ／ 入社2年目（サンプル）</small></div>
+          <p>「教える」というより、お客さまと一緒におしゃべりを楽しむ感覚。緊張がほぐれて笑顔になる瞬間が、いちばんのやりがいです。</p>
+        </div>
+      </div>
+      <!-- スタッフ写真を images/staff2.jpg として保存して差し替え -->
+      <div class="voice">
+        <img src="https://picsum.photos/seed/aloha-staff2/200/200" alt="スタッフ">
+        <div>
+          <div class="who">M.S.<small>カフェスタッフ ／ 入社1年目（サンプル）</small></div>
+          <p>ドリンクを出しながら、自然と英語にも触れられる職場。お客さまとの距離が近くて、毎日通うのが楽しいです。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="req" class="req">
+  <div class="wrap">
+    <span class="eyebrow" style="color:#cfe0c5;">REQUIREMENTS</span>
+    <h2 class="s-title">募集要項</h2>
+    <!-- ※下記は記入例（サンプル）です。実際の条件に差し替えてください -->
+    <table class="req-table">
+      <tr><th>募集職種</th><td>英会話講師／カフェスタッフ／受付・運営スタッフ（サンプル）</td></tr>
+      <tr><th>雇用形態</th><td>正社員／アルバイト・パート（サンプル）</td></tr>
+      <tr><th>勤務時間</th><td>8:30〜20:00 のうちシフト制（応相談）</td></tr>
+      <tr><th>給与</th><td>※実際の条件を記載してください（例：時給・月給など）</td></tr>
+      <tr><th>歓迎する人</th><td>人と話すのが好きな方／英語が好きな方／初めての方も歓迎</td></tr>
+      <tr><th>勤務地</th><td>※店舗所在地を記載してください</td></tr>
+    </table>
+    <p class="req-note">※この表の内容は差し替え用のサンプルです。実際の募集条件に合わせて編集してください。</p>
+  </div>
+</section>
+
+<section id="apply" class="cta">
+  <div class="wrap">
+    <span class="eyebrow" style="color:#e7c9a8;">ENTRY</span>
+    <h2 class="s-title">まずは気軽に、お話ししませんか。</h2>
+    <p>「ちょっと話を聞いてみたい」だけでも大歓迎です。お電話・メールからお気軽にどうぞ。</p>
+    <a href="#" class="btn">応募・相談する</a>
+    <!-- 電話番号・メールはお客様の正式な連絡先に差し替え -->
+    <div class="cta-info">
+      <span>📞 <b>000-0000-0000</b></span>
+      <span>✉️ <b>recruit@aloha-english.example</b></span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <a href="#" class="logo"><span class="mark en">A</span>アロハイングリッシュアカデミー</a>
+    <div style="font-size:.9rem;">採用情報 ／ カフェスタイル英会話教室</div>
+  </div>
+  <div class="wrap"><small>© Aloha English Academy</small></div>
+</footer>
+
+<script>
+  const b=document.getElementById('burger'),m=document.getElementById('mobileMenu');
+  b.addEventListener('click',()=>m.classList.toggle('open'));
+  m.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>m.classList.remove('open')));
+</script>
+</body>
+</html>

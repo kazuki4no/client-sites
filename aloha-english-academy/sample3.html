@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>アロハイングリッシュアカデミー｜カフェスタイル英会話</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@400;500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700&family=Baloo+2:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html,body{max-width:100%;overflow-x:hidden;}
+  img{max-width:100%;height:auto;display:block;}
+  :root{
+    --lime:#9cc23f;
+    --lime-d:#7da32b;
+    --green:#3f7d44;
+    --green-dd:#2c5a31;
+    --coral:#ec6a3c;
+    --coral-d:#d4532a;
+    --cream:#fbf6e9;
+    --brown:#6f4b2e;
+    --ink:#34302a;
+  }
+  body{font-family:"Zen Kaku Gothic New",sans-serif;color:var(--ink);background:var(--cream);line-height:1.85;font-size:16px;-webkit-font-smoothing:antialiased;}
+  h1,h2,h3,.round{font-family:"M PLUS Rounded 1c",sans-serif;}
+  .baloo{font-family:"Baloo 2",cursive;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:1140px;margin:0 auto;padding:0 2rem;}
+
+  header{position:sticky;top:0;z-index:60;background:var(--cream);border-bottom:3px solid var(--green);}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:74px;}
+  .logo{display:flex;align-items:center;gap:.6rem;font-family:"M PLUS Rounded 1c";font-weight:800;color:var(--green-dd);font-size:1.1rem;}
+  .logo .mark{width:42px;height:42px;border-radius:14px;background:var(--lime);color:#fff;display:flex;align-items:center;justify-content:center;font-family:"Baloo 2";font-weight:800;font-size:1.3rem;transform:rotate(-6deg);flex-shrink:0;}
+  .menu{display:flex;align-items:center;gap:1.7rem;list-style:none;}
+  .menu a{font-weight:700;font-size:.95rem;}
+  .menu a:hover{color:var(--coral);}
+  .nav-cta{background:var(--coral);color:#fff;padding:.65rem 1.4rem;border-radius:999px;font-weight:800;font-family:"M PLUS Rounded 1c";font-size:.9rem;box-shadow:0 5px 0 var(--coral-d);}
+  .nav-cta:hover{transform:translateY(2px);box-shadow:0 3px 0 var(--coral-d);}
+  .burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:.3rem;}
+  .burger span{width:26px;height:3px;background:var(--green-dd);border-radius:3px;}
+
+  /* hero */
+  .hero{background:linear-gradient(160deg,#eaf2d6 0%,var(--cream) 70%);position:relative;overflow:hidden;padding:clamp(2.5rem,6vw,4.5rem) 0 clamp(3rem,7vw,5rem);}
+  .blob{position:absolute;border-radius:50%;filter:blur(2px);opacity:.5;z-index:0;}
+  .blob.a{width:280px;height:280px;background:var(--lime);top:-80px;right:-60px;}
+  .blob.b{width:180px;height:180px;background:var(--coral);bottom:-50px;left:8%;opacity:.25;}
+  .hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(2rem,5vw,3.5rem);align-items:center;}
+  .badge{display:inline-block;background:var(--green);color:#fff;font-family:"M PLUS Rounded 1c";font-weight:700;font-size:.85rem;padding:.4rem 1.1rem;border-radius:999px;transform:rotate(-2deg);}
+  .hero h1{font-family:"M PLUS Rounded 1c";font-weight:800;font-size:clamp(2rem,6.2vw,3.5rem);line-height:1.4;color:var(--green-dd);margin:1.1rem 0 1.2rem;}
+  .hero h1 .hl{color:var(--coral);position:relative;}
+  .hero h1 .hl::after{content:"";position:absolute;left:0;right:0;bottom:6px;height:10px;background:var(--lime);opacity:.5;z-index:-1;border-radius:4px;}
+  .hero p{color:#52503f;font-size:clamp(1rem,2.5vw,1.15rem);max-width:36ch;font-weight:500;}
+  .hero-btns{display:flex;flex-wrap:wrap;gap:.9rem;margin-top:1.8rem;}
+  .btn{display:inline-block;padding:1rem 2rem;border-radius:999px;font-weight:800;font-family:"M PLUS Rounded 1c";}
+  .btn-coral{background:var(--coral);color:#fff;box-shadow:0 6px 0 var(--coral-d);}
+  .btn-coral:hover{transform:translateY(2px);box-shadow:0 4px 0 var(--coral-d);}
+  .btn-green{background:#fff;color:var(--green-dd);border:3px solid var(--green);}
+  .btn-green:hover{background:var(--green);color:#fff;}
+  .hero-fig{position:relative;}
+  .hero-fig img{width:100%;aspect-ratio:4/4;object-fit:cover;border-radius:30px;border:6px solid #fff;box-shadow:0 22px 50px rgba(63,125,68,.22);}
+  .sticker{position:absolute;bottom:-18px;right:-10px;background:var(--lime);color:#fff;font-family:"Baloo 2";font-weight:800;width:108px;height:108px;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;line-height:1.2;transform:rotate(8deg);box-shadow:0 10px 24px rgba(124,163,43,.4);font-size:.95rem;}
+  .sticker b{font-size:1.5rem;}
+
+  /* marquee strip */
+  .strip{background:var(--green-dd);color:#fff;}
+  .strip .wrap{display:flex;flex-wrap:wrap;justify-content:center;gap:.8rem 2rem;padding:1rem 2rem;font-weight:700;font-family:"M PLUS Rounded 1c";font-size:.95rem;}
+  .strip .pill{background:rgba(255,255,255,.14);padding:.2rem 1rem;border-radius:999px;}
+
+  section{padding:clamp(3.5rem,8vw,6rem) 0;}
+  .eyebrow{display:inline-block;font-family:"Baloo 2";font-weight:700;color:var(--lime-d);letter-spacing:.05em;}
+  .s-title{font-family:"M PLUS Rounded 1c";font-weight:800;font-size:clamp(1.7rem,5vw,2.6rem);color:var(--green-dd);line-height:1.4;margin:.3rem 0 .8rem;}
+  .s-lead{max-width:58ch;color:#5b5648;font-weight:500;}
+
+  /* features */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem;}
+  .card{border-radius:26px;padding:2rem 1.7rem;border:3px solid var(--green-dd);background:#fff;position:relative;}
+  .card:nth-child(1){background:#f2f7e3;}
+  .card:nth-child(2){background:#fdeee3;}
+  .card:nth-child(3){background:#eaf3ec;}
+  .card .ico{width:62px;height:62px;border-radius:18px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin-bottom:1rem;color:#fff;transform:rotate(-5deg);}
+  .card:nth-child(1) .ico{background:var(--lime);}
+  .card:nth-child(2) .ico{background:var(--coral);}
+  .card:nth-child(3) .ico{background:var(--green);}
+  .card h3{font-family:"M PLUS Rounded 1c";font-weight:800;font-size:1.2rem;color:var(--green-dd);margin-bottom:.4rem;}
+  .card p{font-size:.95rem;color:#5b5648;font-weight:500;}
+
+  /* gallery */
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:2.5rem;}
+  .gallery img{width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:20px;border:4px solid #fff;box-shadow:0 10px 24px rgba(63,125,68,.12);}
+
+  /* trial big */
+  .trial{background:var(--lime);position:relative;overflow:hidden;}
+  .trial::before{content:"";position:absolute;width:340px;height:340px;background:#fff;opacity:.16;border-radius:50%;top:-120px;left:-80px;}
+  .trial-grid{position:relative;z-index:1;display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center;}
+  .trial .eyebrow{color:#3c5417;}
+  .trial .s-title{color:#2c5a31;}
+  .trial .s-lead{color:#3f5a2a;}
+  .price-card{background:#fff;border-radius:28px;padding:2.5rem;text-align:center;border:4px solid var(--green-dd);box-shadow:0 16px 0 rgba(44,90,49,.2);}
+  .price-card .tag{font-family:"M PLUS Rounded 1c";font-weight:800;color:var(--coral);}
+  .price-card .num{font-family:"Baloo 2";font-weight:800;font-size:clamp(2.8rem,9vw,4rem);color:var(--green-dd);line-height:1;margin:.3rem 0;}
+  .price-card .num small{font-size:1rem;color:#7a715f;font-family:"Zen Kaku Gothic New";}
+  .price-card .perk{display:inline-block;background:var(--lime);color:#2c5a31;font-weight:800;font-family:"M PLUS Rounded 1c";border-radius:999px;padding:.45rem 1.2rem;margin-top:.6rem;font-size:.95rem;}
+  .price-card .note{font-size:.85rem;color:#7a715f;margin-top:1rem;}
+
+  /* hours */
+  .hours{display:flex;flex-wrap:wrap;gap:1.3rem;margin-top:2rem;}
+  .hours .hbox{flex:1 1 200px;background:#fff;border:3px solid var(--green);border-radius:20px;padding:1.4rem 1.5rem;}
+  .hours .hbox span{font-family:"Baloo 2";color:var(--coral);font-weight:700;font-size:.9rem;}
+  .hours .hbox b{display:block;font-family:"M PLUS Rounded 1c";font-weight:800;font-size:1.35rem;color:var(--green-dd);margin-top:.2rem;}
+
+  /* contact */
+  .contact{background:var(--green-dd);color:#fff;text-align:center;}
+  .contact .eyebrow{color:var(--lime);}
+  .contact .s-title{color:#fff;}
+  .contact p{max-width:46ch;margin:.6rem auto 2rem;color:#dbe7d6;font-weight:500;}
+  .contact .btn-coral{box-shadow:0 6px 0 var(--coral-d);}
+  .contact-info{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem 2.5rem;margin-top:2rem;font-weight:700;}
+  .contact-info b{font-family:"Baloo 2";}
+
+  footer{background:#24341f;color:#bcc9ad;padding:3rem 0 2rem;}
+  .foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.5rem;align-items:center;}
+  .foot .logo{color:#fff;}
+  footer small{display:block;margin-top:2rem;color:#7f8a72;font-size:.82rem;}
+
+  /* mobile sticky CTA */
+  .m-cta{display:none;position:fixed;left:0;right:0;bottom:0;z-index:70;background:var(--coral);color:#fff;text-align:center;padding:.9rem;font-family:"M PLUS Rounded 1c";font-weight:800;box-shadow:0 -4px 16px rgba(0,0,0,.15);}
+
+  @media(max-width:768px){
+    .wrap{padding:0 1.1rem;}
+    .menu,.nav-cta{display:none;}
+    .burger{display:flex;}
+    .mobile-menu{display:none;flex-direction:column;background:var(--cream);padding:1rem 1.1rem 1.4rem;border-top:1px solid #e7e0cd;}
+    .mobile-menu.open{display:flex;}
+    .mobile-menu a{padding:.7rem 0;font-weight:700;border-bottom:1px solid #ece5d3;}
+    .mobile-menu .nav-cta{display:inline-block;text-align:center;margin-top:1rem;}
+    .hero-grid,.trial-grid{grid-template-columns:1fr;}
+    .cards{grid-template-columns:1fr;}
+    .gallery{grid-template-columns:1fr 1fr;}
+    section{padding:3.3rem 0;}
+    .m-cta{display:block;}
+    body{padding-bottom:56px;}
+  }
+  @media(max-width:380px){.gallery{grid-template-columns:1fr;}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav">
+    <a href="#" class="logo"><span class="mark">A</span>アロハイングリッシュアカデミー</a>
+    <ul class="menu">
+      <li><a href="#about">教室について</a></li>
+      <li><a href="#features">特徴</a></li>
+      <li><a href="#trial">体験レッスン</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">体験を予約する</a>
+    <button class="burger" id="burger" aria-label="メニュー"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about">教室について</a>
+    <a href="#features">特徴</a>
+    <a href="#trial">体験レッスン</a>
+    <a href="#contact">お問い合わせ</a>
+    <a href="#contact" class="nav-cta">体験を予約する</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="blob a"></div><div class="blob b"></div>
+  <div class="wrap hero-grid">
+    <div>
+      <span class="badge">☕ カフェスタイル英会話</span>
+      <h1>勉強というより、<br><span class="hl">おしゃべり</span>を<br>楽しみに行く感覚で。</h1>
+      <p>週末の朝、光あふれるカフェで新しい自分に。初心者もシニアも、まずは一杯片手にどうぞ。</p>
+      <div class="hero-btns">
+        <a href="#trial" class="btn btn-coral">体験 1,000円で予約</a>
+        <a href="#about" class="btn btn-green">教室を見る</a>
+      </div>
+    </div>
+    <!-- ヒーロー：明るいカフェ店内の写真を images/hero.jpg として保存して差し替え -->
+    <div class="hero-fig">
+      <img src="https://picsum.photos/seed/aloha3-hero/900/900" alt="光あふれるカフェの店内">
+      <div class="sticker">体験<b>¥1,000</b>ドリンク付</div>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="wrap">
+    <span class="pill">🕗 朝8:30〜夜20:00</span>
+    <span class="pill">👥 少人数制</span>
+    <span class="pill">🎉 初心者・シニア歓迎</span>
+    <span class="pill">🌏 多国籍ゲスト講師</span>
+    <span class="pill">🍺 アルコールあり</span>
+  </div>
+</div>
+
+<section id="about">
+  <div class="wrap">
+    <span class="eyebrow">ABOUT</span>
+    <h2 class="s-title">英会話、もっと気楽でいい。</h2>
+    <p class="s-lead">アロハイングリッシュアカデミーは、清潔感のある居心地のいいカフェがそのまま教室。コーヒーを片手に、ときにはビールやワインも楽しみながら、おしゃべり感覚で英語に触れられます。「続くかな？」より「楽しそう！」から始められる場所です。</p>
+  </div>
+</section>
+
+<section id="features" style="background:#f3f7e6;">
+  <div class="wrap">
+    <span class="eyebrow">WHY ALOHA</span>
+    <h2 class="s-title">通いたくなる、3つのワケ</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="ico">🛋️</div>
+        <h3>居心地のいいカフェ空間</h3>
+        <p>明るくて清潔感のある店内。緊張しない、むしろ行くのが楽しみになる空間です。</p>
+      </div>
+      <div class="card">
+        <div class="ico">👥</div>
+        <h3>少人数制・初心者＆シニア歓迎</h3>
+        <p>一人ひとりに合わせた少人数レッスン。年齢も英語レベルも、まったく気にせずどうぞ。</p>
+      </div>
+      <div class="card">
+        <div class="ico">🌏</div>
+        <h3>多国籍のゲスト講師</h3>
+        <p>いろんな国のゲスト講師とおしゃべり。教室にいながら、世界とつながる楽しさを。</p>
+      </div>
+    </div>
+    <!-- ギャラリー：レッスン風景・ドリンク・店内など images/gal1.jpg〜gal3.jpg として差し替え -->
+    <div class="gallery">
+      <img src="https://picsum.photos/seed/aloha3-g1/600/600" alt="レッスンの様子">
+      <img src="https://picsum.photos/seed/aloha3-g2/600/600" alt="ドリンク">
+      <img src="https://picsum.photos/seed/aloha3-g3/600/600" alt="店内">
+    </div>
+  </div>
+</section>
+
+<section id="trial" class="trial">
+  <div class="wrap trial-grid">
+    <div>
+      <span class="eyebrow">FIRST STEP</span>
+      <h2 class="s-title">まずは体験から、気軽に。</h2>
+      <p class="s-lead">体験レッスンはドリンク1杯サービス付き。コーヒーでもアルコールでも、お好きな一杯と一緒に。「合うかな？」を、まずは確かめにきてください。</p>
+      <div style="margin-top:1.6rem;"><a href="#contact" class="btn btn-coral">体験レッスンを予約する</a></div>
+    </div>
+    <div class="price-card">
+      <div class="tag">体験レッスン</div>
+      <div class="num">¥1,000<small> 税込</small></div>
+      <div class="perk">＋ ドリンク1杯サービス</div>
+      <p class="note">アルコールもご用意しています。<br>※通常レッスンの料金はお気軽にお問い合わせください。</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <span class="eyebrow">HOURS</span>
+    <h2 class="s-title">あなたの時間に、合わせて。</h2>
+    <p class="s-lead">朝のスタートに、お仕事帰りに。ご希望の時間帯でレッスンを組めます。</p>
+    <div class="hours">
+      <div class="hbox"><span>OPEN</span><b>8:30 - 20:00</b></div>
+      <div class="hbox"><span>WEEKEND</span><b>週末の朝も開講</b></div>
+      <div class="hbox"><span>STYLE</span><b>カフェで少人数</b></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <span class="eyebrow">CONTACT</span>
+    <h2 class="s-title">お問い合わせはお気軽に！</h2>
+    <p>体験のご予約も、ちょっとした質問も大歓迎。お電話・メール、どちらでもどうぞ。</p>
+    <a href="#" class="btn btn-coral">体験レッスンを予約する</a>
+    <!-- 電話番号・メールはお客様の正式な連絡先に差し替え -->
+    <div class="contact-info">
+      <span>📞 <b>000-0000-0000</b></span>
+      <span>✉️ <b>info@aloha-english.example</b></span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap foot">
+    <a href="#" class="logo"><span class="mark">A</span>アロハイングリッシュアカデミー</a>
+    <div style="font-size:.9rem;">営業時間 8:30 - 20:00 ／ カフェスタイル英会話教室</div>
+  </div>
+  <div class="wrap"><small>© Aloha English Academy</small></div>
+</footer>
+
+<a href="#contact" class="m-cta">☕ 体験レッスンを 1,000円で予約する</a>
+
+<script>
+  const b=document.getElementById('burger'),m=document.getElementById('mobileMenu');
+  b.addEventListener('click',()=>m.classList.toggle('open'));
+  m.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>m.classList.remove('open')));
+</script>
+</body>
+</html>
