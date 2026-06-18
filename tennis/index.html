@@ -7,63 +7,46 @@
 <style>
   /* --- テーマカラー・フォント設定 --- */
   :root {
-    --primary-blue: #0055d4;      /* ロゴや見出しの青 */
-    --accent-red: #e63946;        /* ヘッダーメニューの赤ポッチ */
-    --lime-green: #ccff00;        /* 鮮やかなライムグリーン */
+    --primary-blue: #0055d4;
+    --accent-red: #e63946;
+    --lime-green: #ccff00;
     --lime-overlay: rgba(204, 255, 0, 0.4); 
     --text-dark: #333333;
     --bg-light: #f9fbfd;
   }
 
-  body { 
-    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; 
-    margin: 0; padding: 0; color: var(--text-dark); line-height: 1.8; overflow-x: hidden;
-  }
+  body { font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; margin: 0; padding: 0; color: var(--text-dark); line-height: 1.8; overflow-x: hidden; }
   a { text-decoration: none; color: inherit; }
   img { max-width: 100%; height: auto; display: block; }
   .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
 
-  /* --- ヘッダー --- */
-  header { 
-    display: flex; justify-content: space-between; align-items: center; 
-    padding: 10px 40px; background: #ffffff; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-  }
-  .logo-img { height: 45px; width: auto; } /* アップロードされたロゴ画像 */
+  header { display: flex; justify-content: space-between; align-items: center; padding: 10px 40px; background: #ffffff; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.05); }
+  .logo-img { height: 45px; width: auto; }
   .nav-menu { display: flex; gap: 30px; list-style: none; margin: 0; padding: 0; }
   .nav-menu li a { display: flex; flex-direction: column; align-items: center; font-size: 14px; font-weight: bold; color: var(--text-dark); transition: color 0.3s;}
   .nav-menu li a:hover { color: var(--primary-blue); }
   .nav-menu li a::before { content: '●'; color: var(--accent-red); font-size: 8px; margin-bottom: 3px; }
 
-  /* --- メインビジュアル（FV） --- */
-  .hero { 
-    position: relative; height: 75vh; min-height: 500px;
-    background: url('front-original01_img.jpg') center/cover no-repeat; 
-    display: flex; align-items: center; 
-  }
+  .hero { position: relative; height: 75vh; min-height: 500px; background: url('front-original01_img.jpg') center/cover no-repeat; display: flex; align-items: center; }
   .hero-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0,0,0,0.3); z-index: 1; }
-  /* ヘッダー下の波形（白） */
   .wave-top { position: absolute; top: -1px; left: 0; width: 100%; height: 30px; background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="%23ffffff"/></svg>') no-repeat center top / 100% 100%; z-index: 2; }
   .hero-content { position: relative; z-index: 3; color: #ffffff; padding-left: 10%; }
   .catchphrase { font-size: 52px; font-weight: 900; line-height: 1.3; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.4); }
   .sub-catch { font-size: 24px; font-weight: bold; margin-top: 15px; display: inline-block; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
 
-  /* --- 共通見出しスタイル --- */
   .section-label { font-size: 28px; font-weight: 900; color: var(--primary-blue); margin-bottom: 10px; display: block; letter-spacing: 1px; }
   .section-title { font-size: 34px; font-weight: 900; line-height: 1.4; margin-top: 0; margin-bottom: 20px; }
 
-  /* --- About & Concept セクション画像枠線 --- */
   .frame-wrap-right { position: relative; padding: 0 15px 15px 0; display: inline-block; width: 100%; }
   .frame-wrap-left { position: relative; padding: 0 0 15px 15px; display: inline-block; width: 100%; }
   .frame-img { border: 4px solid var(--lime-green); border-radius: 20px; position: relative; z-index: 2; width: 100%; object-fit: cover; }
   .frame-wrap-right::after { content: ''; position: absolute; top: 15px; left: 15px; right: 0; bottom: 0; border: 2px dashed var(--primary-blue); border-radius: 20px; z-index: 1; }
   .frame-wrap-left::after { content: ''; position: absolute; top: 15px; left: 0; right: 15px; bottom: 0; border: 2px dashed var(--primary-blue); border-radius: 20px; z-index: 1; }
 
-  /* --- Section: About --- */
   .section-about { padding: 100px 0; }
   .two-col { display: flex; align-items: center; gap: 50px; }
   .two-col > div { flex: 1; }
 
-  /* --- Section: Menu --- */
   .section-menu { background-color: var(--lime-green); padding: 80px 0 100px 0; text-align: center; }
   .menu-items { display: flex; justify-content: space-between; margin-top: 50px; gap: 30px; }
   .menu-item { flex: 1; display: flex; flex-direction: column; align-items: center; transition: transform 0.3s; }
@@ -72,46 +55,38 @@
   .circle-img img { width: 100%; height: 100%; object-fit: cover; }
   .menu-label { font-size: 22px; font-weight: 900; color: var(--primary-blue); }
 
-  /* --- Section: Concept --- */
   .section-concept { padding: 100px 0; }
 
-  /* --- Section: Points --- */
   .section-points { padding: 50px 0 100px 0; background-color: #ffffff; }
   .point-block { margin-bottom: 80px; }
-  /* 【修正】z-indexを1から4に上げて、前面に表示 */
   .point-bg-text { font-size: 80px; font-weight: 900; color: var(--lime-green); line-height: 0.8; position: relative; z-index: 4; letter-spacing: 2px; }
   .point-bg-text.right { text-align: right; }
   
   .point-content { display: flex; align-items: stretch; position: relative; z-index: 2; margin-top: -30px; }
   .point-content.reverse { flex-direction: row-reverse; }
   
-  /* Point テキストボックス */
   .point-box-wrap { flex: 1.2; position: relative; z-index: 3; }
   .point-box { background: #fff; border: 2px solid var(--primary-blue); border-radius: 15px; padding: 40px; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; }
   .point-box h3 { font-size: 20px; font-weight: 900; margin-top: 0; margin-bottom: 20px; line-height: 1.4; color: var(--text-dark); }
   .point-box p { font-size: 14px; margin: 0; line-height: 1.8; color: #444; }
   
-  /* Point ボックスの点線背景 */
   .point-box-wrap.offset-tl::before { content: ''; position: absolute; top: -10px; left: -10px; right: 10px; bottom: 10px; border: 2px dashed var(--lime-green); border-radius: 15px; z-index: -1; }
   .point-box-wrap.offset-tr::before { content: ''; position: absolute; top: -10px; left: 10px; right: -10px; bottom: 10px; border: 2px dashed var(--lime-green); border-radius: 15px; z-index: -1; }
 
-  /* Point 画像 */
   .point-img-wrap { flex: 0.8; position: relative; z-index: 2; }
   .point-img-wrap img { width: 100%; height: 100%; object-fit: cover; border-radius: 15px; }
-  .overlap-right { margin-left: -50px; margin-top: 20px; margin-bottom: 20px; } /* 画像が右の場合、左にめり込む */
-  .overlap-left { margin-right: -50px; margin-top: 20px; margin-bottom: 20px; } /* 画像が左の場合、右にめり込む */
+  .overlap-right { margin-left: -50px; margin-top: 20px; margin-bottom: 20px; }
+  .overlap-left { margin-right: -50px; margin-top: 20px; margin-bottom: 20px; }
 
-  /* --- フッター --- */
   footer { background: var(--primary-blue); color: #ffffff; text-align: center; padding: 40px 20px; font-size: 14px; }
 
-  /* レスポンシブ対応 (スマホ用) */
   @media (max-width: 768px) {
     header { padding: 15px 20px; flex-direction: column; gap: 15px; }
     .nav-menu { flex-wrap: wrap; justify-content: center; gap: 15px; }
     .catchphrase { font-size: 32px; }
     .sub-catch { font-size: 16px; }
     .two-col { flex-direction: column; text-align: center; gap: 30px; }
-    .frame-wrap-left::after, .frame-wrap-right::after { display: none; } /* スマホ時は枠のズレを消してシンプルに */
+    .frame-wrap-left::after, .frame-wrap-right::after { display: none; }
     .menu-items { flex-direction: column; align-items: center; }
     .point-content, .point-content.reverse { flex-direction: column; margin-top: -10px; }
     .overlap-right, .overlap-left { margin: 20px 0 0 0; }
