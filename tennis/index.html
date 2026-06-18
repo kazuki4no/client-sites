@@ -3,90 +3,134 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>トヤベ ソフトテニスアカデミー | TOP</title>
+<title>トヤベ ソフトテニスアカデミー</title>
 <style>
+  /* --- テーマカラー・フォント設定 --- */
   :root {
-    --primary-blue: #0056b3;
-    --accent-red: #e63946;
-    --lime-overlay: rgba(145, 180, 20, 0.85);
+    --primary-blue: #0055d4;      /* ロゴや見出しの青 */
+    --accent-red: #e63946;        /* ヘッダーメニューの赤ポッチ */
+    --lime-green: #ccff00;        /* 鮮やかなライムグリーン */
+    --lime-overlay: rgba(204, 255, 0, 0.4); 
     --text-dark: #333333;
-    --bg-light: #f4f9fc;
+    --bg-light: #f9fbfd;
   }
-  body { font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; margin: 0; padding: 0; color: var(--text-dark); line-height: 1.8; }
+
+  body { 
+    font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; 
+    margin: 0; padding: 0; color: var(--text-dark); line-height: 1.8; overflow-x: hidden;
+  }
   a { text-decoration: none; color: inherit; }
   img { max-width: 100%; height: auto; display: block; }
-  .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-  header { display: flex; justify-content: space-between; align-items: center; padding: 10px 40px; background: #ffffff; position: relative; z-index: 100; box-shadow: 0 2px 5px rgba(0,0,0,0.05); }
-  .logo { font-weight: 900; font-size: 24px; color: var(--primary-blue); display: flex; align-items: center; gap: 10px; letter-spacing: 2px;}
-  .logo-small { font-size: 14px; color: #666; display: block; margin-bottom: -5px; }
+  .container { max-width: 1000px; margin: 0 auto; padding: 0 20px; }
+
+  /* --- ヘッダー --- */
+  header { 
+    display: flex; justify-content: space-between; align-items: center; 
+    padding: 10px 40px; background: #ffffff; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  }
+  .logo-img { height: 45px; width: auto; } /* アップロードされたロゴ画像 */
   .nav-menu { display: flex; gap: 30px; list-style: none; margin: 0; padding: 0; }
-  .nav-menu li a { display: flex; flex-direction: column; align-items: center; font-size: 15px; font-weight: bold; position: relative; transition: color 0.3s;}
-  .nav-menu li a:hover, .nav-menu li a.active { color: var(--primary-blue); }
-  .nav-menu li a::before { content: '●'; color: var(--accent-red); font-size: 10px; margin-bottom: 2px; }
-  .nav-menu li a .en { font-size: 11px; color: var(--primary-blue); margin-top: 2px; font-weight: normal; }
-  .hero { position: relative; height: 75vh; min-height: 500px; background: url('front-original01_img.jpg') center/cover no-repeat; display: flex; align-items: center; }
-  .hero-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--lime-overlay); z-index: 1; }
-  .wave-top { position: absolute; top: -1px; left: 0; width: 100%; height: 40px; background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="%23ffffff"/></svg>') no-repeat center top / 100% 100%; z-index: 2; }
+  .nav-menu li a { display: flex; flex-direction: column; align-items: center; font-size: 14px; font-weight: bold; color: var(--text-dark); transition: color 0.3s;}
+  .nav-menu li a:hover { color: var(--primary-blue); }
+  .nav-menu li a::before { content: '●'; color: var(--accent-red); font-size: 8px; margin-bottom: 3px; }
+
+  /* --- メインビジュアル（FV） --- */
+  .hero { 
+    position: relative; height: 75vh; min-height: 500px;
+    background: url('front-original01_img.jpg') center/cover no-repeat; 
+    display: flex; align-items: center; 
+  }
+  .hero-overlay { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: rgba(0,0,0,0.3); z-index: 1; }
+  /* ヘッダー下の波形（白） */
+  .wave-top { position: absolute; top: -1px; left: 0; width: 100%; height: 30px; background: url('data:image/svg+xml;utf8,<svg viewBox="0 0 1200 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg"><path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" fill="%23ffffff"/></svg>') no-repeat center top / 100% 100%; z-index: 2; }
   .hero-content { position: relative; z-index: 3; color: #ffffff; padding-left: 10%; }
-  .catchphrase { font-size: 56px; font-weight: 900; line-height: 1.4; margin: 0 0 20px 0; letter-spacing: 0.05em; text-shadow: 1px 1px 3px rgba(0,0,0,0.1); }
-  .catchphrase .blue-accent { color: #ffffff; position: relative; display: inline-block; }
-  .catchphrase .blue-accent.left::before { content: ''; position: absolute; top: -5px; left: -15px; width: 0; height: 0; border-style: solid; border-width: 25px 15px 0 0; border-color: var(--primary-blue) transparent transparent transparent; }
-  .catchphrase .blue-accent.right::after { content: ''; position: absolute; top: -5px; right: -15px; width: 0; height: 0; border-style: solid; border-width: 25px 0 0 15px; border-color: var(--primary-blue) transparent transparent transparent; }
-  .star-bg { position: relative; display: inline-block; z-index: 1; }
-  .star-bg::before { content: '★'; position: absolute; color: var(--accent-red); font-size: 80px; top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(-15deg); z-index: -1; }
-  .sub-catch { font-size: 26px; font-weight: bold; display: inline-block; position: relative; margin: 0; }
-  .sub-catch::after { content: ''; position: absolute; bottom: -8px; left: 0; right: 0; height: 4px; background-image: linear-gradient(to right, var(--primary-blue) 40%, rgba(255, 255, 255, 0) 0%); background-position: bottom; background-size: 12px 4px; background-repeat: repeat-x; }
-  .sub-catch .small-star { color: var(--accent-red); font-size: 28px; vertical-align: text-bottom; margin-right: 5px; }
-  .scroll-indicator { position: absolute; bottom: 30px; left: 10%; color: #ffffff; font-size: 14px; font-weight: bold; letter-spacing: 1px; display: flex; flex-direction: column; align-items: center; z-index: 3; }
-  .scroll-indicator::after { content: ''; width: 1px; height: 50px; background-color: #ffffff; margin-top: 5px; }
-  .section-wrapper { padding: 80px 0; }
-  .bg-light { background-color: var(--bg-light); }
-  .section-header { text-align: center; margin-bottom: 50px; }
-  .section-header .en-title { font-size: 18px; color: var(--accent-red); font-weight: bold; letter-spacing: 2px; margin-bottom: 10px; display: block; }
-  .section-title { font-size: 32px; color: var(--primary-blue); font-weight: bold; margin: 0; }
-  .btn { display: inline-block; padding: 12px 30px; background-color: var(--primary-blue); color: #fff; border-radius: 50px; font-weight: bold; transition: opacity 0.3s, transform 0.3s; text-align: center; border: none; cursor: pointer; }
-  .btn:hover { opacity: 0.9; transform: translateY(-2px); }
-  .btn.btn-outline { background-color: transparent; color: var(--primary-blue); border: 2px solid var(--primary-blue); }
-  .btn.btn-outline:hover { background-color: var(--primary-blue); color: #fff; }
-  .about-content { max-width: 800px; margin: 0 auto; text-align: center; }
-  .about-lead { font-size: 28px; font-weight: bold; color: var(--primary-blue); line-height: 1.5; margin-bottom: 30px; }
-  .about-text { font-size: 16px; text-align: left; margin-bottom: 20px; }
-  .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; }
-  .menu-card { background: #fff; border-radius: 12px; padding: 30px; box-shadow: 0 5px 20px rgba(0,0,0,0.05); display: flex; flex-direction: column; border-top: 5px solid var(--accent-red); }
-  .menu-card h3 { color: var(--primary-blue); font-size: 20px; margin-top: 0; border-bottom: 2px dashed #eee; padding-bottom: 15px; margin-bottom: 20px; }
-  .menu-card .en-label { display: block; font-size: 13px; color: #999; margin-bottom: 5px; font-weight: normal; }
-  .menu-card p { font-size: 14px; flex-grow: 1; margin-bottom: 25px; }
-  .concept-box { background: #fff; padding: 50px; border-radius: 12px; box-shadow: 0 10px 30px rgba(0,50,100,0.08); text-align: center; }
-  .concept-box h3 { font-size: 24px; color: var(--primary-blue); margin-bottom: 25px; }
-  .concept-box p { text-align: left; font-size: 16px; margin: 0 auto 20px auto; max-width: 800px; }
-  .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin-top: 30px; }
-  .feature-item { text-align: center; }
-  .feature-icon { width: 60px; height: 60px; background-color: var(--bg-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px auto; color: var(--primary-blue); font-size: 24px; font-weight: bold; border: 2px solid var(--primary-blue); }
-  .feature-item h3 { font-size: 18px; color: var(--primary-blue); margin-bottom: 15px; }
-  .feature-item p { font-size: 14px; text-align: left; }
+  .catchphrase { font-size: 52px; font-weight: 900; line-height: 1.3; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.4); }
+  .sub-catch { font-size: 24px; font-weight: bold; margin-top: 15px; display: inline-block; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
+
+  /* --- 共通見出しスタイル --- */
+  .section-label { font-size: 28px; font-weight: 900; color: var(--primary-blue); margin-bottom: 10px; display: block; letter-spacing: 1px; }
+  .section-title { font-size: 34px; font-weight: 900; line-height: 1.4; margin-top: 0; margin-bottom: 20px; }
+
+  /* --- About & Concept セクション画像枠線 --- */
+  .frame-wrap-right { position: relative; padding: 0 15px 15px 0; display: inline-block; width: 100%; }
+  .frame-wrap-left { position: relative; padding: 0 0 15px 15px; display: inline-block; width: 100%; }
+  .frame-img { border: 4px solid var(--lime-green); border-radius: 20px; position: relative; z-index: 2; width: 100%; object-fit: cover; }
+  .frame-wrap-right::after { content: ''; position: absolute; top: 15px; left: 15px; right: 0; bottom: 0; border: 2px dashed var(--primary-blue); border-radius: 20px; z-index: 1; }
+  .frame-wrap-left::after { content: ''; position: absolute; top: 15px; left: 0; right: 15px; bottom: 0; border: 2px dashed var(--primary-blue); border-radius: 20px; z-index: 1; }
+
+  /* --- Section: About --- */
+  .section-about { padding: 100px 0; }
+  .two-col { display: flex; align-items: center; gap: 50px; }
+  .two-col > div { flex: 1; }
+
+  /* --- Section: Menu --- */
+  .section-menu { background-color: var(--lime-green); padding: 80px 0 100px 0; text-align: center; }
+  .menu-items { display: flex; justify-content: space-between; margin-top: 50px; gap: 30px; }
+  .menu-item { flex: 1; display: flex; flex-direction: column; align-items: center; transition: transform 0.3s; }
+  .menu-item:hover { transform: translateY(-5px); }
+  .circle-img { width: 220px; height: 220px; border-radius: 50%; border: 4px solid var(--primary-blue); overflow: hidden; margin-bottom: 20px; background-color: #fff;}
+  .circle-img img { width: 100%; height: 100%; object-fit: cover; }
+  .menu-label { font-size: 22px; font-weight: 900; color: var(--primary-blue); }
+
+  /* --- Section: Concept --- */
+  .section-concept { padding: 100px 0; }
+
+  /* --- Section: Points --- */
+  .section-points { padding: 50px 0 100px 0; background-color: #ffffff; }
+  .point-block { margin-bottom: 80px; }
+  .point-bg-text { font-size: 80px; font-weight: 900; color: var(--lime-green); line-height: 0.8; position: relative; z-index: 1; letter-spacing: 2px; }
+  .point-bg-text.right { text-align: right; }
+  
+  .point-content { display: flex; align-items: stretch; position: relative; z-index: 2; margin-top: -30px; }
+  .point-content.reverse { flex-direction: row-reverse; }
+  
+  /* Point テキストボックス */
+  .point-box-wrap { flex: 1.2; position: relative; z-index: 3; }
+  .point-box { background: #fff; border: 2px solid var(--primary-blue); border-radius: 15px; padding: 40px; height: 100%; box-sizing: border-box; display: flex; flex-direction: column; justify-content: center; }
+  .point-box h3 { font-size: 20px; font-weight: 900; margin-top: 0; margin-bottom: 20px; line-height: 1.4; color: var(--text-dark); }
+  .point-box p { font-size: 14px; margin: 0; line-height: 1.8; color: #444; }
+  
+  /* Point ボックスの点線背景 */
+  .point-box-wrap.offset-tl::before { content: ''; position: absolute; top: -10px; left: -10px; right: 10px; bottom: 10px; border: 2px dashed var(--lime-green); border-radius: 15px; z-index: -1; }
+  .point-box-wrap.offset-tr::before { content: ''; position: absolute; top: -10px; left: 10px; right: -10px; bottom: 10px; border: 2px dashed var(--lime-green); border-radius: 15px; z-index: -1; }
+
+  /* Point 画像 */
+  .point-img-wrap { flex: 0.8; position: relative; z-index: 2; }
+  .point-img-wrap img { width: 100%; height: 100%; object-fit: cover; border-radius: 15px; }
+  .overlap-right { margin-left: -50px; margin-top: 20px; margin-bottom: 20px; } /* 画像が右の場合、左にめり込む */
+  .overlap-left { margin-right: -50px; margin-top: 20px; margin-bottom: 20px; } /* 画像が左の場合、右にめり込む */
+
+  /* --- フッター --- */
   footer { background: var(--primary-blue); color: #ffffff; text-align: center; padding: 40px 20px; font-size: 14px; }
+
+  /* レスポンシブ対応 (スマホ用) */
   @media (max-width: 768px) {
-    header { padding: 15px; flex-direction: column; gap: 15px; }
-    .nav-menu { gap: 15px; flex-wrap: wrap; justify-content: center; }
-    .hero-content { padding-left: 20px; padding-right: 20px; }
+    header { padding: 15px 20px; flex-direction: column; gap: 15px; }
+    .nav-menu { flex-wrap: wrap; justify-content: center; gap: 15px; }
     .catchphrase { font-size: 32px; }
     .sub-catch { font-size: 16px; }
-    .about-lead { font-size: 22px; }
-    .concept-box { padding: 30px 20px; }
+    .two-col { flex-direction: column; text-align: center; gap: 30px; }
+    .frame-wrap-left::after, .frame-wrap-right::after { display: none; } /* スマホ時は枠のズレを消してシンプルに */
+    .menu-items { flex-direction: column; align-items: center; }
+    .point-content, .point-content.reverse { flex-direction: column; margin-top: -10px; }
+    .overlap-right, .overlap-left { margin: 20px 0 0 0; }
+    .point-bg-text, .point-bg-text.right { text-align: center; font-size: 50px; margin-bottom: -15px; }
+    .point-box-wrap.offset-tl::before, .point-box-wrap.offset-tr::before { display: none; }
   }
 </style>
 </head>
 <body>
+
 <header>
-  <div class="logo">
-    <div><span class="logo-small">Toyabe Soft Tennis Academy</span>トヤベ ソフトテニスアカデミー</div>
-  </div>
+  <a href="index.html" class="logo">
+    <img src="logo_img-2.png" alt="トヤベ ソフトテニスアカデミー" class="logo-img">
+  </a>
   <ul class="nav-menu">
-    <li><a href="index.html" class="active">ホーム<span class="en">Home</span></a></li>
-    <li><a href="lesson.html">レッスン情報<span class="en">Lesson</span></a></li>
-    <li><a href="greeting.html">ご挨拶<span class="en">Greeting</span></a></li>
-    <li><a href="information.html">スクール概要<span class="en">School</span></a></li>
-    <li><a href="information.html#contact">お問い合わせ<span class="en">Contact</span></a></li>
+    <li><a href="index.html">ホーム</a></li>
+    <li><a href="lesson.html">レッスン情報</a></li>
+    <li><a href="greeting.html">ご挨拶</a></li>
+    <li><a href="information.html">スクール概要</a></li>
+    <li><a href="information.html#contact">お問い合わせ</a></li>
   </ul>
 </header>
 
@@ -94,83 +138,124 @@
   <div class="wave-top"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
-    <h1 class="catchphrase"><span class="blue-accent left">基</span>礎強<span class="blue-accent right">化</span>で<br>今よりもっと<span class="star-bg">強</span>くなる！！</h1>
-    <p class="sub-catch"><span class="small-star">★</span>楽しみながらトレーニングできるテニス教室</p>
+    <h1 class="catchphrase">基礎強化で<br>今よりもっと強くなる！！</h1>
+    <p class="sub-catch">★楽しみながらトレーニングできるテニス教室</p>
   </div>
-  <div class="scroll-indicator">Scroll</div>
 </div>
 
-<div class="section-wrapper">
+<section class="section-about">
   <div class="container">
-    <div class="section-header"><span class="en-title">ABOUT</span></div>
-    <div class="about-content">
-      <h2 class="about-lead">一人ひとりの夢を<br>後押しするレッスン</h2>
-      <p class="about-text">トヤベソフトテニスアカデミーは、成田市を中心としたテニス教室です。<br>平日月4回レッスンを開催し、小学生～高校生の生徒さんへ、学校の部活動・クラブ活動では教えてもらえないような基礎から丁寧に指導いたします。</p>
-      <p class="about-text">生徒様の主体性をはぐくむレッスン方針と、レベルに応じたクラス分けによって、生徒様一人ひとりに合った指導を提供しております。<br>そして、「今よりもっと上手にプレイしたい」「目標としている大会で勝ちたい」といった夢を実現できるよう、生徒様に寄り添いながらやさしくサポートしてまいります。<br>また、ただテニスが上達するだけではなく、テニスをプレイする楽しさやよろこびを感じながら練習できるように心がけています。</p>
-      <p class="about-text">テニス初心者や未経験者のお子様でも、初歩的な内容から少しずつ指導していくためご安心ください。<br>通常レッスンの練習内容を体験いただける「初回体験レッスン」を無料で実施しておりますので、まずはお気軽にお問い合わせください。</p>
+    <div class="two-col">
+      <div>
+        <span class="section-label">About</span>
+        <h2 class="section-title">一人ひとりの夢を<br>後押しするレッスン</h2>
+        <p>トヤベソフトテニスアカデミーは、成田市を中心としたテニス教室です。<br>平日月4回レッスンを開催し、小学生～高校生の生徒さんへ、学校の部活動・クラブ活動では教えてもらえないような基礎から丁寧に指導いたします。</p>
+        <p>生徒様の主体性をはぐくむレッスン方針と、レベルに応じたクラス分けによって、生徒様一人ひとりに合った指導を提供しております。</p>
+      </div>
+      <div>
+        <div class="frame-wrap-right">
+          <img src="front-original01_img.jpg" alt="About" class="frame-img">
+        </div>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-<div class="section-wrapper bg-light">
+<section class="section-menu">
   <div class="container">
-    <div class="section-header">
-      <span class="en-title">MENU</span>
-      <h2 class="section-title">メニュー</h2>
-    </div>
-    <div class="menu-grid">
-      <div class="menu-card">
-        <h3><span class="en-label">Greeting</span>大切な基礎固めを</h3>
-        <p>実戦的な戦術はもちろん、身体の使い方やラケットの持ち方といった基礎固めもメインとしています。これは、ジュニアからテニスをプレイし始めた講師自身が、小学生～高校生の時期に基礎を身に付けることが一番大切だと感じているからです。初心者から試合経験のある方まで、基礎を改めて学ぶことで実力を底上げします。</p>
-        <div style="text-align: center;"><a href="greeting.html" class="btn btn-outline">ご挨拶を読む</a></div>
-      </div>
-      <div class="menu-card">
-        <h3><span class="en-label">Lesson</span>レベルに応じたクラス分け</h3>
-        <p>生徒様一人ひとりのプレイスキルに合わせてクラス分けを行っています。初心者から実践的スキルを身に付けたい方まで柔軟に対応可能です。目標とする姿をヒアリングし、その実現を後押しします。同じように練習を頑張る仲間と切磋琢磨し、絆をはぐくむ環境を整えています。</p>
-        <div style="text-align: center;"><a href="lesson.html" class="btn btn-outline">レッスン情報を見る</a></div>
-      </div>
-      <div class="menu-card">
-        <h3><span class="en-label">Flow</span>実績と経験のある講師</h3>
-        <p>県大会や東北大会優勝、インターハイ出場経験を持つ講師が直接指導します。教育実習では地区大会敗退チームを県大会3位に導いた実績も。プレイヤーとしての確かなスキルと豊富な指導経験を活かし、伝わりやすい指導と生徒様のやる気を引き出すレッスンを実施します。</p>
-        <div style="text-align: center;"><a href="information.html" class="btn btn-outline">スクール概要を見る</a></div>
-      </div>
+    <span class="section-label">Menu</span>
+    <p style="margin-top: -5px; font-weight: bold; margin-bottom: 40px; color: var(--text-dark);">メニュー</p>
+    <div class="menu-items">
+      <a href="greeting.html" class="menu-item">
+        <div class="circle-img"><img src="profile_01_2.jpg" alt="Greeting"></div>
+        <span class="menu-label">Greeting</span>
+      </a>
+      <a href="lesson.html" class="menu-item">
+        <div class="circle-img"><img src="front-original02_img.jpg" alt="Lesson"></div>
+        <span class="menu-label">Lesson</span>
+      </a>
+      <a href="information.html" class="menu-item">
+        <div class="circle-img"><img src="profile03_img.jpg" alt="Flow"></div>
+        <span class="menu-label">Flow</span>
+      </a>
     </div>
   </div>
-</div>
+</section>
 
-<div class="section-wrapper">
+<section class="section-concept">
   <div class="container">
-    <div class="section-header"><span class="en-title">CONCEPT</span></div>
-    <div class="concept-box">
-      <h3>生徒様の主体性も<br>はぐくむレッスン方針</h3>
-      <p>当教室のレッスンでは、最初から正解をすべて教えるのではなく、生徒様自身が考えて行動できるような機会を設けています。</p>
-      <p>これは、テニスのプレイに限らず、生徒様自身の人生の糧となる「主体性」をはぐくんでいくためです。<br>生徒様自身の人生を、自分にとってより良いものにしていくためには、自分で考えて行動を起こせる「主体性」が大切だと考えております。</p>
-      <p>当教室に通っていただくことで、テニスプレイヤーとしての実力が高まるだけではなく、目の前に立ちはだかる壁を乗り越えていけるような力が身に付くことでしょう。</p>
+    <div class="two-col" style="flex-direction: row-reverse;">
+      <div>
+        <span class="section-label">Concept</span>
+        <h2 class="section-title">生徒様の主体性も<br>はぐくむレッスン方針</h2>
+        <p>当教室のレッスンでは、最初から正解をすべて教えるのではなく、生徒様自身が考えて行動できるような機会を設けています。</p>
+        <p>これは、テニスのプレイに限らず、生徒様自身の人生の糧となる「主体性」をはぐくんでいくためです。当教室に通っていただくことで、目の前に立ちはだかる壁を乗り越えていけるような力が身に付くことでしょう。</p>
+      </div>
+      <div>
+        <div class="frame-wrap-left">
+          <img src="front-original02_img.jpg" alt="Concept" class="frame-img">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section-points">
+  <div class="container">
+    
+    <div class="point-block">
+      <div class="point-bg-text">Point.01</div>
+      <div class="point-content">
+        <div class="point-box-wrap offset-tl">
+          <div class="point-box">
+            <h3>初回体験レッスンは無料、<br>スクールが初めての方もぜひお問い合わせください</h3>
+            <p>「初めてのテニスレッスンなので不安がある…」「まずはレッスンの様子を見てみたい」といった声にお応えして、無料でご参加いただける初回体験レッスンをご用意しております。通常レッスンではアップ・乱打・ボールの手投げ・ストローク練習といった内容を実施していますが、初回体験レッスンではこうした練習内容を体験いただけます。また、初回体験レッスンではラケットの貸し出しも行っていますので、通常は生徒様自身にラケットをご用意いただく必要がありません。</p>
+          </div>
+        </div>
+        <div class="point-img-wrap overlap-right">
+          <img src="profile_01_2.jpg" alt="初回体験レッスン">
+        </div>
+      </div>
     </div>
 
-    <div class="features-grid">
-      <div class="feature-item">
-        <div class="feature-icon">1</div>
-        <h3>初回体験レッスンは無料</h3>
-        <p>「初めてなので不安…」「レッスンの様子を見てみたい」という声にお応えし、無料で初回体験をご用意。アップからストローク練習まで通常の内容を体験でき、ラケットの無料貸出も行っています。</p>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">2</div>
-        <h3>成田市で練習を行います</h3>
-        <p>成田市をメインに、主に重兵衛スポーツフィールド中台などで練習を行います。市外にお住まいの方も、練習場所へお越しいただければ参加可能です。アクセス等お気軽にご相談ください。</p>
-      </div>
-      <div class="feature-item">
-        <div class="feature-icon">3</div>
-        <h3>レッスンは平日に開催</h3>
-        <p>現在、主に平日に月4回、1回およそ2時間程度で開催しております。土日祝に開催する場合もございますので、詳しい実施スケジュールについては、お問い合わせにてお伝えいたします。</p>
+    <div class="point-block">
+      <div class="point-bg-text right">Point.02</div>
+      <div class="point-content reverse">
+        <div class="point-box-wrap offset-tr">
+          <div class="point-box">
+            <h3>成田市で練習を行います</h3>
+            <p>当教室では、成田市をメインとしてレッスンを開催しています。このエリア内にあるテニスコートにて、練習を行うことが多いです。なかでも最近では、重兵衛スポーツフィールド中台で練習することが多くなっております。成田市にお住まいではなくても、練習場所へお越しいただけるのであれば参加可能です。レッスンの開催場所や交通手段についてご不明点がありましたら、当教室までお気軽にお問い合わせください。</p>
+          </div>
+        </div>
+        <div class="point-img-wrap overlap-left">
+          <img src="front-original02_img.jpg" alt="練習場所">
+        </div>
       </div>
     </div>
-    <div style="text-align: center; margin-top: 50px;"><a href="information.html#contact" class="btn">無料体験のお問い合わせはこちら</a></div>
+
+    <div class="point-block">
+      <div class="point-bg-text">Point.03</div>
+      <div class="point-content">
+        <div class="point-box-wrap offset-tl">
+          <div class="point-box">
+            <h3>レッスンは平日に開催</h3>
+            <p>トヤベソフトテニスアカデミーのレッスンは、現在主に平日月4回で開催しております。また、レッスンの実施時間はおよそ2時間程度です。なお、現在は平日に実施しているレッスンですが、土日祝に開催する場合もございます。まずは初回体験レッスンにご参加いただくのがおすすめです。メールフォームにてお問い合わせいただければ、レッスンの詳しい実施スケジュールについてお伝えいたします。</p>
+          </div>
+        </div>
+        <div class="point-img-wrap overlap-right">
+          <img src="profile03_img.jpg" alt="レッスンスケジュール">
+        </div>
+      </div>
+    </div>
+
   </div>
-</div>
+</section>
 
 <footer>
-  <div class="container"><p>&copy; 2026 トヤベ ソフトテニスアカデミー All Rights Reserved.</p></div>
+  <div class="container">
+    <p>&copy; 2026 トヤベ ソフトテニスアカデミー All Rights Reserved.</p>
+  </div>
 </footer>
+
 </body>
 </html>
