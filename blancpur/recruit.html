@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recruit (採用情報) | Blancpur (ブランピュール)</title>
+    <meta name="description" content="成田市公津の杜のビストロ＆カフェ「Blancpur (ブランピュール)」の採用情報ページです。洗練された空間で一緒にお店を創り上げてくれるスタッフを募集しています。">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* =========================================
+           Reset & Base
+        ========================================= */
+        *{margin:0;padding:0;box-sizing:border-box;}
+        html,body{
+            max-width:100%;
+            overflow-x:hidden;
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            color: #222;
+            background-color: #fff;
+            line-height: 1.6;
+        }
+        img{max-width:100%;height:auto;display:block;}
+        a {text-decoration: none; color: inherit;}
+        ul {list-style: none;}
+
+        /* Typography */
+        h1, h2, h3 {font-weight: 500;}
+        .section-title {
+            text-align: center;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            margin-bottom: 2rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .section-subtitle {
+            text-align: center;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            color: #666;
+            margin-top: -1.5rem;
+            margin-bottom: 3rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* Layout */
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+        section {
+            padding: 5rem 0;
+        }
+        .bg-light {
+            background-color: #f9f9f9;
+        }
+
+        /* =========================================
+           Header & Navigation
+        ========================================= */
+        header {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+        }
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .logo {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: bold;
+            letter-spacing: 0.1em;
+        }
+        
+        .global-nav {
+            display: flex;
+            gap: 2rem;
+        }
+        .global-nav a {
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
+        }
+        .global-nav a:hover {
+            color: #888;
+        }
+
+        /* Hamburger Button */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            width: 30px;
+            height: 20px;
+            position: relative;
+            z-index: 101;
+        }
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: #222;
+            position: absolute;
+            transition: all 0.3s ease;
+        }
+        .hamburger span:nth-child(1) { top: 0; }
+        .hamburger span:nth-child(2) { top: 9px; }
+        .hamburger span:nth-child(3) { bottom: 0; }
+
+        /* Mobile Nav */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background-color: #111;
+            color: #fff;
+            padding-top: 5rem;
+            transition: right 0.3s ease;
+            z-index: 100;
+        }
+        .mobile-menu.active {
+            right: 0;
+        }
+        .mobile-menu ul {
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            gap: 1.5rem;
+        }
+        .mobile-menu a {
+            font-size: 1.2rem;
+            letter-spacing: 0.1em;
+        }
+
+        /* =========================================
+           Hero Section (Recruit)
+        ========================================= */
+        .hero {
+            height: 60vh;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background-color: #222;
+            margin-top: 60px;
+        }
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.5;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: #fff;
+        }
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        .hero-subtitle {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            letter-spacing: 0.1em;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+        /* =========================================
+           Culture Section
+        ========================================= */
+        .culture-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        .culture-grid:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+        .culture-text {
+            flex: 1 1 400px;
+        }
+        .culture-text h3 {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            border-left: 4px solid #222;
+            padding-left: 1rem;
+        }
+        .culture-text p {
+            margin-bottom: 1rem;
+            color: #444;
+        }
+        .culture-image {
+            flex: 1 1 400px;
+        }
+        .culture-image img {
+            width: 100%;
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* =========================================
+           Requirements Section (募集要項)
+        ========================================= */
+        .req-table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+        }
+        .req-table {
+            width: 100%;
+            min-width: 600px;
+            border-collapse: collapse;
+        }
+        .req-table th, .req-table td {
+            padding: 1.5rem;
+            border-bottom: 1px solid #eee;
+            text-align: left;
+        }
+        .req-table th {
+            width: 25%;
+            font-weight: bold;
+            background-color: #fcfcfc;
+            color: #333;
+        }
+        .req-table td {
+            color: #555;
+        }
+        .req-table tr:last-child th,
+        .req-table tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* =========================================
+           Flow Section
+        ========================================= */
+        .flow-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .flow-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            border: 1px solid #eee;
+            position: relative;
+        }
+        .flow-step::after {
+            content: '';
+            position: absolute;
+            bottom: -2rem;
+            left: 3.5rem;
+            width: 2px;
+            height: 2rem;
+            background: #ccc;
+        }
+        .flow-step:last-child::after {
+            display: none;
+        }
+        .step-num {
+            flex-shrink: 0;
+            width: 3rem;
+            height: 3rem;
+            background-color: #222;
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        .step-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            margin-top: 0.4rem;
+        }
+        .step-content p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* =========================================
+           Entry Section
+        ========================================= */
+        .entry-box {
+            text-align: center;
+            background: #222;
+            color: #fff;
+            padding: 4rem 2rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+        }
+        .entry-box h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.1em;
+        }
+        .entry-box p {
+            margin-bottom: 2rem;
+            color: #ccc;
+        }
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            font-size: 1.2rem;
+        }
+        .contact-info a {
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: opacity 0.3s;
+        }
+        .contact-info a:hover {
+            opacity: 0.7;
+        }
+
+        /* =========================================
+           Footer
+        ========================================= */
+        footer {
+            background-color: #111;
+            color: #fff;
+            text-align: center;
+            padding: 4rem 5% 3rem;
+        }
+        .footer-sns {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        .sns-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.8rem 2rem;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: #fff;
+            text-decoration: none;
+            transition: opacity 0.3s, transform 0.3s;
+        }
+        .sns-btn:hover {
+            opacity: 0.9;
+            transform: translateY(-3px);
+        }
+        .btn-instagram {
+            background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+        }
+        .btn-tabelog {
+            background-color: #e26a00;
+        }
+        .copyright {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* =========================================
+           Media Queries
+        ========================================= */
+        @media (max-width: 768px) {
+            .global-nav {
+                display: none;
+            }
+            .hamburger {
+                display: block;
+            }
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+                background-color: #fff;
+            }
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+                background-color: #fff;
+            }
+            .flow-step::after {
+                left: 2.5rem;
+            }
+            .step-num {
+                width: 2.5rem;
+                height: 2.5rem;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <div class="logo"><a href="index.html">Blancpur</a></div>
+            <nav class="global-nav">
+                <a href="index.html">Home</a>
+                <a href="#culture">Culture</a>
+                <a href="#roles">Roles</a>
+                <a href="#flow">Flow</a>
+                <a href="#entry">Entry</a>
+            </nav>
+            <div class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </header>
+
+    <nav class="mobile-menu" id="mobile-menu">
+        <ul>
+            <li><a href="index.html" class="mobile-link">Home (トップページ)</a></li>
+            <li><a href="#culture" class="mobile-link">Culture (働く環境)</a></li>
+            <li><a href="#roles" class="mobile-link">Roles (募集要項)</a></li>
+            <li><a href="#flow" class="mobile-link">Flow (採用の流れ)</a></li>
+            <li><a href="#entry" class="mobile-link">Entry (ご応募)</a></li>
+        </ul>
+    </nav>
+
+    <section id="top" class="hero">
+        <img src="images/IMG_2347.jpeg" alt="Blancpur 採用情報" class="hero-bg" onerror="this.src='https://picsum.photos/seed/recruit1/1600/900'">
+        <div class="hero-content">
+            <h2 class="hero-title">RECRUIT</h2>
+            <p class="hero-subtitle">日常に、少しの上質を。<br>一緒にお客様へ届ける仲間を募集しています。</p>
+        </div>
+    </section>
+
+    <section id="culture" class="container">
+        <h2 class="section-title">Culture</h2>
+        <p class="section-subtitle">ブランピュールで働く魅力</p>
+
+        <div class="culture-grid">
+            <div class="culture-text">
+                <h3>洗練された空間で、<br>ワンランク上のサービスを学ぶ</h3>
+                <p>黒とグレーを基調としたシックなデザイン、温かみのある間接照明。Blancpurの店内は、働くスタッフにとっても誇りを持てる特別な場所です。</p>
+                <p>未経験の方でも、お客様の期待を超える「心地よいおもてなし」の基本から丁寧にお教えします。</p>
+            </div>
+            <div class="culture-image">
+                <img src="images/IMG_2356.jpeg" alt="洗練された店内" onerror="this.src='https://picsum.photos/seed/recruit2/800/600'">
+            </div>
+        </div>
+
+        <div class="culture-grid">
+            <div class="culture-text">
+                <h3>本格的なビストロ料理と<br>自家製スイーツ</h3>
+                <p>季節の食材を活かした料理や、パティシエ特製のスイーツ。美味しいまかないでその味を体験することも、大切な仕事の一部です。</p>
+                <p>料理の腕を磨きたい方、ラテアートやカフェメニューの提供にこだわりたい方に最適な環境が整っています。（スタッフ割引制度あり）</p>
+            </div>
+            <div class="culture-image">
+                <img src="images/IMG_2390.jpeg" alt="本格的な料理" onerror="this.src='https://picsum.photos/seed/recruit3/800/600'">
+            </div>
+        </div>
+    </section>
+
+    <section id="roles" class="bg-light">
+        <div class="container">
+            <h2 class="section-title">Requirements</h2>
+            <p class="section-subtitle">募集要項</p>
+            
+            <div class="req-table-wrapper">
+                <table class="req-table">
+                    <tbody>
+                        <tr>
+                            <th>募集職種</th>
+                            <td>
+                                1. ホールスタッフ（アルバイト・パート）<br>
+                                2. キッチンスタッフ（アルバイト・パート）<br>
+                                3. 正社員（店長・料理長候補）
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>仕事内容</th>
+                            <td>
+                                【ホール】ご案内、オーダー、配膳、レジ、オープン・クローズ準備など<br>
+                                【キッチン】仕込み、調理補助、盛り付け、洗い場など<br>
+                                【正社員】店舗運営業務全般、スタッフ育成、メニュー開発など
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>給与・時給</th>
+                            <td>
+                                【アルバイト・パート】時給 1,100円〜（能力・経験を考慮し昇給あり）<br>
+                                【正社員】月給 250,000円〜（経験者優遇）
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>勤務時間</th>
+                            <td>
+                                10:00 〜 22:30 の間でシフト制<br>
+                                ※週2日、1日4時間〜OK（時間・曜日はご相談ください）<br>
+                                ※ランチタイムのみ、ディナータイムのみの勤務も歓迎
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>待遇・福利厚生</th>
+                            <td>
+                                交通費規定内支給、制服貸与、美味しいまかないあり、スタッフ割引あり、社員登用制度あり、社会保険完備（規定を満たす方）
+                            </td>
+                        </tr>
+                        <tr>
+                            <th>求める人物像</th>
+                            <td>
+                                ・接客や料理が好きな方<br>
+                                ・笑顔で明るい対応ができる方<br>
+                                ・チームワークを大切にできる方（未経験者も大歓迎です！）
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <section id="flow" class="container">
+        <h2 class="section-title">Selection Flow</h2>
+        <p class="section-subtitle">採用までの流れ</p>
+
+        <div class="flow-container">
+            <div class="flow-step">
+                <div class="step-num">1</div>
+                <div class="step-content">
+                    <h4>ご応募・お問い合わせ</h4>
+                    <p>お電話またはInstagramのDM等から、お気軽にご連絡ください。面接の日程を調整いたします。</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">2</div>
+                <div class="step-content">
+                    <h4>面接（カジュアル面談）</h4>
+                    <p>履歴書（写真貼付）をご持参の上、店舗にお越しください。希望の働き方や、お店の雰囲気についてお話ししましょう。</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">3</div>
+                <div class="step-content">
+                    <h4>採用のご連絡</h4>
+                    <p>面接後、数日以内に結果をご連絡いたします。入社日や初回のシフトについてご相談させていただきます。</p>
+                </div>
+            </div>
+            <div class="flow-step">
+                <div class="step-num">4</div>
+                <div class="step-content">
+                    <h4>研修スタート</h4>
+                    <p>まずはメニューを覚えるところから。先輩スタッフが丁寧にお教えしますので、自分のペースで慣れていってくださいね。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="entry" class="container" style="padding-top: 0;">
+        <div class="entry-box">
+            <h3>JOIN OUR TEAM</h3>
+            <p>ご質問や見学のご希望なども、お気軽にご連絡ください。<br>あなたと一緒にお仕事ができる日を楽しみにしています。</p>
+            <div class="contact-info">
+                <a href="tel:0000000000"><i class="fa-solid fa-phone"></i> お電話でのご応募</a>
+                <a href="https://www.instagram.com/blancpur_narita/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i> InstagramのDMから</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-sns">
+            <a href="https://www.instagram.com/blancpur_narita/" target="_blank" rel="noopener noreferrer" class="sns-btn btn-instagram">
+                <i class="fa-brands fa-instagram"></i> Instagram
+            </a>
+            <a href="https://tabelog.com/chiba/A1204/A120401/12066677/" target="_blank" rel="noopener noreferrer" class="sns-btn btn-tabelog">
+                <i class="fa-solid fa-utensils"></i> 食べログ
+            </a>
+        </div>
+        <p class="copyright">&copy; 2026 Blancpur. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            // トグル処理
+            function toggleMenu() {
+                hamburger.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+            }
+
+            hamburger.addEventListener('click', toggleMenu);
+
+            // メニュー内リンククリックで閉じる
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (hamburger.classList.contains('active')) {
+                        toggleMenu();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
