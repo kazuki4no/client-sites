@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blancpur (ブランピュール) | 成田市公津の杜 ビストロ＆カフェ</title>
+    <meta name="description" content="成田市公津の杜のビストロ＆カフェ「Blancpur (ブランピュール)」。洗練された空間で、ランチ、カフェ、ディナーをお楽しみいただけます。女子会やママ会にもぴったりなソファ席もご用意。">
+    <style>
+        /* =========================================
+           Reset & Base
+        ========================================= */
+        *{margin:0;padding:0;box-sizing:border-box;}
+        html,body{
+            max-width:100%;
+            overflow-x:hidden;
+            font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif;
+            color: #222;
+            background-color: #fff;
+            line-height: 1.6;
+        }
+        img{max-width:100%;height:auto;display:block;}
+        a {text-decoration: none; color: inherit;}
+        ul {list-style: none;}
+
+        /* Typography */
+        h1, h2, h3 {font-weight: 500;}
+        .section-title {
+            text-align: center;
+            font-size: clamp(1.8rem, 5vw, 2.5rem);
+            margin-bottom: 2rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        .section-subtitle {
+            text-align: center;
+            font-size: clamp(0.9rem, 2vw, 1rem);
+            color: #666;
+            margin-top: -1.5rem;
+            margin-bottom: 3rem;
+            letter-spacing: 0.05em;
+        }
+
+        /* Layout */
+        .container {
+            width: 100%;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+        section {
+            padding: 5rem 0;
+        }
+        .bg-light {
+            background-color: #f9f9f9;
+        }
+
+        /* =========================================
+           Header & Navigation
+        ========================================= */
+        header {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+        }
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .logo {
+            font-size: clamp(1.5rem, 4vw, 2rem);
+            font-weight: bold;
+            letter-spacing: 0.1em;
+        }
+        
+        /* Desktop Nav */
+        .global-nav {
+            display: flex;
+            gap: 2rem;
+        }
+        .global-nav a {
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
+        }
+        .global-nav a:hover {
+            color: #888;
+        }
+
+        /* Hamburger Button */
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            width: 30px;
+            height: 20px;
+            position: relative;
+            z-index: 101;
+        }
+        .hamburger span {
+            display: block;
+            width: 100%;
+            height: 2px;
+            background-color: #222;
+            position: absolute;
+            transition: all 0.3s ease;
+        }
+        .hamburger span:nth-child(1) { top: 0; }
+        .hamburger span:nth-child(2) { top: 9px; }
+        .hamburger span:nth-child(3) { bottom: 0; }
+
+        /* Mobile Nav */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            max-width: 300px;
+            height: 100vh;
+            background-color: #111;
+            color: #fff;
+            padding-top: 5rem;
+            transition: right 0.3s ease;
+            z-index: 100;
+        }
+        .mobile-menu.active {
+            right: 0;
+        }
+        .mobile-menu ul {
+            display: flex;
+            flex-direction: column;
+            padding: 2rem;
+            gap: 1.5rem;
+        }
+        .mobile-menu a {
+            font-size: 1.2rem;
+            letter-spacing: 0.1em;
+        }
+
+        /* =========================================
+           Hero Section
+        ========================================= */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background-color: #222;
+            margin-top: 60px;
+        }
+        .hero-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.7;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            color: #fff;
+        }
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 4.5rem);
+            letter-spacing: 0.15em;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+        }
+        .hero-subtitle {
+            font-size: clamp(1rem, 3vw, 1.2rem);
+            letter-spacing: 0.1em;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.5);
+        }
+
+        /* =========================================
+           Concept Section
+        ========================================= */
+        .concept-grid {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 3rem;
+        }
+        .concept-text {
+            flex: 1 1 400px;
+        }
+        .concept-text h3 {
+            font-size: clamp(1.2rem, 3vw, 1.5rem);
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+        }
+        .concept-text p {
+            margin-bottom: 1rem;
+            color: #444;
+        }
+        .concept-image {
+            flex: 1 1 400px;
+        }
+        .concept-image img {
+            width: 100%;
+            border-radius: 4px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* =========================================
+           Menu Section
+        ========================================= */
+        .menu-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .menu-card {
+            background: #fff;
+            padding: 2rem;
+            border: 1px solid #eee;
+            text-align: center;
+            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+        .menu-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+        }
+        .menu-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #222;
+            display: inline-block;
+            padding-bottom: 0.5rem;
+            align-self: center;
+        }
+        .menu-card > p {
+            font-size: 0.95rem;
+            color: #555;
+            margin-bottom: 1.5rem;
+        }
+        .menu-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border-radius: 2px;
+        }
+        .menu-list {
+            text-align: left;
+            font-size: 0.9rem;
+            margin-top: auto;
+            border-top: 1px dashed #ccc;
+            padding-top: 1rem;
+        }
+        .menu-list li {
+            margin-bottom: 0.8rem;
+            display: flex;
+            flex-direction: column;
+        }
+        .menu-list strong {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            font-weight: 500;
+        }
+        .menu-list span.desc {
+            color: #666;
+            font-size: 0.8rem;
+            margin-top: 0.2rem;
+        }
+
+        /* =========================================
+           Space Section
+        ========================================= */
+        .space-wrap {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        .space-item {
+            flex: 1 1 300px;
+        }
+        .space-item img {
+            width: 100%;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+        .space-item h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* =========================================
+           Information Section
+        ========================================= */
+        .info-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+        .info-details {
+            flex: 1 1 350px;
+        }
+        .info-details dl {
+            display: flex;
+            flex-wrap: wrap;
+            border-top: 1px solid #ddd;
+        }
+        .info-details dt {
+            width: 30%;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            font-weight: bold;
+        }
+        .info-details dd {
+            width: 70%;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .btn-reserve {
+            display: inline-block;
+            background-color: #222;
+            color: #fff;
+            padding: 1rem 3rem;
+            margin-top: 2rem;
+            font-size: 1.1rem;
+            letter-spacing: 0.1em;
+            transition: background-color 0.3s;
+        }
+        .btn-reserve:hover {
+            background-color: #555;
+        }
+        .info-map {
+            flex: 1 1 350px;
+            background: #eee;
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #888;
+        }
+
+        /* =========================================
+           Footer
+        ========================================= */
+        footer {
+            background-color: #111;
+            color: #fff;
+            text-align: center;
+            padding: 3rem 5%;
+        }
+        .footer-sns {
+            margin-bottom: 2rem;
+        }
+        .footer-sns a {
+            display: inline-block;
+            margin: 0 1rem;
+            font-size: 1.1rem;
+            text-decoration: underline;
+        }
+        .copyright {
+            font-size: 0.8rem;
+            color: #666;
+        }
+
+        /* =========================================
+           Media Queries
+        ========================================= */
+        @media (max-width: 768px) {
+            .global-nav {
+                display: none;
+            }
+            .hamburger {
+                display: block;
+            }
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(9px) rotate(45deg);
+                background-color: #fff;
+            }
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-9px) rotate(-45deg);
+                background-color: #fff;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <div class="logo"><a href="#top">Blancpur</a></div>
+            <nav class="global-nav">
+                <a href="#concept">Concept</a>
+                <a href="#menu">Menu</a>
+                <a href="#space">Space</a>
+                <a href="#info">Information</a>
+            </nav>
+            <div class="hamburger" id="hamburger">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </header>
+
+    <nav class="mobile-menu" id="mobile-menu">
+        <ul>
+            <li><a href="#concept" class="mobile-link">Concept</a></li>
+            <li><a href="#menu" class="mobile-link">Menu</a></li>
+            <li><a href="#space" class="mobile-link">Space</a></li>
+            <li><a href="#info" class="mobile-link">Information</a></li>
+            <li><a href="https://tabelog.com/chiba/A1204/A120401/12066677/" target="_blank" class="mobile-link">ご予約 (食べログ)</a></li>
+        </ul>
+    </nav>
+
+    <section id="top" class="hero">
+        <img src="images/IMG_2356.jpg" alt="Blancpur 店内" class="hero-bg" onerror="this.src='https://picsum.photos/seed/blancpur1/1600/900'">
+        <div class="hero-content">
+            <h2 class="hero-title">Blancpur</h2>
+            <p class="hero-subtitle">bistro & cafe</p>
+        </div>
+    </section>
+
+    <section id="concept" class="container">
+        <h2 class="section-title">Concept</h2>
+        <p class="section-subtitle">こだわりの空間と料理</p>
+        <div class="concept-grid">
+            <div class="concept-text">
+                <h3>日常に、少しの上質を。<br>公津の杜のビストロ＆カフェ</h3>
+                <p>黒を基調としたシックな外観から一歩足を踏み入れると、温かみのある木目と洗練されたグレーの空間が広がります。</p>
+                <p>ランチタイムは心地よい自然光を感じながら。カフェタイムは自家製のスイーツでほっと一息。ディナーは厳選されたワインと共に本格ビストロ料理を。</p>
+                <p>お一人様から、ご友人とのランチ、大切な日のディナーまで、思い思いの時間をお過ごしください。</p>
+            </div>
+            <div class="concept-image">
+                <img src="images/IMG_2384.jpg" alt="Blancpur お食事の様子" onerror="this.src='https://picsum.photos/seed/blancpur2/800/600'">
+            </div>
+        </div>
+    </section>
+
+    <section id="menu" class="bg-light">
+        <div class="container">
+            <h2 class="section-title">Menu</h2>
+            <p class="section-subtitle">シーンに合わせたお料理</p>
+            <div class="menu-cards">
+                
+                <div class="menu-card">
+                    <img src="images/IMG_2377.jpg" alt="Lunch" onerror="this.src='https://picsum.photos/seed/blancpur3/600/400'">
+                    <h3>Lunch</h3>
+                    <p>季節の食材を活かしたプレートなど、こだわりのランチメニューをご用意しております。</p>
+                </div>
+                
+                <div class="menu-card">
+                    <img src="images/IMG_2400.jpg" alt="Cafe & Sweets" onerror="this.src='https://picsum.photos/seed/blancpur4/600/400'">
+                    <h3>Cafe</h3>
+                    <p>パティシエ特製のスイーツや軽食をコーヒーと共に。</p>
+                    <ul class="menu-list">
+                        <li>
+                            <strong>カスクート <span>¥1,220</span></strong>
+                            <span class="desc">アボカドとサーモンマリネを挟んだサンドイッチ</span>
+                        </li>
+                        <li>
+                            <strong>フレンチトースト <span>¥1,220</span></strong>
+                            <span class="desc">アイスはバニラ・チョコからお選びいただけます</span>
+                        </li>
+                        <li>
+                            <strong>バニラアイス / ジェラート各種 <span>各 ¥500</span></strong>
+                            <span class="desc">ジェラートはベルギーチョコ・カシスをご用意</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="menu-card">
+                    <img src="images/IMG_2367.jpg" alt="Dinner" onerror="this.src='https://picsum.photos/seed/blancpur5/600/400'">
+                    <h3>Dinner</h3>
+                    <p>前菜からメインのお肉・お魚料理まで。お料理を引き立てるワインも豊富に取り揃えております。</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="space" class="container">
+        <h2 class="section-title">Space</h2>
+        <p class="section-subtitle">お子様連れも安心の空間</p>
+        <p style="text-align:center; max-width:600px; margin:0 auto;">
+            女子会やママ会にもゆったりお過ごしいただける広々としたソファ席や、お子様用のハイチェアも完備しております。ベビーカーでのご入店もお気軽にご相談ください。
+        </p>
+        <div class="space-wrap">
+            <div class="space-item">
+                <img src="images/IMG_2405.jpg" alt="ゆったりとしたソファ席" onerror="this.src='https://picsum.photos/seed/blancpur6/600/450'">
+                <h4>ゆったりとしたソファ席</h4>
+                <p style="font-size:0.9rem; color:#666;">グループでのお食事や女子会に人気のお席です。</p>
+            </div>
+            <div class="space-item">
+                <img src="images/IMG_2350.jpg" alt="キッズチェア完備" onerror="this.src='https://picsum.photos/seed/blancpur7/600/450'">
+                <h4>お子様用チェア完備</h4>
+                <p style="font-size:0.9rem; color:#666;">小さなお子様連れのママ会も安心してご利用いただけます。</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="info" class="bg-light">
+        <div class="container">
+            <h2 class="section-title">Information</h2>
+            <p class="section-subtitle">店舗情報・アクセス</p>
+            <div class="info-grid">
+                <div class="info-details">
+                    <dl>
+                        <dt>店舗名</dt>
+                        <dd>Blancpur (ブランピュール)</dd>
+                        <dt>住所</dt>
+                        <dd>〒286-0048<br>千葉県成田市公津の杜（番地等詳細）<br>※店舗前に駐車場あり</dd>
+                        <dt>営業時間</dt>
+                        <dd>
+                            Lunch 11:30 - 14:00<br>
+                            Cafe 14:00 - 17:00<br>
+                            Dinner 17:00 - 22:00
+                        </dd>
+                        <dt>定休日</dt>
+                        <dd>月曜日（祝日の場合は翌火曜）</dd>
+                    </dl>
+                    <div style="text-align: center;">
+                        <a href="https://tabelog.com/chiba/A1204/A120401/12066677/" target="_blank" rel="noopener noreferrer" class="btn-reserve">WEB予約はこちら (食べログ)</a>
+                    </div>
+                </div>
+                <div class="info-map">
+                    <p>※ここにGoogle Mapsが表示されます</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-sns">
+            <a href="https://www.instagram.com/blancpur_narita/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://tabelog.com/chiba/A1204/A120401/12066677/" target="_blank" rel="noopener noreferrer">Tabelog</a>
+        </div>
+        <p class="copyright">&copy; 2026 Blancpur. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileLinks = document.querySelectorAll('.mobile-link');
+
+            // トグル処理
+            function toggleMenu() {
+                hamburger.classList.toggle('active');
+                mobileMenu.classList.toggle('active');
+            }
+
+            hamburger.addEventListener('click', toggleMenu);
+
+            // メニュー内リンククリックで閉じる
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    if (hamburger.classList.contains('active')) {
+                        toggleMenu();
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
