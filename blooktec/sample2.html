@@ -28,34 +28,47 @@ a{color:inherit;text-decoration:none;}
 .en{font-family:'Roboto Condensed',sans-serif;letter-spacing:.08em;}
 .serif{font-family:'Noto Serif JP',serif;}
 
-/* header (transparent over hero) */
-header{position:absolute;top:0;left:0;right:0;z-index:50;}
+/* header (Glassmorphism & Fixed) */
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  right:0;
+  z-index:1000;
+  background:rgba(10, 36, 64, 0.65);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(255, 255, 255, 0.1);
+  transition:all 0.3s ease;
+}
 .nav{display:flex;align-items:center;justify-content:space-between;height:74px;}
 .logo{display:flex;align-items:center;gap:.6rem;font-weight:900;font-size:1.15rem;color:#fff;}
 .logo span{width:30px;height:30px;border-radius:7px;background:linear-gradient(135deg,var(--blue),var(--accent));}
 .menu{display:flex;gap:1.8rem;align-items:center;list-style:none;font-size:.95rem;font-weight:500;color:#fff;}
+.menu a{transition: color 0.3s ease;}
 .menu a:hover{color:var(--accent);}
-.nav-cta{background:var(--accent);color:#06243e !important;padding:.6rem 1.3rem;border-radius:6px;font-weight:700;font-size:.9rem;}
+.nav-cta{background:var(--accent);color:#06243e !important;padding:.6rem 1.3rem;border-radius:6px;font-weight:700;font-size:.9rem;transition: background 0.3s ease;}
+.nav-cta:hover{background:#fff;}
 .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;}
 .hamburger span{width:24px;height:2px;background:#fff;display:block;}
 
-/* ===== FV BANNER HERO ===== */
-.hero{position:relative;min-height:88vh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;}
-.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(110deg,rgba(6,21,40,.86) 0%,rgba(8,28,54,.66) 45%,rgba(10,40,70,.42) 100%);}
-.hero-content{position:relative;z-index:1;color:#fff;padding:8rem 0 3.5rem;width:100%;margin-top:auto;}
-.hero-eyebrow{color:var(--accent);font-weight:700;letter-spacing:.14em;font-size:.92rem;margin-bottom:1.3rem;}
-.hero h1{font-size:clamp(2.1rem,7vw,4.4rem);font-weight:900;line-height:1.28;margin-bottom:1.6rem;text-shadow:0 4px 30px rgba(0,0,0,.4);}
+/* ===== FV BANNER HERO (Full Screen) ===== */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center;background-repeat:no-repeat;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(120deg,rgba(6,21,40,.88) 0%,rgba(10,30,55,.6) 50%,rgba(20,50,80,.4) 100%);}
+.hero-content{position:relative;z-index:1;color:#fff;padding:10rem 0 4.5rem;width:100%;margin-top:auto;}
+.hero-eyebrow{color:var(--accent);font-weight:700;letter-spacing:.14em;font-size:.92rem;margin-bottom:1.3rem;text-shadow:0 2px 10px rgba(0,0,0,.6);}
+.hero h1{font-size:clamp(2.1rem,7vw,4.4rem);font-weight:900;line-height:1.28;margin-bottom:1.6rem;text-shadow:0 4px 20px rgba(0,0,0,.7);}
 .hero h1 em{font-style:normal;color:var(--accent);}
-.hero-sub{font-size:clamp(.98rem,2vw,1.15rem);color:#dce7f3;max-width:36em;margin-bottom:2.3rem;}
-.hero-cta{display:flex;flex-wrap:wrap;gap:1rem;}
-.btn-primary{background:var(--accent);color:#06243e;padding:1rem 2rem;border-radius:8px;font-weight:700;}
-.btn-primary:hover{background:#fff;}
-.btn-outline{border:1.5px solid rgba(255,255,255,.6);color:#fff;padding:1rem 2rem;border-radius:8px;font-weight:700;}
-.btn-outline:hover{background:rgba(255,255,255,.12);}
+.hero-sub{font-size:clamp(.98rem,2vw,1.15rem);color:#f4f7fb;max-width:38em;margin-bottom:2.5rem;text-shadow:0 2px 12px rgba(0,0,0,.6);line-height:1.9;}
+.hero-cta{display:flex;flex-wrap:wrap;gap:1.2rem;}
+.btn-primary{background:var(--accent);color:#06243e;padding:1rem 2.2rem;border-radius:8px;font-weight:700;transition:all 0.3s ease;box-shadow:0 8px 24px rgba(39, 179, 227, 0.25);}
+.btn-primary:hover{background:#fff;transform:translateY(-2px);box-shadow:0 12px 30px rgba(255, 255, 255, 0.3);}
+.btn-outline{background:rgba(255,255,255,0.05);border:1.5px solid rgba(255,255,255,.8);color:#fff;padding:1rem 2.2rem;border-radius:8px;font-weight:700;transition:all 0.3s ease;backdrop-filter:blur(4px);}
+.btn-outline:hover{background:rgba(255,255,255,.15);border-color:#fff;}
 
 /* stat bar below hero */
-.hero-stats{position:relative;z-index:1;background:rgba(6,21,40,.55);backdrop-filter:blur(4px);border-top:1px solid rgba(255,255,255,.12);}
+.hero-stats{position:relative;z-index:1;background:rgba(6,21,40,.65);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-top:1px solid rgba(255,255,255,.15);}
 .hero-stats .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1.5rem;padding-top:1.6rem;padding-bottom:1.6rem;}
 .hstat{color:#fff;min-width:120px;flex:1;}
 .hstat b{font-family:'Roboto Condensed',sans-serif;font-size:clamp(1.8rem,5vw,2.6rem);display:block;line-height:1;}
@@ -131,8 +144,22 @@ footer a:hover{color:var(--accent);}
 @media(max-width:768px){
   .menu{display:none;}
   .hamburger{display:flex;}
-  .menu.open{display:flex;position:absolute;top:74px;left:0;right:0;flex-direction:column;background:var(--navy);padding:1.2rem 1.5rem;gap:1rem;}
-  .hero{min-height:74vh;}
+  .menu.open{
+    display:flex;
+    position:absolute;
+    top:74px;
+    left:0;
+    right:0;
+    flex-direction:column;
+    background:rgba(10, 36, 64, 0.95);
+    backdrop-filter:blur(12px);
+    -webkit-backdrop-filter:blur(12px);
+    padding:1.5rem;
+    gap:1.2rem;
+    border-bottom:1px solid rgba(255, 255, 255, 0.1);
+  }
+  .hero{min-height:100vh;}
+  .hero-content{padding-top:8rem;}
   section{padding:3.4rem 0;}
 }
 @media(max-width:480px){
@@ -158,10 +185,8 @@ footer a:hover{color:var(--accent);}
   </div>
 </header>
 
-<!-- ===== FV BANNER HERO ===== -->
 <section class="hero">
-  <!-- 画像がある場合: 横長で映えるワークステーション/制作現場の写真を images/hero.jpg に差し替え。なければ下のpicsumのまま -->
-  <div class="hero-bg" style="background-image:url('https://picsum.photos/seed/blooktec-tech-dark/1600/900');"></div>
+  <div class="hero-bg" style="background-image:url('hero.jpg');"></div>
   <div class="hero-overlay"></div>
   <div class="hero-content">
     <div class="wrap">
@@ -184,7 +209,6 @@ footer a:hover{color:var(--accent);}
   </div>
 </section>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="wrap about-grid">
     <div>
@@ -193,12 +217,10 @@ footer a:hover{color:var(--accent);}
       <p>パソコンの故障は、業務の停止・納期遅れ・信頼の低下に直結します。ブルックテックは、壊れにくさそのものを設計の出発点に据えることで、その損失をなくすことを目指しています。</p>
       <p>「壊れにくいから、長く使えてコスパが良い」。私たちのものづくりの基準は、このシンプルな一点にあります。</p>
     </div>
-    <!-- 製造/検査風景があれば images/about.jpg として使用 -->
     <img src="https://picsum.photos/seed/blooktec-inspect/640/520" alt="PCの検査・組み立ての様子">
   </div>
 </section>
 
-<!-- SERVICE -->
 <section class="svc" id="service">
   <div class="wrap">
     <div class="center">
@@ -208,7 +230,6 @@ footer a:hover{color:var(--accent);}
     </div>
     <div class="svc-grid">
       <div class="svc-card">
-        <!-- 映像制作のイメージ→images/service-production.jpg -->
         <img src="https://picsum.photos/seed/blooktec-film/720/540" alt="映像制作の現場">
         <div class="ov"></div>
         <div class="txt">
@@ -219,7 +240,6 @@ footer a:hover{color:var(--accent);}
         </div>
       </div>
       <div class="svc-card">
-        <!-- BTO PCのイメージ→images/service-pc.jpg -->
         <img src="https://picsum.photos/seed/blooktec-build2/720/540" alt="ブルックテックPC">
         <div class="ov"></div>
         <div class="txt">
@@ -233,7 +253,6 @@ footer a:hover{color:var(--accent);}
   </div>
 </section>
 
-<!-- FEATURES -->
 <section class="feat" id="feature">
   <div class="wrap">
     <div class="center">
@@ -249,7 +268,6 @@ footer a:hover{color:var(--accent);}
   </div>
 </section>
 
-<!-- USERS -->
 <section>
   <div class="wrap center">
     <p class="label en">FIELDS</p>
@@ -261,7 +279,6 @@ footer a:hover{color:var(--accent);}
   </div>
 </section>
 
-<!-- COMPANY -->
 <section class="svc" id="company">
   <div class="wrap">
     <div class="center">
@@ -283,9 +300,7 @@ footer a:hover{color:var(--accent);}
   </div>
 </section>
 
-<!-- CTA -->
 <section class="cta-band" id="contact">
-  <!-- 横長の背景写真があれば images/cta.jpg として使用 -->
   <div class="cta-bg" style="background-image:url('https://picsum.photos/seed/blooktec-cta/1600/600');"></div>
   <div class="cta-ov"></div>
   <div class="wrap">
