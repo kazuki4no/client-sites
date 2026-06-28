@@ -61,8 +61,10 @@ header{position:fixed;top:0;left:0;width:100%;z-index:100;background:rgba(22,19,
 /* hero */
 .hero{position:relative;min-height:92vh;display:flex;align-items:center;background:var(--black);overflow:hidden;}
 .hero-img{position:absolute;inset:0;z-index:0;}
-.hero-img img{width:100%;height:100%;object-fit:cover;opacity:.55;}
-.hero-img::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at 70% 40%,rgba(194,163,107,.14),transparent 55%),linear-gradient(0deg,var(--black) 4%,rgba(22,19,15,.4) 60%);}
+.hero-img picture{display:block;width:100%;height:100%;}
+.hero-img img{width:100%;height:100%;object-fit:cover;opacity:.9;}
+.hero-img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(22,19,15,.86) 0%,rgba(22,19,15,.5) 34%,rgba(22,19,15,.08) 62%,transparent 100%),linear-gradient(0deg,var(--black) 2%,transparent 42%),radial-gradient(circle at 80% 38%,rgba(194,163,107,.16),transparent 55%);}
+@media(max-width:768px){.hero-img::after{background:linear-gradient(0deg,var(--black) 8%,rgba(22,19,15,.5) 52%,rgba(22,19,15,.32) 100%),radial-gradient(circle at 70% 32%,rgba(194,163,107,.14),transparent 55%);}}
 .hero-inner{position:relative;z-index:2;color:var(--cream);width:100%;}
 .hero-line{display:inline-block;font-family:"Cormorant Garamond",serif;letter-spacing:.32em;color:var(--gold);font-size:.92rem;margin-bottom:1.8rem;padding-bottom:.6rem;border-bottom:1px solid rgba(194,163,107,.5);}
 .hero h1{font-family:"Shippori Mincho B1",serif;font-weight:600;font-size:clamp(2.2rem,8vw,4.6rem);line-height:1.4;letter-spacing:.04em;margin-bottom:1.8rem;}
@@ -213,9 +215,16 @@ footer{background:var(--black2);color:#bdb4a6;padding:3.5rem 0 6rem;}
   </div>
 </header>
 
-<!-- ヒーロー背景（スタジオ or 施術風景の横長写真）を images/hero.jpg として保存して使用 -->
+<!-- ヒーロー背景：PCは横長 images/hero-pc.jpg、スマホは縦長 images/hero-sp.jpg を出し分け -->
 <section class="hero">
-  <div class="hero-img"><img src="images/hero.jpg" alt="眉毛タトゥーの仕上がり"></div>
+  <div class="hero-img">
+    <picture>
+      <!-- スマホ表示：縦長(TOP.jpg)を images/hero-sp.jpg として使用 -->
+      <source media="(max-width:768px)" srcset="images/hero-sp.jpg">
+      <!-- PC表示：横長(TOp2.png)を images/hero-pc.jpg として使用 -->
+      <img src="images/hero-pc.jpg" alt="MIRA INK">
+    </picture>
+  </div>
   <div class="wrap hero-inner">
     <div class="reveal">
       <span class="hero-line">Eyebrow / Scalp / Body Tattoo</span>
