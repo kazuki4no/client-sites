@@ -1,0 +1,338 @@
+@charset "utf-8";
+/* =====================================================================
+   医療法人社団 さくら胃と腸のクリニック 共通スタイル（3案＋採用ページ共用）
+   ベースカラー軸：清潔感と信頼の医療ブルー
+   差し色：消化器・健康・安心のティールグリーン／あたたかみのコーラル
+   テーマ切替： <body class="t-a / t-b / t-c / t-r"> で差分を当てる
+   ===================================================================== */
+
+/* ---------- 共通土台（全ファイル共通） ---------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { max-width: 100%; overflow-x: hidden; }
+img { max-width: 100%; height: auto; display: block; }
+
+:root {
+  /* 共通の基準カラー（軸） */
+  --blue:    #1471a6;   /* 医療ブルー（主役） */
+  --blue-d:  #0d4d75;
+  --blue-dd: #0a3a59;
+  --blue-l:  #3f9bd0;
+  --teal:    #14a08a;   /* 健康・消化器・清潔の差し色 */
+  --teal-d:  #0e8071;
+  --teal-l:  #4fc2ad;
+  --coral:   #f08a6e;   /* あたたかみ・やさしさ（C案差し色） */
+  --coral-d: #e0735a;
+  --ink:     #20323d;
+  --muted:   #5a6b76;
+  --line:    #e1eaf0;
+  --soft:    #f1f7fb;
+  --mint:    #eef8f4;
+  --white:   #ffffff;
+
+  /* テーマで上書きされる変数（既定＝A案） */
+  --primary:   var(--blue);
+  --primary-d: var(--blue-d);
+  --accent:    var(--teal);
+  --accent2:   var(--teal);
+  --section-bg: var(--soft);
+
+  --sans: "Noto Sans JP", system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  --serif: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --head: var(--sans);
+}
+
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  line-height: 1.85;
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 2rem; }
+
+/* セクション共通 */
+.section { padding: 5rem 0; }
+.section-soft { background: var(--section-bg); }
+.section-head { text-align: center; margin-bottom: 3rem; }
+.section-head .en {
+  display: block; font-size: .8rem; letter-spacing: .25em;
+  color: var(--accent); font-weight: 700; text-transform: uppercase; margin-bottom: .5rem;
+}
+.section-head h2 {
+  font-family: var(--head);
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+  color: var(--primary); line-height: 1.4; word-break: keep-all;
+}
+.section-head p { color: var(--muted); margin-top: .8rem; font-size: .98rem; }
+
+/* ボタン */
+.btn-primary, .btn-outline, .btn-ghost {
+  display: inline-flex; align-items: center; justify-content: center; gap: .45em;
+  padding: .9em 2em; border-radius: 8px; font-weight: 700;
+  font-size: 1rem; transition: .2s; cursor: pointer; border: 2px solid transparent;
+}
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-primary:hover { background: var(--teal-d); transform: translateY(-2px); }
+.btn-outline { background: transparent; color: #fff; border-color: rgba(255,255,255,.75); }
+.btn-outline:hover { background: rgba(255,255,255,.15); }
+.btn-ghost { background: #fff; color: var(--primary); border-color: var(--line); }
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+/* ---------- ヘッダー／ナビ（共通土台） ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(255,255,255,.97); backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; height: 72px; }
+.brand { display: flex; align-items: baseline; gap: .5rem; line-height: 1.2; }
+.brand .logo { font-family: var(--head); font-weight: 700; font-size: 1.18rem; color: var(--primary); letter-spacing: .02em; }
+.brand .sub { font-size: .66rem; color: var(--muted); letter-spacing: .08em; }
+.nav-menu { display: flex; align-items: center; gap: 1.4rem; list-style: none; }
+.nav-menu a { font-size: .92rem; font-weight: 500; color: var(--ink); transition: .2s; }
+.nav-menu a:hover { color: var(--accent); }
+.nav-tel { font-weight: 700; color: var(--primary); font-size: .95rem; white-space: nowrap; }
+.nav-cta { background: var(--accent); color:#fff !important; padding: .55em 1.2em; border-radius: 7px; }
+.nav-cta:hover { background: var(--teal-d); }
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: .4rem; }
+.nav-toggle span { display: block; width: 26px; height: 2px; background: var(--primary); margin: 5px 0; transition: .3s; }
+
+/* ---------- フッター（共通） ---------- */
+.site-footer { background: var(--blue-dd); color: #cfdde8; padding: 3rem 0 2rem; }
+.footer-grid { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; }
+.footer-brand .logo { font-family: var(--head); font-size: 1.3rem; color: #fff; font-weight: 700; }
+.footer-brand p { font-size: .85rem; margin-top: .6rem; color: #9fb6c8; max-width: 320px; }
+.footer-info { font-size: .9rem; line-height: 2; }
+.footer-info strong { color: #fff; }
+.footer-info a:hover { color: #fff; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,.12); margin-top: 2rem; padding-top: 1.2rem; font-size: .8rem; color: #8aa1b3; text-align: center; }
+
+/* ---------- 当院の特徴（4点ポイント） ---------- */
+.point-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.4rem; }
+.point { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 2rem 1.4rem; text-align: center; transition: .25s; }
+.point:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(20,113,166,.12); }
+.point .ico { width: 60px; height: 60px; margin: 0 auto 1rem; border-radius: 50%; background: var(--mint); color: var(--accent); display: flex; align-items: center; justify-content: center; font-size: 1.7rem; }
+.point h3 { font-family: var(--head); font-size: 1.08rem; color: var(--primary); margin-bottom: .5rem; line-height: 1.45; }
+.point p { font-size: .9rem; color: var(--muted); }
+
+/* ---------- 実績／特徴バー（共通土台） ---------- */
+.stats-bar { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+.stats-bar .stat { flex: 1 1 170px; text-align: center; padding: 1.1rem; }
+.stats-bar .stat .v { font-family: var(--head); font-size: clamp(1.7rem,5vw,2.4rem); font-weight: 700; line-height: 1.15; }
+.stats-bar .stat .l { font-size: .84rem; color: var(--muted); margin-top: .3rem; }
+
+/* ---------- 診療案内カード（共通土台） ---------- */
+.svc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
+.svc-card { background: #fff; border: 1px solid var(--line); border-radius: 14px; overflow: hidden; transition: .25s; display: flex; flex-direction: column; }
+.svc-card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(20,113,166,.12); }
+.svc-card .thumb { height: 170px; background-size: cover; background-position: center; }
+.svc-card .body { padding: 1.6rem; flex: 1; }
+.svc-card .num { font-size: .74rem; font-weight: 700; color: var(--accent); letter-spacing: .1em; }
+.svc-card h3 { font-family: var(--head); font-size: 1.2rem; color: var(--primary); margin: .3rem 0 .8rem; }
+.svc-card .tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+.svc-card .tags span { background: var(--soft); color: var(--primary); font-size: .8rem; padding: .3em .8em; border-radius: 999px; }
+
+/* ---------- 内視鏡・検査セクション（共通） ---------- */
+.endo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem; }
+.endo-card { background: #fff; border: 1px solid var(--line); border-radius: 16px; padding: 2rem 1.9rem; border-top: 5px solid var(--accent); }
+.endo-card h3 { font-family: var(--head); color: var(--primary); font-size: 1.25rem; margin-bottom: .9rem; display: flex; align-items: center; gap: .5rem; }
+.endo-card h3 .ic { font-size: 1.4rem; }
+.endo-card ul { list-style: none; }
+.endo-card li { position: relative; padding-left: 1.6rem; margin-bottom: .55rem; color: var(--muted); font-size: .95rem; }
+.endo-card li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--accent); font-weight: 700; }
+.endo-card .fee { margin-top: 1rem; font-size: .86rem; color: var(--muted); background: var(--soft); border-radius: 8px; padding: .7rem 1rem; }
+
+/* ---------- 診療時間テーブル（共通） ---------- */
+.hours-wrap { display: grid; grid-template-columns: 1.4fr 1fr; gap: 2.4rem; align-items: start; }
+.hours-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 6px 20px rgba(20,113,166,.07); }
+.hours-table th, .hours-table td { text-align: center; padding: .85rem .3rem; border: 1px solid var(--line); font-size: .92rem; }
+.hours-table thead th { background: var(--primary); color: #fff; font-weight: 700; }
+.hours-table tbody th { background: var(--soft); color: var(--primary); white-space: nowrap; font-size: .82rem; }
+.hours-table .o { color: var(--accent); font-weight: 700; }
+.hours-table .x { color: #b9c4cc; }
+.hours-note { color: var(--muted); font-size: .9rem; }
+.hours-note h4 { color: var(--primary); font-family: var(--head); font-size: 1.05rem; margin-bottom: .6rem; }
+.hours-note ul { list-style: none; }
+.hours-note li { position: relative; padding-left: 1.2rem; margin-bottom: .5rem; }
+.hours-note li::before { content: "●"; position: absolute; left: 0; color: var(--accent); font-size: .6rem; top: .55em; }
+
+/* ---------- 院長紹介（共通） ---------- */
+.doctor { display: grid; grid-template-columns: .9fr 1.4fr; gap: 2.6rem; align-items: center; }
+.doctor .photo { border-radius: 16px; min-height: 360px; background-size: cover; background-position: center top; box-shadow: 0 14px 34px rgba(20,113,166,.15); }
+.doctor .en { font-size: .8rem; letter-spacing: .22em; color: var(--accent); font-weight: 700; }
+.doctor h2 { font-family: var(--head); font-size: clamp(1.5rem,4.5vw,2.1rem); color: var(--primary); margin: .4rem 0 1rem; line-height: 1.45; }
+.doctor .role { color: var(--muted); font-size: .95rem; margin-bottom: 1.2rem; }
+.doctor .role b { font-family: var(--head); color: var(--ink); font-size: 1.3rem; margin-right: .5rem; }
+.doctor p { color: var(--muted); margin-bottom: 1rem; }
+.doctor .career { background: var(--soft); border-radius: 12px; padding: 1.3rem 1.5rem; }
+.doctor .career h4 { color: var(--primary); font-family: var(--head); font-size: .98rem; margin-bottom: .5rem; }
+.doctor .career ul { list-style: none; }
+.doctor .career li { font-size: .88rem; color: var(--muted); padding-left: 1.1rem; position: relative; margin-bottom: .3rem; }
+.doctor .career li::before { content: "–"; position: absolute; left: 0; color: var(--accent); }
+
+/* ---------- アクセス（共通） ---------- */
+.access { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2.4rem; align-items: stretch; }
+.access .mapbox { border-radius: 16px; overflow: hidden; min-height: 320px; background-size: cover; background-position: center; border: 1px solid var(--line); }
+.access-info { display: flex; flex-direction: column; justify-content: center; }
+.access-info h3 { font-family: var(--head); color: var(--primary); font-size: 1.3rem; margin-bottom: 1rem; }
+.access-info table { width: 100%; border-collapse: collapse; }
+.access-info th, .access-info td { text-align: left; padding: .85rem .4rem; border-bottom: 1px solid var(--line); font-size: .94rem; vertical-align: top; }
+.access-info th { width: 32%; color: var(--primary); font-weight: 700; white-space: nowrap; }
+.access-info td { color: var(--muted); }
+
+/* ---------- お問い合わせ／予約CTA（共通） ---------- */
+.cta-section { position: relative; padding: 4.8rem 0; background: var(--primary); }
+.cta-section.has-bg .cta-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.cta-section.has-bg .cta-overlay { position: absolute; inset: 0; background: linear-gradient(rgba(10,58,89,.88), rgba(13,77,117,.82)); }
+.cta-section .wrap { position: relative; z-index: 1; }
+.contact-cta { text-align: center; color: #fff; }
+.contact-cta h2 { font-family: var(--head); font-size: clamp(1.5rem,5vw,2.2rem); margin-bottom: 1rem; }
+.contact-cta p { margin-bottom: 1.8rem; opacity: .94; }
+.tel-block { display: flex; flex-wrap: wrap; gap: 1.4rem 2.6rem; justify-content: center; margin-bottom: 2rem; }
+.tel-block .t-item .lbl { font-size: .82rem; opacity: .85; }
+.tel-block .t-item .num { font-family: var(--head); font-size: clamp(1.5rem,5.5vw,2.1rem); font-weight: 700; line-height: 1.2; }
+.cta-btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+
+/* =====================================================================
+   A案（t-a）王道・スタンダード … 医療ブルーを主役に、定番で安心感
+   ===================================================================== */
+.t-a { --primary: var(--blue); --primary-d: var(--blue-d); --accent: var(--teal); --accent2: var(--teal); --section-bg: var(--soft); }
+.t-a .hero-a { background: linear-gradient(135deg, var(--blue-d) 0%, var(--blue) 60%, var(--blue-l) 135%); color: #fff; padding: 5rem 0; }
+.t-a .hero-a .inner { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2.6rem; align-items: center; }
+.t-a .hero-a .en { letter-spacing: .24em; font-size: .8rem; opacity: .9; font-weight: 600; }
+.t-a .hero-a h1 { font-family: var(--head); font-size: clamp(1.9rem, 5.6vw, 3.1rem); line-height: 1.4; margin: 1rem 0 1.2rem; word-break: keep-all; }
+.t-a .hero-a h1 .mark { color: var(--teal-l); }
+.t-a .hero-a p.lead { font-size: clamp(.95rem,2.3vw,1.08rem); max-width: 620px; opacity: .96; }
+.t-a .hero-a .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+.t-a .hero-a .hero-img { border-radius: 18px; min-height: 320px; background-size: cover; background-position: center; box-shadow: 0 20px 44px rgba(0,0,0,.25); }
+.t-a .stats-wrap { margin-top: 2.6rem; background: rgba(255,255,255,.1); border-radius: 14px; padding: 1rem; }
+.t-a .stats-bar .stat .v { color: #fff; }
+.t-a .stats-bar .stat .l { color: rgba(255,255,255,.82); }
+
+/* =====================================================================
+   B案（t-b）FVバナー … 全画面ヒーロー＋明朝見出し。写真主役で洗練・安心
+   ===================================================================== */
+.t-b { --primary: var(--blue-dd); --primary-d: #072c44; --accent: var(--teal); --accent2: var(--teal); --section-bg: #f5f9fc; --head: var(--serif); }
+.t-b .hero { position: relative; min-height: 80vh; display: flex; align-items: center; overflow: hidden; }
+.t-b .hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.t-b .hero-overlay { position: absolute; inset: 0; background: linear-gradient(rgba(8,42,66,.66), rgba(10,58,89,.5)); }
+.t-b .hero-content { position: relative; z-index: 1; color: #fff; }
+.t-b .hero-eyebrow { letter-spacing: .26em; font-size: .8rem; font-weight: 600; opacity: .92; }
+.t-b .hero h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(2rem, 6.2vw, 3.9rem); line-height: 1.35; margin: 1.1rem 0 1.3rem; text-shadow: 0 2px 18px rgba(0,0,0,.3); word-break: keep-all; }
+.t-b .hero-sub { font-size: clamp(.95rem,2.3vw,1.12rem); max-width: 600px; line-height: 2; opacity: .97; }
+.t-b .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2.2rem; }
+.t-b .stats-strip { background: var(--blue-dd); color: #fff; padding: 2.2rem 0; }
+.t-b .stats-strip .stat .v { color: #fff; }
+.t-b .stats-strip .stat .l { color: rgba(255,255,255,.78); }
+.t-b .section-head h2 { font-family: var(--serif); }
+.t-b .svc-card { border-radius: 6px; }
+.t-b .svc-card h3 { font-family: var(--serif); }
+.t-b .endo-card { border-radius: 6px; }
+.t-b .point { border-radius: 6px; }
+
+/* =====================================================================
+   C案（t-c）アクセント … やさしく明るい。細めバナー帯＋あたたかみのコーラル
+   ===================================================================== */
+.t-c { --primary: #156a9c; --primary-d: #0e4d73; --accent: var(--teal); --accent2: var(--coral); --section-bg: #fdf6f3; }
+.t-c .accent-banner { position: relative; width: 100%; height: 220px; background-size: cover; background-position: center; }
+.t-c .accent-banner::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(21,106,156,.58), rgba(20,160,138,.4) 55%, rgba(240,138,110,.34)); }
+.t-c .accent-banner .cap { position: absolute; inset: 0; z-index: 1; display: flex; align-items: center; }
+.t-c .accent-banner .cap span { color:#fff; font-family: var(--head); font-weight: 700; font-size: clamp(1.1rem,3.4vw,1.7rem); text-shadow: 0 2px 10px rgba(0,0,0,.35); }
+.t-c .hero-c { background: linear-gradient(120deg, #156a9c 0%, #14a08a 60%, #f0a079 128%); color: #fff; padding: 4.2rem 0; text-align: center; }
+.t-c .hero-c .en { font-weight: 700; letter-spacing: .2em; font-size: .82rem; color: #fff; opacity: .9; }
+.t-c .hero-c h1 { font-family: var(--head); font-size: clamp(1.9rem,6vw,3.2rem); line-height: 1.4; margin: 1rem 0 1.2rem; word-break: keep-all; }
+.t-c .hero-c p.lead { max-width: 660px; margin: 0 auto; opacity: .97; }
+.t-c .hero-c .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: 2rem; }
+.t-c .pills { display: flex; flex-wrap: wrap; gap: .55rem; justify-content: center; margin-top: 1.8rem; }
+.t-c .pills span { background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.42); padding: .4em 1em; border-radius: 999px; font-size: .85rem; }
+.t-c .point { border: none; box-shadow: 0 8px 22px rgba(21,106,156,.1); }
+.t-c .point:nth-child(1) .ico { background: var(--mint); color: var(--teal); }
+.t-c .point:nth-child(2) .ico { background: #eaf3fa; color: var(--blue); }
+.t-c .point:nth-child(3) .ico { background: #fdeee8; color: var(--coral-d); }
+.t-c .point:nth-child(4) .ico { background: var(--mint); color: var(--teal); }
+.t-c .svc-card { border: none; box-shadow: 0 8px 22px rgba(21,106,156,.1); border-top: 4px solid var(--teal); }
+.t-c .svc-card:nth-child(2) { border-top-color: var(--blue); }
+.t-c .svc-card:nth-child(3) { border-top-color: var(--coral); }
+.t-c .endo-card:nth-child(2) { border-top-color: var(--coral); }
+.t-c .btn-primary { background: var(--coral); }
+.t-c .btn-primary:hover { background: var(--coral-d); }
+.t-c .nav-cta { background: var(--coral); }
+.t-c .nav-cta:hover { background: var(--coral-d); }
+.t-c .cta-section.cta-warm { background: linear-gradient(120deg, var(--teal), #1788a0 60%, var(--coral)); }
+.t-c .cta-section.cta-warm .cta-overlay { display: none; }
+
+/* =====================================================================
+   採用ページ（t-r）… 選定HPの雰囲気＝A案ブルーに合わせた提案サンプル
+   ===================================================================== */
+.t-r { --primary: var(--blue); --primary-d: var(--blue-d); --accent: var(--teal); --accent2: var(--teal); --section-bg: var(--soft); }
+.t-r .rec-hero { position: relative; min-height: 70vh; display: flex; align-items: center; overflow: hidden; }
+.t-r .rec-hero .hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.t-r .rec-hero .hero-overlay { position: absolute; inset: 0; background: linear-gradient(rgba(10,58,89,.72), rgba(20,113,166,.58)); }
+.t-r .rec-hero .hero-content { position: relative; z-index: 1; color: #fff; }
+.t-r .rec-hero h1 { font-family: var(--head); font-size: clamp(2rem,6.2vw,3.4rem); line-height: 1.4; margin-bottom: 1.2rem; word-break: keep-all; }
+.t-r .rec-hero p { max-width: 600px; opacity: .96; }
+.t-r .job-pills { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.8rem; }
+.t-r .job-pills span { background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.45); padding: .45em 1.1em; border-radius: 999px; font-size: .88rem; }
+.t-r .merit-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.6rem; }
+.t-r .merit { background:#fff; border:1px solid var(--line); border-radius:14px; padding:2rem 1.6rem; text-align:center; }
+.t-r .merit .ico { width:58px; height:58px; margin:0 auto 1rem; border-radius:50%; background:var(--mint); display:flex; align-items:center; justify-content:center; font-size:1.6rem; }
+.t-r .merit h3 { font-family: var(--head); color: var(--primary); font-size: 1.15rem; margin-bottom: .6rem; }
+.t-r .merit p { font-size: .9rem; color: var(--muted); }
+.t-r .voice-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.6rem; }
+.t-r .voice { background:#fff; border:1px solid var(--line); border-radius:14px; padding: 1.8rem; display:flex; gap:1.2rem; align-items:flex-start; }
+.t-r .voice .face { width: 64px; height: 64px; border-radius: 50%; background-size: cover; background-position: center; flex-shrink: 0; }
+.t-r .voice .who { font-weight: 700; color: var(--primary); font-size: .95rem; }
+.t-r .voice .role { font-size: .8rem; color: var(--accent); margin-bottom: .5rem; }
+.t-r .voice p { font-size: .9rem; color: var(--muted); }
+.t-r .info-table { width: 100%; border-collapse: collapse; }
+.t-r .info-table th, .t-r .info-table td { text-align: left; padding: 1rem .6rem; border-bottom: 1px solid var(--line); font-size: .95rem; vertical-align: top; }
+.t-r .info-table th { width: 28%; color: var(--primary); font-weight: 700; white-space: nowrap; background: var(--soft); }
+.t-r .info-table td { color: var(--muted); }
+.t-r .sample-note { font-size: .78rem; color: var(--muted); text-align: center; margin-top: 1rem; }
+
+/* =====================================================================
+   レスポンシブ（全テーマ共通）
+   ===================================================================== */
+@media (max-width: 900px) {
+  .point-grid { grid-template-columns: repeat(2, 1fr); }
+  .svc-grid { grid-template-columns: 1fr; }
+  .t-r .merit-grid { grid-template-columns: 1fr; }
+  .t-a .hero-a .inner { grid-template-columns: 1fr; }
+  .t-a .hero-a .hero-img { min-height: 240px; order: -1; }
+  .doctor { grid-template-columns: 1fr; }
+  .doctor .photo { min-height: 280px; }
+  .access { grid-template-columns: 1fr; }
+  .hours-wrap { grid-template-columns: 1fr; gap: 1.6rem; }
+  .endo-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .wrap { padding: 0 1.2rem; }
+  .section { padding: 3.4rem 0; }
+  .nav-menu { display: none; }
+  .nav-toggle { display: block; }
+  .site-header.open .nav-menu {
+    display: flex; position: absolute; top: 72px; left: 0; right: 0;
+    flex-direction: column; gap: 0; background: #fff; border-bottom: 1px solid var(--line);
+    padding: .5rem 1.2rem 1.2rem; box-shadow: 0 12px 24px rgba(0,0,0,.08);
+  }
+  .site-header.open .nav-menu li { width: 100%; }
+  .site-header.open .nav-menu a { display: block; padding: .9rem 0; border-bottom: 1px solid var(--line); }
+  .site-header.open .nav-menu .nav-tel { padding: .9rem 0; }
+  .site-header.open .nav-menu .nav-cta { display: inline-block; margin-top: .8rem; border: none; text-align: center; }
+
+  .t-b .hero { min-height: 66vh; }
+  .t-c .accent-banner { height: 140px; }
+  .t-r .rec-hero { min-height: 58vh; }
+  .t-r .voice-grid { grid-template-columns: 1fr; }
+  .footer-grid { flex-direction: column; gap: 1.6rem; }
+  .hours-table th, .hours-table td { padding: .7rem .2rem; font-size: .82rem; }
+}
+@media (max-width: 480px) {
+  .point-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 400px) {
+  .btn-primary, .btn-outline, .btn-ghost { padding: .8em 1.3em; font-size: .94rem; }
+}
