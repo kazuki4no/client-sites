@@ -1,0 +1,273 @@
+@charset "utf-8";
+/* =====================================================================
+   株式会社エイトトレード 共通スタイル（3案＋採用ページ共用）
+   ベースカラー軸：信頼のネイビー × ゴールド（商社らしい重厚感・価値ある商品）
+   テーマ切替： <body class="t-a / t-b / t-c / t-r"> で差分を当てる
+   ===================================================================== */
+
+/* ---------- 共通土台 ---------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { max-width: 100%; overflow-x: hidden; }
+img { max-width: 100%; height: auto; display: block; }
+
+:root {
+  --navy:     #14315c;
+  --navy-d:   #0a1f3d;
+  --navy-l:   #2a5490;
+  --navy-xl:  #4472ad;
+  --gold:     #b8873a;
+  --gold-l:   #d4a45f;
+  --sand:     #f7f5f0;
+  --ink:      #1a2228;
+  --muted:    #5c6670;
+  --line:     #dde2e8;
+  --soft:     #eef1f6;
+  --white:    #ffffff;
+
+  --primary:    var(--navy);
+  --primary-d:  var(--navy-d);
+  --accent:     var(--navy-l);
+  --accent2:    var(--gold);
+  --section-bg: var(--soft);
+
+  --sans:  "Noto Sans JP", system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  --serif: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --head:  var(--sans);
+}
+
+body { font-family: var(--sans); color: var(--ink); line-height: 1.85; background: var(--white); -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+.wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 2rem; }
+h1, h2, h3, .stat .v, .stat .l { word-break: keep-all; overflow-wrap: break-word; }
+
+/* セクション共通 */
+.section { padding: 5rem 0; }
+.section-soft { background: var(--section-bg); }
+.section-sand { background: var(--sand); }
+.section-head { text-align: center; margin-bottom: 3rem; }
+.section-head .en { display: block; font-size: .78rem; letter-spacing: .28em; color: var(--accent2); font-weight: 700; text-transform: uppercase; margin-bottom: .5rem; }
+.section-head h2 { font-family: var(--head); font-weight: 800; font-size: clamp(1.55rem, 4.5vw, 2.3rem); color: var(--primary); line-height: 1.45; word-break: keep-all; }
+.section-head p { color: var(--muted); margin-top: .8rem; font-size: .97rem; }
+
+/* ボタン（主・副の2種） */
+.btn-primary, .btn-outline, .btn-green {
+  display: inline-flex; align-items: center; justify-content: center; gap: .4em;
+  padding: .9em 2em; border-radius: 6px; font-weight: 700;
+  font-size: 1rem; transition: .22s; cursor: pointer; border: 2px solid transparent;
+}
+.btn-primary { background: var(--accent2); color: #fff; }
+.btn-primary:hover { background: var(--gold-l); transform: translateY(-2px); }
+.btn-outline { background: transparent; color: #fff; border-color: rgba(255,255,255,.65); }
+.btn-outline:hover { background: rgba(255,255,255,.12); }
+.btn-green { background: var(--navy); color: #fff; box-shadow: 0 8px 18px rgba(20,49,92,.25); }
+.btn-green:hover { background: var(--navy-l); transform: translateY(-2px); }
+
+/* ---------- ヘッダー／ナビ ---------- */
+.site-header { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.97); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.brand { display: flex; align-items: baseline; gap: .5rem; }
+.brand .logo { font-family: var(--head); font-weight: 800; font-size: 1.08rem; color: var(--primary); letter-spacing: .02em; line-height: 1.3; }
+.brand .sub { font-size: .65rem; color: var(--muted); letter-spacing: .08em; }
+.nav-menu { display: flex; align-items: center; gap: 1.5rem; list-style: none; }
+.nav-menu a { font-size: .91rem; font-weight: 500; color: var(--ink); transition: .2s; }
+.nav-menu a:hover { color: var(--accent); }
+.nav-cta { background: var(--accent2); color: #fff !important; padding: .5em 1.1em; border-radius: 6px; }
+.nav-cta:hover { background: var(--gold-l) !important; }
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: .4rem; }
+.nav-toggle span { display: block; width: 26px; height: 2px; background: var(--primary); margin: 5px 0; transition: .3s; }
+
+/* ---------- フッター ---------- */
+.site-footer { background: var(--primary-d); color: #a6b7cc; padding: 3rem 0 2rem; }
+.footer-grid { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; }
+.footer-brand .logo { font-family: var(--head); font-size: 1.1rem; color: #fff; font-weight: 800; }
+.footer-brand p { font-size: .83rem; margin-top: .6rem; color: #7c93b0; }
+.footer-info { font-size: .9rem; line-height: 2; }
+.footer-info strong { color: #fff; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,.1); margin-top: 2rem; padding-top: 1.2rem; font-size: .78rem; color: #6c85a5; text-align: center; }
+
+/* ---------- サービスカード ---------- */
+.svc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem; }
+.svc-card { background: #fff; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; transition: .25s; }
+.svc-card:hover { transform: translateY(-4px); box-shadow: 0 14px 28px rgba(10,31,61,.12); }
+.svc-card .thumb { height: 190px; background-size: cover; background-position: center; }
+.svc-card .body { padding: 1.5rem; }
+.svc-card .num { font-size: .73rem; font-weight: 700; color: var(--accent2); letter-spacing: .12em; }
+.svc-card h3 { font-family: var(--head); font-weight: 800; font-size: 1.05rem; color: var(--primary); margin: .3rem 0 .5rem; }
+.svc-card p { font-size: .9rem; color: var(--muted); }
+
+/* ---------- 実績バー ---------- */
+.stats-bar { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+.stats-bar .stat { flex: 1 1 160px; text-align: center; padding: 1.2rem; }
+.stats-bar .stat .v { font-family: var(--head); font-weight: 800; font-size: clamp(1.15rem, 3.2vw, 1.9rem); line-height: 1.3; color: var(--accent2); }
+.stats-bar .stat .l { font-size: .83rem; color: var(--muted); margin-top: .3rem; }
+
+/* ---------- 強み・特徴カード ---------- */
+.feat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem; }
+.feat { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 2rem 1.8rem; border-left: 4px solid var(--navy); }
+.feat .step { font-size: .72rem; font-weight: 700; letter-spacing: .12em; color: var(--navy-l); }
+.feat h3 { font-family: var(--head); font-weight: 800; color: var(--primary); font-size: 1.1rem; margin: .25rem 0 .8rem; }
+.feat p { font-size: .92rem; color: var(--muted); }
+
+/* ---------- 沿革タイムライン ---------- */
+.timeline { display: flex; flex-direction: column; gap: 0; max-width: 720px; margin: 0 auto; }
+.tl-item { display: flex; gap: 1.6rem; padding: 1.4rem 0; border-bottom: 1px solid var(--line); }
+.tl-item:last-child { border-bottom: none; }
+.tl-date { flex: 0 0 140px; font-family: var(--head); font-weight: 800; color: var(--accent2); font-size: .95rem; }
+.tl-body p { color: var(--muted); font-size: .94rem; }
+
+/* ---------- 会社概要・料金テーブル ---------- */
+.info-table, .price-table { width: 100%; border-collapse: collapse; }
+.info-table th, .info-table td, .price-table th, .price-table td { text-align: left; padding: 1rem .5rem; border-bottom: 1px solid var(--line); font-size: .94rem; vertical-align: top; }
+.info-table th, .price-table th { width: 34%; color: var(--primary); font-weight: 700; white-space: nowrap; }
+.info-table td, .price-table td { color: var(--muted); }
+
+/* ---------- FAQ ---------- */
+.faq-list { display: flex; flex-direction: column; gap: 1.1rem; }
+.faq-item { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 1.4rem 1.6rem; }
+.faq-item .q { display: flex; gap: .7rem; font-family: var(--head); font-weight: 800; color: var(--primary); margin-bottom: .5rem; }
+.faq-item .q .tag { color: var(--accent2); }
+.faq-item .a { display: flex; gap: .7rem; color: var(--muted); font-size: .93rem; }
+.faq-item .a .tag { color: var(--navy-l); font-weight: 700; }
+
+/* ---------- お問い合わせCTA ---------- */
+.contact-cta { text-align: center; color: #fff; }
+.contact-cta h2 { font-family: var(--head); font-weight: 800; font-size: clamp(1.4rem, 4.5vw, 2rem); margin-bottom: 1rem; }
+.contact-cta p { margin-bottom: 2rem; opacity: .92; }
+.cta-btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+.cta-section { position: relative; padding: 5rem 0; background: var(--primary); }
+.cta-section.has-bg .cta-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.cta-section.has-bg .cta-overlay { position: absolute; inset: 0; background: linear-gradient(rgba(10,31,61,.88), rgba(20,49,92,.82)); }
+.cta-section .wrap { position: relative; z-index: 1; }
+
+/* =====================================================================
+   A案（t-a）王道企業サイト ─ ネイビーを主役に、余白広めで信頼感
+   ===================================================================== */
+.t-a { --primary: var(--navy); --primary-d: var(--navy-d); --accent: var(--navy-l); --accent2: var(--gold); }
+.t-a .hero-a { position: relative; overflow: hidden; background: linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 55%, var(--navy-l) 130%); color: #fff; padding: 6rem 0; }
+.t-a .hero-a > .wrap { position: relative; z-index: 1; }
+.t-a .hero-a .en { letter-spacing: .3em; font-size: .78rem; opacity: .8; font-weight: 700; color: var(--gold-l); }
+.t-a .hero-a h1 { font-family: var(--head); font-weight: 800; font-size: clamp(1.9rem, 5.6vw, 3.3rem); line-height: 1.45; margin: 1rem 0 1.2rem; }
+.t-a .hero-a h1 .mark { color: var(--gold-l); }
+.t-a .hero-a p.lead { font-size: clamp(.95rem, 2.2vw, 1.05rem); max-width: 640px; opacity: .92; line-height: 1.95; }
+.t-a .hero-a .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2.2rem; }
+.t-a .stats-wrap { margin-top: 3.2rem; background: rgba(255,255,255,.08); border-radius: 12px; padding: 1rem; }
+.t-a .stats-bar .stat .v { color: var(--gold-l); }
+.t-a .stats-bar .stat .l { color: rgba(255,255,255,.78); }
+.t-a .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; }
+.t-a .two-col .photo { border-radius: 14px; min-height: 280px; background-size: cover; background-position: center; }
+
+/* =====================================================================
+   B案（t-b）FVバナー ─ 商品・物流写真を全画面に、実績カードを重ねる
+   ===================================================================== */
+.t-b { --primary: var(--navy-d); --primary-d: #061527; --accent: var(--navy-l); --accent2: var(--gold); --section-bg: var(--sand); --head: var(--serif); }
+.t-b .hero { position: relative; min-height: 82vh; display: flex; align-items: center; overflow: hidden; }
+.t-b .hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.t-b .hero-overlay { position: absolute; inset: 0; background: linear-gradient(rgba(6,21,39,.72), rgba(10,31,61,.55)); }
+.t-b .hero-content { position: relative; z-index: 1; color: #fff; }
+.t-b .hero-eyebrow { letter-spacing: .3em; font-size: .78rem; font-weight: 600; opacity: .88; color: var(--gold-l); }
+.t-b .hero h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(2.1rem, 6.2vw, 4.1rem); line-height: 1.45; margin: 1rem 0 1.3rem; text-shadow: 0 2px 20px rgba(0,0,0,.3); word-break: keep-all; }
+.t-b .hero h1 .mark { color: var(--gold-l); }
+.t-b .hero-sub { font-size: clamp(.95rem, 2.2vw, 1.08rem); max-width: 600px; line-height: 1.95; opacity: .93; }
+.t-b .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2.2rem; }
+.t-b .hero-stats-card { position: relative; z-index: 2; margin-top: -3.4rem; }
+.t-b .hero-stats-card .card { background: #fff; border-radius: 18px; box-shadow: 0 26px 52px rgba(6,21,39,.2); padding: 1.7rem 2.2rem; display: flex; flex-wrap: wrap; gap: 1.4rem; justify-content: space-around; }
+.t-b .hero-stats-card .stat { text-align: center; flex: 1 1 150px; }
+.t-b .hero-stats-card .stat .v { font-family: var(--serif); font-weight: 700; font-size: clamp(1.3rem, 3vw, 1.7rem); color: var(--navy-d); }
+.t-b .hero-stats-card .stat .l { font-size: .78rem; color: var(--muted); margin-top: .25rem; }
+.t-b .section-head h2 { font-family: var(--serif); }
+.t-b .svc-card h3 { font-family: var(--serif); font-weight: 700; }
+.t-b .message { display: grid; grid-template-columns: 1fr 1.5fr; gap: 2.5rem; align-items: center; }
+.t-b .message .photo { border-radius: 14px; min-height: 300px; background-size: cover; background-position: center; }
+.t-b .message h2 { font-family: var(--serif); font-size: clamp(1.4rem, 4vw, 2rem); color: var(--primary); margin-bottom: 1.2rem; line-height: 1.7; }
+.t-b .message p { color: var(--muted); margin-bottom: 1rem; }
+
+/* =====================================================================
+   C案（t-c）アクセント ─ ゴールド×ネイビーで活気を出す
+   ===================================================================== */
+.t-c { --primary: #14315c; --primary-d: #0a1f3d; --accent: #b8873a; --accent2: #b8873a; --section-bg: var(--sand); }
+.t-c .accent-banner { position: relative; width: 100%; height: 220px; background-size: cover; background-position: center; }
+.t-c .accent-banner::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(10,31,61,.75), rgba(184,135,58,.4) 70%, rgba(10,31,61,.45)); }
+.t-c .accent-banner .cap { position: absolute; inset: 0; z-index: 1; display: flex; align-items: center; padding: 0 2rem; }
+.t-c .accent-banner .cap span { color: #fff; font-family: var(--head); font-weight: 800; font-size: clamp(1.1rem, 3vw, 1.8rem); text-shadow: 0 2px 10px rgba(0,0,0,.45); }
+.t-c .hero-c { background: linear-gradient(135deg, #0a1f3d 0%, #14315c 45%, #2a5490 100%); color: #fff; padding: 4.8rem 0; }
+.t-c .hero-c .en { font-weight: 700; letter-spacing: .22em; font-size: .8rem; color: var(--gold-l); }
+.t-c .hero-c h1 { font-family: var(--head); font-weight: 800; font-size: clamp(1.9rem, 6vw, 3.5rem); line-height: 1.42; margin: 1rem 0 1.2rem; word-break: keep-all; }
+.t-c .hero-c h1 .mark { color: var(--gold-l); }
+.t-c .hero-c p.lead { max-width: 640px; opacity: .94; line-height: 1.95; }
+.t-c .hero-c .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+.t-c .svc-card { border: none; box-shadow: 0 6px 20px rgba(10,31,61,.1); border-top: 4px solid var(--gold); }
+.t-c .svc-card:nth-child(2) { border-top-color: var(--navy-l); }
+.t-c .svc-card:nth-child(3) { border-top-color: var(--gold-l); }
+.t-c .feat { border-left-color: var(--gold); }
+.t-c .feat:nth-child(even) { border-left-color: var(--navy-l); }
+.t-c .cta-accent { background: linear-gradient(135deg, #0a1f3d 0%, #14315c 55%, #2a5490 100%); }
+
+/* =====================================================================
+   採用ページ（t-r）
+   ===================================================================== */
+.t-r { --primary: var(--navy); --primary-d: var(--navy-d); --accent: var(--navy-l); --accent2: var(--gold); --section-bg: var(--soft); }
+.t-r .rec-hero { position: relative; min-height: 68vh; display: flex; align-items: center; overflow: hidden; }
+.t-r .rec-hero .hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.t-r .rec-hero .hero-overlay { position: absolute; inset: 0; background: linear-gradient(rgba(6,21,39,.75), rgba(10,31,61,.6)); }
+.t-r .rec-hero .hero-content { position: relative; z-index: 1; color: #fff; }
+.t-r .rec-hero h1 { font-family: var(--head); font-weight: 800; font-size: clamp(2rem, 6vw, 3.2rem); line-height: 1.45; margin-bottom: 1.2rem; word-break: keep-all; }
+.t-r .rec-hero h1 .mark { color: var(--gold-l); }
+.t-r .rec-hero p { max-width: 580px; opacity: .94; line-height: 1.95; }
+.t-r .job-pills { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.8rem; }
+.t-r .job-pills span { background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.4); padding: .4em 1em; border-radius: 999px; font-size: .86rem; }
+.t-r .merit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
+.t-r .merit { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 2rem 1.6rem; text-align: center; }
+.t-r .merit .ico { width: 56px; height: 56px; margin: 0 auto 1rem; border-radius: 50%; background: var(--soft); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; }
+.t-r .merit h3 { font-family: var(--head); font-weight: 800; color: var(--primary); font-size: 1.05rem; margin-bottom: .5rem; }
+.t-r .merit p { font-size: .9rem; color: var(--muted); }
+.t-r .voice-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem; }
+.t-r .voice { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 1.8rem; display: flex; gap: 1.2rem; align-items: flex-start; }
+.t-r .voice .face { width: 60px; height: 60px; border-radius: 50%; background-size: cover; background-position: center; flex-shrink: 0; }
+.t-r .voice .who { font-weight: 700; color: var(--primary); font-size: .93rem; }
+.t-r .voice .role { font-size: .78rem; color: var(--accent2); margin-bottom: .4rem; }
+.t-r .voice p { font-size: .9rem; color: var(--muted); }
+.t-r .sample-note { font-size: .77rem; color: var(--muted); text-align: center; margin-top: 1rem; }
+.t-r .req-table { width: 100%; border-collapse: collapse; }
+.t-r .req-table th, .t-r .req-table td { text-align: left; padding: 1rem .8rem; border-bottom: 1px solid var(--line); font-size: .93rem; vertical-align: top; }
+.t-r .req-table th { width: 28%; color: var(--primary); font-weight: 700; white-space: nowrap; background: var(--soft); }
+.t-r .req-table td { color: var(--muted); }
+
+/* =====================================================================
+   レスポンシブ（全テーマ共通）
+   ===================================================================== */
+@media (max-width: 900px) {
+  .t-a .two-col { grid-template-columns: 1fr; }
+  .t-r .merit-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .wrap { padding: 0 1.2rem; }
+  .section { padding: 3.4rem 0; }
+  .nav-menu { display: none; }
+  .nav-toggle { display: block; }
+  .site-header.open .nav-menu {
+    display: flex; position: absolute; top: 68px; left: 0; right: 0;
+    flex-direction: column; gap: 0; background: #fff; border-bottom: 1px solid var(--line);
+    padding: .5rem 1.2rem 1.2rem; box-shadow: 0 12px 24px rgba(0,0,0,.08);
+  }
+  .site-header.open .nav-menu li { width: 100%; }
+  .site-header.open .nav-menu a { display: block; padding: .9rem 0; border-bottom: 1px solid var(--line); }
+  .site-header.open .nav-menu .nav-cta { display: inline-block; margin-top: .8rem; border: none; text-align: center; }
+  .svc-grid { grid-template-columns: 1fr; }
+  .feat-grid { grid-template-columns: 1fr; }
+  .tl-item { flex-direction: column; gap: .3rem; }
+  .tl-date { flex: none; }
+  .t-a .hero-a { padding: 4.2rem 0; }
+  .t-b .hero { min-height: 72vh; }
+  .t-b .hero-stats-card { margin-top: -2.2rem; }
+  .t-b .hero-stats-card .card { padding: 1.2rem 1.3rem; gap: 1rem; }
+  .t-b .message { grid-template-columns: 1fr; }
+  .t-b .message .photo { min-height: 220px; }
+  .t-c .accent-banner { height: 140px; }
+  .t-r .rec-hero { min-height: 58vh; }
+  .t-r .merit-grid { grid-template-columns: 1fr; }
+  .t-r .voice-grid { grid-template-columns: 1fr; }
+  .footer-grid { flex-direction: column; gap: 1.6rem; }
+}
+@media (max-width: 400px) {
+  .btn-primary, .btn-outline, .btn-green { padding: .8em 1.4em; font-size: .94rem; }
+}

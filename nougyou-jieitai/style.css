@@ -1,0 +1,258 @@
+@charset "utf-8";
+/* =====================================================================
+   一般社団法人農業自衛隊推進機構 共通スタイル（3案＋採用ページ共用）
+   ベースカラー軸：紺（自衛隊）×緑（農業）×ゴールド（誇り）
+   テーマ切替： <body class="t-a / t-b / t-c / t-r"> で差分を当てる
+   ===================================================================== */
+
+/* ---------- 共通土台 ---------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { max-width: 100%; overflow-x: hidden; }
+img { max-width: 100%; height: auto; display: block; }
+
+:root {
+  --navy:    #1a2b5c;
+  --navy-d:  #0f1a3a;
+  --navy-l:  #2a4080;
+  --green:   #2d7a3a;
+  --green-l: #3d9b4e;
+  --green-xl:#5abd6e;
+  --gold:    #c8960a;
+  --gold-l:  #e6b02a;
+  --sand:    #f7f4ee;
+  --ink:     #1a2228;
+  --muted:   #5a6472;
+  --line:    #d8dfe8;
+  --soft:    #f2f4f8;
+  --white:   #ffffff;
+
+  --primary:    var(--navy);
+  --primary-d:  var(--navy-d);
+  --accent:     var(--navy-l);
+  --accent2:    var(--gold);
+  --section-bg: var(--soft);
+
+  --sans:  "Noto Sans JP", system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  --serif: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --head:  var(--sans);
+}
+
+body { font-family: var(--sans); color: var(--ink); line-height: 1.85; background: var(--white); -webkit-font-smoothing: antialiased; }
+a { color: inherit; text-decoration: none; }
+.wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 2rem; }
+
+/* セクション共通 */
+.section { padding: 5rem 0; }
+.section-soft { background: var(--section-bg); }
+.section-sand { background: var(--sand); }
+.section-head { text-align: center; margin-bottom: 3rem; }
+.section-head .en { display: block; font-size: .78rem; letter-spacing: .28em; color: var(--accent2); font-weight: 700; text-transform: uppercase; margin-bottom: .5rem; }
+.section-head h2 { font-family: var(--head); font-size: clamp(1.55rem, 4.5vw, 2.3rem); color: var(--primary); line-height: 1.45; word-break: keep-all; }
+.section-head p { color: var(--muted); margin-top: .8rem; font-size: .97rem; }
+
+/* ボタン */
+.btn-primary, .btn-outline {
+  display: inline-flex; align-items: center; justify-content: center; gap: .4em;
+  padding: .9em 2em; border-radius: 4px; font-weight: 700;
+  font-size: 1rem; transition: .22s; cursor: pointer; border: 2px solid transparent;
+}
+.btn-primary { background: var(--accent2); color: #fff; }
+.btn-primary:hover { background: var(--gold-l); transform: translateY(-2px); }
+.btn-outline { background: transparent; color: #fff; border-color: rgba(255,255,255,.65); }
+.btn-outline:hover { background: rgba(255,255,255,.12); }
+.btn-green { background: var(--green); color: #fff; }
+.btn-green:hover { background: var(--green-l); transform: translateY(-2px); }
+
+/* ---------- ヘッダー／ナビ ---------- */
+.site-header { position: sticky; top: 0; z-index: 50; background: rgba(255,255,255,.97); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
+.nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.brand { display: flex; align-items: baseline; gap: .5rem; }
+.brand .logo { font-family: var(--head); font-weight: 700; font-size: 1.08rem; color: var(--primary); letter-spacing: .04em; line-height: 1.3; }
+.brand .sub { font-size: .65rem; color: var(--muted); letter-spacing: .08em; }
+.nav-menu { display: flex; align-items: center; gap: 1.5rem; list-style: none; }
+.nav-menu a { font-size: .91rem; font-weight: 500; color: var(--ink); transition: .2s; }
+.nav-menu a:hover { color: var(--accent); }
+.nav-cta { background: var(--accent2); color: #fff !important; padding: .5em 1.1em; border-radius: 4px; }
+.nav-cta:hover { background: var(--gold-l) !important; }
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: .4rem; }
+.nav-toggle span { display: block; width: 26px; height: 2px; background: var(--primary); margin: 5px 0; transition: .3s; }
+
+/* ---------- フッター ---------- */
+.site-footer { background: var(--primary-d); color: #9aabc4; padding: 3rem 0 2rem; }
+.footer-grid { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; }
+.footer-brand .logo { font-family: var(--head); font-size: 1.1rem; color: #fff; font-weight: 700; }
+.footer-brand p { font-size: .83rem; margin-top: .6rem; color: #7090b0; }
+.footer-info { font-size: .9rem; line-height: 2; }
+.footer-info strong { color: #fff; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,.1); margin-top: 2rem; padding-top: 1.2rem; font-size: .78rem; color: #6080a0; text-align: center; }
+
+/* ---------- サービスカード ---------- */
+.svc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem; }
+.svc-card { background: #fff; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; transition: .25s; }
+.svc-card:hover { transform: translateY(-4px); box-shadow: 0 14px 28px rgba(26,43,92,.1); }
+.svc-card .thumb { height: 190px; background-size: cover; background-position: center; }
+.svc-card .body { padding: 1.5rem; }
+.svc-card .num { font-size: .73rem; font-weight: 700; color: var(--accent2); letter-spacing: .12em; }
+.svc-card h3 { font-family: var(--head); font-size: 1.05rem; color: var(--primary); margin: .3rem 0 .5rem; }
+.svc-card p { font-size: .9rem; color: var(--muted); }
+
+/* ---------- 実績バー ---------- */
+.stats-bar { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+.stats-bar .stat { flex: 1 1 160px; text-align: center; padding: 1.2rem; }
+.stats-bar .stat .v { font-family: var(--head); font-size: clamp(1.8rem, 5vw, 2.6rem); font-weight: 700; line-height: 1.1; color: var(--accent2); }
+.stats-bar .stat .l { font-size: .83rem; color: var(--muted); margin-top: .3rem; }
+
+/* ---------- 強み・特徴カード ---------- */
+.feat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem; }
+.feat { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 2rem 1.8rem; border-left: 4px solid var(--navy); }
+.feat .step { font-size: .72rem; font-weight: 700; letter-spacing: .12em; color: var(--navy-l); }
+.feat h3 { font-family: var(--head); color: var(--primary); font-size: 1.1rem; margin: .25rem 0 .8rem; }
+.feat p { font-size: .92rem; color: var(--muted); }
+
+/* ---------- 会社概要テーブル ---------- */
+.info-table { width: 100%; border-collapse: collapse; }
+.info-table th, .info-table td { text-align: left; padding: 1rem .5rem; border-bottom: 1px solid var(--line); font-size: .94rem; vertical-align: top; }
+.info-table th { width: 30%; color: var(--primary); font-weight: 700; white-space: nowrap; }
+.info-table td { color: var(--muted); }
+
+/* ---------- お問い合わせCTA ---------- */
+.contact-cta { text-align: center; color: #fff; }
+.contact-cta h2 { font-family: var(--head); font-size: clamp(1.4rem, 4.5vw, 2rem); margin-bottom: 1rem; }
+.contact-cta p { margin-bottom: 2rem; opacity: .92; }
+.cta-btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+.cta-section { position: relative; padding: 5rem 0; background: var(--primary); }
+.cta-section.has-bg .cta-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.cta-section.has-bg .cta-overlay { position: absolute; inset: 0; background: linear-gradient(rgba(15,26,58,.88), rgba(26,43,92,.82)); }
+.cta-section .wrap { position: relative; z-index: 1; }
+
+/* =====================================================================
+   A案（t-a）王道・スタンダード ─ 紺を主役に、誠実さと使命感
+   ===================================================================== */
+.t-a { --primary: var(--navy); --primary-d: var(--navy-d); --accent: var(--navy-l); --accent2: var(--gold); }
+.t-a .hero-a {
+  background: linear-gradient(135deg, var(--navy-d) 0%, var(--navy) 50%, var(--navy-l) 120%);
+  color: #fff; padding: 6rem 0;
+}
+.t-a .hero-a .en { letter-spacing: .3em; font-size: .78rem; opacity: .78; font-weight: 600; color: var(--gold-l); }
+.t-a .hero-a h1 { font-family: var(--head); font-size: clamp(1.9rem, 6vw, 3.6rem); line-height: 1.38; margin: 1rem 0 1.2rem; word-break: keep-all; }
+.t-a .hero-a h1 .mark { color: var(--gold-l); }
+.t-a .hero-a h1 .mark-g { color: var(--green-xl); }
+.t-a .hero-a p.lead { font-size: clamp(.95rem, 2.4vw, 1.08rem); max-width: 660px; opacity: .92; line-height: 2; }
+.t-a .hero-a .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2.2rem; }
+.t-a .stats-wrap { margin-top: 3rem; background: rgba(255,255,255,.08); border-radius: 8px; padding: 1rem; }
+.t-a .stats-bar .stat .v { color: var(--gold-l); }
+.t-a .stats-bar .stat .l { color: rgba(255,255,255,.76); }
+.t-a .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; }
+.t-a .two-col .photo { border-radius: 4px; min-height: 280px; background-size: cover; background-position: center; }
+
+/* =====================================================================
+   B案（t-b）FVバナー ─ 農地・田園風景を全画面に、明朝体で力強く
+   ===================================================================== */
+.t-b { --primary: var(--navy-d); --primary-d: #07101f; --accent: var(--navy-l); --accent2: var(--gold); --section-bg: var(--sand); --head: var(--serif); }
+.t-b .hero { position: relative; min-height: 84vh; display: flex; align-items: center; overflow: hidden; }
+.t-b .hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.t-b .hero-overlay { position: absolute; inset: 0; background: linear-gradient(rgba(7,16,31,.62), rgba(15,26,58,.50)); }
+.t-b .hero-content { position: relative; z-index: 1; color: #fff; }
+.t-b .hero-eyebrow { letter-spacing: .3em; font-size: .78rem; font-weight: 600; opacity: .85; color: var(--gold-l); }
+.t-b .hero h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(2.1rem, 6.5vw, 4.4rem); line-height: 1.4; margin: 1rem 0 1.3rem; text-shadow: 0 2px 20px rgba(0,0,0,.3); word-break: keep-all; }
+.t-b .hero h1 .mark { color: var(--gold-l); }
+.t-b .hero h1 .mark-g { color: var(--green-xl); }
+.t-b .hero-sub { font-size: clamp(.95rem, 2.4vw, 1.1rem); max-width: 640px; line-height: 2; opacity: .93; }
+.t-b .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2.2rem; }
+.t-b .stats-strip { background: var(--navy-d); color: #fff; padding: 2.4rem 0; }
+.t-b .stats-strip .stat .v { color: var(--gold-l); }
+.t-b .stats-strip .stat .l { color: rgba(255,255,255,.7); }
+.t-b .section-head h2 { font-family: var(--serif); }
+.t-b .svc-card h3 { font-family: var(--serif); }
+.t-b .message { display: grid; grid-template-columns: 1fr 1.5fr; gap: 2.5rem; align-items: center; }
+.t-b .message .photo { border-radius: 4px; min-height: 300px; background-size: cover; background-position: center; }
+.t-b .message h2 { font-family: var(--serif); font-size: clamp(1.4rem, 4vw, 2rem); color: var(--primary); margin-bottom: 1.2rem; line-height: 1.7; }
+.t-b .message p { color: var(--muted); margin-bottom: 1rem; }
+
+/* =====================================================================
+   C案（t-c）アクセント ─ 紺×緑で使命と自然をエネルギッシュに
+   ===================================================================== */
+.t-c { --primary: #1a2b5c; --primary-d: #0f1a3a; --accent: #2d7a3a; --accent2: #c8960a; --section-bg: var(--sand); }
+.t-c .accent-banner { position: relative; width: 100%; height: 220px; background-size: cover; background-position: center; }
+.t-c .accent-banner::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(15,26,58,.72), rgba(45,122,58,.4) 70%, rgba(15,26,58,.45)); }
+.t-c .accent-banner .cap { position: absolute; inset: 0; z-index: 1; display: flex; align-items: center; padding: 0 2rem; }
+.t-c .accent-banner .cap span { color: #fff; font-family: var(--head); font-weight: 700; font-size: clamp(1.1rem, 3vw, 1.8rem); text-shadow: 0 2px 10px rgba(0,0,0,.45); }
+.t-c .hero-c { background: linear-gradient(135deg, #0f1a3a 0%, #1a2b5c 45%, #2a4080 100%); color: #fff; padding: 4.8rem 0; }
+.t-c .hero-c .en { font-weight: 700; letter-spacing: .22em; font-size: .8rem; color: var(--gold-l); }
+.t-c .hero-c h1 { font-family: var(--head); font-size: clamp(1.9rem, 6vw, 3.5rem); line-height: 1.4; margin: 1rem 0 1.2rem; word-break: keep-all; }
+.t-c .hero-c h1 .mark { color: var(--gold-l); }
+.t-c .hero-c h1 .mark-g { color: var(--green-xl); }
+.t-c .hero-c p.lead { max-width: 660px; opacity: .94; line-height: 2; }
+.t-c .hero-c .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+.t-c .svc-card { border: none; box-shadow: 0 6px 20px rgba(26,43,92,.09); border-top: 4px solid var(--accent2); }
+.t-c .svc-card:nth-child(2) { border-top-color: var(--navy-l); }
+.t-c .svc-card:nth-child(3) { border-top-color: var(--green); }
+.t-c .svc-card:nth-child(4) { border-top-color: var(--gold-l); }
+.t-c .feat { border-left-color: var(--accent2); }
+.t-c .feat:nth-child(even) { border-left-color: var(--green); }
+.t-c .cta-accent { background: linear-gradient(135deg, #0f1a3a 0%, #1a2b5c 55%, #2a4080 100%); }
+
+/* =====================================================================
+   採用ページ（t-r）
+   ===================================================================== */
+.t-r { --primary: var(--navy); --primary-d: var(--navy-d); --accent: var(--navy-l); --accent2: var(--gold); --section-bg: var(--soft); }
+.t-r .rec-hero { position: relative; min-height: 72vh; display: flex; align-items: center; overflow: hidden; }
+.t-r .rec-hero .hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.t-r .rec-hero .hero-overlay { position: absolute; inset: 0; background: linear-gradient(rgba(7,16,31,.72), rgba(26,43,92,.6)); }
+.t-r .rec-hero .hero-content { position: relative; z-index: 1; color: #fff; }
+.t-r .rec-hero h1 { font-family: var(--head); font-size: clamp(2rem, 6vw, 3.4rem); line-height: 1.4; margin-bottom: 1.2rem; word-break: keep-all; }
+.t-r .rec-hero h1 .mark { color: var(--gold-l); }
+.t-r .rec-hero p { max-width: 600px; opacity: .94; line-height: 2; }
+.t-r .job-pills { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.8rem; }
+.t-r .job-pills span { background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.4); padding: .4em 1em; border-radius: 999px; font-size: .86rem; }
+.t-r .merit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
+.t-r .merit { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 2rem 1.6rem; text-align: center; }
+.t-r .merit .ico { width: 56px; height: 56px; margin: 0 auto 1rem; border-radius: 50%; background: var(--soft); display: flex; align-items: center; justify-content: center; font-size: 1.6rem; }
+.t-r .merit h3 { font-family: var(--head); color: var(--primary); font-size: 1.05rem; margin-bottom: .5rem; }
+.t-r .merit p { font-size: .9rem; color: var(--muted); }
+.t-r .voice-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem; }
+.t-r .voice { background: #fff; border: 1px solid var(--line); border-radius: 10px; padding: 1.8rem; display: flex; gap: 1.2rem; align-items: flex-start; }
+.t-r .voice .face { width: 60px; height: 60px; border-radius: 50%; background-size: cover; background-position: center; flex-shrink: 0; }
+.t-r .voice .who { font-weight: 700; color: var(--primary); font-size: .93rem; }
+.t-r .voice .role { font-size: .78rem; color: var(--accent2); margin-bottom: .4rem; }
+.t-r .voice p { font-size: .9rem; color: var(--muted); }
+.t-r .sample-note { font-size: .77rem; color: var(--muted); text-align: center; margin-top: 1rem; }
+.t-r .req-table { width: 100%; border-collapse: collapse; }
+.t-r .req-table th, .t-r .req-table td { text-align: left; padding: 1rem .8rem; border-bottom: 1px solid var(--line); font-size: .93rem; vertical-align: top; }
+.t-r .req-table th { width: 28%; color: var(--primary); font-weight: 700; white-space: nowrap; background: var(--soft); }
+.t-r .req-table td { color: var(--muted); }
+
+/* =====================================================================
+   レスポンシブ（全テーマ共通）
+   ===================================================================== */
+@media (max-width: 900px) {
+  .t-a .two-col { grid-template-columns: 1fr; }
+  .t-r .merit-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 768px) {
+  .wrap { padding: 0 1.2rem; }
+  .section { padding: 3.4rem 0; }
+  .nav-menu { display: none; }
+  .nav-toggle { display: block; }
+  .site-header.open .nav-menu {
+    display: flex; position: absolute; top: 68px; left: 0; right: 0;
+    flex-direction: column; gap: 0; background: #fff; border-bottom: 1px solid var(--line);
+    padding: .5rem 1.2rem 1.2rem; box-shadow: 0 12px 24px rgba(0,0,0,.08);
+  }
+  .site-header.open .nav-menu li { width: 100%; }
+  .site-header.open .nav-menu a { display: block; padding: .9rem 0; border-bottom: 1px solid var(--line); }
+  .site-header.open .nav-menu .nav-cta { display: inline-block; margin-top: .8rem; border: none; text-align: center; }
+  .svc-grid { grid-template-columns: 1fr; }
+  .feat-grid { grid-template-columns: 1fr; }
+  .t-b .hero { min-height: 70vh; }
+  .t-b .message { grid-template-columns: 1fr; }
+  .t-b .message .photo { min-height: 220px; }
+  .t-c .accent-banner { height: 140px; }
+  .t-r .rec-hero { min-height: 60vh; }
+  .t-r .merit-grid { grid-template-columns: 1fr; }
+  .t-r .voice-grid { grid-template-columns: 1fr; }
+  .footer-grid { flex-direction: column; gap: 1.6rem; }
+}
+@media (max-width: 400px) {
+  .btn-primary, .btn-outline, .btn-green { padding: .8em 1.4em; font-size: .94rem; }
+}
