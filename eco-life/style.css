@@ -50,7 +50,7 @@ h1, h2, h3, .stat .v, .stat .l { word-break: keep-all; overflow-wrap: break-word
 .section-head p { color: var(--muted); margin-top: .8rem; font-size: .97rem; }
 
 /* ボタン（主・副の2種） */
-.btn-primary, .btn-outline {
+.btn-primary, .btn-outline, .btn-green {
   display: inline-flex; align-items: center; justify-content: center; gap: .4em;
   padding: .9em 2em; border-radius: 6px; font-weight: 700;
   font-size: 1rem; transition: .22s; cursor: pointer; border: 2px solid transparent;
@@ -59,7 +59,7 @@ h1, h2, h3, .stat .v, .stat .l { word-break: keep-all; overflow-wrap: break-word
 .btn-primary:hover { background: var(--amber-l); transform: translateY(-2px); }
 .btn-outline { background: transparent; color: #fff; border-color: rgba(255,255,255,.65); }
 .btn-outline:hover { background: rgba(255,255,255,.12); }
-.btn-green { background: var(--green); color: #fff; }
+.btn-green { background: var(--green); color: #fff; box-shadow: 0 8px 18px rgba(31,107,74,.25); }
 .btn-green:hover { background: var(--green-l); transform: translateY(-2px); }
 
 /* ---------- ヘッダー／ナビ ---------- */
@@ -138,9 +138,15 @@ h1, h2, h3, .stat .v, .stat .l { word-break: keep-all; overflow-wrap: break-word
    ===================================================================== */
 .t-a { --primary: var(--green); --primary-d: var(--green-d); --accent: var(--green-l); --accent2: var(--amber); }
 .t-a .hero-a { position: relative; overflow: hidden; background: linear-gradient(135deg, var(--green-d) 0%, var(--green) 55%, var(--green-l) 130%); color: #fff; padding: 6rem 0; }
-.t-a .hero-a .hero-bg-soft { position: absolute; inset: 0; background-size: cover; background-position: center; opacity: .18; mix-blend-mode: soft-light; }
-.t-a .hero-a .hero-bg-soft::after { content: ""; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(18,63,43,.7) 0%, rgba(31,107,74,.6) 55%, rgba(47,143,99,.55) 130%); }
 .t-a .hero-a > .wrap { position: relative; z-index: 1; }
+.t-a .hero-photo { position: absolute; right: 0; top: 50%; transform: translateY(-50%); width: 400px; height: 400px; pointer-events: none; }
+.t-a .hero-photo .img {
+  position: absolute; inset: 0; border-radius: 50%; background-size: cover; background-position: center;
+  filter: saturate(.7) brightness(.85);
+  -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 42%, rgba(0,0,0,.7) 60%, rgba(0,0,0,0) 82%);
+  mask-image: radial-gradient(circle, rgba(0,0,0,1) 42%, rgba(0,0,0,.7) 60%, rgba(0,0,0,0) 82%);
+}
+.t-a .hero-photo::before { content: ""; position: absolute; inset: -18px; border: 1.5px solid rgba(255,255,255,.45); border-radius: 50%; }
 .t-a .hero-a .en { letter-spacing: .3em; font-size: .78rem; opacity: .8; font-weight: 700; color: var(--amber-l); }
 .t-a .hero-a h1 { font-family: var(--head); font-weight: 800; font-size: clamp(1.9rem, 5.6vw, 3.3rem); line-height: 1.45; margin: 1rem 0 1.2rem; }
 .t-a .hero-a h1 .mark { color: var(--amber-l); }
@@ -232,6 +238,10 @@ h1, h2, h3, .stat .v, .stat .l { word-break: keep-all; overflow-wrap: break-word
 /* =====================================================================
    レスポンシブ（全テーマ共通）
    ===================================================================== */
+@media (max-width: 1180px) {
+  /* hero-photoとテキストが重なる幅では非表示にする */
+  .t-a .hero-photo { display: none; }
+}
 @media (max-width: 900px) {
   .t-a .two-col { grid-template-columns: 1fr; }
   .t-r .merit-grid { grid-template-columns: repeat(2, 1fr); }
