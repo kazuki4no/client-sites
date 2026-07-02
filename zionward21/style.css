@@ -1,0 +1,287 @@
+@charset "utf-8";
+/* =====================================================================
+   一般社団法人シオンワード21 共通スタイル（3案＋採用ページ共用）
+   ベースカラー軸：信頼・防災インフラのネイビー／ブルー
+   差し色：有事・警戒を示すレッド＋浄水・安心のグリーン
+   テーマ切替： <body class="t-a / t-b / t-c / t-r"> で差分を当てる
+   ===================================================================== */
+
+/* ---------- 共通土台（全ファイル共通） ---------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { max-width: 100%; overflow-x: hidden; }
+img { max-width: 100%; height: auto; display: block; }
+
+:root {
+  /* 共通の基準カラー（軸） */
+  --navy:   #12324a;
+  --navy-d: #081a29;
+  --blue:   #1f6fa8;
+  --blue-l: #4fa0d9;
+  --red:    #d64545;   /* 有事対応・警戒を示す差し色（CTA差し色） */
+  --red-d:  #b53434;
+  --green:  #1f8a6e;   /* 浄水・安心を示すグリーン */
+  --gold:   #e8b23c;
+  --ink:    #1c2731;
+  --muted:  #56636f;
+  --line:   #e1e7ec;
+  --soft:   #f2f6f9;
+  --white:  #ffffff;
+
+  /* テーマで上書きされる変数（既定＝A案） */
+  --primary: var(--navy);
+  --primary-d: var(--navy-d);
+  --accent: var(--blue);
+  --accent2: var(--red);
+  --section-bg: var(--soft);
+
+  --sans: "Noto Sans JP", system-ui, -apple-system, "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+  --serif: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", serif;
+  --head: var(--sans);
+}
+
+body {
+  font-family: var(--sans);
+  color: var(--ink);
+  line-height: 1.8;
+  background: var(--white);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.wrap { width: 100%; max-width: 1120px; margin: 0 auto; padding: 0 2rem; }
+
+/* セクション共通 */
+.section { padding: 5rem 0; }
+.section-soft { background: var(--section-bg); }
+.section-head { text-align: center; margin-bottom: 3rem; }
+.section-head .en {
+  display: block; font-size: .8rem; letter-spacing: .25em;
+  color: var(--accent); font-weight: 700; text-transform: uppercase; margin-bottom: .5rem;
+}
+.section-head h2 {
+  font-family: var(--head);
+  font-size: clamp(1.6rem, 5vw, 2.4rem);
+  color: var(--primary); line-height: 1.4; word-break: keep-all;
+}
+.section-head p { color: var(--muted); margin-top: .8rem; font-size: .98rem; }
+
+/* ボタン */
+.btn-primary, .btn-outline {
+  display: inline-flex; align-items: center; justify-content: center; gap: .4em;
+  padding: .9em 2em; border-radius: 6px; font-weight: 700;
+  font-size: 1rem; transition: .2s; cursor: pointer; border: 2px solid transparent;
+}
+.btn-primary { background: var(--accent2); color: #fff; }
+.btn-primary:hover { background: var(--red-d); transform: translateY(-2px); }
+.btn-outline { background: transparent; color: #fff; border-color: rgba(255,255,255,.7); }
+.btn-outline:hover { background: rgba(255,255,255,.15); }
+
+/* ---------- ヘッダー／ナビ（共通土台） ---------- */
+.site-header {
+  position: sticky; top: 0; z-index: 50;
+  background: rgba(255,255,255,.96); backdrop-filter: blur(6px);
+  border-bottom: 1px solid var(--line);
+}
+.nav-inner { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.brand { display: flex; align-items: baseline; gap: .55rem; }
+.brand .logo { font-family: var(--head); font-weight: 700; font-size: 1.3rem; color: var(--primary); letter-spacing: .03em; }
+.brand .sub { font-size: .7rem; color: var(--muted); letter-spacing: .1em; }
+.nav-menu { display: flex; align-items: center; gap: 1.5rem; list-style: none; }
+.nav-menu a { font-size: .92rem; font-weight: 500; color: var(--ink); transition: .2s; }
+.nav-menu a:hover { color: var(--accent); }
+.nav-tel { font-weight: 700; color: var(--primary); font-size: .95rem; }
+.nav-cta { background: var(--accent2); color:#fff !important; padding: .55em 1.2em; border-radius: 6px; }
+.nav-cta:hover { background: var(--red-d); }
+.nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: .4rem; }
+.nav-toggle span { display: block; width: 26px; height: 2px; background: var(--primary); margin: 5px 0; transition: .3s; }
+
+/* ---------- フッター（共通） ---------- */
+.site-footer { background: var(--primary-d); color: #cfd8e8; padding: 3rem 0 2rem; }
+.footer-grid { display: flex; flex-wrap: wrap; gap: 2rem; justify-content: space-between; }
+.footer-brand .logo { font-family: var(--head); font-size: 1.35rem; color: #fff; font-weight: 700; }
+.footer-brand p { font-size: .85rem; margin-top: .6rem; color: #9fb0cc; }
+.footer-info { font-size: .9rem; line-height: 2; }
+.footer-info strong { color: #fff; }
+.footer-bottom { border-top: 1px solid rgba(255,255,255,.12); margin-top: 2rem; padding-top: 1.2rem; font-size: .8rem; color: #8696b5; text-align: center; }
+
+/* ---------- 事業内容カード（共通土台） ---------- */
+.svc-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem; }
+.svc-card { background: #fff; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; transition: .25s; }
+.svc-card:hover { transform: translateY(-4px); box-shadow: 0 14px 30px rgba(14,58,90,.12); }
+.svc-card .thumb { height: 190px; background-size: cover; background-position: center; }
+.svc-card .body { padding: 1.5rem; }
+.svc-card .num { font-size: .75rem; font-weight: 700; color: var(--accent); letter-spacing: .1em; }
+.svc-card h3 { font-family: var(--head); font-size: 1.18rem; color: var(--primary); margin: .3rem 0 .6rem; }
+.svc-card p { font-size: .93rem; color: var(--muted); }
+
+/* ---------- 実績バー（共通土台） ---------- */
+.stats-bar { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; }
+.stats-bar .stat { flex: 1 1 180px; text-align: center; padding: 1.2rem; }
+.stats-bar .stat .v { font-family: var(--head); font-size: clamp(1.8rem,5vw,2.6rem); font-weight: 700; line-height: 1.1; }
+.stats-bar .stat .l { font-size: .85rem; color: var(--muted); margin-top: .3rem; }
+
+/* ---------- サポート体制（導入前／受け入れ後 共通） ---------- */
+.feat-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.6rem; }
+.feat { background: #fff; border: 1px solid var(--line); border-radius: 14px; padding: 2rem 1.8rem; border-top: 4px solid var(--accent); }
+.feat .step { font-size: .72rem; font-weight: 700; letter-spacing: .12em; color: var(--accent); }
+.feat h3 { font-family: var(--head); color: var(--primary); font-size: 1.2rem; margin: .25rem 0 1rem; }
+.feat ul { list-style: none; }
+.feat li { position: relative; padding-left: 1.6rem; margin-bottom: .55rem; color: var(--muted); font-size: .94rem; }
+.feat li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--accent2); font-weight: 700; }
+
+/* ---------- 対応業種タグ（共通） ---------- */
+.tag-list { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; }
+.tag { background: #fff; border: 1px solid var(--line); color: var(--primary); padding: .5em 1.1em; border-radius: 999px; font-size: .9rem; font-weight: 500; }
+
+/* ---------- 対応国（共通） ---------- */
+.country-row { display: flex; flex-wrap: wrap; gap: 1.4rem; justify-content: center; }
+.country { flex: 1 1 240px; max-width: 320px; background:#fff; border:1px solid var(--line); border-radius: 14px; overflow:hidden; text-align:center; }
+.country .flag { height: 150px; background-size: cover; background-position: center; }
+.country .name { padding: 1rem; }
+.country .name b { font-family: var(--head); color: var(--primary); font-size: 1.1rem; }
+.country .name span { display:block; font-size:.82rem; color: var(--muted); margin-top:.2rem; }
+
+/* ---------- 会社概要テーブル（共通） ---------- */
+.info-table { width: 100%; border-collapse: collapse; }
+.info-table th, .info-table td { text-align: left; padding: 1rem .5rem; border-bottom: 1px solid var(--line); font-size: .95rem; vertical-align: top; }
+.info-table th { width: 30%; color: var(--primary); font-weight: 700; white-space: nowrap; }
+.info-table td { color: var(--muted); }
+
+/* ---------- お問い合わせCTA（共通） ---------- */
+.contact-cta { text-align: center; color: #fff; }
+.contact-cta h2 { font-family: var(--head); font-size: clamp(1.5rem,5vw,2.2rem); margin-bottom: 1rem; }
+.contact-cta p { margin-bottom: 2rem; opacity: .92; }
+.contact-cta .tel-big { font-family: var(--head); font-size: clamp(1.8rem,6vw,2.6rem); font-weight: 700; }
+.cta-btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+
+/* 背景色つきCTAセクション（背景画像＋暗幕を使う場合） */
+.cta-section { position: relative; padding: 5rem 0; background: var(--primary); }
+.cta-section.has-bg .cta-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.cta-section.has-bg .cta-overlay { position: absolute; inset: 0; background: linear-gradient(rgba(8,37,57,.85), rgba(8,37,57,.8)); }
+.cta-section .wrap { position: relative; z-index: 1; }
+
+/* =====================================================================
+   A案（t-a）王道・スタンダード … ネイビーを主役に、定番で安心感
+   ===================================================================== */
+.t-a { --primary: var(--navy); --primary-d: var(--navy-d); --accent: var(--blue); --accent2: var(--red); --section-bg: var(--soft); }
+.t-a .hero-a { background: linear-gradient(135deg, var(--navy) 0%, #16517d 60%, var(--blue) 130%); color: #fff; padding: 5.5rem 0; }
+.t-a .hero-a .en { letter-spacing: .25em; font-size: .8rem; opacity: .85; font-weight: 600; }
+.t-a .hero-a h1 { font-family: var(--head); font-size: clamp(1.9rem, 6vw, 3.4rem); line-height: 1.35; margin: 1rem 0 1.2rem; word-break: keep-all; }
+.t-a .hero-a h1 .mark { color: var(--gold); }
+.t-a .hero-a p.lead { font-size: clamp(.95rem,2.4vw,1.1rem); max-width: 660px; opacity: .95; }
+.t-a .hero-a .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+.t-a .stats-wrap { margin-top: 3rem; background: rgba(255,255,255,.08); border-radius: 12px; padding: 1rem; }
+.t-a .stats-bar .stat .v { color: #fff; }
+.t-a .stats-bar .stat .l { color: rgba(255,255,255,.8); }
+.t-a .svc-card .num { color: var(--blue); }
+
+/* =====================================================================
+   B案（t-b）FVバナー … 全画面ヒーロー＋明朝見出し。写真主役で洗練
+   ===================================================================== */
+.t-b { --primary: var(--navy-d); --primary-d: #061a29; --accent: var(--blue-l); --accent2: var(--red); --section-bg: #f5f8fb; --head: var(--serif); }
+.t-b .hero { position: relative; min-height: 82vh; display: flex; align-items: center; overflow: hidden; }
+.t-b .hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.t-b .hero-overlay { position: absolute; inset: 0; background: linear-gradient(rgba(6,22,38,.62), rgba(6,22,38,.48)); }
+.t-b .hero-content { position: relative; z-index: 1; color: #fff; }
+.t-b .hero-eyebrow { letter-spacing: .28em; font-size: .8rem; font-weight: 600; opacity: .9; }
+.t-b .hero h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(2.1rem, 7vw, 4.4rem); line-height: 1.3; margin: 1.1rem 0 1.3rem; text-shadow: 0 2px 18px rgba(0,0,0,.3); word-break: keep-all; }
+.t-b .hero-sub { font-size: clamp(.95rem,2.4vw,1.15rem); max-width: 640px; line-height: 2; opacity: .96; }
+.t-b .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2.2rem; }
+.t-b .stats-strip { background: var(--navy-d); color: #fff; padding: 2.4rem 0; }
+.t-b .stats-strip .stat .v { color: #fff; }
+.t-b .stats-strip .stat .l { color: rgba(255,255,255,.75); }
+.t-b .section-head h2 { font-family: var(--serif); }
+.t-b .svc-card { border-radius: 4px; }
+.t-b .svc-card h3 { font-family: var(--serif); }
+.t-b .feat { border-radius: 4px; }
+/* 理念メッセージ */
+.t-b .message { display: grid; grid-template-columns: 1fr 1.4fr; gap: 2.5rem; align-items: center; }
+.t-b .message .photo { border-radius: 4px; min-height: 320px; background-size: cover; background-position: center; }
+.t-b .message h2 { font-family: var(--serif); font-size: clamp(1.5rem,4.5vw,2.1rem); color: var(--primary); margin-bottom: 1.2rem; line-height: 1.5; }
+.t-b .message p { color: var(--muted); margin-bottom: 1rem; }
+.t-b .message .sign { font-family: var(--serif); color: var(--primary); margin-top: 1.4rem; }
+.t-b .message .sign b { font-size: 1.2rem; }
+
+/* =====================================================================
+   C案（t-c）アクセント … カラフルで元気。細めバナー帯＋CTA強調
+   ===================================================================== */
+.t-c { --primary: #12508a; --primary-d: #0d3a64; --accent: var(--blue); --accent2: var(--red); --section-bg: #fff8f1; }
+.t-c .accent-banner { position: relative; width: 100%; height: 220px; background-size: cover; background-position: center; }
+.t-c .accent-banner::after { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(18,80,138,.6), rgba(31,157,114,.4) 60%, rgba(240,138,36,.35)); }
+.t-c .accent-banner .cap { position: absolute; inset: 0; z-index: 1; display: flex; align-items: center; }
+.t-c .accent-banner .cap span { color:#fff; font-family: var(--head); font-weight: 700; font-size: clamp(1.1rem,3.5vw,1.8rem); text-shadow: 0 2px 10px rgba(0,0,0,.35); }
+.t-c .hero-c { background: linear-gradient(120deg, #12508a 0%, #1f9d72 55%, #f08a24 125%); color: #fff; padding: 4.5rem 0; text-align: center; }
+.t-c .hero-c .en { font-weight: 700; letter-spacing: .2em; font-size: .82rem; color: var(--gold); }
+.t-c .hero-c h1 { font-family: var(--head); font-size: clamp(1.9rem,6.5vw,3.4rem); line-height: 1.35; margin: 1rem 0 1.2rem; word-break: keep-all; }
+.t-c .hero-c p.lead { max-width: 680px; margin: 0 auto; opacity: .96; }
+.t-c .hero-c .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-top: 2rem; }
+.t-c .pills { display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; margin-top: 1.8rem; }
+.t-c .pills span { background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.4); padding: .4em 1em; border-radius: 999px; font-size: .85rem; }
+.t-c .svc-card { border: none; box-shadow: 0 8px 22px rgba(18,80,138,.1); border-top: 4px solid var(--accent2); }
+.t-c .svc-card:nth-child(2) { border-top-color: var(--blue); }
+.t-c .svc-card:nth-child(3) { border-top-color: var(--green); }
+.t-c .svc-card:nth-child(4) { border-top-color: var(--gold); }
+.t-c .feat:nth-child(2) { border-top-color: var(--green); }
+.t-c .svc-card .num { color: var(--accent2); }
+.t-c .tag { border-color: transparent; background: #fff; box-shadow: 0 3px 10px rgba(18,80,138,.08); }
+.t-c .cta-section.cta-warm { background: linear-gradient(120deg, var(--accent2), #f0683f); }
+
+/* =====================================================================
+   採用ページ（t-r）… 選定HPの雰囲気＝A案ネイビーに合わせた提案サンプル
+   ===================================================================== */
+.t-r { --primary: var(--navy); --primary-d: var(--navy-d); --accent: var(--blue); --accent2: var(--red); --section-bg: var(--soft); }
+.t-r .rec-hero { position: relative; min-height: 70vh; display: flex; align-items: center; overflow: hidden; }
+.t-r .rec-hero .hero-bg { position: absolute; inset: 0; background-size: cover; background-position: center; }
+.t-r .rec-hero .hero-overlay { position: absolute; inset: 0; background: linear-gradient(rgba(8,37,57,.7), rgba(14,58,90,.6)); }
+.t-r .rec-hero .hero-content { position: relative; z-index: 1; color: #fff; }
+.t-r .rec-hero h1 { font-family: var(--head); font-size: clamp(2rem,6.5vw,3.6rem); line-height: 1.35; margin-bottom: 1.2rem; word-break: keep-all; }
+.t-r .rec-hero p { max-width: 620px; opacity: .95; }
+.t-r .job-pills { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.8rem; }
+.t-r .job-pills span { background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.45); padding: .45em 1.1em; border-radius: 999px; font-size: .88rem; }
+.t-r .merit-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.6rem; }
+.t-r .merit { background:#fff; border:1px solid var(--line); border-radius:12px; padding:2rem 1.6rem; text-align:center; }
+.t-r .merit .ico { width:56px; height:56px; margin:0 auto 1rem; border-radius:50%; background:var(--soft); display:flex; align-items:center; justify-content:center; font-size:1.6rem; color:var(--accent); }
+.t-r .merit h3 { font-family: var(--head); color: var(--primary); font-size: 1.15rem; margin-bottom: .6rem; }
+.t-r .merit p { font-size: .9rem; color: var(--muted); }
+.t-r .voice-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.6rem; }
+.t-r .voice { background:#fff; border:1px solid var(--line); border-radius:12px; padding: 1.8rem; display:flex; gap:1.2rem; align-items:flex-start; }
+.t-r .voice .face { width: 64px; height: 64px; border-radius: 50%; background-size: cover; background-position: center; flex-shrink: 0; }
+.t-r .voice .who { font-weight: 700; color: var(--primary); font-size: .95rem; }
+.t-r .voice .role { font-size: .8rem; color: var(--accent); margin-bottom: .5rem; }
+.t-r .voice p { font-size: .9rem; color: var(--muted); }
+.t-r .sample-note { font-size: .78rem; color: var(--muted); text-align: center; margin-top: 1rem; }
+
+/* =====================================================================
+   レスポンシブ（全テーマ共通）
+   ===================================================================== */
+@media (max-width: 900px) {
+  .t-r .merit-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 768px) {
+  .wrap { padding: 0 1.2rem; }
+  .section { padding: 3.4rem 0; }
+  .nav-menu { display: none; }
+  .nav-toggle { display: block; }
+  .site-header.open .nav-menu {
+    display: flex; position: absolute; top: 68px; left: 0; right: 0;
+    flex-direction: column; gap: 0; background: #fff; border-bottom: 1px solid var(--line);
+    padding: .5rem 1.2rem 1.2rem; box-shadow: 0 12px 24px rgba(0,0,0,.08);
+  }
+  .site-header.open .nav-menu li { width: 100%; }
+  .site-header.open .nav-menu a { display: block; padding: .9rem 0; border-bottom: 1px solid var(--line); }
+  .site-header.open .nav-menu .nav-cta { display: inline-block; margin-top: .8rem; border: none; text-align: center; }
+
+  .svc-grid { grid-template-columns: 1fr; }
+  .feat-grid { grid-template-columns: 1fr; }
+  .t-b .hero { min-height: 68vh; }
+  .t-b .message { grid-template-columns: 1fr; }
+  .t-b .message .photo { min-height: 220px; }
+  .t-c .accent-banner { height: 140px; }
+  .t-r .rec-hero { min-height: 60vh; }
+  .t-r .voice-grid { grid-template-columns: 1fr; }
+  .footer-grid { flex-direction: column; gap: 1.6rem; }
+}
+@media (max-width: 400px) {
+  .btn-primary, .btn-outline { padding: .8em 1.4em; font-size: .95rem; }
+}
