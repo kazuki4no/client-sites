@@ -39,11 +39,13 @@ section{padding:5rem 0;}
 .btn-outline:hover{background:rgba(255,255,255,.14);}
 
 /* header */
-header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+header{position:sticky;top:0;z-index:50;background:#fff;backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
 .nav{display:flex;align-items:center;justify-content:space-between;height:68px;}
-.brand{display:flex;flex-direction:column;line-height:1.1;}
-.brand b{font-size:1.05rem;font-weight:900;color:var(--navy);letter-spacing:.02em;}
-.brand span{font-size:.62rem;letter-spacing:.18em;color:var(--sky);font-family:"Noto Serif JP",serif;}
+.brand{display:flex;align-items:center;gap:.6rem;}
+.brand img{height:46px;width:auto;display:block;}
+.brand-text{display:flex;flex-direction:column;line-height:1.15;}
+.brand-text b{font-size:1rem;font-weight:900;color:var(--navy);letter-spacing:.01em;}
+.brand-text small{font-size:.56rem;letter-spacing:.16em;color:var(--sky);font-family:"Noto Serif JP",serif;}
 .nav ul{display:flex;gap:1.6rem;list-style:none;align-items:center;}
 .nav ul a{font-size:.9rem;font-weight:500;color:var(--ink);transition:.15s;}
 .nav ul a:hover{color:var(--accent);}
@@ -51,22 +53,20 @@ header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.95);backdro
 .nav .cta:hover{background:var(--accent);}
 .burger{display:none;flex-direction:column;gap:5px;background:none;border:0;cursor:pointer;padding:6px;}
 .burger span{width:26px;height:2px;background:var(--navy);transition:.2s;}
+.mobile-menu{display:none;}
 
-/* hero */
-.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 55%,var(--sky) 130%);color:#fff;position:relative;overflow:hidden;padding:0;}
-.hero::after{content:"";position:absolute;right:-10%;top:-30%;width:60%;height:160%;background:radial-gradient(closest-side,rgba(62,143,207,.35),transparent);pointer-events:none;}
-.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:2.5rem;align-items:center;padding:4.5rem 0;}
-.hero-eyebrow{font-family:"Noto Serif JP",serif;letter-spacing:.22em;font-size:.8rem;color:#9FD0F2;margin-bottom:1.1rem;}
-.hero h1{font-size:clamp(1.9rem,5.6vw,3.3rem);font-weight:900;line-height:1.32;letter-spacing:.01em;margin-bottom:1.2rem;}
+/* hero (full-bleed banner) */
+.hero{position:relative;min-height:84vh;display:flex;align-items:flex-end;color:#fff;overflow:hidden;padding:0;background:var(--navy);}
+.hero-bg{position:absolute;inset:0;background-image:url('images/hero.jpg');background-size:cover;background-position:center;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,24,46,.9) 0%,rgba(8,24,46,.55) 36%,rgba(8,24,46,.18) 60%,rgba(8,24,46,0) 82%);}
+.hero-content{position:relative;z-index:1;width:100%;padding:0 0 3.6rem;}
+.hero-eyebrow{font-family:"Noto Serif JP",serif;letter-spacing:.22em;font-size:.8rem;color:#BFE0F7;margin-bottom:1rem;text-shadow:0 2px 12px rgba(0,0,0,.4);}
+.hero h1{font-size:clamp(1.7rem,5.2vw,3.3rem);font-weight:900;line-height:1.36;letter-spacing:.01em;margin-bottom:1.1rem;text-shadow:0 2px 18px rgba(0,0,0,.5);}
 .hero h1 em{font-style:normal;color:var(--accent);}
-.hero p.sub{font-size:1.02rem;color:#D8E6F4;margin-bottom:1.8rem;max-width:30em;}
-.pills{display:flex;flex-wrap:wrap;gap:.55rem;margin-bottom:2rem;}
-.pill{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:.82rem;font-weight:500;padding:.4rem 1rem;border-radius:50px;}
+.hero p.sub{font-size:1.02rem;color:#EAF2FA;margin-bottom:1.6rem;max-width:33em;text-shadow:0 1px 10px rgba(0,0,0,.5);}
+.pills{display:flex;flex-wrap:wrap;gap:.55rem;margin-bottom:1.8rem;}
+.pill{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);color:#fff;font-size:.82rem;font-weight:500;padding:.4rem 1rem;border-radius:50px;backdrop-filter:blur(3px);}
 .hero-cta{display:flex;flex-wrap:wrap;gap:.9rem;}
-.hero-photo{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/5;box-shadow:0 24px 50px rgba(0,0,0,.35);}
-.hero-photo img{width:100%;height:100%;object-fit:cover;}
-.hero-badge{position:absolute;left:1rem;bottom:1rem;background:rgba(12,35,64,.85);backdrop-filter:blur(4px);color:#fff;padding:.7rem 1.1rem;border-radius:12px;font-size:.8rem;line-height:1.5;border:1px solid rgba(255,255,255,.18);}
-.hero-badge b{color:var(--accent);font-size:1.4rem;display:block;font-weight:900;}
 
 /* stat strip */
 .stats{background:var(--navy);color:#fff;padding:0;}
@@ -141,8 +141,8 @@ footer{background:var(--navy);color:#9FB4CC;padding:3rem 0 2rem;border-top:1px s
 .foot-copy{margin-top:2rem;font-size:.74rem;text-align:center;border-top:1px solid rgba(255,255,255,.1);padding-top:1.4rem;}
 
 @media(max-width:880px){
-  .hero-grid{grid-template-columns:1fr;gap:2rem;padding:3rem 0;}
-  .hero-photo{aspect-ratio:16/11;max-width:480px;}
+  .hero{min-height:74vh;}
+  .hero-content{padding-bottom:2.8rem;}
   .voice-card{grid-template-columns:1fr;}
   .voice-photo img{min-height:300px;}
   .qa{padding:1.6rem;}
@@ -155,6 +155,19 @@ footer{background:var(--navy);color:#9FB4CC;padding:3rem 0 2rem;border-top:1px s
   .mobile-menu a{padding:.7rem 0;border-bottom:1px solid var(--line);font-weight:500;}
   .mobile-menu a.cta-m{background:var(--accent);color:#fff;text-align:center;border-radius:50px;margin-top:.8rem;border:0;font-weight:700;}
   section{padding:3.4rem 0;}
+  .nav{height:60px;}
+  .brand img{height:36px;}
+  .brand-text b{font-size:.86rem;}
+  .brand-text small{font-size:.5rem;letter-spacing:.12em;}
+  .hero{min-height:78vh;}
+  .hero-bg{background-image:url('images/hero-sp.jpg');background-position:center;}
+  .hero-overlay{background:linear-gradient(to top,rgba(8,24,46,.9) 0%,rgba(8,24,46,.66) 46%,rgba(8,24,46,.4) 72%,rgba(8,24,46,.2) 100%);}
+  .hero-content{padding-bottom:2.4rem;}
+  .hero h1{font-size:1.72rem;line-height:1.5;margin-bottom:1rem;}
+  .hero p.sub{font-size:.95rem;line-height:1.85;margin-bottom:1.4rem;}
+  .pills{gap:.5rem;margin-bottom:1.5rem;}
+  .pill{font-size:.8rem;padding:.38rem .9rem;}
+  .hero-cta .btn-primary,.hero-cta .btn-outline{width:100%;justify-content:center;}
   .merit-grid{grid-template-columns:1fr;}
   .work-grid{grid-template-columns:1fr;}
   .req-table th{width:42%;padding:.85rem 1rem;font-size:.85rem;}
@@ -163,6 +176,10 @@ footer{background:var(--navy);color:#9FB4CC;padding:3rem 0 2rem;border-top:1px s
 }
 @media(max-width:420px){
   .wrap{padding:0 1.1rem;}
+  .brand-text small{display:none;}
+  .brand-text b{font-size:.82rem;}
+  .hero h1{font-size:1.55rem;line-height:1.5;}
+  .hero p.sub{font-size:.92rem;}
   .req-table th{display:block;width:100%;border-bottom:0;padding-bottom:.2rem;}
   .req-table td{display:block;width:100%;padding-top:.2rem;padding-bottom:.9rem;}
 }
@@ -173,8 +190,11 @@ footer{background:var(--navy);color:#9FB4CC;padding:3rem 0 2rem;border-top:1px s
 <header>
   <div class="wrap nav">
     <a href="#" class="brand">
-      <b>スカイカーゴビジネス</b>
-      <span>SKY CARGO BUSINESS INC.</span>
+      <img src="images/logo-mark.png" alt="SCB">
+      <span class="brand-text">
+        <b>株式会社スカイカーゴビジネス</b>
+        <small>SKY CARGO BUSINESS INC.</small>
+      </span>
     </a>
     <ul>
       <li><a href="#merits">働く魅力</a></li>
@@ -196,26 +216,22 @@ footer{background:var(--navy);color:#9FB4CC;padding:3rem 0 2rem;border-top:1px s
 
 <!-- HERO -->
 <section class="hero">
-  <div class="wrap hero-grid">
-    <div class="hero-text">
-      <p class="hero-eyebrow">RECRUIT 2026 — 成田・羽田空港</p>
-      <h1>世界を結ぶ信頼は、<br><em>あなたの一歩</em>から始まる。</h1>
-      <p class="sub">医療品も、生活用品も、毎日の暮らしを支える航空貨物。その最前線で「安全」を届ける仕事です。社員のほとんどが業界未経験スタート。専門用語も技術も、先輩が丁寧にお伝えします。</p>
-      <div class="pills">
-        <span class="pill">技術職（アウトサイド）</span>
-        <span class="pill">事務職（インサイド）</span>
-        <span class="pill">未経験歓迎</span>
-        <span class="pill">新卒・中途</span>
-      </div>
-      <div class="hero-cta">
-        <a href="#entry" class="btn-primary">職場見学・応募する →</a>
-        <a href="#work" class="btn-outline">仕事を見る</a>
-      </div>
+  <!-- ヒーロー背景：ブランドバナー写真 images/hero.jpg -->
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="wrap hero-content">
+    <p class="hero-eyebrow">RECRUIT 2026 — 成田・羽田空港</p>
+    <h1>世界を結ぶ信頼は、<br><em>あなたの一歩</em>から始まる。</h1>
+    <p class="sub">医療品も、生活用品も、毎日の暮らしを支える航空貨物。その最前線で「安全」を届ける仕事です。社員のほとんどが業界未経験スタート。専門用語も技術も、先輩が丁寧にお伝えします。</p>
+    <div class="pills">
+      <span class="pill">技術職（アウトサイド）</span>
+      <span class="pill">事務職（インサイド）</span>
+      <span class="pill">未経験歓迎</span>
+      <span class="pill">新卒・中途</span>
     </div>
-    <div class="hero-photo">
-      <!-- 既存サイトの作業写真、または添付の現場写真を images/hero.jpg として保存して差し替え -->
-      <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=900&h=1100&fit=crop&q=80" alt="航空貨物の現場で働くスタッフ">
-      <div class="hero-badge"><b>85名</b>世界の輸出入を支える仲間たち</div>
+    <div class="hero-cta">
+      <a href="#entry" class="btn-primary">職場見学・応募する →</a>
+      <a href="#work" class="btn-outline">仕事を見る</a>
     </div>
   </div>
 </section>
@@ -226,7 +242,7 @@ footer{background:var(--navy);color:#9FB4CC;padding:3rem 0 2rem;border-top:1px s
     <div class="stats-inner">
       <div class="stat"><b>85<small>名</small></b><span>従業員数（2026年1月）</span></div>
       <div class="stat"><b>2010<small>年</small></b><span>設立／成長企業</span></div>
-      <div class="stat"><b>2<small>拠点</small></b><span>成田空港・羽田空港</span></div>
+      <div class="stat"><b>6<small>拠点</small></b><span>成田空港・羽田空港</span></div>
       <div class="stat"><b>ほぼ<small>全員</small></b><span>未経験スタート</span></div>
     </div>
   </div>
@@ -267,8 +283,8 @@ footer{background:var(--navy);color:#9FB4CC;padding:3rem 0 2rem;border-top:1px s
     <div class="work-grid">
       <div class="work-card">
         <div class="ph">
-          <!-- 既存サイト/パンフのブレイクダウン作業写真を images/work1.jpg に差し替え -->
-          <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=700&h=440&fit=crop&q=80" alt="輸入貨物ブレイクダウン業務">
+          <!-- 輸入インタクト（フォークリフト＋誘導者）の実写真 images/work1.jpg -->
+          <img src="images/work1.jpg" alt="輸入貨物ブレイクダウン業務">
         </div>
         <div class="body">
           <span class="tag">技術職</span>
@@ -278,8 +294,8 @@ footer{background:var(--navy);color:#9FB4CC;padding:3rem 0 2rem;border-top:1px s
       </div>
       <div class="work-card">
         <div class="ph">
-          <!-- 既存サイト/パンフのビルドアップ作業写真を images/work2.jpg に差し替え -->
-          <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=700&h=440&fit=crop&q=80" alt="輸出貨物ビルドアップ業務">
+          <!-- 輸出ビルドアップ（積付け貨物）の実写真 images/work2.jpg -->
+          <img src="images/work2.jpg" alt="輸出貨物ビルドアップ業務">
         </div>
         <div class="body">
           <span class="tag">技術職</span>
@@ -289,8 +305,8 @@ footer{background:var(--navy);color:#9FB4CC;padding:3rem 0 2rem;border-top:1px s
       </div>
       <div class="work-card">
         <div class="ph">
-          <!-- 既存サイト/パンフの事務作業写真を images/work3.jpg に差し替え -->
-          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=700&h=440&fit=crop&q=80" alt="インサイド業務">
+          <!-- インサイド（PC入力・事務）の実写真 images/work3.jpg -->
+          <img src="images/work3.jpg" alt="インサイド業務">
         </div>
         <div class="body">
           <span class="tag">事務職</span>
@@ -300,8 +316,8 @@ footer{background:var(--navy);color:#9FB4CC;padding:3rem 0 2rem;border-top:1px s
       </div>
       <div class="work-card">
         <div class="ph">
-          <!-- パンフの貨物確認/バーコード読み取り写真を images/work4.jpg に差し替え -->
-          <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=700&h=440&fit=crop&q=80" alt="貨物の確認作業">
+          <!-- 安全第一のチーム作業の実写真 images/work4.jpg -->
+          <img src="images/work4.jpg" alt="航空貨物のチーム作業">
         </div>
         <div class="body">
           <span class="tag">チームワーク</span>
@@ -345,7 +361,7 @@ footer{background:var(--navy);color:#9FB4CC;padding:3rem 0 2rem;border-top:1px s
       <tr><th>募集職種</th><td>技術職（アウトサイド／航空貨物の作業全般）<br>事務職（インサイド／PC入力・事務全般）</td></tr>
       <tr><th>雇用形態</th><td>正社員</td></tr>
       <tr><th>募集人員</th><td>10名</td></tr>
-      <tr><th>給与（新卒）</th><td>技術職：月給 <b>201,588円</b>（基本給135,632円＋諸手当65,956円＋定額残業代）<br>事務職：月給 <b>211,280円</b>（基本給164,000円＋諸手当47,280円）<br><span style="font-size:.82rem;color:#9FB4CC;">諸手当：資格・スキル・食事・住宅・職能・シフト手当</span></td></tr>
+      <tr><th>給与（新卒）</th><td>技術職：月給 <b>201,588円</b>（基本給135,632円＋諸手当65,956円）<br>事務職：月給 <b>211,280円</b>（基本給164,000円＋諸手当47,280円）<br><span style="font-size:.82rem;color:#9FB4CC;">諸手当：資格・スキル・食事・住宅・職能・シフト手当</span></td></tr>
       <tr><th>給与（中途・経験者例）</th><td>成田地区 <b>260,000円〜</b>／羽田地区 <b>280,000円〜</b>（フォークリフト経験者・各種手当含む）<br><span style="font-size:.82rem;color:#9FB4CC;">経験値を考慮して待遇を検討します。未経験の方もご相談ください。</span></td></tr>
       <tr><th>諸手当</th><td>役職手当・家族手当（扶養家族ひとり5,000円／上限有）・通勤手当（規定あり）・残業手当・深夜手当</td></tr>
       <tr><th>賞与・昇給</th><td>賞与 年2回（7月・12月）／昇給 年1回（10月）</td></tr>
