@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>合同会社NextCore | 業務の芯に、AIを実装する。</title>
+<meta name="description" content="合同会社NextCoreは、AI電話受付、Web/LINE導線、業務自動化、在宅薬局クラウドなどを現場運用までつなぐAI実装スタジオです。千葉市中央区。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{max-width:100%;overflow-x:hidden;}
+img{max-width:100%;height:auto;display:block;}
+:root{
+  --navy:#0a1f3d;
+  --navy2:#102a48;
+  --blue:#2563eb;
+  --cyan:#0ea5c4;
+  --light:#f3f7fb;
+  --gray:#5b6b7f;
+  --line:#e2e8f0;
+}
+body{font-family:"Noto Sans JP",sans-serif;color:var(--navy2);line-height:1.8;background:#fff;}
+a{text-decoration:none;color:inherit;}
+.container{max-width:1140px;margin:0 auto;padding:0 1.5rem;}
+.section{padding:5rem 0;}
+.section-head{text-align:center;margin-bottom:3rem;}
+.section-head .en{display:block;color:var(--cyan);font-weight:700;letter-spacing:.15em;font-size:.85rem;margin-bottom:.5rem;}
+.section-head h2{font-size:clamp(1.6rem,5vw,2.4rem);font-weight:900;color:var(--navy);}
+.section-head p{color:var(--gray);margin-top:.8rem;}
+
+/* Header */
+header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);}
+.nav{display:flex;align-items:center;justify-content:space-between;height:72px;}
+.logo{display:flex;align-items:center;gap:.6rem;font-weight:900;font-size:1.1rem;color:var(--navy);}
+.logo .mark{width:34px;height:34px;border-radius:8px;background:linear-gradient(135deg,var(--blue),var(--cyan));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:.95rem;}
+.nav ul{display:flex;gap:2rem;list-style:none;font-weight:500;font-size:.95rem;}
+.nav ul a{transition:color .2s;}
+.nav ul a:hover{color:var(--blue);}
+.nav-cta{display:inline-block;background:var(--navy);color:#fff;padding:.6rem 1.3rem;border-radius:999px;font-weight:700;font-size:.9rem;}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px;}
+.hamburger span{width:26px;height:3px;background:var(--navy);border-radius:2px;transition:.3s;}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,#12365e 100%);color:#fff;padding:5rem 0;position:relative;overflow:hidden;}
+.hero::after{content:"";position:absolute;right:-120px;top:-120px;width:380px;height:380px;border-radius:50%;background:radial-gradient(circle,rgba(14,165,196,.35),transparent 70%);}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:3rem;align-items:center;position:relative;z-index:1;}
+.hero-eyebrow{color:var(--cyan);font-weight:700;letter-spacing:.1em;font-size:.9rem;margin-bottom:1rem;}
+.hero h1{font-size:clamp(1.8rem,5.5vw,3rem);font-weight:900;line-height:1.45;margin-bottom:1.2rem;}
+.hero h1 .hl{color:var(--cyan);}
+.hero p.lead{font-size:1.02rem;color:#cdddf0;margin-bottom:2rem;}
+.hero-cta{display:flex;flex-wrap:wrap;gap:1rem;}
+.btn-primary{display:inline-block;background:var(--cyan);color:#fff;padding:.9rem 1.8rem;border-radius:999px;font-weight:700;transition:transform .2s,box-shadow .2s;box-shadow:0 8px 24px rgba(14,165,196,.35);}
+.btn-primary:hover{transform:translateY(-2px);}
+.btn-outline{display:inline-block;border:2px solid rgba(255,255,255,.6);color:#fff;padding:.9rem 1.8rem;border-radius:999px;font-weight:700;transition:.2s;}
+.btn-outline:hover{background:#fff;color:var(--navy);}
+.hero-img{border-radius:16px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.35);}
+.hero-img img{width:100%;height:340px;object-fit:cover;}
+.hero-foot{margin-top:2.5rem;display:flex;flex-wrap:wrap;gap:1.6rem;font-size:.82rem;color:#9db6d2;position:relative;z-index:1;}
+
+/* Stats */
+.stats{background:var(--light);}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+.stat{background:#fff;border-radius:14px;padding:2rem 1rem;text-align:center;box-shadow:0 4px 18px rgba(10,37,64,.06);}
+.stat .num{font-size:clamp(1.6rem,4.5vw,2.3rem);font-weight:900;color:var(--blue);line-height:1.2;}
+.stat .num small{font-size:.95rem;}
+.stat .label{color:var(--gray);font-size:.88rem;margin-top:.4rem;}
+
+/* Services */
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem;}
+.svc-card{border:1px solid var(--line);border-radius:16px;padding:1.8rem 1.5rem;transition:transform .25s,box-shadow .25s;background:#fff;}
+.svc-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(10,37,64,.12);}
+.svc-card .num{color:var(--cyan);font-weight:900;font-size:.85rem;letter-spacing:.1em;margin-bottom:.8rem;}
+.svc-card h3{font-size:1.08rem;font-weight:900;color:var(--navy);margin-bottom:.6rem;}
+.svc-card p{color:var(--gray);font-size:.9rem;}
+
+/* Flow */
+.flow-list{display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem;counter-reset:flow;}
+.flow-step{background:var(--light);border-radius:14px;padding:1.8rem 1.5rem;position:relative;}
+.flow-step::before{counter-increment:flow;content:counter(flow);position:absolute;top:-14px;left:1.5rem;width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:.95rem;}
+.flow-step h3{font-size:1.02rem;font-weight:900;color:var(--navy);margin:.6rem 0 .5rem;}
+.flow-step p{color:var(--gray);font-size:.88rem;}
+
+/* Features */
+.features{background:var(--navy);color:#fff;}
+.features .section-head h2{color:#fff;}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+.feat{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:2rem;}
+.feat .ic{width:54px;height:54px;border-radius:12px;background:linear-gradient(135deg,var(--blue),var(--cyan));display:flex;align-items:center;justify-content:center;font-size:1.5rem;margin-bottom:1rem;}
+.feat h3{font-size:1.1rem;font-weight:700;margin-bottom:.6rem;}
+.feat p{color:#bcd0e6;font-size:.92rem;}
+
+/* Works */
+.works-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;}
+.work-card{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#fff;transition:transform .25s,box-shadow .25s;}
+.work-card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(10,37,64,.12);}
+.work-card .thumb{height:180px;overflow:hidden;}
+.work-card .thumb img{width:100%;height:100%;object-fit:cover;}
+.work-card .body{padding:1.4rem 1.5rem;}
+.work-card .tag{display:inline-block;background:var(--light);color:var(--blue);font-weight:700;font-size:.75rem;padding:.3rem .8rem;border-radius:999px;margin-bottom:.7rem;}
+.work-card h3{font-size:1.05rem;font-weight:900;color:var(--navy);margin-bottom:.5rem;}
+.work-card p{color:var(--gray);font-size:.88rem;}
+
+/* Company */
+.company-table{max-width:760px;margin:0 auto;}
+.company-table table{width:100%;border-collapse:collapse;}
+.company-table th{text-align:left;padding:1rem;border-bottom:1px solid var(--line);width:30%;color:var(--navy);font-size:.95rem;}
+.company-table td{padding:1rem;border-bottom:1px solid var(--line);color:var(--gray);font-size:.95rem;}
+
+/* CTA band */
+.cta-band{background:linear-gradient(135deg,var(--blue),var(--cyan));color:#fff;text-align:center;}
+.cta-band h2{font-size:clamp(1.5rem,5vw,2.2rem);font-weight:900;margin-bottom:1rem;}
+.cta-band p{margin-bottom:2rem;color:#eaf8ff;}
+.cta-band .btn-primary{background:#fff;color:var(--blue);box-shadow:none;}
+
+/* Contact */
+.contact-box{max-width:640px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:16px;padding:2.5rem;box-shadow:0 12px 40px rgba(10,37,64,.08);}
+.field{margin-bottom:1.2rem;}
+.field label{display:block;font-weight:700;margin-bottom:.4rem;font-size:.92rem;}
+.field input,.field textarea,.field select{width:100%;border:1px solid var(--line);border-radius:10px;padding:.8rem 1rem;font-family:inherit;font-size:1rem;}
+.field textarea{min-height:130px;resize:vertical;}
+.contact-box .btn-primary{width:100%;text-align:center;border:none;cursor:pointer;font-size:1rem;box-shadow:none;}
+
+/* Footer */
+footer{background:var(--navy2);color:#9fb3c8;padding:3rem 0 1.5rem;}
+.foot-grid{display:flex;flex-wrap:wrap;justify-content:space-between;gap:2rem;margin-bottom:2rem;}
+.foot-logo{color:#fff;font-weight:900;font-size:1.2rem;margin-bottom:.6rem;}
+.foot-links{display:flex;flex-wrap:wrap;gap:1.5rem;}
+.foot-links a:hover{color:#fff;}
+.copy{text-align:center;border-top:1px solid rgba(255,255,255,.1);padding-top:1.5rem;font-size:.85rem;}
+
+@media(max-width:900px){
+  .svc-grid{grid-template-columns:1fr 1fr;}
+  .flow-list{grid-template-columns:1fr 1fr;}
+  .works-grid{grid-template-columns:1fr;}
+}
+@media(max-width:768px){
+  .nav ul,.nav-cta{display:none;}
+  .hamburger{display:flex;}
+  .nav.open ul{display:flex;flex-direction:column;position:absolute;top:72px;left:0;right:0;background:#fff;border-bottom:1px solid var(--line);padding:1rem 1.5rem;gap:1rem;z-index:200;}
+  .nav.open .nav-cta{display:inline-block;position:absolute;top:auto;margin-top:.5rem;left:1.5rem;right:1.5rem;text-align:center;}
+  .hero-grid{grid-template-columns:1fr;gap:2rem;}
+  .hero-img img{height:240px;}
+  .hero-foot{gap:.9rem;}
+  .stats-grid{grid-template-columns:1fr 1fr;}
+  .svc-grid,.feat-grid,.flow-list{grid-template-columns:1fr;}
+  .section{padding:3.5rem 0;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="container">
+    <nav class="nav" id="nav">
+      <a href="#" class="logo"><span class="mark">N</span>合同会社NextCore</a>
+      <ul>
+        <li><a href="#service">サービス</a></li>
+        <li><a href="#works">実装例</a></li>
+        <li><a href="#company">会社概要</a></li>
+        <li><a href="recruit.html">採用情報</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
+      </ul>
+      <a href="#contact" class="nav-cta">相談する</a>
+      <button class="hamburger" id="hamburger" aria-label="メニュー">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <p class="hero-eyebrow">NextCore — AI Implementation Studio</p>
+        <h1>業務の芯に、<br><span class="hl">AIを実装する。</span></h1>
+        <p class="lead">電話、LINE、紙、Web、確認フロー。すでに現場で回っている手順を観察し、人が確認する地点を残したまま、止まらない仕組みとして組み直します。派手なAIではなく、毎日使われるAIを作ります。</p>
+        <div class="hero-cta">
+          <a href="#service" class="btn-primary">サービスを見る</a>
+          <a href="#contact" class="btn-outline">業務実装を相談する</a>
+        </div>
+        <div class="hero-foot">
+          <span>設立 2026年6月2日</span>
+          <span>法人番号 9040003030197</span>
+          <span>千葉市中央区</span>
+        </div>
+      </div>
+      <div class="hero-img">
+        <!-- 元画像URL: https://nextcore-tokyo.com/assets/ai-reception.png（AI電話受付プロトタイプ画面） ／ 保存先: images/hero.jpg -->
+        <img src="https://loremflickr.com/900/700/ai,technology,office" alt="AI実装のイメージ">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="section stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat"><div class="num">24<small>h以内</small></div><div class="label">初回返信目安</div></div>
+      <div class="stat"><div class="num">8<small>領域</small></div><div class="label">AI・Web・自動化を横断</div></div>
+      <div class="stat"><div class="num">¥75,000<small>〜</small></div><div class="label">AI伴走支援 月額</div></div>
+      <div class="stat"><div class="num">千葉</div><div class="label">現場に近い拠点</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Services -->
+<section class="section" id="service">
+  <div class="container">
+    <div class="section-head">
+      <span class="en">SERVICE</span>
+      <h2>事業内容</h2>
+      <p>ページだけ、AIだけでは終わらせない。誰が確認し、何を保存し、どこへ通知するかまで含めて実装します。</p>
+    </div>
+    <div class="svc-grid">
+      <div class="svc-card">
+        <div class="num">01</div>
+        <h3>AI電話受付・問い合わせ整理</h3>
+        <p>予約希望、変更、キャンセル、折り返し依頼を聞き取り、担当者が確認できるキューへつなぎます。</p>
+      </div>
+      <div class="svc-card">
+        <div class="num">02</div>
+        <h3>HP・LP制作／改善</h3>
+        <p>会社サイト、サービスLP、採用ページを、問い合わせ導線と運用まで含めて作ります。</p>
+      </div>
+      <div class="svc-card">
+        <div class="num">03</div>
+        <h3>LINEステップ・LINE導線構築</h3>
+        <p>リッチメニュー、FAQ、予約前後の案内、アフターケアをつなぎ、問い合わせの迷いを減らします。</p>
+      </div>
+      <div class="svc-card">
+        <div class="num">04</div>
+        <h3>通知・集計・帳票下書き</h3>
+        <p>Google Workspace、GAS、チャット通知、各種SaaSを連携し、転記と確認漏れを減らします。</p>
+      </div>
+      <div class="svc-card">
+        <div class="num">05</div>
+        <h3>在宅薬局業務管理クラウド</h3>
+        <p>在宅業務に特化した管理システム。訪問予定、配送、履歴、請求回収を一元管理します。</p>
+      </div>
+      <div class="svc-card">
+        <div class="num">06</div>
+        <h3>AI伴走支援・社内AI導入支援</h3>
+        <p>社内AI秘書、人脈・案件管理、資料作成、タスク整理を、月額75,000円から組み込みます。</p>
+      </div>
+      <div class="svc-card">
+        <div class="num">07</div>
+        <h3>AIエージェント導入支援</h3>
+        <p>問い合わせ、資料作成、定期レポート、監視、ナレッジ検索を、人の確認つきで動かします。</p>
+      </div>
+      <div class="svc-card">
+        <div class="num">08</div>
+        <h3>順番待ちボット構築</h3>
+        <p>受付、待ち状況、呼び出し、キャンセル、スタッフ管理画面を現場の流れに合わせて作ります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Flow -->
+<section class="section" style="background:var(--light);" id="process">
+  <div class="container">
+    <div class="section-head">
+      <span class="en">PROCESS</span>
+      <h2>まず一つの業務を動かす。そこから広げる。</h2>
+      <p>大きな構想より、現場で確実に回る一歩から。効果が見えてから広げます。</p>
+    </div>
+    <div class="flow-list">
+      <div class="flow-step"><h3>業務棚卸し</h3><p>現場の流れ、判断者、個人情報、既存ツール、止まりやすい箇所を確認します。</p></div>
+      <div class="flow-step"><h3>小さく試作</h3><p>AI受付、LP、LINE導線、通知、帳票下書きなど、効果が見えやすい部分から作ります。</p></div>
+      <div class="flow-step"><h3>現場検証</h3><p>実運用に近い形で試し、AIが出す内容と人が確認する場所を調整します。</p></div>
+      <div class="flow-step"><h3>運用定着</h3><p>マニュアル、権限、保守、改善サイクルを整え、担当者が引き継げる形にします。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="section features">
+  <div class="container">
+    <div class="section-head">
+      <span class="en">STRENGTH</span>
+      <h2>選ばれる理由</h2>
+    </div>
+    <div class="feat-grid">
+      <div class="feat">
+        <div class="ic">🔎</div>
+        <h3>現場観察からはじめる</h3>
+        <p>何をAIに任せるかより先に、誰がどこで止まっているかを読み解きます。</p>
+      </div>
+      <div class="feat">
+        <div class="ic">🧭</div>
+        <h3>人の確認地点を残す設計</h3>
+        <p>フォーム、通知先、確認地点、記録先、戻し方まで、責任の置き場所を決めてから動かします。</p>
+      </div>
+      <div class="feat">
+        <div class="ic">🏥</div>
+        <h3>医療・介護に近い現場理解</h3>
+        <p>在宅薬局クラウドなど、機微情報を扱う現場での知見を活かし、安全な運用まで設計します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Works -->
+<section class="section" id="works">
+  <div class="container">
+    <div class="section-head">
+      <span class="en">WORKS</span>
+      <h2>公開中・開発中のテーマ</h2>
+      <p>数字を盛るより、何を作ったか、どこまで触ったか、どの運用に接続したかを具体的に。</p>
+    </div>
+    <div class="works-grid">
+      <div class="work-card">
+        <div class="thumb">
+          <!-- 元画像URL: https://nextcore-tokyo.com/assets/ai-reception.png ／ 保存先: images/work-ai-reception.jpg -->
+          <img src="https://loremflickr.com/700/500/phone,ai,call" alt="AI電話受付のプロトタイプ画面">
+        </div>
+        <div class="body">
+          <span class="tag">開発中</span>
+          <h3>AI電話受付と担当者確認フロー</h3>
+          <p>聞き取り、要件分類、確認待ちキュー、履歴整理までを一連で設計。</p>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="thumb">
+          <!-- 元画像URL: https://nextcore-tokyo.com/assets/workflow.png ／ 保存先: images/work-flow.jpg -->
+          <img src="https://loremflickr.com/700/500/workflow,diagram,business" alt="業務フロー整理のプロトタイプ図">
+        </div>
+        <div class="body">
+          <span class="tag">試作中</span>
+          <h3>業務フロー整理</h3>
+          <p>入口、通知、記録、差し戻し、改善ポイントを見える化。</p>
+        </div>
+      </div>
+      <div class="work-card">
+        <div class="thumb">
+          <!-- 元画像URL: https://nextcore-tokyo.com/assets/consulting.png ／ 保存先: images/work-consulting.jpg -->
+          <img src="https://loremflickr.com/700/500/consulting,meeting" alt="WebやLINE導線を見直しているイメージ">
+        </div>
+        <div class="body">
+          <span class="tag">公開中</span>
+          <h3>LINE導線と案内ページ更新</h3>
+          <p>料金案内、FAQ、予約前後の導線を調整し、問い合わせの迷いを減らす。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA band -->
+<section class="section cta-band">
+  <div class="container">
+    <h2>相談内容がまとまっていなくても、最初の1業務から整理します。</h2>
+    <p>今止まっている作業、改善したい問い合わせ導線、AIや自動化で試したいことを送ってください。</p>
+    <a href="#contact" class="btn-primary">無料で相談する</a>
+  </div>
+</section>
+
+<!-- Company -->
+<section class="section" id="company">
+  <div class="container">
+    <div class="section-head">
+      <span class="en">COMPANY</span>
+      <h2>会社概要</h2>
+    </div>
+    <div class="company-table">
+      <table>
+        <tbody>
+          <tr><th>商号</th><td>合同会社NextCore</td></tr>
+          <tr><th>代表</th><td>加藤 琢也</td></tr>
+          <tr><th>設立</th><td>2026年6月2日</td></tr>
+          <tr><th>法人番号</th><td>9040003030197</td></tr>
+          <tr><th>本店</th><td>千葉県千葉市中央区松波一丁目18番13号 ROCKY松波B102</td></tr>
+          <tr><th>事業内容</th><td>ソフトウェア開発、クラウドサービスの企画・開発・販売・保守、ITコンサルティング、Web制作、LINE導線整備、業務自動化支援</td></tr>
+          <tr><th>連絡先</th><td>takuyakatou@nextcore-tokyo.com</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section class="section stats" id="contact">
+  <div class="container">
+    <div class="section-head">
+      <span class="en">CONTACT</span>
+      <h2>お問い合わせ</h2>
+      <p>初回返信目安は営業日24時間以内です。患者情報・利用者情報・パスワードなど機微情報は入力しないでください。</p>
+    </div>
+    <div class="contact-box">
+      <form onsubmit="alert('送信内容を確認しました。実際の送信機能は公開時に設定します。');return false;">
+        <div class="field"><label>お名前</label><input type="text" placeholder="山田 太郎" required></div>
+        <div class="field"><label>会社名・屋号</label><input type="text" placeholder="株式会社サンプル"></div>
+        <div class="field"><label>メールアドレス</label><input type="email" placeholder="example@company.co.jp" required></div>
+        <div class="field"><label>相談したい内容</label>
+          <select>
+            <option>AI電話受付・問い合わせ整理</option>
+            <option>Web・LP制作</option>
+            <option>LINEステップ・LINE導線構築</option>
+            <option>業務自動化・社内ツール</option>
+            <option>医療・介護・薬局DX</option>
+            <option>その他相談</option>
+          </select>
+        </div>
+        <div class="field"><label>相談内容</label><textarea placeholder="現在困っている業務や、実現したいことをご記入ください" required></textarea></div>
+        <button type="submit" class="btn-primary">送信する</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-logo">合同会社NextCore</div>
+        <p style="font-size:.9rem;">業務の芯に、AIを実装する。</p>
+      </div>
+      <div class="foot-links">
+        <a href="#service">サービス</a>
+        <a href="#works">実装例</a>
+        <a href="#company">会社概要</a>
+        <a href="recruit.html">採用情報</a>
+        <a href="#contact">お問い合わせ</a>
+      </div>
+    </div>
+    <div class="copy">© 2026 合同会社NextCore All Rights Reserved.</div>
+  </div>
+</footer>
+
+<script>
+  const ham=document.getElementById('hamburger');
+  const nav=document.getElementById('nav');
+  ham.addEventListener('click',()=>nav.classList.toggle('open'));
+  nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+</script>
+</body>
+</html>
