@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CORVEL Chauffeur Service｜VIPハイヤー・役員送迎・空港送迎</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* C案 追加スタイル（カラフル・アクセント重視） */
+  :root {
+    --c-gold: #c8a84b;
+    --c-navy: #0d1b3e;
+    --c-sky:  #1a4a8a;
+  }
+  /* アクセント細めバナー帯 */
+  .accent-banner {
+    width: 100%;
+    height: 220px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 0;
+  }
+  @media (max-width: 768px) {
+    .accent-banner { height: 140px; }
+  }
+  /* C案ヒーロー（テキスト主役・明るい背景） */
+  .t-c .hero-offer {
+    background: linear-gradient(135deg, #f0f2f7 0%, #e8edf8 60%, #f5f4f0 100%);
+    padding: 3rem 0 2rem;
+  }
+  .t-c .hero-offer .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 2.4rem; align-items: center; }
+  @media (max-width: 768px) {
+    .t-c .hero-offer .wrap { grid-template-columns: 1fr; gap: 1.6rem; }
+    .c-services { grid-template-columns: 1fr !important; }
+    .c-points { grid-template-columns: 1fr !important; }
+    .c-steps { flex-direction: column; }
+  }
+  .t-c .hero-offer .badges .b {
+    background: rgba(13,27,62,.08); border: 1px solid rgba(13,27,62,.2);
+    border-radius: 999px; padding: .4rem 1rem; font-size: .84rem; color: var(--c-navy); font-weight: 700;
+  }
+  .t-c .hero-offer h1 { font-family: var(--sans); font-size: clamp(1.85rem, 5.5vw, 3rem); line-height: 1.5; color: var(--c-navy); margin-bottom: 1rem; word-break: keep-all; }
+  .t-c .hero-offer h1 .accent { color: var(--c-gold); }
+  .t-c .hero-offer .hero-sub { font-size: clamp(.92rem, 2.2vw, 1.04rem); color: var(--muted); margin-bottom: 1.4rem; line-height: 1.9; }
+  .t-c .hero-offer .tel-bar { display: flex; align-items: center; gap: .6rem; font-size: 1.4rem; font-weight: 700; color: var(--c-navy); margin-top: 1rem; }
+  .t-c .hero-offer .tel-bar small { font-size: .78rem; color: var(--muted); font-weight: 400; }
+  /* 右側フォームカード */
+  .c-hero-form { background: var(--c-navy); border-radius: 18px; padding: 1.8rem 1.6rem; box-shadow: 0 16px 40px rgba(13,27,62,.18); }
+  .c-hero-form .lead { font-weight: 700; color: #fff; text-align: center; font-size: 1.08rem; margin-bottom: 1.2rem; }
+  .c-hero-form .badge-row { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; margin-bottom: 1.2rem; }
+  .c-hero-form .badge-row span { background: rgba(200,168,75,.2); border: 1px solid rgba(200,168,75,.4); border-radius: 999px; color: var(--gold-l); font-size: .78rem; font-weight: 700; padding: .3rem .9rem; }
+  .c-hero-form .cta-btn {
+    display: block; width: 100%; background: var(--gold); color: #fff; font-weight: 700;
+    font-size: 1.05rem; border-radius: 12px; padding: 1rem; text-align: center; margin-bottom: .8rem;
+    transition: background .2s;
+  }
+  .c-hero-form .cta-btn:hover { background: var(--gold-d); }
+  .c-hero-form .cta-tel { display: block; text-align: center; color: rgba(255,255,255,.9); font-size: 1.1rem; font-weight: 700; }
+  .c-hero-form .cta-tel small { display: block; font-size: .75rem; color: rgba(255,255,255,.6); font-weight: 400; margin-top: .2rem; }
+  /* サービスリスト（C案用） */
+  .c-services { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.2rem; }
+  .c-svc {
+    border-radius: 16px; padding: 1.6rem 1.5rem;
+    display: flex; gap: 1rem; align-items: flex-start;
+    border: 2px solid transparent;
+    background: #fff; box-shadow: 0 6px 20px rgba(13,27,62,.07);
+    transition: transform .22s;
+  }
+  .c-svc:hover { transform: translateY(-3px); }
+  .c-svc:nth-child(1) { border-color: #0d1b3e; }
+  .c-svc:nth-child(2) { border-color: #c8a84b; }
+  .c-svc:nth-child(3) { border-color: #1a4a8a; }
+  .c-svc:nth-child(4) { border-color: #a88b38; }
+  .c-svc .ico { font-size: 2rem; flex: 0 0 auto; }
+  .c-svc h3 { color: var(--ink); font-size: 1.08rem; margin-bottom: .4rem; }
+  .c-svc p { font-size: .9rem; color: var(--muted); line-height: 1.8; }
+  /* ポイントカード（C案） */
+  .c-points { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.2rem; }
+  .c-point {
+    text-align: center; background: #fff; border-radius: 18px; padding: 2rem 1.4rem;
+    box-shadow: 0 8px 22px rgba(13,27,62,.06); border-top: 4px solid var(--gold);
+  }
+  .c-point .num { font-family: var(--sans); font-size: 2.5rem; font-weight: 700; color: var(--navy); line-height: 1; }
+  .c-point .unit { font-size: .78rem; color: var(--muted); margin-left: .2em; }
+  .c-point .label { font-size: .9rem; color: var(--muted); margin-top: .5rem; }
+  /* ステップ（C案カラフル） */
+  .c-steps { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .c-step {
+    flex: 1 1 200px; background: #fff; border-radius: 16px; padding: 1.5rem;
+    border-left: 5px solid var(--gold); box-shadow: 0 6px 20px rgba(13,27,62,.06);
+  }
+  .c-step .sno { font-size: .72rem; font-weight: 700; letter-spacing: .1em; color: var(--gold-d); margin-bottom: .5rem; }
+  .c-step h3 { color: var(--navy); font-size: 1rem; margin-bottom: .4rem; }
+  .c-step p { font-size: .88rem; color: var(--muted); }
+</style>
+</head>
+<body class="t-c">
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="brand">
+      <span class="name">CORVEL Chauffeur Service</span>
+      <span class="en">Premium Hire &amp; Chauffeur</span>
+    </div>
+    <nav id="global-nav">
+      <ul style="display:flex;gap:2rem;list-style:none;font-size:.9rem;font-weight:700;">
+        <li><a href="#service">サービス</a></li>
+        <li><a href="#reason">選ばれる理由</a></li>
+        <li><a href="#flow">ご利用の流れ</a></li>
+        <li><a href="#faq">よくある質問</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
+      </ul>
+    </nav>
+    <div class="header-cta">
+      <a href="tel:0476365833" class="btn-primary">今すぐ予約</a>
+    </div>
+    <button class="nav-toggle" aria-label="メニューを開く" onclick="toggleNav()">&#9776;</button>
+  </div>
+</header>
+
+<!-- アクセント細めバナー帯（C案特有） -->
+<!-- 既存サイト（corvel.jp）の横長写真があれば images/banner.jpg に差し替えてください -->
+<div class="accent-banner" style="background-image:url('https://images.unsplash.com/photo-1542296332-2e4473faf563?w=1600&h=400&fit=crop&q=80');"></div>
+
+<!-- ヒーロー（C案：テキスト主役＋右側お問い合わせカード） -->
+<section class="t-c">
+  <div class="hero-offer">
+    <div class="wrap">
+      <div>
+        <div class="badges" style="display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.2rem;">
+          <span class="b">VIP輸送実績多数</span>
+          <span class="b">最大9名対応</span>
+          <span class="b">24h 365日</span>
+          <span class="b">成田空港近隣</span>
+        </div>
+        <h1>FEEL LIKE A <span class="accent">STAR</span>.<br>最高品質の<br>ハイヤーサービス</h1>
+        <p class="hero-sub">
+          国内外VIP輸送に経験豊富な乗務員が担当。<br>
+          役員送迎・空港送迎・貸切チャーター・ドライバー派遣まで、<br>
+          あらゆる移動ニーズをプロが対応します。
+        </p>
+        <div class="tel-bar">
+          <span>📞 <a href="tel:0476365833" style="color:inherit;">0476-36-5833</a></span>
+          <small>ハイヤー事業部（受付時間はご相談ください）</small>
+        </div>
+      </div>
+      <div class="c-hero-form">
+        <div class="lead">まずはお気軽にご相談を</div>
+        <div class="badge-row">
+          <span>見積もり無料</span>
+          <span>着手前に金額提示</span>
+          <span>押し売りなし</span>
+        </div>
+        <a href="https://corvel.jp/corvel_estimate" class="cta-btn" target="_blank" rel="noopener">お見積もりを依頼する</a>
+        <a href="https://corvel.jp/corvel_contact" class="cta-btn" style="background:rgba(255,255,255,.12);margin-bottom:.8rem;" target="_blank" rel="noopener">お問い合わせフォーム</a>
+        <a href="tel:0476365833" class="cta-tel">
+          0476-36-5833
+          <small>ハイヤー事業部</small>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ポイント（数字で強み） -->
+<section class="section section-soft">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="en">Key Points</span>
+      <h2>CORVELの強み、数字で見る</h2>
+    </div>
+    <div class="c-points">
+      <div class="c-point">
+        <div class="num">9<span class="unit">名</span></div>
+        <div class="label">最大乗車定員</div>
+      </div>
+      <div class="c-point">
+        <div class="num">24<span class="unit">h</span></div>
+        <div class="label">365日対応</div>
+      </div>
+      <div class="c-point">
+        <div class="num">2<span class="unit">サービス</span></div>
+        <div class="label">ハイヤー＆ドライバー派遣</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- サービス一覧 -->
+<section class="section" id="service">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="en">Our Services</span>
+      <h2>ご利用いただけるサービス</h2>
+    </div>
+    <div class="c-services">
+      <div class="c-svc">
+        <span class="ico">🚘</span>
+        <div>
+          <h3>ハイヤーサービス</h3>
+          <p>役員車・社用車の年間契約から通勤送迎・接待・ゴルフまで。走る執務室として移動中もビジネスに集中できます。</p>
+        </div>
+      </div>
+      <div class="c-svc">
+        <span class="ico">✈️</span>
+        <div>
+          <h3>空港送迎</h3>
+          <p>フライト情報をリアルタイム確認し、早着・遅延にも柔軟対応。成田・羽田空港はじめ国内外VIPのお出迎えも承ります。</p>
+        </div>
+      </div>
+      <div class="c-svc">
+        <span class="ico">🏌️</span>
+        <div>
+          <h3>貸切チャーター</h3>
+          <p>ゴルフ接待・観光・イベント送迎など完全貸切プラン。最大9名対応の大型車両もご用意しています。</p>
+        </div>
+      </div>
+      <div class="c-svc">
+        <span class="ico">🧑‍✈️</span>
+        <div>
+          <h3>ドライバー派遣</h3>
+          <p>お客様ご自身の車両をお預かりし、専任ドライバーが運行担当。自家用車・社用車そのままご利用いただけます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 選ばれる理由 -->
+<section class="section section-soft" id="reason">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="en">Why Choose Us</span>
+      <h2>CORVELが選ばれる理由</h2>
+    </div>
+    <div class="reasons">
+      <div class="reason">
+        <div class="no">1</div>
+        <div>
+          <h3>国内外VIP輸送の豊富な実績</h3>
+          <p>要人・賓客の輸送に慣れた経験豊富な乗務員が対応。接遇・セキュリティ・プライバシーに配慮したサービスを徹底しています。</p>
+        </div>
+      </div>
+      <div class="reason">
+        <div class="no">2</div>
+        <div>
+          <h3>フライト情報を常時確認・遅延ゼロ対策</h3>
+          <p>空港送迎ではフライト動向をリアルタイムで追跡。早着・遅延が発生してもスムーズにお出迎えします。</p>
+        </div>
+      </div>
+      <div class="reason">
+        <div class="no">3</div>
+        <div>
+          <h3>最大9名対応・多彩な車種</h3>
+          <p>少人数から複数名グループまで、適切な車両をご提案。大型ミニバン・セダンなど用途に合わせて選べます。</p>
+        </div>
+      </div>
+      <div class="reason">
+        <div class="no">4</div>
+        <div>
+          <h3>"走る執務室"快適な車内環境</h3>
+          <p>移動中もWi-Fi・電源・プライバシーを確保し、役員が車内でも業務を継続できる環境をサポートします。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ご利用の流れ -->
+<section class="section" id="flow">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="en">How to Use</span>
+      <h2>ご利用の流れ</h2>
+    </div>
+    <div class="c-steps">
+      <div class="c-step">
+        <div class="sno">STEP 01</div>
+        <h3>お問い合わせ</h3>
+        <p>電話またはフォームよりご希望の日時・目的・人数・乗降地をお知らせください。</p>
+      </div>
+      <div class="c-step">
+        <div class="sno">STEP 02</div>
+        <h3>お見積もり</h3>
+        <p>ご要望をヒアリングし、最適なプランと料金をご提示。着手前に必ず金額確認。</p>
+      </div>
+      <div class="c-step">
+        <div class="sno">STEP 03</div>
+        <h3>ご予約確定</h3>
+        <p>内容をご確認の上、ご予約を確定。乗務員・車両を手配します。</p>
+      </div>
+      <div class="c-step">
+        <div class="sno">STEP 04</div>
+        <h3>当日のご乗車</h3>
+        <p>指定の場所・時間に乗務員がお迎え。空港送迎はフライト情報を確認してお出迎え。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- よくある質問 -->
+<section class="section section-soft" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="en">FAQ</span>
+      <h2>よくあるご質問</h2>
+    </div>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary>対応エリアはどこですか？</summary>
+        <div class="a">千葉県富里市を拠点に、成田空港・羽田空港をはじめ、関東エリア全般に対応しております。遠方のご依頼もお気軽にご相談ください。</div>
+      </details>
+      <details class="faq-item">
+        <summary>何名まで対応できますか？</summary>
+        <div class="a">最大9名様まで対応できる大型車両をご用意しております。人数や用途に合わせて最適な車両をご提案いたします。</div>
+      </details>
+      <details class="faq-item">
+        <summary>当日のフライト遅延にも対応してもらえますか？</summary>
+        <div class="a">はい、フライト情報をリアルタイムで確認しておりますので、早着・遅延が発生しても柔軟にお出迎えいたします。</div>
+      </details>
+      <details class="faq-item">
+        <summary>自分の車を使うドライバー派遣はできますか？</summary>
+        <div class="a">可能です。お客様ご所有の車両をお預かりし、専任ドライバーが運行を担当いたします。詳細はお問い合わせください。</div>
+      </details>
+      <details class="faq-item">
+        <summary>料金の目安を教えてください。</summary>
+        <div class="a">利用区間・時間・車両によって異なります。まずはお問い合わせいただければ、着手前にお見積もりをご提示いたします。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA・お問い合わせ -->
+<section class="section contact-cta" id="contact">
+  <div class="wrap">
+    <h2>まずはお気軽にご相談ください</h2>
+    <p class="sub">見積もり・料金は着手前に必ずご提示。押し売りは一切ありません。</p>
+    <div class="contact-methods">
+      <div class="m">
+        <div class="cap">お電話でのご予約・ご相談</div>
+        <div class="tel"><a href="tel:0476365833" style="color:#fff;">0476-36-5833</a></div>
+        <div class="note">ハイヤー事業部（千葉県富里市）</div>
+      </div>
+      <div class="m">
+        <div class="cap">お問い合わせ・見積もりフォーム</div>
+        <div style="margin-top:.5rem;">
+          <a href="https://corvel.jp/corvel_contact" class="btn-outline" target="_blank" rel="noopener">フォームで問い合わせる</a>
+        </div>
+        <div class="note">24時間受付・翌営業日以内に返信</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="f-top">
+      <div class="f-brand">
+        <div class="name">CORVEL Chauffeur Service</div>
+        <div class="en">Premium Hire &amp; Driver Dispatch</div>
+        <p style="font-size:.84rem;color:rgba(255,255,255,.7);max-width:320px;margin-top:.8rem;line-height:1.8;">
+          千葉県富里市を拠点に、VIPハイヤー・役員送迎・空港送迎・貸切チャーターを提供。最高品質の車輛と経験豊富な乗務員で、記憶に残るサービスをお届けします。
+        </p>
+      </div>
+      <dl class="f-info">
+        <dt>事業者</dt>
+        <dd>株式会社iTech ハイヤー事業部</dd>
+        <dt>所在地</dt>
+        <dd>千葉県富里市七栄127-48 m'Sビル1B</dd>
+        <dt>TEL</dt>
+        <dd>0476-36-5833</dd>
+        <dt>代表責任者</dt>
+        <dd>貝原 良寛</dd>
+        <dt>公式サイト</dt>
+        <dd><a href="https://corvel.jp/" target="_blank" rel="noopener" style="color:var(--gold-l);">https://corvel.jp/</a></dd>
+      </dl>
+    </div>
+    <p class="copy">© 2024 CORVEL Chauffeur Service / 株式会社iTech All Rights Reserved.</p>
+  </div>
+</footer>
+
+<a href="tel:0476365833" class="floating-cta">📞 今すぐ電話する</a>
+
+<script src="nav.js"></script>
+</body>
+</html>
