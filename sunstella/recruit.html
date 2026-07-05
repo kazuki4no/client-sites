@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 ｜ 株式会社サンステラ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+  /* 採用LP追加スタイル */
+  :root {
+    --accent: #2b7fcc;
+    --accent-d: #1e62a0;
+    --recruit-green: #1d9e6c;
+  }
+  body { background: #f7faff; }
+
+  /* FV */
+  .recruit-hero {
+    padding-top: 60px;
+    position: relative;
+    min-height: 88vh;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+  }
+  .recruit-hero .hero-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+  }
+  .recruit-hero .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(26,58,108,.72) 0%, rgba(26,58,108,.45) 100%);
+  }
+  .recruit-hero .hero-inner {
+    position: relative;
+    z-index: 1;
+    color: var(--white);
+    padding: 3rem 1.5rem;
+    max-width: 820px;
+    margin: 0 auto;
+    width: 100%;
+    text-align: center;
+  }
+  .recruit-hero .eyebrow {
+    font-size: .78rem;
+    letter-spacing: .16em;
+    font-weight: 700;
+    color: #7dd3fc;
+    text-transform: uppercase;
+    margin-bottom: .8rem;
+  }
+  .recruit-hero h1 {
+    font-size: clamp(2rem, 5.5vw, 3.6rem);
+    font-weight: 900;
+    line-height: 1.2;
+    margin-bottom: .8rem;
+  }
+  .recruit-hero h1 .accent { color: #fbbf24; }
+  .recruit-hero .hero-sub {
+    font-size: clamp(.92rem, 1.6vw, 1.08rem);
+    color: rgba(255,255,255,.88);
+    margin-bottom: 1.5rem;
+    line-height: 1.75;
+  }
+  .recruit-hero .pill-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .6rem;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+  .recruit-hero .pill {
+    background: rgba(255,255,255,.15);
+    border: 1px solid rgba(255,255,255,.3);
+    color: var(--white);
+    border-radius: 999px;
+    padding: .3rem .85rem;
+    font-size: .82rem;
+    font-weight: 600;
+  }
+  .recruit-hero .hero-cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .8rem;
+    justify-content: center;
+  }
+
+  /* 魅力 */
+  .appeal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.8rem;
+  }
+  .appeal-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 2rem 1.8rem;
+    box-shadow: 0 2px 12px rgba(26,58,108,.08);
+    border-top: 4px solid var(--accent);
+  }
+  .appeal-card .num {
+    font-size: .72rem;
+    font-weight: 800;
+    letter-spacing: .12em;
+    color: var(--accent);
+    margin-bottom: .4rem;
+  }
+  .appeal-card h3 {
+    font-size: 1.08rem;
+    font-weight: 800;
+    margin-bottom: .7rem;
+  }
+  .appeal-card p {
+    font-size: .9rem;
+    color: var(--gray);
+    line-height: 1.7;
+  }
+
+  /* 先輩の声 */
+  .voice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+  }
+  .voice-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    padding: 1.8rem;
+    box-shadow: 0 2px 10px rgba(26,58,108,.07);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .voice-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+  .voice-avatar {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    object-fit: cover;
+    flex-shrink: 0;
+  }
+  .voice-name {
+    font-size: .9rem;
+    font-weight: 700;
+  }
+  .voice-role {
+    font-size: .78rem;
+    color: var(--gray);
+  }
+  .voice-text {
+    font-size: .9rem;
+    color: var(--gray);
+    line-height: 1.75;
+    font-style: italic;
+  }
+
+  /* 募集要項 */
+  .recruit-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: var(--white);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(26,58,108,.08);
+  }
+  .recruit-table th,
+  .recruit-table td {
+    padding: 1.1rem 1.4rem;
+    border-bottom: 1px solid var(--border);
+    text-align: left;
+    font-size: .92rem;
+    vertical-align: top;
+  }
+  .recruit-table th {
+    width: 28%;
+    background: var(--bg);
+    font-weight: 700;
+    color: var(--text);
+    white-space: nowrap;
+  }
+  .recruit-table tr:last-child th,
+  .recruit-table tr:last-child td { border-bottom: none; }
+
+  /* 応募フォーム */
+  .apply-wrap {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 3rem;
+    box-shadow: 0 4px 24px rgba(26,58,108,.10);
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  /* 追従CTA */
+  .floating-cta {
+    background: var(--recruit-green);
+    box-shadow: 0 6px 18px rgba(29,158,108,.4);
+  }
+  .floating-cta:hover { background: #167a54; }
+
+  @media (max-width: 768px) {
+    .recruit-table th { width: 36%; white-space: normal; }
+    .apply-wrap { padding: 2rem 1.2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ========== ヘッダー ========== -->
+<header class="site-header">
+  <span class="logo">SUNSTELLA｜採用情報</span>
+  <nav>
+    <a href="#appeal">働く魅力</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#apply">応募する</a>
+  </nav>
+  <a href="#apply" class="header-cta" style="background:var(--recruit-green);">今すぐ応募</a>
+</header>
+
+<!-- ========== FV ========== -->
+<section class="recruit-hero" id="top">
+  <!-- 職場・スタッフの写真があれば images/recruit-hero.jpg に保存して差し替え -->
+  <div class="hero-bg" style="background-image:url('https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1600&h=900&fit=crop&q=80');"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <p class="eyebrow">Recruit 2026</p>
+    <h1>法人営業で、<br><span class="accent">社会を動かす</span>仕事を。</h1>
+    <p class="hero-sub">
+      株式会社サンステラは、営業支援・販売促進のプロフェッショナル集団です。<br>
+      成長意欲のある方と一緒に、企業の可能性を広げたいと考えています。
+    </p>
+    <div class="pill-row">
+      <span class="pill">📍 千葉県八千代市</span>
+      <span class="pill">🏢 法人営業特化</span>
+      <span class="pill">🚀 2026年4月設立</span>
+      <span class="pill">✓ 未経験者相談可</span>
+    </div>
+    <div class="hero-cta">
+      <a href="#apply" class="btn-primary" style="background:var(--recruit-green);border-color:var(--recruit-green);">今すぐ応募する</a>
+      <a href="#requirements" class="btn-outline">募集要項を見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 働く魅力 ========== -->
+<section class="section section-alt" id="appeal">
+  <div class="container">
+    <span class="section-label">Appeal</span>
+    <h2 class="section-title">サンステラで働く<br>3つの魅力</h2>
+    <div class="appeal-grid">
+      <div class="appeal-card">
+        <div class="num">POINT 01</div>
+        <h3>実行力が身につく環境</h3>
+        <p>提案から現場実行まで一気通貫で携われます。やる気次第でどんどん裁量が広がり、営業のプロとして成長できる環境です。</p>
+      </div>
+      <div class="appeal-card">
+        <div class="num">POINT 02</div>
+        <h3>多様な業種・業界に関われる</h3>
+        <p>営業代行から美容クリニック支援まで、幅広い業種のビジネスに関与できます。視野が広がり、市場価値の高いスキルが磨かれます。</p>
+      </div>
+      <div class="appeal-card">
+        <div class="num">POINT 03</div>
+        <h3>少数精鋭・チームで挑戦</h3>
+        <p>少数精鋭だからこそ、一人ひとりの意見が経営に直結します。仲間と切磋琢磨しながら、会社の成長を体感できます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 先輩の声 ========== -->
+<section class="section" id="voices">
+  <div class="container">
+    <span class="section-label">Voice</span>
+    <h2 class="section-title">先輩スタッフの声</h2>
+    <!-- ※ 以下はサンプルです。実際のスタッフ写真・コメントに差し替えてください -->
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="voice-meta">
+          <!-- スタッフ写真を images/staff1.jpg として保存して差し替え -->
+          <img class="voice-avatar"
+            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80"
+            alt="スタッフ1（サンプル）">
+          <div>
+            <div class="voice-name">田中 〇〇 さん</div>
+            <div class="voice-role">営業代行チーム（サンプル）</div>
+          </div>
+        </div>
+        <p class="voice-text">「入社後すぐに実際のお客様を担当でき、手応えを感じながら仕事ができています。チームの雰囲気がよく、相談しやすい環境です。」</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-meta">
+          <!-- スタッフ写真を images/staff2.jpg として保存して差し替え -->
+          <img class="voice-avatar"
+            src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=faces&q=80"
+            alt="スタッフ2（サンプル）">
+          <div>
+            <div class="voice-name">鈴木 〇〇 さん</div>
+            <div class="voice-role">販売促進チーム（サンプル）</div>
+          </div>
+        </div>
+        <p class="voice-text">「多様な業種のお客様と関わることで、業界知識が自然と身につきます。成果が数字で見えるのでやりがいがあります。」</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-meta">
+          <!-- スタッフ写真を images/staff3.jpg として保存して差し替え -->
+          <img class="voice-avatar"
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80"
+            alt="スタッフ3（サンプル）">
+          <div>
+            <div class="voice-name">山田 〇〇 さん</div>
+            <div class="voice-role">マーケティング担当（サンプル）</div>
+          </div>
+        </div>
+        <p class="voice-text">「少数精鋭なので自分のアイデアが反映されやすく、やりたいことを提案しやすい環境。事業の成長を身近に感じながら働けています。」</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== 募集要項 ========== -->
+<section class="section section-alt" id="requirements">
+  <div class="container">
+    <span class="section-label">Requirements</span>
+    <h2 class="section-title">募集要項</h2>
+    <!-- ※ 以下はサンプルです。実際の条件をご確認の上、差し替えてください -->
+    <table class="recruit-table">
+      <tr>
+        <th>職種</th>
+        <td>法人営業・営業サポート（サンプル）</td>
+      </tr>
+      <tr>
+        <th>雇用形態</th>
+        <td>正社員・アルバイト・業務委託（ご相談可）（サンプル）</td>
+      </tr>
+      <tr>
+        <th>勤務地</th>
+        <td>千葉県八千代市緑が丘1-2-9（リモート相談可）</td>
+      </tr>
+      <tr>
+        <th>勤務時間</th>
+        <td>詳細はご相談ください（サンプル）</td>
+      </tr>
+      <tr>
+        <th>給与</th>
+        <td>詳細はご相談ください（サンプル）</td>
+      </tr>
+      <tr>
+        <th>応募資格</th>
+        <td>法人営業に興味がある方。未経験でも意欲重視で歓迎します（サンプル）</td>
+      </tr>
+      <tr>
+        <th>選考フロー</th>
+        <td>書類選考 → 面接（1〜2回） → 内定（サンプル）</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<!-- ========== 応募フォーム ========== -->
+<section class="section" id="apply">
+  <div class="container">
+    <span class="section-label">Apply</span>
+    <h2 class="section-title" style="text-align:center;">応募・お問い合わせ</h2>
+    <p class="section-lead" style="text-align:center;margin-left:auto;margin-right:auto;">
+      まずは気軽にご連絡ください。選考に関するご質問もお気軽にどうぞ。
+    </p>
+    <!-- ※ このフォームはサンプルです。実際の送信処理は別途実装してください -->
+    <form class="apply-wrap" onsubmit="return false;">
+      <div class="form-row">
+        <label>お名前 <span class="req">必須</span></label>
+        <input type="text" placeholder="山田 太郎">
+      </div>
+      <div class="form-row">
+        <label>メールアドレス <span class="req">必須</span></label>
+        <input type="email" placeholder="taro.yamada@example.com">
+      </div>
+      <div class="form-row">
+        <label>電話番号</label>
+        <input type="tel" placeholder="090-0000-0000">
+      </div>
+      <div class="form-row">
+        <label>希望する働き方</label>
+        <select>
+          <option value="">選択してください</option>
+          <option>正社員として働きたい</option>
+          <option>アルバイト・パートとして働きたい</option>
+          <option>業務委託を検討している</option>
+          <option>まず話を聞きたい</option>
+        </select>
+      </div>
+      <div class="form-row">
+        <label>メッセージ・自己PR</label>
+        <textarea placeholder="志望動機や経験、ご質問などをご記入ください"></textarea>
+      </div>
+      <div class="form-submit">
+        <button type="submit" class="btn-primary" style="background:var(--recruit-green);border-color:var(--recruit-green);">応募する</button>
+      </div>
+      <p class="form-note">※ 送信いただいた情報は採用選考のみに使用します</p>
+    </form>
+  </div>
+</section>
+
+<!-- ========== フッター ========== -->
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-logo">株式会社サンステラ｜採用情報</div>
+    <div class="footer-addr">
+      〒276-0038 千葉県八千代市緑が丘1-2-9<br>
+      <a href="https://www.sunstella2026.com/" style="color:rgba(255,255,255,.6)">https://www.sunstella2026.com/</a>
+    </div>
+    <div class="footer-copy">&copy; 2026 株式会社サンステラ. All Rights Reserved.</div>
+  </div>
+</footer>
+
+<!-- ========== 追従CTA（スマホ） ========== -->
+<a href="#apply" class="floating-cta">今すぐ応募する</a>
+
+<script src="nav.js"></script>
+</body>
+</html>
