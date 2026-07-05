@@ -1,0 +1,454 @@
+/* ============================================================
+   日だまり訪問看護ステーション LP — 共通スタイル
+   ============================================================ */
+
+/* === リセット・ベース === */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { max-width: 100%; overflow-x: hidden; }
+img { max-width: 100%; height: auto; display: block; }
+a { text-decoration: none; }
+
+/* === CSS変数 === */
+:root {
+  --main:    #2d8c6d;
+  --accent:  #3aab82;
+  --accent-d:#1f6e55;
+  --light:   #e4f3ec;
+  --bg:      #f5f9f7;
+  --text:    #243430;
+  --text-s:  #567068;
+  --white:   #fff;
+  --r:       10px;
+  --shadow:  0 4px 18px rgba(0,0,0,.09);
+  --max-w:   1100px;
+}
+
+/* === 基本タイポグラフィ === */
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--text);
+  background: var(--white);
+}
+h1, h2, h3, h4 { font-family: 'Noto Serif JP', serif; line-height: 1.35; }
+
+/* === レイアウトヘルパー === */
+.inner { max-width: var(--max-w); margin: 0 auto; padding: 0 1.5rem; }
+section { padding: 5rem 0; }
+.section-head { text-align: center; margin-bottom: 3rem; }
+.section-head .badge {
+  display: inline-block; background: var(--light); color: var(--main);
+  font-size: .78rem; font-weight: 700; padding: .25em 1em; border-radius: 999px;
+  letter-spacing: .1em; margin-bottom: .7rem;
+}
+.section-head h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); color: var(--main); margin-bottom: .5rem; }
+.section-head p { color: var(--text-s); }
+
+/* === ボタン === */
+.btn-primary, .btn-outline, .btn-green {
+  display: inline-block; padding: .85em 2em; border-radius: 999px;
+  font-weight: 700; font-size: 1rem; text-align: center;
+  transition: .2s; border: 2px solid transparent; cursor: pointer;
+  font-family: 'Noto Sans JP', sans-serif;
+}
+.btn-primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+.btn-primary:hover { background: var(--accent-d); border-color: var(--accent-d); transform: translateY(-2px); }
+.btn-outline { background: transparent; color: #fff; border-color: rgba(255,255,255,.7); }
+.btn-outline:hover { background: rgba(255,255,255,.14); }
+.btn-green { background: var(--main); color: #fff; border-color: var(--main); }
+.btn-green:hover { background: var(--accent-d); border-color: var(--accent-d); transform: translateY(-2px); }
+.btn-white { background: #fff; color: var(--main); border-color: #fff; }
+.btn-white:hover { background: var(--light); border-color: var(--light); transform: translateY(-2px); }
+
+/* === ヘッダー === */
+.site-header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(255,255,255,.97); border-bottom: 1px solid #ddeee6;
+  padding: .7rem 0;
+}
+.header-inner { display: flex; justify-content: space-between; align-items: center; }
+.header-logo {
+  font-family: 'Noto Serif JP', serif; font-size: 1rem; color: var(--main);
+  font-weight: 700; line-height: 1.3;
+}
+.header-logo span { display: block; font-size: .7rem; font-weight: 400; color: var(--text-s); font-family: 'Noto Sans JP', sans-serif; }
+.header-tel { font-size: .88rem; color: var(--text-s); }
+.header-tel strong { display: block; font-size: 1.2rem; color: var(--main); letter-spacing: .05em; }
+.header-cta a.btn-primary { padding: .55em 1.4em; font-size: .88rem; }
+
+/* === 追従CTA（モバイル専用） === */
+.floating-cta {
+  position: fixed; left: 50%; bottom: 12px; transform: translateX(-50%);
+  z-index: 50; padding: .9rem 2rem; border-radius: 999px;
+  background: var(--accent); color: #fff; font-weight: 700; font-size: 1rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,.22); white-space: nowrap;
+}
+@media (min-width: 769px) { .floating-cta { display: none; } }
+
+/* ============================================================
+   HERO — A案（t-a）左右分割
+   ============================================================ */
+.t-a .hero {
+  display: flex; align-items: stretch;
+  min-height: 80vh;
+}
+.t-a .hero-text {
+  flex: 1; background: var(--bg);
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 3.5rem 3rem;
+}
+.t-a .hero-img {
+  flex: 1;
+  background-image: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=900&fit=crop&q=80');
+  background-size: cover; background-position: center;
+}
+.t-a .hero-eyebrow {
+  font-size: .82rem; font-weight: 700; color: var(--main); letter-spacing: .12em;
+  text-transform: uppercase; margin-bottom: .9rem;
+}
+.t-a .hero h1 {
+  font-size: clamp(1.8rem, 4vw, 2.8rem); color: var(--text); margin-bottom: 1rem;
+}
+.t-a .hero h1 .ac { color: var(--main); }
+.t-a .hero-sub { color: var(--text-s); margin-bottom: 1.5rem; font-size: .98rem; }
+.t-a .hero-pills { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.8rem; }
+.t-a .hero-pill {
+  background: var(--main); color: #fff; border-radius: 999px;
+  padding: .28em 1em; font-size: .78rem; font-weight: 700;
+}
+.t-a .hero-cta { display: flex; flex-wrap: wrap; gap: .8rem; align-items: center; }
+.t-a .hero-cta .tel-line { font-size: .83rem; color: var(--text-s); }
+.t-a .hero-cta .tel-line strong { color: var(--main); font-size: 1.1rem; }
+
+/* ============================================================
+   HERO — B案（t-b）フルスクリーン背景
+   ============================================================ */
+.t-b .hero {
+  position: relative; min-height: 80vh;
+  display: flex; align-items: center; justify-content: center; overflow: hidden;
+}
+.t-b .hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=1600&h=900&fit=crop&q=80');
+  background-size: cover; background-position: center;
+}
+.t-b .hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(20,65,48,.52) 0%, rgba(45,140,109,.28) 100%);
+}
+.t-b .hero-content {
+  position: relative; z-index: 1; text-align: center;
+  color: #fff; padding: 2rem 1.5rem; max-width: 820px;
+}
+.t-b .hero-eyebrow {
+  display: inline-block;
+  background: rgba(255,255,255,.18); backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,.3); border-radius: 999px;
+  padding: .3em 1.2em; font-size: .82rem; font-weight: 700;
+  letter-spacing: .1em; color: #fff; margin-bottom: 1.2rem;
+}
+.t-b .hero h1 {
+  font-size: clamp(2rem, 6vw, 3.8rem); color: #fff; margin-bottom: 1rem;
+  text-shadow: 0 2px 12px rgba(0,0,0,.25);
+}
+.t-b .hero h1 .ac { color: #b8f0d0; }
+.t-b .hero-sub { font-size: 1.05rem; margin-bottom: 1.8rem; opacity: .93; }
+.t-b .hero-cta { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+.t-b .hero-pills {
+  display: flex; flex-wrap: wrap; gap: .6rem; justify-content: center; margin-top: 2rem;
+}
+.t-b .hero-pill {
+  background: rgba(255,255,255,.18); backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,.32); border-radius: 999px;
+  padding: .3em 1.1em; font-size: .82rem; color: #fff; font-weight: 700;
+}
+
+/* ============================================================
+   HERO — C案（t-c）オファー＋フォーム一体型
+   ============================================================ */
+.t-c .hero { background: linear-gradient(120deg, var(--bg) 55%, var(--light) 100%); padding: 4rem 0 3.5rem; }
+.t-c .hero-inner { display: flex; gap: 3rem; align-items: flex-start; }
+.t-c .hero-text { flex: 1.15; }
+.t-c .hero-form-wrap { flex: 1; }
+.t-c .hero-eyebrow {
+  font-size: .8rem; font-weight: 700; color: var(--main); letter-spacing: .1em; margin-bottom: .8rem;
+}
+.t-c .hero h1 { font-size: clamp(1.55rem, 3.5vw, 2.4rem); color: var(--text); margin-bottom: .9rem; }
+.t-c .hero h1 .ac { color: var(--main); }
+.t-c .hero-badges { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.2rem; }
+.t-c .hero-badge {
+  background: var(--main); color: #fff; border-radius: 6px;
+  padding: .25em .9em; font-size: .78rem; font-weight: 700;
+}
+.t-c .hero-sub { color: var(--text-s); margin-bottom: 1.2rem; font-size: .95rem; }
+.t-c .hero-tel { display: flex; align-items: center; gap: .8rem; margin-top: 1rem; }
+.t-c .hero-tel-num { font-size: 1.6rem; font-weight: 700; color: var(--main); letter-spacing: .05em; }
+.t-c .hero-tel small { font-size: .78rem; color: var(--text-s); display: block; }
+.form-card {
+  background: #fff; border-radius: var(--r); padding: 2rem;
+  box-shadow: 0 6px 24px rgba(0,0,0,.1);
+}
+.form-card .form-title {
+  font-size: 1rem; font-weight: 700; color: var(--main); margin-bottom: 1.2rem;
+  padding-bottom: .6rem; border-bottom: 2px solid var(--light);
+}
+.form-group { margin-bottom: 1rem; }
+.form-group label { display: block; font-size: .83rem; font-weight: 700; color: var(--text-s); margin-bottom: .3rem; }
+.form-group input, .form-group select, .form-group textarea {
+  width: 100%; box-sizing: border-box; border: 1px solid #c8ddd5; border-radius: 6px;
+  padding: .7em .9em; font-size: 1rem; font-family: 'Noto Sans JP', sans-serif;
+  background: #fafcfb; color: var(--text);
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  outline: none; border-color: var(--accent);
+}
+.form-note { font-size: .78rem; color: var(--text-s); margin-top: .5rem; }
+
+/* ============================================================
+   信頼バー（全案共通・ヒーロー直下）
+   ============================================================ */
+.trust-bar { background: var(--main); padding: 1.1rem 0; }
+.trust-bar-inner { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; align-items: center; }
+.trust-item { display: flex; align-items: center; gap: .5rem; color: #fff; font-weight: 700; font-size: .88rem; }
+.trust-item .icon { font-size: 1.25rem; }
+
+/* ============================================================
+   お悩みセクション
+   ============================================================ */
+.problems { background: var(--bg); }
+.problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.problem-card {
+  background: #fff; border-radius: var(--r); padding: 1.8rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,.05); border-left: 4px solid var(--accent);
+}
+.problem-card .problem-icon { font-size: 1.8rem; margin-bottom: .7rem; }
+.problem-card h3 { font-size: 1rem; color: var(--main); margin-bottom: .4rem; }
+.problem-card p { font-size: .88rem; color: var(--text-s); }
+
+/* ============================================================
+   選ばれる理由
+   ============================================================ */
+.strengths-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.strength-card {
+  text-align: center; background: var(--light);
+  border-radius: var(--r); padding: 2.2rem 1.8rem;
+}
+.strength-num { font-size: .78rem; font-weight: 700; color: var(--main); letter-spacing: .12em; margin-bottom: .6rem; }
+.strength-icon { font-size: 2.6rem; margin-bottom: .8rem; }
+.strength-card h3 { font-size: 1.05rem; color: var(--main); margin-bottom: .5rem; }
+.strength-card p { font-size: .88rem; color: var(--text-s); }
+
+/* ============================================================
+   サービス内容
+   ============================================================ */
+.services { background: var(--bg); }
+.service-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.service-item {
+  display: flex; align-items: flex-start; gap: .8rem;
+  background: #fff; border-radius: var(--r); padding: 1.2rem 1.4rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,.05);
+}
+.service-check { color: var(--accent); font-size: 1.3rem; flex-shrink: 0; margin-top: .1rem; }
+.service-item h3 { font-size: .93rem; color: var(--text); margin-bottom: .2rem; }
+.service-item p { font-size: .85rem; color: var(--text-s); }
+
+/* ============================================================
+   ご利用の流れ
+   ============================================================ */
+.flow-steps { display: flex; flex-direction: column; gap: 1rem; max-width: 700px; margin: 0 auto; }
+.flow-step {
+  display: flex; align-items: flex-start; gap: 1.5rem;
+  background: #fff; border-radius: var(--r); padding: 1.4rem 1.8rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,.05);
+}
+.flow-num {
+  width: 46px; height: 46px; border-radius: 50%; background: var(--main);
+  color: #fff; font-weight: 700; font-size: 1.05rem;
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+}
+.flow-body h3 { font-size: 1rem; color: var(--main); margin-bottom: .3rem; }
+.flow-body p { font-size: .88rem; color: var(--text-s); }
+
+/* ============================================================
+   お客様の声
+   ============================================================ */
+.testimonials { background: var(--bg); }
+.testimonial-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.testimonial-card {
+  background: #fff; border-radius: var(--r); padding: 1.8rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,.06); position: relative;
+}
+.testimonial-card::before {
+  content: '"'; font-family: Georgia, serif; font-size: 4.5rem;
+  color: var(--light); position: absolute; top: .4rem; left: 1rem; line-height: 1;
+}
+.testimonial-text { font-size: .92rem; color: var(--text); padding-top: 1.8rem; position: relative; z-index: 1; margin-bottom: 1rem; }
+.testimonial-meta { display: flex; align-items: center; gap: .8rem; }
+.t-avatar { width: 48px; height: 48px; border-radius: 50%; object-fit: cover; }
+.t-name { font-size: .82rem; color: var(--text-s); }
+.t-name strong { display: block; color: var(--text); font-size: .88rem; }
+
+/* ============================================================
+   料金・保険
+   ============================================================ */
+.pricing-card {
+  background: var(--light); border-radius: var(--r); padding: 2.5rem;
+  max-width: 720px; margin: 0 auto; text-align: center;
+}
+.pricing-card h3 { font-size: 1.15rem; color: var(--main); margin-bottom: 1rem; }
+.pricing-card p { color: var(--text-s); margin-bottom: .6rem; font-size: .92rem; }
+.pricing-card .free-badge {
+  display: inline-block; background: var(--main); color: #fff;
+  font-size: 1rem; font-weight: 700; padding: .4em 1.5em; border-radius: 999px; margin-top: .5rem;
+}
+
+/* ============================================================
+   よくある質問
+   ============================================================ */
+.faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: .8rem; }
+.faq-item { background: var(--bg); border-radius: var(--r); overflow: hidden; }
+.faq-q {
+  padding: 1.1rem 1.5rem; font-weight: 700; color: var(--text); font-size: .95rem;
+  cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+}
+.faq-q .faq-icon { color: var(--main); font-size: 1.2rem; flex-shrink: 0; }
+.faq-a { padding: 0 1.5rem 1rem; color: var(--text-s); font-size: .9rem; border-top: 1px solid #dceee5; padding-top: .8rem; }
+
+/* ============================================================
+   お問い合わせ CTA セクション
+   ============================================================ */
+.cta-section { background: var(--main); padding: 5rem 0; text-align: center; color: #fff; }
+.cta-section h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); color: #fff; margin-bottom: 1rem; }
+.cta-section p { opacity: .9; margin-bottom: 2rem; }
+.cta-btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; margin-bottom: 2.5rem; }
+.contact-form-box {
+  background: rgba(255,255,255,.13); border-radius: var(--r);
+  padding: 2.5rem; max-width: 580px; margin: 0 auto; text-align: left;
+}
+.contact-form-box .form-title { color: #fff; font-size: .95rem; font-weight: 700; margin-bottom: 1.2rem; }
+.contact-form-box .form-group label { color: rgba(255,255,255,.85); }
+.contact-form-box .form-group input,
+.contact-form-box .form-group select,
+.contact-form-box .form-group textarea {
+  background: rgba(255,255,255,.92); color: var(--text);
+  border: 1px solid rgba(255,255,255,.3);
+}
+.contact-form-box .btn-white { width: 100%; margin-top: .5rem; }
+.tel-cta { margin-top: 2.5rem; }
+.tel-num { font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 700; color: #fff; text-decoration: none; display: block; margin: .5rem 0; letter-spacing: .08em; }
+.tel-note { font-size: .82rem; opacity: .8; }
+
+/* ============================================================
+   中間CTA（繰り返し）
+   ============================================================ */
+.cta-mid { background: var(--light); text-align: center; padding: 4rem 0; }
+.cta-mid h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); color: var(--main); margin-bottom: 1rem; }
+.cta-mid p { color: var(--text-s); margin-bottom: 2rem; }
+.cta-mid .btns { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+
+/* ============================================================
+   フッター
+   ============================================================ */
+.site-footer { background: #182e27; color: rgba(255,255,255,.65); padding: 3rem 0 1.5rem; }
+.footer-inner { display: flex; gap: 2.5rem; flex-wrap: wrap; justify-content: space-between; }
+.footer-logo-area { max-width: 320px; }
+.footer-logo { font-family: 'Noto Serif JP', serif; color: #fff; font-size: 1rem; margin-bottom: .5rem; }
+.footer-sub { font-size: .78rem; color: rgba(255,255,255,.5); margin-bottom: 1rem; }
+.footer-info { font-size: .82rem; line-height: 2; }
+.footer-info a { color: rgba(255,255,255,.65); }
+.footer-nav { display: flex; flex-direction: column; gap: .5rem; }
+.footer-nav a { color: rgba(255,255,255,.6); font-size: .85rem; }
+.footer-nav a:hover { color: #fff; }
+.footer-copy { text-align: center; font-size: .75rem; margin-top: 2.5rem; padding-top: 1.2rem; border-top: 1px solid rgba(255,255,255,.1); }
+
+/* ============================================================
+   採用LP 専用
+   ============================================================ */
+.recruit-hero {
+  position: relative; min-height: 75vh;
+  display: flex; align-items: center; overflow: hidden;
+}
+.recruit-hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=1600&h=900&fit=crop&q=80');
+  background-size: cover; background-position: center;
+}
+.recruit-hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(20,65,48,.58) 0%, rgba(45,140,109,.25) 100%);
+}
+.recruit-hero-content { position: relative; z-index: 1; color: #fff; padding: 2rem 0; max-width: 700px; }
+.recruit-eyebrow {
+  display: inline-block; background: rgba(255,255,255,.2); border: 1px solid rgba(255,255,255,.35);
+  border-radius: 999px; padding: .3em 1.2em; font-size: .82rem; font-weight: 700;
+  letter-spacing: .08em; color: #fff; margin-bottom: 1.2rem;
+}
+.recruit-hero h1 { font-size: clamp(1.8rem, 5vw, 3rem); color: #fff; margin-bottom: 1rem; text-shadow: 0 2px 10px rgba(0,0,0,.25); }
+.recruit-hero h1 .ac { color: #b8f0d0; }
+.recruit-hero-sub { font-size: 1rem; opacity: .92; margin-bottom: 1.8rem; }
+.recruit-pills { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.5rem; }
+.recruit-pill {
+  background: rgba(255,255,255,.18); border: 1px solid rgba(255,255,255,.3);
+  border-radius: 999px; padding: .28em 1em; font-size: .8rem; color: #fff; font-weight: 700;
+}
+.merits-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+.merit-card {
+  background: var(--light); border-radius: var(--r); padding: 2rem 1.6rem; text-align: center;
+}
+.merit-icon { font-size: 2.4rem; margin-bottom: .8rem; }
+.merit-card h3 { font-size: 1rem; color: var(--main); margin-bottom: .5rem; }
+.merit-card p { font-size: .87rem; color: var(--text-s); }
+.voice-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; }
+.voice-card {
+  background: #fff; border-radius: var(--r); padding: 2rem; box-shadow: var(--shadow);
+  display: flex; gap: 1.5rem; align-items: flex-start;
+}
+.voice-avatar { width: 70px; height: 70px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+.voice-body h3 { font-size: .92rem; color: var(--main); margin-bottom: .4rem; }
+.voice-body p { font-size: .88rem; color: var(--text-s); }
+.voice-body .voice-meta { font-size: .8rem; color: var(--text-s); margin-top: .6rem; }
+.recruit-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+.recruit-table th, .recruit-table td { padding: .9rem 1.2rem; text-align: left; border-bottom: 1px solid #dceee5; font-size: .9rem; }
+.recruit-table th { background: var(--light); color: var(--main); font-weight: 700; width: 30%; white-space: nowrap; }
+.recruit-section { background: var(--bg); }
+
+/* ============================================================
+   レスポンシブ（768px以下）
+   ============================================================ */
+@media (max-width: 768px) {
+  section { padding: 3.5rem 0; }
+  .inner { padding: 0 1rem; }
+
+  /* A案 hero */
+  .t-a .hero { flex-direction: column; min-height: auto; }
+  .t-a .hero-text { padding: 2.5rem 1rem 2rem; order: 2; }
+  .t-a .hero-img { min-height: 260px; order: 1; }
+
+  /* C案 hero */
+  .t-c .hero-inner { flex-direction: column; }
+
+  /* grids */
+  .problem-grid,
+  .strengths-grid,
+  .testimonial-grid,
+  .merits-grid { grid-template-columns: 1fr; }
+  .service-list { grid-template-columns: 1fr; }
+  .voice-grid { grid-template-columns: 1fr; }
+
+  /* header tel */
+  .header-tel { display: none; }
+  .header-cta a.btn-primary { padding: .5em 1em; font-size: .82rem; }
+
+  /* buttons */
+  .btn-primary, .btn-outline, .btn-green, .btn-white { width: 100%; display: block; text-align: center; }
+  .hero-cta, .cta-btns, .cta-mid .btns { flex-direction: column; }
+
+  /* footer */
+  .footer-inner { flex-direction: column; }
+  .footer-logo-area { max-width: 100%; }
+
+  /* recruit */
+  .recruit-table th { width: auto; }
+  .voice-card { flex-direction: column; }
+}
