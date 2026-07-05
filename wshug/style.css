@@ -1,0 +1,417 @@
+@charset "utf-8";
+/* =============================================================
+   株式会社WSHUG LP共通スタイル（LP3案＋採用LP共用）
+   ベースカラー：信頼のネイビー × アクセントグリーン
+   - t-a 信頼・王道型LP（左右分割FV）
+   - t-b ビジュアル主役型LP（全面背景FV）
+   - t-c オファー・行動喚起型LP（実績バッジ＋FV内フォーム）
+   - t-r 採用LP
+   ============================================================= */
+
+/* ---------- 共通土台 ---------- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html, body { max-width: 100%; overflow-x: hidden; }
+img { max-width: 100%; height: auto; display: block; }
+
+:root {
+  --navy:    #1d3461;
+  --navy-d:  #132447;
+  --navy-dd: #0b1730;
+  --navy-l:  #2d4e8a;
+  --green:   #1a9a6e;
+  --green-d: #137a57;
+  --green-l: #22c48e;
+  --ink:     #1a2638;
+  --muted:   #5a6a7a;
+  --line:    #d0dae8;
+  --soft:    #f0f7ff;
+  --cream:   #f8fbff;
+  --white:   #ffffff;
+  --accent:  var(--green);
+}
+
+body { font-family: 'Noto Serif JP', serif; color: var(--ink); line-height: 1.8; }
+a { color: inherit; text-decoration: none; }
+
+/* ---------- Typography ---------- */
+h1, h2, h3 { font-weight: 700; line-height: 1.3; }
+.section-title {
+  font-size: clamp(1.5rem, 4vw, 2.2rem);
+  text-align: center; margin-bottom: 0.4rem; color: var(--navy);
+}
+.section-sub {
+  text-align: center; color: var(--muted); font-size: 0.95rem; margin-bottom: 2.5rem;
+}
+
+/* ---------- Buttons ---------- */
+.btn-primary, .btn-outline, .btn-green {
+  display: inline-block; padding: 0.85rem 2rem; border-radius: 4px;
+  font-weight: 700; font-size: 1rem; cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s; text-align: center;
+}
+.btn-primary {
+  background: var(--green); color: var(--white); border: 2px solid var(--green);
+}
+.btn-outline {
+  background: transparent; color: var(--navy); border: 2px solid var(--navy);
+}
+.btn-green {
+  background: var(--green); color: var(--white); border: 2px solid var(--green);
+}
+.btn-primary:hover, .btn-green:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn-outline:hover { background: var(--soft); }
+
+/* ---------- Header / Nav ---------- */
+header {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--white); border-bottom: 1px solid var(--line);
+  padding: 0.75rem 1.5rem;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.logo { font-size: 1.05rem; font-weight: 700; color: var(--navy); }
+.logo span { color: var(--green); }
+nav ul { list-style: none; display: flex; gap: 1.5rem; align-items: center; }
+nav ul li a { font-size: 0.88rem; color: var(--muted); }
+nav ul li a:hover { color: var(--navy); }
+.nav-cta {
+  background: var(--green); color: var(--white) !important;
+  padding: 0.4rem 1.2rem; border-radius: 4px; font-weight: 700 !important;
+}
+.hamburger {
+  display: none; background: none; border: none; cursor: pointer;
+  flex-direction: column; gap: 5px;
+}
+.hamburger span {
+  display: block; width: 24px; height: 2px;
+  background: var(--ink); border-radius: 2px; transition: 0.3s;
+}
+@media(max-width:768px) {
+  nav ul {
+    display: none; flex-direction: column; gap: 0;
+    position: absolute; top: 100%; left: 0; width: 100%;
+    background: var(--white); padding: 0.5rem 0;
+    box-shadow: 0 4px 12px rgba(0,0,0,.1);
+  }
+  nav ul.open { display: flex; }
+  nav ul li { width: 100%; }
+  nav ul li a { display: block; padding: 0.75rem 1.5rem; }
+  .hamburger { display: flex; }
+}
+
+/* ---------- Floating CTA ---------- */
+.floating-cta {
+  position: fixed; left: 50%; bottom: 12px; transform: translateX(-50%);
+  z-index: 50; padding: 0.9rem 2rem; border-radius: 999px;
+  background: var(--accent); color: var(--white); font-weight: 700;
+  box-shadow: 0 6px 18px rgba(0,0,0,.25); white-space: nowrap; font-size: 1rem;
+}
+@media(min-width:769px) { .floating-cta { display: none; } }
+
+/* ---------- 共通 Sections ---------- */
+section { padding: 5rem 1.5rem; }
+.container { max-width: 960px; margin: 0 auto; }
+.container-wide { max-width: 1100px; margin: 0 auto; }
+
+/* ---------- Pain Points ---------- */
+.pain { background: var(--soft); }
+.pain-lead { text-align: center; font-size: 1rem; color: var(--muted); margin-bottom: 2rem; }
+.pain-list { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+.pain-item {
+  background: var(--white); border: 1px solid var(--line);
+  border-left: 4px solid var(--navy); padding: 1rem 1.5rem;
+  border-radius: 4px; flex: 1 1 260px; max-width: 310px;
+  font-size: 0.93rem; line-height: 1.6;
+}
+.pain-item::before { content: '✗ '; color: var(--navy); font-weight: 700; }
+
+/* ---------- Services ---------- */
+.services { background: var(--white); }
+.service-grid { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; }
+.service-card {
+  background: var(--soft); border-radius: 8px; padding: 2rem 1.5rem;
+  flex: 1 1 260px; max-width: 310px; text-align: center;
+  border-top: 4px solid var(--navy); transition: box-shadow 0.2s;
+}
+.service-card:hover { box-shadow: 0 4px 16px rgba(29,52,97,.15); }
+.service-card .icon { font-size: 2.5rem; margin-bottom: 1rem; }
+.service-card h3 { color: var(--navy); font-size: 1.05rem; margin-bottom: 0.7rem; }
+.service-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+
+/* ---------- Reasons ---------- */
+.reasons { background: var(--soft); }
+.reason-grid { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+.reason-card {
+  flex: 1 1 280px; padding: 1.8rem;
+  background: var(--white); border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+}
+.reason-num { font-size: 2rem; font-weight: 900; color: var(--navy); line-height: 1; margin-bottom: 0.5rem; }
+.reason-card h3 { font-size: 1rem; color: var(--navy); margin-bottom: 0.5rem; }
+.reason-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+
+/* ---------- Concept ---------- */
+.concept { background: var(--navy-dd); color: var(--white); text-align: center; }
+.concept-inner { max-width: 720px; margin: 0 auto; }
+.concept blockquote {
+  font-size: clamp(1.3rem, 4vw, 2rem); font-weight: 700;
+  border: none; padding: 0; margin: 0 0 1.2rem;
+  color: var(--white); line-height: 1.5;
+}
+.concept blockquote span { color: var(--green-l); }
+.concept p { color: rgba(255,255,255,.8); font-size: 0.95rem; line-height: 1.8; }
+
+/* ---------- FAQ ---------- */
+.faq { background: var(--white); }
+.faq-list { max-width: 700px; margin: 0 auto; }
+.faq-item { border-bottom: 1px solid var(--line); padding: 1.3rem 0; }
+.faq-q {
+  font-weight: 700; color: var(--navy); display: flex; gap: 0.7rem;
+  align-items: flex-start; font-size: 0.97rem;
+}
+.faq-q::before { content: 'Q.'; color: var(--green); flex-shrink: 0; font-weight: 900; }
+.faq-a { margin-top: 0.5rem; font-size: 0.9rem; color: var(--muted); padding-left: 1.8rem; line-height: 1.7; }
+.faq-a::before { content: 'A. '; font-weight: 700; color: var(--navy); }
+
+/* ---------- Contact ---------- */
+.contact { background: var(--soft); }
+.contact-box {
+  background: var(--white); border-radius: 8px; padding: 2.5rem;
+  max-width: 640px; margin: 0 auto; box-shadow: 0 2px 12px rgba(0,0,0,.07);
+}
+.form-group { margin-bottom: 1.2rem; }
+.form-group label { display: block; font-size: 0.88rem; font-weight: 700; margin-bottom: 0.4rem; }
+.form-group input, .form-group textarea, .form-group select {
+  width: 100%; padding: 0.7rem 1rem; border: 1px solid var(--line);
+  border-radius: 4px; font-family: inherit; font-size: 0.92rem; color: var(--ink);
+}
+.form-group textarea { resize: vertical; min-height: 110px; }
+.form-group input:focus, .form-group textarea:focus { outline: 2px solid var(--green); border-color: var(--green); }
+.submit-btn {
+  width: 100%; padding: 1rem; background: var(--green); color: var(--white);
+  border: none; border-radius: 4px; font-size: 1.05rem; font-weight: 700;
+  cursor: pointer; transition: opacity 0.2s;
+}
+.submit-btn:hover { opacity: 0.88; }
+.form-note { text-align: center; font-size: 0.8rem; color: var(--muted); margin-top: 0.8rem; }
+
+/* ---------- CTA Section ---------- */
+.cta-section { background: var(--navy); color: var(--white); text-align: center; }
+.cta-section h2 { font-size: clamp(1.4rem, 4vw, 2rem); margin-bottom: 1rem; }
+.cta-section p { font-size: 0.95rem; color: rgba(255,255,255,.8); margin-bottom: 2rem; }
+.cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.cta-section .btn-outline { color: var(--white); border-color: rgba(255,255,255,.7); }
+.cta-section .btn-outline:hover { background: rgba(255,255,255,.1); }
+
+/* ---------- Footer ---------- */
+footer {
+  background: var(--navy-dd); color: rgba(255,255,255,.65);
+  text-align: center; padding: 2.5rem 1.5rem; font-size: 0.85rem; line-height: 2;
+}
+footer a { color: rgba(255,255,255,.5); }
+.footer-brand { color: var(--white); font-weight: 700; font-size: 1rem; margin-bottom: 0.5rem; }
+
+/* =============================================================
+   A案 (t-a) 信頼・王道型 — 左右分割FV
+   ============================================================= */
+body.t-a .hero {
+  min-height: 82vh; background: var(--cream);
+  display: flex; align-items: center; padding: 4rem 1.5rem;
+}
+@media(max-width:768px) { body.t-a .hero { min-height: 70vh; padding-top: 3rem; } }
+
+body.t-a .hero-inner {
+  display: flex; align-items: center; gap: 3rem;
+  max-width: 1100px; margin: 0 auto; width: 100%;
+}
+body.t-a .hero-text { flex: 1 1 45%; }
+body.t-a .hero-img { flex: 1 1 48%; border-radius: 8px; overflow: hidden; min-height: 380px; }
+body.t-a .hero-img img { width: 100%; height: 100%; object-fit: cover; border-radius: 8px; }
+
+body.t-a .hero-eyebrow {
+  font-size: 0.88rem; color: var(--green); font-weight: 700;
+  letter-spacing: 0.05em; margin-bottom: 0.8rem;
+}
+body.t-a .hero h1 { font-size: clamp(1.8rem, 5vw, 3rem); color: var(--navy); margin-bottom: 1rem; }
+body.t-a .hero h1 .accent { color: var(--green); }
+body.t-a .hero-sub { font-size: 0.97rem; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.75; }
+body.t-a .hero-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+body.t-a .badge {
+  background: var(--soft); border: 1px solid var(--line);
+  padding: 0.3rem 0.85rem; border-radius: 999px;
+  font-size: 0.8rem; color: var(--navy); font-weight: 700;
+}
+body.t-a .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+@media(max-width:768px) {
+  body.t-a .hero-inner { flex-direction: column; gap: 2rem; }
+  body.t-a .hero-img { width: 100%; min-height: 220px; order: -1; }
+  body.t-a .hero-text { text-align: center; }
+  body.t-a .hero-badges, body.t-a .hero-cta { justify-content: center; }
+}
+
+/* =============================================================
+   B案 (t-b) ビジュアル主役型 — 全面背景FV
+   ============================================================= */
+body.t-b .hero {
+  position: relative; min-height: 88vh;
+  display: flex; align-items: center; justify-content: center;
+  overflow: hidden; padding: 5rem 1.5rem;
+}
+@media(max-width:768px) { body.t-b .hero { min-height: 72vh; } }
+
+body.t-b .hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1600&h=900&fit=crop&q=80');
+  background-size: cover; background-position: center;
+}
+body.t-b .hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(11,23,48,.62) 0%, rgba(29,52,97,.48) 100%);
+}
+body.t-b .hero-content {
+  position: relative; z-index: 1; text-align: center;
+  color: var(--white); max-width: 780px;
+}
+body.t-b .hero-eyebrow { font-size: 0.88rem; letter-spacing: 0.1em; opacity: 0.85; margin-bottom: 1rem; }
+body.t-b .hero h1 {
+  font-size: clamp(2rem, 6vw, 3.8rem); margin-bottom: 1.2rem;
+  color: var(--white); line-height: 1.25;
+}
+body.t-b .hero h1 .accent { color: var(--green-l); }
+body.t-b .hero-sub { font-size: 1rem; opacity: 0.9; margin-bottom: 2rem; line-height: 1.8; }
+body.t-b .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.5rem; }
+body.t-b .btn-white {
+  display: inline-block; background: var(--white); color: var(--navy);
+  border: 2px solid var(--white); padding: 0.85rem 2rem; font-size: 1rem;
+  border-radius: 4px; font-weight: 700; transition: opacity 0.2s;
+}
+body.t-b .btn-white:hover { opacity: 0.9; }
+body.t-b .trust-pills { display: flex; flex-wrap: wrap; gap: 0.7rem; justify-content: center; }
+body.t-b .trust-pill {
+  background: rgba(255,255,255,.15); backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,.3);
+  padding: 0.3rem 0.9rem; border-radius: 999px;
+  font-size: 0.8rem; color: var(--white);
+}
+body.t-b .stats-bar { background: var(--navy); padding: 1.5rem; }
+body.t-b .stats-inner {
+  display: flex; flex-wrap: wrap; gap: 0.5rem;
+  justify-content: center; max-width: 900px; margin: 0 auto;
+}
+body.t-b .stat-item { text-align: center; color: var(--white); flex: 1 1 140px; padding: 0.5rem; }
+body.t-b .stat-num { font-size: 2rem; font-weight: 900; color: var(--green-l); line-height: 1; }
+body.t-b .stat-label { font-size: 0.8rem; opacity: 0.75; margin-top: 0.2rem; }
+
+/* =============================================================
+   C案 (t-c) オファー・行動喚起型 — 明るいFV＋フォーム
+   ============================================================= */
+body.t-c .hero {
+  background: var(--cream); padding: 4.5rem 1.5rem 3.5rem;
+}
+body.t-c .hero-inner {
+  display: flex; align-items: flex-start; gap: 3rem;
+  max-width: 1050px; margin: 0 auto;
+}
+body.t-c .hero-left { flex: 1 1 55%; }
+body.t-c .hero-right { flex: 0 0 360px; max-width: 360px; }
+body.t-c .trust-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem; }
+body.t-c .trust-badge {
+  background: var(--navy); color: var(--white);
+  padding: 0.3rem 0.9rem; border-radius: 4px;
+  font-size: 0.78rem; font-weight: 700;
+}
+body.t-c .hero h1 {
+  font-size: clamp(1.6rem, 5vw, 2.8rem); color: var(--navy);
+  line-height: 1.3; margin-bottom: 1rem;
+}
+body.t-c .hero h1 .accent { color: var(--green); }
+body.t-c .hero-sub { font-size: 0.95rem; color: var(--muted); margin-bottom: 1.5rem; line-height: 1.75; }
+body.t-c .hero-form {
+  background: var(--white); border-radius: 8px; padding: 1.8rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,.12); border-top: 4px solid var(--green);
+}
+body.t-c .hero-form h3 {
+  font-size: 1rem; color: var(--navy); margin-bottom: 1.2rem;
+  text-align: center; line-height: 1.4;
+}
+body.t-c .form-row { margin-bottom: 0.85rem; }
+body.t-c .form-row input, body.t-c .form-row textarea {
+  width: 100%; padding: 0.65rem 0.9rem;
+  border: 1px solid var(--line); border-radius: 4px;
+  font-family: inherit; font-size: 0.88rem;
+}
+body.t-c .form-row input:focus, body.t-c .form-row textarea:focus {
+  outline: 2px solid var(--green); border-color: var(--green);
+}
+body.t-c .hero-form .submit-btn {
+  width: 100%; padding: 0.9rem; background: var(--green); color: var(--white);
+  border: none; border-radius: 4px; font-weight: 700; font-size: 1rem; cursor: pointer;
+  transition: opacity 0.2s;
+}
+body.t-c .hero-form .submit-btn:hover { opacity: 0.88; }
+body.t-c .form-assurance { font-size: 0.78rem; text-align: center; color: var(--muted); margin-top: 0.6rem; }
+
+@media(max-width:768px) {
+  body.t-c .hero-inner { flex-direction: column; gap: 2rem; }
+  body.t-c .hero-right { max-width: 100%; width: 100%; flex: 1 1 auto; }
+}
+
+/* =============================================================
+   採用LP (t-r)
+   ============================================================= */
+body.t-r .hero {
+  position: relative; min-height: 82vh;
+  display: flex; align-items: center; overflow: hidden; padding: 5rem 1.5rem;
+}
+@media(max-width:768px) { body.t-r .hero { min-height: 70vh; } }
+
+body.t-r .hero-bg {
+  position: absolute; inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1600&h=900&fit=crop&q=80');
+  background-size: cover; background-position: center;
+}
+body.t-r .hero-overlay {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(11,23,48,.72) 0%, rgba(26,154,110,.28) 100%);
+}
+body.t-r .hero-content {
+  position: relative; z-index: 1; color: var(--white);
+  max-width: 700px; margin: 0 auto; text-align: center;
+}
+body.t-r .hero-eyebrow { font-size: 0.88rem; letter-spacing: 0.1em; opacity: 0.82; margin-bottom: 1rem; }
+body.t-r .hero h1 {
+  font-size: clamp(1.8rem, 5.5vw, 3.5rem); margin-bottom: 1.2rem; color: var(--white);
+}
+body.t-r .hero h1 .accent { color: var(--green-l); }
+body.t-r .hero-sub { font-size: 0.97rem; opacity: 0.9; margin-bottom: 2rem; line-height: 1.8; }
+body.t-r .hero-cta { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+body.t-r .recruit-badges { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+body.t-r .recruit-badge {
+  background: rgba(255,255,255,.15); border: 1px solid rgba(255,255,255,.3);
+  padding: 0.3rem 0.8rem; border-radius: 999px; font-size: 0.8rem; color: var(--white);
+}
+
+/* 採用LP 固有セクション */
+.appeal-grid { display: flex; flex-wrap: wrap; gap: 1.5rem; }
+.appeal-card {
+  flex: 1 1 260px; background: var(--white); border-radius: 8px;
+  padding: 1.8rem; box-shadow: 0 2px 8px rgba(0,0,0,.06); border-top: 4px solid var(--green);
+}
+.appeal-card .num { font-size: 1.8rem; font-weight: 900; color: var(--navy); margin-bottom: 0.4rem; line-height: 1; }
+.appeal-card h3 { font-size: 1rem; color: var(--navy); margin-bottom: 0.5rem; }
+.appeal-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.7; }
+
+.voice-grid { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; }
+.voice-card {
+  flex: 1 1 240px; max-width: 290px; background: var(--white);
+  border-radius: 8px; padding: 1.5rem; box-shadow: 0 2px 8px rgba(0,0,0,.06);
+}
+.voice-card img { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; margin: 0 auto 0.8rem; }
+.voice-card .name { text-align: center; font-size: 0.83rem; font-weight: 700; color: var(--navy); margin-bottom: 0.6rem; }
+.voice-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+.voice-note { text-align: center; font-size: 0.78rem; color: var(--muted); margin-top: 1rem; }
+
+.recruit-table { width: 100%; max-width: 640px; margin: 0 auto; border-collapse: collapse; font-size: 0.9rem; }
+.recruit-table th, .recruit-table td { padding: 0.9rem 1rem; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.recruit-table th { width: 9em; background: var(--soft); color: var(--navy); font-weight: 700; white-space: nowrap; }
+@media(max-width:600px) { .recruit-table th { width: 7em; font-size: 0.85rem; } }
