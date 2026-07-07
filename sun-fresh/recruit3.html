@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報（C案・FVバナー型） | 株式会社サンフレッシュ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+body{font-family:'Noto Sans JP',sans-serif;color:#222;background:#fff;line-height:1.78}
+
+/* ナビ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(0,0,0,.25);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.nav.scrolled{background:rgba(20,50,25,.97);box-shadow:0 1px 8px rgba(0,0,0,.3)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 1.2rem;display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-logo{font-size:.95rem;font-weight:700;color:#fff}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{text-decoration:none;color:rgba(255,255,255,.88);font-size:.85rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:#86EFAC}
+.btn-primary,.btn-outline,.btn-green{display:inline-block;text-decoration:none;border-radius:6px;font-weight:700;transition:all .2s}
+.btn-primary{background:#27AE60;color:#fff;padding:.42rem 1rem;font-size:.82rem}
+.btn-primary:hover,.btn-green:hover{background:#1E8449}
+.btn-outline{border:2px solid rgba(255,255,255,.7);color:#fff;padding:.85rem 1.8rem;font-size:1rem;font-weight:700}
+.btn-outline:hover{background:rgba(255,255,255,.12)}
+.btn-green{background:#27AE60;color:#fff;padding:.9rem 2.4rem;font-size:1.05rem;font-weight:900}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px}
+.nav-mobile{display:none;background:rgba(20,50,25,.98);padding:1rem}
+.nav-mobile.open{display:block}
+.nav-mobile a{display:block;padding:.7rem 0;border-bottom:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.88);text-decoration:none;font-size:.93rem}
+.nav-mobile a:last-child{border-bottom:none}
+
+/* フルスクリーンFVヒーロー */
+.hero{position:relative;min-height:80vh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1600&h=900&fit=crop&q=80') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,40,18,.75) 0%,rgba(20,65,30,.55) 100%)}
+.hero-content{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:6rem 1.5rem 4rem;color:#fff;text-align:center}
+.hero-logo-area{margin-bottom:2rem}
+.hero-company{font-size:.9rem;letter-spacing:.2em;opacity:.8;font-weight:700;margin-bottom:.4rem}
+.hero-divider{width:48px;height:2px;background:#86EFAC;margin:0 auto .8rem}
+.hero-catch{font-family:'Noto Serif JP',serif;font-size:clamp(.9rem,2.2vw,1.1rem);letter-spacing:.14em;opacity:.85;margin-bottom:2.5rem}
+.hero-title{font-family:'Noto Serif JP',serif;font-size:clamp(2.2rem,7vw,4rem);font-weight:700;line-height:1.2;margin-bottom:1.5rem;text-shadow:0 2px 12px rgba(0,0,0,.4)}
+.hero-title em{color:#86EFAC;font-style:normal}
+.hero-tags{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-bottom:2.2rem}
+.hero-tag{background:rgba(255,255,255,.12);color:#fff;padding:.28rem .85rem;border-radius:20px;font-size:.78rem;border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(4px)}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.hero-scroll{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);text-align:center;opacity:.65;animation:bounce 2s infinite}
+.hero-scroll::before{content:'';display:block;width:20px;height:30px;border:2px solid rgba(255,255,255,.6);border-radius:10px;margin:0 auto;position:relative}
+.hero-scroll::after{content:'';display:block;width:4px;height:4px;background:rgba(255,255,255,.6);border-radius:50%;margin:.5rem auto 0;animation:scrolldot 2s infinite}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+@keyframes scrolldot{0%,100%{opacity:1;margin-top:.4rem}50%{opacity:0;margin-top:1rem}}
+
+/* 重要メッセージ帯 */
+.message-band{background:#1B4332;color:#fff;padding:1.2rem 1.5rem;text-align:center}
+.message-band-inner{max-width:900px;margin:0 auto;display:flex;gap:2rem;justify-content:center;flex-wrap:wrap}
+.msg-item{font-size:.88rem;display:flex;align-items:center;gap:.4rem}
+.msg-item strong{color:#86EFAC;font-size:1.02rem}
+
+/* セクション共通 */
+.section{padding:5rem 1.5rem}
+.section-cream{background:#FDFCF8}
+.section-forest{background:#F0F7F2}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-label{color:#27AE60;font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.4rem}
+.section-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;margin-bottom:1.3rem;color:#1B3A1F}
+.section-lead{color:#555;max-width:680px;margin-bottom:2.5rem;font-size:.93rem}
+.sample-note{font-size:.73rem;color:#bbb;margin-top:.5rem}
+
+/* 特徴グリッド */
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.feature-card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 24px rgba(0,0,0,.08);transition:transform .2s}
+.feature-card:hover{transform:translateY(-4px)}
+.feature-card img{width:100%;height:220px;object-fit:cover}
+.feature-card-body{padding:1.6rem}
+.feature-icon{font-size:1.8rem;margin-bottom:.5rem}
+.feature-title{font-size:1.05rem;font-weight:900;margin-bottom:.5rem;color:#1B3A1F}
+.feature-desc{font-size:.87rem;color:#555;line-height:1.75}
+.feature-hl{background:#E8F5E9;border-left:3px solid #27AE60;padding:.5rem .8rem;border-radius:0 6px 6px 0;font-size:.82rem;color:#1B5E20;font-weight:700;margin-top:.8rem}
+
+/* 証言（引用スタイル） */
+.quotes{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem}
+.quote-card{background:#fff;border-radius:12px;padding:2rem;box-shadow:0 2px 16px rgba(0,0,0,.07);position:relative}
+.quote-card::before{content:'"';font-family:'Noto Serif JP',serif;font-size:4rem;color:#C8E6C9;line-height:1;position:absolute;top:.5rem;left:1rem;opacity:.6}
+.quote-text{font-size:.9rem;color:#444;line-height:1.8;padding-top:1.5rem;margin-bottom:1rem;font-style:italic}
+.quote-author{display:flex;align-items:center;gap:.8rem}
+.quote-img{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid #C8E6C9;flex-shrink:0}
+.quote-name{font-weight:700;font-size:.88rem;color:#1B3A1F}
+.quote-role{font-size:.75rem;color:#888}
+
+/* 募集要項 */
+.job-table{width:100%;border-collapse:collapse}
+.job-table th,.job-table td{padding:.9rem 1.2rem;border-bottom:1px solid #E8F5E9;text-align:left;vertical-align:top}
+.job-table th{background:#E8F5E9;width:34%;font-weight:700;color:#1B5E20;font-size:.87rem;white-space:nowrap}
+.job-table td{font-size:.9rem;color:#333}
+.job-table tr:last-child th,.job-table tr:last-child td{border-bottom:none}
+
+/* FAQ */
+.faq-list{max-width:820px}
+.faq-item{border:1px solid #C8E6C9;border-radius:8px;margin-bottom:1rem;overflow:hidden}
+.faq-q{padding:1.1rem 1.4rem;font-weight:700;color:#1B5E20;background:#F1F8E9;display:flex;align-items:flex-start;gap:.6rem;font-size:.92rem}
+.faq-q-icon{background:#27AE60;color:#fff;font-size:.75rem;font-weight:900;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem}
+.faq-a{padding:1.1rem 1.4rem;font-size:.9rem;color:#444;line-height:1.78;background:#fff}
+
+/* タイムライン */
+.timeline{max-width:700px;position:relative}
+.timeline::before{content:'';position:absolute;left:49px;top:0;bottom:0;width:2px;background:#C8E6C9}
+.tl-item{display:flex;gap:1.4rem;margin-bottom:1.8rem}
+.tl-time{width:90px;text-align:right;font-size:.82rem;font-weight:700;color:#1B5E20;flex-shrink:0;padding-top:.15rem}
+.tl-dot{width:14px;height:14px;border-radius:50%;background:#27AE60;border:3px solid #fff;box-shadow:0 0 0 2px #27AE60;flex-shrink:0;margin-top:.2rem}
+.tl-title{font-weight:700;color:#1B3A1F;margin-bottom:.2rem;font-size:.92rem}
+.tl-desc{font-size:.85rem;color:#666}
+
+/* 先輩の声 */
+.voices{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.voice-card{background:#fff;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.07);padding:1.5rem;display:flex;flex-direction:column;gap:.8rem}
+.voice-head{display:flex;align-items:center;gap:1rem}
+.voice-img{width:60px;height:60px;border-radius:50%;object-fit:cover;border:3px solid #C8E6C9;flex-shrink:0}
+.voice-name{font-weight:700;color:#1B3A1F;font-size:.9rem}
+.voice-role{font-size:.76rem;color:#888}
+.voice-text{font-size:.86rem;color:#555;line-height:1.78}
+
+/* 採用担当者 */
+.recruiter-box{display:flex;gap:2rem;align-items:center;background:#fff;border-radius:16px;padding:2.5rem;box-shadow:0 4px 24px rgba(0,0,0,.08);max-width:800px}
+.recruiter-img{width:120px;height:120px;border-radius:50%;object-fit:cover;border:4px solid #C8E6C9;flex-shrink:0}
+.recruiter-name{font-size:1.1rem;font-weight:900;color:#1B3A1F;margin-bottom:.2rem}
+.recruiter-role{font-size:.8rem;color:#888;margin-bottom:.7rem}
+.recruiter-msg{font-size:.9rem;color:#444;line-height:1.8}
+
+/* 応募CTA */
+.cta-section{position:relative;overflow:hidden;padding:6rem 1.5rem;text-align:center;color:#fff}
+.cta-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&h=600&fit=crop&q=80') center/cover no-repeat}
+.cta-overlay{position:absolute;inset:0;background:rgba(15,45,20,.78)}
+.cta-content{position:relative;z-index:1}
+.cta-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.6rem,4.5vw,2.4rem);font-weight:700;margin-bottom:.8rem}
+.cta-lead{font-size:.95rem;opacity:.88;margin-bottom:2rem}
+.btn-white{display:inline-block;background:#fff;color:#1B4332;text-decoration:none;padding:1rem 2.8rem;border-radius:6px;font-size:1.05rem;font-weight:900;transition:opacity .2s}
+.btn-white:hover{opacity:.88}
+.btn-white-outline{display:inline-block;background:transparent;color:#fff;text-decoration:none;padding:.95rem 2rem;border-radius:6px;font-size:1rem;font-weight:700;border:2px solid rgba(255,255,255,.7);transition:all .2s;margin-left:.8rem}
+.btn-white-outline:hover{background:rgba(255,255,255,.12)}
+
+/* フッター */
+footer{background:#0F2A13;color:rgba(255,255,255,.5);text-align:center;padding:2rem 1rem;font-size:.78rem}
+footer p+p{margin-top:.3rem}
+
+/* スマホ */
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .features{grid-template-columns:1fr}
+  .quotes{grid-template-columns:1fr}
+  .voices{grid-template-columns:1fr}
+  .recruiter-box{flex-direction:column;text-align:center;align-items:center}
+  .hero-content{padding:4.5rem 1.2rem 3rem}
+  .message-band-inner{flex-direction:column;gap:.8rem}
+  .job-table,.job-table thead,.job-table tbody,.job-table tr,.job-table th,.job-table td{display:block;width:100%}
+  .job-table th{border-bottom:none;padding-bottom:.3rem;white-space:normal}
+  .job-table td{padding-top:.25rem;padding-bottom:.9rem;border-bottom:1px solid #E8F5E9}
+  .job-table tr:last-child td{border-bottom:none}
+  .btn-white-outline{margin-left:0;margin-top:.6rem;display:block}
+  .cta-btns{display:flex;flex-direction:column;align-items:center;gap:.6rem}
+  .hero-btns{flex-direction:column;align-items:center}
+  .timeline::before{left:45px}
+  .tl-time{width:78px}
+}
+</style>
+</head>
+<body>
+
+<!-- ナビ -->
+<nav class="nav" id="mainNav">
+  <div class="nav-inner">
+    <div class="nav-logo">株式会社サンフレッシュ 採用情報</div>
+    <ul class="nav-links">
+      <li><a href="#features">働く魅力</a></li>
+      <li><a href="#jobs">募集要項</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#voices">先輩の声</a></li>
+      <li><a href="#apply" class="btn-primary">応募する</a></li>
+    </ul>
+    <button class="hamburger" id="hb" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="nm">
+    <a href="#features">働く魅力</a>
+    <a href="#jobs">募集要項</a>
+    <a href="#faq">FAQ</a>
+    <a href="#voices">先輩の声</a>
+    <a href="#apply">応募する</a>
+  </div>
+</nav>
+
+<!-- FVバナーヒーロー（3層） -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-logo-area">
+      <div class="hero-company">株式会社サンフレッシュ</div>
+      <div class="hero-divider"></div>
+      <div class="hero-catch">生姜・にんにくの専門商社 ／ 正社員採用</div>
+    </div>
+    <h1 class="hero-title">食の安全を支える<br><em>信頼の営業</em>へ</h1>
+    <div class="hero-tags">
+      <span class="hero-tag">🌿 専門商材でプロになれる</span>
+      <span class="hero-tag">✅ テレアポ・飛び込みなし</span>
+      <span class="hero-tag">💰 個人ノルマなし</span>
+      <span class="hero-tag">🏖 年間休日118日</span>
+      <span class="hero-tag">⏰ 月残業5時間</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#apply" class="btn-green">応募を検討する</a>
+      <a href="#jobs" class="btn-outline">募集要項を見る</a>
+    </div>
+  </div>
+  <div class="hero-scroll" aria-hidden="true"></div>
+</section>
+
+<!-- 重要訴求バンド -->
+<div class="message-band">
+  <div class="message-band-inner">
+    <div class="msg-item"><strong>テレアポなし</strong>・飛び込みなし</div>
+    <div class="msg-item"><strong>個人ノルマなし</strong></div>
+    <div class="msg-item">年間休日<strong>118日</strong></div>
+    <div class="msg-item">月残業平均<strong>5時間</strong></div>
+    <div class="msg-item">賞与年<strong>2回</strong>（計3ヶ月分）</div>
+  </div>
+</div>
+
+<!-- 働く魅力 -->
+<section class="section section-cream" id="features">
+  <div class="section-inner">
+    <p class="section-label">Features</p>
+    <h2 class="section-title">サンフレッシュで働く3つの魅力</h2>
+    <p class="section-lead">千葉・成田から食の安全を届ける生姜・にんにく専門商社。平成16年創業、有機JAS認証品も自社で一貫取り扱い。</p>
+    <div class="features">
+      <div class="feature-card">
+        <!-- 写真: 農産物・畑イメージ -->
+        <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=640&h=380&fit=crop&q=80" alt="専門商材のイメージ">
+        <div class="feature-card-body">
+          <div class="feature-icon">🌿</div>
+          <div class="feature-title">生姜・にんにくの専門家になれる</div>
+          <div class="feature-desc">仕入・加工・販売を自社一貫。有機JAS認証品も取り扱う専門性の高い商社です。商材知識は入社後OJTで習得でき、食のプロとして成長できます。</div>
+          <div class="feature-hl">入社後OJTで習得OK</div>
+        </div>
+      </div>
+      <div class="feature-card">
+        <!-- 写真: ルート営業・打ち合わせイメージ -->
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=640&h=380&fit=crop&q=80" alt="ルート営業のイメージ">
+        <div class="feature-card-body">
+          <div class="feature-icon">🤝</div>
+          <div class="feature-title">ルート営業メイン・安心のスタイル</div>
+          <div class="feature-desc">「やみくもなテレアポや飛び込み営業はございません」（求人票より）。既存のお取引先との関係を深める仕事です。個人ノルマもなく、チームで目標を目指します。</div>
+          <div class="feature-hl">テレアポ・飛び込みなし ／ 個人ノルマなし</div>
+        </div>
+      </div>
+      <div class="feature-card">
+        <!-- 写真: 安定した職場・チームワーク -->
+        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=640&h=380&fit=crop&q=80" alt="安定した職場のイメージ">
+        <div class="feature-card-body">
+          <div class="feature-icon">⏰</div>
+          <div class="feature-title">プライベートも充実できる安定環境</div>
+          <div class="feature-desc">月残業5時間・年間休日118日（＋計画有給5日）。昇給あり・賞与年2回（計3ヶ月分）・通勤手当全額支給。マイカー通勤可（駐車場あり）。</div>
+          <div class="feature-hl">月残業5h ／ 休日118日 ／ 賞与年2回</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩の声（引用スタイル） -->
+<section class="section" id="voices">
+  <div class="section-inner">
+    <p class="section-label">Voices</p>
+    <h2 class="section-title">先輩スタッフの声</h2>
+    <p class="section-lead">実際に働くスタッフのコメントをご紹介します。</p>
+    <div class="quotes">
+      <!-- 引用1 -->
+      <div class="quote-card">
+        <div class="quote-text">「前職はとにかくテレアポと飛び込みで消耗していました。ここでは既存のお客様との関係を育てる仕事なので、プレッシャーが少なく、代わりに信頼関係が積み上がっていく実感があります。生姜・にんにくの専門知識がついてきた今、お客様に指名してもらえることも増えてきました。」</div>
+        <div class="quote-author">
+          <img class="quote-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="山田さん（仮名）">
+          <div><div class="quote-name">山田 健司（仮名）</div><div class="quote-role">営業スタッフ ／ 入社3年目</div></div>
+        </div>
+        <p class="sample-note">※ここはサンプルです。実際には御社社員の写真・コメントに差し替えます</p>
+      </div>
+      <!-- 引用2 -->
+      <div class="quote-card">
+        <div class="quote-text">「月残業5時間と年間休日118日という数字は、本当にそのとおりです。家庭との両立ができる職場を探していたので、条件面で迷わず決めました。生姜・にんにくという特化した商材を扱うので、食品業界での専門性も自然と高まりますし、働きながら成長できている実感があります。」</div>
+        <div class="quote-author">
+          <img class="quote-img" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&crop=faces&q=80" alt="田中さん（仮名）">
+          <div><div class="quote-name">田中 美咲（仮名）</div><div class="quote-role">営業スタッフ ／ 入社5年目</div></div>
+        </div>
+        <p class="sample-note">※ここはサンプルです。実際には御社社員の写真・コメントに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- タイムライン（1日の流れ） -->
+<section class="section section-forest" id="timeline">
+  <div class="section-inner">
+    <p class="section-label">A Day</p>
+    <h2 class="section-title">営業スタッフの1日の流れ</h2>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-time">8:45</div><div class="tl-dot"></div><div class="tl-body"><div class="tl-title">出社・メールチェック</div><div class="tl-desc">当日の訪問先・受注状況を確認（月曜は8:30）</div></div></div>
+      <div class="tl-item"><div class="tl-time">9:00</div><div class="tl-dot"></div><div class="tl-body"><div class="tl-title">朝礼・スケジュール共有</div><div class="tl-desc">チームで新着商品情報・今日の訪問先を共有</div></div></div>
+      <div class="tl-item"><div class="tl-time">10:00</div><div class="tl-dot"></div><div class="tl-body"><div class="tl-title">社用車で顧客訪問（午前）</div><div class="tl-desc">既存取引先へ。新商品サンプルを持参して提案することも</div></div></div>
+      <div class="tl-item"><div class="tl-time">12:00</div><div class="tl-dot"></div><div class="tl-body"><div class="tl-title">昼休憩（60分）</div><div class="tl-desc">成田公津の杜市場内の職場ならではの環境で</div></div></div>
+      <div class="tl-item"><div class="tl-time">13:00</div><div class="tl-dot"></div><div class="tl-body"><div class="tl-title">顧客訪問（午後）・受発注対応</div><div class="tl-desc">午後の訪問をこなしながら受注・発注の処理も</div></div></div>
+      <div class="tl-item"><div class="tl-time">15:30</div><div class="tl-dot"></div><div class="tl-body"><div class="tl-title">帰社・見積書作成・デスクワーク</div><div class="tl-desc">Excel で見積書を作成。メール返信・資料整理</div></div></div>
+      <div class="tl-item"><div class="tl-time">18:00</div><div class="tl-dot"></div><div class="tl-body"><div class="tl-title">退社</div><div class="tl-desc">月平均残業5時間。定時退社がほとんど</div></div></div>
+    </div>
+    <p class="sample-note">※ここはサンプルです。実際には御社社員の1日の流れに差し替えます</p>
+  </div>
+</section>
+
+<!-- 先輩3人カード -->
+<section class="section section-cream">
+  <div class="section-inner">
+    <p class="section-label">Messages</p>
+    <h2 class="section-title">先輩からのメッセージ</h2>
+    <div class="voices">
+      <div class="voice-card">
+        <div class="voice-head">
+          <img class="voice-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="鈴木さん（仮名）">
+          <div><div class="voice-name">鈴木 大輔（仮名）</div><div class="voice-role">営業スタッフ ／ 入社1年目</div></div>
+        </div>
+        <div class="voice-text">「異業種からの転職で不安でしたが、商品知識はゼロからOJTで教えてもらえました。個人ノルマがないので焦らず成長できています。」</div>
+        <p class="sample-note">※サンプル。実際の社員写真・コメントに差し替えます</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-head">
+          <img class="voice-img" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="佐藤さん（仮名）">
+          <div><div class="voice-name">佐藤 雄介（仮名）</div><div class="voice-role">営業スタッフ ／ 入社4年目</div></div>
+        </div>
+        <div class="voice-text">「特定商材に特化した専門商社なので、食品業界に深いネットワークができました。賞与も年2回しっかりあり、長く安心して働けています。」</div>
+        <p class="sample-note">※サンプル。実際の社員写真・コメントに差し替えます</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-head">
+          <img class="voice-img" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=faces&q=80" alt="木村さん（仮名）">
+          <div><div class="voice-name">木村 さとみ（仮名）</div><div class="voice-role">営業スタッフ ／ 入社2年目</div></div>
+        </div>
+        <div class="voice-text">「年間休日118日と月残業5時間は本当に助かります。子育て中でも安心して続けられる職場環境です。マイカー通勤できるのも魅力でした。」</div>
+        <p class="sample-note">※サンプル。実際の社員写真・コメントに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="section" id="jobs">
+  <div class="section-inner">
+    <p class="section-label">Job Info</p>
+    <h2 class="section-title">募集要項</h2>
+    <p class="sample-note" style="margin-bottom:1rem;">※ここはサンプルです。実際には御社の最新情報に差し替えます</p>
+    <table class="job-table">
+      <tbody>
+        <tr><th>職種</th><td>営業スタッフ（正社員）</td></tr>
+        <tr><th>仕事内容</th><td>
+          既存顧客への新商品提案・受発注業務・見積書作成。社用車による外出訪問あり。<br>
+          <small style="color:#27AE60;font-weight:700;">▶ テレアポ・飛び込み営業なし ／ 個人ノルマなし</small>
+        </td></tr>
+        <tr><th>取り扱い商材</th><td>生姜・にんにくの専門商社（仕入・加工・販売を一貫。有機JAS認証品も取り扱い）</td></tr>
+        <tr><th>雇用形態</th><td>正社員（試用期間3ヶ月・同条件）</td></tr>
+        <tr><th>月給</th><td>220,000円〜（経験・能力を考慮）／ 皆勤手当10,000円 ／ 通勤手当実費全額</td></tr>
+        <tr><th>昇給・賞与</th><td>昇給あり（年2,000円〜） ／ 賞与年2回（計3ヶ月分 前年実績）</td></tr>
+        <tr><th>就業時間</th><td>9:00〜18:00（土曜9:00〜17:00） ／ 月曜のみ8:30〜早出あり</td></tr>
+        <tr><th>休日</th><td>日曜・その他（シフト制・市場カレンダー準拠）/ 年間休日118日（＋計画有給5日）</td></tr>
+        <tr><th>時間外労働</th><td>月平均5時間</td></tr>
+        <tr><th>勤務地</th><td>千葉県成田市飯仲45番地 成田公津の杜市場内サービス棟2階<br>京成公津の杜駅 徒歩10分 ／ マイカー通勤可（駐車場あり）</td></tr>
+        <tr><th>応募資格</th><td>普通自動車運転免許（AT限定可）・Word/Excel基本操作<br>営業経験あれば尚可（未経験者相談可）</td></tr>
+        <tr><th>年齢</th><td>64歳以下（定年65歳のため）</td></tr>
+        <tr><th>各種保険</th><td>雇用・労災・健康・厚生年金</td></tr>
+        <tr><th>選考の流れ</th><td>①書類応募 → ②書類選考（7日以内通知） → ③現地面接1回 → ④内定（7日以内通知）</td></tr>
+        <tr><th>応募先</th><td>担当：江田 TEL：0476-24-8881 ／ Mail：eda@3fresh.co.jp<br>〒286-0046 千葉県成田市飯仲45番地 成田公津の杜市場内サービス棟2階</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section-forest" id="faq">
+  <div class="section-inner">
+    <p class="section-label">FAQ</p>
+    <h2 class="section-title">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-icon">Q</span>営業スタイルを教えてください。新規開拓・テレアポはありますか？</div>
+        <div class="faq-a">当社の営業は「お客様との関係性構築を重視したスタイル」です（求人票明記）。やみくものテレアポや飛び込み営業はなく、既存取引先へのルート営業が中心です。個人ノルマもありません。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-icon">Q</span>生姜・にんにくの知識は必要ですか？</div>
+        <div class="faq-a">入社時は不要です。商品知識はOJTで習得できます。必要なのは普通免許（AT可）とWord/Excelの基本操作のみです。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-icon">Q</span>残業・休日についてどのくらいありますか？</div>
+        <div class="faq-a">月平均残業5時間と非常に少なく、年間休日118日（＋計画有給5日）を確保しています。定時退社の日がほとんどです。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-icon">Q</span>選考の流れを教えてください。</div>
+        <div class="faq-a">①ハローワーク紹介状＋書類を郵送またはメール → ②書類選考（7日以内通知） → ③現地面接1回 → ④内定（面接後7日以内通知）です。勤務開始時期はご相談いただけます。</div>
+      </div>
+    </div>
+    <p class="sample-note">※ここはサンプルです。実際には御社の最新Q&Aに差し替えます</p>
+  </div>
+</section>
+
+<!-- 採用担当者 -->
+<section class="section section-cream" id="recruiter">
+  <div class="section-inner">
+    <p class="section-label">Recruiter</p>
+    <h2 class="section-title">採用担当者より</h2>
+    <div class="recruiter-box">
+      <!-- 写真: 採用担当（サンプル） -->
+      <img class="recruiter-img" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当の写真（サンプル）">
+      <div>
+        <div class="recruiter-name">江田（仮名）</div>
+        <div class="recruiter-role">管理部 採用担当</div>
+        <div class="recruiter-msg">「まずは履歴書（写真貼付）と職務経歴書をご郵送、またはメールでお送りください。ご質問だけでもお気軽にどうぞ。生姜・にんにくという専門商材に興味を持っていただける方、食の安全に関わる仕事をしたいと思っていただける方をお待ちしています。数日以内にご連絡いたします。」</div>
+        <p class="sample-note" style="margin-top:.6rem;">※ここはサンプルです。実際には採用担当者の写真・コメントに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 応募CTA（背景写真） -->
+<section class="cta-section" id="apply">
+  <div class="cta-bg"></div>
+  <div class="cta-overlay"></div>
+  <div class="cta-content">
+    <h2 class="cta-title">ご応募・お問い合わせは<br>いつでもお気軽に</h2>
+    <p class="cta-lead">まずはハローワーク（成田公共職業安定所）にご相談のうえ、<br>お電話またはメールでご連絡ください。</p>
+    <div class="cta-btns" style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+      <a href="tel:0476248881" class="btn-white">📞 0476-24-8881</a>
+      <a href="mailto:eda@3fresh.co.jp" class="btn-white-outline">✉ メールで問い合わせる</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>株式会社サンフレッシュ ／ 千葉県成田市飯仲45番地 成田公津の杜市場内サービス棟2階</p>
+  <p>TEL：0476-24-8881 ／ Mail：eda@3fresh.co.jp</p>
+  <p style="margin-top:.4rem;font-size:.7rem;">このページは採用提案用サンプルです。掲載情報は適宜更新されます。</p>
+</footer>
+
+<script>
+const hb=document.getElementById('hb'),nm=document.getElementById('nm'),nav=document.getElementById('mainNav');
+hb.addEventListener('click',()=>nm.classList.toggle('open'));
+nm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nm.classList.remove('open')));
+window.addEventListener('scroll',()=>{
+  if(window.scrollY>80)nav.classList.add('scrolled');
+  else nav.classList.remove('scrolled');
+},{passive:true});
+</script>
+</body>
+</html>
