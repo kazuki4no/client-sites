@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 株式会社スズショウ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+body{font-family:'Noto Sans JP',sans-serif;color:#333;line-height:1.7}
+a{text-decoration:none;color:inherit}
+
+:root{
+  --navy:#1c3461;
+  --navy-dark:#0f1f3d;
+  --orange:#f97316;
+  --orange-dk:#ea6a0a;
+  --gray-bg:#f5f6fa;
+  --light:#fff;
+}
+
+/* ヘッダー */
+header{
+  background:var(--navy-dark);padding:0 24px;
+  position:sticky;top:0;z-index:100;
+  display:flex;align-items:center;justify-content:space-between;height:60px;
+}
+.logo{color:#fff;font-size:.95rem;font-weight:700;letter-spacing:.04em}
+nav{display:flex;gap:24px}
+nav a{color:rgba(255,255,255,.8);font-size:.82rem;transition:color .2s}
+nav a:hover{color:var(--orange)}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.ham span{display:block;width:24px;height:2px;background:#fff;transition:.3s}
+
+/* ヒーロー */
+.hero{
+  position:relative;min-height:78vh;
+  display:flex;align-items:center;justify-content:center;text-align:center;
+  overflow:hidden;background:var(--navy-dark);
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&h=900&fit=crop&q=80');
+  background-size:cover;background-position:center;opacity:.32;
+}
+.hero-content{position:relative;z-index:2;padding:60px 24px;max-width:820px}
+.badge{
+  display:inline-block;background:var(--orange);color:#fff;
+  font-size:.78rem;font-weight:700;letter-spacing:.12em;
+  padding:4px 18px;border-radius:20px;margin-bottom:20px;
+}
+.hero h1{
+  font-size:clamp(1.8rem,5.5vw,3.2rem);font-weight:900;color:#fff;
+  line-height:1.3;margin-bottom:18px;text-shadow:0 2px 14px rgba(0,0,0,.55);
+}
+.hero p{color:rgba(255,255,255,.9);font-size:clamp(.9rem,2.4vw,1.1rem);margin-bottom:36px}
+.btn-primary{
+  display:inline-block;background:var(--orange);color:#fff;
+  font-weight:700;padding:14px 44px;border-radius:4px;font-size:1rem;
+  transition:background .2s,transform .1s;
+}
+.btn-primary:hover{background:var(--orange-dk);transform:translateY(-1px)}
+
+/* セクション共通 */
+.sec{padding:72px 24px}
+.inner{max-width:960px;margin:0 auto}
+.sec-label{color:var(--orange);font-size:.78rem;font-weight:700;letter-spacing:.16em;margin-bottom:8px}
+.sec-title{
+  font-size:clamp(1.4rem,4vw,2rem);font-weight:900;
+  color:var(--navy-dark);margin-bottom:40px;
+}
+.bg-gray{background:var(--gray-bg)}
+.bg-navy{background:var(--navy-dark)}
+.sample-note{margin-top:16px;font-size:.75rem;color:#bbb}
+
+/* 魅力3点 */
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.feat-card{
+  background:#fff;border-radius:8px;padding:32px 24px;
+  box-shadow:0 2px 12px rgba(0,0,0,.06);text-align:center;
+}
+.feat-icon{font-size:2.4rem;margin-bottom:16px}
+.feat-card h3{font-size:1rem;font-weight:700;color:var(--navy-dark);margin-bottom:12px}
+.feat-card p{font-size:.88rem;color:#666;line-height:1.8}
+
+/* 仕事内容 */
+.job-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.job-item{
+  display:flex;gap:16px;align-items:flex-start;
+  background:#fff;border-radius:8px;padding:24px;
+  box-shadow:0 2px 8px rgba(0,0,0,.05);
+}
+.job-num{
+  width:40px;height:40px;min-width:40px;
+  background:var(--orange);color:#fff;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:.88rem;
+}
+.job-item h4{font-size:.95rem;font-weight:700;color:var(--navy-dark);margin-bottom:6px}
+.job-item p{font-size:.86rem;color:#666}
+
+/* 募集要項 */
+.req-table{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.req-row{display:flex;border-bottom:1px solid #eee}
+.req-row:last-child{border-bottom:none}
+.req-label{
+  width:180px;min-width:180px;background:var(--navy);color:#fff;
+  font-size:.88rem;font-weight:700;padding:16px 20px;
+  display:flex;align-items:center;
+}
+.req-val{padding:16px 24px;font-size:.88rem;color:#333;flex:1;display:flex;align-items:center}
+
+/* タイムライン */
+.timeline{list-style:none;padding:0;position:relative}
+.timeline::before{
+  content:'';position:absolute;left:64px;top:0;bottom:0;
+  width:2px;background:var(--navy);opacity:.18;
+}
+.timeline li{display:flex;gap:20px;align-items:flex-start;padding:20px 0;position:relative}
+.tl-time{min-width:56px;font-size:.82rem;font-weight:700;color:var(--orange);padding-top:4px;text-align:right}
+.tl-dot{
+  width:16px;height:16px;min-width:16px;
+  background:var(--navy);border:3px solid #fff;border-radius:50%;
+  margin-top:4px;box-shadow:0 0 0 2px var(--navy);
+}
+.tl-body h4{font-size:.92rem;font-weight:700;color:var(--navy-dark);margin-bottom:4px}
+.tl-body p{font-size:.84rem;color:#666}
+
+/* 先輩メッセージ */
+.voices{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.voice-card{
+  background:#fff;border-radius:8px;padding:24px;
+  box-shadow:0 2px 12px rgba(0,0,0,.06);
+}
+.voice-head{display:flex;gap:14px;align-items:center;margin-bottom:14px}
+.v-avatar{width:60px;height:60px;border-radius:50%;overflow:hidden;flex-shrink:0}
+.v-avatar img{width:100%;height:100%;object-fit:cover}
+.v-name{font-weight:700;color:var(--navy-dark);font-size:.92rem}
+.v-meta{font-size:.76rem;color:#888;margin-top:2px}
+.voice-card p{font-size:.86rem;color:#444;line-height:1.85}
+
+/* FAQ */
+.faq-list{list-style:none}
+.faq-item{border-bottom:1px solid #e5e7eb;padding:20px 0}
+.faq-q{display:flex;gap:12px;align-items:flex-start;font-weight:700;font-size:.92rem;color:var(--navy-dark)}
+.faq-qmark{
+  min-width:28px;width:28px;height:28px;
+  background:var(--orange);color:#fff;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:.88rem;font-weight:700;
+}
+.faq-a{display:flex;gap:12px;margin-top:12px;font-size:.88rem;color:#555;padding-left:2px}
+.faq-amark{
+  min-width:28px;width:28px;height:28px;
+  background:var(--navy);color:#fff;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:.85rem;font-weight:700;
+}
+
+/* 採用担当者 */
+.recruiter{
+  display:flex;gap:32px;align-items:center;
+  background:#fff;border-radius:12px;padding:40px;
+  box-shadow:0 2px 12px rgba(0,0,0,.06);
+}
+.rec-photo{width:120px;height:120px;border-radius:50%;overflow:hidden;flex-shrink:0}
+.rec-photo img{width:100%;height:100%;object-fit:cover}
+.rec-name{font-size:1.05rem;font-weight:700;color:var(--navy-dark);margin-bottom:6px}
+.rec-role{font-size:.8rem;color:#888;margin-bottom:12px}
+.rec-body p{font-size:.88rem;color:#444;line-height:1.85}
+.btn-outline{
+  display:inline-block;border:2px solid var(--orange);color:var(--orange);
+  font-weight:700;padding:10px 28px;border-radius:4px;font-size:.88rem;
+  margin-top:16px;transition:.2s;
+}
+.btn-outline:hover{background:var(--orange);color:#fff}
+
+/* 応募CTA */
+.cta-sec{padding:72px 24px;background:var(--navy-dark);text-align:center}
+.cta-sec h2{font-size:clamp(1.4rem,4vw,2rem);font-weight:900;color:#fff;margin-bottom:16px}
+.cta-sec p{color:rgba(255,255,255,.8);margin-bottom:32px;font-size:.92rem}
+
+/* フッター */
+footer{background:#0a1525;color:rgba(255,255,255,.45);text-align:center;padding:28px 24px;font-size:.8rem}
+
+/* ── スマホ ── */
+@media(max-width:768px){
+  nav{display:none}
+  nav.open{
+    display:flex;flex-direction:column;
+    position:absolute;top:60px;left:0;right:0;
+    background:var(--navy-dark);padding:16px 24px;gap:16px;
+  }
+  .ham{display:flex}
+  .features{grid-template-columns:1fr}
+  .job-grid{grid-template-columns:1fr}
+  .voices{grid-template-columns:1fr}
+  .req-row{flex-direction:column}
+  .req-label{width:100%;min-width:0;padding:10px 16px}
+  .req-val{padding:12px 16px}
+  .recruiter{flex-direction:column;text-align:center;padding:28px 20px}
+  .timeline::before{left:56px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">株式会社スズショウ｜採用情報</div>
+  <nav id="main-nav">
+    <a href="#features">魅力</a>
+    <a href="#job">仕事内容</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#voices">先輩の声</a>
+    <a href="#faq">FAQ</a>
+    <a href="#apply">応募する</a>
+  </nav>
+  <button class="ham" id="ham" onclick="document.getElementById('main-nav').classList.toggle('open')" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <span class="badge">建築作業員 募集中</span>
+    <h1>地元・千葉で、<br>ものづくりの職人になる。</h1>
+    <p>未経験・学歴不問。先輩が現場でしっかり教えます。<br>手に職をつけて、長く働ける仕事をはじめませんか。</p>
+    <a href="#apply" class="btn-primary">エントリーする（無料）</a>
+  </div>
+</section>
+
+<!-- 魅力3点 -->
+<section class="sec" id="features">
+  <div class="inner">
+    <div class="sec-label">FEATURE</div>
+    <h2 class="sec-title">スズショウで働く3つの魅力</h2>
+    <div class="features">
+      <div class="feat-card">
+        <div class="feat-icon">🔨</div>
+        <h3>未経験から<br>確実に手に職がつく</h3>
+        <p>道具の使い方から現場の段取りまで、ベテラン社員が一から教えます。経験ゼロでも大丈夫です。</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">👷</div>
+        <h3>少人数で<br>アットホームな職場</h3>
+        <p>少数精鋭のチームなので、困ったことをすぐ相談できる環境です。先輩と距離が近く働きやすいと好評です。</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📋</div>
+        <h3>資格取得を<br>会社が全力サポート</h3>
+        <p>現場経験を積みながら資格取得もバックアップ。技術と収入が同時に伸びるキャリアパスがあります。</p>
+      </div>
+    </div>
+    <!-- ※ここはサンプルです。実際には御社の魅力に差し替えます -->
+    <p class="sample-note">※ここはサンプルです。実際には御社の強み・魅力に差し替えます</p>
+  </div>
+</section>
+
+<!-- 仕事内容 -->
+<section class="sec bg-gray" id="job">
+  <div class="inner">
+    <div class="sec-label">JOB DESCRIPTION</div>
+    <h2 class="sec-title">仕事内容</h2>
+    <div class="job-grid">
+      <div class="job-item">
+        <div class="job-num">1</div>
+        <div>
+          <h4>建築現場での施工作業</h4>
+          <p>戸建住宅・集合住宅などの建築現場で上棟・内装・外装の施工作業を担当します。先輩と一緒に進めるので安心です。</p>
+        </div>
+      </div>
+      <div class="job-item">
+        <div class="job-num">2</div>
+        <div>
+          <h4>資材搬入・現場管理</h4>
+          <p>現場への資材搬入や整理整頓、道具・材料の管理も担当します。段取り力が身につく仕事です。</p>
+        </div>
+      </div>
+      <div class="job-item">
+        <div class="job-num">3</div>
+        <div>
+          <h4>品質・安全確認</h4>
+          <p>施工した箇所の品質チェックや現場の安全管理も行います。丁寧な仕事が完成品の品質につながります。</p>
+        </div>
+      </div>
+      <div class="job-item">
+        <div class="job-num">4</div>
+        <div>
+          <h4>職長・施工管理へのステップ</h4>
+          <p>経験を積んだあとは職長や施工管理へのキャリアアップも。長期的な成長を会社が応援します。</p>
+        </div>
+      </div>
+    </div>
+    <!-- ※ここはサンプルです。実際には御社の仕事内容に差し替えます -->
+    <p class="sample-note">※ここはサンプルです。実際には御社の仕事内容に差し替えます</p>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="sec" id="requirements">
+  <div class="inner">
+    <div class="sec-label">REQUIREMENTS</div>
+    <h2 class="sec-title">募集要項</h2>
+    <div class="req-table">
+      <div class="req-row"><div class="req-label">職種</div><div class="req-val">建築作業員</div></div>
+      <div class="req-row"><div class="req-label">雇用形態</div><div class="req-val">正社員（試用期間3ヶ月）</div></div>
+      <div class="req-row"><div class="req-label">勤務地</div><div class="req-val">千葉県印旛郡酒々井町周辺（詳細は面接時にご案内）</div></div>
+      <div class="req-row"><div class="req-label">給与</div><div class="req-val">月給 220,000円〜（経験・スキルにより変動）</div></div>
+      <div class="req-row"><div class="req-label">就業時間</div><div class="req-val">8:00〜17:00（実働8時間）</div></div>
+      <div class="req-row"><div class="req-label">休日・休暇</div><div class="req-val">日曜日・祝日・夏季休暇・年末年始休暇</div></div>
+      <div class="req-row"><div class="req-label">応募資格</div><div class="req-val">学歴・経験不問。普通自動車免許（AT可）あれば尚可</div></div>
+      <div class="req-row"><div class="req-label">待遇・福利厚生</div><div class="req-val">社会保険完備・交通費支給・作業服貸与・資格取得支援</div></div>
+    </div>
+    <!-- ※ここはサンプルです。実際には御社の募集要項に差し替えます -->
+    <p class="sample-note">※ここはサンプルです。実際には御社の募集要項（給与・勤務時間・休日等）に差し替えます</p>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section class="sec bg-gray" id="day">
+  <div class="inner">
+    <div class="sec-label">A DAY IN THE LIFE</div>
+    <h2 class="sec-title">社員の1日の流れ</h2>
+    <ul class="timeline">
+      <li>
+        <div class="tl-time">7:50</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <h4>集合・朝礼・安全確認</h4>
+          <p>現場またはベースで集合。当日の作業内容と安全注意事項を確認してからスタートします。</p>
+        </div>
+      </li>
+      <li>
+        <div class="tl-time">8:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <h4>午前の作業開始</h4>
+          <p>現場へ移動後、資材搬入・施工作業スタート。先輩の指示に従いながら一緒に進めます。</p>
+        </div>
+      </li>
+      <li>
+        <div class="tl-time">12:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <h4>昼食・休憩（1時間）</h4>
+          <p>仲間とランチタイム。弁当持参や近くのコンビニを利用する社員が多いです。</p>
+        </div>
+      </li>
+      <li>
+        <div class="tl-time">13:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <h4>午後の作業・仕上げ・品質確認</h4>
+          <p>午前の続きや仕上げ作業を行います。完成箇所の品質チェックも丁寧に行います。</p>
+        </div>
+      </li>
+      <li>
+        <div class="tl-time">16:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <h4>片付け・清掃・日報提出</h4>
+          <p>現場の後片付けと安全確認。1日の作業内容を日報に記録します。</p>
+        </div>
+      </li>
+      <li>
+        <div class="tl-time">17:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <h4>終業</h4>
+          <p>定時終業が基本。オンオフをしっかり切り替えて毎日働いています。</p>
+        </div>
+      </li>
+    </ul>
+    <!-- ※ここはサンプルです。実際には御社の1日の流れに差し替えます -->
+    <p class="sample-note">※ここはサンプルです。実際には御社のスタッフの1日の流れに差し替えます</p>
+  </div>
+</section>
+
+<!-- 先輩メッセージ -->
+<section class="sec" id="voices">
+  <div class="inner">
+    <div class="sec-label">VOICES</div>
+    <h2 class="sec-title">先輩からのメッセージ</h2>
+    <div class="voices">
+      <div class="voice-card">
+        <div class="voice-head">
+          <!-- 先輩写真（サンプル）：御社スタッフの写真に差し替えます -->
+          <div class="v-avatar">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="田中さん（仮名）">
+          </div>
+          <div>
+            <div class="v-name">田中 健二（仮名）</div>
+            <div class="v-meta">建築作業員 / 入社4年目</div>
+          </div>
+        </div>
+        <p>前職は全く違う仕事で、建築は完全未経験でした。最初は道具の名前も知らなかったくらいです。でも先輩が現場で一つひとつ教えてくれて、今は一人で任せてもらえる現場も増えました。手を動かすことが好きな人には本当に向いている仕事だと思います。</p>
+        <!-- ※ここはサンプルです。実際には御社スタッフのコメントに差し替えます -->
+        <p class="sample-note">※ここはサンプルです。実際には御社スタッフの声に差し替えます</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-head">
+          <!-- 先輩写真（サンプル）：御社スタッフの写真に差し替えます -->
+          <div class="v-avatar">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="佐藤さん（仮名）">
+          </div>
+          <div>
+            <div class="v-name">佐藤 大輔（仮名）</div>
+            <div class="v-meta">建築作業員 / 入社2年目</div>
+          </div>
+        </div>
+        <p>20代で未経験入社です。最初の3ヶ月は基礎作業が中心で、覚えることも多くて大変でしたが、毎日充実していました。現場で「ありがとう」と言ってもらえる瞬間が一番嬉しい。地元の千葉で、地元の建物を作れることに誇りを感じています。</p>
+        <!-- ※ここはサンプルです。実際には御社スタッフのコメントに差し替えます -->
+        <p class="sample-note">※ここはサンプルです。実際には御社スタッフの声に差し替えます</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-head">
+          <!-- 先輩写真（サンプル）：御社スタッフの写真に差し替えます -->
+          <div class="v-avatar">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="鈴木さん（仮名）">
+          </div>
+          <div>
+            <div class="v-name">鈴木 正男（仮名）</div>
+            <div class="v-meta">職長 / 入社8年目</div>
+          </div>
+        </div>
+        <p>最初は右も左も分からなかったですが、「やる気があれば育てる」という社風のおかげで今は職長を任せてもらっています。後輩を育てる立場になって、この仕事の面白さをもっと実感しています。一緒に働きたい人、ぜひ来てください。</p>
+        <!-- ※ここはサンプルです。実際には御社スタッフのコメントに差し替えます -->
+        <p class="sample-note">※ここはサンプルです。実際には御社スタッフの声に差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec bg-gray" id="faq">
+  <div class="inner">
+    <div class="sec-label">FAQ</div>
+    <h2 class="sec-title">よくある質問</h2>
+    <ul class="faq-list">
+      <li class="faq-item">
+        <div class="faq-q"><span class="faq-qmark">Q</span><span>建築の経験がなくても応募できますか？</span></div>
+        <div class="faq-a"><span class="faq-amark">A</span><span>はい、歓迎します。現在活躍しているスタッフの多くが未経験スタートです。入社後は先輩社員がOJTで丁寧に指導しますので安心してください。</span></div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q"><span class="faq-qmark">Q</span><span>資格は持っていなくても大丈夫ですか？</span></div>
+        <div class="faq-a"><span class="faq-amark">A</span><span>入社時は資格不問です。働きながら資格取得できる環境を整えており、費用の一部サポートも行っています。</span></div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q"><span class="faq-qmark">Q</span><span>選考の流れを教えてください。</span></div>
+        <div class="faq-a"><span class="faq-amark">A</span><span>①書類選考 → ②面接（1〜2回） → ③内定 の流れです。選考期間は約1〜2週間が目安です。詳細は面接時にご案内します。</span></div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q"><span class="faq-qmark">Q</span><span>休日はしっかり取れますか？</span></div>
+        <div class="faq-a"><span class="faq-amark">A</span><span>日曜・祝日を基本としており、夏季・年末年始のまとまった休みもあります。メリハリをつけて働いてもらえる環境です。</span></div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q"><span class="faq-qmark">Q</span><span>勤務地はどの範囲ですか？転勤はありますか？</span></div>
+        <div class="faq-a"><span class="faq-amark">A</span><span>基本的に千葉県内の現場での勤務です。遠方への長期出張などは基本的にありません。地元で腰を落ち着けて働きたい方に向いています。</span></div>
+      </li>
+    </ul>
+    <!-- ※ここはサンプルです。実際には御社のFAQに差し替えます -->
+    <p class="sample-note">※ここはサンプルです。実際には御社のよくある質問に差し替えます</p>
+  </div>
+</section>
+
+<!-- 採用担当者紹介 -->
+<section class="sec" id="recruiter">
+  <div class="inner">
+    <div class="sec-label">RECRUITER</div>
+    <h2 class="sec-title">採用担当者より</h2>
+    <div class="recruiter">
+      <!-- 採用担当者写真（サンプル）：実際の担当者写真に差し替えます -->
+      <div class="rec-photo">
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当（仮名）">
+      </div>
+      <div class="rec-body">
+        <div class="rec-name">山田 誠一（仮名）</div>
+        <div class="rec-role">採用担当 / 総務部</div>
+        <p>「建築に興味はあるけど、自分にできるか不安…」という方こそ、ぜひご連絡ください。弊社では未経験の方でも現場で実際に働きながらスキルが身につく体制を整えています。小さな疑問でもお気軽にどうぞ。皆さんとお会いできることを楽しみにしています。</p>
+        <a href="mailto:soumu@suzusyo-corp.com" class="btn-outline">お問い合わせ・エントリー</a>
+        <!-- ※ここはサンプルです。実際には採用担当者の写真・コメントに差し替えます -->
+        <p class="sample-note">※ここはサンプルです。実際には担当者の写真・プロフィール・コメントに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 応募CTA -->
+<section class="cta-sec" id="apply">
+  <h2>一緒に千葉の街をつくりませんか？</h2>
+  <p>未経験・学歴不問。手を動かすことが好きな方を歓迎します。<br>まずはお気軽にご連絡ください。</p>
+  <a href="mailto:soumu@suzusyo-corp.com" class="btn-primary">エントリーする（無料）</a>
+</section>
+
+<footer>
+  <p>© 2026 株式会社スズショウ　All Rights Reserved.</p>
+  <p style="margin-top:6px;font-size:.76rem;">千葉県印旛郡酒々井町 ／ TEL: 043-309-7827</p>
+</footer>
+
+</body>
+</html>
