@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>採用情報｜鍋店株式会社【サンプル】</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box}
+    html,body{margin:0;padding:0;max-width:100%;overflow-x:hidden}
+    body{font-family:'Noto Sans JP',sans-serif;color:#333;background:#fff}
+    img{max-width:100%;height:auto;display:block}
+    a{color:inherit;text-decoration:none}
+    ul{list-style:none;margin:0;padding:0}
+    :root{--main:#1e3a5f;--accent:#c8964a;--light:#f5f0e8;--muted:#888}
+
+    /* NAV */
+    header{background:var(--main);position:sticky;top:0;z-index:100}
+    nav{max-width:1100px;margin:0 auto;padding:0 1rem;display:flex;align-items:center;justify-content:space-between;height:60px}
+    .nav-logo{color:#fff;font-family:'Noto Serif JP',serif;font-size:1rem;font-weight:700;letter-spacing:.05em}
+    .nav-links{display:flex;gap:1.5rem}
+    .nav-links a{color:rgba(255,255,255,.85);font-size:.85rem;transition:color .2s}
+    .nav-links a:hover{color:var(--accent)}
+    .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+    .hamburger span{display:block;width:24px;height:2px;background:#fff;transition:transform .3s}
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .hamburger.open span:nth-child(2){opacity:0}
+    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    .mobile-menu{display:none;flex-direction:column;background:var(--main);padding:.5rem 1rem 1rem}
+    .mobile-menu.open{display:flex}
+    .mobile-menu a{color:rgba(255,255,255,.85);padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:.9rem}
+    @media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}}
+
+    /* HERO */
+    .hero{position:relative;min-height:72vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1547595628-c61a29f496f0?w=1600&h=900&fit=crop&q=80') center/cover no-repeat}
+    .hero-overlay{position:absolute;inset:0;background:rgba(10,25,50,.62)}
+    .hero-content{position:relative;z-index:1;text-align:center;color:#fff;padding:2rem 1.2rem;max-width:800px}
+    .hero-label{display:inline-block;background:var(--accent);color:#fff;font-size:.8rem;padding:.3rem .9rem;border-radius:50px;margin-bottom:1rem;letter-spacing:.1em}
+    .hero-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.7rem,4.5vw,3rem);font-weight:700;line-height:1.5;margin:0 0 1rem}
+    .hero-sub{font-size:clamp(.9rem,2.5vw,1.1rem);opacity:.9;line-height:1.8;margin-bottom:1.8rem}
+    .btn-primary{display:inline-block;background:var(--accent);color:#fff;padding:.85rem 2.5rem;border-radius:4px;font-weight:700;font-size:1rem;transition:opacity .2s}
+    .btn-primary:hover{opacity:.85}
+
+    /* SECTION BASE */
+    section{padding:4rem 1rem}
+    .container{max-width:1100px;margin:0 auto}
+    .section-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,3.5vw,2rem);font-weight:700;color:var(--main);text-align:center;margin:0 0 .4rem}
+    .section-title span{display:block;font-size:.72rem;letter-spacing:.2em;color:var(--accent);font-family:'Noto Sans JP',sans-serif;font-weight:400;margin-bottom:.2rem}
+    .divider{width:40px;height:3px;background:var(--accent);margin:.7rem auto 2rem;border-radius:2px}
+    .section-lead{text-align:center;color:var(--muted);font-size:.95rem;margin-bottom:2.5rem;line-height:1.8}
+    .sample-note{font-size:.73rem;color:var(--muted);display:block;margin-top:.5rem;font-style:italic}
+
+    /* MERIT */
+    .merit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+    .merit-card{background:var(--light);border-radius:8px;overflow:hidden}
+    .merit-card img{width:100%;height:175px;object-fit:cover}
+    .merit-card-body{padding:1.2rem}
+    .merit-card-title{font-weight:700;font-size:1rem;color:var(--main);margin-bottom:.5rem}
+    .merit-card-text{font-size:.87rem;line-height:1.8;color:#555}
+    @media(max-width:768px){.merit-grid{grid-template-columns:1fr}}
+
+    /* JOB DETAIL */
+    .bg-light{background:var(--light)}
+    .job-inner{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+    .job-img{border-radius:8px;overflow:hidden}
+    .job-img img{width:100%;height:340px;object-fit:cover}
+    .job-lead{font-size:.93rem;line-height:1.85;color:#444;margin-bottom:1.2rem}
+    .point-list{margin:0}
+    .point-list li{display:flex;gap:.8rem;margin-bottom:1rem;font-size:.93rem;line-height:1.7}
+    .point-list li::before{content:'';display:block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-top:.55rem;flex-shrink:0}
+    .job-note{margin-top:1rem;font-size:.82rem;color:var(--muted);border-left:3px solid var(--accent);padding-left:.8rem;line-height:1.7}
+    @media(max-width:768px){.job-inner{grid-template-columns:1fr}.job-img img{height:220px}}
+
+    /* TABLE */
+    .table-wrap{overflow-x:auto}
+    .rec-table{width:100%;border-collapse:collapse;font-size:.9rem}
+    .rec-table th,.rec-table td{padding:.9rem 1rem;text-align:left;border-bottom:1px solid #e0d8cc;vertical-align:top}
+    .rec-table th{background:var(--main);color:#fff;width:8em;white-space:nowrap}
+    .rec-table tr:last-child th,.rec-table tr:last-child td{border-bottom:none}
+    @media(max-width:768px){
+      .rec-table th,.rec-table td{display:block;width:100%}
+      .rec-table td{background:var(--light);margin-bottom:.2rem}
+    }
+
+    /* FAQ */
+    .faq-list{max-width:800px;margin:0 auto}
+    .faq-item{border-bottom:1px solid #e0d8cc;padding:1.2rem 0}
+    .faq-q{font-weight:700;color:var(--main);font-size:.95rem;display:flex;gap:.6rem}
+    .faq-q::before{content:'Q.';color:var(--accent);flex-shrink:0}
+    .faq-a{display:flex;gap:.6rem;font-size:.88rem;line-height:1.85;color:#555;margin-top:.7rem;padding-left:1.8rem}
+    .faq-a::before{content:'A.';color:var(--muted);font-weight:700;flex-shrink:0}
+
+    /* TIMELINE */
+    .timeline{max-width:700px;margin:0 auto}
+    .tl-item{display:flex;gap:1rem;margin-bottom:0}
+    .tl-time{flex-shrink:0;width:4.2em;font-weight:700;color:var(--accent);font-size:.88rem;padding-top:.15rem}
+    .tl-body{flex:1;padding-bottom:1.4rem;border-bottom:1px dashed #ddd;margin-bottom:.2rem}
+    .tl-item:last-child .tl-body{border-bottom:none}
+    .tl-title{font-weight:700;color:var(--main);margin-bottom:.3rem;font-size:.93rem}
+    .tl-text{font-size:.85rem;color:#555;line-height:1.75}
+
+    /* VOICES */
+    .voices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+    .voice-card{background:#fff;border:1px solid #e8e0d0;border-radius:8px;padding:1.5rem;text-align:center}
+    .voice-card img{width:78px;height:78px;border-radius:50%;object-fit:cover;margin:0 auto .8rem;border:3px solid var(--light)}
+    .voice-name{font-weight:700;color:var(--main);font-size:.95rem}
+    .voice-role{font-size:.76rem;color:var(--muted);margin-bottom:.8rem}
+    .voice-text{font-size:.86rem;line-height:1.85;color:#555;text-align:left}
+    @media(max-width:768px){.voices-grid{grid-template-columns:1fr}}
+
+    /* CTA */
+    .cta-sec{background:var(--main);color:#fff;text-align:center}
+    .cta-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.3rem,3.5vw,1.8rem);margin-bottom:.8rem}
+    .cta-text{font-size:.93rem;opacity:.85;margin-bottom:1.5rem;line-height:1.8}
+    .btn-outline{display:inline-block;border:2px solid #fff;color:#fff;padding:.75rem 2.2rem;border-radius:4px;font-size:.95rem;font-weight:700;transition:all .2s}
+    .btn-outline:hover{background:rgba(255,255,255,.15)}
+
+    footer{background:#0d1f3c;color:rgba(255,255,255,.55);text-align:center;padding:1.5rem 1rem;font-size:.78rem}
+  </style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="nav-logo">鍋店株式会社｜採用情報</div>
+    <ul class="nav-links">
+      <li><a href="#merit">働く魅力</a></li>
+      <li><a href="#job">仕事内容</a></li>
+      <li><a href="#requirement">募集要項</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#voice">先輩の声</a></li>
+      <li><a href="#apply">応募する</a></li>
+    </ul>
+    <button class="hamburger" aria-label="メニュー" onclick="this.classList.toggle('open');document.querySelector('.mobile-menu').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+  <div class="mobile-menu">
+    <a href="#merit">働く魅力</a>
+    <a href="#job">仕事内容</a>
+    <a href="#requirement">募集要項</a>
+    <a href="#faq">FAQ</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#apply">応募する</a>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-label">経理事務員（正社員）募集</div>
+    <h1 class="hero-title">大正10年創業の蔵元で、<br>経理のプロとして長く活躍しませんか。</h1>
+    <p class="hero-sub">成田山新勝寺門前で100年以上続く清酒「仁勇」「不動」の蔵元。<br>少数精鋭の経理チームが、歴史ある会社の数字を支えています。</p>
+    <a href="#apply" class="btn-primary">募集要項を見る</a>
+  </div>
+</section>
+
+<!-- 働く魅力 -->
+<section id="merit">
+  <div class="container">
+    <h2 class="section-title"><span>MERIT</span>鍋店で働く3つの魅力</h2>
+    <div class="divider"></div>
+    <div class="merit-grid">
+      <div class="merit-card">
+        <!-- 日本酒・蔵元テーマ -->
+        <img src="https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=640&h=380&fit=crop&q=80" alt="酒造の様子">
+        <div class="merit-card-body">
+          <p class="merit-card-title">蔵元ならではの多彩な経理経験</p>
+          <p class="merit-card-text">清酒製造・直営店・和菓子・オンラインショップと複数の事業を3名のチームで担います。「蔵元直営店の売上金集計」など、一般の経理では積みにくい実務経験が幅を広げます。</p>
+          <span class="sample-note">※ここはサンプルです。実際には御社のPR文に差し替えます</span>
+        </div>
+      </div>
+      <div class="merit-card">
+        <!-- オフィスシーン -->
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=640&h=380&fit=crop&q=80" alt="オフィスの様子">
+        <div class="merit-card-body">
+          <p class="merit-card-title">月平均残業3時間・年休105日</p>
+          <p class="merit-card-text">繁忙期（4〜5月）を除けば定時退社が基本。月給27〜35万円・昇給実績あり・退職金制度ありと、長く安心して働ける環境が整っています。</p>
+          <span class="sample-note">※ここはサンプルです。実際には御社のPR文に差し替えます</span>
+        </div>
+      </div>
+      <div class="merit-card">
+        <!-- 酒造テーマ -->
+        <img src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=640&h=380&fit=crop&q=80" alt="100年以上続く老舗">
+        <div class="merit-card-body">
+          <p class="merit-card-title">大正創業・地域に根ざした安定経営</p>
+          <p class="merit-card-text">1921年（大正10年）創業の老舗蔵元。成田山新勝寺門前の直営店「鍋店源五右衛門」は地元の方や参拝客に長く愛されています。腰を落ち着けて働ける安定した土台があります。</p>
+          <span class="sample-note">※ここはサンプルです。実際には御社のPR文に差し替えます</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 仕事内容 -->
+<section id="job" class="bg-light">
+  <div class="container">
+    <h2 class="section-title"><span>JOB DETAIL</span>仕事内容</h2>
+    <div class="divider"></div>
+    <div class="job-inner">
+      <div class="job-img">
+        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=640&h=380&fit=crop&q=80" alt="経理業務">
+      </div>
+      <div>
+        <p class="job-lead">求人票の「会計ソフト入力・銀行関係手続…」という文面だけではイメージしにくいかもしれません。鍋店ではこんな業務が実際にあります。</p>
+        <ul class="point-list">
+          <li><strong>会計ソフト入力・仕訳処理</strong>—製造蔵・直営店・オンラインショップの伝票を一元管理</li>
+          <li><strong>直営店の売上金集計・精査・両替</strong>—門前の直営店「鍋店源五右衛門」の日次集計と銀行への両替手配</li>
+          <li><strong>小口現金の出納管理</strong>—現金の入出金を正確に記録・管理。ミスが許されない集中力が求められる業務</li>
+          <li><strong>銀行関係手続</strong>—振込・入金確認・融資書類など日常的な銀行窓口対応</li>
+          <li><strong>税務関係手続</strong>—税理士と連携しながら各種申告書類の準備・確認</li>
+          <li><strong>各種資料作成</strong>—月次・年次レポート、経営会議向けの資料作成</li>
+        </ul>
+        <div class="job-note">
+          就業場所は3名（うち女性2名）の少人数チーム。ひとりひとりの担当範囲が広い分、成長実感も大きい環境です。<br>
+          <span class="sample-note">※ここはサンプルです。実際には御社の内容に差し替えます</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section id="requirement">
+  <div class="container">
+    <h2 class="section-title"><span>REQUIREMENT</span>募集要項</h2>
+    <div class="divider"></div>
+    <div class="table-wrap">
+      <table class="rec-table">
+        <tr><th>職種</th><td>経理事務員（正社員）</td></tr>
+        <tr><th>仕事内容</th><td>会計ソフト入力・店舗売上金集計・精査・両替／小口現金出納管理／銀行関係手続／税務関係手続／各種資料作成</td></tr>
+        <tr><th>給与</th><td>月給 27万〜35万円（基本給26〜34万円＋住居手当1万円）<br><small style="color:var(--muted)">※経験・能力を考慮のうえ決定。昇給あり（前年度実績：月4,000〜10,000円）。賞与年2回（前年度実績：計1.6ヶ月分）</small></td></tr>
+        <tr><th>勤務時間</th><td>9:00〜18:00（休憩60分）変形労働時間制（1年単位）<br><small style="color:var(--muted)">繁忙期（4〜5月）は月20時間程度の残業あり。月平均残業3時間</small></td></tr>
+        <tr><th>休日</th><td>日曜・祝日・その他（会社カレンダーによる）。年間休日105日<br>6ヶ月経過後の有給休暇10日。育児休業取得実績あり</td></tr>
+        <tr><th>勤務地</th><td>〒286-0026 千葉県成田市本町338番地<br>JR成田駅より徒歩15分 ／ マイカー通勤可（駐車場あり）</td></tr>
+        <tr><th>必要資格</th><td>日商簿記3級・普通自動車免許（AT限定可）<br>必要経験：経理実務 ／ パソコン操作（Word・Excel）</td></tr>
+        <tr><th>学歴</th><td>大学以上</td></tr>
+        <tr><th>年齢</th><td>〜64歳（定年66歳のため）</td></tr>
+        <tr><th>試用期間</th><td>3ヶ月（労働条件同一）</td></tr>
+        <tr><th>待遇</th><td>雇用・労災・健康・厚生年金保険完備 ／ 通勤手当（上限月3万円実費支給） ／ 退職金制度あり（勤続5年以上） ／ マイカー通勤可</td></tr>
+        <tr><th>採用人数</th><td>1名（増員）</td></tr>
+        <tr><th>応募方法</th><td>ハローワーク紹介状＋履歴書（写真貼付）＋職務経歴書を郵送またはメール。オンライン応募も受付。<br>事前に電話かメールでご連絡ください。</td></tr>
+        <tr><th>問い合わせ</th><td>総務・経理部 幡谷 亮徳<br>TEL：0476-22-1455 ／ mail：info@nabedana.co.jp</td></tr>
+      </table>
+    </div>
+    <span class="sample-note" style="text-align:center;display:block;margin-top:1rem">※ここはサンプルです。実際には御社の最新の募集要項に差し替えます</span>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="bg-light">
+  <div class="container">
+    <h2 class="section-title"><span>FAQ</span>よくある質問</h2>
+    <div class="divider"></div>
+    <ul class="faq-list">
+      <li class="faq-item">
+        <p class="faq-q">「蔵元の経理」は一般の経理と何が違うのですか？</p>
+        <p class="faq-a">清酒製造・直営店・和菓子・オンラインショップと複数の事業の数字を扱うため、売上の種類が多様です。基本的な会計ソフト入力・現金管理・税務手続きは他社と共通で、それに加えて「蔵元直営店の売上金集計・精査・両替」という業務が加わります。幅広い経理スキルが身につく環境です。<span class="sample-note">※ここはサンプルです。実際には御社の内容に差し替えます</span></p>
+      </li>
+      <li class="faq-item">
+        <p class="faq-q">簿記3級は入社前に取得必須ですか？</p>
+        <p class="faq-a">応募時点での保有が必須要件です。まだお持ちでない方は、取得後にご応募ください。<span class="sample-note">※ここはサンプルです。実際には御社の方針に差し替えます</span></p>
+      </li>
+      <li class="faq-item">
+        <p class="faq-q">繁忙期の残業はどのくらいですか？</p>
+        <p class="faq-a">4月・5月の繁忙期は月20時間程度の時間外勤務があります。それ以外の月の平均残業は月3時間程度で、定時退社が基本です。チームで準備を進め、繁忙期を乗り越える体制が整っています。<span class="sample-note">※ここはサンプルです。実際には御社の内容に差し替えます</span></p>
+      </li>
+      <li class="faq-item">
+        <p class="faq-q">マイカー通勤はできますか？</p>
+        <p class="faq-a">はい、駐車場が用意されておりマイカー通勤可能です。通勤手当は月上限3万円の実費支給です。JR成田駅から徒歩15分のため、電車通勤も可能です。<span class="sample-note">※ここはサンプルです。実際には御社の内容に差し替えます</span></p>
+      </li>
+      <li class="faq-item">
+        <p class="faq-q">選考の流れを教えてください。</p>
+        <p class="faq-a">書類選考（書類到着後7日以内に連絡）→ 面接1回 → 結果通知（面接後7日以内）です。ハローワーク紹介状が原則必要ですが、オンライン自主応募も受け付けています。<span class="sample-note">※ここはサンプルです。実際には御社の選考フローに差し替えます</span></p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section>
+  <div class="container">
+    <h2 class="section-title"><span>A DAY IN THE LIFE</span>先輩スタッフの1日の流れ</h2>
+    <div class="divider"></div>
+    <p class="section-lead">成田本社で働く経理スタッフのある1日をご紹介します。</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">09:00</div>
+        <div class="tl-body">
+          <p class="tl-title">出社・メールチェック・前日売上確認</p>
+          <p class="tl-text">直営店から受け取った前日の売上データを開いて集計・精査。数字のズレがあればすぐに確認します。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">10:00</div>
+        <div class="tl-body">
+          <p class="tl-title">会計ソフト入力・仕訳処理</p>
+          <p class="tl-text">前日の伝票をまとめて入力。製造蔵・店舗・オンラインショップの複数事業をまとめて処理します。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:00</div>
+        <div class="tl-body">
+          <p class="tl-title">昼食・休憩（60分）</p>
+          <p class="tl-text">社内でお弁当を食べたり、近くの飲食店へ行ったり。成田山門前は食事処も多いです。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-body">
+          <p class="tl-title">銀行関係手続・資料作成</p>
+          <p class="tl-text">振込手続き・入金確認、月次レポートの作成。税理士へ確認資料を送ることも。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">15:30</div>
+        <div class="tl-body">
+          <p class="tl-title">直営店売上金の両替・小口現金出納</p>
+          <p class="tl-text">店舗の売上金を精査し、銀行への両替手配。現金管理は正確さが求められる業務です。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:00</div>
+        <div class="tl-body">
+          <p class="tl-title">翌日準備・退社</p>
+          <p class="tl-text">翌日のタスクを確認して退社。繁忙期以外は定時退社が基本です。</p>
+        </div>
+      </div>
+    </div>
+    <span class="sample-note" style="text-align:center;display:block;margin-top:1.2rem">※ここはサンプルです。実際には御社のスタッフの1日に差し替えます</span>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section id="voice" class="bg-light">
+  <div class="container">
+    <h2 class="section-title"><span>VOICE</span>先輩からのメッセージ</h2>
+    <div class="divider"></div>
+    <div class="voices-grid">
+      <div class="voice-card">
+        <!-- 顔写真・女性 -->
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=faces&q=80" alt="スタッフ">
+        <p class="voice-name">A.T.（仮名）</p>
+        <p class="voice-role">経理担当 ／ 入社5年目</p>
+        <p class="voice-text">前職も経理でしたが、蔵元では直営店の売上管理など、多様な業務があります。少人数チームなので、先輩に気軽に相談できる点がとても助かっています。残業も少なく、仕事終わりの時間を大切にできています。</p>
+        <span class="sample-note">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</span>
+      </div>
+      <div class="voice-card">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&crop=faces&q=80" alt="スタッフ">
+        <p class="voice-name">M.K.（仮名）</p>
+        <p class="voice-role">経理担当 ／ 入社3年目</p>
+        <p class="voice-text">簿記3級を取得して入社しました。入社当初は覚えることが多かったですが、先輩がていねいに教えてくれて、今では一通りの業務を担当できるようになりました。年間休日105日は思っていたより多く、仕事のメリハリがつきやすいです。</p>
+        <span class="sample-note">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</span>
+      </div>
+      <div class="voice-card">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当">
+        <p class="voice-name">幡谷 亮徳</p>
+        <p class="voice-role">総務・経理部 採用担当</p>
+        <p class="voice-text">簿記3級・普通自動車免許・経理実務経験のある方をお待ちしています。蔵元というと特殊な職場に思われるかもしれませんが、経理の仕事はどこでも通じる内容です。長く安心して働ける職場を探している方、ぜひご応募ください。</p>
+        <span class="sample-note">※ここはサンプルです。実際には御社採用担当のコメントに差し替えます</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="apply" class="cta-sec">
+  <div class="container">
+    <h2 class="cta-title">一緒に、鍋店の経理チームを支えませんか。</h2>
+    <p class="cta-text">まずは求人内容をご確認いただき、気になる点があればお気軽にお問い合わせください。<br>ハローワーク紹介状でのご応募・オンライン自主応募どちらも歓迎です。</p>
+    <a href="mailto:info@nabedana.co.jp" class="btn-outline">応募する・問い合わせる</a>
+    <p style="margin-top:1.5rem;font-size:.8rem;opacity:.65">採用担当：総務・経理部 幡谷 亮徳 ／ TEL：0476-22-1455</p>
+    <span class="sample-note" style="color:rgba(255,255,255,.45);margin-top:.5rem">※ここはサンプルです。実際には御社の問い合わせ先・応募フォームに差し替えます</span>
+  </div>
+</section>
+
+<footer>
+  <p>© 鍋店 株式会社 ｜ この採用ページは提案サンプルです</p>
+</footer>
+
+</body>
+</html>
