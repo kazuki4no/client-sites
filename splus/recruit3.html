@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>採用情報 C案 | 株式会社Ｓｐｌｕｓ（比内地鶏・天ぷら 秋風 / 個室居酒屋 風月）</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    img { max-width: 100%; height: auto; display: block; }
+    body { font-family: 'Noto Sans JP', sans-serif; color: #F0EAD6; background: #0E1220; line-height: 1.7; }
+
+    /* === Nav === */
+    nav.top-nav { background: rgba(14,18,32,0.92); backdrop-filter: blur(10px); padding: 0 1.5rem; position: fixed; top: 0; left: 0; right: 0; z-index: 200; display: flex; justify-content: space-between; align-items: center; height: 60px; border-bottom: 1px solid rgba(212,172,13,0.2); }
+    .nav-logo { color: #D4AC0D; font-size: 0.9rem; font-weight: 700; font-family: 'Noto Serif JP', serif; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { color: #C8B890; text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+    .nav-links a:hover { color: #D4AC0D; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 5px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #D4AC0D; }
+    .nav-mobile { display: none; position: fixed; top: 60px; left: 0; right: 0; background: #0E1220; padding: 1rem 1.5rem; z-index: 199; flex-direction: column; border-bottom: 1px solid rgba(212,172,13,0.2); }
+    .nav-mobile a { color: #C8B890; text-decoration: none; font-size: 0.95rem; padding: 0.7rem 0; display: block; border-bottom: 1px solid rgba(212,172,13,0.1); }
+    .nav-mobile.open { display: flex; }
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* === FVヒーロー（全画面背景画像） === */
+    .hero { position: relative; min-height: 85vh; display: flex; align-items: center; margin-top: 60px; }
+    .hero-bg { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=1600&h=900&fit=crop&q=80'); background-size: cover; background-position: center; }
+    .hero-overlay { position: absolute; inset: 0; background: rgba(10,14,26,0.65); }
+    .hero-content { position: relative; z-index: 1; max-width: 800px; margin: 0 auto; padding: 3rem 1.5rem; text-align: center; }
+    .hero-badge { display: inline-block; border: 1px solid #D4AC0D; color: #D4AC0D; font-size: 0.75rem; font-weight: 700; padding: 4px 16px; border-radius: 20px; margin-bottom: 1.5rem; letter-spacing: 0.12em; }
+    .hero-content h1 { font-family: 'Noto Serif JP', serif; font-size: clamp(1.9rem, 7vw, 3.8rem); font-weight: 700; line-height: 1.35; margin-bottom: 1.2rem; color: #F5F0E0; text-shadow: 0 2px 12px rgba(0,0,0,0.5); }
+    .hero-content h1 em { font-style: normal; color: #D4AC0D; }
+    .hero-content p { font-size: clamp(0.9rem, 3vw, 1.05rem); color: #C8B890; margin-bottom: 2rem; }
+    .pills { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-bottom: 2rem; }
+    .pill { background: rgba(212,172,13,0.15); border: 1px solid rgba(212,172,13,0.4); color: #D4AC0D; border-radius: 20px; padding: 4px 14px; font-size: 0.8rem; }
+    .btn-gold { display: inline-block; background: #D4AC0D; color: #0E1220; padding: 0.9rem 2.8rem; border-radius: 4px; text-decoration: none; font-weight: 700; font-size: 1rem; letter-spacing: 0.05em; transition: background 0.2s; }
+    .btn-gold:hover { background: #B8940B; }
+    .btn-outline { display: inline-block; border: 1px solid rgba(212,172,13,0.5); color: #D4AC0D; padding: 0.85rem 2rem; border-radius: 4px; text-decoration: none; font-size: 0.95rem; margin-left: 1rem; transition: all 0.2s; }
+    .btn-outline:hover { background: rgba(212,172,13,0.1); }
+    @media (max-width: 480px) { .btn-outline { display: block; margin: 1rem auto 0; width: fit-content; } }
+
+    /* === 共通 === */
+    section.sec { padding: 5rem 1.5rem; }
+    .container { max-width: 900px; margin: 0 auto; }
+    .sec-label { font-size: 0.7rem; font-weight: 700; color: #D4AC0D; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 0.5rem; }
+    .sec-title { font-family: 'Noto Serif JP', serif; font-size: clamp(1.4rem, 5vw, 2rem); font-weight: 700; color: #F0EAD6; margin-bottom: 0.75rem; }
+    .sec-lead { font-size: 0.92rem; color: #A09070; line-height: 1.85; margin-bottom: 1.5rem; }
+    .sample-note { font-size: 0.75rem; color: #706050; }
+    .gold-line { display: block; width: 40px; height: 2px; background: #D4AC0D; margin: 0.75rem 0 1.5rem; }
+
+    /* === 仕事内容2種 === */
+    .job-bg { background: #12172A; }
+    .job-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; }
+    @media (max-width: 768px) { .job-grid { grid-template-columns: 1fr; } }
+    .job-pane { position: relative; overflow: hidden; min-height: 380px; display: flex; align-items: flex-end; }
+    .job-pane-bg { position: absolute; inset: 0; background-size: cover; background-position: center; transition: transform 0.4s; }
+    .job-pane:hover .job-pane-bg { transform: scale(1.04); }
+    .job-pane-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(10,14,26,0.9) 40%, rgba(10,14,26,0.2) 100%); }
+    .job-pane-content { position: relative; z-index: 1; padding: 2rem 1.5rem; }
+    .job-pane-content h3 { font-family: 'Noto Serif JP', serif; font-size: 1.3rem; font-weight: 700; color: #F0EAD6; margin-bottom: 0.75rem; }
+    .job-pane-content ul { list-style: none; }
+    .job-pane-content li { font-size: 0.87rem; color: #C0B090; padding: 0.3rem 0; display: flex; gap: 0.5rem; }
+    .job-pane-content li::before { content: '—'; color: #D4AC0D; }
+    .job-note-box { background: #1A2035; border-left: 2px solid #D4AC0D; padding: 1rem 1.5rem; border-radius: 0 6px 6px 0; font-size: 0.87rem; color: #A09070; margin-top: 1.5rem; }
+
+    /* === 先輩メッセージ === */
+    .voice-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    @media (max-width: 768px) { .voice-grid { grid-template-columns: 1fr; } }
+    .voice-card { background: #12172A; border: 1px solid rgba(212,172,13,0.15); border-radius: 8px; overflow: hidden; }
+    .voice-card img { width: 100%; height: 180px; object-fit: cover; opacity: 0.85; }
+    .voice-body { padding: 1.2rem; }
+    .voice-name { font-size: 0.76rem; font-weight: 700; color: #D4AC0D; margin-bottom: 0.4rem; }
+    .voice-card p { font-size: 0.86rem; color: #A09070; line-height: 1.7; }
+
+    /* === 1日の流れ === */
+    .tl-bg { background: #12172A; }
+    .tl-list { max-width: 640px; margin: 0 auto; }
+    .tl-item { display: flex; gap: 1.2rem; padding: 1rem 0; border-bottom: 1px solid rgba(212,172,13,0.1); }
+    .tl-item:last-child { border-bottom: none; }
+    .tl-time { background: #D4AC0D; color: #0E1220; font-size: 0.78rem; font-weight: 700; padding: 3px 10px; border-radius: 3px; white-space: nowrap; height: fit-content; margin-top: 0.25rem; flex-shrink: 0; }
+    .tl-text h4 { font-size: 0.95rem; font-weight: 700; color: #F0EAD6; margin-bottom: 0.2rem; }
+    .tl-text p { font-size: 0.84rem; color: #907060; }
+
+    /* === 募集要項 === */
+    .req-table { width: 100%; border-collapse: collapse; }
+    .req-table tr { border-bottom: 1px solid rgba(212,172,13,0.12); }
+    .req-table tr:last-child { border-bottom: none; }
+    .req-table th { color: #D4AC0D; padding: 0.8rem 1rem; text-align: left; font-size: 0.87rem; width: 28%; vertical-align: top; border-right: 1px solid rgba(212,172,13,0.12); }
+    .req-table td { padding: 0.8rem 1rem; font-size: 0.87rem; color: #C0B090; vertical-align: top; }
+    @media (max-width: 768px) {
+      .req-table, .req-table tbody, .req-table tr, .req-table th, .req-table td { display: block; width: 100%; }
+      .req-table th { border-right: none; border-bottom: 1px solid rgba(212,172,13,0.12); }
+    }
+
+    /* === FAQ === */
+    .faq-bg { background: #12172A; }
+    .faq-list { max-width: 720px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid rgba(212,172,13,0.1); padding: 1.1rem 0; }
+    .faq-q { font-size: 0.92rem; font-weight: 700; color: #F0EAD6; margin-bottom: 0.4rem; display: flex; gap: 0.7rem; align-items: flex-start; }
+    .q-badge { background: #D4AC0D; color: #0E1220; border-radius: 3px; width: 22px; height: 22px; display: inline-flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; flex-shrink: 0; margin-top: 0.1rem; }
+    .faq-a { font-size: 0.87rem; color: #A09070; line-height: 1.75; padding-left: 1.9rem; }
+
+    /* === 担当者 === */
+    .mgr-card { display: flex; gap: 2rem; align-items: center; border: 1px solid rgba(212,172,13,0.2); border-radius: 8px; padding: 2rem; max-width: 600px; margin: 0 auto; }
+    @media (max-width: 768px) { .mgr-card { flex-direction: column; text-align: center; } }
+    .mgr-card img { width: 96px; height: 96px; border-radius: 4px; object-fit: cover; flex-shrink: 0; filter: grayscale(20%); }
+    .mgr-info h3 { font-family: 'Noto Serif JP', serif; font-size: 1rem; font-weight: 700; color: #D4AC0D; margin-bottom: 0.5rem; }
+    .mgr-info p { font-size: 0.87rem; color: #A09070; line-height: 1.75; }
+
+    /* === CTA === */
+    .cta-sec { background: linear-gradient(160deg, #0E1220 0%, #1A2035 50%, #0E1220 100%); border-top: 1px solid rgba(212,172,13,0.2); padding: 5rem 1.5rem; text-align: center; }
+    .cta-sec h2 { font-family: 'Noto Serif JP', serif; font-size: clamp(1.4rem, 5vw, 2rem); font-weight: 700; color: #F0EAD6; margin-bottom: 0.75rem; }
+    .cta-sec p { font-size: 0.92rem; color: #A09070; margin-bottom: 2rem; }
+    .cta-sec small { display: block; font-size: 0.82rem; color: #706050; margin-top: 1rem; }
+
+    /* === Footer === */
+    footer { background: #080C18; color: #706050; text-align: center; padding: 2rem 1.5rem; font-size: 0.8rem; line-height: 1.9; border-top: 1px solid rgba(212,172,13,0.1); }
+    footer .f-sample { font-size: 0.72rem; margin-top: 0.75rem; }
+  </style>
+</head>
+<body>
+
+<!-- ナビ -->
+<nav class="top-nav">
+  <div class="nav-logo">株式会社Ｓｐｌｕｓ 採用情報</div>
+  <ul class="nav-links">
+    <li><a href="#job">仕事内容</a></li>
+    <li><a href="#voice">先輩の声</a></li>
+    <li><a href="#requirements">募集要項</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#apply">応募する</a></li>
+  </ul>
+  <button class="hamburger" aria-label="メニュー" onclick="document.getElementById('navMobile').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<nav id="navMobile" class="nav-mobile">
+  <a href="#job">仕事内容</a>
+  <a href="#voice">先輩の声</a>
+  <a href="#requirements">募集要項</a>
+  <a href="#faq">FAQ</a>
+  <a href="#apply">応募する</a>
+</nav>
+
+<!-- FVヒーロー（全画面背景画像） -->
+<div class="hero">
+  <!-- 居酒屋・飲食シーン -->
+  <div class="hero-bg" style="background-image: url('https://images.unsplash.com/photo-1510812431401-41d2bd2722f3?w=1600&h=900&fit=crop&q=80');"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">正社員募集 ／ 成田市 ／ ホール・キッチンスタッフ</div>
+    <h1>接客と調理、<br>どちらも極める人を<br><em>求めています。</em></h1>
+    <p>成田で2店舗を運営する株式会社Ｓｐｌｕｓ。<br>ホール・キッチン両方の現場を学び、<br>店長・独立まで見据えたキャリアを歩めます。</p>
+    <div class="pills">
+      <span class="pill">正社員</span>
+      <span class="pill">月給27〜48万円</span>
+      <span class="pill">未経験歓迎</span>
+      <span class="pill">独立支援制度</span>
+      <span class="pill">年間休日100日以上</span>
+    </div>
+    <a href="#apply" class="btn-gold">採用に応募する</a>
+    <a href="#requirements" class="btn-outline">募集要項を見る</a>
+  </div>
+</div>
+
+<!-- 仕事内容（ホール/キッチン 画像パネル） -->
+<section class="sec job-bg" id="job">
+  <div class="container">
+    <div class="sec-label">JOB DESCRIPTION</div>
+    <div class="sec-title">ホール業務とキッチン業務</div>
+    <span class="gold-line"></span>
+    <p class="sec-lead">「ホールもキッチンも両方？」と思った方へ。はい、両方担当いただくポジションです。<br>どちらの業務内容かを下記で明確にお伝えします。入社時はご経験やご希望に合わせてどちらかから始めることができます。</p>
+    <p class="sample-note" style="margin-bottom:1.5rem;">※ここはサンプルです。実際には御社の業務内容に差し替えます</p>
+  </div>
+  <div class="job-grid">
+    <div class="job-pane">
+      <!-- 接客・ホールシーン -->
+      <div class="job-pane-bg" style="background-image: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&h=600&fit=crop&q=80');"></div>
+      <div class="job-pane-overlay"></div>
+      <div class="job-pane-content">
+        <h3>🍺 ホール業務</h3>
+        <ul>
+          <li>お客様のご案内・席への誘導</li>
+          <li>注文受付（タブレット・口頭）</li>
+          <li>料理・ドリンクの提供</li>
+          <li>会計・レジ締め作業</li>
+          <li>テーブルセッティング・フロア清掃</li>
+          <li>お客様からのご要望への対応</li>
+        </ul>
+      </div>
+    </div>
+    <div class="job-pane">
+      <!-- 調理・キッチンシーン -->
+      <div class="job-pane-bg" style="background-image: url('https://images.unsplash.com/photo-1551538827-9c037cb4f32a?w=800&h=600&fit=crop&q=80');"></div>
+      <div class="job-pane-overlay"></div>
+      <div class="job-pane-content">
+        <h3>🍳 キッチン業務</h3>
+        <ul>
+          <li>調理全般（焼き物・揚げ物・天ぷら等）</li>
+          <li>食材の仕込み・下ごしらえ</li>
+          <li>ドリンク作成（各種お酒・ソフトドリンク）</li>
+          <li>食材在庫の管理・発注補助</li>
+          <li>厨房清掃・衛生管理</li>
+          <li>経験に応じてメニュー開発にも参加</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="job-note-box">
+      ※ 最初はどちらか一方から担当いただきます。習熟度に応じて両方を担当いただく形で、店長・独立に必要なスキルが自然と身につきます。
+    </div>
+  </div>
+</section>
+
+<!-- 先輩メッセージ -->
+<section class="sec" id="voice">
+  <div class="container">
+    <div class="sec-label">STAFF VOICE</div>
+    <div class="sec-title">先輩スタッフの声</div>
+    <span class="gold-line"></span>
+    <p class="sample-note" style="margin-bottom:1.5rem;">※ここはサンプルです。実際には御社スタッフの情報・写真に差し替えます</p>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <!-- 顔写真：女性 -->
+        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=640&h=360&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div class="voice-body">
+          <div class="voice-name">田中 みかさん ／ ホール担当・入社2年</div>
+          <p>最初はホールだけでしたが、今はキッチンもできるようになりました。両方できると、お店全体の流れが見えてくるのが面白いです。シフトも融通が利くので、プライベートとのバランスが取りやすいです。</p>
+          <p class="sample-note" style="margin-top:0.5rem;">※ここはサンプルです</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <!-- 顔写真：男性 -->
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=640&h=360&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div class="voice-body">
+          <div class="voice-name">佐藤 健太さん ／ キッチン担当・入社3年</div>
+          <p>飲食ゼロ経験で入社しましたが、先輩の丁寧な指導でここまでになれました。今は売上管理も任されており、独立支援制度を使って将来の計画を立てています。</p>
+          <p class="sample-note" style="margin-top:0.5rem;">※ここはサンプルです</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <!-- 顔写真：女性 -->
+        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=640&h=360&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div class="voice-body">
+          <div class="voice-name">山田 あいさん ／ ホール・キッチン兼務・入社1年半</div>
+          <p>成田に根ざしたお店なので、地元の常連さんが多くてやりがいがあります。意見を言いやすい雰囲気があり、新しいドリンクのアイデアを出したら試作してもらえました。</p>
+          <p class="sample-note" style="margin-top:0.5rem;">※ここはサンプルです</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section class="sec tl-bg">
+  <div class="container">
+    <div class="sec-label">TIMELINE</div>
+    <div class="sec-title">スタッフの1日の流れ</div>
+    <span class="gold-line"></span>
+    <p class="sample-note" style="margin-bottom:2rem;">※ここはサンプルです。実際には御社の1日スケジュールに差し替えます</p>
+    <div class="tl-list">
+      <div class="tl-item">
+        <div class="tl-time">15:00</div>
+        <div class="tl-text"><h4>出勤・仕込み開始</h4><p>食材確認、野菜カット・仕込み作業。開店に向けてキッチン・ホール両方を整えます。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:00</div>
+        <div class="tl-text"><h4>開店・ホール業務スタート</h4><p>最初の来客をご案内。キッチン担当は調理に集中し、ホール担当と連携します。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">19:00</div>
+        <div class="tl-text"><h4>ピークタイム</h4><p>来店が集中する時間帯。ホールとキッチンが連携してテンポよく提供します。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">21:00</div>
+        <div class="tl-text"><h4>在庫確認・補充作業</h4><p>食材の残量チェック、翌日の発注メモ作成。清掃や補充作業も進めます。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">23:00</div>
+        <div class="tl-text"><h4>クローズ作業</h4><p>ラストオーダー後、片づけ・厨房清掃・レジ締めを進めます。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">24:00</div>
+        <div class="tl-text"><h4>退勤</h4><p>引き継ぎ事項を記録して退勤。次の担当者へ丁寧な申し送りを残します。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="sec" id="requirements">
+  <div class="container">
+    <div class="sec-label">REQUIREMENTS</div>
+    <div class="sec-title">募集要項</div>
+    <span class="gold-line"></span>
+    <table class="req-table">
+      <tr><th>職種</th><td>ホール・キッチンスタッフ（正社員）</td></tr>
+      <tr><th>仕事内容</th><td>居酒屋でのホール・キッチン業務全般。接客、調理、仕込み、ドリンク作成、在庫管理など。経験に応じて売上管理・スタッフ教育も</td></tr>
+      <tr><th>勤務地</th><td>千葉県成田市花崎町532 土屋ビルC号「比内地鶏・天ぷら 秋風」<br>（京成成田駅 徒歩5分 ／ マイカー通勤可・駐車場あり）</td></tr>
+      <tr><th>給与</th><td>月給 270,000円〜480,000円（前年度実績）<br>昇給：月10,000〜50,000円 ／ 賞与：年2回（前年度実績）</td></tr>
+      <tr><th>就業時間</th><td>変形労働時間制（1年単位）<br>16:00〜24:00 ／ 15:00〜23:00 など</td></tr>
+      <tr><th>休日・休暇</th><td>シフト制・月8休み ／ 年間休日100日以上 ／ 希望休考慮あり ／ 有給10日（6ヶ月後）</td></tr>
+      <tr><th>応募資格</th><td>学歴・資格不問 ／ 転勤なし ／ 20〜59歳（未経験歓迎・経験者優遇）</td></tr>
+      <tr><th>待遇</th><td>社会保険完備 ／ 通勤手当（実費・上限20,000円）<br>マイカー通勤可（駐車場あり）／ 独立支援制度あり</td></tr>
+      <tr><th>選考</th><td>書類選考なし → 面接1回 → 結果7日以内通知</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec faq-bg" id="faq">
+  <div class="container">
+    <div class="sec-label">FAQ</div>
+    <div class="sec-title">よくあるご質問</div>
+    <span class="gold-line"></span>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q"><span class="q-badge">Q</span>飲食の経験がなくても応募できますか？</div>
+        <div class="faq-a">はい、未経験の方でも応募いただけます。先輩スタッフが業務を丁寧にサポートします。ホール・キッチン経験者は優遇します。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="q-badge">Q</span>ホールだけ、またはキッチンだけを希望できますか？</div>
+        <div class="faq-a">最終的には両方担当いただくポジションですが、入社時はご経験やご希望に合わせてどちらかから始めることが可能です。まずはお気軽にご相談ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="q-badge">Q</span>休日の希望は通りますか？</div>
+        <div class="faq-a">希望休制度があり、シフト提出時に申請いただければ考慮します。月8休みを基本として、土日休みもシフト調整で取得可能です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="q-badge">Q</span>将来、店長や独立を目指したいのですが。</div>
+        <div class="faq-a">大歓迎です。経験に応じて売上管理やスタッフ教育もお任せします。新店舗立ち上げや独立を目指せる環境と独立支援制度を用意しています。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="q-badge">Q</span>選考の流れを教えてください。</div>
+        <div class="faq-a">書類選考はありません。ハローワーク経由または直接ご応募いただき、面接（1回）後7日以内に結果をご連絡します。履歴書は面接当日にお持ちください。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 採用担当者 -->
+<section class="sec">
+  <div class="container">
+    <div class="sec-label">RECRUITER</div>
+    <div class="sec-title">採用担当者より</div>
+    <span class="gold-line"></span>
+    <div class="mgr-card">
+      <!-- 顔写真：男性 -->
+      <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当者写真（サンプル）">
+      <div class="mgr-info">
+        <h3>金子 卓（代表取締役）</h3>
+        <p>「成田で長く働きたい」「いつか自分の店を持ちたい」そんな方を歓迎します。ホールもキッチンも、最初から完璧でなくて構いません。一緒に成長していきましょう。</p>
+        <p class="sample-note" style="margin-top:0.5rem;">※ここはサンプルです。実際には御社担当者のメッセージ・写真に差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec" id="apply">
+  <div class="container">
+    <h2>成田の夜を、一緒につくりませんか？</h2>
+    <p>ホールもキッチンも、最初から完璧でなくて大丈夫です。<br>まずはメール・お電話でお気軽にご連絡ください。</p>
+    <a href="mailto:izakaya.akikaze@gmail.com" class="btn-gold">メールで問い合わせる</a>
+    <small>TEL: 0476-37-4453 ／ ハローワーク成田よりご紹介も可能です</small>
+  </div>
+</section>
+
+<footer>
+  <p>株式会社Ｓｐｌｕｓ（比内地鶏・天ぷら 秋風 ／ 個室居酒屋 風月）</p>
+  <p>〒286-0033 千葉県成田市花崎町532 土屋ビルC号 ／ TEL: 0476-37-4453</p>
+  <p class="f-sample">このページはサンプルです。株式会社サプライズコレクション×なりまっぷが作成した採用ページ提案です。</p>
+</footer>
+
+</body>
+</html>
