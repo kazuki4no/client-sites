@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 株式会社 成信工業</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#222;background:#f9f9f9}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+/* 変数 */
+:root{
+  --navy:#1a2744;
+  --navy-light:#243560;
+  --orange:#e67e22;
+  --orange-dark:#c0621a;
+  --gray:#f0f2f5;
+  --text-sub:#666;
+}
+
+/* ナビ */
+header{background:var(--navy);position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{color:#fff;font-size:1.1rem;font-weight:700;letter-spacing:.05em}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.85);font-size:.9rem;transition:.2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:var(--orange);color:#fff!important;padding:8px 18px;border-radius:4px;font-weight:700}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px}
+.nav-menu{display:flex;align-items:center;gap:32px}
+
+/* ヒーロー */
+.hero{position:relative;min-height:75vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-img{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center}
+.hero-overlay{position:absolute;inset:0;background:rgba(15,25,50,.6)}
+.hero-content{position:relative;text-align:center;color:#fff;padding:40px 20px;max-width:800px}
+.hero-pill{display:inline-block;background:var(--orange);color:#fff;font-size:.8rem;font-weight:700;padding:4px 14px;border-radius:20px;letter-spacing:.1em;margin-bottom:16px}
+.hero-title{font-size:clamp(1.8rem,5vw,3.2rem);font-weight:900;line-height:1.3;margin-bottom:16px}
+.hero-sub{font-size:clamp(.95rem,2.5vw,1.2rem);opacity:.9;margin-bottom:32px;line-height:1.7}
+.btn-primary{display:inline-block;background:var(--orange);color:#fff;padding:16px 40px;border-radius:4px;font-size:1rem;font-weight:700;transition:.2s;letter-spacing:.05em}
+.btn-primary:hover{background:var(--orange-dark)}
+
+/* セクション共通 */
+section{padding:72px 20px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-title{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:900;color:var(--navy);text-align:center;margin-bottom:8px}
+.section-sub{text-align:center;color:var(--text-sub);font-size:.95rem;margin-bottom:48px}
+.accent-line{display:block;width:48px;height:4px;background:var(--orange);margin:12px auto 0}
+
+/* 魅力3点 */
+.merits{background:#fff}
+.merit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.merit-card{background:var(--gray);border-radius:8px;padding:32px 24px;text-align:center}
+.merit-icon{font-size:2.2rem;margin-bottom:12px}
+.merit-card h3{font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+.merit-card p{font-size:.9rem;color:var(--text-sub);line-height:1.7}
+
+/* 数字バー */
+.numbers{background:var(--navy)}
+.numbers .section-title{color:#fff}
+.numbers .section-sub{color:rgba(255,255,255,.7)}
+.numbers .accent-line{background:var(--orange)}
+.num-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:40px}
+.num-item{text-align:center;color:#fff}
+.num-val{font-size:clamp(2rem,5vw,3rem);font-weight:900;color:var(--orange)}
+.num-label{font-size:.9rem;opacity:.8;margin-top:4px}
+p.num-note{font-size:.75rem;color:rgba(255,255,255,.5);text-align:center;margin-top:24px}
+
+/* 採用待遇特記 */
+.benefits{background:#fff}
+.benefit-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.benefit-item{display:flex;align-items:flex-start;gap:12px;background:var(--gray);border-radius:8px;padding:20px}
+.benefit-item .icon{font-size:1.6rem;flex-shrink:0}
+.benefit-item h4{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:4px}
+.benefit-item p{font-size:.85rem;color:var(--text-sub);line-height:1.6}
+
+/* 募集要項 */
+.requirements{background:var(--gray)}
+.req-table{width:100%;border-collapse:collapse;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.req-table tr{border-bottom:1px solid #eee}
+.req-table th{background:var(--navy);color:#fff;font-size:.9rem;font-weight:700;padding:14px 20px;width:160px;vertical-align:top;text-align:left}
+.req-table td{padding:14px 20px;font-size:.9rem;line-height:1.7;color:#333}
+
+/* タイムライン */
+.timeline-section{background:#fff}
+.timeline{max-width:600px;margin:0 auto;position:relative}
+.timeline::before{content:'';position:absolute;left:28px;top:0;bottom:0;width:3px;background:var(--orange);opacity:.3}
+.tl-item{display:flex;gap:20px;margin-bottom:32px;position:relative}
+.tl-time{width:56px;flex-shrink:0;font-size:.85rem;font-weight:700;color:var(--orange);padding-top:3px;text-align:right}
+.tl-dot{width:18px;height:18px;border-radius:50%;background:var(--orange);flex-shrink:0;margin-top:2px;border:3px solid #fff;box-shadow:0 0 0 2px var(--orange)}
+.tl-body h4{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:2px}
+.tl-body p{font-size:.85rem;color:var(--text-sub)}
+.sample-note{font-size:.75rem;color:#aaa;margin-top:20px;text-align:center}
+
+/* FAQ */
+.faq-section{background:var(--gray)}
+.faq-list{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:16px}
+.faq-item{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.faq-q{background:var(--navy);color:#fff;padding:16px 20px;font-size:.95rem;font-weight:700;display:flex;gap:12px}
+.faq-q .q-label{color:var(--orange);font-weight:900}
+.faq-a{padding:16px 20px;font-size:.9rem;color:#444;line-height:1.8;display:flex;gap:12px}
+.faq-a .a-label{color:var(--orange);font-weight:900;flex-shrink:0}
+
+/* 先輩メッセージ */
+.voices{background:#fff}
+.voice-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+.voice-card{background:var(--gray);border-radius:8px;padding:24px}
+.voice-head{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.voice-head img{width:64px;height:64px;border-radius:50%;object-fit:cover}
+.voice-head .name{font-weight:700;color:var(--navy);font-size:.95rem}
+.voice-head .meta{font-size:.8rem;color:var(--text-sub);margin-top:2px}
+.voice-body{font-size:.9rem;color:#444;line-height:1.8}
+.voice-sample{font-size:.75rem;color:#aaa;margin-top:8px}
+
+/* 担当者 */
+.contact-section{background:var(--navy)}
+.contact-inner{display:flex;align-items:center;gap:40px;justify-content:center;flex-wrap:wrap}
+.contact-photo img{width:120px;height:120px;border-radius:50%;object-fit:cover;border:4px solid var(--orange)}
+.contact-text{color:#fff}
+.contact-text .label{font-size:.8rem;color:rgba(255,255,255,.6);margin-bottom:4px}
+.contact-text .name{font-size:1.4rem;font-weight:900;margin-bottom:8px}
+.contact-text .msg{font-size:.9rem;opacity:.85;line-height:1.7;max-width:420px;margin-bottom:20px}
+.btn-outline-white{display:inline-block;border:2px solid var(--orange);color:var(--orange);padding:12px 32px;border-radius:4px;font-weight:700;font-size:.95rem;transition:.2s}
+.btn-outline-white:hover{background:var(--orange);color:#fff}
+
+/* CTA */
+.cta-section{background:var(--orange);text-align:center;padding:64px 20px}
+.cta-section h2{font-size:clamp(1.5rem,4vw,2rem);font-weight:900;color:#fff;margin-bottom:12px}
+.cta-section p{color:rgba(255,255,255,.9);margin-bottom:32px;font-size:.95rem}
+.btn-white{display:inline-block;background:#fff;color:var(--orange);padding:16px 48px;border-radius:4px;font-size:1rem;font-weight:900;transition:.2s}
+.btn-white:hover{opacity:.9}
+
+footer{background:var(--navy);color:rgba(255,255,255,.6);text-align:center;padding:32px 20px;font-size:.85rem}
+
+/* スマホ */
+@media(max-width:768px){
+  .hamburger{display:flex}
+  .nav-menu{display:none;position:fixed;top:64px;left:0;right:0;bottom:0;background:var(--navy);flex-direction:column;align-items:center;justify-content:flex-start;padding-top:40px;gap:24px;z-index:99}
+  .nav-menu.open{display:flex}
+  .nav-links{flex-direction:column;align-items:center}
+  .merit-grid{grid-template-columns:1fr}
+  .num-grid{gap:24px}
+  .req-table th,.req-table td{display:block;width:100%}
+  .req-table th{border-bottom:none}
+  .contact-inner{flex-direction:column;text-align:center}
+  .contact-photo{margin:0 auto}
+}
+</style>
+</head>
+<body>
+
+<!-- ナビ -->
+<header>
+  <div class="nav-inner">
+    <div class="logo">株式会社 成信工業</div>
+    <button class="hamburger" id="hamburger" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav-menu" id="navMenu">
+      <ul class="nav-links">
+        <li><a href="#merits">働く魅力</a></li>
+        <li><a href="#benefits">待遇・福利厚生</a></li>
+        <li><a href="#requirements">募集要項</a></li>
+        <li><a href="#voices">先輩の声</a></li>
+        <li><a href="#faq">よくある質問</a></li>
+      </ul>
+      <a href="#cta" class="nav-cta">採用に応募する</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-pill">とび・土工 ／ 施工管理 ／ 未経験歓迎</div>
+    <h1 class="hero-title">一人ひとりの<br>「できる部分」を<br>全力で伸ばす会社</h1>
+    <p class="hero-sub">入社祝金あり ／ 資格取得全額支援 ／ 社宅月3万円〜<br>千葉・東京・埼玉・神奈川の現場で活躍しませんか</p>
+    <a href="#cta" class="btn-primary">採用情報を見る・応募する</a>
+  </div>
+</section>
+
+<!-- 働く魅力 -->
+<section class="merits" id="merits">
+  <div class="section-inner">
+    <h2 class="section-title">成信工業で働く3つの魅力<span class="accent-line"></span></h2>
+    <p class="section-sub">未経験から始めて、確かな技術と安定した収入を手に入れよう</p>
+    <div class="merit-grid">
+      <div class="merit-card">
+        <div class="merit-icon">🎁</div>
+        <h3>入社祝金＋充実の福利厚生</h3>
+        <p>入社祝金制度あり（社内規定による）。社宅月3万円〜、家賃補助、社有車貸与、自宅まで送迎可など、生活をしっかりサポートします。</p>
+      </div>
+      <div class="merit-card">
+        <div class="merit-icon">📜</div>
+        <h3>資格取得を会社が全力支援</h3>
+        <p>玉掛け技能講習・足場組立等作業主任者・フルハーネス特別教育など、費用は会社負担。スキルアップしながら日給アップを目指せます。</p>
+      </div>
+      <div class="merit-card">
+        <div class="merit-icon">🤝</div>
+        <h3>年齢層が幅広く<br>風通しのいいチーム</h3>
+        <p>10代〜40代がともに働く現場。できないことを無理にやらせるのではなく、「できる部分を伸ばす」を大切にしています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 数字で見る -->
+<section class="numbers">
+  <div class="section-inner">
+    <h2 class="section-title">数字で見る成信工業<span class="accent-line"></span></h2>
+    <p class="section-sub">※以下はサンプルです。実際には御社の実績に差し替えます</p>
+    <div class="num-grid">
+      <div class="num-item">
+        <div class="num-val">12,000<span style="font-size:1.2rem">円〜</span></div>
+        <div class="num-label">日給（経験・資格により最大25,000円）</div>
+      </div>
+      <div class="num-item">
+        <div class="num-val">229,000<span style="font-size:1.2rem">円〜</span></div>
+        <div class="num-label">手取見込月額（入社時）</div>
+      </div>
+      <div class="num-item">
+        <div class="num-val">80<span style="font-size:1.2rem">日</span></div>
+        <div class="num-label">年間休日（日曜・祝日・GW・夏季・年末年始）</div>
+      </div>
+      <div class="num-item">
+        <div class="num-val">年2<span style="font-size:1.2rem">回</span></div>
+        <div class="num-label">賞与（前年度実績あり）</div>
+      </div>
+    </div>
+    <p class="num-note">※ここはサンプルです。実際には御社の数字に差し替えます</p>
+  </div>
+</section>
+
+<!-- 待遇・福利厚生 -->
+<section class="benefits" id="benefits">
+  <div class="section-inner">
+    <h2 class="section-title">待遇・福利厚生<span class="accent-line"></span></h2>
+    <p class="section-sub">生活面から仕事面まで、あなたをしっかりサポートします</p>
+    <div class="benefit-list">
+      <div class="benefit-item">
+        <div class="icon">🏠</div>
+        <div>
+          <h4>社宅・家賃補助</h4>
+          <p>成田市並木町に社宅あり。月額3万円〜（光熱費別）。家賃補助制度も。</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="icon">🎁</div>
+        <div>
+          <h4>入社祝金</h4>
+          <p>入社時にお祝い金をお渡しする制度があります。詳細は面接時にご説明します。</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="icon">📜</div>
+        <div>
+          <h4>資格取得支援</h4>
+          <p>玉掛け・足場組立等作業主任者・フルハーネス特別教育など、取得費用は会社負担。</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="icon">🚗</div>
+        <div>
+          <h4>社有車貸与・送迎</h4>
+          <p>社有車の貸与制度あり。自宅までの送迎も可能です。マイカー通勤もOK。</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="icon">📈</div>
+        <div>
+          <h4>昇給・賞与</h4>
+          <p>昇給実績あり（月額15,000円〜）。賞与年2回（前年度実績）。</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="icon">🎉</div>
+        <div>
+          <h4>社員旅行・各種お祝い</h4>
+          <p>社員旅行・誕生日プレゼント・各種お祝い制度など、仲間を大切にする文化があります。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="requirements" id="requirements">
+  <div class="section-inner">
+    <h2 class="section-title">募集要項<span class="accent-line"></span></h2>
+    <p class="section-sub"></p>
+    <table class="req-table">
+      <tr><th>職種</th><td>とび・土工（現場作業 ／ 施工管理）</td></tr>
+      <tr><th>仕事内容</th><td>建物の新築・解体・修繕工事に伴う足場の組立・解体工事（現場作業）、工事の工程管理・安全管理・関係先との調整（施工管理）。現場は主に千葉・東京・埼玉・神奈川。</td></tr>
+      <tr><th>雇用形態</th><td>正社員（試用期間1ヶ月・同条件）</td></tr>
+      <tr><th>賃金</th><td>日給12,000円〜25,000円（経験・資格により異なる）<br>月収目安 284,400円〜592,500円<br>手取見込月額：229,000円程度〜（入社時）</td></tr>
+      <tr><th>就業時間</th><td>8:30〜17:30（休憩120分）<br>時間外労働：月平均1時間</td></tr>
+      <tr><th>休日・休暇</th><td>日曜日・祝日・その他（年末年始・夏季・GW）<br>年間休日80日／有給休暇10日（6ヶ月後）</td></tr>
+      <tr><th>応募資格</th><td>18歳以上（法令規定）。経験不問・学歴不問・資格不問。未経験歓迎。<br>外国籍の方は日本語日常会話ができる方。経験者・資格保有者は優遇。</td></tr>
+      <tr><th>加入保険</th><td>雇用保険・労災保険・健康保険・厚生年金</td></tr>
+      <tr><th>就業場所</th><td>千葉県成田市中台2丁目22-1（事業所）。現場直行直帰可。</td></tr>
+      <tr><th>採用人数</th><td>3名</td></tr>
+      <tr><th>選考方法</th><td>面接（予定1回）。オンライン（Zoom・LINE等）面接も可。<br>応募書類：履歴書（写真貼付）・ハローワーク紹介状（オンライン応募を除く）</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section class="timeline-section" id="timeline">
+  <div class="section-inner">
+    <h2 class="section-title">社員の1日の流れ<span class="accent-line"></span></h2>
+    <p class="section-sub">（現場作業スタッフの一例）</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">8:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>事業所集合・朝礼</h4><p>安全確認・当日の作業内容を確認します。直行直帰の方は現場へ直接。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">8:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>現場移動・準備</h4><p>社有車または現場直行で移動。資材の確認・道具の準備を行います。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">9:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>足場組立・解体作業</h4><p>安全を最優先に、チームで息を合わせて作業を進めます。未経験でも先輩が丁寧に教えます。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>昼休憩（120分）</h4><p>しっかり休んで午後に備えます。仲間との会話も楽しみの一つです。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>午後の作業</h4><p>引き続き足場工事や施工管理業務を進めます。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">16:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>片付け・安全確認</h4><p>作業場所の整理・翌日の段取り確認。施工管理スタッフは書類整理も。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>終業</h4><p>現場からそのまま帰宅（直帰）または事業所に戻って解散です。</p></div>
+      </div>
+    </div>
+    <p class="sample-note">※ここはサンプルです。実際には御社の1日の流れに差し替えます</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="section-inner">
+    <h2 class="section-title">よくある質問<span class="accent-line"></span></h2>
+    <p class="section-sub"></p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q"><span class="q-label">Q</span>未経験でも応募できますか？</div>
+        <div class="faq-a"><span class="a-label">A</span>はい、未経験大歓迎です。入社時に力・体力に自信がなかった方も多数活躍しています。先輩が丁寧に指導しますので、安心してご応募ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="q-label">Q</span>入社祝金はどのような制度ですか？具体的な金額が知りたいです。</div>
+        <div class="faq-a"><span class="a-label">A</span>社内規定による入社祝金があります。金額の詳細は面接時にご説明します。ぜひお気軽にお問い合わせください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="q-label">Q</span>資格取得支援とは具体的にどのような資格が対象ですか？</div>
+        <div class="faq-a"><span class="a-label">A</span>玉掛け技能講習・足場の組立て等作業主任者技能講習・フルハーネス型安全帯使用作業特別教育などが対象です。受講費用は会社が負担します。取得後は日給アップにもつながります。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="q-label">Q</span>社宅の条件を教えてください。</div>
+        <div class="faq-a"><span class="a-label">A</span>成田市並木町に単身用・世帯用の社宅があります。月額3万円〜（光熱費別）でご利用いただけます。詳細は面接時にご確認ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="q-label">Q</span>現場はどのエリアですか？転勤はありますか？</div>
+        <div class="faq-a"><span class="a-label">A</span>現場は主に千葉・東京・埼玉・神奈川です。転勤はありません（変更範囲：変更なし）。現場への直行直帰も可能です。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩メッセージ -->
+<section class="voices" id="voices">
+  <div class="section-inner">
+    <h2 class="section-title">先輩からのメッセージ<span class="accent-line"></span></h2>
+    <p class="section-sub">※以下はサンプルです。実際には御社スタッフのメッセージに差し替えます</p>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <!-- 先輩1：男性・とび職・未経験入社 -->
+        <div class="voice-head">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="田中さん（仮名）">
+          <div><div class="name">田中 健太（仮名）</div><div class="meta">とび職／入社2年目・26歳</div></div>
+        </div>
+        <div class="voice-body">入社前は全くの未経験でした。「体力がないと無理かな」と心配でしたが、先輩が「できることから覚えればいい」と言ってくれて気が楽になりました。今では足場の組立が一人でこなせるようになり、日給も上がりました。</div>
+        <div class="voice-sample">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</div>
+      </div>
+      <div class="voice-card">
+        <!-- 先輩2：男性・施工管理 -->
+        <div class="voice-head">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="鈴木さん（仮名）">
+          <div><div class="name">鈴木 拓也（仮名）</div><div class="meta">施工管理／入社4年目・32歳</div></div>
+        </div>
+        <div class="voice-body">施工管理として、現場の安全と工程を管理しています。入社当初は覚えることが多かったですが、会社が資格取得を全面支援してくれて、玉掛けと足場作業主任者の資格を取れました。資格手当で収入も大きく変わりました。</div>
+        <div class="voice-sample">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</div>
+      </div>
+      <div class="voice-card">
+        <!-- 先輩3：男性・若手 -->
+        <div class="voice-head">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="佐藤さん（仮名）">
+          <div><div class="name">佐藤 大輔（仮名）</div><div class="meta">とび職／入社1年目・21歳</div></div>
+        </div>
+        <div class="voice-body">高校を卒業してすぐに入社しました。社宅制度のおかげで生活の心配が少なく、仕事に集中できています。職場の雰囲気がよく、10代〜40代まで一緒に働いているのに全然壁がなくて、本当に楽しいです。</div>
+        <div class="voice-sample">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</div>
+      </div>
+      <div class="voice-card">
+        <!-- 先輩4：女性 -->
+        <div class="voice-head">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=faces&q=80" alt="松本さん（仮名）">
+          <div><div class="name">松本 恵美（仮名）</div><div class="meta">施工管理／入社3年目・28歳</div></div>
+        </div>
+        <div class="voice-body">女性は私だけですが、気遣ってもらえてとても働きやすいです。施工管理として書類整理・工程管理を担当しています。「得意なことを伸ばす」という方針の通り、自分のペースでスキルアップできています。</div>
+        <div class="voice-sample">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 採用担当者 -->
+<section class="contact-section" id="contact">
+  <div class="section-inner">
+    <div class="contact-inner">
+      <div class="contact-photo">
+        <!-- 採用担当者の写真（仮名）-->
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当 柴田（仮名）">
+      </div>
+      <div class="contact-text">
+        <div class="label">採用担当</div>
+        <div class="name">代表取締役 柴田 圭治</div>
+        <div class="msg">数ある求人の中から弊社に目を留めてくださり、ありがとうございます。弊社は「できる部分を伸ばす」を大切にしており、一人ひとりが楽しく働ける環境づくりに力を入れています。まずはお気軽にご連絡ください。</div>
+        <a href="mailto:seishin0901@gmail.com" class="btn-outline-white">メールで問い合わせる</a>
+      </div>
+    </div>
+    <p style="text-align:center;color:rgba(255,255,255,.4);font-size:.75rem;margin-top:24px">※担当者の写真はサンプルです。実際には御社の写真に差し替えます</p>
+  </div>
+</section>
+
+<!-- 最終CTA -->
+<section class="cta-section" id="cta">
+  <h2>あなたの"できること"を<br>ここで伸ばしませんか？</h2>
+  <p>入社祝金・資格支援・社宅完備で、安心してスタートできます</p>
+  <a href="mailto:seishin0901@gmail.com" class="btn-white">メールで応募・問い合わせる</a>
+</section>
+
+<footer>
+  <p>&copy; 株式会社 成信工業 All Rights Reserved.</p>
+  <p style="margin-top:8px;font-size:.8rem">このページはサンプルです。ご提案用に制作しました。</p>
+</footer>
+
+<script>
+const hamburger = document.getElementById('hamburger');
+const navMenu = document.getElementById('navMenu');
+hamburger.addEventListener('click', () => navMenu.classList.toggle('open'));
+navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navMenu.classList.remove('open')));
+</script>
+</body>
+</html>
