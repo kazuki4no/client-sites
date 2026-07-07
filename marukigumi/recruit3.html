@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報（FVバナー型） | 株式会社丸輝組</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#1a1a1a;background:#fff}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none}
+
+/* ナビ（透過→スクロールで不透過） */
+header{position:fixed;top:0;left:0;right:0;z-index:200;transition:background .3s,box-shadow .3s}
+header.solid{background:#111;box-shadow:0 2px 12px rgba(0,0,0,.4)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;align-items:center;height:68px}
+.logo{color:#fff;font-size:1.05rem;font-weight:700;letter-spacing:.06em}
+.logo em{color:#f5c518;font-style:normal}
+.nav-links{display:flex;align-items:center;gap:24px}
+.nav-links a{color:rgba(255,255,255,.8);font-size:.87rem;transition:color .2s}
+.nav-links a:hover{color:#f5c518}
+.nav-cta{background:#f5c518;color:#111 !important;padding:8px 22px;border-radius:3px;font-weight:700 !important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px}
+.mobile-menu{display:none;background:#111;padding:16px 24px}
+.mobile-menu a{display:block;color:rgba(255,255,255,.8);padding:10px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:.93rem}
+
+/* フルスクリーンヒーロー */
+.hero{position:relative;min-height:80vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center}
+.hero-overlay{position:absolute;inset:0;background:rgba(10,16,28,.65)}
+.hero-content{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:120px 24px 80px;text-align:center}
+.hero-kicker{display:inline-block;font-size:.8rem;font-weight:700;letter-spacing:.14em;color:#f5c518;border:1px solid #f5c518;padding:5px 18px;border-radius:20px;margin-bottom:24px;text-transform:uppercase}
+.hero h1{font-family:'Noto Serif JP',serif;font-size:clamp(1.7rem,5.5vw,3.6rem);color:#fff;line-height:1.4;margin-bottom:24px}
+.hero h1 strong{color:#f5c518;font-weight:900}
+.hero-sub{font-size:clamp(.9rem,1.8vw,1.1rem);color:#c0ccd8;line-height:2;margin-bottom:36px}
+.hero-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:32px}
+.tag{background:rgba(245,197,24,.15);border:1px solid rgba(245,197,24,.4);color:#f5c518;font-size:.78rem;padding:5px 14px;border-radius:20px;font-weight:700}
+.btn-gold{display:inline-block;background:#f5c518;color:#111;padding:18px 52px;border-radius:4px;font-size:1.05rem;font-weight:700;letter-spacing:.06em;transition:background .2s;box-shadow:0 4px 24px rgba(245,197,24,.35)}
+.btn-gold:hover{background:#ddb200}
+.scroll-hint{margin-top:24px;font-size:.8rem;color:rgba(255,255,255,.5);letter-spacing:.08em}
+
+/* 概要バー */
+.overview{background:#111;padding:32px 24px}
+.overview-inner{max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+.ov-item strong{display:block;font-size:clamp(1.4rem,4vw,2rem);color:#f5c518;font-weight:900;line-height:1}
+.ov-item span{display:block;font-size:.75rem;color:#8899aa;margin-top:6px}
+
+/* セクション */
+.section{padding:72px 24px}
+.container{max-width:1080px;margin:0 auto}
+.s-label{font-size:.75rem;letter-spacing:.14em;font-weight:700;color:#f5c518;margin-bottom:10px}
+.s-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.3rem,4vw,2.1rem);color:#111;margin-bottom:8px}
+.s-note{font-size:.75rem;color:#aaa;margin-bottom:28px}
+
+/* 写真＋テキスト分割 */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.split img{border-radius:6px}
+.split-text h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.2rem,3.5vw,1.9rem);color:#111;margin-bottom:16px;line-height:1.5}
+.split-text p{font-size:.93rem;line-height:2;color:#444;margin-bottom:16px}
+.split-text ul{list-style:none;margin-bottom:20px}
+.split-text ul li{padding:6px 0;font-size:.9rem;color:#333;display:flex;gap:10px}
+.split-text ul li::before{content:'✓';color:#f5c518;font-weight:700;flex-shrink:0}
+
+/* カード */
+.bg-light{background:#f5f7fb}
+.card-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,.07)}
+.card-img{height:180px;object-fit:cover;width:100%}
+.card-body{padding:20px}
+.card-body h3{font-size:.98rem;font-weight:700;color:#111;margin-bottom:8px}
+.card-body p{font-size:.85rem;line-height:1.8;color:#555}
+
+/* 先輩の声 */
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.vc{background:#fff;border-radius:8px;padding:24px;box-shadow:0 2px 12px rgba(0,0,0,.07);border-bottom:3px solid #f5c518}
+.vc-head{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.vc-img{width:58px;height:58px;border-radius:50%;object-fit:cover}
+.vc-meta strong{display:block;font-size:.92rem;color:#111;margin-bottom:2px}
+.vc-meta span{font-size:.76rem;color:#888}
+.vc blockquote{font-size:.88rem;line-height:1.85;color:#444;border-left:3px solid #f5c518;padding-left:12px}
+
+/* 1日の流れ */
+.dark-bg{background:#0d1b2a}
+.tl-wrap{list-style:none}
+.tl-item{display:flex;gap:20px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.tl-item:last-child{border:none}
+.tl-t{flex-shrink:0;width:60px;font-size:.78rem;font-weight:700;color:#f5c518;padding-top:2px}
+.tl-item h4{font-size:.93rem;font-weight:700;color:#fff;margin-bottom:4px}
+.tl-item p{font-size:.83rem;line-height:1.75;color:#8899aa}
+
+/* FAQ */
+.faq-list{list-style:none}
+.fq{border-bottom:1px solid #e5eaf0;padding:18px 0}
+.fq:first-child{border-top:1px solid #e5eaf0}
+.fq-q{font-weight:700;color:#111;margin-bottom:10px;display:flex;gap:12px;font-size:.96rem}
+.fq-q::before{content:'Q';flex-shrink:0;background:#111;color:#f5c518;width:26px;height:26px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:.85rem;font-family:'Noto Serif JP',serif}
+.fq-a{font-size:.88rem;line-height:1.85;color:#555;padding-left:38px}
+
+/* 募集要項 */
+.spec-tbl{width:100%;border-collapse:collapse;font-size:.93rem}
+.spec-tbl tr{border-bottom:1px solid #e5eaf0}
+.spec-tbl th{width:150px;padding:14px 18px;background:#f5f7fb;color:#111;font-weight:700;text-align:left;vertical-align:top}
+.spec-tbl td{padding:14px 18px;line-height:1.8;color:#333}
+@media(max-width:768px){
+  .spec-tbl thead{display:none}
+  .spec-tbl,.spec-tbl tbody,.spec-tbl tr,.spec-tbl th,.spec-tbl td{display:block;width:100%}
+  .spec-tbl tr{padding:6px 0}
+  .spec-tbl th{width:100%;padding:10px 14px 4px;font-size:.82rem;border:none}
+  .spec-tbl td{padding:4px 14px 12px}
+}
+
+/* 最終CTA */
+.final-cta{position:relative;min-height:380px;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.cta-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1600&h=700&fit=crop&q=80');background-size:cover;background-position:center}
+.cta-ov{position:absolute;inset:0;background:rgba(10,16,28,.75)}
+.cta-content{position:relative;z-index:1;padding:64px 24px;max-width:680px;margin:0 auto}
+.cta-content h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.3rem,4vw,2rem);color:#fff;margin-bottom:16px;line-height:1.5}
+.cta-content p{color:#a0b4c8;font-size:.93rem;margin-bottom:28px}
+
+footer{background:#060e1a;color:#445566;text-align:center;padding:28px;font-size:.78rem}
+footer strong{color:#fff;display:block;margin-bottom:6px;font-size:.93rem}
+
+/* レスポンシブ */
+@media(max-width:768px){
+  .hamburger{display:flex}
+  .nav-links{display:none}
+  .mobile-menu.open{display:block}
+  .overview-inner{grid-template-columns:1fr 1fr}
+  .split{grid-template-columns:1fr}
+  .card-grid{grid-template-columns:1fr}
+  .voice-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<header id="hdr">
+  <div class="nav-inner">
+    <div class="logo">丸輝組 <em>MARUKIGUMI</em></div>
+    <div class="nav-links">
+      <a href="#about">会社について</a>
+      <a href="#voice">先輩の声</a>
+      <a href="#spec">募集要項</a>
+      <a href="#apply" class="nav-cta">応募する</a>
+    </div>
+    <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu">
+    <a href="#about">会社について</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#spec">募集要項</a>
+    <a href="#apply">応募する</a>
+  </div>
+</header>
+
+<!-- フルスクリーンヒーロー -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-kicker">✦ 建設作業員 正社員募集 ✦</div>
+    <h1>「将来をつくる側に、<br><strong>なろう。」</strong></h1>
+    <p class="hero-sub">データセンター・病院の電気設備工事。学歴・経歴不問。<br>資格ゼロでも、月給33万円からスタートできます。</p>
+    <div class="hero-tags">
+      <span class="tag">土日祝休み</span>
+      <span class="tag">年休120日</span>
+      <span class="tag">経験不問</span>
+      <span class="tag">資格取得費全額負担</span>
+      <span class="tag">オンライン面接</span>
+    </div>
+    <a href="#apply" class="btn-gold">今すぐ応募する</a>
+    <p class="scroll-hint">↓ SCROLL ↓</p>
+  </div>
+</section>
+
+<!-- 概要バー -->
+<div class="overview">
+  <div class="overview-inner">
+    <div class="ov-item"><strong>33〜50万</strong><span>月給（万円）</span></div>
+    <div class="ov-item"><strong>120日</strong><span>年間休日</span></div>
+    <div class="ov-item"><strong>0円</strong><span>資格取得 自己負担</span></div>
+    <div class="ov-item"><strong>面接1回</strong><span>オンライン選考</span></div>
+  </div>
+</div>
+
+<!-- 会社について -->
+<section class="section" id="about">
+  <div class="container">
+    <div class="split">
+      <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=560&fit=crop&q=80" alt="建設現場のイメージ（サンプル）">
+      <div class="split-text">
+        <div class="s-label">ABOUT US</div>
+        <h2>社会を支えるインフラを、<br>自分の手でつくる仕事</h2>
+        <p>株式会社丸輝組は、データセンターや病院など、社会に不可欠なインフラの電気設備工事・機械器具設置を手がける会社です。令和7年創業。今まさに最初のメンバーと一緒に、会社をゼロから作り上げている真っ最中です。</p>
+        <p>「アットホームで働きやすい環境づくりを大切に」という代表のもと、仲間を丁寧に育て、長く働ける職場をめざしています。</p>
+        <ul>
+          <li>千葉県内〜関東近郊の現場・転勤なし</li>
+          <li>マイカー通勤可・駐車場完備</li>
+          <li>健康保険・厚生年金完備</li>
+        </ul>
+        <a href="#spec" class="btn-gold" style="padding:12px 32px;font-size:.9rem;display:inline-block">募集要項を見る</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 働く環境 -->
+<section class="section bg-light" id="env">
+  <div class="container">
+    <div class="s-label">ENVIRONMENT</div>
+    <h2 class="s-title">働きやすさへのこだわり</h2>
+    <p class="s-note" style="margin-bottom:32px">※ここはサンプルです。実際には御社の職場環境写真・コメントに差し替えます</p>
+    <!-- ※ここはサンプルです。実際の職場写真・コメントに差し替えてください -->
+    <div class="card-grid">
+      <div class="card">
+        <img class="card-img" src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=640&h=380&fit=crop&q=80" alt="現場作業イメージ（サンプル）">
+        <div class="card-body">
+          <h3>🗓️ 土日祝休み・年間120日</h3>
+          <p>建設業でありながら完全週休2日を実現。オンとオフをしっかり切り分けられます。</p>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=640&h=380&fit=crop&q=80" alt="職場イメージ（サンプル）">
+        <div class="card-body">
+          <h3>🎓 資格取得を全力バックアップ</h3>
+          <p>玉掛・フォークリフト等の取得費用は全額会社負担。手に職をつけるまでしっかりサポート。</p>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=640&h=380&fit=crop&q=80" alt="チームイメージ（サンプル）">
+        <div class="card-body">
+          <h3>👥 立ち上げ期だからこそ声が届く</h3>
+          <p>新設の会社なので、あなたの意見がそのまま職場づくりに反映されやすい環境です。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section class="section" id="voice">
+  <div class="container">
+    <div class="s-label">VOICES</div>
+    <h2 class="s-title">先輩からのメッセージ</h2>
+    <p class="s-note">※ここはサンプルです。実際には御社スタッフのコメント・写真に差し替えます</p>
+    <!-- ※ここはサンプルです。実際のスタッフ写真・コメントに差し替えてください -->
+    <div class="voice-grid">
+      <div class="vc">
+        <div class="vc-head">
+          <img class="vc-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="Aさん（仮名）">
+          <div class="vc-meta"><strong>Aさん（仮名）</strong><span>建設作業員 入社6ヶ月</span></div>
+        </div>
+        <blockquote>「ゼロから教えてもらって、今は現場を任せてもらえるように。未経験でも着実に成長できると実感しています。」</blockquote>
+      </div>
+      <div class="vc">
+        <div class="vc-head">
+          <img class="vc-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="Bさん（仮名）">
+          <div class="vc-meta"><strong>Bさん（仮名）</strong><span>建設作業員 入社1年</span></div>
+        </div>
+        <blockquote>「土日を家族と過ごせるのが一番大きいです。給与も安定、資格も増える。転職して正解でした。」</blockquote>
+      </div>
+      <div class="vc">
+        <div class="vc-head">
+          <img class="vc-img" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=faces&q=80" alt="Cさん（仮名）">
+          <div class="vc-meta"><strong>Cさん（仮名）</strong><span>建設作業員 入社8ヶ月</span></div>
+        </div>
+        <blockquote>「人間関係がフラットで、誰でも相談しやすい。新しい会社なので自分が作る側という感覚が好きです。」</blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section class="section dark-bg" id="day">
+  <div class="container">
+    <div class="s-label">A DAY IN LIFE</div>
+    <h2 class="s-title" style="color:#fff">社員の1日の流れ</h2>
+    <p style="font-size:.75rem;color:#6677aa;margin-bottom:28px">※ここはサンプルです。実際には御社の業務フローに差し替えます</p>
+    <!-- ※ここはサンプルです。実際のタイムラインに差し替えてください -->
+    <ul class="tl-wrap">
+      <li class="tl-item"><div class="tl-t">07:45</div><div><h4>出社・朝礼</h4><p>安全確認と当日の作業内容を共有。</p></div></li>
+      <li class="tl-item"><div class="tl-t">08:00</div><div><h4>午前作業</h4><p>先輩とペアで設備搬入・据付などの作業。</p></div></li>
+      <li class="tl-item"><div class="tl-t">12:00</div><div><h4>昼休憩</h4><p>仲間とランチ。リラックスした時間を過ごします。</p></div></li>
+      <li class="tl-item"><div class="tl-t">13:00</div><div><h4>午後作業</h4><p>撤去・メンテナンスなど多彩な業務でスキルアップ。</p></div></li>
+      <li class="tl-item"><div class="tl-t">16:00</div><div><h4>片付け・終礼</h4><p>現場整備と1日の確認。達成感を仲間と共有。</p></div></li>
+      <li class="tl-item"><div class="tl-t">17:00</div><div><h4>退勤</h4><p>定時が基本。帰宅後の時間を自分のために使えます。</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="s-label">FAQ</div>
+    <h2 class="s-title">よくある質問</h2>
+    <p class="s-note">※ここはサンプルです。実際には御社のQ&Aに差し替えます</p>
+    <!-- ※ここはサンプルです。実際のQ&Aに差し替えてください -->
+    <ul class="faq-list">
+      <li class="fq"><div class="fq-q">全くの未経験でも大丈夫ですか？</div><p class="fq-a">はい。社会人デビューの方・業界未経験の方も多数活躍しています。先輩がペアになって丁寧に教えます。</p></li>
+      <li class="fq"><div class="fq-q">資格ゼロでも応募できますか？</div><p class="fq-a">応募できます。必要な資格（玉掛・フォークリフト等）は入社後に全額会社費用で取得できます。</p></li>
+      <li class="fq"><div class="fq-q">選考の流れを教えてください。</div><p class="fq-a">①応募 → ②オンライン面接（1回・30〜45分）→ ③内定（2日以内に通知）。書類選考はありません。</p></li>
+      <li class="fq"><div class="fq-q">職場の雰囲気はどうですか？</div><p class="fq-a">「アットホームで働きやすい環境」を代表が大切にしています。新設会社なので、全員が同じスタートラインから一緒に積み上げてきた仲間です。相談しやすい職場です。</p></li>
+      <li class="fq"><div class="fq-q">未経験者はどのくらいいますか？</div><p class="fq-a">創業期のメンバーが多く、様々なバックグラウンドを持つ仲間がいます。「最初だから何もわからない」という状況は皆共通の経験として、フォローし合う文化があります。</p></li>
+    </ul>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="section bg-light" id="spec">
+  <div class="container">
+    <div class="s-label">REQUIREMENTS</div>
+    <h2 class="s-title">募集要項</h2>
+    <table class="spec-tbl">
+      <tr><th>職種</th><td>建設作業員（電気設備工事・機械器具設置・搬入据付等）</td></tr>
+      <tr><th>雇用形態</th><td>正社員（試用期間3ヶ月・同条件）</td></tr>
+      <tr><th>給与</th><td>月給 330,000円〜500,000円 ／ 昇給・賞与制度あり</td></tr>
+      <tr><th>勤務時間</th><td>8:00〜17:00（休憩120分）</td></tr>
+      <tr><th>休日・休暇</th><td>土日祝・年間120日 ／ 有給（6ヶ月後10日〜）</td></tr>
+      <tr><th>勤務地</th><td>千葉県成田市公津の杜3-38-5（「公津の杜駅」徒歩8分）<br>現場：千葉県内〜関東近郊 ／ マイカー通勤可</td></tr>
+      <tr><th>資格・学歴</th><td>不問 ／ 資格取得費用は全額会社負担</td></tr>
+      <tr><th>社会保険</th><td>雇用・労災・健康・厚生年金</td></tr>
+      <tr><th>選考</th><td>オンライン面接1回 → 2日以内に通知</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 最終CTA -->
+<section class="final-cta" id="apply">
+  <div class="cta-bg"></div>
+  <div class="cta-ov"></div>
+  <div class="cta-content">
+    <h2>「まずは話だけ聞いてみたい」<br>それで十分です。</h2>
+    <p>書類選考なし・オンライン面接1回。気軽にご連絡ください。一緒に丸輝組を作っていきましょう。</p>
+    <a href="mailto:y.endo@marukigumi.com" class="btn-gold">応募メールを送る</a>
+    <p style="color:rgba(255,255,255,.5);font-size:.78rem;margin-top:12px">Tel: 090-4170-4020 / y.endo@marukigumi.com</p>
+  </div>
+</section>
+
+<footer>
+  <strong>株式会社 丸輝組</strong>
+  〒286-0048 千葉県成田市公津の杜3丁目38-5 | © 2025 Marukigumi Co., Ltd.
+</footer>
+
+<script>
+// スクロールでナビ背景を付ける
+window.addEventListener('scroll',function(){
+  var h=document.getElementById('hdr');
+  if(window.scrollY>80){h.classList.add('solid');}else{h.classList.remove('solid');}
+});
+</script>
+</body>
+</html>
