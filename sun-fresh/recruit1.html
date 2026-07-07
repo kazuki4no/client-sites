@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報（A案・王道スタンダード） | 株式会社サンフレッシュ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+body{font-family:'Noto Sans JP',sans-serif;color:#333;background:#fff;line-height:1.75}
+
+/* ナビ */
+.nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,.97);border-bottom:3px solid #27AE60;box-shadow:0 1px 6px rgba(0,0,0,.07)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 1.2rem;display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-logo{font-size:1rem;font-weight:700;color:#1B5E20}
+.nav-links{display:flex;gap:1.5rem;list-style:none}
+.nav-links a{text-decoration:none;color:#333;font-size:.88rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:#27AE60}
+.btn-primary,.btn-outline,.btn-green{display:inline-block;text-decoration:none;border-radius:6px;font-weight:700;transition:all .2s}
+.btn-primary{background:#27AE60;color:#fff;padding:.45rem 1.1rem;font-size:.85rem}
+.btn-primary:hover,.btn-green:hover{background:#1E8449}
+.btn-outline{border:2px solid #27AE60;color:#27AE60;padding:.85rem 2rem;font-size:1rem}
+.btn-outline:hover{background:#E8F5E9}
+.btn-green{background:#27AE60;color:#fff;padding:.9rem 2.4rem;font-size:1.05rem}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#333;border-radius:2px;transition:.3s}
+.nav-mobile{display:none;background:#fff;border-top:1px solid #eee;padding:1rem}
+.nav-mobile.open{display:block}
+.nav-mobile a{display:block;padding:.7rem 0;border-bottom:1px solid #f0f0f0;color:#333;text-decoration:none;font-size:.95rem}
+.nav-mobile a:last-child{border-bottom:none}
+
+/* ヒーロー */
+.hero{margin-top:60px;position:relative;min-height:78vh;display:flex;align-items:center}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=1600&h=900&fit=crop&q=80') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:rgba(18,55,25,.62)}
+.hero-content{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:4rem 1.5rem;color:#fff}
+.hero-badge{display:inline-block;background:#27AE60;color:#fff;padding:.3rem 1rem;border-radius:20px;font-size:.82rem;margin-bottom:1rem;font-weight:700;letter-spacing:.06em}
+.hero-title{font-size:clamp(1.9rem,6vw,3.4rem);font-weight:900;line-height:1.25;margin-bottom:1.2rem}
+.hero-sub{font-size:clamp(.95rem,2.5vw,1.15rem);margin-bottom:.8rem;opacity:.92;max-width:640px}
+.hero-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
+.hero-tag{background:rgba(255,255,255,.15);color:#fff;padding:.3rem .85rem;border-radius:20px;font-size:.8rem;border:1px solid rgba(255,255,255,.35)}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-hero-outline{display:inline-block;border:2px solid #fff;color:#fff;text-decoration:none;padding:.85rem 1.8rem;border-radius:6px;font-size:.95rem;font-weight:700;transition:all .2s}
+.btn-hero-outline:hover{background:rgba(255,255,255,.15)}
+
+/* セクション共通 */
+.section{padding:5rem 1.5rem}
+.section-alt{background:#F1F8E9}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-label{color:#27AE60;font-size:.82rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.4rem}
+.section-title{font-size:clamp(1.4rem,4vw,2.2rem);font-weight:900;margin-bottom:1.4rem;color:#1B3A1F}
+.section-lead{color:#555;max-width:680px;margin-bottom:2.5rem;font-size:.95rem}
+.sample-note{font-size:.74rem;color:#aaa;margin-top:.5rem}
+
+/* 働く魅力 */
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.feature-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08)}
+.feature-card img{width:100%;height:200px;object-fit:cover}
+.feature-card-body{padding:1.5rem}
+.feature-icon{font-size:1.8rem;margin-bottom:.6rem}
+.feature-title{font-size:1.05rem;font-weight:700;margin-bottom:.5rem;color:#1B3A1F}
+.feature-desc{font-size:.88rem;color:#555;line-height:1.75}
+
+/* 募集要項 */
+.job-table{width:100%;border-collapse:collapse}
+.job-table th,.job-table td{padding:.9rem 1.2rem;border-bottom:1px solid #E8F5E9;text-align:left;vertical-align:top}
+.job-table th{background:#E8F5E9;width:34%;font-weight:700;color:#1B5E20;font-size:.88rem;white-space:nowrap}
+.job-table td{font-size:.9rem;color:#333}
+.job-table tr:last-child th,.job-table tr:last-child td{border-bottom:none}
+
+/* FAQ */
+.faq-list{max-width:820px}
+.faq-item{border:1px solid #C8E6C9;border-radius:8px;margin-bottom:1rem;overflow:hidden}
+.faq-q{padding:1.1rem 1.4rem;font-weight:700;color:#1B5E20;background:#F1F8E9;display:flex;align-items:flex-start;gap:.7rem;font-size:.93rem}
+.faq-q-icon{background:#27AE60;color:#fff;font-size:.75rem;font-weight:900;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem}
+.faq-a{padding:1.1rem 1.4rem;font-size:.9rem;color:#444;line-height:1.78;background:#fff}
+
+/* タイムライン */
+.timeline{max-width:700px;position:relative}
+.timeline::before{content:'';position:absolute;left:49px;top:0;bottom:0;width:2px;background:#C8E6C9}
+.tl-item{display:flex;gap:1.4rem;margin-bottom:1.8rem;position:relative}
+.tl-time{width:90px;text-align:right;font-size:.82rem;font-weight:700;color:#1B5E20;flex-shrink:0;padding-top:.15rem}
+.tl-dot{width:14px;height:14px;border-radius:50%;background:#27AE60;border:3px solid #fff;box-shadow:0 0 0 2px #27AE60;flex-shrink:0;margin-top:.2rem}
+.tl-title{font-weight:700;color:#1B3A1F;margin-bottom:.2rem;font-size:.93rem}
+.tl-desc{font-size:.85rem;color:#666}
+
+/* 先輩の声 */
+.voices{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.voice-card{background:#fff;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.07);padding:1.5rem;display:flex;flex-direction:column;gap:.9rem}
+.voice-head{display:flex;align-items:center;gap:1rem}
+.voice-img{width:60px;height:60px;border-radius:50%;object-fit:cover;border:3px solid #C8E6C9;flex-shrink:0}
+.voice-name{font-weight:700;color:#1B3A1F;font-size:.92rem}
+.voice-role{font-size:.78rem;color:#888}
+.voice-text{font-size:.86rem;color:#555;line-height:1.78}
+
+/* 採用担当者 */
+.contact-box{background:#E8F5E9;border-radius:12px;padding:2rem;display:flex;gap:2rem;align-items:flex-start;max-width:720px}
+.contact-img{width:96px;height:96px;border-radius:50%;object-fit:cover;flex-shrink:0;border:4px solid #fff}
+.contact-name{font-weight:900;font-size:1.05rem;color:#1B3A1F;margin-bottom:.2rem}
+.contact-role{font-size:.8rem;color:#888;margin-bottom:.6rem}
+.contact-msg{font-size:.9rem;color:#444;line-height:1.78}
+
+/* 応募CTA */
+.cta-section{background:#1B5E20;color:#fff;text-align:center;padding:5rem 1.5rem}
+.cta-title{font-size:clamp(1.4rem,4vw,2rem);font-weight:900;margin-bottom:.8rem}
+.cta-lead{font-size:.95rem;opacity:.88;margin-bottom:2rem}
+.btn-white{display:inline-block;background:#fff;color:#1B5E20;text-decoration:none;padding:1rem 2.6rem;border-radius:6px;font-size:1.05rem;font-weight:900;transition:opacity .2s}
+.btn-white:hover{opacity:.88}
+.btn-white-outline{display:inline-block;background:transparent;color:#fff;text-decoration:none;padding:.95rem 2rem;border-radius:6px;font-size:1rem;font-weight:700;border:2px solid #fff;transition:all .2s}
+.btn-white-outline:hover{background:rgba(255,255,255,.12)}
+
+/* フッター */
+footer{background:#1B3A1F;color:rgba(255,255,255,.65);text-align:center;padding:2rem 1rem;font-size:.8rem}
+footer p+p{margin-top:.3rem}
+
+/* スマホ */
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .features{grid-template-columns:1fr}
+  .voices{grid-template-columns:1fr}
+  .contact-box{flex-direction:column;align-items:center;text-align:center}
+  .hero-content{padding:3rem 1.2rem}
+  .timeline::before{left:45px}
+  .tl-time{width:78px}
+  .job-table,.job-table thead,.job-table tbody,.job-table tr,.job-table th,.job-table td{display:block;width:100%}
+  .job-table th{border-bottom:none;padding-bottom:.3rem;white-space:normal}
+  .job-table td{padding-top:.25rem;padding-bottom:.9rem;border-bottom:1px solid #E8F5E9}
+  .job-table tr:last-child td{border-bottom:none}
+  .cta-section .hero-btns{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<!-- ナビ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">株式会社サンフレッシュ 採用情報</div>
+    <ul class="nav-links">
+      <li><a href="#features">働く魅力</a></li>
+      <li><a href="#jobs">募集要項</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#voices">先輩の声</a></li>
+      <li><a href="#apply" class="btn-primary">応募する</a></li>
+    </ul>
+    <button class="hamburger" id="hb" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="nm">
+    <a href="#features">働く魅力</a>
+    <a href="#jobs">募集要項</a>
+    <a href="#faq">FAQ</a>
+    <a href="#voices">先輩の声</a>
+    <a href="#apply">応募する</a>
+  </div>
+</nav>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">正社員採用 / 千葉県成田市</div>
+    <h1 class="hero-title">生姜・にんにくの専門家として<br>お客様との信頼を育てる仕事</h1>
+    <p class="hero-sub">ルート営業メイン。テレアポ・飛び込みなし。個人ノルマなし。安心・安全な農産物を通じて、食のプロと長期的な関係を築いていく営業職です。</p>
+    <div class="hero-tags">
+      <span class="hero-tag">🌿 生姜・にんにく専門商社</span>
+      <span class="hero-tag">✅ テレアポ・飛び込みなし</span>
+      <span class="hero-tag">🏖 年間休日118日</span>
+      <span class="hero-tag">💰 個人ノルマなし</span>
+      <span class="hero-tag">⏰ 月残業5時間</span>
+      <span class="hero-tag">🚗 社用車・マイカー通勤可</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#apply" class="btn-green">応募を検討する</a>
+      <a href="#jobs" class="btn-hero-outline">募集要項を見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- 働く魅力 -->
+<section class="section" id="features">
+  <div class="section-inner">
+    <p class="section-label">Features</p>
+    <h2 class="section-title">サンフレッシュで働く3つの魅力</h2>
+    <p class="section-lead">平成16年創業、生姜・にんにくの専門商社として千葉・成田から全国へ。食の安全にこだわり、有機JAS認証品も自社で扱う信頼の会社です。</p>
+    <div class="features">
+      <div class="feature-card">
+        <!-- 写真: ビジネス・ルート営業イメージ -->
+        <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=640&h=380&fit=crop&q=80" alt="営業スタイルのイメージ">
+        <div class="feature-card-body">
+          <div class="feature-icon">🤝</div>
+          <div class="feature-title">関係構築を大切にした営業スタイル</div>
+          <div class="feature-desc">「やみくものテレアポや飛び込みはございません」（求人票より）。既存のお取引先に新商品を提案し、受発注や見積書作成をこなすルート営業が中心です。個人ノルマもなく、腰を据えて成長できます。</div>
+        </div>
+      </div>
+      <div class="feature-card">
+        <!-- 写真: 農産物・専門商社イメージ -->
+        <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=640&h=380&fit=crop&q=80" alt="農産物・専門商社のイメージ">
+        <div class="feature-card-body">
+          <div class="feature-icon">🌿</div>
+          <div class="feature-title">専門商材のプロになれる</div>
+          <div class="feature-desc">生姜・にんにくの仕入・加工・販売を一貫して手掛け、有機JAS認証品も取り扱う専門商社。食品業界のプロから頼られる存在になり、深い専門知識と人脈が身につきます。</div>
+        </div>
+      </div>
+      <div class="feature-card">
+        <!-- 写真: 働きやすいオフィス環境 -->
+        <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=640&h=380&fit=crop&q=80" alt="働きやすい環境のイメージ">
+        <div class="feature-card-body">
+          <div class="feature-icon">⏰</div>
+          <div class="feature-title">残業少なく長く働ける職場</div>
+          <div class="feature-desc">月平均残業5時間・年間休日118日（＋計画有給5日）。昇給あり、賞与年2回（計3ヶ月分）と待遇も安定。成田公津の杜駅から徒歩10分・マイカー通勤可で通勤面も柔軟です。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="section section-alt" id="jobs">
+  <div class="section-inner">
+    <p class="section-label">Job Info</p>
+    <h2 class="section-title">募集要項</h2>
+    <p class="sample-note" style="margin-bottom:1rem;">※ここはサンプルです。実際には御社の最新情報に差し替えます</p>
+    <table class="job-table">
+      <tbody>
+        <tr><th>職種</th><td>営業スタッフ（正社員）</td></tr>
+        <tr><th>仕事内容</th><td>
+          既存お取引先への新商品提案・受発注業務・見積書作成。社用車による外出訪問あり。<br>
+          <small style="color:#27AE60;font-weight:700;">▶ やみくものテレアポ・飛び込み営業はありません</small><br>
+          <small style="color:#27AE60;font-weight:700;">▶ 個人ノルマなし（会社として目標数字はあります）</small>
+        </td></tr>
+        <tr><th>取り扱い商材</th><td>生姜・にんにくの専門商社（仕入・加工・販売を一貫。有機JAS認証品も取り扱い）</td></tr>
+        <tr><th>雇用形態</th><td>正社員（試用期間3ヶ月・同条件）</td></tr>
+        <tr><th>月給</th><td>220,000円〜（経験・能力を考慮して決定）<br>皆勤手当 10,000円 ／ 通勤手当 実費全額支給</td></tr>
+        <tr><th>昇給・賞与</th><td>昇給あり（年2,000円〜 前年度実績） ／ 賞与年2回（計3ヶ月分 前年度実績）</td></tr>
+        <tr><th>就業時間</th><td>9:00〜18:00（土曜は9:00〜17:00）<br>※月曜のみ8:30〜の早出あり</td></tr>
+        <tr><th>休日</th><td>日曜・その他（シフト制・市場カレンダー準拠）<br>年間休日118日（＋計画有給5日 2026年度）</td></tr>
+        <tr><th>時間外労働</th><td>月平均5時間（36協定特別条項なし）</td></tr>
+        <tr><th>勤務地</th><td>千葉県成田市飯仲45番地 成田公津の杜市場内サービス棟2階<br>京成公津の杜駅 徒歩10分 ／ マイカー通勤可（駐車場あり）</td></tr>
+        <tr><th>応募資格</th><td>普通自動車運転免許（AT限定可）・Word/Excelの基本操作<br>営業職経験あれば尚可（業種・商品知識は入社後にOJTで習得OK）</td></tr>
+        <tr><th>年齢</th><td>64歳以下（定年65歳のため）</td></tr>
+        <tr><th>各種保険</th><td>雇用・労災・健康・厚生年金</td></tr>
+        <tr><th>選考の流れ</th><td>①ハローワーク紹介状＋履歴書（写真付）＋職務経歴書を郵送またはメール送付<br>②書類選考（7日以内通知）→ ③現地面接1回 → ④内定（7日以内通知）</td></tr>
+        <tr><th>応募先</th><td>〒286-0046 千葉県成田市飯仲45番地 成田公津の杜市場内サービス棟2階<br>担当：江田 TEL：0476-24-8881 ／ Mail：eda@3fresh.co.jp</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="section-inner">
+    <p class="section-label">FAQ</p>
+    <h2 class="section-title">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-icon">Q</span>営業はどんなスタイルですか？新規開拓・テレアポはありますか？</div>
+        <div class="faq-a">当社の営業は「お客様との関係性構築を重視したスタイル」です（求人票より）。やみくものテレアポや飛び込み営業はなく、既存のお取引先への新商品提案・受発注・見積書作成が中心の<strong>ルート営業</strong>です。社用車でお客様のもとへ伺うスタイルになります。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-icon">Q</span>生姜・にんにくの知識がなくても大丈夫ですか？</div>
+        <div class="faq-a">はい、問題ありません。商品知識は入社後のOJTで習得できます。必要な資格は普通自動車運転免許（AT限定可）とWord/Excelの基本操作のみ。営業職経験は「あれば尚可」ですので、異業種・未経験の方もぜひご応募ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-icon">Q</span>個人ノルマはありますか？</div>
+        <div class="faq-a">個人ノルマはありません（求人票明記）。会社として目標数字はありますが、個人に厳しいプレッシャーをかける文化はなく、チーム全体で取り組んでいます。安心して自分のペースで成長できます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-icon">Q</span>残業はどのくらいありますか？</div>
+        <div class="faq-a">月平均5時間と非常に少なめです。年間休日118日（＋計画有給5日）を確保しており、プライベートの時間も大切にできる職場環境です。定時退社が多い職場です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-icon">Q</span>選考の流れを教えてください。</div>
+        <div class="faq-a">①ハローワーク紹介状＋書類（履歴書・職務経歴書）を郵送またはメール → ②書類選考（7日以内に通知） → ③現地面接1回 → ④内定（面接後7日以内に通知）の流れです。勤務開始時期はご相談いただけます。</div>
+      </div>
+    </div>
+    <p class="sample-note">※ここはサンプルです。実際には御社の最新Q&Aに差し替えます</p>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section class="section section-alt" id="timeline">
+  <div class="section-inner">
+    <p class="section-label">A Day</p>
+    <h2 class="section-title">営業スタッフの1日の流れ</h2>
+    <p class="section-lead">ルート営業を中心に、訪問とデスクワークをバランスよく組み合わせた1日です。</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">8:45</div><div class="tl-dot"></div>
+        <div class="tl-body"><div class="tl-title">出社・メールチェック</div><div class="tl-desc">当日の訪問先・受注状況・在庫情報を確認します（月曜は8:30出社）。</div></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">9:00</div><div class="tl-dot"></div>
+        <div class="tl-body"><div class="tl-title">朝礼・スケジュール共有</div><div class="tl-desc">チームで情報共有。本日の訪問先・新着商品情報を確認します。</div></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">10:00</div><div class="tl-dot"></div>
+        <div class="tl-body"><div class="tl-title">顧客訪問（午前）</div><div class="tl-desc">社用車でお取引先を訪問。新商品サンプルを持参してご提案することも。</div></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:00</div><div class="tl-dot"></div>
+        <div class="tl-body"><div class="tl-title">昼休憩（60分）</div><div class="tl-desc">成田公津の杜市場内の職場なので、周辺で新鮮な食材に触れることも。</div></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:00</div><div class="tl-dot"></div>
+        <div class="tl-body"><div class="tl-title">顧客訪問（午後）・受発注対応</div><div class="tl-desc">午後の訪問先を回りながら、受注連絡が来たら発注手配も対応します。</div></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">15:30</div><div class="tl-dot"></div>
+        <div class="tl-body"><div class="tl-title">帰社・見積書作成・デスクワーク</div><div class="tl-desc">訪問先からの要望を見積書に落とし込みます。Excelで効率よく作業。</div></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:00</div><div class="tl-dot"></div>
+        <div class="tl-body"><div class="tl-title">翌日準備・メール返信・終礼</div><div class="tl-desc">翌日のスケジュールを整理し、未処理のメールに返信して締め。</div></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">18:00</div><div class="tl-dot"></div>
+        <div class="tl-body"><div class="tl-title">退社</div><div class="tl-desc">月平均残業5時間。定時退社できる日がほとんどです。</div></div>
+      </div>
+    </div>
+    <p class="sample-note">※ここはサンプルです。実際には御社社員の1日の流れに差し替えます</p>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section class="section" id="voices">
+  <div class="section-inner">
+    <p class="section-label">Voices</p>
+    <h2 class="section-title">先輩スタッフからのメッセージ</h2>
+    <p class="section-lead">実際に働くスタッフの声をご紹介します。</p>
+    <div class="voices">
+      <!-- 先輩1 -->
+      <div class="voice-card">
+        <div class="voice-head">
+          <!-- 写真: 男性社員（仮名） -->
+          <img class="voice-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="山田さんの写真（仮名）">
+          <div><div class="voice-name">山田 健司（仮名）</div><div class="voice-role">営業スタッフ ／ 入社3年目</div></div>
+        </div>
+        <div class="voice-text">「前職はゴリゴリの新規開拓営業で毎日プレッシャーでしたが、ここはルート営業が中心。テレアポなし、飛び込みなしで、お客様と丁寧に関係を育てられます。生姜・にんにくの専門知識がつくにつれ、先方から頼られる場面も増えてきて、やりがいを感じています。」</div>
+        <p class="sample-note">※ここはサンプルです。実際には御社社員の写真・コメントに差し替えます</p>
+      </div>
+      <!-- 先輩2 -->
+      <div class="voice-card">
+        <div class="voice-head">
+          <!-- 写真: 女性社員（仮名） -->
+          <img class="voice-img" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=faces&q=80" alt="田中さんの写真（仮名）">
+          <div><div class="voice-name">田中 美咲（仮名）</div><div class="voice-role">営業スタッフ ／ 入社5年目</div></div>
+        </div>
+        <div class="voice-text">「生姜・にんにくの専門商社と聞くとニッチに思えますが、食品業界のバイヤーやシェフと直接お付き合いでき、食の安全に携われている誇りがあります。年間休日が多く、プライベートも充実できるのが5年続けられている理由です。」</div>
+        <p class="sample-note">※ここはサンプルです。実際には御社社員の写真・コメントに差し替えます</p>
+      </div>
+      <!-- 先輩3 -->
+      <div class="voice-card">
+        <div class="voice-head">
+          <!-- 写真: 男性社員（仮名） -->
+          <img class="voice-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="鈴木さんの写真（仮名）">
+          <div><div class="voice-name">鈴木 大輔（仮名）</div><div class="voice-role">営業スタッフ ／ 入社1年目</div></div>
+        </div>
+        <div class="voice-text">「異業種からの転職で最初は商材の知識ゼロでしたが、先輩が丁寧に教えてくれる環境で、少しずつ自信がついています。個人ノルマがないので焦りすぎず成長できています。残業も少なく、毎日ちゃんと家に帰れるのが本当に助かっています。」</div>
+        <p class="sample-note">※ここはサンプルです。実際には御社社員の写真・コメントに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 採用担当者 -->
+<section class="section section-alt" id="recruiter">
+  <div class="section-inner">
+    <p class="section-label">Recruiter</p>
+    <h2 class="section-title">採用担当者より</h2>
+    <div class="contact-box">
+      <!-- 写真: 採用担当（サンプル） -->
+      <img class="contact-img" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当の写真（サンプル）">
+      <div>
+        <div class="contact-name">江田（仮名）</div>
+        <div class="contact-role">管理部 採用担当</div>
+        <div class="contact-msg">「まずは履歴書（写真貼付）と職務経歴書を郵送またはメールでお送りください。ご質問だけでも、お電話・メールでお気軽にどうぞ。数日以内にご連絡差し上げます。安心・安全な食を届ける専門商社として、一緒に働いてくださる方をお待ちしています。」</div>
+        <p class="sample-note" style="margin-top:.5rem;">※ここはサンプルです。実際には採用担当者の写真・コメントに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 応募CTA -->
+<section class="cta-section" id="apply">
+  <h2 class="cta-title">採用情報・ご応募のご相談は<br>いつでも歓迎しています</h2>
+  <p class="cta-lead">まずはハローワーク（成田公共職業安定所）にご相談のうえ、<br>お電話またはメールでお気軽にどうぞ。</p>
+  <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
+    <a href="tel:0476248881" class="btn-white">📞 0476-24-8881</a>
+    <a href="mailto:eda@3fresh.co.jp" class="btn-white-outline">✉ メールで問い合わせる</a>
+  </div>
+</section>
+
+<footer>
+  <p>株式会社サンフレッシュ ／ 千葉県成田市飯仲45番地 成田公津の杜市場内サービス棟2階</p>
+  <p>TEL：0476-24-8881 ／ Mail：eda@3fresh.co.jp</p>
+  <p style="margin-top:.5rem;font-size:.72rem;">このページは採用提案用サンプルです。掲載内容は適宜更新されます。</p>
+</footer>
+
+<script>
+const hb=document.getElementById('hb'),nm=document.getElementById('nm');
+hb.addEventListener('click',()=>nm.classList.toggle('open'));
+nm.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nm.classList.remove('open')));
+</script>
+</body>
+</html>

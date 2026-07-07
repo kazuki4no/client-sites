@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 LP | サニーブルースカイ株式会社</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#1e293b;background:#fff}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+:root{
+  --sky:#0ea5e9;
+  --sky-dark:#0369a1;
+  --orange:#f97316;
+  --navy:#0f172a;
+  --gray:#64748b;
+  --bg:#f8fafc;
+  --sky-light:#e0f2fe;
+}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(15,23,42,.92);backdrop-filter:blur(8px);padding:0 5%}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:58px;max-width:1100px;margin:0 auto}
+.nav-logo{font-weight:900;font-size:.9rem;color:#fff}
+.nav-logo span{font-weight:400;font-size:.7rem;color:rgba(255,255,255,.5)}
+.nav-cta-sm{background:var(--orange);color:#fff;font-weight:700;font-size:.82rem;padding:.45rem 1.1rem;border-radius:6px}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px}
+.nav-mobile{display:none;flex-direction:column;background:rgba(15,23,42,.97);border-top:1px solid rgba(255,255,255,.1)}
+.nav-mobile a{padding:.85rem 5%;border-bottom:1px solid rgba(255,255,255,.08);font-size:.9rem;color:rgba(255,255,255,.85)}
+.nav-mobile.open{display:flex}
+
+/* HERO LP */
+.hero{min-height:85vh;background:linear-gradient(160deg,#0f172a 0%,#0369a1 60%,#0ea5e9 100%);display:flex;align-items:center;padding:7rem 5% 4rem;position:relative;overflow:hidden}
+.hero::after{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1600&h=900&fit=crop&q=80') center/cover;opacity:.12;pointer-events:none}
+.hero-content{position:relative;z-index:1;max-width:680px;margin:0 auto;text-align:center}
+.hero-label{display:inline-block;border:1px solid rgba(255,255,255,.35);color:rgba(255,255,255,.85);font-size:.72rem;font-weight:700;padding:.3rem .9rem;border-radius:999px;letter-spacing:.12em;margin-bottom:1.4rem}
+.hero h1{font-size:clamp(2rem,5.5vw,3.5rem);font-weight:900;color:#fff;line-height:1.25;margin-bottom:1.2rem}
+.hero h1 em{font-style:normal;color:#7dd3fc}
+.hero p{font-size:clamp(.9rem,2vw,1.05rem);color:rgba(255,255,255,.8);line-height:1.9;margin-bottom:2.5rem;max-width:520px;margin-left:auto;margin-right:auto}
+.btn-hero{display:inline-block;background:var(--orange);color:#fff;font-weight:700;font-size:1.05rem;padding:1rem 2.8rem;border-radius:8px;transition:opacity .2s;box-shadow:0 4px 20px rgba(249,115,22,.4)}
+.btn-hero:hover{opacity:.88}
+.hero-note{margin-top:1rem;font-size:.75rem;color:rgba(255,255,255,.45)}
+
+/* NUMBERS */
+.numbers{background:var(--navy);padding:2.5rem 5%}
+.numbers-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;text-align:center}
+.num-item .val{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:900;color:var(--sky);line-height:1}
+.num-item .label{font-size:.75rem;color:rgba(255,255,255,.55);margin-top:.3rem}
+.num-item .sub{font-size:.68rem;color:rgba(255,255,255,.3);margin-top:.1rem}
+.sample-note{font-size:.68rem;color:rgba(255,255,255,.2);margin-top:.2rem;font-style:italic}
+
+/* SECTION COMMON */
+section.lp{padding:5rem 5%}
+.section-inner{max-width:1100px;margin:0 auto}
+.lp-title{font-size:clamp(1.4rem,3vw,2.2rem);font-weight:900;color:var(--navy);margin-bottom:.5rem;text-align:center}
+.lp-sub{text-align:center;color:var(--gray);font-size:.9rem;line-height:1.8;margin-bottom:3rem}
+.lp-label{text-align:center;font-size:.72rem;font-weight:700;letter-spacing:.15em;color:var(--sky);text-transform:uppercase;margin-bottom:.5rem}
+.sample-note-dark{font-size:.72rem;color:#94a3b8;margin-top:.3rem;font-style:italic;text-align:center}
+
+/* PROBLEM / SOLUTION */
+.ps-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-bottom:2rem}
+.ps-box{padding:2rem;border-radius:12px}
+.ps-box.problem{background:#fef2f2;border:1px solid #fecaca}
+.ps-box.solution{background:#ecfdf5;border:1px solid #86efac}
+.ps-box h3{font-size:1rem;font-weight:700;margin-bottom:1rem}
+.ps-box.problem h3{color:#dc2626}
+.ps-box.solution h3{color:#16a34a}
+.ps-list{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.ps-list li{font-size:.85rem;line-height:1.6;padding-left:1.3rem;position:relative;color:#334155}
+.ps-box.problem .ps-list li::before{content:'✗';position:absolute;left:0;color:#dc2626;font-weight:700}
+.ps-box.solution .ps-list li::before{content:'✓';position:absolute;left:0;color:#16a34a;font-weight:700}
+
+/* STYLE DETAIL */
+.style-blocks{display:flex;flex-direction:column;gap:2rem;max-width:800px;margin:0 auto}
+.style-block{display:grid;grid-template-columns:80px 1fr;gap:1.5rem;align-items:start;background:var(--bg);border-radius:12px;padding:1.8rem}
+.style-block-num{font-size:2.5rem;font-weight:900;color:var(--sky-light);line-height:1}
+.style-block h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:.5rem}
+.style-block p{font-size:.85rem;color:var(--gray);line-height:1.7}
+
+/* CTA BANNER */
+.cta-banner{background:linear-gradient(90deg,var(--sky-dark),var(--sky));padding:3rem 5%;text-align:center}
+.cta-banner h2{font-size:clamp(1.2rem,3vw,1.8rem);font-weight:900;color:#fff;margin-bottom:.8rem}
+.cta-banner p{color:rgba(255,255,255,.85);margin-bottom:1.5rem;font-size:.9rem}
+.btn-cta-w{display:inline-block;background:#fff;color:var(--sky-dark);font-weight:700;font-size:1rem;padding:.9rem 2.5rem;border-radius:8px}
+
+/* REQUIREMENTS */
+.req-table{width:100%;border-collapse:collapse;font-size:.88rem;max-width:900px;margin:0 auto}
+.req-table tr:not(:last-child) td,.req-table tr:not(:last-child) th{border-bottom:1px solid #e2e8f0}
+.req-table th{width:150px;padding:.9rem 1rem;text-align:left;font-weight:700;color:var(--sky-dark);background:var(--sky-light);white-space:nowrap;vertical-align:top}
+.req-table td{padding:.9rem 1rem;color:#334155;line-height:1.7}
+.badge{display:inline-block;background:var(--sky-light);color:var(--sky-dark);font-size:.72rem;font-weight:700;padding:.15rem .5rem;border-radius:4px;margin:0 .2rem .2rem 0}
+
+/* TIMELINE */
+.tl-list{display:flex;flex-direction:column;gap:0;max-width:660px;margin:0 auto}
+.tl-item{display:grid;grid-template-columns:72px 1fr;gap:1rem;align-items:stretch}
+.tl-left{display:flex;flex-direction:column;align-items:center}
+.tl-time{font-size:.78rem;font-weight:700;color:var(--sky);text-align:center;padding:.4rem 0}
+.tl-line{flex:1;width:2px;background:#e2e8f0;margin:0 auto}
+.tl-dot{width:12px;height:12px;border-radius:50%;background:var(--sky);border:3px solid #fff;box-shadow:0 0 0 2px var(--sky);flex-shrink:0}
+.tl-right{padding:.4rem 0 1.5rem}
+.tl-right h4{font-size:.9rem;font-weight:700;color:var(--navy);margin-bottom:.25rem}
+.tl-right p{font-size:.8rem;color:var(--gray);line-height:1.6}
+
+/* INTERVIEW */
+.interview-cards{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1.5rem}
+.int-card{background:var(--bg);border-radius:12px;overflow:hidden}
+.int-photo{width:100%;height:180px;object-fit:cover}
+.int-body{padding:1.2rem}
+.int-name{font-weight:700;color:var(--navy);font-size:.88rem;margin-bottom:.15rem}
+.int-role{font-size:.72rem;color:var(--gray);margin-bottom:.6rem}
+.int-q{font-size:.75rem;font-weight:700;color:var(--sky);margin-bottom:.3rem}
+.int-a{font-size:.8rem;color:#334155;line-height:1.6}
+.int-badge{font-size:.65rem;color:#94a3b8;margin-top:.5rem;font-style:italic}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:.6rem;max-width:780px;margin:0 auto}
+.faq-item{background:var(--bg);border-radius:10px;border:1px solid #e2e8f0;overflow:hidden}
+.faq-q{width:100%;background:none;border:none;padding:1rem 1.4rem;text-align:left;font-size:.88rem;font-weight:700;color:var(--navy);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.faq-q::after{content:'＋';font-size:1.1rem;flex-shrink:0;color:var(--sky);transition:transform .2s}
+.faq-item.open .faq-q::after{transform:rotate(45deg)}
+.faq-a{font-size:.83rem;color:#475569;line-height:1.8;padding:0 1.4rem;max-height:0;overflow:hidden;transition:max-height .3s,padding .3s}
+.faq-item.open .faq-a{max-height:300px;padding:.2rem 1.4rem 1rem}
+.faq-a .snote{font-size:.68rem;color:#94a3b8;margin-top:.25rem;font-style:italic}
+
+/* FINAL CTA */
+.final-cta{background:var(--navy);padding:6rem 5%;text-align:center}
+.final-cta h2{font-size:clamp(1.5rem,3.5vw,2.4rem);font-weight:900;color:#fff;margin-bottom:1rem}
+.final-cta p{color:rgba(255,255,255,.7);margin-bottom:2rem;line-height:1.9;font-size:.95rem}
+.btn-final{display:inline-block;background:var(--orange);color:#fff;font-weight:700;font-size:1.1rem;padding:1.1rem 3.5rem;border-radius:8px;box-shadow:0 4px 20px rgba(249,115,22,.45);transition:opacity .2s}
+.btn-final:hover{opacity:.85}
+.sub-links{margin-top:1.5rem;display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap}
+.sub-links a{font-size:.8rem;color:rgba(255,255,255,.45);text-decoration:underline}
+
+footer{background:#050a14;color:rgba(255,255,255,.3);text-align:center;padding:1.5rem 5%;font-size:.75rem}
+
+/* FIXED ENTRY BAR */
+.entry-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:300;background:var(--orange);padding:.9rem 5%;text-align:center}
+.entry-bar a{display:inline-block;background:#fff;color:var(--orange);font-weight:700;font-size:.9rem;padding:.55rem 2rem;border-radius:6px}
+.entry-bar p{display:inline;color:rgba(255,255,255,.85);font-size:.8rem;margin-right:1rem}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .nav-cta-sm,.nav-logo span{display:none}
+  .hamburger{display:flex}
+  .numbers-inner{grid-template-columns:repeat(2,1fr)}
+  .ps-grid{grid-template-columns:1fr}
+  .style-block{grid-template-columns:1fr}
+  .style-block-num{font-size:2rem}
+  .interview-cards{grid-template-columns:1fr}
+  .int-photo{height:220px}
+  .req-table th,.req-table td{display:block;width:100%;padding:.55rem .8rem}
+  .req-table th{background:var(--sky-light);font-size:.78rem;padding:.45rem .8rem}
+  .tl-item{grid-template-columns:60px 1fr}
+  .sub-links{flex-direction:column;align-items:center;gap:.8rem}
+  .entry-bar{display:block}
+  body{padding-bottom:56px}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">サニーブルースカイ株式会社<span>（サンプル）</span></div>
+    <a href="#apply" class="nav-cta-sm">応募する</a>
+    <button class="hamburger" id="hbg" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="navMobile">
+    <a href="#style">営業スタイル</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#timeline">1日の流れ</a>
+    <a href="#interview">先輩の声</a>
+    <a href="#faq">FAQ</a>
+    <a href="#apply">応募する</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-label">営業職 正社員 募集中 · 成田市</div>
+    <h1>現場を守る<em>安全保護具</em>を、<br>誠実に届けませんか。</h1>
+    <p>官公庁・建設業者に自社ブランドの安全保護具を届けるBtoG/BtoB営業職。「既存顧客フォロー中心 ＋ 新規開拓」のバランス型スタイル。月給30〜48万円、年間休日120日、土日祝休み。</p>
+    <a href="#apply" class="btn-hero">採用情報・応募方法を見る</a>
+    <p class="hero-note">※このページはサンプルです。実際には御社情報に差し替えます</p>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<div class="numbers">
+  <div class="numbers-inner">
+    <div class="num-item">
+      <div class="val">6期目</div>
+      <div class="label">安定した成長期</div>
+      <div class="sample-note">※サンプル</div>
+    </div>
+    <div class="num-item">
+      <div class="val">120日</div>
+      <div class="label">年間休日</div>
+      <div class="sub">土日祝完全休</div>
+    </div>
+    <div class="num-item">
+      <div class="val">5億超</div>
+      <div class="label">年商（令和5年）</div>
+      <div class="sample-note">※サンプル</div>
+    </div>
+    <div class="num-item">
+      <div class="val">0日</div>
+      <div class="label">試用期間なし</div>
+      <div class="sub">即正社員</div>
+    </div>
+  </div>
+</div>
+
+<!-- PROBLEM / SOLUTION -->
+<section class="lp" style="background:var(--bg)">
+  <div class="section-inner">
+    <div class="lp-label">For You</div>
+    <h2 class="lp-title">こんな方に向いている仕事です</h2>
+    <p class="lp-sub">※ここはサンプルです。実際には御社のターゲット人材に合わせて差し替えます</p>
+    <div class="ps-grid">
+      <div class="ps-box problem">
+        <h3>❌ こんな不安、ありませんか？</h3>
+        <ul class="ps-list">
+          <li>新規営業ばかりで断られ続けるのはつらい</li>
+          <li>営業スタイルが分からず求人に応募しにくい</li>
+          <li>小さい会社で安定しているか心配</li>
+          <li>未経験から始めても大丈夫か不安</li>
+        </ul>
+      </div>
+      <div class="ps-box solution">
+        <h3>✅ 当社ならこう解決できます</h3>
+        <ul class="ps-list">
+          <li>既存顧客フォロー中心でルート営業に近いスタイル</li>
+          <li>営業の流れ・スタイルをこのページで詳しく説明</li>
+          <li>官公庁との取引実績あり・年商5億超の6期目</li>
+          <li>試用期間なし・先輩同行で未経験から始められる</li>
+        </ul>
+      </div>
+    </div>
+    <p class="sample-note-dark">※ここはサンプルです。実際には御社の特徴・強みに差し替えます</p>
+  </div>
+</section>
+
+<!-- CTA #1 -->
+<div class="cta-banner">
+  <h2>気になったら、まず詳細をチェック</h2>
+  <p>営業スタイル・給与・1日の流れを詳しく説明しています</p>
+  <a href="#requirements" class="btn-cta-w">募集要項を確認する</a>
+</div>
+
+<!-- STYLE -->
+<section class="lp" id="style">
+  <div class="section-inner">
+    <div class="lp-label">Sales Style</div>
+    <h2 class="lp-title">私たちの営業スタイルを詳しく説明します</h2>
+    <p class="lp-sub">「既存か新規か」「どんな顧客か」——応募前に一番気になる点をここで明確にします。<br>※ここはサンプルです。実際には御社の実態に差し替えます</p>
+    <div class="style-blocks">
+      <div class="style-block">
+        <div class="style-block-num">01</div>
+        <div>
+          <h3>主力：官公庁・建設業者への既存顧客フォロー</h3>
+          <p>成田市・千葉県・大手企業様など、すでにお取引のある官公庁・建設業者への定期訪問・提案・フォローアップが業務の中心です。飛び込み新規一本ではなく、関係構築・信頼深化型の営業スタイルです。</p>
+        </div>
+      </div>
+      <div class="style-block">
+        <div class="style-block-num">02</div>
+        <div>
+          <h3>新規開拓も：関東近郊エリアで新しいお客様へ</h3>
+          <p>既存顧客フォローと並行して、関東近郊の新しい取引先へのアプローチも担当します。商品力・実績があるので提案しやすく、「一緒に販路を広げていく」プロセスにやりがいを感じられます。</p>
+        </div>
+      </div>
+      <div class="style-block">
+        <div class="style-block-num">03</div>
+        <div>
+          <h3>提案・事務も社内完結：幅広いスキルが身につく</h3>
+          <p>訪問営業のほか、見積書・提案書の作成、営業実績の入力も担当。ExcelのフォーマットへのデータINのみで始められます。「営業 ＋ 事務スキル」が同時に身につく環境です。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REQUIREMENTS -->
+<section class="lp" id="requirements" style="background:var(--bg)">
+  <div class="section-inner">
+    <div class="lp-label">Requirements</div>
+    <h2 class="lp-title">募集要項</h2>
+    <p class="lp-sub">※ここはサンプルです。実際には御社の最新の募集情報に差し替えます</p>
+    <table class="req-table">
+      <tr><th>職種</th><td>営業職（安全保護具・防護服の法人・官公庁向け販売）</td></tr>
+      <tr><th>雇用形態</th><td>正社員（試用期間なし）</td></tr>
+      <tr><th>給与</th><td>月給 300,000円〜480,000円<br><small>（基本給280,000円〜450,000円＋固定残業代20,000〜30,000円・8時間分）</small><br><span class="badge">昇給あり</span><span class="badge">賞与年2回</span><span class="badge">退職金制度あり</span></td></tr>
+      <tr><th>勤務時間</th><td>9:00〜18:00（休憩90分）/ 時間外月平均20時間</td></tr>
+      <tr><th>休日・休暇</th><td>土曜・日曜・祝日・年末年始（年間休日120日）/ 有給休暇10日（6ヶ月後）</td></tr>
+      <tr><th>勤務地</th><td>千葉県成田市並木町3-2 / JR成田駅 徒歩5分<br><span class="badge">転勤なし</span><span class="badge">マイカー通勤可</span><span class="badge">駐車場あり</span></td></tr>
+      <tr><th>必要資格</th><td>普通自動車運転免許（AT可）/ Excel・Wordフォーマットへのデータ入力ができる方</td></tr>
+      <tr><th>年齢</th><td>44歳以下（長期勤続のキャリア形成のため）</td></tr>
+      <tr><th>福利厚生</th><td>雇用・労災・健康・厚生年金保険 / 退職金（2年以上） / 昇給あり / 屋内禁煙</td></tr>
+    </table>
+    <p class="sample-note-dark">※ここはサンプルです。実際には御社の最新の募集要項に差し替えます</p>
+  </div>
+</section>
+
+<!-- CTA #2 -->
+<div class="cta-banner">
+  <h2>「話を聞いてみたい」もOKです</h2>
+  <p>選考を受ける前のご質問だけのお問い合わせも歓迎しています</p>
+  <a href="#apply" class="btn-cta-w">お問い合わせ・応募する</a>
+</div>
+
+<!-- TIMELINE -->
+<section class="lp" id="timeline">
+  <div class="section-inner">
+    <div class="lp-label">A Day</div>
+    <h2 class="lp-title">社員の1日の流れ（営業職）</h2>
+    <p class="lp-sub">※ここはサンプルです。実際には御社の一般的なスケジュールに差し替えます</p>
+    <div class="tl-list">
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-time">9:00</div><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-right"><h4>出社・メール確認・当日スケジュール整理</h4><p>訪問先の確認と必要書類のチェック。社内でのコミュニケーションも大切な時間。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-time">10:00</div><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-right"><h4>午前の顧客訪問（官公庁・建設業者等）</h4><p>社用車で出発。既存顧客の定期フォロー・新製品の提案訪問。「誠実に届ける」がモットー。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-time">12:00</div><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-right"><h4>昼食（外出先で）</h4><p>外出先でリフレッシュ。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-time">13:00</div><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-right"><h4>午後の訪問・新規開拓アプローチ</h4><p>既存顧客フォローに加え、新規先へのアポイント。積み上げてきた信頼が武器になります。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-time">16:00</div><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-right"><h4>帰社・見積書・提案書の作成</h4><p>訪問ヒアリングをもとに書類作成。Excelフォーマットで効率よく。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-time">17:30</div><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-right"><h4>営業報告・翌日準備</h4><p>1日の実績を入力・報告。翌日のスケジュールを確認して締め。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-time">18:00</div><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-right"><h4>退社</h4><p>定時退社を推奨。月平均残業20時間（固定残業代8時間分含む）。</p></div>
+      </div>
+    </div>
+    <p class="sample-note-dark">※ここはサンプルです。実際には御社の一般的な1日の流れに差し替えます</p>
+  </div>
+</section>
+
+<!-- INTERVIEW -->
+<section class="lp" id="interview" style="background:var(--bg)">
+  <div class="section-inner">
+    <div class="lp-label">Our Team</div>
+    <h2 class="lp-title">先輩社員の声</h2>
+    <p class="lp-sub">※以下はサンプルです。実際には御社の社員様の声・写真に差し替えます</p>
+    <div class="interview-cards">
+      <div class="int-card">
+        <!-- 実際には社員写真に差し替え -->
+        <img class="int-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=640&h=360&fit=crop&crop=faces&q=80" alt="社員写真（サンプル）">
+        <div class="int-body">
+          <div class="int-name">田中 誠（仮名）</div>
+          <div class="int-role">営業部 / 入社3年目</div>
+          <div class="int-q">Q. この仕事のやりがいは？</div>
+          <div class="int-a">現場担当者に「助かった」と言ってもらえる瞬間が一番嬉しい。自社ブランドの商品だから自信を持って提案できます。</div>
+          <div class="int-badge">※サンプル（仮名）</div>
+        </div>
+      </div>
+      <div class="int-card">
+        <img class="int-photo" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=640&h=360&fit=crop&crop=faces&q=80" alt="社員写真（サンプル）">
+        <div class="int-body">
+          <div class="int-name">佐藤 美咲（仮名）</div>
+          <div class="int-role">営業部 / 入社2年目</div>
+          <div class="int-q">Q. 未経験から入ってみて？</div>
+          <div class="int-a">先輩が同行してくれたので、一人でいきなり任されることはなかった。土日休みでプライベートも大事にできています。</div>
+          <div class="int-badge">※サンプル（仮名）</div>
+        </div>
+      </div>
+      <div class="int-card">
+        <img class="int-photo" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=640&h=360&fit=crop&crop=faces&q=80" alt="社員写真（サンプル）">
+        <div class="int-body">
+          <div class="int-name">高橋 健（仮名）</div>
+          <div class="int-role">営業部 / 入社1年目</div>
+          <div class="int-q">Q. 職場の雰囲気は？</div>
+          <div class="int-a">少人数なので代表にも気軽に話せます。アイデアを出したらすぐ試してもらえる環境。成長中の会社ならではの面白さがあります。</div>
+          <div class="int-badge">※サンプル（仮名）</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="lp" id="faq">
+  <div class="section-inner">
+    <div class="lp-label">FAQ</div>
+    <h2 class="lp-title">よくある質問</h2>
+    <p class="lp-sub">※ここはサンプルです。実際には御社のQ&Aに差し替えます</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">営業経験がなくても応募できますか？</button>
+        <div class="faq-a">はい。先輩同行でサポートします。必要なのは「誠実さ」と「普通自動車免許（AT可）」です。<p class="snote">※サンプル</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">既存顧客と新規顧客、どちらが多いですか？</button>
+        <div class="faq-a">既存顧客（官公庁・建設業者）へのフォローが中心で、新規開拓も並行して行います。飛び込み一本ではなく、バランス型の営業スタイルです。<p class="snote">※サンプル</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">転勤はありますか？</button>
+        <div class="faq-a">ありません。就業場所は千葉県成田市（成田駅徒歩5分）のみです。<p class="snote">※サンプル</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">選考の流れを教えてください。</button>
+        <div class="faq-a">書類選考（7日以内）→ 面接1回（オンライン可） → 内定。選考前のご質問もお気軽に。<p class="snote">※サンプル</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">賞与・昇給はありますか？</button>
+        <div class="faq-a">賞与は年2回（前年度実績60〜120万円）、昇給は月1万〜3万円の実績があります。会社業績・勤務評価に応じて支給されます。<p class="snote">※サンプル</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="final-cta" id="apply">
+  <h2>あなたの力で、<br>現場の晴れ空を広げよう。</h2>
+  <p>まずはメールでの問い合わせからどうぞ。<br>ご質問だけのお問い合わせも大歓迎です。書類選考は7日以内にご連絡します。</p>
+  <a href="mailto:horirun1459@gmail.com" class="btn-final">メールで問い合わせ・応募する</a>
+  <div class="sub-links">
+    <a href="#requirements">募集要項を確認する</a>
+    <a href="#style">営業スタイルの詳細へ</a>
+    <a href="#faq">よくある質問</a>
+  </div>
+  <p style="color:rgba(255,255,255,.25);margin-top:1.5rem;font-size:.75rem">※このページはサンプルです。実際には御社情報に差し替えます</p>
+</section>
+
+<footer>
+  <p>© 2024 サニーブルースカイ株式会社（このページはサンプルです）</p>
+</footer>
+
+<!-- FIXED ENTRY BAR (mobile) -->
+<div class="entry-bar">
+  <p>営業職・正社員 募集中</p>
+  <a href="#apply">応募・問い合わせ</a>
+</div>
+
+<script>
+const hbg=document.getElementById('hbg');
+const nav=document.getElementById('navMobile');
+hbg.addEventListener('click',()=>nav.classList.toggle('open'));
+nav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+
+document.querySelectorAll('.faq-q').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const item=btn.closest('.faq-item');
+    const isOpen=item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+    if(!isOpen)item.classList.add('open');
+  });
+});
+</script>
+</body>
+</html>

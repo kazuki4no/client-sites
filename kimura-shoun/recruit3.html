@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 木村商運 有限会社</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#222}
+img{max-width:100%;height:auto;display:block}
+:root{--navy:#16213e;--navy2:#0d1b2a;--orange:#e8571a;--orange2:#c44512;--light:#fdf5f0}
+
+/* ナビ */
+.nav{background:rgba(13,27,42,.92);backdrop-filter:blur(8px);position:fixed;top:0;left:0;right:0;z-index:200;padding:0 24px}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:62px}
+.nav-logo{color:#fff;font-size:1.05rem;font-weight:700;text-decoration:none;font-family:'Noto Serif JP',serif}
+.nav-links{display:flex;gap:20px;list-style:none}
+.nav-links a{color:#ccd;font-size:.86rem;text-decoration:none}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer}
+.hamburger span{display:block;width:24px;height:2px;background:#fff}
+.mobile-menu{display:none;background:var(--navy2);padding:10px 24px}
+.mobile-menu a{display:block;color:#cdd;padding:10px 0;text-decoration:none;border-bottom:1px solid rgba(255,255,255,.08);font-size:.88rem}
+@media(max-width:768px){.nav-links{display:none}.hamburger{display:flex}.mobile-menu.open{display:block}}
+
+/* FVヒーロー */
+.hero{position:relative;min-height:80vh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center}
+.hero-overlay{position:absolute;inset:0;background:rgba(20,30,50,0.62)}
+.hero-content{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:100px 24px 72px}
+.hero-pill{display:inline-block;background:var(--orange);color:#fff;font-size:.76rem;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:24px;letter-spacing:.06em}
+.hero-title{font-family:'Noto Serif JP',serif;color:#fff;font-size:clamp(2.2rem,7vw,4.4rem);line-height:1.2;font-weight:700;margin-bottom:22px;text-shadow:0 2px 16px rgba(0,0,0,.4)}
+.hero-sub{color:#e0e8f0;font-size:clamp(.93rem,2.5vw,1.12rem);line-height:1.9;margin-bottom:40px;max-width:480px}
+.btn-orange{display:inline-block;background:var(--orange);color:#fff;font-size:1rem;font-weight:700;padding:14px 44px;border-radius:4px;text-decoration:none;transition:background .2s}
+.btn-orange:hover{background:var(--orange2)}
+.hero-tags{margin-top:20px;display:flex;flex-wrap:wrap;gap:8px}
+.hero-tag{background:rgba(255,255,255,.15);color:#fff;font-size:.78rem;padding:4px 12px;border-radius:20px;border:1px solid rgba(255,255,255,.3)}
+
+/* セクション共通 */
+.section{padding:72px 24px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-label{color:var(--orange);font-size:.76rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+.section-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,4vw,2.3rem);font-weight:700;color:var(--navy);margin-bottom:40px}
+.section-bg{background:var(--light)}
+.section-dark{background:var(--navy);color:#fff}
+.section-dark .section-title{color:#fff}
+.sample-note{font-size:.74rem;color:#bbb;margin-top:6px}
+.sample-note-dark{font-size:.74rem;color:#778;margin-top:6px}
+
+/* 仕事内容 */
+.job-visual{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:32px}
+.job-visual-card{border-radius:12px;overflow:hidden;position:relative;min-height:240px}
+.job-visual-img{position:absolute;inset:0;background-size:cover;background-position:center}
+.job-visual-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(22,33,62,.9) 40%,rgba(22,33,62,.2))}
+.job-visual-body{position:relative;z-index:1;padding:24px;display:flex;flex-direction:column;justify-content:flex-end;min-height:240px}
+.job-visual-num{font-size:.76rem;font-weight:700;color:var(--orange);letter-spacing:.08em;margin-bottom:8px}
+.job-visual-body h3{color:#fff;font-size:1.05rem;font-weight:700;margin-bottom:8px}
+.job-visual-body p{color:#c8d8e8;font-size:.87rem;line-height:1.75}
+@media(max-width:768px){.job-visual{grid-template-columns:1fr}}
+
+/* 魅力 */
+.merits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.merit-card{background:#fff;border-radius:12px;padding:28px 20px;text-align:center;border-top:4px solid var(--orange);box-shadow:0 2px 14px rgba(0,0,0,.06)}
+.merit-icon{font-size:2.4rem;margin-bottom:12px}
+.merit-card h3{font-size:.97rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+.merit-card p{font-size:.87rem;color:#555;line-height:1.7}
+@media(max-width:768px){.merits-grid{grid-template-columns:1fr}}
+
+/* 募集要項 */
+.req-table{width:100%;border-collapse:collapse}
+.req-table tr{border-bottom:1px solid rgba(255,255,255,.1)}
+.req-table th{width:150px;background:rgba(255,255,255,.07);color:#e8c090;font-size:.86rem;font-weight:700;padding:14px 16px;text-align:left;vertical-align:top}
+.req-table td{font-size:.9rem;padding:14px 16px;line-height:1.8;color:#cde}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block}
+  .req-table tr{margin-bottom:10px;border-bottom:2px solid rgba(255,255,255,.2)}
+  .req-table th{width:100%;padding:8px 12px;background:rgba(255,255,255,.12);color:#e8c090}
+  .req-table td{padding:10px 12px}
+}
+
+/* タイムライン */
+.timeline{position:relative;padding-left:32px}
+.timeline::before{content:'';position:absolute;left:12px;top:8px;bottom:8px;width:2px;background:var(--orange)}
+.tl-item{position:relative;margin-bottom:28px}
+.tl-dot{position:absolute;left:-26px;top:4px;width:14px;height:14px;background:var(--orange);border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 2px var(--orange)}
+.tl-time{font-size:.78rem;color:var(--orange);font-weight:700;margin-bottom:4px}
+.tl-text{font-size:.92rem;color:#333;line-height:1.75}
+
+/* 先輩の声 */
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.voice-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 14px rgba(0,0,0,.07)}
+.voice-img img{width:100%;height:175px;object-fit:cover}
+.voice-body{padding:20px}
+.voice-name{font-size:.97rem;font-weight:700;color:var(--navy);margin-bottom:4px}
+.voice-meta{font-size:.77rem;color:#aaa;margin-bottom:10px}
+.voice-text{font-size:.87rem;color:#444;line-height:1.75}
+@media(max-width:768px){.voice-grid{grid-template-columns:1fr}}
+
+/* FAQ */
+.faq-list{max-width:720px}
+.faq-item{border-bottom:1px solid #e8d8cc;padding:18px 0}
+.faq-q{font-size:.95rem;font-weight:700;color:var(--navy);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.faq-q::after{content:'＋';font-size:1.2rem;color:var(--orange);flex-shrink:0}
+.faq-a{font-size:.9rem;color:#444;line-height:1.8;padding-top:12px;display:none}
+.faq-item.open .faq-q::after{content:'－'}
+.faq-item.open .faq-a{display:block}
+
+/* 採用担当 */
+.contact-box{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:12px;padding:36px;display:flex;gap:28px;align-items:center}
+.contact-img img{width:96px;height:96px;border-radius:50%;object-fit:cover;border:3px solid var(--orange);flex-shrink:0}
+.contact-info h3{color:#fff;font-size:1.1rem;font-weight:700;margin-bottom:8px}
+.contact-info p{color:#9bb;font-size:.9rem;line-height:1.8}
+@media(max-width:768px){.contact-box{flex-direction:column;text-align:center;padding:24px}}
+
+/* CTA */
+.cta-section{background:var(--navy2);padding:80px 24px;text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1553413077-190dd305871c?w=1600&h=400&fit=crop&q=80');background-size:cover;background-position:center;opacity:.15}
+.cta-section h2{position:relative;color:#fff;font-family:'Noto Serif JP',serif;font-size:clamp(1.6rem,4.5vw,2.8rem);margin-bottom:14px}
+.cta-section p{position:relative;color:#aac;margin-bottom:36px;font-size:.95rem}
+
+footer{background:#08111c;color:#556;padding:28px 24px;text-align:center;font-size:.8rem}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">木村商運 有限会社</a>
+    <ul class="nav-links">
+      <li><a href="#job">仕事内容</a></li>
+      <li><a href="#merits">働く魅力</a></li>
+      <li><a href="#requirements">募集要項</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#apply">応募する</a></li>
+    </ul>
+    <button class="hamburger" onclick="document.getElementById('mm').classList.toggle('open')" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mm">
+    <a href="#job">仕事内容</a>
+    <a href="#merits">働く魅力</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#faq">FAQ</a>
+    <a href="#apply">応募する</a>
+  </div>
+</nav>
+
+<!-- FVバナー -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-pill">2tトラック配送ドライバー 正社員募集 ／ 2名</div>
+    <h1 class="hero-title">自分のトラックで<br>関東を駆ける。<br>午後は早めに、<br>自分の時間へ。</h1>
+    <p class="hero-sub">千葉・成田市の木村商運。早朝4時スタートで午後早く終われる働き方。自分専用トラック・安全運転手当3万円など、手当が充実した少人数の会社です。</p>
+    <a href="#apply" class="btn-orange">採用情報を見る</a>
+    <div class="hero-tags">
+      <span class="hero-tag">経験者・未経験者歓迎</span>
+      <span class="hero-tag">30代〜60代活躍中</span>
+      <span class="hero-tag">1日体験入社可</span>
+      <span class="hero-tag">マイカー通勤OK</span>
+      <span class="hero-tag">退職金共済加入</span>
+    </div>
+  </div>
+</section>
+
+<!-- 仕事内容 -->
+<section class="section" id="job">
+  <div class="section-inner">
+    <p class="section-label">Work</p>
+    <h2 class="section-title">仕事内容：2パターンから担当が決まります</h2>
+    <div class="job-visual">
+      <div class="job-visual-card">
+        <div class="job-visual-img" style="background-image:url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=800&h=480&fit=crop&q=80')"></div>
+        <div class="job-visual-overlay"></div>
+        <div class="job-visual-body">
+          <p class="job-visual-num">PATTERN 01</p>
+          <h3>ルート配送（市川センター）</h3>
+          <p>市川センターで積み込み後、決まったルートを配送。同乗研修あり。手積み・手降ろし（最大30kg）。</p>
+          <!-- ※サンプル。実際には御社のルート情報に差し替えます -->
+          <p class="sample-note">※ここはサンプルです。実際には御社の業務詳細に差し替えます</p>
+        </div>
+      </div>
+      <div class="job-visual-card">
+        <div class="job-visual-img" style="background-image:url('https://images.unsplash.com/photo-1473445730015-841f29a9490b?w=800&h=480&fit=crop&q=80')"></div>
+        <div class="job-visual-overlay"></div>
+        <div class="job-visual-body">
+          <p class="job-visual-num">PATTERN 02</p>
+          <h3>当日オーダー配送（習志野センター）</h3>
+          <p>習志野センターから関東一円へ当日オーダーで配送。最初は同乗スタッフが同行するので安心。</p>
+          <!-- ※サンプル。実際には御社のオーダー情報に差し替えます -->
+          <p class="sample-note">※ここはサンプルです。実際には御社の業務詳細に差し替えます</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 働く魅力 -->
+<section class="section section-bg" id="merits">
+  <div class="section-inner">
+    <p class="section-label">Merits</p>
+    <h2 class="section-title">木村商運で働く6つの魅力</h2>
+    <div class="merits-grid">
+      <div class="merit-card">
+        <div class="merit-icon">🌅</div>
+        <h3>午後早めに帰れる</h3>
+        <p>4:00〜13:30スタートが基本。自分の業務が終わり次第帰宅OKです。</p>
+      </div>
+      <div class="merit-card">
+        <div class="merit-icon">🚛</div>
+        <h3>自分専用トラック</h3>
+        <p>担当するトラックは自分専用。管理・整備が自分のペースでできます。</p>
+      </div>
+      <div class="merit-card">
+        <div class="merit-icon">💰</div>
+        <h3>手当が充実</h3>
+        <p>安全運転手当3万・精勤手当1万など。手当込み月給31万円の実績あり。</p>
+      </div>
+      <div class="merit-card">
+        <div class="merit-icon">👥</div>
+        <h3>少人数・アットホーム</h3>
+        <p>社員17名。上下関係の少ない、和気あいあいとした職場です。</p>
+      </div>
+      <div class="merit-card">
+        <div class="merit-icon">📅</div>
+        <h3>年間107日休み</h3>
+        <p>GW・盆休み・年末年始の長期休暇あり。行事の際は相談でお休み可。</p>
+      </div>
+      <div class="merit-card">
+        <div class="merit-icon">🔰</div>
+        <h3>経験不問・研修充実</h3>
+        <p>30代〜60代活躍中。1日体験入社あり。フォークリフト取得支援あり。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項（ダーク背景） -->
+<section class="section section-dark" id="requirements">
+  <div class="section-inner">
+    <p class="section-label">Requirement</p>
+    <h2 class="section-title">募集要項</h2>
+    <table class="req-table">
+      <tr><th>職種</th><td>2tトラック配送ドライバー（正社員）</td></tr>
+      <tr><th>仕事内容</th><td>2t平ボディトラックにて関東一円のルート配送・当日オーダー配送</td></tr>
+      <tr><th>勤務地</th><td>千葉県成田市名古屋430-2（千葉営業所）</td></tr>
+      <tr><th>就業時間</th><td>4:00〜13:30 / 4:30〜14:00（他パターンあり）</td></tr>
+      <tr><th>給与</th><td>月給200,000〜230,000円（各種手当別途）<br>支給例：月給310,000円（基本給＋残業代＋精勤手当等）</td></tr>
+      <tr><th>手当</th><td>精勤手当10,000円・安全運転手当30,000円・洗車手当2,500〜10,000円<br>通勤手当実費（上限20,000円）</td></tr>
+      <tr><th>休日・休暇</th><td>日曜・祝日・その他 週休2日 / 年間107日<br>GW・盆休み・年末年始の長期休暇あり</td></tr>
+      <tr><th>必要免許</th><td>準中型自動車免許以上（MT要）<br>フォークリフト免許優遇（入社後取得支援あり）</td></tr>
+      <tr><th>年齢</th><td>18〜59歳（深夜業・定年60歳のため）</td></tr>
+      <tr><th>社会保険</th><td>雇用・労災・健康・厚生年金加入。退職金共済加入。</td></tr>
+      <tr><th>採用人数</th><td>2名</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Daily Flow</p>
+    <h2 class="section-title">ドライバーの1日の流れ</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <p class="tl-time">04:00</p>
+        <p class="tl-text">出社・点呼。自分専用トラックの始業前点検を行います。</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <p class="tl-time">04:30</p>
+        <p class="tl-text">配送センターへ移動・積み込み。荷物の確認と積み付け。</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <p class="tl-time">05:30</p>
+        <p class="tl-text">配送スタート。ルートを順に回ります。慣れるまでは先輩が同乗します。</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <p class="tl-time">10:00</p>
+        <p class="tl-text">休憩。安全な場所に停めてしっかり休みます。</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <p class="tl-time">12:30</p>
+        <p class="tl-text">配送完了・帰庫。伝票整理と翌日の準備。</p>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <p class="tl-time">13:30</p>
+        <p class="tl-text">業務終了・退勤。仕事が終わり次第帰宅OKです。</p>
+      </div>
+    </div>
+    <p class="sample-note" style="margin-top:16px">※ここはサンプルです。実際には御社の実際のスケジュールに差し替えます</p>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section class="section section-bg">
+  <div class="section-inner">
+    <p class="section-label">Voice</p>
+    <h2 class="section-title">先輩ドライバーの声</h2>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <!-- サンプル顔写真：社員写真に差し替え -->
+        <div class="voice-img"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=175&fit=crop&crop=faces&q=80" alt="先輩A"></div>
+        <div class="voice-body">
+          <p class="voice-name">田中 健一（仮名）</p>
+          <p class="voice-meta">入社4年目 / 30代</p>
+          <p class="voice-text">同乗研修がしっかりしていたので、未経験でもすぐ慣れました。早く終わるので夕方を自由に使えます。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-img"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=175&fit=crop&crop=faces&q=80" alt="先輩B"></div>
+        <div class="voice-body">
+          <p class="voice-name">鈴木 博之（仮名）</p>
+          <p class="voice-meta">入社7年目 / 40代</p>
+          <p class="voice-text">自分専用トラックで働けるのが快適です。安全運転に力を入れると手当に反映されるのでやりがいがあります。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-img"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=175&fit=crop&crop=faces&q=80" alt="先輩C"></div>
+        <div class="voice-body">
+          <p class="voice-name">山本 正（仮名）</p>
+          <p class="voice-meta">入社2年目 / 50代</p>
+          <p class="voice-text">1日体験入社で実際の雰囲気を確かめてから入社しました。50代でも馴染みやすい環境です。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="section-inner">
+    <p class="section-label">FAQ</p>
+    <h2 class="section-title">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">未経験でも応募できますか？</div>
+        <div class="faq-a">はい。準中型免許以上（MT要）をお持ちであれば、配送経験がなくても大丈夫です。同乗研修があるので安心してスタートできます。<br><span class="sample-note">※ここはサンプルです。実際には御社の方針に差し替えます</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">フォークリフト免許は必須ですか？</div>
+        <div class="faq-a">必須ではありません。入社前または入社後すぐに取得していただきます。取得支援があります。<br><span class="sample-note">※ここはサンプルです。実際には御社の方針に差し替えます</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">選考の流れを教えてください。</div>
+        <div class="faq-a">書類選考後、面接1回（日程は相談可）で採用が決まります。1日体験入社も受け付けています。<br><span class="sample-note">※ここはサンプルです。実際には御社の選考フローに差し替えます</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">残業はどのくらいありますか？</div>
+        <div class="faq-a">月平均20時間程度です。自分の業務が終わり次第帰宅OKの社風です。<br><span class="sample-note">※ここはサンプルです。実際には御社の実績値に差し替えます</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">マイカー通勤は可能ですか？</div>
+        <div class="faq-a">可能です。駐車場完備。通勤手当は実費支給（上限月2万円）です。<br><span class="sample-note">※ここはサンプルです。実際には御社の状況に差し替えます</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 採用担当 -->
+<section class="section section-dark">
+  <div class="section-inner">
+    <p class="section-label">Recruiter</p>
+    <h2 class="section-title">採用担当より</h2>
+    <div class="contact-box">
+      <!-- サンプル顔写真：採用担当者の写真に差し替え -->
+      <div class="contact-img"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当"></div>
+      <div class="contact-info">
+        <h3>採用担当：木村 / 小堀（仮名）</h3>
+        <p>一緒に会社を盛り上げてくださる方を募集しています。早朝スタートで午後に時間が作れる働き方、自分専用トラックのある環境を、ぜひ一度体験しに来てください。1日体験入社も歓迎です。</p>
+        <p class="sample-note-dark" style="margin-top:8px">※ここはサンプルです。実際には採用担当者のメッセージに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-section" id="apply">
+  <h2>まず、話を聞くだけでも歓迎です</h2>
+  <p>「体験入社してみたい」「面接日程を相談したい」など、何でもお気軽にご連絡ください。</p>
+  <a href="tel:0476-80-6311" class="btn-orange">☎ 0476-80-6311（採用担当）</a>
+</div>
+
+<footer>
+  <p>© 木村商運 有限会社 千葉営業所　|　このページはサンプルです</p>
+</footer>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>q.closest('.faq-item').classList.toggle('open'))
+})
+</script>
+</body>
+</html>
