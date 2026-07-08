@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>スタッフ採用情報（A案）| ブライダルアビエ 成田店</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { max-width: 100%; overflow-x: hidden; font-family: 'Noto Sans JP', sans-serif; color: #3d2d1e; background: #faf6f0; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    :root {
+      --gold: #c9a227;
+      --gold-dark: #8b6914;
+      --cream: #faf6f0;
+      --cream-dark: #f0e8d8;
+      --brown: #3d2d1e;
+      --brown-mid: #6b4f35;
+      --white: #ffffff;
+    }
+
+    /* ナビ */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--brown); padding: 0 1.5rem;
+      display: flex; align-items: center; justify-content: space-between; height: 60px;
+    }
+    .nav-logo { color: var(--gold); font-family: 'Noto Serif JP', serif; font-size: 1rem; font-weight: 700; text-decoration: none; }
+    .nav-menu { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-menu a { color: #e8d5b5; text-decoration: none; font-size: 0.82rem; }
+    .nav-cta-btn { background: var(--gold); color: var(--brown); padding: 0.4rem 1.1rem; border-radius: 4px; font-size: 0.82rem; font-weight: 700; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--gold); }
+
+    /* ヒーロー */
+    .hero {
+      position: relative; min-height: 72vh;
+      display: flex; align-items: center; justify-content: center; text-align: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=1600&h=900&fit=crop&q=80') center/cover no-repeat;
+    }
+    .hero-overlay { position: absolute; inset: 0; background: rgba(28, 16, 4, 0.60); }
+    .hero-content { position: relative; z-index: 1; padding: 2rem 1.5rem; color: var(--white); max-width: 740px; }
+    .hero-pill {
+      display: inline-block; background: var(--gold); color: var(--brown);
+      padding: 0.3rem 1rem; border-radius: 20px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1.2rem;
+    }
+    .hero-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1.8rem, 6vw, 3rem);
+      font-weight: 700; line-height: 1.45; margin-bottom: 1rem;
+    }
+    .hero-sub { font-size: clamp(0.88rem, 2.4vw, 1.05rem); opacity: 0.9; margin-bottom: 2rem; line-height: 1.7; }
+    .btn-primary, .btn-outline {
+      display: inline-block; padding: 0.85rem 2.2rem; border-radius: 6px;
+      font-size: 0.95rem; font-weight: 700; text-decoration: none;
+    }
+    .btn-primary { background: var(--gold); color: var(--brown); }
+    .btn-outline { border: 2px solid var(--white); color: var(--white); margin-left: 0.8rem; }
+
+    /* 共通 */
+    section { padding: 5rem 1.5rem; }
+    .container { max-width: 960px; margin: 0 auto; }
+    .section-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1.4rem, 4vw, 1.9rem);
+      font-weight: 700; color: var(--brown); text-align: center; margin-bottom: 0.5rem;
+    }
+    .section-title::after { content: ''; display: block; width: 40px; height: 3px; background: var(--gold); margin: 0.6rem auto 0; }
+    .section-sub { text-align: center; color: #999; font-size: 0.78rem; margin-bottom: 2.8rem; }
+
+    /* 魅力3点 */
+    .appeals { background: var(--white); }
+    .appeal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+    .appeal-card { text-align: center; padding: 2rem 1.4rem; background: var(--cream); border-radius: 8px; border-top: 3px solid var(--gold); }
+    .appeal-icon { font-size: 2.4rem; margin-bottom: 0.8rem; }
+    .appeal-card h3 { font-family: 'Noto Serif JP', serif; font-size: 1.05rem; color: var(--gold-dark); margin-bottom: 0.6rem; }
+    .appeal-card p { font-size: 0.88rem; line-height: 1.75; color: var(--brown-mid); }
+
+    /* 募集要項 */
+    .requirements { background: var(--cream); }
+    .req-table { width: 100%; border-collapse: collapse; }
+    .req-table th, .req-table td {
+      padding: 0.9rem 1.2rem; border-bottom: 1px solid #e0d0b8;
+      font-size: 0.9rem; line-height: 1.65; text-align: left; vertical-align: top;
+    }
+    .req-table th { width: 28%; color: var(--gold-dark); font-weight: 700; }
+
+    /* タイムライン */
+    .timeline { background: var(--white); }
+    .tl-list { list-style: none; max-width: 640px; margin: 0 auto; position: relative; padding-left: 2.4rem; }
+    .tl-list::before { content: ''; position: absolute; left: 0.72rem; top: 0; bottom: 0; width: 2px; background: var(--gold); }
+    .tl-list li { position: relative; margin-bottom: 1.8rem; }
+    .tl-list li::before {
+      content: ''; position: absolute; left: -1.83rem; top: 0.35rem;
+      width: 12px; height: 12px; background: var(--gold); border-radius: 50%;
+    }
+    .tl-time { font-size: 0.78rem; font-weight: 700; color: var(--gold-dark); display: block; margin-bottom: 0.2rem; }
+    .tl-text { font-size: 0.9rem; line-height: 1.65; }
+
+    /* 先輩メッセージ */
+    .seniors { background: var(--cream); }
+    .senior-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; }
+    .senior-card { background: var(--white); border-radius: 8px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+    .senior-card img { width: 100%; height: 180px; object-fit: cover; }
+    .senior-card-body { padding: 1.2rem; }
+    .senior-name { font-weight: 700; font-size: 0.92rem; color: var(--brown); }
+    .senior-role { font-size: 0.78rem; color: var(--gold-dark); margin-bottom: 0.6rem; }
+    .senior-msg { font-size: 0.86rem; line-height: 1.75; color: var(--brown-mid); }
+    .sample-note { font-size: 0.7rem; color: #bbb; margin-top: 0.5rem; }
+
+    /* FAQ */
+    .faq { background: var(--white); }
+    .faq-list { max-width: 720px; margin: 0 auto; }
+    details { border-bottom: 1px solid #e8ddd0; }
+    summary {
+      cursor: pointer; list-style: none; padding: 1.1rem 0;
+      display: flex; align-items: flex-start; gap: 0.7rem;
+      font-size: 0.92rem; font-weight: 700; color: var(--brown);
+    }
+    summary::before { content: 'Q'; color: var(--gold); font-family: 'Noto Serif JP', serif; min-width: 1.2rem; }
+    summary::-webkit-details-marker { display: none; }
+    summary .arrow { margin-left: auto; color: var(--gold); font-size: 1.1rem; transition: transform .2s; }
+    details[open] .arrow { transform: rotate(45deg); }
+    .faq-ans {
+      padding: 0 1rem 1.2rem 1.9rem; font-size: 0.88rem; line-height: 1.75; color: var(--brown-mid);
+    }
+    .faq-ans::before { content: 'A　'; color: var(--gold-dark); font-weight: 700; }
+
+    /* CTA */
+    .cta-sec { background: var(--brown); text-align: center; }
+    .cta-sec h2 { font-family: 'Noto Serif JP', serif; font-size: clamp(1.4rem, 3.5vw, 1.9rem); color: var(--gold); margin-bottom: 0.8rem; }
+    .cta-sec p { color: #e8d5b5; margin-bottom: 1.8rem; font-size: 0.92rem; }
+    .cta-tel { color: var(--gold); font-weight: 700; font-size: 0.9rem; margin-bottom: 2rem; display: block; }
+
+    footer { background: #1a0e04; color: #b59a6e; text-align: center; padding: 2rem 1.5rem; font-size: 0.8rem; line-height: 1.9; }
+    .footer-sample { color: #666; font-size: 0.72rem; margin-top: 0.8rem; }
+
+    /* レスポンシブ */
+    @media (max-width: 768px) {
+      .nav-menu { display: none; }
+      .hamburger { display: flex; }
+      .nav-menu.open {
+        display: flex; flex-direction: column; position: fixed;
+        top: 60px; left: 0; right: 0; background: var(--brown); padding: 1.5rem; gap: 1rem; z-index: 99;
+      }
+      .btn-outline { margin-left: 0; margin-top: 0.8rem; }
+      .appeal-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+      .senior-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 600px) {
+      .req-table, .req-table tbody, .req-table tr, .req-table th, .req-table td { display: block; }
+      .req-table th { background: var(--cream-dark); font-size: 0.8rem; padding-bottom: 0.3rem; border-bottom: none; }
+      .req-table td { padding-top: 0.3rem; }
+      .btn-primary, .btn-outline { display: block; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ナビ -->
+<nav>
+  <a href="#" class="nav-logo">ブライダルアビエ 成田店</a>
+  <ul class="nav-menu" id="navMenu">
+    <li><a href="#appeals">働く魅力</a></li>
+    <li><a href="#requirements">募集要項</a></li>
+    <li><a href="#timeline">1日の流れ</a></li>
+    <li><a href="#seniors">先輩の声</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#cta" class="nav-cta-btn">応募する</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ヒーロー -->
+<!-- 既存サイト（habiller.co.jp）のメイン画像があれば差し替え推奨。現在はブライダルダミー画像使用 -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-pill">🌸 正社員・店舗スタッフ 募集中</span>
+    <h1 class="hero-title">人生の節目に<br>寄り添う仕事を、<br>一緒に。</h1>
+    <p class="hero-sub">七五三・成人式・婚礼衣裳のレンタル専門店<br>成田市 公津の杜で、ゆっくり長く働ける環境です</p>
+    <a href="#requirements" class="btn-primary">募集要項を見る</a>
+    <a href="#cta" class="btn-outline">応募する</a>
+  </div>
+</section>
+
+<!-- 働く魅力 -->
+<section class="appeals" id="appeals">
+  <div class="container">
+    <h2 class="section-title">ブライダルアビエで働く3つの魅力</h2>
+    <p class="section-sub">※ここはサンプルです。実際には御社の魅力・特長に差し替えます</p>
+    <!-- サンプルパーツ: 御社の実際の魅力に差し替えてください -->
+    <div class="appeal-grid">
+      <div class="appeal-card">
+        <div class="appeal-icon">👘</div>
+        <h3>知識ゼロから<br>はじめられる</h3>
+        <p>着付けやヘアメイクは先輩がイチから丁寧に指導。冠婚葬祭や着物の知識がなくても大丈夫です。「やってみたい」という気持ちがあれば歓迎します。</p>
+      </div>
+      <div class="appeal-card">
+        <div class="appeal-icon">🏡</div>
+        <h3>アットホームな<br>職場環境</h3>
+        <p>就業場所スタッフ6名のうち女性5名。落ち着いた雰囲気でわからないことはすぐに聞ける環境です。創業40年超の老舗で、長く安心して働けます。</p>
+      </div>
+      <div class="appeal-card">
+        <div class="appeal-icon">📅</div>
+        <h3>安定した待遇と<br>長期就労支援</h3>
+        <p>月給20〜25万円（経験考慮）、昇給・賞与年2回・退職金あり。通勤手当実費支給（上限なし）。再雇用制度で65歳まで働き続けられます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="requirements" id="requirements">
+  <div class="container">
+    <h2 class="section-title">募集要項</h2>
+    <p class="section-sub">2026年7月現在</p>
+    <table class="req-table">
+      <tbody>
+        <tr><th>職種</th><td>店舗スタッフ（正社員）</td></tr>
+        <tr><th>仕事内容</th><td>予約受付・接客対応・電話対応・付随する事務処理、着物のメンテナンス・納品・商品管理業務、社用車での外出業務（免許保有者）。着付け・ヘアメイク・スタジオ撮影はスキルのある方のみ、未経験者はイチから指導します。</td></tr>
+        <tr><th>給与</th><td>月給 200,000〜250,000円（経験・スキルによる）<br>昇給あり（年3,000〜10,000円）／賞与年2回（計1ヶ月分・前年実績）</td></tr>
+        <tr><th>就業時間</th><td>9:00〜18:00（休憩60分）<br>月平均時間外 約10時間</td></tr>
+        <tr><th>休日</th><td>年間休日105日（会社カレンダーによる）<br>6ヶ月後に年次有給休暇10日付与</td></tr>
+        <tr><th>勤務地</th><td>〒286-0048 千葉県成田市公津の杜1-2-9 Fujiビル2F<br>京成線 公津の杜駅 徒歩5分　マイカー通勤可（駐車場あり）</td></tr>
+        <tr><th>対象年齢</th><td>〜59歳まで（定年60歳・再雇用制度あり 上限65歳）</td></tr>
+        <tr><th>学歴</th><td>高校卒業以上</td></tr>
+        <tr><th>必要資格</th><td>普通自動車運転免許（AT限定可）</td></tr>
+        <tr><th>待遇・福利厚生</th><td>雇用・労災・健康・厚生年金完備 / 通勤手当（実費・上限なし）/ 退職金制度あり（勤続1年以上）/ 再雇用制度（65歳まで）/ 育児休業取得実績あり</td></tr>
+        <tr><th>試用期間</th><td>3ヶ月（同条件）</td></tr>
+        <tr><th>選考方法</th><td>書類選考 → 面接（1回予定）。結果は7日以内に通知</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section class="timeline" id="timeline">
+  <div class="container">
+    <h2 class="section-title">社員の1日の流れ</h2>
+    <p class="section-sub">※ここはサンプルです。実際には御社スタッフの1日に差し替えます</p>
+    <!-- サンプルパーツ: 御社スタッフの実際の1日に差し替えてください -->
+    <ul class="tl-list">
+      <li>
+        <span class="tl-time">09:00</span>
+        <span class="tl-text">出勤・朝礼。当日の来店予約を確認し、担当を割り振る</span>
+      </li>
+      <li>
+        <span class="tl-time">10:00</span>
+        <span class="tl-text">七五三・成人式の衣裳相談来店。お客様と一緒にコーディネートを選びながらご案内</span>
+      </li>
+      <li>
+        <span class="tl-time">12:00</span>
+        <span class="tl-text">昼食休憩（60分）。スタッフ同士で和やかな一息</span>
+      </li>
+      <li>
+        <span class="tl-time">13:00</span>
+        <span class="tl-text">返却衣裳のチェック・クリーニング仕分け・翌日の衣裳準備</span>
+      </li>
+      <li>
+        <span class="tl-time">15:00</span>
+        <span class="tl-text">電話応対・翌週以降の予約管理・衣裳の在庫確認・事務処理</span>
+      </li>
+      <li>
+        <span class="tl-time">18:00</span>
+        <span class="tl-text">終業。翌日の準備を確認してスムーズに退勤</span>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- 先輩メッセージ -->
+<section class="seniors" id="seniors">
+  <div class="container">
+    <h2 class="section-title">先輩スタッフの声</h2>
+    <p class="section-sub">※ここはサンプルです。実際には御社スタッフのコメント・写真に差し替えます</p>
+    <!-- サンプルパーツ: 御社スタッフの写真・コメントに差し替えてください -->
+    <div class="senior-grid">
+      <div class="senior-card">
+        <!-- 顔写真ダミー（御社スタッフ写真に差し替え） -->
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=240&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div class="senior-card-body">
+          <div class="senior-name">山田 由里（仮名）</div>
+          <div class="senior-role">接客スタッフ ／ 入社3年目</div>
+          <div class="senior-msg">「入社前は着物の知識がゼロでしたが、先輩が何でも教えてくれました。お客様が衣裳を気に入った瞬間の笑顔が一番うれしいです。職場は少人数で和気あいあいとしています。」</div>
+          <p class="sample-note">※このコメントはサンプルです。御社スタッフのコメントに差し替えます。</p>
+        </div>
+      </div>
+      <div class="senior-card">
+        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=240&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div class="senior-card-body">
+          <div class="senior-name">鈴木 愛（仮名）</div>
+          <div class="senior-role">着付けスタッフ ／ 入社6年目</div>
+          <div class="senior-msg">「結婚式や成人式など人生の大切な節目に関われる仕事です。スタッフ同士の仲が良く、困ったことはすぐ相談できる環境なので、ずっと長く続けられています。」</div>
+          <p class="sample-note">※このコメントはサンプルです。御社スタッフのコメントに差し替えます。</p>
+        </div>
+      </div>
+      <div class="senior-card">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=240&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div class="senior-card-body">
+          <div class="senior-name">田中 裕子（仮名）</div>
+          <div class="senior-role">スタジオスタッフ ／ 入社2年目</div>
+          <div class="senior-msg">「スタジオ撮影のアシスタントから少しずつ覚えました。七五三のお子さんが可愛いポーズをとってくれたときは毎回癒されます。焦らず丁寧に教えてもらえる職場です。」</div>
+          <p class="sample-note">※このコメントはサンプルです。御社スタッフのコメントに差し替えます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <h2 class="section-title">よくある質問</h2>
+    <p class="section-sub">※ここはサンプルです。実際には御社のよくある質問に差し替えます</p>
+    <!-- サンプルパーツ: 御社のQ&Aに差し替えてください -->
+    <div class="faq-list">
+      <details open>
+        <summary>着物や衣裳の知識がなくても大丈夫ですか？<span class="arrow">+</span></summary>
+        <div class="faq-ans">大丈夫です。入社後は段階を踏んでお任せしますので、冠婚葬祭や着物の知識がない方でも問題ありません。わからないことはすぐに聞ける環境を整えています。</div>
+      </details>
+      <details>
+        <summary>入社後の研修・OJTはありますか？<span class="arrow">+</span></summary>
+        <div class="faq-ans">はい。試用期間3ヶ月は先輩スタッフが丁寧に指導します。接客・電話対応・衣裳管理から少しずつ覚えていただけます。着付け・ヘアメイク・撮影は学びたい方にも指導します。</div>
+      </details>
+      <details>
+        <summary>残業はどのくらいありますか？<span class="arrow">+</span></summary>
+        <div class="faq-ans">月平均で約10時間です。繁忙期（七五三・成人式シーズン）は多少増える場合がありますが、年間休日105日で働きやすい環境を整えています。</div>
+      </details>
+      <details>
+        <summary>女性が多い職場ですか？<span class="arrow">+</span></summary>
+        <div class="faq-ans">就業場所の6名のうち5名が女性スタッフです。落ち着いたアットホームな雰囲気で、育児休業取得実績もあり、長く安心して働ける職場です。</div>
+      </details>
+      <details>
+        <summary>運転免許が必要とのことですが、実際に運転しますか？<span class="arrow">+</span></summary>
+        <div class="faq-ans">衣裳の納品や外出業務で社用車を使用する場合があります。AT限定可です。頻度や詳細は面接でご確認ください。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec" id="cta">
+  <div class="container">
+    <h2>一緒に、人生の節目を彩りませんか</h2>
+    <p>ご不明な点はお気軽にお問い合わせください。書類はメール・郵送どちらでも受け付けています。</p>
+    <span class="cta-tel">📞 0476-26-2299 ／ 📧 info-narita@habiller.co.jp</span>
+    <a href="mailto:info-narita@habiller.co.jp" class="btn-primary">メールで問い合わせる</a>
+  </div>
+</section>
+
+<!-- フッター -->
+<footer>
+  <p>有限会社 さわだ貸衣裳店 ブライダルアビエ 成田店</p>
+  <p>〒286-0048 千葉県成田市公津の杜1-2-9 Fujiビル2F</p>
+  <p class="footer-sample">※このページはサンプルです。画像・コメント・数字はすべてダミーです。本番公開時は御社の実際の情報・写真に差し替えます。</p>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navMenu = document.getElementById('navMenu');
+  hamburger.addEventListener('click', () => navMenu.classList.toggle('open'));
+  navMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => navMenu.classList.remove('open')));
+</script>
+</body>
+</html>
