@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>製造オペレーター 採用情報 | 株式会社 町山製作所</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#222;background:#fff}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+:root{
+  --navy:#162540;
+  --navy2:#1d3060;
+  --orange:#d96b0a;
+  --orange2:#f07c1a;
+  --bg:#f4f7fb;
+}
+
+/* ====== 固定CTAバー（スマホ） ====== */
+.fixed-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--orange);padding:.9rem 1.2rem;text-align:center}
+.fixed-bar a{color:#fff;font-weight:700;font-size:1rem;letter-spacing:.05em}
+@media(max-width:768px){.fixed-bar{display:block}body{padding-bottom:60px}}
+
+/* ====== Nav ====== */
+nav{position:sticky;top:0;z-index:150;background:var(--navy);padding:0 1.5rem}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
+.nav-logo{color:#fff;font-weight:700;font-size:.95rem}
+.nav-cta{background:var(--orange);color:#fff;font-weight:700;font-size:.85rem;padding:.5rem 1.3rem;border-radius:4px;transition:background .2s}
+.nav-cta:hover{background:var(--orange2)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:.4rem}
+.hamburger span{width:24px;height:2px;background:#fff;border-radius:2px;display:block}
+.mobile-menu{display:none;background:var(--navy2);padding:.8rem 1.5rem;flex-direction:column;gap:.7rem}
+.mobile-menu a{color:rgba(255,255,255,.9);font-size:.9rem;padding:.45rem 0;border-bottom:1px solid rgba(255,255,255,.1)}
+@media(max-width:768px){.hamburger{display:flex}.mobile-menu.open{display:flex}}
+
+/* ====== Hero ====== */
+.hero{background:linear-gradient(160deg,var(--navy) 0%,var(--navy2) 60%,#243870 100%);color:#fff;padding:6rem 1.5rem 5rem;text-align:center}
+.hero-pill{display:inline-block;background:var(--orange);color:#fff;font-size:.78rem;font-weight:700;letter-spacing:.12em;padding:.35rem 1rem;border-radius:20px;margin-bottom:1.5rem}
+.hero h1{font-size:clamp(1.9rem,5.5vw,3.4rem);font-weight:900;line-height:1.28;margin-bottom:1.2rem}
+.hero h1 span{color:var(--orange2)}
+.hero-sub{font-size:clamp(.95rem,2.5vw,1.1rem);opacity:.88;line-height:1.9;max-width:640px;margin:0 auto 2.5rem}
+.hero-cta{display:inline-block;background:var(--orange);color:#fff;font-weight:700;font-size:1.05rem;padding:1rem 3rem;border-radius:4px;box-shadow:0 4px 20px rgba(217,107,10,.4);transition:all .2s;letter-spacing:.05em}
+.hero-cta:hover{background:var(--orange2);transform:translateY(-2px)}
+.hero-img{width:100%;max-width:960px;margin:3.5rem auto 0;border-radius:12px;overflow:hidden;box-shadow:0 12px 60px rgba(0,0,0,.35)}
+.hero-img img{width:100%;height:400px;object-fit:cover}
+@media(max-width:768px){.hero-img img{height:220px}}
+
+/* ====== 数字バー ====== */
+.nums{background:var(--orange);color:#fff;padding:3rem 1.5rem}
+.nums-inner{max-width:900px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem 3rem}
+.num-item{text-align:center;min-width:120px}
+.num-big{font-size:clamp(2rem,5vw,3rem);font-weight:900;line-height:1}
+.num-unit{font-size:1rem;font-weight:700}
+.num-label{font-size:.78rem;opacity:.88;margin-top:.35rem;letter-spacing:.05em}
+.sample-note{font-size:.7rem;opacity:.7;font-style:italic}
+
+/* ====== 共通セクション ====== */
+.sec{padding:5rem 1.5rem}
+.sec-inner{max-width:1100px;margin:0 auto}
+.sec-tag{display:inline-block;color:var(--orange);font-size:.78rem;font-weight:700;letter-spacing:.12em;border-left:3px solid var(--orange);padding-left:.65rem;margin-bottom:.8rem}
+.sec-title{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:900;margin-bottom:.7rem;line-height:1.3}
+.sec-desc{color:#666;font-size:.93rem;line-height:1.9;max-width:660px;margin-bottom:3rem}
+.bg-light{background:var(--bg)}
+
+/* ====== 3ポイント ====== */
+.points{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.point{border-left:4px solid var(--orange);padding:1.4rem 1.3rem;background:#fff;border-radius:0 8px 8px 0;box-shadow:0 2px 12px rgba(0,0,0,.05)}
+.point-num{font-size:2.5rem;font-weight:900;color:var(--orange);line-height:1;margin-bottom:.6rem}
+.point h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:.5rem}
+.point p{font-size:.88rem;line-height:1.8;color:#555}
+@media(max-width:768px){.points{grid-template-columns:1fr}}
+
+/* ====== CTA中盤 ====== */
+.cta-mid{background:var(--navy);color:#fff;text-align:center;padding:4rem 1.5rem;margin:0}
+.cta-mid h2{font-size:clamp(1.3rem,3.5vw,2rem);font-weight:900;margin-bottom:.8rem}
+.cta-mid p{font-size:.93rem;opacity:.85;margin-bottom:2rem;line-height:1.85}
+.btn-lg{display:inline-block;background:var(--orange);color:#fff;font-weight:700;font-size:1.05rem;padding:1rem 3rem;border-radius:4px;transition:all .2s;letter-spacing:.05em}
+.btn-lg:hover{background:var(--orange2);transform:translateY(-2px)}
+
+/* ====== 社員インタビュー ====== */
+.interview-grid{display:grid;gap:2.5rem}
+.interview{display:grid;grid-template-columns:200px 1fr;gap:2rem;background:#fff;border-radius:10px;padding:2rem;box-shadow:0 2px 16px rgba(0,0,0,.06)}
+.interview:nth-child(even){direction:rtl}
+.interview:nth-child(even)>*{direction:ltr}
+.int-photo img{width:100%;height:200px;object-fit:cover;border-radius:8px}
+.int-body{}
+.int-name{font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:.2rem}
+.int-meta{font-size:.8rem;color:#888;margin-bottom:1rem}
+.int-q{font-size:.82rem;font-weight:700;color:var(--orange);letter-spacing:.05em;margin-bottom:.35rem}
+.int-a{font-size:.9rem;line-height:1.85;color:#444;margin-bottom:1rem}
+
+@media(max-width:768px){
+  .interview,.interview:nth-child(even){direction:ltr;grid-template-columns:1fr}
+  .int-photo img{height:180px}
+}
+
+/* ====== タイムライン ====== */
+.tl-wrap{max-width:700px;margin:0 auto;position:relative}
+.tl-wrap::before{content:'';position:absolute;left:90px;top:0;bottom:0;width:2px;background:linear-gradient(to bottom,var(--orange),rgba(217,107,10,.1))}
+.tl-row{display:flex;align-items:flex-start;gap:1.5rem;margin-bottom:2rem;position:relative}
+.tl-t{width:78px;min-width:78px;font-weight:700;color:var(--orange);font-size:.88rem;text-align:right;padding-top:.15rem}
+.tl-dot{width:16px;height:16px;min-width:16px;border-radius:50%;background:var(--orange);border:3px solid #fff;box-shadow:0 0 0 2px var(--orange);position:relative;z-index:1;margin-top:.1rem}
+.tl-c h4{font-weight:700;font-size:.95rem;color:var(--navy);margin-bottom:.2rem}
+.tl-c p{font-size:.86rem;color:#666;line-height:1.7}
+
+@media(max-width:768px){
+  .tl-wrap::before{left:60px}
+  .tl-t{width:52px;min-width:52px;font-size:.8rem}
+}
+
+/* ====== FAQ ====== */
+.faq-list{max-width:760px;margin:0 auto}
+.faq-item{border-bottom:1px solid #dde4f0}
+.faq-q{cursor:pointer;display:flex;align-items:center;justify-content:space-between;padding:1.3rem 0;font-weight:700;font-size:.93rem;color:var(--navy);gap:1rem;user-select:none}
+.faq-arr{color:var(--orange);font-size:1.1rem;transition:transform .3s;flex-shrink:0}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-a-in{padding:.1rem 0 1.2rem;font-size:.9rem;line-height:1.85;color:#555}
+.faq-item.open .faq-arr{transform:rotate(180deg)}
+.faq-item.open .faq-a{max-height:400px}
+
+/* ====== 募集要項 ====== */
+.spec-tbl{width:100%;border-collapse:collapse}
+.spec-tbl tr{border-bottom:1px solid #dde4f0}
+.spec-tbl th{width:150px;min-width:130px;padding:1.1rem .8rem;font-size:.83rem;font-weight:700;color:var(--navy);background:rgba(22,37,64,.04);text-align:left;vertical-align:top}
+.spec-tbl td{padding:1.1rem .8rem;font-size:.9rem;line-height:1.75;color:#444}
+@media(max-width:768px){
+  .spec-tbl,.spec-tbl thead,.spec-tbl tbody,.spec-tbl th,.spec-tbl td,.spec-tbl tr{display:block}
+  .spec-tbl th{background:none;color:var(--orange);font-size:.78rem;padding:.9rem .5rem .2rem;border:none}
+  .spec-tbl td{padding:.1rem .5rem .9rem;border:none}
+  .spec-tbl tr{border-bottom:1px solid #dde4f0}
+}
+
+/* ====== CTA Final ====== */
+.cta-final{background:linear-gradient(135deg,var(--navy) 0%,var(--navy2) 100%);color:#fff;text-align:center;padding:6rem 1.5rem}
+.cta-final h2{font-size:clamp(1.5rem,4vw,2.4rem);font-weight:900;margin-bottom:1rem}
+.cta-final p{font-size:.95rem;opacity:.85;margin-bottom:2.5rem;line-height:1.9}
+
+/* ====== Footer ====== */
+footer{background:#111;color:rgba(255,255,255,.45);text-align:center;padding:2rem 1.5rem;font-size:.8rem;line-height:1.8}
+</style>
+</head>
+<body>
+
+<!-- 固定CTAバー（スマホ） -->
+<div class="fixed-bar"><a href="https://machiyama-ind.jp/contact/" target="_blank" rel="noopener">今すぐ問い合わせる →</a></div>
+
+<!-- Nav -->
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">㈱ 町山製作所 採用情報</div>
+    <a href="https://machiyama-ind.jp/contact/" class="nav-cta" target="_blank" rel="noopener">応募する</a>
+    <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
+  <div class="mobile-menu" id="mm">
+    <a href="#about">会社について</a>
+    <a href="#voice">先輩インタビュー</a>
+    <a href="#day">1日の流れ</a>
+    <a href="#faq">FAQ</a>
+    <a href="#spec">募集要項</a>
+    <a href="https://machiyama-ind.jp/contact/" target="_blank" rel="noopener">応募する</a>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-pill">正社員 製造オペレーター 募集中</div>
+  <h1>あなたの「丁寧さ」が、<br><span>日本中に届く化粧品</span>を生む。</h1>
+  <p class="hero-sub">資生堂・コーセー・花王など名だたるブランドの製品を支える、創業100年超のモノづくり企業。未経験歓迎・チーム重視・安定正社員。</p>
+  <!-- CTA 1か所目 -->
+  <a href="https://machiyama-ind.jp/contact/" class="hero-cta" target="_blank" rel="noopener">採用ページを見る・応募する</a>
+  <div class="hero-img">
+    <!-- 職場写真・製造ラインの写真に差し替えてください -->
+    <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=960&h=400&fit=crop&q=80" alt="製造ライン">
+  </div>
+</section>
+
+<!-- 数字で見る町山製作所 -->
+<div class="nums">
+  <div class="nums-inner">
+    <div class="num-item">
+      <div class="num-big">100<span class="num-unit">年超</span></div>
+      <div class="num-label">創業明治40年の歴史<br><span class="sample-note">※サンプルです</span></div>
+    </div>
+    <div class="num-item">
+      <div class="num-big">115<span class="num-unit">日</span></div>
+      <div class="num-label">年間休日数<br><span class="sample-note">※サンプルです</span></div>
+    </div>
+    <div class="num-item">
+      <div class="num-big">38<span class="num-unit">名</span></div>
+      <div class="num-label">社員数（女性14名活躍中）<br><span class="sample-note">※サンプルです</span></div>
+    </div>
+    <div class="num-item">
+      <div class="num-big">年<span class="num-unit">3</span>回</div>
+      <div class="num-label">賞与支給実績<br><span class="sample-note">※サンプルです</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- 3ポイント -->
+<section class="sec" id="about">
+  <div class="sec-inner">
+    <div class="sec-tag">WHY MACHIYAMA</div>
+    <h2 class="sec-title">選ばれる3つの理由</h2>
+    <p class="sec-desc">現場の声をもとにまとめました。<span class="sample-note">※ここはサンプルです。実際の御社の強みに差し替えます</span></p>
+    <div class="points">
+      <div class="point">
+        <div class="point-num">01</div>
+        <h3>「職場の雰囲気がいい」が一番の声</h3>
+        <p>チームで動く生産ラインだから、一人で抱え込まない。困ったときは必ず誰かが助けてくれる、声かけが自然な現場です。<br><span class="sample-note">※サンプルです</span></p>
+      </div>
+      <div class="point">
+        <div class="point-num">02</div>
+        <h3>未経験でも技術が身につく仕組み</h3>
+        <p>入社後は日勤スタート。プレス・塗装・印刷・絞り工程のいずれかを先輩と一緒に覚えていきます。焦らず着実に成長できます。</p>
+      </div>
+      <div class="point">
+        <div class="point-num">03</div>
+        <h3>景気に左右されない安定した経営</h3>
+        <p>化粧品・生活用品の需要は不況にも強い。資生堂・花王等の大手取引先を持ち、創業100年超の実績が安定の証です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA中盤（2か所目） -->
+<div class="cta-mid">
+  <h2>まずは、見学・相談だけでも大丈夫です。</h2>
+  <p>採用担当者が丁寧にお答えします。<br>「雰囲気を知りたい」という問い合わせも歓迎です。</p>
+  <a href="https://machiyama-ind.jp/contact/" class="btn-lg" target="_blank" rel="noopener">お問い合わせフォームへ</a>
+</div>
+
+<!-- 社員インタビュー -->
+<section class="sec bg-light" id="voice">
+  <div class="sec-inner">
+    <div class="sec-tag">INTERVIEW</div>
+    <h2 class="sec-title">先輩社員インタビュー</h2>
+    <p class="sec-desc">入社前のギモンに、リアルな声でお答えします。<br><span class="sample-note">※ここはサンプルです。実際には御社社員の写真・インタビューに差し替えます</span></p>
+    <div class="interview-grid">
+      <!-- 写真差し替え: interview1.jpg -->
+      <div class="interview">
+        <div class="int-photo"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=faces&q=80" alt="田中さん"></div>
+        <div class="int-body">
+          <div class="int-name">田中 雄太（仮名）</div>
+          <div class="int-meta">製造オペレーター／入社3年目</div>
+          <div class="int-q">Q. 未経験で不安はありませんでしたか？</div>
+          <div class="int-a">「工場の仕事は初めてで、機械の名前すら知らない状態でした。でも入社後は先輩が隣についてくれて、焦らず教えてもらえました。今は担当ラインの段取りを一人でこなせるようになっています。」</div>
+          <div class="int-q">Q. 職場の雰囲気はどうですか？</div>
+          <div class="int-a">「上下関係は厳しくなく、わからないことがあればすぐ聞ける環境です。チームで目標の生産数を達成したときは、皆で達成感を分かち合えます。」</div>
+          <p class="sample-note">※サンプルです。実際の社員の言葉に差し替えます</p>
+        </div>
+      </div>
+      <div class="interview">
+        <div class="int-photo"><img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=400&fit=crop&crop=faces&q=80" alt="山田さん"></div>
+        <div class="int-body">
+          <div class="int-name">山田 明子（仮名）</div>
+          <div class="int-meta">製造オペレーター／入社5年目</div>
+          <div class="int-q">Q. 女性として働きやすいですか？</div>
+          <div class="int-a">「女性が全体の3割以上います。冷暖房が効いている工場なので体力的にも安心でした。産休・育休の取得実績もあります。働きやすさは入社前の想像を超えていました。」</div>
+          <div class="int-q">Q. 仕事のやりがいを教えてください。</div>
+          <div class="int-a">「お店で資生堂やコーセーのスプレー商品を見るたびに、『これ自分が作った』と感じます。名の知れた製品に関われることが誇りです。」</div>
+          <p class="sample-note">※サンプルです。実際の社員の言葉に差し替えます</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section class="sec" id="day">
+  <div class="sec-inner">
+    <div class="sec-tag">A DAY IN LIFE</div>
+    <h2 class="sec-title">1日の流れ（日勤モデル）</h2>
+    <p class="sec-desc" style="margin-bottom:2.5rem">入社後は日勤のみ。2年を目途に交替制に。<br><span class="sample-note">※ここはサンプルです。実際のスケジュールに差し替えます</span></p>
+    <div class="tl-wrap">
+      <div class="tl-row">
+        <div class="tl-t">8:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-c"><h4>始業・朝礼・申し送り確認</h4><p>チームで今日の生産目標と担当工程を確認。</p></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-t">8:45</div>
+        <div class="tl-dot"></div>
+        <div class="tl-c"><h4>段取り・ライン立ち上げ</h4><p>金型セットや条件確認など、生産準備を行います。</p></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-t">10:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-c"><h4>生産稼働・品質チェック</h4><p>ライン稼働中に日常点検と品質チェックを並行実施。</p></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-t">12:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-c"><h4>昼休憩（60分）</h4><p>仲間とランチタイム。工場内のリフレッシュルームで休憩も。</p></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-t">13:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-c"><h4>午後の生産・ライン調整</h4><p>異常があればリーダーへ報告。チームで素早く対応。</p></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-t">16:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-c"><h4>清掃・申し送り</h4><p>担当エリアを清掃し、翌日・次のシフトへ申し送り。</p></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-t">17:20</div>
+        <div class="tl-dot"></div>
+        <div class="tl-c"><h4>終業</h4><p>月平均残業15時間程度。プライベートの時間が確保できます。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec bg-light" id="faq">
+  <div class="sec-inner">
+    <div class="sec-tag">FAQ</div>
+    <h2 class="sec-title">よくある質問</h2>
+    <p class="sec-desc" style="margin-bottom:2rem"><span class="sample-note">※ここはサンプルです。実際の御社のQ&Aに差し替えます</span></p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">工場や製造業の経験がなくても大丈夫ですか？<span class="faq-arr">▼</span></div>
+        <div class="faq-a"><div class="faq-a-in">問題ありません。入社後は先輩が隣でOJT指導します。日勤のみから始めるので、じっくり技術を身につけられます。</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">選考の流れを教えてください。<span class="faq-arr">▼</span></div>
+        <div class="faq-a"><div class="faq-a-in">書類選考（7日以内に通知）→ 面接2回 → 内定。ハローワークの紹介状が必要です。履歴書・職務経歴書を郵送でお送りください。</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">交替勤務はどのタイミングで始まりますか？<span class="faq-arr">▼</span></div>
+        <div class="faq-a"><div class="faq-a-in">入社後2年を目途に、日勤（8:30〜17:20）・準夜勤（12:50〜21:40）の交替制に移行します。交替は繁忙期中心で、通年ではありません。</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">色の識別検査とは何ですか？<span class="faq-arr">▼</span></div>
+        <div class="faq-a"><div class="faq-a-in">製品の色を正確に識別できるかを確認する検査です。色覚に関わる簡易チェックで、詳細は選考時にご説明します。</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">マイカー通勤はできますか？<span class="faq-arr">▼</span></div>
+        <div class="faq-a"><div class="faq-a-in">はい、駐車場完備でマイカー通勤が可能です。最寄り駅（JR・京成成田駅）からは車で20分程度です。</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="sec" id="spec">
+  <div class="sec-inner">
+    <div class="sec-tag">REQUIREMENTS</div>
+    <h2 class="sec-title">募集要項</h2>
+    <table class="spec-tbl" style="margin-top:1.5rem">
+      <tr><th>職種</th><td>製造オペレーター（正社員）</td></tr>
+      <tr><th>仕事内容</th><td>アルミエアゾール缶の生産ライン段取り・調整・オペレーター（プレス／内面塗装／印刷／絞りのいずれか）・日常点検</td></tr>
+      <tr><th>給与</th><td>月給 200,000〜250,000円（日給月給制）<br>住宅手当 15,000円（世帯主）・通勤手当（実費・上限50,000円）</td></tr>
+      <tr><th>就業時間</th><td>日勤 8:30〜17:20 / 準夜勤 12:50〜21:40<br>変形労働時間制（入社後2年目途で交替へ）</td></tr>
+      <tr><th>休日・休暇</th><td>土日祝・年末年始・夏季（年間115日）、有給休暇（3ヶ月後10日）</td></tr>
+      <tr><th>昇給・賞与</th><td>昇給年1回（1,000〜10,000円/月）・賞与年3回（計2.5ヶ月）</td></tr>
+      <tr><th>福利厚生</th><td>各種社会保険・財形・確定給付年金・退職金（2年以上）・作業服貸与</td></tr>
+      <tr><th>応募資格</th><td>59歳以下（定年60歳）・未経験歓迎・色の識別検査あり</td></tr>
+      <tr><th>勤務地</th><td>千葉県成田市吉岡字久茂富641-2 大栄工業団地</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- CTA最後（3か所目） -->
+<div class="cta-final">
+  <h2>ものづくりの誇りを、一緒に感じませんか。</h2>
+  <p>「少し気になる」だけでも、お問い合わせください。<br>採用担当の秋田が丁寧にお答えします。<br><span style="font-size:.82rem;opacity:.7">※担当者名はサンプルです。実際の担当者に差し替えます</span></p>
+  <a href="https://machiyama-ind.jp/contact/" class="btn-lg" target="_blank" rel="noopener">問い合わせフォームへ（無料・入力2分）</a>
+</div>
+
+<footer>
+  <p>株式会社 町山製作所 / 千葉県成田市吉岡字久茂富641-2 大栄工業団地 / TEL: 0476-73-7534</p>
+  <p style="margin-top:.5rem">このページはサンプルです。制作: （株）サプライズコレクション × なりまっぷ</p>
+</footer>
+
+<script>
+function toggleMenu(){document.getElementById('mm').classList.toggle('open')}
+function toggleFaq(el){el.parentElement.classList.toggle('open')}
+</script>
+</body>
+</html>
