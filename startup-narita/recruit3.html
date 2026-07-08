@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>軽作業スタッフ募集 | 株式会社スタート・アップ【FVバナー版】</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#1a1a1a;background:#fff}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+:root{
+  --deep:#0a1628;
+  --navy:#162b4e;
+  --gold:#f0a500;
+  --gold-light:#f7c84a;
+  --gray:#f5f7fa;
+  --border:#e0e5ee;
+  --sub:#5c6880;
+}
+
+/* 透過ナビ */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  padding:0 28px;height:64px;
+  display:flex;align-items:center;justify-content:space-between;
+  background:linear-gradient(rgba(10,22,40,.7),transparent);
+  transition:background .3s;
+}
+.nav.scrolled{background:rgba(10,22,40,.95)}
+.nav-logo{color:#fff;font-weight:700;font-size:1rem;letter-spacing:.05em}
+.nav-btn{
+  background:var(--gold);color:var(--deep);
+  border:none;border-radius:4px;
+  padding:9px 22px;font-size:.85rem;font-weight:700;cursor:pointer;white-space:nowrap;
+}
+.hamburger{display:none;background:none;border:none;cursor:pointer}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;margin:5px 0}
+.mob-menu{
+  display:none;position:fixed;top:64px;left:0;right:0;
+  background:var(--deep);z-index:99;padding:16px 24px;
+}
+.mob-menu.open{display:block}
+.mob-menu a{display:block;color:#fff;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:.9rem}
+
+/* FVバナー（全画面背景画像）*/
+.hero{
+  position:relative;
+  min-height:80vh;
+  display:flex;align-items:center;justify-content:center;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&h=900&fit=crop&q=80');
+  background-size:cover;background-position:center;
+}
+/* ここはサンプルです。実際には御社の倉庫内・作業風景の写真に差し替えてください */
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(10,22,40,.75) 0%,rgba(22,43,78,.65) 100%);
+}
+.hero-content{
+  position:relative;z-index:1;text-align:center;padding:100px 24px 60px;
+  max-width:800px;
+}
+.hero-badge{
+  display:inline-block;background:var(--gold);color:var(--deep);
+  font-size:.78rem;font-weight:700;padding:5px 16px;border-radius:20px;
+  margin-bottom:20px;letter-spacing:.05em;
+}
+.hero h1{
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(2rem,6vw,3.8rem);font-weight:900;
+  color:#fff;line-height:1.2;margin-bottom:20px;
+  text-shadow:0 2px 20px rgba(0,0,0,.4);
+}
+.hero-sub{
+  color:rgba(255,255,255,.85);
+  font-size:clamp(.95rem,2.2vw,1.1rem);
+  line-height:1.85;margin-bottom:32px;
+}
+.hero-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:36px}
+.hero-tag{
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);
+  color:#fff;border-radius:20px;padding:6px 14px;font-size:.82rem;
+}
+.hero-cta{
+  display:inline-block;background:var(--gold);color:var(--deep);
+  font-weight:900;font-size:1.05rem;padding:16px 48px;border-radius:8px;
+  box-shadow:0 4px 24px rgba(240,165,0,.5);transition:.2s;
+}
+.hero-cta:hover{background:var(--gold-light)}
+.hero-note{color:rgba(255,255,255,.5);font-size:.78rem;margin-top:14px}
+.hero-env-note{
+  position:relative;z-index:1;
+  text-align:center;padding:12px 24px;
+  color:rgba(255,255,255,.45);font-size:.75rem;
+  background:rgba(10,22,40,.5);
+  border-top:1px solid rgba(255,255,255,.1);
+}
+
+/* セクション共通 */
+section{padding:72px 24px}
+.inner{max-width:900px;margin:0 auto}
+.badge{
+  display:inline-block;background:var(--gold);color:var(--deep);
+  font-size:.72rem;font-weight:700;padding:3px 10px;border-radius:3px;
+  margin-bottom:8px;letter-spacing:.08em;
+}
+h2.sec{font-size:clamp(1.5rem,3.5vw,2.1rem);font-weight:900;color:var(--deep);margin-bottom:8px}
+.sec-lead{font-size:.93rem;color:var(--sub);line-height:1.85;margin-bottom:40px}
+
+/* 仕事内容 */
+.job-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.job-card{
+  background:var(--gray);border-radius:10px;padding:24px;
+  border-bottom:4px solid var(--gold);
+}
+.job-icon{font-size:2rem;margin-bottom:12px}
+.job-card h3{font-size:.95rem;font-weight:700;color:var(--deep);margin-bottom:8px}
+.job-card p{font-size:.85rem;color:var(--sub);line-height:1.75}
+
+/* 職場環境（写真ギャラリー・弱点メモ対応） */
+.env-bg{background:var(--deep)}
+.env-badge{background:rgba(240,165,0,.2);color:var(--gold)}
+.env-title{color:#fff}
+.env-lead{color:rgba(255,255,255,.7)}
+.gallery{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+.gallery-item{position:relative;border-radius:8px;overflow:hidden}
+.gallery-item.wide{grid-column:span 2}
+.gallery-item img{width:100%;height:240px;object-fit:cover;transition:transform .4s}
+.gallery-item.wide img{height:320px}
+.gallery-item:hover img{transform:scale(1.04)}
+.gallery-cap{
+  position:absolute;bottom:0;left:0;right:0;
+  background:linear-gradient(transparent,rgba(10,22,40,.85));
+  color:#fff;font-size:.82rem;font-weight:700;padding:24px 14px 10px;
+}
+.gallery-note{
+  margin-top:20px;padding:14px 18px;border:1px solid rgba(255,255,255,.2);
+  border-radius:8px;color:rgba(255,255,255,.5);font-size:.78rem;line-height:1.75;text-align:center;
+}
+
+/* 働く魅力 */
+.merit-bg{background:var(--gray)}
+.merit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.merit-card{
+  background:#fff;border-radius:12px;padding:28px 20px;
+  text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.06);
+}
+.merit-icon{font-size:2.4rem;margin-bottom:12px}
+.merit-val{font-size:1.6rem;font-weight:900;color:var(--gold);margin-bottom:4px}
+.merit-card h3{font-size:.95rem;font-weight:700;color:var(--deep);margin-bottom:10px}
+.merit-card p{font-size:.83rem;color:var(--sub);line-height:1.75}
+
+/* 先輩メッセージ */
+.staff-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.staff-card{border-radius:12px;overflow:hidden;box-shadow:0 3px 14px rgba(0,0,0,.09)}
+.staff-photo{width:100%;height:200px;object-fit:cover}
+.staff-body{padding:20px;background:#fff}
+.staff-name{font-weight:700;font-size:.95rem;color:var(--deep)}
+.staff-role{font-size:.78rem;color:var(--sub);margin-bottom:12px}
+.staff-msg{font-size:.85rem;color:#444;line-height:1.8;border-left:3px solid var(--gold);padding-left:12px}
+.sample-note{font-size:.72rem;color:#bbb;margin-top:10px}
+
+/* タイムライン */
+.tl-wrap{position:relative;padding-left:36px}
+.tl-wrap::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;background:var(--border)}
+.tl-item{position:relative;margin-bottom:28px}
+.tl-dot{
+  position:absolute;left:-32px;top:4px;
+  width:14px;height:14px;border-radius:50%;
+  background:var(--gold);border:3px solid #fff;box-shadow:0 0 0 2px var(--gold);
+}
+.tl-time{font-size:.82rem;font-weight:700;color:var(--gold);margin-bottom:4px}
+.tl-title{font-size:.95rem;font-weight:700;color:var(--deep);margin-bottom:4px}
+.tl-desc{font-size:.85rem;color:var(--sub);line-height:1.7}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:14px}
+.faq-item{border-radius:8px;overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,.06);background:#fff}
+.faq-q{
+  padding:16px 20px;font-weight:700;font-size:.93rem;
+  color:var(--deep);display:flex;align-items:center;gap:12px;
+}
+.q-dot{
+  flex-shrink:0;width:26px;height:26px;border-radius:50%;
+  background:var(--gold);color:var(--deep);font-size:.8rem;font-weight:900;
+  display:flex;align-items:center;justify-content:center;
+}
+.faq-a{padding:0 20px 16px 58px;font-size:.88rem;color:#444;line-height:1.8}
+
+/* 募集要項 */
+.req-bg{background:var(--gray)}
+.req-table{width:100%;border-collapse:collapse;font-size:.9rem}
+.req-table th,.req-table td{padding:13px 16px;border:1px solid var(--border);text-align:left;vertical-align:top}
+.req-table th{background:#fff;color:var(--deep);font-weight:700;width:140px;white-space:nowrap}
+.req-table td{line-height:1.75;color:#333}
+
+/* 採用担当 + CTA */
+.cta-section{
+  background:linear-gradient(135deg,var(--deep) 0%,var(--navy) 100%);
+  padding:72px 24px;
+}
+.recruiter-block{
+  display:flex;align-items:center;gap:28px;
+  border:1px solid rgba(240,165,0,.3);border-radius:12px;padding:32px;
+  margin-bottom:48px;
+}
+.rec-photo{
+  width:90px;height:90px;border-radius:50%;object-fit:cover;
+  flex-shrink:0;border:3px solid var(--gold);
+}
+.rec-text h3{color:#fff;font-size:1rem;font-weight:700;margin-bottom:8px}
+.rec-text p{color:rgba(255,255,255,.75);font-size:.88rem;line-height:1.8}
+.rec-sample{font-size:.72rem;color:rgba(255,255,255,.35);margin-top:6px}
+.cta-inner{text-align:center}
+.cta-inner h2{color:#fff;font-size:clamp(1.4rem,3vw,2rem);font-weight:900;margin-bottom:12px}
+.cta-inner p{color:rgba(255,255,255,.75);margin-bottom:28px;font-size:.95rem}
+.cta-btn{
+  display:inline-block;background:var(--gold);color:var(--deep);
+  font-weight:900;font-size:1.05rem;padding:16px 48px;border-radius:8px;
+  box-shadow:0 4px 24px rgba(240,165,0,.4);transition:.2s;
+}
+.cta-btn:hover{background:var(--gold-light)}
+.cta-sub-note{color:rgba(255,255,255,.45);font-size:.78rem;margin-top:14px;display:block}
+
+/* フッター */
+footer{background:#060f1e;color:rgba(255,255,255,.45);text-align:center;padding:20px;font-size:.8rem}
+footer strong{color:#fff}
+
+/* スマホ */
+@media(max-width:768px){
+  .hamburger{display:block}
+  .nav-btn{display:none}
+  .job-cards,.merit-grid,.staff-cards{grid-template-columns:1fr}
+  .gallery{grid-template-columns:1fr}
+  .gallery-item.wide{grid-column:span 1}
+  .gallery-item img,.gallery-item.wide img{height:200px}
+  .hero-content{padding:80px 20px 40px}
+  .recruiter-block{flex-direction:column;text-align:center}
+  section{padding:52px 20px}
+  .req-table,.req-table tr,.req-table th,.req-table td{display:block;width:100%}
+  .req-table th{border-bottom:none;width:100%;font-size:.82rem;padding:10px 14px}
+  .req-table td{border-top:none;padding:8px 14px 14px}
+  .faq-a{padding-left:18px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav" id="nav">
+  <span class="nav-logo">株式会社スタート・アップ</span>
+  <button class="nav-btn" onclick="document.querySelector('#cta').scrollIntoView({behavior:'smooth'})">応募する</button>
+  <button class="hamburger" id="hbg"><span></span><span></span><span></span></button>
+</nav>
+<div class="mob-menu" id="mob">
+  <a href="#job">仕事内容</a>
+  <a href="#env">職場環境</a>
+  <a href="#merit">働く魅力</a>
+  <a href="#voice">先輩の声</a>
+  <a href="#req">募集要項</a>
+  <a href="#cta" style="color:var(--gold);font-weight:700">応募する</a>
+</div>
+
+<!-- FVバナー（全画面背景画像） -->
+<div class="hero">
+  <!-- ここはサンプルです。実際には御社の倉庫内・作業スタッフの写真に差し替えてください -->
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🎌 成田市 ／ 軽作業スタッフ 募集</div>
+    <h1>電子部品を丁寧に。<br>成田の物流を、<br>一緒に支えませんか。</h1>
+    <p class="hero-sub">
+      未経験OK ・ 年間休日120日 ・ 残業月2時間<br>
+      冷暖房完備の清潔な倉庫。送迎バスで楽に通勤。<br>
+      正社員登用実績7名。長く安心して働ける職場です。
+    </p>
+    <div class="hero-tags">
+      <span class="hero-tag">✅ 未経験歓迎</span>
+      <span class="hero-tag">✅ 年間休日120日</span>
+      <span class="hero-tag">✅ 残業ほぼなし</span>
+      <span class="hero-tag">✅ 正社員登用あり</span>
+      <span class="hero-tag">✅ 送迎バス完備</span>
+    </div>
+    <a href="#cta" class="hero-cta">応募・お問い合わせはこちら →</a>
+    <p class="hero-note">選考前の職場見学も大歓迎 ／ ※ハローワーク紹介状が必要です</p>
+  </div>
+</div>
+<div class="hero-env-note">※FV背景はサンプル画像です。実際には御社の倉庫内・スタッフの写真に差し替えると、より伝わる採用ページになります</div>
+
+<!-- 仕事内容 -->
+<section id="job">
+  <div class="inner">
+    <span class="badge">Work</span>
+    <h2 class="sec">こんな仕事をお任せします</h2>
+    <p class="sec-lead">成田空港周辺の物流センターで、電子部品・自動車パーツの検品・仕分・梱包をお任せします。5kg程度の軽量品が中心です。</p>
+    <div class="job-cards">
+      <div class="job-card">
+        <div class="job-icon">📦</div>
+        <h3>入出庫・仕分作業</h3>
+        <p>届いた商品を種類・数量ごとに仕分けて格納します。チームで協力しながら進めるので、コツをつかめばリズムよく作業できます。</p>
+      </div>
+      <div class="job-card">
+        <div class="job-icon">🔍</div>
+        <h3>検品・ダメージチェック</h3>
+        <p>電子部品や自動車パーツに傷や不良がないか目視で確認。丁寧に見る習慣が自然と身につき、品質管理のスキルになります。</p>
+      </div>
+      <div class="job-card">
+        <div class="job-icon">📋</div>
+        <h3>梱包・ラベル張り</h3>
+        <p>出荷前の商品を安全に梱包し、ラベルを貼り付けます。シンプルな作業で、最初は時間がかかっても習得が早いです。</p>
+      </div>
+    </div>
+    <div style="margin-top:20px;padding:18px 20px;border-radius:8px;background:var(--gray);border-left:4px solid var(--gold);font-size:.9rem;line-height:1.8">
+      <strong style="color:var(--deep)">🏭 就業場所</strong>：成田市野毛平工業団地内の物流センター。
+      <strong>冷暖房完備</strong>で季節を問わず快適。スタッフは10名程度の少人数チーム。
+      <strong>京成成田駅東口から無料送迎バスあり</strong>、マイカー通勤・駐車場も完備。
+    </div>
+  </div>
+</section>
+
+<!-- 職場環境 写真ギャラリー（弱点メモ対応） -->
+<section class="env-bg" id="env">
+  <div class="inner">
+    <span class="badge env-badge">Workplace</span>
+    <h2 class="sec env-title">職場の雰囲気、写真でご確認ください</h2>
+    <p class="sec-lead env-lead">「倉庫って暗い・汚い・きつい」はここには当てはまりません。実際の環境をご覧ください。</p>
+    <div class="gallery">
+      <!-- 倉庫内・作業風景のダミー画像。実際の職場写真に差し替えてください -->
+      <div class="gallery-item wide">
+        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1200&h=500&fit=crop&q=80" alt="物流センター内の様子（サンプル）">
+        <div class="gallery-cap">冷暖房完備のきれいな作業エリア — 夏も冬も快適</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=640&h=380&fit=crop&q=80" alt="仕分け作業（サンプル）">
+        <div class="gallery-cap">整然とした棚・チームで進める仕分け作業</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=640&h=380&fit=crop&q=80" alt="倉庫内の様子（サンプル）">
+        <div class="gallery-cap">電子部品・自動車パーツ中心（5kg以下の軽量品）</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1473445730015-841f29a9490b?w=640&h=380&fit=crop&q=80" alt="成田エリアの物流（サンプル）">
+        <div class="gallery-cap">成田空港周辺の物流を地域から支える</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=640&h=380&fit=crop&q=80" alt="スタッフの雰囲気（サンプル）">
+        <div class="gallery-cap">和やかなチームの雰囲気</div>
+      </div>
+    </div>
+    <p class="gallery-note">※ここはサンプルです。実際には御社の倉庫内・スタッフの作業風景写真に差し替えます<br>実際の職場写真があると応募者の安心感が大きく高まります</p>
+  </div>
+</section>
+
+<!-- 働く魅力 -->
+<section class="merit-bg" id="merit">
+  <div class="inner">
+    <span class="badge">Merit</span>
+    <h2 class="sec">ここで働く3つの魅力</h2>
+    <p class="sec-lead">長く安心して働ける環境を整えています。</p>
+    <div class="merit-grid">
+      <div class="merit-card">
+        <div class="merit-icon">📅</div>
+        <div class="merit-val">120日</div>
+        <h3>年間休日＋残業少なめ</h3>
+        <p>土日祝・年末年始・夏季を含む年間120日の休暇。残業は月平均2時間とほぼなし。プライベートもしっかり確保できます。</p>
+      </div>
+      <div class="merit-card">
+        <div class="merit-icon">🎖️</div>
+        <div class="merit-val">7名実績</div>
+        <h3>正社員登用で将来も安定</h3>
+        <p>契約社員として入社後、正社員に登用された実績が3年間で7名。将来の安定を目指す方を積極的に応援しています。</p>
+      </div>
+      <div class="merit-card">
+        <div class="merit-icon">🚌</div>
+        <div class="merit-val">送迎バス</div>
+        <h3>通勤の心配なし</h3>
+        <p>京成成田駅東口から無料送迎バスあり。マイカー通勤も歓迎（駐車場完備）。通勤手当（上限月2万円）も支給します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩メッセージ -->
+<section id="voice">
+  <div class="inner">
+    <span class="badge">Voice</span>
+    <h2 class="sec">先輩からのメッセージ</h2>
+    <p class="sec-lead">一緒に働いている先輩たちからひとこと。</p>
+    <div class="staff-cards">
+      <!-- ここはサンプルです。実際には御社スタッフのお写真・メッセージに差し替えます -->
+      <div class="staff-card">
+        <img class="staff-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=640&h=380&fit=crop&crop=faces&q=80" alt="先輩スタッフ（サンプル）">
+        <div class="staff-body">
+          <div class="staff-name">鈴木 大輝（仮名）</div>
+          <div class="staff-role">軽作業スタッフ ／ 入社3年目</div>
+          <p class="staff-msg">「冷暖房完備で、電子部品という軽いものばかり扱うので体への負担が少ない。職場の人間関係も良く、毎日定時で帰れるので3年続けられています。」</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社スタッフのメッセージ・写真に差し替えます</p>
+        </div>
+      </div>
+      <div class="staff-card">
+        <img class="staff-photo" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=640&h=380&fit=crop&crop=faces&q=80" alt="先輩スタッフ（サンプル）">
+        <div class="staff-body">
+          <div class="staff-name">田中 さおり（仮名）</div>
+          <div class="staff-role">軽作業スタッフ ／ 入社1年目</div>
+          <p class="staff-msg">「倉庫のお仕事が初めてで不安でしたが、先輩が丁寧に教えてくれました。重い荷物がなく体の負担が少ないので、女性でも全然大丈夫です！」</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社スタッフのメッセージ・写真に差し替えます</p>
+        </div>
+      </div>
+      <div class="staff-card">
+        <img class="staff-photo" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=640&h=380&fit=crop&crop=faces&q=80" alt="先輩スタッフ（サンプル）">
+        <div class="staff-body">
+          <div class="staff-name">高橋 誠（仮名）</div>
+          <div class="staff-role">正社員（元契約社員） ／ 入社3年目</div>
+          <p class="staff-msg">「契約社員から正社員に登用していただきました。将来のことを考えて希望したら、会社がすぐに対応してくれました。ここで長く働いて良かったと思っています。」</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社スタッフのメッセージ・写真に差し替えます</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section style="background:var(--gray)">
+  <div class="inner">
+    <span class="badge">Schedule</span>
+    <h2 class="sec">社員の1日の流れ</h2>
+    <p class="sec-lead">軽作業スタッフの1日をご紹介します。</p>
+    <div class="tl-wrap">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">8:45</div>
+        <div class="tl-title">送迎バスで到着・着替え</div>
+        <div class="tl-desc">京成成田駅東口からの無料送迎バスで通勤。ロッカーで着替えて準備完了。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">9:00</div>
+        <div class="tl-title">始業・朝礼・作業確認</div>
+        <div class="tl-desc">全員で集まって朝礼。その日の担当エリアと作業内容を確認します。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">9:15</div>
+        <div class="tl-title">午前の作業（検品・仕分など）</div>
+        <div class="tl-desc">電子部品・自動車パーツの検品・仕分・ラベル張りを進めます。チームで連携しながら進めます。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">12:00</div>
+        <div class="tl-title">昼休憩（60分）</div>
+        <div class="tl-desc">ゆっくりランチタイム。お弁当を持参する方も多く、和やかな雰囲気です。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">13:00</div>
+        <div class="tl-title">午後の作業（入出庫・梱包など）</div>
+        <div class="tl-desc">入出庫・梱包・ダメージチェックを進めます。慣れてくると自分のペースで進められます。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">17:50</div>
+        <div class="tl-title">終業チェック・片付け</div>
+        <div class="tl-desc">作業エリアを整理し、翌日の確認事項を共有。5分で完了します。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">18:00</div>
+        <div class="tl-title">定時退社</div>
+        <div class="tl-desc">ほぼ毎日定時退社。送迎バスまたはマイカーで帰宅。夜の時間が自分のものです。</div>
+      </div>
+    </div>
+    <p style="font-size:.75rem;color:#aaa;margin-top:20px;text-align:center">※ここはサンプルです。実際には御社のスケジュールに差し替えます</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="inner">
+    <span class="badge">FAQ</span>
+    <h2 class="sec">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q"><span class="q-dot">Q</span>未経験でも応募できますか？</div>
+        <div class="faq-a">はい、大歓迎です。学歴・経験・資格は一切不問で、年齢も問いません。入社後は先輩スタッフが丁寧に教えますのでご安心ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="q-dot">Q</span>体力に自信がなくても大丈夫ですか？</div>
+        <div class="faq-a">大丈夫です。取り扱いは電子部品・自動車パーツ中心で、重さは5kg程度の軽量品がほとんど。重い荷物を持つ作業はほとんどなく、女性のスタッフも多く活躍中です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="q-dot">Q</span>残業はありますか？</div>
+        <div class="faq-a">月平均2時間とほぼありません。繁忙期のみ月2〜5時間程度お願いする場合があります。基本的に毎日定時退社です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="q-dot">Q</span>正社員になることはできますか？</div>
+        <div class="faq-a">はい、正社員登用制度があります。過去3年間で7名が正社員に登用されています。将来の安定を目指す方はぜひご相談ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="q-dot">Q</span>選考の流れを教えてください。</div>
+        <div class="faq-a">ハローワークで紹介状を発行後、面接1回のみです（書類選考なし）。面接後3日以内に結果をお電話でご連絡します。</div>
+      </div>
+    </div>
+    <p style="font-size:.75rem;color:#aaa;margin-top:16px;text-align:center">※ここはサンプルです。実際には御社のよくある質問に差し替えます</p>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="req-bg" id="req">
+  <div class="inner">
+    <span class="badge">Requirement</span>
+    <h2 class="sec">募集要項</h2>
+    <table class="req-table">
+      <tr><th>職種</th><td>軽作業スタッフ（フルタイム・契約社員）</td></tr>
+      <tr><th>仕事内容</th><td>物流センター内での入出庫・検品・仕分・梱包・ダメージチェック。取扱商品は電子部品・自動車パーツ（5kg程度）。</td></tr>
+      <tr><th>就業場所</th><td>千葉県成田市野毛平工業団地内（物流センター）</td></tr>
+      <tr><th>アクセス</th><td>京成成田駅東口から無料送迎バス（10分）<br>マイカー通勤可・駐車場完備</td></tr>
+      <tr><th>給与</th><td>時給 1,350〜1,450円（月額 約220,320〜236,640円）</td></tr>
+      <tr><th>就業時間</th><td>9:00〜18:00（休憩60分）<br>残業：月平均2時間（繁忙期のみ月2〜5時間）</td></tr>
+      <tr><th>休日・休暇</th><td>土・日・祝日、年末年始、夏季休暇　年間休日120日<br>入社6ヵ月後に年次有給休暇10日付与</td></tr>
+      <tr><th>待遇</th><td>各種社会保険完備、通勤手当（実費・上限月2万円）、退職金制度あり<br>昇給あり・賞与年2回（前年度実績10〜30万円）</td></tr>
+      <tr><th>雇用形態</th><td>契約社員（原則更新あり）・正社員登用あり（実績7名）</td></tr>
+      <tr><th>応募資格</th><td>学歴・経験・資格 不問 ／ 年齢不問 ／ 未経験歓迎</td></tr>
+      <tr><th>選考方法</th><td>面接1回（書類選考なし）<br>※ハローワーク紹介状が必要です</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 採用担当 + CTA -->
+<section class="cta-section" id="cta">
+  <div class="inner">
+    <div class="recruiter-block">
+      <!-- ここはサンプルです。採用担当者のお写真・メッセージに差し替えます -->
+      <img class="rec-photo" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当（サンプル）">
+      <div class="rec-text">
+        <h3>採用担当：中澤（仮名）</h3>
+        <p>「選考前の職場見学も大歓迎です。実際に現場を見てから応募を決めていただいても構いません。未経験でも丁寧に研修しますので、まずはお気軽にご連絡ください。」</p>
+        <p class="rec-sample">※ここはサンプルです。実際には採用担当者様のお写真・メッセージに差し替えます</p>
+      </div>
+    </div>
+    <div class="cta-inner">
+      <h2>次の一歩、踏み出しませんか？</h2>
+      <p>ご質問だけでも大歓迎です。まずはお気軽にお問い合わせください。</p>
+      <a href="https://start-up.c-co.jp/inquiry.php" class="cta-btn" target="_blank" rel="noopener">お問い合わせ・応募フォームへ →</a>
+      <span class="cta-sub-note">※選考にはハローワーク（成田公共職業安定所）の紹介状が必要です</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <strong>株式会社スタート・アップ</strong><br>
+  〒286-0826 千葉県成田市東和泉443-50（野毛平工業団地内）<br>
+  TEL: 080-5484-9577
+</footer>
+
+<script>
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',window.scrollY>40);
+});
+const hbg=document.getElementById('hbg');
+const mob=document.getElementById('mob');
+hbg.addEventListener('click',()=>mob.classList.toggle('open'));
+mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mob.classList.remove('open')));
+</script>
+</body>
+</html>
