@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>採用情報【FVバナー型】| 東和綜合警備保障株式会社</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { max-width: 100%; overflow-x: hidden; margin: 0; padding: 0; }
+    body { font-family: 'Noto Sans JP', sans-serif; color: #222; background: #0c1525; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* Nav */
+    nav {
+      position: absolute; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 32px; height: 68px;
+      background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, transparent 100%);
+    }
+    .nav-logo { color: #fff; font-weight: 700; font-size: 0.9rem; text-decoration: none; }
+    .nav-cta { border: 1px solid #f0b800; color: #f0b800; padding: 7px 20px; border-radius: 4px; text-decoration: none; font-size: 0.83rem; font-weight: 700; }
+
+    /* Hero — full viewport */
+    .hero {
+      position: relative; min-height: 82vh; display: flex;
+      flex-direction: column; justify-content: flex-end; overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=1600&h=900&fit=crop&q=80');
+      background-size: cover; background-position: center;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(12,21,37,0.3) 0%, rgba(12,21,37,0.85) 70%, #0c1525 100%);
+    }
+    .hero-content {
+      position: relative; z-index: 1; padding: 0 40px 64px; max-width: 800px;
+    }
+    .hero-label { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 20px; }
+    .hero-label .dot { width: 8px; height: 8px; background: #f0b800; border-radius: 50%; }
+    .hero-label span { color: #f0b800; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
+    .hero h1 { font-family: 'Noto Serif JP', serif; font-weight: 900; font-size: clamp(2.2rem, 6vw, 4rem); color: #fff; line-height: 1.25; margin: 0 0 20px; }
+    .hero h1 .accent { color: #f0b800; }
+    .hero-desc { color: #a8b8cc; font-size: clamp(0.9rem, 2vw, 1rem); line-height: 1.85; margin: 0 0 32px; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 36px; }
+    .htag { background: rgba(240,184,0,0.12); border: 1px solid rgba(240,184,0,0.35); color: #f0d060; padding: 4px 14px; border-radius: 100px; font-size: 0.8rem; }
+    .btn-hero { display: inline-block; background: #f0b800; color: #0c1525; font-weight: 700; padding: 15px 48px; border-radius: 5px; text-decoration: none; font-size: 1rem; }
+    .hero-sub-note { font-size: 0.8rem; color: #5a6e88; margin-top: 10px; }
+
+    /* Scroll arrow */
+    .scroll-arrow { position: absolute; bottom: 20px; right: 40px; z-index: 1; display: flex; flex-direction: column; align-items: center; gap: 4px; text-decoration: none; }
+    .scroll-arrow span { width: 1px; height: 60px; background: linear-gradient(180deg, transparent, #f0b800); display: block; }
+    .scroll-arrow p { color: #f0b800; font-size: 0.7rem; letter-spacing: 0.1em; margin: 0; writing-mode: vertical-rl; }
+
+    /* Main content */
+    main { background: #fff; }
+    .wrap { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+    section { padding: 72px 0; }
+    .alt-bg { background: #f4f6fa; max-width: 100%; padding: 72px 0; }
+    h2 { font-size: clamp(1.35rem, 3.5vw, 1.9rem); color: #0c1525; font-weight: 700; text-align: center; margin: 0 0 8px; }
+    .accent-bar { width: 48px; height: 4px; background: #f0b800; border-radius: 2px; margin: 10px auto 44px; }
+    .sample-note { font-size: 0.76rem; color: #bbb; margin-top: 12px; text-align: center; }
+
+    /* Feature cards */
+    .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+    .feature-item { padding: 32px 24px; border-right: 1px solid #e4eaf4; border-bottom: 1px solid #e4eaf4; }
+    .feature-item:nth-child(3n) { border-right: none; }
+    .feature-item:nth-last-child(-n+3) { border-bottom: none; }
+    .feature-num { font-family: 'Noto Serif JP', serif; font-size: 2.8rem; font-weight: 900; color: #f0b800; line-height: 1; margin-bottom: 10px; opacity: 0.9; }
+    .feature-item h3 { font-size: 0.97rem; color: #0c1525; font-weight: 700; margin: 0 0 8px; }
+    .feature-item p { font-size: 0.87rem; color: #555; line-height: 1.65; margin: 0; }
+
+    /* Image + text block */
+    .img-text { display: grid; grid-template-columns: 1fr 1fr; gap: 0; align-items: stretch; }
+    .img-text-img img { width: 100%; height: 100%; object-fit: cover; min-height: 320px; }
+    .img-text-body { padding: 40px 40px; display: flex; flex-direction: column; justify-content: center; }
+    .img-text-body h2 { text-align: left; }
+    .img-text-body .accent-bar { margin: 10px 0 28px; }
+    .img-text-body p { font-size: 0.92rem; color: #444; line-height: 1.8; margin: 0 0 16px; }
+
+    /* Requirements */
+    .req-table { width: 100%; border-collapse: collapse; }
+    .req-table th, .req-table td { padding: 13px 16px; border-bottom: 1px solid #e4eaf4; text-align: left; vertical-align: top; }
+    .req-table th { width: 30%; font-weight: 700; color: #0c1525; background: #f0f4fb; font-size: 0.88rem; white-space: nowrap; }
+    .req-table td { font-size: 0.88rem; color: #444; line-height: 1.65; }
+    .req-table tr:last-child th, .req-table tr:last-child td { border-bottom: none; }
+
+    /* Voice cards */
+    .voice-row { display: flex; flex-direction: column; gap: 20px; }
+    .voice-card { display: flex; gap: 20px; background: #fff; border-radius: 10px; padding: 24px; box-shadow: 0 2px 16px rgba(0,0,0,0.06); }
+    .voice-avatar { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+    .voice-body { flex: 1; }
+    .voice-name { font-weight: 700; color: #0c1525; font-size: 0.93rem; }
+    .voice-role { font-size: 0.78rem; color: #999; margin-bottom: 10px; }
+    .voice-body p { font-size: 0.88rem; color: #555; line-height: 1.7; margin: 0; }
+
+    /* FAQ */
+    .faq-list { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 12px; }
+    .faq-item { padding: 18px 22px; border-left: 3px solid #f0b800; background: #fff; border-radius: 0 8px 8px 0; box-shadow: 0 1px 8px rgba(0,0,0,0.05); }
+    .faq-q { font-weight: 700; color: #0c1525; margin-bottom: 8px; font-size: 0.93rem; }
+    .faq-a { color: #555; font-size: 0.88rem; line-height: 1.7; }
+
+    /* Dark CTA */
+    .dark-cta { background: #0c1525; padding: 80px 24px; text-align: center; }
+    .dark-cta h2 { color: #fff; font-family: 'Noto Serif JP', serif; font-size: clamp(1.5rem, 4vw, 2.4rem); margin-bottom: 16px; }
+    .dark-cta p { color: #6a7e96; margin: 0 0 36px; font-size: 0.97rem; line-height: 1.8; }
+    .btn-gold { display: inline-block; background: #f0b800; color: #0c1525; font-weight: 700; padding: 16px 56px; border-radius: 5px; text-decoration: none; font-size: 1.05rem; }
+    .dark-cta .cta-note { font-size: 0.8rem; color: #3a4e66; margin-top: 14px; }
+
+    /* Footer */
+    footer { background: #060e1a; color: #3a4e66; padding: 36px 24px; text-align: center; font-size: 0.83rem; line-height: 1.8; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav { padding: 0 16px; }
+      .hero-content { padding: 0 24px 48px; }
+      .scroll-arrow { display: none; }
+      .feature-grid { grid-template-columns: 1fr 1fr; }
+      .feature-item:nth-child(3n) { border-right: 1px solid #e4eaf4; }
+      .feature-item:nth-child(2n) { border-right: none; }
+      .feature-item:nth-last-child(-n+2) { border-bottom: none; }
+      .img-text { grid-template-columns: 1fr; }
+      .img-text-img img { min-height: 220px; }
+      .img-text-body { padding: 28px 24px; }
+      .voice-card { flex-direction: column; gap: 12px; }
+      .req-table th { display: block; width: 100%; border-bottom: none; padding-bottom: 4px; }
+      .req-table td { display: block; width: 100%; padding-top: 4px; }
+      .req-table tr { display: block; border-bottom: 1px solid #e4eaf4; padding: 6px 0; }
+      .req-table tr:last-child { border-bottom: none; }
+    }
+    @media (max-width: 480px) {
+      .feature-grid { grid-template-columns: 1fr; }
+      .feature-item { border-right: none; }
+      .feature-item:nth-last-child(-n+3) { border-bottom: 1px solid #e4eaf4; }
+      .feature-item:last-child { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Hero -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+
+  <nav>
+    <a class="nav-logo" href="#">東和綜合警備保障株式会社</a>
+    <a href="#cta" class="nav-cta">応募する</a>
+  </nav>
+
+  <div class="hero-content">
+    <div class="hero-label">
+      <span class="dot"></span>
+      <span>警備スタッフ 急募 5名</span>
+    </div>
+    <h1>週1日から、<span class="accent">あなたの<br>ペースで</span>働ける。</h1>
+    <p class="hero-desc">未経験・シニア・Wワーク大歓迎。<br>創立38年の地域密着警備会社が、新しい仲間を待っています。</p>
+    <div class="hero-tags">
+      <span class="htag">週1日〜OK</span>
+      <span class="htag">Wワーク可</span>
+      <span class="htag">未経験歓迎</span>
+      <span class="htag">シニア歓迎</span>
+      <span class="htag">直行直帰</span>
+      <span class="htag">日払いあり</span>
+    </div>
+    <a href="#cta" class="btn-hero">募集内容を見る</a>
+    <p class="hero-sub-note">面接1回のみ・書類選考なし・オンライン自主応募可</p>
+  </div>
+
+  <a href="#features" class="scroll-arrow" aria-label="スクロール">
+    <p>SCROLL</p>
+    <span></span>
+  </a>
+</div>
+
+<main>
+
+<!-- Features -->
+<section id="features">
+  <div class="wrap">
+    <h2>6つの「はたらきやすさ」</h2>
+    <div class="accent-bar"></div>
+    <div class="feature-grid">
+      <div class="feature-item">
+        <div class="feature-num">01</div>
+        <h3>週1日〜シフト自由</h3>
+        <p>自分のペースで働けます。本業の休日だけ、家事の合間に、Wワークとして。慣れたら日数を増やすことも可能。</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-num">02</div>
+        <h3>副業・Wワーク公式OK</h3>
+        <p>掛け持ちを公式に歓迎。「今の仕事を続けながら収入を増やしたい」方に選ばれています。</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-num">03</div>
+        <h3>シニアも安心・上限なし</h3>
+        <p>定年後から始めた方も多数在籍。年齢を問わず、長く活躍できる環境があります。</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-num">04</div>
+        <h3>直行直帰OK</h3>
+        <p>現場に直接集合して終わったら直帰。会社への立ち寄り不要で体への負担が少ない。マイカー通勤・駐車場完備。</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-num">05</div>
+        <h3>研修費22,800円支給</h3>
+        <p>新任研修（3日間・20時間）の費用は全額会社負担。資格・経験ゼロから安心スタートできます。</p>
+      </div>
+      <div class="feature-item">
+        <div class="feature-num">06</div>
+        <h3>日払い制度あり</h3>
+        <p>急な出費にも対応できる日払い制度。働いた分をすぐ手元に受け取れます。</p>
+      </div>
+    </div>
+    <p class="sample-note">※ここはサンプルです。実際には御社の特徴に差し替えます</p>
+  </div>
+</section>
+
+<!-- Image + Text -->
+<div class="alt-bg">
+  <div style="max-width:900px;margin:0 auto;overflow:hidden;border-radius:12px;box-shadow:0 4px 32px rgba(0,0,0,0.1);">
+    <div class="img-text">
+      <!-- 実際の現場・スタッフ写真があれば差し替えてください -->
+      <div class="img-text-img">
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=640&h=480&fit=crop&q=80" alt="警備業務のイメージ">
+      </div>
+      <div class="img-text-body">
+        <h2>地域を守る<br>誇りある仕事</h2>
+        <div class="accent-bar"></div>
+        <p>工事現場の交通誘導、駐車場・施設の安全管理、花火大会やコンサートなどのイベント警備。</p>
+        <p>目立つ仕事ではないかもしれませんが、「あなたがいるから安心できる」と地域の方に思ってもらえる、やりがいのある仕事です。</p>
+        <p>創立から38年、地域の安全を守り続けてきた実績がある会社で、あなたも一緒に働きませんか。</p>
+        <p class="sample-note" style="text-align:left;">※ここはサンプルです。御社の会社紹介文に差し替えます</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Requirements -->
+<section id="requirements">
+  <div class="wrap">
+    <h2>募集要項</h2>
+    <div class="accent-bar"></div>
+    <table class="req-table">
+      <tr><th>職種</th><td>警備業務（工事現場・駐車場・イベント警備）</td></tr>
+      <tr><th>雇用形態</th><td>契約社員（1年更新・原則更新あり）</td></tr>
+      <tr><th>勤務地</th><td>千葉県香取市新里974（直行直帰可）</td></tr>
+      <tr><th>給与</th><td>日給 10,500円（月額目安 231,000円／22日勤務の場合）</td></tr>
+      <tr><th>勤務時間</th><td>8:00〜17:00（休憩60分・時間外平均5時間／月）</td></tr>
+      <tr><th>休日・休暇</th><td>シフト制（年間休日105日）／有給休暇（6ヶ月後10日）</td></tr>
+      <tr><th>対象年齢</th><td>18歳以上（上限なし）</td></tr>
+      <tr><th>必要資格</th><td>不問（未経験者歓迎）</td></tr>
+      <tr><th>歓迎</th><td>未経験者・シニア・Wワーク・副業希望の方</td></tr>
+      <tr><th>待遇</th><td>雇用・労災・健康保険・厚生年金加入<br>日払い制度あり・マイカー通勤可・駐車場完備</td></tr>
+      <tr><th>研修</th><td>新任研修3日間（20時間）研修費22,800円支給</td></tr>
+      <tr><th>採用人数</th><td>5名</td></tr>
+      <tr><th>選考</th><td>書類選考なし・面接1回のみ（オンライン自主応募可）</td></tr>
+    </table>
+    <p class="sample-note">※ここはサンプルです。実際には御社の最新情報に差し替えます</p>
+  </div>
+</section>
+
+<!-- Day in life -->
+<div class="alt-bg">
+  <div class="wrap">
+    <h2>1日のスケジュール</h2>
+    <div class="accent-bar"></div>
+    <div style="max-width:580px;margin:0 auto;display:flex;flex-direction:column;gap:0;">
+      <div style="display:flex;gap:0;align-items:stretch;">
+        <div style="width:2px;background:#f0b800;margin:0 28px 0 20px;flex-shrink:0;"></div>
+        <div style="flex:1;padding-bottom:8px;">
+          <div style="display:flex;flex-direction:column;gap:20px;">
+            <div style="display:flex;align-items:flex-start;gap:16px;">
+              <div style="min-width:54px;color:#f0b800;font-weight:700;font-size:0.92rem;padding-top:2px;">8:00</div>
+              <div style="font-size:0.9rem;line-height:1.6;color:#333;"><strong>現場へ直行</strong> ─ マイカーで現場に集合。会社への立ち寄りなし。</div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:16px;">
+              <div style="min-width:54px;color:#f0b800;font-weight:700;font-size:0.92rem;padding-top:2px;">8:10</div>
+              <div style="font-size:0.9rem;line-height:1.6;color:#333;"><strong>朝礼・現場確認</strong> ─ 配置と安全注意事項を確認します。</div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:16px;">
+              <div style="min-width:54px;color:#f0b800;font-weight:700;font-size:0.92rem;padding-top:2px;">8:30</div>
+              <div style="font-size:0.9rem;line-height:1.6;color:#333;"><strong>業務開始</strong> ─ 交通誘導・施設巡回・イベント誘導など担当業務を開始。</div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:16px;">
+              <div style="min-width:54px;color:#f0b800;font-weight:700;font-size:0.92rem;padding-top:2px;">12:00</div>
+              <div style="font-size:0.9rem;line-height:1.6;color:#333;"><strong>昼休憩（60分）</strong> ─ 現場近くで自由に過ごします。</div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:16px;">
+              <div style="min-width:54px;color:#f0b800;font-weight:700;font-size:0.92rem;padding-top:2px;">13:00</div>
+              <div style="font-size:0.9rem;line-height:1.6;color:#333;"><strong>午後の業務</strong> ─ 確実・丁寧に業務を継続します。</div>
+            </div>
+            <div style="display:flex;align-items:flex-start;gap:16px;">
+              <div style="min-width:54px;color:#f0b800;font-weight:700;font-size:0.92rem;padding-top:2px;">17:00</div>
+              <div style="font-size:0.9rem;line-height:1.6;color:#333;"><strong>業務終了・直帰</strong> ─ 終礼後はそのまま帰宅。残業は月平均5時間。</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="sample-note">※ここはサンプルです。実際には御社スタッフの1日に差し替えます</p>
+  </div>
+</div>
+
+<!-- Voices -->
+<section id="voices">
+  <div class="wrap">
+    <h2>先輩スタッフの声</h2>
+    <div class="accent-bar"></div>
+    <div class="voice-row">
+      <div class="voice-card">
+        <!-- サンプル写真。御社スタッフの写真に差し替えてください -->
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩スタッフ" class="voice-avatar">
+        <div class="voice-body">
+          <div class="voice-name">田中 健一（仮名）</div>
+          <div class="voice-role">警備スタッフ・入社3年目・Wワーク入社</div>
+          <p>前の職場と掛け持ちで週2日から始めました。直行直帰なので体が楽で、研修でしっかり教えてもらえたので未経験でも全く困りませんでした。副業OKの環境がとてもありがたいです。</p>
+          <p class="sample-note" style="text-align:left;">※ここはサンプルです。実際には御社スタッフのメッセージに差し替えます</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩スタッフ" class="voice-avatar">
+        <div class="voice-body">
+          <div class="voice-name">鈴木 正男（仮名）</div>
+          <div class="voice-role">警備スタッフ・入社5年目・60代・定年後入社</div>
+          <p>定年後に週3日から始めました。同年代の仲間も多く、年齢的な不安はゼロでした。体を動かすので健康にもいいし、地元の花火大会の警備をやったときは地域に貢献できている実感がありました。</p>
+          <p class="sample-note" style="text-align:left;">※ここはサンプルです。実際には御社スタッフのメッセージに差し替えます</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩スタッフ" class="voice-avatar">
+        <div class="voice-body">
+          <div class="voice-name">佐藤 雄介（仮名）</div>
+          <div class="voice-role">警備スタッフ・入社1年目・未経験入社</div>
+          <p>まったく未経験でしたが、研修費用が会社から出たことで気軽に始められました。日払い制度も助かっています。現場で「ありがとう」と言ってもらえる瞬間がやりがいです。</p>
+          <p class="sample-note" style="text-align:left;">※ここはサンプルです。実際には御社スタッフのメッセージに差し替えます</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<div class="alt-bg" id="faq">
+  <div class="wrap">
+    <h2>よくある質問</h2>
+    <div class="accent-bar"></div>
+    <ul class="faq-list">
+      <li class="faq-item">
+        <div class="faq-q">週1日だけでも大丈夫ですか？</div>
+        <div class="faq-a">はい、大丈夫です。シフトは現場スケジュールに合わせて柔軟に組めます。週1日から始める方も多くいます。</div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q">副業・Wワークは可能ですか？</div>
+        <div class="faq-a">可能です。本業を続けながら空き日に勤務している方が多数います。掛け持ちを公式に歓迎しています。</div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q">資格・経験は必要ですか？</div>
+        <div class="faq-a">必要ありません。入社後の新任研修（3日間・20時間）の費用22,800円は全額会社負担です。</div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q">年齢の上限はありますか？</div>
+        <div class="faq-a">18歳以上であれば上限はありません。シニアの方も多数活躍していますので、ご安心ください。</div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q">日払いの使い方を教えてください</div>
+        <div class="faq-a">日払い制度をご用意しています。詳細は面接時にご説明します。通常は月末締め・翌月20日払いです。</div>
+      </li>
+    </ul>
+    <p class="sample-note">※ここはサンプルです。実際には御社のFAQに差し替えます</p>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="dark-cta" id="cta">
+  <h2>一緒に、地域の安全を守りませんか。</h2>
+  <p>「週何日から？」「Wワークって本当に大丈夫？」<br>気になることは、なんでも気軽にお問い合わせください。</p>
+  <a href="tel:0478523141" class="btn-gold">📞 0478-52-3141</a>
+  <p class="cta-note">選考は面接1回のみ・書類選考なし・オンライン自主応募可</p>
+</div>
+
+</main>
+
+<footer>
+  <p>東和綜合警備保障株式会社</p>
+  <p>〒287-0001 千葉県香取市佐原ロ2122-8 ／ 0478-52-3141</p>
+  <p style="margin-top:12px;">このページはサンプルです。掲載情報はハローワーク求人票（12060-01374661）をもとに作成しています。</p>
+</footer>
+
+</body>
+</html>
