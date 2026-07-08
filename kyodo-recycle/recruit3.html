@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 共同リサイクル株式会社</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#1a1a1a;background:#fff}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+:root{
+  --forest:#2a4a1a;
+  --forest-light:#3d6b28;
+  --moss:#4f7a34;
+  --lime:#8ab85e;
+  --white:#fff;
+  --bg-light:#f4f8f1;
+  --text:#333;
+  --gray:#666;
+}
+
+/* Nav */
+nav{position:sticky;top:0;z-index:100;background:rgba(42,74,26,.95);padding:0 5%}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-family:'Noto Serif JP',serif;font-size:clamp(.88rem,2.3vw,1rem);font-weight:700;color:#fff}
+.nav-links{display:flex;gap:1.8rem;list-style:none}
+.nav-links a{font-size:.88rem;color:rgba(255,255,255,.8);transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:var(--lime);color:var(--forest);padding:.45rem 1.1rem;border-radius:4px;font-size:.88rem;font-weight:700;transition:.2s}
+.nav-cta:hover{background:#9dcf70}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.hamburger span{display:block;width:24px;height:2px;background:#fff}
+.mobile-menu{display:none;position:fixed;top:60px;left:0;right:0;background:var(--forest);padding:1.5rem 5%;z-index:99}
+.mobile-menu ul{list-style:none;display:flex;flex-direction:column;gap:1.2rem}
+.mobile-menu a{font-size:1rem;color:rgba(255,255,255,.9);display:block;padding:.4rem 0;border-bottom:1px solid rgba(255,255,255,.15)}
+.mobile-cta{display:block;margin-top:1rem;background:var(--lime);color:var(--forest);text-align:center;padding:.8rem;border-radius:4px;font-weight:700}
+
+/* Hero - FVバナー型（全画面背景画像） */
+.hero{position:relative;min-height:80vh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1600&h=900&fit=crop&q=80');
+  background-size:cover;
+  background-position:center;
+}
+.hero-overlay{position:absolute;inset:0;background:rgba(20,40,14,.6)}
+.hero-content{position:relative;z-index:2;color:#fff;padding:2rem 5%;max-width:750px;margin-left:5%}
+.hero-tag{display:inline-block;background:var(--lime);color:var(--forest);font-size:.75rem;font-weight:700;padding:.3rem .9rem;border-radius:999px;margin-bottom:1.2rem;letter-spacing:.05em}
+.hero-content h1{
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(2rem,6vw,3.4rem);
+  line-height:1.25;
+  font-weight:700;
+  margin-bottom:1.2rem;
+  text-shadow:0 2px 12px rgba(0,0,0,.4)
+}
+.hero-sub{font-size:clamp(.9rem,2.5vw,1.1rem);line-height:1.9;margin-bottom:2rem;opacity:.92;max-width:520px}
+.hero-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-lime{background:var(--lime);color:var(--forest);padding:.9rem 2rem;border-radius:6px;font-size:1rem;font-weight:700;transition:.2s}
+.btn-lime:hover{background:#9dcf70}
+.btn-ghost{background:transparent;border:2px solid rgba(255,255,255,.7);color:#fff;padding:.9rem 2rem;border-radius:6px;font-size:1rem;font-weight:700;transition:.2s}
+.btn-ghost:hover{background:rgba(255,255,255,.15)}
+
+/* Stats bar */
+.stats-bar{background:var(--forest);padding:1.5rem 5%}
+.stats-inner{display:flex;gap:0;max-width:900px;margin:0 auto;flex-wrap:wrap}
+.stat-item{flex:1;min-width:140px;text-align:center;padding:.8rem;border-right:1px solid rgba(255,255,255,.15)}
+.stat-item:last-child{border-right:none}
+.stat-val{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,3.5vw,2rem);font-weight:700;color:var(--lime);line-height:1}
+.stat-label{font-size:.75rem;color:rgba(255,255,255,.7);margin-top:.3rem}
+
+/* Section */
+section{padding:4rem 5%}
+.section-inner{max-width:900px;margin:0 auto}
+.section-label{font-size:.75rem;font-weight:700;letter-spacing:.18em;color:var(--moss);margin-bottom:.4rem}
+.section-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,4vw,2rem);color:var(--forest);margin-bottom:1.5rem;line-height:1.4}
+.section-title span{color:var(--moss)}
+.divider{width:48px;height:3px;background:var(--lime);margin:1rem 0 2rem}
+.sample-note{font-size:.73rem;color:#aaa;margin-top:.4rem;font-style:italic}
+
+/* 2col */
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center;margin-top:1.5rem}
+.two-col-img{border-radius:12px;overflow:hidden}
+.two-col-img img{width:100%;height:300px;object-fit:cover}
+.two-col-text h3{font-family:'Noto Serif JP',serif;font-size:1.2rem;color:var(--forest);margin-bottom:1rem;line-height:1.5}
+.two-col-text p{font-size:.9rem;line-height:1.85;color:var(--text);margin-bottom:.8rem}
+
+/* Work steps */
+.bg-light{background:var(--bg-light)}
+.work-steps{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;margin-top:1.5rem}
+.work-step{background:#fff;border-radius:10px;padding:1.4rem;border-top:4px solid var(--forest);box-shadow:0 2px 10px rgba(0,0,0,.07)}
+.step-badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--forest);color:#fff;padding:.3rem .8rem;border-radius:4px;font-size:.78rem;font-weight:700;margin-bottom:.8rem}
+.work-step h4{font-size:.95rem;font-weight:700;color:var(--forest);margin-bottom:.5rem}
+.work-step p{font-size:.87rem;color:var(--gray);line-height:1.7}
+
+/* Timeline */
+.timeline{margin-top:1.5rem}
+.tl-item{display:flex;gap:1rem;margin-bottom:1rem}
+.tl-time{min-width:65px;font-weight:700;font-size:.88rem;color:var(--forest);padding-top:.1rem}
+.tl-bar{display:flex;flex-direction:column;align-items:center}
+.tl-dot{width:12px;height:12px;border-radius:50%;background:var(--lime);flex-shrink:0}
+.tl-line{width:2px;flex:1;background:#bfd8a8;margin:3px 0}
+.tl-text h4{font-size:.9rem;font-weight:700;margin-bottom:.2rem}
+.tl-text p{font-size:.83rem;color:var(--gray);line-height:1.6}
+
+/* Staff */
+.staff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:1.5rem}
+.staff-card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+.staff-card img{width:100%;height:180px;object-fit:cover}
+.staff-info{padding:1rem}
+.staff-name{font-weight:700;font-size:.9rem;color:var(--forest);margin-bottom:.2rem}
+.staff-role{font-size:.75rem;color:var(--gray);margin-bottom:.6rem}
+.staff-msg{font-size:.83rem;line-height:1.7;color:#444}
+
+/* Req table */
+.req-table{width:100%;border-collapse:collapse;margin-top:1.5rem}
+.req-table tr{border-bottom:1px solid #cce0b8}
+.req-table th{width:28%;padding:.9rem 1rem;background:var(--forest);color:#fff;font-size:.87rem;font-weight:700;text-align:left;vertical-align:top}
+.req-table td{padding:.9rem 1rem;font-size:.9rem;line-height:1.8;color:var(--text);vertical-align:top}
+
+/* FAQ */
+.faq-list{margin-top:1.5rem;display:flex;flex-direction:column;gap:.8rem}
+.faq-item{border:1px solid #c0d8a4;border-radius:8px;overflow:hidden}
+.faq-q{background:var(--bg-light);padding:1rem 1.2rem;font-weight:700;font-size:.9rem;color:var(--forest);display:flex;gap:.8rem;align-items:flex-start}
+.faq-q::before{content:'Q';background:var(--forest);color:#fff;border-radius:50%;min-width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:.75rem;flex-shrink:0;padding-top:2px}
+.faq-a{padding:1rem 1.2rem;font-size:.88rem;line-height:1.8;color:#444;display:flex;gap:.8rem;border-top:1px solid #c0d8a4}
+.faq-a::before{content:'A';background:var(--moss);color:#fff;border-radius:50%;min-width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:.75rem;flex-shrink:0;padding-top:2px}
+
+/* CTA */
+.cta-section{background:var(--forest);text-align:center;padding:4rem 5%;color:#fff}
+.cta-section h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,4vw,2rem);margin-bottom:1rem}
+.cta-section p{font-size:.95rem;opacity:.88;margin-bottom:2rem;line-height:1.8}
+.btn-lime-lg{display:inline-block;background:var(--lime);color:var(--forest);padding:1rem 2.5rem;border-radius:6px;font-size:1rem;font-weight:700;transition:.2s}
+.btn-lime-lg:hover{background:#9dcf70}
+.tel-link{display:block;font-size:1.3rem;font-weight:700;color:var(--lime);margin-top:1.2rem}
+
+/* Footer */
+footer{background:#111a0d;color:#889c78;text-align:center;padding:2rem 5%}
+footer .company{font-size:.95rem;font-weight:700;color:#fff;margin-bottom:.4rem}
+footer p{font-size:.82rem}
+footer .sample-footer{margin-top:.5rem;font-size:.75rem;color:#444}
+
+/* Responsive */
+@media(max-width:768px){
+  .hamburger{display:flex}
+  .nav-links,.nav-cta{display:none}
+  .mobile-menu.open{display:block}
+  .stats-inner{justify-content:center}
+  .stat-item{min-width:calc(50% - 1rem);border-right:none;border-bottom:1px solid rgba(255,255,255,.15)}
+  .two-col{grid-template-columns:1fr}
+  .work-steps{grid-template-columns:1fr}
+  .staff-grid{grid-template-columns:1fr}
+  .hero-content{margin-left:0}
+  .hero-btns{flex-direction:column}
+  .btn-lime,.btn-ghost{text-align:center}
+  .req-table tr{display:block;margin-bottom:1rem;border:1px solid #cce0b8;border-radius:8px;overflow:hidden}
+  .req-table th{display:block;width:100%}
+  .req-table td{display:block}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="logo">共同リサイクル株式会社｜採用情報</div>
+    <ul class="nav-links">
+      <li><a href="#job">仕事内容</a></li>
+      <li><a href="#merit">魅力</a></li>
+      <li><a href="#req">募集要項</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#apply" class="nav-cta">応募する</a>
+    <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="#job" onclick="toggleMenu()">仕事内容</a></li>
+    <li><a href="#merit" onclick="toggleMenu()">働く魅力</a></li>
+    <li><a href="#req" onclick="toggleMenu()">募集要項</a></li>
+    <li><a href="#faq" onclick="toggleMenu()">よくある質問</a></li>
+  </ul>
+  <a href="#apply" class="mobile-cta" onclick="toggleMenu()">応募する</a>
+</div>
+
+<!-- Hero FVバナー（全画面背景画像） -->
+<section class="hero">
+  <!-- ヒーロー画像はダミーです。御社の現場・施設の写真に差し替えると見栄えが大幅に向上します -->
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag">正社員募集 ／ 重機の操作・プラント作業員</div>
+    <h1>廃棄物を<br>資源に変える。<br>その仕事を<br>担ってほしい。</h1>
+    <p class="hero-sub">ショベルローダーとフォークリフトで、市町村・事業所の廃棄物を選別・圧縮・再資源化。昭和47年創業の共同リサイクルで、重機スキルを活かしてください。</p>
+    <div class="hero-btns">
+      <a href="#job" class="btn-lime">仕事内容を見る</a>
+      <a href="#apply" class="btn-ghost">今すぐ応募する</a>
+    </div>
+  </div>
+</section>
+
+<!-- Stats bar -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item"><div class="stat-val">54年</div><div class="stat-label">創業年数</div></div>
+    <div class="stat-item"><div class="stat-val">117名</div><div class="stat-label">従業員数</div></div>
+    <div class="stat-item"><div class="stat-val">105日</div><div class="stat-label">年間休日</div></div>
+    <div class="stat-item"><div class="stat-val">定時</div><div class="stat-label">退勤が基本</div></div>
+  </div>
+  <p style="text-align:center;color:rgba(255,255,255,.4);font-size:.7rem;margin-top:.8rem">※ここはサンプルです。実際の数値は御社の情報に差し替えます</p>
+</div>
+
+<!-- Job Detail -->
+<section id="job">
+  <div class="section-inner">
+    <div class="section-label">WHAT YOU DO</div>
+    <h2 class="section-title">「重機の操作・プラント作業員」<span>の仕事を、もっと詳しく。</span></h2>
+    <div class="divider"></div>
+    <div class="two-col">
+      <div class="two-col-img">
+        <!-- 現場の写真はサンプルです。御社の施設写真に差し替えてください -->
+        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=640&h=480&fit=crop&q=80" alt="作業現場イメージ">
+      </div>
+      <div class="two-col-text">
+        <h3>「廃棄物処理業」という枠に収まらない、<br>環境インフラの仕事。</h3>
+        <p>市町村・航空会社・大型スーパーから排出されたビン・缶・ペットボトル等の廃棄物を受け入れ、ショベルローダーで集積→手作業で選別→圧縮機でコンパクトに→フォークリフトで出荷準備する一連の工程を担います。</p>
+        <p>「仕事内容がざっくりして分かりにくい」という声を受け、下に具体的な4つのステップで説明しています。</p>
+        <p class="sample-note">※このページは採用ページのサンプルです。実際の写真・内容は御社の情報に差し替えます</p>
+      </div>
+    </div>
+    <div class="work-steps" style="margin-top:2.5rem">
+      <div class="work-step">
+        <div class="step-badge">STEP 1 / ショベルローダー</div>
+        <h4>廃棄物の受入・搬入</h4>
+        <p>収集されたビン・缶・ペットボトル等がリサイクルセンターへ到着。ショベルローダーを操作し、種類別の集積エリアへ丁寧に搬入します。</p>
+        <p class="sample-note">※ここはサンプルです。実際の作業内容は御社の指示内容に差し替えます</p>
+      </div>
+      <div class="work-step">
+        <div class="step-badge">STEP 2 / 手作業</div>
+        <h4>種類別の手作業選別</h4>
+        <p>ビン・缶・ペットボトル・不燃物などを手作業で仕分け。正確な選別がリサイクル品質を高め、資源回収率を上げる重要工程です。</p>
+        <p class="sample-note">※ここはサンプルです。実際の作業内容は御社の指示内容に差し替えます</p>
+      </div>
+      <div class="work-step">
+        <div class="step-badge">STEP 3 / フォークリフト＋機械</div>
+        <h4>圧縮プラント操作</h4>
+        <p>フォークリフトで圧縮機へ搬送し、缶・ペットボトルを圧縮・梱包。2種の重機スキルが同時に活きる工程です。</p>
+        <p class="sample-note">※ここはサンプルです。実際の作業内容は御社の指示内容に差し替えます</p>
+      </div>
+      <div class="work-step">
+        <div class="step-badge">STEP 4 / 出荷</div>
+        <h4>再生有価物の出荷準備</h4>
+        <p>圧縮・梱包された資源物を出荷エリアへフォークリフトで移動。廃棄物が「資源」に生まれ変わる最終工程です。</p>
+        <p class="sample-note">※ここはサンプルです。実際の作業内容は御社の指示内容に差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Merit -->
+<section id="merit" class="bg-light">
+  <div class="section-inner">
+    <div class="section-label">MERITS</div>
+    <h2 class="section-title">ここで働く<span>3つの理由</span></h2>
+    <div class="divider"></div>
+    <div class="two-col">
+      <div class="two-col-text">
+        <h3>📅 定時退勤・年休105日で<br>プライベートも充実</h3>
+        <p>就業時間8:00〜17:00、時間外労働は基本なし。年間休日105日の週休二日制です。仕事とプライベートの両立ができる環境を整えています。</p>
+        <p>6ヶ月経過後には年次有給休暇が10日付与されます。マイカー通勤可・駐車場完備で通いやすさも◎。</p>
+      </div>
+      <div class="two-col-img">
+        <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=640&h=380&fit=crop&q=80" alt="働きやすい環境イメージ">
+      </div>
+    </div>
+    <div class="two-col" style="margin-top:2.5rem">
+      <div class="two-col-img">
+        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=640&h=380&fit=crop&q=80" alt="重機操作のイメージ">
+      </div>
+      <div class="two-col-text">
+        <h3>🚜 ショベルローダー＋フォークリフト<br>2種スキルが身につく</h3>
+        <p>いずれか一方の資格で入社し、もう一方は現場で覚える方も多数。2種類の重機を使いこなせるようになると、転職市場でも価値の高いスキルセットになります。</p>
+        <p>入社後の資格取得サポートがあります（詳細は面接でご確認ください）。</p>
+        <p class="sample-note">※ここはサンプルです。実際のサポート内容は御社の制度に差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- One Day -->
+<section>
+  <div class="section-inner">
+    <div class="section-label">ONE DAY</div>
+    <h2 class="section-title">社員の<span>1日の流れ</span></h2>
+    <div class="divider"></div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">07:45</div>
+        <div class="tl-bar"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-text"><h4>出勤・朝礼・安全確認</h4><p>当日の搬入スケジュール・作業割り当て・安全ポイントを共有</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">08:00</div>
+        <div class="tl-bar"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-text"><h4>廃棄物の受入・ショベルローダー搬入</h4><p>集積エリアへ廃棄物を丁寧に搬入。種類別に置き場所を分けます</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">09:15</div>
+        <div class="tl-bar"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-text"><h4>手作業選別</h4><p>ビン・缶・ペットボトル等を手作業で仕分け。正確さが資源品質を左右します</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">10:30</div>
+        <div class="tl-bar"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-text"><h4>圧縮プラント操作</h4><p>フォークリフトで搬送→圧縮機操作→梱包。資源化の中核作業です</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:00</div>
+        <div class="tl-bar"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-text"><h4>昼休憩（60分）</h4><p>しっかりリフレッシュ。午前・午後に各15分の小休憩もあります</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-bar"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-text"><h4>午後の受入・処理継続</h4><p>引き続き廃棄物の受入・選別・圧縮を担当。チームで役割を分担します</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">16:30</div>
+        <div class="tl-bar"><div class="tl-dot"></div></div>
+        <div class="tl-text"><h4>清掃・点検 → 17:00 定時退勤</h4><p>作業エリアの清掃と設備点検を行い、定時でキッパリと帰れます</p></div>
+      </div>
+    </div>
+    <p class="sample-note" style="margin-top:1rem">※ここはサンプルです。実際のスケジュールは御社の運用に合わせて差し替えます</p>
+  </div>
+</section>
+
+<!-- Staff -->
+<section class="bg-light">
+  <div class="section-inner">
+    <div class="section-label">VOICES</div>
+    <h2 class="section-title">先輩からの<span>メッセージ</span></h2>
+    <div class="divider"></div>
+    <div class="staff-grid">
+      <!-- 先輩社員の写真はサンプルです。実際には御社スタッフの写真に差し替えます -->
+      <div class="staff-card">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=240&fit=crop&crop=faces&q=80" alt="田中浩二さん（仮名）">
+        <div class="staff-info">
+          <div class="staff-name">田中 浩二（仮名）</div>
+          <div class="staff-role">重機オペレーター ／ 入社8年</div>
+          <p class="staff-msg">ショベルローダーで動かした廃棄物が圧縮・梱包されてリサイクルに回る。その流れが毎日見えるのが、この仕事を続けられる理由です。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社社員のコメントに差し替えます</p>
+        </div>
+      </div>
+      <div class="staff-card">
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=240&fit=crop&crop=faces&q=80" alt="鈴木修平さん（仮名）">
+        <div class="staff-info">
+          <div class="staff-name">鈴木 修平（仮名）</div>
+          <div class="staff-role">プラント作業員 ／ 入社3年</div>
+          <p class="staff-msg">フォークリフト1つで入社しましたが、ショベルローダーも現場で習得。2種のオペレーターになれたことが大きな自信になっています。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社社員のコメントに差し替えます</p>
+        </div>
+      </div>
+      <div class="staff-card">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=240&fit=crop&crop=faces&q=80" alt="佐藤明美さん（仮名）">
+        <div class="staff-info">
+          <div class="staff-name">佐藤 明美（仮名）</div>
+          <div class="staff-role">選別スタッフ ／ 入社5年</div>
+          <p class="staff-msg">廃棄物を扱うイメージがありましたが、実際はチームの雰囲気が明るく、お互い助け合いながら働いています。定時退勤できるのも続けられている大きな理由です。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社社員のコメントに差し替えます</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Req -->
+<section id="req">
+  <div class="section-inner">
+    <div class="section-label">REQUIREMENTS</div>
+    <h2 class="section-title">募集要項</h2>
+    <div class="divider"></div>
+    <table class="req-table">
+      <tr><th>職種</th><td>重機の操作・プラント作業員</td></tr>
+      <tr><th>雇用形態</th><td>正社員（試用期間2〜3ヶ月 ／ 試用期間中 日給9,000円）</td></tr>
+      <tr><th>仕事内容</th><td>ショベルローダー・フォークリフトを使用した廃棄物（ビン・缶・ペットボトル等）の受入・選別・圧縮業務、その他附随する業務</td></tr>
+      <tr><th>必要資格</th><td>ショベルローダー等運転技能者 または フォークリフト運転技能者（いずれか一方で応募可）</td></tr>
+      <tr><th>賃金</th><td>日給 9,000円〜11,000円（月換算 194,400円〜237,600円）<br>通勤手当あり（実費・上限7,000円/月）</td></tr>
+      <tr><th>昇給・賞与</th><td>昇給あり（前年度実績あり）／ 賞与年2回（前年度実績 計0.5ヶ月分）</td></tr>
+      <tr><th>就業時間</th><td>8:00〜17:00（休憩90分）時間外労働：基本なし</td></tr>
+      <tr><th>休日</th><td>日曜日・その他 週休二日制 ／ 年間休日105日<br>年次有給休暇 10日（6ヶ月後）</td></tr>
+      <tr><th>勤務地</th><td>多古リサイクルセンター<br>千葉県香取郡多古町飯笹150番地6<br>（成田空港駅より車20分 ／ マイカー通勤可・駐車場完備）</td></tr>
+      <tr><th>各種保険</th><td>雇用保険・労災保険・健康保険・厚生年金</td></tr>
+      <tr><th>採用人数</th><td>1名</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="bg-light">
+  <div class="section-inner">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">よくある質問</h2>
+    <div class="divider"></div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">ショベルローダーかフォークリフト、どちらか一方しか持っていません。応募できますか？</div>
+        <div class="faq-a"><div>はい、どちらか一方の資格があれば応募できます。もう一方の資格は入社後に取得していただける体制です。<p class="sample-note">※ここはサンプルです。実際の制度は御社の内容に差し替えます</p></div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">廃棄物を扱う仕事ですが、臭いや汚れが気になります。</div>
+        <div class="faq-a"><div>扱う廃棄物はビン・缶・ペットボトル等が中心です。屋内禁煙・受動喫煙対策済みの環境で働けます。詳細は面接時にご確認ください。<p class="sample-note">※ここはサンプルです。実際の作業環境は御社の情報に差し替えます</p></div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">年間休日や残業について教えてください。</div>
+        <div class="faq-a"><div>年間休日105日（日曜日＋その他の週休二日制）。就業時間は8:00〜17:00で、時間外労働は基本ありません。<p class="sample-note">※ここはサンプルです。実際の内容は御社の求人情報に差し替えます</p></div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">選考の流れと勤務地を教えてください。</div>
+        <div class="faq-a"><div>書類選考（7日以内通知）→ 面接1回 → 合否通知（5日以内）。勤務地は千葉県香取郡多古町の多古リサイクルセンターです。成田空港駅より車で20分・駐車場完備。<p class="sample-note">※ここはサンプルです。実際の内容は御社の求人情報に差し替えます</p></div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">賞与や昇給の制度はありますか？</div>
+        <div class="faq-a"><div>昇給あり（前年度実績：1時間62〜250円換算）、賞与 年2回（前年度実績：計0.5ヶ月分）。継続して働くほど待遇が向上する環境です。<p class="sample-note">※ここはサンプルです。実際の内容は御社の情報に差し替えます</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Final -->
+<section id="apply" class="cta-section">
+  <h2>一緒に、環境を守る仕事をしませんか。</h2>
+  <p>応募にはハローワーク発行の紹介状が必要です。<br>お近くのハローワークにご相談のうえ、紹介状と履歴書（写真貼付）を<br>本社（千葉県成田市三里塚光ケ丘1-862）宛に郵送ください。</p>
+  <a href="#apply" class="btn-lime-lg">採用担当にお問い合わせ</a>
+  <a href="tel:0476352635" class="tel-link">☎ 0476-35-2635</a>
+  <p style="color:rgba(255,255,255,.5);font-size:.82rem;margin-top:.5rem">E-mail: shinohara@kyodorecycle.co.jp</p>
+</section>
+
+<footer>
+  <div class="company">共同リサイクル株式会社</div>
+  <p>〒286-0117 千葉県成田市三里塚光ケ丘1-862</p>
+  <p>TEL: 0476-35-2635 ／ FAX: 0476-35-2835</p>
+  <p class="sample-footer">このページは採用ページのサンプルです（C案・FVバナー型）</p>
+</footer>
+
+<script>
+function toggleMenu(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+</script>
+</body>
+</html>
