@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>看護師・准看護師 採用情報 ｜ しすい整形クリニック</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#1e293b;line-height:1.7}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ナビ */
+header{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(10,40,65,.85);backdrop-filter:blur(8px)}
+nav{max-width:1100px;margin:0 auto;padding:0 20px;height:64px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:clamp(.85rem,2.5vw,1rem);font-weight:700;color:#fff;letter-spacing:.04em}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{font-size:.875rem;color:rgba(255,255,255,.8);transition:color .2s}
+.nav-links a:hover{color:#4dd0e1}
+.btn-nav{background:#0d9488;color:#fff!important;padding:8px 20px;border-radius:6px;font-weight:700}
+.btn-nav:hover{background:#0f766e!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{width:24px;height:2px;background:#fff;border-radius:2px}
+.mobile-nav{position:fixed;top:64px;left:0;right:0;background:rgba(10,40,65,.97);z-index:99}
+.nav-menu{display:flex;flex-direction:column;padding:20px;gap:16px;list-style:none}
+.nav-menu a{color:rgba(255,255,255,.9)}
+.hidden{display:none!important}
+
+/* FVバナー（全画面・写真主役） */
+.hero{position:relative;min-height:80vh;display:flex;align-items:center;padding-top:64px}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center}
+/* 既存サイト(shisui-seikei.jp)の外観・クリニック内部写真に差し替え推奨 */
+.hero-overlay{position:absolute;inset:0;background:rgba(10,30,50,.6)}
+.hero-content{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:60px 24px;text-align:center}
+.hero-eyebrow{display:inline-block;border:1px solid rgba(77,208,225,.7);color:#4dd0e1;padding:6px 20px;border-radius:20px;font-size:.8rem;letter-spacing:.12em;margin-bottom:28px}
+.hero-title{font-family:'Noto Serif JP',serif;font-size:clamp(2rem,6vw,3.5rem);font-weight:700;color:#fff;line-height:1.3;margin-bottom:24px;letter-spacing:.04em}
+.hero-title em{color:#4dd0e1;font-style:normal}
+.hero-sub{font-size:clamp(.9rem,2.5vw,1.1rem);color:rgba(255,255,255,.85);margin-bottom:40px;max-width:620px;margin-left:auto;margin-right:auto;line-height:1.8}
+.hero-badges{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:44px}
+.badge{background:rgba(13,148,136,.3);border:1px solid rgba(13,148,136,.7);color:#fff;padding:6px 18px;border-radius:20px;font-size:.82rem}
+.btn-hero{display:inline-block;background:#0d9488;color:#fff;padding:16px 52px;border-radius:8px;font-weight:700;font-size:1.05rem;transition:all .2s;box-shadow:0 4px 20px rgba(13,148,136,.5);letter-spacing:.06em}
+.btn-hero:hover{background:#0f766e;transform:translateY(-2px)}
+
+/* セクション共通 */
+section{padding:72px 20px}
+.container{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:52px}
+.section-title h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,3.8vw,2rem);font-weight:700;color:#0a2841}
+.section-title p{color:#64748b;margin-top:12px}
+.title-bar{width:40px;height:3px;background:#0d9488;margin:12px auto 0}
+
+/* 魅力ポイント */
+.points{background:#fff}
+.points-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.point-card{text-align:center;padding:36px 24px;border-radius:16px;background:#f0fdfa;border-bottom:4px solid #0d9488}
+.point-icon{width:64px;height:64px;background:linear-gradient(135deg,#0d9488,#0891b2);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:1.8rem;box-shadow:0 4px 16px rgba(13,148,136,.3)}
+.point-card h3{font-size:1rem;font-weight:700;color:#0a2841;margin-bottom:12px}
+.point-card p{color:#475569;font-size:.88rem;line-height:1.75}
+
+/* 募集要項 */
+.req-section{background:#0a2841}
+.req-section .section-title h2{color:#fff}
+.req-section .section-title p{color:rgba(255,255,255,.6)}
+.req-table{width:100%;border-collapse:collapse}
+.req-table th,.req-table td{padding:14px 20px;text-align:left;border-bottom:1px solid rgba(255,255,255,.1);font-size:.9rem;vertical-align:top}
+.req-table th{color:#4dd0e1;font-weight:700;width:140px;white-space:nowrap}
+.req-table td{color:rgba(255,255,255,.85)}
+.req-table tr:last-child th,.req-table tr:last-child td{border-bottom:none}
+.tag-pill{display:inline-block;background:rgba(13,148,136,.3);border:1px solid rgba(13,148,136,.6);color:#4dd0e1;padding:3px 12px;border-radius:12px;font-size:.78rem;margin:2px 4px 2px 0}
+
+/* FAQ */
+.faq{background:#f8fafc}
+.faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+.faq-item details{background:#fff;border:1px solid #e2e8f0;border-radius:10px;overflow:hidden}
+.faq-item summary{padding:16px 20px;font-weight:700;color:#1e293b;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;font-size:.92rem}
+.faq-item summary::after{content:'+';font-size:1.2rem;color:#0d9488;flex-shrink:0}
+.faq-item details[open] summary::after{content:'−'}
+.faq-item details[open] summary{color:#0a2841;background:#f0fdfa}
+.faq-body{padding:0 20px 16px;color:#475569;font-size:.88rem;line-height:1.8}
+
+/* 1日の流れ */
+.day{background:#fff}
+.timeline{max-width:640px;margin:0 auto;position:relative}
+.timeline::before{content:'';position:absolute;left:68px;top:0;bottom:0;width:2px;background:#99f6e4}
+.timeline-item{display:flex;gap:18px;margin-bottom:28px;position:relative}
+.timeline-time{flex-shrink:0;width:76px;text-align:right;font-size:.82rem;font-weight:700;color:#0d9488;padding-top:2px}
+.timeline-dot{flex-shrink:0;width:12px;height:12px;background:#0d9488;border-radius:50%;margin-top:5px;border:2px solid #fff;box-shadow:0 0 0 2px #0d9488}
+.timeline-content h4{font-size:.9rem;font-weight:700;color:#1e293b;margin-bottom:4px}
+.timeline-content p{font-size:.82rem;color:#64748b}
+
+/* 先輩メッセージ */
+.voices{background:#0a2841}
+.voices .section-title h2{color:#fff}
+.voices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.voice-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:12px;padding:26px 22px}
+.voice-header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.voice-avatar{width:48px;height:48px;border-radius:50%;object-fit:cover;border:2px solid #0d9488}
+.voice-name{font-weight:700;font-size:.88rem;color:#fff}
+.voice-meta{font-size:.75rem;color:rgba(255,255,255,.5)}
+.voice-card p{color:rgba(255,255,255,.78);font-size:.85rem;line-height:1.75}
+.sample-note{font-size:.75rem;color:rgba(255,255,255,.35);margin-top:8px}
+
+/* 採用担当者 */
+.manager{background:#f0fdfa;padding:64px 20px}
+.manager-card{max-width:640px;margin:0 auto;background:#fff;border-radius:14px;padding:36px;box-shadow:0 4px 24px rgba(13,148,136,.1);display:flex;gap:28px;align-items:center;border-top:4px solid #0d9488}
+.manager-img{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.manager-body h3{font-size:1rem;font-weight:700;color:#0a2841;margin-bottom:8px}
+.manager-body p{color:#475569;font-size:.88rem;margin-bottom:16px;line-height:1.7}
+.btn-teal{display:inline-block;background:#0d9488;color:#fff;padding:10px 24px;border-radius:8px;font-weight:700;font-size:.9rem;transition:all .2s}
+.btn-teal:hover{background:#0f766e}
+
+/* 応募CTA */
+.cta{background:linear-gradient(135deg,#0a2841 0%,#0d4f6b 50%,#0d9488 100%);padding:80px 20px;text-align:center;color:#fff}
+.cta h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;margin-bottom:16px}
+.cta p{font-size:.95rem;margin-bottom:36px;opacity:.88;max-width:520px;margin-left:auto;margin-right:auto}
+.btn-white{display:inline-block;background:#fff;color:#0a2841;padding:16px 52px;border-radius:8px;font-weight:700;font-size:1.05rem;transition:all .2s;box-shadow:0 4px 16px rgba(0,0,0,.2)}
+.btn-white:hover{background:#f0fdfa;transform:translateY(-2px)}
+
+/* フッター */
+footer{background:#060f1a;color:#64748b;padding:40px 20px;text-align:center}
+footer p{font-size:.82rem;margin-bottom:8px}
+
+.s-note{font-size:.75rem;color:#94a3b8;margin-top:8px}
+
+@media(max-width:768px){
+  .hamburger{display:flex}
+  .nav-links{display:none}
+  .hero{min-height:75vh}
+  .points-grid{grid-template-columns:1fr}
+  .voices-grid{grid-template-columns:1fr}
+  .manager-card{flex-direction:column;text-align:center}
+  .req-table th,.req-table td{display:block;width:100%!important}
+  .req-table th{white-space:normal;padding:10px 16px}
+  .req-table td{padding:10px 16px 16px}
+  .timeline::before{left:56px}
+  .timeline-time{width:60px;font-size:.78rem}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <nav>
+    <div class="logo">しすい整形クリニック 採用情報</div>
+    <ul class="nav-links">
+      <li><a href="#points">働く魅力</a></li>
+      <li><a href="#requirements">募集要項</a></li>
+      <li><a href="#voices">先輩の声</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#contact" class="btn-nav">応募する</a></li>
+    </ul>
+    <div class="hamburger" onclick="toggleMenu()" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+  <div class="mobile-nav hidden" id="mobileNav">
+    <ul class="nav-menu">
+      <li><a href="#points" onclick="toggleMenu()">働く魅力</a></li>
+      <li><a href="#requirements" onclick="toggleMenu()">募集要項</a></li>
+      <li><a href="#voices" onclick="toggleMenu()">先輩の声</a></li>
+      <li><a href="#faq" onclick="toggleMenu()">FAQ</a></li>
+      <li><a href="#contact" onclick="toggleMenu()">応募する</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- FVバナー（写真主役） -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <!-- 既存サイト(shisui-seikei.jp)の外観・クリニック内部・スタッフ写真があれば差し替え推奨 -->
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">RECRUIT 2026 ｜ 看護師・准看護師</div>
+    <h1 class="hero-title">
+      准看護師も、ブランクも、<br><em>歓迎します。</em>
+    </h1>
+    <p class="hero-sub">しすい整形クリニックは、JR酒々井駅前の外来専門クリニック。<br>急変が少なく、シフトは柔軟。「資格はあるけど不安」という方こそ、ぜひご相談ください。</p>
+    <div class="hero-badges">
+      <span class="badge">准看護師OK</span>
+      <span class="badge">経験不問</span>
+      <span class="badge">午前のみOK</span>
+      <span class="badge">酒々井駅 徒歩1分</span>
+      <span class="badge">残業なし</span>
+    </div>
+    <a href="#contact" class="btn-hero">採用担当に問い合わせる</a>
+  </div>
+</section>
+
+<!-- 働く魅力 -->
+<section class="points" id="points">
+  <div class="container">
+    <div class="section-title">
+      <h2>選ばれる理由</h2>
+      <div class="title-bar"></div>
+    </div>
+    <div class="points-grid">
+      <div class="point-card">
+        <div class="point-icon">🕐</div>
+        <h3>シフトは自分で選べる</h3>
+        <p>午前のみ・午後のみ・フルタイムと週2〜5日。月ごとのシフト制で、家族の都合に合わせて調整できます。土曜は9〜12時のみ。残業なし。</p>
+      </div>
+      <div class="point-card">
+        <div class="point-icon">✅</div>
+        <h3>准看護師・経験不問</h3>
+        <p>看護師・准看護師どちらもOK。整形外科未経験でも、外来は急変が少なく、先輩スタッフが丁寧にサポートします。ブランクがある方も活躍中。</p>
+      </div>
+      <div class="point-card">
+        <div class="point-icon">🏥</div>
+        <h3>長く安心して働ける環境</h3>
+        <p>退職金制度（勤続1年〜）・正社員登用制度・育休取得実績あり。2016年開院の地域密着クリニックで、スタッフ22名（うち女性18名）の温かいチームです。</p>
+      </div>
+    </div>
+    <p class="s-note" style="text-align:center;margin-top:24px;color:#94a3b8">※ここはサンプルです。実際には御社の強みに合わせた内容に差し替えます</p>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="req-section" id="requirements">
+  <div class="container">
+    <div class="section-title">
+      <h2>募集要項</h2>
+      <div class="title-bar"></div>
+    </div>
+    <table class="req-table">
+      <tr>
+        <th>職種</th>
+        <td>看護師・准看護師（パートタイム）</td>
+      </tr>
+      <tr>
+        <th>仕事内容</th>
+        <td>外来看護業務（採血・問診・点滴・電子カルテ入力・医師補助）<br>診療科：整形外科・リハビリ科・スポーツ整形外科・内科・リウマチ科</td>
+      </tr>
+      <tr>
+        <th>応募資格</th>
+        <td>
+          <span class="tag-pill">看護師</span><span class="tag-pill">准看護師</span>
+          <span class="tag-pill">経験不問</span><span class="tag-pill">学歴不問</span>
+        </td>
+      </tr>
+      <tr>
+        <th>給与</th>
+        <td>時給 2,000円／通勤手当 実費支給（上限10,000円/月）</td>
+      </tr>
+      <tr>
+        <th>就業時間</th>
+        <td>9:00〜18:00の間で3時間以上（午前・午後・フルタイム等、相談可）<br>土曜：9:00〜12:00　時間外なし</td>
+      </tr>
+      <tr>
+        <th>休日</th>
+        <td>水曜・日曜・祝日（週2〜5日・シフト制）／年末年始・夏季</td>
+      </tr>
+      <tr>
+        <th>勤務地</th>
+        <td>千葉県印旛郡酒々井町中央台2-1-6 酒々井西駅前ビル<br>（JR酒々井駅 徒歩1分・無料駐車場完備）</td>
+      </tr>
+      <tr>
+        <th>福利厚生</th>
+        <td>
+          <span class="tag-pill">退職金（勤続1年〜）</span>
+          <span class="tag-pill">正社員登用制度</span>
+          <span class="tag-pill">育休取得実績</span>
+          <span class="tag-pill">無料駐車場</span>
+        </td>
+      </tr>
+      <tr>
+        <th>選考</th>
+        <td>書類選考なし →面接1回（ハローワーク紹介状・履歴書を面接時持参）</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-title">
+      <h2>よくある質問</h2>
+      <div class="title-bar"></div>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <details>
+          <summary>准看護師でも応募できますか？</summary>
+          <div class="faq-body">はい、准看護師でもご応募いただけます。看護師・准看護師のいずれかの免許があればOKです。</div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary>整形外科は未経験でも大丈夫ですか？</summary>
+          <div class="faq-body">経験不問です。外来の採血・点滴・電子カルテ入力・医師補助が中心です。急変が少ない環境なので、ブランクがある方も安心して慣れていただけます。<p class="s-note" style="color:#94a3b8">※サンプルです。実際の状況に合わせて差し替えをお願いします</p></div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary>勤務日数・時間はどのくらい柔軟ですか？</summary>
+          <div class="faq-body">週2日〜5日で相談可能。9:00〜18:00の間で3時間以上、午前のみ・午後のみ・フルタイムなど、ご家庭の状況に合わせて相談します。土曜は9:00〜12:00のみ。</div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary>育児・介護と両立できますか？</summary>
+          <div class="faq-body">月ごとのシフト制なので、家族の予定を事前に伝えやすい環境です。育休取得実績もあり、産後復帰されたスタッフも活躍しています。</div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary>正社員になることはできますか？</summary>
+          <div class="faq-body">正社員登用制度があります。まずパートとして働きながら、希望の方はご相談ください。</div>
+        </details>
+      </div>
+    </div>
+    <p class="s-note" style="text-align:center;margin-top:20px">※FAQはサンプルです。よく寄せられる質問に差し替えます</p>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section class="day">
+  <div class="container">
+    <div class="section-title">
+      <h2>スタッフの1日（サンプル）</h2>
+      <div class="title-bar"></div>
+      <p>午前パート・週4日勤務の場合</p>
+    </div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-time">8:50</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h4>出勤・申し送り</h4>
+          <p>当日の予約・特記事項を確認し、診療準備。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">9:00</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h4>外来診療スタート</h4>
+          <p>問診・バイタル測定・電子カルテ入力。患者さんと丁寧に向き合います。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">10:00</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h4>採血・点滴・処置補助</h4>
+          <p>チームで声をかけ合いながら進めます。急変が少なく落ち着いた雰囲気。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">11:50</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h4>引き継ぎ・片付け</h4>
+          <p>午後スタッフへ申し送り。器具の確認を終えて退勤準備。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">12:00</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-content">
+          <h4>退勤</h4>
+          <p>残業なし。子どもの帰宅前に自宅で過ごせます。</p>
+        </div>
+      </div>
+    </div>
+    <p class="s-note" style="text-align:center;margin-top:16px">※ここはサンプルです。実際の業務の流れに差し替えます</p>
+  </div>
+</section>
+
+<!-- 先輩メッセージ -->
+<section class="voices" id="voices">
+  <div class="container">
+    <div class="section-title">
+      <h2>先輩スタッフの声</h2>
+      <div class="title-bar"></div>
+    </div>
+    <div class="voices-grid">
+      <div class="voice-card">
+        <div class="voice-header">
+          <!-- 実際のスタッフ写真があれば差し替え推奨 -->
+          <img class="voice-avatar" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+          <div>
+            <div class="voice-name">Aさん（仮名）</div>
+            <div class="voice-meta">准看護師 / 入職2年目</div>
+          </div>
+        </div>
+        <p>他科から転職しましたが、整形外科外来は急変が少なくて覚えやすかったです。先輩が質問しやすい雰囲気で、今は普通に仕事を回せています。</p>
+        <p class="sample-note">※ここはサンプルです。実際のスタッフコメントに差し替えます</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-header">
+          <img class="voice-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+          <div>
+            <div class="voice-name">Bさん（仮名）</div>
+            <div class="voice-meta">看護師 / 入職4年目</div>
+          </div>
+        </div>
+        <p>育休後に週3・午前のみで復帰しました。月のシフトを自分で希望できるので、子どもの参観日も気兼ねなく休めます。退職金もあって長く働けそうです。</p>
+        <p class="sample-note">※ここはサンプルです。実際のスタッフコメントに差し替えます</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-header">
+          <img class="voice-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+          <div>
+            <div class="voice-name">Cさん（仮名）</div>
+            <div class="voice-meta">看護師 / 入職6年目</div>
+          </div>
+        </div>
+        <p>駅前なので電車でもマイカーでも通えて便利。残業がないのが一番助かっています。外来クリニックって、思っていたより働きやすいんだと実感しています。</p>
+        <p class="sample-note">※ここはサンプルです。実際のスタッフコメントに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 採用担当者 -->
+<section class="manager" id="contact">
+  <div class="container">
+    <div class="section-title">
+      <h2>採用担当者より</h2>
+      <div class="title-bar"></div>
+    </div>
+    <div class="manager-card">
+      <!-- 採用担当者の写真があれば差し替え推奨 -->
+      <img class="manager-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当（サンプル）">
+      <div class="manager-body">
+        <h3>採用担当：松浦（人事課）</h3>
+        <p>「資格はあるけど、今の生活に合う職場かどうかが心配」という方のご相談を歓迎します。シフト・業務内容について、気軽にお問い合わせください。</p>
+        <p class="s-note">※ここはサンプルです。実際の担当者コメントに差し替えます</p>
+        <a href="mailto:info@shisui-seikei.jp" class="btn-teal">メールで問い合わせる</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 応募CTA -->
+<section class="cta">
+  <div class="container">
+    <h2>まずはお気軽にご連絡ください</h2>
+    <p>書類選考なし・面接1回のみ。見学・相談だけでもOKです。<br>准看護師の方も、ブランクのある方も、歓迎しています。</p>
+    <a href="mailto:info@shisui-seikei.jp" class="btn-white">メールで問い合わせる</a>
+  </div>
+</section>
+
+<footer>
+  <p>医療法人社団 成龍会 しすい整形クリニック</p>
+  <p>〒285-0922 千葉県印旛郡酒々井町中央台2-1-6 酒々井西駅前ビル</p>
+  <p>TEL：043-481-6611　Email：info@shisui-seikei.jp</p>
+  <p style="margin-top:16px;font-size:.75rem">※このページはサンプルです。制作会社が提案用に作成しました。</p>
+</footer>
+
+<script>
+function toggleMenu(){
+  const m=document.getElementById('mobileNav');
+  m.classList.toggle('hidden');
+}
+</script>
+</body>
+</html>
