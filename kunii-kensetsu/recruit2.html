@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>現場監督（建築）募集 | 国井建設株式会社 B案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#222;background:#fff}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ナビ */
+.nav{background:#111;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:60px;position:sticky;top:0;z-index:100}
+.nav-logo{color:#fff;font-weight:700;font-size:clamp(0.9rem,2.5vw,1.05rem)}
+.nav-logo em{color:#f5a623;font-style:normal}
+.nav-links{display:flex;gap:24px}
+.nav-links a{color:rgba(255,255,255,0.8);font-size:0.88rem;transition:color 0.2s}
+.nav-links a:hover{color:#f5a623}
+.nav-cta{background:#f5a623;color:#111!important;padding:8px 18px;border-radius:4px;font-weight:700;font-size:0.85rem!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px}
+.mobile-menu{display:none;flex-direction:column;background:#111;padding:16px 24px;gap:12px}
+.mobile-menu a{color:#fff;font-size:0.95rem;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.1)}
+.mobile-menu a:last-child{border-bottom:none}
+
+/* ヒーロー */
+.hero{position:relative;min-height:78vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-img{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center}
+.hero-overlay{position:absolute;inset:0;background:rgba(10,10,10,0.72)}
+.hero-content{position:relative;text-align:center;color:#fff;padding:40px 24px;max-width:780px}
+.hero-catch{font-size:clamp(0.85rem,2.5vw,1rem);color:#f5a623;font-weight:700;letter-spacing:0.2em;margin-bottom:14px;text-transform:uppercase}
+.hero-title{font-size:clamp(2rem,7vw,3.6rem);font-weight:900;line-height:1.2;margin-bottom:18px}
+.hero-title em{color:#f5a623;font-style:normal}
+.hero-sub{font-size:clamp(0.92rem,2.5vw,1.1rem);opacity:0.85;margin-bottom:36px;line-height:1.8;max-width:620px;margin-left:auto;margin-right:auto}
+.btn-main{display:inline-block;background:#f5a623;color:#111;font-size:1.05rem;font-weight:900;padding:18px 44px;border-radius:4px;transition:background 0.2s;letter-spacing:0.05em}
+.btn-main:hover{background:#e09510}
+.btn-sub{display:inline-block;border:2px solid rgba(255,255,255,0.6);color:#fff;font-size:0.95rem;font-weight:700;padding:16px 32px;border-radius:4px;margin-left:12px;transition:all 0.2s}
+.btn-sub:hover{border-color:#f5a623;color:#f5a623}
+
+/* 帯CTA */
+.cta-bar{background:#f5a623;padding:20px 24px;text-align:center}
+.cta-bar p{font-size:clamp(1rem,3vw,1.2rem);font-weight:900;color:#111;margin-bottom:12px}
+.cta-bar a{display:inline-block;background:#111;color:#f5a623;font-weight:700;padding:12px 36px;border-radius:4px;font-size:1rem;letter-spacing:0.05em}
+
+/* セクション */
+section{padding:64px 24px}
+.section-inner{max-width:880px;margin:0 auto}
+.section-label{font-size:0.78rem;font-weight:700;color:#f5a623;letter-spacing:0.18em;text-transform:uppercase;margin-bottom:8px}
+.section-title{font-size:clamp(1.5rem,5vw,2.2rem);font-weight:900;color:#111;line-height:1.3;margin-bottom:12px}
+.section-lead{color:#555;line-height:1.8;margin-bottom:48px}
+.bg-dark{background:#111}
+.bg-light{background:#f8f8f8}
+
+/* ステップ形式アピール */
+.step-list{list-style:none;counter-reset:step}
+.step-item{display:flex;gap:20px;align-items:flex-start;padding:28px 0;border-bottom:1px solid #eee}
+.step-item:last-child{border-bottom:none}
+.step-num{min-width:52px;height:52px;background:#f5a623;color:#111;font-size:1.3rem;font-weight:900;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-body h3{font-size:1.08rem;font-weight:700;color:#111;margin-bottom:8px}
+.step-body p{font-size:0.9rem;color:#555;line-height:1.75}
+
+/* 数字バー */
+.stat-grid{display:flex;flex-wrap:wrap;gap:20px;justify-content:center;margin-top:40px}
+.stat-item{text-align:center;flex:1 1 180px;max-width:220px}
+.stat-num{font-size:clamp(2rem,5vw,3rem);font-weight:900;color:#f5a623;display:block;line-height:1}
+.stat-unit{font-size:0.9rem;color:#f5a623;font-weight:700}
+.stat-label{font-size:0.8rem;color:rgba(255,255,255,0.65);margin-top:8px}
+.stat-sample{font-size:0.7rem;color:rgba(255,255,255,0.3);margin-top:2px}
+
+/* インタビューカード */
+.interview-list{display:flex;flex-direction:column;gap:32px}
+.interview-card{display:flex;gap:24px;align-items:flex-start;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 14px rgba(0,0,0,0.07)}
+.interview-img{width:140px;height:170px;object-fit:cover;flex-shrink:0}
+.interview-body{padding:20px 20px 20px 0}
+.interview-name{font-size:0.9rem;font-weight:700;color:#111;margin-bottom:4px}
+.interview-role{font-size:0.78rem;color:#f5a623;margin-bottom:12px;font-weight:700}
+.interview-q{font-size:0.82rem;font-weight:700;color:#f5a623;margin-bottom:4px}
+.interview-a{font-size:0.88rem;color:#444;line-height:1.75;margin-bottom:10px}
+.interview-sample{font-size:0.72rem;color:#bbb}
+
+/* 募集要項 */
+.spec-table{width:100%;border-collapse:collapse}
+.spec-table tr{border-bottom:1px solid #e8e8e8}
+.spec-table th{background:#111;color:#f5a623;font-weight:700;font-size:0.88rem;width:140px;padding:14px 16px;text-align:left;vertical-align:top}
+.spec-table td{padding:14px 16px;font-size:0.9rem;color:#444;line-height:1.7}
+.spec-highlight{background:#fff8ec;font-weight:700;color:#c07600!important}
+
+/* 1日の流れ */
+.day-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.day-step{background:#fff;border-radius:8px;padding:20px;border-top:3px solid #f5a623;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.day-time{font-size:0.88rem;font-weight:700;color:#f5a623;margin-bottom:6px}
+.day-step h4{font-size:0.92rem;font-weight:700;color:#111;margin-bottom:6px}
+.day-step p{font-size:0.82rem;color:#666;line-height:1.6}
+.day-sample{font-size:0.72rem;color:#bbb;margin-top:6px}
+
+/* FAQ */
+.faq-list{list-style:none}
+.faq-item{border-left:4px solid #f5a623;background:#fff;margin-bottom:12px;border-radius:0 8px 8px 0;box-shadow:0 1px 6px rgba(0,0,0,0.05)}
+.faq-q{display:flex;align-items:center;gap:12px;padding:16px 20px;cursor:pointer;font-weight:700;font-size:0.95rem;color:#111}
+.faq-icon{font-size:1.1rem;color:#f5a623;min-width:20px}
+.faq-a{padding:0 20px 16px 52px;font-size:0.9rem;color:#555;line-height:1.75;display:none}
+.faq-item.open .faq-a{display:block}
+.faq-toggle{margin-left:auto;color:#f5a623;font-size:1.2rem;transition:transform 0.3s}
+.faq-item.open .faq-toggle{transform:rotate(45deg)}
+
+/* CTAボックス */
+.cta-final{background:linear-gradient(135deg,#111 0%,#222 100%);border-radius:12px;padding:52px 24px;text-align:center}
+.cta-final h2{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:900;color:#fff;margin-bottom:16px}
+.cta-final p{color:rgba(255,255,255,0.75);line-height:1.8;margin-bottom:32px}
+
+/* フッター */
+footer{background:#000;color:rgba(255,255,255,0.5);text-align:center;padding:24px;font-size:0.8rem}
+
+/* スマホ固定バー */
+.fixed-cta{display:none;position:fixed;bottom:0;left:0;right:0;background:#f5a623;padding:12px 24px;z-index:200;justify-content:center;gap:12px;align-items:center}
+.fixed-cta p{font-size:0.9rem;font-weight:700;color:#111}
+.fixed-cta a{background:#111;color:#f5a623;font-weight:700;padding:10px 24px;border-radius:4px;font-size:0.9rem;white-space:nowrap}
+
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .mobile-menu.is-open{display:flex}
+  .hero{min-height:60vh}
+  .hero-title{font-size:clamp(1.8rem,7vw,2.8rem)}
+  .btn-sub{margin-left:0;margin-top:12px;display:block}
+  .interview-card{flex-direction:column}
+  .interview-img{width:100%;height:200px}
+  .interview-body{padding:16px}
+  .day-steps{grid-template-columns:1fr}
+  .spec-table{display:block}
+  .spec-table tr{display:block;padding:12px 0}
+  .spec-table th,.spec-table td{display:block;width:100%;padding:4px 0}
+  .spec-table th{background:none;color:#f5a623;font-size:0.82rem}
+  .fixed-cta{display:flex}
+  body{padding-bottom:64px}
+}
+</style>
+</head>
+<body>
+
+<!-- ナビ -->
+<nav class="nav">
+  <div class="nav-logo">国井建設<em>採用サイト</em></div>
+  <div class="nav-links">
+    <a href="#appeal">選ばれる理由</a>
+    <a href="#voice">社員の声</a>
+    <a href="#spec">募集要項</a>
+    <a href="#faq">FAQ</a>
+    <a href="#entry" class="nav-cta">応募する</a>
+  </div>
+  <button class="hamburger" aria-label="メニュー" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#appeal" onclick="toggleMenu()">選ばれる理由</a>
+  <a href="#voice" onclick="toggleMenu()">社員の声</a>
+  <a href="#spec" onclick="toggleMenu()">募集要項</a>
+  <a href="#faq" onclick="toggleMenu()">FAQ</a>
+  <a href="#entry" onclick="toggleMenu()">応募する</a>
+</div>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-catch">Construction Supervisor / Narita, Chiba</p>
+    <h1 class="hero-title">住宅も店舗も<br><em>任せてもらえる</em>現場監督へ</h1>
+    <p class="hero-sub">国井建設は設立40年超。成田を拠点に木造・鉄骨・コンクリートの多彩な案件を手がける総合建設会社です。少数精鋭だからこそ、早期に自分の現場を持てる環境があります。</p>
+    <a href="#entry" class="btn-main">応募・お問い合わせ</a>
+    <a href="#spec" class="btn-sub">募集要項を見る</a>
+  </div>
+</section>
+
+<!-- 帯CTA（1か所目） -->
+<div class="cta-bar">
+  <p>現場のリアルな雰囲気が気になる方は、まずお問い合わせください</p>
+  <a href="http://www.kuniikensetsu.com/contact/" target="_blank" rel="noopener">フォームで問い合わせる（無料）</a>
+</div>
+
+<!-- なぜ国井建設か -->
+<section id="appeal">
+  <div class="section-inner">
+    <p class="section-label">Why Kunii Kensetsu</p>
+    <h2 class="section-title">「ここで成長できる」3つの理由</h2>
+    <ul class="step-list">
+      <li class="step-item">
+        <div class="step-num">01</div>
+        <div class="step-body">
+          <h3>多彩な案件を、年間複数こなせる</h3>
+          <p>住宅（木造・コンクリート）・流通店舗・アパート・マンションと案件の幅が広く、1年で複数種の現場を経験できます。大きな会社では同じ種類の現場ばかり…ということが多いですが、国井建設なら多様な構造と向き合えます。対応件数や案件比率についてはお気軽にお問い合わせください。<br><small style="color:#aaa">※ここはサンプルです。実際の件数・案件比率に差し替えます</small></p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">02</div>
+        <div class="step-body">
+          <h3>20人規模だからこそ、職場の雰囲気が分かりやすい</h3>
+          <p>全社員20名。上司・先輩との距離が近く、「何でも聞ける」空気感が自然に生まれています。入社後は先輩が現場に同行してフォロー。職場の雰囲気については面接でどんなことでも聞いてください。<br><small style="color:#aaa">※ここはサンプルです。実際のチーム文化・雰囲気に差し替えます</small></p>
+        </div>
+      </li>
+      <li class="step-item">
+        <div class="step-num">03</div>
+        <div class="step-body">
+          <h3>月給40〜60万円＋賞与年150〜250万円</h3>
+          <p>スキルと実績が給与に反映される仕組み。退職金共済加入・昇給制度ありと、長く安心して働ける基盤があります。</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- 数字で見る -->
+<section class="bg-dark">
+  <div class="section-inner">
+    <p class="section-label">By the Numbers</p>
+    <h2 class="section-title" style="color:#fff;margin-bottom:8px">数字で見る国井建設</h2>
+    <p style="color:rgba(255,255,255,0.55);font-size:0.8rem;margin-bottom:0">※給与・賞与の数字はサンプルです。実際の数字に差し替えます</p>
+    <div class="stat-grid">
+      <div class="stat-item">
+        <span class="stat-num">44<span class="stat-unit">年+</span></span>
+        <p class="stat-label">創業年数（昭和57年設立）</p>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">100<span class="stat-unit">日</span></span>
+        <p class="stat-label">年間休日数</p>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">40〜<span class="stat-unit">万円</span></span>
+        <p class="stat-label">月給（基本給）</p>
+        <p class="stat-sample">※ここはサンプルです</p>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">2<span class="stat-unit">回</span></span>
+        <p class="stat-label">賞与（年間・実績150〜250万円）</p>
+        <p class="stat-sample">※ここはサンプルです</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 社員インタビュー -->
+<section id="voice" class="bg-light">
+  <div class="section-inner">
+    <p class="section-label">Employee Interview</p>
+    <h2 class="section-title">先輩社員に聞く「国井建設のリアル」</h2>
+    <p style="font-size:0.78rem;color:#aaa;margin-bottom:32px">※以下はサンプルです。実際には御社スタッフのインタビューに差し替えます</p>
+    <div class="interview-list">
+      <div class="interview-card">
+        <!-- 先輩写真サンプル -->
+        <img class="interview-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=280&h=340&fit=crop&crop=faces&q=80" alt="先輩社員サンプル">
+        <div class="interview-body">
+          <p class="interview-name">田中 勇太（仮名）</p>
+          <p class="interview-role">現場監督 / 入社7年目</p>
+          <p class="interview-q">Q. 1年間でどんな現場を担当しますか？</p>
+          <p class="interview-a">住宅が一番多いですが、店舗やアパートも入るので飽きません。木造と鉄骨を同じ年に経験できたりして、思っていたより早く幅が広がりました。先輩に聞けばすぐ答えてもらえる環境なので、不安は少なかったですね。</p>
+          <span class="interview-sample">※ここはサンプルです。実際には御社スタッフのインタビューに差し替えます</span>
+        </div>
+      </div>
+      <div class="interview-card">
+        <img class="interview-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=280&h=340&fit=crop&crop=faces&q=80" alt="先輩社員サンプル">
+        <div class="interview-body">
+          <p class="interview-name">佐藤 誠一（仮名）</p>
+          <p class="interview-role">現場監督 / 入社12年目</p>
+          <p class="interview-q">Q. 職場の雰囲気を教えてください。</p>
+          <p class="interview-a">20人しかいないので、みんな顔と名前が一致します（笑）。飲み会とか無理に誘われる感じもないし、仕事中は気軽に相談できる。社長も普通に現場に出てくるので、距離感が近い会社です。</p>
+          <span class="interview-sample">※ここはサンプルです。実際には御社スタッフのインタビューに差し替えます</span>
+        </div>
+      </div>
+      <div class="interview-card">
+        <img class="interview-img" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=280&h=340&fit=crop&crop=faces&q=80" alt="先輩社員サンプル">
+        <div class="interview-body">
+          <p class="interview-name">中村 健志（仮名）</p>
+          <p class="interview-role">現場監督 / 入社3年目</p>
+          <p class="interview-q">Q. 入社して驚いたことはありますか？</p>
+          <p class="interview-a">「思ったより任せてもらえる」という感じです。若手でも現場をリードする場面が早くから来るので、成長スピードが速い。不安なときは先輩が必ずフォローしてくれます。</p>
+          <span class="interview-sample">※ここはサンプルです。実際には御社スタッフのインタビューに差し替えます</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 帯CTA（2か所目） -->
+<div class="cta-bar">
+  <p>まずは話を聞くだけでも大歓迎です</p>
+  <a href="http://www.kuniikensetsu.com/contact/" target="_blank" rel="noopener">お問い合わせはこちら</a>
+</div>
+
+<!-- 1日の流れ -->
+<section id="day">
+  <div class="section-inner">
+    <p class="section-label">A Day in the Life</p>
+    <h2 class="section-title">現場監督の1日の流れ</h2>
+    <p style="font-size:0.78rem;color:#aaa;margin-bottom:32px">※以下はサンプルです。実際には御社の業務スケジュールに差し替えます</p>
+    <div class="day-steps">
+      <div class="day-step">
+        <p class="day-time">8:00</p>
+        <h4>出社・朝礼・現場へ</h4>
+        <p>作業員へのブリーフィング・安全確認</p>
+        <p class="day-sample">※ここはサンプルです</p>
+      </div>
+      <div class="day-step">
+        <p class="day-time">9:00</p>
+        <h4>施工管理・品質チェック</h4>
+        <p>工程ごとの進捗確認・検査立合い</p>
+        <p class="day-sample">※ここはサンプルです</p>
+      </div>
+      <div class="day-step">
+        <p class="day-time">12:00</p>
+        <h4>昼食・休憩（80分）</h4>
+        <p>先輩とランチで情報交換することも</p>
+        <p class="day-sample">※ここはサンプルです</p>
+      </div>
+      <div class="day-step">
+        <p class="day-time">13:20</p>
+        <h4>午後の確認・写真記録</h4>
+        <p>進捗写真・資材手配・連絡調整</p>
+        <p class="day-sample">※ここはサンプルです</p>
+      </div>
+      <div class="day-step">
+        <p class="day-time">15:30</p>
+        <h4>見積・書類作成</h4>
+        <p>事務所で見積書・工程表の更新</p>
+        <p class="day-sample">※ここはサンプルです</p>
+      </div>
+      <div class="day-step">
+        <p class="day-time">17:00</p>
+        <h4>終業</h4>
+        <p>翌日の段取り確認して退社</p>
+        <p class="day-sample">※ここはサンプルです</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section id="spec" class="bg-light">
+  <div class="section-inner">
+    <p class="section-label">Job Description</p>
+    <h2 class="section-title">募集要項</h2>
+    <table class="spec-table">
+      <tr><th>職種</th><td>現場監督（建築）</td></tr>
+      <tr><th>仕事内容</th><td>建築工事現場の管理・工事完了検査の立合い・完成物件の点検立合い・見積書作成および材料手配（住宅・流通店舗・マンション等、多様な現場）</td></tr>
+      <tr><th>雇用形態</th><td>正社員（雇用期間の定めなし）</td></tr>
+      <tr><th>給与</th><td class="spec-highlight">月給 400,000円〜600,000円<br>賞与年2回（実績：150万〜250万円）<br>昇給あり（月5,000〜10,000円）</td></tr>
+      <tr><th>就業時間</th><td>8:00〜17:00（休憩80分）　月平均残業30時間</td></tr>
+      <tr><th>休日</th><td class="spec-highlight">年間休日 100日（日曜・祝日・他）<br>年次有給休暇 10日（6ヶ月後）</td></tr>
+      <tr><th>勤務地</th><td>千葉県成田市並木町211（JR成田駅より車5分）転勤なし・マイカー通勤可（駐車場あり）</td></tr>
+      <tr><th>必要資格</th><td>1級建築施工管理技士（必須）・普通免許AT限定不可（必須）<br>建築工事経験2年以上（あれば尚可）</td></tr>
+      <tr><th>待遇</th><td>各種社会保険完備・通勤手当（上限2万円/月）・退職金制度あり（勤続1年以上）・退職金共済加入</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <p class="section-label">FAQ</p>
+    <h2 class="section-title">よくある質問</h2>
+    <ul class="faq-list">
+      <li class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-icon">Q</span>どんな現場を担当できますか？<span class="faq-toggle">＋</span></div>
+        <div class="faq-a">住宅・流通店舗・アパート・マンションなど幅広く、木造・鉄骨・コンクリート造すべてを手がけます。1年に複数の現場種別を経験できるのが特徴です。担当件数の詳細はお問い合わせください。<br><small style="color:#aaa">※ここはサンプルです。実際の情報に差し替えます</small></div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-icon">Q</span>職場の雰囲気が分かりません。教えてもらえますか？<span class="faq-toggle">＋</span></div>
+        <div class="faq-a">全社員20人の少人数組織です。チームの雰囲気については面接で何でも聞いていただけます。職場見学のご相談もお気軽にどうぞ。<br><small style="color:#aaa">※ここはサンプルです。実際の情報に差し替えます</small></div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-icon">Q</span>1級建築施工管理技士が必要ですか？<span class="faq-toggle">＋</span></div>
+        <div class="faq-a">必須資格として記載していますが、取得に向けて勉強中の方はご相談ください。経験・意欲によって選考でご案内できる場合があります。<br><small style="color:#aaa">※ここはサンプルです。実際の採用方針に差し替えます</small></div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-icon">Q</span>選考の流れを教えてください。<span class="faq-toggle">＋</span></div>
+        <div class="faq-a">書類選考 → 面接（1回予定）。書類到着後7日以内に結果をご連絡します。応募にはハローワーク紹介状が必要です。<br><small style="color:#aaa">※ここはサンプルです</small></div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-icon">Q</span>退職金制度はありますか？<span class="faq-toggle">＋</span></div>
+        <div class="faq-a">はい、勤続1年以上で退職金制度があります（退職金共済加入）。長期就業できる環境を整えています。<br><small style="color:#aaa">※ここはサンプルです</small></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- CTA（3か所目） -->
+<section id="entry" style="padding:64px 24px;background:#f8f8f8">
+  <div class="section-inner">
+    <div class="cta-final">
+      <h2>まずは、見てもらうだけで大丈夫です</h2>
+      <p>「実際どんな現場か気になる」「待遇の詳細を知りたい」など<br>どんな質問でも歓迎です。お気軽にご連絡ください。</p>
+      <a href="http://www.kuniikensetsu.com/contact/" target="_blank" rel="noopener" class="btn-main">お問い合わせフォームへ</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2024 国井建設株式会社　一級建築士事務所 — このページはサンプルです</p>
+</footer>
+
+<!-- スマホ固定バー -->
+<div class="fixed-cta">
+  <p>応募・質問はこちら</p>
+  <a href="http://www.kuniikensetsu.com/contact/" target="_blank" rel="noopener">フォームへ</a>
+</div>
+
+<script>
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('is-open')}
+function toggleFaq(el){el.parentElement.classList.toggle('open')}
+</script>
+</body>
+</html>
