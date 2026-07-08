@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>採用情報 ｜ 成田商工会議所</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#1a1a1a;background:#fff}
+    img{max-width:100%;height:auto;display:block}
+    a{color:inherit;text-decoration:none}
+    :root{--navy:#1e3a6e;--accent:#f5a623;--light:#f4f7fb;--gray:#555}
+
+    /* ヘッダー */
+    header{position:fixed;top:0;left:0;width:100%;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.08);z-index:100}
+    .nav-inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .logo{font-family:'Noto Serif JP',serif;font-size:1rem;color:var(--navy);font-weight:700;line-height:1.3}
+    .logo span{font-size:.7rem;display:block;color:var(--gray);font-family:'Noto Sans JP',sans-serif;font-weight:400}
+    nav ul{display:flex;gap:24px;list-style:none}
+    nav a{font-size:.85rem;color:var(--gray);font-weight:500;transition:color .2s}
+    nav a:hover{color:var(--navy)}
+    .btn-nav{background:var(--accent);color:#fff;padding:8px 20px;border-radius:4px;font-size:.85rem;font-weight:700;transition:opacity .2s}
+    .btn-nav:hover{opacity:.85}
+    .hamburger{display:none;flex-direction:column;justify-content:space-around;width:28px;height:22px;cursor:pointer;border:none;background:none;padding:0}
+    .hamburger span{display:block;width:100%;height:2px;background:var(--navy);border-radius:2px;transition:all .3s}
+    .hamburger.open span:nth-child(1){transform:translateY(10px) rotate(45deg)}
+    .hamburger.open span:nth-child(2){opacity:0}
+    .hamburger.open span:nth-child(3){transform:translateY(-10px) rotate(-45deg)}
+    .mobile-nav{display:none;background:#fff;border-top:1px solid #e0e0e0}
+    .mobile-nav.open{display:block}
+    .mobile-nav ul{list-style:none;padding:12px 0}
+    .mobile-nav li a{display:block;padding:12px 24px;font-size:.9rem;color:var(--gray)}
+    .mobile-nav li a:hover{background:var(--light)}
+
+    /* ヒーロー */
+    .hero{position:relative;min-height:75vh;display:flex;align-items:center;padding:100px 24px 60px;margin-top:64px}
+    .hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center}
+    .hero-overlay{position:absolute;inset:0;background:rgba(30,58,110,.7)}
+    .hero-content{position:relative;z-index:1;max-width:720px;color:#fff}
+    .pill{display:inline-block;background:var(--accent);color:#fff;font-size:.8rem;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:16px;letter-spacing:.05em}
+    .hero h1{font-family:'Noto Serif JP',serif;font-size:clamp(1.8rem,5vw,3rem);line-height:1.4;margin-bottom:20px;font-weight:700}
+    .hero p{font-size:clamp(.9rem,2vw,1.05rem);line-height:1.85;margin-bottom:28px;opacity:.92}
+    .badges{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:32px}
+    .badge{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4);color:#fff;font-size:.8rem;padding:5px 12px;border-radius:4px}
+    .btn-primary{display:inline-block;background:var(--accent);color:#fff;padding:14px 36px;border-radius:6px;font-size:1rem;font-weight:700;letter-spacing:.03em;transition:opacity .2s}
+    .btn-primary:hover{opacity:.85}
+
+    /* 共通 */
+    section{padding:72px 24px}
+    .container{max-width:1000px;margin:0 auto}
+    .sec-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,3.5vw,2rem);color:var(--navy);margin-bottom:8px;font-weight:700}
+    .sec-sub{font-size:.9rem;color:var(--gray);margin-bottom:40px}
+    .accent-bar{display:inline-block;width:4px;height:1.2em;background:var(--accent);vertical-align:middle;margin-right:8px;border-radius:2px}
+    .sample-note{font-size:.75rem;color:#bbb;margin-top:8px}
+    .section-sample{font-size:.75rem;color:#bbb;margin-bottom:28px}
+
+    /* 働く魅力 */
+    .merit-bg{background:var(--light)}
+    .merit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .merit-card{background:#fff;border-radius:8px;padding:32px 24px;box-shadow:0 2px 12px rgba(0,0,0,.06);text-align:center}
+    .merit-icon{font-size:2.4rem;margin-bottom:14px}
+    .merit-card h3{font-size:1.05rem;color:var(--navy);font-weight:700;margin-bottom:10px}
+    .merit-card p{font-size:.88rem;line-height:1.75;color:var(--gray)}
+
+    /* 仕事内容 */
+    .job-note{font-size:.95rem;color:var(--gray);line-height:1.8;margin-bottom:24px}
+    .job-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .job-item{background:var(--light);border-left:4px solid var(--navy);padding:14px 18px;border-radius:0 6px 6px 0;font-size:.9rem;line-height:1.65}
+    .job-item strong{display:block;color:var(--navy);font-size:.93rem;margin-bottom:4px}
+
+    /* 募集要項 */
+    .req-bg{background:var(--light)}
+    .req-table{width:100%;border-collapse:collapse}
+    .req-table th,.req-table td{border-bottom:1px solid #d8e1ee;padding:14px 16px;font-size:.9rem;vertical-align:top;text-align:left}
+    .req-table th{width:130px;color:var(--navy);font-weight:700;background:#eaf0fb;white-space:nowrap}
+    .req-table td{color:#333;line-height:1.7}
+
+    /* 社員の1日 */
+    .timeline{list-style:none;position:relative;padding-left:0}
+    .timeline::before{content:'';position:absolute;left:70px;top:0;bottom:0;width:2px;background:#c8d8f0}
+    .tl-item{display:flex;gap:18px;margin-bottom:28px;align-items:flex-start}
+    .tl-time{min-width:62px;text-align:right;font-size:.84rem;font-weight:700;color:var(--navy);padding-top:3px}
+    .tl-dot{width:14px;height:14px;border-radius:50%;background:var(--navy);border:2px solid var(--accent);flex-shrink:0;margin-top:4px;position:relative;z-index:1}
+    .tl-body h4{font-size:.93rem;font-weight:700;color:var(--navy);margin-bottom:4px}
+    .tl-body p{font-size:.86rem;color:var(--gray);line-height:1.65}
+
+    /* 先輩メッセージ */
+    .voice-bg{background:var(--light)}
+    .voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .voice-card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+    .voice-img{width:100%;height:180px;object-fit:cover}
+    .voice-body{padding:20px}
+    .voice-meta{font-size:.78rem;color:var(--gray);margin-bottom:4px}
+    .voice-name{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:10px}
+    .voice-body p{font-size:.86rem;line-height:1.75;color:#444}
+
+    /* FAQ */
+    .faq-list{list-style:none}
+    .faq-item{border-bottom:1px solid #e0e8f5;padding:20px 0}
+    .faq-q{display:flex;align-items:flex-start;gap:12px;font-size:.95rem;font-weight:700;color:var(--navy)}
+    .fq-icon,.fa-icon{min-width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.75rem;font-weight:700;flex-shrink:0}
+    .fq-icon{background:var(--navy);color:#fff}
+    .fa-icon{background:var(--accent);color:#fff}
+    .faq-a{display:flex;gap:12px;margin-top:12px;font-size:.88rem;color:var(--gray);line-height:1.75}
+
+    /* 担当者 */
+    .recruiter-wrap{background:var(--light);padding:60px 24px}
+    .recruiter-box{background:var(--navy);color:#fff;border-radius:12px;padding:36px 40px;display:flex;gap:32px;align-items:center}
+    .recruiter-img{width:90px;height:90px;border-radius:50%;object-fit:cover;border:3px solid rgba(255,255,255,.3);flex-shrink:0}
+    .recruiter-body h3{font-size:1.05rem;font-weight:700;margin-bottom:6px}
+    .recruiter-body p{font-size:.88rem;line-height:1.7;opacity:.88}
+
+    /* CTA */
+    .cta-section{background:var(--navy);color:#fff;text-align:center;padding:72px 24px}
+    .cta-section h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,3vw,2rem);margin-bottom:16px;font-weight:700}
+    .cta-section p{font-size:.95rem;opacity:.88;margin-bottom:32px;line-height:1.75}
+    .btn-outline{display:inline-block;border:2px solid #fff;color:#fff;padding:14px 36px;border-radius:6px;font-size:1rem;font-weight:700;margin:8px;transition:background .2s}
+    .btn-outline:hover{background:rgba(255,255,255,.12)}
+
+    footer{background:#0f1f40;color:rgba(255,255,255,.55);text-align:center;padding:24px;font-size:.8rem}
+
+    @media(max-width:768px){
+      nav ul,.btn-nav{display:none}
+      .hamburger{display:flex}
+      .merit-grid,.job-grid,.voice-grid{grid-template-columns:1fr}
+      .timeline::before{left:58px}
+      .tl-time{min-width:50px;font-size:.78rem}
+      .req-table th,.req-table td{display:block;width:100%}
+      .req-table th{border-bottom:none;padding:10px 16px 4px}
+      .req-table td{padding:4px 16px 14px}
+      .recruiter-box{flex-direction:column;text-align:center;padding:28px 24px}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="logo">成田商工会議所<span>採用情報</span></div>
+    <nav>
+      <ul>
+        <li><a href="#merits">働く魅力</a></li>
+        <li><a href="#job">仕事内容</a></li>
+        <li><a href="#requirements">募集要項</a></li>
+        <li><a href="#voice">先輩の声</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a class="btn-nav" href="#apply">応募する</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger" aria-label="メニューを開く" onclick="this.classList.toggle('open');document.querySelector('.mobile-nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-nav">
+    <ul>
+      <li><a href="#merits">働く魅力</a></li>
+      <li><a href="#job">仕事内容</a></li>
+      <li><a href="#requirements">募集要項</a></li>
+      <li><a href="#voice">先輩の声</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#apply">応募する</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="pill">総合事務職（正社員）｜成田市</div>
+    <h1>地域の経済を支える仕事、<br>してみませんか。</h1>
+    <p>
+      名前は「事務職」でも、やることは経営相談・イベント企画・地域活性化まで。<br>
+      成田商工会議所で、街の経済を動かす多彩な仕事に挑戦しませんか。
+    </p>
+    <div class="badges">
+      <span class="badge">月給20〜26万円</span>
+      <span class="badge">年間休日123日</span>
+      <span class="badge">月残業2時間</span>
+      <span class="badge">成田駅 徒歩5分</span>
+      <span class="badge">転勤なし</span>
+    </div>
+    <a href="#apply" class="btn-primary">応募・お問い合わせ</a>
+  </div>
+</section>
+
+<!-- 働く魅力 -->
+<section class="merit-bg" id="merits">
+  <div class="container">
+    <p class="sec-title"><span class="accent-bar"></span>働く魅力</p>
+    <p class="sec-sub">成田商工会議所だから得られる3つのポイント</p>
+    <div class="merit-grid">
+      <div class="merit-card">
+        <div class="merit-icon">🏛️</div>
+        <h3>多彩な仕事、飽きない毎日</h3>
+        <p>「事務職」という肩書きながら、経営相談・イベント企画・地域活性化事業まで幅広い業務に関わります。担当部署によって経験の幅がどんどん広がります。</p>
+      </div>
+      <div class="merit-card">
+        <div class="merit-icon">⏰</div>
+        <h3>プライベートを大切にできる</h3>
+        <p>月平均残業2時間・土日祝休み・年間休日123日。転勤なしで成田市内1拠点のみ。仕事もプライベートもどちらも大切にしたい方に向いた環境です。</p>
+      </div>
+      <div class="merit-card">
+        <div class="merit-icon">🤝</div>
+        <h3>地域に貢献できる安定した職場</h3>
+        <p>地域の経済団体として多くの会員企業から信頼されています。昇給・賞与制度も整っており、長く安心して働ける基盤があります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 仕事内容 -->
+<section id="job">
+  <div class="container">
+    <p class="sec-title"><span class="accent-bar"></span>仕事内容</p>
+    <p class="sec-sub">「総合事務職」の実際は、こんなに多彩です</p>
+    <!-- 弱点メモ対応: 職種名と実際の仕事内容の乖離を補足 -->
+    <p class="job-note">「総合事務職」という名前でピンとこない方も多いかもしれません。実際は、地域の事業者の経営支援から街を盛り上げるイベント企画まで、幅広い業務を担います。配属部署によって担当業務は異なりますが、どの部署でも地域の人々・企業と直接関わる機会があります。</p>
+    <div class="job-grid">
+      <div class="job-item"><strong>経営相談（税務・労務ほか）</strong>地域の中小企業・個人事業主からの相談に対応。専門家と連携しながら課題解決をサポートします。</div>
+      <div class="job-item"><strong>部会・委員会の運営</strong>会員企業が参加する各種部会や委員会の準備・進行・議事録作成などを行います。</div>
+      <div class="job-item"><strong>共済制度の普及促進</strong>会員向け共済制度を電話・訪問・資料で案内・推進します。</div>
+      <div class="job-item"><strong>地域活性化イベントの企画運営</strong>成田市の地域活性化イベントの企画から当日運営まで一貫して携わります。</div>
+      <div class="job-item"><strong>会計事務</strong>部署の伝票処理・収支管理など。簿記の知識が活かせます。</div>
+      <div class="job-item"><strong>会員訪問</strong>法人車で会員企業を訪問し、情報提供・関係構築を行います（AT限定可）。</div>
+    </div>
+    <p style="font-size:.78rem;color:#bbb;margin-top:14px">※実際の業務は配属部署により異なります</p>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="req-bg" id="requirements">
+  <div class="container">
+    <p class="sec-title"><span class="accent-bar"></span>募集要項</p>
+    <p class="sec-sub">給与・待遇・選考について</p>
+    <table class="req-table">
+      <tr><th>職種</th><td>総合事務職（正社員）</td></tr>
+      <tr><th>給与</th><td>月給 200,000〜260,000円（経験・能力を考慮のうえ優遇）<br>昇給あり（前年実績：月7,100〜13,500円）<br>賞与年2回（前年実績 計4.65ヶ月分）<br>各種手当：通勤・扶養・地域・資格・住居手当等</td></tr>
+      <tr><th>就業時間</th><td>8:30〜17:30（休憩60分）／月平均残業2時間</td></tr>
+      <tr><th>休日・休暇</th><td>土・日・祝日（完全週休2日制）<br>年間休日123日 ／ イベント休日出勤時は代休あり</td></tr>
+      <tr><th>勤務地</th><td>〒286-0033 千葉県成田市花崎町736-62<br>JR・京成 成田駅 徒歩5分・マイカー通勤可（駐車場あり）</td></tr>
+      <tr><th>転勤</th><td>なし（成田市内1拠点のみ）</td></tr>
+      <tr><th>学歴</th><td>大学卒以上（経営・経済・商学部系 なお可）</td></tr>
+      <tr><th>資格・免許</th><td>普通自動車免許（AT限定可）必須<br>日商簿記3級・中小企業診断士・社会保険労務士 あれば尚可</td></tr>
+      <tr><th>社会保険</th><td>雇用保険・労災保険・健康保険・厚生年金</td></tr>
+      <tr><th>退職金</th><td>制度あり（勤続3年以上）</td></tr>
+      <tr><th>試用期間</th><td>3ヶ月（同条件）</td></tr>
+      <tr><th>定年</th><td>60歳（再雇用制度あり・上限65歳）</td></tr>
+      <tr><th>採用人数</th><td>2名</td></tr>
+      <tr><th>選考方法</th><td>書類選考（結果10日以内）→ 面接（最大2回・結果10日以内）→ 内定</td></tr>
+      <tr><th>応募書類</th><td>履歴書（写真貼付）・職務経歴書</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 社員の1日 -->
+<section id="schedule">
+  <div class="container">
+    <p class="sec-title"><span class="accent-bar"></span>社員の1日の流れ</p>
+    <p class="sec-sub">ある日の総合事務職のスケジュール（サンプル）</p>
+    <p class="section-sample">※ここはサンプルです。実際には御社のスタッフの1日に差し替えます</p>
+    <ul class="timeline">
+      <li class="tl-item">
+        <div class="tl-time">8:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>出勤・メールチェック</h4><p>一日の予定を確認し、会員からのメールに返信します。</p></div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-time">9:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>経営相談の対応</h4><p>電話・来所での税務・労務相談に対応。必要に応じて専門機関へつなぎます。</p></div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-time">11:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>部会資料の作成・会員連絡</h4><p>次回部会の資料を準備し、会員企業へのアナウンスを行います。</p></div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-time">12:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>昼休憩（60分）</h4><p>駅近のランチスポットへ。同僚と出かけることも多いです。</p></div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>会員企業への訪問</h4><p>法人車で近隣の会員企業を訪問。共済制度の案内や情報交換を行います。</p></div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-time">15:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>イベント企画の打ち合わせ</h4><p>地域活性化イベントの進捗確認と関係機関との調整を行います。</p></div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-time">17:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>退勤</h4><p>翌日の準備を済ませて退勤。残業はほとんどなく、定時で帰れる日がほとんどです。</p></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- 先輩メッセージ -->
+<section class="voice-bg" id="voice">
+  <div class="container">
+    <p class="sec-title"><span class="accent-bar"></span>先輩からのメッセージ</p>
+    <p class="sec-sub">実際に働くスタッフの声</p>
+    <p class="section-sample">※ここはサンプルです。実際には御社のスタッフの写真・コメントに差し替えます</p>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <!-- ※仮の写真です。御社スタッフの写真に差し替えてください -->
+        <img class="voice-img" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=640&h=380&fit=crop&crop=faces&q=80" alt="先輩スタッフ（サンプル）">
+        <div class="voice-body">
+          <p class="voice-meta">入社3年目 ／ 中小企業相談所担当</p>
+          <p class="voice-name">田中 彩花（仮名）</p>
+          <p>経営学部卒で入社しました。「総合事務職」という名前に最初は戸惑いましたが、地域の事業者と直接話せる経営相談の仕事は予想以上にやりがいがあります。先輩が丁寧に教えてくれるので、未経験でも安心して始められました。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <!-- ※仮の写真です。御社スタッフの写真に差し替えてください -->
+        <img class="voice-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=640&h=380&fit=crop&crop=faces&q=80" alt="先輩スタッフ（サンプル）">
+        <div class="voice-body">
+          <p class="voice-meta">入社6年目 ／ 地域振興担当</p>
+          <p class="voice-name">佐藤 健太（仮名）</p>
+          <p>地元・成田出身で、地元に貢献できる仕事がしたいと思って入りました。商工会議所が地域の経済にこれほど深く関わっていることは、入ってから実感しました。イベントで街が盛り上がる瞬間を一緒につくれるのが一番の魅力です。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <!-- ※仮の写真です。御社スタッフの写真に差し替えてください -->
+        <img class="voice-img" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=640&h=380&fit=crop&crop=faces&q=80" alt="先輩スタッフ（サンプル）">
+        <div class="voice-body">
+          <p class="voice-meta">入社10年目 ／ 総務・共済担当</p>
+          <p class="voice-name">山田 美穂（仮名）</p>
+          <p>最初は会計事務を担当し、今は共済制度の推進を中心に動いています。業務の幅が広く、毎年新しいことを学べるのが刺激的です。月の残業がほぼなく、プライベートも充実させながら長く働ける環境だと感じています。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <p class="sec-title"><span class="accent-bar"></span>よくある質問</p>
+    <p class="sec-sub">応募前に気になることをまとめました</p>
+    <p class="section-sample">※ここはサンプルです。実際には御社の採用FAQに差し替えます</p>
+    <ul class="faq-list">
+      <li class="faq-item">
+        <div class="faq-q"><div class="fq-icon">Q</div>未経験でも応募できますか?</div>
+        <div class="faq-a"><div class="fa-icon">A</div>Word・ExcelなどのPC操作と普通自動車免許があれば歓迎しています。会計実務や簿記は「あれば尚可」です。入社後は先輩のOJTでしっかりサポートします。</div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q"><div class="fq-icon">Q</div>配属部署はどのように決まりますか?</div>
+        <div class="faq-a"><div class="fa-icon">A</div>中小企業相談所・地域振興・総務・共済など複数の部署があります。スキルや経験・希望を考慮したうえで決定されます。どの部署でも地域の事業者と関わる機会があります。</div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q"><div class="fq-icon">Q</div>転勤はありますか?</div>
+        <div class="faq-a"><div class="fa-icon">A</div>転勤はありません。成田市内の1拠点のみで、腰を据えて長く働いていただけます。</div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q"><div class="fq-icon">Q</div>残業・休日出勤の実態は?</div>
+        <div class="faq-a"><div class="fa-icon">A</div>月平均残業は2時間程度です。イベント等による休日出勤が生じる場合は代休を取得できます。プライベートを大切にできる環境です。</div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q"><div class="fq-icon">Q</div>選考の流れを教えてください。</div>
+        <div class="faq-a"><div class="fa-icon">A</div>書類選考（10日以内に通知）→ 面接（最大2回・10日以内に通知）→ 内定の流れです。随時選考を行っています。</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- 採用担当者 -->
+<div class="recruiter-wrap">
+  <div class="container">
+    <p class="sec-title" style="margin-bottom:28px"><span class="accent-bar"></span>採用担当者より</p>
+    <div class="recruiter-box">
+      <!-- ※仮の写真です。採用担当者の写真に差し替えてください -->
+      <img class="recruiter-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当者（サンプル）">
+      <!-- ※仮の写真です。実際には御社担当者の写真に差し替えます -->
+      <div class="recruiter-body">
+        <h3>中島（仮名）／ 中小企業相談所</h3>
+        <p>「総合事務職」という名前だけ見ると地味に聞こえるかもしれませんが、実際には地域の多くの人や事業者と関わり、成田を動かす仕事です。一緒に地域を盛り上げてくれる方をお待ちしています。まずはお気軽にお問い合わせください。</p>
+        <p class="sample-note" style="opacity:.6">※ここはサンプルです。実際には御社担当者のコメントに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 応募CTA -->
+<section class="cta-section" id="apply">
+  <div class="container">
+    <h2>一緒に、成田の経済を動かしませんか。</h2>
+    <p>ご質問だけでもお気軽にどうぞ。まずは話を聞いてみるところから始められます。</p>
+    <a href="mailto:nakashima@naritacci.or.jp" class="btn-primary" style="margin:8px">メールで問い合わせる</a>
+    <a href="tel:0476222101" class="btn-outline">電話で問い合わせる<br><span style="font-size:.8rem;font-weight:400">0476-22-2101</span></a>
+    <p style="font-size:.8rem;opacity:.6;margin-top:24px">担当：中小企業相談所 中島 ／ 電話 0476-22-2101</p>
+  </div>
+</section>
+
+<footer>
+  <p>成田商工会議所 ／ 〒286-0033 千葉県成田市花崎町736-62</p>
+  <p style="margin-top:6px">© 2025 成田商工会議所 採用情報（サンプルページ）</p>
+</footer>
+
+</body>
+</html>
