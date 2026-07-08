@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 有限会社 飯田畜産</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#2c2c2c;background:#fffef5}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ナビ（シンプル） */
+header{background:#4a7c40;position:sticky;top:0;z-index:200;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.nav-inner{display:flex;justify-content:space-between;align-items:center;padding:0 24px;height:56px;max-width:1100px;margin:0 auto}
+.nav-logo{color:#fff;font-weight:700;font-size:.95rem}
+.nav-cta-btn{background:#c0622a;color:#fff;font-weight:700;font-size:.85rem;padding:8px 18px;border-radius:4px}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px}
+.nav-mobile{display:none;flex-direction:column;background:#4a7c40;padding:12px 24px}
+.nav-mobile.open{display:flex}
+.nav-mobile a{color:#fff;padding:10px 0;font-size:.9rem;border-bottom:1px solid rgba(255,255,255,.15)}
+
+/* FVヒーロー */
+.hero{position:relative;min-height:80vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(30,70,20,.7) 0%,rgba(60,100,40,.5) 100%)}
+.hero-content{position:relative;color:#fff;padding:48px 24px;max-width:720px;text-align:center}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.4);color:#fff;font-size:.8rem;font-weight:700;padding:5px 16px;border-radius:20px;margin-bottom:20px;letter-spacing:.08em;backdrop-filter:blur(4px)}
+.hero-pill::before{content:'🐷';font-size:.9rem}
+.hero-content h1{font-size:clamp(1.9rem,6.5vw,3.2rem);font-weight:900;line-height:1.25;margin-bottom:16px;text-shadow:0 2px 12px rgba(0,0,0,.4)}
+.hero-content h1 em{font-style:normal;color:#f5e060}
+.hero-content p{font-size:clamp(.95rem,3vw,1.1rem);opacity:.92;margin-bottom:32px;line-height:1.8}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-main{background:#c0622a;color:#fff;font-weight:700;font-size:1rem;padding:15px 40px;border-radius:4px;transition:opacity .2s}
+.btn-main:hover{opacity:.85}
+.btn-sub{background:rgba(255,255,255,.15);color:#fff;font-weight:700;font-size:.9rem;padding:14px 28px;border-radius:4px;border:1px solid rgba(255,255,255,.5);backdrop-filter:blur(4px)}
+
+/* 数字バー */
+.numbers{background:#4a7c40;color:#fff;padding:40px 20px}
+.numbers-inner{max-width:1000px;margin:0 auto}
+.numbers h2{text-align:center;font-size:clamp(1rem,3vw,1.2rem);margin-bottom:24px;opacity:.85;letter-spacing:.1em}
+.numbers-grid{display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
+.num-item{text-align:center;min-width:140px;flex:1}
+.num-val{font-size:clamp(2rem,5vw,2.8rem);font-weight:900;color:#f5e060;line-height:1}
+.num-unit{font-size:.9rem;opacity:.8;margin-top:4px}
+.num-label{font-size:.75rem;opacity:.7;margin-top:4px}
+.num-sample{font-size:.65rem;color:rgba(255,255,255,.5);margin-top:4px}
+
+/* セクション共通 */
+.section{padding:72px 20px}
+.section-inner{max-width:1000px;margin:0 auto}
+.section-tag{display:inline-block;background:#4a7c40;color:#fff;font-size:.7rem;font-weight:700;padding:3px 12px;border-radius:20px;letter-spacing:.12em;margin-bottom:10px}
+.section-title{font-size:clamp(1.4rem,5vw,2rem);font-weight:700;margin-bottom:8px;color:#1a3d15}
+.section-sub{color:#666;line-height:1.7;margin-bottom:40px}
+
+/* 仕事の特徴 */
+.feat-bg{background:#fff}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.feat-card{border-left:4px solid #4a7c40;padding:20px 20px 20px 24px;background:#f5fff2}
+.feat-card h3{font-size:1rem;font-weight:700;color:#4a7c40;margin-bottom:8px}
+.feat-card p{font-size:.88rem;color:#444;line-height:1.7}
+
+/* インタビュー */
+.interview-bg{background:#edf7ea}
+.interview-card{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
+.interview-img{border-radius:8px;overflow:hidden}
+.interview-img img{width:100%;height:320px;object-fit:cover}
+.interview-badge{display:inline-block;background:#4a7c40;color:#fff;font-size:.75rem;padding:3px 12px;border-radius:20px;margin-bottom:12px}
+.interview-q{font-size:1.05rem;font-weight:700;color:#1a3d15;margin-bottom:12px;line-height:1.5}
+.interview-a{font-size:.9rem;color:#444;line-height:1.8}
+.interview-name{margin-top:16px;font-size:.85rem;color:#4a7c40;font-weight:700}
+.sample-note{font-size:.72rem;color:#aaa;margin-top:6px}
+
+/* CTA②中盤 */
+.cta-mid{background:#c0622a;color:#fff;text-align:center;padding:52px 20px}
+.cta-mid h2{font-size:clamp(1.3rem,4vw,1.7rem);margin-bottom:10px}
+.cta-mid p{opacity:.88;margin-bottom:24px;font-size:.95rem;line-height:1.7}
+.btn-white{display:inline-block;background:#fff;color:#c0622a;font-weight:700;font-size:1rem;padding:14px 40px;border-radius:4px}
+
+/* タイムライン */
+.tl-bg{background:#fff}
+.tl-wrap{position:relative;padding-left:44px;max-width:640px;margin:0 auto}
+.tl-wrap::before{content:'';position:absolute;left:16px;top:0;bottom:0;width:2px;background:#c8e0c5}
+.tl-item{position:relative;margin-bottom:24px}
+.tl-dot{position:absolute;left:-35px;top:3px;width:18px;height:18px;border-radius:50%;background:#4a7c40;border:3px solid #fff;box-shadow:0 0 0 2px #4a7c40}
+.tl-time{font-size:.78rem;color:#4a7c40;font-weight:700;margin-bottom:3px}
+.tl-text{font-size:.9rem;color:#444;line-height:1.6}
+
+/* 先輩の声 */
+.voice-bg{background:#fffef5}
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.voice-card{background:#fff;border-radius:8px;border:1px solid #e0d8cc;padding:24px}
+.voice-img{width:68px;height:68px;border-radius:50%;object-fit:cover;margin-bottom:12px}
+.voice-name{font-weight:700;font-size:.9rem;color:#4a7c40;margin-bottom:2px}
+.voice-role{font-size:.75rem;color:#888;margin-bottom:10px}
+.voice-text{font-size:.85rem;color:#444;line-height:1.7}
+
+/* 募集要項 */
+.recruit-bg{background:#f5f0e8}
+.recruit-table{width:100%;border-collapse:collapse}
+.recruit-table tr{border-bottom:1px solid #ddd}
+.recruit-table th{width:36%;background:#4a7c40;color:#fff;padding:13px 16px;font-size:.88rem;font-weight:700;text-align:left;vertical-align:top}
+.recruit-table td{padding:13px 16px;font-size:.88rem;line-height:1.7;color:#444;background:#fff}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:10px}
+.faq-item{border:1px solid #d8e8d5;border-radius:6px;overflow:hidden}
+.faq-q{background:#edf7ea;padding:15px 20px;font-weight:700;font-size:.9rem;color:#1a3d15;cursor:pointer;display:flex;justify-content:space-between;align-items:center}
+.faq-q::after{content:'+';font-size:1.1rem;color:#4a7c40;flex-shrink:0}
+.faq-a{padding:15px 20px;font-size:.88rem;color:#444;line-height:1.7;display:none}
+.faq-item.open .faq-q::after{content:'−'}
+.faq-item.open .faq-a{display:block}
+
+/* CTA③フッター前 */
+.cta-bottom{background:#1a3d15;color:#fff;text-align:center;padding:64px 20px}
+.cta-bottom h2{font-size:clamp(1.3rem,4vw,1.8rem);margin-bottom:12px}
+.cta-bottom p{opacity:.82;margin-bottom:28px;line-height:1.7}
+
+/* スマホ固定バー CTA */
+.fixed-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:300;padding:10px 16px;background:#c0622a}
+.fixed-bar a{display:block;text-align:center;color:#fff;font-weight:700;font-size:.95rem;padding:10px;background:rgba(255,255,255,.1);border-radius:4px}
+
+/* フッター */
+footer{background:#0f2910;color:#aaa;text-align:center;padding:20px 16px;font-size:.78rem;padding-bottom:80px}
+
+/* レスポンシブ */
+@media(max-width:768px){
+  .hamburger{display:flex}
+  .nav-cta-btn{display:none}
+  .feat-grid,.voice-grid{grid-template-columns:1fr}
+  .interview-card{grid-template-columns:1fr}
+  .recruit-table th,.recruit-table td{display:block;width:100%}
+  .recruit-table th{border-bottom:none;padding-bottom:4px}
+  .recruit-table td{padding-top:4px}
+  .fixed-bar{display:block}
+  footer{padding-bottom:80px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="nav-logo">有限会社 飯田畜産 採用情報</div>
+    <a href="https://iidachikusan.co.jp/contact/" class="nav-cta-btn" target="_blank">応募する</a>
+    <button class="hamburger" id="hamBtn" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="navMobile">
+    <a href="#features">仕事の特徴</a>
+    <a href="#timeline">1日の流れ</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#recruit">募集要項</a>
+    <a href="#faq">FAQ</a>
+    <a href="https://iidachikusan.co.jp/contact/" target="_blank">応募する</a>
+  </div>
+</header>
+
+<!-- FVヒーロー -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-pill">養豚作業員 正社員 1名募集</div>
+    <h1>「体力に自信がなくて…」<br>そんな心配、<em>不要です</em>。</h1>
+    <p>少人数3人のチームで手分けするから、<br>ひとりに負担が集中しません。未経験から始めた先輩が活躍中。</p>
+    <div class="hero-btns">
+      <a href="https://iidachikusan.co.jp/contact/" class="btn-main" target="_blank">まずは話だけ聞いてみる</a>
+      <a href="#recruit" class="btn-sub">募集要項を見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- 数字バー -->
+<div class="numbers">
+  <div class="numbers-inner">
+    <h2>数字で見る飯田畜産</h2>
+    <div class="numbers-grid">
+      <div class="num-item">
+        <div class="num-val">30<span style="font-size:1.2rem">年</span></div>
+        <div class="num-unit">創業からの実績</div>
+        <div class="num-sample">※ここはサンプルです。実際の年数に差し替えます</div>
+      </div>
+      <div class="num-item">
+        <div class="num-val">200<span style="font-size:1.2rem">頭</span></div>
+        <div class="num-unit">母豚数</div>
+        <div class="num-sample">※求人票より</div>
+      </div>
+      <div class="num-item">
+        <div class="num-val">0<span style="font-size:1.2rem">h</span></div>
+        <div class="num-unit">時間外労働</div>
+        <div class="num-sample">※求人票より（実績）</div>
+      </div>
+      <div class="num-item">
+        <div class="num-val">年2<span style="font-size:1.2rem">回</span></div>
+        <div class="num-unit">賞与（前年実績）</div>
+        <div class="num-sample">※求人票より</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 仕事の特徴 -->
+<section class="section feat-bg" id="features">
+  <div class="section-inner">
+    <div class="section-tag">FEATURE</div>
+    <h2 class="section-title">この仕事の3つのポイント</h2>
+    <p class="section-sub">「養豚＝体力勝負」のイメージは、ここでは半分だけ当てはまります。</p>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <h3>道具と機械で体を守る</h3>
+        <p>豚・堆肥の運搬は4トンダンプ、畜舎清掃は高圧洗浄機を使用。重いものを素手で運び続ける作業はほとんどありません。コツをつかめば体力の消耗を抑えられます。</p>
+      </div>
+      <div class="feat-card">
+        <h3>3人チームで必ず誰かがいる</h3>
+        <p>大規模農場のような孤独な一人作業はありません。チームで声をかけ合いながら進めるので、分からないことはその場で聞けます。安心して作業に集中できます。</p>
+      </div>
+      <div class="feat-card">
+        <h3>銘柄豚を育てる本物の仕事</h3>
+        <p>「飯田プレミアムポーク」は地元カフェ・レストランへ直接卸す銘柄豚。自分が育てた豚が食卓に届く手応えは、ここでしか得られません。ネット販売でも好評です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- インタビュー -->
+<section class="section interview-bg">
+  <div class="section-inner">
+    <div class="section-tag">INTERVIEW</div>
+    <h2 class="section-title">先輩インタビュー</h2>
+    <p class="section-sub">
+      ※ここはサンプルです。実際には御社スタッフのインタビューに差し替えます<br>
+      <!-- サンプル：実際のスタッフインタビューに差し替えてください -->
+    </p>
+    <div class="interview-card">
+      <div class="interview-img">
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=640&h=380&fit=crop&crop=faces&q=80" alt="インタビュー（仮）" loading="lazy">
+      </div>
+      <div>
+        <div class="interview-badge">入社8年目 / 養豚作業員</div>
+        <div class="interview-q">「前職は建設業。農業は全く別世界でした。それでも続けられた理由を教えてください。」</div>
+        <div class="interview-a">「最初の半年は道具の名前を覚えるのに必死でしたが（笑）、豚が元気に育っているのを見ると嬉しかったです。人工授精や妊娠鑑定ができるようになったときは、本当に自信になりました。農業の知識はゼロでしたが、今では自分がここで身につけたと誇れます。」</div>
+        <div class="interview-name">田中 誠（仮名）— 前職：建設業</div>
+        <div class="sample-note">※ここはサンプルです。実際のスタッフコメントに差し替えます</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA②中盤 -->
+<div class="cta-mid">
+  <h2>「話だけ聞いてみたい」も大歓迎です</h2>
+  <p>農場見学・見るだけOK。まずはフォームからお気軽にご連絡ください。</p>
+  <a href="https://iidachikusan.co.jp/contact/" class="btn-white" target="_blank">お問い合わせはこちら</a>
+</div>
+
+<!-- 1日の流れ -->
+<section class="section tl-bg" id="timeline">
+  <div class="section-inner">
+    <div class="section-tag">A DAY</div>
+    <h2 class="section-title">社員の1日の流れ</h2>
+    <p class="section-sub">
+      ※ここはサンプルです。実際には御社のスケジュールに差し替えます<br>
+      <!-- サンプル：実際の1日のスケジュールに差し替えてください -->
+    </p>
+    <div class="tl-wrap">
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">07:30</div><div class="tl-text">出社・農場確認。豚の健康状態を一巡チェック。気になる個体はメモしておく。</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">08:00</div><div class="tl-text">午前の給飼。飼料の種類・量は担当ごとに把握済み。慣れると自然に身につきます。</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">10:00</div><div class="tl-text">畜舎清掃（高圧洗浄機使用）。チームで分担して約2時間で完了。</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">12:00</div><div class="tl-text">昼休憩60分＋午前・午後に15分休憩が2回。農場の空気を感じながらほっと一息。</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">13:30</div><div class="tl-text">午後の給飼・堆肥運搬（ダンプ使用）。免許が活かせるメイン作業の一つ。</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">15:30</div><div class="tl-text">繁殖記録・豚舎最終チェック。人工授精・妊娠鑑定は慣れた先輩が教えてくれます。</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">17:00</div><div class="tl-text">退勤。時間外労働なし。スパッと帰れます。</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section class="section voice-bg" id="voice">
+  <div class="section-inner">
+    <div class="section-tag">VOICE</div>
+    <h2 class="section-title">先輩スタッフの声</h2>
+    <p class="section-sub">
+      ※ここはサンプルです。実際には御社スタッフの声に差し替えます<br>
+      <!-- サンプル：実際のスタッフコメントに差し替えてください -->
+    </p>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <img class="voice-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="田中（仮名）" loading="lazy">
+        <div class="voice-name">田中 誠（仮名）</div>
+        <div class="voice-role">入社8年目 / 前職：建設業</div>
+        <div class="voice-text">「人工授精ができるようになったときは農業の面白さを感じた。プレミアムポークが評判になるのが誇りです。」</div>
+        <div class="sample-note">※ここはサンプルです。実際のコメントに差し替えます</div>
+      </div>
+      <div class="voice-card">
+        <img class="voice-img" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=faces&q=80" alt="山田（仮名）" loading="lazy">
+        <div class="voice-name">山田 花（仮名）</div>
+        <div class="voice-role">入社3年目 / 女性スタッフ</div>
+        <div class="voice-text">「農業未経験で女性は私だけでしたが、重い作業は必ずフォローしてもらえる。毎朝農場の空気を吸うのが好きです。」</div>
+        <div class="sample-note">※ここはサンプルです。実際のコメントに差し替えます</div>
+      </div>
+      <div class="voice-card">
+        <img class="voice-img" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="鈴木（仮名）" loading="lazy">
+        <div class="voice-name">鈴木 健太（仮名）</div>
+        <div class="voice-role">入社5年目</div>
+        <div class="voice-text">「3人しかいないから、困ったときにすぐ聞ける。自分が育てた豚を地元の人に食べてもらえるのが一番うれしい。」</div>
+        <div class="sample-note">※ここはサンプルです。実際のコメントに差し替えます</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="section recruit-bg" id="recruit">
+  <div class="section-inner">
+    <div class="section-tag">RECRUIT</div>
+    <h2 class="section-title">募集要項</h2>
+    <p class="section-sub">正社員・1名。未経験歓迎・丁寧な指導あり。</p>
+    <table class="recruit-table">
+      <tr><th>職種</th><td>養豚作業員</td></tr>
+      <tr><th>仕事内容</th><td>豚の飼育・管理（メインは運搬）<br>・豚・堆肥・廃水の運搬（4トンダンプ）<br>・飼料の給飼<br>・畜舎の清掃<br>・繁殖管理（人工授精・妊娠鑑定）など</td></tr>
+      <tr><th>雇用形態</th><td>正社員（試用期間3ヶ月・時給1,140円）</td></tr>
+      <tr><th>月給</th><td>235,000円〜335,000円<br>住宅手当10,000円・お茶手当5,000円・通勤手当10,000円</td></tr>
+      <tr><th>昇給・賞与</th><td>昇給 月2,000〜5,000円（実績）／賞与 年2回（2.0ヶ月分・実績）</td></tr>
+      <tr><th>就業時間</th><td>7:30〜17:00（休憩90分・時間外なし）</td></tr>
+      <tr><th>休日</th><td>年間78日・会社カレンダー／有給10日（6ヶ月後）</td></tr>
+      <tr><th>必要資格</th><td>8トン限定中型自動車免許 または 中型免許（AT限定不可）</td></tr>
+      <tr><th>勤務地</th><td>千葉県成田市大栄十余三385-71 / マイカー通勤可・駐車場あり</td></tr>
+      <tr><th>社会保険</th><td>雇用・労災・健康・厚生年金</td></tr>
+      <tr><th>選考</th><td>書類選考 → 面接1回（ハローワーク紹介状・履歴書必要）</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq" style="background:#fff">
+  <div class="section-inner">
+    <div class="section-tag">FAQ</div>
+    <h2 class="section-title">よくある質問</h2>
+    <p class="section-sub">
+      ※ここはサンプルです。実際には御社のQ&Aに差し替えます<br>
+      <!-- サンプル：実際のFAQに差し替えてください -->
+    </p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">力仕事が心配です。体格が小さくても続けられますか？</div>
+        <div class="faq-a">運搬はダンプや台車を使い、腕力だけに頼る作業はほとんどありません。チームで分担するため、一人に集中する場面もほぼないです。女性スタッフも長く活躍しています。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">畜産・農業は完全な未経験ですが大丈夫ですか？</div>
+        <div class="faq-a">大丈夫です。経験は不問で、未経験者には入社後に丁寧に指導します。慣れれば繁殖管理などの専門作業も自分でできるようになります。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">においや衛生面が不安です。</div>
+        <div class="faq-a">農場の環境整備（畜舎清掃・堆肥管理）はしっかり行っており、においに関する対策も取っています。見学でご自身で確認いただくことをおすすめします。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">マイカー通勤は必須ですか？公共交通機関では来られますか？</div>
+        <div class="faq-a">最寄り駅（京成 東成田駅）から車で約15分の立地です。駐車場があるのでマイカー通勤を推奨します。通勤手当（月10,000円）も支給しています。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">賞与・昇給の基準を教えてください。</div>
+        <div class="faq-a">会社業績・勤務評価による支給です。昇給は月額2,000〜5,000円（前年実績）、賞与は年2回・計2.0ヶ月分（前年実績）を支給しています。詳細は面接時にお聞きください。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA③フッター前 -->
+<div class="cta-bottom">
+  <h2>銘柄豚づくりの世界、<br>まずは一歩踏み出してみませんか</h2>
+  <p>農場見学・見るだけ・話だけでも歓迎です。<br>問い合わせフォームからお気軽にどうぞ。</p>
+  <a href="https://iidachikusan.co.jp/contact/" class="btn-main" target="_blank">お問い合わせはこちら</a>
+</div>
+
+<footer>
+  <p>有限会社 飯田畜産 / 千葉県成田市大栄十余三385-71 / TEL: 0476-73-3273</p>
+  <p style="margin-top:6px;font-size:.7rem;opacity:.6">このページは提案サンプルです。画像・スタッフ情報・数値はすべてダミーまたは求人票掲載の実データです。</p>
+</footer>
+
+<!-- スマホ固定バー -->
+<div class="fixed-bar">
+  <a href="https://iidachikusan.co.jp/contact/" target="_blank">📩 まずは話だけ聞いてみる（フォーム）</a>
+</div>
+
+<script>
+const hamBtn = document.getElementById('hamBtn');
+const navMobile = document.getElementById('navMobile');
+hamBtn.addEventListener('click', () => navMobile.classList.toggle('open'));
+
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    q.parentElement.classList.toggle('open');
+  });
+});
+</script>
+</body>
+</html>
