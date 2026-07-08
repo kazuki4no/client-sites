@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報（写真主役版）| ワールドホテルマネージメント株式会社</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0b1e35;--navy2:#132c48;--gold:#d4a030;--gold-l:#f0cc6a;
+  --ink:#1a2633;--gray:#556070;--line:#dde5ee;--bg:#f5f8fb;--cream:#f7f4ed;
+}
+html,body{max-width:100%;overflow-x:hidden}
+body{font-family:"Noto Sans JP",sans-serif;color:var(--ink);line-height:1.85;background:#fff;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+.serif{font-family:"Noto Serif JP",serif}
+.wrap{max-width:1040px;margin:0 auto;padding:0 22px}
+.sample-note{display:block;font-size:.74rem;color:#9ab0c0;margin-top:10px}
+
+/* header（ヒーロー上に重ね・透明） */
+header{position:absolute;top:0;left:0;right:0;z-index:40}
+.nav{display:flex;justify-content:space-between;align-items:center;height:76px}
+.logo{font-family:"Noto Serif JP",serif;font-weight:900;color:#fff;font-size:1.05rem;letter-spacing:.06em;text-shadow:0 2px 8px rgba(0,0,0,.5)}
+.logo b{color:var(--gold-l)}
+.menu{display:flex;gap:28px;align-items:center}
+.menu a{color:#e0eaf4;font-size:.87rem;font-weight:500}
+.menu a:hover{color:var(--gold-l)}
+.hamb{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px}
+.hamb span{display:block;width:26px;height:2px;background:#fff;transition:.3s}
+.hamb.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamb.open span:nth-child(2){opacity:0}
+.hamb.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mob-nav{display:none}
+.mob-nav.open{display:block;position:fixed;top:0;left:0;right:0;background:rgba(11,30,53,.95);padding:4rem 1.5rem 2rem;z-index:39;min-height:100vh}
+.mob-nav ul{list-style:none;display:flex;flex-direction:column;gap:1.2rem}
+.mob-nav a{font-size:1.05rem;font-weight:500;color:#fff}
+.mob-nav .close-btn{position:absolute;top:1rem;right:1.2rem;font-size:1.5rem;color:#fff;background:none;border:none;cursor:pointer}
+@media(max-width:768px){.menu{display:none}.hamb{display:flex}}
+
+/* hero (FVバナー) */
+.hero{position:relative;min-height:80vh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1480796927426-f609979314bd?w=1600&h=900&fit=crop&q=80') center/cover no-repeat;transform:scale(1.04)}
+.hero-ov{position:absolute;inset:0;background:linear-gradient(115deg,rgba(11,30,53,.88) 35%,rgba(11,30,53,.5) 100%)}
+.hero-cont{position:relative;z-index:3;color:#fff;padding:120px 0 80px}
+.eyebrow{color:var(--gold-l);letter-spacing:.3em;font-size:.8rem;font-weight:700;margin-bottom:22px;text-transform:uppercase}
+.hero-cont h1{font-family:"Noto Serif JP",serif;font-size:clamp(2rem,6.5vw,3.8rem);font-weight:900;line-height:1.4;letter-spacing:.02em}
+.hero-cont h1 span{color:var(--gold-l)}
+.hero-cont p{margin-top:24px;max-width:520px;color:#bcd0e4;font-size:1rem;line-height:1.9}
+.hero-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.hero-pills span{border:1px solid rgba(212,160,48,.5);color:#f0e4cf;padding:6px 16px;border-radius:2px;font-size:.8rem}
+.btn-gold{display:inline-block;background:var(--gold);color:#fff;font-weight:700;padding:15px 42px;border-radius:2px;margin-top:34px;transition:.2s;letter-spacing:.05em;font-size:.98rem}
+.btn-gold:hover{background:var(--gold-l);color:var(--navy)}
+
+/* scroll indicator */
+.scroll-ind{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:3;color:rgba(255,255,255,.6);font-size:.72rem;letter-spacing:.2em;writing-mode:vertical-rl;text-orientation:mixed}
+
+/* 特徴スプリット */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;margin-bottom:2px}
+.split .ph{min-height:340px;background-size:cover;background-position:center}
+.split .tx{background:var(--cream);padding:60px 52px;display:flex;flex-direction:column;justify-content:center}
+.split.rev .tx{order:-1}
+.split .tx .no{color:var(--gold);font-weight:900;letter-spacing:.16em;font-size:.84rem;margin-bottom:6px}
+.split .tx h3{font-family:"Noto Serif JP",serif;font-size:clamp(1.3rem,3.5vw,1.7rem);color:var(--navy);font-weight:900;margin-bottom:14px;line-height:1.5}
+.split .tx p{color:var(--gray);font-size:.92rem}
+@media(max-width:768px){
+  .split{grid-template-columns:1fr}
+  .split .ph{min-height:220px}
+  .split .tx{padding:36px 26px}
+  .split.rev .tx{order:unset}
+}
+
+/* 数字 */
+.nums-sec{background:var(--navy);color:#fff;padding:60px 0}
+.nums{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.06)}
+.num-c{background:var(--navy);padding:36px 16px;text-align:center}
+.num-v{font-family:"Noto Serif JP",serif;font-size:clamp(2rem,5.5vw,2.8rem);font-weight:900;color:var(--gold-l);line-height:1}
+.num-u{font-size:.9rem}
+.num-l{font-size:.78rem;color:#7898b4;margin-top:7px}
+@media(max-width:768px){.nums{grid-template-columns:repeat(2,1fr)}}
+
+/* section */
+section{padding:88px 0}
+.sh{text-align:center;margin-bottom:52px}
+.sh .en{color:var(--gold);letter-spacing:.3em;font-size:.78rem;font-weight:700;text-transform:uppercase}
+.sh h2{font-family:"Noto Serif JP",serif;font-size:clamp(1.5rem,4.5vw,2.2rem);color:var(--navy);font-weight:900;margin-top:12px}
+
+/* FAQ */
+.faq-sec{background:var(--bg)}
+.faq-list{display:flex;flex-direction:column;gap:12px;max-width:760px;margin:0 auto}
+.fq{border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.fq-q{background:#fff;padding:16px 22px;font-weight:700;font-size:.93rem;color:var(--navy);display:flex;gap:12px}
+.fq-q::before{content:"Q";background:var(--navy);color:#fff;font-size:.74rem;width:1.7em;height:1.7em;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:900;margin-top:.05em}
+.fq-a{background:#f8fafc;padding:14px 22px;font-size:.89rem;color:var(--gray);display:flex;gap:12px;border-top:1px solid var(--line)}
+.fq-a::before{content:"A";background:var(--gold);color:#fff;font-size:.74rem;width:1.7em;height:1.7em;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:900;margin-top:.05em}
+
+/* タイムライン */
+.day-sec{background:var(--navy);color:#fff}
+.day-sec .sh h2{color:#fff}
+.day-sec .sh .en{color:var(--gold-l)}
+.tl{max-width:700px;margin:0 auto}
+.tl-row{display:flex;gap:24px;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.08)}
+.tl-row:last-child{border:none}
+.tl-t{flex:0 0 68px;font-family:"Noto Serif JP",serif;font-weight:900;color:var(--gold-l);font-size:.9rem;padding-top:2px}
+.tl-c h4{font-size:.95rem;font-weight:700;margin-bottom:3px}
+.tl-c p{font-size:.86rem;color:#8aafce}
+
+/* 先輩 */
+.voices{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.vc{background:#fff;border:1px solid var(--line);border-radius:4px;overflow:hidden}
+.vc img{width:100%;height:200px;object-fit:cover}
+.vc .vb{padding:22px}
+.vc .wn{font-family:"Noto Serif JP",serif;font-weight:900;color:var(--navy);font-size:.95rem}
+.vc .ro{font-size:.74rem;color:var(--gold);font-weight:700;letter-spacing:.06em;margin-bottom:10px}
+.vc p{font-size:.87rem;color:var(--gray);line-height:1.8}
+@media(max-width:768px){.voices{grid-template-columns:1fr}}
+
+/* 募集要項 */
+.req-sec{background:var(--cream)}
+table.req{width:100%;border-collapse:collapse;font-size:.91rem}
+table.req th,table.req td{padding:13px 18px;border:1px solid var(--line);vertical-align:top}
+table.req th{background:var(--navy);color:#fff;font-weight:500;width:28%;white-space:nowrap}
+table.req td{background:#fff}
+@media(max-width:768px){
+  table.req tr{display:block;margin-bottom:10px;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+  table.req th,table.req td{display:block;width:100%;border:none;border-bottom:1px solid var(--line)}
+  table.req th{border-bottom:1px solid rgba(255,255,255,.3)}
+  table.req td:last-child{border-bottom:none}
+}
+
+/* 採用担当 */
+.staff-wr{display:flex;align-items:center;gap:22px;background:#fff;border:1px solid var(--line);border-radius:4px;padding:24px 28px;max-width:540px;margin:0 auto 18px}
+.staff-wr img{width:80px;height:80px;border-radius:50%;flex-shrink:0;object-fit:cover}
+.staff-nm{font-family:"Noto Serif JP",serif;font-weight:900;color:var(--navy);margin-bottom:5px}
+.staff-msg{font-size:.88rem;color:var(--gray)}
+@media(max-width:600px){.staff-wr{flex-direction:column;text-align:center}}
+
+/* CTA */
+.cta-band{background:var(--navy);color:#fff;text-align:center;padding:80px 22px}
+.cta-band h2{font-family:"Noto Serif JP",serif;font-size:clamp(1.4rem,4.5vw,2.2rem);font-weight:900;margin-bottom:12px}
+.cta-band p{color:#8eb4d0;margin-bottom:30px}
+
+/* footer */
+footer{background:#060f1a;color:#334455;text-align:center;padding:22px;font-size:.8rem}
+</style>
+</head>
+<body>
+
+<!-- ナビゲーション -->
+<header>
+  <div class="wrap">
+    <nav class="nav">
+      <div class="logo"><b>WHM</b> 採用情報</div>
+      <div class="menu">
+        <a href="#features">仕事の魅力</a>
+        <a href="#faq">FAQ</a>
+        <a href="#voices">先輩の声</a>
+        <a href="#req">募集要項</a>
+      </div>
+      <button class="hamb" id="ham" aria-label="メニュー">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+  <nav class="mob-nav" id="mnav">
+    <button class="close-btn" id="close-nav">✕</button>
+    <ul>
+      <li><a href="#features">仕事の魅力</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#voices">先輩の声</a></li>
+      <li><a href="#req">募集要項</a></li>
+      <li><a href="#entry">応募する</a></li>
+    </ul>
+  </nav>
+</header>
+
+<!-- FVバナー -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-ov"></div>
+  <div class="hero-cont wrap">
+    <p class="eyebrow">RECRUIT 採用情報</p>
+    <h1>ホテル清掃チームをまとめる<br><span>リーダー</span>として、<br>成田で輝きませんか。</h1>
+    <p>副責任者（現場管理サポート）を1名募集。<br>客室清掃の経験を活かし、次のステップへ進むチャンスです。<br>管理業務は未経験でもOK。8:00〜17:00 / 年間休日107日。</p>
+    <div class="hero-pills">
+      <span>時給 1,400円</span>
+      <span>年間休日 107日</span>
+      <span>管理未経験OK</span>
+      <span>成田駅 徒歩圏内</span>
+      <span>4社保険完備</span>
+    </div>
+    <a href="#entry" class="btn-gold">採用情報を見る・応募する</a>
+  </div>
+  <p class="scroll-ind">SCROLL</p>
+</section>
+
+<!-- 特徴 スプリット3つ -->
+<div id="features">
+  <div class="split">
+    <!-- サンプル。実際には御社の職場写真に差し替え -->
+    <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=640&h=400&fit=crop&q=80')"></div>
+    <div class="tx">
+      <div class="no">POINT 01</div>
+      <h3>「清掃のプロ」だからこそ<br>活きるリーダーポジション</h3>
+      <p>現場を誰より知っているあなたの経験が、そのままチームへの的確な指示になります。アパホテル京成成田駅前で副責任者として活躍できるポジションです。</p>
+    </div>
+  </div>
+  <div class="split rev">
+    <!-- サンプル。実際には御社の職場写真に差し替え -->
+    <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=640&h=400&fit=crop&q=80')"></div>
+    <div class="tx">
+      <div class="no">POINT 02</div>
+      <h3>管理業務は未経験でOK<br>ブランクある方も歓迎</h3>
+      <p>シフト管理・スタッフへの指示出し・ホテル担当者との打ち合わせ——これらは入社後にイチから丁寧に指導します。「また現場で働きたい」という方もぜひ。</p>
+    </div>
+  </div>
+  <div class="split">
+    <!-- サンプル。実際には御社の職場写真に差し替え -->
+    <div class="ph" style="background-image:url('https://images.unsplash.com/photo-1528360983277-13d401cdc186?w=640&h=400&fit=crop&q=80')"></div>
+    <div class="tx">
+      <div class="no">POINT 03</div>
+      <h3>定時17時退勤で<br>プライベートも充実</h3>
+      <p>基本勤務は8:00〜17:00。夕方には退勤できるので、家族との時間も趣味の時間も確保できます。年間休日は107日、シフトの相談にも応じます。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 数字 -->
+<div class="nums-sec">
+  <div class="wrap">
+    <div class="nums">
+      <div class="num-c">
+        <div class="num-v">242,<span class="num-u">200</span></div>
+        <div class="num-l">月収例（時給1,400円×173h）</div>
+      </div>
+      <div class="num-c">
+        <div class="num-v">107<span class="num-u">日</span></div>
+        <div class="num-l">年間休日（シフト相談可）</div>
+      </div>
+      <div class="num-c">
+        <div class="num-v">17<span class="num-u">時</span></div>
+        <div class="num-l">定時退勤</div>
+      </div>
+      <div class="num-c">
+        <div class="num-v">4<span class="num-u">種</span></div>
+        <div class="num-l">社会保険完備</div>
+      </div>
+    </div>
+    <span class="sample-note" style="text-align:center;display:block;color:#3a6070;padding:12px">※ここはサンプルです。実際には御社の最新データに差し替えます。</span>
+  </div>
+</div>
+
+<!-- FAQ -->
+<section class="faq-sec" id="faq">
+  <div class="wrap">
+    <div class="sh">
+      <p class="en">FAQ</p>
+      <h2>よくある質問</h2>
+    </div>
+    <div class="faq-list">
+      <div class="fq">
+        <div class="fq-q">管理経験がなくても応募できますか？</div>
+        <div class="fq-a">ホテル客室清掃の経験があれば管理業務は未経験でOKです。業務の流れはイチから丁寧に指導します。</div>
+      </div>
+      <div class="fq">
+        <div class="fq-q">選考の流れを教えてください。</div>
+        <div class="fq-a">ハローワークの紹介状を取得のうえ、履歴書（写真付き）を持参して就業場所にて面接1回。結果は7日以内に郵送または電話でお知らせします。</div>
+      </div>
+      <div class="fq">
+        <div class="fq-q">ブランクがあっても大丈夫ですか？</div>
+        <div class="fq-a">はい、歓迎しています。清掃現場の経験があれば空白期間の長さは問いません。</div>
+      </div>
+      <div class="fq">
+        <div class="fq-q">残業はどのくらいありますか？</div>
+        <div class="fq-a">月平均10時間程度です。8:00〜17:00の勤務なので、夕方には退勤してプライベートの時間を確保できます。</div>
+      </div>
+      <div class="fq">
+        <div class="fq-q">社会保険はどうなっていますか？</div>
+        <div class="fq-a">雇用保険・労災保険・健康保険・厚生年金の4種すべてに加入いただけます。</div>
+      </div>
+    </div>
+    <span class="sample-note" style="text-align:center;display:block">※ここはサンプルです。実際には御社の質問・回答に差し替えます。</span>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section class="day-sec" id="schedule">
+  <div class="wrap">
+    <div class="sh">
+      <p class="en">DAILY SCHEDULE</p>
+      <h2>副責任者の1日の流れ</h2>
+    </div>
+    <div class="tl">
+      <div class="tl-row"><div class="tl-t">8:00</div><div class="tl-c"><h4>出勤・朝のミーティング</h4><p>スタッフの出勤確認とシフト最終確認。当日の稼働状況を把握します。</p></div></div>
+      <div class="tl-row"><div class="tl-t">8:30</div><div class="tl-c"><h4>スタッフへの業務指示</h4><p>担当ルームの割り振りと作業のポイントを伝達します。</p></div></div>
+      <div class="tl-row"><div class="tl-t">9:00</div><div class="tl-c"><h4>現場巡回・サポート</h4><p>清掃の進捗確認とスタッフへのサポート・品質チェックを行います。</p></div></div>
+      <div class="tl-row"><div class="tl-t">11:00</div><div class="tl-c"><h4>ホテル担当者との打ち合わせ</h4><p>チェックアウト状況・優先度を共有し、午後の動きを調整します。</p></div></div>
+      <div class="tl-row"><div class="tl-t">12:00</div><div class="tl-c"><h4>休憩（60分）</h4><p>ランチタイム。成田駅周辺には飲食店も豊富です。</p></div></div>
+      <div class="tl-row"><div class="tl-t">13:00</div><div class="tl-c"><h4>午後の人員管理・現場調整</h4><p>急な状況変化にも柔軟に対応します。</p></div></div>
+      <div class="tl-row"><div class="tl-t">15:30</div><div class="tl-c"><h4>清掃完了確認・報告</h4><p>全室の清掃完了を確認してホテル側へ報告。</p></div></div>
+      <div class="tl-row"><div class="tl-t">17:00</div><div class="tl-c"><h4>定時退勤！</h4><p>夕方からプライベートや家族との時間を楽しめます。</p></div></div>
+    </div>
+    <span class="sample-note" style="text-align:center;display:block;color:#3a6070;margin-top:16px">※ここはサンプルです。実際には御社の業務フローに合わせて差し替えます。</span>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section id="voices">
+  <div class="wrap">
+    <div class="sh">
+      <p class="en">VOICES</p>
+      <h2>先輩スタッフの声</h2>
+    </div>
+    <div class="voices">
+      <div class="vc">
+        <!-- サンプル顔写真。実際には御社スタッフの写真に差し替え -->
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=200&fit=crop&crop=faces&q=80" alt="田中さん（仮名）">
+        <div class="vb">
+          <div class="wn">田中 恵（仮名）</div>
+          <div class="ro">副責任者 / 清掃歴10年 / 現職3年目</div>
+          <p>現場を知っているからこそ、スタッフへの指示がスムーズに通ります。チームが一体感を持って動いているとき、清掃のプロとしての誇りを感じます。</p>
+        </div>
+      </div>
+      <div class="vc">
+        <!-- サンプル顔写真。実際には御社スタッフの写真に差し替え -->
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=200&fit=crop&crop=faces&q=80" alt="佐藤さん（仮名）">
+        <div class="vb">
+          <div class="wn">佐藤 誠（仮名）</div>
+          <div class="ro">清掃スタッフ / 入社1年目</div>
+          <p>ブランクがあって心配でしたが、副責任者さんが一から丁寧に教えてくれました。今は安心して業務に取り組めています。</p>
+        </div>
+      </div>
+      <div class="vc">
+        <!-- サンプル顔写真。実際には御社スタッフの写真に差し替え -->
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=200&fit=crop&crop=faces&q=80" alt="鈴木さん（仮名）">
+        <div class="vb">
+          <div class="wn">鈴木 美穂（仮名）</div>
+          <div class="ro">副責任者 / 入社2年目 / 管理は入社後に習得</div>
+          <p>最初は不安でしたが上司のサポートで乗り越えられました。17時退勤で夕方を自分のために使えるのが気に入っています。</p>
+        </div>
+      </div>
+    </div>
+    <span class="sample-note" style="text-align:center;display:block">※ここはサンプルです。氏名・写真・コメントはすべて仮のものです。実際には御社スタッフの情報に差し替えます。</span>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="req-sec" id="req">
+  <div class="wrap">
+    <div class="sh">
+      <p class="en">REQUIREMENTS</p>
+      <h2>募集要項</h2>
+    </div>
+    <table class="req">
+      <tr><th>職種</th><td><strong>ホテル客室清掃の現場管理サポート（副責任者）</strong><br>ホテルの清掃チームをまとめるリーダー補佐ポジションです。</td></tr>
+      <tr><th>仕事内容</th><td>アパホテル京成成田駅前にて副責任者として責任者をサポート。シフト管理・スタッフ指示伝達・ホテル担当者との打ち合わせ・現場管理・人員調整など。</td></tr>
+      <tr><th>給与</th><td>時給 1,400円（月収例: 242,200円 / 173h換算）<br>試用期間2ヶ月: 時給 1,350円</td></tr>
+      <tr><th>就業時間</th><td>8:00〜17:00（休憩60分） ※稼働状況により変動あり</td></tr>
+      <tr><th>休日・休暇</th><td>年間休日107日 / シフト制（週休2日）<br>勤務日数相談可 / 年次有給休暇（6ヶ月後10日）</td></tr>
+      <tr><th>勤務地</th><td>アパホテル京成成田駅前<br>千葉県成田市花崎町906 / JR・京成 成田駅 徒歩圏内</td></tr>
+      <tr><th>雇用形態</th><td>契約社員（1年更新・原則更新あり）</td></tr>
+      <tr><th>応募資格</th><td>ホテル客室清掃の経験（必須）<br>管理業務は未経験OK / ブランクある方も歓迎</td></tr>
+      <tr><th>待遇</th><td>雇用・労災・健康・厚生年金 完備<br>通勤手当 実費支給（上限26,000円/月）<br>月平均残業 約10時間</td></tr>
+      <tr><th>選考</th><td>面接1回（就業場所にて）<br>※ハローワークの紹介状が必要です</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 採用担当者 -->
+<section id="apply">
+  <div class="wrap">
+    <div class="sh">
+      <p class="en">CONTACT</p>
+      <h2>採用担当者から</h2>
+    </div>
+    <!-- サンプル顔写真。実際には担当者の写真に差し替え -->
+    <div class="staff-wr">
+      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当（仮名）">
+      <div>
+        <div class="staff-nm">採用担当（仮名）</div>
+        <p class="staff-msg">清掃現場の経験を活かしてリーダーとして次の一歩を踏み出したい方をお待ちしています。面接では、これまでのご経験を気軽に話してください。</p>
+      </div>
+    </div>
+    <span class="sample-note" style="text-align:center;display:block">※ここはサンプルです。担当者の写真・名前・コメントは御社のものに差し替えます。</span>
+  </div>
+</section>
+
+<!-- CTA -->
+<div class="cta-band" id="entry">
+  <h2>清掃の経験を、<br>ホテルを支えるリーダーの力に。</h2>
+  <p>まずはハローワーク窓口へご相談の上、紹介状をお持ちください。</p>
+  <a href="tel:0476-20-4325" class="btn-gold">0476-20-4325（採用担当）に電話する</a>
+</div>
+
+<footer>
+  <p>© ワールドホテルマネージメント株式会社</p>
+  <p style="margin-top:4px">このページはサンプルです。実際のページとは異なります。</p>
+</footer>
+
+<script>
+const h=document.getElementById('ham'),n=document.getElementById('mnav'),c=document.getElementById('close-nav');
+h.addEventListener('click',()=>{h.classList.toggle('open');n.classList.toggle('open')});
+if(c) c.addEventListener('click',()=>{h.classList.remove('open');n.classList.remove('open')});
+document.querySelectorAll('.mob-nav a').forEach(a=>a.addEventListener('click',()=>{h.classList.remove('open');n.classList.remove('open')}));
+</script>
+</body>
+</html>
