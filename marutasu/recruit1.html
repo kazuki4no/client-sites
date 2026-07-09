@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 合同会社まるたす</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#333;line-height:1.7}
+img{max-width:100%;height:auto;display:block}
+
+/* Colors */
+:root{
+  --green:#2e7d32;
+  --green-light:#4caf50;
+  --green-pale:#e8f5e9;
+  --green-bg:#f1f8e9;
+  --earth:#795548;
+  --text:#333;
+  --text-sub:#666;
+  --border:#ddd;
+}
+
+/* Header */
+header{background:#fff;border-bottom:2px solid var(--green);position:sticky;top:0;z-index:100}
+.header-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-size:1.1rem;font-weight:700;color:var(--green);text-decoration:none}
+nav{display:flex;gap:24px}
+nav a{text-decoration:none;color:#555;font-size:.9rem;transition:color .2s}
+nav a:hover{color:var(--green)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{width:24px;height:2px;background:#333;display:block}
+.mobile-nav{display:none;flex-direction:column;background:#fff;border-top:1px solid var(--border);padding:16px 20px;gap:16px}
+.mobile-nav a{text-decoration:none;color:#555;font-size:1rem}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;min-height:520px;display:flex;align-items:center}
+.hero-img{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center}
+.hero-overlay{position:absolute;inset:0;background:rgba(20,50,20,0.55)}
+.hero-content{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:60px 20px;color:#fff}
+.hero-badge{display:inline-block;background:var(--green-light);color:#fff;font-size:.8rem;font-weight:700;padding:4px 12px;border-radius:20px;margin-bottom:16px}
+.hero h1{font-size:clamp(1.7rem,5vw,2.8rem);font-weight:700;line-height:1.4;margin-bottom:16px}
+.hero p{font-size:clamp(1rem,2.5vw,1.15rem);margin-bottom:24px;opacity:.92}
+.btn-primary{display:inline-block;background:var(--green);color:#fff;padding:14px 32px;border-radius:4px;text-decoration:none;font-weight:700;font-size:1rem;transition:background .2s}
+.btn-primary:hover{background:#1b5e20}
+
+/* Section */
+section{padding:64px 20px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-title{font-size:clamp(1.4rem,4vw,1.9rem);font-weight:700;color:var(--green);margin-bottom:8px}
+.section-sub{color:var(--text-sub);margin-bottom:40px;font-size:.95rem}
+
+/* Benefits */
+.benefits-bg{background:var(--green-bg)}
+.benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.benefit-card{background:#fff;border-radius:8px;padding:28px 20px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+.benefit-icon{font-size:2.4rem;margin-bottom:12px}
+.benefit-title{font-size:1.05rem;font-weight:700;color:var(--green);margin-bottom:8px}
+.benefit-desc{font-size:.9rem;color:var(--text-sub);line-height:1.6}
+
+/* Jobs table */
+.jobs-bg{background:#fff}
+.table-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:.92rem}
+th{background:var(--green);color:#fff;padding:12px 16px;text-align:left;width:160px;vertical-align:top}
+td{padding:12px 16px;border-bottom:1px solid var(--border);vertical-align:top}
+tr:last-child td{border-bottom:none}
+
+/* Timeline */
+.timeline-bg{background:var(--green-bg)}
+.timeline{display:flex;flex-direction:column;gap:0}
+.tl-item{display:flex;gap:16px;position:relative}
+.tl-item:not(:last-child)::before{content:'';position:absolute;left:39px;top:52px;width:2px;height:calc(100% - 20px);background:#c8e6c9}
+.tl-time{min-width:80px;text-align:right;font-weight:700;color:var(--green);padding-top:14px;font-size:.9rem}
+.tl-dot{width:16px;height:16px;border-radius:50%;background:var(--green);margin-top:18px;flex-shrink:0}
+.tl-body{padding:12px 0 24px;flex:1}
+.tl-title{font-weight:700;font-size:1rem;margin-bottom:4px}
+.tl-desc{font-size:.88rem;color:var(--text-sub)}
+
+/* Staff */
+.staff-bg{background:#fff}
+.staff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.staff-card{border-radius:8px;overflow:hidden;border:1px solid var(--border)}
+.staff-card img{width:100%;height:180px;object-fit:cover}
+.staff-info{padding:16px}
+.staff-name{font-weight:700;font-size:1rem;margin-bottom:2px}
+.staff-role{font-size:.82rem;color:var(--text-sub);margin-bottom:8px}
+.staff-msg{font-size:.88rem;line-height:1.6}
+.sample-note{font-size:.75rem;color:#aaa;margin-top:8px}
+
+/* FAQ */
+.faq-bg{background:var(--green-bg)}
+.faq-list{display:flex;flex-direction:column;gap:16px}
+.faq-item{background:#fff;border-radius:8px;overflow:hidden;border:1px solid var(--border)}
+.faq-q{font-weight:700;font-size:.95rem;padding:16px 20px;display:flex;align-items:center;gap:10px;cursor:pointer}
+.faq-q::before{content:'Q';background:var(--green);color:#fff;border-radius:4px;padding:2px 8px;font-size:.85rem;flex-shrink:0}
+.faq-a{padding:0 20px 16px 20px;font-size:.9rem;color:var(--text-sub);line-height:1.7}
+.faq-a::before{content:'A ';font-weight:700;color:var(--green)}
+
+/* CTA section */
+.cta-bg{background:var(--green);color:#fff;text-align:center}
+.cta-bg .section-title{color:#fff}
+.cta-bg .section-sub{color:rgba(255,255,255,.85)}
+.btn-white{display:inline-block;background:#fff;color:var(--green);padding:14px 36px;border-radius:4px;text-decoration:none;font-weight:700;font-size:1rem;transition:background .2s}
+.btn-white:hover{background:#e8f5e9}
+
+/* Recruiter */
+.recruiter-bg{background:#fff}
+.recruiter-card{display:flex;gap:32px;align-items:flex-start;max-width:700px}
+.recruiter-card img{width:120px;height:120px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.recruiter-name{font-weight:700;font-size:1.05rem;margin-bottom:4px}
+.recruiter-role{font-size:.85rem;color:var(--text-sub);margin-bottom:12px}
+.recruiter-msg{font-size:.92rem;line-height:1.7}
+
+/* Footer */
+footer{background:#333;color:#ccc;padding:32px 20px;font-size:.85rem}
+.footer-inner{max-width:1100px;margin:0 auto}
+footer h3{color:#fff;margin-bottom:12px;font-size:1rem}
+
+/* Responsive */
+@media(max-width:768px){
+  nav{display:none}
+  .hamburger{display:flex}
+  .mobile-nav.open{display:flex}
+  .benefits-grid{grid-template-columns:1fr}
+  .staff-grid{grid-template-columns:1fr}
+  .recruiter-card{flex-direction:column}
+  th{width:100px}
+  table{font-size:.85rem}
+  .tl-time{min-width:64px;font-size:.82rem}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">合同会社 まるたす</a>
+    <nav>
+      <a href="#benefits">働く魅力</a>
+      <a href="#jobs">募集要項</a>
+      <a href="#staff">先輩の声</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#apply">応募する</a>
+    </nav>
+    <button class="hamburger" onclick="document.querySelector('.mobile-nav').classList.toggle('open')" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-nav">
+    <a href="#benefits">働く魅力</a>
+    <a href="#jobs">募集要項</a>
+    <a href="#staff">先輩の声</a>
+    <a href="#faq">よくある質問</a>
+    <a href="#apply">応募する</a>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">訪問介護ヘルパー ／ 印西市内</div>
+    <h1>自宅から直行直帰。<br>事業所へ出勤しなくていい、<br>新しい介護の働き方。</h1>
+    <p>月給28万円・週休2日・資格取得支援（費用会社負担）<br>未経験の方も一緒に資格を取るところから始めましょう。</p>
+    <a href="#apply" class="btn-primary">採用情報をみる</a>
+  </div>
+</section>
+
+<!-- Benefits -->
+<section class="benefits-bg" id="benefits">
+  <div class="section-inner">
+    <h2 class="section-title">まるたすで働く3つの魅力</h2>
+    <p class="section-sub">同業他社と比べてここが違います</p>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">🚗</div>
+        <div class="benefit-title">直行直帰・事業所出勤不要</div>
+        <div class="benefit-desc">自宅から利用者さまのお宅へ直接向かいます。わざわざ事業所に寄る必要がなく、プライベートな時間を大切にできます。</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">💴</div>
+        <div class="benefit-title">月給28万円＋賞与あり</div>
+        <div class="benefit-desc">基本給27万円＋固定手当1万円。前年度賞与実績20〜25万円。退職金制度（勤続5年以上）も整っています。</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">📚</div>
+        <div class="benefit-title">資格取得支援（費用会社負担）</div>
+        <div class="benefit-desc">無資格でも大丈夫。介護職員初任者研修のスクーリング費用は全額会社負担。資格を取りながら働けます。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Additional points -->
+<section class="jobs-bg">
+  <div class="section-inner">
+    <h2 class="section-title">こんな方に選ばれています</h2>
+    <p class="section-sub">まるたすで活躍しているスタッフの共通点</p>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">🌱</div>
+        <div class="benefit-title">介護未経験からスタート</div>
+        <div class="benefit-desc">資格不問で入社可能。試用期間中は事務や同行訪問でじっくり慣れてから独り立ちできます。</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">📅</div>
+        <div class="benefit-title">休みの曜日を相談できる</div>
+        <div class="benefit-desc">週休2日・年間休日105日。休む曜日は相談のうえ固定できるので、プライベートの予定も立てやすい。</div>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🐾</div>
+        <div class="benefit-title">子連れ・ペット同伴OK</div>
+        <div class="benefit-desc">小さなお子さまやペットと一緒に出勤できる環境。個々のスタッフのライフスタイルを尊重します。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Jobs table -->
+<section class="jobs-bg" style="background:var(--green-bg);padding-top:0" id="jobs">
+  <div class="section-inner">
+    <h2 class="section-title">募集要項</h2>
+    <p class="section-sub">訪問介護ヘルパー（正社員・印西市内）</p>
+    <div class="table-wrap">
+      <table>
+        <tr><th>職種</th><td>訪問介護ヘルパー（印西市内）</td></tr>
+        <tr><th>雇用形態</th><td>正社員（試用期間3か月・同条件）</td></tr>
+        <tr><th>給与</th><td>月給28万円（基本給27万＋固定残業代1万・5時間超分は別途支給）<br>前年度賞与実績 20〜25万円（年1回）</td></tr>
+        <tr><th>勤務時間</th><td>9:00〜18:00（休憩60分）／月平均残業5時間</td></tr>
+        <tr><th>勤務地</th><td>印西市内（自宅直行直帰・事業所出退勤不要）<br>マイカー・バイク・自転車通勤可・駐車場無料</td></tr>
+        <tr><th>休日</th><td>週休2日（曜日固定・相談の上決定）／年間休日105日<br>6か月後に年次有給休暇10日付与</td></tr>
+        <tr><th>必要資格</th><td>普通自動車免許（AT限定可）必須<br>介護職員初任者研修修了者・ホームヘルパー2級（あれば尚可・未取得でも可）</td></tr>
+        <tr><th>資格取得支援</th><td>介護職員初任者研修の費用は会社全額負担</td></tr>
+        <tr><th>待遇・福利厚生</th><td>雇用・労災・健康・厚生年金加入／退職金（勤続5年以上）／確定給付企業年金（はぐくみ）／再雇用制度（67歳定年・70歳まで）／子連れ出勤・ペット同伴出勤可</td></tr>
+        <tr><th>応募方法</th><td>オンライン自主応募可（ハローワーク紹介状不要）<br>面接予定1回・選考結果は面接後2日以内に電話でご連絡</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Timeline -->
+<section class="timeline-bg" id="day">
+  <div class="section-inner">
+    <h2 class="section-title">1日の流れ（モデルケース）</h2>
+    <p class="section-sub">※ここはサンプルです。実際には担当スタッフの1日の流れに差し替えます</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">8:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-title">自宅を出発（直行）</div>
+          <div class="tl-desc">スマホでその日の訪問先・時間をチェック。事業所に寄らずそのまま利用者さまのお宅へ向かいます。</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">9:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-title">1件目の訪問（身体介護）</div>
+          <div class="tl-desc">入浴介助や食事・排せつのサポート。利用者さまのペースに合わせて丁寧にお手伝いします。</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">11:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-title">2〜3件目の訪問（生活支援）</div>
+          <div class="tl-desc">掃除・洗濯・食事の準備など。短時間でも「ありがとう」の言葉が励みになります。</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-title">昼休憩（60分）</div>
+          <div class="tl-desc">自宅や車内で自由に過ごせます。次の訪問先が遠い場合は早めに移動することも。</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">14:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-title">4〜5件目の訪問</div>
+          <div class="tl-desc">午後も1件あたり30〜60分程度。移動時間も含めて余裕を持ったスケジュールで組んでいます。</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-title">最終訪問を終えて直帰</div>
+          <div class="tl-desc">記録はスマホやタブレットで入力済みなので、そのまま自宅へ。事業所に戻る必要はありません。</div>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">月1回</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-title">チームミーティング（事業所orWeb）</div>
+          <div class="tl-desc">情報共有・スキルアップ研修など。WEB参加も可能なので遠方のスタッフも参加しやすいです。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Staff voices -->
+<section class="staff-bg" id="staff">
+  <div class="section-inner">
+    <h2 class="section-title">先輩スタッフからのメッセージ</h2>
+    <p class="section-sub sample-note">※ここはサンプルです。実際には御社スタッフの写真・コメントに差し替えます</p>
+    <!-- replace: staff photos and messages with actual employee profiles -->
+    <div class="staff-grid">
+      <div class="staff-card">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=300&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div class="staff-info">
+          <div class="staff-name">Aさん（仮名）</div>
+          <div class="staff-role">訪問介護ヘルパー / 入社2年</div>
+          <p class="staff-msg">「前職は全然別の仕事で介護は未経験でした。資格取得の費用を出してもらえたのが決め手です。直行直帰なので子どもの送り迎えとも両立できています。」</p>
+          <p class="sample-note">※サンプルです</p>
+        </div>
+      </div>
+      <div class="staff-card">
+        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=300&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div class="staff-info">
+          <div class="staff-name">Bさん（仮名）</div>
+          <div class="staff-role">訪問介護ヘルパー / 入社3年</div>
+          <p class="staff-msg">「事業所に毎日通う必要がないのが想像以上に楽でした。訪問件数もゆったり設定されていて、一人ひとりの利用者さまと向き合える時間があります。」</p>
+          <p class="sample-note">※サンプルです</p>
+        </div>
+      </div>
+      <div class="staff-card">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div class="staff-info">
+          <div class="staff-name">Cさん（仮名）</div>
+          <div class="staff-role">訪問介護ヘルパー / 入社1年</div>
+          <p class="staff-msg">「訪問介護って体力勝負かと思っていましたが、1日5〜7件でペースよく働けます。利用者さんから『来てくれてよかった』と言われると本当にやりがいを感じます。」</p>
+          <p class="sample-note">※サンプルです</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-bg" id="faq">
+  <div class="section-inner">
+    <h2 class="section-title">よくある質問</h2>
+    <p class="section-sub">応募前に気になるポイントをまとめました</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">介護の経験がなくても応募できますか？</div>
+        <div class="faq-a">はい、未経験でも大丈夫です。無資格でも応募可能で、介護職員初任者研修の費用は会社が全額負担します。試用期間中は事務や同行訪問で実務に慣れながら学べます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">普通自動車免許は絶対に必要ですか？</div>
+        <div class="faq-a">はい、必須です。ただしAT限定可です。利用者さまのご自宅へ自分で移動できる手段が必要なため、免許をお持ちの方が対象となります。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">「直行直帰」とはどういうことですか？</div>
+        <div class="faq-a">事業所（柏市・印西市）へ毎日通勤する必要がなく、自宅から直接利用者さまのお宅へ向かい、最後の訪問が終わったらそのまま帰宅できます。毎月1回のミーティングのみ事業所またはWebで参加します。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">昇給制度はありますか？</div>
+        <div class="faq-a">現在のところ定期昇給制度はありませんが、月給28万円（基本給27万＋固定手当）という水準自体が業界内では高めに設定されています。賞与（前年度実績20〜25万円）や退職金制度（勤続5年以上）で長期的な安定を支えています。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">選考の流れを教えてください。</div>
+        <div class="faq-a">① お問い合わせ・オンライン応募（ハローワーク紹介状不要） → ② 書類確認 → ③ 面接（1回・印西市大森の事業所またはオンライン） → ④ 面接から2日以内にお電話でご連絡します。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Recruiter -->
+<section class="recruiter-bg">
+  <div class="section-inner">
+    <h2 class="section-title">採用担当者より</h2>
+    <!-- replace: recruiter photo and message -->
+    <p class="section-sub sample-note">※ここはサンプルです。実際には採用担当者の写真・コメントに差し替えます</p>
+    <div class="recruiter-card">
+      <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当者（サンプル）">
+      <div>
+        <div class="recruiter-name">松浦 智博（仮）</div>
+        <div class="recruiter-role">介護事業部 部長</div>
+        <p class="recruiter-msg">「介護の仕事に興味があるけれど、体力面や知識の不安で踏み出せていない方に来ていただきたいです。まるたすでは一から一緒に学べる環境を整えています。まずはお気軽にご連絡ください。」</p>
+        <p class="sample-note">※サンプルです。実際の担当者写真・コメントに差し替えてください</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-bg" id="apply">
+  <div class="section-inner" style="text-align:center">
+    <h2 class="section-title">まずは気軽にお問い合わせください</h2>
+    <p class="section-sub" style="color:rgba(255,255,255,.85);margin-bottom:32px">オンライン応募可・面接は1回のみ・ハローワーク紹介状不要</p>
+    <p style="color:#fff;margin-bottom:8px;font-size:.95rem">採用担当: 松浦 智博（介護事業部 部長）</p>
+    <p style="color:#fff;margin-bottom:24px;font-size:.95rem">📞 050-3154-1070　✉ gajumaru.sp@gmail.com</p>
+    <a href="mailto:gajumaru.sp@gmail.com" class="btn-white">メールで問い合わせる</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <h3>合同会社 まるたす</h3>
+    <p>〒277-0072 千葉県柏市つくしが丘2丁目9-16</p>
+    <p>TEL: 050-3154-1070　E-mail: gajumaru.sp@gmail.com</p>
+  </div>
+</footer>
+
+</body>
+</html>
