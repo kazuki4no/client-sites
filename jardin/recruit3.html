@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>農場生産スタッフ募集 | 株式会社ハルディン</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#1a1a1a;background:#fff}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+:root{
+  --green:#2a6e34;
+  --green-d:#1a4422;
+  --green-l:#d4edda;
+  --earth:#7a5c3a;
+  --gold:#c89a10;
+  --cream:#fdf8f0;
+}
+
+/* ======== ヘッダー ======== */
+header{position:sticky;top:0;z-index:100;background:rgba(26,68,34,.95);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:space-between;padding:0 5%;height:58px}
+.logo{font-family:'Noto Serif JP',serif;font-size:1rem;font-weight:700;color:#fff;letter-spacing:.04em}
+nav.pc-nav{display:flex;gap:1.5rem}
+nav.pc-nav a{font-size:.85rem;color:rgba(255,255,255,.8);transition:color .2s}
+nav.pc-nav a:hover{color:#fff}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{width:24px;height:2px;background:#fff;display:block}
+.mobile-nav{display:none;position:fixed;top:58px;left:0;right:0;background:rgba(26,68,34,.97);padding:1rem 5%;z-index:99}
+.mobile-nav.open{display:block}
+.mobile-nav a{display:block;padding:.65rem 0;font-size:.95rem;border-bottom:1px solid rgba(255,255,255,.12);color:#fff}
+
+/* ======== FVバナーヒーロー ======== */
+.hero{position:relative;min-height:82vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center}
+.hero-overlay{position:absolute;inset:0;background:rgba(10,30,12,.58)}
+.hero-content{position:relative;z-index:1;color:#fff;text-align:center;padding:2rem 6%;max-width:780px}
+.hero-pill{display:inline-block;background:var(--gold);color:#fff;font-size:.78rem;font-weight:700;padding:.32rem .95rem;border-radius:20px;margin-bottom:1.4rem;letter-spacing:.1em}
+.hero h1{font-family:'Noto Serif JP',serif;font-size:clamp(2rem,5.5vw,3.6rem);font-weight:700;line-height:1.45;margin-bottom:1.2rem;text-shadow:0 2px 12px rgba(0,0,0,.4)}
+.hero h1 span{display:block;font-size:.55em;font-family:'Noto Sans JP',sans-serif;font-weight:400;opacity:.88;margin-top:.4rem}
+.hero p{font-size:clamp(.88rem,2.2vw,1.05rem);opacity:.9;line-height:1.85;margin-bottom:2rem;max-width:560px;margin-left:auto;margin-right:auto}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-solid{display:inline-block;background:var(--green);color:#fff;padding:.85rem 2.2rem;border-radius:6px;font-size:.95rem;font-weight:700;transition:background .2s}
+.btn-solid:hover{background:var(--green-d)}
+.btn-outline-w{display:inline-block;border:2px solid rgba(255,255,255,.7);color:#fff;padding:.8rem 2rem;border-radius:6px;font-size:.95rem;font-weight:500;transition:background .2s}
+.btn-outline-w:hover{background:rgba(255,255,255,.15)}
+
+/* ======== セクション共通 ======== */
+section.inner{padding:4.5rem 8%}
+.sec-eye{font-size:.74rem;font-weight:700;color:var(--green);letter-spacing:.18em;text-transform:uppercase;margin-bottom:.35rem}
+.sec-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.35rem,3vw,1.9rem);font-weight:700;color:#1a1a1a;margin-bottom:.4rem;line-height:1.45}
+.sec-line{width:40px;height:3px;background:var(--green);margin-bottom:1.6rem}
+.sample-note{font-size:.72rem;color:#aaa;margin-top:.7rem}
+
+/* ======== ヒーロー直下・インパクトワード ======== */
+.impact{background:var(--cream);padding:2.8rem 8%;display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background-color:#ddd}
+.impact-item{background:var(--cream);padding:2rem 1.5rem;text-align:center}
+.impact-item strong{display:block;font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:700;color:var(--green);line-height:1}
+.impact-item span{display:block;font-size:.8rem;color:#555;margin-top:.35rem}
+
+/* ======== 弱点克服セクション ======== */
+.story{background:var(--green-l);padding:4rem 8%}
+.story-inner{max-width:800px;margin:0 auto}
+.story-inner h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.3rem,3vw,1.75rem);font-weight:700;line-height:1.5;margin-bottom:1rem;color:var(--green-d)}
+.story-inner p{font-size:.9rem;line-height:1.85;color:#333;margin-bottom:1rem}
+
+/* ======== 魅力カード ======== */
+.merit-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem;margin-top:1.5rem}
+.merit-card{display:flex;gap:1.2rem;background:var(--cream);border-radius:10px;padding:1.5rem;border:1px solid #e8e0d5}
+.merit-icon{font-size:2rem;flex-shrink:0;width:2.8rem;text-align:center}
+.merit-body h3{font-size:.95rem;font-weight:700;color:var(--green-d);margin-bottom:.4rem}
+.merit-body p{font-size:.84rem;line-height:1.75;color:#444}
+
+/* ======== 先輩メッセージ ======== */
+.voices-bg{background:#f7faf7}
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:1.5rem}
+.voice-card{border-radius:12px;overflow:hidden;box-shadow:0 2px 14px rgba(0,0,0,.08)}
+.voice-card img{width:100%;height:200px;object-fit:cover}
+.vc-body{padding:1.2rem}
+.vc-name{font-size:.88rem;font-weight:700;color:var(--green);margin-bottom:.2rem}
+.vc-role{font-size:.73rem;color:#888;margin-bottom:.6rem}
+.vc-text{font-size:.82rem;line-height:1.72;color:#333}
+
+/* ======== タイムライン ======== */
+.tl-wrap{position:relative;padding-left:3rem;margin-top:1.5rem}
+.tl-wrap::before{content:'';position:absolute;left:1.1rem;top:0;bottom:0;width:2px;background:var(--green-l)}
+.tl-item{position:relative;margin-bottom:1.5rem;display:flex;gap:1rem}
+.tl-dot{position:absolute;left:-2.18rem;top:.3rem;width:16px;height:16px;border-radius:50%;background:var(--green);border:3px solid #fff;box-shadow:0 0 0 2px var(--green)}
+.tl-time{font-size:.8rem;font-weight:700;color:var(--green);flex-shrink:0;width:3.5rem;padding-top:.15rem}
+.tl-text strong{display:block;font-size:.9rem;font-weight:700;color:#1a1a1a;margin-bottom:.2rem}
+.tl-text p{font-size:.83rem;line-height:1.65;color:#555}
+
+/* ======== FAQ ======== */
+.faq-bg{background:var(--cream)}
+.faq-list{margin-top:1.2rem}
+.faq-item{border-bottom:1px solid #e0dbd2;padding:.2rem 0}
+.faq-q{display:flex;gap:.6rem;align-items:flex-start;padding:.85rem 0;cursor:pointer;font-size:.92rem;font-weight:700;color:var(--green-d)}
+.faq-q::before{content:'Q';background:var(--earth);color:#fff;font-size:.72rem;padding:.18rem .44rem;border-radius:4px;flex-shrink:0;margin-top:.08rem}
+.faq-a{font-size:.85rem;line-height:1.78;color:#444;padding:.3rem 0 1rem 1.7rem}
+
+/* ======== 募集要項 ======== */
+.job-table{width:100%;border-collapse:collapse;margin-top:1.5rem}
+.job-table tr{border-bottom:1px solid #e5e0d8}
+.job-table th{width:28%;background:var(--green-l);color:var(--green-d);font-size:.82rem;font-weight:700;padding:.85rem 1rem;text-align:left;vertical-align:top}
+.job-table td{font-size:.85rem;padding:.85rem 1rem;line-height:1.65}
+
+/* ======== CTA最終 ======== */
+.cta-final{background:var(--green-d);color:#fff;text-align:center;padding:5rem 8%}
+.cta-final h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,3.5vw,2.1rem);font-weight:700;line-height:1.5;margin-bottom:1rem}
+.cta-final p{font-size:.92rem;opacity:.88;line-height:1.8;margin-bottom:2rem;max-width:520px;margin-left:auto;margin-right:auto}
+.btn-gold{display:inline-block;background:var(--gold);color:#fff;padding:.9rem 2.6rem;border-radius:6px;font-size:1rem;font-weight:700;transition:opacity .2s}
+.btn-gold:hover{opacity:.88}
+
+/* ======== フッター ======== */
+footer{background:#0d1f10;color:#8aaa8e;text-align:center;padding:2rem;font-size:.8rem;line-height:2}
+
+/* ======== レスポンシブ ======== */
+@media(max-width:768px){
+  .pc-nav{display:none}
+  .hamburger{display:flex}
+  .impact{grid-template-columns:1fr;gap:0}
+  .merit-grid{grid-template-columns:1fr}
+  .voice-grid{grid-template-columns:1fr}
+  .job-table tr{display:flex;flex-direction:column;padding:.6rem 0}
+  .job-table th,.job-table td{width:100%;padding:.25rem .4rem;border:none}
+  .job-table th{background:none;font-size:.78rem;padding-bottom:0;color:var(--green)}
+  .hero-btns{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">🌿 株式会社ハルディン</div>
+  <nav class="pc-nav" aria-label="メインナビゲーション">
+    <a href="#merit">働く魅力</a>
+    <a href="#voices">先輩の声</a>
+    <a href="#faq">FAQ</a>
+    <a href="#job">募集要項</a>
+    <a href="#apply">応募する</a>
+  </nav>
+  <button class="hamburger" aria-label="メニューを開く" onclick="document.querySelector('.mobile-nav').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+<nav class="mobile-nav" aria-label="モバイルナビゲーション">
+  <a href="#merit" onclick="document.querySelector('.mobile-nav').classList.remove('open')">働く魅力</a>
+  <a href="#voices" onclick="document.querySelector('.mobile-nav').classList.remove('open')">先輩の声</a>
+  <a href="#faq" onclick="document.querySelector('.mobile-nav').classList.remove('open')">FAQ</a>
+  <a href="#job" onclick="document.querySelector('.mobile-nav').classList.remove('open')">募集要項</a>
+  <a href="#apply" onclick="document.querySelector('.mobile-nav').classList.remove('open')">応募する</a>
+</nav>
+
+<!-- FVバナーヒーロー -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-pill">農場生産スタッフ 正社員募集</span>
+    <h1>種をまく。育てる。届ける。<span>農業の醍醐味を、全部経験できる場所。</span></h1>
+    <p>花苗・野菜苗の育苗管理から出荷まで一貫して担う、農業生産スタッフを募集しています。<br>未経験歓迎・フォークリフト取得支援あり・8:00〜17:00勤務。</p>
+    <div class="hero-btns">
+      <a href="#apply" class="btn-solid">採用情報を見る</a>
+      <a href="#job" class="btn-outline-w">募集要項を確認する</a>
+    </div>
+  </div>
+</section>
+
+<!-- インパクトワード -->
+<div class="impact">
+  <div class="impact-item">
+    <strong>45<small style="font-size:.5em">年</small></strong>
+    <span>農業で積み上げた実績</span>
+  </div>
+  <div class="impact-item">
+    <strong>9<small style="font-size:.5em">か所</small></strong>
+    <span>国内外の自社農場</span>
+  </div>
+  <div class="impact-item">
+    <strong>未経験<small style="font-size:.45em">でも</small>OK</strong>
+    <span>先輩が丁寧にサポート</span>
+  </div>
+</div>
+
+<!-- 弱点克服ストーリー -->
+<section class="story">
+  <div class="story-inner">
+    <div class="sec-eye">ABOUT THE JOB</div>
+    <div class="sec-line"></div>
+    <h2>「採用ページを見ても、<br>仕事の面白さが伝わらなかった」<br>——そう感じた方へ。</h2>
+    <p>求人票には書ききれない魅力があります。種から育てた花が市場に届く感動。農業用ロボットを扱う最先端の現場。先輩スタッフと作り上げる農場の日常。このページでは、ハルディンの採用ページで伝えきれていなかった「仕事のリアル」をお届けします。</p>
+    <p>年間休日93日という数字だけを見ると、少なく見えるかもしれません。でも実際は8:00〜17:00の規則正しい就業時間で、残業は月平均10時間程度。農業という特性を理解したうえで、長く働き続けられる環境を整えています。</p>
+  </div>
+</section>
+
+<!-- 働く魅力 -->
+<section class="inner" id="merit">
+  <div class="sec-eye">FEATURES</div>
+  <div class="sec-title">ハルディンで働く魅力</div>
+  <div class="sec-line"></div>
+  <div class="merit-grid">
+    <div class="merit-card">
+      <div class="merit-icon">🌱</div>
+      <div class="merit-body">
+        <h3>種まきから出荷まで——農業の全工程</h3>
+        <p>育苗管理・農場内の園芸作業・出荷まで一貫して担当。「自分が育てたものが届く」達成感を毎日感じられます。グループのまとめ役も目指せます。</p>
+      </div>
+    </div>
+    <div class="merit-card">
+      <div class="merit-icon">🤝</div>
+      <div class="merit-body">
+        <h3>未経験歓迎・先輩が丁寧に指導</h3>
+        <p>農業の知識ゼロでも大丈夫。入社後は先輩スタッフがひとつひとつ作業を教えます。配属前の研修期間で、自分のペースで基礎を固めることができます。</p>
+      </div>
+    </div>
+    <div class="merit-card">
+      <div class="merit-icon">🚜</div>
+      <div class="merit-body">
+        <h3>フォークリフト資格取得支援</h3>
+        <p>入社後に会社の支援で資格を取得可能。フォークリフトを活かして業務の幅を広げ、出荷リーダーへとキャリアアップしている先輩が多くいます。</p>
+      </div>
+    </div>
+    <div class="merit-card">
+      <div class="merit-icon">🏨</div>
+      <div class="merit-body">
+        <h3>充実の福利厚生（エクシブ宿泊・社内販売）</h3>
+        <p>全国のエクシブ宿泊施設を従業員価格で利用可能。育てた花を社内販売（従業員割引）で購入できる特典も。昇給・賞与年2回・退職金も完備。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩メッセージ -->
+<section class="voices-bg inner" id="voices">
+  <div class="sec-eye">VOICES</div>
+  <div class="sec-title">先輩からのメッセージ</div>
+  <div class="sec-line"></div>
+  <div class="voice-grid">
+    <div class="voice-card">
+      <!-- サンプル顔写真（実際には御社スタッフの写真に差し替えます） -->
+      <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=400&h=200&fit=crop&q=80" alt="農場イメージ（サンプル）">
+      <div class="vc-body">
+        <div class="vc-name">鈴木 さくら（仮名）</div>
+        <div class="vc-role">農場生産スタッフ ／ 入社3年目</div>
+        <p class="vc-text">未経験で入社しましたが、先輩が丁寧に教えてくれたので安心でした。種が育っていく様子を毎日見るのが今でも楽しみです。</p>
+        <p class="sample-note">※サンプルです。実際には御社スタッフの写真・コメントに差し替えます</p>
+      </div>
+    </div>
+    <div class="voice-card">
+      <!-- サンプル顔写真（実際には御社スタッフの写真に差し替えます） -->
+      <img src="https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=400&h=200&fit=crop&q=80" alt="農場イメージ（サンプル）">
+      <div class="vc-body">
+        <div class="vc-name">田中 誠（仮名）</div>
+        <div class="vc-role">農場生産スタッフ ／ 入社5年目</div>
+        <p class="vc-text">フォークリフト資格を取得してからキャリアの幅が広がりました。農業ロボットも使う最先端の環境で、毎日刺激があります。</p>
+        <p class="sample-note">※サンプルです。実際には御社スタッフの写真・コメントに差し替えます</p>
+      </div>
+    </div>
+    <div class="voice-card">
+      <!-- サンプル顔写真（実際には御社スタッフの写真に差し替えます） -->
+      <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&h=200&fit=crop&q=80" alt="農場イメージ（サンプル）">
+      <div class="vc-body">
+        <div class="vc-name">佐藤 ひとみ（仮名）</div>
+        <div class="vc-role">農場生産スタッフ ／ 入社1年目</div>
+        <p class="vc-text">8時から17時の規則正しい生活で、プライベートも充実できます。社内のお花販売で自分が育てた花を持ち帰るのが楽しみです。</p>
+        <p class="sample-note">※サンプルです。実際には御社スタッフの写真・コメントに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- タイムライン -->
+<section class="inner">
+  <div class="sec-eye">DAILY SCHEDULE</div>
+  <div class="sec-title">農場スタッフの1日</div>
+  <div class="sec-line"></div>
+  <div class="tl-wrap">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-time">07:45</div>
+      <div class="tl-text"><strong>出勤・着替え</strong><p>農場に到着。その日の作物の状態を確認します。</p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-time">08:00</div>
+      <div class="tl-text"><strong>朝礼・業務開始</strong><p>チームで当日の作業内容・担当を確認。種まき・育苗管理の作業を進めます。</p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-time">10:00</div>
+      <div class="tl-text"><strong>小休憩（15分）</strong><p>チームで一息。作業進捗を共有しながらリフレッシュ。</p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-time">12:00</div>
+      <div class="tl-text"><strong>昼休憩（60分）</strong><p>休憩室でゆっくり食事。給湯室も完備しています。</p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-time">13:00</div>
+      <div class="tl-text"><strong>午後作業</strong><p>育苗の成長チェック・出荷前の品質確認・フォークリフト搬送など担当業務を進めます。</p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-time">15:00</div>
+      <div class="tl-text"><strong>小休憩（15分）</strong><p>翌日の準備内容を意識しながら最終確認。</p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-time">16:30</div>
+      <div class="tl-text"><strong>後片付け・翌日準備</strong><p>農場内を整備。翌日の種まき・出荷準備を整えます。</p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-time">17:00</div>
+      <div class="tl-text"><strong>退勤</strong><p>残業は月平均10時間程度。定時に上がれる日がほとんどです。</p></div>
+    </div>
+  </div>
+  <p class="sample-note">※ここはサンプルです。実際には御社スタッフの1日の流れに差し替えます</p>
+</section>
+
+<!-- FAQ -->
+<section class="faq-bg inner" id="faq">
+  <div class="sec-eye">FAQ</div>
+  <div class="sec-title">よくある質問</div>
+  <div class="sec-line"></div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">農業・植物の知識がなくても応募できますか？</div>
+      <p class="faq-a">はい、未経験・知識ゼロでも大丈夫です。入社後は先輩スタッフがゼロから丁寧に教えます。一通りの業務を経験してから適性に合ったグループへ配属する仕組みなので安心してご応募ください。</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">年間休日93日というのは農業だから仕方ないですか？</div>
+      <p class="faq-a">農業の特性上シフト制での勤務ですが、就業時間は8:00〜17:00で固定されており、残業は月平均10時間程度。毎日決まった時間に帰れるため、体的にも生活リズム的にも安定しやすい環境です。</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">フォークリフトの資格がなくても大丈夫ですか？</div>
+      <p class="faq-a">大丈夫です。普通自動車免許（AT限定可）があれば応募できます。フォークリフト資格は入社後に会社の取得支援制度を利用して取得できます。</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">どんな花や野菜を育てますか？</div>
+      <p class="faq-a">花苗・カラーリーフ・観葉植物・野菜苗など幅広いジャンルの苗を生産しています。国内外9か所の農場を展開しており、最先端の農業用ロボットも導入しています。</p>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">選考の流れを教えてください。</div>
+      <p class="faq-a">①書類選考（到着後7日以内に結果通知）→ ②面接（1〜2回・7日以内通知）の流れです。遠方の方はWEB面接も可能です。入社日はご希望に合わせて調整します。</p>
+    </div>
+  </div>
+  <p class="sample-note">※ここはサンプルです。実際には御社のFAQに差し替えます</p>
+</section>
+
+<!-- 募集要項 -->
+<section class="inner" id="job">
+  <div class="sec-eye">JOB INFO</div>
+  <div class="sec-title">募集要項</div>
+  <div class="sec-line"></div>
+  <table class="job-table">
+    <tr><th>職種</th><td>農場生産スタッフ</td></tr>
+    <tr><th>仕事内容</th><td>花苗・野菜苗の育苗管理・農場内園芸作業全般（種まき〜育苗〜出荷）。社用車運転業務あり。フォークリフト業務（有資格歓迎）。</td></tr>
+    <tr><th>雇用形態</th><td>正社員（試用期間3ヶ月・同条件）</td></tr>
+    <tr><th>給与</th><td>月給 200,000円〜300,000円 ／ 昇給あり（前年実績 5,000〜20,000円）</td></tr>
+    <tr><th>賞与</th><td>年2回（前年実績：200,000〜500,000円）</td></tr>
+    <tr><th>就業時間</th><td>8:00〜17:00（休憩90分）／ 時間外：月平均10時間</td></tr>
+    <tr><th>休日・休暇</th><td>年間93日（シフト制）／ 有給休暇（6ヶ月後10日）／ 育児休業・看護休暇取得実績あり</td></tr>
+    <tr><th>退職金</th><td>あり（勤続3年以上）</td></tr>
+    <tr><th>各種保険</th><td>雇用保険・労災保険・健康保険・厚生年金</td></tr>
+    <tr><th>通勤</th><td>マイカー通勤可（駐車場あり）／ 通勤手当実費支給（上限月20,000円）</td></tr>
+    <tr><th>応募条件</th><td>44歳以下・高校卒業以上・普通自動車免許（AT限定可）</td></tr>
+    <tr><th>就業場所</th><td>千葉県印西市（第1〜4農場のいずれかへ配属）</td></tr>
+    <tr><th>募集人数</th><td>3名</td></tr>
+  </table>
+  <p class="sample-note">※ここはサンプルです。実際には御社の最新の募集要項に差し替えます</p>
+</section>
+
+<!-- CTA最終 -->
+<section class="cta-final" id="apply">
+  <h2>農業の面白さを、<br>ハルディンで体験してみませんか？</h2>
+  <p>未経験でも、先輩が全力でサポートします。<br>少しでも気になる方は、お気軽にご連絡ください。</p>
+  <a href="https://www.jsjardin.co.jp/contact" class="btn-gold" target="_blank" rel="noopener">お問い合わせフォームへ</a>
+</section>
+
+<footer>
+  <p>株式会社ハルディン</p>
+  <p>〒270-1325 千葉県印西市竹袋470-4（第1農場）</p>
+  <p>TEL: 0476-33-6397</p>
+</footer>
+
+</body>
+</html>
