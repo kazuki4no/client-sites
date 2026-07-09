@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>助産師 採用情報 | みらいウィメンズクリニック</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#1e293b;background:#fff}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ナビ */
+header{background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.1);position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-size:clamp(.85rem,2.5vw,1rem);font-weight:700;color:#0369a1;line-height:1.3}
+.logo span{display:block;font-size:.72rem;font-weight:400;color:#64748b}
+nav.pc-nav{display:flex;gap:24px}
+nav.pc-nav a{font-size:.85rem;color:#334155;white-space:nowrap}
+nav.pc-nav a:hover{color:#0369a1}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.hamburger span{display:block;width:24px;height:2px;background:#334155;transition:.3s}
+.mobile-nav{display:none;background:#fff;border-top:1px solid #e2e8f0}
+.mobile-nav a{display:block;padding:14px 20px;font-size:.9rem;border-bottom:1px solid #f1f5f9;color:#334155}
+.mobile-nav.open{display:block}
+@media(max-width:768px){nav.pc-nav{display:none}.hamburger{display:flex}}
+
+/* ヒーロー */
+.hero{position:relative;min-height:72vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-img{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1600&h=900&fit=crop&q=80') center/cover no-repeat;filter:brightness(.45)}
+.hero-content{position:relative;z-index:1;text-align:center;padding:40px 20px;color:#fff}
+.hero-badge{display:inline-block;background:#0ea5e9;color:#fff;font-size:.78rem;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:16px;letter-spacing:.05em}
+.hero-content h1{font-size:clamp(1.6rem,5.5vw,2.8rem);font-weight:700;line-height:1.4;margin-bottom:16px}
+.hero-content p{font-size:clamp(.9rem,2.5vw,1.1rem);opacity:.9;margin-bottom:28px;line-height:1.8}
+.btn-primary{display:inline-block;background:#0ea5e9;color:#fff;font-size:1rem;font-weight:700;padding:14px 36px;border-radius:4px;transition:.2s}
+.btn-primary:hover{background:#0284c7}
+
+/* セクション共通 */
+section{padding:64px 20px}
+.section-inner{max-width:1000px;margin:0 auto}
+.section-title{font-size:clamp(1.3rem,4vw,1.8rem);font-weight:700;color:#0369a1;margin-bottom:8px;text-align:center}
+.section-sub{text-align:center;color:#64748b;font-size:.9rem;margin-bottom:40px}
+
+/* 魅力3点 */
+.merits{background:#f0f9ff}
+.merit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.merit-card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+.merit-card img{width:100%;height:180px;object-fit:cover}
+.merit-card-body{padding:20px}
+.merit-card-body h3{font-size:1rem;font-weight:700;color:#0369a1;margin-bottom:8px}
+.merit-card-body p{font-size:.88rem;line-height:1.7;color:#475569}
+.merit-sample{font-size:.72rem;color:#94a3b8;margin-top:8px}
+@media(max-width:768px){.merit-grid{grid-template-columns:1fr}}
+
+/* 数字 */
+.numbers{background:#0369a1}
+.numbers .section-title{color:#fff}
+.numbers .section-sub{color:#bae6fd}
+.num-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;text-align:center}
+.num-item{padding:20px 10px}
+.num-val{font-size:clamp(1.8rem,5vw,2.8rem);font-weight:700;color:#fff}
+.num-unit{font-size:.9rem;color:#bae6fd}
+.num-label{font-size:.8rem;color:#bae6fd;margin-top:6px;line-height:1.4}
+.num-sample{font-size:.68rem;color:#7dd3fc;margin-top:4px}
+@media(max-width:768px){.num-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* 募集要項 */
+.spec-table{width:100%;border-collapse:collapse;font-size:.9rem}
+.spec-table th,.spec-table td{padding:14px 16px;border-bottom:1px solid #e2e8f0;text-align:left;vertical-align:top}
+.spec-table th{width:30%;background:#f8fafc;color:#0369a1;font-weight:700;white-space:nowrap}
+.spec-table td{color:#334155;line-height:1.7}
+@media(max-width:768px){.spec-table thead{display:none}.spec-table,.spec-table tbody,.spec-table tr,.spec-table th,.spec-table td{display:block}.spec-table th{background:#eff6ff;font-weight:700;padding:10px 12px;border-bottom:none}.spec-table td{padding:10px 12px 16px}}
+
+/* タイムライン */
+.timeline{background:#f8fafc}
+.tl-wrap{position:relative;padding-left:40px;max-width:680px;margin:0 auto}
+.tl-wrap::before{content:'';position:absolute;left:12px;top:0;bottom:0;width:2px;background:#bae6fd}
+.tl-item{position:relative;margin-bottom:28px}
+.tl-dot{position:absolute;left:-34px;top:4px;width:14px;height:14px;border-radius:50%;background:#0ea5e9;border:2px solid #fff;box-shadow:0 0 0 2px #0ea5e9}
+.tl-time{font-size:.8rem;color:#0369a1;font-weight:700;margin-bottom:2px}
+.tl-text{font-size:.9rem;color:#334155;line-height:1.6}
+.tl-sample{font-size:.72rem;color:#94a3b8;margin-top:4px}
+
+/* 先輩メッセージ */
+.voices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.voice-card{background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:24px;box-shadow:0 1px 4px rgba(0,0,0,.05)}
+.voice-header{display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.voice-header img{width:56px;height:56px;border-radius:50%;object-fit:cover}
+.voice-name{font-size:.85rem;font-weight:700;color:#0369a1}
+.voice-role{font-size:.78rem;color:#64748b}
+.voice-text{font-size:.88rem;line-height:1.8;color:#334155}
+.voice-sample{font-size:.72rem;color:#94a3b8;margin-top:8px}
+@media(max-width:768px){.voices-grid{grid-template-columns:1fr}}
+
+/* FAQ */
+.faq-wrap{max-width:720px;margin:0 auto}
+details{border:1px solid #e2e8f0;border-radius:6px;margin-bottom:12px;overflow:hidden}
+summary{padding:16px 20px;font-size:.92rem;font-weight:700;color:#0369a1;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+summary::-webkit-details-marker{display:none}
+summary::after{content:'+';font-size:1.2rem;color:#0ea5e9;flex-shrink:0}
+details[open] summary::after{content:'−'}
+.faq-answer{padding:0 20px 16px;font-size:.88rem;line-height:1.8;color:#475569}
+
+/* 採用担当者 */
+.staff{background:#eff6ff}
+.staff-card{display:flex;align-items:center;gap:32px;max-width:640px;margin:0 auto;background:#fff;border-radius:8px;padding:32px;box-shadow:0 2px 8px rgba(0,0,0,.07)}
+.staff-card img{width:96px;height:96px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.staff-name{font-size:1rem;font-weight:700;color:#0369a1;margin-bottom:6px}
+.staff-role{font-size:.8rem;color:#64748b;margin-bottom:12px}
+.staff-msg{font-size:.88rem;line-height:1.8;color:#334155}
+.staff-sample{font-size:.72rem;color:#94a3b8;margin-top:8px}
+@media(max-width:600px){.staff-card{flex-direction:column;text-align:center}}
+
+/* CTA */
+.cta-section{background:#0369a1;text-align:center;padding:64px 20px}
+.cta-section h2{font-size:clamp(1.3rem,4vw,1.8rem);color:#fff;margin-bottom:12px}
+.cta-section p{color:#bae6fd;margin-bottom:28px;font-size:.92rem;line-height:1.7}
+.btn-white{display:inline-block;background:#fff;color:#0369a1;font-size:1rem;font-weight:700;padding:14px 36px;border-radius:4px;transition:.2s}
+.btn-white:hover{background:#e0f2fe}
+
+/* フッター */
+footer{background:#0f172a;color:#94a3b8;padding:32px 20px;font-size:.82rem;text-align:center;line-height:1.8}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="logo">みらいウィメンズクリニック<span>助産師 採用情報</span></div>
+    <nav class="pc-nav">
+      <a href="#merits">働く魅力</a>
+      <a href="#spec">募集要項</a>
+      <a href="#timeline">1日の流れ</a>
+      <a href="#voices">先輩の声</a>
+      <a href="#faq">FAQ</a>
+      <a href="#cta">応募する</a>
+    </nav>
+    <button class="hamburger" id="hbg" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav">
+    <a href="#merits">働く魅力</a>
+    <a href="#spec">募集要項</a>
+    <a href="#timeline">1日の流れ</a>
+    <a href="#voices">先輩の声</a>
+    <a href="#faq">FAQ</a>
+    <a href="#cta">応募する</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-content">
+    <div class="hero-badge">正社員・助産師 募集中</div>
+    <h1>安全なお産を、ともにつくる。<br>助産師として成長できる場所。</h1>
+    <p>無痛分娩・助産院併設・年2回の院内勉強会。<br>千葉県印西市で、専門性を磨き続けながら働きませんか。</p>
+    <a href="#cta" class="btn-primary">採用情報を見る</a>
+  </div>
+</section>
+
+<section class="merits" id="merits">
+  <div class="section-inner">
+    <h2 class="section-title">みらいウィメンズクリニックで働く魅力</h2>
+    <p class="section-sub">求人票の定型フォーマットだけでは伝わらない、クリニックの特色です</p>
+    <!-- ※ここはサンプルです。実際には御社の写真・メッセージに差し替えます -->
+    <div class="merit-grid">
+      <div class="merit-card">
+        <!-- 無痛分娩・助産院 画像 差し替えポイント -->
+        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=640&h=380&fit=crop&q=80" alt="医療環境">
+        <div class="merit-card-body">
+          <h3>無痛分娩＋助産院の両方を経験できる</h3>
+          <p>無痛分娩から助産院での自然なお産まで、幅広いお産スタイルに携われます。多様な臨床経験が助産師としての引き出しを増やします。</p>
+          <p class="merit-sample">※ここはサンプルです。実際には御社の写真・コメントに差し替えます</p>
+        </div>
+      </div>
+      <div class="merit-card">
+        <!-- 院内勉強会 画像 差し替えポイント -->
+        <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=640&h=380&fit=crop&q=80" alt="勉強会・研修">
+        <div class="merit-card-body">
+          <h3>年2回の院内勉強会でスキルアップ</h3>
+          <p>午後を休診にして開く院内勉強会を年2回実施。助産師がテーマごとに発表し合い、チーム全体で学ぶ文化があります。超音波スキルも専門家から学べます。</p>
+          <p class="merit-sample">※ここはサンプルです。実際には御社の写真・コメントに差し替えます</p>
+        </div>
+      </div>
+      <div class="merit-card">
+        <!-- 安定就労 画像 差し替えポイント -->
+        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=640&h=380&fit=crop&q=80" alt="クリニック・医療">
+        <div class="merit-card-body">
+          <h3>退職者がほとんどいない職場環境</h3>
+          <p>開院15年。退職する方がほとんどおらず、パートタイムは10年以上退職ゼロ。信頼できる仲間と長く働ける環境が整っています。</p>
+          <p class="merit-sample">※ここはサンプルです。実際には御社の写真・コメントに差し替えます</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="numbers">
+  <div class="section-inner">
+    <h2 class="section-title">数字で見るクリニック</h2>
+    <p class="section-sub">※ここはサンプルです。実際には御社の実績データに差し替えます</p>
+    <div class="num-grid">
+      <div class="num-item">
+        <div class="num-val">15<span class="num-unit">年</span></div>
+        <div class="num-label">開院からの実績</div>
+        <div class="num-sample">※サンプル</div>
+      </div>
+      <div class="num-item">
+        <div class="num-val">114<span class="num-unit">日</span></div>
+        <div class="num-label">年間休日数</div>
+        <div class="num-sample">※サンプル</div>
+      </div>
+      <div class="num-item">
+        <div class="num-val">37<span class="num-unit">万〜</span></div>
+        <div class="num-label">月給（諸手当含む）</div>
+        <div class="num-sample">※サンプル</div>
+      </div>
+      <div class="num-item">
+        <div class="num-val">4<span class="num-unit">大学</span></div>
+        <div class="num-label">連携大学病院数</div>
+        <div class="num-sample">※サンプル</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="spec">
+  <div class="section-inner">
+    <h2 class="section-title">募集要項</h2>
+    <p class="section-sub">千葉県印西市・正社員助産師を募集しています</p>
+    <table class="spec-table">
+      <tr><th>職種</th><td>助産師（正社員）</td></tr>
+      <tr><th>仕事内容</th><td>助産師業務全般（妊婦健診・分娩介助）。無痛分娩・助産院での分娩にも携わります。</td></tr>
+      <tr><th>必須資格</th><td>助産師免許・分娩介助の経験</td></tr>
+      <tr><th>勤務地</th><td>千葉県印西市原4-2-2（北総線 印西牧の原駅 徒歩8分）</td></tr>
+      <tr><th>就業時間</th><td>変形労働時間制（1ヶ月単位）<br>日勤：8:30〜17:30 / 9:00〜18:00<br>夜勤：17:00〜翌9:00（休憩2時間）</td></tr>
+      <tr><th>休日・休暇</th><td>月9日休み（年間休日114日）。週によっては週3日休みの週も。有給休暇・冬休み3日あり。育児休業取得実績あり。</td></tr>
+      <tr><th>給与</th><td>月給 370,000円〜515,000円<br>（基本給310,000〜410,000円＋夜勤手当60,000〜105,000円）<br>昇給あり（年3〜5%・前年度実績）</td></tr>
+      <tr><th>賞与</th><td>年2回・計2ヶ月分（前年度実績）</td></tr>
+      <tr><th>社会保険</th><td>雇用保険・労災保険・健康保険・厚生年金</td></tr>
+      <tr><th>退職金</th><td>退職金制度あり（勤続5年以上）。定年60歳・再雇用65歳まで。</td></tr>
+      <tr><th>通勤</th><td>通勤手当実費支給（上限月3万円）。マイカー通勤可・駐車場あり。</td></tr>
+      <tr><th>試用期間</th><td>1ヶ月（同条件）</td></tr>
+      <tr><th>採用人数</th><td>1名（増員）</td></tr>
+      <tr><th>選考方法</th><td>書類選考 → 面接（1回）</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="timeline" id="timeline">
+  <div class="section-inner">
+    <h2 class="section-title">助産師の1日の流れ（日勤例）</h2>
+    <p class="section-sub">※ここはサンプルです。実際の1日の流れに差し替えます</p>
+    <div class="tl-wrap">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">8:30</div>
+        <div class="tl-text">出勤・申し送り。夜間の状況を確認し、担当を引き継ぎます。</div>
+        <div class="tl-sample">※サンプル</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">9:00</div>
+        <div class="tl-text">妊婦健診開始。計測・ドップラー確認・保健指導など、健診業務を担当します。</div>
+        <div class="tl-sample">※サンプル</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">12:00</div>
+        <div class="tl-text">昼休憩（60分）。スタッフ間での情報共有も行います。</div>
+        <div class="tl-sample">※サンプル</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">13:00</div>
+        <div class="tl-text">午後の健診・処置・分娩担当（交代制）。無痛分娩の管理にも携わります。</div>
+        <div class="tl-sample">※サンプル</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">16:00</div>
+        <div class="tl-text">記録・カンファレンス。気になるケースをチームで振り返ります。</div>
+        <div class="tl-sample">※サンプル</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">17:30</div>
+        <div class="tl-text">夜勤スタッフへ申し送り・退勤。残業は月平均8時間以内です。</div>
+        <div class="tl-sample">※サンプル</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="voices">
+  <div class="section-inner">
+    <h2 class="section-title">先輩からのメッセージ</h2>
+    <p class="section-sub">※ここはサンプルです。実際のスタッフの声・写真に差し替えます</p>
+    <!-- 先輩メッセージ 差し替えポイント -->
+    <div class="voices-grid">
+      <div class="voice-card">
+        <div class="voice-header">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩助産師（仮名）">
+          <div>
+            <div class="voice-name">A.M.さん（仮名）</div>
+            <div class="voice-role">助産師・入職3年目</div>
+          </div>
+        </div>
+        <p class="voice-text">前職では無痛分娩の経験がなかったのですが、入職後に先輩から丁寧に教えてもらいました。院内勉強会で自分の担当テーマを発表するうちに、自然と知識が深まりました。</p>
+        <p class="voice-sample">※ここはサンプルです。実際のスタッフの声に差し替えます</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-header">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩助産師（仮名）">
+          <div>
+            <div class="voice-name">K.T.さん（仮名）</div>
+            <div class="voice-role">助産師・入職7年目</div>
+          </div>
+        </div>
+        <p class="voice-text">助産院も併設されているので、自然分娩から医療的サポートが必要なお産まで、幅広い経験を積めます。院長が院内にほぼ当直しているので、いざというときも安心して対応できます。</p>
+        <p class="voice-sample">※ここはサンプルです。実際のスタッフの声に差し替えます</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-header">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩助産師（仮名）">
+          <div>
+            <div class="voice-name">Y.S.さん（仮名）</div>
+            <div class="voice-role">助産師・入職1年半</div>
+          </div>
+        </div>
+        <p class="voice-text">月9日休みで年間休日が114日あり、プライベートもしっかり確保できています。産休・育休の取得実績もあるので、長く続けられる職場だと感じています。</p>
+        <p class="voice-sample">※ここはサンプルです。実際のスタッフの声に差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="staff" id="staff">
+  <div class="section-inner">
+    <h2 class="section-title">採用担当者より</h2>
+    <p class="section-sub">※ここはサンプルです。実際の担当者写真・メッセージに差し替えます</p>
+    <div class="staff-card">
+      <!-- 採用担当者 写真 差し替えポイント -->
+      <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当者（仮名）">
+      <div>
+        <div class="staff-name">茆原 ○○（仮名）</div>
+        <div class="staff-role">総務担当</div>
+        <p class="staff-msg">退職者がほとんどいないクリニックです。「ここで助産師としてスキルを磨いていける」と思ってもらえる環境をスタッフ全員でつくっています。まずはお気軽にご連絡ください。</p>
+        <p class="staff-sample">※ここはサンプルです。実際の担当者メッセージに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="section-inner">
+    <h2 class="section-title">よくある質問</h2>
+    <p class="section-sub">応募前の疑問にお答えします</p>
+    <div class="faq-wrap">
+      <details>
+        <summary>応募に必要な資格・経験は何ですか？</summary>
+        <div class="faq-answer">助産師免許と分娩介助の経験が必須です。経験年数や施設の規模は問いません。入職後も院内勉強会や専門家からの指導でスキルアップできます。</div>
+      </details>
+      <details>
+        <summary>夜勤はどのくらいありますか？</summary>
+        <div class="faq-answer">変形労働時間制（1ヶ月単位）のため、夜勤があります。夜勤時の休憩は2時間確保しており、夜勤手当（60,000〜105,000円/月）が別途支給されます。月の平均時間外労働は8時間程度です。</div>
+      </details>
+      <details>
+        <summary>選考の流れを教えてください。</summary>
+        <div class="faq-answer">①書類選考（結果は書類到着後7日以内に通知）→ ②面接1回（結果は面接後10日以内に通知）の2ステップです。書類は郵送・メール・ハローワーク求職者マイページで受け付けています。</div>
+      </details>
+      <details>
+        <summary>育児休業は取れますか？</summary>
+        <div class="faq-answer">はい、取得実績があります。退職者がほとんどおらず、復職制度もあるため、長期的に働き続けられる環境です。</div>
+      </details>
+      <details>
+        <summary>分院もあると聞きましたが、どちらに配属されますか？</summary>
+        <div class="faq-answer">2025年に千葉ニュータウン中央駅に分院を開業しました。配属先については選考時にご相談ください（勤務地変更なし・就業規則上の変更範囲に従います）。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="cta">
+  <h2>みらいウィメンズクリニックで、<br>あなたのキャリアを築きませんか</h2>
+  <p>ご質問だけでも歓迎します。まずはお気軽にご連絡ください。<br>電話番号: 0476-40-1200（総務担当：茆原）</p>
+  <a href="mailto:c.chihara@miraiwcl.com" class="btn-white">メールで問い合わせる</a>
+</section>
+
+<footer>
+  <p>みらいウィメンズクリニック</p>
+  <p>〒270-1335 千葉県印西市原4-2-2</p>
+  <p>TEL: 0476-40-1200 / E-mail: c.chihara@miraiwcl.com</p>
+</footer>
+
+<script>
+const hbg=document.getElementById('hbg');
+const mn=document.getElementById('mobile-nav');
+hbg.addEventListener('click',()=>mn.classList.toggle('open'));
+mn.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mn.classList.remove('open')));
+</script>
+</body>
+</html>
