@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>採用情報 | 株式会社 福樹（成田空港フードコート）</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { max-width: 100%; overflow-x: hidden; font-family: 'Noto Sans JP', sans-serif; color: #2C1A1A; background: #fff; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    :root {
+      --primary: #C0392B;
+      --primary-dark: #922B21;
+      --accent: #E74C3C;
+      --gold: #D4AC0D;
+      --bg-dark: #1C0A0A;
+      --bg-light: #FDF5F5;
+      --text: #2C1A1A;
+      --sample: #bbb;
+      --radius: 8px;
+    }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: var(--bg-dark); padding: 0 24px; height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .logo { font-weight: 700; font-size: 1rem; color: #fff; }
+    .logo span { font-size: .75rem; color: #ccc; font-weight: 400; display: block; }
+    nav a { margin-left: 20px; font-size: .85rem; color: #ddd; font-weight: 500; }
+    nav a:hover { color: #fff; }
+    .nav-apply { background: var(--primary); color: #fff !important; padding: 7px 18px; border-radius: 20px; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 26px; height: 2px; background: #fff; border-radius: 2px; }
+    .mobile-nav {
+      display: none; position: fixed; top: 60px; left: 0; right: 0; bottom: 0;
+      background: rgba(28,10,10,.97); z-index: 99;
+      flex-direction: column; align-items: center; justify-content: center; gap: 32px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { font-size: 1.2rem; font-weight: 700; color: #fff; }
+
+    /* Fixed CTA bar (mobile) */
+    .fixed-bar {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 90;
+      background: var(--primary); padding: 12px 20px;
+      box-shadow: 0 -2px 12px rgba(0,0,0,.25);
+    }
+    .fixed-bar a {
+      display: block; background: #fff; color: var(--primary);
+      text-align: center; font-weight: 700; font-size: 1rem;
+      border-radius: 24px; padding: 12px;
+    }
+    @media (max-width: 768px) {
+      .fixed-bar { display: block; }
+      body { padding-bottom: 72px; }
+    }
+
+    /* Hero */
+    .hero {
+      position: relative; min-height: 80vh;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1542296332-2e4473faf563?w=1600&h=900&fit=crop&q=80') center/cover no-repeat;
+    }
+    .hero-overlay { position: absolute; inset: 0; background: rgba(20,5,5,.70); }
+    .hero-content { position: relative; z-index: 2; text-align: center; color: #fff; padding: 60px 20px; max-width: 740px; margin: 0 auto; }
+    .hero-eyebrow { font-size: clamp(.85rem, 1.8vw, 1rem); letter-spacing: .1em; color: var(--gold); font-weight: 700; margin-bottom: 16px; }
+    .hero-content h1 { font-size: clamp(2rem, 6vw, 3.6rem); font-weight: 900; line-height: 1.25; margin-bottom: 20px; }
+    .hero-content h1 em { font-style: normal; color: var(--gold); }
+    .hero-content .sub { font-size: clamp(.95rem, 2vw, 1.1rem); opacity: .88; margin-bottom: 36px; line-height: 1.8; }
+    .btn-red { display: inline-block; background: var(--primary); color: #fff; padding: 16px 48px; border-radius: 40px; font-size: 1.15rem; font-weight: 700; box-shadow: 0 4px 20px rgba(192,57,43,.45); transition: background .2s, transform .1s; }
+    .btn-red:hover { background: var(--primary-dark); transform: translateY(-2px); }
+    .hero-note { font-size: .8rem; opacity: .65; margin-top: 16px; }
+
+    /* Sections */
+    section { padding: 80px 20px; }
+    .container { max-width: 900px; margin: 0 auto; }
+    h2.section-title { font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 900; text-align: center; margin-bottom: 12px; color: var(--text); }
+    .title-accent { display: inline-block; width: 40px; height: 4px; background: var(--primary); border-radius: 2px; margin: 0 auto 40px; display: block; }
+    .section-lead { text-align: center; color: #666; margin-bottom: 48px; line-height: 1.8; }
+    .sample-note { font-size: .72rem; color: var(--sample); text-align: center; margin-top: -36px; margin-bottom: 36px; }
+
+    /* Point badges */
+    .point-badge { display: inline-block; background: var(--primary); color: #fff; border-radius: 4px; padding: 3px 10px; font-size: .78rem; font-weight: 700; margin-bottom: 8px; }
+
+    /* 2コース */
+    .courses-bg { background: var(--bg-light); }
+    .courses-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; }
+    .course-card { background: #fff; border-radius: var(--radius); padding: 36px 28px; border-left: 5px solid var(--primary); box-shadow: 0 2px 16px rgba(0,0,0,.07); }
+    .course-card h3 { font-size: 1.3rem; font-weight: 900; color: var(--primary); margin-bottom: 14px; }
+    .course-card p { font-size: .92rem; line-height: 1.8; color: #555; }
+    .course-card ul { margin-top: 14px; padding-left: 1.2em; color: #555; font-size: .9rem; line-height: 2; }
+
+    /* 数字で見る会社 */
+    .numbers-bg { background: var(--bg-dark); }
+    .numbers-title { text-align: center; color: #fff; font-size: clamp(1.4rem, 3.5vw, 2rem); font-weight: 900; margin-bottom: 8px; }
+    .numbers-sub { text-align: center; color: #aaa; font-size: .9rem; margin-bottom: 48px; }
+    .numbers-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 32px; }
+    .number-item { text-align: center; }
+    .number-item .num { font-size: clamp(2.8rem, 6vw, 4rem); font-weight: 900; color: var(--gold); line-height: 1; }
+    .number-item .unit { font-size: 1rem; color: var(--gold); font-weight: 700; }
+    .number-item .label { font-size: .85rem; color: #ccc; margin-top: 8px; line-height: 1.5; }
+    .numbers-note { font-size: .7rem; color: #888; text-align: center; margin-top: 36px; }
+
+    /* 社員インタビュー */
+    .interview-bg { background: var(--bg-light); }
+    .interview-card {
+      background: #fff; border-radius: var(--radius); overflow: hidden;
+      box-shadow: 0 2px 16px rgba(0,0,0,.08); margin-bottom: 28px;
+      display: flex; gap: 0;
+    }
+    .interview-photo { width: 200px; flex-shrink: 0; object-fit: cover; }
+    .interview-body { padding: 28px 32px; }
+    .interview-body .q { color: var(--primary); font-weight: 900; font-size: .9rem; margin-bottom: 6px; }
+    .interview-body .a { font-size: .9rem; line-height: 1.8; color: #555; margin-bottom: 16px; }
+    .interview-body .name { font-size: .82rem; color: #888; font-weight: 500; }
+    .interview-note { font-size: .7rem; color: var(--sample); margin-top: 6px; }
+
+    /* 募集要項 */
+    .req-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: var(--radius); overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,.07); }
+    .req-table th, .req-table td { padding: 15px 22px; font-size: .92rem; border-bottom: 1px solid #eee; vertical-align: top; }
+    .req-table th { background: var(--bg-light); color: #555; font-weight: 700; width: 28%; white-space: nowrap; }
+    .badge { display: inline-block; background: var(--primary); color: #fff; border-radius: 4px; padding: 2px 8px; font-size: .78rem; font-weight: 700; margin-right: 4px; }
+
+    /* FAQ */
+    .faq-list { list-style: none; }
+    .faq-item { border-bottom: 1px solid #eee; }
+    .faq-q { width: 100%; background: none; border: none; text-align: left; padding: 18px 0; font-size: .98rem; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; color: var(--text); gap: 12px; }
+    .faq-q .icon { color: var(--primary); font-size: 1.2rem; transition: transform .3s; flex-shrink: 0; }
+    .faq-a { display: none; padding: 0 0 16px; font-size: .9rem; line-height: 1.8; color: #555; }
+    .faq-item.open .faq-a { display: block; }
+    .faq-item.open .faq-q .icon { transform: rotate(45deg); }
+
+    /* タイムライン */
+    .timeline { list-style: none; }
+    .timeline li { display: flex; gap: 20px; align-items: flex-start; padding: 16px 0; border-bottom: 1px solid #eee; }
+    .tl-time { flex-shrink: 0; width: 76px; font-weight: 700; color: var(--primary); font-size: .95rem; padding-top: 2px; }
+    .tl-body h4 { font-size: .95rem; font-weight: 700; margin-bottom: 4px; }
+    .tl-body p { font-size: .85rem; color: #666; line-height: 1.6; }
+
+    /* 中盤CTA */
+    .mid-cta { background: var(--primary); text-align: center; color: #fff; }
+    .mid-cta h3 { font-size: clamp(1.3rem, 3.5vw, 1.9rem); font-weight: 900; margin-bottom: 14px; }
+    .mid-cta p { font-size: .92rem; opacity: .9; margin-bottom: 28px; line-height: 1.7; }
+    .btn-white { display: inline-block; background: #fff; color: var(--primary); padding: 14px 44px; border-radius: 40px; font-size: 1.05rem; font-weight: 700; }
+    .btn-white:hover { opacity: .9; }
+
+    /* Final CTA */
+    .final-cta { background: var(--bg-dark); text-align: center; color: #fff; }
+    .final-cta h2 { font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 900; margin-bottom: 14px; }
+    .final-cta p { font-size: .95rem; color: #ccc; margin-bottom: 36px; line-height: 1.8; }
+    .final-cta .btn-red { font-size: 1.15rem; }
+
+    /* Footer */
+    footer { background: #111; color: #888; text-align: center; padding: 32px 20px; font-size: .82rem; line-height: 1.9; }
+    footer strong { color: #ccc; font-size: .95rem; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .hamburger { display: flex; }
+      .courses-grid, .numbers-grid { grid-template-columns: 1fr; }
+      .interview-card { flex-direction: column; }
+      .interview-photo { width: 100%; height: 220px; }
+      .req-table th, .req-table td { display: block; width: 100%; }
+      .req-table th { border-bottom: none; padding-bottom: 4px; }
+      .req-table tr { border-bottom: 1px solid #eee; }
+      .req-table td { border-bottom: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="logo">
+    🍛 ウイリアムズ
+    <span>株式会社 福樹 ｜ 採用情報</span>
+  </div>
+  <nav>
+    <a href="#courses">仕事内容</a>
+    <a href="#numbers">職場データ</a>
+    <a href="#req">募集要項</a>
+    <a href="#faq">FAQ</a>
+    <a href="#final-cta" class="nav-apply">応募する</a>
+  </nav>
+  <button class="hamburger" id="hambtn" aria-label="メニューを開く">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+<div class="mobile-nav" id="mobnav">
+  <a href="#courses" onclick="closeMob()">仕事内容</a>
+  <a href="#numbers" onclick="closeMob()">職場データ</a>
+  <a href="#req" onclick="closeMob()">募集要項</a>
+  <a href="#faq" onclick="closeMob()">FAQ</a>
+  <a href="#final-cta" onclick="closeMob()" style="color:#E74C3C">応募する</a>
+</div>
+
+<!-- Fixed CTA bar (mobile) -->
+<div class="fixed-bar">
+  <a href="mailto:fukuju.co@gmail.com">今すぐ応募する（書類選考なし）</a>
+</div>
+
+<!-- Hero (CTA 1) -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">成田空港第１ターミナル フードコート「ウイリアムズ」</p>
+    <h1>「調理」か「接客」か、<br><em>あなたが選べる</em>仕事。</h1>
+    <p class="sub">
+      空港の活気の中で、好きな仕事から始められます。<br>
+      未経験・学歴・国籍不問。正社員登用実績あり。
+    </p>
+    <a href="mailto:fukuju.co@gmail.com" class="btn-red">今すぐ応募する</a>
+    <p class="hero-note">書類選考なし ／ 面接1回 ／ 結果は5日以内</p>
+  </div>
+</section>
+
+<!-- 2コース選択（弱点メモ対応） -->
+<section class="courses-bg" id="courses">
+  <div class="container">
+    <h2 class="section-title">2つのポジションから選んで応募</h2>
+    <div class="title-accent"></div>
+    <p class="section-lead">
+      「調理だけ担当したい」「接客が得意」どちらも歓迎。<br>
+      希望するポジションを選んで応募できるので、ミスマッチがありません。
+    </p>
+    <div class="courses-grid">
+      <div class="course-card">
+        <div class="point-badge">POSITION A</div>
+        <h3>🍳 調理スタッフ</h3>
+        <p>カレー・定食など人気メニューを担当。マニュアルが整備されているので調理未経験でもOK。丁寧な指導で着実にスキルアップできます。</p>
+        <ul>
+          <li>仕込み・調理・盛り付けなど</li>
+          <li>調理師免許不要・先輩が丁寧に指導</li>
+          <li>料理・食に興味がある方大歓迎</li>
+          <li>慣れたら接客も経験可能</li>
+        </ul>
+      </div>
+      <div class="course-card">
+        <div class="point-badge">POSITION B</div>
+        <h3>✈️ 接客スタッフ</h3>
+        <p>国内外のお客様をお迎えするポジション。多国籍チームと一緒に、成田空港フードコートの「顔」として活躍できます。</p>
+        <ul>
+          <li>注文受付・料理提供・会計・清掃</li>
+          <li>インバウンド客対応（簡単な英語OK）</li>
+          <li>明るくコミュニケーション好きな方へ</li>
+          <li>慣れたら調理も経験可能</li>
+        </ul>
+      </div>
+    </div>
+    <p style="text-align:center;font-size:.8rem;color:var(--sample);margin-top:16px">※ここはサンプルです。実際には御社のポジション詳細に差し替えます</p>
+  </div>
+</section>
+
+<!-- 数字で見る職場 -->
+<section class="numbers-bg" id="numbers">
+  <div class="container">
+    <p class="numbers-title">数字で見る ウイリアムズの職場</p>
+    <p class="numbers-sub">成田空港という特別な環境で働くリアルな数字</p>
+    <div class="numbers-grid">
+      <div class="number-item">
+        <div class="num">108<span class="unit">日</span></div>
+        <div class="label">年間休日<br>（シフト制・希望休相談可）</div>
+      </div>
+      <div class="number-item">
+        <div class="num">2<span class="unit">名</span></div>
+        <div class="label">過去3年間の<br>正社員昇格実績</div>
+      </div>
+      <div class="number-item">
+        <div class="num">5<span class="unit">分</span></div>
+        <div class="label">成田空港駅から<br>徒歩でアクセス</div>
+      </div>
+    </div>
+    <p class="numbers-note">※ここはサンプルです。実際には御社の実績数字に差し替えます</p>
+  </div>
+</section>
+
+<!-- 中盤CTA (CTA 2) -->
+<section class="mid-cta">
+  <div class="container">
+    <h3>調理か接客か、まずはご相談ください。</h3>
+    <p>「どちらか迷っている」という方も大歓迎です。<br>面接でじっくりお話ししましょう。</p>
+    <a href="mailto:fukuju.co@gmail.com" class="btn-white">メールで問い合わせる</a>
+  </div>
+</section>
+
+<!-- 先輩インタビュー -->
+<section class="interview-bg" id="interview">
+  <div class="container">
+    <h2 class="section-title">先輩スタッフの声</h2>
+    <div class="title-accent"></div>
+    <p class="sample-note" style="margin-top:-36px">※ここはサンプルです。実際には御社スタッフの声・写真に差し替えます</p>
+
+    <div class="interview-card">
+      <img class="interview-photo" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=500&fit=crop&crop=faces&q=80" alt="スタッフの写真（サンプル）">
+      <div class="interview-body">
+        <p class="q">Q. 未経験から始めて大変でしたか？</p>
+        <p class="a">最初の2週間は覚えることが多く大変でしたが、先輩が親切に教えてくれました。今では接客が楽しくて仕方ないです。外国のお客様に「ありがとう」と言ってもらえると本当に嬉しい！</p>
+        <p class="name">田中 美咲（仮名）｜ 接客スタッフ ／ 入社2年</p>
+        <p class="interview-note">※サンプルです。御社スタッフの声に差し替えます</p>
+      </div>
+    </div>
+
+    <div class="interview-card">
+      <img class="interview-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=500&fit=crop&crop=faces&q=80" alt="スタッフの写真（サンプル）">
+      <div class="interview-body">
+        <p class="q">Q. 調理スタッフとして成長を感じるのはどんな時？</p>
+        <p class="a">入社当初は盛り付けも不安でしたが、今では繁忙時間帯のリードも任されています。正社員を目指して頑張っている最中です。「調理か接客か選べる」制度があったから迷わず応募できました。</p>
+        <p class="name">山田 健太（仮名）｜ 調理スタッフ ／ 入社3年</p>
+        <p class="interview-note">※サンプルです。御社スタッフの声に差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section id="req">
+  <div class="container">
+    <h2 class="section-title">募集要項</h2>
+    <div class="title-accent"></div>
+    <table class="req-table">
+      <tr><th>雇用形態</th><td>準社員（フルタイムパート）・正社員登用制度あり</td></tr>
+      <tr><th>職種</th><td><span class="badge">調理スタッフ</span><span class="badge">接客スタッフ</span>（どちらか選んで応募可）</td></tr>
+      <tr><th>勤務地</th><td>成田国際空港第１ターミナルビル 中央ビル新館５F フードコート「ウイリアムズ」<br><small style="color:#888">JR/京成 成田空港駅 徒歩5分 ／ マイカー通勤可（駐車場あり）</small></td></tr>
+      <tr><th>給与</th><td>時給 1,200円〜1,300円<br><small style="color:#888">月収目安：約20万〜22万円（時給×8h×21.2日換算）</small></td></tr>
+      <tr><th>勤務時間</th><td>8:00〜20:00のシフト制（実働8時間）<br>就業時間は相談に応じます</td></tr>
+      <tr><th>休日</th><td>シフト制（年間休日108日）／6ヵ月後に有給10日付与</td></tr>
+      <tr><th>待遇・福利厚生</th><td>雇用保険・労災保険・健康保険・厚生年金<br>通勤手当（実費支給・上限2万円）／昇給あり</td></tr>
+      <tr><th>応募資格</th><td>学歴・経験・国籍・年齢不問。未経験者大歓迎！</td></tr>
+      <tr><th>採用人数</th><td>5名（増員）</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section style="background:var(--bg-light)" id="day">
+  <div class="container">
+    <h2 class="section-title">スタッフの1日の流れ</h2>
+    <div class="title-accent"></div>
+    <p class="sample-note">※ここはサンプルです。実際には御社スタッフの1日に差し替えます</p>
+    <ul class="timeline">
+      <li><div class="tl-time">08:00</div><div class="tl-body"><h4>出勤・開店準備</h4><p>食材仕込み・ディスプレイ確認。活気ある空港の朝が始まります。</p></div></li>
+      <li><div class="tl-time">09:00</div><div class="tl-body"><h4>オープン・接客開始</h4><p>国内外のお客様を笑顔でお迎えします。</p></div></li>
+      <li><div class="tl-time">12:00</div><div class="tl-body"><h4>ランチピーク</h4><p>調理・接客チームが連携してスムーズなサービスを。</p></div></li>
+      <li><div class="tl-time">14:00</div><div class="tl-body"><h4>休憩（90分）</h4><p>空港内休憩室でしっかり休憩。</p></div></li>
+      <li><div class="tl-time">15:30</div><div class="tl-body"><h4>午後の業務</h4><p>食材補充・清掃・夕方の準備。</p></div></li>
+      <li><div class="tl-time">17:00</div><div class="tl-body"><h4>退勤</h4><p>引き継ぎをして上がります。お疲れさまでした！</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <h2 class="section-title">よくある質問</h2>
+    <div class="title-accent"></div>
+    <ul class="faq-list">
+      <li class="faq-item">
+        <button class="faq-q">調理・接客の経験がなくても応募できますか？<span class="icon">＋</span></button>
+        <div class="faq-a">はい、未経験歓迎です。先輩スタッフが丁寧にOJT指導します。安心してご応募ください。</div>
+      </li>
+      <li class="faq-item">
+        <button class="faq-q">調理と接客、どちらか一方を選んで応募できますか？<span class="icon">＋</span></button>
+        <div class="faq-a">はい、ご希望のポジションをお選びください。「どちらか迷っている」という方も面接でご相談いただけます。</div>
+      </li>
+      <li class="faq-item">
+        <button class="faq-q">外国語が得意でないと難しいですか？<span class="icon">＋</span></button>
+        <div class="faq-a">問題ありません。簡単な英語で十分です。多国籍スタッフが一緒にサポートします。</div>
+      </li>
+      <li class="faq-item">
+        <button class="faq-q">選考の流れを教えてください。<span class="icon">＋</span></button>
+        <div class="faq-a">応募 → 面接1回（成田空港内店舗） → 合否通知（5日以内）です。書類選考はありません。</div>
+      </li>
+      <li class="faq-item">
+        <button class="faq-q">正社員を目指せますか？<span class="icon">＋</span></button>
+        <div class="faq-a">はい、正社員登用制度があります。過去3年で2名が昇格しました。頑張りをしっかり評価します。</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- Final CTA (CTA 3) -->
+<section class="final-cta" id="final-cta">
+  <div class="container">
+    <h2>成田空港で、<br>あなたを待っています。</h2>
+    <p>調理スタッフ・接客スタッフ、どちらも積極募集中。<br>未経験・学歴・国籍不問。まずはお気軽にご連絡ください。</p>
+    <a href="mailto:fukuju.co@gmail.com" class="btn-red">今すぐ応募する（書類選考なし）</a>
+    <p style="color:#888;font-size:.82rem;margin-top:16px">または TEL: 070-8393-0727（受付時間：8:00〜17:00）</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <strong>株式会社 福樹 ／ フードコート「ウイリアムズ」</strong><br>
+  成田国際空港第１ターミナルビル 中央ビル新館5F<br>
+  TEL: 070-8393-0727 ／ E-mail: fukuju.co@gmail.com
+</footer>
+
+<script>
+  const hambtn = document.getElementById('hambtn');
+  const mobnav = document.getElementById('mobnav');
+  hambtn.addEventListener('click', () => mobnav.classList.toggle('open'));
+  function closeMob() { mobnav.classList.remove('open'); }
+
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => btn.closest('.faq-item').classList.toggle('open'));
+  });
+</script>
+</body>
+</html>

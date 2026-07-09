@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報（LP型）| ミヤコフロアワークス株式会社</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#1a1a1a;line-height:1.7}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+:root{
+  --dark:#1a1a1a;
+  --yellow:#f5a200;
+  --yellow-light:#ffc233;
+  --navy:#0d1f3c;
+  --bg:#f4f3f0;
+  --gray:#666;
+}
+
+/* ナビ */
+header{background:var(--dark);position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.logo{color:#fff;font-weight:900;font-size:clamp(.9rem,2.5vw,1.1rem);letter-spacing:.05em}
+.logo em{color:var(--yellow);font-style:normal}
+.nav-links{display:flex;gap:24px;align-items:center}
+.nav-links a{color:rgba(255,255,255,.8);font-size:.88rem;transition:color .2s}
+.nav-links a:hover{color:var(--yellow)}
+.nav-cta{background:var(--yellow);color:var(--dark)!important;font-weight:900;padding:8px 20px;border-radius:4px;font-size:.88rem;transition:background .2s}
+.nav-cta:hover{background:var(--yellow-light)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff}
+.mobile-menu{display:none;position:fixed;inset:60px 0 0 0;background:var(--dark);z-index:99;flex-direction:column;padding:24px 20px;gap:20px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:#fff;font-size:1.1rem;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.mobile-menu .nav-cta{text-align:center;border:none}
+
+/* ヒーロー */
+.hero{position:relative;min-height:80vh;display:flex;align-items:center;overflow:hidden;background:var(--dark)}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center;opacity:.35}
+.hero-content{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:80px 20px;width:100%}
+.hero-badge{display:inline-block;background:var(--yellow);color:var(--dark);font-size:.78rem;font-weight:900;padding:5px 16px;border-radius:3px;letter-spacing:.12em;margin-bottom:24px}
+.hero h1{font-size:clamp(2rem,5.5vw,3.6rem);font-weight:900;color:#fff;line-height:1.15;margin-bottom:20px}
+.hero h1 strong{color:var(--yellow);display:block}
+.hero-sub{color:rgba(255,255,255,.8);font-size:clamp(.95rem,2vw,1.1rem);margin-bottom:40px;max-width:560px}
+.hero-cta{display:inline-block;background:var(--yellow);color:var(--dark);font-weight:900;padding:18px 52px;border-radius:4px;font-size:1.1rem;letter-spacing:.05em;transition:background .2s}
+.hero-cta:hover{background:var(--yellow-light)}
+.hero-note{font-size:.8rem;color:rgba(255,255,255,.5);margin-top:12px}
+
+/* 数字 */
+.numbers{background:var(--yellow);padding:60px 20px}
+.numbers-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+.num-card{padding:12px}
+.num-val{font-size:clamp(2rem,4vw,3rem);font-weight:900;color:var(--dark);line-height:1}
+.num-unit{font-size:1rem;font-weight:700}
+.num-label{font-size:.82rem;color:var(--dark);margin-top:6px;opacity:.8}
+.num-sample{font-size:.7rem;color:rgba(0,0,0,.5);margin-top:4px}
+
+/* セクション共通 */
+.section{padding:80px 20px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-label{display:inline-block;color:var(--yellow);font-size:.78rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-bottom:8px}
+.section-title{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;color:var(--dark);line-height:1.3;margin-bottom:12px}
+.section-bg{background:var(--bg)}
+.divider{width:40px;height:3px;background:var(--yellow);margin:16px 0 36px}
+
+/* CTA（中盤） */
+.cta-mid{background:var(--navy);padding:60px 20px;text-align:center}
+.cta-mid h2{color:#fff;font-size:clamp(1.4rem,3.5vw,2rem);font-weight:900;margin-bottom:12px}
+.cta-mid p{color:rgba(255,255,255,.8);margin-bottom:28px;font-size:.95rem}
+.btn-yellow{display:inline-block;background:var(--yellow);color:var(--dark);font-weight:900;padding:16px 48px;border-radius:4px;font-size:1.05rem;transition:background .2s}
+.btn-yellow:hover{background:var(--yellow-light)}
+
+/* 業務内容 */
+.work-flow{margin-top:40px}
+.work-step{display:flex;gap:24px;margin-bottom:36px;align-items:flex-start}
+.work-step-num{min-width:52px;height:52px;background:var(--yellow);color:var(--dark);font-weight:900;font-size:1.3rem;display:flex;align-items:center;justify-content:center;border-radius:50%;flex-shrink:0}
+.work-step-body{flex:1}
+.work-step-title{font-size:1.1rem;font-weight:700;color:var(--dark);margin-bottom:8px}
+.work-step-text{font-size:.9rem;color:var(--gray);line-height:1.8}
+.work-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px}
+.work-tag{font-size:.75rem;border:1px solid var(--yellow);color:var(--dark);padding:3px 10px;border-radius:20px;font-weight:500}
+
+/* 魅力 */
+.appeal-list{margin-top:40px;display:flex;flex-direction:column;gap:28px}
+.appeal-row{display:flex;gap:28px;align-items:center;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.appeal-row.reverse{flex-direction:row-reverse}
+.appeal-img{width:300px;height:220px;object-fit:cover;flex-shrink:0}
+.appeal-body{padding:28px}
+.appeal-num{font-size:3rem;font-weight:900;color:var(--yellow);line-height:1;margin-bottom:8px}
+.appeal-title{font-size:1.1rem;font-weight:700;margin-bottom:8px}
+.appeal-text{font-size:.88rem;color:var(--gray);line-height:1.8}
+.appeal-sample{font-size:.73rem;color:#bbb;margin-top:8px;display:block}
+
+/* 社員インタビュー */
+.interview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+.interview-card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.interview-img{width:100%;height:200px;object-fit:cover}
+.interview-body{padding:22px}
+.interview-name{font-weight:700;font-size:1rem;margin-bottom:4px}
+.interview-role{font-size:.8rem;color:var(--yellow);font-weight:700;margin-bottom:12px}
+.interview-q{font-size:.82rem;color:var(--gray);font-weight:700;margin-bottom:4px}
+.interview-a{font-size:.88rem;color:#333;line-height:1.8}
+.interview-sample{font-size:.73rem;color:#bbb;margin-top:10px;display:block}
+
+/* 1日の流れ */
+.timeline-lp{margin-top:40px;display:flex;flex-direction:column;gap:0;position:relative}
+.timeline-lp::before{content:'';position:absolute;left:92px;top:0;bottom:0;width:2px;background:var(--yellow);z-index:0}
+.tl-item{display:flex;gap:16px;padding:16px 0;position:relative;z-index:1}
+.tl-time{min-width:70px;font-weight:900;color:var(--yellow);font-size:.95rem;flex-shrink:0;padding-top:4px;text-align:right}
+.tl-dot{width:14px;height:14px;background:var(--yellow);border-radius:50%;flex-shrink:0;margin-top:5px;border:3px solid #fff;box-shadow:0 0 0 2px var(--yellow)}
+.tl-body{flex:1;background:#fff;border-radius:8px;padding:14px 18px;box-shadow:0 1px 6px rgba(0,0,0,.06)}
+.tl-title{font-weight:700;color:var(--dark);margin-bottom:4px;font-size:.95rem}
+.tl-text{font-size:.85rem;color:var(--gray)}
+
+/* FAQ */
+.faq-list{margin-top:40px;display:flex;flex-direction:column;gap:0}
+.faq-item{border-bottom:1px solid #e0e0e0}
+.faq-q{padding:18px 0;display:flex;align-items:flex-start;gap:14px;cursor:pointer;font-weight:700;font-size:.95rem;color:var(--dark)}
+.faq-q .faq-icon{min-width:28px;height:28px;background:var(--yellow);color:var(--dark);display:flex;align-items:center;justify-content:center;border-radius:50%;font-weight:900;font-size:.85rem;flex-shrink:0;margin-top:1px}
+.faq-a{padding:0 0 18px 42px;font-size:.9rem;color:var(--gray);line-height:1.8;display:none}
+.faq-item.open .faq-a{display:block}
+.faq-arrow{margin-left:auto;color:var(--gray);transition:transform .3s}
+.faq-item.open .faq-arrow{transform:rotate(180deg)}
+
+/* 固定バー */
+.fixed-bar{position:fixed;bottom:0;left:0;right:0;background:var(--yellow);padding:12px 20px;display:flex;align-items:center;justify-content:center;gap:20px;z-index:200;box-shadow:0 -3px 16px rgba(0,0,0,.15)}
+.fixed-bar p{font-weight:700;font-size:.9rem;color:var(--dark)}
+.fixed-bar a{background:var(--dark);color:#fff;font-weight:900;padding:10px 28px;border-radius:4px;font-size:.9rem;white-space:nowrap}
+
+/* 最終CTA */
+.cta-final{background:var(--dark);color:#fff;padding:100px 20px;text-align:center}
+.cta-final h2{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;margin-bottom:16px}
+.cta-final p{color:rgba(255,255,255,.8);margin-bottom:36px;font-size:.95rem}
+
+footer{background:#111;color:rgba(255,255,255,.5);text-align:center;padding:28px 20px;font-size:.8rem;padding-bottom:80px}
+
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .numbers-inner{grid-template-columns:repeat(2,1fr)}
+  .appeal-row,.appeal-row.reverse{flex-direction:column}
+  .appeal-img{width:100%;height:200px}
+  .interview-grid{grid-template-columns:1fr}
+  .timeline-lp::before{left:80px}
+  .tl-time{min-width:58px;font-size:.85rem}
+  .fixed-bar{flex-direction:column;gap:8px;padding:10px 16px}
+  .fixed-bar p{font-size:.82rem}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="logo">MIYAKO<em>FLOOR</em>WORKS</div>
+    <nav class="nav-links">
+      <a href="#work">仕事内容</a>
+      <a href="#voice">社員の声</a>
+      <a href="#faq">FAQ</a>
+      <a href="#apply" class="nav-cta">応募する</a>
+    </nav>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#work" onclick="toggleMenu()">仕事内容</a>
+  <a href="#voice" onclick="toggleMenu()">社員の声</a>
+  <a href="#faq" onclick="toggleMenu()">FAQ</a>
+  <a href="#apply" onclick="toggleMenu()" class="nav-cta">応募する</a>
+</div>
+
+<!-- ヒーロー（CTA 1） -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">RECRUIT 2026</div>
+    <h1>未経験から<strong>プロの床職人へ。</strong></h1>
+    <p class="hero-sub">左官・塗装・防水の3技術を身につける。千葉・成田エリアの現場で、着実にスキルと収入を伸ばしていける環境があります。</p>
+    <a href="#apply" class="hero-cta">まずは3分で応募する →</a>
+    <p class="hero-note">書類選考なし ／ 面接1回 ／ 未経験歓迎</p>
+    <!-- ※ここはサンプルです。実際には御社の応募条件に差し替えます -->
+    <p style="font-size:.72rem;color:rgba(255,255,255,.35);margin-top:4px">※ここはサンプルです。実際には御社の情報に差し替えます</p>
+  </div>
+</section>
+
+<!-- 数字で見る会社 -->
+<div class="numbers">
+  <div class="numbers-inner">
+    <div class="num-card">
+      <div class="num-val">○<span class="num-unit">年</span></div>
+      <div class="num-label">地域での施工実績</div>
+      <div class="num-sample">※サンプルです。実際に差し替えます</div>
+    </div>
+    <div class="num-card">
+      <div class="num-val">○<span class="num-unit">名</span></div>
+      <div class="num-label">在籍スタッフ数</div>
+      <div class="num-sample">※サンプルです。実際に差し替えます</div>
+    </div>
+    <div class="num-card">
+      <div class="num-val">○<span class="num-unit">%</span></div>
+      <div class="num-label">未経験入社の割合</div>
+      <div class="num-sample">※サンプルです。実際に差し替えます</div>
+    </div>
+    <div class="num-card">
+      <div class="num-val">○<span class="num-unit">日</span></div>
+      <div class="num-label">年間休日数</div>
+      <div class="num-sample">※サンプルです。実際に差し替えます</div>
+    </div>
+  </div>
+</div>
+
+<!-- 業務内容（弱点メモ対策：具体的に記載） -->
+<section class="section" id="work">
+  <div class="section-inner">
+    <span class="section-label">WORK</span>
+    <h2 class="section-title">実際にどんな仕事を<br>するのか知ってほしい</h2>
+    <div class="divider"></div>
+    <p style="color:var(--gray);font-size:.95rem;max-width:640px;margin-bottom:8px">床工事は「左官」「塗装」「防水」の3分野。それぞれの具体的な作業内容を正直に紹介します。</p>
+    <!-- ※ここはサンプルです。実際には御社の業務内容に差し替えます -->
+    <p style="font-size:.75rem;color:#bbb;margin-bottom:32px">※ここはサンプルです。実際には御社の業務内容に差し替えます</p>
+    <div class="work-flow">
+      <div class="work-step">
+        <div class="work-step-num">01</div>
+        <div class="work-step-body">
+          <div class="work-step-title">左官工事 ─ モルタル・漆喰で床面を整える</div>
+          <p class="work-step-text">モルタルや漆喰を練り、コテで均すのが左官工事の基本です。下地の水平を出す「セルフレベリング材流し込み」や、仕上がりの表情を決める「コテ波仕上げ」「金鏝仕上げ」まで幅広い技術があります。最初は先輩の横で養生や材料運搬から始め、徐々に本作業へ移行します。「均す」「平らにする」精度が、後の工程の仕上がりを左右する重要な仕事です。</p>
+          <div class="work-tags">
+            <span class="work-tag">モルタル</span>
+            <span class="work-tag">セルフレベリング</span>
+            <span class="work-tag">コテ仕上げ</span>
+            <span class="work-tag">養生</span>
+          </div>
+        </div>
+      </div>
+      <div class="work-step">
+        <div class="work-step-num">02</div>
+        <div class="work-step-body">
+          <div class="work-step-title">塗装工事 ─ エポキシ・ウレタン塗装で床を守り、美しくする</div>
+          <p class="work-step-text">工場・倉庫・店舗の床にエポキシ樹脂塗装やウレタン塗装を施します。工程は「研磨（グラインダーで旧塗膜を除去）→ プライマー塗布（密着強化）→ 主剤塗布 → 仕上げコート」。防塵仕上げで見た目がきれいになり、耐薬品性・耐摩耗性も上がります。塗料のムラや泡立ちを防ぐ細かい作業が求められますが、仕上がりの美しさは努力が目に見える形で出ます。</p>
+          <div class="work-tags">
+            <span class="work-tag">エポキシ塗装</span>
+            <span class="work-tag">ウレタン塗装</span>
+            <span class="work-tag">グラインダー研磨</span>
+            <span class="work-tag">プライマー</span>
+          </div>
+        </div>
+      </div>
+      <div class="work-step">
+        <div class="work-step-num">03</div>
+        <div class="work-step-body">
+          <div class="work-step-title">防水工事 ─ 雨水・漏水から建物を長期的に守る</div>
+          <p class="work-step-text">屋上・バルコニー・水まわりにウレタン防水・塩ビシート防水・FRP防水を施工します。既存の防水層を撤去してから下地補修を行い、新たな防水層を形成するのが基本の流れです。施工が不十分だと建物の内部に影響が出るため、シームレス（継ぎ目なし）の仕上げが求められます。品質が長期にわたり建物を守る責任ある仕事です。</p>
+          <div class="work-tags">
+            <span class="work-tag">ウレタン防水</span>
+            <span class="work-tag">シート防水</span>
+            <span class="work-tag">FRP防水</span>
+            <span class="work-tag">下地補修</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA（中盤） -->
+<div class="cta-mid" id="cta-mid">
+  <h2>気になったら、まず話を聞きに来てください。</h2>
+  <p>書類選考なし・面接1回。「どんな仕事か見てから決めたい」という方も歓迎です。</p>
+  <!-- ※ここはサンプルです。実際には御社の応募先に差し替えます -->
+  <p style="font-size:.72rem;color:rgba(255,255,255,.4);margin-bottom:20px">※ここはサンプルです。実際には御社の応募先に差し替えます</p>
+  <a href="#apply" class="btn-yellow">応募する →</a>
+</div>
+
+<!-- 働く魅力 -->
+<section class="section section-bg" id="appeal">
+  <div class="section-inner">
+    <span class="section-label">APPEAL</span>
+    <h2 class="section-title">ミヤコフロアワークスを<br>選ぶ理由</h2>
+    <div class="divider"></div>
+    <!-- ※ここはサンプルです。実際には御社の魅力に差し替えます -->
+    <p style="font-size:.75rem;color:#bbb;margin-bottom:8px">※ここはサンプルです。実際には御社の魅力ポイントに差し替えます</p>
+    <div class="appeal-list">
+      <div class="appeal-row">
+        <img class="appeal-img" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=600&h=400&fit=crop&q=80" alt="内装工事の様子（サンプル）">
+        <div class="appeal-body">
+          <div class="appeal-num">01</div>
+          <div class="appeal-title">3技術を習得して、市場価値を高められる</div>
+          <p class="appeal-text">左官・塗装・防水の3分野を並行して習得できるのはミヤコフロアワークスの強みです。1つの技術だけでなく複数持つことで、より幅広い案件を担当でき、長期的な収入アップにつながります。</p>
+          <span class="appeal-sample">※ここはサンプルです。実際には御社の特徴に差し替えます</span>
+        </div>
+      </div>
+      <div class="appeal-row reverse">
+        <img class="appeal-img" src="https://images.unsplash.com/photo-1567016432779-094069958ea5?w=600&h=400&fit=crop&q=80" alt="きれいな仕上がり（サンプル）">
+        <div class="appeal-body">
+          <div class="appeal-num">02</div>
+          <div class="appeal-title">地元・成田エリアで長く安定して働ける</div>
+          <p class="appeal-text">住宅・店舗・工場など地元からの受注が安定しています。遠距離の現場への長期出張が少なく、家族との時間を大切にしながら働ける環境です。マイカー通勤OK・直行直帰可能な現場も多数あります。</p>
+          <span class="appeal-sample">※ここはサンプルです。実際には御社の特徴に差し替えます</span>
+        </div>
+      </div>
+      <div class="appeal-row">
+        <img class="appeal-img" src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=600&h=400&fit=crop&q=80" alt="仕上がりの床（サンプル）">
+        <div class="appeal-body">
+          <div class="appeal-num">03</div>
+          <div class="appeal-title">仕上がりが見えるから、達成感が大きい</div>
+          <p class="appeal-text">「施工前後で空間が変わる」仕事です。自分の手で仕上げた床を毎日現場で見られる達成感と、お客様からの「きれいになった」という声がモチベーションになります。地味な作業に見えても、完成したときの喜びは格別です。</p>
+          <span class="appeal-sample">※ここはサンプルです。実際には御社の特徴に差し替えます</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 社員インタビュー -->
+<section class="section" id="voice">
+  <div class="section-inner">
+    <span class="section-label">INTERVIEW</span>
+    <h2 class="section-title">実際に働く人の声</h2>
+    <div class="divider"></div>
+    <!-- ※ここはサンプルです。実際には御社のスタッフ紹介に差し替えます -->
+    <p style="font-size:.75rem;color:#bbb;margin-bottom:8px">※ここはサンプルです。実際には御社のスタッフ紹介に差し替えます</p>
+    <div class="interview-grid">
+      <div class="interview-card">
+        <img class="interview-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=faces&q=80" alt="スタッフ（サンプル）">
+        <div class="interview-body">
+          <div class="interview-name">田中 雄介（仮名）</div>
+          <div class="interview-role">左官工事担当 ／ 入社5年目</div>
+          <div class="interview-q">Q. 入社前の不安は？</div>
+          <p class="interview-a">「体力的にきつそう」と思っていましたが、最初は軽作業から入れてもらい、無理なく体を慣らせました。今では一人で現場を回せるようになりました。</p>
+          <span class="interview-sample">※ここはサンプルです。実際には御社のスタッフ写真・インタビューに差し替えます</span>
+        </div>
+      </div>
+      <div class="interview-card">
+        <img class="interview-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=300&fit=crop&crop=faces&q=80" alt="スタッフ（サンプル）">
+        <div class="interview-body">
+          <div class="interview-name">中村 淳（仮名）</div>
+          <div class="interview-role">塗装・防水担当 ／ 入社8年目</div>
+          <div class="interview-q">Q. この仕事を続けている理由は？</div>
+          <p class="interview-a">技術が増えるにつれて担当できる現場の幅が広がり、給与も上がってきました。「これが正解」という答えのある仕事なので、上達が実感できるのが好きです。</p>
+          <span class="interview-sample">※ここはサンプルです。実際には御社のスタッフ写真・インタビューに差し替えます</span>
+        </div>
+      </div>
+      <div class="interview-card">
+        <img class="interview-img" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=300&fit=crop&crop=faces&q=80" alt="スタッフ（サンプル）">
+        <div class="interview-body">
+          <div class="interview-name">木村 大輔（仮名）</div>
+          <div class="interview-role">左官担当 ／ 入社1年目</div>
+          <div class="interview-q">Q. 未経験から入ってみてどうでしたか？</div>
+          <p class="interview-a">正直、最初は道具の名前から覚えることが多くて大変でした。でも先輩が毎日丁寧に教えてくれて、3ヶ月目には一人で養生と下地処理をできるようになりました。</p>
+          <span class="interview-sample">※ここはサンプルです。実際には御社のスタッフ写真・インタビューに差し替えます</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section class="section section-bg" id="day">
+  <div class="section-inner">
+    <span class="section-label">A DAY</span>
+    <h2 class="section-title">1日の仕事の流れ</h2>
+    <div class="divider"></div>
+    <!-- ※ここはサンプルです。実際には御社の1日の流れに差し替えます -->
+    <p style="font-size:.75rem;color:#bbb;margin-bottom:8px">※ここはサンプルです。実際には御社の1日の流れに差し替えます</p>
+    <div class="timeline-lp">
+      <div class="tl-item">
+        <div class="tl-time">07:45</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-title">集合・朝礼</div>
+          <p class="tl-text">安全確認・当日の作業確認・道具積み込みを行います</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">08:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-title">現場移動・養生・下地確認</div>
+          <p class="tl-text">現場到着後、周囲を養生して施工前の下地状態を確認</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">08:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-title">午前の施工作業</div>
+          <p class="tl-text">左官・塗装・防水のいずれかを担当。先輩と並走しながら進めます</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-title">昼休憩（1時間）</div>
+          <p class="tl-text">現場近くのコンビニ・食堂を利用する方が多いです</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-title">午後の施工・乾燥確認・次工程準備</div>
+          <p class="tl-text">乾燥待ち時間も道具清掃や材料準備で有効活用します</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">16:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-title">仕上がり確認・養生撤去・清掃</div>
+          <p class="tl-text">施工箇所を念入りに確認。清掃してきれいな状態でお返しします</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-title">片付け・退勤</div>
+          <p class="tl-text">片付けをして退勤。直行直帰できる現場もあります</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="section-inner">
+    <span class="section-label">FAQ</span>
+    <h2 class="section-title">よくある質問</h2>
+    <div class="divider"></div>
+    <!-- ※ここはサンプルです。実際には御社のFAQに差し替えます -->
+    <p style="font-size:.75rem;color:#bbb;margin-bottom:8px">※ここはサンプルです。実際には御社のFAQに差し替えます</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-icon">Q</span>未経験・異業種からでも大丈夫ですか？<span class="faq-arrow">▼</span></div>
+        <div class="faq-a">はい、入社スタッフの多くが未経験・異業種出身です。道具の名前・安全作業から始め、先輩がマンツーマンで指導します。体力面は慣れるまでサポートします。<span style="font-size:.73rem;color:#bbb;display:block;margin-top:6px">※ここはサンプルです。実際には御社の回答に差し替えます</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-icon">Q</span>給与・昇給の仕組みを教えてください。<span class="faq-arrow">▼</span></div>
+        <div class="faq-a">月給制（金額は面接時にご説明）。技術習得・資格取得に応じて昇給します。入社時から「何を身につけたらいくら上がる」を明確にお伝えします。<span style="font-size:.73rem;color:#bbb;display:block;margin-top:6px">※ここはサンプルです。実際には御社の回答に差し替えます</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-icon">Q</span>体力面が心配です。体を鍛えておく必要がありますか？<span class="faq-arrow">▼</span></div>
+        <div class="faq-a">特別な体力トレーニングは不要です。最初は軽い作業から始め、体が慣れるにつれて徐々に本作業へ移行します。現場スタッフは40代・50代も活躍しています。<span style="font-size:.73rem;color:#bbb;display:block;margin-top:6px">※ここはサンプルです。実際には御社の回答に差し替えます</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-icon">Q</span>選考〜採用の流れは？<span class="faq-arrow">▼</span></div>
+        <div class="faq-a">①応募 → ②書類確認（なし・応募即面接） → ③面接（現場スタッフも同席） → ④内定。面接は1回。気になることは何でも直接聞いてください。<span style="font-size:.73rem;color:#bbb;display:block;margin-top:6px">※ここはサンプルです。実際には御社の選考フローに差し替えます</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-icon">Q</span>試用期間はありますか？<span class="faq-arrow">▼</span></div>
+        <div class="faq-a">試用期間は○ヶ月（サンプル。実際に差し替えます）。試用期間中も社会保険完備・給与の条件は正社員と変わりません。<span style="font-size:.73rem;color:#bbb;display:block;margin-top:6px">※ここはサンプルです。実際には御社の回答に差し替えます</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 最終CTA -->
+<section class="cta-final" id="apply">
+  <h2>迷っているなら、<br>まず話だけでも聞きに来てください。</h2>
+  <p>「向いているかどうか分からない」という方こそ、大歓迎です。<br>採用担当が現場の雰囲気を丁寧にお伝えします。</p>
+  <!-- ※ここはサンプルです。実際には御社の応募先に差し替えます -->
+  <p style="font-size:.72rem;color:rgba(255,255,255,.35);margin-bottom:24px">※ここはサンプルです。実際には御社の応募先（フォームURL等）に差し替えます</p>
+  <a href="#" class="btn-yellow">応募する（仮ボタン）</a>
+</section>
+
+<footer>
+  <p>© ミヤコフロアワークス株式会社 ／ 千葉県成田市</p>
+  <p>E-mail: info@385floorworks.com</p>
+</footer>
+
+<!-- 固定エントリーバー（スマホ） -->
+<div class="fixed-bar">
+  <p>未経験歓迎 ／ 面接1回で採用</p>
+  <a href="#apply">今すぐ応募する</a>
+</div>
+
+<script>
+function toggleMenu(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function toggleFaq(el){
+  el.parentElement.classList.toggle('open');
+}
+</script>
+</body>
+</html>

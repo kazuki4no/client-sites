@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 医療法人社団ウエルカム 大澤歯科医院（香取市・歯科助手・受付）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#222;background:#fff}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+:root{
+  --dark:#0c1e38;
+  --mint:#05a6a1;
+  --mint-light:#38c9c4;
+  --mint-pale:#e6f9f8;
+  --gold:#c9a227;
+  --gray:#666;
+  --border:#9be0de;
+}
+
+/* ナビ（半透明・ヒーロー上に重ねる） */
+header{position:absolute;top:0;left:0;right:0;z-index:100;background:rgba(12,30,56,.4);backdrop-filter:blur(4px)}
+header.scrolled{position:fixed;background:var(--dark)}
+.nav-inner{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.nav-logo{font-size:.95rem;font-weight:700;color:#fff;line-height:1.3}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{font-size:.88rem;color:rgba(255,255,255,.85);transition:color .2s}
+.nav-links a:hover{color:#fff}
+.nav-cta{background:var(--mint);color:#fff;padding:9px 20px;border-radius:6px;font-size:.88rem;font-weight:700;transition:background .2s}
+.nav-cta:hover{background:var(--mint-light)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;transition:.3s}
+.mobile-menu{display:none;flex-direction:column;background:var(--dark);padding:16px 20px;gap:12px}
+.mobile-menu a{font-size:1rem;color:rgba(255,255,255,.85);padding:8px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.mobile-menu .nav-cta{text-align:center;padding:12px}
+
+@media(max-width:768px){
+  .nav-links,.nav-cta{display:none}
+  .hamburger{display:flex}
+  .mobile-menu.open{display:flex}
+}
+
+/* フルスクリーンヒーロー */
+.hero{position:relative;min-height:80vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(12,30,56,.75) 0%,rgba(5,80,80,.65) 100%)}
+.hero-content{position:relative;z-index:1;padding:100px 20px 60px;max-width:900px;margin:0 auto}
+.hero-label{display:inline-block;background:var(--mint);color:#fff;font-size:.8rem;font-weight:700;letter-spacing:.14em;padding:4px 18px;border-radius:20px;margin-bottom:24px}
+.hero h1{font-family:'Noto Serif JP',serif;font-size:clamp(2rem,6vw,3.6rem);color:#fff;line-height:1.3;margin-bottom:20px;font-weight:900}
+.hero h1 span{color:var(--mint-light)}
+.hero p{font-size:clamp(.95rem,2.5vw,1.1rem);color:rgba(255,255,255,.88);margin-bottom:36px;line-height:2;max-width:600px;margin-left:auto;margin-right:auto}
+.hero-tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:40px}
+.tag{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.45);padding:5px 16px;border-radius:20px;font-size:.85rem}
+.btn-primary,.btn-outline,.btn-green{display:inline-block;padding:15px 36px;border-radius:8px;font-weight:700;font-size:1rem;transition:.2s;cursor:pointer;border:2px solid transparent}
+.btn-primary,.btn-green{background:var(--mint);color:#fff}
+.btn-primary:hover,.btn-green:hover{background:var(--mint-light)}
+.btn-outline{background:transparent;color:#fff;border-color:rgba(255,255,255,.7)}
+.btn-outline:hover{background:#fff;color:var(--dark)}
+.hero-btns{display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
+
+/* スクロール誘導 */
+.scroll-hint{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,.6);font-size:.78rem}
+.scroll-line{width:1px;height:40px;background:rgba(255,255,255,.4);animation:scrollLine 1.5s infinite}
+@keyframes scrollLine{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* セクション共通 */
+section{padding:72px 20px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-label{color:var(--mint);font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:8px}
+.section-title{font-size:clamp(1.5rem,4vw,2.1rem);font-weight:700;margin-bottom:12px;font-family:'Noto Serif JP',serif}
+.divider{width:48px;height:3px;background:var(--mint);margin:12px 0 32px}
+.sample-note{font-size:.78rem;color:#aaa;margin-top:6px}
+
+/* 魅力 */
+.features{background:#f6fffe}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:768px){.features-grid{grid-template-columns:1fr}}
+.feature-card{background:#fff;border-radius:16px;padding:32px 24px;border-left:4px solid var(--mint);box-shadow:0 2px 16px rgba(5,166,161,.1)}
+.feature-num{font-size:2rem;font-weight:900;color:var(--mint);opacity:.25;line-height:1;margin-bottom:8px;font-family:'Noto Serif JP',serif}
+.feature-card h3{font-size:1.05rem;font-weight:700;margin-bottom:10px;color:var(--dark)}
+.feature-card p{font-size:.9rem;line-height:1.85;color:var(--gray)}
+
+/* 写真ギャラリー風 */
+.gallery{background:var(--dark);padding:48px 0}
+.gallery-inner{max-width:1200px;margin:0 auto;padding:0 20px}
+.gallery h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.3rem,3.5vw,1.8rem);color:#fff;margin-bottom:32px;text-align:center}
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:4px}
+@media(max-width:768px){.gallery-grid{grid-template-columns:1fr}}
+.gallery-item{position:relative;overflow:hidden;border-radius:4px}
+.gallery-item img{width:100%;height:240px;object-fit:cover;transition:transform .4s}
+.gallery-item:hover img{transform:scale(1.04)}
+.gallery-caption{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(12,30,56,.85));color:#fff;padding:24px 16px 16px;font-size:.85rem;font-weight:500}
+.gallery-note{text-align:center;margin-top:16px;font-size:.78rem;color:rgba(255,255,255,.45)}
+
+/* 募集要項 */
+.spec-bg{background:#f8f9fc}
+.spec-table{width:100%;border-collapse:collapse;margin-top:8px}
+.spec-table th,.spec-table td{padding:14px 16px;text-align:left;vertical-align:top;border-bottom:1px solid var(--border)}
+.spec-table th{width:140px;font-weight:700;color:var(--mint);white-space:nowrap;background:var(--mint-pale)}
+.spec-table td{font-size:.95rem;line-height:1.85}
+@media(max-width:768px){
+  .spec-table,.spec-table tbody,.spec-table tr,.spec-table th,.spec-table td{display:block;width:100%}
+  .spec-table th{border-bottom:none;padding-bottom:4px}
+  .spec-table td{padding-top:4px;padding-bottom:14px}
+}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:0}
+.faq-item{border-bottom:1px solid var(--border)}
+.faq-q{display:flex;align-items:flex-start;gap:12px;padding:20px 0;cursor:pointer;font-weight:700;font-size:.95rem}
+.faq-q .q-badge{flex-shrink:0;width:28px;height:28px;background:var(--mint);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700}
+.faq-q .icon{margin-left:auto;font-size:1.2rem;color:var(--mint);transition:transform .3s}
+.faq-item.open .icon{transform:rotate(45deg)}
+.faq-a{display:none;padding:0 0 20px 40px;font-size:.9rem;color:var(--gray);line-height:1.8}
+.faq-item.open .faq-a{display:block}
+
+/* 1日の流れ */
+.timeline{display:flex;flex-direction:column;gap:0}
+.timeline-item{display:flex;gap:20px;padding:16px 0;border-bottom:1px dashed var(--border)}
+.timeline-time{flex-shrink:0;width:70px;font-weight:700;color:var(--mint);font-size:.9rem}
+.timeline-dot{flex-shrink:0;width:12px;height:12px;border-radius:50%;background:var(--mint);margin-top:5px}
+.timeline-text{font-size:.9rem;line-height:1.7;color:#444}
+
+/* 先輩の声 */
+.voices-bg{background:var(--mint-pale)}
+.voices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+@media(max-width:768px){.voices-grid{grid-template-columns:1fr}}
+.voice-card{background:#fff;border-radius:16px;padding:28px 24px;box-shadow:0 2px 16px rgba(5,166,161,.1)}
+.voice-head{display:flex;gap:14px;align-items:center;margin-bottom:16px}
+.voice-img{width:64px;height:64px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--mint)}
+.voice-name{font-weight:700;font-size:.95rem}
+.voice-meta{font-size:.8rem;color:var(--gray);margin-top:2px}
+.voice-text{font-size:.88rem;line-height:1.85;color:var(--gray)}
+
+/* 担当者 */
+.manager-wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+@media(max-width:768px){.manager-wrap{grid-template-columns:1fr;text-align:center}}
+.manager-img-wrap img{width:100%;height:360px;object-fit:cover;border-radius:20px}
+.manager-label{color:var(--mint);font-size:.82rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+.manager-name{font-family:'Noto Serif JP',serif;font-size:1.3rem;font-weight:700;margin-bottom:16px;color:var(--dark)}
+.manager-msg{font-size:.92rem;line-height:2;color:var(--gray)}
+
+/* CTA */
+.cta-section{background:var(--mint);text-align:center;padding:80px 20px}
+.cta-section h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,4vw,2rem);color:#fff;margin-bottom:12px}
+.cta-section p{color:rgba(255,255,255,.88);font-size:.95rem;margin-bottom:32px;line-height:1.9}
+.btn-cta-white{display:inline-block;padding:15px 40px;border-radius:8px;font-weight:700;font-size:1rem;background:#fff;color:var(--mint);transition:.2s;border:2px solid #fff}
+.btn-cta-white:hover{background:transparent;color:#fff}
+
+/* フッター */
+footer{background:var(--dark);color:rgba(255,255,255,.65);text-align:center;padding:32px 20px;font-size:.85rem;line-height:1.9}
+footer strong{color:#fff}
+</style>
+</head>
+<body>
+
+<header id="mainHeader">
+  <div class="nav-inner">
+    <div class="nav-logo">医療法人社団 ウエルカム｜大澤歯科医院</div>
+    <ul class="nav-links">
+      <li><a href="#features">働く魅力</a></li>
+      <li><a href="#spec">募集要項</a></li>
+      <li><a href="#voices">先輩の声</a></li>
+      <li><a href="#faq">FAQ</a></li>
+    </ul>
+    <a href="#cta" class="nav-cta">応募する</a>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#features" onclick="toggleMenu()">働く魅力</a>
+    <a href="#spec" onclick="toggleMenu()">募集要項</a>
+    <a href="#voices" onclick="toggleMenu()">先輩の声</a>
+    <a href="#faq" onclick="toggleMenu()">FAQ</a>
+    <a href="#cta" class="nav-cta" onclick="toggleMenu()">応募する</a>
+  </div>
+</header>
+
+<!-- フルスクリーンヒーロー -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-label">歯科助手・受付 正社員募集</div>
+    <h1>患者さんの<span>笑顔</span>を、<br>チームで支える仕事。</h1>
+    <p>年齢も、性別も、経験も問いません。<br>大澤歯科医院は、初めての方が安心してスタートできる職場です。</p>
+    <div class="hero-tags">
+      <span class="tag">未経験OK</span>
+      <span class="tag">年齢・性別不問</span>
+      <span class="tag">月給215,000〜</span>
+      <span class="tag">書類選考なし</span>
+      <span class="tag">マイカー通勤可</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#cta" class="btn-primary">応募・お問い合わせ</a>
+      <a href="#spec" class="btn-outline">募集要項を見る</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    SCROLL
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- 働く魅力 -->
+<section class="features" id="features">
+  <div class="section-inner">
+    <p class="section-label">Why Join Us</p>
+    <h2 class="section-title">大澤歯科医院で働く3つの魅力</h2>
+    <div class="divider"></div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-num">01</div>
+        <h3>専門用語をわかりやすく教えます</h3>
+        <p>バキューム・セメント練和・印象材練和…難しそうな言葉も、一つひとつ丁寧に説明します。入職してからゆっくり覚えていける環境なので、歯科が初めての方も安心です。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">02</div>
+        <h3>年齢・性別・経験はハードルではない</h3>
+        <p>高齢者の方・男性の方の応募も可能と求人票に明記。多様なスタッフが互いに支え合い、個々の強みを活かしながら働いています。どんなバックグラウンドでも歓迎します。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-num">03</div>
+        <h3>安定した正社員雇用と充実の待遇</h3>
+        <p>月給215,000〜230,000円・賞与年2回・昇給制度・社会保険完備・退職金制度（勤続3年〜）。マイカー通勤可で香取市周辺からも通いやすい環境です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 写真ギャラリー -->
+<section class="gallery">
+  <div class="gallery-inner">
+    <h2>職場のイメージ</h2>
+    <div class="gallery-grid">
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=640&h=380&fit=crop&q=80" alt="歯科医院のイメージ（サンプル画像）">
+        <div class="gallery-caption">清潔感あふれる診療室</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=640&h=380&fit=crop&q=80" alt="医療スタッフのイメージ（サンプル画像）">
+        <div class="gallery-caption">チームワークで診療をサポート</div>
+      </div>
+      <div class="gallery-item">
+        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=640&h=380&fit=crop&q=80" alt="クリニックのイメージ（サンプル画像）">
+        <div class="gallery-caption">患者様と向き合う受付</div>
+      </div>
+    </div>
+    <p class="gallery-note">※上記はサンプル画像です。実際には御社の職場写真に差し替えます</p>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="spec-bg" id="spec">
+  <div class="section-inner">
+    <p class="section-label">Requirements</p>
+    <h2 class="section-title">募集要項</h2>
+    <div class="divider"></div>
+    <table class="spec-table">
+      <tr><th>職種</th><td>歯科助手・受付（正社員）</td></tr>
+      <tr><th>勤務地</th><td>千葉県香取市扇島2281（大澤歯科医院）</td></tr>
+      <tr><th>雇用形態</th><td>正社員（試用期間3ヶ月・同条件）</td></tr>
+      <tr><th>給与</th><td>月給 215,000円〜230,000円（経験等により応談）<br>賞与年2回（前年度実績 計2.00ヶ月分）<br>昇給あり（年2,000〜5,000円・前年度実績）<br>通勤手当 実費支給（上限なし）</td></tr>
+      <tr><th>就業時間</th><td>交替制（シフト制）<br>①8:30〜18:00　②10:00〜19:30<br>休憩90分　月平均時間外10時間</td></tr>
+      <tr><th>休日・休暇</th><td>水曜・日曜・祝日（祝日のある週の水曜は出勤）<br>週休2日制・年間休日110日<br>年末年始・夏期各1週間 ／ 有給休暇10日（6ヶ月後）</td></tr>
+      <tr><th>応募資格</th><td>経験不問・学歴不問・資格不問<br>高齢者の方・男性の方の応募も歓迎です</td></tr>
+      <tr><th>待遇・福利厚生</th><td>社会保険完備（雇用・労災・健康・厚生年金）<br>退職金制度あり（勤続3年以上）<br>マイカー通勤可・駐車場完備<br><span class="sample-note">※ここはサンプルです。実際には御社の福利厚生に差し替えます</span></td></tr>
+      <tr><th>選考フロー</th><td>書類選考なし → 面接（1回）→ 内定（面接後5日以内に電話連絡）</td></tr>
+      <tr><th>アクセス</th><td>JR潮来駅より車5分　マイカー通勤可・駐車場あり</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section id="timeline">
+  <div class="section-inner">
+    <p class="section-label">A Day in the Life</p>
+    <h2 class="section-title">スタッフの1日の流れ（Aシフト例）</h2>
+    <div class="divider"></div>
+    <p class="sample-note" style="margin-bottom:24px">※ここはサンプルです。実際には御社のスケジュールに差し替えます</p>
+    <div class="timeline" style="max-width:640px">
+      <div class="timeline-item">
+        <div class="timeline-time">8:30</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-text"><strong>出社・開院準備</strong><br>診療室の清掃・消毒と器具の準備。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">9:00</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-text"><strong>診療開始・受付対応</strong><br>患者様のお出迎えと予約確認。診療中はバキュームや器具受け渡しで医師をサポート。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">12:00</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-text"><strong>昼休み（90分）</strong><br>スタッフとランチタイム。ゆっくり休憩。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">13:30</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-text"><strong>午後の診療・器具管理</strong><br>器具の滅菌・消毒を進めながら、受付と診療サポートを並行。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">17:00</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-text"><strong>会計・閉院準備</strong><br>最後の患者様の会計処理と翌日の予約確認・カルテ整理。</div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">18:00</div>
+        <div class="timeline-dot"></div>
+        <div class="timeline-text"><strong>退社</strong><br>Aシフトは18時退社。お疲れ様でした！</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section class="voices-bg" id="voices">
+  <div class="section-inner">
+    <p class="section-label">Voices</p>
+    <h2 class="section-title">先輩スタッフからのメッセージ</h2>
+    <div class="divider"></div>
+    <p class="sample-note" style="margin-bottom:24px">※ここはサンプルです。実際には御社スタッフのメッセージに差し替えます</p>
+    <div class="voices-grid">
+      <div class="voice-card">
+        <div class="voice-head">
+          <img class="voice-img" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩スタッフ（仮名）">
+          <div>
+            <div class="voice-name">木村 さき（仮名）</div>
+            <div class="voice-meta">歯科助手 / 入社3年目</div>
+          </div>
+        </div>
+        <p class="voice-text">入社前は「歯科って難しそう」と思っていましたが、先輩がわかりやすく教えてくれました。今では後輩に教える立場になり、自分の成長を実感しています。患者様の笑顔が一番のやりがいです。</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-head">
+          <img class="voice-img" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩スタッフ（仮名）">
+          <div>
+            <div class="voice-name">高橋 雄一（仮名）</div>
+            <div class="voice-meta">歯科助手 / 入社2年目</div>
+          </div>
+        </div>
+        <p class="voice-text">40代での転職でしたが、歯科経験がなくても受け入れてもらえました。男性は少ない職場ですが、むしろ力仕事や器具の運搬など任せてもらえることも多く、頼りにされていると感じます。</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-head">
+          <img class="voice-img" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩スタッフ（仮名）">
+          <div>
+            <div class="voice-name">中島 なつき（仮名）</div>
+            <div class="voice-meta">受付 / 入社7年目</div>
+          </div>
+        </div>
+        <p class="voice-text">7年いられるのは、職場の雰囲気がいいから。スタッフ間で何でも相談できますし、院長先生も話しやすい方です。地域の患者様に長く通っていただける、地に足のついた職場だと思います。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 採用担当者 -->
+<section id="manager">
+  <div class="section-inner">
+    <p class="section-label">From HR</p>
+    <h2 class="section-title">採用担当者より</h2>
+    <div class="divider"></div>
+    <p class="sample-note" style="margin-bottom:24px">※ここはサンプルです。実際には採用担当者のお写真・メッセージに差し替えます</p>
+    <div class="manager-wrap">
+      <div class="manager-img-wrap">
+        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=640&h=480&fit=crop&crop=faces&q=80" alt="採用担当者（仮名）">
+      </div>
+      <div>
+        <div class="manager-label">From HR</div>
+        <div class="manager-name">採用担当 大澤（仮名）</div>
+        <p class="manager-msg">「歯科は難しそう」「自分が応募していいか迷っている」という方にこそ、ぜひ読んでいただきたいと思っています。私たちの医院は、患者様に寄り添う気持ちがあれば、経験も年齢も性別も関係なく活躍できる職場です。<br><br>書類選考はありません。まずはお問い合わせフォームから、気軽にご連絡ください。見学のみの方も歓迎しています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="background:#f8f9fc">
+  <div class="section-inner">
+    <p class="section-label">FAQ</p>
+    <h2 class="section-title">よくある質問</h2>
+    <div class="divider"></div>
+    <p class="sample-note" style="margin-bottom:24px">※以下はサンプルです。実際には御社のQ&Aに差し替えます</p>
+    <div class="faq-list" style="max-width:720px">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="q-badge">Q</span>歯科の知識がゼロでも大丈夫ですか？<span class="icon">＋</span>
+        </div>
+        <div class="faq-a">大丈夫です。バキューム操作・器具の準備・滅菌作業など、歯科助手の仕事は手順を覚えれば誰でもできます。わかりにくい用語はやさしい言葉で何度でも説明しますので、安心してご応募ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="q-badge">Q</span>高齢者や男性でも採用されますか？<span class="icon">＋</span>
+        </div>
+        <div class="faq-a">はい、歓迎しています。求人票に「高齢者の方・男性の方の応募も可能」と明記しています。年齢・性別を理由に選考で不利になることはありません。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="q-badge">Q</span>選考の流れを教えてください<span class="icon">＋</span>
+        </div>
+        <div class="faq-a">書類選考なし → 面接1回（随時実施）→ 結果は面接後5日以内に電話でご連絡。お気軽にお問い合わせフォームからご連絡ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="q-badge">Q</span>受付と歯科助手の両方をやるのですか？<span class="icon">＋</span>
+        </div>
+        <div class="faq-a">はい、どちらも担当します。受付は患者様対応・予約・会計・電話応対、歯科助手は診療サポート全般です。最初は得意な方から少しずつ覚えていただけます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="q-badge">Q</span>マイカー通勤はできますか？<span class="icon">＋</span>
+        </div>
+        <div class="faq-a">できます。マイカー通勤可・駐車場完備です。JR潮来駅からも車で5分と便利な立地です。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="cta">
+  <h2>まずはお気軽にお問い合わせください。</h2>
+  <p>書類選考はありません。見学のみのご相談も歓迎します。<br>「少し気になる」程度の気持ちで構いません。</p>
+  <a href="https://ohsawadc.com/counsel/" class="btn-cta-white">お問い合わせフォームへ</a>
+  <p style="margin-top:20px;color:rgba(255,255,255,.7);font-size:.85rem">TEL: 0478-56-3748（診療時間内）</p>
+</section>
+
+<footer>
+  <strong>医療法人社団 ウエルカム　大澤歯科医院</strong><br>
+  千葉県香取市扇島2281 ／ TEL: 0478-56-3748
+</footer>
+
+<script>
+var hdr=document.getElementById('mainHeader');
+window.addEventListener('scroll',function(){
+  hdr.classList.toggle('scrolled',window.scrollY>80);
+});
+function toggleMenu(){
+  var m=document.getElementById('mobileMenu');
+  m.classList.toggle('open');
+}
+function toggleFaq(el){
+  var item=el.parentElement;
+  item.classList.toggle('open');
+}
+</script>
+</body>
+</html>

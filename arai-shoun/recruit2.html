@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 有限会社 荒井商運</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#1a2640;background:#fff}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+:root{
+  --navy:#12284a;
+  --teal:#0e6e72;
+  --orange:#e05900;
+  --bg:#f4f8fc;
+}
+
+/* ヘッダー */
+header{background:var(--navy);position:sticky;top:0;z-index:200}
+.header-inner{max-width:1080px;margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;justify-content:space-between}
+.logo{color:#fff;font-size:1rem;font-weight:700}
+nav.pc-nav{display:flex;gap:24px}
+nav.pc-nav a{color:#cde;font-size:.85rem;font-weight:500;transition:color .2s}
+nav.pc-nav a:hover{color:#fff}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.hamburger span{display:block;width:24px;height:2px;background:#fff}
+.mobile-nav{display:none;position:absolute;top:60px;left:0;right:0;background:var(--navy);z-index:190}
+.mobile-nav.open{display:block}
+.mobile-nav a{display:block;padding:14px 24px;color:#cde;font-size:1rem;border-bottom:1px solid rgba(255,255,255,.08)}
+
+/* ヒーロー */
+.hero{background:var(--navy);color:#fff;padding:80px 20px 64px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1553413077-190dd305871c?w=1600&h=800&fit=crop&q=80');background-size:cover;background-position:center;opacity:.18}
+.hero-inner{position:relative;z-index:1;max-width:720px;margin:0 auto}
+.hero-kicker{font-size:.8rem;letter-spacing:.12em;background:var(--orange);display:inline-block;padding:4px 18px;border-radius:20px;margin-bottom:20px;font-weight:700}
+.hero h1{font-size:clamp(1.9rem,5.5vw,3.4rem);font-weight:900;line-height:1.3;margin-bottom:18px}
+.hero h1 em{font-style:normal;color:#7dd0d4}
+.hero-sub{font-size:clamp(.9rem,2.2vw,1.05rem);opacity:.85;line-height:1.9;margin-bottom:36px}
+.cta-btn{display:inline-block;background:var(--orange);color:#fff;font-size:1.05rem;font-weight:700;padding:16px 48px;border-radius:4px;transition:filter .2s}
+.cta-btn:hover{filter:brightness(1.1)}
+.hero-note{margin-top:16px;font-size:.78rem;opacity:.6}
+
+/* 数字バー */
+.numbers{background:var(--teal);padding:40px 20px}
+.numbers-inner{max-width:900px;margin:0 auto;display:flex;flex-wrap:wrap;gap:16px;justify-content:center}
+.num-item{text-align:center;color:#fff;min-width:160px;flex:1}
+.num-value{font-size:2.4rem;font-weight:900;line-height:1}
+.num-unit{font-size:1rem;font-weight:700}
+.num-label{font-size:.8rem;opacity:.8;margin-top:6px}
+.num-note{font-size:.7rem;color:rgba(255,255,255,.5);margin-top:4px}
+
+/* 課題 → 解決 */
+.pain{background:var(--bg);padding:64px 20px;text-align:center}
+.pain-inner{max-width:680px;margin:0 auto}
+.pain h2{font-size:clamp(1.3rem,3.5vw,1.8rem);font-weight:700;color:var(--navy);margin-bottom:12px}
+.pain p{font-size:.95rem;color:#444;line-height:1.9;margin-bottom:28px}
+.pain-arrow{font-size:2rem;color:var(--orange);margin:16px 0}
+.solve{background:#fff;border-left:4px solid var(--teal);padding:20px 24px;border-radius:0 6px 6px 0;text-align:left}
+.solve p{font-size:.95rem;color:#1a2640;line-height:1.8}
+.solve strong{color:var(--teal)}
+
+/* セクション */
+section.lp-sec{padding:72px 20px}
+.lp-inner{max-width:1000px;margin:0 auto}
+.sec-title{font-size:clamp(1.3rem,3.8vw,1.9rem);font-weight:900;color:var(--navy);text-align:center;margin-bottom:8px}
+.sec-sub{text-align:center;font-size:.88rem;color:#777;margin-bottom:44px}
+
+/* 3案の強み */
+.strength-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.strength-card{border:2px solid var(--bg);border-radius:8px;padding:28px 20px;text-align:center;background:#fff}
+.strength-card:hover{border-color:var(--teal)}
+.st-num{font-size:2rem;font-weight:900;color:var(--teal);line-height:1;margin-bottom:8px}
+.strength-card h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:10px}
+.strength-card p{font-size:.84rem;color:#555;line-height:1.7}
+
+/* タイムライン */
+.tl-bg{background:var(--navy)}
+.tl-bg .sec-title,.tl-bg .sec-sub{color:#fff}
+.tl-bg .sec-sub{color:rgba(255,255,255,.6)}
+.tl-row{display:flex;flex-direction:column;gap:20px;max-width:640px;margin:0 auto;position:relative;padding-left:28px}
+.tl-row::before{content:'';position:absolute;left:6px;top:0;bottom:0;width:2px;background:var(--teal)}
+.tl-step{position:relative;padding-left:28px}
+.tl-step::before{content:'';position:absolute;left:-22px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--teal);border:2px solid #fff}
+.tl-t{font-size:.78rem;color:#7dd0d4;font-weight:700;margin-bottom:2px}
+.tl-h{font-size:.95rem;font-weight:700;color:#fff;margin-bottom:4px}
+.tl-d{font-size:.83rem;color:rgba(255,255,255,.7);line-height:1.6}
+.tl-note{font-size:.72rem;color:rgba(255,255,255,.35);margin-top:4px}
+
+/* 先輩インタビュー */
+.interview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.iv-card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07)}
+.iv-photo{aspect-ratio:1;object-fit:cover;width:100%}
+.iv-body{padding:18px}
+.iv-role{font-size:.75rem;color:var(--orange);font-weight:700;margin-bottom:4px}
+.iv-name{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:10px}
+.iv-body p{font-size:.84rem;color:#444;line-height:1.7}
+.sample-note{font-size:.72rem;color:#bbb;margin-top:8px}
+
+/* 中間CTA */
+.mid-cta{background:var(--orange);text-align:center;padding:48px 20px;color:#fff}
+.mid-cta h2{font-size:clamp(1.2rem,3vw,1.7rem);font-weight:900;margin-bottom:12px}
+.mid-cta p{font-size:.9rem;opacity:.85;margin-bottom:24px;line-height:1.7}
+
+/* 募集要項 */
+.job-table{width:100%;border-collapse:collapse}
+.job-table th,.job-table td{border:1px solid #d8e4ec;padding:13px 16px;font-size:.88rem;line-height:1.7;text-align:left}
+.job-table th{background:var(--bg);color:var(--navy);font-weight:700;width:28%}
+
+/* FAQ */
+.faq-wrap{max-width:720px;margin:0 auto}
+.faq-row{border-bottom:1px solid #e0e8f0;padding:20px 0}
+.faq-q{font-weight:700;color:var(--navy);font-size:.95rem;display:flex;gap:12px}
+.faq-q span{color:var(--teal);font-size:1.1rem;flex-shrink:0}
+.faq-a{font-size:.86rem;color:#444;line-height:1.8;margin-top:10px;padding-left:28px}
+
+/* 最終CTA */
+.final-cta{background:var(--navy);text-align:center;padding:80px 20px;color:#fff}
+.final-cta h2{font-size:clamp(1.4rem,4vw,2.1rem);font-weight:900;margin-bottom:16px}
+.final-cta p{opacity:.8;font-size:.95rem;margin-bottom:8px;line-height:1.7}
+.tel-block{font-size:1.5rem;font-weight:900;color:#7dd0d4;margin:24px 0 8px}
+
+/* フッター */
+footer{background:#0a1628;color:#9ab;text-align:center;padding:28px 20px;font-size:.8rem;line-height:2}
+
+/* 固定エントリーバー（スマホ） */
+.entry-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:300;background:var(--orange);color:#fff;text-align:center;padding:14px;font-weight:700;font-size:1rem}
+
+/* レスポンシブ */
+@media(max-width:768px){
+  nav.pc-nav{display:none}
+  .hamburger{display:flex}
+  .strength-grid,.interview-grid{grid-template-columns:1fr}
+  .numbers-inner{flex-direction:column;align-items:center}
+  .entry-bar{display:block}
+  body{padding-bottom:56px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">有限会社 荒井商運 採用情報</div>
+    <nav class="pc-nav">
+      <a href="#strength">働く魅力</a>
+      <a href="#flow">1日の流れ</a>
+      <a href="#voice">先輩の声</a>
+      <a href="#job">募集要項</a>
+      <a href="#contact">応募する</a>
+    </nav>
+    <div class="hamburger" id="ham" aria-label="メニュー" tabindex="0">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#strength">働く魅力</a>
+    <a href="#flow">1日の流れ</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#job">募集要項</a>
+    <a href="#contact">応募する</a>
+  </div>
+</header>
+
+<!-- ヒーロー -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-kicker">ドライバー募集</div>
+    <h1>毎夜、<em>決まったルートを</em>走る。<br>景気に揺れない、安定の仕事。</h1>
+    <p class="hero-sub">週2〜3日・深夜2時間半のコンパクトな勤務。<br>中型免許があれば、副業・かけ持ちも歓迎です。</p>
+    <a href="#contact" class="cta-btn">詳細を読んで応募する ▼</a>
+    <p class="hero-note">※面接1回・書類選考なし</p>
+  </div>
+</div>
+
+<!-- 数字バー -->
+<div class="numbers">
+  <div class="numbers-inner">
+    <div class="num-item">
+      <span class="num-value">25</span><span class="num-unit">年以上</span>
+      <p class="num-label">設立からの安定運営</p>
+      <p class="num-note">※ここはサンプルです</p>
+    </div>
+    <div class="num-item">
+      <span class="num-value">約2.5</span><span class="num-unit">時間</span>
+      <p class="num-label">1セッションの稼働時間</p>
+      <p class="num-note">※ここはサンプルです</p>
+    </div>
+    <div class="num-item">
+      <span class="num-value">週2〜3</span><span class="num-unit">日</span>
+      <p class="num-label">勤務日数（相談可）</p>
+      <p class="num-note">※ここはサンプルです</p>
+    </div>
+    <div class="num-item">
+      <span class="num-value">30</span><span class="num-unit">名</span>
+      <p class="num-label">スタッフ数</p>
+      <p class="num-note">※ここはサンプルです</p>
+    </div>
+  </div>
+</div>
+
+<!-- こんな方に -->
+<div class="pain" id="pain">
+  <div class="pain-inner">
+    <h2>「副業で安定した収入がほしい」<br>「深夜に短時間で働きたい」</h2>
+    <p>ハローワークの求人票だけではなかなか伝わらない、荒井商運の"働き方の実態"をご紹介します。</p>
+    <div class="pain-arrow">↓</div>
+    <div class="solve">
+      <p><strong>新聞は毎朝届けなければならない</strong>から、景気に関係なく仕事が途切れません。週2〜3日・深夜2時間半という短時間集中型の働き方で、昼間の仕事や家庭と両立しているスタッフが多数活躍中です。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 強み3点 -->
+<section class="lp-sec" id="strength" style="background:#fff">
+  <div class="lp-inner">
+    <h2 class="sec-title">荒井商運を選ぶ3つの理由</h2>
+    <p class="sec-sub">求人票に書ききれなかった、リアルな職場の強みです</p>
+    <div class="strength-grid">
+      <div class="strength-card">
+        <div class="st-num">01</div>
+        <h3>景気に左右されない<br>安定した収入</h3>
+        <p>朝刊配送は好不況に関係なく毎日必要。長く働けるフィールドがあります。</p>
+      </div>
+      <div class="strength-card">
+        <div class="st-num">02</div>
+        <h3>ルートが決まっていて<br>覚えやすい</h3>
+        <p>佐原→江東区→成田・香取・神栖→佐原の固定ルート。慣れると黙々とこなせます。</p>
+      </div>
+      <div class="strength-card">
+        <div class="st-num">03</div>
+        <h3>週2〜3日OK・<br>副業・かけ持ち歓迎</h3>
+        <p>深夜帯の短時間勤務だから、昼の仕事や家事・育児との両立がしやすいです。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 中間CTA -->
+<div class="mid-cta">
+  <h2>ルートを走りながら、毎月安定して稼ぐ。</h2>
+  <p>まずは1日の流れや先輩の声を読んでみてください。</p>
+  <a href="#contact" class="cta-btn" style="background:#fff;color:var(--orange)">応募・お問い合わせはこちら</a>
+</div>
+
+<!-- 1日の流れ -->
+<section class="lp-sec tl-bg" id="flow">
+  <div class="lp-inner">
+    <h2 class="sec-title" style="color:#fff">社員の1日の流れ</h2>
+    <p class="sec-sub">※ここはサンプルです。実際には荒井商運のスタッフの1日に差し替えます</p>
+    <!-- 差し替え: 実際のスタッフの1日のタイムラインに変更してください -->
+    <div class="tl-row">
+      <div class="tl-step">
+        <div class="tl-t">20:00</div>
+        <div class="tl-h">出勤・点呼・車両点検</div>
+        <div class="tl-d">車庫に到着し、トラックの安全確認と出発準備を行います。</div>
+        <div class="tl-note">※ここはサンプルです。実際の内容に差し替えます</div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-t">20:30</div>
+        <div class="tl-h">出発 — 江東区の工場へ</div>
+        <div class="tl-d">佐原車庫を出発し、新聞を積み込む江東区の工場へ向かいます。</div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-t">21:30〜22:00頃</div>
+        <div class="tl-h">工場で積み込み</div>
+        <div class="tl-d">梱包済みの朝刊（約10kg×30個程度）をトラックに積み込みます。</div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-t">22:30〜1:00頃</div>
+        <div class="tl-h">成田・香取・神栖市内の販売店へ配送</div>
+        <div class="tl-d">ルートに沿って販売店5か所へ順次納品。慣れると手際よくこなせます。</div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-t">1:50頃</div>
+        <div class="tl-h">佐原車庫へ帰着・終業</div>
+        <div class="tl-d">報告・後片付けをして終業。コンパクトに仕事が完了します。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩インタビュー -->
+<section class="lp-sec" id="voice" style="background:var(--bg)">
+  <div class="lp-inner">
+    <h2 class="sec-title">先輩スタッフの声</h2>
+    <p class="sec-sub">※ここはサンプルです。実際には荒井商運のスタッフのコメントに差し替えます</p>
+    <!-- 差し替え: 実際のスタッフの顔写真とメッセージに変更してください -->
+    <div class="interview-grid">
+      <div class="iv-card">
+        <img class="iv-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div class="iv-body">
+          <div class="iv-role">ドライバー / 入社6年</div>
+          <div class="iv-name">田中さん（仮名）</div>
+          <p>夜間の道は空いていて走りやすいです。同じルートを走るうちに地理も覚えて、今では時間内に気持ちよく完走できるのが達成感になっています。</p>
+          <p class="sample-note">※ここはサンプルです</p>
+        </div>
+      </div>
+      <div class="iv-card">
+        <img class="iv-photo" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=400&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div class="iv-body">
+          <div class="iv-role">ドライバー / 入社3年</div>
+          <div class="iv-name">鈴木さん（仮名）</div>
+          <p>昼間は別の仕事をしています。深夜で短時間なので、かけ持ちでも体力的にちょうどいい。毎週決まったペースで稼げるのが安心です。</p>
+          <p class="sample-note">※ここはサンプルです</p>
+        </div>
+      </div>
+      <div class="iv-card">
+        <img class="iv-photo" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div class="iv-body">
+          <div class="iv-role">ドライバー / 入社8年</div>
+          <div class="iv-name">山田さん（仮名）</div>
+          <p>新聞の需要は景気の波を受けません。「安定して働ける場所」を求めて入社して8年。その安心感は今でも続いています。</p>
+          <p class="sample-note">※ここはサンプルです</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="lp-sec" id="job" style="background:#fff">
+  <div class="lp-inner">
+    <h2 class="sec-title">募集要項</h2>
+    <p class="sec-sub">詳細はお問い合わせ時にご確認いただけます</p>
+    <div style="overflow-x:auto">
+      <table class="job-table">
+        <tr><th>職種</th><td>配送ドライバー（2tトラック）</td></tr>
+        <tr><th>仕事内容</th><td>新聞輸送。佐原事業所→江東区工場（積み込み）→成田・香取・神栖市内販売店（5か所）→佐原のルートを担当</td></tr>
+        <tr><th>雇用形態</th><td>パートタイム（期間の定めなし）</td></tr>
+        <tr><th>賃金</th><td>時給 1,400円（深夜割増込み）／日給 7,000円<br>通勤手当：実費支給（上限 月3,000円）</td></tr>
+        <tr><th>就業時間</th><td>20:30 〜 翌 1:50（休憩40分）</td></tr>
+        <tr><th>勤務日数</th><td>週2〜3日（相談可）</td></tr>
+        <tr><th>必要な免許</th><td>中型自動車免許（必須）</td></tr>
+        <tr><th>試用期間</th><td>1か月（同条件）</td></tr>
+        <tr><th>社会保険</th><td>労災保険加入</td></tr>
+        <tr><th>マイカー通勤</th><td>可（駐車場あり）</td></tr>
+        <tr><th>勤務地</th><td>〒287-0031 千葉県香取市新部48-2（荒井商運 車庫）</td></tr>
+        <tr><th>採用人数</th><td>2名</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="lp-sec" id="faq" style="background:var(--bg)">
+  <div class="lp-inner">
+    <h2 class="sec-title">よくある質問</h2>
+    <p class="sec-sub">※ここはサンプルです。実際には荒井商運のQ&Aに差し替えます</p>
+    <!-- 差し替え: 実際のよくある質問に変更してください -->
+    <div class="faq-wrap">
+      <div class="faq-row">
+        <div class="faq-q"><span>Q</span>中型免許がないと応募できませんか？</div>
+        <div class="faq-a">2tトラックの運転に中型自動車免許が必要です。免許区分でご不明な場合はお気軽にご相談ください。</div>
+      </div>
+      <div class="faq-row">
+        <div class="faq-q"><span>Q</span>運送の経験がなくても大丈夫ですか？</div>
+        <div class="faq-a">経験があれば尚可ですが、ルートは丁寧にご案内します。慣れればルーティンワークですので安心して始められます。</div>
+      </div>
+      <div class="faq-row">
+        <div class="faq-q"><span>Q</span>副業・かけ持ちでも大丈夫ですか？</div>
+        <div class="faq-a">週2〜3日・深夜2時間半の勤務ですので、副業や昼間の仕事との両立も可能です。</div>
+      </div>
+      <div class="faq-row">
+        <div class="faq-q"><span>Q</span>選考の流れを教えてください。</div>
+        <div class="faq-a">面接1回（予定）。書類選考なし。選考結果は面接後7日以内に電話にてご連絡します。</div>
+      </div>
+      <div class="faq-row">
+        <div class="faq-q"><span>Q</span>マイカーで通勤できますか？</div>
+        <div class="faq-a">はい、マイカー通勤可・駐車場あり。通勤手当は実費支給（上限月3,000円）です。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 最終CTA -->
+<section class="final-cta" id="contact">
+  <div>
+    <h2>まずはお気軽にご連絡ください。<br>面接日程はご都合に合わせます。</h2>
+    <p>担当：専務 荒井</p>
+    <p>電話受付：13:00〜17:00</p>
+    <div class="tel-block">📞 090-2236-8448</div>
+    <p style="font-size:.82rem;opacity:.6;margin-bottom:28px">ハローワーク紹介状と履歴書（写真貼付）を面接時にご持参ください</p>
+    <a href="tel:090-2236-8448" class="cta-btn">電話で問い合わせる</a>
+  </div>
+</section>
+
+<footer>
+  <p>有限会社 荒井商運</p>
+  <p>〒287-0031 千葉県香取市新部48-2</p>
+  <p>📞 090-2236-8448　✉ smoke80082@msn.com</p>
+</footer>
+
+<!-- スマホ固定バー -->
+<a href="#contact" class="entry-bar">今すぐ応募・お問い合わせ ▶</a>
+
+<script>
+const ham = document.getElementById('ham');
+const nav = document.getElementById('mobileNav');
+ham.addEventListener('click', () => nav.classList.toggle('open'));
+nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+</script>
+</body>
+</html>

@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 株式会社 神田断熱</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#1a1a1a;line-height:1.7}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ===== VARIABLES ===== */
+:root{
+  --navy:#1a2744;
+  --navy-dark:#0f1a33;
+  --orange:#e87c2e;
+  --orange-light:#f5a23a;
+  --bg-light:#f5f6fa;
+  --text-muted:#666;
+  --radius:8px;
+}
+
+/* ===== HEADER ===== */
+header{
+  position:sticky;top:0;z-index:100;
+  background:var(--navy);
+  box-shadow:0 2px 8px rgba(0,0,0,.3);
+}
+.header-inner{
+  max-width:1100px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;height:64px;
+}
+.logo{font-size:1.05rem;font-weight:700;color:#fff;letter-spacing:.05em}
+.logo span{color:var(--orange)}
+
+/* PC NAV */
+.pc-nav{display:flex;gap:24px}
+.pc-nav a{color:#ccd;font-size:.88rem;font-weight:500;transition:color .2s}
+.pc-nav a:hover{color:var(--orange-light)}
+
+/* HAMBURGER */
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px}
+.hamburger span{width:24px;height:2px;background:#fff;display:block;transition:.3s}
+
+/* SP MENU */
+.sp-menu{
+  display:none;position:fixed;inset:0;background:rgba(15,26,51,.97);
+  z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:32px;
+}
+.sp-menu.open{display:flex}
+.sp-menu a{color:#fff;font-size:1.2rem;font-weight:700}
+.sp-menu .close-btn{position:absolute;top:20px;right:24px;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer}
+
+/* ===== HERO ===== */
+.hero{
+  position:relative;min-height:70vh;
+  display:flex;align-items:center;justify-content:center;
+  text-align:center;color:#fff;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&h=900&fit=crop&q=80') center/cover no-repeat;
+}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(15,26,51,.75) 0%,rgba(15,26,51,.55) 100%)}
+.hero-content{position:relative;z-index:1;padding:60px 24px;max-width:760px;margin:0 auto}
+.hero-pill{
+  display:inline-block;
+  background:var(--orange);color:#fff;
+  font-size:.8rem;font-weight:700;letter-spacing:.1em;
+  padding:4px 16px;border-radius:99px;margin-bottom:20px;
+}
+.hero h1{
+  font-size:clamp(1.8rem,5vw,3rem);
+  font-weight:900;line-height:1.3;
+  text-shadow:0 2px 12px rgba(0,0,0,.4);
+  margin-bottom:12px;
+}
+.hero p{font-size:clamp(.95rem,2.5vw,1.1rem);opacity:.9;margin-bottom:32px}
+.btn-primary{
+  display:inline-block;
+  background:var(--orange);color:#fff;
+  font-size:1rem;font-weight:700;
+  padding:14px 40px;border-radius:4px;
+  transition:background .2s,transform .15s;
+  border:none;cursor:pointer;
+}
+.btn-primary:hover{background:var(--orange-light);transform:translateY(-2px)}
+
+/* ===== SECTION COMMON ===== */
+section{padding:72px 24px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-title{
+  font-size:clamp(1.4rem,4vw,1.9rem);
+  font-weight:900;text-align:center;
+  color:var(--navy);margin-bottom:12px;
+}
+.section-title span{color:var(--orange)}
+.section-sub{text-align:center;color:var(--text-muted);margin-bottom:48px;font-size:.95rem}
+
+/* ===== PR / COMPANY VOICE ===== */
+.pr-section{background:var(--navy);color:#fff}
+.pr-section .section-title{color:#fff}
+.pr-section .section-title span{color:var(--orange-light)}
+.pr-section .section-sub{color:#aab}
+.pr-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.pr-card{
+  background:rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:var(--radius);padding:28px 20px;
+  text-align:center;
+}
+.pr-card .icon{font-size:2.2rem;margin-bottom:12px}
+.pr-card h3{font-size:1rem;font-weight:700;color:var(--orange-light);margin-bottom:10px}
+.pr-card p{font-size:.88rem;color:#ccd;line-height:1.8}
+
+/* PRESIDENT MESSAGE */
+.message-box{
+  display:grid;grid-template-columns:200px 1fr;gap:40px;align-items:start;
+  margin-top:56px;background:rgba(255,255,255,.06);
+  border-radius:var(--radius);padding:36px;
+}
+.message-box img{border-radius:50%;width:160px;height:160px;object-fit:cover}
+.message-meta{font-size:.82rem;color:#aab;margin-bottom:8px}
+.message-meta strong{font-size:1rem;color:#fff;display:block}
+.message-text{font-size:.95rem;color:#ccd;line-height:1.9}
+.sample-note{font-size:.75rem;color:#778;text-align:center;margin-top:8px}
+
+/* ===== APPEAL POINTS ===== */
+.appeal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.appeal-card{
+  background:#fff;border-radius:var(--radius);
+  box-shadow:0 2px 16px rgba(0,0,0,.07);
+  overflow:hidden;
+  transition:transform .2s,box-shadow .2s;
+}
+.appeal-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.12)}
+.appeal-card img{width:100%;height:200px;object-fit:cover}
+.appeal-body{padding:20px}
+.appeal-body h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+.appeal-body p{font-size:.88rem;color:var(--text-muted);line-height:1.8}
+
+/* ===== 募集要項 ===== */
+.job-table-wrap{overflow-x:auto}
+.job-table{width:100%;border-collapse:collapse;font-size:.9rem}
+.job-table tr{border-bottom:1px solid #e8e8e8}
+.job-table th{
+  width:140px;padding:16px;
+  background:var(--bg-light);
+  font-weight:700;color:var(--navy);
+  text-align:left;white-space:nowrap;
+  vertical-align:top;
+}
+.job-table td{padding:16px;color:#333;line-height:1.8}
+.tag-chip{
+  display:inline-block;
+  background:var(--orange);color:#fff;
+  font-size:.72rem;font-weight:700;
+  padding:2px 10px;border-radius:99px;margin:2px;
+}
+
+/* ===== SENIOR MESSAGES ===== */
+.seniors-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.senior-card{
+  background:#fff;border-radius:var(--radius);
+  box-shadow:0 2px 16px rgba(0,0,0,.07);
+  padding:24px;display:flex;flex-direction:column;gap:12px;
+}
+.senior-head{display:flex;align-items:center;gap:14px}
+.senior-head img{width:56px;height:56px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.senior-name{font-weight:700;color:var(--navy);font-size:.95rem}
+.senior-meta{font-size:.78rem;color:var(--text-muted)}
+.senior-card p{font-size:.88rem;color:#444;line-height:1.8}
+.senior-card .sample-note{text-align:left}
+
+/* ===== TIMELINE ===== */
+.timeline{position:relative;max-width:680px;margin:0 auto}
+.timeline::before{
+  content:'';position:absolute;left:50%;top:0;bottom:0;
+  width:2px;background:#dde;transform:translateX(-50%);
+}
+.timeline-item{
+  display:grid;grid-template-columns:1fr 40px 1fr;
+  align-items:center;gap:12px;margin-bottom:24px;
+}
+.timeline-item:nth-child(even) .tl-left{text-align:right}
+.tl-left,.tl-right{padding:12px 16px;background:#fff;border-radius:var(--radius);box-shadow:0 2px 8px rgba(0,0,0,.07)}
+.tl-left:empty,.tl-right:empty{background:transparent;box-shadow:none}
+.tl-dot{
+  width:40px;height:40px;border-radius:50%;
+  background:var(--navy);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.72rem;font-weight:700;line-height:1.2;text-align:center;
+  flex-shrink:0;
+}
+.tl-left h4,.tl-right h4{font-size:.88rem;font-weight:700;color:var(--navy);margin-bottom:4px}
+.tl-left p,.tl-right p{font-size:.82rem;color:var(--text-muted)}
+
+/* ===== FAQ ===== */
+.faq-list{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq-item{
+  background:#fff;border-radius:var(--radius);
+  box-shadow:0 2px 8px rgba(0,0,0,.06);overflow:hidden;
+}
+.faq-q{
+  display:flex;align-items:center;gap:12px;
+  padding:18px 20px;cursor:pointer;
+  font-weight:700;font-size:.92rem;color:var(--navy);
+  list-style:none;
+  transition:background .2s;
+}
+.faq-q:hover{background:var(--bg-light)}
+.faq-q::before{content:'Q';background:var(--orange);color:#fff;font-size:.78rem;font-weight:900;padding:2px 8px;border-radius:4px;flex-shrink:0}
+.faq-q .arrow{margin-left:auto;font-size:.7rem;color:var(--text-muted);transition:transform .3s}
+.faq-item.open .arrow{transform:rotate(180deg)}
+.faq-a{
+  display:none;
+  padding:0 20px 18px 50px;
+  font-size:.88rem;color:#444;line-height:1.9;
+}
+.faq-item.open .faq-a{display:block}
+
+/* ===== CTA SECTION ===== */
+.cta-section{background:var(--navy);text-align:center;color:#fff;padding:80px 24px}
+.cta-section h2{font-size:clamp(1.4rem,4vw,2rem);font-weight:900;margin-bottom:16px}
+.cta-section p{color:#aab;margin-bottom:32px;font-size:.95rem}
+
+/* ===== FOOTER ===== */
+footer{background:var(--navy-dark);color:#889;text-align:center;padding:32px 24px;font-size:.82rem}
+footer p{margin:4px 0}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  .pc-nav{display:none}
+  .hamburger{display:flex}
+
+  .pr-cards{grid-template-columns:1fr}
+  .message-box{grid-template-columns:1fr;text-align:center}
+  .message-box img{margin:0 auto}
+  .appeal-grid{grid-template-columns:1fr}
+  .seniors-grid{grid-template-columns:1fr}
+
+  .timeline::before{left:20px}
+  .timeline-item{grid-template-columns:40px 1fr;grid-template-rows:auto auto}
+  .tl-dot{order:-1}
+  .tl-left{order:1;text-align:left}
+  .tl-right{grid-column:2;text-align:left}
+  .tl-left:empty{display:none}
+
+  .job-table-wrap{overflow-x:visible}
+  .job-table,.job-table tbody,.job-table tr,.job-table th,.job-table td{display:block;width:100%}
+  .job-table th{background:var(--bg-light);padding:10px 16px;border-bottom:none}
+  .job-table td{padding:10px 16px 18px}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo">神田断熱<span>採用</span></div>
+    <nav class="pc-nav">
+      <a href="#appeal">働く魅力</a>
+      <a href="#requirements">募集要項</a>
+      <a href="#seniors">先輩の声</a>
+      <a href="#faq">FAQ</a>
+      <a href="#cta">応募する</a>
+    </nav>
+    <button class="hamburger" onclick="document.querySelector('.sp-menu').classList.add('open')" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- SP MENU -->
+<div class="sp-menu">
+  <button class="close-btn" onclick="document.querySelector('.sp-menu').classList.remove('open')" aria-label="閉じる">✕</button>
+  <a href="#appeal" onclick="document.querySelector('.sp-menu').classList.remove('open')">働く魅力</a>
+  <a href="#requirements" onclick="document.querySelector('.sp-menu').classList.remove('open')">募集要項</a>
+  <a href="#seniors" onclick="document.querySelector('.sp-menu').classList.remove('open')">先輩の声</a>
+  <a href="#faq" onclick="document.querySelector('.sp-menu').classList.remove('open')">FAQ</a>
+  <a href="#cta" onclick="document.querySelector('.sp-menu').classList.remove('open')">応募する</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-pill">未経験者歓迎｜正社員募集</div>
+    <h1>手に職をつけて、<br>確かな未来を築こう</h1>
+    <p>保温工・板金工として活躍する仲間を募集しています。<br>資格取得は会社全額サポート。一から丁寧に教えます。</p>
+    <a href="#cta" class="btn-primary">まずは話を聞いてみる</a>
+  </div>
+</section>
+
+<!-- PR / COMPANY FEEL -->
+<section class="pr-section">
+  <div class="section-inner">
+    <div class="section-title"><span>神田断熱</span>ってどんな会社？</div>
+    <p class="section-sub">求人票だけではなかなか伝わりにくい、私たちの職場の雰囲気をお伝えします。</p>
+    <div class="pr-cards">
+      <div class="pr-card">
+        <div class="icon">🤝</div>
+        <h3>少人数だから全員が顔見知り</h3>
+        <p>スタッフは6名。大きな組織にありがちな壁がなく、困ったことはすぐ相談できる環境です。女性スタッフも活躍中。</p>
+      </div>
+      <div class="pr-card">
+        <div class="icon">🔧</div>
+        <h3>技術は丁寧に教えます</h3>
+        <p>令和6年設立のフレッシュな会社。「教えてもらえる体制があるか不安」という方も安心してください。基礎からしっかりサポートします。</p>
+      </div>
+      <div class="pr-card">
+        <div class="icon">🌏</div>
+        <h3>社会を支えるやりがいある仕事</h3>
+        <p>建物・工場の配管・ダクトに断熱材を施す仕事は、省エネルギー化や快適な生活環境づくりに直結します。「作った」という実感が持てます。</p>
+      </div>
+    </div>
+
+    <!-- 代表メッセージ -->
+    <div class="message-box">
+      <div>
+        <!-- ここはサンプルです。実際には代表・担当者の写真に差し替えます -->
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=faces&q=80" alt="代表 神田修">
+        <p class="sample-note">※写真はサンプルです</p>
+      </div>
+      <div>
+        <p class="message-meta"><strong>代表取締役 神田 修</strong>からひと言</p>
+        <p class="message-text">
+          「仕事の雰囲気ってなかなか求人票には書けませんよね。うちはとにかく、みんなで教え合いながら仕事を覚えていく職場です。未経験でも、やる気があれば必ず力になります。資格取得の費用は会社が全額出しますし、現場での直行直帰もOKなので、無駄な時間を省いてメリハリのある働き方ができます。まずは気軽に話を聞きに来てください。」
+        </p>
+        <p class="sample-note">※上記はサンプルのメッセージです。実際には御社の代表・担当者のコメントに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPEAL POINTS -->
+<section id="appeal" style="background:var(--bg-light)">
+  <div class="section-inner">
+    <div class="section-title">働く<span>魅力</span></div>
+    <p class="section-sub">神田断熱だから選ばれる3つの理由</p>
+    <div class="appeal-grid">
+      <div class="appeal-card">
+        <!-- 建設現場のダミー画像 -->
+        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=640&h=200&fit=crop&q=80" alt="資格サポート">
+        <div class="appeal-body">
+          <h3>📜 資格取得費用は全額会社負担</h3>
+          <p>仕事に必要な資格は会社がサポート。「資格がないから不安」という方も、入社後にしっかり取得できます。スキルアップが収入アップに直結します。</p>
+        </div>
+      </div>
+      <div class="appeal-card">
+        <!-- 建設現場のダミー画像 -->
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=640&h=200&fit=crop&q=80" alt="昇給・待遇">
+        <div class="appeal-body">
+          <h3>💰 昇給あり＋退職金制度完備</h3>
+          <p>前年度実績で年間2〜2.3万円の昇給。退職金制度も整備されており、長く安心して働ける環境を整えています。</p>
+        </div>
+      </div>
+      <div class="appeal-card">
+        <!-- 建設現場のダミー画像 -->
+        <img src="https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=640&h=200&fit=crop&q=80" alt="直行直帰・マイカー">
+        <div class="appeal-body">
+          <h3>🚗 マイカー通勤＋直行直帰OK</h3>
+          <p>現場への直行直帰が可能。無駄な移動時間を減らしてプライベートを充実させることができます。駐車場も完備。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section id="requirements">
+  <div class="section-inner">
+    <div class="section-title">募集<span>要項</span></div>
+    <p class="section-sub">保温工・板金工【未経験者可】（正社員）</p>
+    <div style="margin-bottom:20px;text-align:center">
+      <span class="tag-chip">未経験歓迎</span>
+      <span class="tag-chip">マイカー通勤可</span>
+      <span class="tag-chip">時間外労働なし</span>
+      <span class="tag-chip">書類選考なし</span>
+      <span class="tag-chip">転勤なし</span>
+    </div>
+    <div class="job-table-wrap">
+      <table class="job-table">
+        <tbody>
+          <tr><th>職種</th><td>保温工・板金工</td></tr>
+          <tr><th>仕事内容</th><td>建物・工場の配管・ダクトに断熱材を取り付ける熱絶縁工事。断熱材の取付および板金加工・取付作業が主な業務です。未経験者には基礎から丁寧に指導します。</td></tr>
+          <tr><th>雇用形態</th><td>正社員（雇用期間の定めなし）</td></tr>
+          <tr><th>給与</th><td>日給 10,000円〜17,000円<br>（月収目安：23万円〜39.1万円 ※23日勤務の場合）<br>経験・能力により考慮のうえ優遇</td></tr>
+          <tr><th>就業時間</th><td>8:00〜17:00（現場により変動あり）<br>休憩 120分</td></tr>
+          <tr><th>休日・休暇</th><td>日曜日、祝日、その他<br>年間休日：90日<br>年末年始・お盆休みあり<br>有給休暇：入社6ヶ月後10日付与</td></tr>
+          <tr><th>待遇・福利厚生</th><td>各種社会保険完備（雇用・労災・健康・厚生年金）<br>昇給あり（前年度実績：年2万〜2.3万円）<br>退職金制度あり（中退共加入）<br>資格取得費用全額会社負担<br>マイカー通勤可（駐車場あり）</td></tr>
+          <tr><th>勤務地</th><td>千葉県香取市虫幡406-7（本社）<br>千葉県・茨城県内の各現場<br>現場への直行直帰あり</td></tr>
+          <tr><th>応募資格</th><td>普通自動車運転免許（AT限定可）<br>年齢：〜40歳（キャリア形成のため）<br>経験不問・学歴不問</td></tr>
+          <tr><th>選考方法</th><td>面接（1回）<br>場所：近隣カフェまたはファミリーレストランにて実施<br>書類選考なし</td></tr>
+          <tr><th>採用人数</th><td>2名</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SENIOR MESSAGES -->
+<section id="seniors" style="background:var(--bg-light)">
+  <div class="section-inner">
+    <div class="section-title">先輩<span>の声</span></div>
+    <p class="section-sub">実際に働くスタッフからのメッセージ</p>
+    <!-- ここはサンプルです。実際には御社スタッフのコメント・写真に差し替えます -->
+    <div class="seniors-grid">
+      <div class="senior-card">
+        <div class="senior-head">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="田中さん（仮名）">
+          <div>
+            <div class="senior-name">田中 誠（仮名）</div>
+            <div class="senior-meta">保温工 / 入社2年目</div>
+          </div>
+        </div>
+        <p>前職は全くの異業種でした。工具を持ったのも入社後が初めてです。先輩が丁寧に教えてくれるので、今では一人でも現場をこなせるようになりました。直行直帰ができるので生活リズムも整っています。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社スタッフのコメント・写真に差し替えます</p>
+      </div>
+      <div class="senior-card">
+        <div class="senior-head">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="佐藤さん（仮名）">
+          <div>
+            <div class="senior-name">佐藤 健（仮名）</div>
+            <div class="senior-meta">板金工 / 入社1年目</div>
+          </div>
+        </div>
+        <p>資格取得のサポートを聞いて応募を決めました。入社後さっそく資格の勉強をはじめていて、会社が費用を全部持ってくれるのが本当に助かります。少人数なのでわからないことをその場で聞けるのが良いです。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社スタッフのコメント・写真に差し替えます</p>
+      </div>
+      <div class="senior-card">
+        <div class="senior-head">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="山田さん（仮名）">
+          <div>
+            <div class="senior-name">山田 亮（仮名）</div>
+            <div class="senior-meta">保温工 / ベテランスタッフ</div>
+          </div>
+        </div>
+        <p>断熱工事って「地味な裏方」のイメージがあるかもしれませんが、省エネや快適な環境を陰で支えている仕事です。「自分がやった」という達成感は確かにあります。未経験でも続けられる職場だと思います。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社スタッフのコメント・写真に差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section id="timeline">
+  <div class="section-inner">
+    <div class="section-title">社員の<span>1日の流れ</span></div>
+    <p class="section-sub">保温工・板金工のある1日（現場直行パターン）</p>
+    <!-- ここはサンプルです。実際には御社の実際の1日のスケジュールに差し替えます -->
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="tl-left"><h4>08:00</h4><p>現場に直行（マイカー）。本日の作業内容を確認</p></div>
+        <div class="tl-dot">AM<br>8</div>
+        <div class="tl-right"></div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-left"></div>
+        <div class="tl-dot">AM<br>10</div>
+        <div class="tl-right"><h4>10:00</h4><p>小休憩。先輩と段取りを確認しながら進める</p></div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-left"><h4>12:00</h4><p>昼食・休憩（120分の休憩時間をしっかりとれる）</p></div>
+        <div class="tl-dot">PM<br>12</div>
+        <div class="tl-right"></div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-left"></div>
+        <div class="tl-dot">PM<br>3</div>
+        <div class="tl-right"><h4>15:00</h4><p>小休憩。作業の仕上げ・片付けを行う</p></div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-left"><h4>17:00</h4><p>作業終了。現場から自宅へ直帰（早く終わればその分帰れる）</p></div>
+        <div class="tl-dot">PM<br>5</div>
+        <div class="tl-right"></div>
+      </div>
+    </div>
+    <p class="sample-note" style="margin-top:24px">※ここはサンプルです。実際には御社の1日の流れに差し替えます</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="background:var(--bg-light)">
+  <div class="section-inner">
+    <div class="section-title">よくある<span>質問</span></div>
+    <p class="section-sub">応募前に気になるポイントをまとめました</p>
+    <!-- ここはサンプルです。実際には御社向けの内容に差し替えます -->
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          未経験でも本当に大丈夫ですか？
+          <span class="arrow">▼</span>
+        </div>
+        <div class="faq-a">はい。現在のスタッフも異業種からの転職者が多く、入社後に基礎から丁寧に指導する体制を整えています。技術は一つひとつ覚えていけば大丈夫です。「やる気」さえあればOKです。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          資格がないと応募できませんか？
+          <span class="arrow">▼</span>
+        </div>
+        <div class="faq-a">普通自動車運転免許（AT限定可）のみ必須です。熱絶縁・板金に関わる専門資格は入社後に取得していただきます。費用は全額会社が負担しますのでご安心ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          選考はどのように進みますか？
+          <span class="arrow">▼</span>
+        </div>
+        <div class="faq-a">書類選考はありません。面接1回（近隣のカフェまたはファミリーレストランにて実施）で選考します。面接後3日以内に結果をお伝えします。まずは気軽にご連絡ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          残業や休日出勤はありますか？
+          <span class="arrow">▼</span>
+        </div>
+        <div class="faq-a">36協定における特別条項はなし（時間外労働なし）です。現場が早く終わればその分帰れます。日曜・祝日は基本的にお休みで、年間休日は90日です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          転勤の可能性はありますか？
+          <span class="arrow">▼</span>
+        </div>
+        <div class="faq-a">転勤はありません。主な現場は千葉県内および茨城県内です。現場への直行直帰が可能なので、遠方の現場でも会社を経由する必要はありません。</div>
+      </div>
+    </div>
+    <p class="sample-note" style="margin-top:24px">※ここはサンプルです。実際には御社向けのQ&Aに差し替えます</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta" class="cta-section">
+  <div class="section-inner">
+    <h2>まずは話を聞いてみませんか？</h2>
+    <p>書類選考なし・面接1回。気軽にご応募いただけます。<br>ご質問だけでも大歓迎です。</p>
+    <a href="mailto:kandadannetsu@gmail.com" class="btn-primary">メールで問い合わせる</a>
+    <p style="margin-top:20px;font-size:.85rem;color:#889">TEL: 0478-51-1790（採用担当）</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>株式会社 神田断熱</p>
+  <p>〒289-0341 千葉県香取市虫幡406-7</p>
+  <p>TEL: 0478-51-1790 / MAIL: kandadannetsu@gmail.com</p>
+</footer>
+
+<script>
+function toggleFaq(el){
+  var item=el.closest('.faq-item');
+  item.classList.toggle('open');
+}
+</script>
+</body>
+</html>
