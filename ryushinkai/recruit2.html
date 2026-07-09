@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>介護職員 募集 | 社会福祉法人 龍心会</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { max-width: 100%; overflow-x: hidden; font-family: 'Noto Sans JP', sans-serif; color: #333; background: #fff; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    :root {
+      --teal: #2a6e5c;
+      --teal-light: #e0f0eb;
+      --teal-dark: #18453a;
+      --gold: #d4920a;
+      --red: #c0392b;
+      --bg: #f6faf8;
+    }
+
+    /* ========== HEADER ========== */
+    header {
+      background: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 200;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.1);
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 60px;
+    }
+    .logo { font-size: 0.9rem; font-weight: 700; color: var(--teal); line-height: 1.3; }
+    .logo span { display: block; font-size: 0.72rem; font-weight: 400; color: #888; }
+    nav ul { display: flex; gap: 1.8rem; list-style: none; }
+    nav ul li a { text-decoration: none; color: #555; font-size: 0.85rem; font-weight: 500; transition: color 0.2s; }
+    nav ul li a:hover { color: var(--teal); }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 6px;
+    }
+    .hamburger span { display: block; width: 24px; height: 3px; background: var(--teal); border-radius: 2px; }
+    @media (max-width: 768px) {
+      .hamburger { display: flex; }
+      nav {
+        display: none;
+        position: absolute;
+        top: 60px;
+        left: 0; right: 0;
+        background: #fff;
+        border-top: 2px solid var(--teal-light);
+        padding: 1rem 1.5rem;
+        box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      }
+      nav.open { display: block; }
+      nav ul { flex-direction: column; gap: 0.75rem; }
+    }
+
+    /* ========== HERO (LP型) ========== */
+    .hero {
+      background: var(--teal-dark);
+      color: #fff;
+      padding: 4rem 1.5rem 5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -100px; right: -100px;
+      width: 400px; height: 400px;
+      background: rgba(255,255,255,0.04);
+      border-radius: 50%;
+    }
+    .hero-inner { max-width: 800px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
+    .hero-label {
+      display: inline-block;
+      background: var(--gold);
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 700;
+      padding: 0.3rem 1.1rem;
+      border-radius: 4px;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 {
+      font-size: clamp(1.8rem, 6vw, 3.2rem);
+      font-weight: 900;
+      line-height: 1.4;
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 em { color: #82e0b5; font-style: normal; }
+    .hero-copy { font-size: 0.97rem; opacity: 0.9; margin-bottom: 2rem; line-height: 1.8; }
+    .hero-cta-area { display: flex; flex-direction: column; align-items: center; gap: 0.7rem; }
+    .btn-cta-main {
+      display: inline-block;
+      background: var(--gold);
+      color: #fff;
+      padding: 1.1rem 3rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
+      transition: opacity 0.2s;
+    }
+    .btn-cta-main:hover { opacity: 0.88; }
+    .hero-cta-area small { font-size: 0.78rem; opacity: 0.7; }
+
+    /* ========== 数字実績バー ========== */
+    .numbers {
+      background: var(--teal);
+      color: #fff;
+      padding: 3rem 1.5rem;
+    }
+    .numbers-inner {
+      max-width: 1000px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      text-align: center;
+    }
+    .num-item {}
+    .num-val { font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; line-height: 1; }
+    .num-val span { font-size: 1rem; font-weight: 400; }
+    .num-label { font-size: 0.82rem; margin-top: 0.4rem; opacity: 0.85; }
+    .num-note { font-size: 0.7rem; opacity: 0.6; margin-top: 0.2rem; }
+    @media (max-width: 768px) {
+      .numbers-inner { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    /* ========== SECTION COMMONS ========== */
+    section { padding: 5rem 1.5rem; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-heading {
+      text-align: center;
+      font-size: clamp(1.3rem, 4vw, 2rem);
+      color: var(--teal-dark);
+      margin-bottom: 0.5rem;
+    }
+    .section-heading::after {
+      content: '';
+      display: block;
+      width: 44px;
+      height: 4px;
+      background: var(--teal);
+      margin: 0.6rem auto 0;
+      border-radius: 2px;
+    }
+    .section-sub { text-align: center; color: #777; font-size: 0.88rem; margin: 0.5rem 0 3rem; }
+    .sample-note { font-size: 0.72rem; color: #bbb; font-style: italic; margin-top: 0.3rem; }
+
+    /* ========== PROBLEM → SOLUTION ========== */
+    .prob-sol { background: var(--bg); }
+    .prob-sol-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    .prob-box {
+      background: #fff;
+      border-radius: 14px;
+      padding: 2rem;
+      border-left: 5px solid #e74c3c;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+    }
+    .prob-box h3 { color: #c0392b; margin-bottom: 1rem; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+    .sol-box {
+      background: #fff;
+      border-radius: 14px;
+      padding: 2rem;
+      border-left: 5px solid var(--teal);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+    }
+    .sol-box h3 { color: var(--teal); margin-bottom: 1rem; font-size: 1rem; display: flex; align-items: center; gap: 0.5rem; }
+    .check-list { list-style: none; }
+    .check-list li {
+      padding: 0.4rem 0 0.4rem 1.5rem;
+      position: relative;
+      font-size: 0.88rem;
+      line-height: 1.6;
+      border-bottom: 1px dashed #eee;
+    }
+    .check-list li:last-child { border-bottom: none; }
+    .check-list li::before { content: '✓'; position: absolute; left: 0; color: var(--teal); font-weight: 700; }
+    .x-list li::before { content: '×'; color: #e74c3c; }
+    @media (max-width: 768px) {
+      .prob-sol-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ========== 強み ========== */
+    .merit-list { display: flex; flex-direction: column; gap: 1.5rem; max-width: 860px; margin: 0 auto; }
+    .merit-item {
+      background: #fff;
+      border-radius: 14px;
+      padding: 2rem;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+    .merit-num-badge {
+      background: var(--teal);
+      color: #fff;
+      border-radius: 10px;
+      padding: 0.5rem 0.8rem;
+      font-weight: 900;
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      text-align: center;
+      min-width: 52px;
+    }
+    .merit-num-badge small { display: block; font-size: 0.65rem; font-weight: 400; }
+    .merit-item h3 { font-size: 1.05rem; color: var(--teal-dark); margin-bottom: 0.5rem; }
+    .merit-item p { font-size: 0.88rem; line-height: 1.75; color: #555; }
+    @media (max-width: 768px) {
+      .merit-item { flex-direction: column; gap: 1rem; }
+    }
+
+    /* ========== 夜勤安心セクション ========== */
+    .nightshift {
+      background: linear-gradient(135deg, #1a3a2e 0%, #235237 100%);
+      color: #fff;
+    }
+    .nightshift h2 { color: #fff; }
+    .nightshift h2::after { background: #82e0b5; }
+    .night-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+    .night-card {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 12px;
+      padding: 1.8rem 1.5rem;
+      text-align: center;
+    }
+    .night-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .night-card h3 { font-size: 1rem; margin-bottom: 0.7rem; color: #82e0b5; }
+    .night-card p { font-size: 0.85rem; line-height: 1.7; opacity: 0.9; }
+    @media (max-width: 768px) {
+      .night-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ========== 1日の流れ ========== */
+    .tl-section { background: #fff; }
+    .timeline2 { max-width: 700px; margin: 0 auto; }
+    .tl2-item {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      background: var(--bg);
+      border-radius: 10px;
+      padding: 1.2rem 1.5rem;
+      align-items: flex-start;
+    }
+    .tl2-time {
+      background: var(--teal);
+      color: #fff;
+      border-radius: 8px;
+      padding: 0.3rem 0.7rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      flex-shrink: 0;
+      min-width: 64px;
+      text-align: center;
+    }
+    .tl2-content h4 { font-size: 0.9rem; margin-bottom: 0.2rem; }
+    .tl2-content p { font-size: 0.82rem; color: #666; }
+
+    /* ========== 先輩の声 ========== */
+    .voice-section { background: var(--bg); }
+    .voice2-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+    .voice2-card {
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+    }
+    .voice2-img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+    .voice2-body { padding: 1.3rem; }
+    .voice2-name { font-weight: 700; font-size: 0.92rem; margin-bottom: 0.2rem; }
+    .voice2-role { font-size: 0.75rem; color: #888; margin-bottom: 0.8rem; }
+    .voice2-body blockquote { font-size: 0.85rem; line-height: 1.7; color: #555; }
+    @media (max-width: 768px) {
+      .voice2-grid { grid-template-columns: 1fr; }
+    }
+
+    /* ========== FAQ ========== */
+    .faq-section { background: #fff; }
+    .faq2-list { max-width: 720px; margin: 0 auto; }
+    .faq2-item { margin-bottom: 1rem; }
+    .faq2-item details {
+      background: var(--bg);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .faq2-item summary {
+      padding: 1rem 1.3rem;
+      cursor: pointer;
+      list-style: none;
+      font-size: 0.92rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.7rem;
+    }
+    .faq2-item summary::-webkit-details-marker { display: none; }
+    .faq2-item summary::before { content: 'Q.'; color: var(--teal); font-weight: 700; flex-shrink: 0; }
+    .faq2-item summary::after {
+      content: '+';
+      margin-left: auto;
+      color: var(--teal);
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+    .faq2-item details[open] summary::after { content: '−'; }
+    .faq2-ans {
+      padding: 0 1.3rem 1rem 2.5rem;
+      font-size: 0.88rem;
+      line-height: 1.8;
+      color: #555;
+    }
+
+    /* ========== 募集要項 ========== */
+    .req-section { background: var(--bg); }
+    .req-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+    }
+    .req-table th {
+      background: var(--teal-light);
+      color: var(--teal-dark);
+      padding: 0.9rem 1.2rem;
+      text-align: left;
+      font-weight: 700;
+      width: 160px;
+      vertical-align: top;
+      border-bottom: 1px solid #ddeae4;
+    }
+    .req-table td {
+      padding: 0.9rem 1.2rem;
+      border-bottom: 1px solid #f0f0f0;
+      line-height: 1.75;
+      vertical-align: top;
+    }
+    .req-table tr:last-child th,
+    .req-table tr:last-child td { border-bottom: none; }
+    @media (max-width: 768px) {
+      .req-table, .req-table tbody, .req-table tr,
+      .req-table th, .req-table td { display: block; width: 100%; }
+      .req-table th {
+        background: var(--teal);
+        color: #fff;
+        padding: 0.6rem 1rem;
+        font-size: 0.82rem;
+        border-bottom: none;
+      }
+      .req-table td { padding: 0.7rem 1rem; border-bottom: 1px solid #eee; }
+    }
+
+    /* ========== CTA ×2 ========== */
+    .mid-cta {
+      background: var(--teal-light);
+      text-align: center;
+      padding: 3rem 1.5rem;
+    }
+    .mid-cta p { font-size: 0.95rem; color: var(--teal-dark); margin-bottom: 1.5rem; font-weight: 500; }
+    .final-cta {
+      background: var(--teal-dark);
+      color: #fff;
+      text-align: center;
+    }
+    .final-cta h2 { font-size: clamp(1.3rem, 4vw, 1.9rem); margin-bottom: 0.8rem; }
+    .final-cta p { opacity: 0.9; margin-bottom: 2rem; line-height: 1.7; font-size: 0.93rem; }
+    .btn-gold {
+      display: inline-block;
+      background: var(--gold);
+      color: #fff;
+      padding: 1.1rem 2.8rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 1.05rem;
+      text-decoration: none;
+      transition: opacity 0.2s;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    }
+    .btn-gold:hover { opacity: 0.88; }
+    .btn-outline-w {
+      display: inline-block;
+      background: transparent;
+      color: #fff;
+      border: 2px solid rgba(255,255,255,0.6);
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-outline-w:hover { background: rgba(255,255,255,0.12); }
+    .cta-btns { display: flex; justify-content: center; flex-wrap: wrap; gap: 1rem; }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: #111;
+      color: #aaa;
+      text-align: center;
+      padding: 2.2rem 1.5rem;
+      font-size: 0.82rem;
+      line-height: 2;
+    }
+
+    /* ========== MOBILE FIXED CTA ========== */
+    .fixed-cta {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0; right: 0;
+      z-index: 300;
+      background: var(--teal-dark);
+      padding: 0.8rem 1.2rem;
+      text-align: center;
+    }
+    .fixed-cta a {
+      display: block;
+      background: var(--gold);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.9rem;
+      border-radius: 8px;
+      text-decoration: none;
+    }
+    @media (max-width: 768px) {
+      .fixed-cta { display: block; }
+      body { padding-bottom: 72px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="nav-inner">
+    <div class="logo">
+      社会福祉法人 龍心会
+      <span>特別養護老人ホーム 採用情報</span>
+    </div>
+    <button class="hamburger" aria-label="メニュー" onclick="document.getElementById('nav2').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+    <nav id="nav2">
+      <ul>
+        <li><a href="#problem">こんな悩みありませんか</a></li>
+        <li><a href="#merit2">龍心会の強み</a></li>
+        <li><a href="#nightshift">夜勤について</a></li>
+        <li><a href="#voice2">先輩の声</a></li>
+        <li><a href="#req2">募集要項</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-label">正社員募集 ／ 特別養護老人ホーム</div>
+    <h1>
+      介護職でも<em>賞与4ヶ月分</em>。<br>
+      残業月5時間で、<em>生活と仕事</em>が両立できる。
+    </h1>
+    <p class="hero-copy">
+      ハローワークの求人票だけでは伝わらない「龍心会の働きやすさ」を、<br>
+      採用ページで丁寧にお伝えします。ユニット型施設でのやりがいある介護。
+    </p>
+    <div class="hero-cta-area">
+      <a href="#req2" class="btn-cta-main">募集要項を確認する →</a>
+      <small>まずは見学のご相談からでも歓迎です</small>
+    </div>
+  </div>
+</section>
+
+<!-- 数字実績バー -->
+<div class="numbers">
+  <div class="numbers-inner">
+    <!-- ※ここはサンプルです。実際には御社の数値に差し替えます -->
+    <div class="num-item">
+      <div class="num-val">4.0<span>ヶ月</span></div>
+      <div class="num-label">賞与（年2回合計）</div>
+      <div class="num-note">前年度実績</div>
+    </div>
+    <div class="num-item">
+      <div class="num-val">5<span>h</span></div>
+      <div class="num-label">月平均残業時間</div>
+      <div class="num-note">業界平均より低水準</div>
+    </div>
+    <div class="num-item">
+      <div class="num-val">105<span>日</span></div>
+      <div class="num-label">年間休日数</div>
+      <div class="num-note">夏季4日・冬季5日含む</div>
+    </div>
+    <div class="num-item">
+      <div class="num-val">20<span>年</span></div>
+      <div class="num-label">施設開設からの実績</div>
+      <div class="num-note">平成15年12月開設</div>
+    </div>
+  </div>
+  <p style="text-align:center; font-size:0.72rem; opacity:0.55; margin-top:1rem;">
+    ※ここはサンプルです。実際には御社の数値に差し替えます
+  </p>
+</div>
+
+<!-- 課題→解決 -->
+<section class="prob-sol" id="problem">
+  <div class="section-inner">
+    <h2 class="section-heading">こんなお悩みを抱えながら転職を考えていませんか？</h2>
+    <p class="section-sub">龍心会なら、これらの不安を一つひとつ解消できます</p>
+
+    <div class="prob-sol-grid">
+      <div class="prob-box">
+        <h3>🔴 よくある介護職の悩み</h3>
+        <!-- ※ここはサンプルです。実際には御社のメリットに差し替えます -->
+        <ul class="check-list x-list">
+          <li>夜勤が月何回あるか入職前に分からない</li>
+          <li>残業が多くて体力が持たない</li>
+          <li>賞与が少なく将来が不安</li>
+          <li>職場の雰囲気が入ってみないと分からない</li>
+          <li>ユニットケアと何が違うか分からない</li>
+        </ul>
+        <p class="sample-note">※ここはサンプルです。実際には御社の状況に差し替えます</p>
+      </div>
+      <div class="sol-box">
+        <h3>🟢 龍心会はこう答えます</h3>
+        <!-- ※ここはサンプルです。実際には御社のメリットに差し替えます -->
+        <ul class="check-list">
+          <li>夜勤回数はシフト表で事前確認OK（研修期間は先輩と同行）</li>
+          <li>月平均残業5時間・36協定特別条項なし</li>
+          <li>賞与計4ヶ月分（前年実績）＋処遇改善手当5万円</li>
+          <li>見学・施設見回り随時歓迎・現場スタッフに直接質問OK</li>
+          <li>ユニット型＝担当者制で入居者と深い関係が築ける</li>
+        </ul>
+        <p class="sample-note">※ここはサンプルです。実際には御社の情報に差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 中盤CTA -->
+<div class="mid-cta">
+  <p>「気になる」「詳しく聞きたい」という方、まずはお問い合わせください。</p>
+  <a href="mailto:hv-recruit@ryushinkai.or.jp" class="btn-gold">メールで相談してみる</a>
+</div>
+
+<!-- 強み -->
+<section id="merit2" style="background:#fff;">
+  <div class="section-inner">
+    <h2 class="section-heading">龍心会を選ぶ5つの理由</h2>
+    <p class="section-sub">求人票だけでは伝わらない、働きやすさの核心</p>
+
+    <!-- ※ここはサンプルです。実際には御社の情報に差し替えます -->
+    <div class="merit-list">
+      <div class="merit-item">
+        <div class="merit-num-badge">01<small>理由</small></div>
+        <div>
+          <h3>賞与4ヶ月分・月収210,100円〜の安定収入</h3>
+          <p>処遇改善手当50,000円をベースに、夜勤手当7,000円・住宅手当最大25,000円・扶養手当も充実。介護職の中でも高水準の収入を確保できます。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社の情報に差し替えます</p>
+        </div>
+      </div>
+      <div class="merit-item">
+        <div class="merit-num-badge">02<small>理由</small></div>
+        <div>
+          <h3>残業月5時間・体力を持続できる働き方</h3>
+          <p>36協定特別条項なし。「夜勤明けは必ず休め、連続勤務を避ける」シフト管理で、20年以上働き続けるスタッフも在籍しています。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社の情報に差し替えます</p>
+        </div>
+      </div>
+      <div class="merit-item">
+        <div class="merit-num-badge">03<small>理由</small></div>
+        <div>
+          <h3>ユニット型施設ならではの「関係性の深さ」</h3>
+          <p>流れ作業にならない介護。担当ユニットの入居者の方を継続してケアするので、変化に気づきやすく「この人を支えている」という実感が持てます。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社の施設特徴に差し替えます</p>
+        </div>
+      </div>
+      <div class="merit-item">
+        <div class="merit-num-badge">04<small>理由</small></div>
+        <div>
+          <h3>夜勤研修制度で「初めての夜勤」も安心</h3>
+          <p>入職後は必ず先輩と同行する夜勤研修期間を設定。緊急時対応・ナースコールへの対応など、実際に動きながら学べます。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社の研修制度に差し替えます</p>
+        </div>
+      </div>
+      <div class="merit-item">
+        <div class="merit-num-badge">05<small>理由</small></div>
+        <div>
+          <h3>退職金制度＋就職支度金で長く働ける環境</h3>
+          <p>勤続1年以上で退職金制度対象。遠方からの転職を支援する就職支度金制度もあり、安心して腰を据えて働ける土台が整っています。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社の制度に差し替えます</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 夜勤安心セクション -->
+<section class="nightshift" id="nightshift">
+  <div class="section-inner">
+    <h2 class="section-heading" style="color:#fff;">夜勤が不安な方へ。龍心会の3つの安心</h2>
+    <p class="section-sub" style="color:rgba(255,255,255,0.7);">「夜勤が心配で応募できない」という方に、リアルをお伝えします</p>
+
+    <!-- ※ここはサンプルです。実際には御社の情報に差し替えます -->
+    <div class="night-grid">
+      <div class="night-card">
+        <div class="night-icon">📋</div>
+        <h3>シフト表で事前に把握</h3>
+        <p>月の夜勤回数はシフト表で事前確認できます。「思ったより多かった」ということが起きにくい環境です。</p>
+        <p class="sample-note" style="color:rgba(255,255,255,0.4);">※ここはサンプルです。実際の情報に差し替えます</p>
+      </div>
+      <div class="night-card">
+        <div class="night-icon">👥</div>
+        <h3>先輩と一緒に研修</h3>
+        <p>初めての夜勤は必ず先輩と同行。ひとり立ちは慣れてから。不安をそのままにしない体制です。</p>
+        <p class="sample-note" style="color:rgba(255,255,255,0.4);">※ここはサンプルです。実際の情報に差し替えます</p>
+      </div>
+      <div class="night-card">
+        <div class="night-icon">💴</div>
+        <h3>夜勤手当で収入アップ</h3>
+        <p>夜勤手当7,000円・深夜勤手当5,500円。夜勤をこなすほど収入が上がる、努力が報われる給与体系です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section class="tl-section" id="timeline2">
+  <div class="section-inner">
+    <h2 class="section-heading">スタッフの1日の流れ</h2>
+    <p class="section-sub">日勤（7:00〜16:00）シフトの例</p>
+
+    <!-- ※ここはサンプルです。実際には御社スタッフの1日に差し替えます -->
+    <div class="timeline2">
+      <div class="tl2-item">
+        <div class="tl2-time">7:00</div>
+        <div class="tl2-content">
+          <h4>出勤・申し送り</h4>
+          <p>夜勤スタッフから引き継ぎ。入居者の体調変化をチームで共有。</p>
+        </div>
+      </div>
+      <div class="tl2-item">
+        <div class="tl2-time">7:30</div>
+        <div class="tl2-content">
+          <h4>朝食介助・口腔ケア</h4>
+          <p>起床介助から食事介助・口腔ケアまで。その日の様子を細かく観察。</p>
+        </div>
+      </div>
+      <div class="tl2-item">
+        <div class="tl2-time">9:00</div>
+        <div class="tl2-content">
+          <h4>入浴介助</h4>
+          <p>担当ユニットの入浴介助。スキンケア・更衣を丁寧に行います。</p>
+        </div>
+      </div>
+      <div class="tl2-item">
+        <div class="tl2-time">11:30</div>
+        <div class="tl2-content">
+          <h4>昼食介助・記録</h4>
+          <p>食事介助・服薬管理・業務日誌記入。リーダーへの報告も。</p>
+        </div>
+      </div>
+      <div class="tl2-item">
+        <div class="tl2-time">13:00</div>
+        <div class="tl2-content">
+          <h4>休憩（60分）</h4>
+          <p>しっかり1時間の休憩。スタッフ室やコンビニで気分転換。</p>
+        </div>
+      </div>
+      <div class="tl2-item">
+        <div class="tl2-time">14:00</div>
+        <div class="tl2-content">
+          <h4>レクリエーション</h4>
+          <p>季節に合わせた企画・実施。入居者の方の笑顔が見られる時間。</p>
+        </div>
+      </div>
+      <div class="tl2-item">
+        <div class="tl2-time">15:30</div>
+        <div class="tl2-content">
+          <h4>おやつ・排泄介助</h4>
+          <p>おやつ・水分補給・夕方の準備。次シフトの引き継ぎ内容を整理。</p>
+        </div>
+      </div>
+      <div class="tl2-item">
+        <div class="tl2-time">16:00</div>
+        <div class="tl2-content">
+          <h4>申し送り・退勤</h4>
+          <p>夕勤スタッフへ申し送りをして、定時に退勤。残業が少ないので予定通りに帰れます。</p>
+        </div>
+      </div>
+      <p class="sample-note" style="text-align:center; margin-top:1rem;">※ここはサンプルです。実際には御社スタッフの1日の流れに差し替えます</p>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section class="voice-section" id="voice2">
+  <div class="section-inner">
+    <h2 class="section-heading">先輩スタッフの声</h2>
+    <p class="section-sub">夜勤・待遇・ユニットケアのリアルを聞きました</p>
+
+    <!-- ※ここはサンプルです。実際には御社スタッフのメッセージと写真に差し替えます -->
+    <div class="voice2-grid">
+      <div class="voice2-card">
+        <img class="voice2-img"
+          src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=640&h=380&fit=crop&crop=faces&q=80"
+          alt="田中 真由美さん（仮名）">
+        <div class="voice2-body">
+          <div class="voice2-name">田中 真由美（仮名）</div>
+          <div class="voice2-role">介護福祉士 ／ 入社5年目</div>
+          <blockquote>ユニット担当制なので、入居者の方の小さな変化に気づけます。「あなたじゃないと嫌だ」と言っていただけたとき、この仕事を選んで良かったと感じました。</blockquote>
+          <p class="sample-note">※ここはサンプルです。実際には御社スタッフの写真・メッセージに差し替えます</p>
+        </div>
+      </div>
+      <div class="voice2-card">
+        <img class="voice2-img"
+          src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=640&h=380&fit=crop&crop=faces&q=80"
+          alt="鈴木 健太さん（仮名）">
+        <div class="voice2-body">
+          <div class="voice2-name">鈴木 健太（仮名）</div>
+          <div class="voice2-role">実務者研修修了 ／ 入社2年目</div>
+          <blockquote>最初の夜勤は不安でしたが、先輩と同行研修があったので落ち着いて対応できました。残業が少なく、夜勤明けに予定を入れられるのが助かっています。</blockquote>
+          <p class="sample-note">※ここはサンプルです。実際には御社スタッフの写真・メッセージに差し替えます</p>
+        </div>
+      </div>
+      <div class="voice2-card">
+        <img class="voice2-img"
+          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=640&h=380&fit=crop&crop=faces&q=80"
+          alt="山田 恵子さん（仮名）">
+        <div class="voice2-body">
+          <div class="voice2-name">山田 恵子（仮名）</div>
+          <div class="voice2-role">介護福祉士 ／ 入社7年目</div>
+          <blockquote>賞与4ヶ月分は介護業界では珍しいと思います。子育てしながらでも生活できる収入が確保できて、長く続けられています。</blockquote>
+          <p class="sample-note">※ここはサンプルです。実際には御社スタッフの写真・メッセージに差し替えます</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq2">
+  <div class="section-inner">
+    <h2 class="section-heading">よくある質問</h2>
+
+    <!-- ※ここはサンプルです。実際には御社のFAQに差し替えます -->
+    <div class="faq2-list">
+      <div class="faq2-item">
+        <details>
+          <summary>夜勤は月何回くらいになりますか？</summary>
+          <div class="faq2-ans">
+            シフトによりますが月4〜6回程度が目安です。入職後は先輩との同行研修期間があり、慣れてから単独夜勤に移行します。シフト表で事前に確認できるので「気づいたら増えていた」ということがありません。<br>
+            <span class="sample-note">※ここはサンプルです。実際には御社の夜勤実態に差し替えます</span>
+          </div>
+        </details>
+      </div>
+      <div class="faq2-item">
+        <details>
+          <summary>必要な資格・経験を教えてください。</summary>
+          <div class="faq2-ans">
+            介護福祉士、または実務者研修修了者の資格をお持ちで、特別養護老人ホーム等での介護業務経験が2年以上ある方が対象です。資格手当（最大1万円）も別途支給されます。
+          </div>
+        </details>
+      </div>
+      <div class="faq2-item">
+        <details>
+          <summary>マイカー通勤はできますか？</summary>
+          <div class="faq2-ans">
+            はい、可能です。無料駐車場あり（任意保険加入条件）。公共交通機関ご利用の場合は北総線 千葉ニュータウン中央駅から徒歩15分です。
+          </div>
+        </details>
+      </div>
+      <div class="faq2-item">
+        <details>
+          <summary>見学はできますか？</summary>
+          <div class="faq2-ans">
+            はい、歓迎しております。施設の雰囲気・ユニットの現場を直接ご確認いただけます。まずはお電話またはメールにてご連絡ください。<br>
+            <span class="sample-note">※ここはサンプルです。実際には御社のご案内に差し替えます</span>
+          </div>
+        </details>
+      </div>
+      <div class="faq2-item">
+        <details>
+          <summary>就職支度金制度について詳しく教えてください。</summary>
+          <div class="faq2-ans">
+            遠方から転職・転居される方を支援するための制度です。詳細は採用担当へお気軽にお問い合わせください。<br>
+            <span class="sample-note">※ここはサンプルです。実際には御社の制度詳細に差し替えます</span>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="req-section" id="req2">
+  <div class="section-inner">
+    <h2 class="section-heading">募集要項</h2>
+    <table class="req-table">
+      <tbody>
+        <tr><th>職種</th><td>介護職員（正社員）＜特別養護老人ホーム＞</td></tr>
+        <tr><th>雇用形態</th><td>正社員（雇用期間の定めなし）</td></tr>
+        <tr>
+          <th>給与</th>
+          <td>
+            月給 210,100円〜289,600円<br>
+            ・基本給 154,100〜233,600円<br>
+            ・処遇改善手当 50,000円 ／ 特殊業務手当 6,000円<br>
+            ・夜勤手当 7,000円/回 ／ 深夜勤手当 5,500円/回<br>
+            ・資格手当 〜10,000円 ／ 住宅手当 15,000〜25,000円 ／ 扶養手当あり
+          </td>
+        </tr>
+        <tr><th>賞与</th><td>年2回（計4.0ヶ月分 ／ 前年度実績）</td></tr>
+        <tr><th>昇給</th><td>あり（月2,000〜5,000円 ／ 前年度実績）</td></tr>
+        <tr>
+          <th>就業時間</th>
+          <td>
+            シフト制：①7:00〜16:00　②9:00〜18:00　③9:30〜18:30<br>
+            ④10:00〜19:00　⑤12:00〜21:00<br>
+            夜勤①16:45〜9:45　夜勤②21:00〜7:00（休憩120分）
+          </td>
+        </tr>
+        <tr><th>休日・休暇</th><td>シフト制（4週8休）／ 年間休日105日 ／ 夏季4日・冬季5日 ／ 有給休暇（6ヶ月後10日〜）</td></tr>
+        <tr><th>時間外</th><td>月平均5時間（36協定特別条項なし）</td></tr>
+        <tr><th>必要資格</th><td>介護福祉士 または 実務者研修修了者（いずれか必須）＋ 特養等での介護業務経験2年以上</td></tr>
+        <tr><th>各種保険</th><td>雇用・労災・健康・厚生年金</td></tr>
+        <tr><th>退職金制度</th><td>あり（勤続1年以上）／ 退職金共済加入</td></tr>
+        <tr><th>その他</th><td>就職支度金制度あり ／ 育児・介護休業取得実績あり ／ 再雇用制度あり（65歳まで）</td></tr>
+        <tr><th>勤務地</th><td>千葉県印西市武西1269-1（北総線 千葉ニュータウン中央駅 徒歩15分 ／ 無料駐車場あり）</td></tr>
+        <tr><th>応募先</th><td>E-mail: hv-recruit@ryushinkai.or.jp ／ TEL: 0476-47-1122（事務課 採用担当）</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 最終CTA -->
+<section class="final-cta">
+  <div class="section-inner">
+    <h2>まずは「見てみたい」から始めて大丈夫です</h2>
+    <p>見学・相談・応募、どの段階でもお気軽にどうぞ。<br>メールでも、お電話でも承ります。</p>
+    <div class="cta-btns">
+      <a href="mailto:hv-recruit@ryushinkai.or.jp" class="btn-gold">メールでお問い合わせ</a>
+    </div>
+    <p style="margin-top:1.5rem; font-size:0.85rem; opacity:0.65;">TEL: 0476-47-1122（事務課 採用担当）</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>社会福祉法人 龍心会</p>
+  <p>〒270-1354 千葉県印西市武西1269-1</p>
+  <p>TEL: 0476-47-1122 ／ E-mail: hv-recruit@ryushinkai.or.jp</p>
+</footer>
+
+<!-- MOBILE FIXED CTA -->
+<div class="fixed-cta">
+  <a href="mailto:hv-recruit@ryushinkai.or.jp">今すぐ相談・応募する →</a>
+</div>
+
+<script>
+  document.querySelector('.hamburger').addEventListener('click', function() {
+    document.getElementById('nav2').classList.toggle('open');
+  });
+</script>
+
+</body>
+</html>
