@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 株式会社アートオート</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;color:#1a2033;background:#fff}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+body{font-family:'Noto Sans JP',sans-serif}
+
+:root{
+  --dark:#080e28;
+  --navy:#0f2557;
+  --gold:#c8a84b;
+  --gold-light:#e8c870;
+  --white:#fff;
+  --sub:#5a6478;
+  --bg:#f6f8fc;
+  --border:#dde3ef;
+}
+
+/* ===== ナビ ===== */
+header{position:fixed;top:0;left:0;right:0;z-index:200;transition:background .4s}
+header.scrolled{background:rgba(8,14,40,.92);backdrop-filter:blur(8px)}
+.nav-inner{max-width:1140px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{color:var(--white);font-family:'Noto Serif JP',serif;font-weight:700;font-size:1rem;letter-spacing:.06em}
+nav.pc-nav a{color:rgba(255,255,255,.8);font-size:.82rem;margin-left:24px;letter-spacing:.04em;transition:color .2s}
+nav.pc-nav a:hover{color:var(--gold-light)}
+.hamburger{display:none;flex-direction:column;gap:6px;cursor:pointer;background:none;border:none;padding:6px}
+.hamburger span{display:block;width:26px;height:2px;background:var(--white);border-radius:2px;transition:.3s}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:rgba(8,14,40,.97);z-index:190}
+.mobile-menu a{display:block;color:var(--white);padding:16px 24px;font-size:.95rem;border-bottom:1px solid rgba(255,255,255,.1);letter-spacing:.04em}
+@media(max-width:768px){nav.pc-nav{display:none}.hamburger{display:flex}.mobile-menu.open{display:block}}
+
+/* ===== FVバナー・ヒーロー ===== */
+.hero{position:relative;min-height:80vh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1473445730015-841f29a9490b?w=1600&h=900&fit=crop&q=80');
+  background-size:cover;background-position:center;
+  transform:scale(1.04);
+  transition:transform 8s ease;
+}
+.hero.loaded .hero-bg{transform:scale(1)}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(170deg,rgba(8,14,40,.72) 0%,rgba(8,14,40,.55) 60%,rgba(15,37,87,.4) 100%)}
+.hero-content{position:relative;z-index:1;max-width:1140px;margin:0 auto;padding:100px 24px 80px;width:100%}
+.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(200,168,75,.18);border:1px solid rgba(200,168,75,.4);border-radius:20px;padding:5px 16px;margin-bottom:24px}
+.hero-eyebrow span{color:var(--gold-light);font-size:.78rem;letter-spacing:.1em;font-weight:700}
+.hero h1{font-family:'Noto Serif JP',serif;font-size:clamp(2rem,6vw,3.8rem);font-weight:900;color:var(--white);line-height:1.25;margin-bottom:20px;letter-spacing:.02em}
+.hero h1 .accent{color:var(--gold-light)}
+.hero-desc{color:rgba(255,255,255,.82);font-size:clamp(.9rem,2.5vw,1.05rem);line-height:1.85;max-width:540px;margin-bottom:36px}
+.hero-cta-wrap{display:flex;gap:16px;flex-wrap:wrap}
+.btn-gold{display:inline-block;background:var(--gold);color:var(--dark);font-weight:700;font-size:.95rem;padding:15px 38px;border-radius:2px;letter-spacing:.06em;transition:background .25s,transform .2s}
+.btn-gold:hover{background:var(--gold-light);transform:translateY(-2px)}
+.btn-outline{display:inline-block;border:1.5px solid rgba(255,255,255,.55);color:var(--white);font-size:.9rem;padding:13px 28px;border-radius:2px;letter-spacing:.04em;transition:border-color .25s}
+.btn-outline:hover{border-color:var(--gold-light);color:var(--gold-light)}
+
+/* ===== セクション共通 ===== */
+section{padding:80px 24px}
+.inner{max-width:1100px;margin:0 auto}
+.sec-header{text-align:center;margin-bottom:56px}
+.sec-label{font-size:.72rem;letter-spacing:.18em;color:var(--gold);font-weight:700;margin-bottom:10px}
+.sec-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,4vw,2.2rem);font-weight:900;color:var(--navy);line-height:1.3}
+.sec-divider{width:40px;height:2px;background:var(--gold);margin:14px auto 0}
+.sec-lead{color:var(--sub);font-size:.92rem;line-height:1.7;margin-top:16px}
+.bg-dark-section{background:var(--dark)}
+.bg-light{background:var(--bg)}
+
+/* ===== 魅力カード ===== */
+.appeal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.appeal-card{padding:36px 28px;background:#fff;border:1px solid var(--border);border-top:3px solid var(--gold);border-radius:0 0 6px 6px}
+.appeal-icon{font-size:2.8rem;margin-bottom:18px}
+.appeal-title{font-family:'Noto Serif JP',serif;font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:12px;line-height:1.4}
+.appeal-body{font-size:.88rem;color:var(--sub);line-height:1.75}
+@media(max-width:768px){.appeal-grid{grid-template-columns:1fr}}
+
+/* ===== 数字バナー（ダーク） ===== */
+.stat-grid{display:flex;flex-wrap:wrap;gap:40px;justify-content:center}
+.stat-item{text-align:center;min-width:160px}
+.stat-num{font-family:'Noto Serif JP',serif;font-size:clamp(2.5rem,6vw,4rem);font-weight:900;color:var(--gold-light);line-height:1}
+.stat-unit{font-size:1.2rem;color:var(--gold)}
+.stat-label{color:rgba(255,255,255,.6);font-size:.8rem;margin-top:6px}
+.stat-note{color:rgba(255,255,255,.35);font-size:.68rem;margin-top:3px}
+.stat-sample{color:rgba(255,255,255,.3);font-size:.68rem;text-align:center;margin-top:24px}
+
+/* ===== 先輩の声 ===== */
+.voices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.voice-card{border-radius:6px;overflow:hidden;box-shadow:0 4px 20px rgba(15,37,87,.12)}
+.voice-img{width:100%;height:190px;object-fit:cover}
+.voice-body{padding:22px;background:#fff}
+.voice-quote{font-size:1.8rem;color:var(--gold);line-height:1;margin-bottom:8px;font-family:'Noto Serif JP',serif}
+.voice-text{font-size:.87rem;color:var(--sub);line-height:1.75;margin-bottom:12px}
+.voice-name{font-weight:700;font-size:.9rem;color:var(--navy)}
+.voice-meta{font-size:.75rem;color:var(--sub)}
+.voice-sample{font-size:.7rem;color:#bbb;margin-top:6px}
+@media(max-width:768px){.voices-grid{grid-template-columns:1fr}}
+
+/* ===== タイムライン ===== */
+.tl-wrap{display:grid;grid-template-columns:auto 1fr;gap:0 24px;position:relative}
+.tl-wrap::before{content:'';position:absolute;left:50px;top:14px;bottom:14px;width:1px;background:var(--border)}
+.tl-time{text-align:right;padding:12px 0;font-weight:700;color:var(--gold);font-size:.85rem;letter-spacing:.04em;width:80px}
+.tl-body{padding:10px 0 24px;border-left:none}
+.tl-dot{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--gold);margin-right:16px;vertical-align:middle;flex-shrink:0}
+.tl-action{font-weight:700;font-size:.95rem;color:var(--navy);margin-bottom:4px;display:flex;align-items:center}
+.tl-detail{font-size:.85rem;color:var(--sub);line-height:1.65;padding-left:26px}
+
+/* ===== 募集要項 ===== */
+.spec-table{width:100%;border-collapse:collapse}
+.spec-table tr:nth-child(odd) th{background:rgba(200,168,75,.08)}
+.spec-table tr:nth-child(even) th{background:rgba(200,168,75,.04)}
+.spec-table th,.spec-table td{padding:14px 20px;font-size:.88rem;border-bottom:1px solid var(--border);text-align:left;vertical-align:top}
+.spec-table th{width:160px;font-weight:700;color:var(--navy);white-space:nowrap;font-family:'Noto Serif JP',serif}
+@media(max-width:768px){
+  .spec-table,.spec-table tbody,.spec-table tr,.spec-table th,.spec-table td{display:block}
+  .spec-table th{width:100%;border-bottom:none;padding-bottom:4px}
+  .spec-table td{padding-top:6px;border-bottom:1px solid var(--border)}
+  .tl-wrap::before{left:42px}
+}
+
+/* ===== FAQ ===== */
+.faq-list{display:flex;flex-direction:column;gap:12px}
+.faq-item{border:1px solid var(--border);border-radius:4px;overflow:hidden}
+.faq-q{background:#fff;padding:18px 22px;font-weight:700;font-size:.93rem;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:8px;font-family:'Noto Serif JP',serif}
+.faq-q::after{content:'＋';font-size:1.2rem;color:var(--gold);flex-shrink:0}
+.faq-a{background:#fafbfc;padding:14px 22px;font-size:.88rem;color:var(--sub);line-height:1.75;border-top:1px solid var(--border)}
+
+/* ===== CTA ===== */
+.cta-wrap{text-align:center;padding:80px 24px;background:linear-gradient(170deg,var(--navy),var(--dark))}
+.cta-wrap h2{font-family:'Noto Serif JP',serif;color:var(--white);font-size:clamp(1.4rem,4vw,2rem);font-weight:900;margin-bottom:14px;line-height:1.35}
+.cta-wrap p{color:rgba(255,255,255,.7);font-size:.92rem;margin-bottom:30px}
+.cta-tel{color:var(--gold-light);font-size:1.1rem;font-weight:700;margin-bottom:24px;display:block}
+
+/* ===== フッター ===== */
+footer{background:var(--dark);color:rgba(255,255,255,.45);text-align:center;padding:32px 20px;font-size:.78rem;line-height:1.9}
+
+/* ===== ナビスクロール ===== */
+</style>
+<script>
+window.addEventListener('scroll',()=>{
+  document.querySelector('header').classList.toggle('scrolled',window.scrollY>50);
+});
+window.addEventListener('load',()=>{
+  document.querySelector('.hero').classList.add('loaded');
+});
+</script>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="logo">株式会社アートオート</div>
+    <nav class="pc-nav">
+      <a href="#appeal">働く魅力</a>
+      <a href="#voices">先輩の声</a>
+      <a href="#spec">募集要項</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#cta">応募する</a>
+    </nav>
+    <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu">
+    <a href="#appeal">働く魅力</a>
+    <a href="#voices">先輩の声</a>
+    <a href="#spec">募集要項</a>
+    <a href="#faq">よくある質問</a>
+    <a href="#cta">応募する</a>
+  </div>
+</header>
+
+<!-- FVバナー・ヒーロー -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span>正社員募集｜未経験歓迎｜千葉県印西市</span>
+    </div>
+    <h1>キャリアカードライバー、<br>始めませんか。<br><span class="accent">月給28〜40万円</span></h1>
+    <p class="hero-desc">平成元年創業、事故車の引き取りから修理・中古車販売まで一貫して手がける株式会社アートオート。安定した業務量、充実した研修制度のもと、キャリアカーが初めての方でもしっかりと育てます。</p>
+    <div class="hero-cta-wrap">
+      <a href="#cta" class="btn-gold">採用に応募する</a>
+      <a href="#spec" class="btn-outline">募集要項を見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- 3つの魅力 -->
+<section class="bg-light" id="appeal">
+  <div class="inner">
+    <div class="sec-header">
+      <div class="sec-label">WHY ARTAUTO</div>
+      <div class="sec-title">アートオートで働く3つの魅力</div>
+      <div class="sec-divider"></div>
+    </div>
+    <div class="appeal-grid">
+      <div class="appeal-card">
+        <div class="appeal-icon">🚗</div>
+        <div class="appeal-title">未経験を育てる<br>マンツーマン研修</div>
+        <p class="appeal-body">キャリアカーの積み下ろし手順から安全運転まで、専任スタッフが段階的に指導。「初めて」を歓迎する文化と、資格取得支援制度（会社規定）がスキルアップを後押しします。</p>
+      </div>
+      <div class="appeal-card">
+        <div class="appeal-icon">💴</div>
+        <div class="appeal-title">月28〜40万円<br>賞与年3回・3ヶ月分</div>
+        <p class="appeal-body">求人票のまま受け取れる月給28〜40万円。賞与は前年度実績で年3回・計3ヶ月分。車両輸送経験者は優遇。昇給制度もあり、長く働くほど収入が安定します。</p>
+      </div>
+      <div class="appeal-card">
+        <div class="appeal-icon">🏡</div>
+        <div class="appeal-title">基本日帰り<br>年間休日110日</div>
+        <p class="appeal-body">関東エリア中心の日帰り業務で、毎日自宅に帰れます。年間休日110日、各種社会保険完備、退職金共済加入。37年の安定経営に支えられた安心の職場環境です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 数字で見る（ダーク） -->
+<section class="bg-dark-section" style="padding:64px 24px">
+  <div class="inner">
+    <div class="sec-header" style="margin-bottom:40px">
+      <div class="sec-label" style="color:var(--gold)">NUMBERS</div>
+      <div class="sec-title" style="color:var(--white)">数字で見るアートオート</div>
+      <div class="sec-divider"></div>
+    </div>
+    <div class="stat-grid">
+      <div class="stat-item">
+        <div class="stat-num">28<span class="stat-unit">〜</span></div>
+        <div class="stat-label">月給（万円）</div>
+        <div class="stat-note">最大40万円</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3<span class="stat-unit">回</span></div>
+        <div class="stat-label">年間賞与</div>
+        <div class="stat-note">計3ヶ月分（前年度実績）</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">110<span class="stat-unit">日</span></div>
+        <div class="stat-label">年間休日</div>
+        <div class="stat-note">日曜・祝日・年末年始等</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">37<span class="stat-unit">年</span></div>
+        <div class="stat-label">創業年数</div>
+        <div class="stat-note">平成元年創業</div>
+      </div>
+    </div>
+    <div class="stat-sample">※ここはサンプルです。実際には御社の最新データに差し替えます</div>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section style="padding:80px 24px;background:#fff" id="voices">
+  <div class="inner">
+    <div class="sec-header">
+      <div class="sec-label">VOICES</div>
+      <div class="sec-title">先輩ドライバーの声</div>
+      <div class="sec-divider"></div>
+      <p class="sec-lead">※ここはサンプルです。実際には御社の社員コメント・写真に差し替えます</p>
+    </div>
+    <div class="voices-grid">
+      <div class="voice-card">
+        <!-- サンプル写真：実際の社員写真に差し替えてください -->
+        <img class="voice-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=640&h=380&fit=crop&crop=faces&q=80" alt="先輩ドライバー（サンプル写真）">
+        <div class="voice-body">
+          <div class="voice-quote">"</div>
+          <p class="voice-text">キャリアカーは全くの素人でしたが、先輩の指導がとても丁寧で3ヶ月後にはひとりで動けるようになりました。給与も求人票どおりで信頼できる会社です。</p>
+          <div class="voice-name">田中 雄一（仮名）</div>
+          <div class="voice-meta">ドライバー / 入社3年目</div>
+          <div class="voice-sample">※このコメントはサンプルです</div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <!-- サンプル写真：実際の社員写真に差し替えてください -->
+        <img class="voice-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=640&h=380&fit=crop&crop=faces&q=80" alt="先輩ドライバー（サンプル写真）">
+        <div class="voice-body">
+          <div class="voice-quote">"</div>
+          <p class="voice-text">日帰りが基本なので家族の時間を大切にできます。業務量が安定していて収入も読みやすい。賞与が年3回というのも、生活設計しやすくて助かっています。</p>
+          <div class="voice-name">佐藤 健太（仮名）</div>
+          <div class="voice-meta">ドライバー / 入社5年目</div>
+          <div class="voice-sample">※このコメントはサンプルです</div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <!-- サンプル写真：実際の社員写真に差し替えてください -->
+        <img class="voice-img" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=640&h=380&fit=crop&crop=faces&q=80" alt="先輩ドライバー（サンプル写真）">
+        <div class="voice-body">
+          <div class="voice-quote">"</div>
+          <p class="voice-text">事故車専門で業務が安定しています。繁忙期はあっても収入が極端に落ちることがなく、37年続いてきた会社の底力を感じます。長く働けそうな職場です。</p>
+          <div class="voice-name">鈴木 正志（仮名）</div>
+          <div class="voice-meta">ドライバー / 入社7年目</div>
+          <div class="voice-sample">※このコメントはサンプルです</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section class="bg-light" style="padding:80px 24px">
+  <div class="inner">
+    <div class="sec-header">
+      <div class="sec-label">A DAY</div>
+      <div class="sec-title">ドライバーの1日の流れ</div>
+      <div class="sec-divider"></div>
+      <p class="sec-lead">※ここはサンプルです。実際には御社の業務フローに差し替えます</p>
+    </div>
+    <div class="tl-wrap">
+      <div class="tl-time">08:00</div>
+      <div class="tl-body">
+        <div class="tl-action"><span class="tl-dot"></span>出社・点呼・車両点検</div>
+        <div class="tl-detail">キャリアカーの安全確認と当日の運行スケジュール確認。</div>
+      </div>
+      <div class="tl-time">08:30</div>
+      <div class="tl-body">
+        <div class="tl-action"><span class="tl-dot"></span>現場へ出発（事故車引き取り）</div>
+        <div class="tl-detail">関東エリアの現場へ。キャリアカーに車両を積み込みます。</div>
+      </div>
+      <div class="tl-time">11:00</div>
+      <div class="tl-body">
+        <div class="tl-action"><span class="tl-dot"></span>自社ヤードへ搬送・積み下ろし</div>
+        <div class="tl-detail">ヤードへ安全に搬送し積み下ろし。次の案件の準備へ。</div>
+      </div>
+      <div class="tl-time">12:30</div>
+      <div class="tl-body">
+        <div class="tl-action"><span class="tl-dot"></span>昼食・休憩（60分）</div>
+        <div class="tl-detail">ゆっくりと休憩。先輩とのコミュニケーションの時間でもあります。</div>
+      </div>
+      <div class="tl-time">13:30</div>
+      <div class="tl-body">
+        <div class="tl-action"><span class="tl-dot"></span>午後の配送・納車業務</div>
+        <div class="tl-detail">修理完了車の納車・追加の引き取り。チームで効率よく分担。</div>
+      </div>
+      <div class="tl-time">17:00</div>
+      <div class="tl-body">
+        <div class="tl-action"><span class="tl-dot"></span>帰社・日報記入・退社</div>
+        <div class="tl-detail">日帰りが基本。夕方には帰宅できます。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section style="padding:80px 24px;background:#fff" id="spec">
+  <div class="inner">
+    <div class="sec-header">
+      <div class="sec-label">REQUIREMENTS</div>
+      <div class="sec-title">募集要項</div>
+      <div class="sec-divider"></div>
+    </div>
+    <table class="spec-table">
+      <tr><th>職種</th><td>キャリアカードライバー（2台積みキャリアカー）</td></tr>
+      <tr><th>仕事内容</th><td>事故車・中古車の引き取り・納車業務。関東中心・基本日帰り。中部・北陸・東北方面もあり（無理のないスケジュール）。</td></tr>
+      <tr><th>雇用形態</th><td>正社員（試用期間2ヶ月・同条件）</td></tr>
+      <tr><th>給与</th><td>月給 280,000〜400,000円<br>昇給あり（前年度実績：月5,000〜20,000円）<br>賞与 年3回・計3ヶ月分（前年度実績）<br>※車両輸送経験者は優遇</td></tr>
+      <tr><th>就業時間</th><td>変形労働時間制（年単位）<br>8:00〜17:00 または 5:00〜20:00 の間で8時間程度<br>休憩60分 / 月平均時間外26時間</td></tr>
+      <tr><th>休日</th><td>日曜日・祝日・会社カレンダーによる<br>年末年始・夏季休暇あり / 年間休日110日</td></tr>
+      <tr><th>必要資格</th><td>8トン限定中型自動車免許（必須）<br>フォークリフト運転技能者（尚可）</td></tr>
+      <tr><th>待遇・福利厚生</th><td>各種社会保険完備 / 通勤手当（実費・上限月2万円）<br>マイカー通勤可・無料駐車場 / 制服貸与<br>資格取得支援（会社規定）/ 退職金共済加入<br>定年60歳・再雇用制度（最大65歳）</td></tr>
+      <tr><th>勤務地</th><td>千葉県印西市竹袋197-1（JR成田線 木下駅より車10分）</td></tr>
+      <tr><th>採用人数</th><td>1名（増員）</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="bg-light" id="faq">
+  <div class="inner">
+    <div class="sec-header">
+      <div class="sec-label">FAQ</div>
+      <div class="sec-title">よくある質問</div>
+      <div class="sec-divider"></div>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">キャリアカーの運転は未経験ですが応募できますか？</div>
+        <div class="faq-a">はい、歓迎しています。積み下ろし手順・安全運転を専任スタッフがマンツーマンで指導します。未経験の方を前提とした研修制度が整っています。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">必要な免許・資格は何ですか？</div>
+        <div class="faq-a">8トン限定中型自動車免許が必須です。フォークリフト運転技能者はあれば尚可（なくても応募可）。資格取得支援制度（会社規定）もあります。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">出張・泊まりがけはありますか？</div>
+        <div class="faq-a">基本は日帰りです。中部・北陸・東北方面の案件もありますが、無理のないスケジュールを組んでいます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">選考の流れを教えてください。</div>
+        <div class="faq-a">① 書類選考（7日以内に結果通知）→ ② 面接1回 → ③ 結果通知（7日以内）。応募書類はメール・郵送・求職者マイページで受け付けています。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">年齢の条件はありますか？</div>
+        <div class="faq-a">定年年齢（60歳）を上限として59歳以下の方が対象です。再雇用制度があり最大65歳まで働けます。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA最終 -->
+<section class="cta-wrap" id="cta">
+  <h2>あなたのスタートを、<br>アートオートで。</h2>
+  <p>選考前のご質問もお気軽にどうぞ。まずはお問い合わせください。</p>
+  <span class="cta-tel">TEL: 0476-40-2233（採用担当：西岡）</span>
+  <a href="mailto:nishioka@artauto.co.jp" class="btn-gold" style="font-size:1rem">メールで問い合わせる・応募する</a>
+</section>
+
+<footer>
+  株式会社アートオート<br>
+  〒270-1325 千葉県印西市竹袋197-1<br>
+  TEL: 0476-40-2233 ／ E-mail: nishioka@artauto.co.jp
+</footer>
+
+</body>
+</html>
