@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>採用情報 | 株式会社カナエル</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    body { font-family: 'Noto Sans JP', sans-serif; color: #2c2c2c; line-height: 1.7; background: #fff; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    body { padding-bottom: 80px; }
+
+    :root {
+      --g: #1B5E38;
+      --g2: #134A2C;
+      --g-light: #E6F4EC;
+      --accent: #D97B2A;
+      --gray: #666;
+      --light: #f8f8f8;
+    }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 200;
+      background: var(--g); padding: 0 24px;
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px;
+    }
+    .logo { color: #fff; font-size: 1rem; font-weight: 700; }
+    .logo span { font-size: 0.7rem; opacity: 0.8; display: block; font-weight: 400; }
+
+    nav.pc-nav { display: flex; gap: 1.6rem; align-items: center; }
+    nav.pc-nav a { color: rgba(255,255,255,0.85); font-size: 0.86rem; transition: color 0.2s; }
+    nav.pc-nav a:hover { color: #fff; }
+    nav.pc-nav .nav-cta {
+      background: var(--accent); color: #fff;
+      padding: 8px 16px; border-radius: 4px; font-size: 0.84rem; font-weight: 700;
+    }
+    nav.pc-nav .nav-cta:hover { opacity: 0.85; }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; }
+
+    .mobile-nav {
+      display: none; position: fixed; top: 60px; left: 0; right: 0;
+      background: var(--g2); border-top: 1px solid rgba(255,255,255,0.1);
+      padding: 16px 24px; z-index: 199; flex-direction: column;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { color: rgba(255,255,255,0.9); padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 0.93rem; }
+    .mobile-nav .m-cta {
+      background: var(--accent); color: #fff; text-align: center;
+      padding: 12px; border-radius: 4px; margin-top: 12px; font-weight: 700; border: none;
+    }
+
+    /* Hero */
+    .hero {
+      background: var(--g2); color: #fff;
+      padding: 72px 24px 64px; position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1600&h=900&fit=crop&q=80') center/cover;
+      opacity: 0.12;
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 820px; margin: 0 auto; text-align: center; }
+    .hero-pill {
+      display: inline-block; border: 1px solid rgba(255,255,255,0.4);
+      border-radius: 100px; padding: 4px 18px;
+      font-size: 0.8rem; margin-bottom: 20px; background: rgba(255,255,255,0.1);
+    }
+    .hero h1 { font-size: clamp(1.9rem, 6vw, 3.1rem); font-weight: 700; line-height: 1.3; margin-bottom: 20px; }
+    .hero-sub {
+      font-size: clamp(0.9rem, 2.5vw, 1.05rem);
+      opacity: 0.88; margin-bottom: 36px; line-height: 1.85;
+    }
+    .hero-cta-wrap { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+    .btn-main {
+      display: inline-block; background: var(--accent); color: #fff;
+      font-size: 1rem; font-weight: 700; padding: 15px 40px; border-radius: 6px; transition: opacity 0.2s;
+    }
+    .btn-main:hover { opacity: 0.85; }
+    .btn-outline {
+      display: inline-block; border: 2px solid rgba(255,255,255,0.6); color: #fff;
+      font-size: 1rem; font-weight: 700; padding: 13px 28px; border-radius: 6px; transition: border-color 0.2s;
+    }
+    .btn-outline:hover { border-color: #fff; }
+
+    /* Numbers */
+    .numbers { background: var(--g); color: #fff; padding: 48px 24px; }
+    .num-grid { max-width: 900px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 0; }
+    .num-item {
+      flex: 1 1 200px; text-align: center;
+      padding: 24px 16px; border-right: 1px solid rgba(255,255,255,0.15);
+    }
+    .num-item:last-child { border-right: none; }
+    .num-val { font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 700; color: #fff; margin-bottom: 6px; }
+    .num-val span { font-size: 0.95rem; font-weight: 400; }
+    .num-label { font-size: 0.84rem; opacity: 0.82; }
+    .num-note { font-size: 0.72rem; opacity: 0.65; margin-top: 4px; }
+    .sample-note { font-size: 0.76rem; color: rgba(255,255,255,0.5); text-align: center; margin-top: 16px; }
+
+    /* Sections */
+    section.content { padding: 68px 24px; }
+    .inner { max-width: 1100px; margin: 0 auto; }
+    .sec-head { text-align: center; margin-bottom: 44px; }
+    .sec-head h2 { font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 700; color: var(--g); margin-bottom: 8px; }
+    .sec-head p { color: var(--gray); font-size: 0.92rem; }
+
+    /* Appeal */
+    .appeal-lp { background: var(--g-light); }
+    .appeal-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .appeal-card {
+      background: #fff; border-radius: 10px; padding: 28px 22px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06); text-align: center;
+      border-top: 4px solid var(--g);
+    }
+    .appeal-icon { font-size: 2.2rem; margin-bottom: 12px; }
+    .appeal-card h3 { font-size: 0.98rem; font-weight: 700; color: var(--g); margin-bottom: 10px; }
+    .appeal-card p { font-size: 0.87rem; color: var(--gray); line-height: 1.7; }
+
+    /* Job LP */
+    .job-lp .job-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .job-lp img { border-radius: 12px; width: 100%; height: 340px; object-fit: cover; }
+    .job-lp h3 { font-size: 1.15rem; font-weight: 700; color: var(--g); margin-bottom: 14px; }
+    .job-lp p { font-size: 0.92rem; color: var(--gray); margin-bottom: 14px; line-height: 1.75; }
+    .job-lp ul { padding-left: 1.2rem; margin-bottom: 12px; }
+    .job-lp ul li { font-size: 0.92rem; margin-bottom: 8px; }
+    .tag-wrap { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .tag {
+      background: var(--g-light); color: var(--g); font-size: 0.8rem;
+      padding: 4px 12px; border-radius: 20px; font-weight: 700;
+    }
+
+    /* Interview */
+    .interview { background: var(--light); }
+    .interview-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 28px; }
+    .interview-card {
+      background: #fff; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06); display: flex;
+    }
+    .interview-card img { width: 130px; flex-shrink: 0; object-fit: cover; }
+    .interview-body { padding: 20px; }
+    .interview-name { font-weight: 700; font-size: 0.95rem; margin-bottom: 4px; }
+    .interview-role { font-size: 0.76rem; color: var(--g); margin-bottom: 10px; }
+    .interview-body p { font-size: 0.86rem; color: var(--gray); line-height: 1.7; }
+
+    /* Timeline */
+    .tl-wrap { max-width: 700px; margin: 0 auto; }
+    .tl-item {
+      display: flex; gap: 20px; align-items: flex-start;
+      margin-bottom: 24px; position: relative;
+    }
+    .tl-item:not(:last-child)::after {
+      content: ''; position: absolute; left: 40px; top: 34px;
+      width: 2px; height: calc(100% + 4px); background: var(--g-light);
+    }
+    .tl-time {
+      flex-shrink: 0; width: 80px; text-align: center;
+      background: var(--g); color: #fff; border-radius: 20px;
+      padding: 5px 0; font-size: 0.8rem; font-weight: 700;
+    }
+    .tl-body h4 { font-size: 0.93rem; font-weight: 700; margin-bottom: 4px; }
+    .tl-body p { font-size: 0.85rem; color: var(--gray); }
+    .sample-note-dark { font-size: 0.78rem; color: #aaa; text-align: center; margin-top: 16px; }
+
+    /* FAQ */
+    .faq-lp { background: var(--g-light); }
+    .faq-list { max-width: 800px; margin: 0 auto; }
+    .faq-item { background: #fff; border-radius: 10px; margin-bottom: 12px; overflow: hidden; }
+    .faq-q {
+      width: 100%; background: none; border: none; text-align: left;
+      padding: 18px 20px; font-size: 0.92rem; font-weight: 700; cursor: pointer;
+      display: flex; align-items: center; gap: 12px; color: #2c2c2c;
+    }
+    .faq-q::before {
+      content: 'Q'; flex-shrink: 0; width: 28px; height: 28px;
+      background: var(--g); color: #fff; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.82rem; font-weight: 700;
+    }
+    .faq-a { display: none; padding: 0 20px 18px 60px; font-size: 0.87rem; color: var(--gray); line-height: 1.75; }
+    .faq-a.open { display: block; }
+
+    /* Recruit table */
+    .recruit-table { width: 100%; border-collapse: collapse; }
+    .recruit-table th, .recruit-table td {
+      padding: 13px 16px; border-bottom: 1px solid #e8e8e8;
+      font-size: 0.91rem; text-align: left; vertical-align: top;
+    }
+    .recruit-table th {
+      width: 150px; background: var(--g-light);
+      color: var(--g); font-weight: 700; white-space: nowrap;
+    }
+
+    /* CTA mid */
+    .cta-mid {
+      background: linear-gradient(135deg, var(--g) 0%, var(--g2) 100%);
+      color: #fff; text-align: center; padding: 56px 24px;
+    }
+    .cta-mid h2 { font-size: clamp(1.25rem, 4vw, 1.7rem); margin-bottom: 12px; }
+    .cta-mid p { font-size: 0.92rem; opacity: 0.87; margin-bottom: 28px; line-height: 1.8; }
+    .cta-mid .btn-main { background: var(--accent); }
+
+    /* CTA bottom */
+    .cta-bottom { background: var(--g2); color: #fff; text-align: center; padding: 64px 24px; }
+    .cta-bottom h2 { font-size: clamp(1.3rem, 4vw, 1.85rem); margin-bottom: 12px; }
+    .cta-bottom p { font-size: 0.92rem; opacity: 0.85; margin-bottom: 30px; line-height: 1.8; }
+
+    /* Fixed entry bar (mobile) */
+    .fixed-bar {
+      display: none; position: fixed; bottom: 0; left: 0; right: 0;
+      background: var(--accent); color: #fff;
+      text-align: center; padding: 14px 24px;
+      font-weight: 700; font-size: 1rem; z-index: 300;
+    }
+
+    footer {
+      background: #111; color: #888; text-align: center;
+      padding: 32px 24px; font-size: 0.83rem;
+    }
+    footer p { margin-bottom: 4px; }
+
+    @media (max-width: 768px) {
+      nav.pc-nav { display: none; }
+      .hamburger { display: flex; }
+      .fixed-bar { display: block; }
+      body { padding-bottom: 60px; }
+      .num-item { flex: 1 1 50%; border-right: none; border-bottom: 1px solid rgba(255,255,255,0.15); }
+      .num-item:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.15); }
+      .appeal-grid { grid-template-columns: 1fr; }
+      .job-lp .job-grid { grid-template-columns: 1fr; }
+      .interview-grid { grid-template-columns: 1fr; }
+      .interview-card { flex-direction: column; }
+      .interview-card img { width: 100%; height: 200px; }
+      .tl-item::after { display: none; }
+      .recruit-table tbody tr { display: block; border-bottom: 1px solid #e8e8e8; }
+      .recruit-table th, .recruit-table td { display: block; width: 100%; border-bottom: none; }
+      .recruit-table th { padding-bottom: 4px; }
+      .recruit-table td { padding-top: 2px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      株式会社カナエル
+      <span>就労移行支援・就労継続支援B型</span>
+    </div>
+    <nav class="pc-nav">
+      <a href="#about">事業内容</a>
+      <a href="#appeal">魅力</a>
+      <a href="#interview">先輩の声</a>
+      <a href="#faq">FAQ</a>
+      <a href="#recruit">募集要項</a>
+      <a href="#entry" class="nav-cta">応募する</a>
+    </nav>
+    <button class="hamburger" id="hambtn" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<nav class="mobile-nav" id="mnav">
+  <a href="#about">事業内容</a>
+  <a href="#appeal">魅力</a>
+  <a href="#interview">先輩の声</a>
+  <a href="#faq">FAQ</a>
+  <a href="#recruit">募集要項</a>
+  <a href="#entry" class="m-cta">応募する</a>
+</nav>
+
+<!-- Hero (CTA 1) -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-pill">サービス管理責任者 ／ 正社員募集</div>
+    <h1>「就労支援」の<br>中心で、チームを率いる。</h1>
+    <p class="hero-sub">
+      月給29〜35万円・年間休日120日・印西牧の原駅徒歩3分<br>
+      2026年4月オープンの新施設。立ち上げメンバーとして事業を一緒に育てませんか。
+    </p>
+    <div class="hero-cta-wrap">
+      <a href="#entry" class="btn-main">応募・お問い合わせはこちら</a>
+      <a href="#recruit" class="btn-outline">募集要項を見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- Numbers -->
+<div class="numbers">
+  <div class="num-grid">
+    <div class="num-item">
+      <div class="num-val">29<span>〜35万円</span></div>
+      <div class="num-label">月給（サビ管経験評価）</div>
+    </div>
+    <div class="num-item">
+      <div class="num-val">120<span>日</span></div>
+      <div class="num-label">年間休日</div>
+      <div class="num-note">土日祝休み</div>
+    </div>
+    <div class="num-item">
+      <div class="num-val">3<span>分</span></div>
+      <div class="num-label">最寄り駅から徒歩</div>
+      <div class="num-note">印西牧の原駅</div>
+    </div>
+    <div class="num-item">
+      <div class="num-val">62<span>名</span></div>
+      <div class="num-label">従業員数</div>
+      <div class="num-note">女性スタッフ16名活躍中</div>
+    </div>
+  </div>
+  <p class="sample-note">※数字で見る会社（ここはサンプルです。実際には御社の数値に差し替えます）</p>
+</div>
+
+<!-- Appeal (CTA section in middle) -->
+<section class="content appeal-lp" id="appeal">
+  <div class="inner">
+    <div class="sec-head">
+      <h2>カナエルで働く3つの理由</h2>
+      <p>外部テンプレの採用情報には載っていない、リアルな職場の魅力をお伝えします</p>
+    </div>
+    <div class="appeal-grid">
+      <div class="appeal-card">
+        <div class="appeal-icon">💰</div>
+        <h3>月給29〜35万円の<br>安定した月給制</h3>
+        <p>サビ管経験をしっかり評価した給与設定。毎月安定した収入で、昇給制度により長期的に収入アップを目指せます。</p>
+      </div>
+      <div class="appeal-card">
+        <div class="appeal-icon">🌱</div>
+        <h3>新施設×多彩なプログラム</h3>
+        <p>ケーキ・パン製造、農園、軽作業、アートと多種多様な活動。2026年4月開設の立ち上げ段階から関わり、自分の支援スタイルを構築できます。</p>
+      </div>
+      <div class="appeal-card">
+        <div class="appeal-icon">🏠</div>
+        <h3>プライベートも大切に<br>できる職場環境</h3>
+        <p>年間120日の休日（土日祝休み）、駅徒歩3分の好立地、マイカー通勤可（駐車場あり）、会社寮完備で長期就業をサポートします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA mid (CTA 2) -->
+<section class="cta-mid">
+  <h2>まずは3案の採用ページをご覧ください</h2>
+  <p>選考に関するご質問も歓迎しています。<br>お気軽にEメールまたはお電話でご連絡ください。</p>
+  <a href="#entry" class="btn-main">お問い合わせ・応募はこちら</a>
+</section>
+
+<!-- Job -->
+<section class="content job-lp" id="about">
+  <div class="inner">
+    <div class="sec-head">
+      <h2>仕事内容 ― 2つの支援を束ねるサビ管</h2>
+      <p>派遣・職業紹介で培った就労支援の知見が生きる、やりがいのある役職です</p>
+    </div>
+    <div class="job-grid">
+      <div>
+        <h3>就労移行支援 ＋ 就労継続支援B型</h3>
+        <p>株式会社カナエルは2026年4月、就労移行支援と就労継続支援B型の多機能型施設を開設。<strong>就労移行支援</strong>で就職を目指す方の訓練・定着を支え、<strong>就労継続支援B型</strong>では多彩な作業活動（ケーキ・パン製造、農園、軽作業、アート）を通じて社会参加の場を提供しています。</p>
+        <p>サビ管はこの両支援の質を左右する中核職種です。</p>
+        <ul>
+          <li>個別支援計画・モニタリング・アセスメントの立案・実施</li>
+          <li>利用者への作業指導と各プログラムへの従事</li>
+          <li>医療・教育・地域機関との連携・調整</li>
+          <li>スタッフのマネジメントと育成</li>
+        </ul>
+        <div class="tag-wrap">
+          <span class="tag">正社員</span>
+          <span class="tag">サビ管経験者優遇</span>
+          <span class="tag">昇給あり</span>
+          <span class="tag">駐車場完備</span>
+          <span class="tag">会社寮あり</span>
+        </div>
+      </div>
+      <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=640&h=440&fit=crop&q=80" alt="支援の様子（サンプル画像）">
+      <!-- ※実際の施設・職場の写真に差し替えてください -->
+    </div>
+  </div>
+</section>
+
+<!-- Timeline -->
+<section class="content" style="background:var(--light);">
+  <div class="inner">
+    <div class="sec-head">
+      <h2>サビ管の1日の流れ</h2>
+      <p>8:30〜17:30勤務モデル</p>
+    </div>
+    <div class="tl-wrap">
+      <div class="tl-item">
+        <div class="tl-time">8:30</div>
+        <div class="tl-body"><h4>出勤・朝礼・受け入れ準備</h4><p>スタッフと申し送りを確認し、利用者を迎える準備を整えます。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">9:00</div>
+        <div class="tl-body"><h4>利用者到着・各プログラム開始</h4><p>ケーキ・パン、農園、アートなど各活動をサポート。個別状況に応じて柔軟に対応します。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">11:00</div>
+        <div class="tl-body"><h4>記録入力・支援計画進捗確認</h4><p>午前の様子を記録。次回モニタリングの準備も進めます。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:30</div>
+        <div class="tl-body"><h4>昼休憩</h4><p>スタッフと情報交換しながらリフレッシュ。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:30</div>
+        <div class="tl-body"><h4>午後の支援・関係機関との連絡調整</h4><p>医療機関・地域支援機関との調整や、利用者・家族との面談を実施。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">15:30</div>
+        <div class="tl-body"><h4>スタッフミーティング・フィードバック</h4><p>支援員へのフィードバックと翌日の業務準備。チームを育てることもサビ管の大切な役割です。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:30</div>
+        <div class="tl-body"><h4>退勤</h4><p>月平均残業10時間・残業手当支給。</p></div>
+      </div>
+    </div>
+    <p class="sample-note-dark">※ここはサンプルです。実際には御社の1日のスケジュールに差し替えます</p>
+  </div>
+</section>
+
+<!-- Interview -->
+<section class="content interview" id="interview">
+  <div class="inner">
+    <div class="sec-head">
+      <h2>先輩スタッフ インタビュー</h2>
+      <p>新施設を一緒に育てている仲間の声をお届けします</p>
+    </div>
+    <div class="interview-grid">
+      <div class="interview-card">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=260&h=320&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div class="interview-body">
+          <div class="interview-name">田中 久美子（仮名）</div>
+          <div class="interview-role">サービス管理責任者 ／ 入社1年目</div>
+          <p>「前職では施設の規模が大きく、個人の判断が通りにくいことが悩みでした。カナエルは新施設で小回りが利く分、利用者さんのペースに合わせた支援計画を自由に立てられます。<br>正直、賞与がない点は入職前に気になりました。でも月給でちゃんと評価してもらえているので、むしろ安定感があります。」</p>
+        </div>
+      </div>
+      <div class="interview-card">
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=260&h=320&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div class="interview-body">
+          <div class="interview-name">佐藤 健一（仮名）</div>
+          <div class="interview-role">就労支援員 ／ 入社1年目</div>
+          <p>「就労継続支援B型でケーキや農園の作業をサポートしているんですが、利用者さんが商品を作り上げたときの達成感は、他の仕事では得られない喜びです。<br>サビ管の田中さんがいつも相談に乗ってくれるので、新人でも安心して支援に入れています。」</p>
+        </div>
+      </div>
+    </div>
+    <p class="sample-note-dark" style="margin-top:20px;">※ここはサンプルです。実際には御社スタッフの写真・インタビューに差し替えます</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="content faq-lp" id="faq">
+  <div class="inner">
+    <div class="sec-head">
+      <h2>よくある質問</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">サービス管理責任者の経験は必須ですか？</button>
+        <div class="faq-a">サービス管理責任者研修修了かつ実務経験が必須要件です。社会福祉士・普通自動車免許（AT可）をお持ちの方は優遇します。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">賞与はありますか？</button>
+        <div class="faq-a">現在、賞与制度はございません。その分、月給29〜35万円の安定した月給制を設定しており、昇給制度で継続的に評価します。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">入社はいつから可能ですか？</button>
+        <div class="faq-a">2026年9月以降の勤務を想定しています。それ以前の入社については要相談で対応可能です。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">就労移行支援と就労継続支援B型の両方を担当しますか？</button>
+        <div class="faq-a">多機能型施設のため、両支援に関わります。利用者さんの段階に応じた個別支援計画を立案し、それぞれのプログラムをサポートしていただきます。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">マイカー通勤はできますか？</button>
+        <div class="faq-a">マイカー通勤可で駐車場もございます。最寄りの印西牧の原駅から徒歩3分と好立地なので、電車・マイカーどちらでも通勤できます。</div>
+      </div>
+    </div>
+    <p class="sample-note-dark" style="margin-top:20px;">※ここはサンプルです。実際には御社でよくいただくご質問に差し替えます</p>
+  </div>
+</section>
+
+<!-- Recruit -->
+<section class="content" id="recruit">
+  <div class="inner">
+    <div class="sec-head"><h2>募集要項</h2></div>
+    <table class="recruit-table">
+      <tbody>
+        <tr><th>職種</th><td>サービス管理責任者</td></tr>
+        <tr><th>雇用形態</th><td>正社員（雇用期間の定めなし）</td></tr>
+        <tr><th>給与</th><td>月給 290,000円〜350,000円<br><small style="color:#888">基本給 280,000〜310,000円 ＋ 職務手当 5,000〜20,000円 ＋ 資格手当 5,000〜20,000円<br>残業手当 別途支給（月10〜20時間想定）</small></td></tr>
+        <tr><th>昇給</th><td>あり（賞与なし）</td></tr>
+        <tr><th>勤務地</th><td>千葉県印西市牧の原1-1-3 ウエイト・ワンビル205<br>北総線 印西牧の原駅 徒歩3分</td></tr>
+        <tr><th>勤務時間</th><td>8:30〜17:30（休憩60分）／ 月平均残業10時間</td></tr>
+        <tr><th>休日・休暇</th><td>土曜・日曜・祝日（年に数回の土曜出勤あり）<br>年間休日120日 ／ 年次有給休暇（入社6ヶ月後10日〜）</td></tr>
+        <tr><th>必要資格</th><td>サービス管理責任者研修修了（必須）・同実務経験（必須）<br>社会福祉士（尚可）／ 普通自動車免許AT可（尚可）</td></tr>
+        <tr><th>待遇・福利厚生</th><td>雇用・労災・健康・厚生年金保険完備 ／ 通勤手当実費（上限なし）<br>マイカー通勤可（駐車場あり）／ 会社寮あり（単身・世帯用）</td></tr>
+        <tr><th>定年</th><td>65歳</td></tr>
+        <tr><th>選考方法</th><td>書類選考 → 面接2回（随時選考）<br>応募書類：履歴書（写真貼付）・職務経歴書</td></tr>
+        <tr><th>勤務開始</th><td>2026年9月以降（要相談）</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CTA bottom (CTA 3) -->
+<section class="cta-bottom" id="entry">
+  <h2>あなたの経験を、ここで活かしませんか</h2>
+  <p>選考に関するご質問も歓迎しています。<br>まずはEメール・お電話でお気軽にご連絡ください。</p>
+  <a href="mailto:y.nomura@kanaeru.jp" class="btn-main">メールで問い合わせる</a>
+</section>
+
+<footer>
+  <p>株式会社カナエル</p>
+  <p>〒270-1331 千葉県印西市牧の原1-1-3 ウエイト・ワンビル205</p>
+  <p>TEL: 0476-85-7980 ／ y.nomura@kanaeru.jp</p>
+</footer>
+
+<!-- Fixed bar (mobile only) -->
+<a href="#entry" class="fixed-bar">今すぐ応募・お問い合わせ →</a>
+
+<script>
+  document.getElementById('hambtn').addEventListener('click', function() {
+    document.getElementById('mnav').classList.toggle('open');
+  });
+  document.querySelectorAll('.mobile-nav a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      document.getElementById('mnav').classList.remove('open');
+    });
+  });
+  function toggleFaq(btn) {
+    btn.nextElementSibling.classList.toggle('open');
+  }
+</script>
+</body>
+</html>
