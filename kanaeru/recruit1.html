@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>採用情報 | 株式会社カナエル</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    body { font-family: 'Noto Sans JP', sans-serif; color: #2c2c2c; line-height: 1.7; background: #fff; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    :root {
+      --green: #2D7A4F;
+      --green-light: #E8F5EE;
+      --green-dark: #1B5435;
+      --accent: #E8A020;
+      --gray: #666;
+      --light: #f7f7f7;
+    }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      padding: 0 24px;
+    }
+    .header-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .logo { font-size: 1.05rem; font-weight: 700; color: var(--green); }
+    .logo span { font-size: 0.72rem; display: block; color: var(--gray); font-weight: 400; }
+
+    nav.pc-nav { display: flex; gap: 1.6rem; align-items: center; }
+    nav.pc-nav a { font-size: 0.88rem; color: #333; transition: color 0.2s; }
+    nav.pc-nav a:hover { color: var(--green); }
+    nav.pc-nav .nav-cta {
+      background: var(--green); color: #fff;
+      padding: 8px 18px; border-radius: 4px;
+      font-size: 0.85rem; font-weight: 700;
+    }
+    nav.pc-nav .nav-cta:hover { background: var(--green-dark); }
+
+    .hamburger {
+      display: none; flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #333; }
+
+    .mobile-nav {
+      display: none; position: fixed; top: 64px; left: 0; right: 0;
+      background: #fff; border-top: 1px solid #eee;
+      padding: 16px 24px; z-index: 99; flex-direction: column;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a { padding: 12px 0; border-bottom: 1px solid #f0f0f0; font-size: 0.93rem; }
+    .mobile-nav .m-cta {
+      background: var(--green); color: #fff; text-align: center;
+      padding: 12px; border-radius: 4px; margin-top: 12px; font-weight: 700;
+    }
+
+    /* Hero */
+    .hero {
+      background: linear-gradient(135deg, var(--green) 0%, var(--green-dark) 100%);
+      color: #fff; padding: 80px 24px 72px; text-align: center;
+      position: relative; overflow: hidden;
+    }
+    .hero::before {
+      content: ''; position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1600&h=900&fit=crop&q=80') center/cover;
+      opacity: 0.15;
+    }
+    .hero-inner { position: relative; z-index: 1; max-width: 780px; margin: 0 auto; }
+    .pill {
+      display: inline-block; background: rgba(255,255,255,0.2);
+      border: 1px solid rgba(255,255,255,0.5); border-radius: 100px;
+      padding: 4px 18px; font-size: 0.82rem; margin-bottom: 18px;
+    }
+    .hero h1 {
+      font-size: clamp(1.8rem, 6vw, 3rem); font-weight: 700;
+      line-height: 1.35; margin-bottom: 16px;
+    }
+    .hero p {
+      font-size: clamp(0.92rem, 2.5vw, 1.08rem);
+      opacity: 0.9; margin-bottom: 32px; line-height: 1.8;
+    }
+    .hero-btn {
+      display: inline-block; background: var(--accent); color: #fff;
+      font-size: 1rem; font-weight: 700; padding: 14px 38px;
+      border-radius: 6px; transition: opacity 0.2s;
+    }
+    .hero-btn:hover { opacity: 0.85; }
+
+    /* Sections */
+    section { padding: 64px 24px; }
+    .inner { max-width: 1100px; margin: 0 auto; }
+    .sec-head { text-align: center; margin-bottom: 44px; }
+    .sec-head h2 { font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 700; color: var(--green-dark); margin-bottom: 8px; }
+    .sec-head p { color: var(--gray); font-size: 0.93rem; }
+
+    /* Appeal */
+    .appeal { background: var(--green-light); }
+    .appeal-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .appeal-card {
+      background: #fff; border-radius: 12px; padding: 28px 24px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06); text-align: center;
+    }
+    .appeal-icon { font-size: 2.4rem; margin-bottom: 14px; }
+    .appeal-card h3 { font-size: 1rem; font-weight: 700; color: var(--green-dark); margin-bottom: 10px; }
+    .appeal-card p { font-size: 0.88rem; color: var(--gray); line-height: 1.7; }
+
+    /* Job */
+    .job-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .job-wrap img { border-radius: 12px; width: 100%; height: 340px; object-fit: cover; }
+    .job-text h3 { font-size: 1.15rem; font-weight: 700; color: var(--green-dark); margin-bottom: 14px; }
+    .job-text p { font-size: 0.93rem; color: var(--gray); margin-bottom: 14px; line-height: 1.75; }
+    .job-text ul { padding-left: 1.2rem; }
+    .job-text ul li { font-size: 0.93rem; margin-bottom: 8px; }
+
+    /* Timeline */
+    .timeline { background: var(--light); }
+    .tl-list { list-style: none; max-width: 720px; margin: 0 auto; }
+    .tl-item {
+      display: flex; gap: 20px; align-items: flex-start; margin-bottom: 24px;
+      position: relative;
+    }
+    .tl-item:not(:last-child)::after {
+      content: ''; position: absolute; left: 40px; top: 32px;
+      width: 2px; height: calc(100% + 8px); background: #d4eadb;
+    }
+    .tl-time {
+      flex-shrink: 0; width: 80px; text-align: center;
+      background: var(--green); color: #fff; border-radius: 20px;
+      padding: 4px 0; font-size: 0.82rem; font-weight: 700; margin-top: 2px;
+    }
+    .tl-body h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 4px; }
+    .tl-body p { font-size: 0.86rem; color: var(--gray); }
+    .sample-note { font-size: 0.78rem; color: #aaa; text-align: center; margin-top: 16px; }
+
+    /* Staff */
+    .staff-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .staff-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+    .staff-card img { width: 100%; height: 210px; object-fit: cover; }
+    .staff-body { padding: 20px; }
+    .staff-name { font-weight: 700; font-size: 0.98rem; margin-bottom: 4px; }
+    .staff-role { font-size: 0.78rem; color: var(--green); margin-bottom: 10px; }
+    .staff-body p { font-size: 0.86rem; color: var(--gray); line-height: 1.7; }
+
+    /* FAQ */
+    .faq { background: var(--green-light); }
+    .faq-list { max-width: 800px; margin: 0 auto; }
+    .faq-item { background: #fff; border-radius: 10px; margin-bottom: 12px; overflow: hidden; }
+    .faq-q {
+      width: 100%; background: none; border: none; text-align: left;
+      padding: 18px 20px; font-size: 0.93rem; font-weight: 700; cursor: pointer;
+      display: flex; align-items: center; gap: 12px; color: #2c2c2c;
+    }
+    .faq-q::before {
+      content: 'Q'; flex-shrink: 0; width: 28px; height: 28px;
+      background: var(--green); color: #fff; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.84rem; font-weight: 700;
+    }
+    .faq-a { display: none; padding: 0 20px 18px 60px; font-size: 0.88rem; color: var(--gray); line-height: 1.75; }
+    .faq-a.open { display: block; }
+
+    /* Recruit table */
+    .recruit-table { width: 100%; border-collapse: collapse; }
+    .recruit-table th, .recruit-table td {
+      padding: 14px 16px; border-bottom: 1px solid #e8e8e8;
+      font-size: 0.92rem; text-align: left; vertical-align: top;
+    }
+    .recruit-table th {
+      width: 160px; background: var(--green-light);
+      color: var(--green-dark); font-weight: 700; white-space: nowrap;
+    }
+
+    /* CTA */
+    .cta-sec {
+      background: var(--green-dark); color: #fff;
+      text-align: center; padding: 64px 24px;
+    }
+    .cta-sec h2 { font-size: clamp(1.35rem, 4vw, 1.85rem); margin-bottom: 12px; }
+    .cta-sec p { font-size: 0.93rem; opacity: 0.85; margin-bottom: 30px; line-height: 1.8; }
+    .cta-btn {
+      display: inline-block; background: var(--accent); color: #fff;
+      font-weight: 700; padding: 14px 40px; border-radius: 6px;
+      font-size: 1rem; transition: opacity 0.2s;
+    }
+    .cta-btn:hover { opacity: 0.85; }
+
+    footer {
+      background: #1a1a1a; color: #999; text-align: center;
+      padding: 32px 24px; font-size: 0.84rem;
+    }
+    footer p { margin-bottom: 4px; }
+
+    @media (max-width: 768px) {
+      nav.pc-nav { display: none; }
+      .hamburger { display: flex; }
+      .appeal-grid { grid-template-columns: 1fr; }
+      .job-wrap { grid-template-columns: 1fr; }
+      .staff-grid { grid-template-columns: 1fr; }
+      .recruit-table tbody tr { display: block; border-bottom: 1px solid #e8e8e8; }
+      .recruit-table th, .recruit-table td {
+        display: block; width: 100%; border-bottom: none;
+      }
+      .recruit-table th { padding-bottom: 4px; }
+      .recruit-table td { padding-top: 2px; }
+      .tl-item::after { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      株式会社カナエル
+      <span>就労移行支援・就労継続支援B型</span>
+    </div>
+    <nav class="pc-nav">
+      <a href="#appeal">働く魅力</a>
+      <a href="#job">仕事内容</a>
+      <a href="#staff">先輩の声</a>
+      <a href="#faq">FAQ</a>
+      <a href="#recruit">募集要項</a>
+      <a href="#entry" class="nav-cta">応募する</a>
+    </nav>
+    <button class="hamburger" id="hambtn" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<nav class="mobile-nav" id="mnav">
+  <a href="#appeal">働く魅力</a>
+  <a href="#job">仕事内容</a>
+  <a href="#staff">先輩の声</a>
+  <a href="#faq">FAQ</a>
+  <a href="#recruit">募集要項</a>
+  <a href="#entry" class="m-cta">応募する</a>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="pill">サービス管理責任者 募集中</div>
+    <h1>あなたの経験で、<br>社会参加の扉を開く。</h1>
+    <p>月給29〜35万円 ／ 年間休日120日（土日祝休み）<br>2026年4月オープンの新施設でチームを率いるサビ管を募集しています。</p>
+    <a href="#entry" class="hero-btn">応募・お問い合わせはこちら</a>
+  </div>
+</section>
+
+<!-- Appeal -->
+<section class="appeal" id="appeal">
+  <div class="inner">
+    <div class="sec-head">
+      <h2>カナエルで働く3つの魅力</h2>
+      <p>サビ管として本来の支援に集中できる環境を整えています</p>
+    </div>
+    <div class="appeal-grid">
+      <div class="appeal-card">
+        <div class="appeal-icon">💰</div>
+        <h3>月給29〜35万円の安定給与</h3>
+        <p>サービス管理責任者の経験・スキルをしっかり評価した月給制。毎月安定した収入を確保しながら、昇給制度で長期的にキャリアアップできます。</p>
+      </div>
+      <div class="appeal-card">
+        <div class="appeal-icon">🌱</div>
+        <h3>多彩なプログラムと立ち上げの醍醐味</h3>
+        <p>ケーキ・パン製造、農園、軽作業、アートなど多種多様な作業プログラムを持つ新施設。2026年4月開設のため、立ち上げから事業づくりに関わることができます。</p>
+      </div>
+      <div class="appeal-card">
+        <div class="appeal-icon">📅</div>
+        <h3>年間休日120日・駅から徒歩3分</h3>
+        <p>土日祝日休みで年間120日の休日を確保。印西牧の原駅から徒歩わずか3分という好立地で、通勤ストレスなく働けます。マイカー通勤（駐車場あり）も可。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Job Detail -->
+<section id="job">
+  <div class="inner">
+    <div class="sec-head">
+      <h2>仕事内容と職場の全体像</h2>
+      <p>外部テンプレの求人ページでは見えてこない、カナエルの「仕事の本質」を紹介します</p>
+    </div>
+    <div class="job-wrap">
+      <div class="job-text">
+        <h3>就労移行支援＋就労継続支援B型を同時運営</h3>
+        <p>株式会社カナエルは、派遣・職業紹介で培った就労支援の知見をもとに、2026年4月に<strong>就労移行支援と就労継続支援B型の多機能型施設</strong>を開設しました。</p>
+        <p><strong>就労移行支援</strong>では就職を目指す方の訓練・定着を支援。<strong>就労継続支援B型</strong>では、ケーキ・パン製造、農園、芸術関連など多彩な活動を通じて「働く場と喜び」を提供しています。</p>
+        <p>サービス管理責任者はこの両支援の中核を担うポジションです。具体的な業務は：</p>
+        <ul>
+          <li>個別支援計画・モニタリング・アセスメントの立案と実施</li>
+          <li>障がい者への作業指導および各プログラムへの従事</li>
+          <li>医療・教育機関など各関係機関との連携・調整</li>
+          <li>スタッフのマネジメントと育成</li>
+          <li>上記業務に付帯する事務・記録作業</li>
+        </ul>
+      </div>
+      <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=640&h=440&fit=crop&q=80" alt="施設・職場の様子（サンプル画像）">
+      <!-- ※実際の施設・職場の写真に差し替えてください -->
+    </div>
+  </div>
+</section>
+
+<!-- Timeline -->
+<section class="timeline">
+  <div class="inner">
+    <div class="sec-head">
+      <h2>サビ管の1日の流れ（例）</h2>
+      <p>8:30〜17:30勤務・休憩60分のスケジュールモデル</p>
+    </div>
+    <ul class="tl-list">
+      <li class="tl-item">
+        <div class="tl-time">8:30</div>
+        <div class="tl-body"><h4>出勤・朝礼・受け入れ準備</h4><p>スタッフと申し送り確認。利用者を迎える環境を整えます。</p></div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-time">9:00</div>
+        <div class="tl-body"><h4>利用者到着・各プログラム開始</h4><p>ケーキ・パン製造、農園作業、アートなど各活動をサポート。個別状況に応じて対応します。</p></div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-time">11:00</div>
+        <div class="tl-body"><h4>記録入力・支援計画の進捗確認</h4><p>午前中の様子を記録し、次回のモニタリング準備を進めます。</p></div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-time">12:30</div>
+        <div class="tl-body"><h4>昼休憩</h4><p>スタッフと情報交換しながらリフレッシュ。</p></div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-time">13:30</div>
+        <div class="tl-body"><h4>午後の作業・関係機関との連絡調整</h4><p>医療機関・地域機関との調整、利用者・家族との面談など。</p></div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-time">15:30</div>
+        <div class="tl-body"><h4>スタッフミーティング・育成フィードバック</h4><p>支援員へのフィードバックと翌日の準備。スタッフの成長もサビ管の大切な仕事です。</p></div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-time">17:30</div>
+        <div class="tl-body"><h4>退勤</h4><p>月平均残業約10時間（残業手当支給）。</p></div>
+      </li>
+    </ul>
+    <p class="sample-note">※ここはサンプルです。実際には御社の1日のスケジュールに差し替えます</p>
+  </div>
+</section>
+
+<!-- Staff -->
+<section id="staff">
+  <div class="inner">
+    <div class="sec-head">
+      <h2>先輩スタッフの声</h2>
+      <p>一緒に新施設を作り上げている仲間をご紹介します</p>
+    </div>
+    <div class="staff-grid">
+      <div class="staff-card">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=640&h=380&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div class="staff-body">
+          <div class="staff-name">田中 久美子（仮名）</div>
+          <div class="staff-role">サービス管理責任者 ／ 入社1年目</div>
+          <p>「新施設だからこそ、仕組みを自分たちで作れる。利用者さんのペースに合わせた支援が自由に組み立てられる点がここを選んだ一番の理由です。」</p>
+        </div>
+      </div>
+      <div class="staff-card">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=640&h=380&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div class="staff-body">
+          <div class="staff-name">佐藤 健一（仮名）</div>
+          <div class="staff-role">就労支援員 ／ 入社1年目</div>
+          <p>「ケーキ作りや農園作業で利用者さんが笑顔になる瞬間、本当に嬉しい。スタッフ同士もフラットで相談しやすい雰囲気があります。」</p>
+        </div>
+      </div>
+      <div class="staff-card">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=640&h=380&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div class="staff-body">
+          <div class="staff-name">山本 恵（仮名）</div>
+          <div class="staff-role">生活支援員 ／ 入社1年目</div>
+          <p>「代表が現場を大切にしているのが伝わってきて安心できました。マネジメント経験を活かしながら、長く働ける職場だと感じています。」</p>
+        </div>
+      </div>
+    </div>
+    <p class="sample-note">※ここはサンプルです。実際には御社スタッフの写真・プロフィールに差し替えます</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="inner">
+    <div class="sec-head">
+      <h2>よくある質問</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">サービス管理責任者の経験は必須ですか？</button>
+        <div class="faq-a">はい、サービス管理責任者研修修了かつ実務経験が必須です。社会福祉士資格・普通自動車免許（AT可）をお持ちの方は優遇します。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">賞与はありますか？</button>
+        <div class="faq-a">現在、賞与制度はありません。その分、毎月の月給をしっかり設定しており（29〜35万円）、昇給制度で継続的に評価します。安定した月給制でご検討ください。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">入社時期はいつですか？</button>
+        <div class="faq-a">2026年9月以降の勤務を想定していますが、9月以前の入社も要相談で対応しています。転職活動中の方もまずはご相談ください。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">どんな作業プログラムがありますか？</button>
+        <div class="faq-a">ケーキ・パン製造、農園関連の作業、軽作業、芸術関連の4種類のプログラムを運営しています。利用者さんの特性・興味に合わせて多彩な活動ができることが特徴です。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">スタッフ体制はどうなっていますか？</button>
+        <div class="faq-a">従業員62名の組織です。サービス管理責任者として支援員・生活支援員のマネジメントをお任せします。新施設の立ち上げフェーズのため、チームづくりから関わっていただきます。</div>
+      </div>
+    </div>
+    <p class="sample-note" style="margin-top:20px;">※ここはサンプルです。実際には御社でよくいただくご質問に差し替えます</p>
+  </div>
+</section>
+
+<!-- Recruit -->
+<section id="recruit">
+  <div class="inner">
+    <div class="sec-head">
+      <h2>募集要項</h2>
+    </div>
+    <table class="recruit-table">
+      <tbody>
+        <tr><th>職種</th><td>サービス管理責任者</td></tr>
+        <tr><th>雇用形態</th><td>正社員（雇用期間の定めなし）</td></tr>
+        <tr><th>給与</th><td>月給 290,000円〜350,000円<br><small style="color:#888">基本給 280,000〜310,000円 ＋ 職務手当 5,000〜20,000円 ＋ 資格手当 5,000〜20,000円<br>残業手当 別途支給（月10〜20時間想定）</small></td></tr>
+        <tr><th>昇給</th><td>あり（賞与なし）</td></tr>
+        <tr><th>勤務地</th><td>千葉県印西市牧の原1-1-3 ウエイト・ワンビル205<br>北総線 印西牧の原駅 徒歩3分</td></tr>
+        <tr><th>勤務時間</th><td>8:30〜17:30（休憩60分）／ 月平均残業10時間</td></tr>
+        <tr><th>休日・休暇</th><td>土曜・日曜・祝日（年に数回の土曜出勤あり）<br>年間休日120日 ／ 年次有給休暇（入社6ヶ月後10日〜）</td></tr>
+        <tr><th>必要資格</th><td>サービス管理責任者研修修了（必須）・同実務経験（必須）<br>社会福祉士（尚可）／ 普通自動車免許AT可（尚可）</td></tr>
+        <tr><th>待遇・福利厚生</th><td>雇用・労災・健康・厚生年金保険完備 ／ 通勤手当実費（上限なし）<br>マイカー通勤可（駐車場あり）／ 会社寮あり（単身・世帯用）</td></tr>
+        <tr><th>定年</th><td>65歳</td></tr>
+        <tr><th>選考方法</th><td>書類選考 → 面接2回（随時選考）<br>応募書類：履歴書（写真貼付）・職務経歴書</td></tr>
+        <tr><th>勤務開始</th><td>2026年9月以降（要相談）</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec" id="entry">
+  <h2>まずはお気軽にご連絡ください</h2>
+  <p>選考に関するご質問もお受けしています。<br>Eメール・お電話・求職者マイページからご応募いただけます。</p>
+  <a href="mailto:y.nomura@kanaeru.jp" class="cta-btn">メール・お電話でお問い合わせ</a>
+</section>
+
+<footer>
+  <p>株式会社カナエル</p>
+  <p>〒270-1331 千葉県印西市牧の原1-1-3 ウエイト・ワンビル205</p>
+  <p>TEL: 0476-85-7980 ／ y.nomura@kanaeru.jp</p>
+</footer>
+
+<script>
+  document.getElementById('hambtn').addEventListener('click', function() {
+    document.getElementById('mnav').classList.toggle('open');
+  });
+  document.querySelectorAll('.mobile-nav a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      document.getElementById('mnav').classList.remove('open');
+    });
+  });
+  function toggleFaq(btn) {
+    btn.nextElementSibling.classList.toggle('open');
+  }
+</script>
+</body>
+</html>

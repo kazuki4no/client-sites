@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | まるみや</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#333;background:#fff}
+img{max-width:100%;height:auto;display:block}
+
+/* ナビ */
+header{background:#7a2828;position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:14px 20px}
+.logo{color:#fff;font-family:'Noto Serif JP',serif;font-size:1.3rem;text-decoration:none}
+nav.pc-nav{display:flex;gap:24px}
+nav.pc-nav a{color:#fff;text-decoration:none;font-size:.9rem;opacity:.9}
+nav.pc-nav a:hover{opacity:1}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px}
+.mobile-nav{display:none;background:#5e1e1e;flex-direction:column}
+.mobile-nav a{color:#fff;padding:14px 20px;text-decoration:none;border-top:1px solid rgba(255,255,255,.1)}
+.mobile-nav.open{display:flex}
+
+/* ヒーロー */
+.hero{position:relative;min-height:60vh;display:flex;align-items:center;overflow:hidden}
+.hero-img{position:absolute;inset:0;object-fit:cover;width:100%;height:100%}
+.hero-overlay{position:absolute;inset:0;background:rgba(80,10,10,.52)}
+.hero-content{position:relative;z-index:1;max-width:700px;padding:60px 20px;margin-left:8%}
+.hero-content h1{font-family:'Noto Serif JP',serif;font-size:clamp(1.6rem,5vw,2.8rem);color:#fff;line-height:1.5;margin-bottom:16px}
+.job-pill{display:inline-block;background:#c94a4a;color:#fff;font-size:.8rem;padding:5px 14px;border-radius:20px;margin-bottom:18px}
+.hero-content p{color:rgba(255,255,255,.88);font-size:1rem;line-height:1.8;margin-bottom:28px}
+.btn-primary{display:inline-block;background:#c94a4a;color:#fff;padding:14px 32px;border-radius:4px;text-decoration:none;font-weight:700;font-size:1rem}
+.btn-primary:hover{background:#a83535}
+
+/* セクション共通 */
+section{padding:64px 20px}
+.section-inner{max-width:1000px;margin:0 auto}
+.section-label{color:#c94a4a;font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px}
+.section-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,4vw,2rem);margin-bottom:32px}
+.bg-cream{background:#fdf7f7}
+
+/* 魅力3点 */
+.merits{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.merit{background:#fff;border-top:4px solid #c94a4a;padding:28px 24px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.merit-icon{font-size:2rem;margin-bottom:12px}
+.merit h3{font-size:1rem;font-weight:700;margin-bottom:8px}
+.merit p{font-size:.9rem;color:#555;line-height:1.7}
+
+/* 仕事内容 */
+.job-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
+.job-text h3{font-size:1.1rem;font-weight:700;margin-bottom:12px;color:#7a2828}
+.job-text p{font-size:.95rem;line-height:1.8;color:#444;margin-bottom:16px}
+.job-list{list-style:none;padding:0}
+.job-list li{padding:6px 0;padding-left:16px;position:relative;font-size:.9rem;color:#444}
+.job-list li::before{content:"▸";color:#c94a4a;position:absolute;left:0}
+.job-img-wrap img{border-radius:8px;width:100%;height:280px;object-fit:cover}
+
+/* 募集要項 */
+.req-table{width:100%;border-collapse:collapse}
+.req-table th,.req-table td{padding:14px 16px;border:1px solid #e0d0d0;text-align:left;font-size:.9rem;vertical-align:top}
+.req-table th{background:#fdf0f0;color:#7a2828;font-weight:700;width:30%;white-space:nowrap}
+.req-table td{color:#444;line-height:1.6}
+
+/* FAQ */
+.faq-list{list-style:none}
+.faq-item{border-bottom:1px solid #e0d0d0;padding:20px 0}
+.faq-q{font-weight:700;color:#7a2828;margin-bottom:8px;font-size:.95rem}
+.faq-q::before{content:"Q. "}
+.faq-a{font-size:.9rem;color:#555;line-height:1.7}
+.faq-a::before{content:"A. ";color:#c94a4a;font-weight:700}
+.sample-note{font-size:.75rem;color:#aaa;margin-top:4px}
+
+/* タイムライン */
+.timeline{list-style:none;position:relative;padding-left:32px}
+.timeline::before{content:"";position:absolute;left:8px;top:0;bottom:0;width:2px;background:#e0d0d0}
+.tl-item{position:relative;padding-bottom:24px}
+.tl-item:last-child{padding-bottom:0}
+.tl-dot{position:absolute;left:-28px;top:4px;width:12px;height:12px;background:#c94a4a;border-radius:50%}
+.tl-time{font-size:.8rem;color:#c94a4a;font-weight:700;margin-bottom:2px}
+.tl-text{font-size:.9rem;color:#444}
+
+/* 先輩メッセージ */
+.staff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.staff-card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07)}
+.staff-card img{width:100%;height:180px;object-fit:cover}
+.staff-body{padding:20px}
+.staff-name{font-weight:700;font-size:.95rem;margin-bottom:4px}
+.staff-role{font-size:.78rem;color:#c94a4a;margin-bottom:10px}
+.staff-text{font-size:.85rem;color:#555;line-height:1.7}
+
+/* 採用担当者 */
+.manager-wrap{display:flex;gap:32px;align-items:center;background:#fff;padding:32px;border-radius:8px;box-shadow:0 2px 12px rgba(0,0,0,.07)}
+.manager-img{width:120px;height:120px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.manager-body h3{font-size:1rem;font-weight:700;margin-bottom:6px}
+.manager-body p{font-size:.9rem;color:#555;line-height:1.7;margin-bottom:12px}
+
+/* CTA */
+.cta-section{background:#7a2828;text-align:center;padding:64px 20px}
+.cta-section h2{color:#fff;font-family:'Noto Serif JP',serif;font-size:clamp(1.3rem,4vw,1.8rem);margin-bottom:16px}
+.cta-section p{color:rgba(255,255,255,.85);margin-bottom:28px;font-size:.95rem}
+.btn-white{display:inline-block;background:#fff;color:#7a2828;padding:14px 36px;border-radius:4px;text-decoration:none;font-weight:700;font-size:1rem}
+.btn-white:hover{background:#f0e0e0}
+
+/* フッター */
+footer{background:#2d1010;color:#ccc;padding:32px 20px;text-align:center}
+footer p{font-size:.85rem;line-height:1.8}
+
+/* レスポンシブ */
+@media(max-width:768px){
+  nav.pc-nav{display:none}
+  .hamburger{display:flex}
+  .hero-content{margin-left:0;padding:48px 20px}
+  .merits{grid-template-columns:1fr}
+  .job-grid{grid-template-columns:1fr}
+  .job-img-wrap{order:-1}
+  .staff-grid{grid-template-columns:1fr}
+  .manager-wrap{flex-direction:column;text-align:center}
+  .req-table th,.req-table td{display:block;width:100%}
+  .req-table th{border-bottom:none;padding-bottom:4px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <a href="#" class="logo">まるみや 採用情報</a>
+    <nav class="pc-nav">
+      <a href="#merits">働く魅力</a>
+      <a href="#job">仕事内容</a>
+      <a href="#requirements">募集要項</a>
+      <a href="#staff">先輩の声</a>
+      <a href="#apply">応募する</a>
+    </nav>
+    <button class="hamburger" onclick="document.querySelector('.mobile-nav').classList.toggle('open')" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav">
+    <a href="#merits">働く魅力</a>
+    <a href="#job">仕事内容</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#staff">先輩の声</a>
+    <a href="#apply">応募する</a>
+  </nav>
+</header>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <img class="hero-img" src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1600&h=900&fit=crop&q=80" alt="まるみやの職場">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="job-pill">正社員募集</div>
+    <h1>昭和33年から続く<br>地元の食卓を支える仕事</h1>
+    <p>月給20万〜30万・年間休日108日・食事付き（朝昼夜）<br>ホール・キッチン・販売・製造とわかりにくい職種名ですが、<br>印西の仕出し屋さんでのお仕事です。</p>
+    <a href="#apply" class="btn-primary">採用情報を見る</a>
+  </div>
+</section>
+
+<!-- 働く魅力 -->
+<section id="merits" class="bg-cream">
+  <div class="section-inner">
+    <div class="section-label">MERITS</div>
+    <h2 class="section-title">まるみやで働く3つの魅力</h2>
+    <div class="merits">
+      <div class="merit">
+        <div class="merit-icon">💰</div>
+        <h3>安定した給与と賞与</h3>
+        <p>月給20〜30万円。年1回の賞与（前年度実績20〜50万円）と毎年の昇給（月1〜2万円）で、長く働くほど収入が上がります。</p>
+      </div>
+      <div class="merit">
+        <div class="merit-icon">🏠</div>
+        <h3>充実した福利厚生</h3>
+        <p>勤務中の食事が朝・昼・夜と付いています。さらに住居の用意・研修旅行（年1〜3回）・資格取得補助（半額以上）も。</p>
+      </div>
+      <div class="merit">
+        <div class="merit-icon">📅</div>
+        <h3>年間休日108日・残業なし</h3>
+        <p>水曜と週1日の週休二日制。36協定の特別条項もなく、時間外労働なしが守られています。メリハリのある働き方ができます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 仕事内容 -->
+<section id="job">
+  <div class="section-inner">
+    <div class="section-label">JOB</div>
+    <h2 class="section-title">実際にどんな仕事をするの？</h2>
+    <div class="job-grid">
+      <div class="job-text">
+        <h3>「販売・製造・飲食」の3つを一人がこなします</h3>
+        <p>県道291号線沿いの「仕出し・お食事処まるみや」で働いていただきます。一日の中でさまざまな業務を担うのが特徴です。</p>
+        <ul class="job-list">
+          <li>水産製品・総菜・漬物などの製造・管理</li>
+          <li>商品の販売・在庫管理</li>
+          <li>簡単な調理補助</li>
+          <li>食器洗いや片付けなどのキッチン補佐</li>
+          <li>お食事処での接客・オーダー受け</li>
+          <li>店舗車での外出業務（免許ある方のみ）</li>
+        </ul>
+        <p style="margin-top:16px;font-size:.85rem;color:#888">未経験・無資格からスタートした社員が多数活躍中です。わからないことは先輩スタッフが丁寧に教えます。</p>
+      </div>
+      <div class="job-img-wrap">
+        <!-- 職場・仕事風景のダミー画像 -->
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=640&h=480&fit=crop&q=80" alt="まるみやの職場風景">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section id="requirements" class="bg-cream">
+  <div class="section-inner">
+    <div class="section-label">REQUIREMENTS</div>
+    <h2 class="section-title">募集要項</h2>
+    <table class="req-table">
+      <tr><th>職種</th><td>正社員／販売・製造・飲食業務（ホール・キッチン）</td></tr>
+      <tr><th>雇用形態</th><td>正社員（雇用期間の定めなし）</td></tr>
+      <tr><th>給与</th><td>月給 200,000円〜300,000円<br><small>昇給あり（年1回・実績1〜2万円/月）</small></td></tr>
+      <tr><th>賞与</th><td>年1回（前年度実績 200,000〜500,000円）</td></tr>
+      <tr><th>就業時間</th><td>シフト制（9:00〜19:00 / 10:00〜20:00 / 11:00〜21:00 ほか）<br>休憩：120分</td></tr>
+      <tr><th>残業</th><td>なし</td></tr>
+      <tr><th>休日</th><td>水曜日・その他週休2日制<br>年間休日108日／年始休暇あり（1/1〜1/5）</td></tr>
+      <tr><th>有給休暇</th><td>6ヵ月後 10日付与</td></tr>
+      <tr><th>資格</th><td>不問（普通自動車免許あると尚可）</td></tr>
+      <tr><th>勤務地</th><td>千葉県印西市中根855-9（北総線・牧の原駅より車5分）</td></tr>
+      <tr><th>待遇・福利厚生</th><td>社会保険完備 / 通勤手当（実費・上限15,000円）/ 制服貸与 / 食事付き（朝・昼・夜）/ 住居あり / 研修旅行 / 資格取得補助 / 退職金共済</td></tr>
+      <tr><th>応募方法</th><td>まずはお気軽にご連絡ください。書類は面接時に持参いただけます。</td></tr>
+    </table>
+    <p class="sample-note">※ここはサンプルです。実際には御社の最新募集要項に差し替えます</p>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section id="day">
+  <div class="section-inner">
+    <div class="section-label">A DAY</div>
+    <h2 class="section-title">社員の1日の流れ（例）</h2>
+    <ul class="timeline">
+      <li class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">9:00</div>
+        <div class="tl-text">出勤・朝食（食事付き）。開店準備、商品陳列と在庫確認</div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">10:00</div>
+        <div class="tl-text">開店。来店客の接客・オーダー受け、販売対応</div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">12:00</div>
+        <div class="tl-text">昼食（食事付き）。交替で休憩</div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">13:00</div>
+        <div class="tl-text">午後の製造業務（総菜・漬物の仕込み・パック詰め）</div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">15:00</div>
+        <div class="tl-text">店舗の清掃・補充。必要に応じて外出業務（配達等）</div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">17:00</div>
+        <div class="tl-text">夕方の接客・販売対応。閉店前の片付け・食器洗い</div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">19:00</div>
+        <div class="tl-text">退勤（時間外なし）</div>
+      </li>
+    </ul>
+    <p class="sample-note" style="margin-top:20px">※ここはサンプルです。実際には御社のシフト例に差し替えます</p>
+  </div>
+</section>
+
+<!-- 先輩メッセージ -->
+<section id="staff" class="bg-cream">
+  <div class="section-inner">
+    <div class="section-label">VOICE</div>
+    <h2 class="section-title">先輩スタッフの声</h2>
+    <div class="staff-grid">
+      <div class="staff-card">
+        <!-- 先輩スタッフ（女性・販売担当）のダミー画像 -->
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=300&fit=crop&crop=faces&q=80" alt="スタッフ（仮）">
+        <div class="staff-body">
+          <div class="staff-name">田中 さん（仮名）</div>
+          <div class="staff-role">販売・ホール担当 / 入社4年目</div>
+          <p class="staff-text">未経験で入りましたが、先輩がすごく丁寧に教えてくれました。食事が付いているので昼ごはんを持参する手間がなく、毎日助かっています。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社スタッフの声に差し替えます</p>
+        </div>
+      </div>
+      <div class="staff-card">
+        <!-- 先輩スタッフ（女性・製造担当）のダミー画像 -->
+        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=300&fit=crop&crop=faces&q=80" alt="スタッフ（仮）">
+        <div class="staff-body">
+          <div class="staff-name">佐々木 さん（仮名）</div>
+          <div class="staff-role">製造・キッチン担当 / 入社2年目</div>
+          <p class="staff-text">総菜や漬物の製造は最初は難しそうに見えましたが、マニュアルがあるので安心でした。残業がないので育児との両立もしやすいです。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社スタッフの声に差し替えます</p>
+        </div>
+      </div>
+      <div class="staff-card">
+        <!-- 先輩スタッフ（男性・多能工）のダミー画像 -->
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=faces&q=80" alt="スタッフ（仮）">
+        <div class="staff-body">
+          <div class="staff-name">山田 さん（仮名）</div>
+          <div class="staff-role">販売・外出業務担当 / 入社6年目</div>
+          <p class="staff-text">昇給が毎年あって、長く働くほど給料が上がるのがモチベーションになっています。研修旅行は毎年楽しみで、チームの仲が深まります。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社スタッフの声に差し替えます</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">よくあるご質問</h2>
+    <ul class="faq-list">
+      <li class="faq-item">
+        <p class="faq-q">未経験でも応募できますか？</p>
+        <p class="faq-a">はい、経験・学歴は不問です。入社後に先輩スタッフが一から丁寧にお教えします。現在のスタッフの多くも未経験スタートです。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社の回答に差し替えます</p>
+      </li>
+      <li class="faq-item">
+        <p class="faq-q">どんな選考の流れですか？</p>
+        <p class="faq-a">書類選考なし。面接1回です（全員と面接します）。結果は面接後7日以内にご連絡します。履歴書は面接時に持参いただいても構いません。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社の回答に差し替えます</p>
+      </li>
+      <li class="faq-item">
+        <p class="faq-q">車・免許がないと応募できませんか？</p>
+        <p class="faq-a">免許は「あれば尚可」であり、必須ではありません。ただし勤務地へは自力でお越しいただける方が対象です（駐車場あり・マイカー通勤可）。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社の回答に差し替えます</p>
+      </li>
+      <li class="faq-item">
+        <p class="faq-q">子どもがいますが働けますか？</p>
+        <p class="faq-a">就学児童の時間に合わせた勤務シフトの調整も可能です。残業なし・シフト制のため、育児との両立をしながら働くスタッフも在籍しています。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社の回答に差し替えます</p>
+      </li>
+      <li class="faq-item">
+        <p class="faq-q">昇給・賞与は本当にありますか？</p>
+        <p class="faq-a">はい、どちらも前年度実績があります。昇給は年1回（月1〜2万円）、賞与は年1回（20〜50万円）です（会社業績・能力により決定）。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社の回答に差し替えます</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- 採用担当者 -->
+<section class="bg-cream">
+  <div class="section-inner">
+    <div class="section-label">CONTACT</div>
+    <h2 class="section-title">採用担当より</h2>
+    <div class="manager-wrap">
+      <!-- 採用担当者のダミー画像 -->
+      <img class="manager-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当（仮）">
+      <div class="manager-body">
+        <h3>代表 宮内 国臣（仮名・ダミー画像）</h3>
+        <p>「まるみや」は昭和33年の創業から60年以上、印西の食卓を支えてきました。販売・製造・飲食と幅広い職種名になっていますが、チームで一緒に動く仕事です。難しく考えずに、まずはお気軽にご連絡ください。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社担当者の写真・コメントに差し替えます</p>
+        <a href="#apply" class="btn-primary" style="margin-top:12px;display:inline-block">応募・お問い合わせ</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 応募CTA -->
+<section id="apply" class="cta-section">
+  <h2>まずはお気軽にご連絡ください</h2>
+  <p>書類選考なし・面接1回。あなたのペースで応募できます。<br>ご不明な点はお電話でもお気軽にどうぞ。</p>
+  <a href="mailto:miyauchik63@outlook.jp" class="btn-white">メールで問い合わせる</a>
+</section>
+
+<footer>
+  <p>まるみや<br>
+  〒270-2324 千葉県印西市中根855-9<br>
+  TEL: 0476-97-5388 / E-mail: miyauchik63@outlook.jp
+  </p>
+</footer>
+
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'})}
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>採用情報 | 株式会社西建</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    body { font-family: 'Noto Sans JP', sans-serif; color: #222; background: #fff; line-height: 1.7; padding-bottom: 70px; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ========= HEADER ========= */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: #152540; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px; box-shadow: 0 2px 8px rgba(0,0,0,0.35);
+    }
+    .logo { color: #fff; font-weight: 900; font-size: 1.05rem; }
+    .logo em { color: #e8a000; font-style: normal; }
+    .nav-links { display: flex; gap: 20px; list-style: none; }
+    .nav-links a { color: #bac8dc; font-size: 0.88rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #e8a000; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; }
+    .mobile-menu { display: none; position: fixed; top: 60px; left: 0; right: 0; background: #152540; padding: 16px 24px; z-index: 99; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; color: #bac8dc; padding: 12px 0; font-size: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ========= HERO ========= */
+    .hero {
+      position: relative; min-height: 75vh;
+      background: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&h=900&fit=crop&q=80') center/cover no-repeat;
+      display: flex; align-items: center;
+    }
+    .hero::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(21,37,64,0.82) 0%, rgba(21,37,64,0.5) 100%); }
+    .hero-inner { position: relative; padding: 60px 24px; max-width: 860px; }
+    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: #e8a000; color: #fff; font-size: 0.78rem; font-weight: 700; padding: 5px 16px; border-radius: 20px; margin-bottom: 18px; letter-spacing: 0.06em; }
+    .hero h1 { color: #fff; font-size: clamp(1.6rem, 5vw, 2.7rem); font-weight: 900; line-height: 1.35; margin-bottom: 16px; }
+    .hero-lead { color: #c5d6eb; font-size: clamp(0.95rem, 2.5vw, 1.1rem); margin-bottom: 16px; }
+    .hero-points { list-style: none; margin-bottom: 36px; }
+    .hero-points li { color: #fff; font-size: clamp(0.9rem, 2.5vw, 1.02rem); padding: 5px 0 5px 24px; position: relative; }
+    .hero-points li::before { content: '✓'; position: absolute; left: 0; color: #e8a000; font-weight: 700; }
+    .btn-cta {
+      display: inline-block; background: #e8a000; color: #fff; font-weight: 900;
+      padding: 16px 44px; border-radius: 4px; font-size: 1.05rem; letter-spacing: 0.04em;
+      transition: background 0.2s, transform 0.15s; box-shadow: 0 4px 20px rgba(232,160,0,0.4);
+    }
+    .btn-cta:hover { background: #c88d00; transform: translateY(-2px); }
+    .btn-ghost {
+      display: inline-block; border: 2px solid rgba(255,255,255,0.7); color: #fff; font-weight: 700;
+      padding: 15px 28px; border-radius: 4px; font-size: 1rem; margin-left: 14px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-ghost:hover { background: rgba(255,255,255,0.15); }
+    .btn-cta, .btn-ghost, .btn-bottom { display: inline-block; }
+
+    /* ========= NUMBERS ========= */
+    .numbers { background: #152540; padding: 56px 24px; }
+    .numbers-inner { max-width: 960px; margin: 0 auto; }
+    .numbers-title { color: #fff; font-size: clamp(1.2rem, 3.5vw, 1.7rem); font-weight: 900; text-align: center; margin-bottom: 8px; }
+    .numbers-sub { color: #7a9cbf; font-size: 0.9rem; text-align: center; margin-bottom: 40px; }
+    .numbers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+    .num-block { background: rgba(255,255,255,0.05); padding: 28px 16px; text-align: center; border: 1px solid rgba(255,255,255,0.08); }
+    .num-val { font-size: clamp(2rem, 5vw, 3rem); font-weight: 900; color: #e8a000; line-height: 1; }
+    .num-unit { font-size: 1rem; color: #e8a000; }
+    .num-label { color: #9ab0c8; font-size: 0.82rem; margin-top: 10px; line-height: 1.5; }
+    .num-note { color: #5a7a96; font-size: 0.75rem; }
+    .sample-note { color: #aaa; font-size: 0.75rem; margin-top: 8px; }
+
+    @media (max-width: 768px) { .numbers-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    /* ========= SECTION COMMON ========= */
+    section.body-sec { padding: 72px 24px; }
+    .sec-inner { max-width: 900px; margin: 0 auto; }
+    .sec-tag { display: inline-block; background: #e8a000; color: #fff; font-size: 0.78rem; font-weight: 700; padding: 3px 14px; border-radius: 2px; letter-spacing: 0.08em; margin-bottom: 12px; }
+    .sec-h { font-size: clamp(1.3rem, 4vw, 1.9rem); font-weight: 900; color: #152540; margin-bottom: 8px; }
+    .sec-lead { color: #666; font-size: 0.95rem; margin-bottom: 44px; }
+
+    /* ========= REASONS ========= */
+    .reasons { background: #f4f7fb; }
+    .reason-item { display: flex; gap: 28px; align-items: flex-start; margin-bottom: 48px; }
+    .reason-item:last-child { margin-bottom: 0; }
+    .reason-num { flex-shrink: 0; width: 56px; height: 56px; background: #152540; color: #e8a000; font-size: 1.4rem; font-weight: 900; display: flex; align-items: center; justify-content: center; border-radius: 4px; }
+    .reason-body h3 { font-size: 1.1rem; font-weight: 900; color: #152540; margin-bottom: 10px; }
+    .reason-body p { color: #555; font-size: 0.95rem; line-height: 1.75; }
+    .reason-highlight { background: #fff8e6; border-left: 3px solid #e8a000; padding: 12px 16px; margin-top: 12px; border-radius: 0 4px 4px 0; font-size: 0.92rem; color: #7a5200; }
+
+    @media (max-width: 600px) { .reason-item { flex-direction: column; } }
+
+    /* ========= BENEFITS ========= */
+    .benefit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 8px; }
+    .benefit-card { border: 1px solid #dde4ef; border-radius: 8px; padding: 20px; background: #fff; }
+    .benefit-icon { font-size: 1.6rem; margin-bottom: 8px; }
+    .benefit-card h4 { font-size: 0.95rem; font-weight: 700; color: #152540; margin-bottom: 6px; }
+    .benefit-card p { font-size: 0.88rem; color: #666; line-height: 1.6; }
+
+    @media (max-width: 768px) { .benefit-grid { grid-template-columns: 1fr; } }
+
+    /* ========= MID CTA ========= */
+    .mid-cta { background: linear-gradient(90deg, #152540 60%, #1c3b6e 100%); padding: 40px 24px; text-align: center; }
+    .mid-cta h3 { color: #fff; font-size: clamp(1.1rem, 3.5vw, 1.6rem); font-weight: 900; margin-bottom: 10px; }
+    .mid-cta p { color: #8aacc8; margin-bottom: 24px; font-size: 0.9rem; }
+
+    /* ========= INTERVIEW ========= */
+    .interview-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .iv-card { background: #fff; border: 1px solid #e0e8f2; border-radius: 10px; overflow: hidden; }
+    .iv-img { width: 100%; height: 180px; object-fit: cover; }
+    .iv-body { padding: 20px; }
+    .iv-meta { font-size: 0.8rem; color: #888; margin-bottom: 8px; }
+    .iv-body h4 { font-size: 1rem; font-weight: 700; color: #152540; margin-bottom: 10px; }
+    .iv-body p { font-size: 0.9rem; color: #555; line-height: 1.7; }
+    .iv-quote { font-size: 1rem; color: #e8a000; font-weight: 900; margin-bottom: 8px; font-style: italic; }
+
+    @media (max-width: 768px) { .interview-grid { grid-template-columns: 1fr; } }
+
+    /* ========= TIMELINE ========= */
+    .tl-wrap { position: relative; padding-left: 36px; }
+    .tl-wrap::before { content: ''; position: absolute; left: 16px; top: 0; bottom: 0; width: 2px; background: #dde4ef; }
+    .tl-item { position: relative; margin-bottom: 28px; }
+    .tl-dot { position: absolute; left: -28px; top: 4px; width: 14px; height: 14px; border-radius: 50%; background: #e8a000; border: 2px solid #fff; box-shadow: 0 0 0 2px #e8a000; }
+    .tl-time { font-size: 0.85rem; font-weight: 700; color: #e8a000; margin-bottom: 4px; }
+    .tl-text { font-size: 0.95rem; color: #444; }
+
+    /* ========= TABLE ========= */
+    .req-table { width: 100%; border-collapse: collapse; }
+    .req-table th, .req-table td { padding: 14px 16px; text-align: left; border-bottom: 1px solid #e0e8f2; font-size: 0.94rem; }
+    .req-table th { background: #152540; color: #fff; font-weight: 700; white-space: nowrap; width: 150px; }
+    .req-table tr:nth-child(even) td { background: #f4f7fb; }
+
+    @media (max-width: 768px) {
+      .req-table, .req-table tbody, .req-table tr { display: block; }
+      .req-table tr { margin-bottom: 16px; border: 1px solid #dde4ef; border-radius: 6px; overflow: hidden; }
+      .req-table th, .req-table td { display: block; width: 100%; padding: 10px 14px; }
+      .req-table tr:nth-child(even) td { background: #f4f7fb; }
+    }
+
+    /* ========= FAQ ========= */
+    .faq-bg { background: #f4f7fb; }
+    .faq-item { background: #fff; border-radius: 8px; margin-bottom: 12px; overflow: hidden; border: 1px solid #dde4ef; }
+    .faq-q { display: flex; align-items: flex-start; gap: 14px; padding: 18px 20px; cursor: pointer; font-weight: 700; color: #152540; }
+    .faq-mark { flex-shrink: 0; background: #e8a000; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; font-weight: 700; }
+    .faq-a { padding: 0 20px 18px 62px; color: #444; font-size: 0.93rem; line-height: 1.75; }
+
+    /* ========= FIXED CTA BAR ========= */
+    .fixed-cta {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 200;
+      background: #e8a000; display: flex; align-items: center; justify-content: center;
+      gap: 16px; padding: 14px 24px; box-shadow: 0 -2px 12px rgba(0,0,0,0.2);
+    }
+    .fixed-cta p { color: #fff; font-size: 0.9rem; font-weight: 700; }
+    .fixed-cta a { background: #152540; color: #fff; font-weight: 700; padding: 10px 24px; border-radius: 4px; font-size: 0.95rem; white-space: nowrap; }
+
+    @media (max-width: 480px) { .fixed-cta { flex-direction: column; gap: 8px; padding: 12px; } .fixed-cta p { font-size: 0.82rem; } }
+
+    /* ========= FOOTER ========= */
+    footer { background: #0c1a2e; color: #8aacc8; padding: 32px 24px; text-align: center; font-size: 0.85rem; line-height: 2; }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">株式会社<em>西建</em></div>
+  <ul class="nav-links">
+    <li><a href="#reasons">西建を選ぶ理由</a></li>
+    <li><a href="#req">募集要項</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#apply-bottom" style="background:#e8a000;color:#fff;padding:8px 16px;border-radius:4px;font-weight:700;">応募する</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+<nav class="mobile-menu" id="mobileMenu">
+  <a href="#reasons">西建を選ぶ理由</a>
+  <a href="#req">募集要項</a>
+  <a href="#faq">FAQ</a>
+  <a href="#apply-bottom">応募する</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">📢 2026年・舗装スタッフ3名増員募集</div>
+    <h1>「きつそう」の先入観の前に、<br>待遇の数字を見てください。</h1>
+    <p class="hero-lead">成田空港内も手がける株式会社西建の採用ページ。<br>求人票に書かれている充実した条件を、整理してお伝えします。</p>
+    <ul class="hero-points">
+      <li>月収 29.9万〜46.5万円（日給14,000〜21,000円）</li>
+      <li>残業なし・年間休日110日・土日休み</li>
+      <li>日払い・週払い可 / 借り上げ社宅完備</li>
+      <li>資格取得支援あり・資格手当で収入UP</li>
+      <li>未経験歓迎・書類選考なし</li>
+    </ul>
+    <a href="#apply-bottom" class="btn-cta">話だけ聞いてみる（無料）</a>
+    <a href="#req" class="btn-ghost">募集要項を見る</a>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<div class="numbers">
+  <div class="numbers-inner">
+    <div class="numbers-title">求人票に書かれているのに、伝わっていない数字たち</div>
+    <div class="numbers-sub">採用ページが工事実績中心だったため、整理してお伝えします</div>
+    <div class="numbers-grid">
+      <div class="num-block">
+        <div class="num-val">29.9<span class="num-unit">万〜</span></div>
+        <div class="num-label">月収（月末払い）<br>日払い・週払い相談可</div>
+        <div class="num-note">日給14,000〜21,000円</div>
+      </div>
+      <div class="num-block">
+        <div class="num-val">0<span class="num-unit">h</span></div>
+        <div class="num-label">時間外労働<br>残業なし</div>
+        <div class="num-note">36協定特別条項なし</div>
+      </div>
+      <div class="num-block">
+        <div class="num-val">110<span class="num-unit">日</span></div>
+        <div class="num-label">年間休日<br>土日・祝・年末年始</div>
+        <div class="num-note">GW・夏季休暇あり</div>
+      </div>
+      <div class="num-block">
+        <div class="num-val">年2<span class="num-unit">回</span></div>
+        <div class="num-label">賞与（実績あり）<br>昇給 月1〜3万円実績</div>
+        <div class="num-note">退職金共済加入</div>
+      </div>
+    </div>
+    <p class="sample-note" style="text-align:center;margin-top:16px;">※ここはサンプルです。実際には御社の実績数値に差し替えます</p>
+  </div>
+</div>
+
+<!-- REASONS -->
+<section class="body-sec reasons" id="reasons">
+  <div class="sec-inner">
+    <span class="sec-tag">WHY NISHIKEN</span>
+    <h2 class="sec-h">それでも西建を選ぶ3つの理由</h2>
+    <p class="sec-lead">「建設はきつい」に踏み切れなかった方へ、正直にお伝えします。</p>
+
+    <div class="reason-item">
+      <div class="reason-num">01</div>
+      <div class="reason-body">
+        <h3>待遇が「求人票の数字」で終わらない</h3>
+        <p>基本給に加えて、皆勤手当（最大3万円）・家族手当・資格手当が毎月積み上がります。資格を取るたびに収入が増える仕組みが整っており、長く働けば働くほど手取りが上がります。</p>
+        <div class="reason-highlight">💡 資格取得費用も会社が補助。取った資格は手当で毎月回収できます。</div>
+        <p class="sample-note">※ここはサンプルです。実際には御社の制度・実績に差し替えます</p>
+      </div>
+    </div>
+
+    <div class="reason-item">
+      <div class="reason-num">02</div>
+      <div class="reason-body">
+        <h3>夜間工事があっても「残業なし」を守る</h3>
+        <p>一部の現場では夜間シフト（20:00〜5:00）があります。ただし就業時間は1日8時間・時間外労働なし（36協定特別条項なし）。昼夜どちらのシフトも「決まった時間に終わる」働き方を守っています。</p>
+        <div class="reason-highlight">💡 夜間シフトは事前に告知。ライフスタイルを確認したうえで調整可能です。</div>
+        <p class="sample-note">※ここはサンプルです。実際には御社の運用実態に差し替えます</p>
+      </div>
+    </div>
+
+    <div class="reason-item">
+      <div class="reason-num">03</div>
+      <div class="reason-body">
+        <h3>成田空港内の現場を手がける誇れる仕事</h3>
+        <p>「どこを直したの？」と家族に話せる仕事です。成田空港内の舗装から地域の道路まで、千葉県北総エリアのインフラを根底で支えています。地域貢献の実感が、長く働き続けるモチベーションになります。</p>
+        <div class="reason-highlight">💡 毎年着実な成長を続け、2026年も増員採用を実施中。安定した経営基盤があります。</div>
+        <p class="sample-note">※ここはサンプルです。実際には御社の実績・写真に差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BENEFITS -->
+<section class="body-sec" style="background:#fff;padding-top:0;">
+  <div class="sec-inner">
+    <span class="sec-tag">BENEFITS</span>
+    <h2 class="sec-h">充実した福利厚生</h2>
+    <p class="sec-lead">「求人票では分かりにくい」福利厚生を整理しました。</p>
+    <div class="benefit-grid">
+      <div class="benefit-card"><div class="benefit-icon">🏠</div><h4>借り上げ社宅（単身）</h4><p>住居費の負担を大幅に軽減。遠方からの転職・Uターンにも安心の社宅制度です。</p><p class="sample-note">※サンプルです</p></div>
+      <div class="benefit-card"><div class="benefit-icon">💴</div><h4>日払い・週払い対応</h4><p>月払いが基本ですが、日払い・週払いも相談可。急な出費にも対応できます。</p><p class="sample-note">※サンプルです</p></div>
+      <div class="benefit-card"><div class="benefit-icon">📜</div><h4>資格取得補助制度</h4><p>会社規定の補助で、大型特殊・施工管理技士等の取得コストを軽減します。</p><p class="sample-note">※サンプルです</p></div>
+      <div class="benefit-card"><div class="benefit-icon">👕</div><h4>作業服貸与</h4><p>制服・安全靴など作業に必要な服装は会社が支給。自己負担なしでスタートできます。</p><p class="sample-note">※サンプルです</p></div>
+      <div class="benefit-card"><div class="benefit-icon">🚗</div><h4>マイカー通勤可</h4><p>駐車場完備。電車の本数が少ないエリアも、マイカーで安心して通勤できます。</p><p class="sample-note">※サンプルです</p></div>
+      <div class="benefit-card"><div class="benefit-icon">🛡️</div><h4>社会保険完備</h4><p>雇用・労災・健康・厚生年金すべて完備。企業年金（厚生年金基金）にも加入。</p><p class="sample-note">※サンプルです</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- MID CTA (#2) -->
+<div class="mid-cta" id="mid-cta">
+  <h3>まずは「見るだけ」で大丈夫です</h3>
+  <p>選考は面接1回。書類選考なし。気軽にご連絡ください。</p>
+  <a href="mailto:nishiyama@nishiken.co.jp" class="btn-cta">メールで問い合わせる</a>
+</div>
+
+<!-- STAFF INTERVIEW -->
+<section class="body-sec" style="background:#f4f7fb;">
+  <div class="sec-inner">
+    <span class="sec-tag">VOICE</span>
+    <h2 class="sec-h">先輩スタッフの声</h2>
+    <p class="sec-lead">実際に入社したメンバーのリアルな感想です。</p>
+    <p class="sample-note" style="margin-bottom:28px;">※ここはサンプルです。実際には御社スタッフの写真・コメントに差し替えます</p>
+    <div class="interview-grid">
+      <div class="iv-card">
+        <!-- 男性スタッフ顔写真ダミー -->
+        <img class="iv-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=640&h=380&fit=crop&crop=faces&q=80" alt="田中 拓海">
+        <div class="iv-body">
+          <p class="iv-meta">舗装リーダー / 入社3年 / 30代</p>
+          <div class="iv-quote">「資格手当で、入社時から月収が5万円上がりました」</div>
+          <h4>田中 拓海（仮名）</h4>
+          <p>前職は異業種。「舗装って力仕事ばかりでは？」と思っていましたが、段取りや機械操作がメインで、むしろ体より頭を使う場面が多いです。資格手当の積み上がりが励みになっています。</p>
+        </div>
+      </div>
+      <div class="iv-card">
+        <!-- 男性スタッフ顔写真ダミー -->
+        <img class="iv-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=640&h=380&fit=crop&crop=faces&q=80" alt="鈴木 健一">
+        <div class="iv-body">
+          <p class="iv-meta">オペレーター見習い / 入社1年 / 20代</p>
+          <div class="iv-quote">「日払いで最初の1ヶ月乗り越えられました」</div>
+          <h4>鈴木 健一（仮名）</h4>
+          <p>転職直後で貯金が少なかったので、日払い制度がとても助かりました。先輩が丁寧に教えてくれるので、未経験でも現場に慣れるのが思ったより早かったです。</p>
+        </div>
+      </div>
+      <div class="iv-card">
+        <!-- 男性スタッフ顔写真ダミー -->
+        <img class="iv-img" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=640&h=380&fit=crop&crop=faces&q=80" alt="佐藤 雄二">
+        <div class="iv-body">
+          <p class="iv-meta">舗装スタッフ / 入社4年 / 40代</p>
+          <div class="iv-quote">「家族手当＋社宅で、生活がすごく安定した」</div>
+          <h4>佐藤 雄二（仮名）</h4>
+          <p>子どもが産まれたタイミングで転職。家族手当・社宅制度を合わせると実質の可処分所得がかなり増えました。残業なしで定時に帰れるのも、家族のために大事だと思っています。</p>
+        </div>
+      </div>
+      <div class="iv-card">
+        <!-- 女性スタッフ顔写真ダミー -->
+        <img class="iv-img" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=640&h=380&fit=crop&crop=faces&q=80" alt="山本 恵">
+        <div class="iv-body">
+          <p class="iv-meta">舗装スタッフ / 入社2年 / 20代</p>
+          <div class="iv-quote">「女性でも全然できる。先輩みんな優しい」</div>
+          <h4>山本 恵（仮名）</h4>
+          <p>「女性には難しい仕事かも」と心配でしたが、現場での作業は役割分担があり、自分のペースで覚えていけました。土日休み・残業なしで、友人との時間も保てています。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="body-sec">
+  <div class="sec-inner">
+    <span class="sec-tag">A DAY</span>
+    <h2 class="sec-h">1日の流れ（日勤の例）</h2>
+    <p class="sec-lead">残業なし。仕事の後の時間も自分のものです。</p>
+    <p class="sample-note" style="margin-bottom:28px;">※ここはサンプルです。実際には御社スタッフの1日に差し替えます</p>
+    <div class="tl-wrap">
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">7:30</div><div class="tl-text">印西作業所に集合・朝礼・当日の作業確認</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">8:00</div><div class="tl-text">現場へ出発（成田空港周辺・北総エリアの各現場）</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">8:30〜</div><div class="tl-text">アスファルト舗装・重機オペレーション（先輩と組んで作業）</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">12:00</div><div class="tl-text">昼休憩（1時間）</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">13:00〜</div><div class="tl-text">午後の施工・仕上げ・品質確認</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">16:30</div><div class="tl-text">後片付け・資機材の片付け</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">17:00</div><div class="tl-text">作業所へ帰所・今日の作業報告。定時終業！</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- REQUIREMENTS -->
+<section class="body-sec" style="background:#f4f7fb;" id="req">
+  <div class="sec-inner">
+    <span class="sec-tag">REQUIREMENTS</span>
+    <h2 class="sec-h">募集要項</h2>
+    <p class="sec-lead">アスファルト舗装スタッフ（正社員）</p>
+    <table class="req-table">
+      <tbody>
+        <tr><th>職種</th><td>アスファルト舗装スタッフ（正社員）</td></tr>
+        <tr><th>仕事内容</th><td>成田空港内・道路のアスファルト舗装工事<br>重機オペレーター（資格取得支援あり）<br>千葉県北総エリアの各現場（印西作業所集合）</td></tr>
+        <tr><th>給与</th><td>日給 14,000円〜21,000円<br>月収換算 299,800円〜465,200円<br>+ 皆勤手当・家族手当・資格手当・職務手当</td></tr>
+        <tr><th>給与支払</th><td>月払い（翌月10日） / 週払い・日払い（相談可）</td></tr>
+        <tr><th>就業時間</th><td>昼間 8:00〜17:00 または 夜間 20:00〜5:00（8時間）<br>時間外労働：なし</td></tr>
+        <tr><th>休日</th><td>土曜・日曜・年末年始・夏季・GW / 年間休日110日</td></tr>
+        <tr><th>勤務地</th><td>千葉県印西市吉高1505-4（印西作業所）/ 成田市・北総エリア各現場</td></tr>
+        <tr><th>福利厚生</th><td>社会保険完備 / 借り上げ社宅（単身）/ 資格取得補助 / 作業服貸与<br>昇給あり / 賞与年2回実績 / 退職金共済</td></tr>
+        <tr><th>応募資格</th><td>未経験歓迎 / 59歳以下 / 普通自動車免許があれば尚可</td></tr>
+        <tr><th>採用人数</th><td>3名（増員）</td></tr>
+        <tr><th>選考</th><td>書類選考なし → 面接1回（随時受付・7日以内に連絡）</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="body-sec faq-bg" id="faq">
+  <div class="sec-inner">
+    <span class="sec-tag">FAQ</span>
+    <h2 class="sec-h">よくある質問</h2>
+    <p class="sec-lead">応募前の疑問にお答えします。</p>
+
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-mark">Q</span>未経験でも本当に大丈夫ですか？</div>
+      <div class="faq-a">大丈夫です。ベテラン社員が現場でマンツーマン指導します。まずは基本的な作業から覚えていただき、資格取得サポートを活用してスキルを広げていただけます。<br><span class="sample-note">※サンプルです</span></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-mark">Q</span>夜間シフトはどのくらいの頻度ですか？</div>
+      <div class="faq-a">現場によって異なります。夜間シフトがある場合は事前にお伝えし、生活リズムを確認してシフトを組みます。日勤現場が多く、夜間は一部の案件に限られます。<br><span class="sample-note">※サンプルです</span></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-mark">Q</span>日払いはすぐ使えますか？</div>
+      <div class="faq-a">入社後から対応しています。転職直後の資金的な不安を和らげるための制度です。月払いとの使い分けもできますので、入社後にご相談ください。<br><span class="sample-note">※サンプルです</span></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-mark">Q</span>社宅はどこにありますか？</div>
+      <div class="faq-a">借り上げ社宅（単身用）です。物件は相談のうえ決定します。遠方からの転職・UIJターンの方にも積極的にご案内しています。<br><span class="sample-note">※サンプルです</span></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-mark">Q</span>マイカーがないと通勤できませんか？</div>
+      <div class="faq-a">印西作業所への通勤はマイカーが便利です。最寄りの安食駅からも車で5分。お持ちの交通手段に合わせてご相談ください。<br><span class="sample-note">※サンプルです</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- APPLY (CTA #3) -->
+<section class="body-sec" id="apply-bottom" style="background:#fff;text-align:center;">
+  <div class="sec-inner">
+    <span class="sec-tag">APPLY</span>
+    <h2 class="sec-h" style="text-align:center;">まずは話を聞くだけで大丈夫です</h2>
+    <p style="color:#666;margin-bottom:32px;">面接は1回・書類選考なし。気軽にメール・お電話ください。</p>
+    <a href="mailto:nishiyama@nishiken.co.jp" class="btn-cta" style="font-size:1.05rem;padding:16px 48px;">メールで問い合わせる</a>
+    <p style="margin-top:20px;color:#888;font-size:0.88rem;">お電話: 090-2750-5745（担当: 西山）</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>株式会社西建</p>
+  <p>〒286-0045 千葉県成田市並木町139-35</p>
+  <p>TEL: 090-2750-5745 / MAIL: nishiyama@nishiken.co.jp</p>
+</footer>
+
+<!-- FIXED CTA BAR -->
+<div class="fixed-cta">
+  <p>アスファルト舗装スタッフ 3名募集中</p>
+  <a href="mailto:nishiyama@nishiken.co.jp">メールで問い合わせる</a>
+</div>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+</script>
+</body>
+</html>

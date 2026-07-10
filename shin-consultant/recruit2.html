@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>採用情報 | 新建設コンサルタント株式会社</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    img { max-width: 100%; height: auto; display: block; }
+    body { font-family: 'Noto Sans JP', sans-serif; color: #222; line-height: 1.7; padding-bottom: 72px; }
+
+    :root {
+      --navy: #152840;
+      --navy2: #1e3d60;
+      --navy3: #264d7a;
+      --orange: #f07c20;
+      --orange2: #f5a040;
+      --yellow: #ffd93d;
+      --gray-bg: #f4f6f9;
+    }
+
+    /* ===== HEADER ===== */
+    .header { background: var(--navy); position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 12px rgba(0,0,0,.25); }
+    .header-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 24px; height: 64px; }
+    .header-logo { color: #fff; font-size: .9rem; font-weight: 700; text-decoration: none; line-height: 1.3; }
+    .header-logo span { color: var(--orange2); display: block; font-size: .65rem; font-weight: 400; }
+    .pc-nav { display: flex; gap: 4px; align-items: center; }
+    .pc-nav a { color: rgba(255,255,255,.82); text-decoration: none; font-size: .8rem; padding: 7px 10px; border-radius: 4px; white-space: nowrap; }
+    .pc-nav a:hover { background: rgba(255,255,255,.1); }
+    .pc-nav .nav-apply { background: var(--orange); color: #fff; border-radius: 20px; padding: 8px 18px; font-weight: 700; }
+    .pc-nav .nav-apply:hover { background: var(--orange2); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 8px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; }
+    .sp-menu { display: none; background: var(--navy2); padding: 16px 24px 24px; }
+    .sp-menu a { display: block; color: #fff; text-decoration: none; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,.1); font-size: .93rem; }
+    .sp-apply-btn { display: block; background: var(--orange); color: #fff; text-align: center; padding: 14px; border-radius: 6px; margin-top: 16px; font-weight: 700; text-decoration: none; }
+    @media (max-width:768px) { .pc-nav { display: none; } .hamburger { display: flex; } }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative; min-height: 580px; display: flex; align-items: center; overflow: hidden;
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy3) 100%);
+    }
+    .hero-img-wrap { position: absolute; right: 0; top: 0; bottom: 0; width: 50%; overflow: hidden; }
+    .hero-img-wrap img { width: 100%; height: 100%; object-fit: cover; opacity: .4; }
+    .hero-content { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 80px 24px; color: #fff; width: 100%; }
+    .hero-eyebrow { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+    .eyebrow-tag { background: var(--orange); color: #fff; font-size: .75rem; font-weight: 700; padding: 4px 12px; border-radius: 20px; }
+    .hero-title { font-size: clamp(2rem,5.5vw,3.4rem); font-weight: 900; line-height: 1.2; margin-bottom: 12px; max-width: 680px; }
+    .hero-title em { color: var(--yellow); font-style: normal; }
+    .hero-sub { font-size: clamp(.88rem,2vw,1rem); opacity: .88; margin-bottom: 24px; max-width: 560px; }
+    .hero-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 32px; }
+    .badge { background: rgba(255,255,255,.13); border: 1px solid rgba(255,255,255,.35); color: #fff; font-size: .77rem; padding: 4px 12px; border-radius: 20px; }
+    .hero-cta-wrap { display: flex; align-items: center; gap: 16px; flex-wrap: wrap; }
+    .btn-cta { display: inline-block; background: var(--orange); color: #fff; font-size: 1rem; font-weight: 700; padding: 15px 40px; border-radius: 4px; text-decoration: none; transition: background .2s, transform .1s; }
+    .btn-cta:hover { background: var(--orange2); transform: translateY(-1px); }
+    .btn-sub { display: inline-block; color: rgba(255,255,255,.8); font-size: .88rem; text-decoration: underline; }
+    @media (max-width:768px) { .hero-img-wrap { display: none; } .hero { min-height: 480px; } }
+
+    /* ===== COMMON ===== */
+    .section { padding: 72px 24px; }
+    .section-alt { background: var(--gray-bg); }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .sec-label { color: var(--orange); font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 6px; }
+    .sec-title { font-size: clamp(1.35rem,4vw,2rem); font-weight: 700; color: var(--navy); margin-bottom: 14px; }
+    .sec-desc { color: #555; font-size: .92rem; margin-bottom: 36px; max-width: 700px; }
+    .sample-note { font-size: .72rem; color: #bbb; margin-top: 8px; }
+    .sec-sample-note { font-size: .74rem; color: #bbb; margin-bottom: 28px; }
+
+    /* ===== NUMBERS ===== */
+    .num-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 20px; }
+    .num-card { background: #fff; border-radius: 10px; padding: 28px 20px; text-align: center; box-shadow: 0 2px 10px rgba(0,0,0,.07); }
+    .num-figure { font-size: clamp(2rem,5vw,3rem); font-weight: 900; color: var(--navy); line-height: 1; margin-bottom: 6px; }
+    .num-figure span { font-size: clamp(1.1rem,2.5vw,1.5rem); }
+    .num-label { font-size: .8rem; color: #666; line-height: 1.5; }
+    @media (max-width:768px) { .num-grid { grid-template-columns: repeat(2,1fr); } }
+
+    /* ===== MERIT ===== */
+    .merit-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .merit-card { background: #fff; border-radius: 10px; padding: 30px 22px; box-shadow: 0 2px 12px rgba(0,0,0,.07); border-left: 5px solid var(--orange); }
+    .merit-icon { font-size: 2.2rem; margin-bottom: 14px; }
+    .merit-title { font-size: 1.02rem; font-weight: 700; color: var(--navy); margin-bottom: 9px; }
+    .merit-text { font-size: .87rem; color: #555; line-height: 1.7; }
+    @media (max-width:768px) { .merit-grid { grid-template-columns: 1fr; } }
+    @media (min-width:481px) and (max-width:768px) { .merit-grid { grid-template-columns: repeat(2,1fr); } }
+
+    /* ===== FREEDOM SECTION ===== */
+    .freedom-wrap { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; align-items: center; }
+    .freedom-img { border-radius: 12px; overflow: hidden; }
+    .freedom-img img { width: 100%; height: 360px; object-fit: cover; }
+    .freedom-points { list-style: none; }
+    .freedom-points li { display: flex; gap: 14px; padding: 16px 0; border-bottom: 1px solid #e8edf3; }
+    .freedom-points li:last-child { border: none; }
+    .fp-icon { width: 36px; height: 36px; background: var(--navy); color: #fff; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
+    .fp-title { font-size: .95rem; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+    .fp-text { font-size: .85rem; color: #555; line-height: 1.6; }
+    @media (max-width:768px) { .freedom-wrap { grid-template-columns: 1fr; } }
+
+    /* ===== INTERVIEW ===== */
+    .interview-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 28px; }
+    .interview-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 14px rgba(0,0,0,.08); display: flex; flex-direction: column; }
+    .interview-img { width: 100%; height: 200px; object-fit: cover; }
+    .interview-body { padding: 22px; flex: 1; }
+    .interview-role { font-size: .7rem; color: var(--orange); font-weight: 700; margin-bottom: 3px; }
+    .interview-name { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+    .interview-year { font-size: .74rem; color: #888; margin-bottom: 12px; }
+    .interview-q { font-size: .8rem; font-weight: 700; color: #fff; background: var(--navy); padding: 6px 12px; border-radius: 4px; margin-bottom: 8px; display: inline-block; }
+    .interview-a { font-size: .87rem; color: #444; line-height: 1.7; }
+    @media (max-width:768px) { .interview-grid { grid-template-columns: 1fr; } }
+
+    /* ===== TABLE ===== */
+    .req-table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+    .req-table th, .req-table td { padding: 14px 16px; border-bottom: 1px solid #e0e0e0; text-align: left; vertical-align: top; }
+    .req-table th { width: 140px; background: var(--gray-bg); color: var(--navy); font-weight: 700; white-space: nowrap; }
+    .req-table td { color: #444; }
+    @media (max-width:768px) {
+      .req-table, .req-table tbody, .req-table tr { display: block; }
+      .req-table th, .req-table td { display: block; width: 100%; white-space: normal; }
+      .req-table th { background: var(--navy); color: #fff; padding: 8px 16px; }
+      .req-table td { padding: 10px 16px 16px; }
+    }
+
+    /* ===== TIMELINE ===== */
+    .timeline { position: relative; padding-left: 32px; max-width: 640px; }
+    .timeline::before { content: ''; position: absolute; left: 10px; top: 8px; bottom: 8px; width: 2px; background: var(--orange); }
+    .tl-item { position: relative; margin-bottom: 22px; }
+    .tl-item:last-child { margin-bottom: 0; }
+    .tl-dot { position: absolute; left: -27px; top: 4px; width: 16px; height: 16px; background: var(--orange); border-radius: 50%; border: 3px solid #fff; box-shadow: 0 0 0 2px var(--orange); }
+    .tl-time { font-size: .77rem; font-weight: 700; color: var(--orange); margin-bottom: 3px; }
+    .tl-text { font-size: .88rem; color: #444; }
+
+    /* ===== STAFF ===== */
+    .staff-grid3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .staff-card { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,.07); }
+    .staff-img { width: 100%; height: 170px; object-fit: cover; }
+    .staff-body { padding: 18px; }
+    .staff-role { font-size: .7rem; color: var(--orange); font-weight: 700; margin-bottom: 3px; }
+    .staff-name { font-size: .95rem; font-weight: 700; color: var(--navy); margin-bottom: 3px; }
+    .staff-year { font-size: .74rem; color: #888; margin-bottom: 9px; }
+    .staff-text { font-size: .85rem; color: #555; line-height: 1.7; }
+    @media (max-width:768px) { .staff-grid3 { grid-template-columns: 1fr; } }
+    @media (min-width:481px) and (max-width:768px) { .staff-grid3 { grid-template-columns: repeat(2,1fr); } }
+
+    /* ===== FAQ ===== */
+    .faq-list { max-width: 800px; }
+    .faq-item { border: 1px solid #dde3ea; border-radius: 8px; margin-bottom: 10px; overflow: hidden; }
+    .faq-q { padding: 15px 20px; font-weight: 700; cursor: pointer; display: flex; align-items: center; gap: 12px; background: #fff; font-size: .9rem; user-select: none; }
+    .faq-q::before { content: 'Q'; width: 26px; height: 26px; background: var(--navy); color: #fff; border-radius: 4px; display: flex; align-items: center; justify-content: center; font-size: .8rem; font-weight: 700; flex-shrink: 0; }
+    .faq-arrow { margin-left: auto; color: var(--orange); font-size: 1.1rem; transition: transform .3s; }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); }
+    .faq-a { display: none; padding: 4px 20px 16px 58px; font-size: .87rem; color: #555; line-height: 1.7; }
+    .faq-item.open .faq-a { display: block; }
+
+    /* ===== CTA ===== */
+    .cta-mid { background: linear-gradient(90deg, var(--navy) 0%, var(--navy3) 100%); padding: 52px 24px; text-align: center; color: #fff; }
+    .cta-mid h3 { font-size: clamp(1.2rem,3.5vw,1.7rem); margin-bottom: 10px; font-weight: 700; }
+    .cta-mid p { opacity: .85; margin-bottom: 24px; font-size: .9rem; }
+    .cta-section { background: var(--navy); color: #fff; text-align: center; padding: 80px 24px; }
+    .cta-section h2 { font-size: clamp(1.4rem,4vw,2.2rem); margin-bottom: 14px; font-weight: 700; }
+    .cta-section p { opacity: .85; margin-bottom: 32px; font-size: .93rem; }
+    .btn-cta-lg { display: inline-block; background: var(--orange); color: #fff; font-size: 1.05rem; font-weight: 700; padding: 17px 50px; border-radius: 4px; text-decoration: none; transition: background .2s, transform .1s; }
+    .btn-cta-lg:hover { background: var(--orange2); transform: translateY(-1px); }
+
+    /* ===== STICKY CTA (SP only) ===== */
+    .sticky-cta { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 300; background: var(--orange); padding: 0; }
+    .sticky-cta a { display: block; color: #fff; text-align: center; font-size: 1rem; font-weight: 700; padding: 17px 20px; text-decoration: none; }
+    @media (max-width:768px) { .sticky-cta { display: block; } body { padding-bottom: 60px; } }
+
+    /* ===== FOOTER ===== */
+    footer { background: #0d1c2e; color: rgba(255,255,255,.55); padding: 38px 24px; font-size: .8rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    .footer-co { font-size: .95rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+    .footer-info { line-height: 2; }
+    .footer-copy { margin-top: 24px; border-top: 1px solid rgba(255,255,255,.1); padding-top: 16px; text-align: center; }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="header">
+  <div class="header-inner">
+    <a href="#" class="header-logo">新建設コンサルタント株式会社<span>採用情報</span></a>
+    <nav class="pc-nav">
+      <a href="#numbers">会社の数字</a>
+      <a href="#merit">働く魅力</a>
+      <a href="#interview">社員の声</a>
+      <a href="#requirements">募集要項</a>
+      <a href="#faq">FAQ</a>
+      <a href="#apply" class="nav-apply">応募する</a>
+    </nav>
+    <button class="hamburger" aria-label="メニューを開く" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="sp-menu" id="spMenu">
+    <a href="#numbers" onclick="closeMenu()">会社の数字</a>
+    <a href="#merit" onclick="closeMenu()">働く魅力</a>
+    <a href="#interview" onclick="closeMenu()">社員の声</a>
+    <a href="#requirements" onclick="closeMenu()">募集要項</a>
+    <a href="#faq" onclick="closeMenu()">よくある質問</a>
+    <a href="#apply" class="sp-apply-btn" onclick="closeMenu()">応募する</a>
+  </nav>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-img-wrap">
+    <!-- 工事現場のイメージ写真 -->
+    <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=600&fit=crop&q=80" alt="工事現場">
+  </div>
+  <div class="hero-content container">
+    <div class="hero-eyebrow">
+      <span class="eyebrow-tag">正社員</span>
+      <span class="eyebrow-tag">千葉県印西市</span>
+      <span class="eyebrow-tag">直行直帰</span>
+    </div>
+    <h1 class="hero-title">
+      「直行直帰・土日休み」で<br>
+      月給<em>48万円〜</em>。<br>
+      公共インフラを支える仕事。
+    </h1>
+    <p class="hero-sub">発注者支援業務・工事監督支援・施工管理 ／ 国土交通省・地方自治体の公共工事を支える専門職</p>
+    <div class="hero-badges">
+      <span class="badge">年間休日 127日</span>
+      <span class="badge">土日祝休み</span>
+      <span class="badge">残業月10時間</span>
+      <span class="badge">資格手当充実</span>
+      <span class="badge">受験費用全額負担</span>
+    </div>
+    <!-- CTA 1 -->
+    <div class="hero-cta-wrap">
+      <a href="mailto:office@nc-c.co.jp" class="btn-cta">まずは話を聞いてみる</a>
+      <a href="#requirements" class="btn-sub">募集要項を見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- Numbers -->
+<section class="section section-alt" id="numbers">
+  <div class="container">
+    <p class="sec-label">Company Facts</p>
+    <h2 class="sec-title">数字で見る新建設コンサルタント</h2>
+    <p class="sec-sample-note">※ここはサンプルです。実際には御社の実績データに差し替えます。</p>
+    <!-- ※サンプルデータです。御社の実績に合わせて差し替えてください -->
+    <div class="num-grid">
+      <div class="num-card">
+        <div class="num-figure">127<span>日</span></div>
+        <div class="num-label">年間休日<br>（土日祝・完全週休二日）</div>
+      </div>
+      <div class="num-card">
+        <div class="num-figure">48<span>万〜</span></div>
+        <div class="num-label">月給（万円）<br>経験・資格考慮</div>
+      </div>
+      <div class="num-card">
+        <div class="num-figure">10<span>h</span></div>
+        <div class="num-label">月平均残業時間<br>直行直帰でメリハリ</div>
+      </div>
+      <div class="num-card">
+        <div class="num-figure">30<span>万</span></div>
+        <div class="num-label">技術士合格祝い金<br>＋月5万円の手当</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Merit -->
+<section class="section" id="merit">
+  <div class="container">
+    <p class="sec-label">Working Style</p>
+    <h2 class="sec-title">建設業の常識を変える<br>働き方の自由度</h2>
+    <p class="sec-desc">「建設業＝残業が多い・土日も出勤」というイメージを覆す環境が整っています。</p>
+    <div class="merit-grid">
+      <div class="merit-card">
+        <div class="merit-icon">🏠</div>
+        <h3 class="merit-title">直行直帰・毎日の出社なし</h3>
+        <p class="merit-text">現場事務所への直行直帰が基本。本社や支社に毎日出勤する必要はありません。通勤ストレスを減らして、仕事に集中できます。</p>
+      </div>
+      <div class="merit-card">
+        <div class="merit-icon">📅</div>
+        <h3 class="merit-title">土日祝休み・年間127日</h3>
+        <p class="merit-text">完全週休二日制（土・日・祝日）＋年末年始・夏季休暇。建設業の中では水準の高い休日数で、プライベートをしっかり守れます。</p>
+      </div>
+      <div class="merit-card">
+        <div class="merit-icon">📈</div>
+        <h3 class="merit-title">資格で着実に給与アップ</h3>
+        <p class="merit-text">技術士手当は月5万円＋合格祝い金30万円。1級土木で月2万円、2級土木で月5千円。受験費用は全額会社負担なので、取るほど得をする仕組みです。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Freedom Feature -->
+<section class="section section-alt">
+  <div class="container">
+    <p class="sec-label">Work-Life Balance</p>
+    <h2 class="sec-title">「直行直帰×自由な働き方」<br>を支える制度</h2>
+    <p class="sec-desc">弊社が大切にしているのは「仕事のやりがい」と「賃金・生活のバランス」。社員一人ひとりが心身ともに健やかに働ける環境を整えています。</p>
+    <div class="freedom-wrap">
+      <div class="freedom-img">
+        <!-- 働き方・オフィスのイメージ -->
+        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=640&h=360&fit=crop&q=80" alt="仕事内容のイメージ">
+      </div>
+      <ul class="freedom-points">
+        <li>
+          <div class="fp-icon">🚗</div>
+          <div>
+            <div class="fp-title">マイカー通勤OK・駐車場あり</div>
+            <p class="fp-text">現場事務所へ車で直行。駐車場完備で、マイカー通勤可能です。</p>
+          </div>
+        </li>
+        <li>
+          <div class="fp-icon">💻</div>
+          <div>
+            <div class="fp-title">WEB面接・メール応募OK</div>
+            <p class="fp-text">選考もWEB面接対応で、遠方の方も安心してご応募いただけます。</p>
+          </div>
+        </li>
+        <li>
+          <div class="fp-icon">🎓</div>
+          <div>
+            <div class="fp-title">受験費用全額負担・資格取得支援</div>
+            <p class="fp-text">業務関連の資格は受験費用を全額会社が負担。学びながら稼げる環境です。</p>
+          </div>
+        </li>
+        <li>
+          <div class="fp-icon">🏥</div>
+          <div>
+            <div class="fp-title">企業年金・ベネフィット・ステーション</div>
+            <p class="fp-text">確定拠出年金・確定給付年金・退職金制度完備。会員制割引サービス（140万超）で生活もサポート。</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA mid -->
+<div class="cta-mid" id="cta-mid">
+  <h3>直行直帰・年休127日の働き方が気になりましたか？</h3>
+  <p>まずはメールでお気軽にお問い合わせください。WEB面接対応しています。</p>
+  <!-- CTA 2 -->
+  <a href="mailto:office@nc-c.co.jp" class="btn-cta">話を聞いてみる（無料）</a>
+</div>
+
+<!-- Interview -->
+<section class="section" id="interview">
+  <div class="container">
+    <p class="sec-label">Staff Interview</p>
+    <h2 class="sec-title">社員インタビュー</h2>
+    <p class="sec-desc" style="margin-bottom:6px;">実際に働いている社員の「本音」を聞きました。</p>
+    <p class="sec-sample-note">※ここはサンプルです。実際には御社社員の写真・コメントに差し替えます。</p>
+    <!-- ※サンプルデータです。御社社員の方々のインタビューに差し替えてください -->
+    <div class="interview-grid">
+      <div class="interview-card">
+        <img class="interview-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=640&h=300&fit=crop&crop=faces&q=80" alt="社員インタビュー（サンプル）">
+        <div class="interview-body">
+          <div class="interview-role">発注者支援業務</div>
+          <div class="interview-name">田中 宏志（仮名）</div>
+          <div class="interview-year">入社4年目 ／ 前職：建設会社施工管理</div>
+          <div class="interview-q">Q. 入社の決め手は？</div>
+          <p class="interview-a">「前の会社は残業が多く、土日も現場に出ることがありました。ここは直行直帰が当たり前で、家族との時間が確実に増えました。給与も上がって、転職して正解でした。」</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社社員のコメントに差し替えます。</p>
+        </div>
+      </div>
+      <div class="interview-card">
+        <img class="interview-img" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=640&h=300&fit=crop&crop=faces&q=80" alt="社員インタビュー（サンプル）">
+        <div class="interview-body">
+          <div class="interview-role">工事監督支援・資料作成</div>
+          <div class="interview-name">佐々木 誠（仮名）</div>
+          <div class="interview-year">入社2年目 ／ 前職：土木コンサルタント</div>
+          <div class="interview-q">Q. 入社後に良かったことは？</div>
+          <p class="interview-a">「資格取得のサポートが手厚くて驚きました。受験費用を全額出してもらえて、1級土木に合格したら月2万円の手当がつきました。勉強を続けるモチベーションが全然違います。」</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社社員のコメントに差し替えます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Day in Life -->
+<section class="section section-alt">
+  <div class="container">
+    <p class="sec-label">A Day in the Life</p>
+    <h2 class="sec-title">社員の1日の流れ</h2>
+    <p class="sec-desc" style="margin-bottom:6px;">「8:30から現場へ直行、17:15には帰る」が基本リズム。</p>
+    <p class="sec-sample-note">※ここはサンプルです。実際には御社社員の1日の流れに差し替えます。</p>
+    <!-- ※サンプルデータです。実際の社員の1日に差し替えてください -->
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">8:30</div><div class="tl-text">現場事務所に直行。今日の確認事項を担当者と確認。</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">9:00〜11:30</div><div class="tl-text">工事現場を巡回。進捗確認・品質チェック・写真撮影。</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">12:00</div><div class="tl-text">昼休憩（60分）。現場近くで食事・休息。</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">13:00〜16:30</div><div class="tl-text">報告書・資料作成（Excel・Word）。写真整理・データ入力。</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">17:15</div><div class="tl-text">現場事務所から直帰。メリハリある退勤が当たり前。</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Staff Messages -->
+<section class="section">
+  <div class="container">
+    <p class="sec-label">From Our Staff</p>
+    <h2 class="sec-title">先輩社員からのメッセージ</h2>
+    <p class="sec-sample-note">※ここはサンプルです。実際には御社社員の写真・コメントに差し替えます。</p>
+    <!-- ※サンプルデータです。御社社員の方々のコメントに差し替えてください -->
+    <div class="staff-grid3">
+      <div class="staff-card">
+        <img class="staff-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=260&fit=crop&crop=faces&q=80" alt="先輩社員（サンプル）">
+        <div class="staff-body">
+          <div class="staff-role">施工管理サポート</div>
+          <div class="staff-name">山本 達也（仮名）</div>
+          <div class="staff-year">入社6年目 ／ 1級土木施工管理技士</div>
+          <p class="staff-text">「国交省の現場は最初は緊張しましたが、会社のサポートが手厚くて安心でした。今は充実して働けています。」</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社社員のコメントに差し替えます。</p>
+        </div>
+      </div>
+      <div class="staff-card">
+        <img class="staff-img" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=260&fit=crop&crop=faces&q=80" alt="先輩社員（サンプル）">
+        <div class="staff-body">
+          <div class="staff-role">発注者支援・資料作成</div>
+          <div class="staff-name">中村 健太（仮名）</div>
+          <div class="staff-year">入社3年目 ／ 2級土木施工管理技士</div>
+          <p class="staff-text">「残業が少なく、趣味の時間を確保できるようになりました。資格手当も増えて生活にゆとりが出てきました。」</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社社員のコメントに差し替えます。</p>
+        </div>
+      </div>
+      <div class="staff-card">
+        <img class="staff-img" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=260&fit=crop&crop=faces&q=80" alt="先輩社員（サンプル）">
+        <div class="staff-body">
+          <div class="staff-role">工事監督支援</div>
+          <div class="staff-name">鈴木 あかね（仮名）</div>
+          <div class="staff-year">入社1年半 ／ 前職：建設事務</div>
+          <p class="staff-text">「現場を直接サポートする仕事で、達成感があります。分からないことは丁寧に教えてもらえて、毎日充実しています。」</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社社員のコメントに差し替えます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Requirements -->
+<section class="section section-alt" id="requirements">
+  <div class="container">
+    <p class="sec-label">Requirements</p>
+    <h2 class="sec-title">募集要項</h2>
+    <table class="req-table">
+      <tbody>
+        <tr><th>職種</th><td>発注者支援業務・工事監督支援・施工管理</td></tr>
+        <tr><th>雇用形態</th><td>正社員（雇用期間の定めなし）</td></tr>
+        <tr><th>就業場所</th><td>千葉県印西市（千葉ニュータウン中央駅 徒歩5分）現場事務所へ直行直帰</td></tr>
+        <tr><th>給与</th><td>月給480,000円〜800,000円（経験・資格考慮）</td></tr>
+        <tr><th>就業時間</th><td>8:30〜17:15（休憩60分）月平均残業10時間</td></tr>
+        <tr><th>休日</th><td>土・日・祝日、年末年始（12/29〜1/3）、夏季休暇 ／ 年間休日127日</td></tr>
+        <tr><th>必要経験</th><td>土木関係実務経験1年以上</td></tr>
+        <tr><th>免許・資格</th><td>普通自動車免許（必須・AT可）<br>1・2級土木施工管理技士、技術士等あれば尚可</td></tr>
+        <tr><th>資格手当</th><td>技術士：月5万円＋合格祝い金30万円<br>1級土木：月2万円 ／ 2級土木：月5千円<br>受験費用は全額会社負担</td></tr>
+        <tr><th>社会保険</th><td>雇用・労災・健康・厚生年金・企業年金（確定拠出・確定給付）</td></tr>
+        <tr><th>福利厚生</th><td>退職金制度・通勤手当（全額）・ベネフィット・ステーション・定期健康診断・ストレスチェック</td></tr>
+        <tr><th>採用人数</th><td>2名</td></tr>
+        <tr><th>選考方法</th><td>書類選考（5日以内通知）→ 面接1回（WEB可）→ 採用通知</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <p class="sec-label">FAQ</p>
+    <h2 class="sec-title">よくある質問</h2>
+    <p class="sec-sample-note">※ここはサンプルです。実際には御社の実情に合わせてQ&Aを差し替えます。</p>
+    <!-- ※サンプルのQ&Aです。御社の実情に合わせて差し替えてください -->
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">土木実務経験はどの程度必要ですか？<span class="faq-arrow">▼</span></div>
+        <div class="faq-a">土木関係の実務経験1年以上が必須条件です。施工管理・現場監督の経験者は特にスキルを活かしやすい環境です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">資格がなくても応募できますか？<span class="faq-arrow">▼</span></div>
+        <div class="faq-a">はい。1・2級土木施工管理技士や技術士は「あれば尚可」です（普通自動車免許は必須）。受験費用は会社が全額負担するので、入社後にキャリアアップできます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">残業や休日出勤はありますか？<span class="faq-arrow">▼</span></div>
+        <div class="faq-a">月平均残業10時間程度です。休日出勤は基本的にありません。直行直帰のため現場が終わればそのまま帰宅できます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">選考はWEBでできますか？<span class="faq-arrow">▼</span></div>
+        <div class="faq-a">はい、WEB面接に対応しています。書類選考（メール・郵送可）→ WEB面接1回 → 採用通知の流れです。遠方の方もご安心ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">「発注者支援業務」は未経験でも働けますか？<span class="faq-arrow">▼</span></div>
+        <div class="faq-a">土木実務経験が1年以上あれば、発注者支援業務自体は未経験でもOKです。業務内容は入社後に丁寧に教えてもらえます。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="cta-section" id="apply">
+  <div class="container">
+    <h2>直行直帰・土日祝休み・月給48万〜。<br>あなたの経験を活かしませんか？</h2>
+    <p>まずはメールでお気軽にお問い合わせください。WEB面接・メール応募に対応しています。</p>
+    <!-- CTA 3 -->
+    <a href="mailto:office@nc-c.co.jp" class="btn-cta-lg">メールで応募・お問い合わせ</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-co">新建設コンサルタント株式会社</div>
+    <div class="footer-info">
+      〒340-0822 埼玉県八潮市大瀬１－１－１ マインループ２１３<br>
+      TEL: 03-5789-5775　／　E-mail: office@nc-c.co.jp
+    </div>
+  </div>
+  <div class="footer-copy">© 新建設コンサルタント株式会社</div>
+</footer>
+
+<!-- Sticky CTA (SP only) -->
+<div class="sticky-cta">
+  <a href="mailto:office@nc-c.co.jp">応募・お問い合わせ（無料）</a>
+</div>
+
+<script>
+function toggleMenu(){var m=document.getElementById('spMenu');m.style.display=m.style.display==='block'?'none':'block';}
+function closeMenu(){document.getElementById('spMenu').style.display='none';}
+function toggleFaq(el){el.parentElement.classList.toggle('open');}
+</script>
+</body>
+</html>

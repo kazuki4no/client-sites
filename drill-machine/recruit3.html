@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | ドリルマシン株式会社</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#1a1a1a;line-height:1.7;background:#0f1e35}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+:root{--dark:#0f1e35;--mid:#1e3353;--cyan:#4fc3f7;--white:#fff;--text:#eaf2ff;--muted:#8fa8c8;--accent:#4fc3f7}
+
+/* ヘッダー */
+header{background:rgba(15,30,53,.95);backdrop-filter:blur(8px);position:fixed;top:0;left:0;right:0;z-index:100;border-bottom:1px solid rgba(79,195,247,.2)}
+.header-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{color:var(--white);font-family:'Noto Serif JP',serif;font-size:1rem;font-weight:700}
+.logo em{color:var(--cyan);font-style:normal}
+nav ul{list-style:none;display:flex;gap:24px}
+nav ul li a{color:var(--muted);font-size:.85rem;transition:color .2s}
+nav ul li a:hover{color:var(--cyan)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--cyan);border-radius:2px}
+.nav-overlay{display:none;position:fixed;inset:0;background:rgba(15,30,53,.97);z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:28px}
+.nav-overlay.open{display:flex}
+.nav-overlay a{color:var(--white);font-size:1.2rem;font-weight:700}
+.nav-overlay a:hover{color:var(--cyan)}
+.nav-overlay .close-btn{position:absolute;top:20px;right:24px;background:none;border:none;color:var(--muted);font-size:1.8rem;cursor:pointer}
+
+/* ヒーロー（FVバナー型） */
+.hero{position:relative;min-height:80vh;display:flex;align-items:center;padding-top:60px}
+.hero-bg{position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&h=900&fit=crop&q=80');
+  background-size:cover;background-position:center}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,30,53,.78) 0%,rgba(15,30,53,.55) 60%,rgba(30,51,83,.7) 100%)}
+.hero-content{position:relative;z-index:1;max-width:740px;padding:60px 24px 60px 48px}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(79,195,247,.15);border:1px solid rgba(79,195,247,.4);color:var(--cyan);font-size:.78rem;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:24px;letter-spacing:.1em}
+.hero-pill::before{content:'';width:8px;height:8px;background:var(--cyan);border-radius:50%;animation:blink 1.4s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.hero-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.9rem,5.5vw,3.8rem);font-weight:700;color:var(--white);line-height:1.25;margin-bottom:24px}
+.hero-title .cyan{color:var(--cyan)}
+.hero-sub{font-size:clamp(.9rem,2vw,1.05rem);color:rgba(255,255,255,.8);margin-bottom:36px;max-width:520px;line-height:1.8}
+.btn-cyan{display:inline-block;background:var(--cyan);color:var(--dark);font-size:1rem;font-weight:700;padding:14px 40px;border-radius:4px;transition:opacity .2s;letter-spacing:.05em}
+.btn-cyan:hover{opacity:.85}
+.hero-stats{display:flex;gap:32px;margin-top:40px;flex-wrap:wrap}
+.hero-stat .val{font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:900;color:var(--cyan);line-height:1}
+.hero-stat .lbl{font-size:.72rem;color:rgba(255,255,255,.6);margin-top:4px}
+.hero-stat-note{font-size:.65rem;color:rgba(255,255,255,.35);margin-top:16px}
+
+/* 共通セクション */
+.sec{padding:72px 20px;background:var(--dark)}
+.sec.alt{background:var(--mid)}
+.sec-inner{max-width:1100px;margin:0 auto}
+.tag{font-size:.72rem;font-weight:700;color:var(--cyan);letter-spacing:.2em;text-transform:uppercase;margin-bottom:8px}
+.sec-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.3rem,3.5vw,2rem);font-weight:700;color:var(--white);margin-bottom:12px}
+.sec-lead{color:var(--muted);font-size:.9rem;margin-bottom:40px;max-width:600px}
+.s-note{font-size:.72rem;color:rgba(255,255,255,.25)}
+
+/* 強みカード */
+.strength-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.str-card{background:rgba(255,255,255,.05);border:1px solid rgba(79,195,247,.18);border-radius:8px;padding:24px}
+.str-icon{font-size:2rem;margin-bottom:12px}
+.str-title{font-size:1rem;font-weight:700;color:var(--white);margin-bottom:8px}
+.str-text{font-size:.86rem;color:var(--muted);line-height:1.8}
+
+/* 先輩の声 */
+.voices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.voice-card{background:rgba(255,255,255,.04);border:1px solid rgba(79,195,247,.12);border-radius:8px;overflow:hidden}
+.voice-img{height:180px;object-fit:cover;width:100%}
+.voice-body{padding:18px}
+.voice-name{font-size:.92rem;font-weight:700;color:var(--white)}
+.voice-role{font-size:.72rem;color:var(--cyan);margin-bottom:8px}
+.voice-text{font-size:.85rem;color:var(--muted);line-height:1.8}
+
+/* 募集要項 */
+.req-table{width:100%;border-collapse:collapse;font-size:.88rem}
+.req-table tr{border-bottom:1px solid rgba(79,195,247,.12)}
+.req-table th{width:130px;background:rgba(79,195,247,.08);color:var(--cyan);font-weight:700;padding:13px 14px;vertical-align:top;white-space:nowrap}
+.req-table td{padding:13px 14px;color:var(--text)}
+
+/* タイムライン */
+.tl-list{list-style:none;max-width:600px}
+.tl-list li{display:flex;gap:16px;margin-bottom:20px}
+.tl-t{min-width:56px;font-size:.78rem;font-weight:700;color:var(--cyan);padding-top:3px}
+.tl-d{width:12px;height:12px;border-radius:50%;background:var(--cyan);margin-top:5px;flex-shrink:0;box-shadow:0 0 6px rgba(79,195,247,.5)}
+.tl-text{font-size:.88rem;color:var(--muted)}
+.tl-label{font-weight:700;color:var(--white);margin-bottom:2px}
+
+/* FAQ */
+.faq-list{max-width:780px}
+.faq-item{border-bottom:1px solid rgba(79,195,247,.12)}
+details{cursor:pointer}
+summary{list-style:none;display:flex;align-items:flex-start;gap:12px;padding:16px 0;font-size:.92rem;font-weight:700;color:var(--white)}
+summary::after{content:'＋';margin-left:auto;font-size:1.1rem;color:var(--cyan);flex-shrink:0}
+details[open] summary::after{content:'－'}
+.faq-a{display:flex;gap:12px;padding:0 0 16px;font-size:.86rem;color:var(--muted);line-height:1.8}
+.bq,.ba{min-width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;flex-shrink:0;margin-top:3px}
+.bq{background:rgba(255,255,255,.1);color:var(--white)}
+.ba{background:var(--cyan);color:var(--dark)}
+
+/* 採用担当 */
+.mgr-card{background:rgba(255,255,255,.05);border:1px solid rgba(79,195,247,.18);border-radius:8px;padding:28px;display:flex;gap:20px;max-width:660px}
+.mgr-avatar{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.mgr-name{font-size:.95rem;font-weight:700;color:var(--white)}
+.mgr-role{font-size:.72rem;color:var(--cyan);margin-bottom:8px}
+.mgr-msg{font-size:.87rem;color:var(--muted);line-height:1.8}
+
+/* CTA */
+.cta-sec{text-align:center;padding:80px 20px;background:linear-gradient(135deg,#0a1628 0%,#1a3660 50%,#0a1628 100%)}
+.cta-sec h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,3.5vw,2.2rem);color:var(--white);margin-bottom:12px}
+.cta-sec p{color:var(--muted);margin-bottom:32px;font-size:.92rem}
+.btn-cyan-lg{display:inline-block;background:var(--cyan);color:var(--dark);font-size:1.05rem;font-weight:700;padding:16px 52px;border-radius:4px;transition:opacity .2s;letter-spacing:.05em}
+.btn-cyan-lg:hover{opacity:.85}
+
+/* フッター */
+footer{background:#060e1a;color:var(--muted);padding:28px 20px;font-size:.8rem;text-align:center;border-top:1px solid rgba(79,195,247,.1)}
+
+/* レスポンシブ */
+@media(max-width:768px){
+  nav ul{display:none}
+  .hamburger{display:flex}
+  .hero-content{padding:40px 20px 40px}
+  .hero-stats{gap:20px}
+  .strength-grid{grid-template-columns:1fr}
+  .voices-grid{grid-template-columns:1fr}
+  .req-table th,.req-table td{display:block;width:100%}
+  .req-table th{padding-bottom:4px}
+  .req-table td{padding-top:4px;padding-bottom:12px}
+  .mgr-card{flex-direction:column}
+}
+</style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header>
+  <div class="header-inner">
+    <div class="logo">ドリルマシン<em>株式会社</em></div>
+    <nav>
+      <ul>
+        <li><a href="#strength">働く魅力</a></li>
+        <li><a href="#recruit">募集要項</a></li>
+        <li><a href="#timeline">1日の流れ</a></li>
+        <li><a href="#voices">先輩の声</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#apply">応募する</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="nav-overlay" id="nav-overlay">
+  <button class="close-btn" id="nav-close">✕</button>
+  <a href="#strength" class="nav-link">働く魅力</a>
+  <a href="#recruit" class="nav-link">募集要項</a>
+  <a href="#timeline" class="nav-link">1日の流れ</a>
+  <a href="#voices" class="nav-link">先輩の声</a>
+  <a href="#faq" class="nav-link">FAQ</a>
+  <a href="#apply" class="nav-link">応募する</a>
+</div>
+
+<!-- ヒーロー（全画面FVバナー） -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-pill">千葉DC（印西市）正社員 ／ 2名募集</div>
+    <h1 class="hero-title">現場を動かす<br>機材が、<span class="cyan">あなたの手</span>から<br>始まっている。</h1>
+    <p class="hero-sub">土木配管機材の整備・出荷管理スタッフ募集。未経験でも入社後に資格取得（会社費用）。大手建設会社を陰で支える、ニッチで確かな仕事です。</p>
+    <a href="#apply" class="btn-cyan">応募・問い合わせはこちら</a>
+    <div class="hero-stats">
+      <div class="hero-stat"><div class="val">260万〜</div><div class="lbl">月給（固定残業込み）</div></div>
+      <div class="hero-stat"><div class="val">105日</div><div class="lbl">年間休日</div></div>
+      <div class="hero-stat"><div class="val">0円</div><div class="lbl">資格取得自己負担</div></div>
+    </div>
+    <p class="hero-stat-note">※写真はサンプルです。実際には御社の職場写真に差し替えます。数字はサンプルです。</p>
+  </div>
+</div>
+
+<!-- 働く魅力 -->
+<section class="sec" id="strength">
+  <div class="sec-inner">
+    <div class="tag">WHY US</div>
+    <h2 class="sec-title">ドリルマシンで働く3つの理由</h2>
+    <p class="sec-lead">求人票には収まりきらなかった、入社前に知っておいてほしいことを率直にお伝えします。</p>
+    <div class="strength-grid">
+      <div class="str-card">
+        <div class="str-icon">🛠</div>
+        <div class="str-title">資格取得は全額会社負担</div>
+        <p class="str-text">フォークリフト・小型クレーンなど業務に必要な資格は、会社が認めた場合は費用全額会社負担。スキルアップのコストを個人に押しつけません。</p>
+      </div>
+      <div class="str-card">
+        <div class="str-icon">💰</div>
+        <div class="str-title">月給26万〜35万＋充実の手当</div>
+        <p class="str-text">特別手当・住宅手当・家族手当・通勤手当が整っており、賞与は年2回（前年度実績2.5か月）、退職金制度も3年以上で適用されます。</p>
+      </div>
+      <div class="str-card">
+        <div class="str-icon">👥</div>
+        <div class="str-title">少人数で顔が見える職場</div>
+        <p class="str-text">千葉DCは6人体制。大手建設会社が取引先でも、職場は風通しのよい少人数チーム。困ったときにすぐ相談できる環境があります。</p>
+      </div>
+    </div>
+    <p class="s-note" style="margin-top:20px">※ここはサンプルです。実際には御社の強みに差し替えます。</p>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section class="sec alt" id="voices">
+  <div class="sec-inner">
+    <div class="tag">VOICES</div>
+    <h2 class="sec-title">先輩スタッフの声</h2>
+    <p class="sec-lead">実際に働いているメンバーから聞きました。</p>
+    <div class="voices-grid">
+      <div class="voice-card">
+        <img class="voice-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=640&h=380&fit=crop&crop=faces&q=80" alt="先輩スタッフ">
+        <div class="voice-body">
+          <div class="voice-name">田中 誠（仮名）</div>
+          <div class="voice-role">整備スタッフ ／ 入社3年目</div>
+          <p class="voice-text">最初は何もわかりませんでしたが、先輩が丁寧に教えてくれました。フォークリフトも会社負担で取れて、今は一人前として動けています。</p>
+          <p class="s-note">※ここはサンプルです。実際には御社スタッフの声に差し替えます。</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <img class="voice-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=640&h=380&fit=crop&crop=faces&q=80" alt="先輩スタッフ">
+        <div class="voice-body">
+          <div class="voice-name">佐藤 健（仮名）</div>
+          <div class="voice-role">出荷担当 ／ 入社5年目</div>
+          <p class="voice-text">少人数で動いているから、自分の仕事が直接結果につながる感じがあります。残業は少なめで、家族との時間も大事にできています。</p>
+          <p class="s-note">※ここはサンプルです。実際には御社スタッフの声に差し替えます。</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <img class="voice-img" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=640&h=380&fit=crop&crop=faces&q=80" alt="先輩スタッフ">
+        <div class="voice-body">
+          <div class="voice-name">山本 なつき（仮名）</div>
+          <div class="voice-role">事務サポート ／ 入社2年目</div>
+          <p class="voice-text">土木のことは知識ゼロでしたが、少しずつ覚えていけました。自分が整えた機材が実際の建設現場で使われていると聞くと、ちょっと嬉しくなります。</p>
+          <p class="s-note">※ここはサンプルです。実際には御社スタッフの声に差し替えます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section class="sec" id="timeline">
+  <div class="sec-inner">
+    <div class="tag">A DAY</div>
+    <h2 class="sec-title">整備スタッフの1日の流れ</h2>
+    <p class="sec-lead">印西市千葉DCでのリアルな1日。</p>
+    <ul class="tl-list">
+      <li><span class="tl-t">08:30</span><div class="tl-d"></div><div class="tl-text"><div class="tl-label">出勤・朝礼</div>当日の出荷・返却予定を共有。</div></li>
+      <li><span class="tl-t">09:00</span><div class="tl-d"></div><div class="tl-text"><div class="tl-label">返却機材の受け入れ・点検</div>状態を確認し、整備優先度を判断します。</div></li>
+      <li><span class="tl-t">10:00</span><div class="tl-d"></div><div class="tl-text"><div class="tl-label">高圧洗浄・塗装・格納</div>機材を洗浄し塗装。フォークリフトで格納します。</div></li>
+      <li><span class="tl-t">12:00</span><div class="tl-d"></div><div class="tl-text"><div class="tl-label">昼食休憩（90分）</div>しっかり休みます。</div></li>
+      <li><span class="tl-t">13:30</span><div class="tl-d"></div><div class="tl-text"><div class="tl-label">整備の続き・在庫整理</div>在庫状態を整え、次の出荷に備えます。</div></li>
+      <li><span class="tl-t">15:00</span><div class="tl-d"></div><div class="tl-text"><div class="tl-label">出荷準備・梱包・発送手配</div>翌日分をリスト確認しながらピッキング・梱包。</div></li>
+      <li><span class="tl-t">17:15</span><div class="tl-d"></div><div class="tl-text"><div class="tl-label">退勤</div>月平均残業15時間。きっちり終わります。</div></li>
+    </ul>
+    <p class="s-note" style="margin-top:14px">※ここはサンプルです。実際には御社のスケジュールに差し替えます。</p>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="sec alt" id="recruit">
+  <div class="sec-inner">
+    <div class="tag">REQUIREMENTS</div>
+    <h2 class="sec-title">募集要項</h2>
+    <table class="req-table">
+      <tr><th>職種</th><td>土木配管機材の整備及び出荷業務管理</td></tr>
+      <tr><th>雇用形態</th><td>正社員（試用期間3か月・同条件）</td></tr>
+      <tr><th>就業場所</th><td>千葉県印西市岩戸3578-1 ドリルマシン千葉DC（転勤なし）</td></tr>
+      <tr><th>月給</th><td>260,000円〜350,000円（固定残業30時間分55,000〜80,000円含む・超過分追加支給）</td></tr>
+      <tr><th>基本給</th><td>135,000円〜150,000円</td></tr>
+      <tr><th>各種手当</th><td>特別手当60,000〜80,000円／住宅手当10,000〜40,000円／家族手当（配偶者20,000円・子5,000円）／通勤手当実費（上限50,000円）</td></tr>
+      <tr><th>就業時間</th><td>8:30〜17:15（月〜金）／第1・3土曜8:30〜17:15　休憩90分</td></tr>
+      <tr><th>年間休日</th><td>105日（日・祝・第2/4/5土・年末年始・夏季休暇）</td></tr>
+      <tr><th>昇給・賞与</th><td>昇給あり ／ 賞与年2回（前年度実績2.5か月）</td></tr>
+      <tr><th>退職金</th><td>あり（勤続3年以上）</td></tr>
+      <tr><th>保険</th><td>雇用・労災・健康・厚生年金</td></tr>
+      <tr><th>資格取得</th><td>会社認定資格は全額会社負担（フォークリフト・小型クレーン等）</td></tr>
+      <tr><th>応募資格</th><td>普通自動車免許（AT限定可）／44歳まで（キャリア形成）／学歴・経験不問</td></tr>
+      <tr><th>マイカー</th><td>通勤可・無料駐車場あり</td></tr>
+      <tr><th>採用人数</th><td>2名</td></tr>
+      <tr><th>選考</th><td>書類選考→1次面接（印西市）→2次面接（東京本社・交通費会社負担）</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq">
+  <div class="sec-inner">
+    <div class="tag">FAQ</div>
+    <h2 class="sec-title">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <details>
+          <summary><span class="bq">Q</span>未経験でも応募できますか？</summary>
+          <div class="faq-a"><span class="ba">A</span>はい、大歓迎です。フォークリフト・小型クレーンは入社後に会社費用で取得できます。普通免許（AT限定可）があれば、経験・学歴は不問です。</div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary><span class="bq">Q</span>「土木配管機材の整備」はどれくらいで慣れますか？</summary>
+          <div class="faq-a"><span class="ba">A</span>先輩が一から指導します。機材の種類から整備の流れまで丁寧に教えるので、焦らず着実に覚えていけます。個人差はありますが、多くのスタッフは数か月で基本的な作業を一人でこなせるようになっています。</div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary><span class="bq">Q</span>転勤はありますか？</summary>
+          <div class="faq-a"><span class="ba">A</span>転勤なしです。千葉県印西市岩戸の千葉DC（デリバリーセンター）1か所のみでの勤務です。</div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary><span class="bq">Q</span>資格取得のサポートはどのくらいありますか？</summary>
+          <div class="faq-a"><span class="ba">A</span>フォークリフト・小型クレーンをはじめ、会社が業務に必要と認めた資格は費用全額会社負担で取得できます。取得を希望する資格があれば、上司に相談してください。</div>
+        </details>
+      </div>
+      <div class="faq-item">
+        <details>
+          <summary><span class="bq">Q</span>選考の流れを教えてください。</summary>
+          <div class="faq-a"><span class="ba">A</span>書類選考 → 1次面接（印西市千葉DC）→ 2次面接（東京本社・交通費会社負担）の流れです。各ステップの結果は7日以内にご連絡します。</div>
+        </details>
+      </div>
+    </div>
+    <p class="s-note" style="margin-top:14px">※ここはサンプルです。実際には御社のQ&Aに差し替えます。</p>
+  </div>
+</section>
+
+<!-- 採用担当 -->
+<section class="sec alt">
+  <div class="sec-inner">
+    <div class="tag">FROM RECRUITER</div>
+    <h2 class="sec-title">採用担当からひとこと</h2>
+    <div class="mgr-card">
+      <img class="mgr-avatar" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当">
+      <div>
+        <div class="mgr-name">大竹（仮名）</div>
+        <div class="mgr-role">採用担当</div>
+        <p class="mgr-msg">「土木配管機材」と聞くと難しそうですが、基本は機材を丁寧に整備して正確に届けること。少人数のチームで、あなたの仕事が直接現場に届きます。まずは気軽に問い合わせてください。</p>
+        <p class="s-note" style="margin-top:8px">※ここはサンプルです。実際には採用担当者の写真・コメントに差し替えます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 応募CTA -->
+<div class="cta-sec" id="apply">
+  <h2>あなたの応募をお待ちしています</h2>
+  <p>未経験・経験問わず歓迎。まずはお気軽にご連絡ください。</p>
+  <a href="mailto:h-ootake@drill.co.jp" class="btn-cyan-lg">応募・問い合わせはこちら</a>
+  <p style="color:var(--muted);font-size:.78rem;margin-top:20px">メール: h-ootake@drill.co.jp　／　TEL: 03-3806-3377</p>
+</div>
+
+<!-- フッター -->
+<footer>
+  ドリルマシン株式会社　〒270-1616 千葉県印西市岩戸3578-1（千葉DC）　TEL: 03-3806-3377　E-mail: h-ootake@drill.co.jp<br>
+  <span style="font-size:.72rem;opacity:.4">© ドリルマシン株式会社</span>
+</footer>
+
+<script>
+const hamburger=document.getElementById('hamburger');
+const overlay=document.getElementById('nav-overlay');
+const closeBtn=document.getElementById('nav-close');
+hamburger.addEventListener('click',()=>overlay.classList.add('open'));
+closeBtn.addEventListener('click',()=>overlay.classList.remove('open'));
+overlay.querySelectorAll('.nav-link').forEach(a=>a.addEventListener('click',()=>overlay.classList.remove('open')));
+</script>
+</body>
+</html>

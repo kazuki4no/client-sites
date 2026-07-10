@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>採用情報｜株式会社アドバンス・テクノロジー</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { max-width: 100%; overflow-x: hidden; font-family: 'Noto Sans JP', sans-serif; color: #1e293b; }
+    img { max-width: 100%; height: auto; display: block; }
+    :root {
+      --primary: #0f172a;
+      --navy: #1e3a8a;
+      --gold: #d97706;
+      --gold-light: #fbbf24;
+      --light: #f0f4ff;
+      --muted: #64748b;
+      --bg: #f8fafc;
+    }
+
+    /* Header */
+    header { background: rgba(15,23,42,0.96); position: fixed; top: 0; left: 0; right: 0; z-index: 200; backdrop-filter: blur(8px); }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .logo { color: #fff; font-size: 0.9rem; font-weight: 700; text-decoration: none; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.82rem; transition: color 0.2s; white-space: nowrap; }
+    .nav-links a:hover { color: var(--gold-light); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; }
+    .mobile-menu { display: none; background: rgba(15,23,42,0.98); padding: 1rem 1.5rem; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; color: rgba(255,255,255,0.85); text-decoration: none; padding: 0.65rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); font-size: 0.95rem; }
+    @media (max-width: 768px) { .nav-links { display: none; } .hamburger { display: flex; } }
+
+    /* Hero: Full-screen FV banner */
+    .hero {
+      position: relative;
+      min-height: 85vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding-top: 60px;
+    }
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background: url('https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1600&h=900&fit=crop&q=80') center/cover;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(160deg, rgba(15,23,42,0.78) 0%, rgba(30,58,138,0.72) 60%, rgba(15,23,42,0.6) 100%);
+    }
+    .hero-content {
+      position: relative;
+      text-align: center;
+      color: #fff;
+      padding: 3rem 1.5rem;
+      max-width: 800px;
+    }
+    .hero-pill {
+      display: inline-block;
+      border: 1px solid rgba(251,191,36,0.6);
+      color: var(--gold-light);
+      border-radius: 9999px;
+      padding: 0.3rem 1.1rem;
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      margin-bottom: 1.75rem;
+      font-family: 'Noto Sans JP', sans-serif;
+    }
+    .hero h1 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1.8rem, 5.5vw, 3.2rem);
+      font-weight: 700;
+      line-height: 1.4;
+      margin-bottom: 1.5rem;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    }
+    .hero h1 em {
+      font-style: normal;
+      color: var(--gold-light);
+    }
+    .hero p {
+      font-size: clamp(0.9rem, 2.2vw, 1rem);
+      color: rgba(255,255,255,0.82);
+      line-height: 2;
+      margin-bottom: 2.5rem;
+    }
+    .btn-gold {
+      display: inline-block;
+      background: var(--gold);
+      color: #fff;
+      padding: 1rem 3rem;
+      border-radius: 4px;
+      font-weight: 700;
+      text-decoration: none;
+      font-size: 1rem;
+      letter-spacing: 0.05em;
+      transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-gold:hover { background: #b45309; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(217,119,6,0.4); }
+    .hero-scroll { position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%); color: rgba(255,255,255,0.5); font-size: 0.75rem; letter-spacing: 0.1em; }
+    .hero-scroll::after { content: '↓'; display: block; text-align: center; margin-top: 0.25rem; font-size: 1rem; animation: bounce 1.5s infinite; }
+    @keyframes bounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(4px)} }
+
+    /* Sections */
+    section { padding: 5rem 1.5rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(1.3rem, 4vw, 2rem);
+      font-weight: 700;
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 0.5rem;
+    }
+    .divider { width: 48px; height: 3px; background: var(--gold); border-radius: 2px; margin: 0.75rem auto 2.5rem; }
+    .sample-note { font-size: 0.72rem; color: #94a3b8; margin-top: 0.6rem; }
+
+    /* Intro ribbon */
+    .intro-section { background: var(--primary); color: #fff; padding: 3.5rem 1.5rem; text-align: center; }
+    .intro-section p { max-width: 680px; margin: 0 auto; line-height: 2; color: rgba(255,255,255,0.85); font-size: 0.95rem; }
+    .intro-section strong { color: var(--gold-light); }
+
+    /* Points */
+    .points-bg { background: var(--bg); }
+    .points-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .point-card {
+      border-top: 4px solid var(--gold);
+      background: #fff;
+      border-radius: 0 0 12px 12px;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      box-shadow: 0 4px 20px rgba(15,23,42,0.08);
+    }
+    .point-icon { font-size: 2.8rem; margin-bottom: 1rem; }
+    .point-card h3 { font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 0.65rem; }
+    .point-card p { font-size: 0.875rem; color: var(--muted); line-height: 1.8; }
+
+    /* Job */
+    .job-section { background: var(--light); }
+    .job-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
+    .job-img { width: 100%; height: 380px; object-fit: cover; border-radius: 8px; }
+    .job-img-note { font-size: 0.72rem; color: #94a3b8; text-align: center; margin-top: 0.4rem; }
+    .job-body h2 { font-family: 'Noto Serif JP', serif; font-size: clamp(1.2rem, 3vw, 1.6rem); font-weight: 700; color: var(--primary); margin-bottom: 1.5rem; }
+    .job-list { list-style: none; display: grid; gap: 1rem; }
+    .job-list li { display: flex; gap: 0.75rem; align-items: flex-start; }
+    .job-list .mark { color: var(--gold); font-size: 1.1rem; flex-shrink: 0; margin-top: 2px; }
+    .job-list .title { font-weight: 700; font-size: 0.95rem; display: block; margin-bottom: 0.2rem; }
+    .job-list p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+
+    /* Voice */
+    .voice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .voice-card {
+      background: #fff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 16px rgba(15,23,42,0.08);
+      position: relative;
+    }
+    .voice-card img { width: 100%; height: 180px; object-fit: cover; }
+    .voice-inner { padding: 1.25rem; }
+    .voice-inner .name { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.1rem; }
+    .voice-inner .role { font-size: 0.78rem; color: var(--gold); margin-bottom: 0.75rem; font-weight: 700; }
+    .voice-inner p { font-size: 0.85rem; color: #475569; line-height: 1.85; }
+    .voice-card::before { content: '"'; position: absolute; top: 172px; right: 1rem; font-size: 4rem; color: var(--gold-light); opacity: 0.25; line-height: 1; font-family: serif; }
+
+    /* Timeline */
+    .tl-section { background: var(--primary); }
+    .tl-section .section-title { color: #fff; }
+    .tl-section .divider { background: var(--gold); }
+    .timeline { max-width: 640px; margin: 0 auto; }
+    .tl-item { display: flex; gap: 1.5rem; margin-bottom: 2rem; align-items: flex-start; color: #fff; }
+    .tl-left { min-width: 60px; text-align: right; }
+    .tl-time { font-size: 0.85rem; font-weight: 700; color: var(--gold-light); }
+    .tl-connector { width: 2px; flex-shrink: 0; position: relative; }
+    .tl-connector::before { content: ''; display: block; width: 12px; height: 12px; background: var(--gold); border-radius: 50%; position: absolute; left: -5px; top: 4px; }
+    .tl-connector::after { content: ''; display: block; width: 2px; background: rgba(255,255,255,0.15); height: calc(100% + 2rem); position: absolute; left: 0; top: 12px; }
+    .tl-item:last-child .tl-connector::after { display: none; }
+    .tl-body { padding-top: 2px; }
+    .tl-body h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .tl-body p { font-size: 0.82rem; color: rgba(255,255,255,0.65); line-height: 1.65; }
+
+    /* Requirements */
+    .req-wrap { max-width: 760px; margin: 0 auto; }
+    table.req-table { width: 100%; border-collapse: collapse; }
+    .req-table th, .req-table td { padding: 0.85rem 1rem; border-bottom: 1px solid #e2e8f0; text-align: left; vertical-align: top; font-size: 0.92rem; }
+    .req-table th { width: 130px; background: var(--light); color: var(--navy); font-weight: 700; white-space: nowrap; }
+    .req-table td small { font-size: 0.82rem; color: var(--muted); display: block; margin-top: 0.2rem; }
+
+    /* FAQ */
+    .faq-bg { background: var(--bg); }
+    .faq-list { max-width: 760px; margin: 0 auto; }
+    .faq-item { background: #fff; border-radius: 8px; margin-bottom: 0.75rem; box-shadow: 0 1px 8px rgba(15,23,42,0.07); }
+    .faq-q { display: flex; align-items: flex-start; gap: 0.75rem; padding: 1rem 1.25rem; font-weight: 700; font-size: 0.95rem; color: var(--navy); }
+    .q-label { background: var(--gold); color: #fff; border-radius: 4px; padding: 2px 7px; font-size: 0.78rem; flex-shrink: 0; margin-top: 2px; }
+    .faq-a { padding: 0 1.25rem 1rem 2.8rem; font-size: 0.9rem; color: #475569; line-height: 1.85; }
+
+    /* CTA */
+    .cta-section {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--primary) 100%);
+      color: #fff;
+      text-align: center;
+    }
+    .cta-section h2 { font-family: 'Noto Serif JP', serif; font-size: clamp(1.4rem, 4vw, 2.2rem); margin-bottom: 1rem; }
+    .cta-section p { color: rgba(255,255,255,0.82); margin-bottom: 2.5rem; font-size: 0.95rem; line-height: 1.9; }
+    .btn-gold-outline { display: inline-block; border: 2px solid var(--gold-light); color: var(--gold-light); padding: 1rem 3rem; border-radius: 4px; font-weight: 700; text-decoration: none; font-size: 1rem; letter-spacing: 0.05em; transition: background 0.2s, color 0.2s; }
+    .btn-gold-outline:hover { background: var(--gold); border-color: var(--gold); color: #fff; }
+
+    /* Footer */
+    footer { background: #060d1a; color: rgba(255,255,255,0.5); text-align: center; padding: 2rem 1.5rem; font-size: 0.82rem; line-height: 2; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .points-grid { grid-template-columns: 1fr; }
+      .job-grid { grid-template-columns: 1fr; }
+      .job-img { height: 240px; }
+      .voice-grid { grid-template-columns: 1fr; }
+      .req-table { display: block; }
+      .req-table tbody { display: block; }
+      .req-table tr { display: block; border-bottom: 2px solid #e2e8f0; padding: 0.5rem 0; }
+      .req-table th, .req-table td { display: block; width: 100%; border: none; padding: 0.3rem 0.75rem; }
+      .req-table th { background: none; color: var(--gold); font-size: 0.78rem; padding-bottom: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <a class="logo" href="#">アドバンス・テクノロジー 採用情報</a>
+    <ul class="nav-links">
+      <li><a href="#points">魅力</a></li>
+      <li><a href="#job">仕事内容</a></li>
+      <li><a href="#voice">先輩の声</a></li>
+      <li><a href="#requirements">募集要項</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#apply">応募する</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-menu" id="mobile-menu">
+    <a href="#points">働く魅力</a>
+    <a href="#job">仕事内容</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#faq">よくある質問</a>
+    <a href="#apply">応募する</a>
+  </nav>
+</header>
+
+<!-- Hero: Full-screen FV -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-pill">RECRUIT 2026 ｜ 正社員募集（2名）</span>
+    <h1>大手通信キャリアを支える<br>精度の仕事、<em>ここにある。</em></h1>
+    <p>残業月2時間。年間休日126日。月給20.5万円〜。<br>
+       未経験・学歴不問。設立30年の安定企業で、<br>
+       コツコツ積み上げていく働き方を。</p>
+    <a href="#apply" class="btn-gold">採用に応募する</a>
+  </div>
+  <div class="hero-scroll">SCROLL</div>
+</div>
+
+<!-- Intro -->
+<div class="intro-section">
+  <p>求人票の<strong>「データ入力」</strong>という一言の裏に、大手通信キャリアのインフラを支えるという確かな仕事があります。<br>設立30年の実績と、先輩たちが語る職場のリアルを、このページでお届けします。</p>
+</div>
+
+<!-- Points -->
+<section class="points-bg" id="points">
+  <div class="container">
+    <h2 class="section-title">ここで働く3つの理由</h2>
+    <div class="divider"></div>
+    <div class="points-grid">
+      <div class="point-card">
+        <div class="point-icon">⏱</div>
+        <h3>残業ほぼなし・年休126日</h3>
+        <p>月平均残業2時間。9:00〜18:00の規則正しい勤務。土日祝＋年末年始・夏期休暇で年間126日休めます。プライベートを大切にできる環境です。</p>
+      </div>
+      <div class="point-card">
+        <div class="point-icon">💴</div>
+        <h3>安定した給与・しっかり昇給</h3>
+        <p>月給20.5万〜28万円（手当含む）。昇給は前年実績で月3,000〜6,000円。賞与年2回（計2.5ヶ月）、退職金制度（勤続3年〜）、育児休業取得実績あり。</p>
+      </div>
+      <div class="point-card">
+        <div class="point-icon">🛡</div>
+        <h3>設立30年の安定経営</h3>
+        <p>大手通信機器メーカーのデータ処理を30年以上手がける安定企業。未経験からでも手順書と研修・OJTで安心してスタートできます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Job -->
+<section class="job-section" id="job">
+  <div class="container">
+    <div class="job-grid">
+      <div>
+        <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=760&h=380&fit=crop&q=80" alt="オフィスでの業務の様子" class="job-img">
+        <!-- 差し替え: 実際の職場の写真に更新 -->
+        <p class="job-img-note">※ここはサンプルです。実際には御社の職場写真に差し替えます</p>
+      </div>
+      <div class="job-body">
+        <h2>「データ入力」では<br>伝わらない仕事の中身</h2>
+        <ul class="job-list">
+          <li>
+            <span class="mark">▶</span>
+            <div>
+              <span class="title">通信機器へのフォーマット入力</span>
+              <p>大手通信キャリア向けの機器に、決められた仕様に沿って設定データを入力。精度と正確さが求められる、インフラを支える仕事です。</p>
+            </div>
+          </li>
+          <li>
+            <span class="mark">▶</span>
+            <div>
+              <span class="title">客先への電話・メール対応</span>
+              <p>作業内容に関する問い合わせへの丁寧な対応。コミュニケーション力も自然に磨かれます。</p>
+            </div>
+          </li>
+          <li>
+            <span class="mark">▶</span>
+            <div>
+              <span class="title">書類作成などの事務作業</span>
+              <p>業務関連書類の作成・管理。PC基本操作があれば十分対応できます。</p>
+            </div>
+          </li>
+        </ul>
+        <p style="margin-top:1.5rem;font-size:0.85rem;color:var(--muted);line-height:1.8;padding:1rem;background:#fff;border-radius:8px;">
+          <strong style="color:var(--primary);">応募資格：</strong>経験不問・学歴不問・年齢不問<br>
+          PC基本操作ができれば大丈夫。コツコツ丁寧な作業が好きな方、大歓迎です。
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Voice -->
+<section id="voice">
+  <div class="container">
+    <h2 class="section-title">先輩からのメッセージ</h2>
+    <div class="divider"></div>
+    <!-- 差し替え: 実際の社員写真・コメントに更新 -->
+    <p style="text-align:center;font-size:0.72rem;color:#94a3b8;margin-bottom:2rem;">※ここはサンプルです。実際には御社スタッフの声に差し替えます</p>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=640&h=180&fit=crop&crop=faces&q=80" alt="田中 香さん">
+        <!-- 差し替え: 社員の実際の写真に更新 -->
+        <div class="voice-inner">
+          <div class="name">田中 香（仮名）</div>
+          <div class="role">データ入力スタッフ・入社3年目</div>
+          <p>前職は飲食業でPCは苦手でしたが、研修でしっかり教えてもらえました。定時に帰れて、プライベートの充実度が全然違います。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社社員のコメントに差し替えます</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=640&h=180&fit=crop&crop=faces&q=80" alt="佐藤 健さん">
+        <!-- 差し替え: 社員の実際の写真に更新 -->
+        <div class="voice-inner">
+          <div class="name">佐藤 健（仮名）</div>
+          <div class="role">データ入力スタッフ・入社5年目</div>
+          <p>大手通信キャリアの通信インフラを支えているんだと気づいてから、仕事の見え方が変わりました。5年で着実に昇給しており、長く続けられる職場です。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社社員のコメントに差し替えます</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=640&h=180&fit=crop&crop=faces&q=80" alt="山田 美咲さん">
+        <!-- 差し替え: 社員の実際の写真に更新 -->
+        <div class="voice-inner">
+          <div class="name">山田 美咲（仮名）</div>
+          <div class="role">データ入力スタッフ・入社2年目</div>
+          <p>子育てしながら働けるか不安でしたが、年休126日・残業ほぼなし・育児休業実績ありで安心して入社できました。職場も温かくて助かっています。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社社員のコメントに差し替えます</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Timeline -->
+<section class="tl-section" id="day">
+  <div class="container">
+    <h2 class="section-title">1日の流れ</h2>
+    <div class="divider"></div>
+    <!-- 差し替え: 実際の業務スケジュールに更新 -->
+    <p style="text-align:center;font-size:0.72rem;color:rgba(255,255,255,0.3);margin-bottom:2.5rem;">※ここはサンプルです。実際には御社の業務スケジュールに差し替えます</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-time">9:00</div></div>
+        <div class="tl-connector"></div>
+        <div class="tl-body"><h4>出社・業務開始</h4><p>メールチェックと本日の作業確認。チームで一言打ち合わせをして業務スタート。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-time">9:30</div></div>
+        <div class="tl-connector"></div>
+        <div class="tl-body"><h4>通信機器データ入力（メイン業務）</h4><p>大手通信キャリアの機器に決められたフォーマットで正確にデータを入力します。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-time">11:00</div></div>
+        <div class="tl-connector"></div>
+        <div class="tl-body"><h4>問い合わせ対応</h4><p>客先からの電話・メールでの質問に丁寧に対応します。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-time">12:00</div></div>
+        <div class="tl-connector"></div>
+        <div class="tl-body"><h4>昼休憩（60分）</h4><p>しっかり休憩。近くのコンビニや持参のお弁当でゆっくり過ごせます。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-time">13:00</div></div>
+        <div class="tl-connector"></div>
+        <div class="tl-body"><h4>午後のデータ入力・確認</h4><p>入力済みデータの確認作業も担当。ミスがないか丁寧にチェックします。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-time">15:30</div></div>
+        <div class="tl-connector"></div>
+        <div class="tl-body"><h4>書類作成・進捗まとめ</h4><p>業務関連書類の作成と本日の進捗確認。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><div class="tl-time">18:00</div></div>
+        <div class="tl-connector"></div>
+        <div class="tl-body"><h4>退社（ほぼ定時）</h4><p>月平均残業2時間。毎日定時退社できます。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Requirements -->
+<section id="requirements">
+  <div class="container">
+    <h2 class="section-title">募集要項</h2>
+    <div class="divider"></div>
+    <div class="req-wrap">
+      <table class="req-table">
+        <tbody>
+          <tr><th>職種</th><td>通信機器データ入力スタッフ（正社員）</td></tr>
+          <tr><th>仕事内容</th><td>通信機器へのデータ入力・客先電話メール対応・書類作成</td></tr>
+          <tr><th>勤務地</th><td>千葉県印西市泉野３－８ 千葉ニュータウンロジスティックセンター３Ｆ（印西事業所）<br><small>最寄駅: 京成 千葉ニュータウン中央駅 徒歩10分／マイカー通勤可（駐車場あり）</small></td></tr>
+          <tr><th>給与</th><td>月給 205,000円〜280,000円（住宅手当・職能手当含む）<br><small>基本給 190,000〜240,000円／昇給あり（月3,000〜6,000円・前年実績）</small></td></tr>
+          <tr><th>賞与</th><td>年2回（計2.5ヶ月・前年実績）</td></tr>
+          <tr><th>就業時間</th><td>9:00〜18:00（休憩60分）</td></tr>
+          <tr><th>残業</th><td>月平均2時間（ほぼ定時退社）</td></tr>
+          <tr><th>休日休暇</th><td>土曜・日曜・祝日・年末年始・夏期休暇（年間休日126日）<br><small>年次有給休暇（6ヶ月後10日）</small></td></tr>
+          <tr><th>待遇・福利厚生</th><td>雇用・労災・健康・厚生年金完備／通勤手当実費（上限なし）／退職金制度（勤続3年〜）／育児休業取得実績あり</td></tr>
+          <tr><th>応募資格</th><td>PC基本操作ができる方（経験不問・学歴不問・年齢不問）</td></tr>
+          <tr><th>選考方法</th><td>書類選考（7日以内に結果連絡）→ 面接1回 → 採用通知</td></tr>
+          <tr><th>採用人数</th><td>2名（増員募集）</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="faq-bg">
+  <div class="container">
+    <h2 class="section-title">よくある質問</h2>
+    <div class="divider"></div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q"><span class="q-label">Q</span>未経験でも応募できますか？</div>
+        <div class="faq-a">はい。経験・学歴・年齢は問いません。入社後に手順を丁寧にお教えします。PC基本操作ができれば問題なくご活躍いただけます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="q-label">Q</span>どんなPCスキルが必要ですか？</div>
+        <div class="faq-a">基本的なPC操作・文字入力ができれば大丈夫です。特別なプログラミング知識や専門資格は必要ありません。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="q-label">Q</span>残業はどのくらいありますか？</div>
+        <div class="faq-a">月平均2時間程度です。基本的に定時（18:00）退社で、36協定の特別条項もありません。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="q-label">Q</span>選考の流れを教えてください</div>
+        <div class="faq-a">①書類選考（7日以内に結果連絡）→ ②面接1回（印西事業所・随時実施）→ ③採用通知（7日以内）という流れです。書類は郵送またはEメールでお送りください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="q-label">Q</span>マイカー通勤はできますか？</div>
+        <div class="faq-a">はい、マイカー通勤可で駐車場もあります。電車の場合は京成 千葉ニュータウン中央駅より徒歩10分です。通勤手当は実費支給（上限なし）です。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="apply" class="cta-section">
+  <div class="container">
+    <h2>あなたの丁寧さを、ここで活かしませんか。</h2>
+    <p>経験・学歴・年齢は問いません。<br>
+       まずはお気軽にメールでご連絡ください。<br>
+       書類選考結果は7日以内にご連絡します。</p>
+    <a href="mailto:shima_t@advance-t.com" class="btn-gold-outline">採用担当へメールを送る</a>
+    <p style="margin-top:1.5rem;font-size:0.82rem;color:rgba(255,255,255,0.5);">採用担当: 島袋　TEL: 03-5735-5527　E-mail: shima_t@advance-t.com</p>
+  </div>
+</section>
+
+<footer>
+  株式会社　アドバンス・テクノロジー<br>
+  〒270-1360 千葉県印西市泉野３－８ 千葉ニュータウンロジスティックセンター３Ｆ（印西事業所）<br>
+  TEL: 03-5735-5527　E-mail: shima_t@advance-t.com
+</footer>
+
+<script>
+  const btn = document.getElementById('hamburger');
+  const menu = document.getElementById('mobile-menu');
+  btn.addEventListener('click', () => menu.classList.toggle('open'));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+</script>
+</body>
+</html>

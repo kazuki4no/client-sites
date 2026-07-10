@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>採用情報 | 昌和建設株式会社</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#222;background:#fff}
+    img{max-width:100%;height:auto;display:block}
+    :root{--navy:#1a2a4a;--orange:#f5a623;--dark:#0d1728;--light:#f4f6f9}
+
+    /* Header */
+    header{position:absolute;top:0;left:0;right:0;z-index:200;padding:0 24px}
+    .header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:72px}
+    .logo{color:#fff;font-weight:700;font-size:1rem;text-decoration:none;text-shadow:0 1px 4px rgba(0,0,0,.4)}
+    nav.pc-nav a{color:rgba(255,255,255,.9);text-decoration:none;margin-left:24px;font-size:.87rem;transition:color .2s}
+    nav.pc-nav a:hover{color:var(--orange)}
+    nav.pc-nav .nav-cta{background:var(--orange);color:#fff;padding:8px 20px;border-radius:4px;font-weight:700}
+    .hamburger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:4px}
+    .hamburger span{display:block;width:24px;height:2px;background:#fff}
+    .sp-nav{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(13,23,40,.97);z-index:300;padding:80px 24px;flex-direction:column}
+    .sp-nav.open{display:flex}
+    .sp-nav a{color:#fff;text-decoration:none;font-size:1.2rem;padding:16px 0;border-bottom:1px solid rgba(255,255,255,.1);font-weight:700}
+    .sp-nav-close{position:absolute;top:20px;right:24px;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer}
+
+    /* Hero */
+    .hero{position:relative;min-height:80vh;display:flex;align-items:center;overflow:hidden}
+    .hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&h=900&fit=crop&q=80') center/cover no-repeat}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(10,18,35,.80) 0%,rgba(20,35,65,.62) 60%,rgba(10,18,35,.75) 100%)}
+    .hero-content{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:140px 24px 100px;color:#fff;text-align:center}
+    .hero-eyebrow{font-size:.82rem;font-weight:700;letter-spacing:.18em;color:var(--orange);margin-bottom:24px;text-transform:uppercase}
+    .hero h1{font-family:'Noto Serif JP',serif;font-size:clamp(2rem,6vw,4rem);font-weight:700;line-height:1.35;margin-bottom:28px;text-shadow:0 2px 16px rgba(0,0,0,.3)}
+    .hero h1 span{color:var(--orange)}
+    .hero-sub{font-size:clamp(.93rem,2.5vw,1.1rem);line-height:1.9;margin-bottom:12px;opacity:.9;max-width:640px;margin-left:auto;margin-right:auto}
+    .hero-tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:40px}
+    .hero-tags span{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:.77rem;padding:5px 16px;border-radius:20px}
+    .btn-hero{display:inline-block;background:var(--orange);color:#fff;font-weight:700;padding:18px 52px;border-radius:50px;text-decoration:none;font-size:1.05rem;box-shadow:0 8px 28px rgba(245,166,35,.5);transition:transform .2s,box-shadow .2s}
+    .btn-hero:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(245,166,35,.6)}
+
+    /* Divider bar */
+    .bar-strip{background:var(--orange);padding:20px 24px}
+    .bar-strip-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-around;flex-wrap:wrap;gap:12px;text-align:center}
+    .bar-item{color:#fff;font-size:.83rem;font-weight:700}
+    .bar-item strong{font-size:1.35rem;display:block;line-height:1.1;margin-bottom:2px}
+
+    /* Section */
+    section{padding:80px 24px}
+    .section-inner{max-width:1100px;margin:0 auto}
+    .eyebrow{font-size:.75rem;font-weight:700;color:var(--orange);letter-spacing:.15em;text-align:center;margin-bottom:10px}
+    .section-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;color:var(--navy);text-align:center;margin-bottom:48px}
+    .section-title::after{content:'';display:block;width:48px;height:3px;background:var(--orange);margin:14px auto 0;border-radius:2px}
+    .note-sm{font-size:.75rem;color:#bbb;margin-top:8px}
+
+    /* Features — 2+1 layout */
+    .feat-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px}
+    .feat-full{grid-column:1/-1}
+    .feat-card{position:relative;border-radius:14px;overflow:hidden;min-height:280px;display:flex;align-items:flex-end}
+    .feat-card-bg{position:absolute;inset:0;background-size:cover;background-position:center}
+    .feat-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(10,18,35,.85) 40%,rgba(10,18,35,.1) 100%)}
+    .feat-card-body{position:relative;z-index:1;padding:28px 24px;color:#fff}
+    .feat-num{font-size:.75rem;font-weight:700;color:var(--orange);letter-spacing:.12em;margin-bottom:6px}
+    .feat-card h3{font-size:1.1rem;font-weight:700;margin-bottom:8px}
+    .feat-card p{font-size:.85rem;opacity:.88;line-height:1.7}
+
+    /* Work detail */
+    .work-bg{background:var(--dark)}
+    .work-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+    .work-img{border-radius:12px;overflow:hidden}
+    .work-img img{width:100%;height:340px;object-fit:cover}
+    .work-text{color:#fff}
+    .work-text .eyebrow{text-align:left}
+    .work-text h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,3vw,1.9rem);font-weight:700;margin-bottom:20px}
+    .work-text h2::after{display:none}
+    .work-item{margin-bottom:16px;padding-left:16px;border-left:3px solid var(--orange)}
+    .work-item h4{font-weight:700;color:var(--orange);margin-bottom:4px;font-size:.9rem}
+    .work-item p{font-size:.85rem;opacity:.85;line-height:1.65}
+
+    /* Requirements */
+    .req-wrap{max-width:900px;margin:0 auto;background:#fff;border-radius:16px;box-shadow:0 4px 28px rgba(0,0,0,.09);overflow:hidden}
+    .req-table{width:100%;border-collapse:collapse}
+    .req-table th,.req-table td{padding:16px 22px;border-bottom:1px solid #e8ecf2;font-size:.9rem;vertical-align:top;text-align:left}
+    .req-table th{width:160px;background:var(--light);font-weight:700;color:var(--navy);white-space:nowrap}
+    .req-table tr:last-child th,.req-table tr:last-child td{border-bottom:none}
+    .tag{display:inline-block;background:var(--orange);color:#fff;font-size:.73rem;padding:2px 10px;border-radius:12px;margin:2px 2px 2px 0}
+
+    /* FAQ */
+    .faq-list{max-width:800px;margin:0 auto}
+    .faq-item{background:var(--light);border-radius:10px;margin-bottom:10px;overflow:hidden}
+    .faq-q{padding:17px 22px;font-weight:700;color:var(--navy);display:flex;justify-content:space-between;align-items:center;font-size:.92rem;cursor:pointer}
+    .faq-q::after{content:'＋';color:var(--orange);font-size:1.15rem;flex-shrink:0;margin-left:12px}
+    .faq-a{padding:0 22px 16px;font-size:.87rem;line-height:1.8;color:#444}
+
+    /* Timeline */
+    .tl-wrap{max-width:680px;margin:0 auto}
+    .tl-item{display:flex;gap:20px;margin-bottom:28px}
+    .tl-time{min-width:62px;font-weight:700;color:var(--orange);font-size:.9rem;padding-top:2px}
+    .tl-body h4{font-weight:700;color:var(--navy);font-size:.93rem;margin-bottom:4px}
+    .tl-body p{font-size:.86rem;color:#555;line-height:1.65}
+
+    /* Seniors */
+    .seniors-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .senior-card{text-align:center;background:var(--light);border-radius:14px;padding:28px 20px}
+    .senior-card img{width:84px;height:84px;border-radius:50%;object-fit:cover;margin:0 auto 14px;border:3px solid var(--orange)}
+    .senior-name{font-weight:700;color:var(--navy);margin-bottom:4px;font-size:.93rem}
+    .senior-role{font-size:.77rem;color:#888;margin-bottom:12px}
+    .senior-card p{font-size:.85rem;color:#555;line-height:1.7;text-align:left}
+
+    /* CTA */
+    .cta-section{background:url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&h=700&fit=crop&q=80') center/cover no-repeat;position:relative;padding:100px 24px;text-align:center}
+    .cta-section::before{content:'';position:absolute;inset:0;background:rgba(10,18,35,.78)}
+    .cta-content{position:relative;z-index:1;color:#fff}
+    .cta-content h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,4vw,2.4rem);font-weight:700;margin-bottom:16px}
+    .cta-content p{font-size:.97rem;opacity:.9;margin-bottom:36px;line-height:1.85}
+
+    /* Footer */
+    footer{background:#08111f;color:#667;padding:28px 24px;text-align:center;font-size:.82rem}
+
+    @media(max-width:768px){
+      nav.pc-nav{display:none}
+      .hamburger{display:flex}
+      .feat-grid{grid-template-columns:1fr}
+      .feat-full{grid-column:auto}
+      .work-inner{grid-template-columns:1fr}
+      .seniors-grid{grid-template-columns:1fr}
+      .req-table th{display:block;width:100%;padding-bottom:4px;border-bottom:none}
+      .req-table td{display:block;padding-top:4px;padding-bottom:14px}
+      .req-table tr{display:block;border-bottom:1px solid #e8ecf2}
+      .req-table tr:last-child{border-bottom:none}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">昌和建設株式会社｜採用情報</a>
+    <nav class="pc-nav">
+      <a href="#features">魅力</a>
+      <a href="#work">仕事内容</a>
+      <a href="#requirements">募集要項</a>
+      <a href="#seniors">先輩の声</a>
+      <a href="#apply" class="nav-cta">応募する</a>
+    </nav>
+    <button class="hamburger" id="menuBtn" aria-label="メニュー"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<nav class="sp-nav" id="spNav">
+  <button class="sp-nav-close" id="navClose">×</button>
+  <a href="#features">魅力</a>
+  <a href="#work">仕事内容</a>
+  <a href="#requirements">募集要項</a>
+  <a href="#seniors">先輩の声</a>
+  <a href="#apply">応募する</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Recruit 2026 — 昌和建設株式会社</div>
+    <h1>ライフラインを守る、<br><span>誇りある仕事。</span></h1>
+    <p class="hero-sub">千葉県内の官公庁発注・水道配水管工事。自社施工一貫体制で品質と安全を追求し続ける会社で、長く腰を据えて働きませんか。</p>
+    <div class="hero-tags">
+      <span>年間休日120日</span>
+      <span>月給30.6万〜</span>
+      <span>賞与年3回</span>
+      <span>残業なし</span>
+      <span>未経験歓迎</span>
+    </div>
+    <a href="#apply" class="btn-hero">まず話を聞いてみる</a>
+  </div>
+</div>
+
+<div class="bar-strip">
+  <div class="bar-strip-inner">
+    <div class="bar-item"><strong>120日</strong>年間休日</div>
+    <div class="bar-item"><strong>30.6万〜</strong>月給</div>
+    <div class="bar-item"><strong>年3回</strong>賞与（実績70〜140万）</div>
+    <div class="bar-item"><strong>0</strong>残業時間</div>
+    <div class="bar-item"><strong>45年+</strong>地域密着の実績</div>
+    <p class="note-sm" style="width:100%;color:rgba(255,255,255,.5)">※ここはサンプルです。実際には御社の数字に差し替えます</p>
+  </div>
+</div>
+
+<section id="features">
+  <div class="section-inner">
+    <div class="eyebrow">WHY SHOWA KENSETSU</div>
+    <h2 class="section-title">昌和建設で働く3つの理由</h2>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <!-- 建設現場イメージ -->
+        <div class="feat-card-bg" style="background-image:url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=560&fit=crop&q=80')"></div>
+        <div class="feat-card-overlay"></div>
+        <div class="feat-card-body">
+          <div class="feat-num">01</div>
+          <h3>官公庁発注の圧倒的な安定性</h3>
+          <p>民間の景気変動に左右されにくい官公庁発注が主体。水道というライフラインを守るインフラ工事のため受注が途切れず、長期で活躍できます。</p>
+        </div>
+      </div>
+      <div class="feat-card">
+        <!-- 技術・工具イメージ -->
+        <div class="feat-card-bg" style="background-image:url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=800&h=560&fit=crop&q=80')"></div>
+        <div class="feat-card-overlay"></div>
+        <div class="feat-card-body">
+          <div class="feat-num">02</div>
+          <h3>自社施工体制で身につく本物の技術</h3>
+          <p>着工から竣工まで全て自社社員が担当。蓄積したノウハウでほぼ全現場が優良建設工事表彰に相当する評価。先輩から本物の技術が直接継承されます。</p>
+        </div>
+      </div>
+      <div class="feat-card feat-full">
+        <!-- 建設現場イメージ2 -->
+        <div class="feat-card-bg" style="background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&h=480&fit=crop&q=80')"></div>
+        <div class="feat-card-overlay"></div>
+        <div class="feat-card-body">
+          <div class="feat-num">03</div>
+          <h3>土木業界を超える好条件——月給30.6万〜・年間休日120日・賞与年3回</h3>
+          <p>日曜・祝日・第2土曜・夏季・年末年始を含む年間休日120日。月給30.6〜40.8万円、前年実績賞与70〜140万円（年3回）。残業なし・マイカー通勤可。プライベートも充実させながら働けます。</p>
+        </div>
+      </div>
+    </div>
+    <p class="note-sm" style="text-align:center">※ここはサンプルです。実際には御社の強みや実績数字に差し替えます</p>
+  </div>
+</section>
+
+<div id="work" class="work-bg" style="padding:80px 24px">
+  <div class="work-inner">
+    <div class="work-img">
+      <!-- 作業員イメージ 差し替え先: 現場写真 -->
+      <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=680&fit=crop&q=80" alt="現場作業イメージ">
+      <p class="note-sm" style="color:#555;margin-top:8px">※ここはサンプルです。実際の現場写真に差し替えます</p>
+    </div>
+    <div class="work-text">
+      <div class="eyebrow">WHAT WE DO</div>
+      <h2>千葉県内の水道インフラを支える、3つのポジション</h2>
+      <div class="work-item">
+        <h4>配管工</h4>
+        <p>道路に埋設されている水道管の配管作業を担当。正確な接続・配置が求められる専門職で、スキルに応じた資格手当あり。</p>
+      </div>
+      <div class="work-item">
+        <h4>重機オペレーター</h4>
+        <p>バックホウ（建設機械）を操作し掘削を担当。免許を活かして活躍できるポジション。経験豊富な先輩が丁寧に指導します。</p>
+      </div>
+      <div class="work-item">
+        <h4>作業員</h4>
+        <p>土砂運搬・重機補助・土木工事全般の補助業務。入社後まずここからスタートし、現場でスキルを磨いてステップアップします。</p>
+      </div>
+      <p class="note-sm" style="margin-top:16px">※ここはサンプルです。実際の仕事内容詳細に差し替えます</p>
+    </div>
+  </div>
+</div>
+
+<section id="requirements">
+  <div class="section-inner">
+    <div class="eyebrow">REQUIREMENTS</div>
+    <h2 class="section-title">募集要項</h2>
+    <div class="req-wrap">
+      <table class="req-table">
+        <tbody>
+          <tr><th>職種</th><td>水道配水管工事スタッフ（配管工 / 重機オペレーター / 作業員）</td></tr>
+          <tr><th>仕事内容</th><td>千葉県内の現場で官公庁発注の水道管取替工事。経験・希望に応じて配管作業・重機（バックホウ）操作・土砂運搬などを担当します。</td></tr>
+          <tr><th>雇用形態</th><td>正社員（試用期間3ヶ月・同条件）</td></tr>
+          <tr><th>勤務地</th><td>千葉県佐倉市（佐倉支店）※現場は千葉県内各地</td></tr>
+          <tr><th>給与</th><td>月給306,000円〜408,000円（日給15,000〜20,000円×20.4日換算）<br>資格手当・昇給制度あり（前年実績＋22,000〜66,000円/月）</td></tr>
+          <tr><th>賞与</th><td>年3回（前年実績70〜140万円）</td></tr>
+          <tr><th>勤務時間</th><td>8:30〜17:00 / 休憩60分 / 残業なし</td></tr>
+          <tr><th>休日・休暇</th><td>日曜・祝日・第2土曜・夏季・年末年始ほか勤務表による休日<br><span class="tag">年間休日120日</span></td></tr>
+          <tr><th>応募資格</th><td>中型・準中型・8t限定中型自動車免許のいずれか（AT限定不可）<br>施工管理技士等があれば尚可<br><span class="tag">未経験歓迎</span> <span class="tag">学歴不問</span> <span class="tag">マイカー通勤可</span></td></tr>
+          <tr><th>福利厚生</th><td>雇用・労災・健康・厚生年金 / 退職金共済 / 通勤手当（実費・上限10,000円/月）</td></tr>
+          <tr><th>採用人数</th><td>3名</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="day" style="background:var(--light)">
+  <div class="section-inner">
+    <div class="eyebrow">A DAY IN THE LIFE</div>
+    <h2 class="section-title">社員の1日の流れ</h2>
+    <p class="note-sm" style="text-align:center;margin-bottom:40px">※ここはサンプルです。実際には御社スタッフの1日に差し替えます</p>
+    <div class="tl-wrap">
+      <div class="tl-item"><div class="tl-time">8:00</div><div class="tl-body"><h4>出勤・朝礼</h4><p>佐倉支店に集合し、当日の作業内容・安全事項を確認してから現場へ出発。</p></div></div>
+      <div class="tl-item"><div class="tl-time">8:30</div><div class="tl-body"><h4>現場到着・準備</h4><p>保安施設を設置し、掘削・配管の段取りを整えます。先輩とペアで作業に入ります。</p></div></div>
+      <div class="tl-item"><div class="tl-time">10:00</div><div class="tl-body"><h4>作業本番</h4><p>バックホウ掘削・配管の接続・配置を進めます。安全確認を徹底しながら作業します。</p></div></div>
+      <div class="tl-item"><div class="tl-time">12:00</div><div class="tl-body"><h4>昼休み（60分）</h4><p>ゆっくり休憩。先輩との雑談でわからないことを解消できる時間でもあります。</p></div></div>
+      <div class="tl-item"><div class="tl-time">13:00</div><div class="tl-body"><h4>午後の作業</h4><p>埋め戻し・路面仮復旧などを進めます。複数工程を経験しながらスキルが身につきます。</p></div></div>
+      <div class="tl-item"><div class="tl-time">16:30</div><div class="tl-body"><h4>後片付け・進捗確認</h4><p>保安施設を撤収・清掃。チームで振り返りをしてから支店へ戻ります。</p></div></div>
+      <div class="tl-item"><div class="tl-time">17:00</div><div class="tl-body"><h4>退勤</h4><p>残業なし。プライベートも家族との時間もしっかり確保できます。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="section-inner">
+    <div class="eyebrow">FAQ</div>
+    <h2 class="section-title">よくある質問</h2>
+    <p class="note-sm" style="text-align:center;margin-bottom:32px">※ここはサンプルです。実際のFAQに差し替えます</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">水道工事の経験がなくても大丈夫ですか？</div>
+        <div class="faq-a">大丈夫です。未経験スタートのメンバーも多く、ベテランの先輩が現場でつきっきりで指導します。中型・準中型免許があれば他のスキルは入社後に習得できます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">勤務地や現場はどのあたりですか？</div>
+        <div class="faq-a">拠点（佐倉支店）は千葉県佐倉市です。現場は千葉県内各地となります。マイカー通勤可、通勤手当（上限10,000円/月）あり。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">年間休日120日というのは本当ですか？</div>
+        <div class="faq-a">本当です。日祝・第2土曜・夏季・年末年始など勤務表による休日を含め年間120日確保しています。土木業界としては多い水準です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">選考の流れを教えてください。</div>
+        <div class="faq-a">ハローワーク紹介状を取得後、電話かメールでご連絡ください。面接1回（佐倉支店）→3日以内に結果通知。履歴書は面接当日に持参してください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">賞与・昇給の実績はありますか？</div>
+        <div class="faq-a">前年実績で賞与70〜140万円（年3回）、昇給＋22,000〜66,000円/月の実績があります。スキル・経験に応じてしっかり評価されます。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="seniors" style="background:var(--light)">
+  <div class="section-inner">
+    <div class="eyebrow">STAFF VOICE</div>
+    <h2 class="section-title">先輩からのメッセージ</h2>
+    <p class="note-sm" style="text-align:center;margin-bottom:32px">※ここはサンプルです。実際には御社スタッフの写真・コメントに差し替えます</p>
+    <div class="seniors-grid">
+      <div class="senior-card">
+        <!-- 顔写真1（男性）差し替え先: 社員写真1 -->
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩社員1">
+        <div class="senior-name">田中 健（仮名）</div>
+        <div class="senior-role">配管工 / 入社4年目</div>
+        <p>最初は補助から始め、今では配管の接続もひとりでこなせます。先輩が丁寧に教えてくれたので、思ったより早くスキルが身につきました。</p>
+        <p class="note-sm">※ここはサンプルです。実際の社員コメントに差し替えます</p>
+      </div>
+      <div class="senior-card">
+        <!-- 顔写真2（男性）差し替え先: 社員写真2 -->
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩社員2">
+        <div class="senior-name">鈴木 拓（仮名）</div>
+        <div class="senior-role">重機オペレーター / 入社7年目</div>
+        <p>官公庁案件だから仕事が安定しています。年休120日はきちんと取れていますし、残業もほぼないので家族の時間を大切にできます。</p>
+        <p class="note-sm">※ここはサンプルです。実際の社員コメントに差し替えます</p>
+      </div>
+      <div class="senior-card">
+        <!-- 顔写真3（男性）差し替え先: 社員写真3 -->
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩社員3">
+        <div class="senior-name">佐藤 誠（仮名）</div>
+        <div class="senior-role">作業員→配管工 / 入社2年目</div>
+        <p>前職は全く異業種でした。免許だけ持って飛び込みましたが、基礎から丁寧に教えてもらえる環境が整っていて安心できました。</p>
+        <p class="note-sm">※ここはサンプルです。実際の社員コメントに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="apply" class="cta-section">
+  <div class="cta-content">
+    <h2>ライフラインを守る誇りある仕事へ、<br>あなたの力を活かしませんか。</h2>
+    <p>選考は面接1回のみ。ハローワーク紹介状を取得後、<br>お電話またはメールでお気軽にご連絡ください。</p>
+    <a href="mailto:showa@aa.wakwak.com" class="btn-hero">メールで問い合わせる</a>
+  </div>
+</div>
+
+<footer>
+  <p>昌和建設株式会社 / 〒270-1614 千葉県印西市瀬戸1733-5 / TEL: 0476-80-3588 / showa@aa.wakwak.com</p>
+</footer>
+
+<script>
+  const menuBtn = document.getElementById('menuBtn');
+  const spNav = document.getElementById('spNav');
+  const navClose = document.getElementById('navClose');
+  menuBtn.addEventListener('click',()=>spNav.classList.add('open'));
+  navClose.addEventListener('click',()=>spNav.classList.remove('open'));
+  spNav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>spNav.classList.remove('open')));
+</script>
+</body>
+</html>
