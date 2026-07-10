@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 株式会社 藤崎建設</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#222;background:#0f0f0f}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+:root{
+  --accent:#f47c20;
+  --navy:#1a2744;
+  --dark:#141414;
+  --white:#fff;
+  --lightgray:#f5f6f8;
+}
+
+/* ヘッダー（透過→スクロールで固定） */
+header{background:rgba(0,0,0,.5);backdrop-filter:blur(8px);position:fixed;top:0;left:0;right:0;z-index:100;border-bottom:1px solid rgba(255,255,255,.1)}
+.header-inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{color:#fff;font-family:'Noto Serif JP',serif;font-weight:900;font-size:1.1rem;letter-spacing:.08em}
+nav ul{list-style:none;display:flex;gap:28px}
+nav ul li a{color:rgba(255,255,255,.8);font-size:.82rem;letter-spacing:.05em;transition:.2s}
+nav ul li a:hover{color:var(--accent)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px}
+
+/* FVバナー（全画面・写真主役） */
+.hero{position:relative;min-height:80vh;display:flex;align-items:center}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center}
+.hero-overlay{position:absolute;inset:0;background:rgba(20,30,50,.60)}
+.hero-content{position:relative;max-width:1100px;margin:0 auto;padding:120px 24px 80px;color:#fff}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:.78rem;padding:6px 16px;border-radius:20px;margin-bottom:24px;letter-spacing:.08em}
+.hero-pill span{background:var(--accent);width:8px;height:8px;border-radius:50%;display:block}
+.hero h1{font-family:'Noto Serif JP',serif;font-size:clamp(2rem,6vw,4rem);font-weight:900;line-height:1.2;margin-bottom:24px;text-shadow:0 2px 16px rgba(0,0,0,.5)}
+.hero h1 em{color:var(--accent);font-style:normal}
+.hero-lead{font-size:clamp(.9rem,2.5vw,1.05rem);opacity:.88;max-width:580px;line-height:2;margin-bottom:36px}
+.btn-hero{display:inline-block;background:var(--accent);color:#fff;font-weight:700;font-size:1rem;padding:16px 44px;border-radius:2px;letter-spacing:.05em;transition:.2s;box-shadow:0 4px 24px rgba(244,124,32,.4)}
+.btn-hero:hover{opacity:.85}
+.scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.5);font-size:.75rem;text-align:center;letter-spacing:.1em}
+.scroll-hint::after{content:'▼';display:block;font-size:.65rem;margin-top:6px;animation:bounce .8s infinite alternate}
+@keyframes bounce{from{transform:translateY(0)}to{transform:translateY(4px)}}
+
+/* キーワードバナー */
+.keywords{background:var(--accent);padding:24px 20px}
+.kw-inner{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:12px 32px;justify-content:center}
+.kw-item{color:#fff;font-weight:900;font-size:.9rem;letter-spacing:.05em}
+.kw-item::before{content:'✓ '}
+
+/* セクション */
+.section{padding:80px 20px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-white{background:#fff}
+.section-dark{background:var(--dark)}
+.label{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;font-weight:700;margin-bottom:12px}
+.label-accent{color:var(--accent)}
+.label-light{color:rgba(255,255,255,.45)}
+.title{font-family:'Noto Serif JP',serif;font-size:clamp(1.6rem,4.5vw,2.4rem);font-weight:900;margin-bottom:16px}
+.title-dark{color:#111}
+.title-white{color:#fff}
+.sub{font-size:.93rem;line-height:1.9;margin-bottom:44px}
+.sub-dark{color:#555}
+.sub-light{color:rgba(255,255,255,.65)}
+.sample-note{font-size:.72rem;color:#aaa;margin-top:6px}
+
+/* 魅力グリッド */
+.merit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#e0e0e0;border:1px solid #e0e0e0}
+.merit-item{background:#fff;padding:36px 28px}
+.merit-num{font-size:3.5rem;font-weight:900;color:var(--accent);line-height:1;margin-bottom:12px;font-family:'Noto Serif JP',serif}
+.merit-item h3{font-size:1rem;font-weight:700;color:#111;margin-bottom:12px;line-height:1.5}
+.merit-item p{font-size:.87rem;color:#555;line-height:1.85}
+
+/* 写真＋テキスト（交互） */
+.photo-block{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:stretch;min-height:360px}
+.photo-block.reverse{direction:rtl}
+.photo-block.reverse > *{direction:ltr}
+.photo-block-img{overflow:hidden}
+.photo-block-img img{width:100%;height:100%;object-fit:cover}
+.photo-block-body{padding:48px 40px;display:flex;flex-direction:column;justify-content:center;background:#fff}
+.photo-block.dark-body .photo-block-body{background:var(--navy);color:#fff}
+.photo-block-body h3{font-size:1.3rem;font-weight:900;color:#111;margin-bottom:14px;line-height:1.5}
+.photo-block.dark-body .photo-block-body h3{color:#fff}
+.photo-block-body p{font-size:.9rem;color:#555;line-height:1.9}
+.photo-block.dark-body .photo-block-body p{color:rgba(255,255,255,.75)}
+
+/* FAQ */
+.faq-grid{display:flex;flex-direction:column;gap:2px;background:#ddd}
+.faq-item{background:#fff}
+.faq-q{padding:18px 24px;font-weight:700;font-size:.93rem;color:#111;cursor:default;display:flex;align-items:baseline;gap:12px}
+.faq-q::before{content:"Q";background:var(--accent);color:#fff;font-size:.75rem;font-weight:900;padding:2px 8px;border-radius:2px;flex-shrink:0}
+.faq-a{padding:0 24px 18px 56px;font-size:.88rem;color:#555;line-height:1.85}
+
+/* 1日の流れ */
+.tl-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#333}
+.tl-cell{background:var(--dark);padding:28px 24px}
+.tl-cell-time{font-size:1.4rem;font-weight:900;color:var(--accent);font-family:'Noto Serif JP',serif;margin-bottom:8px}
+.tl-cell h4{color:#fff;font-weight:700;font-size:.9rem;margin-bottom:6px}
+.tl-cell p{color:#888;font-size:.83rem;line-height:1.7}
+
+/* 先輩カード */
+.voices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.voice-card{border-radius:4px;overflow:hidden;background:#1a1a1a;border:1px solid #2a2a2a}
+.voice-photo{height:200px;overflow:hidden}
+.voice-photo img{width:100%;height:100%;object-fit:cover}
+.voice-body{padding:20px}
+.voice-name{color:var(--accent);font-weight:700;font-size:.9rem;margin-bottom:2px}
+.voice-meta{color:#666;font-size:.76rem;margin-bottom:10px}
+.voice-text{color:#bbb;font-size:.85rem;line-height:1.8}
+.voice-sample{font-size:.7rem;color:#555;margin-top:8px}
+
+/* 募集要項 */
+.spec-table{width:100%;border-collapse:collapse;font-size:.9rem}
+.spec-table th,.spec-table td{padding:14px 20px;text-align:left;vertical-align:top;border-bottom:1px solid #1e1e1e}
+.spec-table th{color:var(--accent);font-weight:700;width:26%;white-space:nowrap}
+.spec-table td{color:#ccc}
+
+/* 採用担当 */
+.recruiter-box{display:flex;gap:32px;align-items:center;background:#1a1a1a;border:1px solid #2a2a2a;border-radius:4px;padding:36px 40px}
+.recruiter-photo{width:100px;height:100px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--accent)}
+.recruiter-text h3{color:#fff;font-size:1rem;font-weight:700;margin-bottom:6px}
+.recruiter-text p{color:#aaa;font-size:.88rem;line-height:1.8}
+
+/* 最終CTA */
+.cta-section{position:relative;min-height:400px;display:flex;align-items:center}
+.cta-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&h=700&fit=crop&q=80');background-size:cover;background-position:center}
+.cta-overlay{position:absolute;inset:0;background:rgba(10,20,40,.78)}
+.cta-content{position:relative;max-width:900px;margin:0 auto;padding:80px 24px;text-align:center;color:#fff}
+.cta-content h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,4vw,2.4rem);font-weight:900;margin-bottom:16px;line-height:1.4}
+.cta-content h2 span{color:var(--accent)}
+.cta-content p{font-size:.93rem;opacity:.8;margin-bottom:32px;line-height:1.9}
+.btn-accent{display:inline-block;background:var(--accent);color:#fff;font-weight:900;font-size:1rem;padding:16px 48px;border-radius:2px;transition:.2s;box-shadow:0 4px 24px rgba(244,124,32,.4)}
+.btn-accent:hover{opacity:.85}
+
+/* フッター */
+footer{background:#000;color:#555;font-size:.8rem;padding:28px 20px;text-align:center;border-top:1px solid #1e1e1e}
+footer p+p{margin-top:5px}
+
+/* スマホ */
+@media(max-width:768px){
+  nav ul{display:none}
+  .hamburger{display:flex}
+  nav.open ul{display:flex;flex-direction:column;position:fixed;top:64px;left:0;right:0;background:rgba(0,0,0,.95);padding:20px 24px;gap:16px}
+  .merit-grid{grid-template-columns:1fr;background:none;border:none;gap:16px}
+  .merit-item{border:1px solid #e0e0e0;border-radius:4px}
+  .photo-block,.photo-block.reverse{grid-template-columns:1fr;direction:ltr}
+  .photo-block-img{height:220px}
+  .tl-grid{grid-template-columns:1fr}
+  .voices-grid{grid-template-columns:1fr}
+  .recruiter-box{flex-direction:column;text-align:center}
+  .spec-table th,.spec-table td{display:block;width:100%}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">藤崎建設</div>
+    <nav id="nav">
+      <ul>
+        <li><a href="#merit">働く魅力</a></li>
+        <li><a href="#day">1日の流れ</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#voices">先輩の声</a></li>
+        <li><a href="#apply">応募する</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger" aria-label="メニュー" onclick="document.getElementById('nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- FVバナー（全画面写真） -->
+<section class="hero">
+  <!-- 建設現場写真（サンプル）背景 -->
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-pill"><span></span>建設現場管理 ／ 正社員 ／ 未経験歓迎</div>
+    <h1>千葉・東京の現場で、<br><em>確かな技術</em>を磨く仕事。<br>少人数・アットホームな環境</h1>
+    <p class="hero-lead">内装・外壁塗装・水回り・解体まで多彩な工事を経験できる建設会社です。20〜30代中心のチームで、未経験からでも安心してスタートできます。まずは3案のサンプルページを見てください。</p>
+    <a href="#apply" class="btn-hero">まずは話を聞いてみる</a>
+  </div>
+  <div class="scroll-hint">SCROLL</div>
+</section>
+
+<!-- キーワードバナー -->
+<section class="keywords">
+  <div class="kw-inner">
+    <div class="kw-item">未経験歓迎</div>
+    <div class="kw-item">残業なし</div>
+    <div class="kw-item">直行直帰OK</div>
+    <div class="kw-item">資格取得全額支援</div>
+    <div class="kw-item">少人数アットホーム</div>
+    <div class="kw-item">幅広い工種</div>
+  </div>
+</section>
+
+<!-- 魅力3点 -->
+<section class="section section-white" id="merit">
+  <div class="section-inner">
+    <p class="label label-accent">Why Fujisaki</p>
+    <h2 class="title title-dark">藤崎建設で働く理由</h2>
+    <p class="sub sub-dark">求人票だけでは伝わらない魅力があります。</p>
+    <div class="merit-grid">
+      <div class="merit-item">
+        <div class="merit-num">01</div>
+        <h3>幅広い現場で技術が積み上がる</h3>
+        <p>内装（壁紙・床）、外壁・屋根塗装、水回り設備、解体工事まで。建築一式総合建設業として多業種許可を取得しているから、1社でさまざまな工種を経験できます。元請け・下請けを問わない多彩な案件で、現場ごとに発見があります。</p>
+      </div>
+      <div class="merit-item">
+        <div class="merit-num">02</div>
+        <h3>少人数・アットホームで相談しやすい</h3>
+        <p>スタッフは9名（女性3名）。20〜30代中心で距離が近く、困ったことも気軽に相談できる環境です。未経験スタートの仲間も複数いるので、一人で不安を抱え込む心配がありません。</p>
+      </div>
+      <div class="merit-item">
+        <div class="merit-num">03</div>
+        <h3>頑張りが給与と資格に直結する</h3>
+        <p>基本給20万〜＋固定残業代5万＋インセンティブ・歩合制度。昇給は年1回+実力に応じた随時調整。資格（建築士・施工管理技士等）の受験費用は合格したら全額会社負担。成長が収入に反映されます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 写真＋テキスト：残業なし -->
+<div class="photo-block dark-body">
+  <div class="photo-block-img">
+    <!-- 建物・外壁写真（サンプル） -->
+    <img src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=800&h=600&fit=crop&q=80" alt="建物外観（サンプル）">
+  </div>
+  <div class="photo-block-body">
+    <h3>残業なし・8:30〜17:30・直行直帰</h3>
+    <p>求人票どおり、時間外労働なし。勤務時間は8:30〜17:30、現場から自宅への直行直帰が基本です。年間休日105日は日曜・祝日に加え月2〜3日の追加休暇込み。プライベートの時間をしっかり確保できます。</p>
+  </div>
+</div>
+
+<div class="photo-block reverse">
+  <div class="photo-block-img">
+    <!-- 内装・リフォーム写真（サンプル） -->
+    <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=800&h=600&fit=crop&q=80" alt="内装の様子（サンプル）">
+  </div>
+  <div class="photo-block-body">
+    <h3>内装から大規模改修まで幅広い案件</h3>
+    <p>個人宅の壁紙・床の張り替えから、マンションの大規模改修まで。「この現場はこうすれば上手くいく」という経験が現場ごとに積み重なります。千葉県内・東京都内が中心で通勤しやすい立地です。</p>
+  </div>
+</div>
+
+<!-- 1日の流れ -->
+<section class="section section-dark" id="day">
+  <div class="section-inner">
+    <p class="label label-accent">A Day in the Life</p>
+    <h2 class="title title-white">社員の1日の流れ</h2>
+    <p class="sub sub-light">※ここはサンプルです。実際には在籍スタッフの1日に差し替えます。</p>
+    <div class="tl-grid">
+      <div class="tl-cell">
+        <div class="tl-cell-time">8:15</div>
+        <h4>現場へ直行 / 朝礼</h4>
+        <p>マイカーで現場へ直行。今日の作業内容と安全確認をチームで共有します。</p>
+      </div>
+      <div class="tl-cell">
+        <div class="tl-cell-time">8:30</div>
+        <h4>午前の施工作業</h4>
+        <p>内装・外壁塗装・水回りなど当日の工事内容に集中して進めます。</p>
+      </div>
+      <div class="tl-cell">
+        <div class="tl-cell-time">12:00</div>
+        <h4>昼休み</h4>
+        <p>現場近くで昼食。先輩と気軽に話せる、息抜きの時間です。</p>
+      </div>
+      <div class="tl-cell">
+        <div class="tl-cell-time">13:00</div>
+        <h4>午後の施工・仕上げ確認</h4>
+        <p>丁寧に仕上げを進め、進捗を先輩と確認しながら対応します。</p>
+      </div>
+      <div class="tl-cell">
+        <div class="tl-cell-time">17:00</div>
+        <h4>片付け・終礼</h4>
+        <p>道具の整理と現場清掃。作業記録をチームで共有して終了。</p>
+      </div>
+      <div class="tl-cell">
+        <div class="tl-cell-time">17:30</div>
+        <h4>退勤（直帰）</h4>
+        <p>現場から自宅へ直帰。毎日定時上がりでプライベートを充実させられます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section-white" id="faq">
+  <div class="section-inner">
+    <p class="label label-accent">FAQ</p>
+    <h2 class="title title-dark">よくある質問</h2>
+    <p class="sub sub-dark">応募前の疑問にお答えします。</p>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-q">建設の経験がまったくありませんが大丈夫ですか？</div>
+        <div class="faq-a">大丈夫です。未経験スタートのスタッフが複数在籍しています。最初は先輩と一緒に現場に入り、見ながら覚えるスタイルなので焦らず成長できます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">給与の幅（25万〜60万）が大きい理由は何ですか？</div>
+        <div class="faq-a">経験・スキル・資格・インセンティブによって変わるためです。未経験スタートは月25万（固定残業代5万込み）が目安。資格取得・経験を積むほど上を目指せる設計です。詳細は面談でお話しします。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">年間休日105日は少なくないですか？</div>
+        <div class="faq-a">日曜・祝日に加え月2〜3日の追加休暇があります。残業なしで8:30〜17:30勤務なので、平日も自分の時間を使いやすい環境です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">資格取得のサポートはありますか？</div>
+        <div class="faq-a">はい。建築士・施工管理技士・電気工事士などの試験に合格した場合、受験費用を全額会社が負担します。資格が増えるほど給与に反映されます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">女性でも働けますか？</div>
+        <div class="faq-a">はい。現在スタッフ9名中3名が女性です。少人数のフラットな職場なので、困ったことをすぐ相談できます。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩メッセージ -->
+<section class="section section-dark" id="voices">
+  <div class="section-inner">
+    <p class="label label-accent">Voices</p>
+    <h2 class="title title-white">先輩からのメッセージ</h2>
+    <p class="sub sub-light">※ここはサンプルです。実際には在籍スタッフのメッセージに差し替えます。</p>
+    <div class="voices-grid">
+      <div class="voice-card">
+        <div class="voice-photo">
+          <!-- 先輩写真サンプル -->
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=300&fit=crop&crop=faces&q=80" alt="先輩スタッフ写真（サンプル）">
+        </div>
+        <div class="voice-body">
+          <div class="voice-name">Kさん（仮名）</div>
+          <div class="voice-meta">入社2年目 ／ 建設現場管理</div>
+          <div class="voice-text">前職は全然違う業界でした。技術の幅が広いので、1年も経つといろんな現場で役立てる自分に気づけます。少人数だから先輩に気軽に聞けるのが一番助かっています。</div>
+          <div class="voice-sample">※ここはサンプルです。実際には在籍スタッフのメッセージに差し替えます。</div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-photo">
+          <!-- 先輩写真サンプル -->
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=300&fit=crop&crop=faces&q=80" alt="先輩スタッフ写真（サンプル）">
+        </div>
+        <div class="voice-body">
+          <div class="voice-name">Tさん（仮名）</div>
+          <div class="voice-meta">入社4年目 ／ 建設現場管理</div>
+          <div class="voice-text">大規模改修から個人宅のリフォームまで、案件の幅が広いから飽きない。資格も会社サポートで取れました。インセンティブもあるので、頑張りが給与に見えやすいのが嬉しい。</div>
+          <div class="voice-sample">※ここはサンプルです。実際には在籍スタッフのメッセージに差し替えます。</div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-photo">
+          <!-- 先輩写真サンプル -->
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=300&fit=crop&crop=faces&q=80" alt="先輩スタッフ写真（サンプル）">
+        </div>
+        <div class="voice-body">
+          <div class="voice-name">Mさん（仮名）</div>
+          <div class="voice-meta">入社2年半 ／ 内装・現場補助</div>
+          <div class="voice-text">女性でも働きやすい環境です。相談しやすく、家庭の都合にも柔軟に対応してもらえます。技術が身についてきたのが実感できるので、仕事が楽しくなってきました。</div>
+          <div class="voice-sample">※ここはサンプルです。実際には在籍スタッフのメッセージに差し替えます。</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 採用担当 -->
+<section class="section section-dark" id="recruiter">
+  <div class="section-inner">
+    <p class="label label-accent">Recruiter</p>
+    <h2 class="title title-white" style="margin-bottom:28px">採用担当者より</h2>
+    <div class="recruiter-box">
+      <!-- 採用担当写真サンプル -->
+      <img class="recruiter-photo" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当者（サンプル）">
+      <div class="recruiter-text">
+        <h3>長廻（人事課）</h3>
+        <p>「建設に挑戦してみたい」「手に職をつけたい」という気持ちがあれば大歓迎です。資格も技術も入社後に一緒に身につけていきましょう。まずはお気軽にご連絡ください。</p>
+        <p class="sample-note">※写真・コメントはサンプルです。実際の担当者情報に差し替えます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="section section-dark" id="spec">
+  <div class="section-inner">
+    <p class="label label-accent">Recruitment</p>
+    <h2 class="title title-white" style="margin-bottom:28px">募集要項</h2>
+    <table class="spec-table">
+      <tr><th>職種</th><td>建設現場管理（正社員）</td></tr>
+      <tr><th>仕事内容</th><td>住宅リフォームから大規模改修工事。内装・外壁塗装・水回り設備・解体工事。現場は千葉県内・東京都内中心。</td></tr>
+      <tr><th>給与</th><td>月給25万〜60万円（基本給20万〜55万＋固定残業代5万/月10時間分・超過別途）<br>インセンティブ・歩合あり。経験・能力考慮のうえ決定。</td></tr>
+      <tr><th>勤務時間</th><td>8:30〜17:30（休憩120分）・時間外労働なし</td></tr>
+      <tr><th>休日・休暇</th><td>日曜・祝日・月2〜3日追加休暇 ／ 年間休日105日</td></tr>
+      <tr><th>勤務地</th><td>千葉県印西市（各現場へ直行直帰・マイカー通勤可）</td></tr>
+      <tr><th>待遇</th><td>社会保険完備 ／ 交通費全額支給 ／ 昇給年1回＋随時調整 ／ 賞与年1回<br>資格取得費用全額支援 ／ スポーツクラブ無料 ／ ホワイトニング・脱毛機無料</td></tr>
+      <tr><th>必要資格</th><td>普通自動車免許（AT可）必須 ／ 未経験歓迎</td></tr>
+      <tr><th>選考</th><td>書類選考 → 面接1回。随時募集。採用人数3名。</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 最終CTA（写真背景） -->
+<section class="cta-section" id="apply">
+  <!-- 建設現場写真（サンプル）背景 -->
+  <div class="cta-bg"></div>
+  <div class="cta-overlay"></div>
+  <div class="cta-content">
+    <h2>千葉・東京の現場で、<br><span>一緒に技術を磨きませんか？</span></h2>
+    <p>「まずは話を聞いてみたい」「どんな現場か見てみたい」だけでも大歓迎です。<br>選考前のご質問もお気軽にどうぞ。</p>
+    <a href="mailto:fujiken0803.pon@gmail.com" class="btn-accent">メールで問い合わせる</a>
+    <p style="color:rgba(255,255,255,.55);font-size:.82rem;margin-top:16px">TEL: 050-5846-1081（人事課 長廻）</p>
+  </div>
+</section>
+
+<footer>
+  <p>株式会社 藤崎建設</p>
+  <p>〒270-1342 千葉県印西市高花5-10-11</p>
+  <p>TEL: 050-5846-1081 ／ E-mail: fujiken0803.pon@gmail.com</p>
+</footer>
+
+<script>
+// ハンバーガーメニューを閉じる（ナビリンククリック時）
+document.querySelectorAll('#nav a').forEach(function(a){
+  a.addEventListener('click',function(){document.getElementById('nav').classList.remove('open')});
+});
+</script>
+</body>
+</html>
