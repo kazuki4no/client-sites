@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報（LP型） | 株式会社印旛商会</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#1c1c1c;line-height:1.75}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ── ヘッダー ── */
+header{background:#1a1a1a;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100}
+.logo{color:#fff;font-weight:900;font-size:.95rem;letter-spacing:.08em}
+nav.pc-nav{display:flex;gap:24px}
+nav.pc-nav a{color:#ccc;font-size:.82rem;transition:color .2s}
+nav.pc-nav a:hover{color:#f97316}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px}
+.nav-drawer{display:none;position:fixed;top:0;right:0;width:240px;height:100%;background:#1a1a1a;z-index:200;padding:64px 24px 24px;flex-direction:column;gap:20px}
+.nav-drawer a{color:#ccc;font-size:1rem}
+.nav-drawer.open{display:flex}
+.drawer-close{position:absolute;top:16px;right:16px;background:none;border:none;color:#fff;font-size:1.5rem;cursor:pointer}
+.overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:150}
+.overlay.open{display:block}
+
+/* ── ヒーロー ── */
+.hero{position:relative;min-height:80vh;display:flex;align-items:center;justify-content:flex-start;overflow:hidden;padding:60px 24px}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1553413077-190dd305871c?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(100deg,rgba(10,10,10,.85) 50%,rgba(10,10,10,.3))}
+.hero-inner{position:relative;z-index:1;max-width:600px;color:#fff}
+.hero-badge{display:inline-block;background:#f97316;color:#fff;font-size:.72rem;font-weight:900;letter-spacing:.12em;padding:5px 18px;border-radius:999px;margin-bottom:20px}
+.hero-title{font-size:clamp(2rem,6vw,3.4rem);font-weight:900;line-height:1.2;margin-bottom:20px}
+.hero-title em{color:#f97316;font-style:normal}
+.hero-sub{font-size:clamp(.88rem,2vw,1rem);color:#e0e0e0;margin-bottom:36px;line-height:1.8}
+.btn-orange{display:inline-block;background:#f97316;color:#fff;padding:16px 48px;border-radius:4px;font-size:1rem;font-weight:700;transition:background .2s;margin-right:12px}
+.btn-orange:hover{background:#ea6a00}
+
+/* ── 数字バー ── */
+.numbers{background:#f97316;padding:48px 24px}
+.numbers .inner{max-width:960px;margin:0 auto;display:flex;flex-wrap:wrap;gap:0}
+.num-item{flex:1 1 25%;text-align:center;padding:16px;border-right:1px solid rgba(255,255,255,.25)}
+.num-item:last-child{border-right:none}
+.num-val{font-size:clamp(2rem,5vw,2.8rem);font-weight:900;color:#fff;line-height:1}
+.num-unit{font-size:.85rem;color:rgba(255,255,255,.85);font-weight:700}
+.num-label{font-size:.78rem;color:rgba(255,255,255,.75);margin-top:6px}
+.num-note{font-size:.7rem;color:rgba(255,255,255,.6)}
+
+/* ── セクション共通 ── */
+section{padding:80px 24px}
+.container{max-width:960px;margin:0 auto}
+.section-eyebrow{font-size:.72rem;font-weight:900;letter-spacing:.18em;color:#f97316;text-transform:uppercase;margin-bottom:10px}
+.section-title{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:900;margin-bottom:48px;color:#111}
+
+/* ── 仕事の魅力 ── */
+.merit-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
+.merit-card{display:flex;gap:20px;align-items:flex-start}
+.merit-no{font-size:2.5rem;font-weight:900;color:#f2e8df;line-height:1;flex-shrink:0;width:48px}
+.merit-body h3{font-weight:700;font-size:1.05rem;margin-bottom:8px;color:#111}
+.merit-body p{font-size:.9rem;color:#555;line-height:1.7}
+
+/* ── 社員インタビュー ── */
+.interview{background:#f5f0eb}
+.interview-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:32px}
+.interview-card{background:#fff;border-radius:12px;overflow:hidden;display:flex;gap:0;flex-direction:column}
+.interview-card img{width:100%;height:220px;object-fit:cover}
+.interview-body{padding:24px}
+.interview-name{font-weight:900;color:#111;margin-bottom:4px}
+.interview-role{font-size:.78rem;color:#f97316;font-weight:700;margin-bottom:14px}
+.interview-quote{font-size:.9rem;color:#444;line-height:1.75;border-left:3px solid #f97316;padding-left:12px}
+.interview-sample{font-size:.72rem;color:#bbb;margin-top:10px}
+
+/* ── タイムライン ── */
+.timeline-wrap{background:#fff}
+.tl-list{list-style:none;position:relative;padding-left:0}
+.tl-list::before{content:'';position:absolute;left:28px;top:0;bottom:0;width:2px;background:#f0e8df}
+.tl-item{display:flex;gap:20px;align-items:flex-start;padding-left:64px;position:relative;margin-bottom:32px}
+.tl-time{position:absolute;left:0;top:0;width:56px;height:56px;background:#1a1a1a;color:#f97316;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:900}
+.tl-body h4{font-weight:700;font-size:.95rem;margin-bottom:4px}
+.tl-body p{font-size:.88rem;color:#555}
+
+/* ── 中盤CTA ── */
+.mid-cta{background:#1a1a1a;padding:64px 24px;text-align:center;color:#fff}
+.mid-cta h2{font-size:clamp(1.4rem,4vw,2rem);font-weight:900;margin-bottom:16px}
+.mid-cta p{font-size:.95rem;color:#aaa;margin-bottom:32px}
+
+/* ── FAQ ── */
+.faq-list{list-style:none}
+.faq-item{margin-bottom:0;border-bottom:1px solid #eee}
+.faq-q{font-weight:700;padding:20px 0 12px;display:flex;gap:12px;cursor:default}
+.faq-q::before{content:'Q';color:#f97316;font-weight:900;flex-shrink:0}
+.faq-a{font-size:.92rem;color:#555;display:flex;gap:12px;padding-bottom:20px}
+.faq-a::before{content:'A';color:#999;font-weight:700;flex-shrink:0}
+
+/* ── 募集要項 ── */
+.spec{background:#f9f5f0}
+.spec-table{width:100%;border-collapse:collapse}
+.spec-table th,.spec-table td{padding:14px 16px;border-bottom:1px solid #e4ddd5;text-align:left;vertical-align:top;font-size:.92rem}
+.spec-table th{width:28%;font-weight:700;color:#111;background:#ede7df;white-space:nowrap}
+.spec-table td{color:#333}
+
+/* ── 最終CTA ── */
+.final-cta{background:linear-gradient(135deg,#1a1a1a 0%,#2d2d2d 100%);padding:80px 24px;text-align:center;color:#fff}
+.final-cta h2{font-size:clamp(1.6rem,4.5vw,2.4rem);font-weight:900;margin-bottom:16px}
+.final-cta p{font-size:.95rem;color:#bbb;margin-bottom:40px}
+.cta-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+
+/* ── 固定バー ── */
+.fixed-bar{display:none;position:fixed;bottom:0;left:0;right:0;background:#f97316;padding:14px 24px;z-index:99;text-align:center}
+.fixed-bar a{color:#fff;font-weight:700;font-size:.95rem}
+.fixed-bar a::after{content:' ▶'}
+
+/* ── フッター ── */
+footer{background:#0d0d0d;color:#666;padding:36px 24px;font-size:.85rem}
+.footer-inner{max-width:960px;margin:0 auto}
+
+/* ── レスポンシブ ── */
+@media(max-width:768px){
+  nav.pc-nav{display:none}
+  .hamburger{display:flex}
+  .fixed-bar{display:block}
+  body{padding-bottom:56px}
+  .merit-grid{grid-template-columns:1fr}
+  .interview-grid{grid-template-columns:1fr}
+  .num-item{flex:1 1 50%}
+  .spec-table{display:block}
+  .spec-table thead{display:none}
+  .spec-table tbody,.spec-table tr,.spec-table th,.spec-table td{display:block;width:100%}
+  .spec-table tr{margin-bottom:12px;border:1px solid #e4ddd5;border-radius:8px;overflow:hidden}
+  .spec-table th{background:#ede7df;padding:10px 14px}
+  .spec-table td{padding:10px 14px;border-bottom:none}
+  .cta-buttons{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">株式会社印旛商会</div>
+  <nav class="pc-nav">
+    <a href="#merits">魅力</a>
+    <a href="#interview">先輩の声</a>
+    <a href="#spec">募集要項</a>
+    <a href="#faq">FAQ</a>
+    <a href="#final-cta">応募する</a>
+  </nav>
+  <button class="hamburger" id="hamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+<div class="overlay" id="overlay"></div>
+<nav class="nav-drawer" id="navDrawer">
+  <button class="drawer-close" id="drawerClose">✕</button>
+  <a href="#merits">魅力</a>
+  <a href="#interview">先輩の声</a>
+  <a href="#spec">募集要項</a>
+  <a href="#faq">FAQ</a>
+  <a href="#final-cta">応募する</a>
+</nav>
+<div class="fixed-bar"><a href="#final-cta">今すぐ応募する</a></div>
+
+<!-- ヒーロー -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <div class="hero-badge">📷 正社員募集中 ／ 土日祝休み</div>
+    <h1 class="hero-title">「クルマ好き」が<br><em>そのまま強みになる</em><br>仕事、あります。</h1>
+    <p class="hero-sub">自動車・バイク部品のヤフオク出品 × SNS投稿企画 × 梱包発送<br>スマホ撮影OK・残業なし・月給22万〜</p>
+    <a href="#final-cta" class="btn-orange">採用詳細を見る</a>
+  </div>
+</div>
+
+<!-- 数字バー -->
+<div class="numbers">
+  <div class="inner">
+    <div class="num-item">
+      <div class="num-val">120<span class="num-unit">日</span></div>
+      <div class="num-label">年間休日数</div>
+    </div>
+    <div class="num-item">
+      <div class="num-val">0<span class="num-unit">時間</span></div>
+      <div class="num-label">月平均残業時間</div>
+    </div>
+    <div class="num-item">
+      <div class="num-val">22<span class="num-unit">万〜</span></div>
+      <div class="num-label">月給（月額）</div>
+    </div>
+    <div class="num-item">
+      <div class="num-val">3<span class="num-unit">分</span></div>
+      <div class="num-label">最寄り駅から徒歩</div>
+    </div>
+  </div>
+  <p style="text-align:center;font-size:.72rem;color:rgba(255,255,255,.6);margin-top:12px">※ここはサンプルです。実際には御社の実績数字に差し替えます。</p>
+</div>
+
+<!-- 仕事の魅力 -->
+<section id="merits">
+  <div class="container">
+    <p class="section-eyebrow">Why Work Here</p>
+    <h2 class="section-title">ここで働く理由</h2>
+    <div class="merit-grid">
+      <div class="merit-card">
+        <div class="merit-no">01</div>
+        <div class="merit-body">
+          <h3>「スマホで撮る」が仕事になる</h3>
+          <p>商品撮影はスマホで完結。高価な機材不要、SNSを使い慣れている感覚がそのまま業務スキルになります。撮影→説明文→出品の流れを全部手がけられます。</p>
+        </div>
+      </div>
+      <div class="merit-card">
+        <div class="merit-no">02</div>
+        <div class="merit-body">
+          <h3>カーレースや自動車文化を仕事にできる</h3>
+          <p>自動車・バイク部品の輸出入・販売が事業の柱。クルマ・バイク好きには毎日が学びの場。カーレースイベントへの参加特典もあります（実績あり）。</p>
+        </div>
+      </div>
+      <div class="merit-card">
+        <div class="merit-no">03</div>
+        <div class="merit-body">
+          <h3>完全週休2日＋祝日・残業ほぼゼロ</h3>
+          <p>年間120日休みで、時間外労働なし（36協定の特別条項も設定なし）。退勤後と週末の時間をしっかり自分のために使えます。</p>
+        </div>
+      </div>
+      <div class="merit-card">
+        <div class="merit-no">04</div>
+        <div class="merit-body">
+          <h3>少人数だから裁量が大きい</h3>
+          <p>現在5名体制（役員3名・スタッフ2名）の若い会社。一人ひとりのアイデアが直接業務に反映され、自分で「仕事を作る」感覚を持てます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 社員インタビュー -->
+<section class="interview" id="interview">
+  <div class="container">
+    <p class="section-eyebrow">Team Voices</p>
+    <h2 class="section-title">先輩スタッフの声</h2>
+    <div class="interview-grid">
+      <div class="interview-card">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=640&h=380&fit=crop&crop=faces&q=80" alt="先輩スタッフ">
+        <div class="interview-body">
+          <div class="interview-name">田中 A子（仮名）</div>
+          <div class="interview-role">出品管理・SNS担当 ／ 入社1年</div>
+          <blockquote class="interview-quote">「前職では全く別の仕事をしていたんですが、SNSが得意だという話をしたら"それが一番必要なスキルだよ"と言われて入社を決めました。部品の知識はゼロからでしたが、今は落札されるたびに達成感があります。」</blockquote>
+          <p class="interview-sample">※ここはサンプルです。実際には御社スタッフの声に差し替えます。</p>
+        </div>
+      </div>
+      <div class="interview-card">
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=640&h=380&fit=crop&crop=faces&q=80" alt="先輩スタッフ">
+        <div class="interview-body">
+          <div class="interview-name">鈴木 B太（仮名）</div>
+          <div class="interview-role">出品・倉庫管理担当 ／ 入社2年</div>
+          <blockquote class="interview-quote">「バイクが好きで応募しました。毎日さまざまなパーツを手にする中で、自然と専門知識が身につきます。倉庫への搬運も体を動かすのが好きな自分には向いています。土日はゆっくり趣味に使えて充実しています。」</blockquote>
+          <p class="interview-sample">※ここはサンプルです。実際には御社スタッフの声に差し替えます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 中盤CTA -->
+<div class="mid-cta" id="mid-cta">
+  <h2>まず話を聞いてみませんか？</h2>
+  <p>選考プレッシャーなしの気軽な問い合わせから歓迎です。</p>
+  <a href="mailto:info@inbashokai.jp" class="btn-orange">メールで気軽に聞く</a>
+</div>
+
+<!-- 1日の流れ -->
+<section class="timeline-wrap" id="timeline">
+  <div class="container">
+    <p class="section-eyebrow">A Day in the Life</p>
+    <h2 class="section-title">1日の流れ <span style="font-size:.65em;color:#bbb;font-weight:400">（サンプル）</span></h2>
+    <ul class="tl-list">
+      <li class="tl-item">
+        <span class="tl-time">9:00</span>
+        <div class="tl-body"><h4>出勤・前日の受注確認</h4><p>メールをチェックし、発送待ち・問い合わせ対応を整理。</p></div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">9:30</span>
+        <div class="tl-body"><h4>商品撮影・採寸・説明文作成</h4><p>入庫した部品をスマホで撮影。採寸してヤフオク掲載用の説明文を書きます。</p></div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">11:00</span>
+        <div class="tl-body"><h4>ヤフオク出品・在庫更新</h4><p>撮影分を登録・価格設定・公開。在庫リストも同時に更新。</p></div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">12:00</span>
+        <div class="tl-body"><h4>昼休憩（1時間）</h4><p>JR小林駅から徒歩3分。周辺でランチ、または持参弁当も。</p></div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">13:00</span>
+        <div class="tl-body"><h4>梱包・発送手配</h4><p>受注商品をていねいに梱包し、配送業者へ手配。</p></div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">14:30</span>
+        <div class="tl-body"><h4>SNS投稿・翌日準備</h4><p>Instagram等の投稿を企画・作成。翌日の入庫予定を確認。</p></div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">17:00</span>
+        <div class="tl-body"><h4>業務まとめ・退勤</h4><p>一日の処理件数を記録して退勤。残業はほぼありません。</p></div>
+      </li>
+    </ul>
+    <p style="font-size:.75rem;color:#bbb;margin-top:8px">※ここはサンプルです。実際には御社の1日のスケジュールに差し替えます。</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="background:#fafaf8">
+  <div class="container">
+    <p class="section-eyebrow">FAQ</p>
+    <h2 class="section-title">よくある質問</h2>
+    <ul class="faq-list">
+      <li class="faq-item">
+        <div class="faq-q">自動車部品の知識がなくても応募できますか？</div>
+        <div class="faq-a">はい。自動車教習所レベルの知識があれば大丈夫です。入社後はていねいにサポートします。クルマやバイクへの興味が一番大切です。</div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q">撮影機材は自分で用意しますか？</div>
+        <div class="faq-a">スマホがあれば大丈夫です。普段スマホで写真を撮り慣れている方であれば、特別な準備は必要ありません。</div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q">英語や中国語のスキルは必要ですか？</div>
+        <div class="faq-a">必須ではありません。ただし、スキルをお持ちの方は海外向け輸出入の業務で活かせる場面があります。</div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q">選考の流れを教えてください。</div>
+        <div class="faq-a">メール or ハローワーク紹介状でご応募→書類選考（7日以内）→面接1回（印西市小林）→合否連絡（7日以内）の流れです。</div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q">設立間もない会社ですが、安定して働けますか？</div>
+        <div class="faq-a">2023年設立の若い会社ですが、各種社会保険完備・昇給賞与実績あり・資格取得支援制度ありと待遇面は整えています。小規模だからこそ成長の実感も大きいです。</div>
+      </li>
+    </ul>
+    <p style="font-size:.75rem;color:#bbb;margin-top:16px">※ここはサンプルです。実際には御社のよくあるご質問に差し替えます。</p>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="spec" id="spec">
+  <div class="container">
+    <p class="section-eyebrow">Requirements</p>
+    <h2 class="section-title">募集要項</h2>
+    <table class="spec-table">
+      <tbody>
+        <tr><th>職種</th><td>自動車・バイク部品出品管理・事務作業スタッフ（正社員）</td></tr>
+        <tr><th>給与</th><td>月給 220,000円〜240,000円（経験・年齢考慮）<br>昇給あり・賞与あり（年1回）</td></tr>
+        <tr><th>就業時間</th><td>9:00〜18:00（昼休憩60分）/ 時間外労働なし</td></tr>
+        <tr><th>休日</th><td>土・日・祝日 ／ GW・お盆・年末年始 ／ 年間休日120日</td></tr>
+        <tr><th>勤務地</th><td>千葉県印西市小林1693-2（JR小林駅 徒歩3分）</td></tr>
+        <tr><th>必要資格</th><td>普通自動車免許（AT限定可）必須</td></tr>
+        <tr><th>歓迎スキル</th><td>SNSの日常利用・Word・Excel・メール基本操作</td></tr>
+        <tr><th>待遇</th><td>社会保険完備 ／ 通勤手当（実費・上限なし）／ マイカー通勤可 ／ 資格取得支援制度</td></tr>
+        <tr><th>試用期間</th><td>1〜3ヶ月（同条件）</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 最終CTA -->
+<section class="final-cta" id="final-cta">
+  <div class="container">
+    <h2>あなたの「好き」が、仕事になります。</h2>
+    <p>クルマ・バイク・SNS・写真が好きな方、ぜひお気軽にご連絡ください。<br>まずは話を聞くだけでも歓迎です。</p>
+    <div class="cta-buttons">
+      <a href="mailto:info@inbashokai.jp" class="btn-orange">メールで応募・問い合わせ</a>
+    </div>
+    <p style="font-size:.8rem;color:#666;margin-top:24px">ハローワーク紹介状でのご応募も歓迎しています。</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <p>株式会社印旛商会</p>
+    <p>〒270-1318 千葉県印西市小林1693-2</p>
+    <p>TEL: 080-2127-4525 ／ E-mail: info@inbashokai.jp</p>
+  </div>
+</footer>
+
+<script>
+const hamburger=document.getElementById('hamburger');
+const navDrawer=document.getElementById('navDrawer');
+const overlay=document.getElementById('overlay');
+const drawerClose=document.getElementById('drawerClose');
+function openDrawer(){navDrawer.classList.add('open');overlay.classList.add('open')}
+function closeDrawer(){navDrawer.classList.remove('open');overlay.classList.remove('open')}
+hamburger.addEventListener('click',openDrawer);
+drawerClose.addEventListener('click',closeDrawer);
+overlay.addEventListener('click',closeDrawer);
+navDrawer.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeDrawer));
+</script>
+</body>
+</html>
