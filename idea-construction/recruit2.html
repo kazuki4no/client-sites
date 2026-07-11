@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 株式会社イデアコンストラクション</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#1e2a3a;background:#f8fafc}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+:root{
+  --navy:#0f3460;
+  --amber:#ffb300;
+  --dark:#0d2347;
+  --white:#fff;
+  --light:#eef2f9;
+  --muted:#5e7191;
+}
+
+/* HEADER */
+header{
+  background:var(--navy);padding:0 24px;height:60px;
+  display:flex;align-items:center;justify-content:space-between;
+  position:sticky;top:0;z-index:100;
+}
+.logo{color:#fff;font-weight:900;font-size:.9rem}
+.logo em{color:var(--amber);font-style:normal}
+.pc-nav{display:flex;gap:24px;list-style:none;align-items:center}
+.pc-nav a{color:rgba(255,255,255,.8);font-size:.82rem;white-space:nowrap;transition:color .2s}
+.pc-nav a:hover{color:var(--amber)}
+.pc-nav .nav-cta{
+  background:var(--amber);color:var(--navy);
+  padding:7px 16px;border-radius:4px;font-weight:900;font-size:.82rem;
+}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff}
+.sp-nav{
+  display:none;position:fixed;top:60px;right:0;
+  width:200px;background:var(--navy);padding:20px;
+  list-style:none;flex-direction:column;gap:14px;
+  box-shadow:-4px 0 16px rgba(0,0,0,.3);z-index:99;
+}
+.sp-nav.open{display:flex}
+.sp-nav a{color:rgba(255,255,255,.9);font-size:.9rem}
+@media(max-width:768px){.pc-nav{display:none}.hamburger{display:flex}}
+
+/* HERO */
+.hero{
+  background:var(--dark);
+  position:relative;
+  padding:80px 24px 72px;
+  text-align:center;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;opacity:.2;
+  background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&h=900&fit=crop&q=80');
+  background-size:cover;background-position:center;
+}
+.hero-inner{position:relative;z-index:1;max-width:760px;margin:0 auto}
+.hero-tag{
+  display:inline-block;border:1.5px solid var(--amber);color:var(--amber);
+  font-size:.78rem;font-weight:700;padding:4px 16px;border-radius:99px;margin-bottom:24px;
+}
+.hero h1{
+  color:#fff;font-size:clamp(2rem,5.5vw,3.5rem);
+  font-weight:900;line-height:1.25;margin-bottom:20px;
+}
+.hero h1 em{color:var(--amber);font-style:normal}
+.hero p{color:rgba(255,255,255,.8);font-size:clamp(.9rem,2.5vw,1.05rem);line-height:1.9;margin-bottom:40px}
+.btn-amber{
+  display:inline-block;background:var(--amber);color:var(--navy);
+  font-size:1.05rem;font-weight:900;padding:18px 48px;border-radius:4px;
+  transition:background .2s,transform .2s;
+}
+.btn-amber:hover{background:#e6a000;transform:translateY(-2px)}
+.hero-note{color:rgba(255,255,255,.5);font-size:.78rem;margin-top:16px}
+
+/* STATS */
+.stats{background:var(--amber);padding:40px 24px}
+.stats-inner{max-width:960px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+.stat{text-align:center}
+.stat-num{font-size:clamp(2rem,5vw,3rem);font-weight:900;color:var(--navy);line-height:1}
+.stat-num span{font-size:1rem}
+.stat-label{font-size:.78rem;color:var(--navy);opacity:.8;margin-top:6px;line-height:1.4}
+.stats-note{text-align:center;font-size:.72rem;color:var(--navy);opacity:.65;margin-top:20px}
+@media(max-width:768px){.stats-inner{grid-template-columns:repeat(2,1fr)}}
+
+/* SECTION */
+.section{padding:72px 24px}
+.bg-white{background:#fff}
+.inner{max-width:960px;margin:0 auto}
+.section-label{font-size:.78rem;font-weight:700;color:var(--amber);letter-spacing:.1em;margin-bottom:8px}
+.section-title{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:900;color:var(--navy);margin-bottom:16px;line-height:1.3}
+.section-lead{color:var(--muted);font-size:.9rem;line-height:1.8;margin-bottom:48px}
+
+/* CHECKLIST */
+.checklist{list-style:none;display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin-bottom:40px}
+.checklist li{
+  display:flex;align-items:flex-start;gap:12px;
+  background:#fff;padding:16px 20px;border-radius:8px;
+  font-size:.9rem;line-height:1.6;color:#1e2a3a;
+  border-left:3px solid var(--amber);
+}
+.checklist li::before{content:'✓';color:var(--amber);font-weight:900;flex-shrink:0;margin-top:.1em}
+@media(max-width:768px){.checklist{grid-template-columns:1fr}}
+
+/* MERIT LP */
+.merits-lp{display:flex;flex-direction:column;gap:32px}
+.merit-lp-row{
+  display:flex;gap:32px;align-items:center;
+  background:#fff;border-radius:12px;
+  overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07);
+}
+.merit-lp-row:nth-child(even){flex-direction:row-reverse}
+.merit-lp-img{flex:0 0 44%;min-height:220px;overflow:hidden}
+.merit-lp-img img{width:100%;height:100%;object-fit:cover;display:block}
+.merit-lp-body{flex:1;padding:36px}
+.merit-lp-body .num{font-size:3rem;font-weight:900;color:var(--amber);line-height:1;margin-bottom:8px}
+.merit-lp-body h3{font-size:1.2rem;font-weight:900;color:var(--navy);margin-bottom:12px;line-height:1.4}
+.merit-lp-body p{font-size:.9rem;line-height:1.85;color:#1e2a3a}
+@media(max-width:768px){
+  .merit-lp-row,.merit-lp-row:nth-child(even){flex-direction:column}
+  .merit-lp-img{flex:none;height:200px;width:100%}
+  .merit-lp-body{padding:24px}
+}
+
+/* CTA MID */
+.cta-mid{background:var(--navy);padding:56px 24px;text-align:center}
+.cta-mid h2{color:#fff;font-size:clamp(1.3rem,3.5vw,1.9rem);font-weight:900;margin-bottom:16px}
+.cta-mid p{color:rgba(255,255,255,.75);margin-bottom:32px;font-size:.9rem;line-height:1.8}
+
+/* TIMELINE */
+.tl-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.tl-card{background:#fff;border-radius:8px;padding:24px;display:flex;gap:16px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.tl-card-time{
+  min-width:64px;font-size:.8rem;font-weight:700;
+  color:var(--amber);text-align:center;padding-top:2px;
+}
+.tl-card-body h4{font-size:.9rem;font-weight:700;color:var(--navy);margin-bottom:4px}
+.tl-card-body p{font-size:.82rem;color:var(--muted);line-height:1.65}
+@media(max-width:768px){.tl-grid{grid-template-columns:1fr}}
+
+/* INTERVIEW */
+.interview-card{
+  background:var(--navy);border-radius:12px;
+  padding:40px;display:flex;gap:36px;align-items:flex-start;
+}
+.interview-img{
+  width:100px;height:100px;border-radius:50%;
+  object-fit:cover;flex-shrink:0;
+  border:3px solid var(--amber);
+}
+.interview-body{}
+.interview-body .role{font-size:.78rem;color:var(--amber);font-weight:700;margin-bottom:6px}
+.interview-body h3{font-size:1.1rem;font-weight:900;color:#fff;margin-bottom:16px}
+.interview-q{margin-bottom:16px}
+.interview-q p.q{font-size:.82rem;font-weight:700;color:var(--amber);margin-bottom:4px}
+.interview-q p.a{font-size:.9rem;color:rgba(255,255,255,.85);line-height:1.8}
+.sample-note{font-size:.72rem;color:rgba(255,255,255,.4);margin-top:12px;font-style:italic}
+@media(max-width:768px){.interview-card{flex-direction:column;gap:20px;padding:28px 24px}}
+
+/* VOICE */
+.voice-row{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.voice-card{background:#fff;border-radius:8px;padding:24px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.voice-head{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+.voice-avatar{width:52px;height:52px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.voice-meta h4{font-size:.88rem;font-weight:700;color:var(--navy)}
+.voice-meta p{font-size:.75rem;color:var(--muted)}
+.voice-card blockquote{font-size:.875rem;line-height:1.8;color:#1e2a3a;border-left:3px solid var(--amber);padding-left:12px}
+.note{font-size:.72rem;color:#94a3b8;margin-top:6px;font-style:italic}
+@media(max-width:768px){.voice-row{grid-template-columns:1fr}}
+
+/* REQUIREMENTS */
+.req-table{width:100%;border-collapse:collapse}
+.req-table tr{border-bottom:1px solid #dde5f0}
+.req-table th{
+  width:130px;background:var(--navy);color:#fff;
+  font-size:.875rem;font-weight:700;padding:14px 16px;
+  vertical-align:top;text-align:left;white-space:nowrap;
+}
+.req-table td{padding:14px 16px;font-size:.9rem;line-height:1.75;color:#1e2a3a;background:#fff}
+@media(max-width:768px){
+  .req-table tr{display:block;margin-bottom:12px;border:1px solid #dde5f0;border-radius:8px;overflow:hidden}
+  .req-table th,.req-table td{display:block;width:100%}
+  .req-table td{padding-top:8px}
+}
+
+/* FAQ */
+.faq-list{list-style:none}
+.faq-item{background:#fff;border-radius:8px;margin-bottom:8px;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06)}
+.faq-q{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:18px 20px;cursor:pointer;font-size:.9rem;font-weight:700;color:var(--navy);
+}
+.faq-icon{color:var(--amber);font-size:1.2rem;flex-shrink:0;font-weight:700}
+.faq-a{display:none;padding:0 20px 18px;font-size:.875rem;line-height:1.8;color:var(--muted)}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-q{color:var(--amber)}
+
+/* CTA FINAL */
+.cta-final{background:linear-gradient(135deg,var(--dark) 0%,var(--navy) 100%);padding:72px 24px;text-align:center}
+.cta-final h2{color:#fff;font-size:clamp(1.5rem,4vw,2.4rem);font-weight:900;margin-bottom:12px}
+.cta-final .sub{color:rgba(255,255,255,.7);font-size:.9rem;margin-bottom:36px;line-height:1.8}
+.btn-amber-lg{
+  display:inline-block;background:var(--amber);color:var(--navy);
+  font-size:1.1rem;font-weight:900;padding:18px 56px;border-radius:4px;
+  transition:background .2s,transform .2s;
+}
+.btn-amber-lg:hover{background:#e6a000;transform:translateY(-2px)}
+.cta-tel{color:rgba(255,255,255,.65);font-size:.85rem;margin-top:16px}
+
+/* ENTRY BAR (mobile sticky) */
+.entry-bar{
+  display:none;position:fixed;bottom:0;left:0;width:100%;
+  background:var(--amber);z-index:200;
+  padding:12px 20px;
+  display:flex;align-items:center;justify-content:space-between;
+  box-shadow:0 -4px 12px rgba(0,0,0,.15);
+}
+.entry-bar p{font-size:.82rem;font-weight:700;color:var(--navy)}
+.entry-bar a{
+  background:var(--navy);color:#fff;
+  font-size:.88rem;font-weight:900;
+  padding:10px 20px;border-radius:4px;
+  white-space:nowrap;
+}
+@media(min-width:769px){.entry-bar{display:none!important}}
+body{padding-bottom:64px}
+@media(min-width:769px){body{padding-bottom:0}}
+
+/* FOOTER */
+footer{background:#0a1628;color:rgba(255,255,255,.6);padding:36px 24px;text-align:center;font-size:.85rem;line-height:1.9}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">株式会社<em>イデアコンストラクション</em>　採用情報</div>
+  <nav>
+    <ul class="pc-nav">
+      <li><a href="#merit">働く魅力</a></li>
+      <li><a href="#timeline">1日の流れ</a></li>
+      <li><a href="#requirements">募集要項</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#cta-final" class="nav-cta">応募する</a></li>
+    </ul>
+  </nav>
+  <button class="hamburger" onclick="document.getElementById('sp-nav').classList.toggle('open')" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+<ul class="sp-nav" id="sp-nav">
+  <li><a href="#merit" onclick="document.getElementById('sp-nav').classList.remove('open')">働く魅力</a></li>
+  <li><a href="#timeline" onclick="document.getElementById('sp-nav').classList.remove('open')">1日の流れ</a></li>
+  <li><a href="#requirements" onclick="document.getElementById('sp-nav').classList.remove('open')">募集要項</a></li>
+  <li><a href="#faq" onclick="document.getElementById('sp-nav').classList.remove('open')">FAQ</a></li>
+  <li><a href="#cta-final" onclick="document.getElementById('sp-nav').classList.remove('open')">応募する</a></li>
+</ul>
+
+<!-- HERO (CTA 1) -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <span class="hero-tag">大手ゼネコン案件 ／ 直行直帰 ／ 土日祝休み</span>
+    <h1>あなたが、<em>大手の現場</em>を<br>動かす力になる</h1>
+    <p>杭・鉄筋配筋の確認写真撮影・iPad入力でお任せする重要な仕事。<br>建設の専門知識がなくても大丈夫。<br>年間休日125日・日給最大18,000円・直行直帰で、<br>プライベートも仕事もしっかり両立できます。</p>
+    <a href="#cta-final" class="btn-amber">まず応募してみる</a>
+    <p class="hero-note">※選考前に詳しいご説明もいたします。お気軽にどうぞ。</p>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">125<span>日</span></div>
+      <div class="stat-label">年間休日<br>（土日祝休み）</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">18,000<span>円</span></div>
+      <div class="stat-label">日給上限<br>（月換算36万円）</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3<span>社</span></div>
+      <div class="stat-label">大手ゼネコン<br>主要取引先</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">4<span>人</span></div>
+      <div class="stat-label">就業場所スタッフ<br>（うち女性2名）</div>
+    </div>
+  </div>
+  <p class="stats-note">※ここはサンプルです。実際の数値に差し替えます</p>
+</div>
+
+<!-- こんな方に向いています -->
+<section class="section bg-white">
+  <div class="inner">
+    <p class="section-label">For you</p>
+    <h2 class="section-title">こんな方に向いています</h2>
+    <ul class="checklist">
+      <li>毎朝の通勤ラッシュを避けて直行直帰で働きたい</li>
+      <li>土日祝はしっかり休んでプライベートを大切にしたい</li>
+      <li>体力的な負担が少ない現場仕事がしたい</li>
+      <li>iPadやデジタルツールを活用した仕事に挑戦したい</li>
+      <li>大手ゼネコンと関わるやりがいのある環境で働きたい</li>
+      <li>アルバイトからスタートして将来は正社員も目指したい</li>
+    </ul>
+  </div>
+</section>
+
+<!-- MERIT (CTA 2埋め込み用) -->
+<section class="section" id="merit">
+  <div class="inner">
+    <p class="section-label">Merit</p>
+    <h2 class="section-title">この仕事が選ばれる理由</h2>
+    <div class="merits-lp">
+      <div class="merit-lp-row">
+        <div class="merit-lp-img">
+          <!-- 建設現場イメージ（サンプル） -->
+          <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=640&h=380&fit=crop&q=80" alt="建設現場イメージ（サンプル）">
+        </div>
+        <div class="merit-lp-body">
+          <div class="num">01</div>
+          <h3>大手ゼネコンの現場で<br>信頼される仕事</h3>
+          <p>竹中工務店・大林組・清水建設など業界を代表する企業との継続取引。品質管理に欠かせない写真記録を担う重要なポジションです。「自分が撮った記録が現場の安全を支えている」という実感が働きがいになります。</p>
+        </div>
+      </div>
+      <div class="merit-lp-row">
+        <div class="merit-lp-img">
+          <!-- デジタルツール活用イメージ（サンプル） -->
+          <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=640&h=380&fit=crop&q=80" alt="デジタルツール活用イメージ（サンプル）">
+        </div>
+        <div class="merit-lp-body">
+          <div class="num">02</div>
+          <h3>直行直帰＋土日祝休み<br>ライフスタイル重視</h3>
+          <p>毎朝・毎夕の通勤ラッシュから解放されます。千葉県印西市の現場へ自宅から直行し、帰りもそのまま直帰。年間休日125日（土日祝休み）で、プライベートや家族との時間もしっかり確保できます。</p>
+        </div>
+      </div>
+      <div class="merit-lp-row">
+        <div class="merit-lp-img">
+          <!-- オフィスミーティングイメージ（サンプル） -->
+          <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=640&h=380&fit=crop&q=80" alt="チームイメージ（サンプル）">
+        </div>
+        <div class="merit-lp-body">
+          <div class="num">03</div>
+          <h3>アルバイトから<br>正社員への道</h3>
+          <p>まずはアルバイトとしてスタートしていただき、実績・業務態度により正社員登用の可能性があります。昇給制度もあり、スキルが上がれば収入も上がる環境です。民間保険（病気・怪我の入院保障）も完備しています。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA 2 (中盤) -->
+<section class="cta-mid">
+  <h2>まずは話を聞いてみませんか？</h2>
+  <p>選考前のご質問・不安な点もお気軽にどうぞ。<br>メールまたはお電話でご連絡ください。</p>
+  <a href="#cta-final" class="btn-amber">応募・お問い合わせはこちら</a>
+</section>
+
+<!-- TIMELINE -->
+<section class="section bg-white" id="timeline">
+  <div class="inner">
+    <p class="section-label">A day</p>
+    <h2 class="section-title">社員の1日の流れ</h2>
+    <p class="section-lead">※ここはサンプルです。実際には御社スタッフの典型的な1日に差し替えます</p>
+    <div class="tl-grid">
+      <div class="tl-card">
+        <div class="tl-card-time">07:30</div>
+        <div class="tl-card-body"><h4>自宅を出発</h4><p>直行なので通勤ラッシュを避けて出発。気持ちに余裕が生まれます。</p></div>
+      </div>
+      <div class="tl-card">
+        <div class="tl-card-time">08:00</div>
+        <div class="tl-card-body"><h4>現場到着・安全確認</h4><p>ヘルメット・安全靴を装着。その日の作業エリアを確認します。</p></div>
+      </div>
+      <div class="tl-card">
+        <div class="tl-card-time">08:30</div>
+        <div class="tl-card-body"><h4>図面確認・撮影準備</h4><p>当日の確認箇所を図面で把握しiPadの準備を整えます。</p></div>
+      </div>
+      <div class="tl-card">
+        <div class="tl-card-time">09:00</div>
+        <div class="tl-card-body"><h4>杭・配筋の確認撮影</h4><p>図面と照合しながら杭・鉄筋配筋の状況を丁寧に写真記録します。</p></div>
+      </div>
+      <div class="tl-card">
+        <div class="tl-card-time">12:00</div>
+        <div class="tl-card-body"><h4>昼食・休憩（90分）</h4><p>ゆっくり昼食をとり、しっかりリフレッシュできます。</p></div>
+      </div>
+      <div class="tl-card">
+        <div class="tl-card-time">13:30</div>
+        <div class="tl-card-body"><h4>午後の撮影・データ入力</h4><p>引き続き確認撮影。iPadで現場その場でデータを整理します。</p></div>
+      </div>
+      <div class="tl-card">
+        <div class="tl-card-time">17:00</div>
+        <div class="tl-card-body"><h4>作業終了・直帰</h4><p>現場から直接自宅へ。会社に戻る必要はありません。</p></div>
+      </div>
+      <div class="tl-card" style="background:var(--light);border:2px dashed var(--amber)">
+        <div class="tl-card-time" style="color:var(--navy)">休日</div>
+        <div class="tl-card-body"><h4>土日祝は完全オフ</h4><p>週休2日制で年間125日休暇。家族や趣味の時間を大切に。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERVIEW -->
+<section class="section">
+  <div class="inner">
+    <p class="section-label">Interview</p>
+    <h2 class="section-title">スタッフインタビュー</h2>
+    <p class="section-lead">※ここはサンプルです。実際には御社スタッフのインタビューに差し替えます</p>
+    <div class="interview-card">
+      <!-- インタビュー顔写真（サンプル） -->
+      <img class="interview-img" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="インタビュースタッフ（サンプル）">
+      <div class="interview-body">
+        <p class="role">入社3年目 / 配筋確認担当</p>
+        <h3>山田 洋介さん（仮名）</h3>
+        <div class="interview-q">
+          <p class="q">入社のきっかけを教えてください</p>
+          <p class="a">「前職の営業職で毎日の満員電車に疲れていました。直行直帰でiPadを使う仕事という点が新鮮で、建設の知識がなくても応募できると知って入社しました。」</p>
+        </div>
+        <div class="interview-q">
+          <p class="q">働いてみてどうですか？</p>
+          <p class="a">「通勤ラッシュがなくなっただけで生活の質が上がりました。大手ゼネコンの現場に携わっているというやりがいもあります。土日はしっかり休めるので体も楽です。」</p>
+        </div>
+        <p class="sample-note">※サンプルです。実際のスタッフインタビューに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOICE -->
+<section class="section bg-white">
+  <div class="inner">
+    <p class="section-label">Voice</p>
+    <h2 class="section-title">先輩スタッフの声</h2>
+    <p class="section-lead">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</p>
+    <div class="voice-row">
+      <div class="voice-card">
+        <div class="voice-head">
+          <!-- 顔写真（サンプル） -->
+          <img class="voice-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="スタッフ（サンプル）">
+          <div class="voice-meta"><h4>田中 健さん（仮名）</h4><p>入社2年目</p></div>
+        </div>
+        <blockquote>「直行直帰で通勤ストレスがゼロ。土日はしっかり休めて家族との時間が増えました。」</blockquote>
+        <p class="note">※サンプルです</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-head">
+          <!-- 顔写真（サンプル） -->
+          <img class="voice-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=faces&q=80" alt="スタッフ（サンプル）">
+          <div class="voice-meta"><h4>佐藤 美咲さん（仮名）</h4><p>入社1年目</p></div>
+        </div>
+        <blockquote>「iPad操作も先輩が丁寧に教えてくれてすぐ慣れました。大手現場に携わる充実感があります。」</blockquote>
+        <p class="note">※サンプルです</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-head">
+          <!-- 顔写真（サンプル） -->
+          <img class="voice-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="スタッフ（サンプル）">
+          <div class="voice-meta"><h4>鈴木 拓也さん（仮名）</h4><p>入社3年目</p></div>
+        </div>
+        <blockquote>「重労働はなく、体への負担も少ない。年間125日休めるのが入社の決め手でした。」</blockquote>
+        <p class="note">※サンプルです</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REQUIREMENTS -->
+<section class="section" id="requirements">
+  <div class="inner">
+    <p class="section-label">Requirements</p>
+    <h2 class="section-title">募集要項</h2>
+    <table class="req-table">
+      <tr><th>職種</th><td>杭・鉄筋配筋工事の写真撮影および写真入力</td></tr>
+      <tr><th>雇用形態</th><td>アルバイト（正社員登用制度あり）</td></tr>
+      <tr><th>就業場所</th><td>千葉県印西市（大手ゼネコン新築現場）　※直行直帰</td></tr>
+      <tr><th>仕事内容</th><td>大手ゼネコン新築現場での杭工事・鉄筋配筋の確認写真撮影・iPad入力・PC管理</td></tr>
+      <tr><th>給与</th><td>日給 12,000円〜18,000円<br>（月換算 240,000円〜360,000円　※月平均20日）<br>業務態度により昇給あり</td></tr>
+      <tr><th>就業時間</th><td>8:00〜17:00（変形労働時間制・1か月単位）　休憩90分</td></tr>
+      <tr><th>休日</th><td>土曜・日曜・祝日　年間休日125日</td></tr>
+      <tr><th>応募資格</th><td>学歴・資格・年齢不問。経験者優遇（経験少なくても相談可）</td></tr>
+      <tr><th>保険</th><td>雇用保険・労災保険・健康保険・厚生年金完備<br>民間保険（怪我・病気の入院保障）あり</td></tr>
+      <tr><th>通勤手当</th><td>実費支給（上限なし）</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section bg-white" id="faq">
+  <div class="inner">
+    <p class="section-label">FAQ</p>
+    <h2 class="section-title">よくある質問</h2>
+    <p class="section-lead">※ここはサンプルです。実際には御社への質問に差し替えます</p>
+    <ul class="faq-list">
+      <li class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">建設の経験がなくても応募できますか？<span class="faq-icon">＋</span></div>
+        <div class="faq-a">はい、経験不問です。入社後に先輩がOJTで丁寧に教えます。「あれば尚可」ですが経験が少なくても相談可能です。</div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">アルバイトから正社員になれますか？<span class="faq-icon">＋</span></div>
+        <div class="faq-a">正社員登用制度があります。業務態度や実績次第で昇給・登用の可能性があります。</div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">iPadの操作が苦手でも大丈夫ですか？<span class="faq-icon">＋</span></div>
+        <div class="faq-a">問題ありません。入社後に基本操作から丁寧に教えます。スマートフォンを使えれば比較的早く慣れます。</div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">体力に自信がなくても働けますか？<span class="faq-icon">＋</span></div>
+        <div class="faq-a">大丈夫です。主な業務はiPadを持って写真撮影・確認をする作業で、重機操作や重労働はありません。</div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q" onclick="this.parentElement.classList.toggle('open')">選考の流れを教えてください。<span class="faq-icon">＋</span></div>
+        <div class="faq-a">書類選考（7日以内通知）→ 面接（1回予定）→ 採用。選考場所は東京都千代田区（小川町・淡路町・御茶ノ水）です。場所は相談可能です。</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- CTA FINAL (CTA 3) -->
+<section class="cta-final" id="cta-final">
+  <h2>あなたの応募をお待ちしています</h2>
+  <p class="sub">ご質問・ご応募はメールまたはお電話で。<br>サンプル内の画像はダミーです。御社の写真に差し替えると見栄えがさらに上がります。</p>
+  <a href="mailto:info@ideacs.co.jp" class="btn-amber-lg">メールで応募・お問い合わせ</a>
+  <p class="cta-tel">お電話: 03-3518-6205（担当：前鶴）</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  株式会社イデアコンストラクション<br>
+  〒101-0052 東京都千代田区神田小川町2-10 第二木津ビル301<br>
+  TEL: 03-3518-6205　E-mail: info@ideacs.co.jp
+</footer>
+
+<!-- ENTRY BAR (mobile sticky) -->
+<div class="entry-bar">
+  <p>大手ゼネコン案件 ／ 直行直帰</p>
+  <a href="#cta-final">今すぐ応募する</a>
+</div>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(function(q){
+  q.addEventListener('click',function(){
+    this.parentElement.classList.toggle('open');
+  });
+});
+</script>
+</body>
+</html>
