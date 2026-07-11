@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 株式会社アキ</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#333;line-height:1.7}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ナビ */
+.nav{background:#fff;border-bottom:3px solid #e07200;position:sticky;top:0;z-index:100;padding:0 1.5rem}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:60px;max-width:1100px;margin:0 auto}
+.nav-logo{color:#e07200;font-weight:900;font-size:1rem}
+.nav-links{display:flex;gap:1.6rem}
+.nav-links a{color:#444;font-size:.88rem;font-weight:500;transition:color .2s}
+.nav-links a:hover{color:#e07200}
+.nav-cta{background:#e07200;color:#fff;padding:.45rem 1.1rem;border-radius:4px;font-weight:700;font-size:.85rem}
+.nav-cta:hover{background:#c06000;color:#fff}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#e07200;border-radius:2px}
+.mobile-menu{display:none;background:#fff;padding:1rem 1.5rem;border-top:1px solid #f0e0d0}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:block;color:#444;padding:.65rem 0;border-bottom:1px solid #f5ece4;font-size:.95rem}
+
+/* ヒーロー（LP型・上から読ませる） */
+.hero{background:linear-gradient(135deg,#1e2f50 0%,#2d4a80 100%);color:#fff;padding:5rem 1.5rem 4rem;text-align:center}
+.hero-eyebrow{display:inline-block;background:rgba(255,255,255,.15);color:#f0c060;font-size:.82rem;font-weight:700;padding:.3rem 1rem;border-radius:2rem;margin-bottom:1.3rem;letter-spacing:.06em;border:1px solid rgba(240,192,96,.4)}
+.hero h1{font-size:clamp(1.6rem,5vw,2.8rem);font-weight:900;line-height:1.35;margin-bottom:.8rem}
+.hero h1 .accent{color:#f5b642}
+.hero-lead{font-size:clamp(.95rem,2.5vw,1.1rem);opacity:.88;margin-bottom:2.5rem;max-width:620px;margin-left:auto;margin-right:auto}
+.btn-cta{display:inline-block;background:#e07200;color:#fff;padding:1rem 3rem;border-radius:50px;font-weight:900;font-size:1.05rem;transition:all .2s;box-shadow:0 4px 18px rgba(224,114,0,.45)}
+.btn-cta:hover{background:#c06000;transform:translateY(-2px);box-shadow:0 6px 24px rgba(224,114,0,.5)}
+.hero-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:.6rem;margin-top:2rem}
+.hero-badges span{background:rgba(255,255,255,.1);color:#dde8f8;font-size:.8rem;padding:.25rem .8rem;border-radius:2rem;border:1px solid rgba(255,255,255,.2)}
+
+/* 共通 */
+section{padding:4.5rem 1.5rem}
+.container{max-width:860px;margin:0 auto}
+.section-title{text-align:center;margin-bottom:2.5rem}
+.section-title h2{font-size:clamp(1.4rem,4vw,2rem);font-weight:900;color:#1e2f50;margin-bottom:.5rem}
+.section-title p{color:#666;font-size:.92rem}
+.section-title .lead{font-size:1rem;color:#444;max-width:580px;margin:.8rem auto 0;line-height:1.8}
+.bg-light{background:#fdf5ec}
+.bg-navy{background:#1e2f50;color:#fff}
+.bg-navy .section-title h2{color:#fff}
+.bg-navy .section-title p{color:#aac4e8}
+.accent-line{width:3rem;height:4px;background:#e07200;border-radius:2px;margin:.8rem auto 0}
+
+/* 数字で見る（LP型の特徴セクション） */
+.numbers-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem}
+.number-item{text-align:center;padding:1.8rem 1rem;background:#fff;border-radius:10px;box-shadow:0 2px 12px rgba(30,47,80,.1)}
+.number-val{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;color:#e07200;line-height:1}
+.number-unit{font-size:.85rem;font-weight:700;color:#e07200}
+.number-label{font-size:.82rem;color:#555;margin-top:.5rem;line-height:1.5}
+.note-sample{font-size:.73rem;color:#bbb;font-style:italic;margin-top:.5rem}
+.note-sample-center{text-align:center;margin-bottom:1.5rem}
+
+/* 課題→解決（LP型の強みセクション） */
+.problems-wrap{display:flex;flex-direction:column;gap:1.2rem;max-width:720px;margin:0 auto}
+.problem-item{background:#fff;border-radius:10px;padding:1.5rem;display:flex;gap:1.2rem;align-items:flex-start;box-shadow:0 2px 10px rgba(0,0,0,.07)}
+.p-icon{font-size:1.8rem;flex-shrink:0;margin-top:.1rem}
+.p-body h4{font-weight:700;font-size:.95rem;color:#1e2f50;margin-bottom:.3rem}
+.p-body p{font-size:.87rem;color:#555;line-height:1.7}
+.p-arrow{text-align:center;font-size:1.2rem;color:#e07200;font-weight:700}
+
+/* 中盤CTA */
+.mid-cta{background:#e07200;color:#fff;text-align:center;padding:3rem 1.5rem}
+.mid-cta p{font-size:.95rem;margin-bottom:1.5rem;opacity:.9}
+.btn-cta-white{display:inline-block;background:#fff;color:#e07200;padding:.85rem 2.4rem;border-radius:50px;font-weight:900;font-size:1rem;transition:all .2s}
+.btn-cta-white:hover{opacity:.88}
+
+/* 募集要項（LP型） */
+.req-cards{display:flex;flex-direction:column;gap:.6rem;max-width:720px;margin:0 auto}
+.req-row{display:grid;grid-template-columns:8rem 1fr;background:#fff;border-radius:8px;overflow:hidden;border:1px solid #e8e0d8}
+.req-label{background:#fdf5ec;padding:.9rem 1rem;font-weight:700;font-size:.85rem;color:#1e2f50;display:flex;align-items:center}
+.req-val{padding:.9rem 1rem;font-size:.9rem;line-height:1.8;color:#444}
+
+/* インタビュー */
+.interview-list{display:flex;flex-direction:column;gap:2rem;max-width:720px;margin:0 auto}
+.interview-item{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:10px;padding:1.8rem;display:flex;gap:1.5rem;align-items:flex-start}
+.interview-photo{width:72px;height:72px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.interview-name{font-weight:700;font-size:.9rem;color:#fff;margin-bottom:.2rem}
+.interview-meta{font-size:.78rem;color:#aac4e8;margin-bottom:.8rem}
+.interview-body p{font-size:.87rem;color:#dde8f8;line-height:1.8}
+.interview-note{font-size:.73rem;color:#7a9fc0;margin-top:.5rem}
+
+/* FAQ */
+.faq-list{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:.8rem}
+.faq-item{background:#fff;border-radius:8px;border:1px solid #e8ddd0}
+.faq-q{padding:1rem 1.2rem;font-weight:700;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:.5rem}
+.faq-q .q-text{color:#1e2f50;font-size:.9rem}
+.faq-toggle{color:#e07200;font-size:1.2rem;flex-shrink:0}
+.faq-a{padding:0 1.2rem;max-height:0;overflow:hidden;transition:max-height .3s,padding .3s}
+.faq-item.open .faq-a{padding:.7rem 1.2rem 1.1rem;max-height:300px}
+.faq-a p{font-size:.87rem;color:#555;line-height:1.8}
+
+/* タイムライン */
+.timeline{max-width:600px;margin:0 auto;position:relative}
+.timeline::before{content:'';position:absolute;left:3.2rem;top:0;bottom:0;width:2px;background:#fde0c0}
+.tl-item{display:flex;gap:1.5rem;margin-bottom:2rem;align-items:flex-start}
+.tl-time{flex-shrink:0;width:5.5rem;text-align:right;font-weight:700;color:#e07200;font-size:.88rem;padding-top:.15rem}
+.tl-dot{flex-shrink:0;width:1rem;height:1rem;background:#e07200;border-radius:50%;margin-top:.3rem;position:relative;z-index:1}
+.tl-body h4{font-weight:700;font-size:.92rem;margin-bottom:.2rem;color:#1e2f50}
+.tl-body p{font-size:.84rem;color:#666;line-height:1.7}
+
+/* 最終CTA */
+.final-cta{background:linear-gradient(135deg,#1e2f50,#2d4a80);color:#fff;text-align:center;padding:5rem 1.5rem}
+.final-cta h2{font-size:clamp(1.5rem,4vw,2.1rem);font-weight:900;margin-bottom:1rem}
+.final-cta p{font-size:.95rem;opacity:.88;margin-bottom:2rem;line-height:1.8}
+.btn-cta-lg{display:inline-block;background:#e07200;color:#fff;padding:1.1rem 3.2rem;border-radius:50px;font-weight:900;font-size:1.1rem;box-shadow:0 4px 20px rgba(224,114,0,.5);transition:all .2s}
+.btn-cta-lg:hover{background:#c06000;transform:translateY(-2px)}
+
+/* フッター */
+.footer{background:#0e1a30;color:#7a9fc0;text-align:center;padding:2.5rem 1.5rem;font-size:.84rem;line-height:2}
+
+/* スマホ固定CTA */
+.sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;background:#e07200;color:#fff;text-align:center;padding:.85rem;font-weight:900;font-size:1rem;z-index:200;box-shadow:0 -2px 10px rgba(0,0,0,.2)}
+
+/* レスポンシブ */
+@media(max-width:768px){
+  .nav-links,.nav-cta-wrap{display:none}
+  .hamburger{display:flex}
+  .numbers-grid{grid-template-columns:repeat(2,1fr)}
+  .interview-item{flex-direction:column}
+  .req-row{grid-template-columns:1fr}
+  .req-label{border-bottom:1px solid #e8e0d8;padding-bottom:.6rem}
+  .timeline::before{left:2.8rem}
+  .tl-time{width:4rem;font-size:.82rem}
+  .sticky-cta{display:block;padding-bottom:calc(.85rem + env(safe-area-inset-bottom,0px))}
+  .final-cta{padding-bottom:6rem}
+}
+</style>
+</head>
+<body>
+
+<!-- ナビ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="nav-logo">株式会社アキ 採用情報</span>
+    <div class="nav-links">
+      <a href="#problems">警備のリアル</a>
+      <a href="#requirements">募集要項</a>
+      <a href="#voices">先輩の声</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#final-cta" class="nav-cta">応募する</a>
+    </div>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#problems" onclick="closeMenu()">警備のリアル</a>
+    <a href="#requirements" onclick="closeMenu()">募集要項</a>
+    <a href="#voices" onclick="closeMenu()">先輩の声</a>
+    <a href="#faq" onclick="closeMenu()">よくある質問</a>
+    <a href="#final-cta" onclick="closeMenu()">応募する</a>
+  </div>
+</nav>
+
+<!-- ヒーロー（CTA①） -->
+<section class="hero" id="top">
+  <div class="hero-eyebrow">警備員 募集中 ／ 印西市エリア</div>
+  <h1>正直に言います。<br>警備の仕事、<span class="accent">思ってたより良いんです。</span></h1>
+  <p class="hero-lead">「きつい」「不安定」そんなイメージで迷っていませんか？<br>実際に働く人たちの声と、見えていない強みをお伝えします。</p>
+  <a href="#final-cta" class="btn-cta">まず3案を見てみる</a>
+  <div class="hero-badges">
+    <span>未経験歓迎</span>
+    <span>60代以上OK</span>
+    <span>直行直帰</span>
+    <span>日給全額保証</span>
+    <span>年間休日120日</span>
+  </div>
+</section>
+
+<!-- 数字で見る -->
+<section class="bg-light">
+  <div class="container">
+    <div class="section-title">
+      <h2>数字で見る 株式会社アキ</h2>
+      <div class="accent-line"></div>
+    </div>
+    <p class="note-sample note-sample-center">※ここはサンプルです。実際には御社の数字・実績に差し替えます</p>
+    <!-- ※差し替え対象：数字全件 -->
+    <div class="numbers-grid">
+      <div class="number-item">
+        <div><span class="number-val">120</span><span class="number-unit">日</span></div>
+        <div class="number-label">年間休日<br>週休二日制</div>
+      </div>
+      <div class="number-item">
+        <div><span class="number-val">0</span><span class="number-unit">円</span></div>
+        <div class="number-label">資格取得費用<br>会社が全額負担</div>
+      </div>
+      <div class="number-item">
+        <div><span class="number-val">100</span><span class="number-unit">%</span></div>
+        <div class="number-label">日給全額保証<br>早く終わっても</div>
+      </div>
+      <div class="number-item">
+        <div><span class="number-val">2</span><span class="number-unit">名</span></div>
+        <div class="number-label">正社員登用実績<br>過去3年間</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 警備のリアル（課題→解決） -->
+<section id="problems">
+  <div class="container">
+    <div class="section-title">
+      <h2>「警備ってどうなの？」に正直に答えます</h2>
+      <p class="lead">よくある不安を、実際の情報でお答えします</p>
+      <div class="accent-line"></div>
+    </div>
+    <div class="problems-wrap">
+      <div class="problem-item">
+        <div class="p-icon">😅</div>
+        <div class="p-body">
+          <h4>「昇給・賞与なしって不安…」</h4>
+          <p>確かに現在は昇給・賞与制度はありません。ただ、資格（交通誘導2級）を取得すると日給が+500円アップします。費用は全額会社負担なので、手元のお金を使わずにスキルと給与を同時に上げることができます。</p>
+        </div>
+      </div>
+      <div class="p-arrow">↓ 実はこういうことです</div>
+      <div class="problem-item">
+        <div class="p-icon">💰</div>
+        <div class="p-body">
+          <h4>「日給全額保証」は警備業では珍しい</h4>
+          <p>現場が予定より早く終わっても日給はまるごと支払われます。一般的に警備は実働時間で計算するケースも多いですが、当社は「早く終わった分が損になる」仕組みはありません。安心して現場に向かえます。</p>
+        </div>
+      </div>
+      <div class="problem-item">
+        <div class="p-icon">🚗</div>
+        <div class="p-body">
+          <h4>「毎朝事務所まで行くのが大変そう」</h4>
+          <p>現場への直行・直帰OK。マイカー通勤可・駐車場完備で、自宅から直接担当の現場へ向かえます。「通勤で体力を消耗してから働く」という必要はありません。</p>
+        </div>
+      </div>
+      <div class="problem-item">
+        <div class="p-icon">👴</div>
+        <div class="p-body">
+          <h4>「年齢的に応募していいか不安」</h4>
+          <p>60代以上の方が実際に活躍中です。重い荷物を運ぶ仕事ではなく、交通誘導が中心。1時間ごとに交代休憩があり、体への負担を分散しながら働けます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 中盤CTA（CTA②） -->
+<section class="mid-cta" id="mid-cta">
+  <p>採用ページ3案、まずは見るだけでかまいません。</p>
+  <a href="#final-cta" class="btn-cta-white">応募ページへ進む</a>
+</section>
+
+<!-- 募集要項 -->
+<section class="bg-light" id="requirements">
+  <div class="container">
+    <div class="section-title">
+      <h2>募集要項</h2>
+      <div class="accent-line"></div>
+    </div>
+    <div class="req-cards">
+      <div class="req-row"><div class="req-label">職種</div><div class="req-val">警備員（交通誘導）</div></div>
+      <div class="req-row"><div class="req-label">勤務地</div><div class="req-val">千葉県印西市内の各建設・道路工事現場（直行直帰。希望相談可）</div></div>
+      <div class="req-row"><div class="req-label">仕事内容</div><div class="req-val">工事現場での歩行者への声かけ・車両の誘導。制服・装備品は一式貸与（空調服・防寒着含む）。</div></div>
+      <div class="req-row"><div class="req-label">雇用形態</div><div class="req-val">フルタイム（正社員登用制度あり・過去3年で2名登用）</div></div>
+      <div class="req-row"><div class="req-label">賃金</div><div class="req-val">日給 10,000〜12,500円 / 月額換算 204,000〜255,000円<br>資格者手当 +500円／日・熱中症手当 +150円（夏季）<br>通勤手当 実費支給（上限なし）</div></div>
+      <div class="req-row"><div class="req-label">就業時間</div><div class="req-val">8:00〜17:00 または 9:00〜18:00（休憩60分）</div></div>
+      <div class="req-row"><div class="req-label">休日・休暇</div><div class="req-val">週休二日制・年間休日120日<br>年末年始・夏季・有給休暇（6か月後から10日）</div></div>
+      <div class="req-row"><div class="req-label">昇給・賞与</div><div class="req-val">現在なし（資格取得で日給アップあり）</div></div>
+      <div class="req-row"><div class="req-label">応募資格</div><div class="req-val">18歳以上・未経験歓迎・60代以上OK</div></div>
+      <div class="req-row"><div class="req-label">福利厚生</div><div class="req-val">社会保険完備・マイカー通勤可・駐車場あり<br>社員寮あり（1R・家賃一部会社負担・要相談）</div></div>
+      <div class="req-row"><div class="req-label">選考</div><div class="req-val">面接1回・書類選考なし。出張面接・リモート面接可</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩インタビュー -->
+<section class="bg-navy" id="voices">
+  <div class="container">
+    <div class="section-title">
+      <h2>先輩スタッフインタビュー</h2>
+      <p>実際に働くメンバーのリアルな声</p>
+      <div class="accent-line" style="background:#f5b642"></div>
+    </div>
+    <p class="note-sample note-sample-center" style="color:#7a9fc0;margin-bottom:1.8rem">※ここはサンプルです。実際には御社スタッフの写真・コメントに差し替えます</p>
+    <!-- ※差し替え対象：顔写真・名前・職種・コメント全件 -->
+    <div class="interview-list">
+      <div class="interview-item">
+        <img class="interview-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div>
+          <div class="interview-name">田中 さん（仮名）</div>
+          <div class="interview-meta">警備員・入社2年目 ／ 前職：製造業</div>
+          <div class="interview-body"><p>「直行直帰なので朝の時間に余裕があります。早く終わっても給与が保証されているのが一番の安心感。前職より体の疲れ方が少なく、毎日ちゃんと休める生活になりました。」</p></div>
+          <p class="interview-note">※このコメントはサンプルです</p>
+        </div>
+      </div>
+      <div class="interview-item">
+        <img class="interview-photo" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div>
+          <div class="interview-name">佐藤 さん（仮名）</div>
+          <div class="interview-meta">警備員・入社4年目 ／ 60代</div>
+          <div class="interview-body"><p>「60代で転職を考えたとき、体力的に不安でした。でも実際は交通誘導中心で、交代休憩もあり無理なく続けられています。資格を会社負担で取れて日給も上がりました。定年もなく長く働けそうです。」</p></div>
+          <p class="interview-note">※このコメントはサンプルです</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <div class="section-title">
+      <h2>よくある質問</h2>
+      <div class="accent-line"></div>
+    </div>
+    <p class="note-sample note-sample-center">※ここはサンプルです。実際には御社のQ&Aに差し替えます</p>
+    <!-- ※差し替え対象：Q&A全件 -->
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q"><span class="q-text">完全未経験でも採用されますか？</span><span class="faq-toggle">＋</span></div>
+        <div class="faq-a"><p>はい。研修制度があり、未経験の方も安心してスタートできます。先輩スタッフが丁寧にフォローします。</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="q-text">昇給・賞与がないのは本当に大丈夫？</span><span class="faq-toggle">＋</span></div>
+        <div class="faq-a"><p>現在の制度では昇給・賞与はありません。ただし交通誘導2級の資格取得（費用会社負担）で日給が500円アップします。資格取得で実質的な収入アップが可能です。</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="q-text">将来的に正社員になれますか？</span><span class="faq-toggle">＋</span></div>
+        <div class="faq-a"><p>正社員登用制度があり、過去3年間で2名が登用されています。実績・適性に応じて相談できます。</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="q-text">社員寮はどんな感じですか？</span><span class="faq-toggle">＋</span></div>
+        <div class="faq-a"><p>単身用の1Rで、家賃を会社が一部負担します。「近くに引っ越して通勤を楽にしたい」方にも対応できます。詳細は面談でご相談ください。</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="q-text">外国籍でも応募できますか？</span><span class="faq-toggle">＋</span></div>
+        <div class="faq-a"><p>外国籍の方も応募可能です。日本語での会話・読み書きができる方（N2レベル程度）であれば歓迎します。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section class="bg-light" id="day">
+  <div class="container">
+    <div class="section-title">
+      <h2>直行直帰の1日の流れ</h2>
+      <div class="accent-line"></div>
+    </div>
+    <p class="note-sample note-sample-center">※ここはサンプルです。実際には御社社員の1日に差し替えます</p>
+    <!-- ※差し替え対象：タイムライン全件 -->
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">8:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>現場へ直行</h4><p>事務所には立ち寄らず、自宅から直接現場へ。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">8:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>配置確認・業務開始準備</h4><p>現場リーダーと当日の役割を確認。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">9:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>交通誘導スタート</h4><p>1時間ごとに交代休憩あり。無理なく続けられるリズムです。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>昼休憩（60分）</h4><p>自分のペースでゆっくり休める時間。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">15:00頃</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>現場が早く終わることも</h4><p>予定より早く終わっても日給は全額支払われます。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>直帰</h4><p>後片付け後はそのまま帰宅。残業は月平均1時間程度。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 最終CTA（CTA③） -->
+<section class="final-cta" id="final-cta">
+  <h2>まずはお気軽にご連絡ください</h2>
+  <p>面接1回・書類選考なし。<br>出張面接・リモート面接にも対応しています。<br>「まず話を聞きたい」だけでも大歓迎です。</p>
+  <a href="mailto:info-aki@ims.tokyo.jp" class="btn-cta-lg">メールで問い合わせる</a>
+</section>
+
+<!-- フッター -->
+<footer class="footer">
+  <p>株式会社アキ</p>
+  <p>〒277-0841 千葉県柏市あけぼの4丁目3-21 柏あけぼのビル2階</p>
+  <p>TEL: 04-7157-1033 ／ MAIL: info-aki@ims.tokyo.jp</p>
+</footer>
+
+<!-- スマホ固定CTA -->
+<a href="#final-cta" class="sticky-cta">今すぐ応募する →</a>
+
+<script>
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+function closeMenu(){document.getElementById('mobileMenu').classList.remove('open')}
+document.querySelectorAll('.faq-q').forEach(function(q){
+  q.addEventListener('click',function(){
+    var item=q.closest('.faq-item');
+    item.classList.toggle('open');
+    q.querySelector('.faq-toggle').textContent=item.classList.contains('open')?'−':'＋';
+  });
+});
+</script>
+</body>
+</html>

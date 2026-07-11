@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>足場組立作業員 採用募集 | 合同会社ハイテックコーポレーション</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    body { font-family: 'Noto Sans JP', sans-serif; color: #222; background: #fff; line-height: 1.75; padding-bottom: 60px; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    :root {
+      --black: #111111;
+      --dark: #1a1a1a;
+      --orange: #f07000;
+      --orange2: #ffa020;
+      --bg: #f4f4f4;
+      --border: #e0e0e0;
+      --sub: #555;
+    }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 200;
+      background: var(--black); height: 60px;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+    }
+    .logo { color: #fff; font-size: 0.82rem; font-weight: 700; line-height: 1.4; }
+    .logo em { color: var(--orange); font-style: normal; }
+    nav.pc { display: flex; align-items: center; gap: 1.5rem; }
+    nav.pc a { color: #aaa; font-size: 0.82rem; transition: color 0.2s; }
+    nav.pc a:hover { color: #fff; }
+    .btn-nav { background: var(--orange); color: #fff !important; padding: 0.4rem 1.1rem; border-radius: 3px; font-weight: 700; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 6px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: #fff; }
+    .sp-nav { display: none; flex-direction: column; background: var(--black); position: absolute; top: 60px; left: 0; right: 0; }
+    .sp-nav.open { display: flex; }
+    .sp-nav a { color: #aaa; padding: 0.85rem 5%; border-bottom: 1px solid #222; font-size: 0.9rem; }
+
+    /* Hero */
+    .hero {
+      position: relative; min-height: 85vh;
+      display: flex; align-items: center;
+      background: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&h=900&fit=crop&q=80') center/cover no-repeat;
+      overflow: hidden;
+    }
+    .hero-ov { position: absolute; inset: 0; background: rgba(10,10,10,0.72); }
+    .hero-inner { position: relative; z-index: 1; padding: 6rem 5%; max-width: 740px; }
+    .hero-label { display: inline-block; border: 1px solid var(--orange); color: var(--orange); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; padding: 0.22rem 0.8rem; margin-bottom: 1.2rem; }
+    .hero h1 { font-size: clamp(1.8rem, 5.5vw, 3.4rem); color: #fff; font-weight: 900; line-height: 1.15; margin-bottom: 1rem; }
+    .hero h1 span { color: var(--orange); }
+    .hero-sub { color: #c0c0c0; font-size: 1rem; line-height: 1.85; margin-bottom: 0.8rem; }
+    .hero-points { display: flex; gap: 1.5rem; margin: 1.5rem 0 2rem; flex-wrap: wrap; }
+    .hero-point { background: rgba(255,255,255,0.08); border-left: 3px solid var(--orange); padding: 0.6rem 1rem; font-size: 0.85rem; color: #ddd; }
+    .btn-hero { display: inline-block; background: var(--orange); color: #fff; font-weight: 900; font-size: 1.1rem; padding: 1rem 3rem; border-radius: 3px; transition: background 0.2s; letter-spacing: 0.05em; }
+    .btn-hero:hover { background: #d06000; }
+    .btn-hero-sub { display: inline-block; border: 1px solid #555; color: #ccc; font-size: 0.9rem; padding: 1rem 2rem; border-radius: 3px; margin-left: 1rem; transition: all 0.2s; }
+    .btn-hero-sub:hover { border-color: #aaa; color: #fff; }
+    .hero-note { color: #888; font-size: 0.76rem; margin-top: 1rem; }
+
+    /* Sections */
+    section { padding: 5rem 5%; }
+    .en-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; color: var(--orange); text-transform: uppercase; margin-bottom: 0.35rem; }
+    .sec-h2 { font-size: clamp(1.4rem, 3.5vw, 2rem); font-weight: 900; color: var(--black); margin-bottom: 0.7rem; }
+    .sec-desc { color: var(--sub); font-size: 0.93rem; margin-bottom: 2.5rem; max-width: 580px; line-height: 1.8; }
+
+    /* Why */
+    .why-sec { background: var(--bg); }
+    .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .why-card { background: #fff; border-radius: 6px; padding: 2rem 1.5rem; border-top: 3px solid var(--orange); }
+    .why-num { font-size: 2.5rem; font-weight: 900; color: var(--orange); line-height: 1; margin-bottom: 0.5rem; opacity: 0.5; }
+    .why-card h3 { font-size: 1rem; font-weight: 700; color: var(--black); margin-bottom: 0.5rem; line-height: 1.45; }
+    .why-card p { font-size: 0.86rem; color: var(--sub); line-height: 1.8; }
+
+    /* CTA mid */
+    .cta-mid { background: var(--orange); text-align: center; padding: 3.5rem 5%; }
+    .cta-mid h2 { color: #fff; font-size: clamp(1.3rem, 3vw, 1.8rem); margin-bottom: 0.8rem; }
+    .cta-mid p { color: rgba(255,255,255,0.85); font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .btn-cta-w { display: inline-block; background: #fff; color: var(--orange); font-weight: 900; font-size: 1rem; padding: 0.9rem 2.5rem; border-radius: 3px; }
+
+    /* Numbers */
+    .numbers-sec { background: var(--black); }
+    .numbers-sec .en-label { color: var(--orange2); }
+    .numbers-sec .sec-h2 { color: #fff; }
+    .num-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: #2a2a2a; }
+    .num-item { background: var(--dark); padding: 2.5rem 1rem; text-align: center; }
+    .num-val { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; color: var(--orange2); line-height: 1; }
+    .num-val small { font-size: 1.1rem; }
+    .num-label { color: #888; font-size: 0.82rem; margin-top: 0.4rem; }
+    .num-smp { color: #444; font-size: 0.68rem; margin-top: 0.2rem; }
+
+    /* Requirements */
+    .req-sec { background: var(--bg); }
+    .req-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; background: #fff; }
+    .req-table tr { border-bottom: 1px solid var(--border); }
+    .req-table tr:last-child { border-bottom: none; }
+    .req-table th { width: 26%; background: var(--black); color: #fff; padding: 1rem 1.2rem; text-align: left; vertical-align: top; font-weight: 700; font-size: 0.85rem; }
+    .req-table td { padding: 1rem 1.2rem; vertical-align: top; }
+    .highlight { background: #fff8ee; font-weight: 700; color: var(--orange); }
+
+    /* Interview */
+    .interview-sec {}
+    .iv-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; }
+    .iv-card { background: var(--bg); border-radius: 8px; padding: 2rem 1.5rem; }
+    .iv-top { display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+    .iv-photo { width: 64px; height: 64px; border-radius: 50%; object-fit: cover; border: 3px solid var(--orange); }
+    .iv-name { font-weight: 700; color: var(--black); font-size: 0.92rem; }
+    .iv-meta { font-size: 0.74rem; color: var(--sub); }
+    .iv-q { font-size: 0.78rem; font-weight: 700; color: var(--orange); margin-top: 1rem; margin-bottom: 0.3rem; }
+    .iv-a { font-size: 0.86rem; color: #444; line-height: 1.8; }
+    .iv-smp { font-size: 0.68rem; color: #ccc; margin-top: 0.5rem; }
+
+    /* FAQ */
+    .faq-sec { background: var(--bg); }
+    .faq-list { max-width: 800px; display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--border); }
+    .faq-item { border-bottom: 1px solid var(--border); padding: 1.5rem 0; }
+    .faq-q { font-weight: 700; color: var(--black); display: flex; gap: 0.8rem; align-items: baseline; cursor: pointer; }
+    .faq-q-mark { color: var(--orange); font-size: 1.1rem; font-weight: 900; flex-shrink: 0; }
+    .faq-a { font-size: 0.87rem; color: var(--sub); line-height: 1.8; margin-top: 0.6rem; padding-left: 1.8rem; }
+
+    /* Timeline */
+    .tl-wrap { max-width: 680px; }
+    .tl-row { display: flex; align-items: flex-start; gap: 0; margin-bottom: 0; }
+    .tl-time-col { min-width: 70px; text-align: right; padding-right: 1rem; padding-top: 0.1rem; }
+    .tl-time-val { font-size: 0.8rem; font-weight: 700; color: var(--black); }
+    .tl-mid { display: flex; flex-direction: column; align-items: center; width: 20px; flex-shrink: 0; }
+    .tl-circle { width: 12px; height: 12px; border-radius: 50%; background: var(--orange); flex-shrink: 0; }
+    .tl-bar { width: 2px; background: #ddd; flex: 1; min-height: 40px; }
+    .tl-row:last-child .tl-bar { display: none; }
+    .tl-content { padding-left: 1rem; padding-bottom: 2rem; }
+    .tl-content h4 { font-size: 0.92rem; font-weight: 700; color: var(--black); margin-bottom: 0.2rem; }
+    .tl-content p { font-size: 0.82rem; color: var(--sub); }
+
+    /* CTA final */
+    .cta-final { background: var(--black); text-align: center; }
+    .cta-final h2 { color: #fff; font-size: clamp(1.5rem, 3.5vw, 2rem); margin-bottom: 0.8rem; }
+    .cta-final p { color: #888; margin-bottom: 2rem; font-size: 0.9rem; }
+    .final-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-final { display: inline-block; background: var(--orange); color: #fff; font-weight: 900; font-size: 1rem; padding: 1rem 3rem; border-radius: 3px; transition: background 0.2s; }
+    .btn-final:hover { background: #d06000; }
+    .btn-final-tel { display: inline-block; border: 1px solid #444; color: #aaa; font-size: 1rem; padding: 1rem 2.5rem; border-radius: 3px; }
+
+    /* Sticky bar */
+    .sticky-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 300;
+      background: var(--orange); display: flex; align-items: center; justify-content: center;
+      height: 52px; gap: 1.5rem;
+      box-shadow: 0 -2px 12px rgba(0,0,0,0.3);
+    }
+    .sticky-bar a { color: #fff; font-weight: 700; font-size: 0.9rem; letter-spacing: 0.05em; }
+    .sticky-bar .sep { color: rgba(255,255,255,0.5); }
+    @media (min-width: 769px) { .sticky-bar { display: none; } }
+
+    /* Footer */
+    footer { background: #0a0a0a; color: #555; padding: 2.5rem 5%; font-size: 0.84rem; line-height: 2; }
+    footer strong { color: #888; }
+
+    /* sample note */
+    .smp-note { font-size: 0.7rem; color: #ccc; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav.pc { display: none; }
+      .hamburger { display: flex; }
+      .why-grid { grid-template-columns: 1fr; }
+      .num-grid { grid-template-columns: repeat(2, 1fr); }
+      .iv-grid { grid-template-columns: 1fr; }
+      .final-btns { flex-direction: column; align-items: center; }
+      .req-table th, .req-table td { display: block; width: 100%; }
+      .req-table th { border-bottom: none; }
+      .btn-hero-sub { margin-left: 0; margin-top: 0.75rem; display: block; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="logo">合同会社<br><em>ハイテックコーポレーション</em></div>
+  <nav class="pc">
+    <a href="#why">選ばれる理由</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#interview">社員の声</a>
+    <a href="#faq">FAQ</a>
+    <a href="#entry" class="btn-nav">今すぐ応募</a>
+  </nav>
+  <button class="hamburger" id="hamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+<nav class="sp-nav" id="spNav">
+  <a href="#why">選ばれる理由</a>
+  <a href="#requirements">募集要項</a>
+  <a href="#interview">社員の声</a>
+  <a href="#faq">FAQ</a>
+  <a href="#entry">今すぐ応募</a>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-ov"></div>
+  <div class="hero-inner">
+    <span class="hero-label">正社員募集 ／ 足場組立作業員</span>
+    <h1>「土日も休みたい」<br>その当たり前、<span>足場の仕事</span>で<br>実現できます。</h1>
+    <p class="hero-sub">年間休日125日・土日祝休み。足場業界では珍しい働き方を、ハイテックコーポレーションは実現しています。</p>
+    <div class="hero-points">
+      <div class="hero-point">📅 年間休日125日／土日祝休み</div>
+      <div class="hero-point">🌱 未経験歓迎・段階的育成</div>
+      <div class="hero-point">🎓 資格取得費用 会社全額負担</div>
+    </div>
+    <a href="#entry" class="btn-hero">求人に応募する</a>
+    <a href="#why" class="btn-hero-sub">詳細を見る</a>
+    <p class="hero-note">面接1回のみ。書類選考後 → 面接 → 7日以内に結果通知</p>
+  </div>
+</section>
+
+<!-- Why -->
+<section class="why-sec" id="why">
+  <div class="en-label">WHY HIGHTECH</div>
+  <h2 class="sec-h2">足場のイメージ、<br>変えてください。</h2>
+  <p class="sec-desc">「危なそう」「体力的にきつそう」——そのイメージのまま求人票を見ていませんか？当社の3つの特徴を知れば、きっと印象が変わります。</p>
+  <div class="why-grid">
+    <div class="why-card">
+      <div class="why-num">01</div>
+      <h3>土日祝休み＋<br>年間125日の休暇</h3>
+      <p>足場業界では珍しい完全週休2日制を実現。年末年始・夏期・GWもしっかり休め、プライベートとの両立が可能です。</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">02</div>
+      <h3>未経験は補助から<br>段階的にステップアップ</h3>
+      <p>入社初日から危険な作業はしません。まずは資材の名前を覚えることや片付け・先輩の補助から始まります。経験豊富な社員が現場で丁寧に指導します。</p>
+    </div>
+    <div class="why-card">
+      <div class="why-num">03</div>
+      <h3>資格取得費用は<br>全額会社負担</h3>
+      <p>足場作業主任者・玉掛け・高所作業車など業務に必要な資格は会社が全額サポート。資格手当も月5,000〜20,000円つきます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA mid 1 -->
+<div class="cta-mid">
+  <h2>まず話だけでも聞いてみませんか？</h2>
+  <p>面接は1回のみ。選考結果は7日以内にお知らせします。</p>
+  <a href="#entry" class="btn-cta-w">応募・お問い合わせはこちら</a>
+</div>
+
+<!-- Numbers -->
+<section class="numbers-sec">
+  <div class="en-label">NUMBERS</div>
+  <h2 class="sec-h2" style="color:#fff;">数字で見る ハイテックコーポレーション</h2>
+  <!-- ※ここはサンプルです。実際には御社の数字に差し替えます -->
+  <p class="smp-note" style="margin-bottom:2rem;color:#555;">※以下の数値はサンプルです。実際には御社の数字に差し替えます</p>
+  <div class="num-grid">
+    <div class="num-item">
+      <div class="num-val">125<small>日</small></div>
+      <div class="num-label">年間休日数</div>
+      <div class="num-smp">※サンプル</div>
+    </div>
+    <div class="num-item">
+      <div class="num-val">¥0</div>
+      <div class="num-label">制服・安全帯の自己負担</div>
+      <div class="num-smp">※サンプル</div>
+    </div>
+    <div class="num-item">
+      <div class="num-val">8<small>年</small></div>
+      <div class="num-label">設立年数（2016年〜）</div>
+      <div class="num-smp">※サンプル</div>
+    </div>
+    <div class="num-item">
+      <div class="num-val">3<small>名</small></div>
+      <div class="num-label">今回の募集人数（増員）</div>
+      <div class="num-smp">※サンプル</div>
+    </div>
+  </div>
+</section>
+
+<!-- Requirements -->
+<section class="req-sec" id="requirements">
+  <div class="en-label">REQUIREMENTS</div>
+  <h2 class="sec-h2">募集要項</h2>
+  <table class="req-table">
+    <tr><th>職種</th><td>足場組立作業員（正社員）</td></tr>
+    <tr><th>仕事内容</th><td>建設現場での足場の組立・解体作業。資材の運搬・積み込み・荷下ろし・現場片付け・安全確認。未経験者は先輩社員の補助・資材搬入からスタート。経験者は能力に応じて職長・現場リーダー業務も。</td></tr>
+    <tr><th class="highlight">給与</th><td class="highlight">月給 200,000円 〜 450,000円<br><span style="font-size:0.85rem;font-weight:400;color:#666;">職長手当：5,000〜10,000円 ／ 資格手当：5,000〜20,000円 ／ 家族手当：5,000〜10,000円</span></td></tr>
+    <tr><th>勤務時間</th><td>8:00 〜 17:00（休憩60分）／ 月平均残業20時間</td></tr>
+    <tr><th class="highlight">休日・休暇</th><td class="highlight">土日・祝日・年末年始・夏期休暇・GW <b>（年間休日125日）</b><br><span style="font-size:0.85rem;font-weight:400;color:#666;">年次有給休暇（6か月経過後10日）</span></td></tr>
+    <tr><th>勤務地</th><td>千葉県印西市竹袋1755-45（印西牧の原駅より車5分）<br>マイカー通勤可・駐車場無料</td></tr>
+    <tr><th>応募資格</th><td>18歳以上。未経験歓迎。普通自動車免許（AT限定可）あれば尚可。外国籍の方も歓迎（日本語の読み書き可）。</td></tr>
+    <tr><th>待遇・福利厚生</th><td>社会保険完備（雇用・労災・健康・厚生年金）／通勤手当（実費・上限10,000円）／制服・安全帯等支給（会社負担）／資格取得支援（費用全額会社負担）／社員寮あり</td></tr>
+  </table>
+</section>
+
+<!-- Interview -->
+<section class="interview-sec" id="interview">
+  <div class="en-label">INTERVIEW</div>
+  <h2 class="sec-h2">先輩スタッフの声</h2>
+  <!-- ※ここはサンプルです。実際には御社の社員の声・写真に差し替えます -->
+  <p class="smp-note" style="margin-bottom:2rem;color:#bbb;">※ここはサンプルです。実際には御社スタッフの写真・コメントに差し替えます</p>
+  <div class="iv-grid">
+    <div class="iv-card">
+      <div class="iv-top">
+        <!-- 顔写真ダミー（男性スタッフ）：実際には御社スタッフの写真に差し替えます -->
+        <img class="iv-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="田中（仮名）の顔写真">
+        <div>
+          <div class="iv-name">田中 健太（仮名）</div>
+          <div class="iv-meta">入社3年目 ／ 足場組立</div>
+        </div>
+      </div>
+      <div class="iv-q">Q. 未経験で不安はありましたか？</div>
+      <div class="iv-a">最初は資材の名前もわからなかったですが、先輩が現場で一つひとつ教えてくれました。今では後輩に教える立場になっています。</div>
+      <div class="iv-smp">※ここはサンプルです。実際には御社スタッフの写真・コメントに差し替えます</div>
+    </div>
+    <div class="iv-card">
+      <div class="iv-top">
+        <!-- 顔写真ダミー（男性スタッフ）：実際には御社スタッフの写真に差し替えます -->
+        <img class="iv-photo" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="佐藤（仮名）の顔写真">
+        <div>
+          <div class="iv-name">佐藤 雄一（仮名）</div>
+          <div class="iv-meta">入社5年目 ／ 職長補佐</div>
+        </div>
+      </div>
+      <div class="iv-q">Q. 休日はしっかり取れていますか？</div>
+      <div class="iv-a">土日祝は基本的にお休みです。年間125日なので家族と過ごす時間が前の会社より確実に増えました。夏季・年末年始も休めます。</div>
+      <div class="iv-smp">※ここはサンプルです。実際には御社スタッフの写真・コメントに差し替えます</div>
+    </div>
+    <div class="iv-card">
+      <div class="iv-top">
+        <!-- 顔写真ダミー（男性スタッフ）：実際には御社スタッフの写真に差し替えます -->
+        <img class="iv-photo" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="山田（仮名）の顔写真">
+        <div>
+          <div class="iv-name">山田 浩二（仮名）</div>
+          <div class="iv-meta">入社1年目 ／ 足場補助</div>
+        </div>
+      </div>
+      <div class="iv-q">Q. 職場の雰囲気はどうですか？</div>
+      <div class="iv-a">いろんな国籍の先輩がいますが、チームワークを大事にしている雰囲気があってすぐに馴染めました。困ったときはすぐに助けてもらえます。</div>
+      <div class="iv-smp">※ここはサンプルです。実際には御社スタッフの写真・コメントに差し替えます</div>
+    </div>
+  </div>
+</section>
+
+<!-- Timeline -->
+<section id="timeline">
+  <div class="en-label">A DAY</div>
+  <h2 class="sec-h2">社員の1日の流れ</h2>
+  <!-- ※ここはサンプルです。実際には御社の1日の流れに差し替えます -->
+  <p class="smp-note" style="margin-bottom:2rem;color:#bbb;">※ここはサンプルです。実際には御社の1日の流れに差し替えます</p>
+  <div class="tl-wrap">
+    <div class="tl-row">
+      <div class="tl-time-col"><div class="tl-time-val">7:45</div></div>
+      <div class="tl-mid"><div class="tl-circle"></div><div class="tl-bar"></div></div>
+      <div class="tl-content"><h4>現場集合・朝礼・安全確認</h4><p>当日の役割分担と危険箇所を全員で共有します。</p></div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-time-col"><div class="tl-time-val">8:00</div></div>
+      <div class="tl-mid"><div class="tl-circle"></div><div class="tl-bar"></div></div>
+      <div class="tl-content"><h4>作業開始（資材搬入・準備）</h4><p>未経験者は先輩の補助・資材の整理からスタート。</p></div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-time-col"><div class="tl-time-val">10:00</div></div>
+      <div class="tl-mid"><div class="tl-circle"></div><div class="tl-bar"></div></div>
+      <div class="tl-content"><h4>午前の休憩（15分）</h4><p>先輩からコツを教えてもらう大事な時間です。</p></div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-time-col"><div class="tl-time-val">12:00</div></div>
+      <div class="tl-mid"><div class="tl-circle"></div><div class="tl-bar"></div></div>
+      <div class="tl-content"><h4>昼食・休憩（1時間）</h4><p>しっかり休んでエネルギーチャージ。</p></div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-time-col"><div class="tl-time-val">13:00</div></div>
+      <div class="tl-mid"><div class="tl-circle"></div><div class="tl-bar"></div></div>
+      <div class="tl-content"><h4>午後の作業（組立・解体・搬出）</h4><p>チームで連携しながら現場を進めていきます。</p></div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-time-col"><div class="tl-time-val">15:00</div></div>
+      <div class="tl-mid"><div class="tl-circle"></div><div class="tl-bar"></div></div>
+      <div class="tl-content"><h4>午後の休憩（15分）</h4><p>安全のため、こまめな休憩を全員で取ります。</p></div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-time-col"><div class="tl-time-val">17:00</div></div>
+      <div class="tl-mid"><div class="tl-circle"></div><div class="tl-bar"></div></div>
+      <div class="tl-content"><h4>片付け・終了・帰宅</h4><p>定時に上がれる日がほとんど。残業は月平均20時間です。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-sec" id="faq">
+  <div class="en-label">FAQ</div>
+  <h2 class="sec-h2">よくある質問</h2>
+  <!-- ※ここはサンプルです。実際には御社のFAQに差し替えます -->
+  <p class="smp-note" style="margin-bottom:1.5rem;color:#bbb;">※ここはサンプルです。実際には御社のQ&Aに差し替えます</p>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-q-mark">Q</span>完全未経験でも採用していただけますか？</div>
+      <div class="faq-a">はい。未経験者は資材の名前を覚えることや現場の片付け・先輩の補助からスタートしていただきます。段階的に技術を習得できる環境です。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-q-mark">Q</span>資格なしでも応募できますか？</div>
+      <div class="faq-a">できます。入社後に必要な資格は会社の費用負担で取得いただけます。資格取得は給与アップにもつながります。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-q-mark">Q</span>土日・祝日は確実に休めますか？</div>
+      <div class="faq-a">基本的に土日祝日はお休みです（年間125日）。現場の状況でまれに土曜出勤をお願いすることがありますが、振替対応しています。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-q-mark">Q</span>体力的にどれくらいきつい仕事ですか？</div>
+      <div class="faq-a">屋外での現場作業ですが、入社当初は無理のない作業からスタートします。安全第一・チーム作業なので一人に過大な負担がかかることはありません。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-q-mark">Q</span>外国人スタッフが多いとのことですが？</div>
+      <div class="faq-a">様々な国籍のスタッフが在籍していますが、日本語でのコミュニケーションで業務を進めています。チームワークを大切にする職場です。</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA final -->
+<section class="cta-final" id="entry">
+  <h2>一歩踏み出してみませんか？</h2>
+  <p>書類選考 → 面接（1回）→ 7日以内に結果通知。まずはお気軽にご連絡ください。</p>
+  <div class="final-btns">
+    <a href="mailto:high-tech-b@bg-hightech.jp" class="btn-final">メールで問い合わせる</a>
+    <a href="tel:0476858860" class="btn-final-tel">📞 0476-85-8860 に電話</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <strong>合同会社　ハイテックコーポレーション</strong><br>
+  〒270-1325 千葉県印西市竹袋1755-45<br>
+  TEL: 0476-85-8860　／　MAIL: high-tech-b@bg-hightech.jp
+</footer>
+
+<!-- Sticky bar (mobile only) -->
+<div class="sticky-bar">
+  <a href="mailto:high-tech-b@bg-hightech.jp">✉ メールで問い合わせ</a>
+  <span class="sep">|</span>
+  <a href="tel:0476858860">📞 電話する</a>
+</div>
+
+<script>
+  const btn = document.getElementById('hamburger');
+  const nav = document.getElementById('spNav');
+  btn.addEventListener('click', () => nav.classList.toggle('open'));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+</script>
+</body>
+</html>

@@ -83,7 +83,9 @@ td{background:#fff;line-height:1.7}
 .faq-item{background:#fff;border-radius:8px;overflow:hidden;border:1px solid #d4dde8}
 .faq-q{font-weight:700;color:var(--navy);padding:16px 20px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-size:.95rem}
 .faq-q::after{content:"＋";color:var(--blue);font-size:1.2rem;flex-shrink:0}
-.faq-a{padding:0 20px 16px;font-size:.9rem;color:var(--text);line-height:1.8}
+.faq-item.open .faq-q::after{content:"－"}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .3s ease,padding-bottom .3s ease;padding:0 20px;font-size:.9rem;color:var(--text);line-height:1.8}
+.faq-item.open .faq-a{max-height:500px;padding-bottom:16px}
 
 /* 1日の流れ */
 .timeline{list-style:none;position:relative;padding-left:24px}
@@ -406,6 +408,11 @@ footer{background:#111827;color:rgba(255,255,255,.6);text-align:center;padding:2
 </footer>
 
 <script>
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>{
+    q.closest('.faq-item').classList.toggle('open')
+  })
+})
 document.querySelectorAll('a[href^="#"]').forEach(a=>{
   a.addEventListener('click',e=>{
     const t=document.querySelector(a.getAttribute('href'));

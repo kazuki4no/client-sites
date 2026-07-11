@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | アエベ（古民家イタリアン）</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#333;line-height:1.7}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+:root{
+  --primary:#8B1A2D;
+  --primary-dark:#5E1020;
+  --accent:#C9A855;
+  --bg-warm:#FBF7F2;
+  --text:#333;
+  --text-light:#666;
+}
+
+/* ヘッダー */
+header{background:#fff;border-bottom:3px solid var(--primary);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.header-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-family:'Noto Serif JP',serif;font-size:1.25rem;color:var(--primary);font-weight:700;letter-spacing:.05em}
+.logo span{font-size:.75rem;display:block;color:var(--text-light);font-family:'Noto Sans JP',sans-serif;font-weight:400}
+nav.pc-nav{display:flex;gap:28px;align-items:center}
+nav.pc-nav a{font-size:.9rem;font-weight:500;color:var(--text);transition:color .2s}
+nav.pc-nav a:hover{color:var(--primary)}
+nav.pc-nav .btn-apply{background:var(--primary);color:#fff;padding:8px 20px;border-radius:4px}
+nav.pc-nav .btn-apply:hover{background:var(--primary-dark)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.hamburger span{display:block;width:24px;height:2px;background:var(--primary);transition:.3s}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:#fff;border-top:1px solid #eee;padding:20px;z-index:99;flex-direction:column;gap:16px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:1rem;font-weight:500;padding:10px 0;border-bottom:1px solid #f0f0f0;color:var(--text)}
+.mobile-menu a:last-child{background:var(--primary);color:#fff;text-align:center;border-radius:4px;border:none;padding:12px}
+
+/* ヒーロー */
+.hero{position:relative;min-height:75vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center}
+.hero-overlay{position:absolute;inset:0;background:rgba(80,15,25,.62)}
+.hero-content{position:relative;z-index:1;padding:40px 20px;color:#fff}
+.hero-badge{display:inline-block;background:var(--accent);color:#333;font-size:.8rem;font-weight:700;padding:4px 16px;border-radius:20px;margin-bottom:16px;letter-spacing:.06em}
+.hero-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.6rem,5vw,2.8rem);font-weight:700;line-height:1.4;margin-bottom:16px;text-shadow:0 2px 8px rgba(0,0,0,.4)}
+.hero-sub{font-size:clamp(1rem,2.5vw,1.15rem);color:rgba(255,255,255,.9);margin-bottom:28px}
+.btn-hero{display:inline-block;background:var(--accent);color:#333;font-weight:700;font-size:1rem;padding:14px 40px;border-radius:4px;transition:opacity .2s}
+.btn-hero:hover{opacity:.85}
+
+/* セクション共通 */
+section{padding:72px 20px}
+.section-inner{max-width:1000px;margin:0 auto}
+.section-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,4vw,2rem);text-align:center;margin-bottom:8px;color:var(--primary)}
+.section-sub{text-align:center;color:var(--text-light);font-size:.95rem;margin-bottom:48px}
+.section-title-line{display:flex;align-items:center;gap:12px;margin-bottom:32px}
+.section-title-line::before,.section-title-line::after{content:'';flex:1;height:1px;background:#ddd}
+
+/* 働く魅力 */
+.merits{background:var(--bg-warm)}
+.merit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.merit-card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07)}
+.merit-card img{width:100%;height:180px;object-fit:cover}
+.merit-card-body{padding:20px}
+.merit-card-body h3{font-family:'Noto Serif JP',serif;font-size:1.05rem;color:var(--primary);margin-bottom:8px}
+.merit-card-body p{font-size:.9rem;color:var(--text-light);line-height:1.7}
+
+/* 募集要項 */
+.requirements-table{width:100%;border-collapse:collapse;font-size:.95rem}
+.requirements-table tr{border-bottom:1px solid #eee}
+.requirements-table th{background:#f9f4f0;color:var(--primary);font-weight:700;padding:16px 20px;width:170px;text-align:left;vertical-align:top;white-space:nowrap}
+.requirements-table td{padding:16px 20px;color:var(--text)}
+.tag{display:inline-block;background:#FDF0F2;color:var(--primary);border:1px solid var(--primary);font-size:.78rem;padding:3px 10px;border-radius:12px;margin:2px}
+
+/* FAQ */
+.faq{background:var(--bg-warm)}
+.faq-list{display:flex;flex-direction:column;gap:12px}
+.faq-item{background:#fff;border-radius:8px;border:1px solid #eee;overflow:hidden}
+.faq-q{display:flex;align-items:center;gap:12px;padding:16px 20px;cursor:pointer;font-weight:700;font-size:.95rem}
+.faq-q .q-badge{background:var(--primary);color:#fff;font-size:.8rem;padding:3px 10px;border-radius:4px;flex-shrink:0}
+.faq-a{padding:0 20px 16px;font-size:.9rem;color:var(--text-light);line-height:1.8;display:none}
+.faq-item.open .faq-a{display:block}
+.faq-arrow{margin-left:auto;transition:transform .3s}
+.faq-item.open .faq-arrow{transform:rotate(180deg)}
+
+/* 1日の流れ */
+.timeline{display:flex;flex-direction:column;gap:0}
+.tl-item{display:flex;align-items:flex-start;gap:20px;padding:16px 0;position:relative}
+.tl-item:not(:last-child)::after{content:'';position:absolute;left:47px;top:52px;width:2px;height:calc(100% - 16px);background:#ddd}
+.tl-time{background:var(--primary);color:#fff;font-weight:700;font-size:.85rem;padding:6px 12px;border-radius:4px;min-width:72px;text-align:center;flex-shrink:0}
+.tl-body h4{font-weight:700;margin-bottom:4px;font-size:.95rem}
+.tl-body p{font-size:.88rem;color:var(--text-light)}
+
+/* 先輩メッセージ */
+.voice-section{background:var(--bg-warm)}
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.voice-card{background:#fff;border-radius:8px;padding:24px;box-shadow:0 2px 10px rgba(0,0,0,.06);display:flex;flex-direction:column;gap:16px}
+.voice-meta{display:flex;align-items:center;gap:12px}
+.voice-meta img{width:64px;height:64px;border-radius:50%;object-fit:cover;border:3px solid var(--accent)}
+.voice-meta-info .name{font-weight:700;font-size:.95rem}
+.voice-meta-info .role{font-size:.82rem;color:var(--text-light);margin-top:2px}
+.voice-card p{font-size:.9rem;color:var(--text);line-height:1.8;flex:1}
+.voice-sample{font-size:.75rem;color:#aaa;text-align:right;margin-top:4px}
+
+/* 担当者 */
+.manager{text-align:center}
+.manager img{width:100px;height:100px;border-radius:50%;object-fit:cover;margin:0 auto 16px;border:4px solid var(--accent)}
+.manager h3{font-weight:700;margin-bottom:8px;font-size:1.05rem}
+.manager p{font-size:.9rem;color:var(--text-light);max-width:500px;margin:0 auto 24px}
+
+/* 応募CTA */
+.cta-section{background:var(--primary);color:#fff;text-align:center}
+.cta-section h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.3rem,4vw,1.8rem);margin-bottom:12px}
+.cta-section p{font-size:.95rem;color:rgba(255,255,255,.85);margin-bottom:28px}
+.btn-cta{display:inline-block;background:var(--accent);color:#333;font-weight:700;padding:16px 52px;border-radius:4px;font-size:1.05rem;transition:opacity .2s}
+.btn-cta:hover{opacity:.85}
+
+/* フッター */
+footer{background:#1a0a0e;color:#ccc;text-align:center;padding:40px 20px;font-size:.88rem}
+footer .company{color:#fff;font-weight:700;font-size:1rem;margin-bottom:8px}
+footer p{margin:4px 0}
+
+/* レスポンシブ */
+@media(max-width:768px){
+  nav.pc-nav{display:none}
+  .hamburger{display:flex}
+  .merit-grid{grid-template-columns:1fr}
+  .voice-grid{grid-template-columns:1fr}
+  .requirements-table th,.requirements-table td{display:block;width:100%}
+  .requirements-table th{border-bottom:none;padding-bottom:4px}
+  .requirements-table td{padding-top:4px}
+  .tl-item:not(:last-child)::after{display:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">アエベ<span>古民家イタリアン 採用情報</span></div>
+    <nav class="pc-nav">
+      <a href="#merits">働く魅力</a>
+      <a href="#requirements">募集要項</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#apply" class="btn-apply">応募する</a>
+    </nav>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#merits" onclick="closeMenu()">働く魅力</a>
+    <a href="#requirements" onclick="closeMenu()">募集要項</a>
+    <a href="#faq" onclick="closeMenu()">よくある質問</a>
+    <a href="#apply" onclick="closeMenu()">応募する</a>
+  </div>
+</header>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">ホールスタッフ・調理補助 ／ 正社員 ／ 経験不問</div>
+    <h1 class="hero-title">国登録有形文化財の古民家で、<br>あなたの笑顔を活かせる仕事</h1>
+    <p class="hero-sub">千葉県印西市 ── 歴史ある「武蔵屋」でイタリア料理をご提供。<br>未経験歓迎・シフト制・月給22万〜</p>
+    <a href="#apply" class="btn-hero">採用ページを見る・応募する</a>
+  </div>
+</section>
+
+<!-- 働く魅力 -->
+<section class="merits" id="merits">
+  <div class="section-inner">
+    <h2 class="section-title">アエベで働く3つの魅力</h2>
+    <p class="section-sub">国指定の文化財建築でしか味わえない仕事の醍醐味があります</p>
+    <div class="merit-grid">
+      <div class="merit-card">
+        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=640&h=380&fit=crop&q=80" alt="古民家の内装">
+        <!-- ※ここはサンプルです。実際には御社の店内写真に差し替えます -->
+        <div class="merit-card-body">
+          <h3>唯一無二の職場環境</h3>
+          <p>国登録有形文化財「武蔵屋」の古民家建築でお客様をお迎えします。歴史ある空間でのホスピタリティは、ほかでは経験できない誇りある仕事です。</p>
+        </div>
+      </div>
+      <div class="merit-card">
+        <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=640&h=380&fit=crop&q=80" alt="カフェの雰囲気">
+        <!-- ※ここはサンプルです。実際には御社の接客シーン写真に差し替えます -->
+        <div class="merit-card-body">
+          <h3>未経験から始められる</h3>
+          <p>飲食店の経験は不問。月給22万〜30万円で正社員スタートできます。昇給制度あり（実績月最大5,000円）。接客が好き・料理が好きという気持ちを大切にします。</p>
+        </div>
+      </div>
+      <div class="merit-card">
+        <img src="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=640&h=380&fit=crop&q=80" alt="飲食店の雰囲気">
+        <!-- ※ここはサンプルです。実際には御社の写真に差し替えます -->
+        <div class="merit-card-body">
+          <h3>週2日休み・シフト制</h3>
+          <p>火曜・水曜が定休（週休2日制）。シフト制なのでプライベートとのバランスが取りやすい環境です。年間休日108日、通勤手当も実費支給。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section id="requirements">
+  <div class="section-inner">
+    <h2 class="section-title">募集要項</h2>
+    <p class="section-sub">※以下の情報はサンプルです。実際には御社の最新情報に差し替えます</p>
+    <table class="requirements-table">
+      <tr><th>職種</th><td>ホールスタッフ・調理補助</td></tr>
+      <tr><th>仕事内容</th><td>料理の配膳・ドリンク提供・会計・清掃などホール業務全般。状況に応じて調理補助も担当します。</td></tr>
+      <tr><th>雇用形態</th><td>正社員（試用期間1ヶ月・同条件）</td></tr>
+      <tr><th>給与</th><td>月給 220,000円〜300,000円<br>昇給あり（前年実績：月最大5,000円）　賞与あり</td></tr>
+      <tr><th>就業時間</th><td>11:00〜20:00（シフト制）　休憩60分</td></tr>
+      <tr><th>休日</th><td>火曜・水曜（週休2日制）　年間休日108日<br>年末年始休暇あり</td></tr>
+      <tr><th>交通</th><td>JR成田線 木下駅 徒歩3分　マイカー通勤可・駐車場あり<br>通勤手当 実費支給（上限月2万円）</td></tr>
+      <tr><th>勤務地</th><td>千葉県印西市木下1645</td></tr>
+      <tr><th>応募資格</th><td>
+        <span class="tag">経験不問</span>
+        <span class="tag">学歴不問</span>
+        <span class="tag">資格不問</span>
+        <span class="tag">59歳以下（定年60歳）</span>
+      </td></tr>
+      <tr><th>保険・待遇</th><td>採用後に必要な保険へ加入（詳細は面接でご確認ください）　制服貸与あり　屋内禁煙</td></tr>
+      <tr><th>選考</th><td>書類選考なし。面接1回（持参書類：履歴書・職歴書）。面接後7日以内に電話でご連絡します。</td></tr>
+    </table>
+    <p style="font-size:.8rem;color:#aaa;margin-top:12px;text-align:right">※ここはサンプルです。実際には御社の募集要項に差し替えます</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="section-inner">
+    <h2 class="section-title">よくある質問</h2>
+    <p class="section-sub">応募前に気になるポイントをまとめました</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="q-badge">Q</span>
+          飲食店での経験がなくても応募できますか？
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">はい、未経験の方も大歓迎です。接客が好き・食事が好きという気持ちがあれば十分です。先輩スタッフが丁寧にサポートしますので、安心してください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="q-badge">Q</span>
+          社会保険はどうなっていますか？
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">採用後に必要な保険へ加入します（労災保険ほか）。具体的な内容については面接時にご確認ください。不明な点はお気軽にお問い合わせください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="q-badge">Q</span>
+          シフトの曜日・時間は固定ですか？
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">シフト制ですので、ご希望を考慮しながら相談して決めます。定休日は火曜・水曜で、週2日の休みが確保されます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="q-badge">Q</span>
+          「古民家」というのはどんな建物ですか？
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">国登録有形文化財に指定された「武蔵屋」という古民家建築です。歴史ある建物の中でイタリア料理を提供するという、ほかにはない独自の雰囲気が自慢です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="q-badge">Q</span>
+          将来、イタリア料理の調理に携わることはできますか？
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">ホールスタッフ・調理補助として入社後、ご希望や適性を見ながら調理に関わる機会も増やしていけます。「将来は飲食店を開きたい」という方もぜひご応募ください。</div>
+      </div>
+    </div>
+    <p style="font-size:.8rem;color:#aaa;margin-top:16px;text-align:right">※ここはサンプルです。実際には御社のFAQに差し替えます</p>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section id="schedule">
+  <div class="section-inner">
+    <h2 class="section-title">スタッフの1日の流れ</h2>
+    <p class="section-sub">イメージしやすいよう、典型的な一日をご紹介します</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">10:45</div>
+        <div class="tl-body"><h4>出勤・仕込み準備</h4><p>制服に着替え、テーブルセッティングや備品の補充など開店準備を行います。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">11:00</div>
+        <div class="tl-body"><h4>開店・ランチ営業</h4><p>お客様のご案内、料理の配膳、ドリンクのご提供。古民家の空間をお楽しみいただけるよう丁寧にご対応します。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">14:00</div>
+        <div class="tl-body"><h4>休憩・後片付け</h4><p>ランチタイム終了後、片付けを終えて60分の休憩。まかない食事が楽しみな時間です。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">16:00</div>
+        <div class="tl-body"><h4>ディナー準備</h4><p>テーブルのリセット、食材補充、状況に応じて調理補助も担います。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:00</div>
+        <div class="tl-body"><h4>ディナー営業</h4><p>夜のコース料理をお楽しみいただくお客様のご対応。ゆったりとした接客を大切にしています。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">20:00</div>
+        <div class="tl-body"><h4>閉店・清掃・退勤</h4><p>テーブル・フロアの清掃後、退勤。次の営業日の準備メモを残すこともあります。</p></div>
+      </div>
+    </div>
+    <p style="font-size:.8rem;color:#aaa;margin-top:16px;text-align:right">※ここはサンプルです。実際には御社の1日の流れに差し替えます</p>
+  </div>
+</section>
+
+<!-- 先輩メッセージ -->
+<section class="voice-section" id="voices">
+  <div class="section-inner">
+    <h2 class="section-title">先輩スタッフからのメッセージ</h2>
+    <p class="section-sub">実際に働くスタッフの声をご紹介します</p>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="voice-meta">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=faces&q=80" alt="スタッフA（仮名）">
+          <!-- ※ここはサンプルです。実際には御社スタッフの写真に差し替えます -->
+          <div class="voice-meta-info">
+            <div class="name">Aさん（仮名）</div>
+            <div class="role">ホールスタッフ ／ 入社2年</div>
+          </div>
+        </div>
+        <p>「最初は古民家って何？という感じでしたが、実際に働いてみると歴史ある建物の雰囲気がとても好きになりました。お客様も『素敵な場所ね』と喜んでくださることが多く、それが一番の励みです。」</p>
+        <div class="voice-sample">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-meta">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=faces&q=80" alt="スタッフB（仮名）">
+          <!-- ※ここはサンプルです。実際には御社スタッフの写真に差し替えます -->
+          <div class="voice-meta-info">
+            <div class="name">Bさん（仮名）</div>
+            <div class="role">ホールスタッフ ／ 入社4年</div>
+          </div>
+        </div>
+        <p>「料理が好きで応募しました。ホール業務だけでなく調理補助も経験できるので、将来に向けていい勉強になっています。シフトの融通も利くので、プライベートとうまく両立できています。」</p>
+        <div class="voice-sample">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-meta">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&crop=faces&q=80" alt="スタッフC（仮名）">
+          <!-- ※ここはサンプルです。実際には御社スタッフの写真に差し替えます -->
+          <div class="voice-meta-info">
+            <div class="name">Cさん（仮名）</div>
+            <div class="role">調理補助 ／ 入社1年</div>
+          </div>
+        </div>
+        <p>「完全未経験で入社しましたが、先輩がとても丁寧に教えてくれました。国指定の文化財で働いているというのが友人に話すと驚かれます（笑）。少人数なのでアットホームな雰囲気も好きです。」</p>
+        <div class="voice-sample">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 担当者紹介 -->
+<section id="manager">
+  <div class="section-inner">
+    <h2 class="section-title">採用担当者より</h2>
+    <div class="manager">
+      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当（仮名）">
+      <!-- ※ここはサンプルです。実際には御社担当者の写真に差し替えます -->
+      <h3>代表 阿部（仮名：採用担当者名）</h3>
+      <p>「国登録有形文化財の古民家でイタリア料理を楽しんでいただく──そんな特別な場所で一緒に働いてくれる方を探しています。飲食未経験でも、接客が好き・料理が好きという気持ちがあれば大丈夫。まずはお気軽にお問い合わせください。」</p>
+      <a href="mailto:aebe.inzai@gmail.com" style="display:inline-block;background:var(--primary);color:#fff;padding:12px 36px;border-radius:4px;font-weight:700;">メールでお問い合わせ</a>
+    </div>
+    <p style="font-size:.8rem;color:#aaa;margin-top:16px;text-align:center">※ここはサンプルです。実際には御社担当者のプロフィール・コメントに差し替えます</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="apply">
+  <div class="section-inner">
+    <h2>古民家イタリアンで、あなたの力を活かしませんか？</h2>
+    <p>まずはハローワーク経由でご応募いただくか、メールでお気軽にお問い合わせください。</p>
+    <a href="mailto:aebe.inzai@gmail.com" class="btn-cta">応募・問い合わせはこちら</a>
+  </div>
+</section>
+
+<footer>
+  <div class="company">アエベ</div>
+  <p>〒270-1326 千葉県印西市木下1645</p>
+  <p>E-mail: aebe.inzai@gmail.com</p>
+</footer>
+
+<script>
+function toggleMenu(){
+  var m=document.getElementById('mobileMenu');
+  m.classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+function toggleFaq(el){
+  var item=el.parentElement;
+  item.classList.toggle('open');
+}
+</script>
+</body>
+</html>
