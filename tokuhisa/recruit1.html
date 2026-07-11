@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>採用情報 | 株式会社徳久</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#1a1a1a;background:#fff}
+img{max-width:100%;height:auto;display:block}
+a{text-decoration:none;color:inherit}
+
+/* カラー変数 */
+:root{
+  --green:#2d7a4f;
+  --green-dark:#1e5436;
+  --green-light:#e8f5ee;
+  --accent:#f0a500;
+  --text:#333;
+  --muted:#666;
+  --border:#e0e0e0;
+}
+
+/* ヘッダー */
+header{position:sticky;top:0;z-index:100;background:#fff;border-bottom:2px solid var(--green);padding:0 24px}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-size:1.1rem;font-weight:700;color:var(--green)}
+nav.pc-nav{display:flex;gap:24px}
+nav.pc-nav a{font-size:.9rem;font-weight:500;color:var(--text);padding:4px 0;border-bottom:2px solid transparent;transition:.2s}
+nav.pc-nav a:hover{border-color:var(--green);color:var(--green)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:8px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--green)}
+
+@media(max-width:768px){
+  nav.pc-nav{display:none}
+  nav.pc-nav.open{display:flex;flex-direction:column;position:absolute;top:64px;left:0;right:0;background:#fff;padding:16px 24px;border-bottom:1px solid var(--border);gap:16px}
+  .hamburger{display:flex}
+}
+
+/* ヒーロー */
+.hero{background:linear-gradient(135deg,var(--green-dark) 0%,var(--green) 100%);color:#fff;padding:80px 24px 60px;text-align:center}
+.hero-inner{max-width:800px;margin:0 auto}
+.hero-badge{display:inline-flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:20px}
+.pill{background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.5);border-radius:20px;padding:4px 14px;font-size:.8rem}
+.hero h1{font-size:clamp(1.7rem,5vw,2.8rem);line-height:1.4;font-weight:700;margin-bottom:16px}
+.hero p{font-size:clamp(.9rem,2.5vw,1.1rem);opacity:.9;margin-bottom:32px;line-height:1.7}
+.btn-primary{display:inline-block;background:var(--accent);color:#fff;font-weight:700;padding:14px 36px;border-radius:4px;font-size:1rem;transition:.2s}
+.btn-primary:hover{opacity:.85}
+
+/* セクション共通 */
+section{padding:60px 24px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-title{text-align:center;font-size:clamp(1.3rem,4vw,1.8rem);font-weight:700;margin-bottom:8px;color:var(--green-dark)}
+.section-sub{text-align:center;color:var(--muted);margin-bottom:40px;font-size:.95rem}
+.divider{width:48px;height:3px;background:var(--accent);margin:12px auto 40px}
+
+/* 働く魅力 */
+.merit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.merit-card{background:var(--green-light);border-radius:8px;padding:32px 24px;text-align:center}
+.merit-icon{font-size:2.4rem;margin-bottom:12px}
+.merit-card h3{font-size:1rem;font-weight:700;margin-bottom:8px;color:var(--green-dark)}
+.merit-card p{font-size:.88rem;color:var(--muted);line-height:1.7}
+@media(max-width:768px){.merit-grid{grid-template-columns:1fr}}
+
+/* タイムライン */
+.timeline{background:var(--green-light);padding:60px 24px}
+.timeline-list{max-width:640px;margin:0 auto;position:relative}
+.timeline-list::before{content:'';position:absolute;left:28px;top:0;bottom:0;width:2px;background:var(--green)}
+.timeline-item{display:flex;gap:20px;margin-bottom:28px;position:relative}
+.tl-dot{flex-shrink:0;width:58px;height:58px;border-radius:50%;background:var(--green);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;line-height:1.2;z-index:1}
+.tl-body h4{font-weight:700;margin-bottom:4px;font-size:.95rem}
+.tl-body p{font-size:.85rem;color:var(--muted);line-height:1.6}
+.sample-note{font-size:.75rem;color:#aaa;margin-top:8px}
+
+/* 先輩メッセージ */
+.voices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.voice-card{border:1px solid var(--border);border-radius:8px;padding:24px;background:#fff}
+.voice-head{display:flex;gap:14px;align-items:center;margin-bottom:12px}
+.voice-img{width:60px;height:60px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.voice-name{font-weight:700;font-size:.95rem}
+.voice-meta{font-size:.78rem;color:var(--muted)}
+.voice-card blockquote{font-size:.88rem;color:var(--text);line-height:1.7;border-left:3px solid var(--green);padding-left:12px}
+@media(max-width:768px){.voices-grid{grid-template-columns:1fr}}
+
+/* 募集要項 */
+.recruit-table{width:100%;border-collapse:collapse;font-size:.9rem}
+.recruit-table tr{border-bottom:1px solid var(--border)}
+.recruit-table th{width:140px;padding:14px 16px;text-align:left;background:var(--green-light);color:var(--green-dark);font-weight:700;vertical-align:top;white-space:nowrap}
+.recruit-table td{padding:14px 16px;line-height:1.7}
+@media(max-width:600px){
+  .recruit-table,.recruit-table tbody,.recruit-table tr,.recruit-table th,.recruit-table td{display:block}
+  .recruit-table th{width:100%;border-bottom:none;padding-bottom:4px}
+  .recruit-table td{padding-top:4px;padding-bottom:14px}
+}
+
+/* FAQ */
+.faq-bg{background:var(--green-light)}
+.faq-list{max-width:760px;margin:0 auto}
+.faq-item{background:#fff;border-radius:6px;margin-bottom:12px;overflow:hidden}
+.faq-q{padding:16px 20px;font-weight:700;font-size:.95rem;cursor:pointer;position:relative;padding-right:40px}
+.faq-q::after{content:'＋';position:absolute;right:20px;top:50%;transform:translateY(-50%);color:var(--green);font-size:1.2rem}
+.faq-a{padding:0 20px 16px;font-size:.88rem;color:var(--muted);line-height:1.7;display:none}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .faq-q::after{content:'－'}
+
+/* 担当者紹介 */
+.contact-box{max-width:600px;margin:0 auto;background:var(--green-light);border-radius:8px;padding:32px;display:flex;gap:24px;align-items:center}
+.contact-img{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.contact-info h3{font-weight:700;margin-bottom:4px}
+.contact-info p{font-size:.88rem;color:var(--muted);line-height:1.6}
+.contact-info .tel{font-size:1.1rem;font-weight:700;color:var(--green-dark);margin-top:8px}
+@media(max-width:480px){.contact-box{flex-direction:column;text-align:center}}
+
+/* CTA */
+.cta-section{background:var(--green-dark);color:#fff;text-align:center;padding:60px 24px}
+.cta-section h2{font-size:clamp(1.3rem,4vw,1.7rem);margin-bottom:12px}
+.cta-section p{margin-bottom:28px;opacity:.9;font-size:.95rem}
+
+/* フッター */
+footer{background:#222;color:#bbb;text-align:center;padding:28px 16px;font-size:.82rem;line-height:1.8}
+footer strong{color:#fff}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">株式会社徳久 採用サイト</div>
+    <nav class="pc-nav" id="pcNav">
+      <a href="#merit">働く魅力</a>
+      <a href="#day">1日の流れ</a>
+      <a href="#voices">先輩の声</a>
+      <a href="#requirements">募集要項</a>
+      <a href="#faq">FAQ</a>
+      <a href="#apply">応募する</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span class="pill">職業指導員</span>
+      <span class="pill">生活支援員</span>
+      <span class="pill">未経験・無資格OK</span>
+      <span class="pill">浦安駅徒歩3分</span>
+    </div>
+    <h1>利用者さんの<br>「できた！」を、一緒に喜べる仕事</h1>
+    <p>就労継続支援A型事業所パレット浦安駅前で、<br>障がいのある方々の働く日常をサポートするスタッフを募集しています。</p>
+    <a href="#apply" class="btn-primary">求人の詳細を見る・応募する</a>
+  </div>
+</section>
+
+<!-- 働く魅力 -->
+<section id="merit">
+  <div class="section-inner">
+    <h2 class="section-title">働く魅力</h2>
+    <div class="divider"></div>
+    <div class="merit-grid">
+      <div class="merit-card">
+        <div class="merit-icon">⏰</div>
+        <h3>実働6.5時間のゆとり勤務</h3>
+        <p>8:30〜16:00と短めの就業時間。仕事終わりに余裕をもった生活が送れます。</p>
+      </div>
+      <div class="merit-card">
+        <div class="merit-icon">💴</div>
+        <h3>月給25〜35万円＋処遇改善手当</h3>
+        <p>処遇改善手当5〜7万円を含む高め水準。有資格者にはさらに資格手当（最大2万円/月）を支給。</p>
+      </div>
+      <div class="merit-card">
+        <div class="merit-icon">🌱</div>
+        <h3>未経験・無資格から始められる</h3>
+        <p>「福祉は初めて」でも大丈夫。丁寧に研修しますので、ゼロから安心してスタートできます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- タイムライン -->
+<section class="timeline" id="day">
+  <div class="section-inner">
+    <h2 class="section-title">社員の1日の流れ</h2>
+    <p class="section-sub">職業指導員スタッフの典型的な1日をご紹介します</p>
+    <div class="divider"></div>
+    <!-- ※ここはサンプルです。実際には御社スタッフの1日の流れに差し替えます -->
+    <p class="sample-note" style="text-align:center;margin-bottom:24px">※ここはサンプルです。実際には御社スタッフの1日の流れに差し替えます</p>
+    <div class="timeline-list">
+      <div class="timeline-item">
+        <div class="tl-dot">8:30<br>出勤</div>
+        <div class="tl-body"><h4>朝礼・引き継ぎ確認</h4><p>前日の報告確認と当日の利用者さんの状況を共有。一日の作業予定を確認します。</p></div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-dot">9:00<br>作業</div>
+        <div class="tl-body"><h4>作業支援・指導</h4><p>中古ブランド品のクリーニング・出品・梱包発送など、利用者さんの各担当作業をサポートします。</p></div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-dot">12:00<br>昼休み</div>
+        <div class="tl-body"><h4>昼食・休憩</h4><p>浦安駅前エリアのランチで気分転換。スタッフ同士の交流タイムでもあります。</p></div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-dot">13:00<br>午後</div>
+        <div class="tl-body"><h4>個別支援・記録入力</h4><p>利用者さん一人ひとりの様子を見ながら個別対応。PCで支援記録を入力します。</p></div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-dot">15:30<br>終礼</div>
+        <div class="tl-body"><h4>片付け・終礼</h4><p>翌日の準備と本日の振り返り。気になった点をチームで共有します。</p></div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-dot">16:00<br>退勤</div>
+        <div class="tl-body"><h4>退勤</h4><p>実働6.5時間でしっかり終業。プライベートの時間を大切にできます。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section id="voices">
+  <div class="section-inner">
+    <h2 class="section-title">先輩スタッフからのメッセージ</h2>
+    <div class="divider"></div>
+    <!-- ※ここはサンプルです。実際には御社スタッフの写真・氏名・コメントに差し替えます -->
+    <p class="sample-note" style="text-align:center;margin-bottom:24px">※ここはサンプルです。実際には御社スタッフの写真・氏名・コメントに差し替えます</p>
+    <div class="voices-grid">
+      <div class="voice-card">
+        <!-- 先輩顔写真（女性） -->
+        <div class="voice-head">
+          <img class="voice-img" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=faces&q=80" alt="田中さん">
+          <div>
+            <div class="voice-name">田中 さゆり（仮名）</div>
+            <div class="voice-meta">生活支援員・入社3年目</div>
+          </div>
+        </div>
+        <blockquote>「前職はまったく福祉と無関係でした。でも入社後の研修がとても丁寧で、先輩スタッフが親切に教えてくれたので不安なく続けられています。利用者さんの笑顔が一番の励みです。」</blockquote>
+      </div>
+      <div class="voice-card">
+        <!-- 先輩顔写真（男性） -->
+        <div class="voice-head">
+          <img class="voice-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="鈴木さん">
+          <div>
+            <div class="voice-name">鈴木 拓也（仮名）</div>
+            <div class="voice-meta">職業指導員・入社2年目</div>
+          </div>
+        </div>
+        <blockquote>「ブランド品通販という普通と違う事業内容に興味を持って応募しました。利用者さんと一緒に梱包作業をするのが日々のやりがいで、チームワークが自然と生まれる職場です。」</blockquote>
+      </div>
+      <div class="voice-card">
+        <!-- 先輩顔写真（女性） -->
+        <div class="voice-head">
+          <img class="voice-img" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=faces&q=80" alt="山田さん">
+          <div>
+            <div class="voice-name">山田 みどり（仮名）</div>
+            <div class="voice-meta">生活支援員・入社4年目</div>
+          </div>
+        </div>
+        <blockquote>「16:00に必ず帰れるので、子育てしながらでも無理なく働けます。有資格者の手当もあり、精神保健福祉士の資格を取得してから給与が上がったのも嬉しかったです。」</blockquote>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section id="requirements" style="background:#fafafa">
+  <div class="section-inner">
+    <h2 class="section-title">募集要項</h2>
+    <div class="divider"></div>
+    <table class="recruit-table">
+      <tr><th>職種</th><td>職業指導員・生活支援員</td></tr>
+      <tr><th>雇用形態</th><td>正社員（試用期間3カ月・時給1,265円）</td></tr>
+      <tr><th>給与</th><td>月給250,000円〜350,000円<br>（基本給180,000〜250,000円、処遇改善手当50,000〜70,000円、固定残業代20,000〜30,000円含む）<br>有資格者：資格手当 最大20,000円/月を別途支給</td></tr>
+      <tr><th>昇給・賞与</th><td>昇給あり（前年度実績 2,000〜50,000円/時間） / 賞与年2回（前年度実績 200,000〜700,000円）</td></tr>
+      <tr><th>就業時間</th><td>8:30〜16:00（実働6.5時間・休憩60分）<br>月平均時間外労働：5時間</td></tr>
+      <tr><th>休日・休暇</th><td>日曜日・その他（月8日休み）<br>年間休日96日 / 入社6カ月後に有給10日付与</td></tr>
+      <tr><th>勤務地</th><td>千葉県浦安市猫実４－６－２６ ミナモトビル2階<br>東京メトロ東西線 浦安駅 徒歩3分</td></tr>
+      <tr><th>応募資格</th><td>未経験・無資格歓迎。経験者・有資格者（社会福祉士・精神保健福祉士・介護福祉士等）はさらに優遇</td></tr>
+      <tr><th>必要スキル</th><td>基本的なPCスキル必須</td></tr>
+      <tr><th>加入保険</th><td>雇用保険・労災保険・健康保険・厚生年金</td></tr>
+      <tr><th>採用人数</th><td>2名</td></tr>
+      <tr><th>選考フロー</th><td>書類選考（3日以内通知）→ 面接1回（結果3日以内通知）<br>応募書類：ハローワーク紹介状・履歴書（写真貼付）・職務経歴書</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-bg" id="faq">
+  <div class="section-inner">
+    <h2 class="section-title">よくある質問</h2>
+    <div class="divider"></div>
+    <!-- ※ここはサンプルです。実際には御社のFAQ内容に差し替えます -->
+    <p class="sample-note" style="text-align:center;margin-bottom:24px">※ここはサンプルです。実際には御社のFAQ内容に差し替えます</p>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <div class="faq-q">福祉の仕事は初めてでも大丈夫ですか？</div>
+        <div class="faq-a">はい、未経験・無資格の方でも安心して始められます。入社後に先輩スタッフが丁寧にフォローしますので、福祉の知識がなくても問題ありません。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">「就労継続支援A型」とはどのような仕事ですか？</div>
+        <div class="faq-a">障がいのある方が、雇用契約のもとで働けるよう支援する事業所です。当社では中古ハイブランド品の通販業務・無人餃子店の運営・内職作業などを利用者さんに担当していただき、スタッフはその作業指導とサポートを行います。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">資格がある場合、手当はどうなりますか？</div>
+        <div class="faq-a">社会福祉士・精神保健福祉士・介護福祉士等の有資格者には、毎月最大20,000円の資格手当を別途支給します。取得済みの方はぜひ面接時にお伝えください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">選考の流れを教えてください。</div>
+        <div class="faq-a">書類選考（書類到着後3日以内に通知）→ 面接1回（結果を3日以内に通知）です。応募書類はEメールでお送りください。お気軽にご応募ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">残業はどのくらいありますか？</div>
+        <div class="faq-a">月平均5時間程度です。固定残業代（10時間分）を含む給与設定のため、10時間を超えた場合は別途支給します。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 採用担当者紹介 -->
+<section id="contact">
+  <div class="section-inner">
+    <h2 class="section-title">採用担当者より</h2>
+    <div class="divider"></div>
+    <!-- ※ここはサンプルです。実際には採用担当者の写真・メッセージに差し替えます -->
+    <p class="sample-note" style="text-align:center;margin-bottom:24px">※ここはサンプルです。実際には採用担当者の写真・メッセージに差し替えます</p>
+    <div class="contact-box">
+      <img class="contact-img" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当者">
+      <div class="contact-info">
+        <h3>採用担当：竹田（仮名）</h3>
+        <p>「福祉に興味があるけれど、未経験で不安…」というお気持ちは当然です。<br>まずはお気軽にご連絡ください。ざっくばらんにお話しましょう。</p>
+        <div class="tel">📞 047-305-8830</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 応募CTA -->
+<section class="cta-section" id="apply">
+  <h2>一緒に、誰かの「できた」を増やしませんか？</h2>
+  <p>採用担当（竹田）までお電話またはEメールにてご連絡ください。</p>
+  <a href="mailto:tokuhisa2017@gmail.com" class="btn-primary" style="margin-right:12px">メールで問い合わせる</a>
+  <a href="tel:047-305-8830" class="btn-primary">📞 047-305-8830</a>
+</section>
+
+<footer>
+  <p><strong>株式会社徳久</strong></p>
+  <p>千葉県浦安市猫実４－６－２６ ミナモトビル2階</p>
+  <p>TEL：047-305-8830 / Email：tokuhisa2017@gmail.com</p>
+</footer>
+
+<script>
+const hamburger = document.getElementById('hamburger');
+const pcNav = document.getElementById('pcNav');
+hamburger.addEventListener('click', () => pcNav.classList.toggle('open'));
+
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
+});
+</script>
+</body>
+</html>
