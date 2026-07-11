@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>千葉県の不動産無料査定は株式会社御成エステート｜C案：オファー・行動喚起型LP</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#16324f;
+    --navy-dark:#0d2038;
+    --gold:#c9a227;
+    --gold-light:#e6c757;
+    --red:#c0392b;
+    --bg:#f7f8fa;
+    --text:#2a2e35;
+    --gray:#6b7280;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Noto Sans JP',sans-serif;color:var(--text);background:var(--bg);line-height:1.8;width:100%;overflow-x:hidden;}
+  img{max-width:100%;display:block;}
+  a{text-decoration:none;color:inherit;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px;}
+
+  header{
+    position:fixed;top:0;left:0;width:100%;background:var(--navy-dark);color:#fff;z-index:100;
+    padding:12px 20px;display:flex;justify-content:space-between;align-items:center;
+  }
+  header .logo{font-family:'Shippori Mincho',serif;font-weight:800;font-size:clamp(13px,3vw,19px);}
+  header .badge{background:var(--red);color:#fff;font-size:11px;padding:5px 10px;border-radius:20px;font-weight:700;}
+
+  /* FV: 即・無料査定 訴求 */
+  .fv{
+    min-height:100vh;padding-top:70px;
+    background:linear-gradient(160deg,var(--navy) 0%,var(--navy-dark) 100%);
+    color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;position:relative;padding-bottom:50px;
+  }
+  .fv::before{
+    content:"";position:absolute;inset:0;
+    background:url('https://loremflickr.com/1600/1200/house,realestate,sold') center/cover no-repeat;
+    opacity:0.16;
+  }
+  /* 元画像: 物件・査定シーン写真 → images/fv-bg.jpg（現在はダミー：https://loremflickr.com/1600/1200/house,realestate,sold） */
+  .fv-inner{position:relative;z-index:2;padding:20px;}
+  .offer-tag{
+    display:inline-block;background:var(--red);color:#fff;font-weight:900;
+    padding:8px 20px;border-radius:30px;font-size:clamp(12px,2.5vw,15px);margin-bottom:20px;
+    animation:pulse 1.8s infinite;
+  }
+  @keyframes pulse{0%{transform:scale(1);}50%{transform:scale(1.05);}100%{transform:scale(1);}}
+  .fv h1{
+    font-family:'Shippori Mincho',serif;font-size:clamp(26px,6.5vw,48px);font-weight:800;line-height:1.5;margin-bottom:18px;
+  }
+  .fv h1 span{color:var(--gold-light);}
+  .fv p.lead{font-size:clamp(13px,3vw,17px);color:#dfe6ee;margin-bottom:30px;}
+  .cta-btn{
+    display:inline-block;background:var(--gold);color:var(--navy-dark);font-weight:900;
+    font-size:clamp(16px,3.5vw,21px);padding:20px 48px;border-radius:6px;
+    box-shadow:0 8px 24px rgba(0,0,0,0.3);
+  }
+  .cta-sub{margin-top:14px;font-size:12px;color:#c7d0da;}
+
+  /* 実績数字バー */
+  .stats-bar{
+    background:var(--navy-dark);color:#fff;padding:36px 0;
+  }
+  .stats-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:30px;text-align:center;}
+  .stat{min-width:140px;}
+  .stat .num{font-family:'Shippori Mincho',serif;font-size:clamp(28px,6vw,42px);font-weight:800;color:var(--gold-light);}
+  .stat .num sup{font-size:0.5em;margin-left:2px;}
+  .stat .label{font-size:12.5px;color:#c7d0da;margin-top:6px;}
+  .stats-note{text-align:center;font-size:11px;color:#8fa0b3;margin-top:16px;}
+
+  section{padding:64px 0;}
+  .section-title{text-align:center;font-family:'Shippori Mincho',serif;font-size:clamp(22px,4.5vw,32px);font-weight:800;color:var(--navy);margin-bottom:12px;}
+  .section-sub{text-align:center;color:var(--gray);margin-bottom:40px;font-size:14px;}
+
+  /* オファーボックス */
+  .offer-box{
+    background:#fff;border:3px solid var(--gold);border-radius:16px;
+    padding:36px 24px;text-align:center;box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    position:relative;
+  }
+  .offer-box .ribbon{
+    position:absolute;top:-18px;left:50%;transform:translateX(-50%);
+    background:var(--red);color:#fff;padding:6px 24px;border-radius:20px;font-weight:800;font-size:13px;
+  }
+  .offer-box h3{font-size:clamp(18px,3.5vw,26px);color:var(--navy);margin:16px 0;}
+  .offer-box .price{font-size:clamp(30px,6vw,44px);color:var(--red);font-weight:900;font-family:'Shippori Mincho',serif;}
+  .offer-box .price small{font-size:14px;color:var(--text);font-weight:500;}
+  .offer-box p{color:var(--gray);font-size:13.5px;margin:14px 0 22px;}
+
+  /* 理由 grid */
+  .reason-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;}
+  .reason-card{background:#fff;border-radius:12px;padding:26px 20px;box-shadow:0 4px 14px rgba(0,0,0,0.06);border-left:5px solid var(--gold);}
+  .reason-card h3{font-size:16px;color:var(--navy);margin-bottom:10px;}
+  .reason-card p{font-size:13.5px;color:var(--gray);}
+
+  /* 比較表 */
+  .compare{background:#fff;}
+  table.compare-table{width:100%;border-collapse:collapse;font-size:13px;}
+  table.compare-table th,table.compare-table td{border:1px solid #e5e7eb;padding:12px 8px;text-align:center;}
+  table.compare-table th{background:var(--navy);color:#fff;font-weight:700;}
+  table.compare-table tr:nth-child(even){background:#f7f8fa;}
+  table.compare-table td.ok{color:#1a7f37;font-weight:900;}
+
+  /* 声 */
+  .voices{background:var(--bg);}
+  .voice-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
+  .voice-card{background:#fff;border-radius:12px;padding:24px;box-shadow:0 4px 14px rgba(0,0,0,0.06);}
+  .voice-card .stars{color:var(--gold);margin-bottom:10px;font-size:15px;}
+  .voice-card p{font-size:13.5px;margin-bottom:12px;}
+  .voice-card .name{font-size:12px;color:var(--gray);text-align:right;}
+
+  /* FAQ */
+  .faq-item{border-bottom:1px solid #e5e7eb;padding:18px 0;}
+  .faq-item h4{color:var(--navy);font-size:14.5px;margin-bottom:8px;}
+  .faq-item h4::before{content:"Q. ";color:var(--gold);font-weight:900;}
+  .faq-item p{color:var(--gray);font-size:13.5px;}
+  .faq-item p::before{content:"A. ";color:var(--red);font-weight:900;}
+
+  .company{background:#fff;}
+  table.company-table{width:100%;border-collapse:collapse;font-size:14px;}
+  table.company-table th{width:130px;text-align:left;padding:16px 10px;color:var(--navy);border-bottom:1px solid #e5e7eb;font-weight:700;vertical-align:top;}
+  table.company-table td{padding:16px 10px;border-bottom:1px solid #e5e7eb;}
+
+  .final-cta{background:linear-gradient(160deg,var(--navy) 0%,var(--navy-dark) 100%);color:#fff;text-align:center;}
+  .final-cta h2{font-family:'Shippori Mincho',serif;font-size:clamp(22px,4.5vw,32px);margin-bottom:16px;}
+  .final-cta p{color:#dfe6ee;margin-bottom:32px;font-size:14.5px;}
+  .contact-info{margin-top:28px;font-size:14px;color:#dfe6ee;}
+  .contact-info a{color:var(--gold-light);font-weight:700;}
+
+  footer{background:var(--navy-dark);color:#9fb0c2;text-align:center;padding:24px;font-size:12px;}
+
+  .floating-cta{position:fixed;bottom:0;left:0;width:100%;background:var(--gold);display:flex;z-index:200;box-shadow:0 -4px 12px rgba(0,0,0,0.15);}
+  .floating-cta a{flex:1;text-align:center;padding:16px 8px;font-weight:900;color:var(--navy-dark);font-size:clamp(13px,3vw,16px);}
+  .floating-cta a.tel{background:var(--navy-dark);color:#fff;}
+
+  /* mid-page CTA */
+  .mid-cta{background:var(--gold);text-align:center;padding:36px 20px;}
+  .mid-cta h3{color:var(--navy-dark);font-size:clamp(17px,3.5vw,22px);margin-bottom:16px;font-weight:800;}
+  .mid-cta .cta-btn{background:var(--navy-dark);color:#fff;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">株式会社御成エステート</div>
+  <div class="badge">年中無休で受付中</div>
+</header>
+
+<section class="fv">
+  <div class="fv-inner">
+    <div class="offer-tag">今なら査定・相談 完全無料</div>
+    <h1>その不動産、<br><span>今いくらで売れるか</span>知っていますか？</h1>
+    <p class="lead">千葉県の居住用売買専門。無料査定・購入相談、まずはお気軽にどうぞ。</p>
+    <a href="#contact" class="cta-btn">今すぐ無料査定を申し込む</a>
+    <p class="cta-sub">お電話でも受付中：043-309-7695（10:00〜18:00・年中無休）</p>
+  </div>
+</section>
+
+<div class="stats-bar">
+  <div class="wrap">
+    <div class="stats-grid">
+      <div class="stat"><div class="num">0<small style="font-size:0.5em;">円</small></div><div class="label">査定・相談費用</div></div>
+      <div class="stat"><div class="num">365<sup>日</sup></div><div class="label">年中無休対応</div></div>
+      <div class="stat"><div class="num">10-18<sup>時</sup></div><div class="label">営業時間</div></div>
+      <div class="stat"><div class="num">0<small style="font-size:0.5em;">件</small></div><div class="label">無理な勧誘</div></div>
+    </div>
+    <p class="stats-note">※上記は当社の対応方針を示す指標です。具体的な取扱件数等の実績数値は準備が整い次第掲載します。</p>
+  </div>
+</div>
+
+<section class="offer-section">
+  <div class="wrap">
+    <div class="offer-box">
+      <div class="ribbon">期間限定ではなく、いつでも</div>
+      <h3>売却査定・購入相談</h3>
+      <div class="price">完全無料<small>（何度でもご相談OK）</small></div>
+      <p>「まだ売るか決めていない」段階でも大歓迎。査定額の根拠まで丁寧に説明し、しつこい営業は一切いたしません。</p>
+      <a href="#contact" class="cta-btn">無料査定に申し込む</a>
+    </div>
+  </div>
+</section>
+
+<section class="reasons">
+  <div class="wrap">
+    <h2 class="section-title">選ばれる3つの理由</h2>
+    <p class="section-sub">千葉県の居住用売買に特化した地域密着の不動産会社です。</p>
+    <div class="reason-grid">
+      <div class="reason-card"><h3>① 地域密着の相場力</h3><p>千葉市を中心とした相場・物件動向を熟知し、適正価格をご提案。</p></div>
+      <div class="reason-card"><h3>② 完全無料・何度でも相談OK</h3><p>売却するか未定の段階でも査定・相談は無料。納得いくまでご相談いただけます。</p></div>
+      <div class="reason-card"><h3>③ 年中無休のスピード対応</h3><p>お問い合わせから査定・提案までスピーディーに対応します。</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="mid-cta">
+  <h3>迷っているなら、まずは無料査定から。</h3>
+  <a href="#contact" class="cta-btn">無料で査定を依頼する</a>
+</div>
+
+<section class="compare">
+  <div class="wrap">
+    <h2 class="section-title">他社との違い</h2>
+    <p class="section-sub">※比較項目は当社の対応方針に基づく一般的な傾向です。</p>
+    <table class="compare-table">
+      <tr><th></th><th>御成エステート</th><th>一般的な仲介会社</th></tr>
+      <tr><td>査定・相談費用</td><td class="ok">完全無料</td><td>無料〜有料の場合あり</td></tr>
+      <tr><td>営業日</td><td class="ok">年中無休</td><td>定休日あり</td></tr>
+      <tr><td>地域特化</td><td class="ok">千葉県居住用に特化</td><td>全国対応で薄く広く</td></tr>
+      <tr><td>営業スタイル</td><td class="ok">無理な勧誘なし</td><td>営業が続く場合あり</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="voices">
+  <div class="wrap">
+    <h2 class="section-title">お客様の声</h2>
+    <p class="section-sub">※内容はサンプルです。実際のお客様の声に差し替えてご利用ください。</p>
+    <div class="voice-grid">
+      <div class="voice-card"><div class="stars">★★★★★</div><p>「無料と聞いて半信半疑でしたが、本当に無理な営業がなく安心できました。」</p><div class="name">千葉市・50代 女性</div></div>
+      <div class="voice-card"><div class="stars">★★★★★</div><p>「土日も対応してもらえて、忙しい中でもスムーズに相談できました。」</p><div class="name">若葉区・30代 男性</div></div>
+      <div class="voice-card"><div class="stars">★★★★★</div><p>「査定額の根拠が明確で、他社と比較しても納得感がありました。」</p><div class="name">稲毛区・40代 女性</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <h2 class="section-title">よくあるご質問</h2>
+    <div class="faq-item"><h4>査定は本当に無料ですか？</h4><p>はい、何度でも無料です。売却を決めていない段階でもお気軽にご相談ください。</p></div>
+    <div class="faq-item"><h4>売却を迷っている段階でも相談できますか？</h4><p>もちろん可能です。まずは情報収集のためだけのご相談も歓迎しています。</p></div>
+    <div class="faq-item"><h4>定休日はありますか？</h4><p>年中無休で対応しております（10:00〜18:00）。</p></div>
+  </div>
+</section>
+
+<section class="company">
+  <div class="wrap">
+    <h2 class="section-title">会社概要</h2>
+    <table class="company-table">
+      <tr><th>会社名</th><td>株式会社御成エステート</td></tr>
+      <tr><th>事業内容</th><td>千葉県内 居住用不動産の売買仲介</td></tr>
+      <tr><th>営業時間</th><td>10:00〜18:00（年中無休）</td></tr>
+      <tr><th>電話番号</th><td>043-309-7695</td></tr>
+      <tr><th>所在地</th><td>千葉県千葉市若葉区</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="final-cta" id="contact">
+  <div class="wrap">
+    <h2>今すぐ無料査定・相談を申し込む</h2>
+    <p>売却も購入も、迷ったらまずはお気軽にご相談ください。しつこい営業は一切ありません。</p>
+    <a href="https://www.onariestate.jp/contact/" class="cta-btn">無料査定・相談フォームへ</a>
+    <div class="contact-info">お電話でのご相談：<a href="tel:0433097695">043-309-7695</a>（10:00〜18:00・年中無休）</div>
+  </div>
+</section>
+
+<footer>&copy; 株式会社御成エステート</footer>
+
+<div class="floating-cta">
+  <a href="tel:0433097695" class="tel">📞 今すぐ電話</a>
+  <a href="https://www.onariestate.jp/contact/">無料査定・相談フォーム</a>
+</div>
+
+</body>
+</html>
