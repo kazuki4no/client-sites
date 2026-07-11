@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>採用情報 | 東海エンジニアリング株式会社</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    body { font-family: 'Noto Sans JP', sans-serif; color: #333; background: #F8F9FC; line-height: 1.7; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+    :root { --navy: #1B2A4A; --orange: #E07B29; --light: #EEF2FA; --white: #fff; }
+
+    /* NAV */
+    header { background: var(--navy); position: sticky; top: 0; z-index: 100; }
+    .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; padding: 0 20px; height: 60px; }
+    .nav-logo { color: #fff; font-weight: 700; font-size: 0.95rem; line-height: 1.3; }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.85); font-size: 0.88rem; transition: color .2s; }
+    .nav-links a:hover { color: var(--orange); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; }
+    .mobile-menu { display: none; background: #162240; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu ul { list-style: none; }
+    .mobile-menu ul li a { display: block; padding: 13px 24px; color: rgba(255,255,255,0.9); font-size: 0.95rem; border-bottom: 1px solid rgba(255,255,255,0.06); }
+
+    /* HERO */
+    .hero { position: relative; min-height: 78vh; display: flex; align-items: center; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&h=900&fit=crop&q=80'); background-size: cover; background-position: center; }
+    .hero-overlay { position: absolute; inset: 0; background: rgba(15,25,50,0.68); }
+    .hero-content { position: relative; max-width: 1100px; margin: 0 auto; padding: 70px 20px; width: 100%; }
+    .hero-pill { display: inline-block; background: var(--orange); color: #fff; font-size: 0.78rem; font-weight: 700; padding: 4px 14px; border-radius: 20px; margin-bottom: 18px; letter-spacing: 0.04em; }
+    .hero h1 { color: #fff; font-size: clamp(1.8rem,5vw,3.2rem); font-weight: 900; line-height: 1.3; margin-bottom: 18px; }
+    .hero-sub { color: rgba(255,255,255,0.85); font-size: clamp(0.9rem,2.5vw,1.05rem); margin-bottom: 36px; max-width: 640px; }
+    .hero-btns { display: flex; flex-wrap: wrap; gap: 12px; }
+    .btn-primary { display: inline-block; background: var(--orange); color: #fff; font-weight: 700; padding: 14px 36px; border-radius: 4px; font-size: 1rem; transition: background .2s; }
+    .btn-primary:hover { background: #c8691e; }
+    .btn-outline { display: inline-block; border: 2px solid rgba(255,255,255,0.7); color: #fff; font-weight: 700; padding: 12px 32px; border-radius: 4px; font-size: 1rem; transition: .2s; }
+    .btn-outline:hover { background: rgba(255,255,255,0.1); }
+
+    /* SECTIONS */
+    section { padding: 72px 20px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: 0.75rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--orange); margin-bottom: 6px; }
+    .section-title { font-size: clamp(1.4rem,3.5vw,2rem); font-weight: 900; color: var(--navy); margin-bottom: 48px; line-height: 1.3; }
+
+    /* APPEAL */
+    .appeal-bg { background: var(--light); }
+    .appeal-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .appeal-card { background: #fff; border-radius: 10px; padding: 36px 28px; text-align: center; box-shadow: 0 2px 14px rgba(0,0,0,0.06); }
+    .appeal-icon { font-size: 2.6rem; margin-bottom: 16px; }
+    .appeal-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--navy); margin-bottom: 10px; }
+    .appeal-card p { font-size: 0.87rem; color: #555; line-height: 1.75; }
+    .appeal-highlight { color: var(--orange); font-weight: 700; }
+
+    /* JOB TABLE */
+    .table-wrap { overflow-x: auto; }
+    .job-table { width: 100%; border-collapse: collapse; font-size: 0.88rem; min-width: 600px; }
+    .job-table tr { border-bottom: 1px solid #E0E8F4; }
+    .job-table th { background: var(--navy); color: #fff; padding: 14px 20px; text-align: left; width: 26%; font-weight: 700; vertical-align: top; }
+    .job-table td { padding: 14px 20px; color: #444; vertical-align: top; line-height: 1.65; }
+    @media (max-width: 768px) {
+      .job-table { min-width: unset; }
+      .job-table tr { display: block; border-bottom: none; margin-bottom: 12px; border: 1px solid #D4DFF0; border-radius: 6px; overflow: hidden; }
+      .job-table th { display: block; width: 100%; }
+      .job-table td { display: block; width: 100%; }
+    }
+
+    /* TIMELINE */
+    .timeline-bg { background: var(--light); }
+    .timeline { position: relative; max-width: 700px; }
+    .timeline::before { content:''; position: absolute; left: 25px; top: 8px; bottom: 8px; width: 2px; background: #C8D4E8; }
+    .timeline-item { display: flex; gap: 20px; margin-bottom: 28px; align-items: flex-start; }
+    .timeline-dot { width: 52px; height: 52px; min-width: 52px; border-radius: 50%; background: var(--navy); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 700; font-size: 0.75rem; position: relative; z-index: 1; flex-direction: column; line-height: 1.2; }
+    .timeline-body { padding-top: 10px; }
+    .timeline-body h4 { font-weight: 700; color: var(--navy); font-size: 0.95rem; margin-bottom: 4px; }
+    .timeline-body p { font-size: 0.85rem; color: #555; }
+    .sample-note { font-size: 0.73rem; color: #aaa; font-style: italic; margin-top: 4px; display: block; }
+
+    /* STAFF */
+    .staff-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; }
+    .staff-card { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+    .staff-img { width: 100%; height: 200px; object-fit: cover; }
+    .staff-body { padding: 22px; }
+    .staff-name { font-weight: 700; font-size: 0.95rem; color: var(--navy); }
+    .staff-meta { font-size: 0.77rem; color: #888; margin-bottom: 10px; }
+    .staff-body p { font-size: 0.85rem; color: #555; line-height: 1.75; }
+
+    /* FAQ */
+    .faq-bg { background: var(--light); }
+    .faq-list { border-top: 1px solid #D4DFF0; }
+    .faq-item { border-bottom: 1px solid #D4DFF0; }
+    .faq-q { width: 100%; background: none; border: none; text-align: left; padding: 18px 4px; font-size: 0.92rem; font-weight: 700; color: var(--navy); cursor: pointer; display: flex; align-items: flex-start; gap: 12px; font-family: inherit; }
+    .faq-badge { background: var(--orange); color: #fff; font-size: 0.75rem; padding: 2px 8px; border-radius: 3px; flex-shrink: 0; margin-top: 2px; font-weight: 700; }
+    .faq-a { padding: 0 0 18px 36px; font-size: 0.87rem; color: #555; line-height: 1.75; display: none; }
+    .faq-item.open .faq-a { display: block; }
+
+    /* MANAGER */
+    .manager-card { background: #fff; border-radius: 10px; padding: 32px; display: flex; gap: 28px; align-items: flex-start; box-shadow: 0 2px 14px rgba(0,0,0,0.06); max-width: 700px; }
+    .manager-img { width: 100px; height: 100px; min-width: 100px; border-radius: 50%; object-fit: cover; }
+    .manager-name { font-weight: 700; color: var(--navy); font-size: 1rem; margin-bottom: 4px; }
+    .manager-role { font-size: 0.78rem; color: #888; margin-bottom: 12px; }
+    .manager-msg { font-size: 0.88rem; color: #555; line-height: 1.75; }
+
+    /* CTA */
+    .cta-section { background: var(--navy); text-align: center; }
+    .cta-section h2 { color: #fff; font-size: clamp(1.4rem,3.5vw,2rem); font-weight: 900; margin-bottom: 14px; }
+    .cta-section p { color: rgba(255,255,255,0.8); margin-bottom: 36px; font-size: 0.95rem; }
+    .btn-white { background: #fff; color: var(--navy); font-weight: 700; padding: 14px 40px; border-radius: 4px; font-size: 1rem; display: inline-block; transition: .2s; }
+    .btn-white:hover { background: #E8EDF5; }
+
+    /* FOOTER */
+    footer { background: #111827; color: rgba(255,255,255,0.65); padding: 44px 20px; font-size: 0.83rem; }
+    .footer-inner { max-width: 1100px; margin: 0 auto; }
+    footer h3 { color: rgba(255,255,255,0.9); font-size: 1rem; margin-bottom: 14px; }
+    footer p { margin-bottom: 4px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .appeal-grid { grid-template-columns: 1fr; }
+      .staff-grid { grid-template-columns: 1fr; }
+      .manager-card { flex-direction: column; align-items: center; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="nav-logo">東海エンジニアリング株式会社<br><span style="font-size:0.75rem;font-weight:400;opacity:.7;">採用情報</span></div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#appeal">働く魅力</a></li>
+        <li><a href="#jobs">募集要項</a></li>
+        <li><a href="#timeline">1日の流れ</a></li>
+        <li><a href="#staff">先輩の声</a></li>
+        <li><a href="#faq">よくある質問</a></li>
+        <li><a href="#apply" style="color:var(--orange);font-weight:700;">応募する</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.toggle('open')" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu">
+    <ul>
+      <li><a href="#appeal">働く魅力</a></li>
+      <li><a href="#jobs">募集要項</a></li>
+      <li><a href="#timeline">1日の流れ</a></li>
+      <li><a href="#staff">先輩の声</a></li>
+      <li><a href="#faq">よくある質問</a></li>
+      <li><a href="#apply">応募する</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-pill">施設オペレーション業務（統括者）正社員</div>
+    <h1>東京ディズニーランドの<br>設備を守る、誇りある仕事。</h1>
+    <p class="hero-sub">中央監視室から電気・空調・設備を統括管理。<br>月給30〜40万円 ／ 資格は入社後でもOK ／ 退職金あり</p>
+    <div class="hero-btns">
+      <a href="#apply" class="btn-primary">応募・問い合わせはこちら</a>
+      <a href="#jobs" class="btn-outline">募集要項を見る</a>
+    </div>
+  </div>
+</div>
+
+<!-- APPEAL -->
+<section class="appeal-bg" id="appeal">
+  <div class="section-inner">
+    <div class="section-label">Working Merits</div>
+    <h2 class="section-title">東海エンジニアリングで<br>働く3つの魅力</h2>
+    <div class="appeal-grid">
+      <div class="appeal-card">
+        <div class="appeal-icon">🏯</div>
+        <h3>非日常の職場。<br>東京ディズニーランド勤務</h3>
+        <p>あの夢と魔法の世界の「裏側」を支える仕事です。日本を代表するエンターテインメント施設で、社会インフラとしての誇りを持って働けます。</p>
+        <span class="sample-note">※ここはサンプルです。実際には御社の職場環境に合わせた内容に差し替えます。</span>
+      </div>
+      <div class="appeal-card">
+        <div class="appeal-icon">💴</div>
+        <h3>月給<span class="appeal-highlight">30〜40万円</span>。<br>安定の正社員採用</h3>
+        <p>正社員採用・昇給制度あり・退職金制度（勤続3年以上）。長く安心して働ける環境が整っています。資格取得支援もあります。</p>
+        <span class="sample-note">※ここはサンプルです。実際には御社の待遇詳細に差し替えます。</span>
+      </div>
+      <div class="appeal-card">
+        <div class="appeal-icon">📋</div>
+        <h3>資格は「あれば尚可」。<br>未経験歓迎の設備管理</h3>
+        <p>建築物環境衛生管理技術者・ボイラー技士等の資格は「あれば尚可」。入社後にチームで学びながら取得を目指せる環境です。</p>
+        <span class="sample-note">※ここはサンプルです。実際には御社の研修体制に合わせた内容に差し替えます。</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOB TABLE -->
+<section id="jobs" style="background:#fff;">
+  <div class="section-inner">
+    <div class="section-label">Job Requirements</div>
+    <h2 class="section-title">募集要項</h2>
+    <div class="table-wrap">
+      <table class="job-table">
+        <tbody>
+          <tr><th>職種</th><td>東京ディズニーランドの施設オペレーション業務（統括者）</td></tr>
+          <tr><th>仕事内容</th><td>中央監視室にて電気・設備等のエラーを監視する業務です。主にアトラクション等含む全建物の空調管理、および簡単な修理業務も含みます。</td></tr>
+          <tr><th>雇用形態</th><td>正社員（就業形態：請負）</td></tr>
+          <tr><th>勤務地</th><td>〒279-0031 千葉県浦安市舞浜１－１ 東京ディズニーランド内（舞浜駅より徒歩9分）</td></tr>
+          <tr><th>給与</th><td>月給 300,000円〜400,000円<br>※通勤手当 実費支給（上限50,000円/月）</td></tr>
+          <tr><th>勤務時間</th><td>変形労働時間制（1ヶ月単位）<br>① 日勤：8:30〜17:30<br>② 夜勤：17:00〜翌9:00（休憩120分）<br>1班5名体制で日勤・夜勤交代制</td></tr>
+          <tr><th>休日・休暇</th><td>年間休日105日（4日サイクル：日勤→夜勤入→夜勤明け→公休）<br>有給休暇（6ヶ月後10日〜）</td></tr>
+          <tr><th>必要資格</th><td>なし（以下はあれば尚可）<br>建築物環境衛生管理技術者、2級ボイラー技士、危険物取扱者（乙種）、第三種冷凍機械等</td></tr>
+          <tr><th>待遇・福利厚生</th><td>昇給あり（前年度実績）、退職金制度あり（勤続3年以上）、各種社会保険完備（雇用・労災・健康・厚生年金）、制服貸与</td></tr>
+          <tr><th>試用期間</th><td>3ヶ月（同条件）</td></tr>
+          <tr><th>応募方法</th><td>ハローワーク紹介状、履歴書（写真貼付）、職務経歴書をご持参またはEメール送付ください。事前に電話連絡の上ご応募ください。</td></tr>
+          <tr><th>選考方法</th><td>書類選考・面接（2回）→ 書類到着後7日以内・面接後7日以内にご連絡</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-bg" id="timeline">
+  <div class="section-inner">
+    <div class="section-label">A Day in Life</div>
+    <h2 class="section-title">当社社員の1日の流れ<br>（日勤の場合）</h2>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot">8:30</div>
+        <div class="timeline-body">
+          <h4>出社・引き継ぎ</h4>
+          <p>夜勤班から設備の状況を引き継ぎ。中央監視室のシステムを確認し、1日の業務を開始します。</p>
+          <span class="sample-note">※ここはサンプルです。実際には御社の業務内容に合わせて差し替えます。</span>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">9:00</div>
+        <div class="timeline-body">
+          <h4>施設巡回・設備点検</h4>
+          <p>各エリアの空調・電気設備の動作状況を巡回確認。問題があれば即座に対応します。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">12:00</div>
+        <div class="timeline-body">
+          <h4>昼休憩（60分）</h4>
+          <p>施設内の休憩スペースでリフレッシュ。チームメンバーとのコミュニケーションの時間でもあります。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">13:00</div>
+        <div class="timeline-body">
+          <h4>監視業務・対応作業</h4>
+          <p>中央監視室にてアラート監視、記録記入。必要に応じて簡単な修理・調整業務を行います。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">16:00</div>
+        <div class="timeline-body">
+          <h4>設備点検・日報作成</h4>
+          <p>午後の巡回点検と1日の作業記録をまとめます。夜勤班への引き継ぎ書類を準備。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-dot">17:30</div>
+        <div class="timeline-body">
+          <h4>夜勤班に引き継ぎ・退勤</h4>
+          <p>夜勤スタッフへ設備状況を詳細に引き継いで終業。4日サイクルで休日もしっかり確保されています。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STAFF -->
+<section id="staff" style="background:#fff;">
+  <div class="section-inner">
+    <div class="section-label">Voices from Staff</div>
+    <h2 class="section-title">先輩からのメッセージ</h2>
+    <div class="staff-grid">
+      <div class="staff-card">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=640&h=400&fit=crop&crop=faces&q=80" alt="スタッフ写真" class="staff-img">
+        <div class="staff-body">
+          <div class="staff-name">田中 誠（仮名）</div>
+          <div class="staff-meta">施設オペレーション / 入社6年目</div>
+          <p>「最初は資格も経験もゼロでした。でもチームの先輩がていねいに教えてくれて、2年目にボイラー技士の資格を取れました。ディズニーランドで働いていると聞いた子どもの目が輝くのが、この仕事の誇りです。」</p>
+          <span class="sample-note">※ここはサンプルです。実際には御社のスタッフコメント・写真に差し替えます。</span>
+        </div>
+      </div>
+      <div class="staff-card">
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=640&h=400&fit=crop&crop=faces&q=80" alt="スタッフ写真" class="staff-img">
+        <div class="staff-body">
+          <div class="staff-name">山田 健太（仮名）</div>
+          <div class="staff-meta">施設オペレーション / 入社3年目</div>
+          <p>「夜勤交代制と聞いて最初は不安でしたが、4日サイクルで公休がしっかり確保されているので体も慣れました。中央監視室から全設備を管理する統括業務は責任感がある分、やりがいが大きい。」</p>
+          <span class="sample-note">※ここはサンプルです。実際には御社のスタッフコメント・写真に差し替えます。</span>
+        </div>
+      </div>
+      <div class="staff-card">
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=640&h=400&fit=crop&crop=faces&q=80" alt="スタッフ写真" class="staff-img">
+        <div class="staff-body">
+          <div class="staff-name">伊藤 龍一（仮名）</div>
+          <div class="staff-meta">施設オペレーション / 入社11年目</div>
+          <p>「入社当時は設備の知識がほぼゼロ。それでも先輩に助けてもらいながら少しずつ覚えていきました。今はチームのまとめ役として若手の相談を受ける立場になり、長く安心して働けています。」</p>
+          <span class="sample-note">※ここはサンプルです。実際には御社のスタッフコメント・写真に差し替えます。</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-bg" id="faq">
+  <div class="section-inner">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q"><span class="faq-badge">Q</span>設備管理の経験や資格がなくても応募できますか？</button>
+        <div class="faq-a">はい、応募できます。建築物環境衛生管理技術者や2級ボイラー技士などの資格は「あれば尚可」です。入社後、先輩スタッフがていねいに指導しますので、未経験でもご安心ください。入社後の資格取得支援も行っています。
+          <span class="sample-note">※ここはサンプルです。実際には御社の資格支援制度の内容に合わせて差し替えます。</span>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span class="faq-badge">Q</span>夜勤・交代制の勤務ですが、体への負担は大きいですか？</button>
+        <div class="faq-a">1班5名体制で、「日勤→夜勤入→夜勤明け→公休」の4日サイクルで勤務します。夜勤明けの翌日は必ず公休があるため、体調管理がしやすいサイクルです。入社後に先輩スタッフのアドバイスも参考にしながら体が慣れていきます。
+          <span class="sample-note">※ここはサンプルです。実際には御社の勤務体系に合わせて差し替えます。</span>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span class="faq-badge">Q</span>マイカー通勤は可能ですか？</button>
+        <div class="faq-a">申し訳ございませんが、マイカー通勤は不可となっております。勤務地の東京ディズニーランド（千葉県浦安市舞浜）は舞浜駅から徒歩9分です。通勤手当は実費支給（上限月5万円）となっています。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span class="faq-badge">Q</span>選考はどのような流れですか？</button>
+        <div class="faq-a">① まずはお電話でご連絡ください。② 書類選考（ハローワーク紹介状・履歴書・職務経歴書）を行います。③ 面接を2回実施します。書類選考・面接後のいずれも7日以内にご連絡いたします。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q"><span class="faq-badge">Q</span>賞与はありますか？</button>
+        <div class="faq-a">現在、賞与制度はございません。その代わり月給水準を高めに設定しており（月給300,000〜400,000円）、昇給制度・退職金制度（勤続3年以上）があります。長期的に安定した待遇をご提供しています。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MANAGER -->
+<section style="background:#fff;" id="manager">
+  <div class="section-inner">
+    <div class="section-label">Message from HR</div>
+    <h2 class="section-title">採用担当者より</h2>
+    <div class="manager-card">
+      <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当者" class="manager-img">
+      <div>
+        <div class="manager-name">白石 総務経理部 採用担当（仮名）</div>
+        <div class="manager-role">総務経理部 採用担当</div>
+        <p class="manager-msg">東海エンジニアリングは創業50年以上のビル総合管理会社です。東京ディズニーランドという唯一無二の職場で、設備を守る「縁の下の力持ち」として誇りを持って働けます。資格・経験がなくても、一つひとつ着実に覚えていただける環境を整えています。まずはお気軽にご連絡ください。</p>
+        <span class="sample-note">※ここはサンプルです。実際には御社の担当者メッセージ・写真に差し替えます。</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="apply">
+  <div class="section-inner">
+    <h2>ご応募・ご質問は<br>お気軽にどうぞ</h2>
+    <p>事前にお電話でご連絡のうえ、ご応募ください。<br>選考についてのご質問もお気軽に。</p>
+    <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;">
+      <a href="tel:0352278301" class="btn-white">📞 03-5227-8301</a>
+      <a href="mailto:recruit@tokaieng.co.jp" class="btn-white" style="background:var(--orange);color:#fff;">✉ メールで問い合わせ</a>
+    </div>
+    <p style="color:rgba(255,255,255,0.5);font-size:0.78rem;margin-top:24px;">受付時間：平日 9:00〜17:30</p>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <h3>東海エンジニアリング株式会社</h3>
+    <p>〒162-0843 東京都新宿区市谷田町２－７－１５ 市ヶ谷クロスプレイス7階</p>
+    <p>TEL: 03-5227-8301 　Email: recruit@tokaieng.co.jp</p>
+  </div>
+</footer>
+
+<script>
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.closest('.faq-item').classList.toggle('open');
+    });
+  });
+</script>
+</body>
+</html>

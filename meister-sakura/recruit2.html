@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 株式会社 マイ・スター</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#1a1a2e;background:#fff}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ナビ */
+header{background:#0f172a;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.5)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{color:#fff;font-weight:700;font-size:1rem}
+.logo em{color:#f59e0b;font-style:normal}
+nav.pc-nav{display:flex;gap:24px}
+nav.pc-nav a{color:#94a3b8;font-size:.85rem;transition:color .2s}
+nav.pc-nav a:hover{color:#f59e0b}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px}
+.mobile-menu{display:none;background:#0f172a;padding:12px 20px}
+.mobile-menu a{display:block;color:#cbd5e1;padding:10px 0;font-size:.9rem;border-bottom:1px solid rgba(255,255,255,.07)}
+.mobile-menu.open{display:block}
+@media(max-width:768px){
+  nav.pc-nav{display:none}
+  .hamburger{display:flex}
+}
+
+/* ヒーロー */
+.hero{background:#0f172a;padding:80px 20px 60px;text-align:center}
+.hero-eyecatch{display:inline-block;background:#f59e0b;color:#0f172a;font-size:.75rem;font-weight:700;padding:4px 16px;border-radius:20px;margin-bottom:20px;letter-spacing:.08em}
+.hero-title{color:#fff;font-size:clamp(1.8rem,5.5vw,3rem);font-weight:900;line-height:1.35;margin-bottom:18px}
+.hero-title em{color:#f59e0b;font-style:normal;display:block}
+.hero-sub{color:#94a3b8;font-size:clamp(.9rem,2.2vw,1.05rem);line-height:1.8;margin-bottom:36px;max-width:600px;margin-left:auto;margin-right:auto}
+.btn-hero{display:inline-block;background:#f59e0b;color:#0f172a;font-weight:900;font-size:1.05rem;padding:15px 44px;border-radius:4px;transition:background .2s}
+.btn-hero:hover{background:#e08c00}
+.hero-tags{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:28px}
+.tag{color:#64748b;font-size:.8rem;padding:4px 12px;border:1px solid #1e293b;border-radius:20px}
+.tag em{color:#f59e0b;font-style:normal}
+
+/* 数字セクション */
+.numbers{background:#f59e0b;padding:48px 20px}
+.numbers-inner{max-width:900px;margin:0 auto}
+.numbers-title{text-align:center;font-size:clamp(1.1rem,3vw,1.5rem);font-weight:900;color:#0f172a;margin-bottom:32px}
+.numbers-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.num-card{background:#fff;border-radius:8px;padding:24px 16px;text-align:center}
+.num-big{font-size:clamp(2rem,5vw,2.8rem);font-weight:900;color:#0f172a;line-height:1;margin-bottom:6px}
+.num-unit{font-size:1rem;font-weight:700;color:#0f172a}
+.num-label{font-size:.75rem;color:#555;margin-top:6px;line-height:1.4}
+.num-note{font-size:.7rem;color:#999;margin-top:4px}
+@media(max-width:768px){.numbers-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* セクション共通 */
+section.pad{padding:72px 20px}
+.section-inner{max-width:1000px;margin:0 auto}
+.label{font-size:.75rem;font-weight:700;letter-spacing:.12em;color:#f59e0b;margin-bottom:8px;display:block}
+.sec-title{font-size:clamp(1.4rem,3.5vw,2rem);font-weight:900;color:#0f172a;line-height:1.3;margin-bottom:36px}
+.bg-dark{background:#0f172a}
+.bg-slate{background:#f8fafc}
+
+/* 魅力 */
+.features-lp{display:flex;flex-direction:column;gap:40px}
+.feat-row{display:flex;gap:32px;align-items:flex-start}
+.feat-num{font-size:4rem;font-weight:900;color:#f59e0b;line-height:1;flex-shrink:0;width:60px}
+.feat-body h3{font-size:1.15rem;font-weight:700;color:#0f172a;margin-bottom:10px}
+.feat-body p{font-size:.92rem;line-height:1.8;color:#475569}
+@media(max-width:600px){.feat-row{flex-direction:column;gap:12px}.feat-num{font-size:2.8rem;width:auto}}
+
+/* CTA Mid */
+.cta-mid{background:#1e293b;padding:48px 20px;text-align:center}
+.cta-mid h2{color:#fff;font-size:clamp(1.2rem,3.5vw,1.7rem);font-weight:900;margin-bottom:10px}
+.cta-mid p{color:#94a3b8;font-size:.9rem;margin-bottom:24px}
+.btn-mid{display:inline-block;background:#f59e0b;color:#0f172a;font-weight:900;font-size:1rem;padding:14px 40px;border-radius:4px}
+
+/* 求人票 */
+.req-table{width:100%;border-collapse:collapse;font-size:.9rem}
+.req-table tr{border-bottom:1px solid #e2e8f0}
+.req-table th{background:#0f172a;color:#f59e0b;text-align:left;padding:14px 20px;width:28%;font-weight:600;font-size:.85rem}
+.req-table td{padding:14px 20px;line-height:1.7;color:#334155}
+@media(max-width:768px){
+  .req-table th,.req-table td{display:block;width:100%}
+  .req-table th{padding:10px 16px;font-size:.8rem}
+  .req-table td{padding:10px 16px 14px}
+}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:12px}
+.faq-item{border:1px solid #e2e8f0;border-radius:8px;overflow:hidden}
+.faq-q{background:#f1f5f9;padding:16px 20px;font-weight:700;font-size:.92rem;color:#0f172a;cursor:pointer;display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.faq-q::after{content:"▼";flex-shrink:0;font-size:.7rem;color:#f59e0b;margin-top:2px;transition:.3s}
+.faq-q.open::after{transform:rotate(180deg)}
+.faq-a{padding:0 20px;max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s}
+.faq-a.open{padding:14px 20px;max-height:200px}
+.faq-a p{font-size:.88rem;line-height:1.7;color:#475569}
+
+/* タイムライン */
+.timeline{display:flex;flex-direction:column;gap:0}
+.tl-item{display:flex;gap:20px;padding:0 0 28px}
+.tl-left{display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:64px}
+.tl-time{font-size:.8rem;font-weight:700;color:#f59e0b;white-space:nowrap}
+.tl-dot{width:12px;height:12px;background:#f59e0b;border-radius:50%;margin:6px 0;flex-shrink:0}
+.tl-line{width:2px;background:#e2e8f0;flex:1}
+.tl-item:last-child .tl-line{display:none}
+.tl-right h4{font-size:.95rem;font-weight:700;color:#0f172a;margin-bottom:4px}
+.tl-right p{font-size:.85rem;color:#64748b;line-height:1.6}
+.tl-sample{font-size:.72rem;color:#bbb;margin-top:4px}
+
+/* 先輩メッセージ */
+.voices-lp{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.voice-card{border:1px solid #e2e8f0;border-radius:8px;padding:24px 20px;background:#fff}
+.voice-photo{width:72px;height:72px;border-radius:50%;object-fit:cover;margin:0 auto 12px;border:3px solid #f59e0b}
+.voice-name{text-align:center;font-weight:700;font-size:.87rem;color:#0f172a;margin-bottom:2px}
+.voice-role{text-align:center;font-size:.73rem;color:#94a3b8;margin-bottom:14px}
+.voice-text{font-size:.85rem;line-height:1.7;color:#475569}
+.voice-sample{font-size:.7rem;color:#cbd5e1;margin-top:8px;text-align:center}
+@media(max-width:768px){.voices-lp{grid-template-columns:1fr}}
+
+/* 担当者 */
+.staff-wrap{display:flex;gap:28px;align-items:flex-start;background:#fff;border:1px solid #e2e8f0;border-radius:8px;padding:28px}
+.staff-img{width:100px;height:100px;border-radius:50%;object-fit:cover;border:3px solid #f59e0b;flex-shrink:0}
+.staff-body h3{font-size:1rem;font-weight:700;color:#0f172a;margin-bottom:2px}
+.staff-body .role{font-size:.78rem;color:#94a3b8;margin-bottom:10px}
+.staff-body p{font-size:.88rem;line-height:1.8;color:#475569}
+.staff-sample{font-size:.73rem;color:#bbb;margin-top:6px}
+@media(max-width:600px){.staff-wrap{flex-direction:column;align-items:center;text-align:center}}
+
+/* CTA最終 */
+.cta-final{background:#0f172a;padding:72px 20px;text-align:center}
+.cta-final h2{color:#fff;font-size:clamp(1.5rem,4vw,2rem);font-weight:900;margin-bottom:12px}
+.cta-final p{color:#94a3b8;margin-bottom:28px;font-size:.92rem;line-height:1.7}
+.btn-final{display:inline-block;background:#f59e0b;color:#0f172a;font-weight:900;font-size:1.1rem;padding:16px 48px;border-radius:4px}
+
+/* スマホ固定CTA */
+.fixed-cta{display:none;position:fixed;bottom:0;left:0;right:0;background:#f59e0b;z-index:200;padding:12px 20px;text-align:center}
+.fixed-cta a{color:#0f172a;font-weight:900;font-size:.95rem}
+@media(max-width:768px){.fixed-cta{display:block}}
+
+/* フッター */
+footer{background:#020617;color:#475569;padding:36px 20px;text-align:center;font-size:.82rem;line-height:2}
+@media(max-width:768px){body{padding-bottom:52px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="logo">株式会社 <em>マイ・スター</em> 採用情報</div>
+    <nav class="pc-nav">
+      <a href="#numbers">実績</a>
+      <a href="#features">働く理由</a>
+      <a href="#requirements">募集要項</a>
+      <a href="#faq">FAQ</a>
+      <a href="#voices">先輩の声</a>
+      <a href="#final-cta">応募する</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="#numbers">実績</a>
+    <a href="#features">働く理由</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#faq">FAQ</a>
+    <a href="#voices">先輩の声</a>
+    <a href="#final-cta">応募する</a>
+  </nav>
+</header>
+
+<!-- ヒーロー CTA①-->
+<section class="hero">
+  <div class="hero-eyecatch">✔ 佐倉市・TIG溶接スタッフ募集中</div>
+  <h1 class="hero-title">
+    「溶接、経験ゼロ」でも大丈夫。<br>
+    <em>社員の9割が、元スタッフです。</em>
+  </h1>
+  <p class="hero-sub">火花が飛ばないTIG溶接。冷暖房完備のきれいな工場で、先輩が一から教えます。無期雇用なので、期間を気にせず長く働けます。</p>
+  <a href="#final-cta" class="btn-hero">採用情報を詳しく見る</a>
+  <div class="hero-tags">
+    <span class="tag"><em>✓</em> 未経験歓迎</span>
+    <span class="tag"><em>✓</em> 年間休日120日</span>
+    <span class="tag"><em>✓</em> 残業月5時間</span>
+    <span class="tag"><em>✓</em> 無期雇用</span>
+    <span class="tag"><em>✓</em> 送迎バスあり</span>
+    <span class="tag"><em>✓</em> 正社員登用あり</span>
+  </div>
+</section>
+
+<!-- 数字で見る会社 -->
+<section id="numbers" class="numbers">
+  <div class="numbers-inner">
+    <h2 class="numbers-title">数字で見る マイ・スター</h2>
+    <!-- ※ここはサンプルです。実際には御社の実際の数字に差し替えます -->
+    <div class="numbers-grid">
+      <div class="num-card">
+        <div class="num-big">9<span class="num-unit">割</span></div>
+        <div class="num-label">現在の社員が元スタッフ出身</div>
+        <div class="num-note">※サンプル。実際の数字に差し替えます</div>
+      </div>
+      <div class="num-card">
+        <div class="num-big">20<span class="num-unit">名</span></div>
+        <div class="num-label">過去3年間の正社員登用実績</div>
+        <div class="num-note">※サンプル。実際の数字に差し替えます</div>
+      </div>
+      <div class="num-card">
+        <div class="num-big">120<span class="num-unit">日</span></div>
+        <div class="num-label">年間休日（土日祝）</div>
+        <div class="num-note">※サンプル。実際の数字に差し替えます</div>
+      </div>
+      <div class="num-card">
+        <div class="num-big">5<span class="num-unit">h</span></div>
+        <div class="num-label">月平均残業時間</div>
+        <div class="num-note">※サンプル。実際の数字に差し替えます</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 働く理由 -->
+<section id="features" class="pad bg-slate">
+  <div class="section-inner">
+    <span class="label">Why Work Here</span>
+    <h2 class="sec-title">マイ・スターを選ぶ3つの理由</h2>
+    <!-- ※ここはサンプルです。実際には御社の強みに差し替えます -->
+    <div class="features-lp">
+      <div class="feat-row">
+        <div class="feat-num">01</div>
+        <div class="feat-body">
+          <h3>TIG溶接の経験がなくても始められる</h3>
+          <p>求人票にも「あれば尚可」と書いてあるとおり、TIG溶接の経験は必須ではありません。入社後は先輩スタッフが一から丁寧に指導します。電気製品部品の溶接なので作業がシンプルで習得しやすく、前職が全く別業種だった方も多数活躍しています。</p>
+        </div>
+      </div>
+      <div class="feat-row">
+        <div class="feat-num">02</div>
+        <div class="feat-body">
+          <h3>正社員登用が現実的にある会社</h3>
+          <p>「正社員登用あり」と書いているだけの会社は多くありますが、当社は社員の9割が元スタッフ出身という実績があります。過去3年間で約20名が正社員登用されており、働き続ければ正社員への道が開かれています。無期雇用なので期間の不安なく腰を落ち着けられます。</p>
+        </div>
+      </div>
+      <div class="feat-row">
+        <div class="feat-num">03</div>
+        <div class="feat-body">
+          <h3>プライベートを大切にしながら長く働ける</h3>
+          <p>年間休日120日（土日祝休み）、月平均残業5時間というメリハリのある働き方ができます。JR・京成佐倉駅からの送迎バスとマイカー通勤の両方に対応。無期雇用なので期間の心配なく、長期的なキャリアを描けます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA中盤 CTA②-->
+<div class="cta-mid" id="mid-cta">
+  <h2>まずは採用情報をご覧ください</h2>
+  <p>経験不問・選考方法は面接1回。お気軽にお問い合わせください。</p>
+  <a href="#final-cta" class="btn-mid">詳細を見る・ご相談する</a>
+</div>
+
+<!-- 募集要項 -->
+<section id="requirements" class="pad">
+  <div class="section-inner">
+    <span class="label">Requirements</span>
+    <h2 class="sec-title">募集要項</h2>
+    <table class="req-table">
+      <tr><th>職種</th><td>溶接加工スタッフ（TIG溶接）</td></tr>
+      <tr><th>仕事内容</th><td>電気製品を製造する工場での部品（手のひらサイズ）のTIG溶接作業。火花が飛ばない安全な溶接で、冷暖房完備のきれいな工場です。</td></tr>
+      <tr><th>勤務地</th><td>千葉県佐倉市（JR・京成佐倉駅より送迎バスあり）</td></tr>
+      <tr><th>雇用形態</th><td>無期雇用派遣（登録型ではありません。期間を気にせず長く働けます）</td></tr>
+      <tr><th>給与</th><td>時給 1,350円（月換算目安：約192,780円）<br>通勤手当実費支給（日額上限300円）</td></tr>
+      <tr><th>勤務時間</th><td>9:00〜17:00（休憩60分）</td></tr>
+      <tr><th>休日・休暇</th><td>土曜・日曜・祝日｜年間休日120日<br>有給休暇（6ヶ月後10日〜）</td></tr>
+      <tr><th>残業</th><td>月平均5時間程度（36協定特別条項なし）</td></tr>
+      <tr><th>必要資格・経験</th><td>溶接技能者資格（あれば尚可）／未経験者大歓迎</td></tr>
+      <tr><th>正社員登用</th><td>あり（過去3年間で約20名実績・社員の9割が元スタッフ）</td></tr>
+      <tr><th>加入保険</th><td>雇用保険・労災保険・健康保険・厚生年金</td></tr>
+      <tr><th>アクセス</th><td>送迎バス（佐倉駅）またはマイカー通勤可（無料駐車場あり）</td></tr>
+      <tr><th>選考方法</th><td>面接1回（随時選考・面接後2日以内に結果通知）</td></tr>
+    </table>
+    <p style="font-size:.75rem;color:#94a3b8;margin-top:12px">※ここはサンプルです。実際には御社の最新の募集要項に差し替えます</p>
+  </div>
+</section>
+
+<!-- FAQ（アコーディオン） -->
+<section id="faq" class="pad bg-slate">
+  <div class="section-inner">
+    <span class="label">FAQ</span>
+    <h2 class="sec-title">よくある質問</h2>
+    <!-- ※ここはサンプルです。実際には御社のFAQに差し替えます -->
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">TIG溶接の経験がなくても応募できますか？</div>
+        <div class="faq-a"><p>はい、大丈夫です。求人票にも「あれば尚可」と記載されているとおり、未経験者を歓迎しています。入社後は先輩スタッフが一から丁寧にサポートします。</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">正社員になれる可能性はありますか？</div>
+        <div class="faq-a"><p>あります。過去3年間で約20名が正社員登用されており、現在の社員の9割が元スタッフ出身です。</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">工場なので危険な環境では？と心配です。</div>
+        <div class="faq-a"><p>TIG溶接は火花が飛ばないタイプで、冷暖房完備のきれいな工場です。安全で快適な環境で働けます。</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">通勤の方法は？</div>
+        <div class="faq-a"><p>JR・京成佐倉駅から送迎バスがあります。マイカー通勤も可能で、無料駐車場を完備しています。</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">残業はどのくらいありますか？</div>
+        <div class="faq-a"><p>月平均5時間程度（求人票記載値）です。メリハリある働き方が実現できます。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section class="pad">
+  <div class="section-inner">
+    <span class="label">A Day in the Life</span>
+    <h2 class="sec-title">スタッフの1日の流れ</h2>
+    <!-- ※ここはサンプルです。実際には御社スタッフの1日の流れに差し替えます -->
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-left"><span class="tl-time">09:00</span><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-right"><h4>出社・作業準備</h4><p>送迎バスで工場到着。着替えて作業エリアの準備をします。</p><p class="tl-sample">※サンプルです。実際の内容に差し替えます</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><span class="tl-time">09:15</span><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-right"><h4>TIG溶接作業（午前）</h4><p>手のひらサイズの電気部品を丁寧にTIG溶接します。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><span class="tl-time">12:00</span><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-right"><h4>昼休憩（60分）</h4><p>ゆったり1時間の休憩。社員同士で話す時間も。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><span class="tl-time">13:00</span><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-right"><h4>TIG溶接作業（午後）＋品質確認</h4><p>午後も溶接作業を続け、仕上がりの品質確認を行います。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><span class="tl-time">16:00</span><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-right"><h4>まとめ・清掃</h4><p>作業エリアを片付けて清掃します。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><span class="tl-time">17:00</span><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-right"><h4>退社</h4><p>送迎バス・マイカーで帰宅。残業は月平均5時間と少なめです。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩メッセージ -->
+<section id="voices" class="pad bg-slate">
+  <div class="section-inner">
+    <span class="label">Staff Voice</span>
+    <h2 class="sec-title">先輩からのメッセージ</h2>
+    <!-- ※ここはサンプルです。実際には御社スタッフのメッセージ・写真に差し替えます -->
+    <div class="voices-lp">
+      <div class="voice-card">
+        <img class="voice-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩">
+        <p class="voice-name">田中 誠さん（仮名）</p>
+        <p class="voice-role">溶接スタッフ・入社3年目</p>
+        <p class="voice-text">「全く別業種からの転職でした。溶接初体験でしたが、先輩が丁寧に教えてくれたので安心でした。今では新入りに教える立場になっています。」</p>
+        <p class="voice-sample">※ここはサンプルです。実際のコメントに差し替えます</p>
+      </div>
+      <div class="voice-card">
+        <img class="voice-photo" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩">
+        <p class="voice-name">鈴木 美咲さん（仮名）</p>
+        <p class="voice-role">溶接スタッフ・入社2年目</p>
+        <p class="voice-text">「火花が飛ばないし、エアコン完備でとてもきれい。工場のイメージが変わりました。女性でも全然大丈夫です！」</p>
+        <p class="voice-sample">※ここはサンプルです。実際のコメントに差し替えます</p>
+      </div>
+      <div class="voice-card">
+        <img class="voice-photo" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="正社員">
+        <p class="voice-name">佐藤 健太さん（仮名）</p>
+        <p class="voice-role">正社員・入社5年目（元スタッフ）</p>
+        <p class="voice-text">「スタッフ入社から3年で正社員になれました。会社が社員を大切にしているのが伝わる職場です。」</p>
+        <p class="voice-sample">※ここはサンプルです。実際のコメントに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 採用担当者 -->
+<section class="pad">
+  <div class="section-inner">
+    <span class="label">From HR</span>
+    <h2 class="sec-title">採用担当者より</h2>
+    <!-- ※ここはサンプルです。実際には御社採用担当者のお写真・コメントに差し替えます -->
+    <div class="staff-wrap">
+      <img class="staff-img" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当">
+      <div class="staff-body">
+        <h3>飯田（仮名）</h3>
+        <p class="role">採用担当</p>
+        <p>溶接の経験がない方でも、意欲があれば一緒に成長していけます。無期雇用で腰を落ち着けて働ける環境ですし、結果を出せば正社員への道もあります。まずは気軽にお問い合わせください。</p>
+        <p class="staff-sample">※ここはサンプルです。実際には御社採用担当者のコメントに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 最終CTA CTA③-->
+<div id="final-cta" class="cta-final">
+  <h2>まずはお気軽にお問い合わせください</h2>
+  <p>気になることがあれば、お気軽にご連絡ください。<br>面接は1回・随時選考で対応いたします。</p>
+  <a href="https://mei-ster.co.jp/contact/" class="btn-final" target="_blank" rel="noopener">お問い合わせ・ご相談はこちら</a>
+</div>
+
+<footer>
+  <p>株式会社 マイ・スター</p>
+  <p>〒289-1513 千葉県山武市松尾町猿尾211-3</p>
+  <p>TEL: 0479-74-3101</p>
+</footer>
+
+<!-- スマホ固定CTA -->
+<div class="fixed-cta">
+  <a href="https://mei-ster.co.jp/contact/" target="_blank" rel="noopener">📩 お問い合わせ・ご相談はこちら</a>
+</div>
+
+<script>
+const btn = document.getElementById('hamburger');
+const menu = document.getElementById('mobileMenu');
+btn.addEventListener('click', () => menu.classList.toggle('open'));
+menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => menu.classList.remove('open')));
+
+document.querySelectorAll('.faq-q').forEach(q => {
+  q.addEventListener('click', () => {
+    const a = q.nextElementSibling;
+    const isOpen = q.classList.contains('open');
+    document.querySelectorAll('.faq-q').forEach(x => { x.classList.remove('open'); x.nextElementSibling.classList.remove('open'); });
+    if (!isOpen) { q.classList.add('open'); a.classList.add('open'); }
+  });
+});
+</script>
+</body>
+</html>
