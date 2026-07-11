@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>採用情報｜八千代特殊金属株式会社</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { max-width: 100%; overflow-x: hidden; font-family: 'Noto Sans JP', sans-serif; color: #1e293b; }
+    img { max-width: 100%; height: auto; display: block; }
+    :root {
+      --primary: #2d3748;
+      --amber: #f59e0b;
+      --amber-dark: #d97706;
+      --amber-light: #fef3c7;
+      --muted: #64748b;
+      --bg: #f8fafc;
+    }
+
+    /* ===== Header ===== */
+    header { background: var(--primary); position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 8px rgba(0,0,0,0.3); }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .logo { color: #fff; font-size: 0.88rem; font-weight: 700; text-decoration: none; line-height: 1.4; }
+    .nav-links { display: flex; gap: 1.2rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.88); text-decoration: none; font-size: 0.82rem; white-space: nowrap; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--amber); }
+    .nav-cta { background: var(--amber); color: var(--primary) !important; padding: 0.3rem 0.9rem; border-radius: 6px; font-weight: 700 !important; }
+    .nav-cta:hover { background: var(--amber-dark) !important; color: #fff !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; }
+    .mobile-menu { display: none; background: var(--primary); padding: 1rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.1); }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; color: rgba(255,255,255,0.88); text-decoration: none; padding: 0.65rem 0; border-bottom: 1px solid rgba(255,255,255,0.08); font-size: 0.95rem; }
+    .mobile-menu a:last-child { border-bottom: none; }
+    @media (max-width: 768px) { .nav-links { display: none; } .hamburger { display: flex; } }
+
+    /* ===== Hero ===== */
+    .hero { position: relative; min-height: 85vh; display: flex; align-items: center; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=1600&h=900&fit=crop&q=80') center/cover; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(45,55,72,0.92) 0%, rgba(45,55,72,0.75) 100%); }
+    .hero-content { position: relative; max-width: 780px; margin: 0 auto; padding: 5rem 1.5rem 4rem; color: #fff; text-align: center; }
+    .hero-pill { display: inline-block; background: var(--amber); color: var(--primary); border-radius: 9999px; padding: 0.35rem 1.2rem; font-size: 0.82rem; font-weight: 700; margin-bottom: 1.75rem; letter-spacing: 0.06em; }
+    .hero h1 { font-size: clamp(1.75rem, 5.5vw, 3rem); font-weight: 700; line-height: 1.35; margin-bottom: 1.25rem; }
+    .hero h1 strong { color: var(--amber); }
+    .hero p { font-size: clamp(0.9rem, 2.5vw, 1.05rem); color: rgba(255,255,255,0.85); line-height: 2; margin-bottom: 2.5rem; }
+    .btn-cta { display: inline-block; background: var(--amber); color: var(--primary); padding: 1rem 3rem; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 1.05rem; transition: background 0.2s, transform 0.2s, box-shadow 0.2s; }
+    .btn-cta:hover { background: var(--amber-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(245,158,11,0.45); }
+    .hero-sub { font-size: 0.8rem; color: rgba(255,255,255,0.55); margin-top: 1rem; }
+    .hero-sample { font-size: 0.7rem; color: rgba(255,255,255,0.35); margin-top: 0.5rem; }
+
+    /* ===== Section base ===== */
+    section { padding: 5rem 1.5rem; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-title { font-size: clamp(1.3rem, 4vw, 2rem); font-weight: 700; color: var(--primary); text-align: center; margin-bottom: 0.5rem; }
+    .divider { width: 48px; height: 4px; background: var(--amber); border-radius: 2px; margin: 0.5rem auto 2.75rem; }
+    .sample-note { font-size: 0.71rem; color: #94a3b8; margin-top: 0.65rem; text-align: center; }
+
+    /* ===== Stats ===== */
+    .stats-section { position: relative; padding: 5rem 1.5rem; overflow: hidden; }
+    .stats-bg-img { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1605792657660-596af9009e82?w=1600&h=700&fit=crop&q=80') center/cover; }
+    .stats-overlay { position: absolute; inset: 0; background: rgba(45,55,72,0.88); }
+    .stats-inner { position: relative; max-width: 1100px; margin: 0 auto; }
+    .stats-title { font-size: clamp(1.3rem, 4vw, 2rem); font-weight: 700; color: #fff; text-align: center; margin-bottom: 0.5rem; }
+    .stats-divider { width: 48px; height: 4px; background: var(--amber); border-radius: 2px; margin: 0.5rem auto 2.75rem; }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .stat-item { text-align: center; color: #fff; background: rgba(255,255,255,0.06); border-radius: 12px; padding: 2rem 1rem; border-top: 3px solid var(--amber); }
+    .stat-num { font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; color: var(--amber); line-height: 1; margin-bottom: 0.5rem; }
+    .stat-unit { font-size: 1.2rem; }
+    .stat-label { font-size: 0.85rem; color: rgba(255,255,255,0.8); line-height: 1.6; }
+    .stat-note { text-align: center; font-size: 0.71rem; color: rgba(255,255,255,0.35); margin-top: 2rem; }
+    .stats-unique { margin-top: 2.5rem; background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.4); border-radius: 12px; padding: 1.5rem 2rem; text-align: center; }
+    .stats-unique p { color: rgba(255,255,255,0.9); font-size: 0.95rem; line-height: 1.9; }
+    .stats-unique strong { color: var(--amber); }
+
+    /* ===== Features (3点) ===== */
+    .features-bg { background: var(--bg); }
+    .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; }
+    .feat-card { background: #fff; border-radius: 14px; padding: 2rem 1.5rem; box-shadow: 0 2px 16px rgba(45,55,72,0.08); border-top: 4px solid var(--amber); }
+    .feat-icon { font-size: 2rem; margin-bottom: 1rem; }
+    .feat-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--primary); margin-bottom: 0.75rem; line-height: 1.5; }
+    .feat-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.9; }
+
+    /* ===== Interview ===== */
+    .int-wrap { max-width: 900px; margin: 0 auto; }
+    .int-card { display: flex; gap: 2rem; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 2px 16px rgba(45,55,72,0.1); margin-bottom: 2rem; }
+    .int-img { width: 260px; flex-shrink: 0; }
+    .int-img img { width: 100%; height: 100%; object-fit: cover; min-height: 220px; }
+    .int-body { padding: 1.75rem 1.75rem 1.75rem 0; }
+    .int-role { font-size: 0.78rem; color: var(--amber); font-weight: 700; letter-spacing: 0.05em; margin-bottom: 0.3rem; }
+    .int-name { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.2rem; }
+    .int-tenure { font-size: 0.78rem; color: var(--muted); margin-bottom: 1rem; }
+    .int-body p { font-size: 0.88rem; color: #475569; line-height: 1.95; }
+    .int-body .badge { display: inline-block; background: var(--amber-light); color: var(--primary); font-size: 0.75rem; padding: 0.2rem 0.65rem; border-radius: 4px; font-weight: 700; margin-bottom: 0.75rem; }
+
+    /* ===== CTA mid ===== */
+    .cta-mid { background: linear-gradient(135deg, #1a202c 0%, var(--primary) 100%); color: #fff; text-align: center; padding: 4rem 1.5rem; }
+    .cta-mid h2 { font-size: clamp(1.2rem, 3.5vw, 1.75rem); margin-bottom: 0.75rem; }
+    .cta-mid p { color: rgba(255,255,255,0.8); font-size: 0.95rem; margin-bottom: 2rem; line-height: 1.85; }
+
+    /* ===== Timeline ===== */
+    .timeline-lp { max-width: 660px; margin: 0 auto; position: relative; }
+    .timeline-lp::before { content: ''; position: absolute; left: 76px; top: 0; bottom: 0; width: 2px; background: #e2e8f0; }
+    .tl-item { display: flex; align-items: flex-start; margin-bottom: 1.85rem; position: relative; }
+    .tl-time { min-width: 72px; font-weight: 700; color: var(--primary); font-size: 0.9rem; padding-top: 4px; }
+    .tl-circle { width: 14px; height: 14px; border-radius: 50%; background: var(--amber); border: 2px solid #fff; box-shadow: 0 0 0 2px var(--amber); margin: 4px 1rem 0; flex-shrink: 0; position: relative; z-index: 1; }
+    .tl-body h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.25rem; }
+    .tl-body p { font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
+
+    /* ===== FAQ ===== */
+    .faq-bg { background: var(--bg); }
+    .faq-list { max-width: 780px; margin: 0 auto; }
+    .faq-item { background: #fff; border-radius: 10px; margin-bottom: 0.85rem; box-shadow: 0 1px 8px rgba(45,55,72,0.07); }
+    .faq-q { display: flex; align-items: flex-start; gap: 0.75rem; padding: 1.1rem 1.25rem; font-weight: 700; font-size: 0.95rem; color: var(--primary); }
+    .q-label { background: var(--amber); color: var(--primary); border-radius: 4px; padding: 2px 7px; font-size: 0.78rem; flex-shrink: 0; margin-top: 2px; font-weight: 700; }
+    .faq-a { padding: 0 1.25rem 1.1rem 2.9rem; font-size: 0.9rem; color: #475569; line-height: 1.9; }
+    .faq-a strong { color: var(--primary); }
+
+    /* ===== Seniors ===== */
+    .seniors-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; max-width: 960px; margin: 0 auto; }
+    .senior-card { background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 2px 16px rgba(45,55,72,0.1); text-align: center; }
+    .senior-card img { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; margin: 1.75rem auto 1rem; border: 3px solid var(--amber); }
+    .senior-card-body { padding: 0 1.25rem 1.75rem; }
+    .senior-role { font-size: 0.75rem; color: var(--amber); font-weight: 700; letter-spacing: 0.05em; margin-bottom: 0.25rem; }
+    .senior-name { font-size: 1rem; font-weight: 700; margin-bottom: 1rem; }
+    .senior-card-body p { font-size: 0.85rem; color: #475569; line-height: 1.9; text-align: left; }
+
+    /* ===== Requirements ===== */
+    .req-wrap { max-width: 780px; margin: 0 auto; }
+    table.req-table { width: 100%; border-collapse: collapse; }
+    .req-table th, .req-table td { padding: 0.9rem 1rem; border-bottom: 1px solid #e2e8f0; text-align: left; vertical-align: top; font-size: 0.92rem; }
+    .req-table th { width: 140px; background: var(--amber-light); color: var(--primary); font-weight: 700; white-space: nowrap; }
+    .req-table td small { font-size: 0.82rem; color: var(--muted); display: block; margin-top: 0.2rem; }
+    .req-table tr:last-child th, .req-table tr:last-child td { border-bottom: none; }
+
+    /* ===== CTA final ===== */
+    .cta-final { background: var(--primary); color: #fff; text-align: center; padding: 5rem 1.5rem; }
+    .cta-final h2 { font-size: clamp(1.3rem, 4vw, 2rem); margin-bottom: 1rem; }
+    .cta-final p { color: rgba(255,255,255,0.85); margin-bottom: 2rem; font-size: 0.95rem; line-height: 1.85; }
+    .btn-amber { display: inline-block; background: var(--amber); color: var(--primary); padding: 1rem 3rem; border-radius: 8px; font-weight: 700; text-decoration: none; font-size: 1.05rem; transition: background 0.2s, transform 0.2s, box-shadow 0.2s; }
+    .btn-amber:hover { background: var(--amber-dark); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(245,158,11,0.5); }
+    .contact-box { margin-top: 2.5rem; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; }
+    .contact-item { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.2); border-radius: 10px; padding: 1rem 2rem; text-align: center; }
+    .contact-item .label { font-size: 0.75rem; color: var(--amber); font-weight: 700; margin-bottom: 0.4rem; letter-spacing: 0.05em; }
+    .contact-item a { color: #fff; text-decoration: none; font-size: 1.1rem; font-weight: 700; }
+    .contact-item a:hover { color: var(--amber); }
+    .contact-item p { font-size: 0.82rem; color: rgba(255,255,255,0.7); }
+
+    /* ===== Footer ===== */
+    footer { background: #0f172a; color: rgba(255,255,255,0.6); text-align: center; padding: 2rem 1.5rem; font-size: 0.82rem; line-height: 2.2; }
+
+    /* ===== Fixed entry bar (mobile) ===== */
+    .fixed-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: var(--amber); padding: 0.85rem 1.5rem; text-align: center; z-index: 200; box-shadow: 0 -2px 14px rgba(0,0,0,0.25); }
+    .fixed-bar a { color: var(--primary); font-weight: 700; text-decoration: none; font-size: 1rem; display: block; letter-spacing: 0.03em; }
+    @media (max-width: 768px) {
+      .fixed-bar { display: block; }
+      body { padding-bottom: 64px; }
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+      section { padding: 3.5rem 1rem; }
+      .stats-section { padding: 3.5rem 1rem; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+      .feat-grid { grid-template-columns: 1fr; }
+      .int-card { flex-direction: column; }
+      .int-img { width: 100%; }
+      .int-img img { min-height: 200px; max-height: 240px; }
+      .int-body { padding: 1.25rem; }
+      .seniors-grid { grid-template-columns: 1fr; max-width: 400px; }
+      .req-table { display: block; }
+      .req-table tbody { display: block; }
+      .req-table tr { display: block; border-bottom: 2px solid #e2e8f0; padding: 0.4rem 0; }
+      .req-table th, .req-table td { display: block; width: 100%; border: none; padding: 0.3rem 0.75rem; }
+      .req-table th { background: none; color: var(--amber-dark); font-size: 0.78rem; padding-bottom: 0; }
+      .timeline-lp::before { left: 70px; }
+      .contact-box { flex-direction: column; align-items: center; }
+      .contact-item { width: 100%; max-width: 320px; }
+    }
+    @media (max-width: 480px) {
+      .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+      .stat-item { padding: 1.25rem 0.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ===== Header ===== -->
+<header>
+  <div class="nav-inner">
+    <a class="logo" href="#">八千代特殊金属株式会社<br><span style="font-size:0.75rem;font-weight:400;opacity:0.7;">採用情報</span></a>
+    <ul class="nav-links">
+      <li><a href="#about">会社の強み</a></li>
+      <li><a href="#voice">社員の声</a></li>
+      <li><a href="#flow">1日の流れ</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#requirements">募集要項</a></li>
+      <li><a href="#apply" class="nav-cta">応募する</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-menu" id="mobile-menu">
+    <a href="#about">会社の強み</a>
+    <a href="#voice">社員の声</a>
+    <a href="#flow">1日の流れ</a>
+    <a href="#faq">FAQ</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#apply">応募する</a>
+  </nav>
+</header>
+
+<!-- ===== Hero: CTA #1 ===== -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-pill">出荷・横持ち業務スタッフ｜正社員募集</span>
+    <h1>普通免許（AT可）で応募できる。<br>日本でここにしかない<br><strong>鉄をつくる現場</strong>で働こう。</h1>
+    <p>「横持ち」とは、工場から2次加工工場へ鋼材を運ぶ業務のこと。<br>
+       クレーン・フォークリフト・大型トラック——入社後に全て取得できます。<br>
+       月給23.2万〜・年間休日118日・賞与年2回。千葉県八千代市。</p>
+    <a href="#apply" class="btn-cta">この仕事に応募する</a>
+    <p class="hero-sub">まずはお気軽にメールか電話でご連絡ください</p>
+    <p class="hero-sample">※ここはサンプルです。実際には御社のキャッチコピーに差し替えます</p>
+  </div>
+</div>
+
+<!-- ===== Stats: 数字で見る会社 ===== -->
+<div class="stats-section" id="stats">
+  <div class="stats-bg-img"></div>
+  <div class="stats-overlay"></div>
+  <div class="stats-inner">
+    <h2 class="stats-title">数字で見る、八千代特殊金属</h2>
+    <div class="stats-divider"></div>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-num">101<span class="stat-unit">名</span></div>
+        <div class="stat-label">従業員数<br>チームワークが自慢の職場</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">60<span class="stat-unit">年</span></div>
+        <div class="stat-label">設立からの実績<br>（昭和41年創業）</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">118<span class="stat-unit">日</span></div>
+        <div class="stat-label">年間休日<br>土日＋GW・夏季・年末年始</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">全<span class="stat-unit">額</span></div>
+        <div class="stat-label">資格取得費用負担<br>玉掛・クレーン・フォークリフト等</div>
+      </div>
+    </div>
+    <p class="stat-note">※ここはサンプルです。実際には御社の最新数値に差し替えます</p>
+    <div class="stats-unique">
+      <p>八千代特殊金属は、<strong>日本で唯一の「受託熱間圧延加工会社」</strong>。<br>
+         さらに<strong>世界でも数少ない「中空鋼を製造できる会社」</strong>のひとつです。<br>
+         特殊鋼・非鉄金属合金の専門メーカーとして、60年以上にわたり<br>日本のものづくりを支え続けています。</p>
+    </div>
+  </div>
+</div>
+
+<!-- ===== Features: 会社の強み・働く魅力 ===== -->
+<section class="features-bg" id="about">
+  <div class="container">
+    <h2 class="section-title">ここで働く3つの理由</h2>
+    <div class="divider"></div>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-icon">🔑</div>
+        <h3>普通免許（AT可）で応募できる。資格は会社が全額サポート</h3>
+        <p>玉掛け・クレーン・フォークリフト・大型トラック免許——入社後に必要な資格はすべて会社が費用を全額負担。最初は普通免許（AT限定でOK）だけで大丈夫です。スキルを増やしながら着実に成長できる環境が整っています。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社の支援制度に差し替えます</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🏭</div>
+        <h3>日本唯一の現場で、プロとしての誇りを持って働ける</h3>
+        <p>受託熱間圧延加工を専業とする会社は日本にここだけ。「横持ち」は単なる運搬ではなく、日本のものづくりを最前線でつなぐ大切な役割です。60年の技術と信頼の中で、専門職としてのキャリアを積めます。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社のエピソードに差し替えます</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">📅</div>
+        <h3>年間休日118日・賞与3ヶ月・浴室完備の整った福利厚生</h3>
+        <p>土日＋GW・夏季・年末年始休暇で年118日の休日。賞与は年2回・計3ヶ月分、昇給あり（最大8,000円/月）、退職金制度（3年以上）、昼食補助、浴室完備。体を動かす仕事だからこそ、ケアの環境も充実しています。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社の制度詳細に差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Interview: 社員インタビュー ===== -->
+<section id="voice">
+  <div class="container">
+    <h2 class="section-title">先輩社員に聞きました</h2>
+    <div class="divider"></div>
+    <div class="int-wrap">
+
+      <div class="int-card">
+        <div class="int-img">
+          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=640&h=380&fit=crop&q=80" alt="社員インタビュー写真">
+        </div>
+        <div class="int-body">
+          <div class="int-role">出荷・横持ち業務</div>
+          <div class="int-name">Aさん（男性・30代）</div>
+          <div class="int-tenure">入社3年目</div>
+          <span class="badge">前職：ドライバー経験者</span>
+          <p>「最初はクレーンもフォークリフトも未経験でしたが、入社後に全部取らせてもらいました。資格取得の費用も時間も会社が面倒を見てくれるので、本当に助かりました。仕事は体を動かすので大変な日もありますが、工場から出荷トラックへ鋼材を積み終えたときの達成感は格別です。チームのメンバーとの連携も楽しいですよ。」</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社の社員インタビューに差し替えます</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA mid: CTA #2 ===== -->
+<div class="cta-mid" id="cta-mid">
+  <div class="container" style="max-width:760px;">
+    <h2>「話だけでも聞いてみたい」でも大丈夫です</h2>
+    <p>書類選考の前に、まずはメールやお電話でお気軽にご相談ください。<br>
+       普通免許（AT可）があれば応募できます。資格は入社後でOKです。</p>
+    <a href="mailto:toiawase@y-t-k.com" class="btn-cta">採用担当にメールを送る</a>
+  </div>
+</div>
+
+<!-- ===== Timeline: 1日の流れ ===== -->
+<section id="flow">
+  <div class="container">
+    <h2 class="section-title">1日の流れ（7:55〜17:05）</h2>
+    <div class="divider"></div>
+    <div class="timeline-lp">
+      <div class="tl-item">
+        <div class="tl-time">7:55</div>
+        <div class="tl-circle"></div>
+        <div class="tl-body">
+          <h4>始業・朝礼・ミーティング</h4>
+          <p>安全確認・作業分担の確認。その日の出荷スケジュールを共有します。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">8:15</div>
+        <div class="tl-circle"></div>
+        <div class="tl-body">
+          <h4>出荷荷札確認・伝票起票</h4>
+          <p>出荷する鋼材の荷札を確認し、必要な伝票を起票。正確さが求められる重要な作業です。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">9:00</div>
+        <div class="tl-circle"></div>
+        <div class="tl-body">
+          <h4>クレーン・フォークリフトで鋼材積み込み</h4>
+          <p>工場内の鋼材を、クレーンやフォークリフトを使って出荷トラックに積み込みます。玉掛け技術も活用するプロの仕事です。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:00</div>
+        <div class="tl-circle"></div>
+        <div class="tl-body">
+          <h4>昼休憩（60分）</h4>
+          <p>昼食補助あり。浴室も完備しているので、作業後にさっぱりできます。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-circle"></div>
+        <div class="tl-body">
+          <h4>大型トラックで横持ち（2次加工工場への運搬）</h4>
+          <p>大型トラックを運転して2次加工工場へ鋼材を「横持ち（構内輸送）」。安全確認を徹底しながら丁寧に運搬します。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">15:30</div>
+        <div class="tl-circle"></div>
+        <div class="tl-body">
+          <h4>翌日の出荷準備・片付け・終業（17:05）</h4>
+          <p>翌日の出荷分の確認・準備を行い、安全に後片付けをして終業。月平均残業は10時間程度です。</p>
+        </div>
+      </div>
+    </div>
+    <p class="sample-note">※ここはサンプルです。実際には御社の1日のスケジュールに差し替えます</p>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section class="faq-bg" id="faq">
+  <div class="container">
+    <h2 class="section-title">よくある質問</h2>
+    <div class="divider"></div>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="q-label">Q</span>
+          普通免許（AT限定）しか持っていませんが応募できますか？
+        </div>
+        <div class="faq-a">
+          <strong>はい、普通免許（AT限定可）があれば応募いただけます。</strong>玉掛け・クレーン・フォークリフト・大型免許は「あれば尚可」ですが、未取得でも問題ありません。入社後、会社が必要と認めた資格は費用全額負担で取得をサポートします。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="q-label">Q</span>
+          未経験でも大丈夫ですか？体力に自信がなくても働けますか？
+        </div>
+        <div class="faq-a">
+          鋼材の積み込みや運搬はクレーン・フォークリフトを使う機械作業が中心です。<strong>自分の腕力だけで重いものを持ち上げる仕事ではありません。</strong>先輩が丁寧に教えますので、未経験からスタートした社員も多くいます。入社後の研修でしっかり習得できます。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="q-label">Q</span>
+          「横持ち」とはどんな仕事ですか？長距離ドライバーとは違うのですか？
+        </div>
+        <div class="faq-a">
+          「横持ち」は工場から近隣の2次加工工場まで鋼材を運ぶ<strong>構内・近距離の輸送</strong>です。長距離ドライバーとは異なり、基本的に日帰りで完結します。また積み込み・伝票確認・運搬まで一連の流れを担当するため、仕事の全体像が見えてやりがいを感じやすいポジションです。
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="q-label">Q</span>
+          職場の雰囲気はどうですか？チームで動きますか？
+        </div>
+        <div class="faq-a">
+          鋼材の積み込みはチームで連携して行う作業です。お互いの安全を確認し合いながら動くため、<strong>コミュニケーションが自然に生まれる職場</strong>です。従業員101名の規模感で、昭和41年から続く会社なので長く働くベテランも多く、困ったときに聞ける先輩がいる環境です。
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== Seniors: 先輩からのメッセージ ===== -->
+<section id="seniors">
+  <div class="container">
+    <h2 class="section-title">先輩からのメッセージ</h2>
+    <div class="divider"></div>
+    <div class="seniors-grid">
+
+      <div class="senior-card">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩社員">
+        <div class="senior-card-body">
+          <div class="senior-role">出荷担当・入社5年目</div>
+          <div class="senior-name">Aさん（30代）</div>
+          <p>「最初は鋼材の積み込み方もクレーンの使い方も何も分からなかった。でも先輩たちが根気よく教えてくれて、今では一人で段取りを組めるようになりました。日本でここにしかない技術の現場にいる、という誇りが仕事のエネルギーになっています。」</p>
+        </div>
+      </div>
+
+      <div class="senior-card">
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩社員">
+        <div class="senior-card-body">
+          <div class="senior-role">横持ちドライバー・入社3年目</div>
+          <div class="senior-name">Bさん（20代）</div>
+          <p>「普通免許しかなかった自分でも入社できて、大型免許・フォークリフトを会社の費用で取得できました。資格が増えるほど仕事の幅が広がって、給料も上がっていくのが実感できています。年休118日で休みもしっかり取れるので、プライベートも充実しています。」</p>
+        </div>
+      </div>
+
+      <div class="senior-card">
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩社員">
+        <div class="senior-card-body">
+          <div class="senior-role">出荷・伝票管理・入社8年目</div>
+          <div class="senior-name">Cさん（40代）</div>
+          <p>「40代で転職してきましたが、ベテランが多い職場なので浮くことなく馴染めました。昼食補助や浴室完備など、体を動かす仕事への配慮が行き届いている会社です。賞与も年2回ちゃんと出るので、家族を安心させられる職場だと思っています。」</p>
+        </div>
+      </div>
+
+    </div>
+    <p class="sample-note">※ここはサンプルです。実際には御社の先輩社員コメントに差し替えます</p>
+  </div>
+</section>
+
+<!-- ===== Requirements: 募集要項 ===== -->
+<section style="background:var(--bg);" id="requirements">
+  <div class="container">
+    <h2 class="section-title">募集要項</h2>
+    <div class="divider"></div>
+    <div class="req-wrap">
+      <p class="sample-note" style="margin-bottom:1.5rem;">※ここはサンプルです。実際には御社の最新の募集要項に差し替えます</p>
+      <table class="req-table">
+        <tbody>
+          <tr>
+            <th>会社名</th>
+            <td>八千代特殊金属株式会社</td>
+          </tr>
+          <tr>
+            <th>職種</th>
+            <td>出荷・横持ち業務（鋼材の積み込み・構内輸送・伝票管理）</td>
+          </tr>
+          <tr>
+            <th>雇用形態</th>
+            <td>正社員</td>
+          </tr>
+          <tr>
+            <th>月給</th>
+            <td>232,000円〜250,000円<small>各種手当含む</small></td>
+          </tr>
+          <tr>
+            <th>昇給</th>
+            <td>あり（最大8,000円/月）</td>
+          </tr>
+          <tr>
+            <th>賞与</th>
+            <td>年2回（合計3ヶ月分）</td>
+          </tr>
+          <tr>
+            <th>就業時間</th>
+            <td>7:55〜17:05（変形労働時間制）<small>月平均残業10時間</small></td>
+          </tr>
+          <tr>
+            <th>休日・休暇</th>
+            <td>年間休日118日（土日・GW休暇・夏季休暇・年末年始休暇）</td>
+          </tr>
+          <tr>
+            <th>退職金</th>
+            <td>あり（勤続3年以上）</td>
+          </tr>
+          <tr>
+            <th>資格取得支援</th>
+            <td>会社が必要と認めた資格は全額負担<small>（玉掛け・クレーン・フォークリフト・大型免許など）</small></td>
+          </tr>
+          <tr>
+            <th>福利厚生</th>
+            <td>昼食補助あり・浴室完備・社会保険完備</td>
+          </tr>
+          <tr>
+            <th>応募資格</th>
+            <td>普通自動車免許（AT限定可）<br>玉掛け・クレーン・フォークリフト・大型免許は尚可（なくても可）</td>
+          </tr>
+          <tr>
+            <th>勤務地</th>
+            <td>千葉県八千代市大和田新田730番地</td>
+          </tr>
+          <tr>
+            <th>アクセス</th>
+            <td>東葉高速鉄道 八千代緑が丘駅よりバス「向山三叉路」下車1分<br>マイカー通勤可</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA final: CTA #3 ===== -->
+<section class="cta-final" id="apply">
+  <div class="container" style="max-width:780px;">
+    <h2>日本唯一の現場で、<br>あなたのキャリアをスタートしませんか？</h2>
+    <p>普通免許（AT可）があれば応募できます。<br>
+       資格取得は入社後でOK。会社が全額サポートします。<br>
+       まずはお気軽にご連絡ください。</p>
+    <a href="mailto:toiawase@y-t-k.com" class="btn-amber">採用担当にメールで問い合わせる</a>
+    <div class="contact-box">
+      <div class="contact-item">
+        <div class="label">電話で問い合わせる</div>
+        <a href="tel:0474592211">047-459-2211</a>
+        <p>（平日 8:00〜17:00）</p>
+      </div>
+      <div class="contact-item">
+        <div class="label">メールで問い合わせる</div>
+        <a href="mailto:toiawase@y-t-k.com">toiawase@y-t-k.com</a>
+        <p>24時間受付</p>
+      </div>
+      <div class="contact-item">
+        <div class="label">公式サイト</div>
+        <a href="http://www.y-t-k.com" target="_blank" rel="noopener noreferrer">www.y-t-k.com</a>
+        <p>会社情報はこちら</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<footer>
+  <p>八千代特殊金属株式会社</p>
+  <p>〒276-0031 千葉県八千代市大和田新田730番地</p>
+  <p>TEL: 047-459-2211 ／ MAIL: toiawase@y-t-k.com</p>
+</footer>
+
+<!-- ===== Fixed Entry Bar (mobile) ===== -->
+<div class="fixed-bar">
+  <a href="#apply">&#128231; 今すぐ応募する（普通免許AT可）</a>
+</div>
+
+<script>
+  // Hamburger menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  hamburger.addEventListener('click', function () {
+    mobileMenu.classList.toggle('open');
+  });
+  mobileMenu.querySelectorAll('a').forEach(function (a) {
+    a.addEventListener('click', function () {
+      mobileMenu.classList.remove('open');
+    });
+  });
+</script>
+
+</body>
+</html>
