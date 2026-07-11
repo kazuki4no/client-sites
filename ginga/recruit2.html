@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 株式会社 銀河</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html,body{max-width:100%;overflow-x:hidden;margin:0;padding:0}
+body{font-family:'Noto Sans JP',sans-serif;color:#333;line-height:1.7;font-size:16px}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+:root{
+  --navy:#0c2040;
+  --navy2:#163358;
+  --orange:#f05a1a;
+  --orange-lt:#ff7b42;
+  --bg:#f4f6fa;
+}
+
+/* ===== HEADER ===== */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:var(--navy);height:64px;padding:0 24px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo{color:#fff;font-weight:900;font-size:clamp(0.85rem,2.2vw,1rem);white-space:nowrap}
+nav ul{display:flex;gap:18px;list-style:none;margin:0;padding:0}
+nav a{color:rgba(255,255,255,0.88);font-size:.85rem;transition:color .2s}
+nav a:hover{color:#ffcc00}
+.hamburger{
+  display:none;flex-direction:column;justify-content:center;gap:5px;
+  cursor:pointer;background:none;border:none;padding:8px;
+}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mob-nav{
+  display:none;position:fixed;top:64px;left:0;right:0;
+  background:var(--navy);z-index:99;
+}
+.mob-nav.open{display:block}
+.mob-nav ul{list-style:none;margin:0;padding:0}
+.mob-nav a{
+  display:block;color:#fff;padding:14px 24px;font-size:1rem;
+  border-bottom:1px solid rgba(255,255,255,0.1);
+}
+@media(max-width:768px){nav{display:none}.hamburger{display:flex}}
+
+/* ===== HERO ===== */
+.hero{
+  position:relative;margin-top:64px;
+  min-height:80vh;display:flex;align-items:center;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&h=900&fit=crop&q=80');
+  background-size:cover;background-position:center;
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(160deg,rgba(12,32,64,.92) 40%,rgba(22,51,88,.75) 100%);
+}
+.hero-inner{position:relative;z-index:2;padding:60px 24px;max-width:800px;margin:0 auto}
+.hero-kv{
+  display:inline-block;background:var(--orange);color:#fff;
+  font-size:.76rem;font-weight:700;padding:4px 14px;
+  border-radius:4px;margin-bottom:20px;letter-spacing:.1em;
+}
+.hero h1{
+  color:#fff;font-size:clamp(1.9rem,5vw,3rem);
+  font-weight:900;margin:0 0 20px;line-height:1.25;
+}
+.hero-sub{color:rgba(255,255,255,.9);font-size:clamp(.95rem,2.2vw,1.1rem);margin:0 0 32px}
+.btn-orange{
+  display:inline-block;background:var(--orange);color:#fff;
+  font-weight:700;font-size:1rem;padding:15px 40px;
+  border-radius:4px;transition:background .2s;
+}
+.btn-orange:hover{background:#d04a0e}
+.hero-points{
+  display:flex;flex-wrap:wrap;gap:12px;margin-top:28px;
+}
+.hero-point{
+  background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);
+  color:#fff;font-size:.82rem;padding:6px 14px;border-radius:20px;
+}
+
+/* ===== SECTIONS ===== */
+.sec{padding:72px 24px}
+.sec-bg{background:var(--bg)}
+.sec-dark{background:var(--navy);color:#fff}
+.wrap{max-width:880px;margin:0 auto}
+.sec-label{color:var(--orange);font-size:.78rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;margin-bottom:6px}
+h2{font-size:clamp(1.35rem,3.5vw,2rem);font-weight:900;color:var(--navy);margin:0 0 36px;line-height:1.4}
+.sec-dark h2{color:#fff}
+.sample-note{font-size:.75rem;color:#aaa;margin:0 0 22px;display:block}
+
+/* CTA inline */
+.cta-inline{text-align:center;padding:48px 24px}
+.cta-inline p{color:#666;margin:0 0 18px;font-size:.95rem}
+
+/* ===== 5つの理由 ===== */
+.reasons{display:flex;flex-direction:column;gap:24px}
+.reason{
+  display:flex;gap:20px;align-items:flex-start;
+  background:#fff;border-radius:10px;padding:24px;
+  box-shadow:0 2px 14px rgba(0,0,0,.07);
+}
+.reason-no{
+  flex-shrink:0;width:52px;height:52px;border-radius:50%;
+  background:var(--orange);color:#fff;font-size:1.3rem;
+  font-weight:900;display:flex;align-items:center;justify-content:center;
+}
+.reason-body h3{color:var(--navy);font-size:1rem;font-weight:700;margin:0 0 8px}
+.reason-body p{font-size:.875rem;color:#555;margin:0}
+@media(max-width:600px){.reason{flex-direction:column}}
+
+/* ===== 数字で見る ===== */
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.stat-card{text-align:center;padding:24px 16px}
+.stat-num{
+  font-size:clamp(2rem,5vw,2.8rem);font-weight:900;
+  color:var(--orange-lt);line-height:1;margin-bottom:8px;display:block;
+}
+.stat-unit{font-size:.9rem;font-weight:700;color:var(--orange-lt)}
+.stat-label{font-size:.8rem;color:rgba(255,255,255,.75);margin-top:6px}
+.stat-note{font-size:.7rem;color:rgba(255,255,255,.5);margin-top:4px}
+@media(max-width:600px){.stats-grid{grid-template-columns:repeat(2,1fr)}}
+
+/* ===== TABLE ===== */
+.req-table{width:100%;border-collapse:collapse}
+.req-table th{
+  background:var(--navy);color:#fff;width:150px;
+  padding:12px 16px;text-align:left;font-size:.875rem;
+  vertical-align:top;border-bottom:1px solid rgba(255,255,255,.15);
+}
+.req-table td{padding:12px 16px;border-bottom:1px solid #e5e9f0;font-size:.9rem;vertical-align:top}
+.req-table tr:last-child th,.req-table tr:last-child td{border-bottom:none}
+@media(max-width:600px){
+  .req-table th,.req-table td{display:block;width:100%}
+  .req-table th{border-bottom:none;padding-bottom:4px}
+  .req-table td{padding-top:4px;padding-bottom:12px;border-bottom:1px solid #e5e9f0}
+}
+
+/* ===== TIMELINE ===== */
+.tl{position:relative}
+.tl::before{content:'';position:absolute;left:58px;top:0;bottom:0;width:2px;background:var(--orange)}
+.tl-item{display:flex;gap:20px;margin-bottom:26px}
+.tl-time{width:58px;text-align:right;font-size:.82rem;font-weight:700;color:var(--navy);padding-top:3px;flex-shrink:0}
+.tl-dot{width:16px;height:16px;border-radius:50%;background:var(--orange);flex-shrink:0;margin-top:4px;position:relative;z-index:1;margin-left:-7px}
+.tl-body{flex:1}
+.tl-body strong{display:block;font-size:.9rem;color:var(--navy);margin-bottom:3px}
+.tl-body p{font-size:.82rem;color:#666;margin:0}
+@media(max-width:600px){.tl::before{left:40px}.tl-time{width:40px;font-size:.75rem}}
+
+/* ===== FAQ ===== */
+.faq-list{list-style:none;margin:0;padding:0}
+.faq-item{border-bottom:1px solid #e5e9f0}
+.faq-q{font-weight:700;padding:18px 0;display:flex;gap:12px;align-items:flex-start;font-size:.92rem;cursor:default}
+.q-badge{
+  flex-shrink:0;background:var(--orange);color:#fff;
+  font-size:.76rem;font-weight:700;width:24px;height:24px;
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+}
+.faq-a{padding:0 0 18px 36px;font-size:.875rem;color:#555;line-height:1.75}
+
+/* ===== VOICES ===== */
+.voice-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px}
+.voice-card{background:#fff;border-radius:8px;padding:22px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.voice-head{display:flex;gap:14px;align-items:center;margin-bottom:14px}
+.voice-avatar{width:56px;height:56px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.voice-name{font-weight:700;font-size:.875rem;color:var(--navy)}
+.voice-info{font-size:.76rem;color:#888;margin-top:2px}
+.voice-text{font-size:.85rem;color:#444;line-height:1.75}
+@media(max-width:768px){.voice-grid{grid-template-columns:1fr}}
+
+/* ===== CTA FINAL ===== */
+.cta-final{background:var(--orange);color:#fff;text-align:center;padding:72px 24px}
+.cta-final h2{color:#fff;font-size:clamp(1.4rem,3.5vw,2rem)}
+.cta-final p{margin:0 0 28px;font-size:1rem;opacity:.95}
+.btn-white{
+  display:inline-block;background:#fff;color:var(--orange);
+  font-weight:700;font-size:1rem;padding:15px 40px;border-radius:4px;
+  transition:opacity .2s;
+}
+.btn-white:hover{opacity:.85}
+
+/* ===== FOOTER ===== */
+footer{
+  background:var(--navy);color:rgba(255,255,255,.7);
+  text-align:center;padding:32px 24px;font-size:.85rem;line-height:2;
+}
+
+/* ===== スマホ固定バー ===== */
+.fixed-cta{
+  display:none;
+  position:fixed;bottom:0;left:0;right:0;z-index:200;
+  background:var(--orange);padding:14px 20px;
+  text-align:center;box-shadow:0 -2px 12px rgba(0,0,0,.2);
+}
+.fixed-cta a{
+  color:#fff;font-weight:700;font-size:.95rem;
+  display:block;
+}
+@media(max-width:768px){
+  .fixed-cta{display:block}
+  footer{padding-bottom:80px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">株式会社 銀河｜採用情報</div>
+  <nav>
+    <ul>
+      <li><a href="#reasons">安心の5理由</a></li>
+      <li><a href="#voices">先輩の声</a></li>
+      <li><a href="#requirements">募集要項</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#apply">応募する</a></li>
+    </ul>
+  </nav>
+  <button class="hamburger" id="hbg" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+<div class="mob-nav" id="mobnav">
+  <ul>
+    <li><a href="#reasons">安心の5理由</a></li>
+    <li><a href="#voices">先輩の声</a></li>
+    <li><a href="#requirements">募集要項</a></li>
+    <li><a href="#faq">FAQ</a></li>
+    <li><a href="#apply">応募する</a></li>
+  </ul>
+</div>
+
+<!-- ====== HERO ====== -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <div class="hero-kv">正社員 ／ 60歳以上 ／ 定年なし ／ 未経験歓迎</div>
+    <h1>60歳からの<br>プロフェッショナルへ。<br>JRの線路を守る仕事。</h1>
+    <p class="hero-sub">昭和58年創業。JR東日本の現場を支え続ける銀河で、<br>あなたの経験と気力を活かしませんか。</p>
+    <!-- CTA #1 -->
+    <a href="#apply" class="btn-orange">まず話を聞いてみる →</a>
+    <div class="hero-points">
+      <span class="hero-point">📅 年間休日120日</span>
+      <span class="hero-point">💴 月給19万円〜</span>
+      <span class="hero-point">🚗 マイカー通勤OK</span>
+      <span class="hero-point">🎓 研修充実・資格取得サポート</span>
+    </div>
+  </div>
+</div>
+
+<!-- ====== 5つの理由 ====== -->
+<section class="sec sec-bg" id="reasons">
+  <div class="wrap">
+    <p class="sec-label">Why Ginga</p>
+    <h2>60歳以上が安心して選ぶ<br>5つの理由</h2>
+    <div class="reasons">
+      <div class="reason">
+        <div class="reason-no">1</div>
+        <div class="reason-body">
+          <h3>研修が充実。知識ゼロからでも列車見張員のプロになれる</h3>
+          <p>入社後すぐに警備業法定研修（20時間以上）を実施。列車見張員の資格取得は2日間の講習＋社内準備講習で対応。研修費は会社負担（最低賃金適用）なので、費用の心配なく専門知識を習得できます。</p>
+        </div>
+      </div>
+      <div class="reason">
+        <div class="reason-no">2</div>
+        <div class="reason-body">
+          <h3>定年制なし。65歳を超えても現役で活躍できる</h3>
+          <p>「気力・体力があれば大丈夫」という会社の方針のもと、定年制を設けていません。実際に65歳以上のスタッフが多数在籍し、いきいきと現場に立っています。</p>
+        </div>
+      </div>
+      <div class="reason">
+        <div class="reason-no">3</div>
+        <div class="reason-body">
+          <h3>月給19万円〜。安定した収入と充実した手当</h3>
+          <p>月給191,830円〜214,830円の安定した固定給。精勤手当・資格手当も加算されます。通勤手当は実費全額支給（上限なし）で、マイカー通勤の方も安心です。</p>
+        </div>
+      </div>
+      <div class="reason">
+        <div class="reason-no">4</div>
+        <div class="reason-body">
+          <h3>年間休日120日。オンとオフのメリハリをしっかり確保</h3>
+          <p>週休2日（毎週）＋年間120日の休日。有給休暇も入社半年後から付与されます。趣味やご家族との時間も大切にしながら働けます。</p>
+        </div>
+      </div>
+      <div class="reason">
+        <div class="reason-no">5</div>
+        <div class="reason-body">
+          <h3>JR東日本の現場に携わる、誇りある専門職</h3>
+          <p>JR東日本・株式会社交通建設・日本リーテックなど大手企業との取引実績。鉄道インフラを支える「列車見張員」は専門資格を持つプロフェッショナルな職種です。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA #2（中盤）-->
+<div class="cta-inline">
+  <p>気になった方は、まずお電話でご相談ください。</p>
+  <a href="tel:043-228-5539" class="btn-orange">📞 043-228-5539 に電話する</a>
+</div>
+
+<!-- ====== 数字で見る銀河 ====== -->
+<section class="sec sec-dark">
+  <div class="wrap">
+    <p class="sec-label" style="color:#f97b40">Numbers</p>
+    <h2>数字で見る 株式会社 銀河</h2>
+    <span class="sample-note" style="color:rgba(255,255,255,.4)">※社員数・研修時間・休日は求人票記載の数値。取引先数は公開情報をもとにしたサンプル表記です。実際の数値に差し替えてください</span>
+    <!-- 差し替え指示: 実際の数値・実績データに変更してください -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <span class="stat-num">50<span class="stat-unit">名</span></span>
+        <div class="stat-label">全体スタッフ数</div>
+        <div class="stat-note">（シニア世代が中心）</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">120<span class="stat-unit">日</span></span>
+        <div class="stat-label">年間休日</div>
+        <div class="stat-note">（週休2日・完全週休）</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">20<span class="stat-unit">時間+</span></span>
+        <div class="stat-label">入社後研修時間</div>
+        <div class="stat-note">（資格取得サポート含む）</div>
+      </div>
+      <div class="stat-card">
+        <span class="stat-num">3<span class="stat-unit">社+</span></span>
+        <div class="stat-label">主要取引先</div>
+        <div class="stat-note">（JR東日本・大手含む）</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== VOICES ====== -->
+<section class="sec sec-bg" id="voices">
+  <div class="wrap">
+    <p class="sec-label">Voice</p>
+    <h2>先輩スタッフのリアルな声</h2>
+    <span class="sample-note">※ここはサンプルです。実際には御社スタッフの声・写真に差し替えます</span>
+    <!-- 差し替え指示: 実際のスタッフの写真・名前・コメントに変更してください -->
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="voice-head">
+          <img class="voice-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩スタッフ（仮名）">
+          <!-- ※写真はサンプルです。実際には御社スタッフの写真に差し替えます -->
+          <div>
+            <div class="voice-name">田中 健司さん（仮名）</div>
+            <div class="voice-info">62歳 ／ 入社3年目 ／ 列車見張員</div>
+          </div>
+        </div>
+        <p class="voice-text">「最初は列車見張りという仕事をまったく知りませんでしたが、社内の準備講習のおかげで資格取得もスムーズでした。今はJRの現場に立てることが自分の誇りです。」</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-head">
+          <img class="voice-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩スタッフ（仮名）">
+          <!-- ※写真はサンプルです。実際には御社スタッフの写真に差し替えます -->
+          <div>
+            <div class="voice-name">山田 正夫さん（仮名）</div>
+            <div class="voice-info">67歳 ／ 入社5年目 ／ 警備員</div>
+          </div>
+        </div>
+        <p class="voice-text">「定年後に何か続けられる仕事を探していました。同世代の仲間が多いので話が合うし、年間休日が多いので家族との時間もしっかり取れています。」</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-head">
+          <img class="voice-avatar" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩スタッフ（仮名）">
+          <!-- ※写真はサンプルです。実際には御社スタッフの写真に差し替えます -->
+          <div>
+            <div class="voice-name">佐藤 隆さん（仮名）</div>
+            <div class="voice-info">64歳 ／ 入社2年目 ／ 列車見張員</div>
+          </div>
+        </div>
+        <p class="voice-text">「夜勤があると聞いて心配でしたが、実際は現場スケジュール次第で、入社時に希望を伝えたら相談に乗ってもらえました。マイカーで通えるのも助かっています。」</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-head">
+          <img class="voice-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩スタッフ（仮名）">
+          <!-- ※写真はサンプルです。実際には御社スタッフの写真に差し替えます -->
+          <div>
+            <div class="voice-name">伊藤 博之さん（仮名）</div>
+            <div class="voice-info">68歳 ／ 入社7年目 ／ 警備員</div>
+          </div>
+        </div>
+        <p class="voice-text">「68歳でも現役で働いています。定年がないので年齢を気にせず続けられる。昇給や賞与はないけど、月給が安定しているので生活設計が立てやすいんです。」</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== TIMELINE ====== -->
+<section class="sec">
+  <div class="wrap">
+    <p class="sec-label">A Day in the Life</p>
+    <h2>社員の1日の流れ（日勤の例）</h2>
+    <span class="sample-note">※ここはサンプルです。実際には御社スタッフの1日の流れに差し替えます</span>
+    <!-- 差し替え指示: 実際の社員さんの1日の流れに変更してください -->
+    <div class="tl">
+      <div class="tl-item">
+        <div class="tl-time">7:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><strong>出社・点呼・装備確認</strong><p>制服と装備を整え、当日の現場・安全指示を確認。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">8:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><strong>現場へ出発（マイカー）</strong><p>JR総武本線・成田線エリアの担当現場へ。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">8:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><strong>業務開始。線路の安全を守る</strong><p>列車接近を把握し、作業員やお客様を安全に誘導します。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><strong>昼休憩（60分）</strong><p>同僚と話しながらリフレッシュ。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><strong>午後業務</strong><p>引き続き見張り・誘導を担当。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><strong>現場終了・帰社・退社</strong><p>日報記入後、退社。時間外労働なし。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== FAQ ====== -->
+<section class="sec sec-bg" id="faq">
+  <div class="wrap">
+    <p class="sec-label">FAQ</p>
+    <h2>よくあるご質問</h2>
+    <span class="sample-note">※ここはサンプルです。実際には御社のQ&Aに差し替えます</span>
+    <!-- 差し替え指示: 実際によくある質問と回答に変更してください -->
+    <ul class="faq-list">
+      <li class="faq-item">
+        <div class="faq-q"><span class="q-badge">Q</span>60歳を超えていても体力的に続けられますか？</div>
+        <div class="faq-a">はい。65歳以上のスタッフも多数活躍中です。体力に不安がある方も、配属現場や勤務シフトについて入社時に相談できますのでお気軽にご連絡ください。</div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q"><span class="q-badge">Q</span>昇給・賞与がないと聞きましたが、給与面は大丈夫ですか？</div>
+        <div class="faq-a">月給制（191,830円〜214,830円）で安定した収入が見込めます。精勤手当・資格手当が加算されるほか、通勤手当は実費全額支給。昇給・賞与はありませんが、毎月の収入が安定しているため、生活設計が立てやすいと好評です。</div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q"><span class="q-badge">Q</span>夜間勤務はどのくらいの頻度でありますか？</div>
+        <div class="faq-a">現場スケジュールによります。夜間専任にはならず、日中現場との組み合わせが多いです。体力や希望に応じて配属を調整しますので、入社時にご相談ください。</div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q"><span class="q-badge">Q</span>研修費用はかかりますか？</div>
+        <div class="faq-a">研修費は会社負担（最低賃金1,140円/時間が適用）です。お金の心配なく資格取得に集中していただけます。</div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q"><span class="q-badge">Q</span>定年はありますか？</div>
+        <div class="faq-a">定年制はありません。気力・体力が続く限り、ご活躍いただけます。</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ====== REQUIREMENTS ====== -->
+<section class="sec" id="requirements">
+  <div class="wrap">
+    <p class="sec-label">Requirements</p>
+    <h2>募集要項</h2>
+    <table class="req-table">
+      <tr><th>職種</th><td>列車見張員・警備員</td></tr>
+      <tr><th>雇用形態</th><td>正社員（試用期間3ヶ月・同条件）</td></tr>
+      <tr><th>応募資格</th><td>60歳以上 ／ 普通自動車免許（AT可）／ 未経験歓迎・学歴不問</td></tr>
+      <tr><th>給与</th><td>月給 191,830円〜214,830円<br>精勤手当・資格手当あり ／ 通勤手当実費支給（上限なし）</td></tr>
+      <tr><th>就業時間</th><td>①8:00〜17:00 ②23:00〜5:00（現場スケジュールによる）<br>休憩60分 ／ 時間外労働なし</td></tr>
+      <tr><th>休日・休暇</th><td>日曜・その他 ／ 週休2日（毎週）／ 年間休日120日<br>有給休暇あり（入社6ヶ月後10日付与）</td></tr>
+      <tr><th>就業場所</th><td>印西市・富里市・印旛郡（JR総武本線・成田線エリア）<br>マイカー通勤可 ／ 駐車場あり</td></tr>
+      <tr><th>各種保険</th><td>雇用保険・労災保険・健康保険・厚生年金</td></tr>
+      <tr><th>採用人数</th><td>2名</td></tr>
+      <tr><th>選考</th><td>面接1回（ハローワーク紹介状＋履歴書（写真貼付）持参）<br>→ 面接後5日以内にお電話で結果をご連絡</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- CTA #3（最終）-->
+<section class="cta-final" id="apply">
+  <div class="wrap">
+    <h2>まずは話を聞いてみませんか。</h2>
+    <p>「体力的に続けられるか不安」「夜勤の頻度はどうか」など、<br>どんなご質問にもお答えします。お気軽にお電話ください。</p>
+    <a href="tel:043-228-5539" class="btn-white">📞 043-228-5539 に電話する</a>
+  </div>
+</section>
+
+<footer>
+  <p>株式会社 銀河</p>
+  <p>〒265-0051 千葉県千葉市若葉区中野町2171-1</p>
+  <p>TEL: 043-228-5539 ／ MAIL: ginga@mx5.alpha-web.ne.jp</p>
+</footer>
+
+<!-- スマホ固定CTA -->
+<div class="fixed-cta" id="fixedCta">
+  <a href="tel:043-228-5539">📞 まずは電話で相談する — 043-228-5539</a>
+</div>
+
+<script>
+const hbg=document.getElementById('hbg');
+const mobnav=document.getElementById('mobnav');
+hbg.addEventListener('click',()=>{
+  hbg.classList.toggle('open');
+  mobnav.classList.toggle('open');
+});
+mobnav.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  hbg.classList.remove('open');
+  mobnav.classList.remove('open');
+}));
+// フッターに達したら固定バーを隠す
+const footer=document.querySelector('footer');
+const fixedCta=document.getElementById('fixedCta');
+const obs=new IntersectionObserver(e=>{
+  fixedCta.style.display=e[0].isIntersecting?'none':'';
+});
+obs.observe(footer);
+</script>
+</body>
+</html>
