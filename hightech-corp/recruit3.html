@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>足場組立作業員 採用募集 | 合同会社ハイテックコーポレーション</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@600;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    body { font-family: 'Noto Sans JP', sans-serif; color: #222; background: #fff; line-height: 1.75; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+    :root {
+      --deep: #0c1830;
+      --navy: #1b2f5e;
+      --gold: #c8941a;
+      --gold-light: #e0ad30;
+      --bg: #f7f6f2;
+      --border: #e2ddd5;
+      --sub: #5a5a5a;
+    }
+
+    /* Header */
+    header {
+      position: sticky; top: 0; z-index: 200;
+      background: rgba(12,24,48,0.97); backdrop-filter: blur(8px);
+      height: 64px; display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+    }
+    .logo { color: #fff; font-family: 'Noto Serif JP', serif; font-size: 0.88rem; font-weight: 700; line-height: 1.45; }
+    .logo em { color: var(--gold-light); font-style: normal; }
+    nav.pc { display: flex; align-items: center; gap: 1.8rem; }
+    nav.pc a { color: #99a8cc; font-size: 0.82rem; letter-spacing: 0.04em; transition: color 0.2s; }
+    nav.pc a:hover { color: #fff; }
+    .btn-nav { background: var(--gold); color: #fff !important; padding: 0.4rem 1.2rem; border-radius: 2px; font-weight: 700; letter-spacing: 0.06em; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 6px; }
+    .hamburger span { display: block; width: 22px; height: 2px; background: #fff; }
+    .sp-nav { display: none; flex-direction: column; background: rgba(12,24,48,0.98); position: absolute; top: 64px; left: 0; right: 0; }
+    .sp-nav.open { display: flex; }
+    .sp-nav a { color: #99a8cc; padding: 0.9rem 5%; border-bottom: 1px solid rgba(255,255,255,0.07); font-size: 0.9rem; }
+
+    /* Hero */
+    .hero {
+      position: relative; min-height: 90vh;
+      display: flex; align-items: flex-end;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&h=900&fit=crop&q=80') center/cover no-repeat;
+    }
+    .hero-ov {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(12,24,48,0.45) 0%, rgba(12,24,48,0.75) 60%, rgba(12,24,48,0.92) 100%);
+    }
+    .hero-inner { position: relative; z-index: 1; width: 100%; padding: 5rem 5% 6rem; }
+    .hero-tag { display: inline-flex; align-items: center; gap: 0.5rem; background: var(--gold); color: #fff; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em; padding: 0.3rem 0.9rem; margin-bottom: 1.4rem; }
+    .hero h1 {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(2rem, 6vw, 4rem);
+      color: #fff; font-weight: 900; line-height: 1.15;
+      margin-bottom: 1.2rem;
+    }
+    .hero h1 em { color: var(--gold-light); font-style: normal; }
+    .hero-lead { color: #c0cce0; font-size: clamp(0.9rem, 2vw, 1.05rem); line-height: 1.9; margin-bottom: 2rem; max-width: 600px; }
+    .hero-chips { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+    .hero-chip { background: rgba(200,148,26,0.18); border: 1px solid rgba(200,148,26,0.5); color: var(--gold-light); font-size: 0.8rem; padding: 0.3rem 0.8rem; letter-spacing: 0.04em; }
+    .btn-gold { display: inline-block; background: var(--gold); color: #fff; font-weight: 700; font-size: 1rem; padding: 1rem 3rem; letter-spacing: 0.06em; transition: background 0.2s; }
+    .btn-gold:hover { background: #a07515; }
+    .btn-ghost { display: inline-block; border: 1px solid rgba(255,255,255,0.4); color: #ddd; font-size: 0.9rem; padding: 1rem 2rem; margin-left: 1rem; transition: all 0.2s; }
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.7); color: #fff; }
+
+    /* Decorative divider */
+    .divider { height: 4px; background: linear-gradient(90deg, var(--gold) 0%, var(--gold-light) 50%, var(--gold) 100%); }
+
+    /* Sections */
+    section { padding: 5.5rem 5%; }
+    .en-label { font-size: 0.68rem; font-weight: 700; letter-spacing: 0.22em; color: var(--gold); text-transform: uppercase; margin-bottom: 0.35rem; }
+    .sec-h2 { font-family: 'Noto Serif JP', serif; font-size: clamp(1.5rem, 3.5vw, 2.2rem); font-weight: 700; color: var(--deep); margin-bottom: 0.8rem; }
+    .sec-desc { color: var(--sub); font-size: 0.93rem; margin-bottom: 3rem; max-width: 580px; line-height: 1.85; }
+
+    /* Features */
+    .features-sec { background: var(--deep); }
+    .features-sec .sec-h2 { color: #fff; }
+    .features-sec .sec-desc { color: #8899bb; }
+    .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: rgba(255,255,255,0.08); margin-top: 2.5rem; }
+    .f-item { background: var(--deep); padding: 2.5rem 2rem; }
+    .f-icon { font-size: 2rem; margin-bottom: 1.2rem; }
+    .f-item h3 { font-family: 'Noto Serif JP', serif; font-size: 1.05rem; color: var(--gold-light); margin-bottom: 0.6rem; font-weight: 700; line-height: 1.5; }
+    .f-item p { font-size: 0.87rem; color: #8899bb; line-height: 1.85; }
+
+    /* Stats */
+    .stats-sec { background: var(--bg); }
+    .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; border: 1px solid var(--border); }
+    .s-item { padding: 2.5rem 1.5rem; text-align: center; border-right: 1px solid var(--border); }
+    .s-item:last-child { border-right: none; }
+    .s-num { font-family: 'Noto Serif JP', serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 700; color: var(--deep); line-height: 1; }
+    .s-num small { font-size: 1rem; color: var(--gold); }
+    .s-label { font-size: 0.8rem; color: var(--sub); margin-top: 0.5rem; }
+    .smp { font-size: 0.68rem; color: #ccc; margin-top: 0.25rem; }
+
+    /* Requirements */
+    .req-table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .req-table tr { border-bottom: 1px solid var(--border); }
+    .req-table tr:last-child { border-bottom: none; }
+    .req-table th { width: 25%; background: var(--deep); color: #c0cce0; padding: 1rem 1.3rem; text-align: left; vertical-align: top; font-weight: 700; font-size: 0.85rem; }
+    .req-table td { padding: 1rem 1.3rem; vertical-align: top; }
+    .req-hl { color: var(--gold); font-weight: 700; }
+
+    /* FAQ */
+    .faq-sec { background: var(--bg); }
+    .faq-list { max-width: 800px; }
+    .faq-item { border-bottom: 1px solid var(--border); padding: 1.5rem 0; }
+    .faq-item:first-child { border-top: 1px solid var(--border); }
+    .faq-q { font-family: 'Noto Serif JP', serif; font-weight: 700; color: var(--deep); display: flex; gap: 1rem; align-items: baseline; margin-bottom: 0.5rem; }
+    .faq-q-mark { color: var(--gold); font-size: 1.1rem; flex-shrink: 0; }
+    .faq-a { font-size: 0.87rem; color: var(--sub); line-height: 1.85; padding-left: 1.9rem; }
+
+    /* Timeline */
+    .tl-wrap { max-width: 700px; }
+    .tl-row { display: flex; gap: 1.5rem; align-items: flex-start; }
+    .tl-left { display: flex; flex-direction: column; align-items: center; min-width: 60px; }
+    .tl-t { font-size: 0.78rem; font-weight: 700; color: var(--deep); white-space: nowrap; }
+    .tl-d { width: 10px; height: 10px; border-radius: 50%; background: var(--gold); margin: 4px 0; flex-shrink: 0; }
+    .tl-l { flex: 1; width: 2px; background: var(--border); }
+    .tl-row:last-child .tl-l { display: none; }
+    .tl-r { padding-bottom: 2rem; }
+    .tl-r h4 { font-family: 'Noto Serif JP', serif; font-size: 0.92rem; font-weight: 700; color: var(--deep); margin-bottom: 0.2rem; }
+    .tl-r p { font-size: 0.83rem; color: var(--sub); }
+
+    /* Voices */
+    .voices-sec { background: var(--deep); }
+    .voices-sec .sec-h2 { color: #fff; }
+    .voices-sec .sec-desc { color: #8899bb; }
+    .voices-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .v-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 2rem 1.5rem; }
+    .v-top { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; }
+    .v-photo { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); }
+    .v-name { font-weight: 700; color: #e0e8ff; font-size: 0.9rem; }
+    .v-meta { font-size: 0.72rem; color: #7788aa; }
+    .v-text { font-size: 0.86rem; color: #aab8cc; line-height: 1.85; }
+    .v-smp { font-size: 0.68rem; color: #445; margin-top: 0.5rem; }
+
+    /* Recruiter */
+    .rec-sec { background: var(--bg); }
+    .rec-inner { display: flex; gap: 2.5rem; align-items: flex-start; max-width: 760px; }
+    .rec-photo { width: 110px; height: 110px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 3px solid var(--gold); }
+    .rec-name { font-family: 'Noto Serif JP', serif; font-weight: 700; color: var(--deep); font-size: 1rem; margin-bottom: 0.2rem; }
+    .rec-role { font-size: 0.76rem; color: var(--sub); margin-bottom: 0.8rem; }
+    .rec-text { font-size: 0.9rem; color: #444; line-height: 1.85; }
+    .rec-smp { font-size: 0.68rem; color: #bbb; margin-top: 0.5rem; }
+
+    /* CTA */
+    .cta-sec { background: var(--deep); text-align: center; padding: 6rem 5%; position: relative; overflow: hidden; }
+    .cta-sec::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1600&h=700&fit=crop&q=80') center/cover no-repeat;
+      opacity: 0.06;
+    }
+    .cta-inner { position: relative; z-index: 1; }
+    .cta-sec h2 { font-family: 'Noto Serif JP', serif; color: #fff; font-size: clamp(1.5rem, 3.5vw, 2.2rem); margin-bottom: 0.8rem; }
+    .cta-sec p { color: #8899bb; margin-bottom: 2.5rem; font-size: 0.93rem; line-height: 1.8; }
+    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-cta { display: inline-block; background: var(--gold); color: #fff; font-weight: 700; font-size: 1rem; padding: 1rem 3rem; letter-spacing: 0.06em; transition: background 0.2s; }
+    .btn-cta:hover { background: #a07515; }
+    .btn-cta-line { display: inline-block; border: 1px solid rgba(255,255,255,0.3); color: #ccc; font-size: 1rem; padding: 1rem 2.5rem; transition: all 0.2s; }
+
+    /* Footer */
+    footer { background: #060e1e; color: #445566; padding: 2.5rem 5%; font-size: 0.84rem; line-height: 2; }
+    footer strong { color: #667788; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav.pc { display: none; }
+      .hamburger { display: flex; }
+      .features-grid { grid-template-columns: 1fr; gap: 1px; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .s-item { border-right: none; border-bottom: 1px solid var(--border); }
+      .s-item:last-child { border-bottom: none; }
+      .voices-grid { grid-template-columns: 1fr; }
+      .rec-inner { flex-direction: column; }
+      .rec-photo { margin: 0 auto; }
+      .cta-btns { flex-direction: column; align-items: center; }
+      .req-table th, .req-table td { display: block; width: 100%; }
+      .req-table th { border-bottom: none; }
+      .btn-ghost { margin-left: 0; margin-top: 0.75rem; display: block; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="logo">合同会社<br><em>ハイテックコーポレーション</em></div>
+  <nav class="pc">
+    <a href="#features">選ばれる理由</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#faq">FAQ</a>
+    <a href="#voices">先輩の声</a>
+    <a href="#entry" class="btn-nav">応募はこちら</a>
+  </nav>
+  <button class="hamburger" id="hamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+<nav class="sp-nav" id="spNav">
+  <a href="#features">選ばれる理由</a>
+  <a href="#requirements">募集要項</a>
+  <a href="#faq">FAQ</a>
+  <a href="#voices">先輩の声</a>
+  <a href="#entry">応募はこちら</a>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-ov"></div>
+  <div class="hero-inner">
+    <span class="hero-tag">正社員募集 ／ 足場組立作業員</span>
+    <h1>現場で誇れる仕事を、<br><em>あなたと一緒に。</em></h1>
+    <p class="hero-lead">足場業界の"当たり前"を変える職場があります。<br>年間125日休めて、未経験から育てて、資格取得も全額サポート。<br>安全第一・チームワーク重視のハイテックコーポレーションで働きませんか？</p>
+    <div class="hero-chips">
+      <span class="hero-chip">📅 年間休日125日</span>
+      <span class="hero-chip">🌱 未経験歓迎</span>
+      <span class="hero-chip">🎓 資格費用 全額会社負担</span>
+      <span class="hero-chip">🚗 マイカー通勤可</span>
+    </div>
+    <a href="#entry" class="btn-gold">求人に応募する</a>
+    <a href="#features" class="btn-ghost">詳しく見る</a>
+  </div>
+</section>
+<div class="divider"></div>
+
+<!-- Features -->
+<section class="features-sec" id="features">
+  <div class="en-label">WHY CHOOSE US</div>
+  <h2 class="sec-h2">「危なそう・きつそう」を<br>ひっくり返す3つの特徴</h2>
+  <p class="sec-desc">足場の仕事に対するマイナスイメージ——その多くは"知らないことへの不安"から来ています。ハイテックコーポレーションが提供する環境を知っていただければ、きっとイメージが変わるはずです。</p>
+  <div class="features-grid">
+    <div class="f-item">
+      <div class="f-icon">📅</div>
+      <h3>土日祝休み<br>年間休日125日</h3>
+      <p>足場業界では珍しい完全週休2日制。年末年始・夏期休暇・GWも確実に休める環境です。プライベートとの両立を諦めなくて済みます。</p>
+    </div>
+    <div class="f-item">
+      <div class="f-icon">🌱</div>
+      <h3>未経験者は片付け・補助から<br>段階的に成長</h3>
+      <p>入社初日からいきなり高所作業はしません。資材の名前を覚えること、片付け、先輩の補助から始め、焦らず安全に技術を身につけられます。</p>
+    </div>
+    <div class="f-item">
+      <div class="f-icon">🎓</div>
+      <h3>必要な資格を<br>会社が全額サポート</h3>
+      <p>足場作業主任者・玉掛け・高所作業車など、業務に必要な資格取得費用は会社負担。資格が増えるほど手当も増え、給与が上がります。</p>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<section class="stats-sec">
+  <div class="en-label">NUMBERS</div>
+  <h2 class="sec-h2">数字で見るハイテックコーポレーション</h2>
+  <!-- ※ここはサンプルです。実際には御社の数字に差し替えます -->
+  <p class="smp" style="margin-bottom:2rem;color:#bbb;font-size:0.76rem;">※以下の数値はサンプルです。実際には御社の数字に差し替えます</p>
+  <div class="stats-grid">
+    <div class="s-item">
+      <div class="s-num">125<small>日</small></div>
+      <div class="s-label">年間休日数</div>
+      <div class="smp">※サンプル</div>
+    </div>
+    <div class="s-item">
+      <div class="s-num">¥0</div>
+      <div class="s-label">制服・安全帯の自己負担</div>
+      <div class="smp">※サンプル</div>
+    </div>
+    <div class="s-item">
+      <div class="s-num">2016<small>年〜</small></div>
+      <div class="s-label">設立（安定した事業基盤）</div>
+      <div class="smp">※サンプル</div>
+    </div>
+    <div class="s-item">
+      <div class="s-num">3<small>名</small></div>
+      <div class="s-label">今回の募集人数（増員）</div>
+      <div class="smp">※サンプル</div>
+    </div>
+  </div>
+</section>
+
+<!-- Requirements -->
+<section id="requirements">
+  <div class="en-label">REQUIREMENTS</div>
+  <h2 class="sec-h2">募集要項</h2>
+  <table class="req-table">
+    <tr><th>職種</th><td>足場組立作業員（正社員）</td></tr>
+    <tr><th>仕事内容</th><td>建設現場での足場の組立・解体作業。資材の運搬・積み込み・荷下ろし・現場片付け・安全確認。未経験者は先輩の補助・資材搬入からスタート。経験者は職長・現場リーダー業務も。</td></tr>
+    <tr><th>給与</th><td><span class="req-hl">月給 200,000円 〜 450,000円</span><br>職長手当：5,000〜10,000円 ／ 資格手当：5,000〜20,000円 ／ 家族手当：5,000〜10,000円<br>昇給あり（前年度実績）</td></tr>
+    <tr><th>勤務時間</th><td>8:00 〜 17:00（休憩60分）／ 月平均残業20時間</td></tr>
+    <tr><th>休日・休暇</th><td><span class="req-hl">年間休日125日</span>（土・日・祝日・年末年始・夏期休暇・GW）<br>年次有給休暇あり（6か月経過後10日）</td></tr>
+    <tr><th>勤務地</th><td>〒270-1325 千葉県印西市竹袋1755-45（印西牧の原駅より車5分）<br>マイカー通勤可・駐車場無料</td></tr>
+    <tr><th>応募資格</th><td>18歳以上。未経験歓迎・資格不問。普通自動車免許（AT可）あれば尚可。外国籍の方も歓迎（日本語の読み書き可）。</td></tr>
+    <tr><th>待遇・福利厚生</th><td>社会保険完備（雇用・労災・健康・厚生年金）／通勤手当（上限10,000円/月）／制服・安全帯等支給（会社負担）／資格取得支援（費用全額会社負担）／社員寮あり（一部自己負担）</td></tr>
+    <tr><th>選考方法</th><td>書類選考 → 面接（1回）→ 結果通知（7日以内）</td></tr>
+  </table>
+</section>
+
+<!-- Timeline -->
+<section id="timeline" style="background:var(--bg);">
+  <div class="en-label">A DAY</div>
+  <h2 class="sec-h2">社員の1日の流れ</h2>
+  <!-- ※ここはサンプルです。実際には御社の1日の流れに差し替えます -->
+  <p class="smp" style="margin-bottom:2rem;color:#bbb;font-size:0.76rem;">※ここはサンプルです。実際には御社の1日の流れに差し替えます</p>
+  <div class="tl-wrap">
+    <div class="tl-row">
+      <div class="tl-left"><div class="tl-t">7:45</div><div class="tl-d"></div><div class="tl-l"></div></div>
+      <div class="tl-r"><h4>現場集合・朝礼・安全確認</h4><p>今日の作業内容、危険箇所、役割分担を全員で共有します。</p></div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-left"><div class="tl-t">8:00</div><div class="tl-d"></div><div class="tl-l"></div></div>
+      <div class="tl-r"><h4>作業開始（資材搬入・準備）</h4><p>未経験者は先輩の補助・資材の整理から。少しずつ作業を覚えます。</p></div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-left"><div class="tl-t">10:00</div><div class="tl-d"></div><div class="tl-l"></div></div>
+      <div class="tl-r"><h4>午前の休憩（15分）</h4><p>先輩からコツを教えてもらうのもこの時間。アットホームな職場です。</p></div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-left"><div class="tl-t">12:00</div><div class="tl-d"></div><div class="tl-l"></div></div>
+      <div class="tl-r"><h4>昼食・休憩（1時間）</h4><p>しっかり食べてリフレッシュ。チームで話す時間でもあります。</p></div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-left"><div class="tl-t">13:00</div><div class="tl-d"></div><div class="tl-l"></div></div>
+      <div class="tl-r"><h4>午後の作業（組立・解体・搬出）</h4><p>チーム連携で作業を進めます。慣れると担当できる範囲が広がります。</p></div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-left"><div class="tl-t">15:00</div><div class="tl-d"></div><div class="tl-l"></div></div>
+      <div class="tl-r"><h4>午後の休憩（15分）</h4><p>疲労を溜めないようこまめな休憩を全員で取ります。</p></div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-left"><div class="tl-t">17:00</div><div class="tl-d"></div><div class="tl-l"></div></div>
+      <div class="tl-r"><h4>片付け・終了・帰宅</h4><p>定時に上がれる日がほとんど。次の日に向けてゆっくり休めます。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Voices -->
+<section class="voices-sec" id="voices">
+  <div class="en-label">VOICES</div>
+  <h2 class="sec-h2">先輩スタッフの声</h2>
+  <p class="sec-desc">一緒に働く仲間たちの言葉を聞いてください。</p>
+  <!-- ※ここはサンプルです。実際には御社の社員の声・写真に差し替えます -->
+  <p class="smp" style="margin-bottom:2rem;color:#445;font-size:0.72rem;">※ここはサンプルです。実際には御社スタッフの写真・コメントに差し替えます</p>
+  <div class="voices-grid">
+    <div class="v-card">
+      <div class="v-top">
+        <!-- 顔写真ダミー（男性スタッフ）：実際には御社スタッフの写真に差し替えます -->
+        <img class="v-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="田中（仮名）の顔写真">
+        <div>
+          <div class="v-name">田中 健太（仮名）</div>
+          <div class="v-meta">入社3年目 ／ 足場組立</div>
+        </div>
+      </div>
+      <p class="v-text">最初は「自分にできるかな」と心配でしたが、先輩が一つひとつ丁寧に教えてくれました。今は職長補佐として後輩を指導しています。資格も2つ取得できました。</p>
+      <p class="v-smp">※ここはサンプルです。実際には御社スタッフの写真・コメントに差し替えます</p>
+    </div>
+    <div class="v-card">
+      <div class="v-top">
+        <!-- 顔写真ダミー（男性スタッフ）：実際には御社スタッフの写真に差し替えます -->
+        <img class="v-photo" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="佐藤（仮名）の顔写真">
+        <div>
+          <div class="v-name">佐藤 雄一（仮名）</div>
+          <div class="v-meta">入社5年目 ／ 職長補佐</div>
+        </div>
+      </div>
+      <p class="v-text">前職は休日が不規則でしたが、ここは年間125日しっかり休める。家族との時間が格段に増えました。給与も安定していて満足しています。</p>
+      <p class="v-smp">※ここはサンプルです。実際には御社スタッフの写真・コメントに差し替えます</p>
+    </div>
+    <div class="v-card">
+      <div class="v-top">
+        <!-- 顔写真ダミー（男性スタッフ）：実際には御社スタッフの写真に差し替えます -->
+        <img class="v-photo" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="山田（仮名）の顔写真">
+        <div>
+          <div class="v-name">山田 浩二（仮名）</div>
+          <div class="v-meta">入社1年目 ／ 補助作業員</div>
+        </div>
+      </div>
+      <p class="v-text">いろんな国籍のメンバーがいますが、チームワークを大切にする雰囲気があって、すぐに職場に馴染めました。困ったときは必ず誰かが助けてくれます。</p>
+      <p class="v-smp">※ここはサンプルです。実際には御社スタッフの写真・コメントに差し替えます</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-sec" id="faq">
+  <div class="en-label">FAQ</div>
+  <h2 class="sec-h2">よくある質問</h2>
+  <!-- ※ここはサンプルです。実際には御社のFAQに差し替えます -->
+  <p class="smp" style="margin-bottom:1.5rem;color:#bbb;font-size:0.76rem;">※ここはサンプルです。実際には御社のQ&Aに差し替えます</p>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-q-mark">Q</span>未経験でも採用してもらえますか？</div>
+      <div class="faq-a">はい、未経験歓迎です。入社後は資材の名前を覚えることや現場の片付け・先輩の補助からスタートしていただきます。段階的に技術を習得できる環境です。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-q-mark">Q</span>資格はなくても応募できますか？</div>
+      <div class="faq-a">できます。業務に必要な資格（足場作業主任者・玉掛け・高所作業車等）は入社後に会社の費用負担で取得いただけます。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-q-mark">Q</span>土日・祝日は本当に休めますか？</div>
+      <div class="faq-a">年間休日125日を実現しています。現場の都合でまれに土曜出勤をお願いすることがありますが、振替対応しています。年末年始・夏期・GWも確実に休めます。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-q-mark">Q</span>体力的にどれくらいきつい仕事ですか？</div>
+      <div class="faq-a">屋外の現場作業ですので体力は必要ですが、入社当初は無理のない作業から始めます。安全第一・チームワーク作業なので、一人に過度な負担がかかることはありません。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-q-mark">Q</span>多国籍の職場への不安があります。</div>
+      <div class="faq-a">業務上の基本言語は日本語です。国籍に関わらずチームワークと安全第一を共通の文化として大切にしており、互いに助け合える環境です。</div>
+    </div>
+  </div>
+</section>
+
+<!-- Recruiter -->
+<section class="rec-sec" id="recruiter">
+  <div class="en-label">RECRUITER</div>
+  <h2 class="sec-h2">採用担当からひとこと</h2>
+  <!-- ※ここはサンプルです。実際には採用担当者の写真・メッセージに差し替えます -->
+  <div class="rec-inner">
+    <!-- 顔写真ダミー（採用担当）：実際には採用担当者の写真に差し替えます -->
+    <img class="rec-photo" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=faces&q=80" alt="高泉（採用担当）の顔写真">
+    <div>
+      <div class="rec-name">高泉（総務部長 ／ 採用担当）</div>
+      <div class="rec-role">合同会社ハイテックコーポレーション</div>
+      <p class="rec-text">「足場の仕事はきつそう」「危険なのでは」——そう思って二の足を踏んでいる方にこそ来てほしいと思っています。当社は安全第一を徹底しており、未経験の方でも無理なく働き始められる環境があります。国籍・経験を問わず、まじめにチームで働ける方を歓迎します。まずはお気軽にご連絡ください。</p>
+      <p class="rec-smp">※ここはサンプルです。実際には採用担当者の写真・コメントに差し替えます</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec" id="entry">
+  <div class="cta-inner">
+    <h2>一緒に働いてみませんか？</h2>
+    <p>書類選考 → 面接（1回）→ 7日以内に結果通知。<br>まずはお気軽にメールまたはお電話でご連絡ください。</p>
+    <div class="cta-btns">
+      <a href="mailto:high-tech-b@bg-hightech.jp" class="btn-cta">メールで問い合わせる</a>
+      <a href="tel:0476858860" class="btn-cta-line">📞 0476-85-8860 に電話</a>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <strong>合同会社　ハイテックコーポレーション</strong><br>
+  〒270-1325 千葉県印西市竹袋1755-45<br>
+  TEL: 0476-85-8860　／　MAIL: high-tech-b@bg-hightech.jp
+</footer>
+
+<script>
+  const btn = document.getElementById('hamburger');
+  const nav = document.getElementById('spNav');
+  btn.addEventListener('click', () => nav.classList.toggle('open'));
+  nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => nav.classList.remove('open')));
+</script>
+</body>
+</html>
