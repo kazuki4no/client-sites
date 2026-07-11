@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>採用情報 | 印西設備工業株式会社</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#222;background:#fff}
+    img{max-width:100%;height:auto;display:block}
+    a{text-decoration:none;color:inherit}
+    :root{--black:#111;--orange:#f57c00;--deep:#1a1a2e;--light:#f7f7f7}
+
+    /* nav */
+    header{background:var(--black);position:sticky;top:0;z-index:100}
+    .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:60px}
+    .logo{color:#fff;font-size:1.05rem;font-weight:900;white-space:nowrap}
+    nav.pc-nav{display:flex;gap:24px}
+    nav.pc-nav a{color:#bbb;font-size:.88rem;transition:color .2s}
+    nav.pc-nav a:hover{color:#fff}
+    .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+    .hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px}
+    .mobile-menu{display:none;background:var(--black);flex-direction:column}
+    .mobile-menu a{color:#bbb;padding:14px 24px;font-size:.95rem;border-top:1px solid #333}
+    .mobile-menu.open{display:flex}
+    @media(max-width:768px){nav.pc-nav{display:none}.hamburger{display:flex}}
+
+    /* hero – LP型 大キャッチ＋CTA① */
+    .hero{background:var(--deep);min-height:80vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:80px 20px;position:relative;overflow:hidden}
+    .hero-img-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center;opacity:.25}
+    .hero-content{position:relative;z-index:1;max-width:760px}
+    .hero-tag{display:inline-block;background:var(--orange);color:#fff;font-size:.82rem;font-weight:700;padding:5px 18px;border-radius:20px;margin-bottom:20px}
+    .hero h1{color:#fff;font-size:clamp(2rem,7vw,3.8rem);font-weight:900;line-height:1.2;margin-bottom:20px}
+    .hero h1 em{color:var(--orange);font-style:normal}
+    .hero-body{color:#bbb;font-size:clamp(.9rem,3vw,1.1rem);line-height:1.8;margin-bottom:32px}
+    .btn-cta{display:inline-block;background:var(--orange);color:#fff;font-weight:900;font-size:1.05rem;padding:16px 44px;border-radius:50px;box-shadow:0 4px 16px rgba(245,124,0,.4);transition:transform .15s,box-shadow .15s}
+    .btn-cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(245,124,0,.5)}
+    .hero-caption{color:#888;font-size:.78rem;margin-top:12px}
+
+    /* trust bar */
+    .trust-bar{background:var(--orange);padding:18px 20px}
+    .trust-inner{max-width:1000px;margin:0 auto;display:flex;justify-content:center;gap:40px;flex-wrap:wrap}
+    .trust-item{color:#fff;font-size:.88rem;font-weight:700;display:flex;align-items:center;gap:8px}
+    .trust-item::before{content:'✓';font-size:1rem}
+
+    /* metrics */
+    .metrics{background:var(--black);padding:60px 20px}
+    .metrics-inner{max-width:900px;margin:0 auto}
+    .metrics h2{color:#fff;text-align:center;font-size:clamp(1.2rem,4vw,1.7rem);font-weight:900;margin-bottom:36px}
+    .bar-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .bar-item{}
+    .bar-label{color:#aaa;font-size:.82rem;margin-bottom:6px}
+    .bar-track{background:#333;border-radius:4px;height:24px;overflow:hidden;position:relative}
+    .bar-fill{height:100%;background:linear-gradient(90deg,var(--orange),#ffa040);border-radius:4px;transition:width .8s ease}
+    .bar-val{position:absolute;right:8px;top:50%;transform:translateY(-50%);color:#fff;font-size:.8rem;font-weight:700}
+    .metrics-note{color:#666;font-size:.72rem;text-align:center;margin-top:16px}
+    .sample-note{font-size:.72rem;color:#888;margin-top:8px;text-align:center}
+    @media(max-width:600px){.bar-grid{grid-template-columns:1fr}}
+
+    /* section */
+    .sec{padding:80px 20px}
+    .sec-inner{max-width:1000px;margin:0 auto}
+    .sec-title{font-size:clamp(1.3rem,4vw,1.9rem);font-weight:900;text-align:center;margin-bottom:8px}
+    .sec-sub{text-align:center;color:#888;font-size:.88rem;margin-bottom:8px}
+    .acc{display:block;width:48px;height:4px;background:var(--orange);margin:10px auto 36px}
+    .bg-dark{background:var(--light)}
+
+    /* problem → solution */
+    .ps-wrap{max-width:800px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:28px}
+    .ps-box{border-radius:12px;padding:24px}
+    .ps-box.problem{background:#ffeaea;border-left:4px solid #e53e3e}
+    .ps-box.solution{background:#e8f5e9;border-left:4px solid #2e7d32}
+    .ps-box h3{font-size:.95rem;font-weight:900;margin-bottom:12px}
+    .ps-box h3.red{color:#c53030}
+    .ps-box h3.green{color:#2e7d32}
+    .ps-box ul{list-style:none;font-size:.88rem;line-height:2}
+    .ps-box ul li::before{margin-right:6px}
+    .ps-box.problem ul li::before{content:'✗';color:#e53e3e}
+    .ps-box.solution ul li::before{content:'✔';color:#2e7d32}
+    @media(max-width:640px){.ps-wrap{grid-template-columns:1fr}}
+
+    /* merits */
+    .merits{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .merit{background:#fff;border:2px solid #eee;border-radius:12px;padding:24px 18px;text-align:center;transition:border-color .2s,box-shadow .2s}
+    .merit:hover{border-color:var(--orange);box-shadow:0 4px 16px rgba(245,124,0,.12)}
+    .merit-icon{font-size:2.4rem;margin-bottom:12px}
+    .merit h3{font-size:.95rem;font-weight:700;margin-bottom:8px;color:var(--black)}
+    .merit p{font-size:.84rem;color:#555;line-height:1.7}
+    @media(max-width:768px){.merits{grid-template-columns:1fr}}
+
+    /* interview */
+    .interviews{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+    .interview-card{background:#fff;border:1px solid #ddd;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+    .iv-img{width:100%;height:180px;object-fit:cover}
+    .iv-body{padding:18px}
+    .iv-name{font-weight:700;font-size:.9rem;color:var(--black);margin-bottom:2px}
+    .iv-role{font-size:.76rem;color:#888;margin-bottom:10px}
+    .iv-quote{font-size:.85rem;color:#444;line-height:1.7}
+    @media(max-width:640px){.interviews{grid-template-columns:1fr}}
+
+    /* req */
+    .req-table{width:100%;border-collapse:collapse;margin-bottom:12px}
+    .req-table tr:nth-child(even){background:#f9f9f9}
+    .req-table th,.req-table td{border:1px solid #ddd;padding:14px 16px;font-size:.9rem;vertical-align:top}
+    .req-table th{background:#f0f0f0;width:140px;font-weight:700;white-space:nowrap;color:var(--black)}
+    @media(max-width:640px){
+      .req-table,.req-table thead,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block}
+      .req-table th{width:100%;background:#e8e8e8}
+      .req-table td{padding-left:16px;margin-bottom:6px}
+    }
+
+    /* faq */
+    .faq-list{max-width:800px;margin:0 auto}
+    .faq-item{border-bottom:1px solid #eee;padding:18px 0}
+    .faq-q{display:flex;align-items:flex-start;gap:12px;font-weight:700;font-size:.95rem;color:var(--black)}
+    .faq-q::before{content:'Q';min-width:28px;height:28px;background:var(--orange);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:900;flex-shrink:0;margin-top:1px}
+    .faq-a{display:flex;align-items:flex-start;gap:12px;color:#555;font-size:.88rem;line-height:1.7;margin-top:10px}
+    .faq-a::before{content:'A';min-width:28px;height:28px;background:#fff3e0;color:var(--orange);border:2px solid var(--orange);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.82rem;font-weight:900;flex-shrink:0;margin-top:1px}
+
+    /* timeline */
+    .tl{max-width:700px;margin:0 auto}
+    .tl-row{display:flex;gap:20px;margin-bottom:24px}
+    .tl-time{min-width:70px;text-align:right;font-weight:700;color:var(--orange);font-size:.88rem;padding-top:2px}
+    .tl-bar{display:flex;flex-direction:column;align-items:center}
+    .tl-dot{width:14px;height:14px;background:var(--orange);border-radius:50%;flex-shrink:0}
+    .tl-line{width:2px;flex:1;background:#ddd;min-height:28px}
+    .tl-body{flex:1;padding-bottom:8px}
+    .tl-body h4{font-weight:700;font-size:.9rem;margin-bottom:4px}
+    .tl-body p{font-size:.84rem;color:#666;line-height:1.6}
+
+    /* cta mid – CTA② */
+    .cta-mid{background:linear-gradient(135deg,#1a1a2e,#2d2d44);padding:72px 20px;text-align:center}
+    .cta-mid h2{color:#fff;font-size:clamp(1.3rem,4vw,2rem);font-weight:900;margin-bottom:12px}
+    .cta-mid p{color:#aaa;font-size:.92rem;margin-bottom:28px;line-height:1.7}
+
+    /* cta bottom – CTA③ */
+    .cta-bottom{background:var(--orange);padding:72px 20px;text-align:center}
+    .cta-bottom h2{color:#fff;font-size:clamp(1.3rem,4vw,2rem);font-weight:900;margin-bottom:12px}
+    .cta-bottom p{color:rgba(255,255,255,.85);font-size:.92rem;margin-bottom:28px;line-height:1.7}
+    .btn-white{display:inline-block;background:#fff;color:var(--orange);font-weight:900;font-size:1.05rem;padding:16px 44px;border-radius:50px;box-shadow:0 4px 16px rgba(0,0,0,.15);transition:transform .15s}
+    .btn-white:hover{transform:translateY(-2px)}
+    .cta-note{color:rgba(255,255,255,.7);font-size:.78rem;margin-top:12px}
+
+    /* fixed CTA bar – mobile */
+    .fixed-bar{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--orange);padding:12px 16px;z-index:200;text-align:center}
+    .fixed-bar a{color:#fff;font-weight:900;font-size:.95rem}
+    @media(max-width:768px){.fixed-bar{display:block}}
+    .fixed-bar-pad{height:52px;display:none}
+    @media(max-width:768px){.fixed-bar-pad{display:block}}
+
+    footer{background:#111;color:#777;font-size:.82rem;padding:32px 20px;text-align:center;line-height:1.8}
+  </style>
+</head>
+<body>
+<header>
+  <div class="nav-inner">
+    <div class="logo">印西設備工業株式会社</div>
+    <nav class="pc-nav">
+      <a href="#about">会社について</a>
+      <a href="#merits">働く魅力</a>
+      <a href="#interview">社員の声</a>
+      <a href="#req">募集要項</a>
+      <a href="#apply">応募する</a>
+    </nav>
+    <button class="hamburger" id="ham" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-menu" id="mob">
+    <a href="#about">会社について</a>
+    <a href="#merits">働く魅力</a>
+    <a href="#interview">社員の声</a>
+    <a href="#req">募集要項</a>
+    <a href="#apply">応募する</a>
+  </nav>
+</header>
+
+<!-- Hero – CTA① -->
+<section class="hero">
+  <div class="hero-img-bg"></div>
+  <div class="hero-content">
+    <div class="hero-tag">配管工事スタッフ 募集中</div>
+    <h1>水道インフラを守る仕事。<br><em>月給30〜50万</em>・<em>年122日休み</em>。<br>未経験でもOK。</h1>
+    <p class="hero-body">官公庁の公共工事が中心。残業月平均10時間。<br>現場は必ず2人以上。印西市近郊・千葉県内のみ。</p>
+    <a href="#apply" class="btn-cta">まず採用情報を見てみる</a>
+    <p class="hero-caption">スクロールするだけで詳細を確認できます</p>
+  </div>
+</section>
+
+<!-- Trust bar -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item">土日祝休み（年122日）</div>
+    <div class="trust-item">月給30〜50万</div>
+    <div class="trust-item">未経験歓迎</div>
+    <div class="trust-item">創業46年・官公庁工事実績</div>
+    <div class="trust-item">2人以上体制で安心</div>
+  </div>
+</div>
+
+<!-- Metrics -->
+<section class="metrics" id="about">
+  <div class="metrics-inner">
+    <h2>業界比較で見る 印西設備工業の待遇</h2>
+    <div class="bar-grid">
+      <div class="bar-item">
+        <div class="bar-label">年間休日数（配管工事業界平均比）</div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:88%"></div>
+          <div class="bar-val">122日</div>
+        </div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label">月給水準（求人票ベース）</div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:82%"></div>
+          <div class="bar-val">30〜50万円</div>
+        </div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label">月平均残業時間の少なさ</div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:78%"></div>
+          <div class="bar-val">月10時間</div>
+        </div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label">勤続しやすい環境（継続年数の長さ）</div>
+        <div class="bar-track">
+          <div class="bar-fill" style="width:75%"></div>
+          <div class="bar-val">定年65歳・再雇用70歳</div>
+        </div>
+      </div>
+    </div>
+    <p class="metrics-note sample-note">※ここはサンプルです。数値は求人票に基づく参考値であり、実際には御社の最新情報に差し替えます</p>
+  </div>
+</section>
+
+<!-- Problem → Solution -->
+<section class="sec">
+  <div class="sec-inner">
+    <h2 class="sec-title" id="merits">「配管工事の求人を見ていて、こんな不安はありませんか？」</h2>
+    <span class="acc"></span>
+    <div class="ps-wrap">
+      <div class="ps-box problem">
+        <h3 class="red">他社での不安ポイント</h3>
+        <ul>
+          <li>休みが少なく身体がもたない</li>
+          <li>給料の上限が分からない</li>
+          <li>一人で現場に放り込まれそう</li>
+          <li>遠方の現場に転勤がある</li>
+          <li>残業が多く家族と会えない</li>
+        </ul>
+      </div>
+      <div class="ps-box solution">
+        <h3 class="green">印西設備工業の場合</h3>
+        <ul>
+          <li>年間122日・土日祝完全休み</li>
+          <li>月給30〜50万（求人票に明記）</li>
+          <li>基本的に2人以上で作業</li>
+          <li>現場は千葉県内・転勤なし</li>
+          <li>月平均残業10時間・定時退勤基本</li>
+        </ul>
+      </div>
+    </div>
+    <p class="sample-note" style="margin-top:16px">※ここはサンプルです。実際には御社の情報に差し替えます</p>
+  </div>
+</section>
+
+<!-- Merits -->
+<section class="sec bg-dark">
+  <div class="sec-inner">
+    <h2 class="sec-title">選ばれる3つの理由</h2>
+    <span class="acc"></span>
+    <div class="merits">
+      <div class="merit">
+        <div class="merit-icon">🏛️</div>
+        <h3>官公庁工事で収入が安定</h3>
+        <p>公共工事を主体とした安定受注。民間景気に左右されにくく、創業46年の実績が信頼を支えます。</p>
+      </div>
+      <div class="merit">
+        <div class="merit-icon">🗓️</div>
+        <h3>業界トップ水準の年122日休み</h3>
+        <p>土日祝完全休み・年末年始・年間122日。配管工事業界では際立って多い休日数です。</p>
+      </div>
+      <div class="merit">
+        <div class="merit-icon">👷</div>
+        <h3>2人以上体制で未経験でも安心</h3>
+        <p>一人作業は原則なし。先輩が横にいる環境で、未経験でもしっかりスキルを積めます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Interview -->
+<section class="sec" id="interview">
+  <div class="sec-inner">
+    <h2 class="sec-title">社員インタビュー</h2>
+    <p class="sec-sub">実際に働くスタッフの声を聞いてみてください</p>
+    <span class="acc"></span>
+    <div class="interviews">
+      <!-- 差し替え指示: 実際の社員写真・名前・コメントに置き換えてください -->
+      <div class="interview-card">
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=640&h=380&fit=crop&crop=faces&q=80" alt="社員" class="iv-img">
+        <div class="iv-body">
+          <div class="iv-name">鈴木 大輔（仮名）</div>
+          <div class="iv-role">配管工事スタッフ・入社4年目</div>
+          <p class="iv-quote">「前職は製造業でまったく別の仕事でした。でも2人体制なので最初から安心して現場に入れました。給料も想定以上でよかったです。」</p>
+          <p class="sample-note">※ここはサンプルです。実際の写真・コメントに差し替えます</p>
+        </div>
+      </div>
+      <div class="interview-card">
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=640&h=380&fit=crop&crop=faces&q=80" alt="社員" class="iv-img">
+        <div class="iv-body">
+          <div class="iv-name">中村 拓也（仮名）</div>
+          <div class="iv-role">配管工事スタッフ・入社9年目</div>
+          <p class="iv-quote">「官公庁の水道工事は地図に残る仕事です。9年続けられているのは、休みがちゃんと取れて家族と過ごせる環境があるからだと思っています。」</p>
+          <p class="sample-note">※ここはサンプルです。実際の写真・コメントに差し替えます</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA mid – CTA② -->
+<section class="cta-mid">
+  <h2>気になった方は、まず募集要項を確認してみてください</h2>
+  <p>応募の前にどんな待遇か・どんな仕事かを全部確認できます。<br>疑問はお気軽にお問い合わせください。</p>
+  <a href="#req" class="btn-cta">募集要項を確認する</a>
+</section>
+
+<!-- Req -->
+<section class="sec bg-dark" id="req">
+  <div class="sec-inner">
+    <h2 class="sec-title">募集要項</h2>
+    <span class="acc"></span>
+    <table class="req-table">
+      <tr><th>職種</th><td>配管工事スタッフ</td></tr>
+      <tr><th>仕事内容</th><td>官公庁発注の水道本管維持・修繕工事 / 新築・改修工事での配管作業・器具付工事 / 作業車運転 / 日報作成（パソコン）<br>※未経験でも先輩と一緒に作業しながら技術を習得できます</td></tr>
+      <tr><th>給与</th><td>月給 300,000〜500,000円（固定残業代30,000〜50,000円含む）<br>基本給 270,000〜450,000円 / 昇給あり / 賞与年2回（計3ヶ月分・前年度実績）</td></tr>
+      <tr><th>就業時間</th><td>8:00〜17:00 / 休憩90分 / 月平均時間外10時間</td></tr>
+      <tr><th>休日</th><td>土日祝・年末年始 / 年間休日122日 / 有給休暇（6ヶ月後10日〜）</td></tr>
+      <tr><th>勤務地</th><td>印西市近郊の工事現場（千葉県内が中心） / マイカー通勤可・駐車場あり / 転勤なし</td></tr>
+      <tr><th>必須資格</th><td>普通自動車免許（AT限定不可）</td></tr>
+      <tr><th>歓迎資格</th><td>2級管工事施工管理技士 / 準中型・中型自動車免許（配管工事経験者優遇）</td></tr>
+      <tr><th>福利厚生</th><td>雇用・労災・健康・厚生年金保険 / 退職金共済・退職金制度 / 資格手当 / 通勤手当（実費・上限10,000円）/ 空調服・飲料水支給 / 定年65歳・再雇用70歳まで</td></tr>
+      <tr><th>採用人数</th><td>2名（増員）</td></tr>
+      <tr><th>選考</th><td>書類選考 → 面接1回 → 結果通知（7日以内）</td></tr>
+    </table>
+    <p class="sample-note">※ここはサンプルです。実際には御社の最新条件に差し替えます</p>
+  </div>
+</section>
+
+<!-- Timeline -->
+<section class="sec">
+  <div class="sec-inner">
+    <h2 class="sec-title">社員の1日の流れ</h2>
+    <span class="acc"></span>
+    <div class="tl">
+      <div class="tl-row">
+        <div class="tl-time">8:00</div>
+        <div class="tl-bar"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body"><h4>朝礼・出発準備</h4><p>事務所で安全確認・工事内容の確認。材料・道具を積み込んで出発。</p></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">9:00</div>
+        <div class="tl-bar"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body"><h4>午前の現場作業</h4><p>先輩と2人以上で水道本管の維持修繕や配管作業。官公庁工事は計画的に進みます。</p></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">12:00</div>
+        <div class="tl-bar"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body"><h4>昼休み（90分）</h4><p>しっかり休憩。現場近くの食堂やコンビニで。</p></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">13:30</div>
+        <div class="tl-bar"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body"><h4>午後の現場作業</h4><p>配管の続き・器具付・仕上げ確認など。定時退勤を目指して進めます。</p></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">16:00</div>
+        <div class="tl-bar"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body"><h4>片付け・撤収</h4><p>道具・材料を車に積み込み、安全確認して出発。</p></div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-time">17:00</div>
+        <div class="tl-bar"><div class="tl-dot"></div></div>
+        <div class="tl-body"><h4>日報作成・退勤</h4><p>事務所で作業日報をパソコン入力して退勤。定時が基本です。</p></div>
+      </div>
+    </div>
+    <p class="sample-note" style="margin-top:20px">※ここはサンプルです。実際には御社の1日の流れに差し替えます</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec bg-dark">
+  <div class="sec-inner">
+    <h2 class="sec-title">よくある質問</h2>
+    <span class="acc"></span>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">配管工事の経験がまったくなくても大丈夫ですか？</div>
+        <div class="faq-a">はい、未経験歓迎です。基本的に2人以上で作業するので、先輩と一緒に技術を習得できます。焦らずステップアップできる環境を整えています。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">転勤や遠方への出張はありますか？</div>
+        <div class="faq-a">転勤はありません。現場は印西市近郊がほとんどで、ほぼ千葉県内です。マイカー通勤可・駐車場ありです。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">残業が多い職場ではないか心配です。</div>
+        <div class="faq-a">月平均10時間程度です。官公庁の公共工事は工期管理がしっかりしていて、過度な残業が発生しにくい環境です。固定残業代を超えた分は追加支給します。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">普通自動車免許しかありませんが問題ありませんか？</div>
+        <div class="faq-a">普通自動車免許（AT限定不可）があれば応募可能です。準中型・中型免許は「あれば尚可」の扱いで、入社後に取得を目指す方も歓迎しています。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">選考の流れを教えてください。</div>
+        <div class="faq-a">書類提出（郵送・メール可）→書類選考→面接（1回）→結果通知（7日以内）。ハローワーク経由の場合は紹介状が必要な場合があります。</div>
+      </div>
+    </div>
+    <p class="sample-note" style="margin-top:20px">※ここはサンプルです。実際には御社の最新情報に差し替えます</p>
+  </div>
+</section>
+
+<!-- CTA bottom – CTA③ -->
+<section class="cta-bottom" id="apply">
+  <h2>公共インフラを支える仕事に<br>挑戦してみませんか</h2>
+  <p>配管工事経験者優遇・未経験者も歓迎。<br>まずはお気軽にご連絡ください。</p>
+  <a href="mailto:info@inzaisk.jp" class="btn-white">メールで問い合わせ・応募する</a>
+  <p class="cta-note">ハローワーク経由の場合は紹介状が必要な場合があります / TEL: 0476-42-3792</p>
+</section>
+
+<div class="fixed-bar-pad"></div>
+<div class="fixed-bar">
+  <a href="#apply">今すぐ応募・お問い合わせはこちら ▶</a>
+</div>
+
+<footer>
+  <p>印西設備工業　株式会社</p>
+  <p>〒270-1367 千葉県印西市浦部1366-1</p>
+  <p>TEL: 0476-42-3792　E-mail: info@inzaisk.jp</p>
+</footer>
+
+<script>
+  const ham=document.getElementById('ham'),mob=document.getElementById('mob');
+  ham.addEventListener('click',()=>mob.classList.toggle('open'));
+  mob.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mob.classList.remove('open')));
+</script>
+</body>
+</html>
