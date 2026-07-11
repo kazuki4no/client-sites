@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報LP | 有限会社 丸千金属工業所</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#1a1a2e;line-height:1.7}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+:root{
+  --dark:#152238;
+  --navy:#1e3a5f;
+  --orange:#f39c12;
+  --orange-dark:#d68910;
+  --light:#f4f7fc;
+  --white:#ffffff;
+  --gray:#666;
+}
+
+/* ヘッダー */
+header{background:var(--dark);position:sticky;top:0;z-index:200;box-shadow:0 2px 10px rgba(0,0,0,.4)}
+.header-inner{max-width:960px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:58px}
+.logo{color:#fff;font-size:clamp(0.8rem,2.2vw,1rem);font-weight:700}
+nav{display:flex;gap:20px}
+nav a{color:rgba(255,255,255,.8);font-size:0.82rem;transition:color .2s}
+nav a:hover{color:#fff}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px}
+.hamburger span{width:22px;height:2px;background:#fff;border-radius:2px;display:block}
+.nav-menu{display:flex;gap:20px}
+@media(max-width:768px){
+  .hamburger{display:flex}
+  .nav-menu{display:none;position:fixed;top:58px;left:0;right:0;background:var(--dark);flex-direction:column;gap:0;padding:8px 0}
+  .nav-menu.open{display:flex}
+  .nav-menu a{padding:14px 20px;border-bottom:1px solid rgba(255,255,255,.1)}
+}
+
+/* ヒーロー（CTA1） */
+.hero{background:linear-gradient(135deg,var(--dark) 0%,var(--navy) 100%);padding:80px 20px}
+.hero-inner{max-width:800px;margin:0 auto;text-align:center}
+.hero-badge{display:inline-flex;gap:8px;margin-bottom:20px;flex-wrap:wrap;justify-content:center}
+.badge{background:rgba(255,255,255,.12);color:rgba(255,255,255,.9);font-size:0.8rem;padding:4px 14px;border-radius:20px;border:1px solid rgba(255,255,255,.25)}
+.badge.hot{background:var(--orange);border-color:var(--orange);color:#fff;font-weight:700}
+.hero h1{color:#fff;font-size:clamp(1.9rem,5.5vw,3.2rem);font-weight:900;line-height:1.25;margin-bottom:16px}
+.hero h1 .accent{color:var(--orange)}
+.hero-sub{color:rgba(255,255,255,.8);font-size:clamp(0.9rem,2.2vw,1.1rem);margin-bottom:12px}
+.hero-note{color:rgba(255,255,255,.55);font-size:0.83rem;margin-bottom:36px}
+.btn-cta{display:inline-block;background:var(--orange);color:#fff;font-weight:900;font-size:1.05rem;padding:16px 48px;border-radius:4px;box-shadow:0 4px 16px rgba(243,156,18,.4);transition:background .2s}
+.btn-cta:hover{background:var(--orange-dark)}
+.btn-cta-sub{display:inline-block;margin-top:16px;color:rgba(255,255,255,.7);font-size:0.85rem;text-decoration:underline}
+
+/* 数字バー */
+.numbers{background:var(--orange);padding:36px 20px}
+.numbers-inner{max-width:900px;margin:0 auto;display:flex;gap:24px;justify-content:center;flex-wrap:wrap}
+.num-item{text-align:center;min-width:140px}
+.num-big{font-size:clamp(2rem,5vw,3rem);font-weight:900;color:#fff;line-height:1}
+.num-unit{font-size:0.9rem;color:rgba(255,255,255,.85);font-weight:700}
+.num-label{font-size:0.8rem;color:rgba(255,255,255,.8);margin-top:4px}
+.num-sample{font-size:0.7rem;color:rgba(255,255,255,.5);margin-top:2px}
+
+/* セクション */
+section.lp{padding:64px 20px}
+section.lp.bg{background:var(--light)}
+.lp-inner{max-width:800px;margin:0 auto}
+.lp-label{font-size:0.72rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--orange);margin-bottom:6px}
+.lp-title{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:900;line-height:1.3;margin-bottom:12px}
+.lp-lead{color:var(--gray);font-size:0.93rem;line-height:1.8;margin-bottom:36px}
+.sample-note{color:#bbb;font-size:0.75rem;margin-top:8px;display:block}
+
+/* 3つの理由 */
+.reason-list{display:flex;flex-direction:column;gap:32px}
+.reason-item{display:grid;grid-template-columns:120px 1fr;gap:24px;align-items:start;background:#fff;border-radius:10px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+@media(max-width:600px){.reason-item{grid-template-columns:1fr}}
+.reason-img{border-radius:8px;overflow:hidden}
+.reason-img img{width:120px;height:120px;object-fit:cover;border-radius:8px}
+@media(max-width:600px){.reason-img img{width:100%;height:160px}}
+.reason-num{font-size:0.75rem;font-weight:700;color:var(--orange);letter-spacing:.1em;margin-bottom:4px}
+.reason-title{font-size:1.05rem;font-weight:700;margin-bottom:8px}
+.reason-text{color:var(--gray);font-size:0.88rem;line-height:1.75}
+
+/* 先輩インタビュー */
+.interview-list{display:flex;flex-direction:column;gap:24px}
+.interview-card{display:flex;gap:20px;background:#fff;border-left:4px solid var(--orange);border-radius:0 8px 8px 0;padding:24px}
+@media(max-width:600px){.interview-card{flex-direction:column}}
+.interview-img{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.interview-name{font-weight:700;font-size:0.95rem;margin-bottom:2px}
+.interview-meta{color:var(--gray);font-size:0.8rem;margin-bottom:10px}
+.interview-q{color:var(--orange);font-weight:700;font-size:0.85rem;margin-bottom:4px}
+.interview-a{font-size:0.88rem;color:#444;line-height:1.75}
+
+/* タイムライン */
+.tl-wrap{position:relative;padding-left:32px}
+.tl-wrap::before{content:'';position:absolute;left:10px;top:0;bottom:0;width:2px;background:var(--orange)}
+.tl-row{position:relative;margin-bottom:28px}
+.tl-dot{position:absolute;left:-28px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:2px solid #fff;box-shadow:0 0 0 2px var(--orange)}
+.tl-time{font-size:0.8rem;font-weight:700;color:var(--orange);margin-bottom:2px}
+.tl-head{font-weight:700;font-size:0.95rem;margin-bottom:4px}
+.tl-body{color:var(--gray);font-size:0.87rem;line-height:1.65}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:0}
+details{border-bottom:1px solid #dde3ef}
+details:first-of-type{border-top:1px solid #dde3ef}
+summary{padding:18px 16px;font-weight:700;font-size:0.93rem;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center}
+summary::after{content:"＋";color:var(--orange);font-size:1.1rem}
+details[open] summary::after{content:"－"}
+.faq-body{padding:4px 16px 18px;color:#444;font-size:0.88rem;line-height:1.75}
+
+/* 募集要項 */
+.spec-grid{display:flex;flex-direction:column;gap:0;border:1px solid #dde3ef;border-radius:8px;overflow:hidden;background:#fff}
+.spec-row{display:grid;grid-template-columns:140px 1fr}
+.spec-row:not(:last-child){border-bottom:1px solid #dde3ef}
+.spec-th{background:var(--dark);color:#fff;padding:14px 16px;font-size:0.87rem;font-weight:700}
+.spec-td{padding:14px 16px;font-size:0.88rem;color:#333;line-height:1.65}
+@media(max-width:600px){
+  .spec-row{grid-template-columns:1fr}
+  .spec-th{padding-bottom:4px}
+  .spec-td{padding-top:4px}
+}
+
+/* CTA中盤（CTA2） */
+.cta-mid{background:var(--dark);padding:52px 20px;text-align:center}
+.cta-mid h2{color:#fff;font-size:clamp(1.3rem,3.5vw,1.9rem);font-weight:900;margin-bottom:12px}
+.cta-mid p{color:rgba(255,255,255,.75);margin-bottom:28px;font-size:0.93rem}
+
+/* 最終CTA（CTA3） */
+.cta-final{background:linear-gradient(135deg,var(--dark),var(--navy));padding:72px 20px;text-align:center}
+.cta-final h2{color:#fff;font-size:clamp(1.5rem,4vw,2.2rem);font-weight:900;margin-bottom:12px}
+.cta-final p{color:rgba(255,255,255,.78);margin-bottom:32px;font-size:0.95rem}
+.cta-subtext{color:rgba(255,255,255,.55);font-size:0.82rem;margin-top:16px}
+
+/* スマホ固定CTAバー */
+.fixed-bar{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--orange);z-index:300;padding:12px 16px}
+.fixed-bar a{display:block;color:#fff;font-weight:900;font-size:0.95rem;text-align:center}
+@media(max-width:768px){.fixed-bar{display:block}}
+
+/* フッター */
+footer{background:#0d1a2b;color:rgba(255,255,255,.55);font-size:0.82rem;padding:28px 20px;text-align:center;padding-bottom:80px}
+@media(min-width:769px){footer{padding-bottom:28px}}
+footer p{line-height:1.8}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">有限会社 丸千金属工業所 採用情報</div>
+    <button class="hamburger" id="hamburger" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav-menu" id="navMenu">
+      <a href="#reasons">選ばれる理由</a>
+      <a href="#voices">先輩の声</a>
+      <a href="#specs">募集要項</a>
+      <a href="#apply">応募する</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ヒーロー（CTA1） -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span class="badge hot">未経験歓迎</span>
+      <span class="badge">正社員</span>
+      <span class="badge">八千代市</span>
+      <span class="badge">週休2日</span>
+    </div>
+    <h1>機械が初めてでも、<br><span class="accent">一から教えます。</span></h1>
+    <p class="hero-sub">NC旋盤・マシニングセンターで医療機器・自動車部品などを手がける<br>金属加工の会社で、正社員として長く活躍しませんか。</p>
+    <p class="hero-note">昭和33年創業・千葉県八千代市・従業員30名の家族的な職場です</p>
+    <a href="#apply" class="btn-cta" id="apply">採用情報を見る</a><br>
+    <a href="#specs" class="btn-cta-sub">まず募集要項を確認する</a>
+  </div>
+</section>
+
+<!-- 数字で見る会社 -->
+<div class="numbers">
+  <!-- ※ここはサンプルです。実際には御社の実績数値に差し替えます -->
+  <div class="numbers-inner">
+    <div class="num-item">
+      <div class="num-big">68<span class="num-unit">年</span></div>
+      <div class="num-label">創業年数（昭和33年〜）</div>
+      <div class="num-sample">※サンプル</div>
+    </div>
+    <div class="num-item">
+      <div class="num-big">30<span class="num-unit">名</span></div>
+      <div class="num-label">社員数（全体）</div>
+      <div class="num-sample">※サンプル</div>
+    </div>
+    <div class="num-item">
+      <div class="num-big">105<span class="num-unit">日</span></div>
+      <div class="num-label">年間休日</div>
+      <div class="num-sample">※サンプル</div>
+    </div>
+    <div class="num-item">
+      <div class="num-big">2<span class="num-unit">回</span></div>
+      <div class="num-label">年間賞与</div>
+      <div class="num-sample">※サンプル</div>
+    </div>
+  </div>
+</div>
+
+<!-- 3つの理由 -->
+<section class="lp bg" id="reasons">
+  <div class="lp-inner">
+    <div class="lp-label">WHY MARUSEN</div>
+    <h2 class="lp-title">丸千を選ぶ3つの理由</h2>
+    <p class="lp-lead">「未経験だから不安」という気持ちは当然です。それでも選んでもらえる理由をまとめました。</p>
+    <!-- ※ここはサンプルです。実際には御社の強みに差し替えます -->
+    <div class="reason-list">
+      <div class="reason-item">
+        <div class="reason-img"><img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=240&h=240&fit=crop&q=80" alt="製造・加工（サンプル）"></div>
+        <div>
+          <div class="reason-num">REASON 01</div>
+          <div class="reason-title">「機械は難しそう」はまずは置いておいて大丈夫</div>
+          <p class="reason-text">NC旋盤やマシニングセンターという言葉に身構える方が多いですが、入社後は基礎の操作から丁寧に教えます。現在活躍しているメンバーも、最初はまったくの未経験でした。「ものを作ることが好き」という気持ちがあれば十分です。</p>
+          <span class="sample-note">※ここはサンプルです。実際には御社の内容に差し替えます</span>
+        </div>
+      </div>
+      <div class="reason-item">
+        <div class="reason-img"><img src="https://images.unsplash.com/photo-1567427017947-545c5f8d16ad?w=240&h=240&fit=crop&q=80" alt="多種部品加工（サンプル）"></div>
+        <div>
+          <div class="reason-num">REASON 02</div>
+          <div class="reason-title">医療機器から自動車部品まで、幅広い技術が身につく</div>
+          <p class="reason-text">当社で加工する部品は、医療機器・自動車・コンプレッサー・カメラなど、生活と産業を支える多彩な製品に使われます。ひとつの技術にとどまらず、幅広い経験を積むことで、長く活躍できる技術者として成長できます。</p>
+          <span class="sample-note">※ここはサンプルです。実際には御社の内容に差し替えます</span>
+        </div>
+      </div>
+      <div class="reason-item">
+        <div class="reason-img"><img src="https://images.unsplash.com/photo-1605792657660-596af9009e82?w=240&h=240&fit=crop&q=80" alt="少人数職場（サンプル）"></div>
+        <div>
+          <div class="reason-num">REASON 03</div>
+          <div class="reason-title">30人の職場だから、誰もが声をかけやすい</div>
+          <p class="reason-text">大きな工場ではないので、困ったことはすぐに先輩や上司に聞けます。昇給・賞与制度も整っており、長く安心して働ける環境づくりを会社として大切にしています。近隣住居への入居相談も可能です。</p>
+          <span class="sample-note">※ここはサンプルです。実際には御社の内容に差し替えます</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA中盤（CTA2） -->
+<div class="cta-mid">
+  <h2>「話を聞いてみたい」だけでも大丈夫です</h2>
+  <p>選考はまず面接1回。気軽にお問い合わせください。</p>
+  <a href="tel:047-450-1333" class="btn-cta">☎ 047-450-1333</a>
+</div>
+
+<!-- 先輩インタビュー -->
+<section class="lp" id="voices">
+  <div class="lp-inner">
+    <div class="lp-label">STAFF INTERVIEW</div>
+    <h2 class="lp-title">先輩スタッフに聞いてみました</h2>
+    <p class="lp-lead">実際に働く仲間のリアルな声を紹介します。</p>
+    <!-- ※ここはサンプルです。実際には御社社員の写真・コメントに差し替えます -->
+    <div class="interview-list">
+      <div class="interview-card">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=160&h=160&fit=crop&crop=faces&q=80" alt="田中さん（サンプル）" class="interview-img">
+        <div>
+          <div class="interview-name">田中 誠さん（仮名） / 入社3年目</div>
+          <div class="interview-meta">加工オペレーター</div>
+          <div class="interview-q">入社のきっかけは？</div>
+          <p class="interview-a">ものを作ることが昔から好きで、未経験でも歓迎してくれる求人を探していました。最初は機械の操作が全くわからなかったですが、先輩に一つひとつ教えてもらい、今では一人で担当ラインを持てるようになりました。</p>
+          <span class="sample-note">※ここはサンプルです。実際には御社社員の写真・コメントに差し替えます</span>
+        </div>
+      </div>
+      <div class="interview-card">
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=160&h=160&fit=crop&crop=faces&q=80" alt="佐藤さん（サンプル）" class="interview-img">
+        <div>
+          <div class="interview-name">佐藤 健一さん（仮名） / 入社7年目</div>
+          <div class="interview-meta">加工オペレーター（シニアスタッフ）</div>
+          <div class="interview-q">今のやりがいは？</div>
+          <p class="interview-a">医療機器に使われる部品を加工するとき、精度への責任感とやりがいを強く感じます。昇給もあり、技術が上がるほど給料も上がっていく実感があって、長く勤めようと思えます。</p>
+          <span class="sample-note">※ここはサンプルです。実際には御社社員の写真・コメントに差し替えます</span>
+        </div>
+      </div>
+      <div class="interview-card">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=160&h=160&fit=crop&crop=faces&q=80" alt="山田さん（サンプル）" class="interview-img">
+        <div>
+          <div class="interview-name">山田 恵さん（仮名） / 入社5年目</div>
+          <div class="interview-meta">検査スタッフ</div>
+          <div class="interview-q">職場の雰囲気は？</div>
+          <p class="interview-a">女性スタッフも7名いて、働きやすい環境です。少人数なのでみんなの顔が分かって、ちょっとしたことも話しやすい雰囲気。困ったことはすぐ聞けるのが安心です。</p>
+          <span class="sample-note">※ここはサンプルです。実際には御社社員の写真・コメントに差し替えます</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section class="lp bg" id="timeline">
+  <div class="lp-inner">
+    <div class="lp-label">DAILY SCHEDULE</div>
+    <h2 class="lp-title">1日の流れ（加工オペレーターの例）</h2>
+    <p class="lp-lead">入社後のイメージがつかめるよう、1日の流れをご紹介します。</p>
+    <!-- ※ここはサンプルです。実際には御社の業務スケジュールに差し替えます -->
+    <div class="tl-wrap">
+      <div class="tl-row"><div class="tl-dot"></div><div class="tl-time">8:00</div><div class="tl-head">出社・機械点検</div><p class="tl-body">設備の安全確認と当日の加工品・プログラムを確認します。</p><span class="sample-note">※サンプルです</span></div>
+      <div class="tl-row"><div class="tl-dot"></div><div class="tl-time">8:10</div><div class="tl-head">朝礼・作業分担確認</div><p class="tl-body">チームで今日の生産計画を共有し、安全への意識を高めます。</p><span class="sample-note">※サンプルです</span></div>
+      <div class="tl-row"><div class="tl-dot"></div><div class="tl-time">8:30</div><div class="tl-head">加工作業（午前）</div><p class="tl-body">NC旋盤・マシニングセンターを操作し精密部品を加工します。</p><span class="sample-note">※サンプルです</span></div>
+      <div class="tl-row"><div class="tl-dot"></div><div class="tl-time">12:10</div><div class="tl-head">昼休み（70分）</div><p class="tl-body">休憩室でリフレッシュ。仲間との会話が一息になります。</p><span class="sample-note">※サンプルです</span></div>
+      <div class="tl-row"><div class="tl-dot"></div><div class="tl-time">13:20</div><div class="tl-head">加工作業（午後）・検査</div><p class="tl-body">加工を続けながら、完成品の精度検査・測定を行います。</p><span class="sample-note">※サンプルです</span></div>
+      <div class="tl-row"><div class="tl-dot"></div><div class="tl-time">16:30</div><div class="tl-head">後片付け・翌日準備</div><p class="tl-body">機械の清掃と翌日の素材・プログラムを段取りします。</p><span class="sample-note">※サンプルです</span></div>
+      <div class="tl-row"><div class="tl-dot"></div><div class="tl-time">17:00</div><div class="tl-head">退社（柔軟に対応）</div><p class="tl-body">急ぎの案件がなければ定時退社が基本。就業時間は相談可能です。</p><span class="sample-note">※サンプルです</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="lp" id="faq">
+  <div class="lp-inner">
+    <div class="lp-label">FAQ</div>
+    <h2 class="lp-title">よくある質問</h2>
+    <!-- ※ここはサンプルです。実際には御社の回答に差し替えます -->
+    <div class="faq-list">
+      <details>
+        <summary>機械を触ったことがないのですが大丈夫ですか？</summary>
+        <div class="faq-body">大丈夫です。未経験者でも安心できるよう、基礎から段階を追って指導します。現在活躍しているメンバーの多くも未経験スタートです。<span class="sample-note">※サンプルです。実際には御社回答に差し替えます</span></div>
+      </details>
+      <details>
+        <summary>選考の流れを教えてください。</summary>
+        <div class="faq-body">ハローワーク紹介状・履歴書・職務経歴書を面接当日にお持ちいただきます。書類選考なし・面接1回で、結果は7日以内にお電話でご連絡します。<span class="sample-note">※サンプルです。実際には御社回答に差し替えます</span></div>
+      </details>
+      <details>
+        <summary>必要な資格・学歴はありますか？</summary>
+        <div class="faq-body">学歴・資格ともに不問です。ものづくりへの興味と真面目に取り組む姿勢があれば歓迎します。<span class="sample-note">※サンプルです</span></div>
+      </details>
+      <details>
+        <summary>残業はどのくらいありますか？</summary>
+        <div class="faq-body">月平均30時間程度です。お客様の受注状況により変動しますが、就業時間は柔軟に対応します。<span class="sample-note">※サンプルです</span></div>
+      </details>
+      <details>
+        <summary>マイカー通勤は可能ですか？</summary>
+        <div class="faq-body">可能です。駐車場は無料でご利用いただけます。バス利用の場合は「桑橋」停から徒歩5分です。<span class="sample-note">※サンプルです</span></div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="lp bg" id="specs">
+  <div class="lp-inner">
+    <div class="lp-label">REQUIREMENTS</div>
+    <h2 class="lp-title">募集要項</h2>
+    <div class="spec-grid">
+      <div class="spec-row"><div class="spec-th">職種</div><div class="spec-td">加工オペレーター《未経験応募可》</div></div>
+      <div class="spec-row"><div class="spec-th">仕事内容</div><div class="spec-td">NC旋盤・マシニングセンター等による精密部品の加工・検査<br>（医療機器・自動車部品・コンプレッサー・カメラ部品など）</div></div>
+      <div class="spec-row"><div class="spec-th">雇用形態</div><div class="spec-td">正社員</div></div>
+      <div class="spec-row"><div class="spec-th">給与</div><div class="spec-td">月給 200,640円〜310,000円（経験・技術により決定）<br>技術手当10,000円 / 皆勤手当2,000円 / 通勤手当（上限月15,000円）</div></div>
+      <div class="spec-row"><div class="spec-th">昇給・賞与</div><div class="spec-td">昇給あり（年1回）／賞与年2回（実績：30,000〜400,000円）</div></div>
+      <div class="spec-row"><div class="spec-th">就業時間</div><div class="spec-td">8:00〜17:00（休憩70分）※就業時間は柔軟に対応</div></div>
+      <div class="spec-row"><div class="spec-th">休日・休暇</div><div class="spec-td">週休2日制（日曜＋他）／年間休日105日<br>年末年始・夏季休暇 / 有給休暇（6ヶ月後10日）/ 育児休業取得実績あり</div></div>
+      <div class="spec-row"><div class="spec-th">勤務地</div><div class="spec-td">千葉県八千代市桑橋685-2<br>東葉高速線 八千代緑が丘駅よりバス → 「桑橋」停徒歩5分</div></div>
+      <div class="spec-row"><div class="spec-th">待遇</div><div class="spec-td">社会保険完備 / マイカー通勤可・駐車場無料<br>近隣住居の入居相談可能（単身用あり）</div></div>
+      <div class="spec-row"><div class="spec-th">応募資格</div><div class="spec-td">学歴不問・資格不問・未経験歓迎 / 64歳以下（定年65歳のため）</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 最終CTA（CTA3） -->
+<section class="cta-final" id="apply">
+  <h2>ご応募・ご相談はお気軽に</h2>
+  <p>「話を聞いてみたい」だけのご連絡も大歓迎です。<br>工場見学なども随時受け付けています。</p>
+  <a href="tel:047-450-1333" class="btn-cta">☎ 047-450-1333（採用担当:横山）</a>
+  <p class="cta-subtext">または E-mail: ty@marusenkinzoku.jp まで</p>
+</section>
+
+<!-- フッター -->
+<footer>
+  <div>
+    <p>有限会社 丸千金属工業所</p>
+    <p>〒276-0007 千葉県八千代市桑橋685-2</p>
+    <p>TEL: 047-450-1333 / E-mail: ty@marusenkinzoku.jp</p>
+  </div>
+</footer>
+
+<!-- スマホ固定CTAバー -->
+<div class="fixed-bar">
+  <a href="tel:047-450-1333">☎ タップして電話する（採用担当:横山）</a>
+</div>
+
+<script>
+document.getElementById('hamburger').addEventListener('click',function(){
+  document.getElementById('navMenu').classList.toggle('open');
+});
+</script>
+</body>
+</html>
