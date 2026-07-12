@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>採用情報 | 有限会社 岩城造園土木</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;color:#1a1a1a;line-height:1.7;padding-bottom:70px;}
+img{max-width:100%;height:auto;display:block;}
+a{color:inherit;text-decoration:none;}
+
+:root{
+  --forest:#1a3d1a;
+  --forest-mid:#285228;
+  --forest-light:#e5f0e5;
+  --gold:#c8a500;
+  --gold-light:#fff8dc;
+  --gray:#f5f5f3;
+  --border:#d4e4d4;
+}
+
+/* ヘッダー */
+.site-header{display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 1.2rem;background:var(--forest);position:sticky;top:0;z-index:100;}
+.brand{color:#fff;font-weight:700;font-size:.95rem;line-height:1.3;}
+.brand span{display:block;font-size:.62rem;font-weight:400;color:rgba(255,255,255,.65);}
+.site-nav{display:flex;gap:1rem;align-items:center;}
+.site-nav a{font-size:.8rem;color:rgba(255,255,255,.8);}
+.site-nav a:hover{color:#fff;}
+.nav-cta{background:var(--gold);color:#fff!important;padding:.35rem .9rem;border-radius:4px;font-weight:700;}
+.hamburger{display:none;background:none;border:0;font-size:1.7rem;line-height:1;cursor:pointer;color:#fff;}
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:var(--forest);padding:.5rem 1rem;}
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.8rem 0;border-bottom:1px solid rgba(255,255,255,.12);font-size:1rem;}
+}
+
+/* ヒーロー */
+.hero{background:var(--forest);padding:4rem 6% 4.5rem;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;right:-60px;top:-60px;width:400px;height:400px;
+  background:rgba(200,165,0,.08);border-radius:50%;}
+.hero-eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.14em;color:var(--gold);margin-bottom:.8rem;}
+.hero-catch{font-size:clamp(1.8rem,5.5vw,3.2rem);font-weight:900;color:#fff;line-height:1.25;margin-bottom:1rem;}
+.hero-catch em{color:var(--gold);font-style:normal;}
+.hero-lead{font-size:clamp(.9rem,2.5vw,1.05rem);color:rgba(255,255,255,.82);max-width:520px;margin-bottom:2rem;}
+.hero-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem;}
+.pill{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);color:#fff;
+  font-size:.78rem;padding:.3rem .75rem;border-radius:50px;}
+.pill.gold{background:var(--gold);border-color:var(--gold);}
+.btn-gold{display:inline-block;background:var(--gold);color:#fff;font-weight:700;
+  padding:1rem 2.5rem;border-radius:6px;font-size:1.05rem;transition:.2s;}
+.btn-gold:hover{background:#a68900;}
+@media(max-width:768px){.hero{padding:3rem 1rem 3.5rem;}}
+
+/* 数字バー */
+.stats{background:#fff;padding:2.5rem 6%;}
+.stats-grid{display:flex;flex-wrap:wrap;gap:0;justify-content:center;}
+.stat-item{flex:1;min-width:180px;text-align:center;padding:1.5rem 1rem;border-right:1px solid var(--border);}
+.stat-item:last-child{border-right:none;}
+.stat-num{font-size:clamp(1.8rem,5vw,2.8rem);font-weight:900;color:var(--forest);}
+.stat-unit{font-size:1rem;font-weight:700;color:var(--forest);}
+.stat-label{font-size:.8rem;color:#666;margin-top:.3rem;}
+.stat-note{font-size:.7rem;color:#aaa;}
+@media(max-width:768px){
+  .stats-grid{flex-direction:column;}
+  .stat-item{border-right:none;border-bottom:1px solid var(--border);}
+  .stat-item:last-child{border-bottom:none;}
+}
+
+/* 問題提起 */
+.problem{background:var(--gray);padding:3.5rem 6%;text-align:center;}
+.problem h2{font-size:clamp(1.3rem,4vw,1.8rem);font-weight:700;color:var(--forest);margin-bottom:1rem;}
+.problem-list{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin:1.5rem 0;}
+.problem-badge{background:#fff;border:2px solid var(--border);border-radius:8px;padding:.8rem 1.2rem;font-size:.9rem;color:#555;font-weight:500;}
+.problem-badge span{color:var(--forest);font-weight:700;}
+.problem-lead{font-size:1rem;color:var(--forest);font-weight:700;margin-top:1.5rem;}
+
+/* 解決提案 */
+.solution{padding:3.5rem 6%;}
+.sol-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center;}
+.sol-img{border-radius:12px;height:340px;object-fit:cover;width:100%;}
+.sol-body{}
+.sol-label{font-size:.72rem;font-weight:700;letter-spacing:.12em;color:var(--gold);margin-bottom:.5rem;}
+.sol-title{font-size:clamp(1.3rem,3.5vw,1.8rem);font-weight:700;color:var(--forest);margin-bottom:1.2rem;line-height:1.4;}
+.sol-list{list-style:none;}
+.sol-list li{padding:.65rem 0;border-bottom:1px solid var(--border);font-size:.93rem;display:flex;gap:.7rem;align-items:flex-start;}
+.sol-list li::before{content:"✓";color:var(--gold);font-weight:700;flex-shrink:0;margin-top:.1rem;}
+@media(max-width:768px){.sol-grid{grid-template-columns:1fr;}.sol-img{height:220px;}}
+
+/* CTA 中盤 -->
+.cta-mid{background:var(--forest);padding:2.5rem 6%;text-align:center;}
+.cta-mid h2{color:#fff;font-size:clamp(1.2rem,3.5vw,1.7rem);font-weight:700;margin-bottom:.8rem;}
+.cta-mid p{color:rgba(255,255,255,.8);font-size:.9rem;margin-bottom:1.5rem;}
+.btn-gold-outline{display:inline-block;border:2px solid var(--gold);color:var(--gold);font-weight:700;
+  padding:.85rem 2.2rem;border-radius:6px;font-size:1rem;transition:.2s;}
+.btn-gold-outline:hover{background:var(--gold);color:#fff;}
+
+/* タイムライン */
+.tl-section{background:var(--forest-light);padding:3.5rem 6%;}
+.tl-section .sec-label{font-size:.72rem;font-weight:700;letter-spacing:.12em;color:var(--forest);margin-bottom:.5rem;}
+.tl-section .sec-title{font-size:clamp(1.3rem,4vw,1.9rem);font-weight:700;color:var(--forest);margin-bottom:.5rem;}
+.tl-section .sec-note{font-size:.73rem;color:#aaa;margin-bottom:2rem;}
+.timeline{position:relative;padding-left:100px;max-width:700px;margin:0 auto;}
+.timeline::before{content:"";position:absolute;left:80px;top:0;bottom:0;width:2px;background:var(--border);}
+.tl-item{position:relative;margin-bottom:1.6rem;}
+.tl-time{position:absolute;left:-100px;width:80px;text-align:right;font-size:.82rem;font-weight:700;color:var(--forest-mid);line-height:1.4;padding-top:.15rem;}
+.tl-dot{position:absolute;left:-14px;top:.2rem;width:12px;height:12px;background:var(--gold);border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 2px var(--gold);}
+.tl-body{background:#fff;border-left:3px solid var(--gold);border-radius:0 8px 8px 0;padding:.9rem 1.1rem;}
+.tl-action{font-weight:700;font-size:.93rem;color:var(--forest);margin-bottom:.25rem;}
+.tl-note{font-size:.82rem;color:#555;}
+@media(max-width:768px){
+  .timeline{padding-left:80px;}
+  .timeline::before{left:62px;}
+  .tl-time{left:-80px;width:62px;font-size:.73rem;}
+  .tl-dot{left:-14px;}
+}
+
+/* 募集要項 */
+.req-section{padding:3.5rem 6%;}
+.sec-label{font-size:.72rem;font-weight:700;letter-spacing:.12em;color:var(--forest);margin-bottom:.5rem;}
+.sec-title{font-size:clamp(1.3rem,4vw,1.9rem);font-weight:700;color:var(--forest);margin-bottom:2rem;}
+.req-table{width:100%;border-collapse:collapse;border-radius:10px;overflow:hidden;border:1px solid var(--border);}
+.req-table th,.req-table td{padding:1rem 1.2rem;text-align:left;border-bottom:1px solid var(--border);font-size:.9rem;}
+.req-table th{background:var(--forest-light);color:var(--forest);font-weight:700;width:30%;white-space:nowrap;}
+.req-table tr:last-child th,.req-table tr:last-child td{border-bottom:none;}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{background:#f4f8f4;padding:.5rem .8rem;}
+  .req-table td{padding:.5rem .8rem 1rem;}
+}
+
+/* FAQ */
+.faq-section{background:var(--gray);padding:3.5rem 6%;}
+.faq-list{list-style:none;max-width:760px;margin:0 auto;}
+.faq-item{background:#fff;border-radius:8px;margin-bottom:.8rem;overflow:hidden;
+  box-shadow:0 1px 6px rgba(0,0,0,.05);}
+.faq-q{padding:1.1rem 1.4rem;font-weight:700;font-size:.93rem;
+  background:var(--forest-light);color:var(--forest);display:flex;gap:.8rem;}
+.faq-q::before{content:"Q";background:var(--forest);color:#fff;border-radius:4px;padding:.1rem .5rem;flex-shrink:0;}
+.faq-a{padding:1rem 1.4rem;font-size:.88rem;color:#444;display:flex;gap:.8rem;}
+.faq-a::before{content:"A";background:var(--gold);color:#fff;border-radius:4px;padding:.1rem .5rem;flex-shrink:0;height:fit-content;}
+
+/* 先輩の声 */
+.voice-section{padding:3.5rem 6%;}
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;}
+.voice-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07);}
+.voice-img{width:100%;height:180px;object-fit:cover;}
+.voice-body{padding:1.2rem 1.2rem 1.4rem;}
+.voice-name{font-weight:700;font-size:.92rem;color:var(--forest);margin-bottom:.15rem;}
+.voice-role{font-size:.76rem;color:#888;margin-bottom:.7rem;}
+.voice-msg{font-size:.87rem;color:#444;line-height:1.75;}
+.voice-sample{font-size:.72rem;color:#aaa;margin-top:.6rem;}
+@media(max-width:768px){.voice-grid{grid-template-columns:1fr;}}
+
+/* インタビュー（B案追加） */
+.interview{background:var(--gold-light);padding:3.5rem 6%;}
+.int-inner{display:grid;grid-template-columns:200px 1fr;gap:2rem;align-items:start;max-width:700px;margin:0 auto;}
+.int-img{border-radius:50%;width:160px;height:160px;object-fit:cover;border:4px solid var(--gold);}
+.int-name{font-weight:700;font-size:1.05rem;color:var(--forest);margin-bottom:.2rem;}
+.int-role{font-size:.8rem;color:#888;margin-bottom:1rem;}
+.int-text{font-size:.9rem;color:#333;line-height:1.8;}
+.int-sample{font-size:.72rem;color:#aaa;margin-top:.6rem;}
+@media(max-width:768px){.int-inner{grid-template-columns:1fr;text-align:center;}.int-img{margin:0 auto;}}
+
+/* 最終CTA */
+.cta-final{background:var(--forest);padding:4rem 6%;text-align:center;}
+.cta-final h2{color:#fff;font-size:clamp(1.3rem,4vw,2rem);font-weight:700;margin-bottom:1rem;}
+.cta-final p{color:rgba(255,255,255,.8);font-size:.9rem;margin-bottom:.6rem;}
+.cta-note2{font-size:.8rem;color:rgba(255,255,255,.6);margin-bottom:2rem!important;}
+.btn-gold-lg{display:inline-block;background:var(--gold);color:#fff;font-weight:700;
+  padding:1.1rem 3rem;border-radius:6px;font-size:1.1rem;transition:.2s;margin-bottom:.8rem;}
+.btn-gold-lg:hover{background:#a68900;}
+
+/* 固定下バー */
+.fixed-cta{position:fixed;bottom:0;left:0;right:0;background:var(--gold);padding:.85rem 1rem;
+  display:flex;align-items:center;justify-content:center;gap:1.2rem;z-index:200;
+  box-shadow:0 -2px 12px rgba(0,0,0,.2);}
+.fixed-cta a{color:#fff;font-weight:700;font-size:.95rem;}
+.fixed-cta a:hover{opacity:.85;}
+
+/* フッター */
+footer{background:#111;color:rgba(255,255,255,.6);padding:2rem 6%;font-size:.82rem;}
+footer p{margin-bottom:.3rem;}
+</style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header class="site-header">
+  <a class="brand" href="#top">有限会社 岩城造園土木<span>採用情報</span></a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#appeal">魅力</a>
+    <a href="#req">募集要項</a>
+    <a href="#timeline">1日の流れ</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#faq">FAQ</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<!-- ヒーロー -->
+<section class="hero" id="top">
+  <p class="hero-eyebrow">造園工・施設維持管理／正社員募集</p>
+  <h1 class="hero-catch">「手に職」で<br><em>月38万円</em>を<br>実現する仕事。</h1>
+  <p class="hero-lead">公園や企業庭園の緑を守るプロを目指せます。<br>残業なし・資格取得費用全額会社負担・退職金あり。<br>印西市を拠点に活躍しませんか。</p>
+  <div class="hero-pills">
+    <span class="pill gold">残業なし</span>
+    <span class="pill">資格取得費用全額負担</span>
+    <span class="pill">未経験歓迎</span>
+    <span class="pill">マイカー通勤可</span>
+    <span class="pill">年間休日105日</span>
+  </div>
+  <a class="btn-gold" href="#entry">採用情報を見る</a>
+</section>
+
+<!-- 数字バー -->
+<div class="stats">
+  <div class="stats-grid">
+    <div class="stat-item">
+      <span class="stat-num">38.8<span class="stat-unit">万円</span></span>
+      <p class="stat-label">月収上限（日給18,000×21.6日）</p>
+      <p class="stat-note">※サンプル数値。実際の給与実績に差し替えます</p>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">0<span class="stat-unit">時間</span></span>
+      <p class="stat-label">残業（時間外労働なし）</p>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">105<span class="stat-unit">日</span></span>
+      <p class="stat-label">年間休日</p>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">全額<span class="stat-unit">負担</span></span>
+      <p class="stat-label">資格取得費用（会社負担）</p>
+      <p class="stat-note">※サンプル数値。実際の実績に差し替えます</p>
+    </div>
+  </div>
+</div>
+
+<!-- 問題提起 -->
+<section class="problem">
+  <h2>こんなことを気にして<br>応募をためらっていませんか？</h2>
+  <div class="problem-list">
+    <div class="problem-badge"><span>造園の経験が全くない</span>…</div>
+    <div class="problem-badge"><span>体力的に続くか心配</span></div>
+    <div class="problem-badge"><span>日給制って不安定じゃないの？</span></div>
+    <div class="problem-badge"><span>資格がなくてもいいのか</span></div>
+  </div>
+  <p class="problem-lead">→ すべて「大丈夫」です。その理由を見てください。</p>
+</section>
+
+<!-- 解決提案 -->
+<section class="solution" id="appeal">
+  <div class="sol-grid">
+    <img class="sol-img"
+      src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=720&h=680&fit=crop&q=80"
+      alt="緑豊かな公園の景色">
+    <div class="sol-body">
+      <p class="sol-label">Why Iwaki-Zoen</p>
+      <h2 class="sol-title">岩城造園土木が選ばれる理由</h2>
+      <ul class="sol-list">
+        <li>未経験からでも先輩がマンツーマンで丁寧に指導します</li>
+        <li>資格取得費用は会社が全額負担（造園施工管理技士など）</li>
+        <li>スキルが増えるほど日給が上がり月38万円超も狙える</li>
+        <li>残業なし・定時17時退社でプライベートも充実</li>
+        <li>年間休日105日＋夏季・年末年始休暇</li>
+        <li>退職金制度あり（3年以上）・各種社会保険完備</li>
+        <li>公共施設・企業庭園の安定した仕事。天候に関係なく年間を通じて現場あり</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA 中盤 -->
+<div class="cta-mid">
+  <h2>まずは雰囲気だけ聞いてみませんか？</h2>
+  <p>書類選考なし・面接1回のシンプルな選考です。気軽にご連絡ください。</p>
+  <a class="btn-gold-outline" href="#entry">お問い合わせはこちら</a>
+</div>
+
+<!-- 1日の流れ -->
+<section class="tl-section" id="timeline">
+  <p class="sec-label">Day Schedule</p>
+  <h2 class="sec-title">当社社員の1日の流れ</h2>
+  <p class="sec-note">※ここはサンプルです。実際には社員の方のスケジュールに差し替えます</p>
+  <div class="timeline">
+    <div class="tl-item">
+      <span class="tl-time">8:00</span>
+      <span class="tl-dot"></span>
+      <div class="tl-body">
+        <div class="tl-action">会社に集合・朝礼</div>
+        <div class="tl-note">道具・機材を確認し、本日の作業内容と現場を共有します。</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-time">8:30</span>
+      <span class="tl-dot"></span>
+      <div class="tl-body">
+        <div class="tl-action">作業車両で現場へ出発</div>
+        <div class="tl-note">印西市近隣が主なエリア。移動時間を利用して作業計画を確認します。</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-time">9:00</span>
+      <span class="tl-dot"></span>
+      <div class="tl-body">
+        <div class="tl-action">午前作業</div>
+        <div class="tl-note">剪定・草刈り・薬剤散布などを担当別に分担して進めます。</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-time">12:00</span>
+      <span class="tl-dot"></span>
+      <div class="tl-body">
+        <div class="tl-action">昼休憩（90分）</div>
+        <div class="tl-note">ゆっくり休憩。仲間との会話がリフレッシュになります。</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-time">13:30</span>
+      <span class="tl-dot"></span>
+      <div class="tl-body">
+        <div class="tl-action">午後作業・仕上げ確認</div>
+        <div class="tl-note">仕上がりを丁寧にチェック。美しく整えることが信頼につながります。</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-time">16:30</span>
+      <span class="tl-dot"></span>
+      <div class="tl-body">
+        <div class="tl-action">道具の片付け・帰社</div>
+        <div class="tl-note">翌日のスムーズな作業のために道具・機材を整えて戻ります。</div>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-time">17:00</span>
+      <span class="tl-dot"></span>
+      <div class="tl-body">
+        <div class="tl-action">退社</div>
+        <div class="tl-note">定時でしっかり帰れます。アフター5は自分の時間を満喫。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="req-section" id="req">
+  <p class="sec-label">Recruitment</p>
+  <h2 class="sec-title">募集要項</h2>
+  <table class="req-table">
+    <tbody>
+      <tr><th>職種</th><td>造園工・施設維持管理スタッフ（正社員）</td></tr>
+      <tr><th>仕事内容</th><td>公共施設・公園・企業庭園の維持管理（剪定・伐採・芝刈・草刈・薬剤散布等）</td></tr>
+      <tr><th>給与</th><td>日給12,000円〜18,000円（月換算 259,200円〜388,800円）<br>皆勤手当：10,000〜20,000円／月</td></tr>
+      <tr><th>昇給・賞与</th><td>昇給あり（月5,000〜10,000円・前年度実績）<br>賞与年2回（50,000〜300,000円・前年度実績）</td></tr>
+      <tr><th>勤務時間</th><td>8:00〜17:00（休憩90分）・時間外労働なし</td></tr>
+      <tr><th>休日・休暇</th><td>日曜日・祝日・その他（年間休日105日）<br>夏季・年末年始休暇・有給休暇（6ヵ月後10日）</td></tr>
+      <tr><th>勤務地</th><td>〒270-2318 千葉県印西市押付89（印西市近隣の各現場）</td></tr>
+      <tr><th>アクセス</th><td>JR成田線 小林駅より車10分・マイカー通勤可（駐車場あり）</td></tr>
+      <tr><th>応募資格</th><td>普通自動車運転免許（AT限定不可）必須・59歳以下<br>未経験歓迎・経験者優遇</td></tr>
+      <tr><th>待遇・福利厚生</th><td>各種社会保険完備・退職金制度あり（3年以上）<br>資格取得支援（費用全額会社負担）<br>通勤手当（実費・上限15,000円/月）</td></tr>
+      <tr><th>選考方法</th><td>面接1回（書類選考なし）・面接後3日以内に結果通知<br>※ハローワーク紹介状またはオンライン自主応募</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <p class="sec-label">FAQ</p>
+  <h2 class="sec-title">よくあるご質問</h2>
+  <ul class="faq-list">
+    <li class="faq-item">
+      <div class="faq-q">まったくの未経験ですが応募できますか？</div>
+      <div class="faq-a">はい。先輩がマンツーマンで丁寧に指導します。体を動かすことが好きな方であれば、経験ゼロからスタートできます。</div>
+    </li>
+    <li class="faq-item">
+      <div class="faq-q">日給制というのが不安です。毎月の収入はどれくらいですか？</div>
+      <div class="faq-a">日給12,000〜18,000円×月21.6日の計算で、月259,200〜388,800円が目安です。スキルが上がるにつれて日給も上がります。昇給実績は月5,000〜10,000円（前年度）です。</div>
+    </li>
+    <li class="faq-item">
+      <div class="faq-q">どんな資格を取得できますか？費用は自己負担ですか？</div>
+      <div class="faq-a">造園施工管理技士・各種剪定資格など仕事に直結する資格の取得費用は会社が全額負担します。資格が増えるほど担当できる仕事が広がり、収入アップにもつながります。</div>
+    </li>
+    <li class="faq-item">
+      <div class="faq-q">体力的にきつい仕事ですか？</div>
+      <div class="faq-a">屋外での作業が中心です。ただし残業なしで17時退社なので、疲れを翌日に持ち越しにくい環境です。入社当初は先輩と一緒に動きながら体を慣らしていきます。</div>
+    </li>
+    <li class="faq-item">
+      <div class="faq-q">選考はどのように進みますか？</div>
+      <div class="faq-a">書類選考なしで面接1回です。ハローワーク紹介状をご持参いただくか、オンライン自主応募からもご応募いただけます。面接後3日以内に結果をご連絡します。</div>
+    </li>
+  </ul>
+</section>
+
+<!-- 先輩の声 -->
+<section class="voice-section" id="voice">
+  <p class="sec-label">Voice</p>
+  <h2 class="sec-title">先輩からのメッセージ</h2>
+  <p style="font-size:.73rem;color:#aaa;margin-bottom:1.8rem;text-align:center;">※ここはサンプルです。実際には社員の方のお写真・メッセージに差し替えます</p>
+  <!-- 先輩の声：人物写真（&crop=faces） -->
+  <div class="voice-grid">
+    <div class="voice-card">
+      <img class="voice-img"
+        src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=640&h=360&fit=crop&crop=faces&q=80"
+        alt="先輩社員">
+      <div class="voice-body">
+        <div class="voice-name">田中 健太（仮名）</div>
+        <div class="voice-role">造園工 / 入社3年目</div>
+        <p class="voice-msg">前職は工場勤務でした。造園は体を動かすのが楽しく、公園がきれいになるたびに達成感があります。先輩がやさしく教えてくれるので、未経験でも安心です。</p>
+        <p class="voice-sample">※ここはサンプルです。実際には御社の社員の方のメッセージに差し替えます</p>
+      </div>
+    </div>
+    <div class="voice-card">
+      <img class="voice-img"
+        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=640&h=360&fit=crop&crop=faces&q=80"
+        alt="先輩社員">
+      <div class="voice-body">
+        <div class="voice-name">佐藤 誠（仮名）</div>
+        <div class="voice-role">造園工 / 入社5年目</div>
+        <p class="voice-msg">資格費用を会社が全額出してくれると聞いて入社しました。今では2つの資格を取得。担当できる作業が増え、日給もしっかり上がりました。手に職の実感があります。</p>
+        <p class="voice-sample">※ここはサンプルです。実際には御社の社員の方のメッセージに差し替えます</p>
+      </div>
+    </div>
+    <div class="voice-card">
+      <img class="voice-img"
+        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=640&h=360&fit=crop&crop=faces&q=80"
+        alt="先輩社員">
+      <div class="voice-body">
+        <div class="voice-name">鈴木 拓也（仮名）</div>
+        <div class="voice-role">造園工 / 入社7年目</div>
+        <p class="voice-msg">残業ゼロが何より助かります。子どもの送り迎えもできて、家族との時間を大切にできます。小さな会社なので社長・先輩との距離が近く、相談しやすい環境です。</p>
+        <p class="voice-sample">※ここはサンプルです。実際には御社の社員の方のメッセージに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- インタビュー -->
+<section class="interview">
+  <p class="sec-label" style="text-align:center;">Interview</p>
+  <h2 class="sec-title" style="text-align:center;font-size:clamp(1.2rem,3.5vw,1.7rem);color:var(--forest);margin-bottom:2rem;">先輩社員インタビュー</h2>
+  <p style="font-size:.73rem;color:#aaa;margin-bottom:1.5rem;text-align:center;">※ここはサンプルです。実際には社員の方のお写真・インタビュー内容に差し替えます</p>
+  <div class="int-inner">
+    <!-- インタビュー：人物写真（&crop=faces） -->
+    <img class="int-img"
+      src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&crop=faces&q=80"
+      alt="インタビュー社員">
+    <div>
+      <div class="int-name">木村 洋介（仮名）</div>
+      <div class="int-role">造園工 / 入社10年目 / ベテラン社員</div>
+      <p class="int-text">「最初はどんな仕事か全然わかりませんでした。でも、公共の公園や企業の庭園が自分の手できれいになるのを見ると、本当にやりがいを感じます。資格も複数取得でき、今では現場の段取りを任せてもらえるようになりました。小さな会社だからこそ、自分の成長がそのまま仕事の幅の広がりにつながっています。」</p>
+      <p class="int-sample">※ここはサンプルです。実際には御社の社員の方のインタビューに差し替えます</p>
+    </div>
+  </div>
+</section>
+
+<!-- 最終CTA -->
+<section class="cta-final" id="entry">
+  <h2>あなたの「手に職」が、<br>ここから始まります。</h2>
+  <p>書類選考なし・面接1回のシンプルな選考。</p>
+  <p class="cta-note2">まずはお気軽にお電話かメールでご連絡ください。</p>
+  <a class="btn-gold-lg" href="tel:0476973459">📞 0476-97-3459</a>
+  <p style="font-size:.8rem;color:rgba(255,255,255,.65);margin-top:1rem;">受付時間：平日8:00〜17:00</p>
+</section>
+
+<!-- フッター -->
+<footer>
+  <p>有限会社 岩城造園土木</p>
+  <p>〒270-2318 千葉県印西市押付89</p>
+  <p>TEL: 0476-97-3459 ／ E-mail: iwaki_z@yahoo.co.jp</p>
+</footer>
+
+<!-- 固定エントリーバー -->
+<div class="fixed-cta">
+  <a href="tel:0476973459">📞 まずはお電話で相談</a>
+  <span style="color:rgba(255,255,255,.4);">|</span>
+  <a href="mailto:iwaki_z@yahoo.co.jp">✉ メールで問い合わせ</a>
+</div>
+
+<script>
+(function(){
+  var btn = document.querySelector('.hamburger');
+  var nav = document.querySelector('.site-nav');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  }
+})();
+</script>
+</body>
+</html>
