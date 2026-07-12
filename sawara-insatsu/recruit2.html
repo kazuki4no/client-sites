@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 佐原印刷株式会社</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;color:#1a2530;line-height:1.7;background:#fff;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;height:auto;display:block;}
+
+/* ====== COLORS ====== */
+:root{
+  --main:#0f4c5c;
+  --accent:#d4810a;
+  --light-bg:#f0f5f7;
+  --text:#1a2530;
+  --muted:#617282;
+}
+
+/* ====== HEADER ====== */
+.site-header{background:var(--main);padding:.8rem 1.2rem;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.2);}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;}
+.brand{color:#fff;font-weight:700;font-size:1.05rem;}
+.brand span{color:#72d4c8;}
+.hamburger{display:none;background:none;border:0;font-size:1.7rem;color:#fff;line-height:1;cursor:pointer;}
+.site-nav{display:flex;gap:1.3rem;align-items:center;}
+.site-nav a{color:#b0d8d4;font-size:.87rem;font-weight:500;transition:color .2s;}
+.site-nav a:hover{color:#fff;}
+.site-nav .nav-cta{background:var(--accent);color:#fff;padding:.4rem 1rem;border-radius:4px;font-weight:700;}
+
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:var(--main);box-shadow:0 8px 16px rgba(0,0,0,.2);padding:.5rem 1rem;}
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.15);color:#b0d8d4;}
+  .site-nav .nav-cta{margin:.5rem 0 .3rem;text-align:center;border-radius:4px;}
+}
+
+/* ====== HERO（CTA 1） ====== */
+.hero{background:var(--main);padding:4rem 1.2rem;text-align:center;color:#fff;position:relative;overflow:hidden;}
+.hero::before{content:"";position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1600&h=600&fit=crop&q=80') center/cover;opacity:.18;}
+.hero-inner{position:relative;max-width:720px;margin:0 auto;}
+.hero-badge{display:inline-flex;align-items:center;gap:.4rem;background:var(--accent);color:#fff;font-size:.78rem;font-weight:700;padding:.35rem .9rem;border-radius:20px;margin-bottom:1.2rem;letter-spacing:.06em;}
+.hero-title{font-size:clamp(1.9rem,5vw,3.2rem);font-weight:700;line-height:1.3;margin-bottom:1rem;}
+.hero-title em{color:#72d4c8;font-style:normal;}
+.hero-sub{color:#b0d8d4;font-size:.95rem;margin-bottom:2rem;line-height:1.9;}
+.hero-tags{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-bottom:2rem;}
+.hero-tags span{border:1px solid rgba(255,255,255,.35);color:#fff;font-size:.82rem;padding:.3rem .8rem;border-radius:20px;}
+.btn-cta{display:inline-block;background:var(--accent);color:#fff;font-weight:700;padding:1rem 2.8rem;border-radius:6px;font-size:1.05rem;transition:opacity .2s;}
+.btn-cta:hover{opacity:.85;}
+.hero-note{margin-top:1rem;font-size:.8rem;color:#7ba8a2;}
+
+/* ====== SECTION ====== */
+.section{padding:4rem 1.2rem;}
+.section-inner{max-width:1100px;margin:0 auto;}
+.s-label{font-size:.75rem;font-weight:700;color:var(--accent);letter-spacing:.12em;text-transform:uppercase;margin-bottom:.4rem;}
+.s-title{font-size:clamp(1.4rem,3.5vw,2.1rem);font-weight:700;margin-bottom:.8rem;color:var(--main);}
+.s-lead{color:var(--muted);font-size:.93rem;max-width:680px;line-height:1.9;}
+.bg-light{background:var(--light-bg);}
+.bg-main{background:var(--main);color:#fff;}
+.bg-main .s-title{color:#fff;}
+.bg-main .s-lead{color:#b0d8d4;}
+
+/* ====== 数字バー ====== */
+.stats-grid{display:flex;flex-wrap:wrap;gap:1rem;margin-top:2rem;justify-content:space-between;}
+.stat-box{flex:1 1 160px;background:#fff;border-radius:10px;padding:1.5rem 1rem;text-align:center;box-shadow:0 3px 10px rgba(0,0,0,.06);}
+.stat-num{font-size:2.2rem;font-weight:700;color:var(--main);line-height:1;}
+.stat-num span{font-size:1rem;color:var(--accent);}
+.stat-label{font-size:.8rem;color:var(--muted);margin-top:.4rem;}
+.stat-note{font-size:.72rem;color:#bbb;}
+
+/* ====== 仕事紹介カード ====== */
+.job-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:2rem;}
+.job-card{background:#fff;border-radius:10px;padding:1.8rem 1.4rem;border-left:4px solid var(--accent);box-shadow:0 3px 10px rgba(0,0,0,.06);}
+.job-card-no{font-size:.75rem;font-weight:700;color:var(--accent);letter-spacing:.1em;margin-bottom:.5rem;}
+.job-card h3{color:var(--main);font-size:1rem;font-weight:700;margin-bottom:.7rem;}
+.job-card p{font-size:.88rem;color:#555;line-height:1.8;}
+.job-highlight{background:#fff8f0;border:1px solid #f2c585;border-radius:8px;padding:1.2rem 1.5rem;margin-top:1.5rem;}
+.job-highlight strong{color:var(--accent);}
+
+@media(max-width:768px){.job-cards{grid-template-columns:1fr;}}
+
+/* ====== インタビュー（B案固有） ====== */
+.interview-wrap{display:grid;grid-template-columns:240px 1fr;gap:2rem;align-items:center;margin-top:2rem;background:#fff;border-radius:12px;padding:2rem;box-shadow:0 4px 16px rgba(0,0,0,.06);}
+.interview-img{border-radius:10px;width:100%;height:240px;object-fit:cover;}
+.interview-q{font-size:.8rem;font-weight:700;color:var(--accent);margin-bottom:.3rem;}
+.interview-a{font-size:.9rem;color:#444;line-height:1.9;margin-bottom:1rem;}
+.interview-meta{font-size:.8rem;color:var(--muted);}
+
+@media(max-width:768px){
+  .interview-wrap{grid-template-columns:1fr;}
+  .interview-img{height:220px;}
+}
+
+/* ====== CTA BANNER（CTA 2） ====== */
+.cta-banner{background:var(--accent);padding:3rem 1.2rem;text-align:center;color:#fff;}
+.cta-banner h2{font-size:clamp(1.3rem,3.5vw,2rem);font-weight:700;margin-bottom:.6rem;}
+.cta-banner p{font-size:.92rem;margin-bottom:1.5rem;opacity:.9;}
+.btn-white{display:inline-block;background:#fff;color:var(--accent);font-weight:700;padding:.9rem 2.5rem;border-radius:6px;font-size:1rem;transition:opacity .2s;}
+.btn-white:hover{opacity:.9;}
+
+/* ====== 募集要項テーブル ====== */
+.req-table{width:100%;border-collapse:collapse;margin-top:2rem;}
+.req-table th,.req-table td{padding:1rem 1.2rem;border:1px solid #d4dde4;text-align:left;font-size:.9rem;vertical-align:top;}
+.req-table th{background:var(--main);color:#fff;width:28%;font-weight:700;white-space:nowrap;}
+.req-table td{color:#333;}
+.req-table tr:nth-child(even) td{background:#f7fbfc;}
+
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{border-bottom:none;padding:.6rem .8rem;font-size:.83rem;}
+  .req-table td{padding:.7rem .8rem 1rem;border-top:none;}
+}
+
+/* ====== タイムライン ====== */
+.timeline-list{list-style:none;padding:0;margin-top:2rem;}
+.timeline-item{display:grid;grid-template-columns:68px 26px 1fr;align-items:flex-start;margin-bottom:0;}
+.tl-time{font-size:.83rem;font-weight:700;color:var(--main);text-align:right;padding-right:.5rem;padding-top:.25rem;}
+.tl-line-wrap{display:flex;flex-direction:column;align-items:center;}
+.tl-dot{width:14px;height:14px;background:var(--accent);border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 2px var(--accent);flex-shrink:0;margin-top:.25rem;z-index:1;}
+.tl-bar{width:2px;background:#d4dde4;flex:1;min-height:22px;}
+.timeline-item:last-child .tl-bar{display:none;}
+.tl-card{background:#fff;border:1px solid #d4dde4;border-radius:8px;padding:.9rem 1.1rem;margin-bottom:.9rem;margin-left:.5rem;}
+.tl-card h4{color:var(--main);font-size:.88rem;font-weight:700;margin-bottom:.2rem;}
+.tl-card p{font-size:.83rem;color:#555;line-height:1.7;}
+
+@media(max-width:768px){
+  .timeline-item{grid-template-columns:58px 22px 1fr;}
+  .tl-time{font-size:.76rem;}
+}
+
+/* ====== VOICE ====== */
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem;}
+.voice-card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,.07);}
+.voice-card img{width:100%;height:180px;object-fit:cover;}
+.voice-body{padding:1.2rem;}
+.voice-meta{font-size:.78rem;color:var(--accent);font-weight:700;margin-bottom:.3rem;}
+.voice-name{font-size:.95rem;font-weight:700;color:var(--main);margin-bottom:.5rem;}
+.voice-card p{font-size:.85rem;color:#555;line-height:1.8;}
+.sample-note{color:#bbb;font-size:.73rem;margin-top:.6rem;}
+
+@media(max-width:768px){.voice-grid{grid-template-columns:1fr;}}
+
+/* ====== FAQ ====== */
+.faq-list{margin-top:1.8rem;max-width:800px;}
+.faq-item{border-bottom:1px solid #d4dde4;padding:1rem 0;}
+.faq-q{font-weight:700;font-size:.9rem;color:var(--main);display:flex;gap:.7rem;align-items:flex-start;}
+.faq-q::before{content:"Q";background:var(--accent);color:#fff;font-size:.75rem;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem;}
+.faq-a{display:flex;gap:.7rem;align-items:flex-start;margin-top:.6rem;font-size:.88rem;color:#555;line-height:1.8;}
+.faq-a::before{content:"A";background:var(--main);color:#fff;font-size:.75rem;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem;}
+
+/* ====== 採用担当者 ====== */
+.manager-wrap{display:flex;gap:1.8rem;align-items:center;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.2);border-radius:12px;padding:2rem;margin-top:2rem;max-width:700px;margin-left:auto;margin-right:auto;}
+.manager-img{width:120px;height:120px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid rgba(255,255,255,.3);}
+.manager-role{font-size:.78rem;color:#72d4c8;font-weight:700;margin-bottom:.2rem;}
+.manager-name{font-size:1rem;font-weight:700;margin-bottom:.6rem;}
+.manager-msg{font-size:.87rem;line-height:1.85;opacity:.88;}
+
+@media(max-width:600px){
+  .manager-wrap{flex-direction:column;text-align:center;}
+  .manager-img{margin:0 auto;}
+}
+
+/* ====== ENTRY（CTA 3） ====== */
+.entry-section{background:var(--main);padding:4rem 1.2rem;text-align:center;color:#fff;}
+.entry-section h2{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;margin-bottom:.7rem;}
+.entry-section p{color:#b0d8d4;margin-bottom:2rem;font-size:.93rem;}
+.entry-info{margin-top:1.5rem;font-size:.85rem;color:#7ba8a2;line-height:2;}
+
+/* ====== STICKY MOBILE CTA ====== */
+.sticky-cta{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--accent);padding:.9rem 1.2rem;text-align:center;z-index:200;box-shadow:0 -3px 12px rgba(0,0,0,.15);}
+.sticky-cta a{color:#fff;font-weight:700;font-size:.95rem;display:flex;align-items:center;justify-content:center;gap:.5rem;}
+
+@media(max-width:768px){
+  .sticky-cta{display:block;}
+  body{padding-bottom:60px;}
+}
+
+/* ====== FOOTER ====== */
+footer{background:#0a2d38;color:#5e8898;padding:2rem 1.2rem;text-align:center;font-size:.84rem;}
+.foot-name{color:#fff;font-weight:700;margin-bottom:.5rem;font-size:.95rem;}
+footer address{font-style:normal;line-height:2.1;}
+</style>
+</head>
+<body id="top">
+
+<!-- ====== HEADER ====== -->
+<header class="site-header">
+  <div class="header-inner">
+    <a class="brand" href="#top">佐原印刷 <span>採用情報</span></a>
+    <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+    <nav class="site-nav">
+      <a href="#jobs">仕事内容</a>
+      <a href="#requirements">募集要項</a>
+      <a href="#voice">先輩の声</a>
+      <a href="#faq">FAQ</a>
+      <a class="nav-cta" href="#entry">応募する</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ====== HERO（CTA 1） ====== -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">🗓 急募・パート採用</div>
+    <h1 class="hero-title">午前4時間で<br>暮らしを整える。<br><em>100年企業で事務スタッフ募集</em></h1>
+    <p class="hero-sub">大正9年創業・香取市の地元密着型印刷会社で、一般事務・経理補助の仲間を探しています。土日祝休み・ダブルワーク可・扶養調整もご相談ください。</p>
+    <div class="hero-tags">
+      <span>時給1,200円</span><span>4時間／日</span><span>土日祝休み</span><span>ダブルワーク可</span><span>未経験歓迎</span>
+    </div>
+    <a class="btn-cta" href="#entry">詳細・応募はこちら ▼</a>
+    <p class="hero-note">まずは郵便でご応募ください。書類選考なし・面接1回のみ。</p>
+  </div>
+</section>
+
+<!-- ====== 数字で見る職場 ====== -->
+<section class="section">
+  <div class="section-inner">
+    <p class="s-label">Numbers</p>
+    <h2 class="s-title">数字で見る佐原印刷</h2>
+    <div class="stats-grid">
+      <div class="stat-box">
+        <div class="stat-num">100<span>年超</span></div>
+        <div class="stat-label">創業大正9年（1920年）</div>
+        <div class="stat-note">※サンプル数値です</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">10<span>名</span></div>
+        <div class="stat-label">少数精鋭のチーム</div>
+        <div class="stat-note">※サンプル数値です</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">4<span>h</span></div>
+        <div class="stat-label">午前のみ・短時間勤務</div>
+        <div class="stat-note">※サンプル数値です</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">10<span>日</span></div>
+        <div class="stat-label">年次有給休暇（6ヶ月経過後）</div>
+        <div class="stat-note">※サンプル数値です</div>
+      </div>
+    </div>
+    <!-- ※ここはサンプルです。実際には御社の数字に差し替えます -->
+    <p style="color:#bbb;font-size:.75rem;margin-top:1rem;">※数字はサンプルです。実際には御社の実績数値に差し替えます</p>
+  </div>
+</section>
+
+<!-- ====== 仕事内容 ====== -->
+<section class="section bg-light" id="jobs">
+  <div class="section-inner">
+    <p class="s-label">Work Detail</p>
+    <h2 class="s-title">担当する仕事の詳細</h2>
+    <p class="s-lead">求人票には「その他付随する業務」と書きましたが、実際の仕事内容をより詳しくご説明します。1つ1つの業務はシンプルで、正確さを大切にするお仕事です。</p>
+    <div class="job-cards">
+      <div class="job-card">
+        <p class="job-card-no">業務 01</p>
+        <h3>データ入力・フォーム管理</h3>
+        <p>受注情報・伝票データを決まったフォーマットへ入力します。特殊なスキルは不要で、基本的なPC入力ができれば大丈夫です。</p>
+      </div>
+      <div class="job-card">
+        <p class="job-card-no">業務 02</p>
+        <h3>郵便物の仕分け・発送</h3>
+        <p>毎朝届く郵便物を種別ごとに仕分けし、各担当へ配布します。発送書類の準備・封入作業なども含まれます。</p>
+      </div>
+      <div class="job-card">
+        <p class="job-card-no">業務 03</p>
+        <h3>電話応対・来客対応</h3>
+        <p>主にお客様からの注文受付や問い合わせの一次対応を担当します。慣れるまで先輩がサポートします。</p>
+      </div>
+      <div class="job-card">
+        <p class="job-card-no">業務 04</p>
+        <h3>伝票出力・経理補助</h3>
+        <p>伝票の印刷・整理・ファイリング、請求書の確認補助など経理周りのサポートも行います。</p>
+      </div>
+    </div>
+    <div class="job-highlight">
+      ✅ <strong>必要なスキルはこれだけ：</strong>フォーマットに合わせたデータ入力とメールの送受信ができれば十分です。印刷業の専門知識は入社後に習得できます。
+    </div>
+    <!-- ※ここはサンプルです。実際には御社の業務内容に差し替えます -->
+    <p style="color:#bbb;font-size:.75rem;margin-top:1rem;">※業務内容はサンプルです。実際には御社の業務に合わせて差し替えます</p>
+  </div>
+</section>
+
+<!-- ====== CTA バナー（CTA 2） ====== -->
+<section class="cta-banner">
+  <h2>急募！今すぐ応募できます</h2>
+  <p>書類到着後、面接日をご連絡します。書類選考なし・面接1回のみです。</p>
+  <a class="btn-white" href="#entry">応募方法を見る ▼</a>
+</section>
+
+<!-- ====== 募集要項 ====== -->
+<section class="section" id="requirements">
+  <div class="section-inner">
+    <p class="s-label">Requirements</p>
+    <h2 class="s-title">募集要項</h2>
+    <table class="req-table">
+      <tr><th>職種</th><td>一般事務・経理補助（急募）</td></tr>
+      <tr><th>雇用形態</th><td>パートタイム</td></tr>
+      <tr><th>給与</th><td>時給 1,200円<br><small style="color:#888;">通勤手当あり（日額200円）</small></td></tr>
+      <tr><th>就業時間</th><td>8:30〜12:30 または 9:00〜13:00（4時間程度）<br><small style="color:#888;">就業時間は相談に応じます</small></td></tr>
+      <tr><th>勤務日数</th><td>週4〜5日（相談可）</td></tr>
+      <tr><th>休日</th><td>土曜・日曜・祝日・夏季休暇・年末年始休暇</td></tr>
+      <tr><th>有給休暇</th><td>10日（6ヶ月経過後）</td></tr>
+      <tr><th>応募資格</th><td>64歳以下（定年65歳のため）<br>PCの基本操作・メール送受信ができる方<br>未経験歓迎</td></tr>
+      <tr><th>試用期間</th><td>3ヶ月（経験者は短縮あり）／本採用と同条件</td></tr>
+      <tr><th>その他</th><td>ダブルワーク可・制服貸与・育児休業取得実績あり</td></tr>
+      <tr><th>勤務地</th><td>〒287-0036 千葉県香取市観音93-2<br>マイカー通勤可・駐車場あり</td></tr>
+      <tr><th>採用人数</th><td>1名</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- ====== 1日の流れ ====== -->
+<section class="section bg-light">
+  <div class="section-inner">
+    <p class="s-label">Day in the Life</p>
+    <h2 class="s-title">スタッフの1日の流れ（例）</h2>
+    <ul class="timeline-list">
+      <li class="timeline-item">
+        <span class="tl-time">8:30</span>
+        <div class="tl-line-wrap"><span class="tl-dot"></span><span class="tl-bar"></span></div>
+        <div class="tl-card">
+          <h4>出社・朝の確認</h4>
+          <p>制服に着替えて出社。メールチェックと前日からの伝票確認をします。</p>
+        </div>
+      </li>
+      <li class="timeline-item">
+        <span class="tl-time">9:00</span>
+        <div class="tl-line-wrap"><span class="tl-dot"></span><span class="tl-bar"></span></div>
+        <div class="tl-card">
+          <h4>データ入力・伝票処理</h4>
+          <p>受注伝票のデータ入力メイン。フォーマットに沿って正確に進めます。</p>
+        </div>
+      </li>
+      <li class="timeline-item">
+        <span class="tl-time">10:00</span>
+        <div class="tl-line-wrap"><span class="tl-dot"></span><span class="tl-bar"></span></div>
+        <div class="tl-card">
+          <h4>電話・郵便対応</h4>
+          <p>午前中に集中する電話応対と郵便物の仕分け。流れが分かれば迷わずこなせます。</p>
+        </div>
+      </li>
+      <li class="timeline-item">
+        <span class="tl-time">11:00</span>
+        <div class="tl-line-wrap"><span class="tl-dot"></span><span class="tl-bar"></span></div>
+        <div class="tl-card">
+          <h4>経理補助・整理</h4>
+          <p>請求書確認補助・伝票ファイリング。月末は集計補助が加わります。</p>
+        </div>
+      </li>
+      <li class="timeline-item">
+        <span class="tl-time">12:30</span>
+        <div class="tl-line-wrap"><span class="tl-dot"></span><span class="tl-bar"></span></div>
+        <div class="tl-card">
+          <h4>退社</h4>
+          <p>4時間のスッキリした勤務終了。午後は自由な時間です。</p>
+        </div>
+      </li>
+    </ul>
+    <!-- ※ここはサンプルです。実際には御社の業務フローに合わせて差し替えます -->
+    <p style="color:#bbb;font-size:.75rem;margin-top:1rem;">※1日の流れはサンプルです。実際には御社の業務フローに差し替えます</p>
+  </div>
+</section>
+
+<!-- ====== 先輩の声 ====== -->
+<section class="section" id="voice">
+  <div class="section-inner">
+    <p class="s-label">Staff Voice</p>
+    <h2 class="s-title">先輩スタッフの声</h2>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=640&h=280&fit=crop&crop=faces&q=80" alt="伊藤さん（仮名）">
+        <div class="voice-body">
+          <p class="voice-meta">一般事務担当 ／ 4年目</p>
+          <p class="voice-name">伊藤 由美さん（仮名）</p>
+          <p>「家族の送り迎えがあるので午前中だけ働けるのが理想でした。入社して4年、慣れたらとても働きやすい職場です。」</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社スタッフの声に差し替えます</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=640&h=280&fit=crop&crop=faces&q=80" alt="山田さん（仮名）">
+        <div class="voice-body">
+          <p class="voice-meta">経理補助担当 ／ 1年目</p>
+          <p class="voice-name">山田 千春さん（仮名）</p>
+          <p>「ダブルワーク可と聞いて入社しました。午後は別の仕事をしていますが、問題なく両立できています。先輩がとても丁寧に教えてくれました。」</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社スタッフの声に差し替えます</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=640&h=280&fit=crop&crop=faces&q=80" alt="中村さん（仮名）">
+        <div class="voice-body">
+          <p class="voice-meta">営業事務担当 ／ 10年目</p>
+          <p class="voice-name">中村 健さん（仮名）</p>
+          <p>「入ったころは印刷の知識ゼロでしたが、仕事をしながら覚えました。地域のお客様と長く関われるのが魅力です。」</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社スタッフの声に差し替えます</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== インタビュー（B案固有） ====== -->
+<section class="section bg-light">
+  <div class="section-inner">
+    <p class="s-label">Interview</p>
+    <h2 class="s-title">先輩に聞きました</h2>
+    <div class="interview-wrap">
+      <img class="interview-img" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=320&fit=crop&crop=faces&q=80" alt="田中さん（仮名）">
+      <div>
+        <p class="interview-q">Q. 入社前に不安だったことはありますか？</p>
+        <p class="interview-a">「印刷の仕事を全く知らなかったので不安でした。でも事務の仕事は印刷の専門知識より、丁寧に入力・整理するスキルが大事で、入社後すぐに慣れました。」</p>
+        <p class="interview-q">Q. 職場の雰囲気を一言で表すと？</p>
+        <p class="interview-a">「アットホームです。10人という規模なので、全員顔を知っていて働きやすいです。困ったときにすぐ相談できる環境がいいと思っています。」</p>
+        <p class="interview-meta">田中 美香さん（仮名）・一般事務担当・入社5年目</p>
+        <!-- ※ここはサンプルです。実際には御社スタッフのインタビューに差し替えます -->
+        <p class="sample-note">※インタビューはサンプルです。実際には御社スタッフの言葉に差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== FAQ ====== -->
+<section class="section" id="faq">
+  <div class="section-inner">
+    <p class="s-label">FAQ</p>
+    <h2 class="s-title">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">事務経験がなくても応募できますか？</div>
+        <div class="faq-a">はい、歓迎しています。メールの送受信とフォーマットへの入力ができれば大丈夫です。印刷業の知識は入社後に覚えていただけます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">ダブルワークは本当に可能ですか？</div>
+        <div class="faq-a">可能です。午前の4時間勤務なので、午後に別のお仕事をされている方もいます。就業時間は相談に応じますのでご安心ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">選考の流れを教えてください。</div>
+        <div class="faq-a">応募書類（履歴書＋ハローワーク紹介状）をご郵送ください。書類が届き次第、面接日をご連絡します（書類選考ではありません）。面接は1回、結果は7日以内にお知らせします。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">試用期間中の待遇は変わりますか？</div>
+        <div class="faq-a">試用期間（3ヶ月）中も本採用と同じ条件です。経験者は試用期間が短縮される場合があります。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">扶養範囲内で働けますか？</div>
+        <div class="faq-a">週4〜5日・4時間程度の勤務で、就業日数は相談可能です。扶養範囲内での調整についてはお気軽にご相談ください。</div>
+      </div>
+    </div>
+    <!-- ※ここはサンプルです。実際には御社のよくある質問に差し替えます -->
+    <p style="color:#bbb;font-size:.75rem;margin-top:1rem;">※FAQはサンプルです。実際には御社でよく受ける質問に差し替えます</p>
+  </div>
+</section>
+
+<!-- ====== 採用担当者 ====== -->
+<section class="section bg-main">
+  <div class="section-inner">
+    <p class="s-label" style="color:#72d4c8;">Recruiter</p>
+    <h2 class="s-title">採用担当者からひとこと</h2>
+    <div class="manager-wrap">
+      <img class="manager-img" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当（仮名）">
+      <div>
+        <p class="manager-role">代表取締役・採用担当</p>
+        <p class="manager-name">香取 克己（仮名）</p>
+        <p class="manager-msg">「100年以上地域と共に歩んできた会社です。社員みんなで話し合いながら新しいことに挑戦しています。午前のみの短時間勤務で、ご自身のライフスタイルを大切にしながら働ける環境です。お気軽にご応募ください。」</p>
+        <!-- ※ここはサンプルです。実際には御社採用担当者のコメントに差し替えます -->
+        <p class="sample-note" style="color:rgba(255,255,255,.35);margin-top:.8rem;">※ここはサンプルです。実際には御社採用担当者のメッセージに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== 応募（CTA 3） ====== -->
+<section class="entry-section" id="entry">
+  <h2>応募する・お問い合わせ</h2>
+  <p>履歴書（写真貼付）とハローワーク紹介状を郵送してください。書類到着後に面接日をご連絡します。</p>
+  <a class="btn-cta" href="tel:0478581531">📞 0478-58-1531（採用担当へ直通）</a>
+  <div class="entry-info">
+    <strong>郵送先：</strong>〒287-0036 千葉県香取市観音93-2<br>
+    佐原印刷株式会社 採用担当宛
+  </div>
+</section>
+
+<!-- ====== スマホ固定CTA ====== -->
+<div class="sticky-cta">
+  <a href="#entry">📝 応募はこちら →</a>
+</div>
+
+<!-- ====== FOOTER ====== -->
+<footer>
+  <div class="foot-inner" style="max-width:600px;margin:0 auto;">
+    <p class="foot-name">佐原印刷株式会社</p>
+    <address>
+      〒287-0036 千葉県香取市観音93-2<br>
+      TEL: 0478-58-1531　／　FAX: 0478-52-2573<br>
+      Email: info@sawara-insatsu.co.jp
+    </address>
+  </div>
+</footer>
+
+<script>
+  (function(){
+    var btn = document.querySelector('.hamburger');
+    var nav = document.querySelector('.site-nav');
+    if(btn && nav){
+      btn.addEventListener('click', function(){
+        var open = nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open);
+      });
+    }
+  })();
+</script>
+</body>
+</html>
