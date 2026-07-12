@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>タクシー乗務員（昼日勤）採用情報 | 有限会社高千穂タクシー</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;color:#1a1a1a;line-height:1.7;background:#fff;}
+
+.site-header{
+  background:#1c3a6e;color:#fff;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 1.5rem;position:sticky;top:0;z-index:100;
+}
+.brand{color:#fff;text-decoration:none;font-weight:700;font-size:.95rem;}
+.site-nav{display:flex;gap:1.4rem;align-items:center;}
+.site-nav a{color:#fff;text-decoration:none;font-size:.82rem;transition:opacity .2s;}
+.site-nav a:hover{opacity:.75;}
+.nav-cta{background:#c8973c;padding:.35rem 1rem;border-radius:4px;font-weight:700;}
+.hamburger{display:none;background:none;border:0;color:#fff;font-size:1.8rem;cursor:pointer;line-height:1;}
+
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{
+    display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:#1c3a6e;padding:.5rem 1rem;
+  }
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.15);font-size:.9rem;}
+  .nav-cta{margin:.5rem 0;text-align:center;border-radius:4px;}
+}
+
+.hero{
+  background:url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&h=700&fit=crop&q=80') center/cover no-repeat;
+  position:relative;min-height:480px;display:flex;align-items:center;
+}
+.hero-overlay{position:absolute;inset:0;background:rgba(12,22,46,.68);}
+.hero-content{position:relative;z-index:1;max-width:720px;padding:3.5rem 2rem;color:#fff;}
+.hero-badge{
+  display:inline-block;background:#c8973c;color:#fff;
+  font-size:.78rem;font-weight:700;padding:.3rem .9rem;border-radius:20px;margin-bottom:.9rem;
+}
+.hero-content h1{
+  font-size:clamp(1.7rem,5vw,2.8rem);font-weight:900;line-height:1.35;margin-bottom:1rem;
+}
+.hero-content h1 em{color:#c8973c;font-style:normal;}
+.hero-content p{font-size:.98rem;margin-bottom:1.8rem;opacity:.9;max-width:560px;}
+.btn-primary{
+  display:inline-block;background:#c8973c;color:#fff;
+  padding:.85rem 2.2rem;border-radius:4px;font-weight:700;text-decoration:none;font-size:1rem;
+  transition:background .2s;
+}
+.btn-primary:hover{background:#a87a2a;}
+
+section{padding:4rem 1.5rem;}
+.container{max-width:860px;margin:0 auto;}
+.section-title{
+  font-size:clamp(1.25rem,3.5vw,1.7rem);font-weight:900;color:#1c3a6e;
+  text-align:center;margin-bottom:.4rem;
+}
+.section-sub{text-align:center;color:#666;margin-bottom:2.5rem;font-size:.88rem;}
+
+.features{background:#eef3fb;}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+@media(max-width:768px){.feature-grid{grid-template-columns:1fr;}}
+.feature-card{background:#fff;border-radius:8px;padding:1.6rem;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.07);}
+.feature-icon{
+  width:56px;height:56px;border-radius:50%;background:#1c3a6e;
+  display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;
+}
+.feature-icon svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.feature-card h3{font-size:1.02rem;font-weight:700;color:#1c3a6e;margin-bottom:.5rem;}
+.feature-card p{font-size:.86rem;color:#555;line-height:1.7;}
+
+.req-table{width:100%;border-collapse:collapse;font-size:.9rem;}
+.req-table th,.req-table td{padding:.85rem 1rem;border-bottom:1px solid #dce7f5;text-align:left;vertical-align:top;}
+.req-table th{width:180px;background:#eef3fb;font-weight:700;color:#1c3a6e;}
+.req-note{color:#aaa;font-size:.78rem;display:block;margin-top:.2rem;}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{background:#eef3fb;padding:.5rem .8rem;}
+  .req-table td{padding:.5rem .8rem 1rem;}
+}
+
+.timeline{background:#f7f9fc;}
+.tl-wrap{position:relative;padding-left:100px;max-width:700px;margin:0 auto;}
+.tl-item{position:relative;margin-bottom:1.6rem;padding-left:28px;}
+.tl-time{
+  position:absolute;left:-100px;width:88px;text-align:right;
+  font-weight:700;color:#1c3a6e;font-size:.88rem;padding-top:3px;
+}
+.tl-dot{
+  position:absolute;left:-14px;top:6px;
+  width:14px;height:14px;border-radius:50%;background:#c8973c;
+  border:2px solid #fff;box-shadow:0 0 0 2px #c8973c;
+}
+.tl-line{
+  position:absolute;left:-7px;top:20px;bottom:-1.6rem;width:2px;background:#cdd9ee;
+}
+.tl-item:last-child .tl-line{display:none;}
+.tl-item h4{font-size:.93rem;font-weight:700;color:#1c3a6e;margin-bottom:.2rem;}
+.tl-item p{font-size:.83rem;color:#555;}
+@media(max-width:768px){
+  .tl-wrap{padding-left:68px;}
+  .tl-time{left:-68px;width:58px;font-size:.78rem;}
+}
+
+.voices{background:#eef3fb;}
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+@media(max-width:768px){.voice-grid{grid-template-columns:1fr;}}
+.voice-card{background:#fff;border-radius:8px;padding:1.4rem;box-shadow:0 2px 8px rgba(0,0,0,.07);}
+.voice-card img{width:64px;height:64px;border-radius:50%;object-fit:cover;margin-bottom:.8rem;}
+.v-name{font-weight:700;font-size:.92rem;color:#1c3a6e;}
+.v-meta{font-size:.76rem;color:#888;margin-bottom:.7rem;}
+.voice-card p{font-size:.84rem;color:#444;line-height:1.75;}
+.v-sample{font-size:.73rem;color:#ccc;margin-top:.5rem;}
+
+.faq-item{border-bottom:1px solid #dce7f5;padding:1rem 0;}
+.faq-q{font-weight:700;color:#1c3a6e;margin-bottom:.4rem;font-size:.93rem;}
+.faq-q::before{content:'Q. ';color:#c8973c;}
+.faq-a{font-size:.86rem;color:#555;padding-left:1.4rem;}
+.faq-a::before{content:'A. ';font-weight:700;color:#1c3a6e;}
+
+.manager-section{background:#f7f9fc;}
+.manager-card{
+  display:flex;gap:1.5rem;align-items:flex-start;
+  background:#fff;padding:1.5rem;border-radius:8px;
+  box-shadow:0 2px 8px rgba(0,0,0,.07);
+}
+.manager-card img{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.m-name{font-weight:700;color:#1c3a6e;margin-bottom:.2rem;font-size:.95rem;}
+.m-role{font-size:.78rem;color:#888;margin-bottom:.6rem;}
+.manager-card p{font-size:.86rem;color:#444;line-height:1.75;}
+@media(max-width:768px){
+  .manager-card{flex-direction:column;}
+  .manager-card img{margin:0 auto;}
+}
+
+.cta-section{background:#1c3a6e;color:#fff;text-align:center;padding:4.5rem 1.5rem;}
+.cta-section h2{font-size:clamp(1.25rem,3vw,1.75rem);margin-bottom:.6rem;}
+.cta-section p{opacity:.85;margin-bottom:2rem;font-size:.93rem;}
+.btn-gold{
+  display:inline-block;background:#c8973c;color:#fff;
+  padding:.9rem 2.6rem;border-radius:4px;font-weight:700;text-decoration:none;font-size:1rem;
+  transition:background .2s;
+}
+.btn-gold:hover{background:#a87a2a;}
+
+footer{background:#0e1d3d;color:#9db0d0;text-align:center;padding:1.8rem 1rem;font-size:.8rem;}
+footer p{margin:.15rem 0;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="#top">有限会社高千穂タクシー</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#features">働く魅力</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#voices">先輩の声</a>
+    <a href="#faq">よくある質問</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="top">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-badge">昼日勤専門 ／ 未経験歓迎 ／ 八千代市</span>
+    <h1>夜勤なし。昼だけ働く。<br><em>地域に根ざして60年</em>の<br>タクシー乗務員募集。</h1>
+    <p>6:00〜15:00の昼日勤のみ。夕方にはご家族と食卓を囲めます。歩合給で頑張った分だけ収入に反映。八千代市で半世紀以上、地域の皆さんに支えられてきた会社でドライバーとして働いてみませんか。</p>
+    <a href="#entry" class="btn-primary">まずは募集要項を見る</a>
+  </div>
+</section>
+
+<!-- 働く魅力 -->
+<section class="features" id="features">
+  <div class="container">
+    <h2 class="section-title">高千穂タクシーで働く3つの魅力</h2>
+    <p class="section-sub">「タクシーの仕事は大変そう」というイメージをお持ちの方にこそ、ぜひ読んでいただきたい内容です。</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <!-- 時計アイコン -->
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+        </div>
+        <h3>昼日勤 6:00〜15:00</h3>
+        <p>夜間の乗務は一切ありません。朝6時から午後3時まで働けば退勤。夕食をご家族と、夕方の時間を趣味に充てられる生活リズムが実現します。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <!-- 円マークアイコン -->
+          <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3>歩合給で稼ぎやすい</h3>
+        <p>頑張った分が収入に直結する歩合給制度。接客を磨いてリピーターを増やせば、安定した高収入も狙えます。自分でコントロールできる働き方です。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <!-- 家アイコン -->
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+        </div>
+        <h3>創業60年・地域密着の安心感</h3>
+        <p>昭和39年（1964年）から八千代市に根ざしてきました。地域のお客様との長年の信頼関係と、安定した経営基盤で長く安心して働けます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section id="requirements">
+  <div class="container">
+    <h2 class="section-title">募集要項</h2>
+    <p class="section-sub">※下記はサンプルです。実際の条件は面談時にご確認ください。</p>
+    <table class="req-table">
+      <tbody>
+        <tr>
+          <th>職種</th>
+          <!-- タクシー乗務員（昼日勤）に差し替え -->
+          <td>タクシー乗務員（昼日勤）<span class="req-note">※ここはサンプルです。実際には御社の職種詳細に差し替えます</span></td>
+        </tr>
+        <tr>
+          <th>勤務時間</th>
+          <!-- 実際の勤務時間に差し替え -->
+          <td>6:00〜15:00（昼日勤・休憩含む）<span class="req-note">※ここはサンプルです。実際には御社の勤務時間に差し替えます</span></td>
+        </tr>
+        <tr>
+          <th>給与</th>
+          <!-- 実際の賃金情報に差し替え -->
+          <td>歩合給（月収例：○○万円〜 ／ 詳細は面談時にご説明）<span class="req-note">※ここはサンプルです。実際には御社の賃金情報に差し替えます</span></td>
+        </tr>
+        <tr>
+          <th>休日・休暇</th>
+          <!-- 実際の休日情報に差し替え -->
+          <td>シフト制（週休2日以上 ／ 詳細は面談時にご説明）<span class="req-note">※ここはサンプルです。実際には御社の休日情報に差し替えます</span></td>
+        </tr>
+        <tr>
+          <th>必要資格</th>
+          <!-- 実際の応募資格に差し替え -->
+          <td>普通自動車第一種免許以上（第二種免許は入社後取得サポート可）<span class="req-note">※ここはサンプルです。実際には御社の応募資格に差し替えます</span></td>
+        </tr>
+        <tr>
+          <th>経験</th>
+          <!-- 実際の経験要件に差し替え -->
+          <td>未経験歓迎 ／ タクシー経験者優遇<span class="req-note">※ここはサンプルです。実際には御社の経験要件に差し替えます</span></td>
+        </tr>
+        <tr>
+          <th>勤務地</th>
+          <!-- 実際の勤務地に差し替え -->
+          <td>千葉県八千代市内および近隣エリア<span class="req-note">※ここはサンプルです。実際には御社の勤務地に差し替えます</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section class="timeline" id="day">
+  <div class="container">
+    <h2 class="section-title">乗務員の1日の流れ（昼日勤）</h2>
+    <p class="section-sub">6:00〜15:00のある1日をご紹介します。<br><span style="font-size:.78rem;color:#bbb;">※ここはサンプルです。実際には御社の1日の流れに差し替えます</span></p>
+    <div class="tl-wrap">
+      <div class="tl-item">
+        <span class="tl-time">6:00</span>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+        <h4>出勤・点呼・車両点検</h4>
+        <p>安全点呼を受け、車内を清潔に整えてから出庫。気持ち良い朝のスタートです。</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">6:30</span>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+        <h4>乗車開始（流し・無線配車）</h4>
+        <p>八千代市内を中心に稼働。地域密着ならではの顔なじみのお客様も多く、安心して運行できます。</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">8:30</span>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+        <h4>通勤・通院ピークタイム</h4>
+        <p>病院・駅への送迎が集中する時間帯。地域の足として欠かせない存在です。</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">12:00</span>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+        <h4>昼休憩（約60分）</h4>
+        <p>休憩所でゆっくりランチ。午後に向けてエネルギーをチャージします。</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">13:00</span>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+        <h4>午後の乗車（買い物・お出かけ客）</h4>
+        <p>買い物や外出のお客様が中心。丁寧な接客がリピーターにつながります。</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">14:30</span>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+        <h4>帰庫・車内清掃・日報提出</h4>
+        <p>翌日の乗務員のために車内を整えて、日報を提出して終了です。</p>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">15:00</span>
+        <div class="tl-dot"></div>
+        <div class="tl-line"></div>
+        <h4>退勤</h4>
+        <p>夕方前に帰宅。ご家族と夕食を楽しんだり、自分の時間を大切にできます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section class="voices" id="voices">
+  <div class="container">
+    <h2 class="section-title">先輩乗務員からのメッセージ</h2>
+    <p class="section-sub">実際に働くドライバーの声をご紹介します。</p>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <!-- 先輩ドライバー（男性）の顔写真 -->
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩乗務員">
+        <div class="v-name">田中 隆（仮名）</div>
+        <div class="v-meta">タクシー乗務員 ／ 入社6年目</div>
+        <p>前職は製造業で夜勤もありましたが、体への負担が大きくて転職しました。昼だけと聞いて最初は半信半疑でしたが、本当に夕方には家にいます。歩合で収入が変わるのが面白くて、日々工夫しています。</p>
+        <div class="v-sample">※ここはサンプルです。実際には御社スタッフの声に差し替えます</div>
+      </div>
+      <div class="voice-card">
+        <!-- 先輩ドライバー（女性）の顔写真 -->
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩乗務員">
+        <div class="v-name">鈴木 恵子（仮名）</div>
+        <div class="v-meta">タクシー乗務員 ／ 入社3年目</div>
+        <p>女性でも大丈夫か心配でしたが、昼間だけなので安心して乗務できています。常連のお客様に「あなたじゃないとダメ」と言っていただけると、この仕事にして良かったと思います。</p>
+        <div class="v-sample">※ここはサンプルです。実際には御社スタッフの声に差し替えます</div>
+      </div>
+      <div class="voice-card">
+        <!-- 先輩ドライバー（男性・ベテラン）の顔写真 -->
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩乗務員">
+        <div class="v-name">渡辺 誠（仮名）</div>
+        <div class="v-meta">タクシー乗務員 ／ 入社10年目</div>
+        <p>未経験で入社し、第二種免許もここで取得しました。研修期間は先輩がしっかりついてくれるので不安なし。10年経った今では、お客様の顔を見ただけで目的地が分かることも。地域に愛される仕事です。</p>
+        <div class="v-sample">※ここはサンプルです。実際には御社スタッフの声に差し替えます</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <h2 class="section-title">よくある質問</h2>
+    <p class="section-sub">応募前に気になるポイントをQ&Aでご案内します。<br><span style="font-size:.78rem;color:#bbb;">※ここはサンプルです。実際には御社のQ&Aに差し替えます</span></p>
+    <div class="faq-item">
+      <div class="faq-q">第二種免許を持っていないのですが、応募できますか？</div>
+      <div class="faq-a">はい、応募できます。普通自動車第一種免許をお持ちであればOKです。入社後に第二種免許の取得をサポートします（費用補助あり・詳細は面談時にご案内します）。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">本当に夜勤はないのですか？</div>
+      <div class="faq-a">今回募集しているのは昼日勤（6:00〜15:00）のみです。夕方前には退勤できますので、夜間の乗務はありません。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">歩合給の仕組みを教えてください。</div>
+      <div class="faq-a">売上に応じた歩合給制度です。稼げば稼ぐほど収入が増える仕組みになっています。具体的な計算方法は面談時にご説明します。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">タクシーの仕事は未経験です。研修はありますか？</div>
+      <div class="faq-a">入社後は先輩ドライバーによる同乗研修を実施します。道の把握から接客マナーまで丁寧にサポートしますのでご安心ください。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">休日はどのくらいありますか？</div>
+      <div class="faq-a">シフト制で週休2日以上の確保を基本としています。詳細は面談時にお伝えします。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 採用担当者 -->
+<section class="manager-section" id="manager">
+  <div class="container">
+    <h2 class="section-title">採用担当者より</h2>
+    <div class="manager-card">
+      <!-- 採用担当者の顔写真 -->
+      <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当者">
+      <div>
+        <div class="m-name">山田 浩二（仮名）</div>
+        <div class="m-role">採用担当 ／ 有限会社高千穂タクシー</div>
+        <p>「タクシーはきつそう」と思って一度は諦めた方が、昼日勤と知って入社し、「こんなに働きやすいとは思わなかった」と言ってくれることがよくあります。歩合の工夫が面白いと感じてくれた方は特に長続きしていますよ。まずは気軽にお話だけでも聞かせてください。</p>
+        <div class="v-sample">※ここはサンプルです。実際には御社の担当者情報に差し替えます</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="entry">
+  <h2>まずはお気軽にお問い合わせください</h2>
+  <p>選考の流れ・給与の詳細・働き方の疑問など、何でもご相談いただけます。<br>話を聞くだけでも大歓迎です。</p>
+  <a href="tel:XXXXXXXXXX" class="btn-gold">お電話でのお問い合わせ</a>
+</section>
+
+<footer>
+  <p>有限会社高千穂タクシー</p>
+  <p>千葉県八千代市</p>
+</footer>
+
+<script>
+(function(){
+  var btn = document.querySelector('.hamburger');
+  var nav = document.querySelector('.site-nav');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  }
+})();
+</script>
+</body>
+</html>
