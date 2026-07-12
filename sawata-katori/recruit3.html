@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>採用情報 | 株式会社さわた</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;color:#1e1e2e;background:#0c1322;line-height:1.75;}
+img{max-width:100%;height:auto;display:block;}
+a{color:inherit;text-decoration:none;}
+
+:root{
+  --sky:#2d6fd4;
+  --sky-light:#6fa8dc;
+  --gold:#d4a53a;
+  --bg-dark:#0c1322;
+  --bg-mid:#131c2e;
+  --bg-light:#f6f8fe;
+  --card-bg:#1a2540;
+  --text-dark:#1e1e2e;
+  --text-light:#d4d8e8;
+  --muted:#8090a8;
+  --border:#2a3450;
+  --border-light:#d8dcea;
+}
+
+/* ===== Header ===== */
+.site-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 1.5rem;position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(12,19,34,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);
+}
+.brand{font-family:'Noto Serif JP',serif;font-size:1.05rem;font-weight:700;color:#fff;}
+.site-nav{display:flex;gap:1.5rem;align-items:center;}
+.site-nav a{color:var(--text-light);font-size:.85rem;transition:color .2s;}
+.site-nav a:hover{color:var(--gold);}
+.site-nav .nav-cta{border:2px solid var(--gold);color:var(--gold);padding:.4rem 1.2rem;border-radius:3px;font-weight:700;}
+.site-nav .nav-cta:hover{background:var(--gold);color:#000;}
+.hamburger{display:none;background:none;border:0;font-size:1.7rem;line-height:1;cursor:pointer;color:#fff;}
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:rgba(12,19,34,.98);box-shadow:0 8px 20px rgba(0,0,0,.5);padding:.5rem 1.5rem;}
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.85rem 0;border-bottom:1px solid var(--border);color:var(--text-light);}
+  .site-nav .nav-cta{margin:.6rem 0;text-align:center;border-radius:3px;}
+}
+
+/* ===== Hero FVバナー ===== */
+.hero{position:relative;min-height:80vh;display:flex;align-items:center;padding-top:60px;overflow:hidden;}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1556388158-158ea5ccacbd?w=1600&h=900&fit=crop&q=80');
+  background-size:cover;background-position:center;
+}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(5,12,30,.78) 0%,rgba(20,40,80,.6) 60%,rgba(5,12,30,.72) 100%);}
+.hero-content{position:relative;z-index:2;max-width:780px;padding:3rem 2rem;color:#fff;}
+.hero-eyebrow{display:flex;align-items:center;gap:.8rem;margin-bottom:1.4rem;}
+.hero-eyebrow span{font-size:.75rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);font-weight:700;}
+.hero-eyebrow::before,.hero-eyebrow::after{content:'';flex:0 0 40px;height:1px;background:var(--gold);}
+.hero-eyebrow::after{flex:1;}
+.hero h1{font-family:'Noto Serif JP',serif;font-size:clamp(2.2rem,6vw,4rem);font-weight:900;line-height:1.25;margin-bottom:1.2rem;letter-spacing:.03em;}
+.hero h1 em{color:var(--gold);font-style:normal;}
+.hero-lead{font-size:clamp(.9rem,2vw,1.05rem);line-height:1.9;margin-bottom:2.4rem;color:rgba(255,255,255,.88);}
+.pill-group{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem;}
+.pill{display:inline-block;border:1px solid rgba(212,165,58,.6);color:var(--gold);font-size:.77rem;padding:.28rem .85rem;border-radius:20px;}
+.btn-gold{display:inline-block;background:var(--gold);color:#000;font-weight:700;padding:1rem 2.5rem;border-radius:3px;font-size:1rem;letter-spacing:.05em;transition:opacity .2s;}
+.btn-gold:hover{opacity:.85;}
+@media(max-width:768px){.hero h1{font-size:2rem;}}
+
+/* ===== Section ===== */
+.dark-section{background:var(--bg-dark);}
+.mid-section{background:var(--bg-mid);}
+.light-section{background:var(--bg-light);}
+section{padding:5rem 1.2rem;}
+.section-inner{max-width:900px;margin:0 auto;}
+.sec-eyebrow{font-size:.75rem;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:.6rem;}
+.sec-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;margin-bottom:.5rem;}
+.sec-title.light{color:#fff;}
+.sec-title.dark{color:var(--text-dark);}
+.sec-sub{font-size:.9rem;margin-bottom:2.5rem;}
+.sec-sub.light{color:var(--muted);}
+.sec-sub.dark{color:#6a6a7a;}
+
+/* ===== Feature Grid ===== */
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;}
+.feature-card{background:var(--card-bg);border:1px solid var(--border);border-radius:8px;padding:2rem 1.6rem;position:relative;overflow:hidden;}
+.feature-card::after{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--sky),var(--gold));}
+.feature-icon{font-size:2rem;margin-bottom:1rem;color:var(--gold);}
+.feature-card h3{font-size:1rem;font-weight:700;color:#fff;margin-bottom:.6rem;}
+.feature-card p{font-size:.87rem;line-height:1.8;color:var(--text-light);}
+@media(max-width:768px){.feature-grid{grid-template-columns:1fr;}}
+
+/* ===== Timeline ===== */
+.timeline{position:relative;padding-left:100px;}
+.timeline::before{content:'';position:absolute;left:76px;top:8px;bottom:8px;width:2px;background:linear-gradient(180deg,var(--gold),var(--sky));}
+.timeline-item{position:relative;margin-bottom:2rem;}
+.timeline-time{position:absolute;left:-100px;top:5px;width:88px;text-align:right;font-size:.8rem;font-weight:700;color:var(--gold);}
+.timeline-dot{position:absolute;left:-28px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--gold);border:3px solid var(--bg-dark);}
+.timeline-body{background:var(--card-bg);border:1px solid var(--border);border-radius:6px;padding:1rem 1.2rem;}
+.timeline-body h4{font-size:.95rem;font-weight:700;color:#fff;margin-bottom:.3rem;}
+.timeline-body p{font-size:.87rem;color:var(--muted);}
+.sample-note{font-size:.74rem;color:var(--muted);font-style:italic;margin-top:.4rem;}
+@media(max-width:768px){
+  .timeline{padding-left:76px;}
+  .timeline::before{left:56px;}
+  .timeline-time{left:-76px;width:64px;}
+  .timeline-dot{left:-22px;}
+}
+
+/* ===== Voice Cards ===== */
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;}
+.voice-card{background:var(--bg-light);border:1px solid var(--border-light);border-radius:8px;overflow:hidden;}
+.voice-card img{width:100%;height:180px;object-fit:cover;}
+.voice-body{padding:1.3rem;}
+.voice-name{font-weight:700;color:var(--text-dark);font-size:.95rem;}
+.voice-meta{font-size:.76rem;color:#7a7a8a;margin-bottom:.7rem;}
+.voice-body p{font-size:.88rem;line-height:1.75;color:var(--text-dark);}
+.voice-quote{font-size:3rem;color:var(--gold);line-height:.8;margin-bottom:.4rem;opacity:.4;}
+.sample-note-s{font-size:.73rem;color:#aaa;font-style:italic;margin-top:.4rem;}
+@media(max-width:768px){.voice-grid{grid-template-columns:1fr;}}
+
+/* ===== FAQ ===== */
+.faq-item{background:#fff;border:1px solid var(--border-light);border-radius:6px;margin-bottom:1rem;overflow:hidden;}
+.faq-q{display:flex;align-items:flex-start;gap:.8rem;padding:1.1rem 1.3rem;font-weight:700;font-size:.95rem;color:var(--text-dark);}
+.faq-q::before{content:'Q';background:var(--gold);color:#000;font-weight:700;font-size:.8rem;border-radius:3px;padding:.15rem .55rem;flex-shrink:0;margin-top:.1rem;}
+.faq-a{display:flex;align-items:flex-start;gap:.8rem;padding:.2rem 1.3rem 1.1rem;font-size:.9rem;line-height:1.75;color:var(--text-dark);}
+.faq-a::before{content:'A';background:var(--sky);color:#fff;font-weight:700;font-size:.8rem;border-radius:3px;padding:.15rem .55rem;flex-shrink:0;margin-top:.05rem;}
+
+/* ===== Requirements ===== */
+.req-table{width:100%;border-collapse:collapse;background:#fff;}
+.req-table th,.req-table td{padding:.9rem 1.1rem;border:1px solid var(--border-light);text-align:left;font-size:.9rem;vertical-align:top;}
+.req-table th{background:var(--bg-dark);color:var(--gold);width:30%;font-weight:500;}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{background:#f0f2f8;color:var(--text-dark);padding:.5rem .8rem;}
+  .req-table td{padding:.5rem .8rem 1rem;background:#fff;}
+}
+
+/* ===== CTA ===== */
+.cta-section{background:linear-gradient(135deg,#0a1c40,#0e2a5c);text-align:center;padding:5.5rem 1.2rem;}
+.cta-section h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,4vw,2.2rem);color:#fff;margin-bottom:1rem;font-weight:700;}
+.cta-section p{color:rgba(255,255,255,.78);margin-bottom:2.4rem;}
+
+/* ===== Footer ===== */
+footer{background:var(--bg-dark);color:var(--muted);text-align:center;padding:2.5rem 1.2rem;font-size:.83rem;line-height:2;border-top:1px solid var(--border);}
+</style>
+</head>
+<body>
+
+<header class="site-header" id="top">
+  <a class="brand" href="#top">株式会社さわた</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#features">働く魅力</a>
+    <a href="#timeline">1日の流れ</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#faq">FAQ</a>
+    <a href="#req">募集要項</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<!-- Hero FVバナー -->
+<section class="hero" id="hero-top">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow"><span>Recruit 2025</span></div>
+    <h1>空へ向かう荷物が、<br><em>人の笑顔を運ぶ。</em></h1>
+    <p class="hero-lead">2t保冷車で、羽田・成田空港と都内ホテルへ機内食を届ける仕事。<br>創業40年の歴史が、あなたの「走る力」を待っています。</p>
+    <div class="pill-group">
+      <span class="pill">正社員</span>
+      <span class="pill">月給30〜40万</span>
+      <span class="pill">定年なし</span>
+      <span class="pill">社会保険完備</span>
+      <span class="pill">マイカー通勤可</span>
+    </div>
+    <a href="#entry" class="btn-gold">採用情報を見る・応募する</a>
+  </div>
+</section>
+
+<!-- Features -->
+<section class="dark-section" id="features">
+  <div class="section-inner">
+    <p class="sec-eyebrow">Why Join Us</p>
+    <h2 class="sec-title light">さわたで働く、3つの理由</h2>
+    <p class="sec-sub light" style="margin-bottom:2.5rem;">「ルートが決まっている」「空港が舞台」「家族に優しい手当」——毎日続けたくなる仕事がここにあります。</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">✈</div>
+        <h3>空港・ホテルへ届ける誇り</h3>
+        <p>羽田・成田空港への機内食配送に加え、明治神宮や大手ホテルへも。「いつもの道」に特別な意味が生まれる仕事です。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💴</div>
+        <h3>月給30〜40万＋家族手当</h3>
+        <p>基本給に加え、子ども1人につき月2万円の家族手当。通勤手当は実費全額支給。家族のために働く人を、会社が支えます。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🛡</div>
+        <h3>定年なし・長く続けられる職場</h3>
+        <p>定年制がなく、働き続けたい方に優しい環境。社会保険完備・慰安旅行・お誕生日会など、スタッフを大切にする文化があります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Timeline -->
+<section class="mid-section" id="timeline">
+  <div class="section-inner">
+    <p class="sec-eyebrow">A Day in the Life</p>
+    <h2 class="sec-title light">1日の流れ（早便ルート例）</h2>
+    <p class="sec-sub light" style="margin-bottom:1.5rem;">※ここはサンプルです。実際には御社のドライバーの1日の流れに差し替えます。</p>
+    <!-- サンプルタイムライン: 実際のスケジュールに差し替えてください -->
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="timeline-time">05:00</span>
+        <span class="timeline-dot"></span>
+        <div class="timeline-body">
+          <h4>出勤・積み込み</h4>
+          <p>保冷車に機内食を積み込み、数量・状態を確認。朝の澄んだ空気の中、仕事がスタートします。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-time">06:00</span>
+        <span class="timeline-dot"></span>
+        <div class="timeline-body">
+          <h4>出発</h4>
+          <p>渋滞前の時間帯を走る爽快なドライブ。決まったルートで迷いなく進めます。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-time">07:30</span>
+        <span class="timeline-dot"></span>
+        <div class="timeline-body">
+          <h4>成田空港・納品</h4>
+          <p>空港のハンドリング担当者へ丁寧に引き渡し。顔なじみが増えるほど仕事が楽しくなります。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-time">10:00</span>
+        <span class="timeline-dot"></span>
+        <div class="timeline-body">
+          <h4>都内ホテルへ納品</h4>
+          <p>格式ある場所への配送。自分の仕事が上質なサービスの一端を担っているという実感があります。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-time">12:30</span>
+        <span class="timeline-dot"></span>
+        <div class="timeline-body">
+          <h4>帰社・報告・整備</h4>
+          <p>無事に戻ってチームへ報告、車をきれいに戻します。一日の充実感を感じる時間です。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-time">13:30</span>
+        <span class="timeline-dot"></span>
+        <div class="timeline-body">
+          <h4>翌日確認・退勤</h4>
+          <p>翌日のルートを確認してから退勤。早番の日は午後が丸ごと自分の時間になります。</p>
+          <p class="sample-note">※このサンプルは一例です。実際のルートに差し替えます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Voice -->
+<section class="light-section" id="voice">
+  <div class="section-inner">
+    <p class="sec-eyebrow">Staff Voice</p>
+    <h2 class="sec-title dark">先輩からのメッセージ</h2>
+    <p class="sec-sub dark" style="margin-bottom:1.5rem;">※ここはサンプルです。実際には御社のスタッフの写真・コメントに差し替えます。</p>
+    <!-- サンプル先輩メッセージ: 実際の情報に差し替えてください -->
+    <div class="voice-grid">
+      <div class="voice-card">
+        <!-- 先輩1の顔写真を images/voice1.jpg に差し替えてください -->
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=640&h=380&fit=crop&crop=faces&q=80" alt="先輩ドライバー 中村さん">
+        <div class="voice-body">
+          <div class="voice-quote">"</div>
+          <p class="voice-name">中村 大樹（仮名）</p>
+          <p class="voice-meta">配送ドライバー / 入社4年目</p>
+          <p>就業時間が変わるのが最初は心配でしたが、前日に翌日のルートがわかるので体のリズムを整えやすい。空港納品のあとに「お疲れさま」と言ってもらえる瞬間が一番やりがいを感じます。</p>
+          <p class="sample-note-s">※サンプルです。実際の社員のコメントに差し替えます。</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <!-- 先輩2の顔写真を images/voice2.jpg に差し替えてください -->
+        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=640&h=380&fit=crop&crop=faces&q=80" alt="先輩スタッフ 小林さん">
+        <div class="voice-body">
+          <div class="voice-quote">"</div>
+          <p class="voice-name">小林 真理（仮名）</p>
+          <p class="voice-meta">物流サポート / 入社6年目</p>
+          <p>女性が120名近く活躍していて、相談しやすい雰囲気です。定年がないので「ここで長く働こう」という気持ちで続けられています。慰安旅行は毎回楽しみです。</p>
+          <p class="sample-note-s">※サンプルです。実際の社員のコメントに差し替えます。</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <!-- 先輩3の顔写真を images/voice3.jpg に差し替えてください -->
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=640&h=380&fit=crop&crop=faces&q=80" alt="先輩ドライバー 高橋さん">
+        <div class="voice-body">
+          <div class="voice-quote">"</div>
+          <p class="voice-name">高橋 翔（仮名）</p>
+          <p class="voice-meta">配送ドライバー / 入社1年目</p>
+          <p>未経験で入社しました。研修で先輩と一緒に走ったのが2週間。「ルートが同じ」という安心感が大きくて、思ったより早く一人立ちできました。家族手当が毎月振り込まれるのも正直ありがたいです。</p>
+          <p class="sample-note-s">※サンプルです。実際の社員のコメントに差し替えます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="dark-section" id="faq">
+  <div class="section-inner">
+    <p class="sec-eyebrow">FAQ</p>
+    <h2 class="sec-title light">よくある質問</h2>
+    <p class="sec-sub light" style="margin-bottom:2rem;">※ここはサンプルです。実際には御社のよくある質問に差し替えます。</p>
+    <!-- サンプルFAQ: 実際の回答に差し替えてください -->
+    <div class="faq-item">
+      <div class="faq-q">免許はどの種類が必要ですか？</div>
+      <div class="faq-a">準中型自動車免許（必須）または普通自動車免許（平成19年6月1日以前取得・AT限定不可）が必要です。詳しくは採用担当へお気軽にご確認ください。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">就業時間がルートで変わるのが心配です。生活リズムは整いますか？</div>
+      <div class="faq-a">翌日のルートは前日にお伝えするため、起床時間の見通しが立てやすい環境です。ルート自体は固定されているので、慣れると生活リズムが安定しやすくなります。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">配送の経験がありません。採用していただけますか？</div>
+      <div class="faq-a">経験不問で募集しております。入社後は先輩が同乗してルートを案内するサポート期間があります。ルートが決まっているため、多くの方が数週間で流れを習得されています。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">家族手当の詳細を教えてください。</div>
+      <div class="faq-a">子ども1人につき月20,000円の家族手当を支給しています。お子さんの人数が増えるごとに加算されます。詳しくは採用担当へお問い合わせください。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">試用期間があると聞きましたが、待遇は変わりますか？</div>
+      <div class="faq-a">試用期間は2ヶ月ですが、給与・社会保険などの待遇は本採用と完全に同じです。安心してスタートしていただけます。</div>
+    </div>
+  </div>
+</section>
+
+<!-- Requirements -->
+<section class="light-section" id="req">
+  <div class="section-inner">
+    <p class="sec-eyebrow">Requirements</p>
+    <h2 class="sec-title dark">募集要項</h2>
+    <p class="sec-sub dark" style="margin-bottom:1.5rem;"></p>
+    <table class="req-table">
+      <tbody>
+        <tr><th>職種</th><td>配送業務（2t保冷車・機内食）正社員</td></tr>
+        <tr><th>給与</th><td>月給 300,000円〜400,000円<br>（月平均労働日数：21.4日）</td></tr>
+        <tr><th>就業時間</th><td>シフト制 / 5:00〜18:00の間の8時間勤務（ルートにより変動）<br>月平均時間外20時間</td></tr>
+        <tr><th>休日・休暇</th><td>年間108日（シフト制・月8〜9日休み）<br>6ヶ月経過後に年次有給休暇10日付与</td></tr>
+        <tr><th>必要免許</th><td>準中型自動車免許（必須）<br>または普通自動車免許（平成19年6月1日以前取得・AT限定不可）</td></tr>
+        <tr><th>試用期間</th><td>2ヶ月（同条件）</td></tr>
+        <tr><th>手当・福利厚生</th><td>家族手当（子ども1人につき20,000円）<br>通勤手当（実費支給・上限なし）<br>雇用・労災・健康保険・厚生年金完備<br>慰安旅行・お誕生日会</td></tr>
+        <tr><th>定年制</th><td>なし</td></tr>
+        <tr><th>勤務地</th><td>千葉県香取市山之辺1461-5（本社工場）<br>与倉入口バス停より徒歩3分 / マイカー通勤可・駐車場完備</td></tr>
+        <tr><th>応募方法</th><td>事前にお電話またはメールでご連絡ください。<br>履歴書（写真貼付）＋ハローワーク紹介状を郵送</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CTA Final -->
+<section class="cta-section" id="entry">
+  <h2>「話を聞いてみたい」<br>そのひと声から始まります</h2>
+  <p>配送のこと、免許のこと、勤務時間のこと——<br>どんな質問でも採用担当が丁寧にお答えします。</p>
+  <a href="tel:0478524123" class="btn-gold" style="font-size:1.1rem;">📞 0478-52-4123</a>
+  <p style="margin-top:1.2rem;font-size:.83rem;color:rgba(255,255,255,.5);">受付：平日 9:00〜17:00（昼12:00〜13:00も受付可）</p>
+</section>
+
+<footer>
+  <p>株式会社さわた</p>
+  <p>〒287-0042 千葉県香取市山之辺1461-5</p>
+  <p>TEL: 0478-52-4123　E-mail: sawata@choshinet.or.jp</p>
+</footer>
+
+<script>
+(function(){
+  var btn = document.querySelector('.hamburger');
+  var nav = document.querySelector('.site-nav');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  }
+})();
+</script>
+</body>
+</html>
