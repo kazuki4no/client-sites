@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>採用情報 | 株式会社曽我興業</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans JP',sans-serif;color:#1c1c1e;line-height:1.7;background:#fff}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ヘッダー */
+.site-header{display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 1.5rem;position:absolute;top:0;left:0;right:0;z-index:100}
+.brand{font-family:'Noto Serif JP',serif;font-size:1rem;font-weight:700;color:#fff;letter-spacing:.08em}
+.site-nav{display:flex;gap:1.4rem;align-items:center}
+.site-nav a{color:rgba(255,255,255,.85);font-size:.85rem;transition:color .2s;letter-spacing:.04em}
+.site-nav a:hover{color:#f0b429}
+.site-nav .nav-cta{border:1.5px solid #f0b429;color:#f0b429;padding:.38rem .95rem;border-radius:3px;font-size:.82rem;font-weight:700}
+.site-nav .nav-cta:hover{background:#f0b429;color:#1c1c1e}
+.hamburger{display:none;background:none;border:0;font-size:1.8rem;color:#fff;line-height:1;cursor:pointer}
+@media(max-width:768px){
+  .hamburger{display:block}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:fixed;top:0;left:0;right:0;bottom:0;z-index:200;
+    background:rgba(10,15,30,.97);padding:5rem 2rem 2rem;justify-content:flex-start}
+  .site-nav.open{display:flex}
+  .site-nav a{color:rgba(255,255,255,.85);padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:1.1rem}
+  .site-nav a:last-child{border-bottom:none}
+}
+
+/* FVヒーロー（全画面背景画像） */
+.hero{position:relative;min-height:80vh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&h=900&fit=crop&q=80') center/cover no-repeat;z-index:0}
+.hero-overlay{position:absolute;inset:0;background:rgba(10,15,30,.6);z-index:1}
+.hero-content{position:relative;z-index:2;max-width:760px;padding:7rem 1.5rem 4rem;color:#fff}
+.hero-tag{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1.4rem}
+.hero-tag span{background:rgba(240,180,41,.2);border:1px solid rgba(240,180,41,.5);color:#f0b429;font-size:.74rem;font-weight:700;padding:.25rem .7rem;border-radius:2px;letter-spacing:.08em}
+.hero h1{font-family:'Noto Serif JP',serif;font-size:clamp(2rem,6vw,3.5rem);font-weight:900;line-height:1.2;margin-bottom:1.2rem;letter-spacing:.03em}
+.hero h1 em{color:#f0b429;font-style:normal;display:block}
+.hero p{font-size:clamp(.92rem,2vw,1.05rem);color:rgba(255,255,255,.8);margin-bottom:2.2rem;line-height:1.8;max-width:560px}
+.btn-hero{display:inline-block;background:#f0b429;color:#1c1c1e;font-weight:700;padding:.9rem 2.4rem;border-radius:3px;font-size:1rem;letter-spacing:.05em;transition:background .2s;margin-right:1rem}
+.btn-hero:hover{background:#d4991f}
+.btn-hero-sub{display:inline-block;color:rgba(255,255,255,.75);font-size:.88rem;border-bottom:1px solid rgba(255,255,255,.4);padding-bottom:.1rem}
+
+/* セクション共通 */
+.section{padding:4.5rem 1.5rem}
+.section-inner{max-width:920px;margin:0 auto}
+.section-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,4vw,2.1rem);font-weight:900;text-align:center;margin-bottom:.5rem;color:#1c1c1e;letter-spacing:.04em}
+.section-sub{text-align:center;color:#78716c;font-size:.88rem;margin-bottom:.8rem}
+.gold-bar{width:40px;height:3px;background:#f0b429;margin:.8rem auto 2.5rem}
+.bg-dark{background:#0f1623;color:#fff}
+.bg-dark .section-title{color:#fff}
+.bg-warm{background:#fafaf7}
+.sample-note{font-size:.72rem;color:#aab4c8;margin-top:.4rem;display:block}
+
+/* 魅力 — ダーク背景カード */
+.merit-grid-dark{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(255,255,255,.08)}
+.merit-card-dark{background:#0f1623;padding:2.2rem 1.5rem;border:1px solid rgba(255,255,255,.06)}
+.merit-icon{font-size:1.6rem;margin-bottom:1rem;color:#f0b429}
+.merit-card-dark h3{font-size:1rem;font-weight:700;color:#fff;margin-bottom:.6rem;line-height:1.4}
+.merit-card-dark p{font-size:.85rem;color:rgba(255,255,255,.6);line-height:1.7}
+@media(max-width:768px){.merit-grid-dark{grid-template-columns:1fr;background:none;gap:1rem}}
+
+/* 仕事内容 */
+.work-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center}
+.work-grid img{border-radius:4px;height:300px;object-fit:cover;width:100%}
+.work-text h3{font-family:'Noto Serif JP',serif;font-size:1.25rem;font-weight:700;margin-bottom:.8rem;color:#1c1c1e}
+.work-text p{color:#44403c;font-size:.9rem;line-height:1.8}
+@media(max-width:768px){.work-grid{grid-template-columns:1fr}}
+
+/* タイムライン */
+.timeline{position:relative;padding-left:100px}
+.timeline::before{content:'';position:absolute;left:78px;top:10px;bottom:10px;width:1px;background:#e7e5e4}
+.tl-item{position:relative;margin-bottom:1.6rem}
+.tl-time{position:absolute;left:-100px;width:80px;text-align:right;font-size:.82rem;font-weight:700;color:#f0b429;padding-top:.15rem}
+.tl-dot{position:absolute;left:-12px;top:.35rem;width:10px;height:10px;border-radius:50%;background:#f0b429;box-shadow:0 0 0 3px #fff,0 0 0 5px rgba(240,180,41,.3)}
+.tl-body{padding-left:.8rem}
+.tl-body strong{font-size:.92rem;font-weight:700;color:#1c1c1e;display:block}
+.tl-body span{font-size:.82rem;color:#78716c}
+@media(max-width:768px){
+  .timeline{padding-left:80px}
+  .timeline::before{left:58px}
+  .tl-time{left:-80px;width:60px;font-size:.76rem}
+}
+
+/* 先輩の声 */
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.voice-card{position:relative;border-radius:4px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.1)}
+.voice-card img{width:100%;height:200px;object-fit:cover}
+.voice-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(0deg,rgba(10,15,30,.9) 60%,transparent);padding:1.2rem 1rem;color:#fff}
+.voice-name{font-weight:700;font-size:.88rem}
+.voice-role{font-size:.74rem;color:#f0b429;margin-bottom:.4rem}
+.voice-text{font-size:.8rem;line-height:1.6;color:rgba(255,255,255,.85)}
+@media(max-width:768px){.voice-grid{grid-template-columns:1fr}}
+
+/* 募集要項 */
+.req-table{width:100%;border-collapse:collapse;font-size:.9rem}
+.req-table th,.req-table td{padding:.9rem 1rem;border-bottom:1px solid #e7e5e4;text-align:left;vertical-align:top}
+.req-table th{width:28%;background:#fafaf7;font-weight:700;color:#1c1c1e;white-space:nowrap;font-family:'Noto Serif JP',serif}
+.req-table td{color:#44403c}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%}
+  .req-table th{background:#fafaf7;padding:.5rem .8rem;white-space:normal}
+  .req-table td{padding:.5rem .8rem 1rem}
+}
+
+/* FAQ */
+.faq-list{max-width:680px;margin:0 auto}
+.faq-item{border-bottom:1px solid #e7e5e4;padding:1.2rem 0}
+.faq-q{font-weight:700;font-size:.92rem;color:#1c1c1e;margin-bottom:.5rem;display:flex;gap:.5rem}
+.faq-q::before{content:'Q.';color:#f0b429;font-weight:900;font-size:1rem;flex-shrink:0;font-family:'Noto Serif JP',serif}
+.faq-a{font-size:.87rem;color:#44403c;padding-left:1.6rem;line-height:1.7}
+
+/* CTA */
+.cta-sec{background:url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1600&h=600&fit=crop&q=80') center/cover no-repeat;position:relative;text-align:center;padding:5rem 1.5rem}
+.cta-sec::before{content:'';position:absolute;inset:0;background:rgba(10,15,30,.75)}
+.cta-sec > *{position:relative;z-index:1}
+.cta-sec h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,4vw,2.2rem);font-weight:900;color:#fff;margin-bottom:1rem;letter-spacing:.04em}
+.cta-sec p{color:rgba(255,255,255,.8);font-size:.92rem;margin-bottom:2rem}
+.btn-gold{display:inline-block;background:#f0b429;color:#1c1c1e;font-weight:700;padding:.9rem 2.5rem;border-radius:3px;font-size:1rem;transition:background .2s;letter-spacing:.04em}
+.btn-gold:hover{background:#d4991f}
+
+footer{background:#0a0f1e;color:#57534e;text-align:center;padding:2.2rem 1rem;font-size:.82rem;letter-spacing:.04em}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="#top">株式会社曽我興業</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#merit">働く理由</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#faq">FAQ</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag">
+      <span>鉄筋工</span>
+      <span>未経験歓迎</span>
+      <span>資格取得全額負担</span>
+    </div>
+    <h1>鉄骨が、<br>街をつくる。<em>あなたの手で。</em></h1>
+    <p>手に職をつけたい方へ。資格取得費用は全額会社負担。<br>未経験からスタートした先輩が大勢いる職場です。</p>
+    <a class="btn-hero" href="#entry">応募・お問い合わせ</a>
+    <a class="btn-hero-sub" href="#merit">詳しく見る</a>
+  </div>
+</section>
+
+<section class="section bg-dark" id="merit">
+  <div class="section-inner">
+    <h2 class="section-title">ここを選ぶ理由</h2>
+    <div class="gold-bar"></div>
+    <div class="merit-grid-dark">
+      <div class="merit-card-dark">
+        <div class="merit-icon">◈</div>
+        <h3>資格取得費用を全額負担</h3>
+        <p>鉄筋施工技能士・玉掛け・フォークリフトなど、現場で使える資格の費用をすべて会社が出します。自己負担ゼロでキャリアを積めます。</p>
+        <span class="sample-note">※ここはサンプルです。実際には御社の資格支援内容に差し替えます</span>
+      </div>
+      <div class="merit-card-dark">
+        <div class="merit-icon">◈</div>
+        <h3>未経験から手に職をつける</h3>
+        <p>「きつそう」というイメージより、技術と段取りが大切な仕事です。先輩が基礎から指導するので、ゼロからでも確実に成長できます。</p>
+        <span class="sample-note">※ここはサンプルです。実際には御社の研修制度に差し替えます</span>
+      </div>
+      <div class="merit-card-dark">
+        <div class="merit-icon">◈</div>
+        <h3>仲間同士でフォローし合う職場</h3>
+        <p>現場の安全は「声をかけ合える仲の良さ」が支えます。困ったときに相談できる、風通しのよいチームです。</p>
+        <span class="sample-note">※ここはサンプルです。実際には御社の職場エピソードに差し替えます</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-warm">
+  <div class="section-inner">
+    <h2 class="section-title">仕事内容</h2>
+    <div class="gold-bar"></div>
+    <div class="work-grid">
+      <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=640&h=380&fit=crop&q=80" alt="建設現場の作業（サンプル）">
+      <div class="work-text">
+        <h3>鉄筋工（加工・組立）</h3>
+        <p>建物の骨組みを形成する鉄筋を、図面に沿って加工・組み立てる仕事です。マンション・商業施設・公共施設など、さまざまな現場で活躍できます。</p>
+        <br>
+        <p>入社後はまず材料の管理・運搬といった基本から。先輩とペアで作業しながら、加工・組立の技術を着実に習得していきます。「覚えたい」という気持ちが最大の武器です。</p>
+        <span class="sample-note" style="margin-top:.7rem">※ここはサンプルです。実際には御社の具体的な仕事内容に差し替えます</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="voice">
+  <div class="section-inner">
+    <h2 class="section-title">先輩からのメッセージ</h2>
+    <div class="gold-bar"></div>
+    <p style="text-align:center;font-size:.8rem;color:#aab4c8;margin-bottom:1.8rem">※ここはサンプルです。実際には御社の先輩社員のメッセージに差し替えます</p>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <!-- 人物写真（男性）に差し替えてください -->
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=640&h=200&fit=crop&crop=faces&q=80" alt="先輩社員（サンプル）">
+        <div class="voice-overlay">
+          <div class="voice-name">田中 〇〇（仮名）</div>
+          <div class="voice-role">鉄筋工 ／ 入社3年目</div>
+          <p class="voice-text">「資格費用を全額出してもらえるのが本当に助かりました。先輩が丁寧で、すぐ質問できる環境です。」</p>
+          <p style="font-size:.68rem;color:rgba(255,255,255,.4);margin-top:.3rem">※サンプルです。御社の社員に差し替えます</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <!-- 人物写真（男性）に差し替えてください -->
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=640&h=200&fit=crop&crop=faces&q=80" alt="先輩社員（サンプル）">
+        <div class="voice-overlay">
+          <div class="voice-name">鈴木 〇〇（仮名）</div>
+          <div class="voice-role">鉄筋工 ／ 入社5年目</div>
+          <p class="voice-text">「段取りが分かると仕事が楽しくなります。体力より技術です。職場の雰囲気がよくて続けられています。」</p>
+          <p style="font-size:.68rem;color:rgba(255,255,255,.4);margin-top:.3rem">※サンプルです。御社の社員に差し替えます</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <!-- 人物写真（男性）に差し替えてください -->
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=640&h=200&fit=crop&crop=faces&q=80" alt="先輩社員（サンプル）">
+        <div class="voice-overlay">
+          <div class="voice-name">佐藤 〇〇（仮名）</div>
+          <div class="voice-role">現場リーダー ／ 入社8年目</div>
+          <p class="voice-text">「資格を積んでリーダーになれました。若い人に資格を取ってほしい。一緒に成長できる会社です。」</p>
+          <p style="font-size:.68rem;color:rgba(255,255,255,.4);margin-top:.3rem">※サンプルです。御社の社員に差し替えます</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-warm">
+  <div class="section-inner">
+    <h2 class="section-title">社員の1日の流れ</h2>
+    <p class="section-sub">鉄筋工（入社2年目・サンプル）</p>
+    <div class="gold-bar"></div>
+    <p style="text-align:center;font-size:.8rem;color:#aab4c8;margin-bottom:1.8rem">※ここはサンプルです。実際には御社の1日に差し替えます</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <span class="tl-time">7:30</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body">
+          <strong>集合・朝礼</strong>
+          <span>当日の作業内容・安全確認を全員で共有。</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">8:00</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body">
+          <strong>午前の作業</strong>
+          <span>図面確認後、鉄筋加工・組立を先輩と分担。</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">12:00</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body">
+          <strong>昼食・休憩</strong>
+          <span>現場近くで1時間。仲間とのんびり過ごす。</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">13:00</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body">
+          <strong>午後の作業</strong>
+          <span>組立の続き。慣れると段取りが速くなり余裕が出る。</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">15:00</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body">
+          <strong>小休憩</strong>
+          <span>水分補給・ストレッチ。</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">17:00</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body">
+          <strong>後片付け・終礼</strong>
+          <span>翌日の確認をして終了。残業は少なめ。</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">17:30</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body">
+          <strong>退勤</strong>
+          <span>マイカーで帰宅。</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="requirements">
+  <div class="section-inner">
+    <h2 class="section-title">募集要項</h2>
+    <div class="gold-bar"></div>
+    <p style="text-align:center;font-size:.8rem;color:#aab4c8;margin-bottom:1.2rem">※以下はサンプルです。実際には御社の求人内容に差し替えます</p>
+    <table class="req-table">
+      <tbody>
+        <tr><th>職種</th><td>鉄筋工（加工・組立）</td></tr>
+        <tr><th>雇用形態</th><td>正社員（試用期間あり）</td></tr>
+        <tr><th>勤務地</th><td>千葉県八千代市およびその近郊の各建設現場</td></tr>
+        <tr><th>給与</th><td>月給 〇〇万円〜（経験・スキルに応じて）</td></tr>
+        <tr><th>勤務時間</th><td>7:30〜17:30（休憩1時間）</td></tr>
+        <tr><th>休日・休暇</th><td>日曜・祝日・会社カレンダーによる休日</td></tr>
+        <tr><th>応募資格</th><td>未経験歓迎。普通自動車免許（AT限定可）あれば尚可</td></tr>
+        <tr><th>資格支援</th><td>鉄筋施工技能士等の資格取得費用を全額会社負担</td></tr>
+        <tr><th>待遇・福利厚生</th><td>社会保険完備・制服支給・マイカー通勤可</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section bg-warm" id="faq">
+  <div class="section-inner">
+    <h2 class="section-title">よくある質問</h2>
+    <div class="gold-bar"></div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">未経験でも応募できますか？</div>
+        <div class="faq-a">はい、大歓迎です。入社後に先輩が基礎からていねいに指導します。意欲さえあれば経験・知識は問いません。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">どんな資格が取れますか？</div>
+        <div class="faq-a">鉄筋施工技能士（1・2級）・玉掛け・フォークリフトなど、現場で役立つ資格の受験費用・テキスト代を全額会社負担します。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">体力に自信がなくても大丈夫ですか？</div>
+        <div class="faq-a">技術と段取りが主役の仕事です。慣れるにつれて体への負担も自然と減ります。最初からムリをする必要はありません。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">職場の雰囲気はどうですか？</div>
+        <div class="faq-a">先輩が気軽に声をかけてくれるアットホームな職場です。困ったことをすぐ相談できる環境を大切にしています。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">キャリアアップはできますか？</div>
+        <div class="faq-a">資格を積み重ねることで、現場リーダー・現場監督へのキャリアアップが可能です。意欲のある方を会社が全力でサポートします。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-sec" id="entry">
+  <h2>まずは、お気軽にご連絡ください</h2>
+  <p>「もう少し聞きたい」だけでも大丈夫です。<br>一緒に働ける方をお待ちしています。</p>
+  <a class="btn-gold" href="mailto:info@example.com">お問い合わせ・ご応募はこちら</a>
+  <p style="margin-top:1.2rem;font-size:.8rem;color:rgba(255,255,255,.5)">※サンプルです。実際の連絡先に差し替えます</p>
+</section>
+
+<footer>
+  <p>株式会社曽我興業</p>
+  <p>千葉県八千代市（住所サンプル） ／ TEL：〇〇〇-〇〇〇-〇〇〇〇</p>
+</footer>
+
+<script>
+(function(){
+  var btn = document.querySelector('.hamburger');
+  var nav = document.querySelector('.site-nav');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+      if(open){document.body.style.overflow='hidden';}
+      else{document.body.style.overflow='';}
+    });
+  }
+})();
+</script>
+</body>
+</html>
