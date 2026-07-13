@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SUMiTAS千葉緑区店 採用サイト｜千葉市緑区で不動産営業スタッフ募集</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Shippori+Mincho:wght@600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1c3144;
+    --navy-dark:#11202c;
+    --terra:#c1592c;
+    --terra-light:#e08a5c;
+    --bg:#f8f6f3;
+    --text:#2a2e35;
+    --gray:#6b7280;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'Noto Sans JP',sans-serif;color:var(--text);background:var(--bg);line-height:1.8;width:100%;overflow-x:hidden;}
+  img{max-width:100%;display:block;}
+  a{text-decoration:none;color:inherit;}
+  .wrap{max-width:960px;margin:0 auto;padding:0 20px;}
+
+  .notice{
+    background:var(--terra-light);color:var(--navy-dark);text-align:center;
+    font-size:12.5px;font-weight:700;padding:10px 16px;
+    position:fixed;top:0;left:0;width:100%;z-index:110;
+  }
+
+  header{
+    position:fixed;top:34px;left:0;width:100%;background:rgba(17,32,44,0.95);color:#fff;z-index:100;
+    padding:14px 20px;display:flex;justify-content:space-between;align-items:center;
+  }
+  header .logo{font-family:'Shippori Mincho',serif;font-weight:800;font-size:clamp(12px,3vw,18px);}
+  header .tel{font-size:clamp(12px,2.5vw,15px);font-weight:700;color:var(--terra-light);}
+
+  .fv{
+    min-height:100vh;padding-top:120px;
+    background:linear-gradient(160deg,var(--navy) 0%,var(--navy-dark) 100%);
+    color:#fff;display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;position:relative;padding-bottom:50px;
+  }
+  .fv::before{
+    content:"";position:absolute;inset:0;
+    background:url('https://loremflickr.com/1600/1200/office,team,japan') center/cover no-repeat;
+    opacity:0.18;
+  }
+  /* 元画像: スタッフ・店舗写真 → images/recruit-fv.jpg（現在はダミー：https://loremflickr.com/1600/1200/office,team,japan） */
+  .fv-inner{position:relative;z-index:2;padding:20px;}
+  .fv .eyebrow{font-size:clamp(12px,2.5vw,15px);letter-spacing:2px;color:var(--terra-light);font-weight:700;margin-bottom:14px;}
+  .fv h1{font-family:'Shippori Mincho',serif;font-size:clamp(22px,5.5vw,40px);font-weight:800;line-height:1.6;margin-bottom:20px;}
+  .fv h1 span{color:var(--terra-light);}
+  .fv p.lead{font-size:clamp(13px,3vw,17px);color:#dfe6ee;margin-bottom:30px;}
+  .cta-btn{
+    display:inline-block;background:var(--terra);color:#fff;font-weight:900;
+    font-size:clamp(15px,3vw,18px);padding:18px 40px;border-radius:6px;box-shadow:0 8px 20px rgba(0,0,0,0.25);
+  }
+  .cta-sub{margin-top:12px;font-size:12px;color:#c7d0da;}
+
+  section{padding:64px 0;}
+  .section-title{text-align:center;font-family:'Shippori Mincho',serif;font-size:clamp(21px,4.2vw,30px);font-weight:800;color:var(--navy);margin-bottom:12px;}
+  .section-sub{text-align:center;color:var(--gray);margin-bottom:40px;font-size:14px;}
+
+  .message{background:#fff;}
+  .message-inner{display:flex;gap:30px;flex-wrap:wrap;align-items:center;}
+  .message-inner .img{flex:1 1 260px;min-width:220px;border-radius:12px;overflow:hidden;}
+  .message-inner .img img{width:100%;height:280px;object-fit:cover;}
+  .message-inner .txt{flex:2 1 320px;min-width:260px;}
+  .message-inner h3{color:var(--navy);font-size:clamp(16px,3vw,21px);margin-bottom:14px;}
+  .message-inner p{color:var(--gray);font-size:14px;margin-bottom:10px;}
+
+  .points{background:var(--bg);}
+  .point-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;}
+  .point-card{background:#fff;border-radius:12px;padding:26px 20px;box-shadow:0 4px 14px rgba(0,0,0,0.06);border-top:4px solid var(--terra);}
+  .point-card .icon{font-size:32px;margin-bottom:12px;}
+  .point-card h3{font-size:16px;color:var(--navy);margin-bottom:10px;}
+  .point-card p{font-size:13.5px;color:var(--gray);}
+
+  .voice{background:#fff;}
+  .voice-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
+  .voice-card{background:var(--bg);border-radius:12px;padding:24px;}
+  .voice-card .role{color:var(--terra);font-weight:800;font-size:12.5px;margin-bottom:8px;}
+  .voice-card p{font-size:13.5px;color:var(--text);}
+
+  .job-detail{background:var(--bg);}
+  table.job-table{width:100%;border-collapse:collapse;font-size:13.5px;background:#fff;border-radius:8px;overflow:hidden;}
+  table.job-table th{width:140px;text-align:left;padding:16px 12px;color:var(--navy);background:#f0ede8;font-weight:700;vertical-align:top;}
+  table.job-table td{padding:16px 12px;border-bottom:1px solid #e5e7eb;}
+
+  .flow{background:#fff;}
+  .flow-steps{display:flex;flex-wrap:wrap;justify-content:center;gap:0;}
+  .flow-step{flex:1 1 200px;max-width:220px;text-align:center;padding:20px;}
+  .flow-step .num{width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:16px;margin:0 auto 12px;}
+  .flow-step h4{font-size:14px;color:var(--navy);margin-bottom:6px;}
+  .flow-step p{font-size:12px;color:var(--gray);}
+
+  .final-cta{background:linear-gradient(160deg,var(--navy) 0%,var(--navy-dark) 100%);color:#fff;text-align:center;}
+  .final-cta h2{font-family:'Shippori Mincho',serif;font-size:clamp(19px,4.2vw,28px);margin-bottom:16px;}
+  .final-cta p{color:#dfe6ee;margin-bottom:28px;font-size:14px;}
+  .contact-info{margin-top:24px;font-size:13.5px;color:#dfe6ee;}
+  .contact-info a{color:var(--terra-light);font-weight:700;}
+
+  footer{background:var(--navy-dark);color:#9fb0c2;text-align:center;padding:24px;font-size:12px;}
+
+  .floating-cta{position:fixed;bottom:0;left:0;width:100%;background:var(--terra);display:flex;z-index:200;box-shadow:0 -4px 12px rgba(0,0,0,0.15);}
+  .floating-cta a{flex:1;text-align:center;padding:16px 8px;font-weight:900;color:#fff;font-size:clamp(13px,3vw,16px);}
+  .floating-cta a.tel{background:var(--navy-dark);color:#fff;}
+
+  @media(max-width:600px){
+    .message-inner{flex-direction:column;}
+  }
+</style>
+</head>
+<body>
+
+<div class="notice">※このページは採用LPのサンプルです。実情報が確定次第、内容を差し替えてご利用ください。</div>
+
+<header>
+  <div class="logo">SUMiTAS千葉緑区店 採用サイト</div>
+  <div class="tel">TEL 043-312-2310</div>
+</header>
+
+<section class="fv">
+  <div class="fv-inner">
+    <div class="eyebrow">RECRUIT｜千葉市緑区・不動産営業スタッフ募集</div>
+    <h1>地域のお客様の「何でも相談室」に、<br><span>本気で寄り添う仕事</span>を。</h1>
+    <p class="lead">※内容は差し替え用のサンプルです。未経験者歓迎・売買と賃貸の垣根を超えた不動産営業として一緒に働きませんか。</p>
+    <a href="#contact" class="cta-btn">応募・お問い合わせはこちら</a>
+    <p class="cta-sub">お電話でのお問い合わせ：043-312-2310（10:00〜19:00・水曜定休）</p>
+  </div>
+</section>
+
+<section class="message">
+  <div class="wrap">
+    <h2 class="section-title">店長メッセージ</h2>
+    <p class="section-sub">※内容は差し替え用のサンプルです。</p>
+    <div class="message-inner">
+      <div class="img">
+        <!-- 元画像: 店長・スタッフ写真 → images/recruit-message.jpg（現在はダミー：https://loremflickr.com/700/700/businessperson,japan） -->
+        <img src="https://loremflickr.com/700/700/businessperson,japan" alt="店長">
+      </div>
+      <div class="txt">
+        <h3>「地域のお客様に、マイペースに、でも正しく決断してもらえる相談室に」</h3>
+        <p>私たちは千葉市緑区・土気エリアで、売買と賃貸の垣根を超えた不動産の「何でも相談室」として営業しています。お客様一人ひとりの状況に向き合う責任は重いですが、その分やりがいも大きい仕事です。</p>
+        <p>経験の有無より、お客様に誠実に向き合える方を求めています。一緒に地域に信頼される店舗を作っていきましょう。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="points">
+  <div class="wrap">
+    <h2 class="section-title">当店で働く3つの魅力</h2>
+    <p class="section-sub">※内容は差し替え用のサンプルです。</p>
+    <div class="point-grid">
+      <div class="point-card"><div class="icon">🏠</div><h3>売買も賃貸も学べる幅広さ</h3><p>売却・購入・賃貸・住宅ローンまで扱うため、幅広い知識と提案力が身につきます。</p></div>
+      <div class="point-card"><div class="icon">🤝</div><h3>未経験からでも安心の研修体制</h3><p>不動産業界が初めての方でも、先輩スタッフがしっかりサポートします。</p></div>
+      <div class="point-card"><div class="icon">📅</div><h3>水曜定休でメリハリある働き方</h3><p>10:00〜19:00・水曜定休のシフトで、しっかり休みを取りながら働けます。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="voice">
+  <div class="wrap">
+    <h2 class="section-title">先輩スタッフの声</h2>
+    <p class="section-sub">※内容は差し替え用のサンプルです。</p>
+    <div class="voice-grid">
+      <div class="voice-card"><div class="role">営業担当・入社3年目</div><p>「お客様から『相談してよかった』と言ってもらえた時が一番のやりがいです。売買も賃貸も扱えるからこそ、幅広い提案ができます。」</p></div>
+      <div class="voice-card"><div class="role">営業担当・未経験入社</div><p>「未経験で入社しましたが、先輩に同行しながら少しずつ知識をつけられました。今は自分で査定のご説明もできるようになりました。」</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="job-detail">
+  <div class="wrap">
+    <h2 class="section-title">募集要項</h2>
+    <p class="section-sub">※内容は差し替え用のサンプルです。詳細は面談時にご説明します。</p>
+    <table class="job-table">
+      <tr><th>職種</th><td>不動産営業スタッフ（売買・賃貸仲介）</td></tr>
+      <tr><th>雇用形態</th><td>正社員（※サンプル：詳細は応相談）</td></tr>
+      <tr><th>勤務地</th><td>千葉県千葉市緑区土気町1729-118 折原ビル3F</td></tr>
+      <tr><th>勤務時間</th><td>10:00〜19:00（シフト制・水曜定休）</td></tr>
+      <tr><th>給与</th><td>※サンプル：経験・能力に応じて優遇</td></tr>
+      <tr><th>待遇・福利厚生</th><td>※サンプル：各種社会保険完備、交通費支給 等</td></tr>
+      <tr><th>応募資格</th><td>未経験可・普通自動車運転免許（AT限定可）</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="flow">
+  <div class="wrap">
+    <h2 class="section-title">応募の流れ</h2>
+    <div class="flow-steps">
+      <div class="flow-step"><div class="num">1</div><h4>応募・お問い合わせ</h4><p>フォームまたはお電話でご連絡ください。</p></div>
+      <div class="flow-step"><div class="num">2</div><h4>面談</h4><p>お互いの理解を深めるための面談を行います。</p></div>
+      <div class="flow-step"><div class="num">3</div><h4>ご入社</h4><p>条件にご納得いただいた上でご入社となります。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta" id="contact">
+  <div class="wrap">
+    <h2>まずはお気軽にお問い合わせください</h2>
+    <p>未経験の方も歓迎です。まずはお話だけでも構いません。</p>
+    <a href="https://chibamidoriku.sumitas.jp/contact" class="cta-btn">応募・お問い合わせフォームへ</a>
+    <div class="contact-info">お電話でのお問い合わせ：<a href="tel:0433122310">043-312-2310</a>（10:00〜19:00・水曜定休）</div>
+  </div>
+</section>
+
+<footer>&copy; SUMiTAS千葉緑区店（運営：Lect株式会社）</footer>
+
+<div class="floating-cta">
+  <a href="tel:0433122310" class="tel">📞 電話で問い合わせ</a>
+  <a href="https://chibamidoriku.sumitas.jp/contact">応募・お問い合わせ</a>
+</div>
+
+</body>
+</html>
