@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>生活雑貨ボンメゾン | 季節のギフト特集 - 千葉・茨城・神奈川27店舗</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Sans JP", sans-serif;
+    color: #4a3728;
+    line-height: 1.85;
+    background: #fbf5ea;
+    width: 100%;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; display: block; }
+  a { text-decoration: none; color: inherit; }
+  .container { max-width: 920px; margin: 0 auto; padding: 0 20px; }
+
+  /* Header */
+  .fv {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(150deg, #c1613d 0%, #cf7a4e 55%, #e0a06a 100%);
+    color: #fff;
+    padding: 100px 20px 60px;
+    position: relative;
+  }
+  .fv-badge {
+    background: #fbf5ea;
+    color: #a54b2a;
+    font-weight: 700;
+    padding: 8px 22px;
+    border-radius: 30px;
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    margin-bottom: 22px;
+    letter-spacing: 0.08em;
+  }
+  .fv h1 {
+    font-size: clamp(1.7rem, 5.2vw, 3rem);
+    font-weight: 700;
+    line-height: 1.55;
+    margin-bottom: 18px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  }
+  .fv h1 span { color: #fff3d6; }
+  .fv p.sub {
+    font-size: clamp(1rem, 2.4vw, 1.25rem);
+    margin-bottom: 28px;
+    opacity: 0.95;
+  }
+  .fv-img {
+    width: 100%;
+    max-width: 700px;
+    border-radius: 10px;
+    margin: 20px auto;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+  }
+  .cta-btn {
+    display: inline-block;
+    background: #4d6b47;
+    color: #fff;
+    font-weight: 700;
+    font-size: clamp(1rem, 2.6vw, 1.25rem);
+    padding: 18px 46px;
+    border-radius: 50px;
+    box-shadow: 0 8px 20px rgba(77,107,71,0.45);
+    margin: 8px 0;
+    transition: transform 0.2s;
+  }
+  .cta-btn:hover { transform: translateY(-3px); }
+  .cta-sub { font-size: 0.85rem; margin-top: 10px; opacity: 0.9; }
+  .cta-group { display: flex; flex-direction: column; align-items: center; gap: 12px; margin-top: 18px; }
+  .cta-tel {
+    font-size: clamp(1.3rem, 4.2vw, 1.9rem);
+    font-weight: 900;
+    color: #fff;
+  }
+  .cta-tel small { display: block; font-size: 0.85rem; font-weight: 400; }
+
+  /* Sections */
+  section { padding: 70px 0; }
+  .sec-title {
+    text-align: center;
+    font-size: clamp(1.4rem, 3.6vw, 2rem);
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #a54b2a;
+    letter-spacing: 0.04em;
+  }
+  .sec-sub {
+    text-align: center;
+    color: #6b5645;
+    margin-bottom: 40px;
+    font-size: clamp(0.9rem, 2vw, 1.05rem);
+  }
+
+  /* Trust numbers */
+  .trust { background: #fff; }
+  .trust-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    text-align: center;
+  }
+  .trust-card {
+    background: #fbf5ea;
+    border-radius: 12px;
+    padding: 30px 20px;
+    border-top: 4px solid #c1613d;
+  }
+  .trust-card .num { font-size: 2.2rem; font-weight: 900; color: #a54b2a; }
+  .trust-card .num small { font-size: 1rem; font-weight: 700; }
+  .trust-card p { font-size: 0.9rem; color: #6b5645; margin-top: 8px; }
+
+  /* Gift scenes */
+  .scenes { background: #f3e6d3; }
+  .scene-row {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+  }
+  .scene-row:nth-child(even) { flex-direction: row-reverse; }
+  .scene-row img {
+    flex: 1 1 300px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+  }
+  .scene-text { flex: 1 1 300px; }
+  .scene-num {
+    display: inline-block;
+    background: #4d6b47;
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 5px 16px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+  }
+  .scene-text h3 { font-size: 1.3rem; color: #a54b2a; margin-bottom: 12px; }
+  .scene-text p { color: #5c4a3a; }
+
+  /* Store lineup */
+  .stores { background: #fff; }
+  .store-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 18px;
+  }
+  .store-card {
+    background: #fbf5ea;
+    border-radius: 10px;
+    padding: 20px;
+    text-align: center;
+  }
+  .store-card .area { font-weight: 700; color: #a54b2a; margin-bottom: 6px; }
+  .store-card .cnt { font-size: 1.6rem; font-weight: 900; color: #4d6b47; }
+
+  /* Voice */
+  .voice { background: #f3e6d3; }
+  .voice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .voice-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 25px;
+  }
+  .voice-card .stars { color: #e0a06a; margin-bottom: 10px; }
+  .voice-card p { font-size: 0.9rem; color: #4a3728; margin-bottom: 10px; }
+  .voice-card .name { font-size: 0.8rem; color: #8a7563; text-align: right; }
+
+  /* FAQ */
+  .faq { background: #fff; }
+  .faq-item {
+    background: #fbf5ea;
+    border-radius: 10px;
+    padding: 20px 25px;
+    margin-bottom: 15px;
+  }
+  .faq-item .q { font-weight: 700; color: #a54b2a; margin-bottom: 8px; }
+  .faq-item .q::before { content: "Q. "; color: #c1613d; }
+  .faq-item .a::before { content: "A. "; color: #4d6b47; font-weight: 700; }
+  .faq-item .a { color: #5c4a3a; font-size: 0.92rem; }
+
+  /* Final CTA */
+  .final-cta {
+    background: linear-gradient(150deg, #a54b2a, #c1613d);
+    color: #fff;
+    text-align: center;
+  }
+  .final-cta h2 { font-size: clamp(1.4rem, 3.6vw, 2rem); margin-bottom: 20px; }
+  .final-cta .cta-group { margin-top: 20px; }
+
+  footer {
+    background: #4a3728;
+    color: #d9c9b8;
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 0.8rem;
+  }
+
+  /* Floating CTA */
+  .floating-cta {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    display: flex;
+    z-index: 999;
+    box-shadow: 0 -4px 15px rgba(0,0,0,0.15);
+  }
+  .floating-cta a {
+    flex: 1;
+    text-align: center;
+    padding: 14px 10px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #fff;
+  }
+  .floating-cta .tel { background: #c1613d; }
+  .floating-cta .shop { background: #4d6b47; }
+  .floating-cta .form { background: #4a3728; }
+
+  @media (max-width: 600px) {
+    section { padding: 50px 0; }
+    .scene-row { flex-direction: column !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- FV -->
+<header class="fv">
+  <div class="fv-badge">千葉・茨城・神奈川 27店舗展開</div>
+  <h1>大切な人に贈る、<br><span>心地よい暮らし</span>のギフト。</h1>
+  <p class="sub">生活雑貨ボンメゾン　季節のギフト特集<br>母の日・夏のご挨拶・敬老の日 まで</p>
+  <!-- 元画像URL: bonmaison.co.jp トップの店内・商品写真イメージ → images/fv-main.jpg -->
+  <img class="fv-img" src="https://loremflickr.com/1000/600/gift,shop,lifestyle,goods" alt="ボンメゾンの店内イメージ">
+  <div class="cta-group">
+    <a href="https://bonmaison.official.ec/" class="cta-btn">オンラインショップでギフトを見る</a>
+    <a href="tel:0432956414" class="cta-tel">043-295-6414<small>平日9:00〜18:00（土日休）</small></a>
+    <div class="cta-sub">お近くの店舗でも季節のギフトを取り揃えております</div>
+  </div>
+</header>
+
+<!-- Trust -->
+<section class="trust">
+  <div class="container">
+    <h2 class="sec-title">選ばれ続けて、地域とともに</h2>
+    <p class="sec-sub">1976年創業から半世紀。千葉・茨城・神奈川で暮らしに寄り添ってきました</p>
+    <div class="trust-grid">
+      <div class="trust-card"><div class="num"><small>創業</small>1976</div><p>年からの信頼と実績</p></div>
+      <div class="trust-card"><div class="num">27<small>店舗</small></div><p>千葉21・茨城5・神奈川1</p></div>
+      <div class="trust-card"><div class="num"><small>本店</small>昭和の森</div><p>地域最大級の品揃え</p></div>
+      <div class="trust-card"><div class="num">55<small>周年</small></div><p>快適で心地よい暮らしを提案</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Scenes -->
+<section class="scenes">
+  <div class="container">
+    <h2 class="sec-title">シーンで選べる、季節のギフト</h2>
+    <p class="sec-sub">大切な人の顔を思い浮かべながら、心のこもった一品を</p>
+
+    <div class="scene-row">
+      <!-- 元画像URL: 母の日ギフト商品写真 → images/scene-1.jpg -->
+      <img src="https://loremflickr.com/500/350/gift,flowers,mothersday" alt="母の日ギフト">
+      <div class="scene-text">
+        <span class="scene-num">SCENE 1</span>
+        <h3>母の日・父の日のギフトに</h3>
+        <p>キッチン雑貨やタオル、癒しの日用品まで。毎年好評の花とのセット提案も店頭で承っております。</p>
+      </div>
+    </div>
+
+    <div class="scene-row">
+      <!-- 元画像URL: 夏のご挨拶ギフト商品写真 → images/scene-2.jpg -->
+      <img src="https://loremflickr.com/500/350/japanese,zakka,tableware" alt="夏のご挨拶ギフト">
+      <div class="scene-text">
+        <span class="scene-num">SCENE 2</span>
+        <h3>お中元・夏のご挨拶に</h3>
+        <p>のし対応・ラッピング承ります。上質な暮らしの道具を、お世話になった方への感謝の気持ちとして。</p>
+      </div>
+    </div>
+
+    <div class="scene-row">
+      <!-- 元画像URL: 内祝い・引き出物商品写真 → images/scene-3.jpg -->
+      <img src="https://loremflickr.com/500/350/gift,box,interior,goods" alt="内祝い・引き出物ギフト">
+      <div class="scene-text">
+        <span class="scene-num">SCENE 3</span>
+        <h3>内祝い・引き出物にも</h3>
+        <p>出産内祝いや快気祝いなど、日々のお祝いごとにふさわしい上品な生活雑貨を幅広くご用意しています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Stores -->
+<section class="stores">
+  <div class="container">
+    <h2 class="sec-title">お近くの店舗でも</h2>
+    <p class="sec-sub">オンラインだけでなく、実店舗で手にとってお選びいただけます</p>
+    <div class="store-grid">
+      <div class="store-card"><div class="area">千葉県</div><div class="cnt">21店舗</div></div>
+      <div class="store-card"><div class="area">茨城県</div><div class="cnt">5店舗</div></div>
+      <div class="store-card"><div class="area">神奈川県</div><div class="cnt">1店舗</div></div>
+      <div class="store-card"><div class="area">本店</div><div class="cnt">昭和の森本店</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Voice -->
+<section class="voice">
+  <div class="container">
+    <h2 class="sec-title">お客様の声</h2>
+    <p class="sec-sub">※内容は差し替え用のサンプルです。実際のお客様の声に差し替えてください。</p>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="stars">★★★★★</div>
+        <p>母の日に何を贈るか迷っていましたが、スタッフの方が丁寧に相談に乗ってくれて素敵なギフトが選べました。</p>
+        <div class="name">千葉市 S様</div>
+      </div>
+      <div class="voice-card">
+        <div class="stars">★★★★★</div>
+        <p>のしの対応もしっかりしていて、お中元として恥ずかしくない品質のものを選べて安心しました。</p>
+        <div class="name">柏市 K様</div>
+      </div>
+      <div class="voice-card">
+        <div class="stars">★★★★★</div>
+        <p>近所に店舗があるので気軽に立ち寄れます。オンラインショップも品揃えが豊富で助かっています。</p>
+        <div class="name">水戸市 M様</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <h2 class="sec-title">よくあるご質問</h2>
+    <div class="faq-item">
+      <div class="q">のし・ラッピングには対応していますか？</div>
+      <div class="a">はい、店舗にてご対応しております。用途に応じたのしの表書きもご相談いただけます。</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">オンラインショップと店舗で商品は違いますか？</div>
+      <div class="a">一部店舗限定商品がございます。詳しくは最寄りの店舗までお問い合わせください。</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">予算に応じたギフト提案はできますか？</div>
+      <div class="a">はい、ご予算やシーンをお伺いした上でスタッフが最適な商品をご提案いたします。</div>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="final-cta">
+  <div class="container">
+    <h2>心地よい暮らしを贈る、<br>季節のギフトをお選びください</h2>
+    <div class="cta-group">
+      <a href="https://bonmaison.official.ec/" class="cta-btn">オンラインショップを見る</a>
+      <a href="tel:0432956414" class="cta-tel">043-295-6414<small>平日9:00〜18:00（土日休）</small></a>
+      <a href="https://bonmaison.co.jp/contact/" style="color:#fff;text-decoration:underline;margin-top:10px;">お問い合わせフォームへ</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>株式会社ボンメゾン（BONMAISON CO., LTD.）</p>
+  <p>本ページはLP提案サンプルです。© BONMAISON</p>
+</footer>
+
+<!-- Floating CTA -->
+<div class="floating-cta">
+  <a class="tel" href="tel:0432956414">📞 電話で相談</a>
+  <a class="shop" href="https://bonmaison.official.ec/">🛍️ オンラインショップ</a>
+  <a class="form" href="https://bonmaison.co.jp/contact/">✉️ お問い合わせ</a>
+</div>
+
+</body>
+</html>
