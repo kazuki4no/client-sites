@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>正看護師 募集 | 訪問看護ステーションかぼちゃ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;color:#1a2030;background:#fff;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;height:auto;display:block;}
+
+:root{
+  --navy:#1a3a5c;
+  --navy-dark:#0f2540;
+  --gold:#e8a020;
+  --teal:#2a9d8f;
+  --light:#f5f8fc;
+  --muted:#607080;
+}
+
+/* ヘッダー */
+.site-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 1.5rem;background:var(--navy);
+  position:sticky;top:0;z-index:100;
+}
+.brand{color:#fff;font-size:.95rem;font-weight:700;}
+.site-nav{display:flex;gap:1.2rem;align-items:center;}
+.site-nav a{font-size:.82rem;color:rgba(255,255,255,.8);transition:color .2s;}
+.site-nav a:hover{color:#fff;}
+.site-nav .nav-cta{background:var(--gold);color:#fff;padding:.4rem 1rem;border-radius:4px;font-weight:700;font-size:.82rem;}
+.hamburger{display:none;background:none;border:0;font-size:1.7rem;line-height:1;cursor:pointer;color:#fff;}
+
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{
+    display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:var(--navy-dark);padding:.5rem 1.2rem;
+  }
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.85);}
+  .site-nav .nav-cta{margin:.6rem 0;text-align:center;border-bottom:0;}
+}
+
+/* ヒーロー */
+.hero{
+  background:var(--navy);color:#fff;
+  padding:5.5rem 1.5rem 4.5rem;
+  text-align:center;position:relative;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1600&h=900&fit=crop&q=80') center/cover;
+  opacity:.15;
+}
+.hero-content{position:relative;z-index:1;max-width:680px;margin:0 auto;}
+.hero-badge{
+  display:inline-block;background:var(--gold);color:#fff;
+  font-size:.78rem;font-weight:700;padding:.3rem .9rem;border-radius:4px;margin-bottom:1.4rem;
+  letter-spacing:.05em;
+}
+.hero h1{
+  font-size:clamp(1.9rem,5.5vw,3.2rem);font-weight:900;line-height:1.3;
+  margin-bottom:1.1rem;
+}
+.hero h1 em{color:var(--gold);font-style:normal;}
+.hero-lead{font-size:clamp(.95rem,2.5vw,1.1rem);opacity:.88;margin-bottom:2rem;line-height:1.8;}
+.hero-pills{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin-bottom:2.2rem;}
+.pill{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:.78rem;padding:.28rem .8rem;border-radius:3px;}
+.btn-hero{
+  background:var(--gold);color:#fff;font-size:1.05rem;font-weight:700;
+  padding:1rem 2.8rem;border-radius:4px;display:inline-block;
+  box-shadow:0 4px 20px rgba(232,160,32,.4);transition:transform .2s,box-shadow .2s;
+}
+.btn-hero:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(232,160,32,.5);}
+.hero-sub{margin-top:1.2rem;font-size:.82rem;opacity:.65;}
+
+/* 数字で見る会社 */
+.stats-section{background:var(--light);padding:3.5rem 1.5rem;}
+.container{max-width:900px;margin:0 auto;}
+.section-label{font-size:.75rem;font-weight:700;color:var(--teal);letter-spacing:.12em;margin-bottom:.5rem;}
+.section-title{font-size:clamp(1.4rem,4vw,2rem);font-weight:700;margin-bottom:1.2rem;}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.5rem;}
+@media(max-width:768px){.stats-grid{grid-template-columns:repeat(2,1fr);}}
+.stat-item{background:#fff;border-radius:10px;padding:1.5rem 1rem;text-align:center;box-shadow:0 2px 10px rgba(26,58,92,.07);}
+.stat-num{font-size:2rem;font-weight:900;color:var(--navy);line-height:1;}
+.stat-unit{font-size:.85rem;font-weight:700;color:var(--navy);}
+.stat-label{font-size:.78rem;color:var(--muted);margin-top:.4rem;}
+.stat-note{font-size:.7rem;color:#aaa;margin-top:.2rem;}
+
+/* 求人の特徴 */
+.highlight-section{padding:4rem 1.5rem;background:#fff;}
+.highlight-list{display:grid;gap:1.2rem;max-width:700px;margin:0 auto;}
+.highlight-item{
+  display:flex;gap:1.2rem;align-items:flex-start;
+  border-left:4px solid var(--teal);padding:.8rem 1rem .8rem 1.2rem;
+  background:#f8fbfb;border-radius:0 8px 8px 0;
+}
+.hi-num{
+  width:36px;height:36px;border-radius:50%;background:var(--teal);color:#fff;
+  font-size:.85rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.hi-body h3{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:.3rem;}
+.hi-body p{font-size:.87rem;color:var(--muted);line-height:1.7;}
+
+/* 中盤CTA */
+.mid-cta{background:var(--navy);color:#fff;padding:3rem 1.5rem;text-align:center;}
+.mid-cta p{opacity:.85;margin-bottom:1.4rem;font-size:.95rem;}
+.btn-mid{
+  background:var(--gold);color:#fff;font-size:1rem;font-weight:700;
+  padding:.85rem 2.5rem;border-radius:4px;display:inline-block;
+  transition:transform .2s;
+}
+.btn-mid:hover{transform:translateY(-2px);}
+
+/* 先輩インタビュー */
+.interview-section{background:var(--light);padding:4rem 1.5rem;}
+.interview-list{display:grid;gap:2rem;}
+.interview-card{
+  background:#fff;border-radius:12px;overflow:hidden;
+  display:grid;grid-template-columns:200px 1fr;
+  box-shadow:0 2px 16px rgba(26,58,92,.07);
+}
+@media(max-width:768px){.interview-card{grid-template-columns:1fr;}}
+.interview-img{width:100%;height:100%;object-fit:cover;min-height:200px;}
+.interview-body{padding:1.8rem;}
+.int-name{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:.1rem;}
+.int-meta{font-size:.78rem;color:var(--muted);margin-bottom:.8rem;}
+.int-q{font-size:.8rem;font-weight:700;color:var(--teal);margin-bottom:.3rem;}
+.int-a{font-size:.88rem;color:#2a3a4a;line-height:1.8;margin-bottom:.9rem;}
+.int-tag{
+  display:inline-block;background:#e8f4f4;color:var(--teal);
+  font-size:.73rem;font-weight:700;padding:.2rem .6rem;border-radius:3px;margin-right:.4rem;
+}
+.sample-note{font-size:.73rem;color:#bbb;margin-top:.5rem;font-style:italic;}
+
+/* 1日の流れ */
+.day-section{background:#fff;padding:4rem 1.5rem;}
+.day-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;max-width:760px;margin:0 auto;}
+@media(max-width:640px){.day-grid{grid-template-columns:1fr;}}
+.day-item{display:flex;gap:.8rem;align-items:flex-start;padding:.8rem;}
+.day-time{
+  font-size:.8rem;font-weight:700;color:var(--navy);
+  min-width:52px;padding-top:.15rem;
+}
+.day-dot{
+  width:10px;height:10px;border-radius:50%;background:var(--teal);
+  flex-shrink:0;margin-top:.45rem;
+}
+.day-text h4{font-size:.9rem;font-weight:700;margin-bottom:.1rem;}
+.day-text p{font-size:.82rem;color:var(--muted);}
+
+/* FAQ */
+.faq-section{background:var(--light);padding:4rem 1.5rem;}
+.faq-list{max-width:700px;margin:0 auto;}
+.faq-item{
+  background:#fff;border-radius:10px;margin-bottom:1rem;
+  box-shadow:0 1px 8px rgba(26,58,92,.06);overflow:hidden;
+}
+.faq-q{
+  display:flex;gap:.8rem;padding:1.1rem 1.3rem;cursor:pointer;
+  font-size:.92rem;font-weight:700;color:var(--navy);
+}
+.faq-q::before{
+  content:'Q';background:var(--navy);color:#fff;border-radius:4px;
+  padding:.1rem .45rem;font-size:.75rem;flex-shrink:0;height:fit-content;margin-top:.1rem;
+}
+.faq-a{padding:0 1.3rem 1.1rem 3rem;font-size:.88rem;color:#2a3a4a;line-height:1.8;}
+
+/* 募集要項 */
+.req-section{background:#fff;padding:4rem 1.5rem;}
+.req-table{width:100%;border-collapse:collapse;}
+.req-table th,.req-table td{
+  padding:.9rem 1.1rem;text-align:left;
+  border-bottom:1px solid #e0eaf0;font-size:.88rem;
+}
+.req-table th{
+  background:#f0f5fa;width:32%;font-weight:700;
+  color:var(--navy-dark);white-space:nowrap;
+}
+.req-table td{color:#2a3a4a;}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{background:#f0f5fa;padding:.5rem .8rem;}
+  .req-table td{padding:.5rem .8rem 1rem;}
+}
+
+/* 最終CTA */
+.entry-section{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-dark) 100%);color:#fff;padding:5rem 1.5rem;text-align:center;}
+.entry-section h2{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:900;margin-bottom:1rem;}
+.entry-section p{opacity:.85;margin-bottom:2rem;font-size:.95rem;max-width:540px;margin-left:auto;margin-right:auto;}
+.entry-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.btn-primary{
+  background:var(--gold);color:#fff;font-size:1rem;font-weight:700;
+  padding:.95rem 2.4rem;border-radius:4px;display:inline-block;
+  box-shadow:0 4px 18px rgba(232,160,32,.35);transition:transform .2s;
+}
+.btn-primary:hover{transform:translateY(-2px);}
+.btn-outline{
+  background:transparent;color:#fff;border:2px solid rgba(255,255,255,.6);
+  font-size:.95rem;font-weight:700;padding:.9rem 2rem;border-radius:4px;display:inline-block;
+  transition:border-color .2s,background .2s;
+}
+.btn-outline:hover{border-color:#fff;background:rgba(255,255,255,.1);}
+
+/* 固定エントリーバー（スマホ） */
+.fixed-cta{
+  display:none;position:fixed;bottom:0;left:0;right:0;
+  background:var(--gold);padding:.9rem 1.5rem;text-align:center;z-index:200;
+  box-shadow:0 -4px 16px rgba(0,0,0,.2);
+}
+.fixed-cta a{color:#fff;font-weight:700;font-size:1rem;}
+@media(max-width:768px){.fixed-cta{display:block;}}
+body{padding-bottom:60px;}
+
+/* フッター */
+.site-footer{background:#0a1a2e;color:rgba(255,255,255,.65);padding:2rem 1.5rem;text-align:center;font-size:.8rem;}
+.site-footer .co{color:#fff;font-weight:700;margin-bottom:.4rem;}
+.site-footer p{margin:.15rem 0;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="#top">訪問看護ステーションかぼちゃ</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#stats">待遇</a>
+    <a href="#highlight">特徴</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#faq">FAQ</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<!-- ヒーロー -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">▶ 2025年開設 オープニングメンバー募集</div>
+    <h1>看護師経験を活かして、<br>地域に<em>もっと深く</em>関わりたい方へ。</h1>
+    <p class="hero-lead">
+      訪問看護経験はゼロでも大丈夫。<br>
+      病院での2年以上の経験があれば、子ども〜高齢者まで<br>
+      ご自宅でのケアに本格的に挑戦できます。
+    </p>
+    <div class="hero-pills">
+      <span class="pill">正看護師</span>
+      <span class="pill">月給31〜35万円＋各種手当</span>
+      <span class="pill">年間休日120日</span>
+      <span class="pill">訪問手当・オンコール手当</span>
+    </div>
+    <a class="btn-hero" href="#entry">まずは募集要項を見る →</a>
+    <p class="hero-sub">ハローワーク経由・オンライン自主応募（紹介状不要）どちらもOK</p>
+  </div>
+</section>
+
+<!-- 数字で見る会社 -->
+<section class="stats-section" id="stats">
+  <div class="container">
+    <p class="section-label">Numbers</p>
+    <h2 class="section-title">数字で見る待遇</h2>
+    <p style="font-size:.8rem;color:#aaa;margin-bottom:.5rem;">※ここはサンプルです。実際には御社の数字に差し替えます</p>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div><span class="stat-num">31</span><span class="stat-unit">〜35万</span></div>
+        <p class="stat-label">月給（各種手当含む）</p>
+        <p class="stat-note">※固定残業・資格手当含む</p>
+      </div>
+      <div class="stat-item">
+        <div><span class="stat-num">120</span><span class="stat-unit">日</span></div>
+        <p class="stat-label">年間休日</p>
+        <p class="stat-note">完全週休2日制</p>
+      </div>
+      <div class="stat-item">
+        <div><span class="stat-num">5,000</span><span class="stat-unit">円</span></div>
+        <p class="stat-label">オンコール訪問手当/件</p>
+        <p class="stat-note">※他オンコール手当も別途</p>
+      </div>
+      <div class="stat-item">
+        <div><span class="stat-num">半年</span></div>
+        <p class="stat-label">正社員登用目安</p>
+        <p class="stat-note">入社半年後見込み</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 特徴 -->
+<section class="highlight-section" id="highlight">
+  <div class="container">
+    <p class="section-label">Points</p>
+    <h2 class="section-title">かぼちゃで働く4つのポイント</h2>
+    <div class="highlight-list">
+      <div class="highlight-item">
+        <div class="hi-num">1</div>
+        <div class="hi-body">
+          <h3>訪問看護経験がなくてもスタートできる</h3>
+          <p>看護師経験2年以上あれば訪問看護は初めてでもOK。一緒に成長していける環境を整えています。病院との違いを丁寧に共有します。</p>
+        </div>
+      </div>
+      <div class="highlight-item">
+        <div class="hi-num">2</div>
+        <div class="hi-body">
+          <h3>子ども〜高齢者まで幅広い利用者層</h3>
+          <p>障がいを持つ子どもから終末期ケアの高齢者まで多様な利用者様に関われます。「訪問看護」の幅の広さが、あなたの看護師としての視野を広げます。</p>
+        </div>
+      </div>
+      <div class="highlight-item">
+        <div class="hi-num">3</div>
+        <div class="hi-body">
+          <h3>立ち上げメンバーとして職場をつくれる</h3>
+          <p>2025年6月開設の小さなステーション。福利厚生・働き方を一緒に考えていける環境です。あなたの意見が職場の文化に直接反映されます。</p>
+        </div>
+      </div>
+      <div class="highlight-item">
+        <div class="hi-num">4</div>
+        <div class="hi-body">
+          <h3>マイカー通勤OK・村上駅から徒歩3分</h3>
+          <p>マイカーでの訪問が可能で、駐車場無料。東葉高速鉄道 村上駅からも徒歩3分のアクセスです。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 中盤CTA -->
+<section class="mid-cta">
+  <div class="container">
+    <p>「訪問看護、やってみたいな」と思ったら、まずお気軽にご連絡ください。</p>
+    <a class="btn-mid" href="#entry">募集要項を見る</a>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section class="interview-section" id="voice">
+  <div class="container">
+    <p class="section-label">Voice</p>
+    <h2 class="section-title">先輩スタッフの声</h2>
+    <p class="sample-note">※ここはサンプルです。実際には御社スタッフの写真・コメントに差し替えます</p>
+    <div class="interview-list">
+      <div class="interview-card">
+        <img class="interview-img"
+          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=280&fit=crop&crop=faces&q=80"
+          alt="スタッフ写真（サンプル）">
+        <div class="interview-body">
+          <p class="int-name">S.Y.（仮名）</p>
+          <p class="int-meta">正看護師 / 入職6ヶ月 / 前職：急性期病院</p>
+          <p class="int-q">訪問看護を選んだ理由は？</p>
+          <p class="int-a">急性期病院で8年働いて、「患者さんの生活そのものに関わりたい」という思いが強くなりました。訪問看護は初めてでしたが、医師やリハビリスタッフと連携しながら一人一人にじっくり関われるのがとても合っています。</p>
+          <span class="int-tag">訪問看護未経験入職</span>
+          <span class="int-tag">前職：急性期病院</span>
+          <p class="sample-note">※ここはサンプルです。実際のコメントに差し替えます</p>
+        </div>
+      </div>
+      <div class="interview-card">
+        <img class="interview-img"
+          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=280&fit=crop&crop=faces&q=80"
+          alt="スタッフ写真（サンプル）">
+        <div class="interview-body">
+          <p class="int-name">M.O.（仮名）</p>
+          <p class="int-meta">正看護師 / 入職3ヶ月 / 前職：小児科病棟</p>
+          <p class="int-q">入職して変わったことは？</p>
+          <p class="int-a">小児科出身なので子どもの利用者様に関われること、さらに高齢者ケアも経験できることで、スキルの幅が一気に広がりました。少人数でアットホームな雰囲気なので、分からないことをすぐ相談できます。</p>
+          <span class="int-tag">小児科経験者</span>
+          <span class="int-tag">幅広い利用者層</span>
+          <p class="sample-note">※ここはサンプルです。実際のコメントに差し替えます</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section class="day-section" id="day">
+  <div class="container">
+    <p class="section-label">Schedule</p>
+    <h2 class="section-title">看護師の1日の流れ</h2>
+    <p style="font-size:.78rem;color:#aaa;margin-bottom:1.5rem;">※ここはサンプルです。実際には御社の1日の流れに差し替えます</p>
+    <div class="day-grid">
+      <div class="day-item">
+        <span class="day-time">8:30</span>
+        <span class="day-dot"></span>
+        <div class="day-text">
+          <h4>出勤・朝礼</h4>
+          <p>スケジュール確認・引継ぎ</p>
+        </div>
+      </div>
+      <div class="day-item">
+        <span class="day-time">9:00</span>
+        <span class="day-dot"></span>
+        <div class="day-text">
+          <h4>1件目の訪問</h4>
+          <p>バイタル・医療処置・服薬管理</p>
+        </div>
+      </div>
+      <div class="day-item">
+        <span class="day-time">11:00</span>
+        <span class="day-dot"></span>
+        <div class="day-text">
+          <h4>2〜3件目の訪問</h4>
+          <p>入浴介助・生活支援・家族指導</p>
+        </div>
+      </div>
+      <div class="day-item">
+        <span class="day-time">13:00</span>
+        <span class="day-dot"></span>
+        <div class="day-text">
+          <h4>休憩・記録入力</h4>
+          <p>訪問記録・次の準備</p>
+        </div>
+      </div>
+      <div class="day-item">
+        <span class="day-time">14:00</span>
+        <span class="day-dot"></span>
+        <div class="day-text">
+          <h4>4〜5件目の訪問</h4>
+          <p>終末期ケア・リハビリ連携</p>
+        </div>
+      </div>
+      <div class="day-item">
+        <span class="day-time">16:30</span>
+        <span class="day-dot"></span>
+        <div class="day-text">
+          <h4>帰社・翌日準備</h4>
+          <p>医師連絡・スケジュール確認</p>
+        </div>
+      </div>
+      <div class="day-item">
+        <span class="day-time">17:30</span>
+        <span class="day-dot"></span>
+        <div class="day-text">
+          <h4>退勤</h4>
+          <p>定時退勤が基本</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <p class="section-label">FAQ</p>
+    <h2 class="section-title">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <p class="faq-q">訪問看護の経験がなくても応募できますか？</p>
+        <p class="faq-a">はい、訪問看護経験は不問です。看護師経験2年以上があればご応募いただけます。入職後サポートします。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">オンコール対応の頻度はどのくらいですか？</p>
+        <p class="faq-a">契約者数や曜日により変動します。オンコール手当（1日1,500〜8,000円）・オンコール訪問手当（1件5,000円）が支給されます。詳細は面接でご確認ください。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">マイカー通勤は必要ですか？</p>
+        <p class="faq-a">マイカー通勤可（AT限定可）で、駐車場無料です。電車でも村上駅から徒歩3分です。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">正社員にはなれますか？</p>
+        <p class="faq-a">あります。入社半年を目安に正社員登用予定です。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">選考の流れを教えてください。</p>
+        <p class="faq-a">書類選考なし・面接1回（随時）。オンライン自主応募（紹介状不要）も受け付けています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="req-section" id="requirements">
+  <div class="container">
+    <p class="section-label">Requirements</p>
+    <h2 class="section-title">募集要項</h2>
+    <table class="req-table">
+      <tr><th>職種</th><td>正看護師</td></tr>
+      <tr><th>雇用形態</th><td>契約社員（正社員登用あり・入社半年後見込み）</td></tr>
+      <tr><th>給与</th><td>月給 310,000円〜350,000円<br>（基本給＋資格手当＋固定残業代含む）<br>訪問手当・オンコール手当別途支給</td></tr>
+      <tr><th>勤務時間</th><td>8:30〜17:30（シフト制）/ 休憩60分</td></tr>
+      <tr><th>休日</th><td>日曜・祝日・その他 / 年間休日120日 / 完全週休2日制</td></tr>
+      <tr><th>勤務地</th><td>千葉県八千代市村上2659-33<br>東葉高速鉄道 村上駅より徒歩3分</td></tr>
+      <tr><th>交通費</th><td>実費支給（上限月20,000円）</td></tr>
+      <tr><th>社会保険</th><td>雇用・労災・健康・厚生年金</td></tr>
+      <tr><th>応募資格</th><td>看護師免許 / 看護師経験2年以上（訪問看護経験不問）</td></tr>
+      <tr><th>採用人数</th><td>3名</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 最終CTA -->
+<section class="entry-section" id="entry">
+  <div class="container">
+    <h2>一歩踏み出してみませんか。</h2>
+    <p>「地域で看護師として働きたい」<br>そう思ったら、まずお気軽にお問い合わせください。<br>ハローワーク経由・直接応募どちらもお待ちしています。</p>
+    <div class="entry-btns">
+      <a class="btn-primary" href="tel:047-411-8195">電話でお問い合わせ</a>
+      <a class="btn-outline" href="mailto:pampkin0729@gmail.com">メールで問い合わせ</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p class="co">訪問看護ステーションかぼちゃ（株式会社かぼちゃ）</p>
+  <p>〒276-0028 千葉県八千代市村上2659-33</p>
+  <p>TEL：047-411-8195　E-mail：pampkin0729@gmail.com</p>
+</footer>
+
+<!-- 固定エントリーバー（スマホ） -->
+<div class="fixed-cta">
+  <a href="#entry">今すぐ応募する →</a>
+</div>
+
+<script>
+(function(){
+  var btn=document.querySelector('.hamburger');
+  var nav=document.querySelector('.site-nav');
+  if(btn&&nav){
+    btn.addEventListener('click',function(){
+      var open=nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded',open);
+    });
+  }
+})();
+</script>
+</body>
+</html>
