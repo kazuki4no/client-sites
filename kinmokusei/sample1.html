@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>木軸ペン工房 金杢犀 | 銘木が語る、一本の物語</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Noto Serif JP", "Hiragino Mincho ProN", "Yu Mincho", "Noto Sans JP", serif;
+    color: #2b1d12;
+    line-height: 1.9;
+    background: #faf5ea;
+    width: 100%;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; display: block; }
+  a { text-decoration: none; color: inherit; }
+  .container { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+  /* FV */
+  .fv {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(135deg, #2b1d12 0%, #4a3220 55%, #6b4423 100%);
+    color: #faf5ea;
+    padding: 100px 20px 60px;
+    position: relative;
+  }
+  .fv-badge {
+    background: #c9a227;
+    color: #2b1d12;
+    font-weight: 700;
+    padding: 8px 22px;
+    border-radius: 30px;
+    font-size: clamp(0.8rem, 2vw, 1rem);
+    margin-bottom: 22px;
+    letter-spacing: 0.1em;
+  }
+  .fv h1 {
+    font-size: clamp(1.7rem, 5.5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  }
+  .fv h1 span { color: #c9a227; }
+  .fv p.sub {
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    margin-bottom: 30px;
+    opacity: 0.9;
+    letter-spacing: 0.03em;
+  }
+  .fv-img {
+    width: 100%;
+    max-width: 680px;
+    border-radius: 6px;
+    margin: 20px auto;
+    box-shadow: 0 15px 45px rgba(0,0,0,0.4);
+    border: 1px solid rgba(201,162,39,0.4);
+  }
+  .cta-btn {
+    display: inline-block;
+    background: #c9a227;
+    color: #2b1d12;
+    font-weight: 700;
+    font-size: clamp(1rem, 2.8vw, 1.25rem);
+    padding: 18px 46px;
+    border-radius: 4px;
+    box-shadow: 0 8px 20px rgba(201,162,39,0.4);
+    margin: 10px 0;
+    transition: transform 0.2s;
+    letter-spacing: 0.05em;
+  }
+  .cta-btn:hover { transform: translateY(-3px); }
+  .cta-sub { font-size: 0.82rem; margin-top: 12px; opacity: 0.85; }
+  .cta-group { display: flex; flex-direction: column; align-items: center; gap: 10px; margin-top: 22px; }
+
+  /* Sections */
+  section { padding: 70px 0; }
+  .sec-title {
+    text-align: center;
+    font-size: clamp(1.4rem, 3.8vw, 2rem);
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #4a3220;
+    letter-spacing: 0.05em;
+  }
+  .sec-sub {
+    text-align: center;
+    color: #6b5847;
+    margin-bottom: 40px;
+    font-size: clamp(0.88rem, 2vw, 1rem);
+  }
+  .divider { width: 60px; height: 2px; background: #c9a227; margin: 0 auto 40px; }
+
+  /* Concept */
+  .concept { background: #fff; }
+  .concept-box { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
+  .concept-box img { flex: 1 1 320px; border-radius: 6px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
+  .concept-text { flex: 1 1 320px; }
+  .concept-text p { margin-bottom: 15px; color: #444; }
+
+  /* Products */
+  .products { background: #f3ead9; }
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 22px;
+  }
+  .product-card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+    border: 1px solid #e6d8bd;
+  }
+  .product-card img { width: 100%; height: 180px; object-fit: cover; }
+  .product-card .pc-body { padding: 18px 18px 22px; }
+  .product-card h3 { font-size: 1.02rem; margin-bottom: 8px; color: #4a3220; }
+  .product-card p { font-size: 0.85rem; color: #6b5847; margin-bottom: 10px; }
+  .product-card .price-tag { font-weight: 700; color: #a6791f; font-size: 0.95rem; }
+
+  /* Strengths */
+  .strengths { background: #fff; }
+  .strength-row {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+  }
+  .strength-row:nth-child(even) { flex-direction: row-reverse; }
+  .strength-row img {
+    flex: 1 1 300px;
+    border-radius: 6px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+  }
+  .strength-text { flex: 1 1 300px; }
+  .strength-num {
+    display: inline-block;
+    background: #4a3220;
+    color: #f3ead9;
+    font-weight: 700;
+    font-size: 0.85rem;
+    padding: 5px 16px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    letter-spacing: 0.05em;
+  }
+  .strength-text h3 { font-size: 1.25rem; color: #4a3220; margin-bottom: 12px; }
+  .strength-text p { color: #444; }
+
+  /* Price note */
+  .price { background: #2b1d12; color: #f3ead9; }
+  .price .sec-title, .price .sec-sub { color: #f3ead9; }
+  .price-table {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    color: #2b1d12;
+  }
+  .price-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 30px;
+    border-bottom: 1px solid #eee;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .price-row:last-child { border-bottom: none; }
+  .price-row .label { font-weight: 700; }
+  .price-row .price-val { font-weight: 700; color: #a6791f; font-size: 1.15rem; }
+  .price-note { text-align: center; margin-top: 20px; font-size: 0.82rem; opacity: 0.85; }
+
+  /* Flow */
+  .flow { background: #f3ead9; }
+  .flow-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+  }
+  .flow-step {
+    background: #fff;
+    padding: 25px 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+  }
+  .flow-step .num {
+    width: 40px; height: 40px;
+    background: #c9a227;
+    color: #2b1d12;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    margin: 0 auto 15px;
+  }
+  .flow-step h4 { color: #4a3220; margin-bottom: 8px; font-size: 1rem; }
+  .flow-step p { font-size: 0.85rem; color: #6b5847; }
+
+  /* Voice */
+  .voice { background: #fff; }
+  .voice-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+  }
+  .voice-card {
+    background: #f3ead9;
+    border-radius: 8px;
+    padding: 25px;
+  }
+  .voice-card .stars { color: #c9a227; margin-bottom: 10px; }
+  .voice-card p { font-size: 0.9rem; color: #333; margin-bottom: 10px; }
+  .voice-card .name { font-size: 0.8rem; color: #6b5847; text-align: right; }
+
+  /* FAQ */
+  .faq { background: #f3ead9; }
+  .faq-item {
+    background: #fff;
+    border-radius: 8px;
+    padding: 20px 25px;
+    margin-bottom: 15px;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.05);
+  }
+  .faq-item .q { font-weight: 700; color: #4a3220; margin-bottom: 8px; }
+  .faq-item .q::before { content: "Q. "; color: #a6791f; }
+  .faq-item .a::before { content: "A. "; color: #6b4423; font-weight: 700; }
+  .faq-item .a { color: #444; font-size: 0.92rem; }
+
+  /* Final CTA */
+  .final-cta {
+    background: linear-gradient(135deg, #2b1d12, #4a3220);
+    color: #faf5ea;
+    text-align: center;
+  }
+  .final-cta h2 { font-size: clamp(1.4rem, 3.8vw, 2rem); margin-bottom: 20px; font-weight: 700; }
+  .final-cta .cta-group { margin-top: 20px; }
+
+  .sns-row { display: flex; justify-content: center; gap: 18px; margin-top: 25px; flex-wrap: wrap; font-size: 0.85rem; }
+  .sns-row a { border-bottom: 1px solid rgba(250,245,234,0.5); padding-bottom: 2px; }
+
+  footer {
+    background: #1e140c;
+    color: #cdbfa8;
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 0.8rem;
+  }
+
+  /* Floating CTA */
+  .floating-cta {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    display: flex;
+    z-index: 999;
+    box-shadow: 0 -4px 15px rgba(0,0,0,0.15);
+  }
+  .floating-cta a {
+    flex: 1;
+    text-align: center;
+    padding: 14px 10px;
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: #2b1d12;
+    background: #c9a227;
+  }
+
+  @media (max-width: 600px) {
+    section { padding: 50px 0; }
+    .strength-row { flex-direction: column !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- FV -->
+<header class="fv">
+  <div class="fv-badge">木軸ペン工房 金杢犀（きんもくせい）</div>
+  <h1>銘木が語る、<span>一本の物語</span>。</h1>
+  <p class="sub">木の個性と職人の手仕事が息づく、世界に一本のシャープペン・ボールペン・万年筆</p>
+  <!-- 元画像URL: https://kinmokuseijp.base.shop/ 木軸ペン商品写真 → images/fv-main.jpg -->
+  <img class="fv-img" src="https://loremflickr.com/1000/600/wooden,pen,craftsmanship" alt="銘木を使った木軸ペン">
+  <div class="cta-group">
+    <a href="https://kinmokuseijp.base.shop/" class="cta-btn">ショップを見る</a>
+    <div class="cta-sub">毎週金曜21:00 限定アイテム販売 ／ オーダーメイド制作も承ります</div>
+  </div>
+</header>
+
+<!-- Concept -->
+<section class="concept">
+  <div class="container">
+    <h2 class="sec-title">銘木の持つ深い魅力を、手のひらに</h2>
+    <div class="divider"></div>
+    <div class="concept-box">
+      <!-- 元画像URL: https://kinmokuseijp.base.shop/ 木材・素材写真 → images/concept-wood.jpg -->
+      <img src="https://loremflickr.com/560/420/fine,wood,texture" alt="銘木の木目">
+      <div class="concept-text">
+        <p>一本一本、木目も色合いも異なる「銘木」。金杢犀では、その木が持つ唯一無二の表情を活かしながら、シャープペン・ボールペン・万年筆・名刺入れ・印鑑スタンド・スマホケース・ペントレイ・しおりなど、日常に寄り添う道具を丁寧に手掛けています。</p>
+        <p>削り、磨き、仕上げる。すべての工程に製作への愛情とこだわりを込め、使うほどに手に馴染む一本をお届けします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Products -->
+<section class="products">
+  <div class="container">
+    <h2 class="sec-title">商品ラインナップ</h2>
+    <p class="sec-sub">銘木を使ったペン類を中心に、暮らしを彩るアイテムを展開しています</p>
+    <div class="product-grid">
+      <div class="product-card">
+        <!-- 元画像URL: https://kinmokuseijp.base.shop/ シャープペン商品写真 → images/product-mechanical.jpg -->
+        <img src="https://loremflickr.com/400/300/mechanical,pencil,wood" alt="木軸シャープペン">
+        <div class="pc-body">
+          <h3>木軸シャープペン</h3>
+          <p>銘木の質感を活かした一本。書くたびに木の温もりを感じます</p>
+          <div class="price-tag">¥8,000〜</div>
+        </div>
+      </div>
+      <div class="product-card">
+        <!-- 元画像URL: https://kinmokuseijp.base.shop/ ボールペン商品写真 → images/product-ballpoint.jpg -->
+        <img src="https://loremflickr.com/400/300/ballpoint,pen,wood" alt="木軸ボールペン">
+        <div class="pc-body">
+          <h3>木軸ボールペン</h3>
+          <p>手に取るたびに愛着が増す、ずっしりとした重厚感</p>
+          <div class="price-tag">¥9,000〜</div>
+        </div>
+      </div>
+      <div class="product-card">
+        <!-- 元画像URL: https://kinmokuseijp.base.shop/ 万年筆商品写真 → images/product-fountain.jpg -->
+        <img src="https://loremflickr.com/400/300/fountain,pen,wood" alt="木軸万年筆">
+        <div class="pc-body">
+          <h3>木軸万年筆</h3>
+          <p>銘木の美しさをまとった、特別な一本の書き味</p>
+          <div class="price-tag">¥12,900〜</div>
+        </div>
+      </div>
+      <div class="product-card">
+        <!-- 元画像URL: https://kinmokuseijp.base.shop/ 名刺入れ商品写真 → images/product-cardcase.jpg -->
+        <img src="https://loremflickr.com/400/300/wooden,cardcase,craft" alt="木製名刺入れ">
+        <div class="pc-body">
+          <h3>木製名刺入れ</h3>
+          <p>ビジネスシーンで印象に残る、上質な木の佇まい</p>
+          <div class="price-tag">¥9,800〜</div>
+        </div>
+      </div>
+      <div class="product-card">
+        <!-- 元画像URL: https://kinmokuseijp.base.shop/ 印鑑スタンド商品写真 → images/product-stampstand.jpg -->
+        <img src="https://loremflickr.com/400/300/wooden,stand,craft" alt="木製印鑑スタンド">
+        <div class="pc-body">
+          <h3>印鑑スタンド</h3>
+          <p>デスクに置くだけで空間が引き締まる存在感</p>
+          <div class="price-tag">¥8,500〜</div>
+        </div>
+      </div>
+      <div class="product-card">
+        <!-- 元画像URL: https://kinmokuseijp.base.shop/ スマホケース商品写真 → images/product-phonecase.jpg -->
+        <img src="https://loremflickr.com/400/300/wooden,phone,case" alt="木製スマホケース">
+        <div class="pc-body">
+          <h3>木製スマホケース</h3>
+          <p>持つほどに手に馴染む、木ならではの経年変化も楽しめます</p>
+          <div class="price-tag">¥10,500〜</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Strengths -->
+<section class="strengths">
+  <div class="container">
+    <h2 class="sec-title">金杢犀が選ばれる理由</h2>
+    <p class="sec-sub">木の個性を活かした一点物と、確かな手仕事へのこだわり</p>
+
+    <div class="strength-row">
+      <!-- 元画像URL: https://kinmokuseijp.base.shop/ 木材選定の様子 → images/strength-1.jpg -->
+      <img src="https://loremflickr.com/500/350/wood,grain,material" alt="銘木の選定">
+      <div class="strength-text">
+        <span class="strength-num">POINT 1</span>
+        <h3>木目も表情も、すべて一点物</h3>
+        <p>同じ木は二つとありません。木目・色合い・質感を見極めながら一本ずつ丁寧に木取りし、その木ならではの魅力を最大限に引き出しています。</p>
+      </div>
+    </div>
+
+    <div class="strength-row">
+      <!-- 元画像URL: https://kinmokuseijp.base.shop/ 制作工程写真 → images/strength-2.jpg -->
+      <img src="https://loremflickr.com/500/350/artisan,handwork,workshop" alt="手仕事の工程">
+      <div class="strength-text">
+        <span class="strength-num">POINT 2</span>
+        <h3>削り、磨き、仕上げる。すべて手作業</h3>
+        <p>工房でひとつひとつ手作業により削り出し、丁寧に磨き上げています。使い込むほどに艶が増し、自分だけの一本へと育っていきます。</p>
+      </div>
+    </div>
+
+    <div class="strength-row">
+      <!-- 元画像URL: https://kinmokuseijp.base.shop/ オーダーメイド案内画像 → images/strength-3.jpg -->
+      <img src="https://loremflickr.com/500/350/custom,order,craft" alt="オーダーメイド対応">
+      <div class="strength-text">
+        <span class="strength-num">POINT 3</span>
+        <h3>通常注文でのオーダーメイドにも対応</h3>
+        <p>毎週金曜21:00の限定販売のほか、木種や仕様をご相談いただきながら制作するオーダーメイドも承っています。贈り物としても選ばれています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Price -->
+<section class="price">
+  <div class="container">
+    <h2 class="sec-title">価格の目安</h2>
+    <p class="sec-sub">木種や仕様により変動いたします</p>
+    <div class="price-table">
+      <div class="price-row"><span class="label">木軸シャープペン</span><span class="price-val">¥8,000〜</span></div>
+      <div class="price-row"><span class="label">木軸ボールペン</span><span class="price-val">¥9,000〜</span></div>
+      <div class="price-row"><span class="label">木軸万年筆</span><span class="price-val">¥12,900〜</span></div>
+      <div class="price-row"><span class="label">名刺入れ・印鑑スタンド 等</span><span class="price-val">¥8,500〜</span></div>
+    </div>
+    <p class="price-note">※詳細な価格・在庫状況は公式ショップにてご確認ください。</p>
+  </div>
+</section>
+
+<!-- Flow -->
+<section class="flow">
+  <div class="container">
+    <h2 class="sec-title">ご購入の流れ</h2>
+    <p class="sec-sub">毎週金曜21:00の限定販売、またはオーダーメイドでのご注文</p>
+    <div class="flow-steps">
+      <div class="flow-step">
+        <div class="num">1</div>
+        <h4>公式ショップをチェック</h4>
+        <p>毎週金曜21:00に限定アイテムが解禁されます</p>
+      </div>
+      <div class="flow-step">
+        <div class="num">2</div>
+        <h4>お気に入りを選ぶ</h4>
+        <p>木目や色合いは一点ごとに異なります</p>
+      </div>
+      <div class="flow-step">
+        <div class="num">3</div>
+        <h4>ご注文・オーダーメイド相談</h4>
+        <p>木種や仕様のご相談も承ります</p>
+      </div>
+      <div class="flow-step">
+        <div class="num">4</div>
+        <h4>お届け</h4>
+        <p>丁寧に梱包してお手元へお届けします</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Voice -->
+<section class="voice">
+  <div class="container">
+    <h2 class="sec-title">お客様の声</h2>
+    <p class="sec-sub">※内容は差し替え用のサンプルです。実際のお客様の声に差し替えてください。</p>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="stars">★★★★★</div>
+        <p>木目の美しさに一目惚れして購入しました。使うたびに手に馴染んでいくのが楽しみです。</p>
+        <div class="name">東京都 S様</div>
+      </div>
+      <div class="voice-card">
+        <div class="stars">★★★★★</div>
+        <p>贈り物として万年筆を購入しました。名入れのような特別感があり、とても喜ばれました。</p>
+        <div class="name">大阪府 N様</div>
+      </div>
+      <div class="voice-card">
+        <div class="stars">★★★★★</div>
+        <p>金曜21時の販売にいつも張り付いています。毎回違う木目に出会えるのが楽しみです。</p>
+        <div class="name">福岡県 M様</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq">
+  <div class="container">
+    <h2 class="sec-title">よくあるご質問</h2>
+    <div class="faq-item">
+      <div class="q">いつでも購入できますか？</div>
+      <div class="a">限定アイテムは毎週金曜21:00に公式ショップで販売しております。オーダーメイドでのご注文はいつでもご相談いただけます。</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">木の種類は選べますか？</div>
+      <div class="a">在庫状況により異なりますが、オーダーメイドの際は木種のご相談も承っております。詳しくはショップよりお問い合わせください。</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">名入れは可能ですか？</div>
+      <div class="a">対応可能な商品もございます。ご希望の場合はご注文前にお問い合わせください。</div>
+    </div>
+    <div class="faq-item">
+      <div class="q">支払い・配送方法は？</div>
+      <div class="a">BASEショップのお支払い方法・配送方法に準じます。詳細はショップページをご確認ください。</div>
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="final-cta">
+  <div class="container">
+    <h2>世界に一本の木軸ペンを、<br>あなたの手に。</h2>
+    <div class="cta-group">
+      <a href="https://kinmokuseijp.base.shop/" class="cta-btn">公式ショップへ</a>
+    </div>
+    <div class="sns-row">
+      <a href="https://twitter.com/kinmokuseiJAPAN">X（Twitter）</a>
+      <a href="https://www.instagram.com/kinmokusei_japan/">Instagram</a>
+      <a href="https://www.youtube.com/@kinmokusei">YouTube</a>
+      <a href="https://kinmokuseijp.blog">ブログ</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>木軸ペン工房 金杢犀（きんもくせい）</p>
+  <p>本ページはLP提案サンプルです。</p>
+</footer>
+
+<!-- Floating CTA -->
+<div class="floating-cta">
+  <a href="https://kinmokuseijp.base.shop/">ショップを見る</a>
+</div>
+
+</body>
+</html>
