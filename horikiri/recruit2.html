@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 株式会社ホリキリ（サンプル）</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;color:#ddd;background:#0b2340;line-height:1.75;overflow-x:hidden;padding-bottom:64px;}
+img{max-width:100%;height:auto;display:block;}
+a{color:inherit;text-decoration:none;}
+.container{max-width:1080px;margin:0 auto;padding:0 1.5rem;}
+
+/* Header */
+.site-header{display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 1.5rem;background:#071728;position:relative;z-index:100;}
+.brand{font-size:.95rem;font-weight:700;color:#fff;}
+.hamburger{display:none;background:none;border:none;font-size:1.7rem;line-height:1;cursor:pointer;color:#00adb5;}
+.site-nav{display:flex;gap:1.4rem;align-items:center;}
+.site-nav a{font-size:.85rem;color:#99b8d0;transition:color .2s;}
+.site-nav a:hover{color:#00adb5;}
+.site-nav .nav-cta{background:#00adb5;color:#fff;padding:.45rem 1.1rem;border-radius:4px;font-weight:700;}
+.site-nav .nav-cta:hover{background:#008a96;}
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:#071728;padding:.5rem 1rem;border-top:1px solid #1e3a56;}
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.8rem 0;border-bottom:1px solid #1e3a56;font-size:.95rem;}
+  .site-nav .nav-cta{margin:.5rem 0;text-align:center;border-radius:4px;}
+}
+
+/* Hero */
+.hero{position:relative;min-height:80vh;display:flex;align-items:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(7,23,40,.92) 55%,rgba(0,173,181,.18));}
+.hero-content{position:relative;z-index:1;max-width:760px;padding:3rem 1.5rem;}
+.hero-badge{display:inline-block;border:1px solid #00adb5;color:#00adb5;font-size:.78rem;letter-spacing:.08em;padding:.3rem .9rem;border-radius:20px;margin-bottom:1.2rem;}
+.hero h1{font-size:clamp(1.7rem,5vw,3rem);font-weight:700;color:#fff;line-height:1.35;margin-bottom:1rem;}
+.hero h1 em{color:#00adb5;font-style:normal;}
+.hero-lead{color:#a8c8e0;font-size:clamp(.9rem,2vw,1.05rem);margin-bottom:2rem;max-width:600px;}
+.stat-row{display:flex;flex-wrap:wrap;gap:1rem;margin-bottom:2.2rem;}
+.stat-badge{background:rgba(0,173,181,.12);border:1px solid rgba(0,173,181,.35);border-radius:8px;padding:.7rem 1.2rem;text-align:center;}
+.stat-badge .num{display:block;font-size:1.6rem;font-weight:700;color:#00adb5;line-height:1;}
+.stat-badge .lbl{display:block;font-size:.75rem;color:#99b8d0;margin-top:.2rem;}
+.btn-teal{display:inline-block;background:#00adb5;color:#fff;padding:.9rem 2.4rem;border-radius:5px;font-weight:700;font-size:1rem;transition:background .2s;}
+.btn-teal:hover{background:#008a96;}
+.btn-teal-outline{display:inline-block;border:2px solid #00adb5;color:#00adb5;padding:.8rem 2.4rem;border-radius:5px;font-weight:700;font-size:1rem;transition:all .2s;}
+.btn-teal-outline:hover{background:#00adb5;color:#fff;}
+
+/* Sections */
+.section{padding:5rem 0;}
+.section-white{background:#fff;color:#333;}
+.section-light{background:#f2f7fa;color:#333;}
+.section-dark{background:#0b2340;color:#ddd;}
+.section-mid{background:#0f2d4a;color:#ddd;}
+.lbl{font-size:.78rem;font-weight:700;letter-spacing:.1em;color:#00adb5;text-transform:uppercase;margin-bottom:.5rem;}
+.section-title{font-size:clamp(1.3rem,3vw,1.9rem);font-weight:700;margin-bottom:.7rem;}
+.section-sub{font-size:.9rem;margin-bottom:2.5rem;opacity:.7;}
+
+/* Feature */
+.feature-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5rem;}
+.feature-card{background:rgba(0,173,181,.06);border:1px solid rgba(0,173,181,.2);border-radius:8px;padding:1.6rem;}
+.feature-icon{font-size:1.8rem;margin-bottom:.7rem;}
+.feature-card h3{font-size:1rem;font-weight:700;color:#00adb5;margin-bottom:.5rem;}
+.feature-card p{font-size:.88rem;opacity:.8;}
+
+/* Numbers */
+.num-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:1.5rem;text-align:center;}
+.num-card{background:#fff;border-radius:8px;padding:1.8rem 1rem;box-shadow:0 2px 10px rgba(0,0,0,.06);}
+.num-card .big{font-size:2.4rem;font-weight:700;color:#0b2340;line-height:1;}
+.num-card .unit{font-size:1rem;color:#0b2340;}
+.num-card .desc{font-size:.82rem;color:#666;margin-top:.4rem;}
+.num-note{font-size:.75rem;color:#aaa;margin-top:1rem;text-align:right;}
+
+/* Timeline */
+.timeline-wrap{max-width:700px;margin:0 auto;}
+.tl-note{font-size:.8rem;color:#99b8d0;margin-bottom:1.2rem;}
+.timeline{position:relative;}
+.timeline::before{content:'';position:absolute;left:82px;top:.5rem;bottom:.5rem;width:2px;background:#00adb5;opacity:.3;}
+.tl-item{display:grid;grid-template-columns:72px 20px 1fr;gap:0 .8rem;align-items:start;margin-bottom:1.5rem;}
+.tl-time{text-align:right;font-weight:700;color:#00adb5;padding-top:2px;font-size:.9rem;}
+.tl-dot{width:12px;height:12px;border-radius:50%;background:#00adb5;justify-self:center;margin-top:.35rem;}
+.tl-body strong{display:block;font-weight:700;color:#fff;margin-bottom:.2rem;}
+.tl-body p{font-size:.88rem;opacity:.7;}
+@media(max-width:768px){
+  .timeline::before{left:48px;}
+  .tl-item{grid-template-columns:40px 16px 1fr;gap:0 .5rem;}
+  .tl-time{font-size:.8rem;}
+}
+
+/* Voice */
+.voice-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.5rem;}
+.voice-card{background:#fff;border-radius:8px;padding:1.6rem;color:#333;}
+.voice-header{display:flex;align-items:center;gap:1rem;margin-bottom:1rem;}
+.voice-photo{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.voice-meta strong{display:block;font-weight:700;color:#0b2340;}
+.voice-meta span{font-size:.8rem;color:#888;}
+.voice-card blockquote{font-size:.88rem;color:#444;border-left:3px solid #00adb5;padding-left:.9rem;line-height:1.75;}
+.voice-sample{font-size:.75rem;color:#aaa;margin-top:.8rem;}
+
+/* CTA block */
+.cta-block{background:linear-gradient(135deg,#071728,#0f3a50);border:1px solid rgba(0,173,181,.3);border-radius:12px;padding:2.5rem 2rem;text-align:center;margin-top:3rem;}
+.cta-block h3{font-size:clamp(1.2rem,3vw,1.6rem);color:#fff;margin-bottom:.7rem;}
+.cta-block p{color:#99b8d0;margin-bottom:1.8rem;font-size:.9rem;}
+
+/* Table */
+.req-table{width:100%;border-collapse:collapse;font-size:.88rem;color:#333;}
+.req-table th,.req-table td{border:1px solid #d0dce8;padding:.75rem 1rem;text-align:left;vertical-align:top;}
+.req-table th{background:#e8f4f8;color:#0b2340;font-weight:700;width:32%;white-space:nowrap;}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{border-bottom:none;white-space:normal;}
+  .req-table td{border-top:none;padding:.6rem 1rem 1rem;}
+  .req-table tr{margin-bottom:2px;}
+}
+
+/* FAQ */
+.faq-list{max-width:780px;}
+.faq-item{border-bottom:1px solid rgba(255,255,255,.08);padding:1.2rem 0;}
+.faq-q{font-weight:700;color:#fff;margin-bottom:.5rem;font-size:.93rem;}
+.faq-q::before{content:'Q. ';color:#00adb5;}
+.faq-a{font-size:.88rem;color:#99b8d0;padding-left:1.8rem;}
+.faq-a::before{content:'A. ';font-weight:700;color:#00adb5;margin-left:-1.8rem;}
+
+/* Fixed CTA (mobile) */
+.fixed-cta{display:none;}
+@media(max-width:768px){
+  .fixed-cta{
+    display:block;position:fixed;bottom:0;left:0;right:0;z-index:200;
+    background:#00adb5;text-align:center;padding:.9rem;
+    font-weight:700;color:#fff;font-size:1rem;letter-spacing:.03em;
+    box-shadow:0 -2px 12px rgba(0,0,0,.3);
+  }
+  .fixed-cta:hover{background:#008a96;}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="#top">株式会社ホリキリ｜採用情報</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#features">仕事の特徴</a>
+    <a href="#numbers">数字で見る</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#job">募集要項</a>
+    <a href="#faq">FAQ</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content container">
+    <span class="hero-badge">技術職（情報システム課）・正社員</span>
+    <h1>月残業<em>1時間</em>。<br>あなたの技術が、<br>90年の製造業を動かす。</h1>
+    <p class="hero-lead">ハローワーク求人で御社の情報システム課の募集を拝見しました。Javaエンジニアが、商用車サスペンションを製造する工場の基幹システムを担う仕事です。驚くほど残業が少なく、長く腰を据えて働ける環境があります。</p>
+    <div class="stat-row">
+      <div class="stat-badge"><span class="num">約1h</span><span class="lbl">月平均残業</span></div>
+      <div class="stat-badge"><span class="num">121日</span><span class="lbl">年間休日</span></div>
+      <div class="stat-badge"><span class="num">5.3ヶ月</span><span class="lbl">前年度賞与実績</span></div>
+      <div class="stat-badge"><span class="num">転勤</span><span class="lbl">なし</span></div>
+    </div>
+    <a class="btn-teal" href="#entry">エントリーはこちら（CTA1）</a>
+  </div>
+</section>
+
+<section class="section section-mid" id="features">
+  <div class="container">
+    <p class="lbl">Job Features</p>
+    <h2 class="section-title" style="color:#fff;">この仕事の特徴</h2>
+    <p class="section-sub">製造業のIT部門だからこそ得られる仕事のやりがいと、充実した職場環境です。<br>
+    ※ここはサンプルです。実際には御社の特徴に差し替えます。</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">⚙️</div>
+        <h3>製造×ITで直接インパクト</h3>
+        <p>コードが工場ラインと直結しています。改善が即座に製造現場に反映される達成感は、純粋なIT企業では得られない体験です。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🕐</div>
+        <h3>残業月平均わずか1時間</h3>
+        <p>月平均残業は1時間。繁忙期でも大きく増えることはありません。家族との時間や、自分の趣味・スキルアップの時間をしっかり確保できます。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏗️</div>
+        <h3>小チームで裁量が大きい</h3>
+        <p>情報システム課は4名の小規模チーム。設計から実装・保守まで一気通貫で携われる環境です。若手のうちから提案が通りやすい職場です。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">👩‍💻</div>
+        <h3>女性エンジニアも活躍中</h3>
+        <p>職場内では女性エンジニアも多く活躍。男女ともに育児休業の取得実績があり、ライフステージが変わっても長く働き続けられる職場です。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔄</div>
+        <h3>フレックスで自分のペースで</h3>
+        <p>勤続1年後にフレックスタイム制を利用可能（コアタイム 10:10〜15:00）。コアタイムをはずした時間帯は自分のリズムで仕事を進められます。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🚗</div>
+        <h3>マイカー通勤OK・駐車場無料</h3>
+        <p>転勤なし、マイカー通勤可（駐車場無料）。千葉県八千代市の落ち着いた環境で、長期就業に向いた職場です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-light" id="numbers">
+  <div class="container">
+    <p class="lbl" style="color:#00899e;">Numbers</p>
+    <h2 class="section-title" style="color:#0b2340;">数字で見る職場環境</h2>
+    <p class="section-sub" style="color:#555;">客観的なデータで、ここで働く実態をお伝えします。<br>
+    ※ここはサンプルです。実際には御社の最新データに差し替えます。</p>
+    <div class="num-grid">
+      <div class="num-card"><div class="big">約<span class="unit">1</span>h</div><div class="desc">月平均残業時間</div></div>
+      <div class="num-card"><div class="big">121<span class="unit">日</span></div><div class="desc">年間休日数</div></div>
+      <div class="num-card"><div class="big">5.3<span class="unit">ヶ月</span></div><div class="desc">賞与実績（前年度）</div></div>
+      <div class="num-card"><div class="big">1935<span class="unit">年</span></div><div class="desc">創業（昭和10年）</div></div>
+      <div class="num-card"><div class="big">198<span class="unit">名</span></div><div class="desc">従業員数</div></div>
+      <div class="num-card"><div class="big">60<span class="unit">歳</span></div><div class="desc">定年（再雇用65歳）</div></div>
+    </div>
+    <p class="num-note">※ここはサンプルです。実際には御社の最新データに差し替えます。</p>
+  </div>
+</section>
+
+<section class="section section-dark" id="day">
+  <div class="container">
+    <p class="lbl">Daily Schedule</p>
+    <h2 class="section-title" style="color:#fff;">社員の1日の流れ</h2>
+    <div class="timeline-wrap">
+      <p class="tl-note">※ここはサンプルです。実際には御社の社員の1日に差し替えます。</p>
+      <div class="timeline">
+        <div class="tl-item">
+          <span class="tl-time">8:00</span>
+          <span class="tl-dot"></span>
+          <div class="tl-body"><strong>出社・朝のMTG</strong><p>メール確認と当日タスクの共有。</p></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">9:00</span>
+          <span class="tl-dot"></span>
+          <div class="tl-body"><strong>JavaによるWebシステム開発</strong><p>製造管理システムの機能追加・改善。集中して取り組める時間です。</p></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">12:00</span>
+          <span class="tl-dot"></span>
+          <div class="tl-body"><strong>昼食・休憩（70分）</strong><p>食堂または近隣の飲食店でゆっくりランチ。</p></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">13:00</span>
+          <span class="tl-dot"></span>
+          <div class="tl-body"><strong>テスト・コードレビュー</strong><p>実装した機能の動作確認、チームレビュー。</p></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">15:30</span>
+          <span class="tl-dot"></span>
+          <div class="tl-body"><strong>製造部門との打ち合わせ</strong><p>現場からの改善要望をヒアリングし、次の開発に活かします。</p></div>
+        </div>
+        <div class="tl-item">
+          <span class="tl-time">17:10</span>
+          <span class="tl-dot"></span>
+          <div class="tl-body"><strong>退社（定時）</strong><p>残業は月平均1時間。今日も定時で帰れます。</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-white" id="voice">
+  <div class="container">
+    <p class="lbl" style="color:#00899e;">Voices</p>
+    <h2 class="section-title" style="color:#0b2340;">先輩社員の声</h2>
+    <p class="section-sub" style="color:#555;">実際に働くメンバーの言葉をお届けします。<br>
+    ※ここはサンプルです。実際には御社の社員の声に差し替えます。</p>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="voice-header">
+          <img class="voice-photo" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=280&fit=crop&crop=faces&q=80" alt="先輩社員（仮名）">
+          <div class="voice-meta">
+            <strong>木村 拓哉（仮名）</strong>
+            <span>30代 / IT企業から転職 / 在籍7年目</span>
+          </div>
+        </div>
+        <blockquote>IT企業でのWeb開発も経験しましたが、ここは「自分が書いたコードが工場を動かす」という手応えがまったく違います。残業がほぼゼロなので、帰宅後も技術書を読む余裕があり、かえってスキルアップできています。</blockquote>
+        <p class="voice-sample">※ここはサンプルです。実際には御社の社員の声に差し替えます。</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-header">
+          <img class="voice-photo" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=280&fit=crop&crop=faces&q=80" alt="先輩社員（仮名）">
+          <div class="voice-meta">
+            <strong>中村 有紀（仮名）</strong>
+            <span>30代 / 在籍5年目 / 育休取得経験あり</span>
+          </div>
+        </div>
+        <blockquote>育休を取ってから復帰しましたが、チームが温かく迎えてくれました。フレックスを使えば子どもの送り迎えも対応できています。女性エンジニアとして長くキャリアを積める職場だと実感しています。</blockquote>
+        <p class="voice-sample">※ここはサンプルです。実際には御社の社員の声に差し替えます。</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-header">
+          <img class="voice-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=280&fit=crop&crop=faces&q=80" alt="先輩社員（仮名）">
+          <div class="voice-meta">
+            <strong>松田 誠（仮名）</strong>
+            <span>40代 / 在籍12年目 / リーダー</span>
+          </div>
+        </div>
+        <blockquote>4人のチームだから、新しい人もすぐに責任ある仕事を任せてもらえます。自分が提案したシステムが現場で使われているのを見るとき、この仕事の価値を感じます。安定した環境で長く続けられるのが一番の魅力です。</blockquote>
+        <p class="voice-sample">※ここはサンプルです。実際には御社の社員の声に差し替えます。</p>
+      </div>
+    </div>
+
+    <div class="cta-block">
+      <h3>まずは3案のサンプルを見ていただけませんか？</h3>
+      <p>ご検討いただくだけで構いません。ぜひ一度、あなたのための採用ページをご覧ください。</p>
+      <a class="btn-teal" href="#entry">エントリーはこちら（CTA2）</a>
+    </div>
+  </div>
+</section>
+
+<section class="section section-light" id="job">
+  <div class="container">
+    <p class="lbl" style="color:#00899e;">Recruitment</p>
+    <h2 class="section-title" style="color:#0b2340;">募集要項</h2>
+    <table class="req-table">
+      <tbody>
+        <tr><th>職種</th><td>技術職（情報システム課・システム開発スタッフ）</td></tr>
+        <tr><th>仕事内容</th><td>製造部 情報システム課にてJavaによるWebシステム開発、現有設備のシステム保守・改善業務</td></tr>
+        <tr><th>雇用形態</th><td>正社員（雇用期間の定めなし）</td></tr>
+        <tr><th>勤務地</th><td>千葉県八千代市上高野1827-4（転勤なし）<br>最寄り：京成線 勝田台駅／東葉高速線 東葉勝田台駅</td></tr>
+        <tr><th>就業時間</th><td>8:00〜17:10（休憩70分）<br>勤続1年以上でフレックスタイム制（コアタイム 10:10〜15:00）</td></tr>
+        <tr><th>残業</th><td>月平均約1時間（ほぼなし）</td></tr>
+        <tr><th>休日・休暇</th><td>週休2日制・年間121日／有給・育児休業（取得実績あり）</td></tr>
+        <tr><th>給与</th><td>月給 254,715円〜518,600円（経験・年齢考慮）<br>試用期間3ヶ月：月額−3,000円</td></tr>
+        <tr><th>手当</th><td>家族手当・住宅手当（3〜5万円/月）・通勤手当（実費）・時間外手当 等</td></tr>
+        <tr><th>昇給・賞与</th><td>昇給あり（年2〜8%） ／賞与年2回（前年度実績 計5.3ヶ月）</td></tr>
+        <tr><th>社会保険等</th><td>雇用・労災・健康・厚生年金／確定拠出年金／退職金（勤続2年以上）</td></tr>
+        <tr><th>必要経験</th><td>Java/C++等オブジェクト指向言語 開発経験3年以上（または同等）<br>IPA情報処理技術者資格程度の知識</td></tr>
+        <tr><th>免許</th><td>普通自動車（AT限定可）</td></tr>
+        <tr><th>年齢</th><td>59歳以下（定年60歳のため）</td></tr>
+        <tr><th>マイカー</th><td>可（駐車場無料）・オンライン応募可</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section section-dark" id="faq">
+  <div class="container">
+    <p class="lbl">FAQ</p>
+    <h2 class="section-title" style="color:#fff;">よくある質問</h2>
+    <p class="section-sub">※ここはサンプルです。実際には御社でよくあるご質問に差し替えます。</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <p class="faq-q">製造業の経験がなくても応募できますか？</p>
+        <p class="faq-a">はい。Java/C++の開発経験（3年以上）があれば、製造業の知識は入社後に習得いただけます。現チームにも他業界からの転職者がいます。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">フレックスタイムはいつから使えますか？</p>
+        <p class="faq-a">勤続1年以上で適用されます。コアタイム（10:10〜15:00）以外は柔軟に出退勤できます。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">残業が月1時間というのは本当ですか？</p>
+        <p class="faq-a">実績値です。求人票にも「月平均時間外労働時間：1時間」と記載しています。ほぼ定時退社できる職場環境です。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">選考はどのような流れですか？</p>
+        <p class="faq-a">書類選考 → 面接（予定2回）→ 筆記試験の順です。結果は書類・面接ともに7日以内にご連絡します。オンライン自主応募の場合はハローワーク紹介状は不要です。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">育児休業は取りやすいですか？</p>
+        <p class="faq-a">男女ともに取得実績があります。女性エンジニアも多く活躍しており、子育て中の社員も複数在籍しています。<br><small style="color:#6a8daa;">※ここはサンプルです。実際には御社の事例に差し替えます。</small></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="entry" style="background:#071728;padding:5rem 1.5rem;text-align:center;">
+  <p class="lbl" style="color:#00adb5;text-align:center;">Entry</p>
+  <h2 style="color:#fff;font-size:clamp(1.3rem,3vw,1.8rem);margin-bottom:.8rem;">まずはお気軽にご連絡ください</h2>
+  <p style="color:#99b8d0;margin-bottom:2rem;font-size:.93rem;">書類選考→面接2回のシンプルな選考フロー。<br>ハローワーク紹介状なしでオンラインからご応募いただけます。</p>
+  <a class="btn-teal" href="mailto:saiyo@hrk.nhkspg.co.jp" style="display:inline-block;">メールでエントリー（CTA3）</a>
+</section>
+
+<footer style="background:#040f1a;color:#7a99b5;padding:2rem 1.5rem;font-size:.83rem;">
+  <div style="max-width:1080px;margin:0 auto;">
+    <p>
+      <strong style="color:#fff;">株式会社ホリキリ</strong><br>
+      〒276-0022 千葉県八千代市上高野1827-4<br>
+      TEL: 047-484-1111　E-mail: saiyo@hrk.nhkspg.co.jp
+    </p>
+  </div>
+</footer>
+
+<!-- Mobile fixed CTA -->
+<a class="fixed-cta" href="#entry">今すぐエントリー →</a>
+
+<script>
+(function(){
+  var btn=document.querySelector('.hamburger');
+  var nav=document.querySelector('.site-nav');
+  if(btn&&nav){
+    btn.addEventListener('click',function(){
+      var open=nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded',open);
+    });
+  }
+})();
+</script>
+</body>
+</html>
