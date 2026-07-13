@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>介護職 採用情報 | 社会福祉法人鳳雄会 ほうゆうの里</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;color:#333;line-height:1.7;overflow-x:hidden;}
+img{max-width:100%;height:auto;display:block;}
+a{text-decoration:none;color:inherit;}
+
+/* ── カラー変数 ── */
+:root{
+  --green:#2d7d5a;
+  --green-light:#e8f5ee;
+  --green-mid:#4a9e76;
+  --accent:#f5a623;
+  --text:#333;
+  --gray:#666;
+  --bg:#f8fbf9;
+}
+
+/* ── ヘッダー ── */
+.site-header{display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 1.5rem;background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.08);
+  position:sticky;top:0;z-index:100;position:relative;}
+.brand{font-size:1rem;font-weight:700;color:var(--green);}
+.site-nav{display:flex;gap:1.5rem;align-items:center;}
+.site-nav a{font-size:.88rem;color:#555;transition:color .2s;}
+.site-nav a:hover{color:var(--green);}
+.site-nav .nav-cta{background:var(--green);color:#fff;padding:.4rem 1rem;border-radius:4px;font-weight:700;}
+.site-nav .nav-cta:hover{background:var(--green-mid);}
+.hamburger{display:none;background:none;border:0;font-size:1.7rem;line-height:1;cursor:pointer;color:var(--green);}
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:#fff;box-shadow:0 8px 16px rgba(0,0,0,.12);padding:.5rem 1.2rem;}
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.8rem 0;border-bottom:1px solid #eee;font-size:.95rem;}
+  .site-nav .nav-cta{margin:.6rem 0;text-align:center;border-radius:4px;padding:.7rem;}
+}
+
+/* ── ヒーロー ── */
+.hero{background:linear-gradient(135deg,#1e5c40 0%,#2d7d5a 50%,#3d9e72 100%);
+  color:#fff;padding:4rem 1.5rem;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=1600&h=700&fit=crop&q=80') center/cover no-repeat;
+  opacity:.18;}
+.hero-content{position:relative;}
+.hero .pill{display:inline-block;background:rgba(255,255,255,.25);border:1px solid rgba(255,255,255,.5);
+  color:#fff;font-size:.8rem;padding:.3rem .9rem;border-radius:20px;margin-bottom:1rem;letter-spacing:.06em;}
+.hero h1{font-size:clamp(1.8rem,6vw,3rem);font-weight:700;line-height:1.3;margin-bottom:1.2rem;}
+.hero p{font-size:clamp(.95rem,3vw,1.1rem);opacity:.9;margin-bottom:2rem;max-width:600px;margin-left:auto;margin-right:auto;}
+.btn-primary{display:inline-block;background:var(--accent);color:#fff;font-weight:700;
+  padding:.9rem 2.5rem;border-radius:6px;font-size:1rem;transition:opacity .2s;}
+.btn-primary:hover{opacity:.85;}
+
+/* ── セクション共通 ── */
+section{padding:4rem 1.5rem;}
+.section-inner{max-width:880px;margin:0 auto;}
+.section-title{font-size:clamp(1.3rem,4vw,1.8rem);font-weight:700;color:var(--green);
+  text-align:center;margin-bottom:.5rem;}
+.section-sub{text-align:center;color:var(--gray);font-size:.9rem;margin-bottom:2.5rem;}
+.section-divider{width:48px;height:3px;background:var(--green);margin:.6rem auto 2rem;}
+
+/* ── 魅力3点 ── */
+.appeal{background:var(--bg);}
+.appeal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+@media(max-width:768px){.appeal-grid{grid-template-columns:1fr;}}
+.appeal-card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07);}
+.appeal-card img{width:100%;height:200px;object-fit:cover;}
+.appeal-card-body{padding:1.2rem;}
+.appeal-card-body h3{font-size:1rem;font-weight:700;color:var(--green);margin-bottom:.5rem;}
+.appeal-card-body p{font-size:.88rem;color:#555;line-height:1.65;}
+
+/* ── 数字バー ── */
+.numbers{background:#fff;}
+.numbers-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:1.5rem;}
+.num-item{text-align:center;min-width:140px;}
+.num-item .num{font-size:clamp(2rem,6vw,3rem);font-weight:700;color:var(--green);}
+.num-item .unit{font-size:1rem;font-weight:700;color:var(--green);}
+.num-item p{font-size:.82rem;color:var(--gray);margin-top:.3rem;}
+.num-sample{text-align:center;font-size:.75rem;color:#aaa;margin-top:1rem;}
+
+/* ── 募集要項 ── */
+.recruit-bg{background:var(--bg);}
+.req-table{width:100%;border-collapse:collapse;font-size:.92rem;}
+.req-table th,.req-table td{padding:.9rem 1rem;border-bottom:1px solid #e0e8e4;text-align:left;vertical-align:top;}
+.req-table th{background:var(--green-light);color:var(--green);font-weight:700;width:32%;}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{background:var(--green-light);padding:.5rem .8rem;}
+  .req-table td{padding:.5rem .8rem 1rem;}
+}
+
+/* ── 1日の流れ（CSS Grid方式） ── */
+.timeline-section{background:#fff;}
+.timeline{position:relative;max-width:640px;margin:0 auto;}
+.timeline::before{content:'';position:absolute;left:82px;top:.8rem;bottom:.8rem;width:2px;background:var(--green-light);}
+.tl-item{display:grid;grid-template-columns:72px 20px 1fr;gap:0 .8rem;align-items:start;margin-bottom:1.4rem;}
+.tl-time{text-align:right;font-size:.82rem;font-weight:700;color:var(--green);padding-top:.18rem;}
+.tl-dot{width:12px;height:12px;border-radius:50%;background:var(--green);justify-self:center;margin-top:.28rem;flex-shrink:0;}
+.tl-body h4{font-size:.92rem;font-weight:700;color:var(--text);}
+.tl-body p{font-size:.83rem;color:#666;margin-top:.2rem;}
+@media(max-width:768px){
+  .tl-item{grid-template-columns:48px 16px 1fr;}
+  .timeline::before{left:55px;}
+  .tl-time{font-size:.77rem;}
+}
+
+/* ── FAQ ── */
+.faq-section{background:var(--bg);}
+.faq-list{max-width:720px;margin:0 auto;}
+.faq-item{background:#fff;border-radius:8px;margin-bottom:1rem;overflow:hidden;
+  box-shadow:0 1px 6px rgba(0,0,0,.06);}
+.faq-q{padding:1rem 1.2rem;font-weight:700;color:var(--green);position:relative;cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;font-size:.92rem;}
+.faq-q::before{content:'Q';font-weight:900;margin-right:.6rem;color:var(--accent);}
+.faq-a{padding:0 1.2rem 1rem 2.4rem;font-size:.88rem;color:#555;line-height:1.75;}
+
+/* ── 先輩の声 ── */
+.voices-section{background:#fff;}
+.voices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+@media(max-width:768px){.voices-grid{grid-template-columns:1fr;}}
+.voice-card{background:var(--green-light);border-radius:8px;padding:1.4rem;text-align:center;}
+.voice-card img{width:90px;height:90px;border-radius:50%;object-fit:cover;margin:0 auto .8rem;
+  border:3px solid var(--green);}
+.voice-name{font-size:.9rem;font-weight:700;color:var(--green);}
+.voice-role{font-size:.78rem;color:var(--gray);margin-bottom:.7rem;}
+.voice-text{font-size:.85rem;color:#555;text-align:left;line-height:1.7;}
+.voice-sample{font-size:.73rem;color:#aaa;margin-top:.6rem;}
+
+/* ── 担当者 ── */
+.manager-section{background:var(--bg);}
+.manager-card{display:flex;gap:1.5rem;align-items:flex-start;max-width:640px;margin:0 auto;
+  background:#fff;border-radius:10px;padding:1.8rem;box-shadow:0 2px 12px rgba(0,0,0,.07);}
+@media(max-width:600px){.manager-card{flex-direction:column;align-items:center;text-align:center;}}
+.manager-card img{width:90px;height:90px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--green);}
+.manager-name{font-size:1rem;font-weight:700;color:var(--green);}
+.manager-role{font-size:.78rem;color:var(--gray);margin-bottom:.5rem;}
+.manager-text{font-size:.88rem;color:#555;line-height:1.7;}
+.manager-sample{font-size:.73rem;color:#aaa;margin-top:.5rem;}
+
+/* ── CTA ── */
+.cta-section{background:var(--green);color:#fff;text-align:center;padding:4rem 1.5rem;}
+.cta-section h2{font-size:clamp(1.3rem,4vw,1.8rem);font-weight:700;margin-bottom:.8rem;}
+.cta-section p{font-size:.95rem;opacity:.9;margin-bottom:2rem;}
+.btn-white{display:inline-block;background:#fff;color:var(--green);font-weight:700;
+  padding:.9rem 2.5rem;border-radius:6px;font-size:1rem;transition:opacity .2s;}
+.btn-white:hover{opacity:.85;}
+
+/* ── フッター ── */
+footer{background:#1e3d2e;color:rgba(255,255,255,.75);text-align:center;padding:2rem 1.5rem;font-size:.82rem;}
+footer a{color:rgba(255,255,255,.75);}
+</style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header class="site-header">
+  <a class="brand" href="#top">社会福祉法人鳳雄会 ほうゆうの里</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#appeal">職場の魅力</a>
+    <a href="#recruit">募集要項</a>
+    <a href="#timeline">1日の流れ</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#faq">よくある質問</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<!-- ヒーロー -->
+<section class="hero" id="top">
+  <div class="hero-content">
+    <span class="pill">八千代市 / 介護職 / 未経験歓迎</span>
+    <h1>人の温もりが、<br>ここに集まっている。</h1>
+    <p>ユニット型特養と乳児院が隣り合う、八千代市の地域密着施設。<br>
+    資格がなくても、ブランクがあっても、一緒に成長できる環境が整っています。</p>
+    <a href="#entry" class="btn-primary">採用情報を見る・応募する</a>
+  </div>
+</section>
+
+<!-- 職場の魅力 -->
+<section class="appeal" id="appeal">
+  <div class="section-inner">
+    <h2 class="section-title">ほうゆうの里で働く魅力</h2>
+    <div class="section-divider"></div>
+    <div class="appeal-grid">
+      <div class="appeal-card">
+        <img src="https://images.unsplash.com/photo-1584515933487-779824d29309?w=640&h=380&fit=crop&q=80" alt="寄り添うケアのイメージ">
+        <div class="appeal-card-body">
+          <h3>個別ケアで、一人ひとりに向き合う</h3>
+          <p>ユニット型特養は10名前後の少人数グループ制。利用者の方の生活リズムを大切にしながら、丁寧に関わることができます。</p>
+        </div>
+      </div>
+      <div class="appeal-card">
+        <img src="https://images.unsplash.com/photo-1516627145497-ae6968895b74?w=640&h=380&fit=crop&q=80" alt="乳児院の子どもたちのイメージ">
+        <div class="appeal-card-body">
+          <h3>敷地内の乳児院で、子どもの声に癒される</h3>
+          <p>同じ敷地内に乳児院があり、子どもたちの声や様子が日常の風景に。独自の温かい雰囲気が根付いています。</p>
+        </div>
+      </div>
+      <div class="appeal-card">
+        <img src="https://images.unsplash.com/photo-1576765608535-5f04d1e3f289?w=640&h=380&fit=crop&q=80" alt="介護スタッフのイメージ">
+        <div class="appeal-card-body">
+          <h3>資格なし・未経験・ブランク、全部OK</h3>
+          <p>社内研修が充実。介護福祉士の資格取得も支援しており、取得後は手当が増額されます。シニアスタッフも活躍中です。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 数字で見る ほうゆうの里 -->
+<section class="numbers" id="numbers">
+  <div class="section-inner">
+    <h2 class="section-title">数字で見る ほうゆうの里</h2>
+    <div class="section-divider"></div>
+    <div class="numbers-grid">
+      <div class="num-item">
+        <div><span class="num">114</span><span class="unit">日</span></div>
+        <p>年間休日数</p>
+      </div>
+      <div class="num-item">
+        <div><span class="num">6,000</span><span class="unit">円</span></div>
+        <p>夜勤手当（1回）</p>
+      </div>
+      <div class="num-item">
+        <div><span class="num">2.2</span><span class="unit">ヶ月</span></div>
+        <p>賞与（年2回・前年度実績）</p>
+      </div>
+      <div class="num-item">
+        <div><span class="num">100</span><span class="unit">床</span></div>
+        <p>総定員（ユニット70＋従来型30）</p>
+      </div>
+      <div class="num-item">
+        <div><span class="num">2011</span><span class="unit">年</span></div>
+        <p>ユニット型特養 開設</p>
+      </div>
+    </div>
+    <p class="num-sample">※ここはサンプルです。実際には御社の実績・データに差し替えます</p>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="recruit-bg" id="recruit">
+  <div class="section-inner">
+    <h2 class="section-title">募集要項</h2>
+    <div class="section-divider"></div>
+    <table class="req-table">
+      <tr><th>職種</th><td>介護職（正社員）</td></tr>
+      <tr><th>仕事内容</th><td>ユニット型特養・従来型特養での食事・入浴・排泄介助、リハビリサポート、レクリエーション・イベント企画など。利用者の方の生活リズムを大切にした個別ケア。</td></tr>
+      <tr><th>給与</th><td>月給 205,894円〜222,907円（基本給 174,200円〜190,100円＋各種手当）<br>夜勤手当 6,000円/回・介護福祉士取得者は直接処遇手当+10,000円</td></tr>
+      <tr><th>昇給・賞与</th><td>昇給あり（前年度実績 月額5,000円〜）<br>賞与年2回・計2.20ヶ月分（前年度実績）</td></tr>
+      <tr><th>就業時間</th><td>シフト制（早番 6:30〜15:30 / 日勤 9:00〜18:00 / 遅番 12:30〜21:30 / 夜勤 21:30〜6:30）<br>月平均残業10時間</td></tr>
+      <tr><th>休日・休暇</th><td>年間休日114日・シフト制・年次有給休暇あり（6ヶ月後10日）</td></tr>
+      <tr><th>勤務地</th><td>千葉県八千代市上高野157<br>京成勝田台駅北口よりバス「ほうゆうの里」バス停目の前<br>マイカー通勤可・駐車場あり（無料）</td></tr>
+      <tr><th>資格・経験</th><td>不問（未経験・ブランクのある方大歓迎）<br>介護福祉士・実務者研修・初任者研修修了者は尚可</td></tr>
+      <tr><th>待遇・福利厚生</th><td>社会保険完備（雇用・労災・健康・厚生年金）<br>退職金共済加入・通勤手当（上限25,000円/月）・社内研修制度充実</td></tr>
+      <tr><th>採用人数</th><td>3名</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section class="timeline-section" id="timeline">
+  <div class="section-inner">
+    <h2 class="section-title">介護職スタッフの1日（日勤の例）</h2>
+    <p class="section-sub">※ここはサンプルです。実際には御社のスタッフの1日に差し替えます</p>
+    <div class="section-divider"></div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">9:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>出勤・申し送り</h4><p>夜勤スタッフから利用者の状況を引き継ぎ。今日のケア方針を確認します。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">9:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>朝の体操・活動支援</h4><p>ユニット内でリハビリ体操やレクリエーション。一人ひとりのペースに合わせて関わります。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">11:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>昼食・食事介助</h4><p>食事量や様子を確認しながら介助。笑顔で会話する大切な時間です。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>入浴介助・個別ケア</h4><p>スケジュールに合わせて入浴や排泄介助、その他の個別ケアを行います。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">15:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>おやつ・リクリエーション</h4><p>利用者の方と一緒に手芸やゲームなど。今日いちばん盛り上がる時間かも。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>夕食・介助・記録</h4><p>夕食後は記録入力と次のシフトへの申し送り準備。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">18:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>退勤</h4><p>遅番スタッフへ引き継ぎ後、業務終了。お疲れ様でした。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- よくある質問 -->
+<section class="faq-section" id="faq">
+  <div class="section-inner">
+    <h2 class="section-title">よくある質問</h2>
+    <div class="section-divider"></div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">介護の経験が全くなくても応募できますか？</div>
+        <div class="faq-a">はい、大歓迎です。社内研修が充実しており、未経験の方でも一から丁寧に指導します。ブランクのある方もご相談ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">資格がなくても働けますか？将来的に資格を取りたい場合のサポートはありますか？</div>
+        <div class="faq-a">資格は不問です。入職後に介護職員初任者研修や実務者研修、介護福祉士の取得を目指す方へのサポートも行っています。資格取得後は手当が増額されます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">シフトはどのように決まりますか？希望は通りますか？</div>
+        <div class="faq-a">月単位でシフトを組みます。ご家庭の事情や希望はできる限り考慮していますので、まずはご相談ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">選考の流れを教えてください。</div>
+        <div class="faq-a">書類選考（7日以内に結果通知）→ 面接（予定2回）→ 採用決定の流れです。随時選考を行っていますので、お気軽にお問い合わせください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">マイカー通勤は可能ですか？</div>
+        <div class="faq-a">可能です。無料の駐車場をご用意しています。京成勝田台駅からバスでのアクセスも良好です。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section class="voices-section" id="voice">
+  <div class="section-inner">
+    <h2 class="section-title">先輩スタッフからのメッセージ</h2>
+    <p class="section-sub">※ここはサンプルです。実際には御社のスタッフの写真とメッセージに差し替えます</p>
+    <div class="section-divider"></div>
+    <div class="voices-grid">
+      <div class="voice-card">
+        <!-- サンプル：女性スタッフ（仮名） -->
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=280&h=280&fit=crop&crop=faces&q=80" alt="先輩スタッフ 田中さん（仮名）の顔写真サンプル">
+        <div class="voice-name">田中 みどり（仮名）</div>
+        <div class="voice-role">介護職・入社4年目</div>
+        <p class="voice-text">未経験で入社しましたが、先輩が丁寧に教えてくれたので安心でした。利用者の方が笑顔になる瞬間に、この仕事を選んで良かったと感じます。</p>
+        <p class="voice-sample">※ここはサンプルです。実際の声に差し替えます</p>
+      </div>
+      <div class="voice-card">
+        <!-- サンプル：男性スタッフ（仮名） -->
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=280&h=280&fit=crop&crop=faces&q=80" alt="先輩スタッフ 山田さん（仮名）の顔写真サンプル">
+        <div class="voice-name">山田 健太（仮名）</div>
+        <div class="voice-role">介護職・入社2年目</div>
+        <p class="voice-text">子どもたちの声が聞こえる環境が独特で、毎日癒されながら働けています。研修制度が充実していて、資格を取得しながら着実にスキルアップできています。</p>
+        <p class="voice-sample">※ここはサンプルです。実際の声に差し替えます</p>
+      </div>
+      <div class="voice-card">
+        <!-- サンプル：女性スタッフ（仮名） -->
+        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=280&h=280&fit=crop&crop=faces&q=80" alt="先輩スタッフ 佐藤さん（仮名）の顔写真サンプル">
+        <div class="voice-name">佐藤 由美（仮名）</div>
+        <div class="voice-role">介護職・入社7年目</div>
+        <p class="voice-text">地元・八千代市の施設で長く働けているのが嬉しいです。ユニット型なので少人数で顔を覚えて、じっくり向き合えるのが好きです。シフトも相談しやすい職場です。</p>
+        <p class="voice-sample">※ここはサンプルです。実際の声に差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 採用担当者紹介 -->
+<section class="manager-section">
+  <div class="section-inner">
+    <h2 class="section-title">採用担当者より</h2>
+    <div class="section-divider"></div>
+    <div class="manager-card">
+      <!-- サンプル：担当者写真 -->
+      <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当者の顔写真サンプル">
+      <div>
+        <div class="manager-name">荒木 勝明（仮名）</div>
+        <div class="manager-role">施設長 / 採用担当</div>
+        <p class="manager-text">「ほうゆうの里」は、地域に開かれた温かい施設を目指しています。資格やキャリアよりも、まず「人が好き」という気持ちを大切にしています。ちょっとでも気になったら、まずは気軽にお問い合わせください。一緒に働きましょう。</p>
+        <p class="manager-sample">※ここはサンプルです。実際の担当者の写真とメッセージに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 応募CTA -->
+<section class="cta-section" id="entry">
+  <h2>まずは気軽にお問い合わせください</h2>
+  <p>選考の詳細や職場見学のご相談など、お気軽にどうぞ。<br>電話・メールどちらでも受け付けています。</p>
+  <a href="tel:047-409-5100" class="btn-white">☎ 047-409-5100</a>
+</section>
+
+<!-- フッター -->
+<footer>
+  <p>社会福祉法人鳳雄会 ほうゆうの里</p>
+  <p>〒276-0022 千葉県八千代市上高野157</p>
+  <p>TEL: <a href="tel:047-409-5100">047-409-5100</a> / E-mail: <a href="mailto:houyunosato2@houyukai.or.jp">houyunosato2@houyukai.or.jp</a></p>
+</footer>
+
+<script>
+(function(){
+  var btn = document.querySelector('.hamburger');
+  var nav = document.querySelector('.site-nav');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  }
+})();
+</script>
+</body>
+</html>
