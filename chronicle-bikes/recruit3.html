@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>求人情報 ｜ バイク販売スタッフ ｜ 株式会社クロニクル</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#1a1810;background:#fff}
+img{max-width:100%;height:auto;display:block}
+
+/* ナビ */
+.site-header{background:rgba(15,12,8,.92);backdrop-filter:blur(6px);display:flex;align-items:center;justify-content:space-between;padding:.85rem 1.4rem;position:sticky;top:0;z-index:200;position:relative}
+.brand{text-decoration:none;color:#f0e8d8;font-weight:700;font-size:.92rem;line-height:1.3;font-family:'Noto Serif JP',serif}
+.brand span{display:block;font-size:.66rem;font-weight:400;color:#998;margin-top:2px;font-family:'Noto Sans JP',sans-serif}
+.hamburger{display:none;background:none;border:0;font-size:1.8rem;line-height:1;cursor:pointer;color:#bf7c28}
+.site-nav{display:flex;gap:1.4rem;align-items:center}
+.site-nav a{text-decoration:none;color:#c8b89a;font-size:.86rem;transition:color .2s}
+.site-nav a:hover{color:#bf7c28}
+.site-nav .nav-cta{border:1px solid #bf7c28;color:#bf7c28;padding:7px 18px;border-radius:3px;font-weight:700;font-size:.83rem}
+.site-nav .nav-cta:hover{background:#bf7c28;color:#fff}
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;position:absolute;top:100%;left:0;right:0;z-index:100;background:rgba(15,12,8,.97);padding:.5rem 1.2rem;border-top:1px solid #333}
+  .site-nav.open{display:flex}
+  .site-nav a{padding:.85rem 0;border-bottom:1px solid #2a2520;color:#c8b89a;font-size:1rem}
+  .site-nav .nav-cta{border:none;border-radius:0;border-bottom:1px solid #2a2520;background:none;color:#bf7c28}
+}
+
+/* FVヒーロー */
+.hero{position:relative;min-height:80vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1449426468159-d96dbf08f19f?w=1600&h=900&fit=crop&q=80') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:rgba(12,9,4,.6)}
+.hero-content{position:relative;z-index:1;text-align:center;padding:60px 24px;max-width:780px}
+.hero-label{display:inline-block;border:1px solid rgba(191,124,40,.8);color:#bf7c28;padding:6px 20px;font-size:.78rem;letter-spacing:.14em;font-weight:700;margin-bottom:28px}
+.hero h1{font-family:'Noto Serif JP',serif;font-size:clamp(2rem,6vw,3.8rem);font-weight:900;color:#f0e8d8;line-height:1.4;margin-bottom:22px;text-shadow:0 2px 16px rgba(0,0,0,.5)}
+.hero h1 em{color:#bf7c28;font-style:normal}
+.hero p{font-size:clamp(.92rem,2.2vw,1.08rem);color:#c8b89a;line-height:2;margin-bottom:40px}
+.btn-hero{display:inline-block;background:#bf7c28;color:#fff;font-weight:700;padding:16px 48px;border-radius:3px;text-decoration:none;font-size:1rem;letter-spacing:.06em;transition:background .2s,transform .2s}
+.btn-hero:hover{background:#9d6520;transform:translateY(-2px)}
+.scroll-hint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);z-index:1;display:flex;flex-direction:column;align-items:center;gap:6px}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,rgba(191,124,40,.8),transparent)}
+.scroll-text{color:#bf7c28;font-size:.7rem;letter-spacing:.1em}
+@media(max-width:768px){.hero{min-height:72vh}.hero-content{padding:40px 20px}}
+
+/* セクション共通 */
+section{padding:72px 24px}
+.section-inner{max-width:980px;margin:0 auto}
+.sec-label{font-size:.72rem;letter-spacing:.2em;font-weight:700;color:#bf7c28;margin-bottom:10px;text-transform:uppercase}
+h2.sec-h{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,4.5vw,2.3rem);font-weight:900;color:#1a1810;margin-bottom:36px;line-height:1.4}
+h2.sec-h em{color:#bf7c28;font-style:normal;border-bottom:2px solid #bf7c28;padding-bottom:2px}
+.bg-cream{background:#f9f5ef}
+.bg-charcoal{background:#1a1810;color:#f0e8d8}
+.sec-h-light{color:#f0e8d8}
+
+/* 強み3点 */
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:#e0d8cc}
+@media(max-width:768px){.feature-grid{grid-template-columns:1fr}}
+.feature-cell{background:#fff;padding:40px 28px}
+@media(max-width:768px){.feature-cell{padding:32px 20px}}
+.feature-num{font-family:'Noto Serif JP',serif;font-size:2.8rem;font-weight:900;color:#e8dcc8;line-height:1;margin-bottom:14px}
+.feature-cell h3{font-size:1.05rem;font-weight:700;color:#1a1810;margin-bottom:12px;line-height:1.5}
+.feature-cell h3 strong{color:#bf7c28}
+.feature-cell p{font-size:.87rem;line-height:1.9;color:#555}
+.sample-note{font-size:.76rem;color:#aaa;margin-top:12px}
+
+/* 職場風景 */
+.gallery{display:grid;grid-template-columns:2fr 1fr;grid-template-rows:repeat(2,200px);gap:4px}
+@media(max-width:768px){.gallery{grid-template-columns:1fr;grid-template-rows:auto;gap:4px}}
+.gallery-main{grid-row:span 2}
+@media(max-width:768px){.gallery-main{grid-row:span 1}}
+.gallery img{width:100%;height:100%;object-fit:cover}
+.gallery-main img{height:100%}
+@media(max-width:768px){.gallery img,.gallery-main img{height:220px}}
+
+/* タイムライン */
+.timeline{max-width:560px;margin:0 auto;position:relative}
+.timeline::before{content:'';position:absolute;left:78px;top:0;bottom:0;width:1px;background:#3a3028}
+@media(max-width:768px){.timeline::before{left:60px}}
+.tl-row{display:flex;gap:20px;margin-bottom:30px;align-items:flex-start}
+.tl-t{min-width:56px;font-size:.82rem;font-weight:700;color:#bf7c28;padding-top:2px;text-align:right;flex-shrink:0;letter-spacing:.03em}
+@media(max-width:768px){.tl-t{min-width:42px;font-size:.76rem}}
+.tl-d{width:10px;height:10px;border-radius:50%;background:#bf7c28;flex-shrink:0;margin-top:4px;box-shadow:0 0 0 3px rgba(191,124,40,.25)}
+.tl-b h4{font-size:.93rem;font-weight:700;color:#f0e8d8;margin-bottom:3px}
+.tl-b p{font-size:.83rem;color:#888;line-height:1.7}
+
+/* 募集要項 */
+.spec-table{width:100%;border-collapse:collapse;font-size:.9rem}
+.spec-table tr{border-bottom:1px solid #e0d8cc}
+.spec-table th{text-align:left;padding:14px 16px;font-weight:700;color:#1a1810;background:#f2ece3;width:25%;vertical-align:top}
+.spec-table td{padding:14px 16px;line-height:1.85;color:#444}
+@media(max-width:768px){
+  .spec-table,.spec-table tbody,.spec-table tr,.spec-table th,.spec-table td{display:block;width:100%}
+  .spec-table th{background:#f2ece3;padding:10px 14px;font-size:.85rem}
+  .spec-table td{padding:10px 14px 14px}
+}
+
+/* 先輩の声カード */
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+@media(max-width:768px){.voice-grid{grid-template-columns:1fr}}
+.voice-card{background:#252018;border-radius:4px;overflow:hidden}
+.voice-card img{width:100%;height:265px;object-fit:cover}
+.voice-card-body{padding:20px}
+.voice-name{font-size:.95rem;font-weight:700;color:#f0e8d8;margin-bottom:3px}
+.voice-meta{font-size:.76rem;color:#888;margin-bottom:12px}
+.voice-quote{font-size:.85rem;line-height:1.8;color:#b8a898}
+
+/* FAQ */
+.faq-box{max-width:700px;margin:0 auto}
+.faq-row{border-bottom:1px solid #e0d8cc;padding:20px 0}
+.faq-q{font-weight:700;font-size:.95rem;color:#1a1810;margin-bottom:10px;padding-left:26px;position:relative}
+.faq-q::before{content:'Q.';position:absolute;left:0;color:#bf7c28;font-family:'Noto Serif JP',serif;font-weight:900}
+.faq-a{font-size:.88rem;color:#555;line-height:1.85;padding-left:26px;position:relative}
+.faq-a::before{content:'A.';position:absolute;left:0;color:#888;font-weight:700}
+
+/* CTA */
+.final-cta{position:relative;text-align:center;padding:88px 24px;overflow:hidden}
+.final-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1594498653385-d5172c532c00?w=1600&h=700&fit=crop&q=80') center/cover no-repeat}
+.final-overlay{position:absolute;inset:0;background:rgba(10,8,4,.72)}
+.final-inner{position:relative;z-index:1;max-width:660px;margin:0 auto}
+.final-inner h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,4.5vw,2.4rem);font-weight:900;color:#f0e8d8;margin-bottom:16px}
+.final-inner p{color:#b8a898;line-height:2;font-size:.97rem;margin-bottom:36px}
+.btn-final{display:inline-block;background:#bf7c28;color:#fff;font-weight:700;padding:16px 52px;border-radius:3px;text-decoration:none;font-size:1.02rem;letter-spacing:.05em;transition:background .2s,transform .2s}
+.btn-final:hover{background:#9d6520;transform:translateY(-2px)}
+
+footer{background:#0d0b08;color:#776e60;text-align:center;padding:32px 20px;font-size:.82rem;line-height:2}
+footer strong{color:#f0e8d8}
+</style>
+</head>
+<body id="top">
+
+<!-- ナビ -->
+<header class="site-header">
+  <a class="brand" href="#top">CHRONICLE<span>株式会社クロニクル ／ Royal Enfield 正規ディーラー</span></a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#feature">特徴</a>
+    <a href="#day">1日の流れ</a>
+    <a href="#spec">募集要項</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#faq">FAQ</a>
+    <a class="nav-cta" href="#apply">応募する</a>
+  </nav>
+</header>
+<script>
+(function(){
+  var btn=document.querySelector('.hamburger');
+  var nav=document.querySelector('.site-nav');
+  if(btn&&nav){btn.addEventListener('click',function(){var o=nav.classList.toggle('open');btn.setAttribute('aria-expanded',o);});}
+})();
+</script>
+
+<!-- FVヒーロー -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-label">RECRUIT 2026 ／ 正社員 ／ 八千代市</div>
+    <h1>バイクと生きる、<br><em>それが仕事になる。</em></h1>
+    <p>ロイヤルエンフィールド正規ディーラー・株式会社クロニクルは<br>バイク好きのためのバイク店です。未経験でも、情熱があれば。</p>
+    <a href="#apply" class="btn-hero">採用情報を見る</a>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-text">SCROLL</div>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- 強み3点 -->
+<section id="feature" class="bg-cream">
+  <div class="section-inner">
+    <div class="sec-label">Why Chronicle</div>
+    <h2 class="sec-h">クロニクルで働く、<em>3つの理由</em></h2>
+    <!-- ※ここはサンプルです。実際には御社の特徴に差し替えます -->
+    <div class="feature-grid">
+      <div class="feature-cell">
+        <div class="feature-num">01</div>
+        <h3><strong>Royal Enfield</strong><br>正規ディーラーとしての誇り</h3>
+        <p>1901年創業の英国ブランド、ロイヤルエンフィールドの正規ディーラーとして、千葉・茨城に4店舗を展開。バイク販売の最前線で、世界的ブランドの一翼を担います。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社の特徴に差し替えます</p>
+      </div>
+      <div class="feature-cell">
+        <div class="feature-num">02</div>
+        <h3>社割・ピット利用・<strong>資格取得支援</strong></h3>
+        <p>車両・パーツ・オイルの社割購入、勤務後の自車ピット整備、二輪整備士資格取得支援制度。バイク好きが長く楽しく働き続けられる環境が揃っています。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社の特徴に差し替えます</p>
+      </div>
+      <div class="feature-cell">
+        <div class="feature-num">03</div>
+        <h3>残業ゼロ、年間<strong>107日休日</strong></h3>
+        <p>定時退勤、週休2日（火・木曜）、年間休日107日。有給休暇の取得も推奨しており、プライベートをバイクで満喫できます。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社の特徴に差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 職場風景 -->
+<div class="gallery">
+  <!-- 写真はサンプルです。実際には御社の店舗・職場写真に差し替えます -->
+  <div class="gallery-main">
+    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&h=500&fit=crop&q=80" alt="バイク（サンプル）">
+  </div>
+  <div>
+    <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=640&h=200&fit=crop&q=80" alt="バイク（サンプル）">
+  </div>
+  <div>
+    <img src="https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=640&h=200&fit=crop&q=80" alt="バイク（サンプル）">
+  </div>
+</div>
+<p class="sample-note" style="text-align:center;padding:10px 0 4px;background:#f9f5ef">※写真はサンプルです。実際には御社の店舗・車両の写真に差し替えます</p>
+
+<!-- 1日の流れ -->
+<section id="day" class="bg-charcoal">
+  <div class="section-inner">
+    <div class="sec-label" style="color:#bf7c28">A Day in the Life</div>
+    <h2 class="sec-h sec-h-light">先輩スタッフの<em>1日の流れ</em></h2>
+    <!-- ※ここはサンプルです。実際には御社の1日の流れに差し替えます -->
+    <div class="timeline">
+      <div class="tl-row">
+        <div class="tl-t">9:30</div>
+        <div class="tl-d"></div>
+        <div class="tl-b">
+          <h4>出勤・開店準備</h4>
+          <p>展示車のセッティング、ショールームの清掃・整理。一日のスタートを丁寧に準備します。</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-t">10:00</div>
+        <div class="tl-d"></div>
+        <div class="tl-b">
+          <h4>来客対応・接客・商談</h4>
+          <p>来店したお客様をお迎えし、バイクの魅力をお伝えします。試乗案内も行います。</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-t">12:00</div>
+        <div class="tl-d"></div>
+        <div class="tl-b">
+          <h4>昼食休憩（60分）</h4>
+          <p>1時間のランチ休憩。スタッフ間のコミュニケーションも自然と深まる時間。</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-t">13:00</div>
+        <div class="tl-d"></div>
+        <div class="tl-b">
+          <h4>午後の接客・見積・書類</h4>
+          <p>購入を検討されているお客様との商談、見積書の作成、購入手続きのサポートが中心。</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-t">15:00</div>
+        <div class="tl-d"></div>
+        <div class="tl-b">
+          <h4>店舗企画・SNS・事務</h4>
+          <p>店内のレイアウト変更、イベント企画立案、SNS投稿など。クリエイティブな仕事も。</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-t">17:30</div>
+        <div class="tl-d"></div>
+        <div class="tl-b">
+          <h4>翌日準備・日報入力</h4>
+          <p>翌日のアポイント確認、在庫確認、日報入力。1日の締めくくり。</p>
+        </div>
+      </div>
+      <div class="tl-row">
+        <div class="tl-t">18:30</div>
+        <div class="tl-d"></div>
+        <div class="tl-b">
+          <h4>退勤（定時）</h4>
+          <p>残業なし。バイク仲間との夕暮れツーリングに出かけるスタッフも。</p>
+        </div>
+      </div>
+    </div>
+    <p class="sample-note" style="text-align:center;margin-top:24px;color:#666">※ここはサンプルです。実際には御社の1日の流れに差し替えます</p>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section id="spec">
+  <div class="section-inner">
+    <div class="sec-label">Recruit Info</div>
+    <h2 class="sec-h">募集<em>要項</em></h2>
+    <table class="spec-table">
+      <tr><th>職種</th><td>バイク（オートバイ）販売店の販売スタッフ</td></tr>
+      <tr><th>雇用形態</th><td>正社員（雇用期間の定めなし）</td></tr>
+      <tr><th>勤務場所</th><td>千葉県八千代市大和田新田494-16（八千代店）<br>※繁忙期等に他店舗（松戸・つくば等）への応援勤務あり</td></tr>
+      <tr><th>給与</th><td>月給240,000〜350,000円<br>業界経験者: 月給280,000円〜 ／ 未経験者: 月給240,000円〜<br>昇給あり（前年度: 月2,000〜10,000円）</td></tr>
+      <tr><th>賞与</th><td>年2回（前年度実績: 計1.5ヶ月分）</td></tr>
+      <tr><th>勤務時間</th><td>9:30〜18:30（休憩60分）</td></tr>
+      <tr><th>休日</th><td>火曜・木曜・その他（週休2日）年間休日107日<br>年末年始・有給休暇推奨</td></tr>
+      <tr><th>福利厚生</th><td>社会保険完備（雇用・労災・健康・厚生年金）<br>社割制度 ／ ピット利用（自車整備・カスタム）<br>二輪整備士資格取得支援 ／ 定期健康診断 ／ 制服貸与</td></tr>
+      <tr><th>通勤</th><td>マイカー通勤可・バイク通勤可（敷地内無料駐車場）</td></tr>
+      <tr><th>試用期間</th><td>6ヶ月（月給マイナス4万円・賞与なし）</td></tr>
+      <tr><th>応募資格</th><td>学歴不問・業界経験不問・64歳以下<br>自動二輪免許・普通自動車免許（AT限定可）はあれば尚可</td></tr>
+      <tr><th>採用人数</th><td>2名</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section id="voice" class="bg-charcoal">
+  <div class="section-inner">
+    <div class="sec-label" style="color:#bf7c28">Staff Voice</div>
+    <h2 class="sec-h sec-h-light">先輩スタッフ<em>からのメッセージ</em></h2>
+    <!-- ※ここはサンプルです。実際には御社スタッフの写真・コメントに差し替えます -->
+    <div class="voice-grid">
+      <div class="voice-card">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=640&h=540&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div class="voice-card-body">
+          <div class="voice-name">田中 翔太（仮名）</div>
+          <div class="voice-meta">販売スタッフ ／ 2023年入社</div>
+          <div class="voice-quote">接客経験しかなかった自分でも、先輩が親切に教えてくれました。社割でパーツが買えるのが毎月の楽しみです。バイク好きにはたまらない職場です。</div>
+          <p class="sample-note" style="color:#666">※ここはサンプルです</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=640&h=540&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div class="voice-card-body">
+          <div class="voice-name">加藤 健二（仮名）</div>
+          <div class="voice-meta">チーフスタッフ ／ 2021年入社</div>
+          <div class="voice-quote">ロイヤルエンフィールドに憧れてこの会社を選びました。ピットで愛車をカスタムできる会社はほかにない。仕事もプライベートもバイク一色で最高の毎日です。</div>
+          <p class="sample-note" style="color:#666">※ここはサンプルです</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=640&h=540&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div class="voice-card-body">
+          <div class="voice-name">鈴木 美咲（仮名）</div>
+          <div class="voice-meta">販売スタッフ ／ 2024年入社</div>
+          <div class="voice-quote">バイクにそこまで詳しくなかった私でも馴染めました。お客様と「バイクってこんなに楽しいんですよ」と話せるようになった今は、毎日が充実しています。</div>
+          <p class="sample-note" style="color:#666">※ここはサンプルです</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="sec-label">FAQ</div>
+    <h2 class="sec-h">よくある<em>ご質問</em></h2>
+    <!-- ※ここはサンプルです。実際には御社のQ&Aに差し替えます -->
+    <div class="faq-box">
+      <div class="faq-row">
+        <div class="faq-q">バイクの免許や業界経験は必要ですか？</div>
+        <div class="faq-a">いいえ、どちらも「あれば尚可」の扱いです。現在活躍しているスタッフの多くは未経験からスタートしています。バイクへの好奇心があれば問題ありません。</div>
+      </div>
+      <div class="faq-row">
+        <div class="faq-q">選考の流れを教えてください。</div>
+        <div class="faq-a">ハローワークで紹介状を取得のうえ、履歴書（写真貼付）・職務経歴書とともにご応募ください。書類選考後に面接（予定2回）を実施します。選考結果は書類選考後・面接後それぞれ7日以内にご連絡します。</div>
+      </div>
+      <div class="faq-row">
+        <div class="faq-q">試用期間中の待遇を教えてください。</div>
+        <div class="faq-a">試用期間は6ヶ月で、月給は通常よりマイナス4万円・賞与なしとなります。試用期間終了後は正式採用となり、通常の給与・賞与が適用されます。</div>
+      </div>
+      <div class="faq-row">
+        <div class="faq-q">八千代店以外での勤務はありますか？</div>
+        <div class="faq-a">基本は八千代店勤務です。繁忙期や急な欠員時に松戸店・つくば店等への応援勤務をお願いする場合があります。</div>
+      </div>
+      <div class="faq-row">
+        <div class="faq-q">ピット利用や社割の条件を詳しく教えてください。</div>
+        <div class="faq-a">社割制度は車両本体・パーツ・オイル等の購入に適用されます（割引率は入社後にご確認いただけます）。ピットは勤務時間外に自車の整備・カスタムが可能です。詳細は面接時にお気軽にご質問ください。</div>
+      </div>
+    </div>
+    <p class="sample-note" style="text-align:center;margin-top:24px">※ここはサンプルです。実際には御社のQ&Aに差し替えます</p>
+  </div>
+</section>
+
+<!-- 最終CTA -->
+<section id="apply" class="final-cta">
+  <div class="final-bg"></div>
+  <div class="final-overlay"></div>
+  <div class="final-inner">
+    <h2>バイクに囲まれた毎日へ。<br>一緒に走り出しましょう。</h2>
+    <p>まずはハローワークで紹介状を取得いただき、<br>お気軽にお問い合わせください。<br>面接1回での採用実績もあります。</p>
+    <a href="mailto:info@chronicleinc.jp" class="btn-final">メールでお問い合わせ</a>
+  </div>
+</section>
+
+<footer>
+  <strong>株式会社クロニクル</strong><br>
+  〒276-0046 千葉県八千代市大和田新田494-16（八千代店）<br>
+  TEL: 047-363-3838 ／ MAIL: info@chronicleinc.jp
+</footer>
+
+</body>
+</html>

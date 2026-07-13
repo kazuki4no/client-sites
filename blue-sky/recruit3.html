@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>採用情報 | 株式会社スカイ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;color:#1f2937;line-height:1.7;background:#fff;}
+img{max-width:100%;height:auto;display:block;}
+a{color:inherit;text-decoration:none;}
+
+/* ====== Header ====== */
+.site-header{display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 1.5rem;position:relative;background:rgba(10,20,50,.88);
+  color:#fff;position:sticky;top:0;z-index:200;backdrop-filter:blur(4px);}
+.brand{font-weight:700;font-size:1.05rem;color:#fff;}
+.site-nav{display:flex;gap:1.5rem;align-items:center;}
+.site-nav a{color:#a5f3fc;font-size:.85rem;transition:color .2s;}
+.site-nav a:hover{color:#fff;}
+.site-nav .nav-cta{background:#0891b2;color:#fff;padding:.38rem 1.1rem;border-radius:4px;font-weight:700;font-size:.85rem;}
+.hamburger{display:none;background:none;border:0;font-size:1.7rem;line-height:1;cursor:pointer;color:#fff;}
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:rgba(10,20,50,.96);box-shadow:0 8px 20px rgba(0,0,0,.4);padding:.5rem 1rem;}
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.8rem 0;border-bottom:1px solid rgba(165,243,252,.15);color:#a5f3fc;}
+  .site-nav .nav-cta{margin:.5rem 0;text-align:center;}
+}
+
+/* ====== FVヒーロー ====== */
+.hero{position:relative;min-height:80vh;display:flex;align-items:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1600&h=900&fit=crop&q=80');
+  background-size:cover;background-position:center;}
+.hero-overlay{position:absolute;inset:0;background:rgba(5,15,45,.65);}
+.hero-inner{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:6rem 1.5rem;color:#fff;}
+.hero-tag{display:inline-block;border-bottom:2px solid #06b6d4;color:#a5f3fc;
+  font-family:'Noto Sans JP',sans-serif;font-size:.78rem;font-weight:700;
+  padding-bottom:.2rem;margin-bottom:1.4rem;letter-spacing:.12em;text-transform:uppercase;}
+.hero h1{font-family:'Noto Serif JP',serif;font-size:clamp(2rem,6vw,3.8rem);font-weight:900;
+  line-height:1.25;margin-bottom:1.4rem;text-shadow:0 2px 20px rgba(0,0,0,.4);}
+.hero h1 em{color:#67e8f9;font-style:normal;}
+.hero-desc{font-size:clamp(.9rem,2.3vw,1.05rem);max-width:540px;color:#cffafe;line-height:1.9;margin-bottom:2.2rem;}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;}
+.btn-primary{display:inline-block;background:#0891b2;color:#fff;font-weight:700;
+  padding:.78rem 2.2rem;border-radius:6px;font-size:1rem;transition:background .2s;}
+.btn-primary:hover{background:#0e7490;}
+.hero-note{font-size:.78rem;color:#a5f3fc;opacity:.85;}
+
+/* ====== 強みストリップ ====== */
+.strip{background:#06b6d4;padding:.5rem 1.5rem;}
+.strip-inner{max-width:960px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:1rem 2.5rem;}
+.strip-item{color:#fff;font-size:.82rem;font-weight:700;padding:.4rem 0;white-space:nowrap;}
+.strip-item::before{content:"✓ ";color:#cffafe;}
+
+/* ====== Section ====== */
+.section{padding:4.5rem 1.5rem;}
+.section-inner{max-width:960px;margin:0 auto;}
+.section-title{font-size:clamp(1.3rem,3vw,1.8rem);font-weight:700;margin-bottom:2rem;text-align:center;}
+.section-title span{display:block;font-size:.75rem;color:#0891b2;font-weight:700;letter-spacing:.14em;margin-bottom:.4rem;text-transform:uppercase;}
+.bg-light{background:#f0fbff;}
+
+/* ====== 特長カード（3列） ====== */
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.feature-card{border-radius:14px;overflow:hidden;box-shadow:0 4px 20px rgba(6,182,212,.1);}
+.feature-card-img{width:100%;height:160px;object-fit:cover;}
+.feature-card-body{padding:1.5rem;background:#fff;}
+.feature-card-body h3{font-size:1rem;font-weight:700;color:#0c3a50;margin-bottom:.6rem;}
+.feature-card-body p{font-size:.87rem;color:#4b5563;line-height:1.75;}
+.sample-note{font-size:.73rem;color:#9ca3af;margin-top:.5rem;}
+@media(max-width:768px){.feature-grid{grid-template-columns:1fr;}}
+
+/* ====== 募集要項テーブル ====== */
+.req-table{width:100%;border-collapse:collapse;font-size:.93rem;}
+.req-table th,.req-table td{padding:.85rem 1.1rem;border:1px solid #a5f3fc;text-align:left;vertical-align:top;}
+.req-table th{background:#ecfeff;font-weight:700;color:#0c3a50;width:26%;white-space:nowrap;}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{background:#ecfeff;padding:.5rem .8rem;white-space:normal;}
+  .req-table td{padding:.5rem .8rem 1rem;}
+}
+
+/* ====== 先輩の声 ====== */
+.voices-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;}
+.voice-card{background:#fff;border-radius:14px;padding:1.6rem;box-shadow:0 4px 20px rgba(6,182,212,.1);
+  border-top:4px solid #06b6d4;display:flex;flex-direction:column;gap:.8rem;}
+.voice-top{display:flex;gap:1rem;align-items:flex-start;}
+.voice-avatar{width:64px;height:64px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.voice-meta h4{font-weight:700;font-size:.93rem;margin-bottom:.15rem;}
+.voice-meta .role{font-size:.77rem;color:#6b7280;}
+.voice-quote{font-size:.88rem;color:#374151;line-height:1.78;border-left:3px solid #06b6d4;padding-left:.9rem;}
+@media(max-width:768px){.voices-grid{grid-template-columns:1fr;}}
+
+/* ====== タイムライン ====== */
+.timeline{max-width:620px;margin:0 auto;}
+.tl-item{display:flex;align-items:flex-start;}
+.tl-left{width:68px;min-width:68px;text-align:right;padding-right:10px;padding-top:2px;flex-shrink:0;}
+.tl-time{font-weight:700;font-size:.88rem;color:#0891b2;}
+.tl-center{width:22px;min-width:22px;display:flex;flex-direction:column;align-items:center;padding-top:4px;flex-shrink:0;}
+.tl-dot{width:13px;height:13px;border-radius:50%;background:#0891b2;flex-shrink:0;}
+.tl-line{width:2px;flex:1;background:#a5f3fc;min-height:36px;margin-top:4px;}
+.tl-item:last-child .tl-line{display:none;}
+.tl-right{flex:1;padding-left:14px;padding-bottom:28px;}
+.tl-label{font-weight:700;font-size:.93rem;margin-bottom:3px;}
+.tl-desc{font-size:.86rem;color:#6b7280;line-height:1.65;}
+
+/* ====== FAQ ====== */
+.faq-list{display:flex;flex-direction:column;gap:.9rem;}
+.faq-item{border:1px solid #a5f3fc;border-radius:8px;overflow:hidden;}
+.faq-q{width:100%;background:#ecfeff;padding:.9rem 1.2rem;text-align:left;font-weight:700;font-size:.92rem;
+  cursor:pointer;border:0;display:flex;justify-content:space-between;align-items:center;gap:.5rem;color:#0c3a50;}
+.faq-q .q-badge{color:#0891b2;flex-shrink:0;}
+.faq-q .arrow{font-size:.8rem;transition:transform .2s;flex-shrink:0;}
+.faq-q.open .arrow{transform:rotate(180deg);}
+.faq-a{display:none;padding:1rem 1.2rem;background:#fff;font-size:.9rem;color:#374151;line-height:1.8;}
+.faq-a.open{display:block;}
+
+/* ====== 担当者 ====== */
+.staff-card{display:flex;gap:2rem;align-items:flex-start;background:#fff;border-radius:14px;padding:2rem;
+  box-shadow:0 4px 20px rgba(6,182,212,.1);max-width:680px;margin:0 auto;}
+.staff-photo{width:110px;height:110px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.staff-info h3{font-weight:700;margin-bottom:.2rem;}
+.staff-info .staff-role{font-size:.82rem;color:#6b7280;margin-bottom:.7rem;}
+.staff-info p{font-size:.88rem;color:#374151;line-height:1.75;}
+@media(max-width:768px){.staff-card{flex-direction:column;align-items:center;gap:1rem;text-align:center;}}
+
+/* ====== CTA ====== */
+.cta-section{background:linear-gradient(160deg,#0c3a50 0%,#0e7490 100%);color:#fff;padding:5rem 1.5rem;text-align:center;}
+.cta-section h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,4vw,2.2rem);font-weight:900;margin-bottom:1rem;}
+.cta-section p{font-size:.93rem;color:#a5f3fc;margin-bottom:2.2rem;line-height:1.85;}
+.cta-note{font-size:.8rem;color:#67e8f9;margin-top:1rem;}
+
+/* ====== Footer ====== */
+footer{background:#071425;color:#9ca3af;padding:2rem 1.5rem;font-size:.83rem;}
+footer .footer-inner{max-width:960px;margin:0 auto;display:flex;flex-wrap:wrap;gap:1.2rem;justify-content:space-between;}
+footer p{line-height:1.85;}
+@media(max-width:768px){footer .footer-inner{flex-direction:column;}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="#top">株式会社スカイ 採用情報</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#features">働く特長</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#voices">先輩の声</a>
+    <a href="#faq">よくある質問</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<!-- FVバナー -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">IT Engineer Recruit — 株式会社スカイ</div>
+    <h1>あなたの技術が、<br><em>正直に</em>評価される。</h1>
+    <p class="hero-desc">スキルを盛らない採用・月残業10時間・テレワーク対応。<br>
+       Java・PHP・Azure——幅広い案件であなたのペースで長く働ける環境を用意しています。</p>
+    <div class="hero-cta">
+      <a class="btn-primary" href="#entry">採用情報を見る</a>
+      <span class="hero-note">書類選考なし ／ 面接1回 ／ リモート面接可</span>
+    </div>
+  </div>
+</section>
+
+<div class="strip">
+  <div class="strip-inner">
+    <span class="strip-item">年間休日126日</span>
+    <span class="strip-item">月残業平均10時間</span>
+    <span class="strip-item">テレワーク受注拡大中</span>
+    <span class="strip-item">幅広い言語・案件対応</span>
+    <span class="strip-item">書類選考なし</span>
+    <span class="strip-item">定年65歳</span>
+  </div>
+</div>
+
+<section class="section" id="features">
+  <div class="section-inner">
+    <h2 class="section-title"><span>FEATURES</span>株式会社スカイで働く3つの特長</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <img class="feature-card-img" src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=640&h=380&fit=crop&q=80" alt="オフィスで打合せ">
+        <div class="feature-card-body">
+          <h3>スキルを正直に話せる採用面接</h3>
+          <p>「技術を盛る」案件配置はしません。面接では得意・苦手をヒアリングし、今の実力に合った現場を一緒に探します。「自信がない」方の応募も歓迎します。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社の強みに差し替えます</p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <img class="feature-card-img" src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=640&h=380&fit=crop&q=80" alt="ビジネスシーン">
+        <div class="feature-card-body">
+          <h3>月残業10時間・年間休日126日</h3>
+          <p>働き方改革に沿い残業の多い案件を抑制。賞与がない代わりに月収が安定し、各種手当も別途支給。プライベートとのメリハリをつけやすい環境です。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社のデータに差し替えます</p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <img class="feature-card-img" src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=640&h=380&fit=crop&q=80" alt="チームワーク">
+        <div class="feature-card-body">
+          <h3>テレワーク対応・幅広い案件</h3>
+          <p>千葉・都内・川崎・横浜の案件＋テレワーク受注を積極拡大中。Java・PHP・Azure・COBOLなど幅広い言語・分野に対応し、あなたの技術を活かせます。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社の情報に差し替えます</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-light" id="requirements">
+  <div class="section-inner">
+    <h2 class="section-title"><span>REQUIREMENTS</span>募集要項</h2>
+    <table class="req-table">
+      <tbody>
+        <tr><th>職種</th><td>プログラム開発・開発支援・運用・監視・IT関連業務</td></tr>
+        <tr><th>雇用形態</th><td>正社員（就業形態：請負）</td></tr>
+        <tr><th>給与</th><td>月給 220,000円〜450,000円<br>（基本給 200,000円〜380,000円 ＋ 職務手当 15,000〜20,000円 ＋ 技術手当 5,000〜50,000円）<br><small>※賞与なし。昇給制度あり（前年度実績：年0〜30,000円）</small></td></tr>
+        <tr><th>就業時間</th><td>9:00〜18:00（休憩60分）／月平均残業10時間</td></tr>
+        <tr><th>休日・休暇</th><td>土・日・祝日、年末年始6日、夏季休暇4日<br>年間休日126日 ／ 有給休暇10日（入社6ヶ月後）</td></tr>
+        <tr><th>勤務地</th><td>千葉県内・都内・川崎市・横浜市（協業先による）<br>テレワーク案件あり ／ マイカー通勤可の案件あり</td></tr>
+        <tr><th>必要なスキル</th><td>IT業界での実務経験1年以上<br>（Java / JavaScript / C / C++ / C# / PHP / VB / COBOL / Azure / AWS 等のいずれか1つ以上）</td></tr>
+        <tr><th>待遇・保険</th><td>社会保険完備（雇用・労災・健康・厚生年金）<br>通勤手当実費支給（上限なし）、財形貯蓄、退職金共済</td></tr>
+        <tr><th>試用期間</th><td>6ヶ月（本採用と同条件）</td></tr>
+        <tr><th>定年</th><td>一律65歳</td></tr>
+        <tr><th>募集人数</th><td>5名</td></tr>
+        <tr><th>選考方法</th><td>面接1回（書類選考なし）／リモート面接可</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section" id="voices">
+  <div class="section-inner">
+    <h2 class="section-title"><span>VOICES</span>先輩からのメッセージ</h2>
+    <div class="voices-grid">
+      <div class="voice-card">
+        <div class="voice-top">
+          <img class="voice-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩社員">
+          <div class="voice-meta">
+            <h4>鈴木 健一（仮名）</h4>
+            <div class="role">Java開発 ／ 入社5年目</div>
+          </div>
+        </div>
+        <p class="voice-quote">「前の職場ではスキル以上の案件に無理やりアサインされることがありました。ここでは最初の面接から正直に話せる雰囲気があり、自分に合った現場にいられています。」</p>
+        <p class="sample-note">※ここはサンプルです。実際には社員のメッセージに差し替えます</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-top">
+          <img class="voice-avatar" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩社員">
+          <div class="voice-meta">
+            <h4>田中 美咲（仮名）</h4>
+            <div class="role">Webシステム開発 ／ 入社3年目</div>
+          </div>
+        </div>
+        <p class="voice-quote">「月残業10時間という数字は本当で、定時に上がれる日がほとんど。子育てしながら続けられているのはここの環境のおかげです。月収が安定しているのも助かっています。」</p>
+        <p class="sample-note">※ここはサンプルです。実際には社員のメッセージに差し替えます</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-top">
+          <img class="voice-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩社員">
+          <div class="voice-meta">
+            <h4>山田 翔太（仮名）</h4>
+            <div class="role">運用・監視 ／ 入社2年目</div>
+          </div>
+        </div>
+        <p class="voice-quote">「PHPしか経験がなかった自分でも面接に進めました。スキルを正直に話したら、今の実力に合った案件を一緒に探してもらえて。自分のペースでJavaも覚えられています。」</p>
+        <p class="sample-note">※ここはサンプルです。実際には社員のメッセージに差し替えます</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-top">
+          <img class="voice-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩社員">
+          <div class="voice-meta">
+            <h4>佐藤 誠（仮名）</h4>
+            <div class="role">ネットワーク・サーバ構築 ／ 入社7年目</div>
+          </div>
+        </div>
+        <p class="voice-quote">「50代の自分でも長く続けられる案件を一緒に考えてくれます。安定した案件が中心で、定年の65歳まで無理なく続けられると感じています。」</p>
+        <p class="sample-note">※ここはサンプルです。実際には社員のメッセージに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-light" id="schedule">
+  <div class="section-inner">
+    <h2 class="section-title"><span>SCHEDULE</span>社員の1日の流れ（テレワーク日）</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-left"><span class="tl-time">9:00</span></div>
+        <div class="tl-center"><span class="tl-dot"></span><span class="tl-line"></span></div>
+        <div class="tl-right">
+          <p class="tl-label">テレワーク開始・朝の連絡</p>
+          <p class="tl-desc">Slackでチームに一声。その日のタスクと優先順位を確認します。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><span class="tl-time">10:00</span></div>
+        <div class="tl-center"><span class="tl-dot"></span><span class="tl-line"></span></div>
+        <div class="tl-right">
+          <p class="tl-label">設計・コーディング</p>
+          <p class="tl-desc">案件の設計書を確認し、担当箇所のコーディングに集中します。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><span class="tl-time">12:00</span></div>
+        <div class="tl-center"><span class="tl-dot"></span><span class="tl-line"></span></div>
+        <div class="tl-right">
+          <p class="tl-label">昼休憩（60分）</p>
+          <p class="tl-desc">自宅でゆっくり。気分転換に外出する社員も多いです。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><span class="tl-time">13:00</span></div>
+        <div class="tl-center"><span class="tl-dot"></span><span class="tl-line"></span></div>
+        <div class="tl-right">
+          <p class="tl-label">開発・テスト（集中タイム）</p>
+          <p class="tl-desc">Java・PHP・C#など担当言語での開発。静かな環境で集中して進めます。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><span class="tl-time">16:00</span></div>
+        <div class="tl-center"><span class="tl-dot"></span><span class="tl-line"></span></div>
+        <div class="tl-right">
+          <p class="tl-label">進捗ミーティング（30分）</p>
+          <p class="tl-desc">チームでオンライン進捗共有。翌日の課題を確認します。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><span class="tl-time">17:00</span></div>
+        <div class="tl-center"><span class="tl-dot"></span><span class="tl-line"></span></div>
+        <div class="tl-right">
+          <p class="tl-label">作業ログ・翌日準備</p>
+          <p class="tl-desc">ログ記入・翌日タスク整理。残業が少ないため毎日確保できます。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-left"><span class="tl-time">18:00</span></div>
+        <div class="tl-center"><span class="tl-dot"></span></div>
+        <div class="tl-right">
+          <p class="tl-label">退勤</p>
+          <p class="tl-desc">月平均残業10時間の実績。プライベートとのバランスを保ちやすい環境です。</p>
+        </div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:1.2rem;font-size:.75rem;color:#9ca3af;">※ここはサンプルです。実際には社員のスケジュールに差し替えます</p>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="section-inner">
+    <h2 class="section-title"><span>FAQ</span>よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span><span class="q-badge">Q.</span> 経験が浅くても応募できますか？</span>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-a">IT業界での実務経験1年以上が必須ですが、「自信がない」方も歓迎します。面接では得意・苦手を丁寧にヒアリングし、スキルを盛らず今の実力に合った案件を一緒に探します。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span><span class="q-badge">Q.</span> 賞与がありませんが、収入は安定しますか？</span>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-a">月給は基本給200,000〜380,000円＋職務手当・技術手当（計20,000〜70,000円）が別途支給されます。賞与の代わりに月々の手取りを安定させる設計で、昇給実績もあります（前年度：年0〜30,000円）。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span><span class="q-badge">Q.</span> テレワークや勤務地の希望は通りますか？</span>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-a">テレワーク受注を積極的に増やしており、案件によってはフルリモートも可能です。勤務地の希望にも柔軟に対応します。千葉ニュータウン中央近辺の案件はマイカー通勤可の場合もあります。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span><span class="q-badge">Q.</span> どんな言語・技術の案件がありますか？</span>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-a">Java・JavaScript・C・C++・C#・PHP・VB・COBOL・Azure・AWSなど幅広い案件があります。都内ではWeb系・損保系・金融系、川崎・横浜では組み込み・制御系が増えています。</div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span><span class="q-badge">Q.</span> 選考の流れを教えてください。</span>
+          <span class="arrow">▼</span>
+        </button>
+        <div class="faq-a">①書類選考なし → ②面接1回（リモート対応可）→ ③内定。面接後7日以内に結果をお知らせします。ハローワーク紹介状またはオンライン自主応募どちらでも受け付けています。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-light" id="staff">
+  <div class="section-inner">
+    <h2 class="section-title"><span>RECRUITER</span>採用担当者より</h2>
+    <div class="staff-card">
+      <img class="staff-photo" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当者">
+      <div class="staff-info">
+        <h3>青野（仮名）</h3>
+        <div class="staff-role">採用担当</div>
+        <p>「面接では『技術を盛って来てください』とは言いません。今のスキルを正直に話していただければ、合う案件を一緒に考えます。自信がない方も、長く一緒に働ける方を歓迎しています。まずは気軽にご連絡ください。」</p>
+        <p class="sample-note">※ここはサンプルです。実際には採用担当者のプロフィールに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="entry">
+  <h2>技術に正直に、<br>長く働きませんか。</h2>
+  <p>書類選考なし・面接1回・リモート面接対応。<br>
+     得意なことも不安なことも、正直に話していただける場を用意しています。</p>
+  <a class="btn-primary" href="mailto:recruit@blue-sky.co.jp">応募・お問い合わせはこちら</a>
+  <div class="cta-note">E-mail: recruit@blue-sky.co.jp ／ TEL: 0476-29-8139</div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <p>株式会社スカイ<br>〒286-0048 千葉県成田市公津の杜６丁目１１－１０<br>TEL: 0476-29-8139</p>
+    <p>E-mail: recruit@blue-sky.co.jp</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn = document.querySelector('.hamburger');
+  var nav = document.querySelector('.site-nav');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  }
+  document.querySelectorAll('.faq-q').forEach(function(q){
+    q.addEventListener('click', function(){
+      var a = q.nextElementSibling;
+      var isOpen = q.classList.toggle('open');
+      q.setAttribute('aria-expanded', isOpen);
+      a.classList.toggle('open', isOpen);
+    });
+  });
+})();
+</script>
+</body>
+</html>

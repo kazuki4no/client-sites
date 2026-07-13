@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>採用情報 | 株式会社SIB 千葉営業所</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans JP', sans-serif; color: #1a1a1a; background: #fff; line-height: 1.75; overflow-x: hidden; }
+
+    .site-header { display: flex; align-items: center; justify-content: space-between; padding: .8rem 1.5rem; position: sticky; top: 0; background: rgba(8,20,35,.92); z-index: 100; }
+    .brand { color: #fff; text-decoration: none; font-weight: 700; font-size: .88rem; font-family: 'Noto Serif JP', serif; }
+    .site-nav { display: flex; gap: 1.3rem; align-items: center; }
+    .site-nav a { color: rgba(255,255,255,.85); text-decoration: none; font-size: .85rem; }
+    .site-nav a:hover { color: #55c8e0; }
+    .nav-cta { background: #55c8e0; color: #08182a !important; padding: .4rem 1rem; border-radius: 4px; font-weight: 700; }
+    .hamburger { display: none; background: none; border: 0; font-size: 1.7rem; line-height: 1; cursor: pointer; color: #fff; }
+    @media (max-width: 768px) {
+      .hamburger { display: block; }
+      .site-nav { display: none; flex-direction: column; align-items: stretch; gap: 0;
+        position: absolute; top: 100%; left: 0; right: 0; z-index: 50;
+        background: #08182a; padding: .5rem 1.5rem; box-shadow: 0 8px 16px rgba(0,0,0,.3); }
+      .site-nav.open { display: flex; }
+      .site-nav a { padding: .8rem 0; border-bottom: 1px solid rgba(255,255,255,.15); }
+    }
+
+    .hero { position: relative; min-height: 78vh; display: flex; align-items: center; justify-content: center; text-align: center; overflow: hidden; padding: 6rem 1.5rem 3rem; }
+    .hero-bg { position: absolute; inset: 0; background: url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1600&h=900&fit=crop&q=80') center/cover; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,16,28,.55), rgba(6,16,28,.85)); }
+    .hero-content { position: relative; max-width: 780px; color: #fff; }
+    .hero-pill { display: inline-block; background: #55c8e0; color: #08182a; font-size: .78rem; font-weight: 700; padding: .35rem 1rem; border-radius: 20px; margin-bottom: 1.4rem; }
+    .hero h1 { font-family: 'Noto Serif JP', serif; font-size: clamp(2rem, 7vw, 3.6rem); font-weight: 900; line-height: 1.45; margin-bottom: 1.4rem; }
+    .hero h1 em { color: #55c8e0; font-style: normal; }
+    .hero p { font-size: clamp(.95rem, 2.5vw, 1.1rem); opacity: .92; margin-bottom: 2.2rem; }
+    .btn-primary { display: inline-block; background: #55c8e0; color: #08182a; padding: .9rem 2.2rem; border-radius: 4px; font-weight: 700; text-decoration: none; }
+
+    section { padding: 4.2rem 1.5rem; }
+    .section-title { text-align: center; font-family: 'Noto Serif JP', serif; font-size: clamp(1.5rem, 4vw, 2.2rem); font-weight: 900; margin-bottom: 2.8rem; color: #08182a; }
+    .section-title span { color: #1e88a8; }
+    .container { max-width: 880px; margin: 0 auto; }
+
+    .catch-band { background: #08182a; text-align: center; padding: 3rem 1.5rem; }
+    .catch-band p { font-family: 'Noto Serif JP', serif; font-size: clamp(1.1rem, 3.5vw, 1.5rem); font-weight: 700; color: #fff; line-height: 1.9; }
+    .catch-band em { color: #55c8e0; font-style: normal; }
+
+    .appeal { background: #f0f8fb; }
+    .appeal-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
+    .appeal-card { background: #fff; padding: 2rem 1.6rem; text-align: center; border-top: 3px solid #55c8e0; }
+    .appeal-num { font-family: 'Noto Serif JP', serif; font-size: 2rem; font-weight: 900; color: #1e88a8; opacity: .3; line-height: 1; margin-bottom: .4rem; }
+    .appeal-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: .6rem; color: #08182a; }
+    .appeal-card p { font-size: .86rem; color: #555; }
+    @media (max-width: 768px) { .appeal-grid { grid-template-columns: 1fr; } }
+
+    .work-section { background: #08182a; color: #fff; }
+    .work-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
+    .work-img { border-radius: 6px; overflow: hidden; }
+    .work-img img { width: 100%; height: 300px; object-fit: cover; display: block; }
+    .work-text h3 { font-family: 'Noto Serif JP', serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem; }
+    .work-text p { font-size: .88rem; opacity: .85; margin-bottom: .8rem; }
+    @media (max-width: 768px) { .work-inner { grid-template-columns: 1fr; } }
+
+    .req { background: #f0f8fb; }
+    .req-table { width: 100%; border-collapse: collapse; }
+    .req-table th, .req-table td { padding: 1rem 1.2rem; border-bottom: 1px solid #d3e6ee; text-align: left; }
+    .req-table th { background: #08182a; color: #55c8e0; font-weight: 700; font-size: .88rem; width: 160px; white-space: nowrap; }
+    .req-table td { font-size: .88rem; color: #333; background: #fff; }
+    .req-table tr:last-child th, .req-table tr:last-child td { border-bottom: none; }
+    @media (max-width: 768px) {
+      .req-table, .req-table tbody, .req-table tr, .req-table th, .req-table td { display: block; width: 100%; }
+      .req-table th { background: #f0f8fb; color: #08182a; padding: .6rem .8rem; }
+      .req-table td { padding: .6rem .8rem 1.2rem; background: #fff; }
+    }
+
+    .timeline-wrap { max-width: 560px; margin: 0 auto; }
+    .tl-item { display: grid; grid-template-columns: 72px 24px 1fr; gap: 0 .6rem; }
+    .tl-time { font-weight: 700; font-size: .88rem; color: #1e88a8; text-align: right; padding-top: .15rem; }
+    .tl-col { display: flex; flex-direction: column; align-items: center; }
+    .tl-dot { width: 12px; height: 12px; background: #1e88a8; border-radius: 50%; flex-shrink: 0; margin-top: .2rem; }
+    .tl-bar { width: 2px; flex: 1; background: #d3e6ee; min-height: 32px; margin-top: 2px; }
+    .tl-item:last-child .tl-bar { display: none; }
+    .tl-body { padding-bottom: 1.5rem; }
+    .tl-body strong { font-size: .88rem; font-weight: 700; color: #08182a; display: block; }
+    .tl-body span { font-size: .82rem; color: #777; }
+
+    .voice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.6rem; }
+    .voice-card { background: #f0f8fb; border-radius: 6px; overflow: hidden; }
+    .voice-img { height: 190px; overflow: hidden; }
+    .voice-img img { width: 100%; height: 100%; object-fit: cover; }
+    .voice-body { padding: 1.4rem; }
+    .voice-name { font-family: 'Noto Serif JP', serif; font-weight: 700; font-size: .95rem; color: #08182a; }
+    .voice-role { font-size: .76rem; color: #999; margin-bottom: .7rem; }
+    .voice-text { font-size: .85rem; color: #444; }
+    @media (max-width: 768px) { .voice-grid { grid-template-columns: 1fr; } }
+
+    .faq-list { max-width: 700px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid #d3e6ee; padding: 1.3rem 0; }
+    .faq-q { font-weight: 700; font-size: .92rem; color: #08182a; margin-bottom: .5rem; display: flex; gap: .7rem; align-items: baseline; }
+    .faq-q::before { content: 'Q'; color: #1e88a8; font-size: 1rem; flex-shrink: 0; }
+    .faq-a { font-size: .86rem; color: #444; padding-left: 1.5rem; }
+
+    .s-note { font-size: .74rem; color: #aaa; display: block; margin-top: .35rem; }
+
+    .cta-section { background: #08182a; color: #fff; text-align: center; }
+    .cta-section h2 { font-family: 'Noto Serif JP', serif; font-size: clamp(1.5rem, 4.5vw, 2.2rem); font-weight: 900; margin-bottom: 1rem; }
+    .cta-section p { font-size: .9rem; opacity: .8; margin-bottom: 2rem; }
+
+    footer { background: #05101d; color: rgba(255,255,255,.55); text-align: center; padding: 2rem 1.5rem; font-size: .8rem; }
+    footer strong { color: #fff; display: block; margin-bottom: .5rem; font-size: .92rem; }
+  </style>
+</head>
+<body>
+
+<header class="site-header" id="top">
+  <a class="brand" href="#top">株式会社SIB 千葉営業所 採用情報</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#work">仕事内容</a>
+    <a href="#req">募集要項</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#faq">よくある質問</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-pill">新倉庫物流スタッフ 募集中</span>
+    <h1>新築倉庫が、<em>働きやすさ</em>を変える。</h1>
+    <p>設備がすべて新しい倉庫での入出庫・仕分け作業。週休2日、年間休日110日で無理なく続けられます。</p>
+    <a class="btn-primary" href="#entry">まずは話を聞いてみる</a>
+  </div>
+</section>
+
+<div class="catch-band">
+  <p>安定した勤務体系と、清潔で快適な環境。<br><em>安心して長く働ける</em>倉庫がここにある。</p>
+</div>
+
+<section class="appeal">
+  <div class="container">
+    <h2 class="section-title">働く<span>3つの理由</span></h2>
+    <div class="appeal-grid">
+      <div class="appeal-card">
+        <div class="appeal-num">01</div>
+        <h3>新築倉庫でスタート</h3>
+        <p>2026年稼働の新しい倉庫。設備がすべて新しく、清潔で快適な環境です。</p>
+        <span class="s-note">※ここはサンプルです。実際には御社の強みに差し替えます</span>
+      </div>
+      <div class="appeal-card">
+        <div class="appeal-num">02</div>
+        <h3>週休2日・年間休日110日</h3>
+        <p>シフト制で希望休も相談可能。生活リズムを保ちやすい働き方です。</p>
+        <span class="s-note">※ここはサンプルです。実際には御社の制度に差し替えます</span>
+      </div>
+      <div class="appeal-card">
+        <div class="appeal-num">03</div>
+        <h3>表彰制度でやりがいアップ</h3>
+        <p>親睦会や独自の表彰制度があり、チームワークと向上心が身につきます。</p>
+        <span class="s-note">※ここはサンプルです。実際には御社のチームに差し替えます</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="work-section" id="work">
+  <div class="container">
+    <h2 class="section-title" style="color:#fff;">仕事<span>内容</span></h2>
+    <div class="work-inner">
+      <div class="work-img">
+        <img src="https://images.unsplash.com/photo-1473445730015-841f29a9490b?w=640&h=380&fit=crop&q=80" alt="倉庫内の物流作業">
+      </div>
+      <div class="work-text">
+        <h3>新倉庫での入出庫・仕分け作業</h3>
+        <p>冷凍・冷蔵・常温の各エリアでの入出庫作業、製品の仕分け・検品・ピッキングを担当します。</p>
+        <p>体に無理のない軽作業が中心で、長期的に働きやすいのが特徴です。新築倉庫なので同期入社の仲間も多く、心強い環境です。</p>
+        <span class="s-note">※ここはサンプルです。実際には御社の業務内容に差し替えます</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="req" id="req">
+  <div class="container">
+    <h2 class="section-title">募集<span>要項</span></h2>
+    <table class="req-table">
+      <tbody>
+        <tr><th>職種</th><td>新倉庫物流作業（八千代市）<span class="s-note">※サンプルです</span></td></tr>
+        <tr><th>仕事内容</th><td>冷凍・冷蔵・常温倉庫での入出庫作業、仕分け・検品・ピッキング<span class="s-note">※サンプルです</span></td></tr>
+        <tr><th>雇用形態</th><td>正社員（試用期間6ヶ月）<span class="s-note">※サンプルです</span></td></tr>
+        <tr><th>給与</th><td>月給 〇〇万円〜（フォークリフト実務経験者優遇）<span class="s-note">※サンプルです</span></td></tr>
+        <tr><th>勤務時間</th><td>日勤・夜勤いずれかの固定勤務（シフト相談可）<span class="s-note">※サンプルです</span></td></tr>
+        <tr><th>休日</th><td>週休2日制（シフト制・希望休システムあり／年間休日110日）<span class="s-note">※サンプルです</span></td></tr>
+        <tr><th>待遇</th><td>各種保険完備・昇給あり・賞与年2回・退職金制度あり<span class="s-note">※サンプルです</span></td></tr>
+        <tr><th>応募資格</th><td>フォークリフト運転技能者必須（実務経験あれば尚可）<span class="s-note">※サンプルです</span></td></tr>
+        <tr><th>勤務地</th><td>千葉県八千代市保品（プロロジスパーク八千代1）<span class="s-note">※サンプルです</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="timeline">
+  <div class="container">
+    <h2 class="section-title">当社社員の<span>1日の流れ</span></h2>
+    <p style="text-align:center;font-size:.78rem;color:#aaa;margin-bottom:2.2rem;">※以下はサンプルです。実際には御社社員の1日に差し替えます（日勤の例）</p>
+    <div class="timeline-wrap">
+      <div class="tl-item"><div class="tl-time">7:45</div><div class="tl-col"><div class="tl-dot"></div><div class="tl-bar"></div></div><div class="tl-body"><strong>出社・朝礼</strong><span>作業割り当てと安全確認</span></div></div>
+      <div class="tl-item"><div class="tl-time">8:00</div><div class="tl-col"><div class="tl-dot"></div><div class="tl-bar"></div></div><div class="tl-body"><strong>入出庫作業</strong><span>各エリアで作業開始</span></div></div>
+      <div class="tl-item"><div class="tl-time">12:00</div><div class="tl-col"><div class="tl-dot"></div><div class="tl-bar"></div></div><div class="tl-body"><strong>昼休み</strong><span>コンビニ併設の休憩室でリフレッシュ</span></div></div>
+      <div class="tl-item"><div class="tl-time">13:00</div><div class="tl-col"><div class="tl-dot"></div><div class="tl-bar"></div></div><div class="tl-body"><strong>午後の作業</strong><span>ピッキング・検品を継続</span></div></div>
+      <div class="tl-item"><div class="tl-time">17:00</div><div class="tl-col"><div class="tl-dot"></div></div><div class="tl-body"><strong>終業</strong><span>着替えて退社</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="voice">
+  <div class="container">
+    <h2 class="section-title">先輩からの<span>メッセージ</span></h2>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="voice-img"><img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=640&h=360&fit=crop&crop=faces&q=80" alt="先輩社員"></div>
+        <div class="voice-body">
+          <div class="voice-name">大野 拓也（仮名）</div>
+          <div class="voice-role">入社2年目</div>
+          <div class="voice-text">サポート体制がしっかりしていてすぐ慣れました。新築で設備も綺麗なので気持ちよく働けています。</div>
+          <span class="s-note">※サンプルです</span>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-img"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=640&h=360&fit=crop&crop=faces&q=80" alt="先輩社員"></div>
+        <div class="voice-body">
+          <div class="voice-name">中村 悠斗（仮名）</div>
+          <div class="voice-role">入社4年目</div>
+          <div class="voice-text">週休2日でシフトの希望も通りやすく、プライベートと両立できています。</div>
+          <span class="s-note">※サンプルです</span>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-img"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=640&h=360&fit=crop&crop=faces&q=80" alt="先輩社員"></div>
+        <div class="voice-body">
+          <div class="voice-name">石川 直樹（仮名）</div>
+          <div class="voice-role">入社1年目</div>
+          <div class="voice-text">軽作業中心なので体への負担が少なく、長く続けられそうだと感じています。</div>
+          <span class="s-note">※サンプルです</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="container">
+    <h2 class="section-title">よくある<span>質問</span></h2>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-q">フォークリフトの資格は必須ですか？</div><div class="faq-a">はい、必須です。実務経験があれば尚可ですが、経験が浅い方もご相談ください。<span class="s-note">※サンプルです</span></div></div>
+      <div class="faq-item"><div class="faq-q">日勤と夜勤は選べますか？</div><div class="faq-a">いずれかの固定勤務となります。面接時にご希望をお伺いします。<span class="s-note">※サンプルです</span></div></div>
+      <div class="faq-item"><div class="faq-q">倉庫作業の経験がなくても大丈夫ですか？</div><div class="faq-a">サポート体制が整っているので未経験の方でも安心してスタートできます。<span class="s-note">※サンプルです</span></div></div>
+      <div class="faq-item"><div class="faq-q">休憩はしっかり取れますか？</div><div class="faq-a">広々とした休憩室にコンビニも併設しており、しっかりリフレッシュできます。<span class="s-note">※サンプルです</span></div></div>
+      <div class="faq-item"><div class="faq-q">選考の流れは？</div><div class="faq-a">お問い合わせ→面接（1回程度）→採用通知の流れです。<span class="s-note">※サンプルです</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="entry">
+  <h2>まずは気軽にご連絡ください</h2>
+  <p>倉庫作業に興味がある方、安定した働き方を探している方をお待ちしています。</p>
+  <a class="btn-primary" href="mailto:">お問い合わせ・応募する</a>
+</section>
+
+<footer>
+  <strong>株式会社SIB 千葉営業所</strong>
+  〒264-0020 千葉県千葉市若葉区貝塚2-3-24-3<br>
+  TEL: 090-4654-1857　E-mail: t_takahashi@sibco-ltd.com
+</footer>
+
+<script>
+  (function(){
+    var btn = document.querySelector('.hamburger');
+    var nav = document.querySelector('.site-nav');
+    if(btn && nav){
+      btn.addEventListener('click', function(){
+        var open = nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open);
+      });
+    }
+  })();
+</script>
+</body>
+</html>

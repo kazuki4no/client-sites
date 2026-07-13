@@ -22,6 +22,7 @@ nav.pc-nav a:hover{color:#00c9b1}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
 .hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px}
 .nav-mobile{display:none;flex-direction:column;background:rgba(8,16,38,.97);padding:20px 24px;gap:14px;border-top:1px solid rgba(255,255,255,.1)}
+.nav-mobile.open{display:flex}
 .nav-mobile a{color:rgba(255,255,255,.8);font-size:.92rem;padding:6px 0;border-bottom:1px solid rgba(255,255,255,.07)}
 
 /* ============ HERO FV ============ */
@@ -326,8 +327,7 @@ footer{background:#04090f;color:#444;padding:32px 20px;text-align:center;font-si
 
 <script>
 function toggleNav(){
-  var n=document.getElementById('navMobile');
-  n.style.display=n.style.display==='flex'?'none':'flex';
+  document.getElementById('navMobile').classList.toggle('open');
 }
 document.querySelectorAll('.faq-q').forEach(function(q){
   q.addEventListener('click',function(){
@@ -340,7 +340,7 @@ document.querySelectorAll('a[href^="#"]').forEach(function(a){
     var el=document.getElementById(id);
     if(el){e.preventDefault();el.scrollIntoView({behavior:'smooth'});}
     var nav=document.getElementById('navMobile');
-    if(nav)nav.style.display='none';
+    if(nav)nav.classList.remove('open');
   });
 });
 </script>

@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>採用情報 | 株式会社 清工舎</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;color:#222;line-height:1.7;overflow-x:hidden;}
+
+/* ===== HEADER ===== */
+.site-header{display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 1.5rem;background:#1a2744;position:sticky;top:0;z-index:100;}
+.brand{color:#fff;font-family:'Noto Serif JP',serif;font-size:1.1rem;text-decoration:none;white-space:nowrap;}
+.hamburger{display:none;background:none;border:0;font-size:1.7rem;line-height:1;cursor:pointer;color:#fff;}
+.site-nav{display:flex;gap:1.4rem;align-items:center;position:relative;}
+.site-nav a{color:#ccd;text-decoration:none;font-size:.9rem;transition:color .2s;}
+.site-nav a:hover{color:#fff;}
+.nav-cta{background:#e87722;color:#fff!important;padding:.45rem 1.2rem;border-radius:4px;font-weight:700;}
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:-1.5rem;right:-1.5rem;z-index:50;
+    background:#1a2744;box-shadow:0 8px 16px rgba(0,0,0,.3);padding:.5rem 1.5rem;}
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.8rem 0;border-bottom:1px solid rgba(255,255,255,.1);color:#dde;}
+  .nav-cta{margin:.8rem 0;text-align:center;border-radius:4px;}
+}
+
+/* ===== HERO ===== */
+.hero{position:relative;min-height:72vh;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&h=900&fit=crop&q=80');
+  background-size:cover;background-position:center;}
+.hero-overlay{position:absolute;inset:0;background:rgba(16,26,56,.65);}
+.hero-content{position:relative;z-index:1;text-align:center;color:#fff;padding:2rem 1.5rem;max-width:800px;}
+.hero-pill{display:inline-block;background:#e87722;color:#fff;font-size:.85rem;font-weight:700;
+  padding:.3rem .9rem;border-radius:99px;margin-bottom:1.2rem;letter-spacing:.05em;}
+.hero-content h1{font-family:'Noto Serif JP',serif;font-size:clamp(1.8rem,6vw,3.2rem);line-height:1.4;margin-bottom:1rem;text-shadow:0 2px 8px rgba(0,0,0,.3);}
+.hero-content p{font-size:clamp(.95rem,2.5vw,1.15rem);margin-bottom:2rem;opacity:.9;}
+.btn-primary{display:inline-block;background:#e87722;color:#fff;font-weight:700;font-size:1.05rem;
+  padding:.85rem 2.2rem;border-radius:6px;text-decoration:none;transition:background .2s;}
+.btn-primary:hover{background:#c9651a;}
+
+/* ===== SECTION BASE ===== */
+section{padding:5rem 1.5rem;}
+.container{max-width:900px;margin:0 auto;}
+.section-label{font-size:.78rem;font-weight:700;letter-spacing:.2em;color:#e87722;text-transform:uppercase;margin-bottom:.5rem;}
+.section-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,4vw,2.2rem);margin-bottom:.5rem;color:#1a2744;}
+.section-lead{color:#555;margin-bottom:2.5rem;}
+.divider{width:48px;height:3px;background:#e87722;margin:1rem 0 2rem;}
+
+/* ===== FEATURES ===== */
+.features-bg{background:#f5f7fb;}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+@media(max-width:768px){.features-grid{grid-template-columns:1fr;}}
+.feature-card{background:#fff;border-radius:8px;padding:2rem 1.5rem;box-shadow:0 4px 20px rgba(0,0,0,.07);text-align:center;}
+.feature-icon{width:56px;height:56px;background:#e87722;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;}
+.feature-icon svg{stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.feature-card h3{font-size:1.05rem;font-weight:700;margin-bottom:.6rem;color:#1a2744;}
+.feature-card p{font-size:.9rem;color:#555;line-height:1.6;}
+
+/* ===== JOB CONTENT ===== */
+.job-wrap{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:start;}
+@media(max-width:768px){.job-wrap{grid-template-columns:1fr;}}
+.job-img{border-radius:8px;overflow:hidden;}
+.job-img img{width:100%;height:280px;object-fit:cover;display:block;}
+.job-text h3{font-size:1.1rem;font-weight:700;color:#1a2744;margin-bottom:.8rem;}
+.job-text p{font-size:.92rem;color:#444;margin-bottom:.8rem;}
+.job-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem;}
+.tag{background:#eef2ff;color:#1a2744;font-size:.8rem;font-weight:700;padding:.3rem .8rem;border-radius:99px;}
+
+/* ===== REQUIREMENTS TABLE ===== */
+.req-table{width:100%;border-collapse:collapse;}
+.req-table th,.req-table td{text-align:left;padding:.9rem 1.1rem;border-bottom:1px solid #e8eaf0;font-size:.93rem;}
+.req-table th{background:#f5f7fb;width:28%;font-weight:700;color:#1a2744;}
+.req-table td{color:#333;}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{background:#f5f7fb;padding:.5rem .8rem;border-bottom:none;}
+  .req-table td{padding:.5rem .8rem 1rem;border-bottom:1px solid #e8eaf0;}
+}
+
+/* ===== TIMELINE ===== */
+.timeline{list-style:none;}
+.tl-item{display:grid;grid-template-columns:80px 24px 1fr;gap:0 12px;margin-bottom:0;}
+.tl-time{text-align:right;font-weight:700;color:#1a2744;font-size:.9rem;padding-top:2px;}
+.tl-spine{display:flex;flex-direction:column;align-items:center;}
+.tl-dot{width:12px;height:12px;border-radius:50%;background:#e87722;flex-shrink:0;margin-top:5px;}
+.tl-line{width:2px;background:#d0d6e8;flex:1;min-height:36px;}
+.tl-item:last-child .tl-line{display:none;}
+.tl-body{padding-bottom:1.8rem;}
+.tl-body h4{font-size:.95rem;font-weight:700;color:#1a2744;margin-bottom:.3rem;}
+.tl-body p{font-size:.88rem;color:#555;}
+
+/* ===== VOICES ===== */
+.voices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;}
+@media(max-width:768px){.voices-grid{grid-template-columns:1fr;}}
+.voice-card{background:#fff;border-radius:8px;padding:1.5rem;box-shadow:0 4px 16px rgba(0,0,0,.07);}
+.voice-head{display:flex;align-items:center;gap:.9rem;margin-bottom:.9rem;}
+.voice-head img{width:56px;height:56px;border-radius:50%;object-fit:cover;}
+.voice-name{font-weight:700;font-size:.9rem;color:#1a2744;}
+.voice-meta{font-size:.78rem;color:#888;}
+.voice-body{font-size:.88rem;color:#444;line-height:1.7;}
+.voice-sample{font-size:.75rem;color:#aaa;margin-top:.6rem;}
+
+/* ===== FAQ ===== */
+.faq-bg{background:#f5f7fb;}
+.faq-list{max-width:740px;margin:0 auto;}
+details{border-radius:6px;background:#fff;margin-bottom:.8rem;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+summary{padding:1rem 1.2rem;font-weight:700;font-size:.95rem;color:#1a2744;cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;}
+summary::after{content:'＋';font-size:1.2rem;color:#e87722;flex-shrink:0;}
+details[open] summary::after{content:'−';}
+.faq-ans{padding:.5rem 1.2rem 1.2rem;font-size:.9rem;color:#444;line-height:1.8;}
+
+/* ===== MANAGER ===== */
+.mgr-wrap{display:flex;align-items:center;gap:2rem;background:#fff;border-radius:8px;padding:2rem;box-shadow:0 4px 20px rgba(0,0,0,.07);}
+@media(max-width:600px){.mgr-wrap{flex-direction:column;text-align:center;}}
+.mgr-wrap img{width:100px;height:100px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.mgr-text h3{font-size:1rem;font-weight:700;color:#1a2744;margin-bottom:.3rem;}
+.mgr-text .role{font-size:.8rem;color:#888;margin-bottom:.8rem;}
+.mgr-text p{font-size:.9rem;color:#444;margin-bottom:1rem;}
+.btn-outline{display:inline-block;border:2px solid #e87722;color:#e87722;font-weight:700;
+  padding:.6rem 1.5rem;border-radius:4px;text-decoration:none;transition:all .2s;}
+.btn-outline:hover{background:#e87722;color:#fff;}
+
+/* ===== ENTRY ===== */
+.entry-bg{background:#1a2744;color:#fff;text-align:center;}
+.entry-bg .section-title{color:#fff;}
+.entry-bg .section-lead{color:rgba(255,255,255,.75);}
+.entry-bg .divider{background:#e87722;margin:1rem auto 2rem;}
+
+/* ===== FOOTER ===== */
+footer{background:#111827;color:#999;text-align:center;padding:2rem 1rem;font-size:.85rem;}
+footer address{font-style:normal;line-height:2;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="#top">株式会社 清工舎</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#features">働く魅力</a>
+    <a href="#job">仕事内容</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#voices">先輩の声</a>
+    <a href="#faq">よくある質問</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-pill">看板製作施工スタッフ 募集中</div>
+    <h1>街に看板を、<br>あなたに「手に職」を。</h1>
+    <p>未経験歓迎・入社後に資格が取れる・先輩が一から教えます<br>千葉県八千代市／年間休日124日</p>
+    <a class="btn-primary" href="#entry">まずは話を聞いてみる</a>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features-bg" id="features">
+  <div class="container">
+    <p class="section-label">Why Seikoosha</p>
+    <h2 class="section-title">清工舎で働く3つの理由</h2>
+    <div class="divider"></div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 000 1.4l1.6 1.6a1 1 0 001.4 0l3.77-3.77a6 6 0 01-7.94 7.94l-6.91 6.91a2.12 2.12 0 01-3-3l6.91-6.91a6 6 0 017.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3>未経験から「職人」へ</h3>
+        <p>入社後に溶接・電気工事士・高所作業車・屋外広告士など、仕事しながら資格が取れます。会社が費用を全額サポート。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24"><circle cx="12" cy="8" r="5"/><path d="M3 21v-1a9 9 0 0118 0v1"/></svg>
+        </div>
+        <h3>先輩が一から教える</h3>
+        <p>まずは先輩のアシスタントからスタート。工具の名前・材料の使い方・現場の流れを丁寧に教えてもらえるので安心です。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg width="28" height="28" viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+        </div>
+        <h3>毎回違う、ものづくりの面白さ</h3>
+        <p>案件ごとに素材もデザインも違う看板を手がけます。完成した看板が街に出るたびに感じられる達成感は格別。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOB -->
+<section id="job">
+  <div class="container">
+    <p class="section-label">Work Detail</p>
+    <h2 class="section-title">仕事内容</h2>
+    <div class="divider"></div>
+    <div class="job-wrap">
+      <div class="job-img">
+        <!-- 職場の様子写真。実際には御社の現場・スタッフ写真に差し替えます -->
+        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=640&h=380&fit=crop&q=80" alt="現場作業の様子">
+      </div>
+      <div class="job-text">
+        <h3>看板製作・施工のお仕事</h3>
+        <p>お客様のご要望に合わせた看板を企画から施工まで一貫して担当します。屋外広告・店舗サイン・車両マーキングなど、関わる案件は多岐にわたります。</p>
+        <p>入社直後は先輩スタッフのアシスタントとして現場を体験しながら基礎を身につけます。仕事の流れが掴めてきたら少しずつ担当範囲を広げていきます。</p>
+        <p>千葉県・東京都を中心に活動しており、現場によって直行直帰も可能です。</p>
+        <div class="job-tags">
+          <span class="tag">未経験歓迎</span>
+          <span class="tag">資格取得支援</span>
+          <span class="tag">書類選考なし</span>
+          <span class="tag">マイカー通勤可</span>
+          <span class="tag">週休2日</span>
+        </div>
+        <!-- ※ここはサンプルです。実際には御社の仕事内容の詳細に差し替えます -->
+        <p class="voice-sample">※ここはサンプルです。実際には御社の仕事内容に差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REQUIREMENTS -->
+<section class="features-bg" id="requirements">
+  <div class="container">
+    <p class="section-label">Requirements</p>
+    <h2 class="section-title">募集要項</h2>
+    <div class="divider"></div>
+    <table class="req-table">
+      <tbody>
+        <tr><th>職種</th><td>看板製作施工スタッフ（正社員）</td></tr>
+        <tr><th>勤務地</th><td>千葉県八千代市吉橋1075-5（現場によって直行直帰あり）<br>最寄り駅：東葉高速鉄道 八千代緑が丘駅 徒歩10分</td></tr>
+        <tr><th>給与</th><td>月給250,000円（基本給200,000円＋固定残業代50,000円・32時間相当）<br>※時間超過分は追加支給　昇給あり（前年実績：最大35,000円/月）</td></tr>
+        <tr><th>賞与</th><td>年1回（前年実績：200,000〜900,000円）</td></tr>
+        <tr><th>就業時間</th><td>8:30〜17:30（休憩60分）　※現場により夜勤あり（月1〜2回程度）</td></tr>
+        <tr><th>休日</th><td>土・日・祝日、年末年始、夏季休暇（年間休日124日）<br>※現場により土曜出勤の場合あり（代休取得）</td></tr>
+        <tr><th>資格・条件</th><td>普通自動車免許（AT限定可）／学歴・経験不問</td></tr>
+        <tr><th>試用期間</th><td>3ヶ月（同条件）</td></tr>
+        <tr><th>各種保険</th><td>雇用・労災・健康・厚生年金</td></tr>
+        <tr><th>待遇</th><td>通勤手当（実費・上限30,000円/月）／制服貸与／健康診断／資格取得支援制度</td></tr>
+        <tr><th>選考方法</th><td>面接1回（書類選考なし）<br>ご希望の面接日をお電話またはメールでご連絡ください</td></tr>
+      </tbody>
+    </table>
+    <!-- ※ここはサンプルです。実際には御社の最新の募集要項に差し替えます -->
+    <p style="font-size:.78rem;color:#aaa;margin-top:1rem;">※ここはサンプルです。実際には御社の最新の募集要項に差し替えます</p>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="container">
+    <p class="section-label">One Day</p>
+    <h2 class="section-title">社員の1日の流れ</h2>
+    <div class="divider"></div>
+    <!-- ※ここはサンプルです。実際には御社スタッフの1日に差し替えます -->
+    <p style="font-size:.78rem;color:#aaa;margin-bottom:1.5rem;">※ここはサンプルです。実際には御社スタッフの1日に差し替えます</p>
+    <ul class="timeline">
+      <li class="tl-item">
+        <span class="tl-time">8:30</span>
+        <span class="tl-spine"><span class="tl-dot"></span><span class="tl-line"></span></span>
+        <div class="tl-body"><h4>出社・朝礼・段取り確認</h4><p>その日の現場・作業内容を先輩と確認。工具や資材の積み込みをします。</p></div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">9:00</span>
+        <span class="tl-spine"><span class="tl-dot"></span><span class="tl-line"></span></span>
+        <div class="tl-body"><h4>現場へ移動・作業開始</h4><p>施工現場へ。先輩の指示を受けながら看板の取り付け・仕上げを行います。</p></div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">12:00</span>
+        <span class="tl-spine"><span class="tl-dot"></span><span class="tl-line"></span></span>
+        <div class="tl-body"><h4>昼休み（60分）</h4><p>同僚とランチ。わからないことを先輩に気軽に相談できる時間でもあります。</p></div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">13:00</span>
+        <span class="tl-spine"><span class="tl-dot"></span><span class="tl-line"></span></span>
+        <div class="tl-body"><h4>午後の施工・仕上げ確認</h4><p>看板のパネル取り付け・配線・最終チェック。完成に近づくにつれ達成感が増します。</p></div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">16:00</span>
+        <span class="tl-spine"><span class="tl-dot"></span><span class="tl-line"></span></span>
+        <div class="tl-body"><h4>片付け・撤収準備</h4><p>工具や資材を丁寧に片付けて次の仕事に備えます。</p></div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">17:30</span>
+        <span class="tl-spine"><span class="tl-dot"></span><span class="tl-line"></span></span>
+        <div class="tl-body"><h4>帰社・日報記入・退勤</h4><p>当日の作業内容を報告して終了。現場によっては直帰も可能です。</p></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- VOICES -->
+<section class="features-bg" id="voices">
+  <div class="container">
+    <p class="section-label">Voices</p>
+    <h2 class="section-title">先輩スタッフからのメッセージ</h2>
+    <div class="divider"></div>
+    <!-- ※ここはサンプルです。実際には御社スタッフの写真・コメントに差し替えます -->
+    <p style="font-size:.78rem;color:#aaa;margin-bottom:1.8rem;">※ここはサンプルです。実際には御社スタッフの写真・コメントに差し替えます</p>
+    <div class="voices-grid">
+      <div class="voice-card">
+        <div class="voice-head">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="田中さん">
+          <div>
+            <div class="voice-name">田中 誠（仮名）</div>
+            <div class="voice-meta">施工スタッフ・入社3年目</div>
+          </div>
+        </div>
+        <p class="voice-body">前職はまったく別の業界でした。入社してから先輩に丁寧に教えてもらい、今では一人で現場を任せてもらえるようになりました。資格も取得できて、仕事の幅が広がっています。</p>
+        <p class="voice-sample">※ここはサンプルです</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-head">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=faces&q=80" alt="鈴木さん">
+          <div>
+            <div class="voice-name">鈴木 あかり（仮名）</div>
+            <div class="voice-meta">デザイン・制作担当・入社2年目</div>
+          </div>
+        </div>
+        <p class="voice-body">自分が関わった看板が街に設置されているのを見ると、すごく嬉しい気持ちになります。チームの雰囲気がよく、わからないことは何でも聞きやすい職場です。</p>
+        <p class="voice-sample">※ここはサンプルです</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-head">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="山本さん">
+          <div>
+            <div class="voice-name">山本 健（仮名）</div>
+            <div class="voice-meta">施工リーダー・入社5年目</div>
+          </div>
+        </div>
+        <p class="voice-body">溶接や高所作業車など、入社後に複数の資格を取得しました。会社が全面的にサポートしてくれたおかげです。スキルが増えるにつれて給与も上がり、やりがいを感じています。</p>
+        <p class="voice-sample">※ここはサンプルです</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <p class="section-label">FAQ</p>
+    <h2 class="section-title">よくある質問</h2>
+    <div class="divider"></div>
+    <div class="faq-list">
+      <details>
+        <summary>未経験でも応募できますか？</summary>
+        <div class="faq-ans">はい、もちろんです。現在のスタッフも前職はさまざまで、まったく異業種から転職した人が多数います。入社後は先輩のアシスタントとしてスタートし、業務を通じて必要なスキルを習得していただきます。</div>
+      </details>
+      <details>
+        <summary>どのような資格が取れますか？</summary>
+        <div class="faq-ans">溶接技術者・電気工事士・高所作業車運転技能者・屋外広告士などの資格取得を会社が支援します。費用は会社負担で、業務の傍ら段階的に挑戦していただけます。</div>
+      </details>
+      <details>
+        <summary>選考の流れを教えてください。</summary>
+        <div class="faq-ans">書類選考はありません。まずはお電話またはメールで面接日時をご連絡ください。面接は1回のみで、面接時に履歴書をご持参いただきます。結果は面接後2日以内にお知らせします。</div>
+      </details>
+      <details>
+        <summary>現場は毎日変わりますか？</summary>
+        <div class="faq-ans">案件によって異なります。千葉県・東京都を中心とした現場で活動しており、現場によっては直行直帰も可能です。同じ現場を複数日担当することもあります。</div>
+      </details>
+      <details>
+        <summary>マイカー通勤は可能ですか？</summary>
+        <div class="faq-ans">はい、マイカー通勤が可能です。駐車場も無料でご利用いただけます。普通自動車免許（AT限定可）をお持ちの方を対象としています。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- MANAGER -->
+<section class="features-bg" id="manager">
+  <div class="container">
+    <p class="section-label">Contact</p>
+    <h2 class="section-title">採用担当者からひとこと</h2>
+    <div class="divider"></div>
+    <div class="mgr-wrap">
+      <!-- ※ここはサンプルです。実際には採用担当者の写真に差し替えます -->
+      <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当 岡由花">
+      <div class="mgr-text">
+        <h3>岡 由花（仮）</h3>
+        <div class="role">経理総務 / 採用担当</div>
+        <p>「前職と全然違う業界でも大丈夫？」という不安をよく相談されます。清工舎のスタッフは異業種出身者ばかりなので、まずは気軽にご連絡ください。どんな質問でもお気軽にどうぞ。</p>
+        <!-- ※ここはサンプルです。実際には担当者の写真・コメントに差し替えます -->
+        <p class="voice-sample">※ここはサンプルです。実際には御社担当者の写真・コメントに差し替えます</p>
+        <a class="btn-outline" href="#entry">応募・お問い合わせ</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENTRY -->
+<section class="entry-bg" id="entry">
+  <div class="container">
+    <h2 class="section-title">まずは話を聞いてみませんか？</h2>
+    <div class="divider"></div>
+    <p class="section-lead" style="max-width:560px;margin:0 auto 2.5rem;">書類選考はありません。面接は1回のみです。気になる点があれば、お気軽にご連絡ください。</p>
+    <a class="btn-primary" href="mailto:keiri@seikoosha.co.jp">メールで問い合わせる</a>
+    <p style="margin-top:1.2rem;font-size:.85rem;opacity:.6;">電話：047-450-3394（経理総務・岡）</p>
+  </div>
+</section>
+
+<footer>
+  <address>
+    株式会社 清工舎<br>
+    〒276-0047 千葉県八千代市吉橋1075-5<br>
+    TEL: 047-450-3394
+  </address>
+</footer>
+
+<script>
+(function(){
+  var btn = document.querySelector('.hamburger');
+  var nav = document.querySelector('.site-nav');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  }
+})();
+</script>
+</body>
+</html>

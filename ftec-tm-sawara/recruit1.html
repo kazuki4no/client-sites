@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>採用情報 | 株式会社エフテック・ティーエム 佐原工場</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans JP',sans-serif;color:#333;line-height:1.7;background:#fff}
+a{text-decoration:none;color:inherit}
+img{max-width:100%;height:auto;display:block}
+
+/* ===== Header ===== */
+.site-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 1.5rem;background:#162b4d;position:sticky;top:0;z-index:100;
+}
+.brand{color:#fff;font-weight:700;font-size:.95rem;line-height:1.3}
+.brand span{color:#e87420}
+.site-nav{display:flex;gap:1.4rem;align-items:center}
+.site-nav a{color:rgba(255,255,255,.85);font-size:.88rem;transition:color .2s}
+.site-nav a:hover{color:#e87420}
+.site-nav .nav-cta{
+  background:#e87420;color:#fff;padding:.45rem 1.2rem;border-radius:3px;font-weight:700;
+}
+.site-nav .nav-cta:hover{background:#c85f10}
+.hamburger{display:none;background:none;border:0;color:#fff;font-size:1.7rem;line-height:1;cursor:pointer}
+@media(max-width:768px){
+  .hamburger{display:block}
+  .site-nav{
+    display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:#162b4d;box-shadow:0 8px 20px rgba(0,0,0,.35);padding:.5rem 1rem;
+  }
+  .site-nav.open{display:flex}
+  .site-nav a{padding:.8rem 0;border-bottom:1px solid rgba(255,255,255,.12);color:#fff}
+  .site-nav .nav-cta{margin:.5rem 0;text-align:center}
+}
+
+/* ===== Hero ===== */
+.hero{position:relative;min-height:62vh;display:flex;align-items:center;background:#162b4d;overflow:hidden}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1600&h=900&fit=crop&q=80');
+  background-size:cover;background-position:center;opacity:.22;
+}
+.hero-content{position:relative;z-index:1;padding:3rem 1.5rem;max-width:680px;margin:0 auto;text-align:center}
+.hero-tag{
+  display:inline-block;background:#e87420;color:#fff;
+  font-size:.78rem;font-weight:700;padding:.3rem 1rem;border-radius:2px;letter-spacing:.06em;margin-bottom:1.2rem;
+}
+.hero h1{font-size:clamp(1.9rem,6vw,3.2rem);font-weight:900;color:#fff;line-height:1.25;margin-bottom:1rem}
+.hero p{color:rgba(255,255,255,.82);font-size:clamp(.95rem,2.5vw,1.08rem);margin-bottom:2rem}
+.btn-primary{
+  display:inline-block;background:#e87420;color:#fff;
+  font-weight:700;padding:.85rem 2.4rem;border-radius:3px;font-size:1rem;
+  transition:background .2s;
+}
+.btn-primary:hover{background:#c85f10}
+.hero-note{color:rgba(255,255,255,.55);font-size:.78rem;margin-top:.9rem}
+
+/* ===== Sections ===== */
+.section{padding:4.5rem 1.5rem}
+.section-alt{background:#f5f7fa}
+.container{max-width:900px;margin:0 auto}
+.section-title{font-size:clamp(1.4rem,4vw,2rem);font-weight:900;color:#162b4d;text-align:center;margin-bottom:.4rem}
+.divider{width:44px;height:4px;background:#e87420;margin:.7rem auto 2.5rem}
+.section-sub{text-align:center;color:#666;font-size:.93rem;margin-bottom:2rem}
+
+/* ===== Feature cards ===== */
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.feat-card{background:#fff;border-radius:8px;padding:2rem 1.5rem;text-align:center;box-shadow:0 2px 14px rgba(0,0,0,.06);border-top:3px solid #e87420}
+.feat-icon{color:#e87420;display:flex;justify-content:center;margin-bottom:1rem}
+.feat-card h3{font-size:1rem;font-weight:700;color:#162b4d;margin-bottom:.5rem}
+.feat-card p{font-size:.88rem;color:#555}
+@media(max-width:768px){.features{grid-template-columns:1fr}}
+
+/* ===== Job detail ===== */
+.job-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+.job-img img{width:100%;border-radius:8px;object-fit:cover;height:300px}
+.job-text h3{font-size:1.15rem;font-weight:700;color:#162b4d;margin-bottom:.8rem}
+.job-text p{color:#555;font-size:.92rem;margin-bottom:.8rem}
+.task-list{padding-left:1.1em;color:#555;font-size:.9rem;line-height:2}
+.job-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:1rem}
+.tag{background:#e8f0fa;color:#162b4d;font-size:.78rem;padding:.3rem .8rem;border-radius:20px;font-weight:700}
+@media(max-width:768px){.job-grid{grid-template-columns:1fr}}
+
+/* ===== Requirement table ===== */
+.req-table{width:100%;border-collapse:collapse;border-radius:8px;overflow:hidden;box-shadow:0 2px 14px rgba(0,0,0,.06)}
+.req-table th,.req-table td{padding:1rem 1.2rem;border-bottom:1px solid #eee;font-size:.92rem;text-align:left;vertical-align:top}
+.req-table th{background:#162b4d;color:#fff;width:28%;font-weight:700;white-space:nowrap}
+.req-table tr:last-child th,.req-table tr:last-child td{border-bottom:none}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%}
+  .req-table th{background:#e8f0fa;color:#162b4d;padding:.5rem .8rem;white-space:normal}
+  .req-table td{padding:.5rem .8rem 1rem}
+}
+
+/* ===== Timeline ===== */
+.timeline{max-width:580px;margin:0 auto}
+.tl-item{display:grid;grid-template-columns:72px 28px 1fr;align-items:start;margin-bottom:0}
+.tl-time{text-align:right;font-weight:700;color:#162b4d;font-size:.88rem;padding-top:.28rem;padding-right:.5rem}
+.tl-axis{display:flex;flex-direction:column;align-items:center}
+.tl-dot{width:13px;height:13px;background:#e87420;border-radius:50%;flex-shrink:0;margin-top:.35rem}
+.tl-line{width:2px;background:#dce3ed;flex:1;min-height:24px}
+.tl-body{padding:.05rem 0 1.4rem .8rem}
+.tl-body h4{font-size:.93rem;font-weight:700;color:#162b4d;margin-bottom:.2rem}
+.tl-body p{font-size:.85rem;color:#666}
+.tl-item:last-child .tl-line{display:none}
+
+/* ===== Staff voices ===== */
+.voices{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.voice-card{background:#fff;border-radius:8px;padding:1.5rem;box-shadow:0 2px 14px rgba(0,0,0,.06)}
+.voice-header{display:flex;align-items:center;gap:.9rem;margin-bottom:1rem}
+.voice-img{width:60px;height:60px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.voice-meta strong{display:block;font-size:.93rem;color:#162b4d}
+.voice-meta span{font-size:.8rem;color:#888}
+.voice-card p{font-size:.88rem;color:#555;line-height:1.75}
+.sample-note{color:#bbb;font-size:.75rem;margin-top:.5rem;font-style:italic}
+@media(max-width:768px){.voices{grid-template-columns:1fr}}
+
+/* ===== FAQ ===== */
+.faq-list{max-width:700px;margin:0 auto}
+.faq-item{border-bottom:1px solid #eee;padding:1.2rem 0}
+.faq-item:first-child{padding-top:0}
+.faq-q{font-weight:700;color:#162b4d;margin-bottom:.5rem;font-size:.93rem;display:flex;gap:.5rem}
+.faq-q::before{content:"Q";color:#e87420;font-weight:900;flex-shrink:0}
+.faq-a{font-size:.88rem;color:#555;display:flex;gap:.5rem}
+.faq-a::before{content:"A";color:#999;font-weight:700;flex-shrink:0}
+
+/* ===== Recruiter ===== */
+.recruiter-box{background:#fff;border-radius:8px;padding:2rem;display:flex;align-items:flex-start;gap:2rem;box-shadow:0 2px 14px rgba(0,0,0,.06)}
+.recruiter-img{width:110px;height:110px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.recruiter-text h3{font-size:1.05rem;font-weight:700;color:#162b4d;margin-bottom:.2rem}
+.recruiter-text .role{font-size:.82rem;color:#888;margin-bottom:.8rem}
+.recruiter-text p{font-size:.9rem;color:#555;margin-bottom:.8rem}
+.contact-info{font-size:.85rem;color:#555}
+.contact-info p{margin-bottom:.2rem}
+@media(max-width:768px){.recruiter-box{flex-direction:column;align-items:center;text-align:center}}
+
+/* ===== Entry CTA ===== */
+.entry-cta{background:#162b4d;padding:5rem 1.5rem;text-align:center}
+.entry-cta h2{font-size:clamp(1.4rem,4vw,2rem);font-weight:900;color:#fff;margin-bottom:.6rem}
+.entry-cta p{color:rgba(255,255,255,.78);margin-bottom:2rem;font-size:.95rem}
+.btn-cta-lg{
+  display:inline-block;background:#e87420;color:#fff;
+  font-weight:700;padding:1rem 3rem;border-radius:3px;font-size:1.05rem;
+  transition:background .2s;
+}
+.btn-cta-lg:hover{background:#c85f10}
+.entry-sub{color:rgba(255,255,255,.48);font-size:.78rem;margin-top:.9rem}
+
+/* ===== Footer ===== */
+.site-footer{background:#0c1e36;padding:2rem 1.5rem;text-align:center;color:rgba(255,255,255,.55);font-size:.83rem}
+.site-footer p{margin-bottom:.3rem}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+  <a class="brand" href="#top"><span>エフテック・ティーエム</span> 採用情報</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#job">仕事内容</a>
+    <a href="#req">募集要項</a>
+    <a href="#day">1日の流れ</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#faq">FAQ</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-tag">正社員採用 ／ 千葉県香取市</div>
+    <h1>ものづくりで<br>社会を支える仕事。</h1>
+    <p>工業用断熱材・耐火材の機械加工スタッフを募集中。<br>経験・学歴不問。しっかり教える職場でゼロからスタートできます。</p>
+    <a class="btn-primary" href="#job">仕事内容を見る</a>
+    <p class="hero-note">土日休み ／ 年間休日125日 ／ 各種社会保険完備 ／ マイカー通勤OK</p>
+  </div>
+</section>
+
+<!-- 特徴 -->
+<section class="section section-alt" id="job">
+  <div class="container">
+    <h2 class="section-title">この仕事の3つの特徴</h2>
+    <div class="divider"></div>
+    <div class="features">
+      <div class="feat-card">
+        <div class="feat-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3>未経験から専門技術へ</h3>
+        <p>NCルーター・大型ミシン・混練機など多様な機械を操作。ものづくりの専門スキルを着実に習得できます。先輩が丁寧に指導します。</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <h3>土日休み・年間休日125日</h3>
+        <p>週休2日（土日）＋GW・夏季・年末年始の長期休暇。プライベートや家族との時間をしっかり確保できます。</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H3a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11a2 2 0 0 1 2 2v3m-1 14H7a2 2 0 0 1-2-2v-5m16 0v-2a2 2 0 0 0-2-2H9"/><circle cx="12" cy="17" r="2"/><circle cx="19" cy="17" r="2"/></svg>
+        </div>
+        <h3>マイカー通勤OK・駐車場完備</h3>
+        <p>通勤手当あり（実費・月上限2万円）。JR水郷駅から車5分。公共交通機関が少ない地域でも安心して通勤できます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 仕事内容詳細 -->
+<section class="section">
+  <div class="container">
+    <h2 class="section-title">仕事内容について</h2>
+    <div class="divider"></div>
+    <div class="job-grid">
+      <div class="job-img">
+        <!-- ここはサンプル写真です。実際には御社の職場写真に差し替えます -->
+        <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=640&h=400&fit=crop&q=80" alt="工場での作業の様子">
+      </div>
+      <div class="job-text">
+        <h3>耐火材・断熱材の機械加工スタッフ</h3>
+        <p>建物や工業設備に使われる断熱材・耐火材を、専用機械で正確に加工する仕事です。「機械を使ったことがない」という方でも、適性や希望を確認したうえで担当業務が決まるので安心してスタートできます。</p>
+        <p>主な担当業務（いずれかに配属）：</p>
+        <ul class="task-list">
+          <li>工業用断熱材の<strong>切断・開孔加工</strong>（専用切断機使用）</li>
+          <li><strong>大型ミシン</strong>を使った素材の縫製作業（工業用特殊ミシン）</li>
+          <li><strong>混練機</strong>での材料の混合作業</li>
+          <li><strong>NCルーター</strong>（コンピューター制御）を使った高精度加工</li>
+        </ul>
+        <p style="margin-top:.8rem;font-size:.88rem;color:#555">仕事に慣れてきたら、複数の担当を任されることもあります。</p>
+        <div class="job-tags">
+          <span class="tag">経験不問</span>
+          <span class="tag">学歴不問</span>
+          <span class="tag">未経験歓迎</span>
+          <span class="tag">正社員</span>
+        </div>
+      </div>
+    </div>
+    <p class="sample-note" style="text-align:center;margin-top:1.5rem">※上記の写真はサンプルです。実際には御社の職場写真に差し替えます。</p>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="section section-alt" id="req">
+  <div class="container">
+    <h2 class="section-title">募集要項</h2>
+    <div class="divider"></div>
+    <table class="req-table">
+      <tbody>
+        <tr>
+          <th>職種</th>
+          <td>製造・加工スタッフ（正社員）</td>
+        </tr>
+        <tr>
+          <th>仕事内容</th>
+          <td>工業用断熱材・耐火材の機械加工<br>（切断・開孔・縫製・混練・NCルーター加工。適性を見て配属）</td>
+        </tr>
+        <tr>
+          <th>給与</th>
+          <td>月給 210,000円〜240,000円<br><small style="color:#888">家族手当：配偶者 10,000円 ／ その他扶養 1人につき 5,000円</small></td>
+        </tr>
+        <tr>
+          <th>就業時間</th>
+          <td>8:15〜17:15（休憩90分）<br><small style="color:#888">受注繁忙期は交替制あり（16:30〜1:30 ／ 18歳以上）</small></td>
+        </tr>
+        <tr>
+          <th>休日</th>
+          <td>土曜・日曜・祝日（会社カレンダーによる）<br>GW・夏季休暇・年末年始 ／ 年間休日125日</td>
+        </tr>
+        <tr>
+          <th>勤務地</th>
+          <td>千葉県香取市一ノ分目310-1（小見川工場）<br>JR水郷駅から車5分 ／ マイカー通勤可 ／ 駐車場あり</td>
+        </tr>
+        <tr>
+          <th>資格・経験</th>
+          <td>経験不問・学歴不問<br>普通自動車免許があれば尚可（AT限定可）</td>
+        </tr>
+        <tr>
+          <th>年齢</th>
+          <td>64歳以下（定年65歳のため）</td>
+        </tr>
+        <tr>
+          <th>試用期間</th>
+          <td>3ヶ月（試用期間中も同条件）</td>
+        </tr>
+        <tr>
+          <th>昇給・賞与</th>
+          <td>昇給あり ／ 賞与あり（年2回・前年度実績 計1.8ヶ月分）</td>
+        </tr>
+        <tr>
+          <th>社会保険</th>
+          <td>雇用・労災・健康・厚生年金（完備）<br>退職金共済加入 ／ 退職金制度あり（勤続3年以上）</td>
+        </tr>
+        <tr>
+          <th>通勤手当</th>
+          <td>実費支給（月上限 20,000円）</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section class="section" id="day">
+  <div class="container">
+    <h2 class="section-title">社員の1日の流れ</h2>
+    <div class="divider"></div>
+    <!-- 社員の1日（サンプル）。実際のスタッフの1日に差し替えてください。 -->
+    <p class="section-sub">※ここはサンプルです。実際には御社スタッフの1日の流れに差し替えます。</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">8:00</div>
+        <div class="tl-axis"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <h4>出勤・朝礼</h4>
+          <p>マイカーで出勤。チームで当日の作業内容・安全事項を確認します。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">8:15</div>
+        <div class="tl-axis"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <h4>午前の加工作業</h4>
+          <p>担当機械で断熱材・耐火材の加工を行います。図面を確認しながら正確に仕上げます。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:00</div>
+        <div class="tl-axis"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <h4>昼休憩（60分）</h4>
+          <p>工場内の休憩室でのんびり昼食。お弁当持参のスタッフが多いです。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-axis"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <h4>午後の加工・品質確認</h4>
+          <p>加工を続けながら寸法・仕上がりのチェックも行います。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">15:00</div>
+        <div class="tl-axis"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <h4>休憩（30分）</h4>
+          <p>作業を一度止めてリフレッシュ。同僚との雑談タイムでもあります。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">15:30</div>
+        <div class="tl-axis"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <h4>仕上げ・後片付け</h4>
+          <p>当日分の加工を完成させ、機械の清掃と翌日の段取りを行います。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:15</div>
+        <div class="tl-axis"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <h4>退勤</h4>
+          <p>定時退勤。残業は月平均10時間程度で無理のない範囲です。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section class="section section-alt" id="voice">
+  <div class="container">
+    <h2 class="section-title">先輩スタッフの声</h2>
+    <div class="divider"></div>
+    <!-- 先輩の声（サンプル）。実際のスタッフのメッセージ・写真に差し替えてください。 -->
+    <p class="section-sub">※ここはサンプルです。実際には御社スタッフのメッセージ・写真に差し替えます。</p>
+    <div class="voices">
+      <div class="voice-card">
+        <div class="voice-header">
+          <img class="voice-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="スタッフ写真">
+          <div class="voice-meta">
+            <strong>田中 拓也（仮名）</strong>
+            <span>製造スタッフ ／ 入社3年目</span>
+          </div>
+        </div>
+        <p>「前職は飲食業でした。機械加工は全くの未経験でしたが、先輩が一から丁寧に教えてくれて、入社半年後には一人で作業できるようになりました。今はNCルーターを担当させてもらっています。」</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社スタッフのメッセージに差し替えます。</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-header">
+          <img class="voice-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="スタッフ写真">
+          <div class="voice-meta">
+            <strong>佐藤 健一（仮名）</strong>
+            <span>製造スタッフ ／ 入社5年目</span>
+          </div>
+        </div>
+        <p>「土日がしっかり休めるのが良いですね。家族との時間も確保できています。仕事内容も入社前に詳しく説明してもらえたので、不安なく入社できました。有給も取りやすい雰囲気です。」</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社スタッフのメッセージに差し替えます。</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-header">
+          <img class="voice-img" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="スタッフ写真">
+          <div class="voice-meta">
+            <strong>鈴木 誠（仮名）</strong>
+            <span>縫製担当 ／ 入社2年目</span>
+          </div>
+        </div>
+        <p>「大型ミシンは難しそうに見えましたが、実際は使い方がシンプルで覚えやすかったです。コツをつかんだら正確に作業できて、仕上がったときの達成感があります。ものづくりの楽しさを実感しています。」</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社スタッフのメッセージに差し替えます。</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-header">
+          <img class="voice-img" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=faces&q=80" alt="スタッフ写真">
+          <div class="voice-meta">
+            <strong>山田 恵子（仮名）</strong>
+            <span>縫製・混練担当 ／ 入社4年目</span>
+          </div>
+        </div>
+        <p>「製造業は男性ばかりというイメージがありましたが、縫製の担当は手先が器用な方に向いていて、女性の私でも無理なく続けられています。職場の雰囲気が穏やかで、困ったときは気軽に相談できます。」</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社スタッフのメッセージに差し替えます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <h2 class="section-title">よくある質問</h2>
+    <div class="divider"></div>
+    <!-- FAQ（サンプル）。実際にいただくご質問に差し替えてください。 -->
+    <div class="faq-list">
+      <div class="faq-item">
+        <p class="faq-q">製造・機械加工の経験がなくても応募できますか？</p>
+        <p class="faq-a">はい、応募いただけます。入社後は先輩スタッフが丁寧に指導しますので、未経験の方でも安心してスタートできます。学歴・職歴も問いません。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">どの機械を担当するかは入社前に決まりますか？</p>
+        <p class="faq-a">入社後に適性や希望を確認したうえで担当業務を決定します。NCルーター・大型ミシン・混練機・切断機のいずれかに配属される形となります。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">残業はどのくらいありますか？</p>
+        <p class="faq-a">月平均10時間程度です。連休前の繁忙期は就業時間が変動することがありますが、36協定の特別条項はなく、無理のない範囲での残業となっています。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">選考の流れを教えてください。</p>
+        <p class="faq-a">事前にお電話のうえ、ハローワーク紹介状と履歴書（写真貼付）を郵送してください。書類選考後（7日以内に通知）、面接（1回予定）という流れです。面接結果も7日以内にご連絡します。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">転勤はありますか？</p>
+        <p class="faq-a">転勤の可能性はありますが、範囲は香取市内の事業所に限られます。大きな引っ越しは必要ありません。</p>
+      </div>
+    </div>
+    <p class="sample-note" style="text-align:center;margin-top:1rem">※上記はサンプルです。実際にいただくご質問に差し替えてください。</p>
+  </div>
+</section>
+
+<!-- 採用担当者 -->
+<section class="section section-alt">
+  <div class="container">
+    <h2 class="section-title">採用担当者より</h2>
+    <div class="divider"></div>
+    <!-- 採用担当者紹介（サンプル）。実際の担当者の写真・メッセージに差し替えてください。 -->
+    <div class="recruiter-box">
+      <img class="recruiter-img" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当者">
+      <div class="recruiter-text">
+        <h3>斎藤 高央（さいとう たかお）</h3>
+        <p class="role">製造部</p>
+        <p>「私たちが手がける断熱材・耐火材は、建設・製造業の現場を支える縁の下の力持ちです。機械の操作は覚えれば必ずできるようになりますので、難しく考えなくて大丈夫です。まずは一度見学にいらしてください。どんなご質問でもお気軽にどうぞ。」</p>
+        <p class="sample-note">※上記はサンプルです。実際の担当者の写真・メッセージに差し替えます。</p>
+        <div class="contact-info" style="margin-top:.8rem">
+          <p>TEL: 0478-52-0373</p>
+          <p>E-mail: t.saito@ftec-tm.co.jp</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Entry CTA -->
+<section class="entry-cta" id="entry">
+  <h2>ものづくりで、あなたの力を発揮しませんか。</h2>
+  <p>経験・学歴不問。しっかり教える環境と、安定した正社員の待遇でお迎えします。</p>
+  <a class="btn-cta-lg" href="https://ftec-tm.co.jp/contact.html" target="_blank" rel="noopener">まずはお気軽にお問い合わせください</a>
+  <p class="entry-sub">ハローワーク経由でのご応募も受け付けています。</p>
+</section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  <p>株式会社エフテック・ティーエム 佐原工場</p>
+  <p>〒289-0301 千葉県香取市一ノ分目310-1</p>
+  <p>TEL: 0478-52-0373 ／ E-mail: t.saito@ftec-tm.co.jp</p>
+</footer>
+
+<script>
+(function(){
+  var btn = document.querySelector('.hamburger');
+  var nav = document.querySelector('.site-nav');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  }
+})();
+</script>
+</body>
+</html>

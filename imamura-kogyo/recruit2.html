@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>採用情報 | 株式会社イマムラ興業</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Noto Sans JP', sans-serif; color: #1a1a1a; background: #0d1117; line-height: 1.7; overflow-x: hidden; padding-bottom: 70px; }
+
+    /* ヘッダー */
+    .site-header { display: flex; align-items: center; justify-content: space-between; padding: .8rem 1.5rem;
+      position: sticky; top: 0; background: #0d1117; z-index: 100; border-bottom: 1px solid #222; }
+    .brand { color: #f9c00c; text-decoration: none; font-weight: 700; font-size: .92rem; }
+    .site-nav { display: flex; gap: 1.4rem; align-items: center; }
+    .site-nav a { color: rgba(255,255,255,.8); text-decoration: none; font-size: .86rem; transition: color .2s; }
+    .site-nav a:hover { color: #f9c00c; }
+    .nav-cta { background: #f9c00c; color: #0d1117 !important; padding: .4rem 1rem; border-radius: 4px; font-weight: 700; }
+    .hamburger { display: none; background: none; border: 0; font-size: 1.7rem; line-height: 1; cursor: pointer; color: #f9c00c; }
+    @media (max-width: 768px) {
+      .hamburger { display: block; }
+      .site-nav { display: none; flex-direction: column; align-items: stretch; gap: 0;
+        position: absolute; top: 100%; left: 0; right: 0; z-index: 50;
+        background: #0d1117; padding: .5rem 1.5rem; border-top: 1px solid #333;
+        box-shadow: 0 8px 16px rgba(0,0,0,.4); }
+      .site-nav.open { display: flex; }
+      .site-nav a { padding: .8rem 0; border-bottom: 1px solid #222; }
+    }
+
+    /* ヒーロー */
+    .hero { min-height: 80vh; display: flex; align-items: center; justify-content: center;
+      text-align: center; position: relative; overflow: hidden; padding: 5rem 1.5rem; }
+    .hero::before { content: ''; position: absolute; inset: 0;
+      background: url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1600&h=900&fit=crop&q=80') center/cover;
+      opacity: .15; }
+    .hero-inner { position: relative; max-width: 720px; }
+    .hero-label { display: inline-block; background: #f9c00c; color: #0d1117; font-size: .78rem; font-weight: 900; padding: .3rem 1rem; border-radius: 3px; margin-bottom: 1.5rem; letter-spacing: .08em; }
+    .hero h1 { font-size: clamp(2rem, 7vw, 3.6rem); font-weight: 900; color: #fff; line-height: 1.25; margin-bottom: 1.4rem; }
+    .hero h1 em { color: #f9c00c; font-style: normal; display: block; }
+    .hero p { font-size: clamp(.95rem, 2.5vw, 1.1rem); color: rgba(255,255,255,.8); margin-bottom: 2.4rem; }
+    .btn-hero { display: inline-block; background: #f9c00c; color: #0d1117; padding: 1rem 2.4rem; border-radius: 6px; font-weight: 900; text-decoration: none; font-size: 1.05rem; transition: background .2s; }
+    .btn-hero:hover { background: #e6b000; }
+    .hero-scroll { margin-top: 3rem; font-size: .78rem; color: rgba(255,255,255,.4); }
+
+    /* セクション共通 */
+    section { padding: 5rem 1.5rem; }
+    .section-title { text-align: center; font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 900; margin-bottom: 3rem; }
+    .section-title.dark { color: #0d1117; }
+    .section-title span { color: #f9c00c; }
+    .container { max-width: 860px; margin: 0 auto; }
+    .bg-white { background: #fff; }
+    .bg-dark { background: #0d1117; }
+    .bg-gray { background: #f5f5f5; }
+
+    /* 数字で見る会社 */
+    .numbers-section { background: #0d1117; }
+    .numbers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+    .num-card { text-align: center; padding: 1.5rem 1rem; border: 1px solid #2a2a2a; border-radius: 8px; }
+    .num-val { font-size: clamp(2rem, 6vw, 3rem); font-weight: 900; color: #f9c00c; line-height: 1; }
+    .num-unit { font-size: .85rem; color: rgba(255,255,255,.5); }
+    .num-label { font-size: .82rem; color: rgba(255,255,255,.65); margin-top: .5rem; }
+    .num-note { font-size: .7rem; color: #555; display: block; margin-top: .3rem; }
+    @media (max-width: 768px) { .numbers-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    /* 働く魅力 LP型 */
+    .appeal-section { background: #fff; }
+    .appeal-row { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-bottom: 4rem; }
+    .appeal-row:last-child { margin-bottom: 0; }
+    .appeal-row.reverse { direction: rtl; }
+    .appeal-row.reverse > * { direction: ltr; }
+    .appeal-img { border-radius: 10px; overflow: hidden; }
+    .appeal-img img { width: 100%; height: 280px; object-fit: cover; display: block; }
+    .appeal-text .tag { display: inline-block; background: #f9c00c; color: #0d1117; font-size: .72rem; font-weight: 900; padding: .25rem .7rem; border-radius: 3px; margin-bottom: .8rem; letter-spacing: .06em; }
+    .appeal-text h3 { font-size: clamp(1.1rem, 3vw, 1.4rem); font-weight: 900; color: #0d1117; margin-bottom: .8rem; line-height: 1.4; }
+    .appeal-text p { font-size: .88rem; color: #444; line-height: 1.8; }
+    @media (max-width: 768px) { .appeal-row, .appeal-row.reverse { grid-template-columns: 1fr; direction: ltr; } }
+
+    /* CTA中盤 */
+    .mid-cta { background: #f9c00c; text-align: center; }
+    .mid-cta h2 { font-size: clamp(1.3rem, 4vw, 1.8rem); font-weight: 900; color: #0d1117; margin-bottom: 1rem; }
+    .mid-cta p { font-size: .9rem; color: #333; margin-bottom: 2rem; }
+    .btn-dark { display: inline-block; background: #0d1117; color: #f9c00c; padding: .9rem 2rem; border-radius: 6px; font-weight: 700; text-decoration: none; font-size: 1rem; transition: background .2s; }
+    .btn-dark:hover { background: #1e2a3a; }
+
+    /* 募集要項 */
+    .req-table { width: 100%; border-collapse: collapse; }
+    .req-table th, .req-table td { padding: 1rem 1.2rem; border-bottom: 1px solid #e8e8e8; text-align: left; }
+    .req-table th { background: #0d1117; color: #f9c00c; font-weight: 700; font-size: .86rem; width: 160px; white-space: nowrap; }
+    .req-table td { font-size: .88rem; color: #333; }
+    .req-table tr:last-child th, .req-table tr:last-child td { border-bottom: none; }
+    @media (max-width: 768px) {
+      .req-table, .req-table tbody, .req-table tr, .req-table th, .req-table td { display: block; width: 100%; }
+      .req-table th { padding: .6rem .8rem; }
+      .req-table td { padding: .6rem .8rem 1.2rem; }
+    }
+
+    /* 1日の流れ */
+    .timeline-wrap { max-width: 560px; margin: 0 auto; }
+    .tl-item { display: grid; grid-template-columns: 72px 24px 1fr; gap: 0 .6rem; }
+    .tl-time { font-weight: 700; font-size: .88rem; color: #f9c00c; text-align: right; padding-top: .15rem; }
+    .tl-col { display: flex; flex-direction: column; align-items: center; }
+    .tl-dot { width: 12px; height: 12px; background: #f9c00c; border-radius: 50%; flex-shrink: 0; margin-top: .2rem; }
+    .tl-bar { width: 2px; flex: 1; background: #333; min-height: 32px; margin-top: 2px; }
+    .tl-item:last-child .tl-bar { display: none; }
+    .tl-body { padding-bottom: 1.5rem; }
+    .tl-body strong { font-size: .88rem; font-weight: 700; color: #fff; display: block; }
+    .tl-body span { font-size: .82rem; color: #888; }
+
+    /* 社員インタビュー */
+    .interview-section { background: #fff; }
+    .interview-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    .interview-card { border-radius: 10px; overflow: hidden; box-shadow: 0 4px 20px rgba(0,0,0,.08); }
+    .interview-img { height: 230px; overflow: hidden; }
+    .interview-img img { width: 100%; height: 100%; object-fit: cover; }
+    .interview-body { padding: 1.4rem; }
+    .interview-name { font-weight: 700; font-size: .92rem; color: #0d1117; }
+    .interview-role { font-size: .76rem; color: #999; margin-bottom: .8rem; }
+    .interview-q { font-size: .78rem; font-weight: 700; color: #f9c00c; background: #0d1117; display: inline-block; padding: .2rem .6rem; border-radius: 3px; margin-bottom: .4rem; }
+    .interview-a { font-size: .84rem; color: #444; line-height: 1.7; }
+    @media (max-width: 768px) { .interview-grid { grid-template-columns: 1fr; } }
+
+    /* FAQ */
+    .faq-section { background: #0d1117; }
+    .faq-list { max-width: 700px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid #222; padding: 1.3rem 0; }
+    .faq-q { font-weight: 700; font-size: .92rem; color: #f9c00c; margin-bottom: .5rem; display: flex; gap: .7rem; align-items: baseline; }
+    .faq-q::before { content: 'Q'; font-size: 1rem; flex-shrink: 0; }
+    .faq-a { font-size: .86rem; color: rgba(255,255,255,.75); line-height: 1.7; padding-left: 1.5rem; }
+
+    /* 最終CTA */
+    .final-cta { background: #f9c00c; text-align: center; }
+    .final-cta h2 { font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 900; color: #0d1117; margin-bottom: 1rem; }
+    .final-cta p { font-size: .92rem; color: #333; margin-bottom: 2.2rem; }
+
+    /* スマホ固定バー */
+    .fixed-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; background: #f9c00c; padding: .9rem 1rem; text-align: center; z-index: 200; box-shadow: 0 -4px 16px rgba(0,0,0,.2); }
+    .fixed-bar a { color: #0d1117; font-weight: 900; text-decoration: none; font-size: .95rem; }
+    @media (max-width: 768px) { .fixed-bar { display: block; } }
+
+    /* サンプルメモ */
+    .s-note { font-size: .72rem; color: #bbb; display: block; margin-top: .3rem; }
+    .s-note-dark { font-size: .72rem; color: #666; display: block; margin-top: .3rem; }
+
+    /* フッター */
+    footer { background: #040810; color: rgba(255,255,255,.5); text-align: center; padding: 2rem 1.5rem; font-size: .78rem; }
+    footer strong { color: rgba(255,255,255,.8); display: block; margin-bottom: .5rem; font-size: .9rem; }
+  </style>
+</head>
+<body>
+
+<header class="site-header" id="top">
+  <a class="brand" href="#top">株式会社イマムラ興業 採用情報</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#appeal">魅力</a>
+    <a href="#req">募集要項</a>
+    <a href="#interview">社員の声</a>
+    <a href="#faq">よくある質問</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-label">土木作業員 募集中</span>
+    <h1>
+      「土木は不人気」？
+      <em>実際に働くと、話が違う。</em>
+    </h1>
+    <p>空港整備・道路・上下水道——千葉のインフラを毎日作り続ける17名のチーム。<br>若手中心で資格取得を全力支援。未経験から一人前になれる道があります。</p>
+    <a class="btn-hero" href="#entry">まずは話を聞いてみる</a>
+    <p class="hero-scroll">▼ 続きを読む</p>
+  </div>
+</section>
+
+<!-- 数字で見る会社 -->
+<section class="numbers-section">
+  <div class="container">
+    <h2 class="section-title"><span>数字</span>で見るイマムラ興業</h2>
+    <div class="numbers-grid">
+      <div class="num-card">
+        <div class="num-val">17<span class="num-unit">名</span></div>
+        <div class="num-label">従業員数</div>
+        <span class="num-note">※ここはサンプルです。実際の数字に差し替えます</span>
+      </div>
+      <div class="num-card">
+        <div class="num-val">〇<span class="num-unit">年</span></div>
+        <div class="num-label">創業年数</div>
+        <span class="num-note">※ここはサンプルです。実際の数字に差し替えます</span>
+      </div>
+      <div class="num-card">
+        <div class="num-val">〇<span class="num-unit">件</span></div>
+        <div class="num-label">年間施工実績</div>
+        <span class="num-note">※ここはサンプルです。実際の数字に差し替えます</span>
+      </div>
+      <div class="num-card">
+        <div class="num-val">〇<span class="num-unit">割</span></div>
+        <div class="num-label">20〜30代比率</div>
+        <span class="num-note">※ここはサンプルです。実際の数字に差し替えます</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 働く魅力 -->
+<section class="appeal-section" id="appeal">
+  <div class="container">
+    <h2 class="section-title dark">働く<span>魅力</span></h2>
+
+    <div class="appeal-row">
+      <div class="appeal-img">
+        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=640&h=380&fit=crop&q=80" alt="公共工事の現場">
+      </div>
+      <div class="appeal-text">
+        <span class="tag">社会貢献</span>
+        <h3>空港も道路も水道も、あなたが作る</h3>
+        <p>公共インフラ工事は「作ったものが残る仕事」です。空港の整備、道路の補修、上下水道の更新——千葉県内で毎日使われているインフラの多くに、イマムラ興業の手が入っています。完成したものが実際に使われているのを見る瞬間が、この仕事の最大のやりがいです。</p>
+        <span class="s-note-dark">※ここはサンプルです。実際には御社の強みに差し替えます</span>
+      </div>
+    </div>
+
+    <div class="appeal-row reverse">
+      <div class="appeal-img">
+        <img src="https://images.unsplash.com/photo-1474302770737-173ee21bab63?w=640&h=380&fit=crop&q=80" alt="空港整備の現場">
+      </div>
+      <div class="appeal-text">
+        <span class="tag">キャリアアップ</span>
+        <h3>資格取得で、3年後の自分が変わる</h3>
+        <p>土木施工管理技士・重機免許など各種資格の取得を会社が費用・勉強時間の面から全力支援。資格を取るたびに担当できる仕事が増え、給与も上がります。未経験入社で3〜5年後に重機オペレーターになった先輩も複数います。</p>
+        <span class="s-note-dark">※ここはサンプルです。実際には御社の制度に差し替えます</span>
+      </div>
+    </div>
+
+    <div class="appeal-row">
+      <div class="appeal-img">
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=640&h=380&fit=crop&q=80" alt="チームの現場">
+      </div>
+      <div class="appeal-text">
+        <span class="tag">職場環境</span>
+        <h3>17名のフラットなチームで、毎日が学べる</h3>
+        <p>若手中心（20〜30代が中心）の職場で、先輩が隣で丁寧に教えてくれます。「土木は怖い・体育会系」というイメージとは違い、質問しやすい雰囲気があります。17名という規模だから、一人ひとりの成長がしっかり見えます。</p>
+        <span class="s-note-dark">※ここはサンプルです。実際には御社の環境に差し替えます</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 中盤CTA -->
+<section class="mid-cta">
+  <h2>まずは3案のサイトを見ていただくだけで大丈夫です</h2>
+  <p>気になる点があれば、お気軽にお問い合わせください。</p>
+  <a class="btn-dark" href="#entry">お問い合わせ・応募する</a>
+</section>
+
+<!-- 募集要項 -->
+<section class="bg-gray" id="req">
+  <div class="container">
+    <h2 class="section-title dark">募集<span>要項</span></h2>
+    <table class="req-table">
+      <tbody>
+        <tr>
+          <th>職種</th>
+          <td>土木作業員<span class="s-note-dark">※ここはサンプルです。実際の職種名に差し替えます</span></td>
+        </tr>
+        <tr>
+          <th>仕事内容</th>
+          <td>千葉県内の公共工事（道路・空港整備・上下水道等）における土木作業全般<span class="s-note-dark">※ここはサンプルです。実際の業務内容に差し替えます</span></td>
+        </tr>
+        <tr>
+          <th>雇用形態</th>
+          <td>正社員（試用期間あり）<span class="s-note-dark">※ここはサンプルです。実際の雇用形態に差し替えます</span></td>
+        </tr>
+        <tr>
+          <th>給与</th>
+          <td>月給 〇〇万円〜 ／ 日給 〇〇,〇〇〇円〜（経験・能力を考慮）<span class="s-note-dark">※ここはサンプルです。実際の給与に差し替えます</span></td>
+        </tr>
+        <tr>
+          <th>勤務時間</th>
+          <td>8:00〜17:00（実働8時間）<span class="s-note-dark">※ここはサンプルです。実際の勤務時間に差し替えます</span></td>
+        </tr>
+        <tr>
+          <th>休日・休暇</th>
+          <td>日曜・祝日・第2土曜（年間休日〇日）<span class="s-note-dark">※ここはサンプルです。実際の休日に差し替えます</span></td>
+        </tr>
+        <tr>
+          <th>待遇・福利厚生</th>
+          <td>各種保険完備・資格取得支援・交通費支給・制服貸与<span class="s-note-dark">※ここはサンプルです。実際の待遇に差し替えます</span></td>
+        </tr>
+        <tr>
+          <th>応募資格</th>
+          <td>学歴・経験不問。インフラを作る仕事に興味のある方歓迎<span class="s-note-dark">※ここはサンプルです。実際の応募資格に差し替えます</span></td>
+        </tr>
+        <tr>
+          <th>勤務地</th>
+          <td>千葉県八千代市ほか（千葉県内各地の公共工事現場）<span class="s-note-dark">※ここはサンプルです。実際の所在地に差し替えます</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section class="bg-dark">
+  <div class="container">
+    <h2 class="section-title"><span>1日の</span>流れ</h2>
+    <p style="text-align:center;font-size:.76rem;color:#666;margin-bottom:2.2rem;">※以下はサンプルです。実際には御社社員の1日に差し替えます</p>
+    <div class="timeline-wrap">
+      <div class="tl-item">
+        <div class="tl-time">7:30</div>
+        <div class="tl-col"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+        <div class="tl-body"><strong>朝礼・安全確認</strong><span>当日の作業・安全事項をチーム全員で確認</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">8:00</div>
+        <div class="tl-col"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+        <div class="tl-body"><strong>現場移動・作業開始</strong><span>車で現場へ移動し担当区画の作業に着手</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">10:00</div>
+        <div class="tl-col"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+        <div class="tl-body"><strong>小休憩（10分）</strong><span>水分補給と進捗確認</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:00</div>
+        <div class="tl-col"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+        <div class="tl-body"><strong>昼休み（1時間）</strong><span>現場付近で昼食。先輩との雑談タイムでもある</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-col"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+        <div class="tl-body"><strong>午後の作業</strong><span>仕上げ・検査準備など、完成に向けて進める</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">15:00</div>
+        <div class="tl-col"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+        <div class="tl-body"><strong>小休憩（10分）</strong><span>最終調整と残り作業の確認</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:00</div>
+        <div class="tl-col"><div class="tl-dot"></div><div class="tl-bar"></div></div>
+        <div class="tl-body"><strong>作業終了・後片付け</strong><span>道具整理・現場安全確認</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:30</div>
+        <div class="tl-col"><div class="tl-dot"></div></div>
+        <div class="tl-body"><strong>帰社・日報記入</strong><span>作業進捗報告して終業。残業少なく、プライベートも確保</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 社員インタビュー -->
+<section class="interview-section" id="interview">
+  <div class="container">
+    <h2 class="section-title dark">社員<span>インタビュー</span></h2>
+    <div class="interview-grid">
+      <div class="interview-card">
+        <!-- 社員写真：御社スタッフ写真に差し替えてください -->
+        <div class="interview-img">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=640&h=540&fit=crop&crop=faces&q=80" alt="社員インタビュー">
+        </div>
+        <div class="interview-body">
+          <div class="interview-name">山田 太郎（仮名）</div>
+          <div class="interview-role">土木作業員 / 入社3年目</div>
+          <div class="interview-q">入社の決め手は？</div>
+          <div class="interview-a">「若い人が多い」と聞いて、相談しやすそうだと感じました。実際に入ってみて正解でした。空港整備の現場を担当したとき、作ったものが毎日使われているのを見て、この仕事の大きさを実感しました。</div>
+          <span class="s-note-dark">※ここはサンプルです。実際には御社スタッフのインタビューに差し替えます</span>
+        </div>
+      </div>
+      <div class="interview-card">
+        <!-- 社員写真：御社スタッフ写真に差し替えてください -->
+        <div class="interview-img">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=640&h=540&fit=crop&crop=faces&q=80" alt="社員インタビュー">
+        </div>
+        <div class="interview-body">
+          <div class="interview-name">鈴木 健（仮名）</div>
+          <div class="interview-role">重機オペレーター / 入社5年目</div>
+          <div class="interview-q">仕事で嬉しかったことは？</div>
+          <div class="interview-a">2年目に重機免許を取得し、今はオペレーターを担当しています。資格を取るたびに仕事の幅が広がるのが楽しいですね。チームで完成させた達成感は何度経験しても格別です。</div>
+          <span class="s-note-dark">※ここはサンプルです。実際には御社スタッフのインタビューに差し替えます</span>
+        </div>
+      </div>
+      <div class="interview-card">
+        <!-- 社員写真：御社スタッフ写真に差し替えてください -->
+        <div class="interview-img">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=640&h=540&fit=crop&crop=faces&q=80" alt="社員インタビュー">
+        </div>
+        <div class="interview-body">
+          <div class="interview-name">田中 亮（仮名）</div>
+          <div class="interview-role">土木作業員 / 入社1年目</div>
+          <div class="interview-q">不安はありましたか？</div>
+          <div class="interview-a">「土木はきつそう」というイメージがあって最初は不安でした。でも、実際は安全管理がしっかりしていて、先輩も丁寧に教えてくれます。思っていたよりずっと働きやすい環境です。</div>
+          <span class="s-note-dark">※ここはサンプルです。実際には御社スタッフのインタビューに差し替えます</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="container">
+    <h2 class="section-title"><span>よくある</span>質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">未経験でも応募できますか？</div>
+        <div class="faq-a">はい、歓迎しています。先輩が基本から丁寧に指導します。入社後に実務を通じてスキルを身につけていただけます。<span class="s-note">※ここはサンプルです。実際には御社の内容に差し替えます</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">資格がないと働けませんか？</div>
+        <div class="faq-a">入社時の資格は不問です。各種資格の取得を入社後に会社が支援します。資格は給与アップに直結します。<span class="s-note">※ここはサンプルです。実際には御社の内容に差し替えます</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">体力に自信がないと難しいですか？</div>
+        <div class="faq-a">慣れるまでの段階に合わせて仕事を任せています。安全管理を徹底しているので無理なく始められます。<span class="s-note">※ここはサンプルです。実際には御社の内容に差し替えます</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">キャリアアップはできますか？</div>
+        <div class="faq-a">資格取得支援制度があり、重機オペレーターや施工管理へのステップアップが可能です。<span class="s-note">※ここはサンプルです。実際には御社の内容に差し替えます</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">選考の流れを教えてください。</div>
+        <div class="faq-a">①お問い合わせ → ②面接（1〜2回） → ③採用通知という流れを予定しています。まずお気軽にご連絡ください。<span class="s-note">※ここはサンプルです。実際には御社の選考フローに差し替えます</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 最終CTA -->
+<section class="final-cta" id="entry">
+  <h2>インフラを作る仕事を、一緒にやりませんか。</h2>
+  <p>土木の仕事に興味がある方、チームで働くのが好きな方をお待ちしています。<br>面接前の見学・ご質問もお気軽にどうぞ。</p>
+  <a class="btn-dark" href="mailto:">お問い合わせ・応募する</a>
+</section>
+
+<footer>
+  <strong>株式会社イマムラ興業</strong>
+  〒〇〇〇-〇〇〇〇 千葉県八千代市〇〇〇〇<br>
+  TEL: 〇〇〇-〇〇〇〇-〇〇〇〇　E-mail: 〇〇〇@〇〇〇.co.jp
+</footer>
+
+<!-- スマホ固定バー -->
+<div class="fixed-bar">
+  <a href="#entry">今すぐ応募・お問い合わせ ▶</a>
+</div>
+
+<script>
+  (function(){
+    var btn = document.querySelector('.hamburger');
+    var nav = document.querySelector('.site-nav');
+    if(btn && nav){
+      btn.addEventListener('click', function(){
+        var open = nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open);
+      });
+    }
+  })();
+</script>
+</body>
+</html>

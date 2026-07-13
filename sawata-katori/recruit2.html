@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>採用情報 | 株式会社さわた</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;color:#1e1e2e;background:#f5f7ff;line-height:1.75;}
+img{max-width:100%;height:auto;display:block;}
+a{color:inherit;text-decoration:none;}
+
+:root{
+  --blue:#0a3060;
+  --orange:#e07a30;
+  --orange-light:#fff0e6;
+  --bg:#f5f7ff;
+  --text:#2b2b3b;
+  --muted:#7a7a8a;
+  --border:#dde0f0;
+}
+
+/* ===== Header ===== */
+.site-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 1.4rem;background:#fff;border-bottom:2px solid var(--orange);
+  position:sticky;top:0;z-index:100;
+}
+.brand{font-size:1rem;font-weight:900;color:var(--blue);}
+.site-nav{display:flex;gap:1.4rem;align-items:center;}
+.site-nav a{color:var(--text);font-size:.85rem;font-weight:500;}
+.site-nav a:hover{color:var(--orange);}
+.site-nav .nav-cta{background:var(--orange);color:#fff;padding:.4rem 1.2rem;border-radius:3px;font-weight:700;}
+.hamburger{display:none;background:none;border:0;font-size:1.7rem;line-height:1;cursor:pointer;color:var(--blue);}
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:#fff;box-shadow:0 8px 16px rgba(0,0,0,.1);padding:.5rem 1.2rem;border-top:1px solid var(--border);}
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.85rem 0;border-bottom:1px solid var(--border);}
+  .site-nav .nav-cta{margin:.6rem 0;text-align:center;border-radius:3px;}
+}
+
+/* ===== Hero LP ===== */
+.hero{position:relative;min-height:75vh;display:flex;align-items:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1553413077-190dd305871c?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(120deg,rgba(10,48,96,.82) 40%,rgba(10,48,96,.5));}
+.hero-content{position:relative;z-index:2;max-width:780px;padding:3rem 2rem;color:#fff;}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--orange);color:#fff;font-size:.8rem;font-weight:700;padding:.35rem 1rem;border-radius:3px;margin-bottom:1.4rem;}
+.hero h1{font-size:clamp(2rem,5.5vw,3.6rem);font-weight:900;line-height:1.2;margin-bottom:1.2rem;}
+.hero h1 em{color:var(--orange);font-style:normal;}
+.hero p{font-size:clamp(.95rem,2.2vw,1.1rem);line-height:1.85;margin-bottom:2.2rem;opacity:.9;}
+.btn-orange{display:inline-block;background:var(--orange);color:#fff;font-weight:700;padding:1rem 2.6rem;border-radius:3px;font-size:1.05rem;transition:opacity .2s;}
+.btn-orange:hover{opacity:.85;}
+.btn-outline{display:inline-block;border:2px solid #fff;color:#fff;font-weight:700;padding:.9rem 2rem;border-radius:3px;font-size:1rem;margin-left:1rem;}
+@media(max-width:600px){.btn-outline{display:none;}}
+
+/* ===== Numbers bar ===== */
+.numbers-bar{background:var(--blue);padding:2.5rem 1.2rem;}
+.numbers-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-around;flex-wrap:wrap;gap:1.4rem;}
+.num-item{text-align:center;color:#fff;}
+.num-value{font-size:clamp(2rem,5vw,3rem);font-weight:900;color:var(--orange);}
+.num-label{font-size:.8rem;opacity:.78;margin-top:.3rem;}
+.num-note{font-size:.7rem;color:var(--orange);display:block;margin-top:.1rem;}
+.sample-note{font-size:.72rem;color:rgba(255,255,255,.5);font-style:italic;margin-top:.3rem;}
+
+/* ===== Section ===== */
+section{padding:4.5rem 1.2rem;}
+.section-inner{max-width:900px;margin:0 auto;}
+.sec-eyebrow{font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;color:var(--orange);font-weight:700;margin-bottom:.5rem;}
+.sec-title{font-size:clamp(1.4rem,4vw,2rem);font-weight:900;color:var(--blue);margin-bottom:.5rem;}
+.sec-sub{font-size:.9rem;color:var(--muted);margin-bottom:2.5rem;}
+
+/* ===== Benefits ===== */
+.benefits{background:#fff;}
+.benefit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;}
+.benefit-card{position:relative;border:1px solid var(--border);border-radius:8px;padding:1.8rem 1.4rem 1.4rem;background:var(--bg);overflow:hidden;}
+.benefit-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--orange);}
+.benefit-num{font-size:2.5rem;font-weight:900;color:var(--orange);opacity:.15;position:absolute;top:.5rem;right:.8rem;line-height:1;}
+.benefit-card h3{font-size:1rem;font-weight:700;color:var(--blue);margin-bottom:.6rem;margin-top:.3rem;}
+.benefit-card p{font-size:.88rem;line-height:1.8;color:var(--text);}
+@media(max-width:768px){.benefit-grid{grid-template-columns:1fr;}}
+
+/* ===== Interview ===== */
+.interview-section{background:var(--bg);}
+.interview-card{display:grid;grid-template-columns:140px 1fr;gap:2rem;align-items:start;background:#fff;border:1px solid var(--border);border-radius:8px;padding:2rem;margin-bottom:1.4rem;}
+.interview-card img{width:140px;height:160px;object-fit:cover;border-radius:6px;}
+.interview-name{font-weight:700;color:var(--blue);font-size:1rem;}
+.interview-meta{font-size:.78rem;color:var(--muted);margin-bottom:.7rem;}
+.interview-q{font-weight:700;font-size:.88rem;color:var(--orange);margin-bottom:.3rem;}
+.interview-a{font-size:.9rem;line-height:1.8;margin-bottom:.9rem;color:var(--text);}
+.sample-note-inline{font-size:.74rem;color:var(--muted);font-style:italic;}
+@media(max-width:600px){
+  .interview-card{grid-template-columns:1fr;}
+  .interview-card img{width:100%;height:200px;}
+}
+
+/* ===== CTA Mid ===== */
+.cta-mid{background:var(--orange);padding:3.5rem 1.2rem;text-align:center;}
+.cta-mid h2{font-size:clamp(1.3rem,3.5vw,1.8rem);font-weight:900;color:#fff;margin-bottom:.7rem;}
+.cta-mid p{color:rgba(255,255,255,.88);font-size:.95rem;margin-bottom:2rem;}
+.btn-white{display:inline-block;background:#fff;color:var(--orange);font-weight:700;padding:.95rem 2.6rem;border-radius:3px;font-size:1.05rem;}
+
+/* ===== Timeline ===== */
+.timeline-section{background:#fff;}
+.timeline{position:relative;padding-left:120px;}
+.timeline::before{content:'';position:absolute;left:102.5px;top:8px;bottom:8px;width:3px;background:#dde0f0;}
+.timeline-item{position:relative;margin-bottom:2rem;}
+.timeline-time{position:absolute;left:-120px;top:5px;width:88px;text-align:right;font-size:.82rem;font-weight:700;color:var(--blue);}
+.timeline-dot{position:absolute;left:-24px;top:6px;width:16px;height:16px;border-radius:50%;background:var(--orange);border:3px solid #fff;box-shadow:0 0 0 2px var(--orange);}
+.timeline-body{background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:1rem 1.2rem;}
+.timeline-body h4{font-size:.95rem;font-weight:700;color:var(--blue);margin-bottom:.3rem;}
+.timeline-body p{font-size:.87rem;color:var(--muted);}
+.sample-note{font-size:.75rem;color:var(--muted);font-style:italic;margin-top:.4rem;}
+@media(max-width:768px){
+  .timeline{padding-left:98px;}
+  .timeline::before{left:80.5px;}
+  .timeline-time{left:-98px;width:66px;}
+  .timeline-dot{left:-24px;}
+}
+
+/* ===== FAQ ===== */
+.faq-section{background:var(--bg);}
+.faq-item{background:#fff;border:1px solid var(--border);border-radius:6px;margin-bottom:1rem;overflow:hidden;}
+.faq-q{display:flex;align-items:flex-start;gap:.8rem;padding:1.1rem 1.3rem;font-weight:700;font-size:.95rem;color:var(--blue);cursor:default;}
+.faq-q::before{content:'Q';background:var(--orange);color:#fff;font-weight:700;font-size:.8rem;border-radius:3px;padding:.15rem .55rem;flex-shrink:0;margin-top:.1rem;}
+.faq-a{display:flex;align-items:flex-start;gap:.8rem;padding:.2rem 1.3rem 1.1rem;font-size:.9rem;line-height:1.75;color:var(--text);}
+.faq-a::before{content:'A';background:var(--blue);color:#fff;font-weight:700;font-size:.8rem;border-radius:3px;padding:.15rem .55rem;flex-shrink:0;margin-top:.05rem;}
+
+/* ===== Requirements ===== */
+.req-section{background:#fff;}
+.req-table{width:100%;border-collapse:collapse;}
+.req-table th,.req-table td{padding:.9rem 1.1rem;border:1px solid var(--border);text-align:left;font-size:.9rem;vertical-align:top;}
+.req-table th{background:var(--blue);color:#fff;width:30%;font-weight:500;}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{background:#eef0f8;color:var(--blue);padding:.5rem .8rem;}
+  .req-table td{padding:.5rem .8rem 1rem;}
+}
+
+/* ===== CTA Final ===== */
+.cta-final{background:var(--blue);text-align:center;padding:5rem 1.2rem;}
+.cta-final h2{font-size:clamp(1.4rem,4vw,2rem);font-weight:900;color:#fff;margin-bottom:1rem;}
+.cta-final p{color:rgba(255,255,255,.82);margin-bottom:2.2rem;font-size:.95rem;}
+
+/* ===== Fixed CTA Bar (mobile) ===== */
+.fixed-cta-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;
+  background:var(--orange);padding:.85rem 1.2rem;text-align:center;}
+.fixed-cta-bar a{color:#fff;font-weight:700;font-size:1rem;letter-spacing:.05em;}
+@media(max-width:768px){.fixed-cta-bar{display:block;}body{padding-bottom:58px;}}
+
+/* ===== Footer ===== */
+footer{background:#071830;color:rgba(255,255,255,.7);text-align:center;padding:2.5rem 1.2rem;font-size:.83rem;line-height:2;}
+</style>
+</head>
+<body>
+
+<header class="site-header" id="top">
+  <a class="brand" href="#top">株式会社さわた</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#benefits">魅力</a>
+    <a href="#interview">先輩の声</a>
+    <a href="#timeline">1日の流れ</a>
+    <a href="#faq">FAQ</a>
+    <a href="#req">募集要項</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<!-- Hero LP -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">✈ 正社員 / 配送ドライバー 募集中</div>
+    <h1>空港と都市を<br>つなぐ<em>誇りの仕事</em>。</h1>
+    <p>株式会社さわたは創業昭和60年。羽田・成田空港への機内食配送を担う<br>歴史と実績のある会社です。あなたの「走る力」が、空の旅を支えています。</p>
+    <a href="#entry" class="btn-orange">まずは求人内容を確認する</a>
+    <a href="#interview" class="btn-outline">先輩の声を読む</a>
+  </div>
+</section>
+
+<!-- Numbers -->
+<div class="numbers-bar">
+  <div class="numbers-inner">
+    <div class="num-item">
+      <div class="num-value">40<span style="font-size:1.5rem">年</span></div>
+      <div class="num-label">創業からの歴史</div>
+      <span class="num-note">昭和60年設立</span>
+      <span class="sample-note">※サンプル数値</span>
+    </div>
+    <div class="num-item">
+      <div class="num-value">140<span style="font-size:1.5rem">名</span></div>
+      <div class="num-label">就業場所スタッフ数</div>
+      <span class="num-note">うち女性118名活躍中</span>
+      <span class="sample-note">※求人票記載値</span>
+    </div>
+    <div class="num-item">
+      <div class="num-value">30〜<span style="font-size:1.5rem">40万</span></div>
+      <div class="num-label">月給（正社員）</div>
+      <span class="num-note">＋家族手当・通勤手当</span>
+      <span class="sample-note">※求人票記載値</span>
+    </div>
+    <div class="num-item">
+      <div class="num-value">108<span style="font-size:1.5rem">日</span></div>
+      <div class="num-label">年間休日</div>
+      <span class="num-note">月8〜9日休み</span>
+      <span class="sample-note">※求人票記載値</span>
+    </div>
+  </div>
+</div>
+
+<!-- Benefits -->
+<section class="benefits" id="benefits">
+  <div class="section-inner">
+    <p class="sec-eyebrow">Why Sawata</p>
+    <h2 class="sec-title">さわたを選ぶ3つの理由</h2>
+    <p class="sec-sub">毎日の運転に「意味」と「報酬」が両立している仕事です。</p>
+    <div class="benefit-grid">
+      <div class="benefit-card">
+        <div class="benefit-num">01</div>
+        <h3>配送先が「特別な場所」</h3>
+        <p>羽田・成田空港の機内食配送に加え、明治神宮・都内大手ホテルへも納品。普通の運送会社とは違う誇りを感じられる職場です。</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-num">02</div>
+        <h3>月給30〜40万＋手厚い手当</h3>
+        <p>基本給にプラスして子ども1人2万円の家族手当、上限なしの通勤手当。社会保険も完備で、安心して長く続けられる待遇です。</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-num">03</div>
+        <h3>ルート定番・生活リズムが安定</h3>
+        <p>担当ルートは事前にお知らせするため、生活設計が立てやすい。先輩と一緒に走る研修期間で、初めての方もスムーズに慣れます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Interview -->
+<section class="interview-section" id="interview">
+  <div class="section-inner">
+    <p class="sec-eyebrow">Voices</p>
+    <h2 class="sec-title">先輩スタッフに聞きました</h2>
+    <p class="sec-sub" style="margin-bottom:.5rem;">※ここはサンプルです。実際には御社のスタッフの写真・コメントに差し替えます。</p>
+    <!-- サンプル先輩インタビュー: 実際の社員情報に差し替えてください -->
+    <div class="interview-card">
+      <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=640&h=700&fit=crop&crop=faces&q=80" alt="先輩スタッフ 田中さん">
+      <div>
+        <p class="interview-name">田中 健司（仮名）</p>
+        <p class="interview-meta">配送ドライバー / 入社3年目 / 前職：一般ドライバー</p>
+        <p class="interview-q">入社のきっかけは？</p>
+        <p class="interview-a">「空港」という非日常の場所に関われる仕事に惹かれました。配送先が明治神宮や有名ホテルと聞いて「かっこいいな」と（笑）。実際に働いてみると、担当先のスタッフさんに顔を覚えてもらえて、声をかけてもらえるのが一番の励みです。</p>
+        <p class="interview-q">働いていて大変だったことは？</p>
+        <p class="interview-a">最初は朝が早くて体が慣れるまで少し大変でした。でも先輩が「1週間もすれば体が覚える」と言った通りで、今はむしろ早起きが気持ちいいくらいです。ルートが同じなので道は迷いません。</p>
+        <p class="sample-note-inline">※このコメントはサンプルです。実際のスタッフのインタビューに差し替えます。</p>
+      </div>
+    </div>
+    <div class="interview-card">
+      <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=640&h=700&fit=crop&crop=faces&q=80" alt="先輩スタッフ 佐藤さん">
+      <div>
+        <p class="interview-name">佐藤 奈緒（仮名）</p>
+        <p class="interview-meta">配送サポート担当 / 入社5年目 / ドライバー職から転換</p>
+        <p class="interview-q">女性でも働きやすいですか？</p>
+        <p class="interview-a">就業場所の女性スタッフは118名います。力仕事と思われがちですが、サポート・管理業務も多く、実際に長く続けている女性が多いのが証拠だと思います。育児休業の取得実績もあるので、ライフイベントへの理解があります。</p>
+        <p class="interview-q">この会社ならではの良さを教えてください。</p>
+        <p class="interview-a">慰安旅行とお誕生日会があって、「人を大事にしている」という雰囲気が本当にある職場です。定年がないので長く働けますし、安心して将来を考えられます。</p>
+        <p class="sample-note-inline">※このコメントはサンプルです。実際のスタッフのインタビューに差し替えます。</p>
+      </div>
+    </div>
+    <div class="interview-card">
+      <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=640&h=700&fit=crop&crop=faces&q=80" alt="先輩スタッフ 山本さん">
+      <div>
+        <p class="interview-name">山本 拓也（仮名）</p>
+        <p class="interview-meta">配送ドライバー / 入社2年目 / 未経験からスタート</p>
+        <p class="interview-q">未経験でも仕事を覚えられますか？</p>
+        <p class="interview-a">最初は先輩の横に乗って一緒に回りました。ルートは決まっているので「毎日新しい道を覚えなくていい」という安心感が大きかったです。2週間ほどで一人で動けるようになりました。</p>
+        <p class="interview-q">就業時間の変動はどう対応していますか？</p>
+        <p class="interview-a">前日に翌日のルートを確認できるので、起床時間の目安が立てやすいです。早い日は早く終わるし、遅めのルートの日はゆっくり出られます。意外と生活リズムは整っています。</p>
+        <p class="sample-note-inline">※このコメントはサンプルです。実際のスタッフのインタビューに差し替えます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Mid -->
+<div class="cta-mid">
+  <h2>まずは3案のページをご覧になるだけで大丈夫です</h2>
+  <p>ご質問はLINE・メール・お電話など、ご都合のよい方法でお気軽にどうぞ。</p>
+  <a href="#entry" class="btn-white">応募・お問い合わせはこちら</a>
+</div>
+
+<!-- Timeline -->
+<section class="timeline-section" id="timeline">
+  <div class="section-inner">
+    <p class="sec-eyebrow">A Day</p>
+    <h2 class="sec-title">1日の流れ（配送ドライバー・早便ルート例）</h2>
+    <p class="sec-sub" style="margin-bottom:1.5rem;">※ここはサンプルです。実際には御社のドライバーの1日に差し替えます。</p>
+    <!-- サンプルタイムライン -->
+    <div class="timeline">
+      <div class="timeline-item">
+        <span class="timeline-time">05:00</span>
+        <span class="timeline-dot"></span>
+        <div class="timeline-body">
+          <h4>出勤・積み込み確認</h4>
+          <p>保冷車に当日分の機内食を積み込み、数量・積み付けを確認します。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-time">06:00</span>
+        <span class="timeline-dot"></span>
+        <div class="timeline-body">
+          <h4>出発</h4>
+          <p>渋滞が少ない時間帯に出発。快適なドライブで目的地へ。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-time">07:30</span>
+        <span class="timeline-dot"></span>
+        <div class="timeline-body">
+          <h4>成田空港・各社への納品</h4>
+          <p>ハンドリング会社の担当者へ丁寧に引き渡し。顔なじみが増える楽しい時間です。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-time">10:00</span>
+        <span class="timeline-dot"></span>
+        <div class="timeline-body">
+          <h4>都内ホテルへ納品</h4>
+          <p>格式ある納品先でのやり取りが、仕事の誇りを実感させてくれます。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-time">12:30</span>
+        <span class="timeline-dot"></span>
+        <div class="timeline-body">
+          <h4>帰社・点呼・車両整備</h4>
+          <p>無事に戻ったらチームに報告、車をきれいに戻します。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <span class="timeline-time">13:30</span>
+        <span class="timeline-dot"></span>
+        <div class="timeline-body">
+          <h4>翌日確認・退勤</h4>
+          <p>翌日ルートをチェックして退勤。早番の日はしっかり午後を楽しめます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="section-inner">
+    <p class="sec-eyebrow">FAQ</p>
+    <h2 class="sec-title">よくある質問</h2>
+    <p class="sec-sub" style="margin-bottom:1.5rem;">※ここはサンプルです。実際には御社のよくある質問に差し替えます。</p>
+    <!-- サンプルFAQ -->
+    <div class="faq-item">
+      <div class="faq-q">準中型免許が必要と書いてありますが、普通免許（AT限定なし）でも応募できますか？</div>
+      <div class="faq-a">はい。普通自動車免許をお持ちの方（平成19年6月1日以前取得・AT限定不可）もご応募いただけます。詳しくは求人票または採用担当までご確認ください。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">就業時間がルートで変動するのは大変ではないですか？</div>
+      <div class="faq-a">翌日のルートは前日にお知らせしているため、朝の起床時間が事前に把握できます。ルート自体は固定されているので、慣れれば生活リズムが整いやすくなります。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">配送の経験がまったくありません。採用してもらえますか？</div>
+      <div class="faq-a">経験不問で募集しています。入社後は先輩と一緒に配送ルートを回る研修期間があり、一人立ちできるまでサポートします。免許さえお持ちであれば、未経験の方も歓迎です。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">子どもがいますが、家族手当は何人分もらえますか？</div>
+      <div class="faq-a">子ども1人につき月20,000円の家族手当があります。お子さんの人数に応じて支給されますので、詳しくは採用担当へお気軽にお問い合わせください。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">試用期間の2ヶ月間、給与や待遇は変わりますか？</div>
+      <div class="faq-a">試用期間中も給与・社会保険などの待遇は本採用と同条件です。2ヶ月後に正式採用となります。</div>
+    </div>
+  </div>
+</section>
+
+<!-- Requirements -->
+<section class="req-section" id="req">
+  <div class="section-inner">
+    <p class="sec-eyebrow">Requirements</p>
+    <h2 class="sec-title">募集要項</h2>
+    <table class="req-table">
+      <tbody>
+        <tr><th>職種</th><td>配送業務（2t保冷車・機内食）正社員</td></tr>
+        <tr><th>給与</th><td>月給 300,000円〜400,000円（月平均労働日数：21.4日）</td></tr>
+        <tr><th>就業時間</th><td>シフト制 / 5:00〜18:00の間・8時間勤務<br>月平均時間外20時間</td></tr>
+        <tr><th>休日</th><td>年間108日（月8〜9日休み・シフト制）<br>6ヶ月後に有給10日付与</td></tr>
+        <tr><th>必要免許</th><td>準中型自動車免許 または 普通免許（H19.6.1以前・AT限定不可）</td></tr>
+        <tr><th>試用期間</th><td>2ヶ月（同条件）</td></tr>
+        <tr><th>手当</th><td>家族手当（子ども1人2万円）・通勤手当（実費・上限なし）</td></tr>
+        <tr><th>保険</th><td>雇用保険・労災保険・健康保険・厚生年金</td></tr>
+        <tr><th>勤務地</th><td>千葉県香取市山之辺1461-5（本社工場）</td></tr>
+        <tr><th>選考方法</th><td>書類選考 → 面接（予定2回）</td></tr>
+        <tr><th>応募方法</th><td>お電話でご連絡のうえ、履歴書＋ハローワーク紹介状を郵送</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CTA Final -->
+<section class="cta-final" id="entry">
+  <h2>気になったら、まずは連絡してみてください</h2>
+  <p>「詳しく聞いてみたい」「見学できますか？」というご質問も大歓迎です。<br>採用担当がわかりやすくお答えします。</p>
+  <a href="tel:0478524123" class="btn-orange" style="margin-bottom:1rem;display:inline-block;">📞 0478-52-4123 に電話する</a><br>
+  <span style="color:rgba(255,255,255,.6);font-size:.85rem;">受付時間：平日9:00〜17:00（昼12:00〜13:00も受付可）</span>
+</section>
+
+<footer>
+  <p>株式会社さわた</p>
+  <p>〒287-0042 千葉県香取市山之辺1461-5</p>
+  <p>TEL: 0478-52-4123　E-mail: sawata@choshinet.or.jp</p>
+</footer>
+
+<!-- Fixed CTA Bar (mobile) -->
+<div class="fixed-cta-bar">
+  <a href="tel:0478524123">📞 タップして電話する（採用担当）</a>
+</div>
+
+<script>
+(function(){
+  var btn = document.querySelector('.hamburger');
+  var nav = document.querySelector('.site-nav');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  }
+})();
+</script>
+</body>
+</html>
