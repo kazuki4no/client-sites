@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 中村工業</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Hiragino Sans','Meiryo',sans-serif;color:#1a1a2e;line-height:1.7;background:#fff;padding-bottom:70px;}
+
+/* ===== Header ===== */
+.site-header{display:flex;align-items:center;justify-content:space-between;padding:.7rem 1.5rem;background:#1b3a5c;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.2);}
+.brand{color:#fff;font-size:1rem;font-weight:700;text-decoration:none;}
+.site-nav{display:flex;gap:1.2rem;align-items:center;}
+.site-nav a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.85rem;transition:color .2s;}
+.site-nav a:hover{color:#fff;}
+.nav-cta{background:#f5a800;color:#1b3a5c!important;padding:.35rem .85rem;border-radius:4px;font-weight:800;}
+.nav-cta:hover{background:#e09800!important;}
+.hamburger{display:none;background:none;border:0;font-size:1.7rem;color:#fff;cursor:pointer;line-height:1;}
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;position:absolute;top:100%;left:0;right:0;z-index:50;background:#1b3a5c;padding:.4rem 1.5rem;}
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.72rem 0;border-bottom:1px solid rgba(255,255,255,.15);}
+  .nav-cta{border-radius:0;text-align:center;}
+}
+
+/* ===== Hero LP ===== */
+.hero{background:linear-gradient(135deg,#1b3a5c 0%,#0d2440 100%);color:#fff;padding:4.5rem 1.5rem 3.5rem;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&h=900&fit=crop&q=80') center/cover;opacity:.15;}
+.hero-inner{position:relative;}
+.hero-badge{display:inline-block;background:#f5a800;color:#1b3a5c;font-size:.75rem;font-weight:800;padding:.28rem .85rem;border-radius:20px;letter-spacing:.1em;margin-bottom:1.2rem;}
+.hero h1{font-size:clamp(1.8rem,6vw,3.2rem);font-weight:900;line-height:1.2;margin-bottom:1.1rem;}
+.hero h1 span{color:#f5a800;}
+.hero-lead{font-size:1rem;opacity:.85;max-width:520px;margin:0 auto 1.5rem;}
+.hero-pills{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin-bottom:2rem;}
+.pill{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.25);padding:.25rem .7rem;border-radius:20px;font-size:.75rem;}
+.hero-cta-wrap{display:flex;flex-direction:column;align-items:center;gap:.6rem;}
+.btn-hero{display:inline-block;background:#f5a800;color:#1b3a5c;padding:1rem 2.5rem;border-radius:6px;font-weight:900;font-size:1.1rem;text-decoration:none;transition:background .2s;letter-spacing:.03em;}
+.btn-hero:hover{background:#e09800;}
+.hero-note{font-size:.75rem;opacity:.65;}
+
+/* ===== Stats ===== */
+.stats-bar{background:#f5a800;color:#1b3a5c;padding:1.5rem 1.5rem;}
+.stats-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-around;flex-wrap:wrap;gap:1rem;}
+.stat-item{text-align:center;}
+.stat-num{font-size:clamp(1.4rem,4vw,2rem);font-weight:900;line-height:1;}
+.stat-label{font-size:.75rem;font-weight:700;opacity:.75;margin-top:.2rem;}
+span.sample-note-stat{font-size:.65rem;display:block;opacity:.6;margin-top:.3rem;}
+
+/* ===== Sections ===== */
+.container{max-width:900px;margin:0 auto;padding:0 1.5rem;}
+.section{padding:4.5rem 0;}
+.section-title{font-size:clamp(1.3rem,3.8vw,1.8rem);font-weight:800;color:#1b3a5c;margin-bottom:.5rem;text-align:center;}
+.section-sub{text-align:center;color:#666;font-size:.9rem;margin-bottom:2rem;}
+.section-title::after{content:'';display:block;width:44px;height:3px;background:#f5a800;margin:.5rem auto 0;border-radius:2px;}
+
+/* ===== Pain → Solution ===== */
+.bg-light{background:#f4f7fb;}
+.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:2.5rem;}
+@media(max-width:640px){.pain-grid{grid-template-columns:1fr;}}
+.pain-card{background:#fff;border-radius:8px;padding:1.4rem;border-left:4px solid #f5a800;}
+.pain-card h4{font-weight:700;color:#1b3a5c;margin-bottom:.4rem;font-size:.93rem;}
+.pain-card p{font-size:.85rem;color:#555;}
+.solve-list{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+@media(max-width:700px){.solve-list{grid-template-columns:1fr;}}
+.solve-item{background:#fff;border-radius:8px;padding:1.4rem;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.07);}
+.solve-icon{width:46px;height:46px;margin:0 auto .7rem;color:#f5a800;}
+.solve-item h4{font-weight:700;font-size:.9rem;color:#1b3a5c;margin-bottom:.35rem;}
+.solve-item p{font-size:.82rem;color:#666;line-height:1.6;}
+
+/* ===== CTA mid ===== */
+.cta-mid{background:#1b3a5c;color:#fff;padding:2.5rem 1.5rem;text-align:center;}
+.cta-mid p{opacity:.8;margin-bottom:1.2rem;font-size:.93rem;}
+.btn-outline{display:inline-block;border:2px solid #f5a800;color:#f5a800;padding:.75rem 2rem;border-radius:5px;font-weight:700;text-decoration:none;font-size:.95rem;transition:all .2s;}
+.btn-outline:hover{background:#f5a800;color:#1b3a5c;}
+
+/* ===== Timeline ===== */
+.tl-wrap{background:#fff;border-radius:10px;padding:2rem 1.8rem;box-shadow:0 2px 10px rgba(0,0,0,.07);}
+.timeline{position:relative;}
+.timeline::before{content:'';position:absolute;left:82px;top:0;bottom:0;width:2px;background:#dde4ee;}
+.tl-item{display:grid;grid-template-columns:72px 20px 1fr;gap:0 .8rem;align-items:start;padding:.8rem 0;}
+.tl-time{text-align:right;font-size:.82rem;font-weight:700;color:#1b3a5c;padding-top:.25rem;}
+.tl-dot{width:12px;height:12px;border-radius:50%;background:#f5a800;justify-self:center;margin-top:.35rem;}
+.tl-body h4{font-size:.92rem;font-weight:700;color:#1a1a2e;margin-bottom:.15rem;}
+.tl-body p{font-size:.82rem;color:#666;}
+@media(max-width:580px){
+  .timeline::before{left:52px;}
+  .tl-item{grid-template-columns:44px 16px 1fr;}
+  .tl-time{font-size:.74rem;}
+}
+
+/* ===== Interview ===== */
+.interview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;}
+@media(max-width:700px){.interview-grid{grid-template-columns:1fr;}}
+.interview-card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.08);}
+.interview-img{width:100%;height:240px;object-fit:cover;display:block;}
+.interview-body{padding:1.2rem;}
+.interview-name{font-weight:700;font-size:.92rem;color:#1b3a5c;}
+.interview-meta{font-size:.75rem;color:#999;margin-bottom:.6rem;}
+.interview-body p{font-size:.85rem;color:#555;line-height:1.65;}
+
+/* ===== FAQ ===== */
+.faq-list{display:flex;flex-direction:column;gap:.85rem;}
+.faq-item{background:#fff;border-radius:8px;box-shadow:0 2px 8px rgba(0,0,0,.07);}
+.faq-q{padding:.9rem 1.2rem;font-weight:700;color:#1b3a5c;font-size:.9rem;display:flex;justify-content:space-between;align-items:center;gap:.5rem;}
+.faq-q::after{content:'';display:block;width:14px;height:14px;flex-shrink:0;background:url("data:image/svg+xml,%3Csvg viewBox='0 0 24 24' fill='none' stroke='%23f5a800' stroke-width='2.5' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 5v14M5 12h14'/%3E%3C/svg%3E") no-repeat center/contain;}
+.faq-a{padding:0 1.2rem .9rem;font-size:.855rem;color:#555;line-height:1.7;}
+
+/* ===== Table ===== */
+.req-table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.07);}
+.req-table th,.req-table td{padding:.85rem 1.1rem;border-bottom:1px solid #eaeef4;font-size:.87rem;vertical-align:top;text-align:left;}
+.req-table th{background:#edf2f8;color:#1b3a5c;font-weight:700;width:30%;white-space:nowrap;}
+.req-table tr:last-child th,.req-table tr:last-child td{border-bottom:none;}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{border-bottom:none;padding:.5rem .9rem;}
+  .req-table td{padding:.4rem .9rem .9rem;}
+}
+
+/* ===== Final CTA ===== */
+.cta-final{background:linear-gradient(135deg,#f5a800 0%,#e08c00 100%);color:#1b3a5c;padding:5rem 1.5rem;text-align:center;}
+.cta-final h2{font-size:clamp(1.4rem,4vw,2rem);font-weight:900;margin-bottom:.8rem;}
+.cta-final p{font-size:.95rem;opacity:.8;margin-bottom:2rem;}
+.btn-dark{display:inline-block;background:#1b3a5c;color:#fff;padding:1rem 2.5rem;border-radius:6px;font-weight:800;text-decoration:none;font-size:1.05rem;transition:background .2s;}
+.btn-dark:hover{background:#0d2440;}
+
+/* ===== Fixed mobile bar ===== */
+.fixed-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;background:#f5a800;padding:.75rem 1.5rem;text-align:center;}
+@media(max-width:768px){.fixed-bar{display:block;}}
+.fixed-bar a{display:block;background:#1b3a5c;color:#fff;font-weight:800;font-size:.95rem;padding:.75rem;border-radius:5px;text-decoration:none;}
+
+/* ===== Footer ===== */
+footer{background:#0d2440;color:rgba(255,255,255,.6);padding:2rem 1.5rem;text-align:center;font-size:.78rem;line-height:2;}
+
+/* ===== sample note ===== */
+.sample-note{font-size:.72rem;color:#bbb;margin-top:.5rem;display:block;text-align:center;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="#top">中村工業</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#why">選ばれる理由</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#faq">よくある質問</a>
+    <a href="#req">募集要項</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-badge">建築金物施工 ／ 正社員募集</div>
+    <h1>手すり・アルミパネルの<br>施工スタッフを募集<br><span>工具無料・資格費用ゼロ</span></h1>
+    <p class="hero-lead">少人数チームで自分のペースで成長できます。書類選考なし・面接1回のみ。千葉県八千代市の小さくて本気な会社です。</p>
+    <div class="hero-pills">
+      <span class="pill">経験・学歴不問</span>
+      <span class="pill">書類選考なし</span>
+      <span class="pill">工具貸与</span>
+      <span class="pill">資格取得支援</span>
+      <span class="pill">マイカー通勤可</span>
+      <span class="pill">駐車場代無料</span>
+    </div>
+    <div class="hero-cta-wrap">
+      <a class="btn-hero" href="#entry">応募する</a>
+      <span class="hero-note">まずは話を聞くだけでも大丈夫です</span>
+    </div>
+  </div>
+</section>
+
+<!-- Stats -->
+<div class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">13,000<small style="font-size:.6em">円〜</small></div>
+      <div class="stat-label">日給（最大15,000円）</div>
+      <span class="sample-note-stat">※求人票掲載の実績値</span>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">0<small style="font-size:.6em">円</small></div>
+      <div class="stat-label">入社時の道具代（工具は会社貸与）</div>
+      <span class="sample-note-stat">※求人票掲載の条件</span>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">1<small style="font-size:.6em">回</small></div>
+      <div class="stat-label">面接のみ（書類選考なし）</div>
+      <span class="sample-note-stat">※求人票掲載の条件</span>
+    </div>
+  </div>
+</div>
+
+<!-- Why choose -->
+<section class="section bg-light" id="why">
+  <div class="container">
+    <h2 class="section-title">よくある不安を解消します</h2>
+    <p class="section-sub">こんな不安をお持ちではないですか？</p>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <h4>道具・工具を自分でそろえる費用が心配…</h4>
+        <p>中村工業では必要な工具はすべて会社から貸与します。初期費用ゼロで始められます。</p>
+      </div>
+      <div class="pain-card">
+        <h4>資格がないと採用されないかも…</h4>
+        <p>業務に必要な資格の取得費用は会社が全額負担します。働きながら取得できます。</p>
+      </div>
+    </div>
+    <div class="solve-list">
+      <div class="solve-item">
+        <svg class="solve-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+        </svg>
+        <h4>工具はすべて貸与</h4>
+        <p>必要な道具は会社が用意します。自己負担なく仕事を始められます。</p>
+      </div>
+      <div class="solve-item">
+        <svg class="solve-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/>
+        </svg>
+        <h4>資格取得費用を全額負担</h4>
+        <p>業務で必要な資格は会社が費用を負担。スキルアップをサポートします。</p>
+      </div>
+      <div class="solve-item">
+        <svg class="solve-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+        </svg>
+        <h4>少人数で風通し抜群</h4>
+        <p>従業員2名の小さなチーム。困ったらすぐ相談できる環境です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA mid 1 -->
+<div class="cta-mid">
+  <p>書類選考なし・面接1回だけ。まずは気軽に応募してみてください。</p>
+  <a class="btn-outline" href="#entry">応募する</a>
+</div>
+
+<!-- 1日の流れ -->
+<section class="section" id="schedule">
+  <div class="container">
+    <h2 class="section-title">社員の1日の流れ</h2>
+    <div class="tl-wrap">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-time">08:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body"><h4>出発</h4><p>マイカーで現場へ直行、または事務所集合</p></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">09:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body"><h4>作業開始</h4><p>手すり・アルミパネル・ブラインドボックス等の施工</p></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">12:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body"><h4>昼休憩（120分）</h4><p>現場近くでゆっくり食事</p></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">14:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body"><h4>午後の施工</h4><p>仕上げ・細かい調整・品質確認</p></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">16:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body"><h4>片付け・清掃</h4><p>工具の片付けと現場の清掃</p></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">17:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body"><h4>退勤</h4><p>現場から直帰、または事務所へ戻る</p></div>
+        </div>
+      </div>
+      <span class="sample-note">※ここはサンプルです。実際には御社の実際の1日の流れに差し替えます</span>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩インタビュー -->
+<section class="section bg-light" id="voice">
+  <div class="container">
+    <h2 class="section-title">先輩スタッフのインタビュー</h2>
+    <div class="interview-grid">
+
+      <div class="interview-card">
+        <!-- 先輩写真（仮）: 御社スタッフの顔写真に差し替えてください -->
+        <img class="interview-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=280&fit=crop&crop=faces&q=80" alt="スタッフ写真（仮）">
+        <div class="interview-body">
+          <div class="interview-name">田中さん（仮名）</div>
+          <div class="interview-meta">建築金物作業員・入社2年</div>
+          <p>「道具は全部会社が用意してくれる。資格も会社費用で取れる。始める前の心配がなかったのが助かりました。」</p>
+          <span class="sample-note">※ここはサンプルです。実際には御社のスタッフの写真・コメントに差し替えます</span>
+        </div>
+      </div>
+
+      <div class="interview-card">
+        <!-- 先輩写真（仮）: 御社スタッフの顔写真に差し替えてください -->
+        <img class="interview-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=280&fit=crop&crop=faces&q=80" alt="スタッフ写真（仮）">
+        <div class="interview-body">
+          <div class="interview-name">鈴木さん（仮名）</div>
+          <div class="interview-meta">建築金物作業員・入社4年</div>
+          <p>「東京の現場が多いし、直行直帰できる日もある。2人なので自分で段取りを決めて動くのが楽しいです。」</p>
+          <span class="sample-note">※ここはサンプルです。実際には御社のスタッフの写真・コメントに差し替えます</span>
+        </div>
+      </div>
+
+      <div class="interview-card">
+        <!-- 先輩写真（仮）: 御社スタッフの顔写真に差し替えてください -->
+        <img class="interview-img" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=280&fit=crop&crop=faces&q=80" alt="スタッフ写真（仮）">
+        <div class="interview-body">
+          <div class="interview-name">山田さん（仮名）</div>
+          <div class="interview-meta">建築金物作業員・入社6年</div>
+          <p>「代表の『楽しくやろう』が本当の会社。入社前は半信半疑でしたが、今は毎日来るのが楽しいです。」</p>
+          <span class="sample-note">※ここはサンプルです。実際には御社のスタッフの写真・コメントに差し替えます</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CTA mid 2 -->
+<div class="cta-mid">
+  <p>少しでも気になったら、まずはお気軽にご連絡ください。</p>
+  <a class="btn-outline" href="#entry">応募する</a>
+</div>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="container">
+    <h2 class="section-title">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">未経験でも大丈夫ですか？</div>
+        <div class="faq-a">はい。経験・学歴は問いません。施工の技術は入社後に一から丁寧に教えます。業務に必要な資格の取得費用は会社が全額負担します。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">工具は自分で買わないといけませんか？</div>
+        <div class="faq-a">不要です。必要な工具はすべて会社から貸与します。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">現場はどのあたりですか？</div>
+        <div class="faq-a">主に東京都内の現場です。直行直帰の場合もあるため、現場によっては通勤の手間が省けます。マイカー通勤可・駐車場代無料です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">選考の流れを教えてください。</div>
+        <div class="faq-a">書類選考はありません。ハローワーク紹介状と履歴書をお持ちいただき、面接1回のみです。面接後3日以内に電話でご連絡します。場所はご希望に応じて最寄りの喫茶店等で行います。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">休日・休暇の状況を教えてください。</div>
+        <div class="faq-a">年間休日68日です（日曜＋その他）。週休2日制で、現場によっては土・祝が休みになる場合もあります。年次有給休暇は6ヶ月後に10日付与されます。</div>
+      </div>
+    </div>
+    <span class="sample-note" style="margin-top:1rem;">※ここはサンプルです。実際には御社のよくある質問に差し替えます</span>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="section bg-light" id="req">
+  <div class="container">
+    <h2 class="section-title">募集要項</h2>
+    <table class="req-table">
+      <tbody>
+        <tr><th>職種</th><td>建築金物作業員（手すり・ブラインドボックス・アルミパネル等の施工）</td></tr>
+        <tr><th>雇用形態</th><td>正社員（雇用期間の定めなし）</td></tr>
+        <tr><th>賃金</th><td>日給13,000円〜15,000円<br>月額換算321,100円〜370,500円<br>昇給あり（前年度実績：月0〜5,000円）</td></tr>
+        <tr><th>就業時間</th><td>8:00〜17:00（所定労働時間：週40時間。休憩120分）</td></tr>
+        <tr><th>休日・休暇</th><td>年間休日68日（日曜＋その他。週休2日制。現場により土・祝休みの場合あり）<br>夏季・年末年始休暇あり。年次有給休暇10日（6ヶ月後付与）</td></tr>
+        <tr><th>勤務地</th><td>〒276-0027 千葉県八千代市村上団地１－７－２０５（事務所）<br>主な現場：東京都（直行直帰の場合あり）<br>東葉高速鉄道 村上駅 徒歩5分</td></tr>
+        <tr><th>応募資格</th><td>経験・学歴不問。普通自動車運転免許（あれば尚可・AT限定可）。年齢は〜44歳（キャリア形成のため）</td></tr>
+        <tr><th>試用期間</th><td>なし</td></tr>
+        <tr><th>各種保険</th><td>雇用保険・労災保険（元請けで加入）</td></tr>
+        <tr><th>マイカー通勤</th><td>可（駐車場代無料）</td></tr>
+        <tr><th>資格取得支援</th><td>業務に必要な資格の取得費用は会社が負担します</td></tr>
+        <tr><th>選考方法</th><td>書類選考なし。面接1回（ハローワーク紹介状＋履歴書持参）。面接後3日以内に電話でご連絡</td></tr>
+        <tr><th>採用人数</th><td>1名（増員）</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="cta-final" id="entry">
+  <h2>一歩踏み出してみませんか？</h2>
+  <p>書類選考なし・面接1回。話を聞くだけでも構いません。<br>まずはお気軽にご連絡ください。</p>
+  <a class="btn-dark" href="mailto:akira-world1965@ezweb.ne.jp">メールで問い合わせる</a>
+</section>
+
+<footer>
+  <p>中村工業</p>
+  <p>〒276-0027 千葉県八千代市村上団地１－７－２０５</p>
+  <p>TEL: 090-8084-1491　E-mail: akira-world1965@ezweb.ne.jp</p>
+</footer>
+
+<!-- Fixed mobile bar -->
+<div class="fixed-bar">
+  <a href="#entry">今すぐ応募する（書類選考なし）</a>
+</div>
+
+<script>
+(function(){
+  var btn = document.querySelector('.hamburger');
+  var nav = document.querySelector('.site-nav');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  }
+})();
+</script>
+</body>
+</html>
