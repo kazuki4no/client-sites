@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>採用情報 | 株式会社サーモテックステクニカル</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;color:#1a1a1a;line-height:1.7;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+
+:root{
+  --blue:#1c3a50;
+  --cyan:#00b4d8;
+  --cyan-lt:#48cae4;
+  --bg:#f0f4f6;
+  --text-muted:#666;
+  --border:#d9e2e8;
+}
+
+/* --- ヘッダー --- */
+.site-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 1.5rem;
+  background:rgba(28,58,80,.9);
+  backdrop-filter:blur(6px);
+  position:fixed;top:0;left:0;right:0;z-index:100;
+}
+.brand{color:#fff;font-size:.95rem;font-weight:700;letter-spacing:.03em;}
+.site-nav{display:flex;gap:1.5rem;align-items:center;}
+.site-nav a{color:rgba(255,255,255,.75);font-size:.9rem;}
+.site-nav a:hover{color:#fff;}
+.nav-cta{border:1.5px solid var(--cyan);color:var(--cyan) !important;padding:.35rem .85rem;border-radius:4px;font-weight:700;}
+.nav-cta:hover{background:var(--cyan);color:#fff !important;}
+.hamburger{display:none;background:none;border:0;font-size:1.7rem;line-height:1;cursor:pointer;color:#fff;}
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{
+    display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:rgba(28,58,80,.97);box-shadow:0 8px 16px rgba(0,0,0,.3);padding:.5rem 1rem;
+  }
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.8rem 0;border-bottom:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.8);}
+}
+
+/* --- FVヒーロー（全画面） --- */
+.hero{
+  position:relative;min-height:80vh;display:flex;align-items:center;justify-content:center;
+  color:#fff;text-align:center;overflow:hidden;padding:6rem 1.5rem 4rem;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&h=900&fit=crop&q=80') center/cover;
+}
+.hero-overlay{position:absolute;inset:0;background:rgba(20,40,56,.62);}
+.hero-content{position:relative;z-index:1;max-width:760px;margin:0 auto;}
+.hero-pill{
+  display:inline-block;border:1px solid var(--cyan);color:var(--cyan);
+  padding:.3rem 1rem;border-radius:20px;font-size:.82rem;letter-spacing:.1em;margin-bottom:1.2rem;
+}
+.hero h1{
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(2rem,6vw,3.5rem);line-height:1.25;margin-bottom:1rem;
+  text-shadow:0 2px 12px rgba(0,0,0,.3);
+}
+.hero h1 em{color:var(--cyan-lt);font-style:normal;}
+.hero-sub{font-size:clamp(.9rem,2vw,1.1rem);color:rgba(255,255,255,.8);margin-bottom:2rem;}
+.btn-cyan{display:inline-block;background:var(--cyan);color:#fff;padding:.85rem 2.5rem;border-radius:6px;font-weight:700;font-size:1rem;transition:.2s;}
+.btn-cyan:hover{background:var(--cyan-lt);}
+.hero-note{font-size:.75rem;color:rgba(255,255,255,.4);margin-top:.8rem;}
+
+/* --- セクション共通 --- */
+.section{padding:4rem 1.5rem;}
+.section-dark{background:var(--blue);color:#fff;}
+.section-bg{background:var(--bg);}
+.container{max-width:900px;margin:0 auto;}
+.section-eyebrow{font-size:.78rem;letter-spacing:.14em;color:var(--cyan);font-weight:700;margin-bottom:.4rem;}
+.section-title{font-size:clamp(1.4rem,4vw,2rem);font-weight:700;margin-bottom:.6rem;}
+.section-lead{color:var(--text-muted);margin-bottom:2rem;font-size:.93rem;}
+.section-lead-white{color:rgba(255,255,255,.7);margin-bottom:2rem;font-size:.93rem;}
+
+/* --- 働く魅力 --- */
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem;}
+.feature{padding:1.8rem 1.4rem;border:1px solid rgba(0,180,216,.25);border-radius:10px;background:rgba(0,180,216,.05);}
+.feature-icon{margin-bottom:1rem;}
+.feature-icon svg{stroke:var(--cyan);fill:none;}
+.feature h3{font-size:1rem;font-weight:700;color:#e0f7ff;margin-bottom:.5rem;}
+.feature p{font-size:.88rem;color:rgba(255,255,255,.65);}
+@media(max-width:640px){.features{grid-template-columns:1fr;}}
+
+/* --- 仕事イメージ画像 --- */
+.img-grid{display:grid;grid-template-columns:2fr 1fr;gap:.8rem;margin-top:2rem;}
+.img-grid img{width:100%;object-fit:cover;border-radius:8px;}
+.img-grid .main-img{height:300px;}
+.img-grid .sub-img{height:300px;}
+@media(max-width:560px){.img-grid{grid-template-columns:1fr;}.img-grid .sub-img{display:none;}}
+
+/* --- 募集要項 --- */
+.req-table{width:100%;border-collapse:collapse;margin-top:1.5rem;}
+.req-table th,.req-table td{border:1px solid var(--border);padding:.75rem 1rem;font-size:.92rem;text-align:left;vertical-align:top;}
+.req-table th{background:var(--blue);color:#fff;width:30%;font-weight:500;}
+.req-table td{background:#fff;}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{border-bottom:none;}
+  .req-table td{border-top:none;padding-bottom:1rem;}
+}
+.sample-note{font-size:.75rem;color:#aaa;margin-top:.5rem;}
+
+/* --- タイムライン --- */
+.tl-list{list-style:none;position:relative;}
+.tl-list::before{content:'';position:absolute;left:82px;top:0;bottom:0;width:2px;background:rgba(0,180,216,.3);}
+.tl-item{display:grid;grid-template-columns:72px 20px 1fr;gap:0 .8rem;align-items:start;margin-bottom:1.5rem;}
+.tl-time{text-align:right;font-size:.85rem;font-weight:700;color:var(--cyan);padding-top:.25rem;}
+.tl-dot{width:12px;height:12px;border-radius:50%;background:var(--cyan);justify-self:center;margin-top:.3rem;}
+.tl-body h4{font-size:.95rem;font-weight:700;color:#e0f7ff;margin-bottom:.2rem;}
+.tl-body p{font-size:.88rem;color:rgba(255,255,255,.6);}
+@media(max-width:480px){
+  .tl-list::before{left:50px;}
+  .tl-item{grid-template-columns:40px 16px 1fr;gap:0 .6rem;}
+  .tl-time{font-size:.78rem;}
+}
+
+/* --- 先輩の声 --- */
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2rem;}
+.voice-card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.06);}
+.voice-card img{width:100%;height:200px;object-fit:cover;}
+.voice-card-body{padding:1.2rem;}
+.voice-card-name strong{color:var(--blue);font-size:1rem;display:block;margin-bottom:.1rem;}
+.voice-card-name span{font-size:.8rem;color:var(--text-muted);}
+.voice-card p{font-size:.88rem;line-height:1.65;margin-top:.5rem;}
+.voice-note{font-size:.73rem;color:#bbb;margin-top:.4rem;}
+@media(max-width:768px){.voice-grid{grid-template-columns:1fr;}}
+
+/* --- FAQ --- */
+.faq-list-dark{margin-top:2rem;}
+.faq-item-dark{border-bottom:1px solid rgba(255,255,255,.1);padding:1.2rem 0;}
+.faq-q-dark{font-size:.95rem;font-weight:700;color:var(--cyan-lt);padding-left:1.5rem;position:relative;}
+.faq-q-dark::before{content:'Q';font-weight:700;position:absolute;left:0;color:var(--cyan);}
+.faq-a-dark{font-size:.9rem;color:rgba(255,255,255,.7);padding-left:1.5rem;position:relative;margin-top:.5rem;}
+.faq-a-dark::before{content:'A';font-weight:700;position:absolute;left:0;color:rgba(255,255,255,.4);}
+
+/* --- 応募CTA --- */
+.cta-section{
+  position:relative;padding:5rem 1.5rem;text-align:center;color:#fff;overflow:hidden;
+}
+.cta-bg{
+  position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&h=700&fit=crop&q=80') center/cover;
+}
+.cta-overlay{position:absolute;inset:0;background:rgba(28,58,80,.78);}
+.cta-content{position:relative;z-index:1;max-width:640px;margin:0 auto;}
+.cta-content h2{font-size:clamp(1.4rem,4vw,2rem);font-family:'Noto Serif JP',serif;margin-bottom:.8rem;}
+.cta-content p{color:rgba(255,255,255,.8);margin-bottom:2rem;}
+
+/* --- フッター --- */
+footer{background:#0e1e2c;color:#5a7a8a;padding:2.5rem 1.5rem;text-align:center;font-size:.85rem;line-height:2;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="#top">株式会社サーモテックステクニカル</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#about">仕事内容</a>
+    <a href="#job">募集要項</a>
+    <a href="#day">1日の流れ</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#faq">FAQ</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<!-- FVヒーロー -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-pill">京成グループ｜八千代市｜正社員募集</span>
+    <h1>日本中の放送現場で、<br><em>あなたの技術が動いている。</em></h1>
+    <p class="hero-sub">放送中継車専用の空調装置をオーダーメイドで製造。<br>全国のTV局を支えるニッチな専門メーカーで働きませんか。</p>
+    <a class="btn-cyan" href="#entry">採用情報・応募はこちら</a>
+    <p class="hero-note">※背景写真はダミーです。実際には御社の職場写真に差し替えます。</p>
+  </div>
+</section>
+
+<!-- 働く魅力（ダーク） -->
+<section class="section section-dark" id="about">
+  <div class="container">
+    <p class="section-eyebrow">WHAT WE DO</p>
+    <h2 class="section-title">ここにしかない、ものづくりの誇り</h2>
+    <p class="section-lead-white">誰もが知るTV局の、誰も知らない縁の下の職人集団。</p>
+    <div class="features">
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="28" height="28" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>全国TV局採用の製品</h3>
+        <p>NHK・民放の放送中継車に搭載されるオーダーメイド空調装置。ニッチだから競合が少なく、必要不可欠な存在です。</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="28" height="28" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.41 1.41M4.93 4.93l1.41 1.41M20 12h2M2 12h2M17.66 17.66l1.41 1.41M4.93 19.07l1.41-1.41M12 22v2M12 2v2"/></svg>
+        </div>
+        <h3>開発から搭載まで一貫</h3>
+        <p>設計・組立・溶接・配線・搭載工事・メンテナンスまで、製品の一生に関われる一貫生産体制。</p>
+      </div>
+      <div class="feature">
+        <div class="feature-icon">
+          <svg width="28" height="28" stroke-width="1.8" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>7名の少数精鋭チーム</h3>
+        <p>社員7名。一人ひとりの仕事の影響が大きく、大企業では味わえない裁量と達成感があります。OJTで未経験から育てます。</p>
+      </div>
+    </div>
+
+    <div class="img-grid">
+      <img class="main-img" src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=960&h=600&fit=crop&q=80" alt="製造現場（ダミー）">
+      <img class="sub-img" src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=480&h=600&fit=crop&q=80" alt="作業の様子（ダミー）">
+    </div>
+    <p class="sample-note" style="color:rgba(255,255,255,.35);margin-top:.5rem;">※写真はダミーです。実際には御社の作業写真に差し替えます。</p>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="section section-bg" id="job">
+  <div class="container">
+    <p class="section-eyebrow">REQUIREMENTS</p>
+    <h2 class="section-title">募集要項</h2>
+    <table class="req-table">
+      <tbody>
+        <tr><th>職種</th><td>オーダーメイド空調機の組立て〜メンテナンス</td></tr>
+        <tr><th>雇用形態</th><td>正社員（試用期間2ヶ月・同条件）</td></tr>
+        <tr><th>月給</th><td>202,100円〜232,900円<br>家族手当 7,000〜13,000円 / 出張手当あり</td></tr>
+        <tr><th>昇給・賞与</th><td>昇給あり（年10,700〜14,300円・前年実績）<br>賞与年3回（計4.70ヶ月分・前年実績）</td></tr>
+        <tr><th>就業時間</th><td>9:00〜17:30（休憩60分）/ 月平均残業20時間</td></tr>
+        <tr><th>年間休日</th><td>110日（日曜・祝日・一部土曜・夏季・年末年始）</td></tr>
+        <tr><th>勤務地</th><td>千葉県八千代市吉橋1114番地9<br>東葉高速線 八千代緑が丘駅 徒歩17分</td></tr>
+        <tr><th>待遇</th><td>雇用・労災・健康・厚生年金 / 退職金制度あり<br>マイカー通勤可（駐車場無料）/ 制服貸与</td></tr>
+        <tr><th>応募資格</th><td>普通自動車免許（AT限定可）必須 / 学歴不問<br>第二種電気工事士等 あれば尚可</td></tr>
+        <tr><th>選考</th><td>書類選考 → 筆記試験 → 面接（予定1回）</td></tr>
+        <tr><th>定年</th><td>60歳（再雇用制度あり・上限65歳）</td></tr>
+      </tbody>
+    </table>
+    <p class="sample-note">※求人票をもとにしたサンプルです。実際の条件は採用時にご確認ください。</p>
+  </div>
+</section>
+
+<!-- 1日の流れ（ダーク） -->
+<section class="section section-dark" id="day">
+  <div class="container">
+    <p class="section-eyebrow">A DAY IN LIFE</p>
+    <h2 class="section-title">社員の1日の流れ</h2>
+    <p class="section-lead-white">※ここはサンプルです。実際には御社スタッフの1日に差し替えます。</p>
+    <ul class="tl-list">
+      <li class="tl-item">
+        <div class="tl-time">8:50</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>出社・朝礼</h4><p>安全確認・当日の作業内容を全員で共有する時間。</p></div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-time">9:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>組立・配管作業</h4><p>図面に従い銅パイプ配管・溶接を進める。集中して一つの部品に向き合う午前の核心。</p></div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-time">12:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>昼食・休憩</h4><p>工場内の休憩スペースでゆっくりと。</p></div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>制御盤組立・配線・検査</h4><p>制御系の配線と制御盤を組み上げ、動作確認も担当。</p></div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-time">15:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>小休憩（15分）</h4><p>後半の作業前のリフレッシュタイム。</p></div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-time">15:15</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>後片付け・翌日の準備</h4><p>工具の整理と翌日の段取りを整えて退社準備。</p></div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-time">17:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>退社</h4><p>定時退社を基本としています。</p></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section class="section section-bg" id="voice">
+  <div class="container">
+    <p class="section-eyebrow">VOICE</p>
+    <h2 class="section-title">先輩からのメッセージ</h2>
+    <p class="section-lead">※ここはサンプルです。実際には御社スタッフのメッセージ・写真に差し替えます。</p>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <!-- 先輩顔写真ダミー（男性・正方形寄り） -->
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=380&fit=crop&crop=faces&q=80" alt="先輩社員（ダミー）">
+        <div class="voice-card-body">
+          <div class="voice-card-name"><strong>田中 拓也（仮名）</strong><span>組立担当 / 入社4年目</span></div>
+          <p>「電気は全く知らないまま入社。先輩が根気よく教えてくれて、今では配管から検査まで一人でこなせます。」</p>
+          <p class="voice-note">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます。</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <!-- 先輩顔写真ダミー（男性） -->
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=380&fit=crop&crop=faces&q=80" alt="先輩社員（ダミー）">
+        <div class="voice-card-body">
+          <div class="voice-card-name"><strong>木村 誠（仮名）</strong><span>メンテナンス担当 / 入社7年目</span></div>
+          <p>「出張で全国のTV局に行くたびに、自分が組んだ機械を見られる。あの誇らしさがやめられない理由です。」</p>
+          <p class="voice-note">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます。</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <!-- 先輩顔写真ダミー（男性） -->
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=380&fit=crop&crop=faces&q=80" alt="先輩社員（ダミー）">
+        <div class="voice-card-body">
+          <div class="voice-card-name"><strong>佐藤 健一（仮名）</strong><span>設計補助 / 入社2年目</span></div>
+          <p>「7人だから一台の製品にずっと関われます。自分の工夫が製品に反映されると、作った甲斐があると感じます。」</p>
+          <p class="voice-note">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ（ダーク） -->
+<section class="section section-dark" id="faq">
+  <div class="container">
+    <p class="section-eyebrow">FAQ</p>
+    <h2 class="section-title">よくある質問</h2>
+    <div class="faq-list-dark">
+      <div class="faq-item-dark">
+        <p class="faq-q-dark">電気・溶接の経験がなくても応募できますか？</p>
+        <p class="faq-a-dark">はい。「知識・経験は問いません、常に丁寧にOJTを行います」と会社が明言しています。モノづくりへの興味があれば大丈夫です。</p>
+      </div>
+      <div class="faq-item-dark">
+        <p class="faq-q-dark">出張はどのくらいありますか？</p>
+        <p class="faq-a-dark">搭載工事やメンテナンスで全国のTV局等へ出張することがあります。頻度は案件により異なります。出張手当（往復距離に応じ1,000〜5,000円/日）が支給されます。</p>
+      </div>
+      <div class="faq-item-dark">
+        <p class="faq-q-dark">選考の流れを教えてください。</p>
+        <p class="faq-a-dark">書類選考（7日以内）→ 筆記試験 → 面接（予定1回・7日以内）。応募にはハローワーク紹介状・履歴書（写真貼付）・職務経歴書が必要です。</p>
+      </div>
+      <div class="faq-item-dark">
+        <p class="faq-q-dark">休日・残業はどのくらいですか？</p>
+        <p class="faq-a-dark">年間休日110日（日曜・祝日・一部土曜・夏季・年末年始）。月平均残業20時間です。マイカー通勤可で駐車場無料です。</p>
+      </div>
+      <div class="faq-item-dark">
+        <p class="faq-q-dark">どんな人が向いていますか？</p>
+        <p class="faq-a-dark">「モノ造りが好きで、一つの製品開発〜製造まで関わりたい方」（会社より）。大手では担えない製品の一生に携われる環境です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 応募CTA（フルスクリーン背景） -->
+<section class="cta-section" id="entry">
+  <div class="cta-bg"></div>
+  <div class="cta-overlay"></div>
+  <div class="cta-content">
+    <h2>あなたの技術が、<br>今夜の放送を支える。</h2>
+    <p>まずはお気軽にご連絡ください。選考前のご相談も歓迎です。</p>
+    <a class="btn-cyan" href="tel:047-459-8250">電話でお問い合わせ：047-459-8250</a>
+  </div>
+</section>
+
+<footer>
+  <p>株式会社サーモテックステクニカル</p>
+  <p>〒276-0047 千葉県八千代市吉橋1114番地9</p>
+  <p>TEL: 047-459-8250 / E-mail: imamura@thermo-tex.co.jp</p>
+</footer>
+
+<script>
+(function(){
+  var btn = document.querySelector('.hamburger');
+  var nav = document.querySelector('.site-nav');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  }
+})();
+</script>
+</body>
+</html>
