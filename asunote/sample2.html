@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>アスノート株式会社｜kintone導入・業務改善支援の専門会社</title>
+<meta name="description" content="アスノート株式会社は「kintoneで、業務改善を前に進める」をミッションに、kintone導入・アプリ構築・業務改善支援、人材育成、プラグイン開発（benryPlus）を行う専門会社です。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0e2a47;
+  --navy-2:#123a5e;
+  --cyan:#0098c4;
+  --cyan-dark:#00728f;
+  --sand:#f2f8fa;
+  --text:#20303d;
+  --gray:#5c6d78;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{max-width:100%;overflow-x:hidden;}
+img{max-width:100%;height:auto;display:block;}
+body{font-family:'Noto Sans JP',sans-serif; color:var(--text); line-height:1.8; background:#fff;}
+a{text-decoration:none; color:inherit;}
+ul{list-style:none;}
+.container{max-width:1120px; margin:0 auto; padding:0 1.2rem;}
+section{padding:4.5rem 0;}
+.eyebrow{text-align:center; color:var(--cyan); font-weight:700; font-size:.85rem; letter-spacing:.2em; margin-bottom:.5rem; text-transform:uppercase;}
+h2.section-title{font-size:clamp(1.6rem,4.5vw,2.3rem); font-weight:900; text-align:center; color:var(--navy); margin-bottom:.6rem;}
+.section-sub{text-align:center; color:var(--gray); margin-bottom:2.8rem; font-size:.95rem;}
+.btn-primary{display:inline-block; background:var(--cyan); color:#fff; font-weight:700; padding:.95rem 2.2rem; border-radius:4px; box-shadow:0 8px 20px rgba(0,152,196,.32);}
+.btn-outline{display:inline-block; border:2px solid var(--navy); color:var(--navy); font-weight:700; padding:.9rem 2.2rem; border-radius:4px;}
+
+/* header */
+header{position:sticky; top:0; z-index:100; background:#fff; box-shadow:0 2px 12px rgba(0,0,0,.08);}
+.nav-wrap{display:flex; align-items:center; justify-content:space-between; padding:.8rem 1.2rem; max-width:1120px; margin:0 auto;}
+.logo{font-size:1.05rem; font-weight:900; color:var(--navy);}
+.logo span{color:var(--cyan); display:block; font-size:.6rem; letter-spacing:.15em; font-weight:500;}
+nav.main-nav ul{display:flex; gap:1.4rem;}
+nav.main-nav a{font-size:.88rem; font-weight:500; color:var(--navy);}
+nav.main-nav a:hover{color:var(--cyan);}
+.header-cta{display:flex; align-items:center; gap:1rem;}
+.cta-btn{background:var(--navy); color:#fff; font-weight:700; font-size:.85rem; padding:.6rem 1.2rem; border-radius:4px; white-space:nowrap;}
+.hamburger{display:none; flex-direction:column; gap:5px; width:28px; cursor:pointer; background:none; border:none;}
+.hamburger span{display:block; height:3px; background:var(--navy); border-radius:2px;}
+@media(max-width:900px){ nav.main-nav{display:none;} .hamburger{display:flex;} }
+.mobile-nav{display:none; background:#fff; border-top:1px solid #e5eef2;}
+.mobile-nav.open{display:block;}
+.mobile-nav ul{padding:.5rem 1.2rem 1rem;}
+.mobile-nav li{border-bottom:1px solid #e5eef2;}
+.mobile-nav a{display:block; padding:.9rem 0; font-weight:500; color:var(--navy);}
+
+/* FV banner hero */
+.fv{position:relative; min-height:78vh; display:flex; align-items:center; color:#fff; overflow:hidden;}
+.fv::before{
+  content:''; position:absolute; inset:0;
+  /* 元画像なし（新規提案）→ images/fv-banner.jpg に差し替え */
+  background:url('https://loremflickr.com/1600/1000/business,consulting,office') center/cover;
+}
+.fv::after{content:''; position:absolute; inset:0; background:linear-gradient(120deg,rgba(14,42,71,.93) 30%,rgba(14,42,71,.55) 75%);}
+.fv-content{position:relative; z-index:2; max-width:1120px; margin:0 auto; padding:0 1.2rem;}
+.fv-tag{display:inline-block; background:var(--cyan); font-weight:700; font-size:.85rem; padding:.4rem 1.1rem; border-radius:50px; margin-bottom:1.2rem; letter-spacing:.06em;}
+.fv h1{font-size:clamp(2rem,6vw,3.2rem); font-weight:900; line-height:1.5; margin-bottom:1.4rem; text-shadow:0 2px 12px rgba(0,0,0,.3);}
+.fv p{font-size:1.05rem; max-width:620px; margin-bottom:2rem; color:#e6f2f5;}
+.fv-btns{display:flex; gap:1rem; flex-wrap:wrap;}
+.btn-fv{display:inline-flex; align-items:center; gap:.5rem; background:var(--cyan); color:#fff; font-weight:700; padding:1rem 2.2rem; border-radius:4px; font-size:1.05rem;}
+.btn-fv-outline{display:inline-flex; align-items:center; gap:.5rem; border:2px solid #fff; color:#fff; font-weight:700; padding:.95rem 2.2rem; border-radius:4px;}
+
+/* strip numbers */
+.numbers{background:var(--navy); color:#fff;}
+.numbers .container{display:flex; justify-content:space-around; flex-wrap:wrap; gap:2rem; text-align:center;}
+.numbers .num{font-size:clamp(1.4rem,3.6vw,2rem); font-weight:900; color:var(--cyan);}
+.numbers .label{font-size:.85rem; color:#c3d7e0; margin-top:.3rem;}
+
+/* about */
+.about-inner{max-width:820px; margin:0 auto; text-align:center;}
+.about-inner p{font-size:1.02rem; margin-bottom:1rem;}
+.about-inner .strong-line{font-size:clamp(1.15rem,3vw,1.5rem); color:var(--navy); font-weight:900; margin-bottom:1.4rem;}
+
+/* services */
+.service-section{background:var(--sand);}
+.service-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem;}
+@media(max-width:900px){ .service-grid{grid-template-columns:1fr;} }
+.service-card{background:#fff; border-radius:6px; overflow:hidden; box-shadow:0 6px 20px rgba(14,42,71,.08);}
+.service-card img{height:180px; width:100%; object-fit:cover;}
+.service-card .body{padding:1.4rem; border-top:3px solid var(--cyan);}
+.service-card h3{font-size:1.1rem; color:var(--navy); margin-bottom:.6rem;}
+.service-card p{font-size:.86rem; color:var(--gray);}
+
+/* strengths */
+.strength-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:1rem;}
+@media(max-width:900px){ .strength-grid{grid-template-columns:repeat(2,1fr);} }
+.strength-card{text-align:center;}
+.strength-card img{border-radius:6px; height:120px; width:100%; object-fit:cover; margin-bottom:.6rem;}
+.strength-card strong{font-size:.88rem; color:var(--navy); display:block;}
+
+/* representative */
+.rep-section{background:var(--sand);}
+.rep-flex{display:flex; align-items:center; gap:2.5rem; flex-wrap:wrap;}
+.rep-img{flex:0 0 220px;}
+.rep-img img{border-radius:50%; width:220px; height:220px; object-fit:cover; box-shadow:0 10px 30px rgba(14,42,71,.18);}
+.rep-text{flex:1 1 400px;}
+.rep-text .name{font-weight:900; color:var(--navy); font-size:1.2rem; margin-bottom:.3rem;}
+.rep-text .role{color:var(--cyan-dark); font-weight:700; font-size:.85rem; margin-bottom:1rem;}
+.rep-text p{font-size:.92rem; color:var(--gray); margin-bottom:.8rem;}
+.rep-tags{display:flex; gap:.6rem; flex-wrap:wrap; margin-top:1rem;}
+.rep-tags span{background:#fff; border:1px solid #cfe3ea; color:var(--navy); font-size:.78rem; font-weight:700; padding:.4rem 1rem; border-radius:50px;}
+
+/* company table */
+.company-table{max-width:760px; margin:0 auto; background:var(--sand); border-radius:8px; overflow:hidden;}
+.company-table dl{display:grid; grid-template-columns:150px 1fr;}
+.company-table dt{background:#dcedf2; padding:1rem 1.2rem; font-weight:700; color:var(--navy); font-size:.9rem; border-bottom:1px solid #cfe3ea;}
+.company-table dd{padding:1rem 1.2rem; font-size:.9rem; border-bottom:1px solid #cfe3ea; background:#fff;}
+.company-table dl > *:nth-last-child(-n+2){border-bottom:none;}
+
+/* contact */
+.contact-cta{background:linear-gradient(120deg,var(--navy),var(--cyan-dark)); color:#fff; text-align:center;}
+.contact-cta h2{font-size:clamp(1.4rem,4vw,2rem); font-weight:900; margin-bottom:1rem;}
+.contact-cta p{color:#dbeef2; margin-bottom:2rem;}
+.contact-flex{display:flex; gap:1.2rem; justify-content:center; flex-wrap:wrap;}
+.btn-big{display:inline-flex; align-items:center; gap:.6rem; background:#fff; font-size:clamp(1rem,2.8vw,1.25rem); font-weight:900; color:var(--navy); padding:1rem 2.2rem; border-radius:4px;}
+.btn-big-outline{display:inline-flex; align-items:center; gap:.6rem; background:rgba(255,255,255,.15); border:1px solid rgba(255,255,255,.4); font-size:clamp(1rem,2.8vw,1.25rem); font-weight:700; color:#fff; padding:1rem 2.2rem; border-radius:4px;}
+.contact-note{margin-top:1.2rem; font-size:.85rem; color:#cfe8ee;}
+
+/* footer */
+footer{background:#081c2f; color:#8fa8b2; padding:2.6rem 0 1.5rem;}
+.footer-flex{display:flex; justify-content:space-between; flex-wrap:wrap; gap:2rem; margin-bottom:2rem;}
+.footer-logo{color:#fff; font-size:1.15rem; font-weight:900; margin-bottom:.6rem;}
+.footer-nav ul{display:flex; flex-wrap:wrap; gap:1rem 1.6rem;}
+.footer-nav a{font-size:.85rem;}
+.copyright{text-align:center; font-size:.78rem; border-top:1px solid #123647; padding-top:1.2rem;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <a href="#" class="logo">アスノート株式会社<span>ASUNOTE INC. / kintone専門</span></a>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#about">私たちについて</a></li>
+        <li><a href="#service">サービス</a></li>
+        <li><a href="#strength">選ばれる理由</a></li>
+        <li><a href="#rep">代表紹介</a></li>
+        <li><a href="#company">会社概要</a></li>
+      </ul>
+    </nav>
+    <div class="header-cta">
+      <a href="https://pj.asunote.jp/contact/" class="cta-btn">無料相談を申し込む</a>
+      <button class="hamburger" onclick="document.getElementById('mnav').classList.toggle('open')">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-nav" id="mnav">
+    <ul>
+      <li><a href="#about">私たちについて</a></li>
+      <li><a href="#service">サービス</a></li>
+      <li><a href="#strength">選ばれる理由</a></li>
+      <li><a href="#rep">代表紹介</a></li>
+      <li><a href="#company">会社概要</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </div>
+</header>
+
+<section class="fv">
+  <div class="fv-content">
+    <span class="fv-tag">サイボウズ公式コンサルティングパートナー</span>
+    <h1>kintoneの「導入したけど<br>活用しきれていない」を、解決する。</h1>
+    <p>公認kintoneエバンジェリストが率いる専門チームが、アプリ構築・業務改善・人材育成・プラグイン開発までワンストップで伴走支援。初回相談は無料（オンライン60分程度）です。</p>
+    <div class="fv-btns">
+      <a href="https://pj.asunote.jp/contact/" class="btn-fv">🖥 無料相談を申し込む</a>
+      <a href="#service" class="btn-fv-outline">サービスを見る</a>
+    </div>
+  </div>
+</section>
+
+<section class="numbers">
+  <div class="container">
+    <div><div class="num">2025年7月</div><div class="label">法人設立</div></div>
+    <div><div class="num">公認</div><div class="label">サイボウズ公認kintoneエバンジェリスト</div></div>
+    <div><div class="num">独自開発</div><div class="label">プラグイン「benryPlus」シリーズ</div></div>
+    <div><div class="num">著書出版</div><div class="label">2026年4月発売</div></div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <p class="eyebrow">About Us</p>
+    <h2 class="section-title">kintoneで、業務改善を前に進める。</h2>
+    <div class="about-inner">
+      <p class="strong-line">「kintoneで、業務改善を前に進める」</p>
+      <p>アスノート株式会社は、kintone導入企業が抱える「使いこなせていない」「作ったけど定着しない」といった課題に向き合い、業務改善が実際に前進する状態をつくることをミッションとしています。導入支援・アプリ構築から、社内で運用を続けられる人材の育成まで、単発の制作で終わらせない伴走型の支援を行っています。</p>
+      <p>あわせて、現場の業務改善ノウハウを製品化した独自プラグイン「benryPlus」シリーズの開発・販売、生成AIを活用したカスタマイズ支援（準備中）にも取り組んでいます。</p>
+    </div>
+  </div>
+</section>
+
+<section id="service" class="service-section">
+  <div class="container">
+    <p class="eyebrow">Service</p>
+    <h2 class="section-title">サービス内容</h2>
+    <p class="section-sub">kintoneに関わる課題をトータルで支援します</p>
+    <div class="service-grid">
+      <div class="service-card">
+        <img src="https://loremflickr.com/500/380/business,consulting,office" alt="kintone導入・業務改善支援">
+        <div class="body">
+          <h3>kintone導入・業務改善支援</h3>
+          <p>ヒアリングをもとに業務フローを整理し、kintoneアプリの設計・構築から運用定着までを伴走支援します。</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://loremflickr.com/500/380/software,development,coding" alt="プラグイン開発・販売（benryPlus）">
+        <div class="body">
+          <h3>プラグイン開発・販売（benryPlus）</h3>
+          <p>現場の業務改善ノウハウを製品化した自社プラグイン「benryPlus」シリーズを開発・販売しています。</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://loremflickr.com/500/380/training,seminar,office" alt="人材育成プログラム">
+        <div class="body">
+          <h3>人材育成プログラム</h3>
+          <p>社内でkintoneを使いこなせる人材、業務改善を推進できる人材の育成を支援します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="strength">
+  <div class="container">
+    <p class="eyebrow">Why Us</p>
+    <h2 class="section-title">選ばれる理由</h2>
+    <p class="section-sub">サイボウズ公認エバンジェリストならではの知見と実績</p>
+    <div class="strength-grid">
+      <div class="strength-card">
+        <img src="https://loremflickr.com/300/200/certificate,award,office" alt="サイボウズ公式コンサルティングパートナー認定">
+        <strong>公式パートナー認定</strong>
+      </div>
+      <div class="strength-card">
+        <img src="https://loremflickr.com/300/200/presentation,seminar,speaker" alt="kintoneエバンジェリストによる登壇実績">
+        <strong>公認エバンジェリスト</strong>
+      </div>
+      <div class="strength-card">
+        <img src="https://loremflickr.com/300/200/book,writing,desk" alt="著書『ゼロから始めるkintoneカスタマイズ入門』">
+        <strong>著書出版</strong>
+      </div>
+      <div class="strength-card">
+        <img src="https://loremflickr.com/300/200/community,meeting,group" alt="kintone Café広島 運営メンバー">
+        <strong>kintone Café広島 運営</strong>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rep" class="rep-section">
+  <div class="container rep-flex">
+    <div class="rep-img">
+      <img src="https://loremflickr.com/440/440/businessman,portrait" alt="代表取締役 松田正太郎">
+    </div>
+    <div class="rep-text">
+      <p class="eyebrow" style="text-align:left;">Representative</p>
+      <div class="name">代表取締役　松田正太郎</div>
+      <div class="role">サイボウズ公認 kintoneエバンジェリスト</div>
+      <p>個人事業「プロジェクト・アスノート」を前身に、2025年7月にアスノート株式会社を設立。kintone Café広島の運営メンバーとしても活動し、2026年4月には著書『ゼロから始めるkintoneカスタマイズ入門』を出版するなど、kintoneコミュニティを通じて業務改善のノウハウを発信し続けています。</p>
+      <div class="rep-tags">
+        <span>サイボウズ公認kintoneエバンジェリスト</span>
+        <span>kintone Café広島 運営メンバー</span>
+        <span>著書出版（2026年4月）</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="company">
+  <div class="container">
+    <p class="eyebrow">Company</p>
+    <h2 class="section-title">会社概要</h2>
+    <div class="company-table">
+      <dl>
+        <dt>社名</dt><dd>アスノート株式会社（ASUNOTE INC.）</dd>
+        <dt>代表者</dt><dd>代表取締役　松田正太郎</dd>
+        <dt>設立</dt><dd>2025年7月8日（前身：個人事業「プロジェクト・アスノート」）</dd>
+        <dt>所在地</dt><dd>※現サイトに記載がないため要確認。ご記入をお願いいたします。</dd>
+        <dt>事業内容</dt><dd>kintone導入・活用・業務改善支援、アプリ構築支援、人材育成プログラム、プラグイン開発・販売（benryPlus）、生成AI活用カスタマイズ支援（準備中）</dd>
+        <dt>認定・実績</dt><dd>サイボウズ公式コンサルティングパートナー認定、サイボウズ公認kintoneエバンジェリスト、kintone Café広島 運営メンバー</dd>
+        <dt>関連情報</dt><dd>著書『ゼロから始めるkintoneカスタマイズ入門』（2026年4月18日発売）</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact-cta">
+  <div class="container">
+    <p class="eyebrow" style="color:#dff5f0;">Contact</p>
+    <h2>まずは無料相談から</h2>
+    <p>kintone導入・業務改善に関するご相談を承ります。オンラインで60分程度、まずはお気軽にお申し込みください。</p>
+    <div class="contact-flex">
+      <a href="https://pj.asunote.jp/contact/" class="btn-big">🖥 無料相談を申し込む</a>
+      <a href="https://pj.asunote.jp/" class="btn-big-outline">サイトを見る</a>
+    </div>
+    <p class="contact-note">お問い合わせフォームは pj.asunote.jp/contact/ をご利用ください</p>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-flex">
+      <div>
+        <div class="footer-logo">アスノート株式会社</div>
+        <p style="font-size:.85rem;">kintoneで、業務改善を前に進める。<br>kintone導入・業務改善支援 / プラグイン開発 / 人材育成</p>
+      </div>
+      <nav class="footer-nav">
+        <ul>
+          <li><a href="#about">私たちについて</a></li>
+          <li><a href="#service">サービス</a></li>
+          <li><a href="#strength">選ばれる理由</a></li>
+          <li><a href="#rep">代表紹介</a></li>
+          <li><a href="#company">会社概要</a></li>
+        </ul>
+      </nav>
+    </div>
+    <p class="copyright">© アスノート株式会社</p>
+  </div>
+</footer>
+
+<script>
+document.getElementById('mnav').addEventListener('click', e=>{
+  if(e.target.tagName==='A') document.getElementById('mnav').classList.remove('open');
+});
+</script>
+</body>
+</html>
