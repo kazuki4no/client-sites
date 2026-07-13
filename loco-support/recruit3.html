@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>採用情報 | ロコサポート</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;color:#222;line-height:1.7;}
+img{max-width:100%;height:auto;display:block;}
+a{color:inherit;text-decoration:none;}
+:root{--teal:#0a3d4f;--gold:#d4a017;--gold-lt:#f0c040;--bg:#f7f5f0;--white:#fff;}
+
+/* Header */
+.site-header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(10,61,79,.96);backdrop-filter:blur(8px);color:#fff;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 1.5rem;
+}
+.brand{font-family:'Noto Serif JP',serif;font-weight:700;font-size:1.05rem;color:#fff;letter-spacing:.04em;}
+.brand em{color:var(--gold-lt);font-style:normal;}
+.hamburger{display:none;background:none;border:0;color:#fff;font-size:1.7rem;line-height:1;cursor:pointer;}
+.site-nav{display:flex;gap:1.5rem;align-items:center;}
+.site-nav a{color:#b0c8d0;font-size:.86rem;transition:color .2s;}
+.site-nav a:hover{color:#fff;}
+.site-nav .nav-cta{
+  background:var(--gold);color:#fff;padding:.4rem 1.2rem;border-radius:4px;font-weight:700;
+  transition:background .2s;
+}
+.site-nav .nav-cta:hover{background:var(--gold-lt);}
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{
+    display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:rgba(10,61,79,.98);padding:.5rem 1rem;
+  }
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.8rem 0;border-bottom:1px solid rgba(255,255,255,.12);color:#b0c8d0;}
+  .site-nav .nav-cta{margin:.5rem 0;text-align:center;border-radius:4px;}
+}
+
+/* Hero - FV full screen */
+.hero{
+  position:relative;min-height:82vh;display:flex;align-items:center;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&h=900&fit=crop&q=80');
+  background-size:cover;background-position:center;
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(160deg,rgba(10,61,79,.82) 0%,rgba(4,20,30,.72) 100%);
+}
+.hero-content{
+  position:relative;max-width:860px;margin:0 auto;padding:5rem 1.5rem;color:#fff;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:.6rem;
+  font-size:.76rem;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--gold-lt);margin-bottom:1.5rem;
+}
+.hero-eyebrow::before{content:'';display:block;width:24px;height:1px;background:var(--gold);}
+.hero-title{
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(2.2rem,7vw,4rem);font-weight:900;line-height:1.15;
+  margin-bottom:1.4rem;letter-spacing:.03em;
+}
+.hero-title span{color:var(--gold-lt);}
+.hero-sub{
+  font-size:1rem;opacity:.88;line-height:1.85;margin-bottom:2.5rem;max-width:500px;
+  border-left:2px solid var(--gold);padding-left:1rem;
+}
+.btn-gold{
+  display:inline-block;background:var(--gold);color:#fff;
+  font-weight:700;padding:.95rem 2.6rem;border-radius:4px;font-size:1.05rem;
+  letter-spacing:.04em;transition:background .2s;
+}
+.btn-gold:hover{background:var(--gold-lt);}
+.btn-border{
+  display:inline-block;border:1.5px solid rgba(255,255,255,.5);color:#fff;
+  font-weight:700;padding:.95rem 2.4rem;border-radius:4px;font-size:1.05rem;
+  margin-left:.8rem;transition:background .2s;
+}
+.btn-border:hover{background:rgba(255,255,255,.12);}
+@media(max-width:500px){.btn-border{margin-left:0;margin-top:.8rem;display:block;text-align:center;}}
+
+/* Scroll cue */
+.scroll-cue{
+  position:absolute;bottom:2.2rem;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:.4rem;color:rgba(255,255,255,.5);font-size:.72rem;letter-spacing:.1em;
+}
+.scroll-cue svg{animation:bob 1.6s ease-in-out infinite;}
+@keyframes bob{0%,100%{transform:translateY(0);}50%{transform:translateY(5px);}}
+
+/* Philosophy strip */
+.philosophy{
+  background:var(--teal);color:#fff;padding:2.8rem 1.5rem;text-align:center;
+}
+.philosophy p{font-size:clamp(1rem,2.5vw,1.25rem);max-width:700px;margin:0 auto;line-height:1.9;letter-spacing:.04em;opacity:.92;}
+.philosophy strong{color:var(--gold-lt);}
+
+/* Sections */
+.section{padding:5rem 1.5rem;}
+.section-warm{background:var(--bg);}
+.section-dark{background:var(--teal);color:#fff;}
+.container{max-width:960px;margin:0 auto;}
+.section-label{font-size:.73rem;font-weight:700;letter-spacing:.16em;color:var(--gold);text-transform:uppercase;margin-bottom:.5rem;}
+.section-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.6rem,4.5vw,2.4rem);font-weight:900;margin-bottom:.8rem;color:var(--teal);}
+.section-dark .section-title{color:#fff;}
+.section-dark .section-label{color:var(--gold-lt);}
+.section-lead{color:#555;max-width:640px;margin-bottom:2.5rem;line-height:1.8;}
+.section-dark .section-lead{color:rgba(255,255,255,.82);}
+.sample-note{font-size:.72rem;color:#bbb;margin-top:.8rem;}
+.section-dark .sample-note{color:rgba(255,255,255,.4);}
+
+/* Feature cards */
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+@media(max-width:768px){.feature-grid{grid-template-columns:1fr;}}
+.feature-card{
+  background:#fff;border-radius:10px;overflow:hidden;
+  box-shadow:0 4px 20px rgba(10,61,79,.12);
+}
+.feature-card-img{width:100%;aspect-ratio:16/9;object-fit:cover;}
+.feature-card-body{padding:1.4rem 1.5rem 1.8rem;}
+.feature-card-tag{
+  display:inline-block;background:rgba(10,61,79,.08);color:var(--teal);
+  font-size:.72rem;font-weight:700;padding:.2rem .7rem;border-radius:12px;margin-bottom:.7rem;
+}
+.feature-card h3{font-size:1rem;font-weight:700;color:var(--teal);margin-bottom:.5rem;line-height:1.4;}
+.feature-card p{font-size:.88rem;color:#555;line-height:1.75;}
+
+/* Timeline */
+.timeline{position:relative;}
+.timeline::before{content:'';position:absolute;left:82px;top:0;bottom:0;width:2px;background:rgba(255,255,255,.2);}
+.section-dark .timeline::before{background:rgba(255,255,255,.2);}
+.tl-item{display:grid;grid-template-columns:72px 20px 1fr;gap:0 .8rem;align-items:start;margin-bottom:1.6rem;}
+.tl-time{text-align:right;font-weight:700;color:var(--gold-lt);font-size:.93rem;padding-top:.1rem;}
+.tl-dot{width:14px;height:14px;border-radius:50%;background:var(--gold);justify-self:center;margin-top:.35rem;position:relative;z-index:1;}
+.tl-body h4{font-weight:700;color:#fff;margin-bottom:.2rem;}
+.tl-body p{font-size:.9rem;color:rgba(255,255,255,.72);line-height:1.7;}
+@media(max-width:768px){
+  .timeline::before{left:46px;}
+  .tl-item{grid-template-columns:40px 16px 1fr;gap:0 .6rem;}
+  .tl-time{font-size:.78rem;}
+}
+
+/* Voice */
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+@media(max-width:768px){.voice-grid{grid-template-columns:1fr;}}
+.voice-card{
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  border-radius:8px;padding:1.5rem;
+}
+.voice-header{display:flex;align-items:center;gap:.9rem;margin-bottom:1rem;}
+.voice-photo{width:72px;height:72px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--gold);}
+.voice-name{font-weight:700;color:#fff;font-size:.95rem;}
+.voice-tenure{font-size:.78rem;color:rgba(255,255,255,.55);margin-top:.2rem;}
+.voice-text{font-size:.9rem;color:rgba(255,255,255,.8);line-height:1.75;}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:1rem;}
+.faq-item{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+.faq-q{display:flex;align-items:flex-start;gap:.8rem;padding:1.1rem 1.5rem;font-weight:700;font-size:.97rem;color:var(--teal);}
+.faq-q-badge{
+  background:var(--teal);color:#fff;width:26px;height:26px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;font-size:.82rem;flex-shrink:0;font-weight:900;
+}
+.faq-a{padding:.1rem 1.5rem 1.2rem 3.8rem;color:#555;font-size:.93rem;line-height:1.75;}
+
+/* Requirements */
+.req-table{width:100%;border-collapse:collapse;}
+.req-table th,.req-table td{padding:.9rem 1.2rem;border-bottom:1px solid #e8e2d8;text-align:left;vertical-align:top;}
+.req-table th{width:160px;background:#ede8e0;font-weight:700;color:var(--teal);font-size:.88rem;white-space:nowrap;}
+.req-table td{color:#444;font-size:.93rem;line-height:1.7;}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{padding:.5rem .8rem;white-space:normal;}
+  .req-table td{padding:.5rem .8rem 1rem;}
+}
+
+/* CTA section */
+.cta-section{
+  position:relative;overflow:hidden;
+  background:var(--teal);color:#fff;text-align:center;padding:6rem 1.5rem;
+}
+.cta-section::before{
+  content:'';position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&h=600&fit=crop&q=80') center/cover;
+  opacity:.08;
+}
+.cta-section .container{position:relative;}
+.cta-section h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.7rem,4.5vw,2.6rem);font-weight:900;margin-bottom:1rem;letter-spacing:.03em;}
+.cta-section p{opacity:.88;margin-bottom:2rem;font-size:1.05rem;}
+.cta-divider{width:40px;height:2px;background:var(--gold);margin:1.2rem auto 1.5rem;}
+
+/* Footer */
+footer{background:#060f12;color:#666;padding:2.2rem 1.5rem;text-align:center;font-size:.84rem;line-height:1.8;}
+footer strong{color:#90a8b0;display:block;margin-bottom:.3rem;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="#top">ロコ<em>サポート</em></a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#features">仕事の魅力</a>
+    <a href="#day">1日の流れ</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#faq">よくある質問</a>
+    <a href="#requirements">募集要項</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Maintenance Staff Recruit</div>
+    <h1 class="hero-title">
+      千葉の現場で、<br>
+      <span>専門技術</span>という<br>
+      武器を手に入れる。
+    </h1>
+    <p class="hero-sub">自動ドアという唯一無二のフィールドで、代表技術者と共に腕を磨く正社員ポジション。未経験歓迎・資格取得支援・独立サポートあり。</p>
+    <a href="#entry" class="btn-gold">応募・問い合わせ</a>
+    <a href="#features" class="btn-border">仕事内容を見る</a>
+  </div>
+  <div class="scroll-cue">
+    <span>SCROLL</span>
+    <svg width="16" height="24" viewBox="0 0 16 24" fill="none" stroke="currentColor" stroke-width="1.5">
+      <path d="M8 4v16M2 14l6 6 6-6"/>
+    </svg>
+  </div>
+</section>
+
+<!-- Philosophy -->
+<div class="philosophy">
+  <p>「自動ドアを直す」だけではない。<br><strong>社会のインフラを支え、お客様に安心を届ける専門家</strong>として、千葉の現場に必要とされる仕事です。</p>
+</div>
+
+<!-- Features -->
+<section class="section section-warm" id="features">
+  <div class="container">
+    <div class="section-label">FEATURES</div>
+    <h2 class="section-title">この仕事の3つの魅力</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <img class="feature-card-img" src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=640&h=360&fit=crop&q=80" alt="技術作業のイメージ（サンプル）">
+        <div class="feature-card-body">
+          <div class="feature-card-tag">スキルアップ</div>
+          <h3>手に職・資格取得支援で市場価値アップ</h3>
+          <p>自動ドア施工技能士など業務資格の取得を会社が支援。技術が身につけば独立・開業の道も開けます。</p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <img class="feature-card-img" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=640&h=360&fit=crop&q=80" alt="現場作業のイメージ（サンプル）">
+        <div class="feature-card-body">
+          <div class="feature-card-tag">マンツーマン指導</div>
+          <h3>代表と二人三脚。未経験でも安心のスタート</h3>
+          <p>「丁寧に教育する」を会社の約束にしています。現場でわからないことはその場で聞ける環境です。</p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <img class="feature-card-img" src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=640&h=360&fit=crop&q=80" alt="休暇・ライフスタイルのイメージ（サンプル）">
+        <div class="feature-card-body">
+          <div class="feature-card-tag">ワークライフバランス</div>
+          <h3>年間126日休日・月給30〜50万円の安定収入</h3>
+          <p>土日祝・長期休暇でプライベートを確保。月給は技術手当・精勤手当込みで実質手厚い水準です。</p>
+        </div>
+      </div>
+    </div>
+    <p class="sample-note" style="margin-top:1rem;">※写真はサンプルです。実際には御社の現場・職場写真に差し替えます</p>
+  </div>
+</section>
+
+<!-- Day in the life -->
+<section class="section section-dark" id="day">
+  <div class="container">
+    <div class="section-label">A DAY IN THE LIFE</div>
+    <h2 class="section-title">1日の流れ</h2>
+    <p class="section-lead">現場を中心とした、ある日のスケジュールです。現場の規模や場所により変わります。</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">08:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>出社・朝礼</h4><p>当日の現場確認、工具・部材チェック。スムーズな出発準備。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">09:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>現場出発・午前作業</h4><p>千葉県内の現場へ移動。自動ドアの設置・修理・点検を代表と共に進めます。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>昼休憩</h4><p>ゆっくり90分の休憩。近くで昼食を取りながら先輩と情報交換。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>午後の作業・動作確認</h4><p>仕上げの動作テストと微調整。お客様に「安心」を届けるためのこだわり。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">16:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>帰社・報告</h4><p>作業報告書を記入し、翌日の段取りを確認してから終業。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">18:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>退社</h4><p>定時退社が基本。月の残業は平均約10時間。プライベートも充実。</p></div>
+      </div>
+    </div>
+    <p class="sample-note">※ここはサンプルです。実際には御社の1日の流れに差し替えます</p>
+  </div>
+</section>
+
+<!-- Senior voices -->
+<section class="section section-dark" id="voice">
+  <div class="container">
+    <div class="section-label">VOICE</div>
+    <h2 class="section-title">先輩からのメッセージ</h2>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="voice-header">
+          <img class="voice-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+          <div>
+            <div class="voice-name">田中 健二（仮名）</div>
+            <div class="voice-tenure">入社3年目 / メンテナンススタッフ</div>
+          </div>
+        </div>
+        <p class="voice-text">代表がひとつひとつ丁寧に教えてくれました。今では一人でひととおりの作業をこなせるようになり、達成感が仕事の原動力になっています。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社スタッフの声に差し替えます</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-header">
+          <img class="voice-photo" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+          <div>
+            <div class="voice-name">松本 翔（仮名）</div>
+            <div class="voice-tenure">入社1年半 / メンテナンススタッフ</div>
+          </div>
+        </div>
+        <p class="voice-text">将来の独立を見据えて入社を決めました。専門性を磨きながら資格取得も支援してもらえる環境は、キャリアを真剣に考える人にとって理想的だと感じています。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社スタッフの声に差し替えます</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-header">
+          <img class="voice-photo" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+          <div>
+            <div class="voice-name">橋本 竜也（仮名）</div>
+            <div class="voice-tenure">入社2年目 / メンテナンススタッフ</div>
+          </div>
+        </div>
+        <p class="voice-text">前職は全く別の業界でしたが、最初の3か月で基礎を身につけられました。土日がしっかり休めるので、家族との時間を大切にしながら働けています。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社スタッフの声に差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section-warm" id="faq">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q"><div class="faq-q-badge">Q</div>未経験でも応募できますか？</div>
+        <div class="faq-a">はい、大丈夫です。代表技術者がマンツーマンで現場指導を行います。「やる気と運転免許」があれば、技術や知識は現場で身につけられます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><div class="faq-q-badge">Q</div>資格取得のサポートはありますか？</div>
+        <div class="faq-a">はい、業務に必要な資格等の取得を会社が応援します。自動ドア施工技能士の資格取得者は優遇される制度もあります。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><div class="faq-q-badge">Q</div>残業はどのくらいありますか？</div>
+        <div class="faq-a">月平均約10時間です。年に数回、緊急対応が入ることがありますが、その際は別途手当が支給されます。定時退社が基本です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><div class="faq-q-badge">Q</div>選考について教えてください。</div>
+        <div class="faq-a">書類選考はありません。ご応募後に担当者よりご連絡し、ご都合に合わせて面接日時を調整します。面接は1回で、結果は面接後1日以内にご連絡します。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><div class="faq-q-badge">Q</div>オンライン応募はできますか？</div>
+        <div class="faq-a">メール（contact@loco-support.com）からのご応募が可能です。ハローワークのオンライン自主応募も受け付けています（ハローワーク紹介状は不要）。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Requirements -->
+<section class="section" id="requirements">
+  <div class="container">
+    <div class="section-label">REQUIREMENTS</div>
+    <h2 class="section-title">募集要項</h2>
+    <table class="req-table">
+      <tbody>
+        <tr><th>職種</th><td>メンテナンススタッフ</td></tr>
+        <tr><th>雇用形態</th><td>正社員（雇用期間の定めなし）</td></tr>
+        <tr><th>仕事内容</th><td>千葉県内を中心とした自動ドアの設置・修理・点検業務。代表技術者のアシスト業務を通じ、現場で指導を受けながらスキルアップできます。</td></tr>
+        <tr><th>勤務地</th><td>〒276-0040 千葉県八千代市緑が丘西3-11-17<br>（東葉高速鉄道 八千代緑ヶ丘駅 徒歩10分・マイカー通勤可・駐車無料）</td></tr>
+        <tr><th>勤務時間</th><td>9:00〜18:00（休憩90分）/ 月平均残業 約10時間</td></tr>
+        <tr><th>給与</th><td>月給 300,000〜500,000円<br>（基本給 195,000〜340,000円＋技術手当＋精勤手当）<br>試用期間（3か月）は日給 13,000円</td></tr>
+        <tr><th>賞与・昇給</th><td>年2回賞与 / 昇給あり（年0〜10,000円）</td></tr>
+        <tr><th>休日・休暇</th><td>土曜・日曜・祝日、年末年始、夏季休暇（年間休日126日）</td></tr>
+        <tr><th>各種手当</th><td>通勤手当（実費・上限月10,000円）、家族手当（5,000〜20,000円）、緊急対応手当</td></tr>
+        <tr><th>応募資格</th><td>普通自動車免許（AT限定可）必須 / 年齢38歳以下 / 経験・学歴不問</td></tr>
+        <tr><th>選考方法</th><td>書類選考なし・面接1回（結果は面接後1日以内）</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="entry">
+  <div class="container">
+    <h2>あなたの挑戦を、<br>一緒に形にしましょう。</h2>
+    <div class="cta-divider"></div>
+    <p>「少し話を聞きたい」だけでも大歓迎。<br>面接日時はご都合に合わせて柔軟に調整します。</p>
+    <a href="mailto:contact@loco-support.com" class="btn-gold" style="margin:.4rem;">メールで問い合わせ</a>
+    <a href="tel:047-456-8133" class="btn-border" style="margin:.4rem;">電話する（047-456-8133）</a>
+  </div>
+</section>
+
+<footer>
+  <strong>ロコサポート（Ｌｏｃｏサポート）</strong>
+  〒276-0040 千葉県八千代市緑が丘西3-11-17<br>
+  TEL: 047-456-8133 / E-mail: contact@loco-support.com
+</footer>
+
+<script>
+(function(){
+  var btn=document.querySelector('.hamburger');
+  var nav=document.querySelector('.site-nav');
+  if(btn&&nav){
+    btn.addEventListener('click',function(){
+      var open=nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded',open);
+    });
+  }
+})();
+</script>
+</body>
+</html>
