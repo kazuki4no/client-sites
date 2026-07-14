@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 賃貸スマイル株式会社</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;color:#222;background:#fff;line-height:1.7;}
+img{max-width:100%;display:block;}
+a{text-decoration:none;color:inherit;}
+
+/* --- HEADER --- */
+.site-header{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1.4rem;background:#fff;border-bottom:2px solid #f2562b;position:sticky;top:0;z-index:100;}
+.brand{font-size:1rem;font-weight:700;color:#c44321;}
+.hamburger{display:none;background:none;border:0;font-size:1.7rem;line-height:1;cursor:pointer;color:#c44321;}
+.site-nav{display:flex;gap:1.4rem;align-items:center;}
+.site-nav a{font-size:.88rem;font-weight:500;color:#444;}
+.site-nav a:hover{color:#c44321;}
+.site-nav .nav-cta{background:#f2562b;color:#fff;padding:.4rem 1rem;border-radius:4px;font-size:.88rem;font-weight:700;}
+.site-nav .nav-cta:hover{background:#c44321;}
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;position:absolute;top:100%;left:0;right:0;z-index:50;background:#fff;box-shadow:0 8px 16px rgba(0,0,0,.12);padding:.5rem 1rem;}
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.8rem 0;border-bottom:1px solid #eee;}
+  .site-nav .nav-cta{margin:.5rem 0;text-align:center;border-radius:4px;}
+}
+
+/* --- HERO (LP型・インパクト重視) --- */
+.hero{background:linear-gradient(135deg,#c44321 0%,#f2562b 60%,#f7885e 100%);padding:5rem 1.4rem 4rem;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;right:-80px;top:-80px;width:360px;height:360px;background:rgba(255,255,255,.06);border-radius:50%;}
+.hero::after{content:'';position:absolute;left:-60px;bottom:-60px;width:260px;height:260px;background:rgba(255,255,255,.04);border-radius:50%;}
+.hero-pill{display:inline-block;background:rgba(255,255,255,.2);color:#fff;font-size:.8rem;padding:.3rem .9rem;border-radius:20px;border:1px solid rgba(255,255,255,.5);margin-bottom:1.2rem;letter-spacing:.08em;}
+.hero h1{font-size:clamp(2rem,6vw,3.4rem);color:#fff;font-weight:900;line-height:1.15;margin-bottom:1rem;position:relative;z-index:1;}
+.hero h1 .accent{display:block;font-size:clamp(1rem,3vw,1.4rem);font-weight:500;opacity:.9;margin-top:.3rem;}
+.hero-sub{color:rgba(255,255,255,.9);font-size:clamp(.9rem,2vw,1.05rem);max-width:560px;margin:0 auto 2.2rem;}
+.btn-hero{display:inline-block;background:#fff;color:#c44321;padding:1rem 2.8rem;border-radius:4px;font-weight:900;font-size:1.05rem;box-shadow:0 6px 20px rgba(0,0,0,.18);transition:transform .2s,box-shadow .2s;position:relative;z-index:1;}
+.btn-hero:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.22);}
+.hero-tags{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:center;margin-top:1.8rem;position:relative;z-index:1;}
+.hero-tag{background:rgba(255,255,255,.15);color:#fff;font-size:.78rem;padding:.3rem .8rem;border-radius:20px;border:1px solid rgba(255,255,255,.4);}
+
+/* --- PROBLEM/RESOLVE --- */
+.problem{background:#fff9f7;padding:4rem 1.2rem;}
+.container{max-width:860px;margin:0 auto;}
+.section-label{font-size:.75rem;letter-spacing:.14em;color:#f2562b;font-weight:700;margin-bottom:.4rem;text-transform:uppercase;}
+.section-title{font-size:clamp(1.3rem,4vw,1.9rem);font-weight:700;margin-bottom:1.6rem;line-height:1.35;}
+.section-title span{color:#c44321;}
+.concern-list{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:2rem;}
+@media(max-width:600px){.concern-list{grid-template-columns:1fr;}}
+.concern-item{background:#fff;border-left:4px solid #f2562b;padding:1rem 1.2rem;border-radius:0 8px 8px 0;font-size:.92rem;color:#444;box-shadow:0 1px 6px rgba(0,0,0,.06);}
+.concern-item::before{content:'⚡ ';}
+.resolve{background:linear-gradient(90deg,#fff4f0,#fff);border-radius:12px;padding:1.6rem;text-align:center;font-size:1rem;font-weight:700;color:#c44321;border:2px solid #f2562b;}
+
+/* --- NUMBERS --- */
+.numbers{background:#f8f8f8;padding:4rem 1.2rem;text-align:center;}
+.num-grid{display:flex;justify-content:center;gap:2rem;flex-wrap:wrap;margin-top:2rem;}
+.num-item{text-align:center;}
+.num-val{font-size:clamp(2rem,6vw,3rem);font-weight:900;color:#c44321;line-height:1.1;}
+.num-val span{font-size:.5em;font-weight:700;}
+.num-label{font-size:.82rem;color:#666;margin-top:.3rem;}
+.num-sample{font-size:.72rem;color:#bbb;margin-top:.2rem;}
+
+/* --- APPEAL --- */
+.appeal{padding:4rem 1.2rem;}
+.appeal-list{display:flex;flex-direction:column;gap:1.4rem;}
+.appeal-item{display:flex;gap:1.4rem;align-items:flex-start;background:#fff;border-radius:12px;padding:1.4rem;box-shadow:0 2px 12px rgba(0,0,0,.07);}
+@media(max-width:600px){.appeal-item{flex-direction:column;}}
+.appeal-num{font-size:2.2rem;font-weight:900;color:#f2562b;line-height:1;min-width:50px;}
+.appeal-body h3{font-size:1.05rem;font-weight:700;color:#222;margin-bottom:.4rem;}
+.appeal-body p{font-size:.9rem;color:#555;line-height:1.65;}
+
+/* --- DAY TIMELINE --- */
+.day{background:#fff9f7;padding:4rem 1.2rem;}
+.timeline-wrap{position:relative;}
+.timeline-wrap::before{content:'';position:absolute;left:calc(70px + .4rem + 10px);top:0;bottom:0;width:2px;background:#f2d4c8;}
+.tl-item{display:grid;grid-template-columns:70px 20px 1fr;gap:0 .8rem;align-items:start;margin-bottom:1.4rem;}
+.tl-time{text-align:right;font-weight:700;color:#c44321;font-size:.9rem;padding-top:.3rem;}
+.tl-dot{width:12px;height:12px;background:#f2562b;border-radius:50%;justify-self:center;margin-top:.45rem;position:relative;z-index:1;}
+.tl-body h4{font-size:.95rem;font-weight:700;margin-bottom:.2rem;}
+.tl-body p{font-size:.85rem;color:#555;}
+.sample-note{font-size:.75rem;color:#bbb;text-align:center;margin-top:.5rem;}
+@media(max-width:768px){
+  .tl-item{grid-template-columns:52px 16px 1fr;}
+  .timeline-wrap::before{left:calc(52px + .4rem + 8px);}
+}
+
+/* --- VOICE --- */
+.voice{padding:4rem 1.2rem;}
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+@media(max-width:768px){.voice-grid{grid-template-columns:1fr;}}
+.voice-card{border:2px solid #f2d4c8;border-radius:12px;overflow:hidden;}
+.voice-img{width:100%;height:200px;object-fit:cover;}
+.voice-body{padding:1.1rem;}
+.voice-name{font-weight:700;color:#c44321;font-size:.92rem;}
+.voice-role{font-size:.76rem;color:#999;margin-bottom:.5rem;}
+.voice-text{font-size:.87rem;color:#444;line-height:1.65;}
+.voice-small{font-size:.72rem;color:#bbb;margin-top:.4rem;}
+
+/* --- RECRUIT TABLE --- */
+.recruit{background:#f8f8f8;padding:4rem 1.2rem;}
+.req-table{width:100%;border-collapse:collapse;font-size:.9rem;background:#fff;}
+.req-table th,.req-table td{padding:.85rem 1rem;text-align:left;border-bottom:1px solid #f0ebe8;}
+.req-table th{background:#fff4f0;width:30%;font-weight:700;color:#c44321;}
+.req-table td{color:#444;}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{padding:.5rem .8rem;}
+  .req-table td{padding:.5rem .8rem 1rem;}
+}
+
+/* --- FAQ --- */
+.faq{padding:4rem 1.2rem;}
+.faq-list{display:flex;flex-direction:column;gap:.9rem;}
+.faq-item{border:1px solid #f0d8d0;border-radius:10px;overflow:hidden;}
+.faq-q{background:#fff4f0;padding:1rem 1.2rem;font-weight:700;font-size:.95rem;color:#c44321;}
+.faq-q::before{content:'Q. ';}
+.faq-a{padding:1rem 1.2rem;font-size:.9rem;color:#444;line-height:1.7;}
+.faq-a::before{content:'A. ';color:#f2562b;font-weight:700;}
+
+/* --- CTAs --- */
+.cta-mid{background:linear-gradient(90deg,#c44321,#f2562b);padding:3rem 1.2rem;text-align:center;}
+.cta-mid h2{color:#fff;font-size:clamp(1.2rem,3.5vw,1.7rem);margin-bottom:1rem;}
+.btn-white{display:inline-block;background:#fff;color:#c44321;padding:.85rem 2.4rem;border-radius:4px;font-weight:900;font-size:1rem;box-shadow:0 4px 16px rgba(0,0,0,.15);transition:transform .2s;}
+.btn-white:hover{transform:translateY(-2px);}
+
+.cta-final{background:#1a1a1a;padding:4rem 1.2rem;text-align:center;}
+.cta-final h2{color:#fff;font-size:clamp(1.3rem,4vw,2rem);margin-bottom:.8rem;}
+.cta-final p{color:#aaa;margin-bottom:2rem;font-size:.95rem;}
+.btn-orange{display:inline-block;background:#f2562b;color:#fff;padding:.95rem 2.8rem;border-radius:4px;font-weight:900;font-size:1.05rem;box-shadow:0 4px 20px rgba(242,86,43,.4);transition:transform .2s;}
+.btn-orange:hover{transform:translateY(-2px);}
+
+/* --- FOOTER CTA BAR (スマホ固定) --- */
+.cta-bar{display:none;position:fixed;bottom:0;left:0;right:0;background:#f2562b;color:#fff;text-align:center;padding:.9rem;font-weight:700;z-index:200;font-size:.95rem;}
+@media(max-width:768px){.cta-bar{display:block;}}
+.cta-bar a{color:#fff;}
+body{padding-bottom:0;}
+@media(max-width:768px){body{padding-bottom:52px;}}
+
+footer{background:#111;color:#888;padding:2rem 1.2rem;text-align:center;font-size:.85rem;}
+footer .co-name{font-size:1rem;font-weight:700;color:#ddd;margin-bottom:.5rem;}
+footer p{margin:.2rem 0;}
+</style>
+</head>
+<body>
+
+<header class="site-header" id="top">
+  <a class="brand" href="#top">賃貸スマイル株式会社</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#numbers">数字で見る</a>
+    <a href="#appeal">働く魅力</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#recruit">募集要項</a>
+    <a href="#faq">FAQ</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-pill">賃貸スマイル株式会社 採用情報</div>
+  <h1>
+    お客様の「新生活」を届ける<br>
+    カウンター営業、募集中。
+    <span class="accent">飛び込みなし・未経験歓迎・転居なし</span>
+  </h1>
+  <p class="hero-sub">ハローワークで求人を拝見しました。採用ページがないと、せっかくの求人情報が応募者に伝わりにくいことがあります。こんな採用ページがあれば、御社の魅力がもっと届きます。</p>
+  <a class="btn-hero" href="#recruit">募集要項を見る</a>
+  <div class="hero-tags">
+    <span class="hero-tag">完全反響型</span>
+    <span class="hero-tag">年間休日112日</span>
+    <span class="hero-tag">宅建手当3万円</span>
+    <span class="hero-tag">賞与年3回</span>
+    <span class="hero-tag">転居なし</span>
+  </div>
+</section>
+
+<section class="problem">
+  <div class="container">
+    <div class="section-label">ISSUE</div>
+    <h2 class="section-title">こんな不安、<span>ありませんか？</span></h2>
+    <div class="concern-list">
+      <div class="concern-item">「不動産営業って飛び込みが多そう…」</div>
+      <div class="concern-item">「資格がないと難しそう…」</div>
+      <div class="concern-item">「土日勤務だと休みが心配」</div>
+      <div class="concern-item">「転勤で引っ越しはしたくない」</div>
+    </div>
+    <div class="resolve">✅ 賃貸スマイルなら、その不安をすべて解消できます</div>
+  </div>
+</section>
+
+<section class="numbers" id="numbers">
+  <div class="container">
+    <div class="section-label">NUMBERS</div>
+    <h2 class="section-title">数字で見る<span>賃貸スマイル</span></h2>
+    <p class="sample-note">※ここはサンプルです。実際の数字に差し替えます</p>
+    <div class="num-grid">
+      <div class="num-item">
+        <div class="num-val">112<span>日</span></div>
+        <div class="num-label">年間休日</div>
+        <div class="num-sample">※サンプル</div>
+      </div>
+      <div class="num-item">
+        <div class="num-val">3<span>回</span></div>
+        <div class="num-label">年間賞与</div>
+        <div class="num-sample">※サンプル</div>
+      </div>
+      <div class="num-item">
+        <div class="num-val">48<span>名</span></div>
+        <div class="num-label">従業員数</div>
+        <div class="num-sample">※サンプル</div>
+      </div>
+      <div class="num-item">
+        <div class="num-val">20<span>年+</span></div>
+        <div class="num-label">設立からの実績</div>
+        <div class="num-sample">※サンプル</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="appeal" id="appeal">
+  <div class="container">
+    <div class="section-label">APPEAL</div>
+    <h2 class="section-title">入社して<span>よかった3つの理由</span></h2>
+    <div class="appeal-list">
+      <div class="appeal-item">
+        <div class="appeal-num">01</div>
+        <div class="appeal-body">
+          <h3>完全反響型だから、お客様と正面から向き合える</h3>
+          <p>飛び込み営業・テレアポは一切ありません。来店や問い合わせのお客様だけを担当する「完全反響型」なので、1組1組に丁寧に向き合えます。不動産の古いイメージではなく、新しいスタイルの提案営業を実感できます。</p>
+        </div>
+      </div>
+      <div class="appeal-item">
+        <div class="appeal-num">02</div>
+        <div class="appeal-body">
+          <h3>宅建手当・賞与年3回・昇給で収入が伸びる</h3>
+          <p>宅地建物取引士を取得すると月3万円の資格手当が加算。賞与は年3回（前年度実績最大70万円）・昇給制度もあり、頑張りが給与に反映されます。固定残業代（41時間分）も含む安定した収入体系です。</p>
+        </div>
+      </div>
+      <div class="appeal-item">
+        <div class="appeal-num">03</div>
+        <div class="appeal-body">
+          <h3>出店拡大中・地元で長く活躍できる</h3>
+          <p>市川・本八幡・浦安・船橋に加えグループ会社エースも擁し、順次出店予定。転居なし（浦安・市川・船橋エリア内）なので、地元で腰を据えてキャリアを積めます。20〜40代のスタッフが多く、食事会などプライベートでも仲のよいチームです。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MID CTA -->
+<section class="cta-mid">
+  <h2>まず3案のサンプルページを見るだけでOKです</h2>
+  <a class="btn-white" href="#recruit">募集要項を確認する</a>
+</section>
+
+<section class="day" id="day">
+  <div class="container">
+    <div class="section-label">A DAY</div>
+    <h2 class="section-title">社員の<span>1日の流れ</span></h2>
+    <p class="sample-note">※ここはサンプルです。実際のスタッフの1日に差し替えます</p>
+    <br>
+    <div class="timeline-wrap">
+      <div class="tl-item">
+        <div class="tl-time">10:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>出勤・朝礼</h4><p>物件情報・来客予定を共有してスタート。チームで情報を揃えてから営業開始。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">11:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>来店・問い合わせ対応</h4><p>お客様の希望条件をヒアリングし、ぴったりの物件を提案。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>昼食休憩</h4><p>スタッフ交代で1時間の昼休憩。近くのカフェやランチスポットへ。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">14:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>物件案内・内見同行</h4><p>お客様と一緒に物件へ。実際に見ることで「ここに決めた！」につながります。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">16:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>申し込み・契約書類作成</h4><p>入居申し込みや重要事項の説明。丁寧なサポートで安心してもらえる瞬間。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">18:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>日報・翌日準備</h4><p>当日の対応をまとめ、翌日のアポを確認。チームで情報共有して終業。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">19:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>退勤</h4><p>定時退社が基本（月平均残業15時間）。オフタイムも充実！</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="voice" id="voice">
+  <div class="container">
+    <div class="section-label">VOICE</div>
+    <h2 class="section-title">先輩スタッフの<span>声</span></h2>
+    <p class="sample-note">※ここはサンプルです。実際のスタッフの写真とメッセージに差し替えます</p>
+    <br>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <!-- 先輩スタッフ顔写真（ダミー・女性） -->
+        <img class="voice-img" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=280&fit=crop&crop=faces&q=80" alt="スタッフ（サンプル）">
+        <div class="voice-body">
+          <div class="voice-name">鈴木 はる（仮名）</div>
+          <div class="voice-role">カウンター営業 / 入社3年目</div>
+          <p class="voice-text">最初は不動産のことが全くわからなかったけど、来店されたお客様と話しながら覚えられました。飛び込みがないので、怖い思いをしたことは一度もないです。</p>
+          <div class="voice-small">※サンプルです。実際のスタッフのコメントに差し替えます</div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <!-- 先輩スタッフ顔写真（ダミー・男性） -->
+        <img class="voice-img" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=280&fit=crop&crop=faces&q=80" alt="スタッフ（サンプル）">
+        <div class="voice-body">
+          <div class="voice-name">伊藤 けんと（仮名）</div>
+          <div class="voice-role">カウンター営業 / 入社5年目</div>
+          <p class="voice-text">宅建を取ってから給与が上がり、すごくモチベーションになりました。賞与が年3回あるので、頑張った分が返ってくる実感があります。</p>
+          <div class="voice-small">※サンプルです。実際のスタッフのコメントに差し替えます</div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <!-- 先輩スタッフ顔写真（ダミー・女性2） -->
+        <img class="voice-img" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=300&h=280&fit=crop&crop=faces&q=80" alt="スタッフ（サンプル）">
+        <div class="voice-body">
+          <div class="voice-name">木村 ちか（仮名）</div>
+          <div class="voice-role">カウンター営業 / 入社7年目</div>
+          <p class="voice-text">浦安が地元なので転居なしで長く働けているのがありがたい。年間休日112日で、土日休みではないけど、水曜に仲間とランチしたりプライベートも充実しています。</p>
+          <div class="voice-small">※サンプルです。実際のスタッフのコメントに差し替えます</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="recruit" id="recruit">
+  <div class="container">
+    <div class="section-label">RECRUIT</div>
+    <h2 class="section-title">募集<span>要項</span></h2>
+    <table class="req-table">
+      <tr><th>職種</th><td>カウンター営業（浦安店）</td></tr>
+      <tr><th>仕事内容</th><td>賃貸仲介営業ルームアドバイザー。来店・問い合わせのお客様に物件提案・案内・契約サポートを行います（完全反響型）</td></tr>
+      <tr><th>雇用形態</th><td>正社員（試用期間2ヶ月・同条件）</td></tr>
+      <tr><th>給与</th><td>月給 270,000円〜500,000円（基本給206,200円〜＋固定残業代41h分63,800円〜含む）</td></tr>
+      <tr><th>手当・賞与</th><td>宅建士手当3万円/月・住宅手当（最大1万円）・扶養手当・役職手当 ／ 賞与年3回（前年度実績20〜70万円）・昇給あり</td></tr>
+      <tr><th>就業場所</th><td>千葉県浦安市北栄1-16-10 岡清ビル1階（浦安駅徒歩3分）</td></tr>
+      <tr><th>就業時間</th><td>10:00〜19:00（変形労働時間制・月平均残業15時間）</td></tr>
+      <tr><th>休日・休暇</th><td>週休2日（水曜＋平日1日）・年間休日112日・年次有給（6ヶ月後10日）・年末年始・夏季・GW</td></tr>
+      <tr><th>応募資格</th><td>普通自動車運転免許（AT可）・PC操作できる方。学歴・経験不問（35歳以下・キャリア形成目的）</td></tr>
+      <tr><th>転勤</th><td>市川市・浦安市・船橋市のいずれか。転居を伴う転勤はありません</td></tr>
+      <tr><th>加入保険</th><td>雇用・労災・健康・厚生年金</td></tr>
+      <tr><th>選考方法</th><td>書類選考 → 面接（1回予定）。随時受付中</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">よくある<span>ご質問</span></h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">不動産の経験がなくても応募できますか？</div>
+        <div class="faq-a">はい、未経験者が多数活躍しています。完全反響型で飛び込みなし。丁寧な研修でゼロからサポートします。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">宅建は入社までに必要ですか？</div>
+        <div class="faq-a">入社時は必須ではありません。取得後は月3万円の資格手当が加算されます。取得支援もあります。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">転勤はありますか？</div>
+        <div class="faq-a">市川・浦安・船橋エリア内の移動の可能性はありますが、転居を伴う転勤はありません。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">土日は休めますか？</div>
+        <div class="faq-a">土日祝は勤務日ですが、水曜日＋平日1日が休みです。年間休日は112日あります。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final" id="entry">
+  <h2>あなたの「お客様の笑顔が見たい」気持ちを<br>一緒に育てませんか？</h2>
+  <p>まずは気軽にお問い合わせください。選考への不安もお気軽にどうぞ。</p>
+  <a class="btn-orange" href="mailto:jh@c-smile.co.jp">メールでお問い合わせ</a>
+</section>
+
+<footer>
+  <div class="co-name">賃貸スマイル株式会社</div>
+  <p>〒279-0002 千葉県浦安市北栄1-16-10 岡清ビル1階（浦安店）</p>
+  <p>TEL: 047-709-7770　E-mail: jh@c-smile.co.jp</p>
+</footer>
+
+<div class="cta-bar"><a href="mailto:jh@c-smile.co.jp">▶ 今すぐ応募・お問い合わせ</a></div>
+
+<script>
+(function(){
+  var btn = document.querySelector('.hamburger');
+  var nav = document.querySelector('.site-nav');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  }
+})();
+</script>
+</body>
+</html>
