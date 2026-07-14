@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 株式会社シーフォース</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;color:#1A2B4A;line-height:1.7;padding-bottom:70px;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+
+/* --- HEADER --- */
+.site-header{display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 2rem;background:#1A2B4A;position:sticky;top:0;z-index:100;}
+.brand{font-size:1rem;font-weight:700;color:#fff;}
+.site-nav{display:flex;gap:1.4rem;align-items:center;}
+.site-nav a{font-size:.85rem;color:rgba(255,255,255,.8);}
+.site-nav a:hover{color:#fff;}
+.nav-cta{background:#F5A623;color:#fff!important;padding:.4rem 1.2rem;border-radius:4px;font-weight:700;}
+.hamburger{display:none;background:none;border:0;font-size:1.7rem;line-height:1;cursor:pointer;color:#fff;}
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:#1A2B4A;padding:.5rem 1.5rem;}
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.8rem 0;border-bottom:1px solid rgba(255,255,255,.1);}
+}
+
+/* --- HERO --- */
+.hero{position:relative;min-height:80vh;display:flex;align-items:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1600&h=900&fit=crop&q=80');
+  background-size:cover;background-position:center;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,20,50,.8) 0%,rgba(26,43,74,.65) 100%);}
+.hero-content{position:relative;z-index:1;max-width:860px;margin:0 auto;padding:4rem 2rem;color:#fff;}
+.hero-tag{display:inline-block;background:#F5A623;color:#fff;font-size:.8rem;font-weight:700;
+  padding:.3rem 1rem;border-radius:3px;margin-bottom:1.2rem;letter-spacing:.06em;text-transform:uppercase;}
+.hero-content h1{font-size:clamp(2rem,5.5vw,3.6rem);font-weight:900;line-height:1.25;margin-bottom:1.2rem;}
+.hero-content h1 em{color:#F5A623;font-style:normal;}
+.hero-content p{font-size:clamp(.95rem,2.5vw,1.1rem);opacity:.9;margin-bottom:2rem;max-width:580px;}
+.hero-cta-wrap{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-hero{display:inline-block;background:#F5A623;color:#fff;font-weight:700;font-size:1.05rem;
+  padding:.9rem 2.2rem;border-radius:6px;transition:opacity .2s;}
+.btn-hero:hover{opacity:.85;}
+.btn-secondary{display:inline-block;border:2px solid rgba(255,255,255,.6);color:#fff;font-weight:700;
+  padding:.85rem 2rem;border-radius:6px;transition:background .2s;}
+.btn-secondary:hover{background:rgba(255,255,255,.15);}
+
+/* --- SECTION COMMON --- */
+.section{padding:4.5rem 1.5rem;}
+.section-inner{max-width:960px;margin:0 auto;}
+.section-title{font-size:clamp(1.4rem,4vw,2rem);font-weight:900;color:#1A2B4A;margin-bottom:.4rem;}
+.section-sub{font-size:.92rem;color:#888;margin-bottom:2rem;}
+.sample-note{font-size:.78rem;color:#aaa;margin-top:.3rem;}
+
+/* --- NUMBERS --- */
+.numbers-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;text-align:center;}
+.num-card{padding:1.5rem 1rem;border-left:3px solid #1A2B4A;}
+.num-val{font-size:clamp(2rem,5vw,3rem);font-weight:900;color:#1A2B4A;line-height:1;}
+.num-unit{font-size:.9rem;font-weight:700;color:#1A2B4A;}
+.num-label{font-size:.82rem;color:#666;margin-top:.4rem;}
+@media(max-width:768px){.numbers-grid{grid-template-columns:repeat(2,1fr);}}
+
+/* --- APPEAL --- */
+.appeal-list{display:flex;flex-direction:column;gap:2rem;}
+.appeal-item{display:grid;grid-template-columns:80px 1fr;gap:0 1.5rem;align-items:center;
+  background:#fff;border-radius:12px;padding:1.8rem;box-shadow:0 4px 16px rgba(0,0,0,.07);}
+.appeal-num{font-size:3rem;font-weight:900;color:#dde5f5;line-height:1;text-align:center;}
+.appeal-body h3{font-size:1.1rem;font-weight:700;color:#1A2B4A;margin-bottom:.4rem;}
+.appeal-body p{font-size:.92rem;color:#555;}
+@media(max-width:768px){.appeal-item{grid-template-columns:50px 1fr;gap:0 1rem;}}
+
+/* --- INTERVIEW --- */
+.interview-list{display:flex;flex-direction:column;gap:2.5rem;}
+.interview-item{display:grid;grid-template-columns:1fr 2fr;gap:2rem;align-items:center;
+  background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.07);}
+.interview-item:nth-child(even){direction:rtl;}
+.interview-item:nth-child(even) .interview-text{direction:ltr;}
+.interview-img{width:100%;height:260px;object-fit:cover;}
+.interview-text{padding:1.5rem;}
+.interview-meta{font-size:.8rem;color:#888;margin-bottom:.4rem;}
+.interview-name{font-size:1.05rem;font-weight:700;margin-bottom:.8rem;}
+.interview-q{font-size:.82rem;color:#F5A623;font-weight:700;margin-bottom:.2rem;}
+.interview-text p{font-size:.9rem;color:#444;margin-bottom:.8rem;}
+@media(max-width:768px){
+  .interview-item,.interview-item:nth-child(even){direction:ltr;grid-template-columns:1fr;}
+  .interview-img{height:200px;}
+}
+
+/* --- TIMELINE --- */
+.bg-dark{background:#1A2B4A;}
+.bg-dark .section-title,.bg-dark .section-sub{color:#fff;}
+.bg-dark .section-sub{opacity:.7;}
+.timeline{position:relative;}
+.timeline::before{content:'';position:absolute;left:82px;top:0;bottom:0;width:2px;background:rgba(255,255,255,.2);}
+.tl-item{display:grid;grid-template-columns:72px 20px 1fr;gap:0 .8rem;align-items:start;}
+.tl-time{text-align:right;font-size:.85rem;font-weight:700;color:#F5A623;padding-top:.25rem;}
+.tl-dot{width:12px;height:12px;border-radius:50%;background:#F5A623;justify-self:center;margin-top:.35rem;}
+.tl-body{padding-bottom:1.8rem;}
+.tl-body strong{display:block;font-size:.95rem;font-weight:700;color:#fff;margin-bottom:.2rem;}
+.tl-body p{font-size:.88rem;color:rgba(255,255,255,.7);}
+@media(max-width:768px){
+  .timeline::before{left:50px;}
+  .tl-item{grid-template-columns:40px 16px 1fr;}
+  .tl-time{font-size:.75rem;}
+}
+
+/* --- TABLE --- */
+.req-table{width:100%;border-collapse:collapse;}
+.req-table th,.req-table td{padding:.9rem 1rem;border-bottom:1px solid #e0e8f0;text-align:left;vertical-align:top;}
+.req-table th{background:#F0F4FB;color:#1A2B4A;font-weight:700;width:30%;}
+.req-table td{color:#333;}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{background:#f4f6f8;padding:.5rem .8rem;}
+  .req-table td{padding:.5rem .8rem 1rem;}
+}
+
+/* --- FAQ --- */
+.faq-list{list-style:none;}
+.faq-item{background:#fff;border-radius:10px;padding:1.2rem 1.4rem;margin-bottom:1rem;
+  box-shadow:0 2px 8px rgba(0,0,0,.05);}
+.faq-q{font-weight:700;color:#1A2B4A;margin-bottom:.4rem;}
+.faq-q::before{content:'Q. ';color:#F5A623;}
+.faq-a::before{content:'A. ';font-weight:700;color:#1A2B4A;}
+.faq-a{color:#555;font-size:.92rem;}
+
+/* --- CTA SECTIONS --- */
+.cta-mid{background:linear-gradient(135deg,#F5A623,#E8960F);text-align:center;padding:3rem 1.5rem;color:#fff;}
+.cta-mid h2{font-size:clamp(1.3rem,4vw,1.8rem);font-weight:900;margin-bottom:.8rem;}
+.cta-mid p{margin-bottom:1.5rem;opacity:.95;}
+.btn-white{display:inline-block;background:#fff;color:#F5A623;font-weight:700;font-size:1rem;
+  padding:.85rem 2.2rem;border-radius:6px;transition:opacity .2s;}
+.btn-white:hover{opacity:.85;}
+
+.cta-final{background:#1A2B4A;text-align:center;padding:4rem 1.5rem;color:#fff;}
+.cta-final h2{font-size:clamp(1.4rem,4vw,2rem);font-weight:900;margin-bottom:1rem;}
+.cta-final p{margin-bottom:2rem;opacity:.85;}
+
+/* --- FIXED ENTRY BAR (MOBILE) --- */
+.fixed-bar{display:none;position:fixed;bottom:0;left:0;right:0;background:#F5A623;
+  z-index:200;padding:1rem;text-align:center;}
+.fixed-bar a{color:#fff;font-weight:700;font-size:1rem;}
+@media(max-width:768px){.fixed-bar{display:block;}}
+
+/* --- FOOTER --- */
+.site-footer{background:#0D1A36;color:#aaa;text-align:center;padding:2rem 1.5rem;font-size:.83rem;}
+.site-footer p+p{margin-top:.3rem;}
+
+/* BG ALT */
+.bg-gray{background:#F7F9FC;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="#top">株式会社シーフォース</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#appeal">働く魅力</a>
+    <a href="#interview">先輩インタビュー</a>
+    <a href="#timeline">1日の流れ</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#faq">FAQ</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Recruit 2026</div>
+    <h1>「助かった」が聞ける仕事。<br><em>有名施設を支える</em>ITサポートへ。</h1>
+    <p>浦安市舞浜・超有名大規模施設のヘルプデスク受付事務。<br>未経験スタート・15名チーム・正社員登用あり。</p>
+    <div class="hero-cta-wrap">
+      <a class="btn-hero" href="#entry">今すぐ応募する</a>
+      <a class="btn-secondary" href="#requirements">募集要項を見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<section class="section bg-gray">
+  <div class="section-inner">
+    <h2 class="section-title">数字で見るシーフォース</h2>
+    <p class="section-sub">※ここはサンプルです。実際には御社の実績データに差し替えます</p>
+    <!-- HTMLコメント: 実際の会社データに差し替えてください -->
+    <div class="numbers-grid">
+      <div class="num-card">
+        <div class="num-val">120<span class="num-unit">日</span></div>
+        <p class="num-label">年間休日数</p>
+      </div>
+      <div class="num-card">
+        <div class="num-val">60<span class="num-unit">%</span></div>
+        <p class="num-label">地方出身メンバー比率</p>
+      </div>
+      <div class="num-card">
+        <div class="num-val">15<span class="num-unit">名</span></div>
+        <p class="num-label">現地チーム人数</p>
+      </div>
+      <div class="num-card">
+        <div class="num-val">10<span class="num-unit">万</span></div>
+        <p class="num-label">転居手当 最大</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA 1 -->
+<div class="cta-mid">
+  <h2>まずは募集要項を確認してみませんか？</h2>
+  <p>シフトの詳細・給与・待遇が一覧で確認できます。</p>
+  <a class="btn-white" href="#requirements">募集要項を見る</a>
+</div>
+
+<!-- APPEAL -->
+<section class="section" id="appeal">
+  <div class="section-inner">
+    <h2 class="section-title">シーフォースを選ぶ理由</h2>
+    <p class="section-sub">未経験でも、地方出身でも、ここから始められる3つの理由</p>
+    <div class="appeal-list">
+      <div class="appeal-item">
+        <div class="appeal-num">01</div>
+        <div class="appeal-body">
+          <h3>誰もが知る有名施設での仕事</h3>
+          <p>浦安市舞浜の超有名大規模施設を支えるITヘルプデスク。現場スタッフの「困った」を解決し、「助かった」と感謝される。裏方から組織を支える誇りと手応えを感じられる仕事です。</p>
+        </div>
+      </div>
+      <div class="appeal-item">
+        <div class="appeal-num">02</div>
+        <div class="appeal-body">
+          <h3>未経験でも安心のサポート体制</h3>
+          <p>マニュアル・対応フロー完備・15名のチーム体制。周りのほとんどが未経験スタート組なので、「こんなこと聞いていいの？」という遠慮は不要。質問しやすい環境が整っています。</p>
+        </div>
+      </div>
+      <div class="appeal-item">
+        <div class="appeal-num">03</div>
+        <div class="appeal-body">
+          <h3>上京・転居サポートが手厚い</h3>
+          <p>転居手当最大10万円・住宅手当最大3万円/月と、上京コストをしっかりカバー。チームの6割以上が地方出身で、同じ境遇の仲間がそろっているので新生活も安心です。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERVIEW -->
+<section class="section bg-gray" id="interview">
+  <div class="section-inner">
+    <h2 class="section-title">先輩インタビュー</h2>
+    <p class="section-sub">※ここはサンプルです。実際には御社スタッフの写真・コメントに差し替えます</p>
+    <!-- HTMLコメント: 実際の社員インタビューに差し替えてください -->
+    <div class="interview-list">
+      <div class="interview-item">
+        <img class="interview-img" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=320&fit=crop&crop=faces&q=80" alt="田中はな（仮名）の写真">
+        <div class="interview-text">
+          <p class="interview-meta">ヘルプデスク担当 ／ 入社2年目</p>
+          <p class="interview-name">田中 はな（仮名）</p>
+          <p class="interview-q">入社前のイメージと違ったことはありますか？</p>
+          <p>「ITって難しそう、と思っていましたが、窓口の受付が中心なので、専門知識がなくても大丈夫でした。対応フローが整っているので、マニュアルを確認しながら自信をつけていけます。」</p>
+          <p class="interview-q">今後のキャリアについて聞かせてください。</p>
+          <p>「少しずつ覚えて、後輩に教えられるようになりました。いつかはプロジェクト運営支援の仕事もやってみたいです。」</p>
+        </div>
+      </div>
+      <div class="interview-item">
+        <img class="interview-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=320&fit=crop&crop=faces&q=80" alt="鈴木たくや（仮名）の写真">
+        <div class="interview-text">
+          <p class="interview-meta">ヘルプデスク担当 ／ 入社3年目</p>
+          <p class="interview-name">鈴木 たくや（仮名）</p>
+          <p class="interview-q">地方から上京して働くことに不安はありましたか？</p>
+          <p>「かなり不安でした（笑）。でも転居手当があって生活基盤が整えられたし、チームの6割が地方出身なので話が合いました。一人暮らしのコツも先輩から教えてもらって助かりました。」</p>
+          <p class="interview-q">職場の雰囲気はどうですか？</p>
+          <p>「困ったらすぐ相談できる空気があります。20代が多いので、仕事終わりにメンバーと食事に行くこともあって楽しいですよ。」</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="section bg-dark" id="timeline">
+  <div class="section-inner">
+    <h2 class="section-title">1日の流れ（遅番の例）</h2>
+    <p class="section-sub sample-note">※ここはサンプルです。実際には御社スタッフの1日に差し替えます</p>
+    <!-- HTMLコメント: 実際のスタッフの1日に差し替えてください -->
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">13:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <strong>始業・引き継ぎ確認</strong>
+          <p>前半勤務者から引き継ぎを受け、午後の対応をスタート。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">14:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <strong>問い合わせ受付・取次</strong>
+          <p>施設スタッフからのPCトラブル・システム問い合わせに対応。マニュアルを確認しながら丁寧に処理します。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">16:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <strong>休憩（60分）</strong>
+          <p>チームメンバーとリフレッシュ。施設内スタッフ用エリアで一息。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <strong>修理依頼・担当部署への対応連携</strong>
+          <p>受け付けた依頼を各担当部署に取り次ぎ、対応完了の確認を行います。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">20:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <strong>日報・ナレッジ更新</strong>
+          <p>当日の対応事例をまとめてチームで共有。次番スタッフへの引き継ぎ準備。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">22:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <strong>退勤</strong>
+          <p>施設内の専用バス・舞浜駅から帰宅。交通費は全額支給。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REQUIREMENTS -->
+<section class="section" id="requirements">
+  <div class="section-inner">
+    <h2 class="section-title">募集要項</h2>
+    <table class="req-table">
+      <tbody>
+        <tr><th>職種</th><td>施設内ヘルプデスクの受付事務</td></tr>
+        <tr><th>就業場所</th><td>千葉県浦安市舞浜（最寄：舞浜駅・徒歩10分）</td></tr>
+        <tr><th>雇用形態</th><td>契約社員（6ヶ月・更新可）<br>6ヶ月後は基本的に正社員へ登用</td></tr>
+        <tr><th>給与</th><td>月給 250,000円〜300,000円<br>（基本給＋固定残業代20時間分）<br>早番手当 40,000円/月（別途）</td></tr>
+        <tr><th>諸手当</th><td>転居手当 最大10万円、住宅手当 最大3万円/月<br>通勤手当（上限2万円/月）、皆勤手当 5,000〜10,000円/月</td></tr>
+        <tr><th>就業時間</th><td>シフト制<br>早番 6:00〜15:00／遅番 13:30〜22:30<br>月平均残業 約3時間</td></tr>
+        <tr><th>休日</th><td>シフト制・週休2日（年間120日）<br>希望休4日まで取得可</td></tr>
+        <tr><th>応募資格</th><td>18歳以上、学歴・資格不問<br>ヘルプデスク・コールセンター経験者は優遇</td></tr>
+        <tr><th>加入保険</th><td>雇用・労災・健康・厚生年金</td></tr>
+        <tr><th>選考方法</th><td>書類選考→オンライン面接（最大2回）<br>書類選考結果：到着後3日以内</td></tr>
+        <tr><th>採用人数</th><td>4名</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- CTA 2 -->
+<div class="cta-mid">
+  <h2>質問や不安なことはお気軽に</h2>
+  <p>選考前のご相談も大歓迎です。</p>
+  <a class="btn-white" href="#entry">お問い合わせ</a>
+</div>
+
+<!-- FAQ -->
+<section class="section bg-gray" id="faq">
+  <div class="section-inner">
+    <h2 class="section-title">よくある質問</h2>
+    <p class="section-sub">※ここはサンプルです。実際には御社の採用担当者様が回答をご記入ください</p>
+    <!-- HTMLコメント: よくある質問の回答内容を実際の情報に差し替えてください -->
+    <ul class="faq-list">
+      <li class="faq-item">
+        <p class="faq-q">ITの経験がなくても大丈夫ですか？</p>
+        <p class="faq-a">はい。マニュアルと対応フローが整備されており、未経験スタートのメンバーが多数在籍しています。まずは窓口対応から始めますのでご安心ください。</p>
+      </li>
+      <li class="faq-item">
+        <p class="faq-q">シフト制の詳細を教えてください。</p>
+        <p class="faq-a">早番（6:00〜15:00）と遅番（13:30〜22:30）が基本です。希望休は月4日まで取得可能。チームで調整しながら決めています。</p>
+      </li>
+      <li class="faq-item">
+        <p class="faq-q">正社員登用の実績はありますか？</p>
+        <p class="faq-a">はい、実績があります。入社6ヶ月後に勤務状況に応じて正社員へ登用しています。長期的に活躍したい方に向いた環境です。</p>
+      </li>
+      <li class="faq-item">
+        <p class="faq-q">地方から上京して働くことは可能ですか？</p>
+        <p class="faq-a">もちろんです。転居手当（最大10万円）と住宅手当（最大3万円/月）で転居コストをサポートします。チームの6割以上が地方出身で、上京経験のある先輩が多いので相談しやすい環境です。</p>
+      </li>
+      <li class="faq-item">
+        <p class="faq-q">キャリアアップはできますか？</p>
+        <p class="faq-a">はい。ヘルプデスク受付から業務の幅を広げ、クライアント先のプロジェクト運営支援へステップアップした社員の実例があります。段階的に成長できる環境です。</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final" id="entry">
+  <h2>あなたのご応募をお待ちしています</h2>
+  <p>「話を聞いてみたい」だけでも大丈夫です。<br>費用は5万円を目安に、着手前に必ずお伝えします。<br>まずはお気軽にご連絡ください。</p>
+  <a class="btn-white" href="mailto:recruit@c-force-corp.co.jp">応募・お問い合わせ</a>
+</section>
+
+<footer class="site-footer">
+  <p>株式会社シーフォース</p>
+  <p>東京都中央区銀座６－１０－１ GINZA SIX 13F</p>
+  <p>TEL: 090-8667-8696　E-mail: recruit@c-force-corp.co.jp</p>
+</footer>
+
+<!-- FIXED BAR (MOBILE) -->
+<div class="fixed-bar">
+  <a href="#entry">今すぐ応募・お問い合わせ ▶</a>
+</div>
+
+<script>
+(function(){
+  var btn = document.querySelector('.hamburger');
+  var nav = document.querySelector('.site-nav');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  }
+})();
+</script>
+</body>
+</html>
