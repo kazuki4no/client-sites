@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>歯科衛生士 採用情報 | デンタルオフィスかがみ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--green:#006b73;--green-light:#e6f4f5;--green-dark:#004c54;--gold:#c9a24a;--text:#1a2e35;--gray:#5f7177;--white:#fff}
+body{font-family:'Noto Sans JP',sans-serif;color:var(--text);background:#fff;line-height:1.75}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+
+/* ===== HEADER ===== */
+.site-header{display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.4rem;background:transparent;position:absolute;top:0;left:0;right:0;z-index:100}
+.brand{font-size:.95rem;font-weight:700;color:#fff;text-shadow:0 1px 4px rgba(0,0,0,.4)}
+.site-nav{display:flex;gap:1.4rem;align-items:center}
+.site-nav a{font-size:.83rem;color:rgba(255,255,255,.9);transition:color .2s;text-shadow:0 1px 3px rgba(0,0,0,.3)}
+.site-nav a:hover{color:#fff}
+.nav-cta{background:var(--gold);color:#fff!important;padding:.4rem 1rem;border-radius:4px;font-weight:700;text-shadow:none}
+.hamburger{display:none;background:none;border:0;font-size:1.7rem;line-height:1;cursor:pointer;color:#fff}
+@media(max-width:768px){
+  .hamburger{display:block}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;position:fixed;top:0;left:0;right:0;bottom:0;z-index:200;background:rgba(0,75,84,.97);padding:5rem 1.4rem 2rem;justify-content:flex-start}
+  .site-nav.open{display:flex}
+  .site-nav a{padding:1rem 0;border-bottom:1px solid rgba(255,255,255,.15);font-size:1rem}
+  .close-nav{display:block!important;position:absolute;top:1rem;right:1.2rem;background:none;border:0;font-size:2rem;color:#fff;cursor:pointer}
+}
+.close-nav{display:none}
+
+/* ===== HERO (FVバナー型) ===== */
+.hero{position:relative;min-height:80vh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=1600&h=900&fit=crop&q=80') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(0,60,70,.72) 40%,rgba(0,40,55,.45))}
+.hero-content{position:relative;z-index:1;max-width:680px;padding:7rem 2rem 4rem;color:#fff}
+.hero-kana{font-size:.78rem;letter-spacing:.2em;color:rgba(255,255,255,.7);margin-bottom:.5rem}
+.hero-catch{font-family:'Noto Serif JP',serif;font-size:clamp(1.7rem,5.5vw,3rem);font-weight:700;line-height:1.3;margin-bottom:1rem}
+.hero-catch span{color:var(--gold)}
+.hero-desc{font-size:clamp(.88rem,2.2vw,1rem);opacity:.9;line-height:1.85;margin-bottom:.5rem}
+.hero-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:2rem}
+.hero-pill{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4);color:#fff;font-size:.75rem;padding:.3rem .8rem;border-radius:20px}
+.btn-hero-fv{display:inline-block;background:var(--gold);color:#fff;font-weight:700;font-size:1rem;padding:.9rem 2.6rem;border-radius:4px;letter-spacing:.04em;box-shadow:0 4px 16px rgba(201,162,74,.4);transition:opacity .2s}
+.btn-hero-fv:hover{opacity:.9}
+@media(max-width:768px){.hero-content{padding:6rem 1.4rem 3rem}}
+
+/* ===== SECTION BASE ===== */
+section{padding:4rem 1.4rem}
+.sec-inner{max-width:860px;margin:0 auto}
+.sec-label{text-align:center;font-size:.75rem;font-weight:700;letter-spacing:.12em;color:var(--gold);margin-bottom:.4rem}
+.sec-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.3rem,4vw,2rem);font-weight:700;color:var(--green-dark);margin-bottom:.4rem;text-align:center}
+.sec-sub{text-align:center;color:var(--gray);font-size:.88rem;margin-bottom:2.4rem}
+.alt-bg{background:var(--green-light)}
+.sample-note{font-size:.78rem;color:#aaa;margin-top:.6rem;font-style:italic}
+
+/* ===== FEATURES ===== */
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.feat-card{border:1px solid #dde9ea;border-radius:10px;padding:1.6rem 1.2rem;background:#fff}
+.feat-num{font-size:2rem;font-weight:900;color:var(--green);opacity:.25;margin-bottom:.3rem;font-family:'Noto Serif JP',serif}
+.feat-icon svg{width:36px;height:36px;stroke:var(--green);stroke-width:1.6;fill:none;stroke-linecap:round;stroke-linejoin:round;margin-bottom:.5rem}
+.feat-title{font-weight:700;margin-bottom:.5rem;font-size:.95rem}
+.feat-text{font-size:.86rem;color:#444;line-height:1.7}
+@media(max-width:768px){.features{grid-template-columns:1fr}}
+
+/* ===== GALLERY ===== */
+.gallery{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.gallery-big{grid-row:span 2}
+.gallery img{width:100%;height:100%;object-fit:cover;border-radius:8px}
+.gallery-big img{height:340px}
+.gallery-sm img{height:160px}
+@media(max-width:600px){.gallery{grid-template-columns:1fr}.gallery-big img{height:200px}.gallery-sm img{height:140px}}
+
+/* ===== TIMELINE ===== */
+.timeline{list-style:none;position:relative;padding:0}
+.timeline::before{content:'';position:absolute;left:82px;top:0;bottom:0;width:2px;background:var(--green);opacity:.2}
+.tl-item{display:grid;grid-template-columns:72px 20px 1fr;gap:0 .8rem;align-items:start;margin-bottom:1.4rem}
+.tl-time{text-align:right;font-size:.85rem;font-weight:700;color:var(--green);padding-top:.15rem}
+.tl-dot{width:12px;height:12px;border-radius:50%;background:var(--green);justify-self:center;margin-top:.3rem}
+.tl-body{font-size:.9rem;padding-bottom:.6rem}
+.tl-body strong{display:block;font-weight:700;color:var(--green-dark);margin-bottom:.1rem}
+@media(max-width:768px){
+  .timeline::before{left:50px}
+  .tl-item{grid-template-columns:40px 16px 1fr;gap:0 .5rem}
+}
+
+/* ===== VOICES ===== */
+.voices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem}
+.voice-card{background:#fff;border-radius:10px;padding:1.4rem;box-shadow:0 3px 12px rgba(0,0,0,.07);position:relative;border-bottom:3px solid var(--gold)}
+.voice-card::before{content:'"';position:absolute;top:.5rem;right:1rem;font-size:3rem;color:var(--gold);opacity:.2;font-family:serif;line-height:1}
+.voice-photo{width:80px;height:80px;border-radius:50%;object-fit:cover;margin:0 auto .8rem;border:3px solid var(--green-light)}
+.voice-name{font-weight:700;text-align:center;font-size:.9rem}
+.voice-role{font-size:.78rem;color:var(--gray);text-align:center;margin-bottom:.7rem}
+.voice-text{font-size:.88rem;color:#333;line-height:1.7}
+@media(max-width:768px){.voices-grid{grid-template-columns:1fr}}
+
+/* ===== FAQ ===== */
+.faq-list{display:flex;flex-direction:column;gap:.8rem}
+.faq-item{background:#fff;border-radius:8px;padding:1.1rem 1.2rem;box-shadow:0 1px 6px rgba(0,0,0,.06);border-left:3px solid var(--gold)}
+.faq-q{font-weight:700;margin-bottom:.4rem;font-size:.9rem}
+.faq-q::before{content:'Q. ';color:var(--gold)}
+.faq-a{font-size:.88rem;color:#333;line-height:1.7}
+.faq-a::before{content:'A. ';font-weight:700;color:var(--green)}
+
+/* ===== TABLE ===== */
+.req-table{width:100%;border-collapse:collapse;font-size:.88rem}
+.req-table th,.req-table td{padding:.85rem 1rem;border-bottom:1px solid #dce8ea;text-align:left;vertical-align:top}
+.req-table th{background:var(--green-light);width:30%;font-weight:700;white-space:nowrap}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%}
+  .req-table th{background:var(--green-light);padding:.5rem .8rem}
+  .req-table td{padding:.5rem .8rem 1rem}
+}
+
+/* ===== MANAGER ===== */
+.manager-wrap{display:flex;gap:1.6rem;align-items:center;background:#fff;border-radius:10px;padding:1.8rem;box-shadow:0 3px 14px rgba(0,0,0,.07)}
+.manager-photo{width:100px;height:100px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--green-light)}
+.manager-name{font-family:'Noto Serif JP',serif;font-weight:700;font-size:1rem;margin-bottom:.25rem}
+.manager-role{font-size:.82rem;color:var(--gray);margin-bottom:.6rem}
+.manager-msg{font-size:.9rem;color:#333;line-height:1.75}
+@media(max-width:768px){.manager-wrap{flex-direction:column;text-align:center}.manager-photo{margin:0 auto}}
+
+/* ===== ENTRY ===== */
+.entry-section{background:var(--green-dark);color:#fff;text-align:center;padding:4.5rem 1.4rem;position:relative;overflow:hidden}
+.entry-section::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=1600&h=700&fit=crop&q=80') center/cover;opacity:.12}
+.entry-inner{position:relative;z-index:1}
+.entry-section h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,4vw,2.2rem);font-weight:700;margin-bottom:.6rem}
+.entry-section p{font-size:.92rem;opacity:.88;margin-bottom:.4rem}
+.btn-entry{display:inline-block;background:var(--gold);color:#fff;font-weight:700;font-size:1.05rem;padding:1rem 3rem;border-radius:4px;box-shadow:0 4px 16px rgba(201,162,74,.4);margin:1.6rem .5rem .4rem;transition:opacity .2s}
+.btn-entry:hover{opacity:.9}
+.btn-tel{display:inline-block;border:2px solid rgba(255,255,255,.5);color:#fff;padding:.85rem 2rem;border-radius:4px;font-size:.9rem;font-weight:700;margin:.4rem .5rem;transition:border-color .2s}
+.btn-tel:hover{border-color:#fff}
+
+/* ===== FOOTER ===== */
+footer{background:#001e22;color:rgba(255,255,255,.6);padding:2rem 1.4rem;text-align:center;font-size:.82rem}
+footer p{margin:.2rem 0}
+</style>
+</head>
+<body id="top">
+
+<header class="site-header">
+  <a class="brand" href="#top">デンタルオフィスかがみ</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <button class="close-nav" aria-label="閉じる">✕</button>
+    <a href="#about">私たちについて</a>
+    <a href="#day">1日の流れ</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#faq">よくある質問</a>
+    <a href="#entry" class="nav-cta">応募する</a>
+  </nav>
+</header>
+
+<!-- HERO (FVバナー型) -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-kana">DENTAL OFFICE KAGAMI — 歯科衛生士 採用情報</p>
+    <h1 class="hero-catch">患者さんと<span>ちゃんと向き合える</span>、<br>浦安の歯科医院です。</h1>
+    <p class="hero-desc">1日25名のペースで、丁寧な診療を続けています。<br>インプラント・口腔外科まで学べる環境。年間休日115日・残業なし。</p>
+    <div class="hero-pills">
+      <span class="hero-pill">歯科衛生士 正社員</span>
+      <span class="hero-pill">月給27〜32万円</span>
+      <span class="hero-pill">残業なし</span>
+      <span class="hero-pill">全員女性スタッフ</span>
+    </div>
+    <a href="#entry" class="btn-hero-fv">採用情報をチェックする</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="sec-inner">
+    <p class="sec-label">ABOUT US</p>
+    <h2 class="sec-title">デンタルオフィスかがみについて</h2>
+    <p class="sec-sub">開院6年目の地域密着型歯科医院。コミュニケーションを何より大切にしています</p>
+    <!-- ※院内の様子。実際には御社の写真に差し替えます -->
+    <div class="gallery">
+      <div class="gallery-big">
+        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=680&fit=crop&q=80" alt="診療の様子">
+      </div>
+      <div class="gallery-sm">
+        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=640&h=320&fit=crop&q=80" alt="院内の様子">
+      </div>
+      <div class="gallery-sm">
+        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=640&h=320&fit=crop&q=80" alt="スタッフの様子">
+      </div>
+    </div>
+    <!-- ※ 実際には院内写真・スタッフ写真に差し替えます -->
+    <p class="sample-note" style="text-align:center;margin-top:.8rem">※上記はサンプル画像です。実際には御社の院内写真に差し替えます</p>
+    <p style="margin-top:2rem;font-size:.95rem;line-height:1.9;color:#333">大正生まれから令和生まれまで、幅広い世代の患者さんが通う地域密着の歯科医院です。院長の「技術だけに特化せず、患者さんの声に耳を傾けたい」という思いのもと、スタッフ全員がコミュニケーションを大切に診療しています。近隣の保育園の嘱託医も担い、地域の健康を支える存在として6年間歩んできました。</p>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="alt-bg">
+  <div class="sec-inner">
+    <p class="sec-label">FEATURES</p>
+    <h2 class="sec-title">ここで働く3つの魅力</h2>
+    <p class="sec-sub">歯科衛生士として長く活躍できる環境を整えています</p>
+    <div class="features">
+      <div class="feat-card">
+        <div class="feat-num">01</div>
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/><path d="M11 7h2v6h-2zm0 8h2v2h-2z"/></svg>
+        </div>
+        <p class="feat-title">幅広い診療経験が積める</p>
+        <p class="feat-text">インプラント・口腔外科のオペアシストまで経験できる環境。勉強会・講演会への参加費補助もあり、資格取得後も継続して成長できます。</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-num">02</div>
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M20 21a8 8 0 10-16 0"/></svg>
+        </div>
+        <p class="feat-title">患者さんとの信頼関係</p>
+        <p class="feat-text">1日の来院数は約25名。顔なじみの患者さんと季節の話もできる、人と人のつながりを大切にした診療スタイルです。地域に愛されるクリニックを一緒に作っていきましょう。</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-num">03</div>
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+        </div>
+        <p class="feat-title">年間休日115日・残業なし</p>
+        <p class="feat-text">時間外労働なし。子育て・介護など限られた時間での勤務も柔軟に対応します。メリハリある働き方で、長く安心して続けられます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="day">
+  <div class="sec-inner">
+    <p class="sec-label">DAY IN THE LIFE</p>
+    <h2 class="sec-title">スタッフの1日の流れ</h2>
+    <p class="sec-sub">※ここはサンプルです。実際には御社の業務スケジュールに差し替えます</p>
+    <!-- ※サンプルです。実際の1日の流れに差し替えてください -->
+    <ul class="timeline">
+      <li class="tl-item">
+        <span class="tl-time">9:10</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body"><strong>出勤・朝礼・準備</strong>その日のアポイントと連絡事項を確認します。</div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">9:30</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body"><strong>午前の診療スタート</strong>歯周病治療・メンテナンス・予防処置を丁寧に行います。</div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">13:00</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body"><strong>昼休憩（90分）</strong>広いスタッフルームでゆっくり休憩。個人ロッカー完備で快適です。</div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">14:30</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body"><strong>午後の診療</strong>オペアシスト・カウンセリングなど、幅広い処置を担当します。</div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">18:30</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body"><strong>片付け・消毒</strong>器材を丁寧に整えて終業準備。</div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">19:10</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body"><strong>退勤</strong>定時退勤。残業なしでプライベートも充実させられます。</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- VOICES -->
+<section class="alt-bg" id="voice">
+  <div class="sec-inner">
+    <p class="sec-label">STAFF VOICE</p>
+    <h2 class="sec-title">先輩スタッフのメッセージ</h2>
+    <p class="sec-sub">※ここはサンプルです。実際には御社スタッフの写真・メッセージに差し替えます</p>
+    <!-- ※サンプルです。実際のスタッフ写真・メッセージに差し替えてください -->
+    <div class="voices-grid">
+      <div class="voice-card">
+        <img class="voice-photo" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=faces&q=80" alt="田中さくら（仮名）">
+        <p class="voice-name">田中 さくら（仮名）</p>
+        <p class="voice-role">歯科衛生士 / 入社3年目</p>
+        <p class="voice-text">ここは「数をこなす」ではなく「きちんと見る」診療所。患者さんと季節の話をしながらメンテナンスできる雰囲気が気に入っています。</p>
+        <p class="sample-note">※サンプルです。実際のスタッフに差し替えます</p>
+      </div>
+      <div class="voice-card">
+        <img class="voice-photo" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=faces&q=80" alt="佐藤みなみ（仮名）">
+        <p class="voice-name">佐藤 みなみ（仮名）</p>
+        <p class="voice-role">歯科衛生士 / 入社1年目</p>
+        <p class="voice-text">新卒でもインプラント見学をさせてもらい、毎日が勉強です。勉強会補助があるので、資格の次のステップも見据えて働けています。</p>
+        <p class="sample-note">※サンプルです。実際のスタッフに差し替えます</p>
+      </div>
+      <div class="voice-card">
+        <img class="voice-photo" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&crop=faces&q=80" alt="中村あい（仮名）">
+        <p class="voice-name">中村 あい（仮名）</p>
+        <p class="voice-role">歯科衛生士 / 入社5年目</p>
+        <p class="voice-text">子育て中でも相談しやすく、定時に帰れます。全員女性スタッフなので話しやすく、プライベートの変化があっても長く続けられる職場です。</p>
+        <p class="sample-note">※サンプルです。実際のスタッフに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="sec-inner">
+    <p class="sec-label">FAQ</p>
+    <h2 class="sec-title">よくある質問</h2>
+    <p class="sec-sub">※ここはサンプルです。実際には御社のFAQに差し替えます</p>
+    <!-- ※サンプルです。実際のQ&Aに差し替えてください -->
+    <div class="faq-list">
+      <div class="faq-item">
+        <p class="faq-q">未経験・新卒でも応募できますか？</p>
+        <p class="faq-a">歯科衛生士免許があれば経験年数を問わず歓迎しています。先輩スタッフが丁寧にサポートします。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">選考はどのように進みますか？</p>
+        <p class="faq-a">書類選考（7日以内にご連絡）→ 面接1回 → 内定です。まずは院内見学のみでも大歓迎です。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">子育て中・介護中でも働けますか？</p>
+        <p class="faq-a">はい。ライフスタイルに応じた勤務時間に柔軟に対応します。詳細はご面談の際にご相談ください。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">勉強会・スキルアップ支援はありますか？</p>
+        <p class="faq-a">勉強会・講演会への参加費を院で補助します。インプラントや口腔外科のオペアシストも経験できます。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">インプラントなどの高度な技術は必要ですか？</p>
+        <p class="faq-a">入職時に必須ではありません。基本の歯科衛生士業務から始め、興味があればオペ見学などにも参加できます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TABLE -->
+<section class="alt-bg">
+  <div class="sec-inner">
+    <h2 class="sec-title">募集要項</h2>
+    <p class="sec-sub">※サンプルです。実際の求人票の内容に差し替えます</p>
+    <!-- ※サンプルです。実際の募集要項に差し替えてください -->
+    <table class="req-table">
+      <tbody>
+        <tr><th>職種</th><td>歯科衛生士</td></tr>
+        <tr><th>雇用形態</th><td>正社員（試用期間3ヶ月・同条件）</td></tr>
+        <tr><th>給与</th><td>月給 270,000円〜320,000円（経験・能力を考慮）<br>賞与年2回・昇給あり（月4,000〜5,000円/前年実績）</td></tr>
+        <tr><th>就業時間</th><td>平日 9:10〜19:10（休憩90分）／土曜 9:10〜17:10（休憩60分）<br>1ヶ月単位の変形労働時間制・時間外なし</td></tr>
+        <tr><th>休日・休暇</th><td>日曜・祝日・水曜（隔週）／年間休日115日<br>6ヶ月後に有給休暇10日付与</td></tr>
+        <tr><th>勤務地</th><td>千葉県浦安市堀江2-14-10（東京メトロ東西線 浦安駅 徒歩12分）</td></tr>
+        <tr><th>必要資格</th><td>歯科衛生士免許（必須）</td></tr>
+        <tr><th>各種保険</th><td>雇用・労災・健康・厚生年金</td></tr>
+        <tr><th>その他</th><td>通勤手当（上限2万円）／退職金制度あり（勤続5年以上）<br>個人ロッカー・制服・シューズ貸与／広いスタッフルーム完備</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- MANAGER -->
+<section>
+  <div class="sec-inner">
+    <p class="sec-label">FROM THE TEAM</p>
+    <h2 class="sec-title">採用担当よりひとこと</h2>
+    <p class="sec-sub">※ここはサンプルです。実際には担当者の写真・メッセージに差し替えます</p>
+    <!-- ※サンプルです。実際の採用担当者の写真・メッセージに差し替えてください -->
+    <div class="manager-wrap">
+      <img class="manager-photo" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&crop=faces&q=80" alt="山下ひろこ（仮名）">
+      <div>
+        <p class="manager-name">山下 ひろこ（仮名）</p>
+        <p class="manager-role">採用担当 / 歯科衛生士</p>
+        <p class="manager-msg">「一緒にイチから温かい空間をつくっていきましょう」という院長の言葉を信じて入職した私も、いつのまにか5年が経ちました。見学だけでもぜひ来てみてください。院内の雰囲気をそのままお伝えします。</p>
+        <p class="sample-note">※サンプルです。実際の担当者のメッセージに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ENTRY CTA -->
+<section class="entry-section" id="entry">
+  <div class="entry-inner">
+    <h2>まずは見学から、気軽にどうぞ。</h2>
+    <p>応募前の院内見学も歓迎しています。</p>
+    <p>メール・お電話どちらでもお気軽にご連絡ください。</p>
+    <a href="mailto:dentaloffice.kagami@gmail.com" class="btn-entry">メールで問い合わせる</a>
+    <a href="tel:0473033603" class="btn-tel">047-303-3603</a>
+  </div>
+</section>
+
+<footer>
+  <p>デンタルオフィスかがみ</p>
+  <p>〒279-0041 千葉県浦安市堀江2-14-10 大協マンション1F</p>
+  <p>TEL: 047-303-3603 ／ E-mail: dentaloffice.kagami@gmail.com</p>
+</footer>
+
+<script>
+(function(){
+  var btn=document.querySelector('.hamburger');
+  var nav=document.querySelector('.site-nav');
+  var closeBtn=document.querySelector('.close-nav');
+  if(btn&&nav){
+    btn.addEventListener('click',function(){
+      var open=nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded',open);
+    });
+  }
+  if(closeBtn&&nav){
+    closeBtn.addEventListener('click',function(){
+      nav.classList.remove('open');
+      if(btn) btn.setAttribute('aria-expanded',false);
+    });
+  }
+})();
+</script>
+</body>
+</html>
