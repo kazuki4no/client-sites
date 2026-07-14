@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 秀和産業株式会社</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;}
+body{margin:0;font-family:'Noto Sans JP',sans-serif;color:#222;line-height:1.7;}
+img{max-width:100%;display:block;}
+
+/* ヘッダー配管 */
+.site-header{display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 1.4rem;position:relative;background:rgba(15,10,5,.92);color:#fff;
+  position:fixed;top:0;left:0;right:0;z-index:200;}
+.brand{color:#F9A825;font-family:'Noto Serif JP',serif;font-weight:700;font-size:1rem;text-decoration:none;}
+.site-nav{display:flex;gap:1.2rem;align-items:center;}
+.site-nav a{color:rgba(255,255,255,.82);text-decoration:none;font-size:.86rem;}
+.site-nav .nav-cta{background:#F9A825;color:#1a0d00;padding:.4rem .9rem;border-radius:4px;font-weight:700;}
+.hamburger{display:none;background:none;border:0;color:#F9A825;font-size:1.7rem;line-height:1;cursor:pointer;}
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:rgba(15,10,5,.97);box-shadow:0 8px 20px rgba(0,0,0,.4);padding:.5rem 1.4rem;}
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.8rem 0;border-bottom:1px solid rgba(255,255,255,.12);color:rgba(255,255,255,.85);}
+  .site-nav .nav-cta{margin:.5rem 0 .3rem;text-align:center;border:none;}
+}
+
+/* ヒーローFVバナー 全画面画像 */
+.hero{position:relative;min-height:85vh;display:flex;align-items:center;overflow:hidden;margin-top:54px;}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1473445730015-841f29a9490b?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center;}
+.hero-overlay{position:absolute;inset:0;background:rgba(15,7,0,.62);}
+.hero-content{position:relative;z-index:1;max-width:800px;margin:0 auto;padding:4rem 1.5rem;color:#fff;text-align:center;}
+.hero-label{display:inline-block;border:1px solid #F9A825;color:#F9A825;font-size:.78rem;letter-spacing:.15em;padding:.3rem 1.2rem;margin-bottom:1.4rem;}
+.hero h1{font-family:'Noto Serif JP',serif;font-size:clamp(2rem,5.5vw,3.4rem);font-weight:900;line-height:1.2;margin:0 0 1.2rem;letter-spacing:.03em;}
+.hero-sub{font-size:clamp(.9rem,2.5vw,1.05rem);opacity:.88;margin-bottom:2.2rem;line-height:1.85;}
+.btn-gold{display:inline-block;background:#F9A825;color:#1a0d00;padding:.9rem 2.5rem;border-radius:4px;font-size:1rem;font-weight:700;text-decoration:none;letter-spacing:.05em;}
+.btn-gold:hover{opacity:.9;}
+@media(max-width:768px){.hero{min-height:78vh;}}
+
+/* セクション共通 */
+section{padding:4.5rem 1.5rem;}
+.container{max-width:960px;margin:0 auto;}
+.sec-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,4vw,2rem);font-weight:700;text-align:center;color:#1a0d00;margin-bottom:.4rem;}
+.sec-sub{text-align:center;color:#777;margin-bottom:2.5rem;font-size:.92rem;}
+.bg-warm{background:#FBF6EE;}
+.bg-dark{background:#1a0d00;color:#fff;}
+.bg-dark .sec-title{color:#F9A825;}
+
+/* ビジョンバナー */
+.vision-band{background:#F9A825;color:#1a0d00;text-align:center;padding:3rem 1.5rem;}
+.vision-band .kanji{font-family:'Noto Serif JP',serif;font-size:clamp(2.5rem,6vw,4rem);font-weight:900;margin:0 0 .5rem;letter-spacing:.15em;}
+.vision-band p{font-size:clamp(.9rem,2.5vw,1.05rem);margin:0;opacity:.85;}
+
+/* 特徴3点 */
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.f-card{border:1px solid #e8dcc8;border-radius:8px;padding:1.8rem 1.3rem;background:#fff;}
+.f-num{font-family:'Noto Serif JP',serif;font-size:2rem;font-weight:900;color:#F9A825;line-height:1;margin-bottom:.6rem;}
+.f-card h3{font-size:1rem;color:#1a0d00;font-weight:700;margin:0 0 .5rem;}
+.f-card p{font-size:.87rem;color:#555;margin:0;line-height:1.7;}
+@media(max-width:768px){.features{grid-template-columns:1fr;}}
+
+/* 仕事内容 */
+.work-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center;}
+.work-grid img{border-radius:6px;width:100%;height:320px;object-fit:cover;}
+@media(max-width:768px){.work-grid{grid-template-columns:1fr;}}
+.work-text h3{font-family:'Noto Serif JP',serif;font-size:1.15rem;color:#1a0d00;font-weight:700;margin:0 0 .8rem;}
+.work-text p{font-size:.9rem;color:#444;margin:0 0 .8rem;}
+
+/* タイムライン CSS Grid 3列 */
+.timeline{position:relative;max-width:680px;margin:0 auto;}
+.timeline::before{content:'';position:absolute;left:82px;top:0;bottom:0;width:2px;background:#F9A825;opacity:.4;}
+.tl-item{display:grid;grid-template-columns:72px 20px 1fr;gap:0 .8rem;align-items:start;margin-bottom:1.6rem;}
+.tl-time{text-align:right;font-size:.88rem;font-weight:700;color:#1a0d00;padding-top:.18rem;}
+.tl-dot{width:12px;height:12px;border-radius:50%;background:#F9A825;justify-self:center;margin-top:.32rem;}
+.tl-body h4{margin:0 0 .2rem;font-size:.97rem;color:#1a0d00;font-weight:700;}
+.tl-body p{margin:0;font-size:.88rem;color:#555;}
+@media(max-width:768px){
+  .tl-item{grid-template-columns:44px 16px 1fr;}
+  .timeline::before{left:51px;}
+  .tl-time{font-size:.76rem;}
+}
+
+/* 先輩メッセージ */
+.voices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.v-card{border-radius:8px;overflow:hidden;background:#fff;box-shadow:0 2px 16px rgba(0,0,0,.1);}
+.v-card img{width:100%;aspect-ratio:1/1;object-fit:cover;}
+.v-card-body{padding:1.1rem 1rem .9rem;}
+.v-name{font-weight:700;color:#1a0d00;font-size:.92rem;}
+.v-role{font-size:.77rem;color:#888;margin-bottom:.5rem;}
+.v-card p{font-size:.86rem;color:#555;line-height:1.7;margin:0;}
+.sample-note{font-size:.72rem;color:#bbb;margin-top:.4rem;}
+@media(max-width:768px){.voices-grid{grid-template-columns:1fr;}}
+
+/* 募集要項テーブル */
+.req-table{width:100%;border-collapse:collapse;font-size:.92rem;}
+.req-table th,.req-table td{text-align:left;padding:.9rem 1rem;border-bottom:1px solid #e8dcc8;vertical-align:top;}
+.req-table th{background:#F5EDD8;color:#1a0d00;font-weight:700;width:28%;}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{background:#f4ead3;padding:.5rem .8rem;}
+  .req-table td{padding:.5rem .8rem 1rem;}
+}
+
+/* FAQ */
+.faq-list{max-width:700px;margin:0 auto;}
+.faq-item{border-bottom:1px solid #e8dcc8;padding:1.2rem 0;}
+.faq-q{font-weight:700;color:#1a0d00;margin:0 0 .4rem;display:flex;gap:.6rem;}
+.faq-q::before{content:'Q.';color:#F9A825;flex-shrink:0;}
+.faq-a{padding-left:1.6rem;color:#555;font-size:.9rem;margin:0;}
+
+/* CTA */
+.cta-sec{background:#1a0d00;color:#fff;text-align:center;padding:5rem 1.5rem;}
+.cta-sec h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,4vw,2.2rem);margin:0 0 .8rem;color:#F9A825;}
+.cta-sec p{opacity:.82;margin:0 0 2rem;font-size:.95rem;}
+.btn-gold-lg{display:inline-block;background:#F9A825;color:#1a0d00;padding:1rem 2.8rem;border-radius:4px;font-size:1.05rem;font-weight:700;text-decoration:none;letter-spacing:.05em;}
+.btn-gold-lg:hover{opacity:.9;}
+
+/* フッター */
+footer{background:#0b0500;color:#666;text-align:center;padding:2rem 1rem;font-size:.82rem;}
+footer address{font-style:normal;line-height:2;}
+</style>
+</head>
+<body>
+
+<header class="site-header" id="top">
+  <a class="brand" href="#top">秀和産業株式会社</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#vision">ビジョン</a>
+    <a href="#work">仕事内容</a>
+    <a href="#day">1日の流れ</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#req">募集要項</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<!-- FVバナー型ヒーロー -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-label">採用情報 | ルート配送・顧客管理</span>
+    <h1>伝統の甘さを、<br>次の店へ。</h1>
+    <p class="hero-sub">昭和50年、浦安から。和菓子屋さんへ材料を届け続けて50年。<br>
+      「社員とその家族を幸せに」という理念のもと、<br>一緒に日本の食文化を支えてくれる仲間を募集します。</p>
+    <a class="btn-gold" href="#entry">まずは話を聞いてみる</a>
+  </div>
+</section>
+
+<!-- ビジョンバナー -->
+<section class="vision-band" id="vision">
+  <div class="kanji">まるけ</div>
+  <p>桜の葉を束ねるように、人と人、企業と企業を繋いでいく。<br>私たちの新しいビジョンです。</p>
+</section>
+
+<!-- 特徴3点 -->
+<section class="bg-warm">
+  <div class="container">
+    <h2 class="sec-title">この仕事の3つの特長</h2>
+    <p class="sec-sub">和菓子材料の卸売だからこその、安定と温かさがあります。</p>
+    <div class="features">
+      <div class="f-card">
+        <div class="f-num">01</div>
+        <h3>ルート固定・安心の働き方</h3>
+        <p>配送先は決まったルート。慣れれば自分のペースで動けます。移動時間は最大15分ほど、長距離ドライブなし。</p>
+      </div>
+      <div class="f-card">
+        <div class="f-num">02</div>
+        <h3>直帰OK・プライベートを大切に</h3>
+        <p>配送が終われば帰社不要・会議なし。17〜18時半には自宅へ。年間休日115日・育児休業取得実績あり。</p>
+      </div>
+      <div class="f-card">
+        <div class="f-num">03</div>
+        <h3>50年続く安定の老舗企業</h3>
+        <p>昭和50年設立、50年の歴史。退職金制度（3年以上）・再雇用制度（65歳まで）あり。長く腰を据えて働けます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 仕事内容 -->
+<section id="work">
+  <div class="container">
+    <h2 class="sec-title">仕事内容</h2>
+    <p class="sec-sub">和菓子材料を、作る人のもとへ届ける。</p>
+    <div class="work-grid">
+      <div class="work-text">
+        <h3>和菓子材料のルート配送・顧客管理</h3>
+        <p>小豆・砂糖・寒天・包装材などの材料を、個人の和菓子屋さんから大手メーカーまで毎日届けます。配送エリアは東京23区・川崎・越谷・春日部など。2チーム制でルートを担当。</p>
+        <p>集金・伝票処理・帳簿管理も業務の一部。顔なじみの職人さんから「これ食べてみて！」と新作の和菓子をいただくこともあります。</p>
+        <p style="font-size:.83rem;color:#888;">配送エリア：東京23区（南北2チーム）・神奈川川崎・埼玉越谷・春日部など</p>
+      </div>
+      <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=640&h=400&fit=crop&q=80" alt="配送の様子">
+    </div>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section id="day" class="bg-warm">
+  <div class="container">
+    <h2 class="sec-title">当社社員の1日の流れ</h2>
+    <p class="sec-sub">
+      ルート配送スタッフのある一日をご紹介します。<br>
+      <small style="color:#bbb;">※ここはサンプルです。実際には御社の社員の1日の流れに差し替えます</small>
+    </p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">8:00</div><div class="tl-dot"></div>
+        <div class="tl-body"><h4>出社・配送準備</h4><p>配送予定の確認・伝票作成。集金がある日は帳簿管理なども行います。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">9:00</div><div class="tl-dot"></div>
+        <div class="tl-body"><h4>全員でトラックへ積み込み</h4><p>1台ずつ全員で協力して積み込み。チームの連帯感が生まれる時間です。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">11:00</div><div class="tl-dot"></div>
+        <div class="tl-body"><h4>配送スタート</h4><p>東京23区内を中心に出発。馴染みの和菓子職人さんと挨拶を交わしながら届けます。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:30</div><div class="tl-dot"></div>
+        <div class="tl-body"><h4>昼食・休憩</h4><p>配送先近くの好きなお店で昼食。60分の自由なひと息。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:30</div><div class="tl-dot"></div>
+        <div class="tl-body"><h4>午後の配送</h4><p>午後のルートを進めます。ルートは固定なので迷わず安心して動けます。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:30</div><div class="tl-dot"></div>
+        <div class="tl-body"><h4>直帰</h4><p>帰社不要・会議なし。配送が終わったらそのまま自宅へ。家族との時間をゆっくり。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩メッセージ -->
+<section id="voice">
+  <div class="container">
+    <h2 class="sec-title">先輩からのメッセージ</h2>
+    <p class="sec-sub">実際に働くスタッフの声です。</p>
+    <!-- ※ここはサンプルです。実際には御社の先輩社員の写真・コメントに差し替えます -->
+    <p style="text-align:center;font-size:.73rem;color:#bbb;margin-bottom:1.5rem;">※ここはサンプルです。実際には御社の社員の写真・コメントに差し替えます</p>
+    <div class="voices-grid">
+      <div class="v-card">
+        <!-- 先輩写真 男性1 / 実際の社員写真に差し替えてください -->
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=faces&q=80" alt="先輩スタッフの写真">
+        <div class="v-card-body">
+          <p class="v-name">田中 誠さん（仮名）</p>
+          <p class="v-role">ルート配送 / 入社4年目</p>
+          <p>和菓子職人さんに「ありがとう」と言ってもらえた瞬間、この仕事を選んで良かったと思います。日本の伝統に関わっている実感が毎日あります。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社の先輩のコメントに差し替えます</p>
+        </div>
+      </div>
+      <div class="v-card">
+        <!-- 先輩写真 男性2 / 実際の社員写真に差し替えてください -->
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=300&fit=crop&crop=faces&q=80" alt="先輩スタッフの写真">
+        <div class="v-card-body">
+          <p class="v-name">鈴木 大輔さん（仮名）</p>
+          <p class="v-role">ルート配送 / 入社7年目</p>
+          <p>直帰できるので子どもの行事に参加できています。会社の「社員家族を幸せに」という理念が、本当に実感できる職場です。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社の先輩のコメントに差し替えます</p>
+        </div>
+      </div>
+      <div class="v-card">
+        <!-- 先輩写真 女性1 / 実際の社員写真に差し替えてください -->
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=300&fit=crop&crop=faces&q=80" alt="先輩スタッフの写真">
+        <div class="v-card-body">
+          <p class="v-name">山田 恵さん（仮名）</p>
+          <p class="v-role">ルート配送 / 入社2年目</p>
+          <p>桜餅や大福など、季節の和菓子に触れながら仕事できるのが楽しいです。配送先の職人さんとの会話が毎日の楽しみになっています。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社の先輩のコメントに差し替えます</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section id="req" class="bg-warm">
+  <div class="container">
+    <h2 class="sec-title">募集要項</h2>
+    <p class="sec-sub"></p>
+    <!-- ※ここはサンプルです。実際には御社の最新の募集要項に差し替えます -->
+    <p style="text-align:center;font-size:.73rem;color:#bbb;margin-bottom:1.5rem;">※ここはサンプルです。実際には御社の最新の募集要項に差し替えます</p>
+    <table class="req-table">
+      <tbody>
+        <tr><th>職種</th><td>和菓子材料のルート配送・顧客管理</td></tr>
+        <tr><th>雇用形態</th><td>正社員（試用期間なし）</td></tr>
+        <tr><th>給与</th><td>月給 250,000円〜350,000円<br><small style="color:#888;">※固定残業代（41時間分）含む。超過分別途支給。基本給 191,520円〜268,128円</small></td></tr>
+        <tr><th>就業時間</th><td>7:15〜16:15 または 8:00〜17:00（変形労働時間制・月平均168時間）</td></tr>
+        <tr><th>休日</th><td>週休2日制（月曜・日曜）・年間休日115日<br>GW・お盆期間のみ変動あり。年次有給休暇（入社6ヶ月後10日）</td></tr>
+        <tr><th>勤務地</th><td>千葉県浦安市港76番17号<br><small style="color:#888;">JR京葉線 新浦安駅 車20分。マイカー通勤可・駐車場あり</small></td></tr>
+        <tr><th>必要免許</th><td>普通自動車運転免許（AT限定可）</td></tr>
+        <tr><th>年齢</th><td>62歳以下（定年63歳のため）</td></tr>
+        <tr><th>待遇</th><td>昇給年1回・賞与年2回（前年実績1ヶ月分）・退職金制度（勤続3年以上）<br>社会保険完備・交通費全額支給・育児休業取得実績あり</td></tr>
+        <tr><th>再雇用</th><td>再雇用制度あり（最長65歳まで）</td></tr>
+        <tr><th>採用人数</th><td>2名</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <h2 class="sec-title">よくある質問</h2>
+    <p class="sec-sub"></p>
+    <!-- ※ここはサンプルです。実際には御社のFAQに差し替えます -->
+    <p style="text-align:center;font-size:.73rem;color:#bbb;margin-bottom:1.5rem;">※ここはサンプルです。実際には御社のFAQに差し替えます</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <p class="faq-q">経験がなくても大丈夫ですか？</p>
+        <p class="faq-a">はい、経験不問です。普通自動車免許（AT限定可）があれば応募できます。ルートは固定なので、慣れれば自分のペースで動けるようになります。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">選考の流れを教えてください。</p>
+        <p class="faq-a">書類選考（3日以内にご連絡）→ 面接2回程度の流れです。ハローワーク紹介状・履歴書・職務経歴書をご用意ください。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">配送エリアはどこですか？</p>
+        <p class="faq-a">東京23区（南北2チームに分担）・神奈川川崎・埼玉越谷・春日部などです。一度に長距離を走ることはありません。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">育児中でも働けますか？</p>
+        <p class="faq-a">はい。育児休業の取得実績があり、直帰OKで家族との時間も確保しやすい環境です。「社員とその家族を幸せに」という理念を大切にしています。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">どのような人が活躍していますか？</p>
+        <p class="faq-a">人と話すのが好きな方、コツコツと仕事を進められる方が活躍しています。運送経験より、誠実さとルートを覚える意欲が大切です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec" id="entry">
+  <h2>まずは気軽に<br>お問い合わせください</h2>
+  <p>選考に関するご質問も受け付けています。<br>担当：新規事業推進室 伊藤亮介</p>
+  <a class="btn-gold-lg" href="mailto:shuuwa32@shuuwa.co.jp">メールでお問い合わせ</a>
+</section>
+
+<footer>
+  <address>
+    秀和産業株式会社<br>
+    〒279-0024 千葉県浦安市港76番17号<br>
+    TEL: 090-6005-5047 / E-mail: shuuwa32@shuuwa.co.jp
+  </address>
+</footer>
+
+<script>
+(function(){
+  var btn=document.querySelector('.hamburger');
+  var nav=document.querySelector('.site-nav');
+  if(btn&&nav){btn.addEventListener('click',function(){
+    var o=nav.classList.toggle('open');btn.setAttribute('aria-expanded',o);
+  });}
+})();
+</script>
+</body>
+</html>
