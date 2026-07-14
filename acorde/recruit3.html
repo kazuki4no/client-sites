@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>採用情報 | 株式会社アコルデ（EARTH浦安店）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Serif+JP:wght@500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;color:#1a1010;background:#fff;line-height:1.8;}
+
+:root{
+  --primary:#d4a843;
+  --primary-light:#f5e8c0;
+  --dark:#1a1010;
+  --dark-mid:#3a2a2a;
+  --text:#3a2a2a;
+  --text-light:#8a7070;
+  --bg-dark:#100808;
+  --bg-warm:#f9f4ee;
+}
+
+/* ===== ヘッダー ===== */
+.site-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 1.5rem;background:rgba(16,8,8,.92);backdrop-filter:blur(8px);
+  position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(212,168,67,.3);
+}
+.brand{font-family:'Noto Serif JP',serif;font-size:.95rem;color:var(--primary);text-decoration:none;font-weight:700;letter-spacing:.08em;}
+.brand span{font-size:.7rem;font-weight:300;color:rgba(255,255,255,.5);display:block;letter-spacing:.05em;}
+.hamburger{display:none;background:none;border:0;font-size:1.7rem;line-height:1;cursor:pointer;color:var(--primary);}
+.site-nav{display:flex;gap:1.4rem;align-items:center;}
+.site-nav a{color:rgba(255,255,255,.8);text-decoration:none;font-size:.82rem;letter-spacing:.04em;transition:color .2s;}
+.site-nav a:hover{color:var(--primary);}
+.nav-cta{border:1px solid var(--primary);color:var(--primary)!important;padding:.4rem 1rem;border-radius:2px;font-size:.8rem!important;transition:background .2s!important;}
+.nav-cta:hover{background:var(--primary)!important;color:var(--dark)!important;}
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{
+    display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:rgba(16,8,8,.97);border-top:1px solid rgba(212,168,67,.2);
+    padding:.5rem 1rem;
+  }
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.8rem 0;border-bottom:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.8);}
+}
+
+/* ===== ヒーロー（全画面FVバナー型）===== */
+.hero{
+  position:relative;
+  min-height:85vh;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=1600&h=900&fit=crop&q=80');
+  background-size:cover;background-position:center;
+}
+.hero-overlay{position:absolute;inset:0;background:rgba(16,8,8,.62);}
+.hero-content{
+  position:relative;z-index:1;color:#fff;text-align:center;
+  padding:3rem 1.5rem;max-width:800px;
+}
+.hero-eyebrow{
+  display:inline-block;border:1px solid rgba(212,168,67,.7);color:var(--primary);
+  padding:.25rem 1.2rem;font-size:.75rem;letter-spacing:.18em;margin-bottom:1.8rem;
+  text-transform:uppercase;
+}
+.hero h1{
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(2.2rem,6.5vw,4rem);
+  font-weight:700;line-height:1.2;margin-bottom:1.2rem;
+  text-shadow:0 2px 12px rgba(0,0,0,.4);
+}
+.hero h1 strong{color:var(--primary);}
+.hero-desc{
+  font-size:clamp(.88rem,2.2vw,1rem);
+  opacity:.85;max-width:520px;margin:0 auto 2.5rem;line-height:1.9;
+}
+.btn-gold{
+  display:inline-block;background:var(--primary);color:var(--dark);
+  padding:.9rem 2.6rem;font-size:1rem;font-weight:700;text-decoration:none;
+  border-radius:2px;letter-spacing:.06em;
+  box-shadow:0 4px 18px rgba(212,168,67,.4);transition:background .2s,transform .2s;
+}
+.btn-gold:hover{background:#e8bb50;transform:translateY(-2px);}
+.hero-scroll{
+  position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  color:rgba(255,255,255,.4);font-size:.75rem;letter-spacing:.15em;text-align:center;
+  animation:float 2s ease-in-out infinite;
+}
+.hero-scroll::before{content:'↓';display:block;font-size:1.2rem;color:var(--primary);margin-bottom:.4rem;}
+@keyframes float{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(6px);}}
+
+/* ===== セクション共通 ===== */
+section{padding:5.5rem 1.5rem;}
+.container{max-width:960px;margin:0 auto;}
+.section-label{text-align:center;margin-bottom:.6rem;}
+.section-label span{display:inline-block;border-bottom:1px solid var(--primary);color:var(--primary);font-size:.72rem;letter-spacing:.2em;padding-bottom:.3rem;text-transform:uppercase;}
+.section-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,4vw,2.2rem);text-align:center;margin-bottom:3rem;color:var(--dark);}
+
+/* ===== 魅力 ===== */
+.features{background:var(--bg-dark);}
+.features .section-title{color:#fff;}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+@media(max-width:768px){.features-grid{grid-template-columns:1fr;}}
+.feat-card{background:rgba(255,255,255,.04);border:1px solid rgba(212,168,67,.2);padding:2rem 1.5rem;border-radius:4px;transition:border-color .2s;}
+.feat-card:hover{border-color:rgba(212,168,67,.5);}
+.feat-num{font-family:'Noto Serif JP',serif;font-size:2.5rem;color:rgba(212,168,67,.25);line-height:1;margin-bottom:.8rem;}
+.feat-card h3{font-size:1rem;font-weight:700;color:#fff;margin-bottom:.8rem;}
+.feat-card p{font-size:.86rem;color:rgba(255,255,255,.65);line-height:1.8;}
+.feat-bar{height:2px;background:var(--primary);width:30px;margin-top:1rem;opacity:.6;}
+
+/* ===== 1日の流れ ===== */
+.timeline-section{background:var(--bg-warm);}
+.timeline{position:relative;max-width:620px;margin:0 auto;}
+.timeline::before{content:'';position:absolute;left:82px;top:8px;bottom:8px;width:2px;background:rgba(212,168,67,.3);}
+.tl-item{display:grid;grid-template-columns:72px 20px 1fr;gap:0 .8rem;align-items:start;margin-bottom:1.8rem;}
+.tl-time{text-align:right;font-size:.85rem;font-weight:700;color:var(--primary);padding-top:.15rem;font-family:'Noto Serif JP',serif;}
+.tl-dot{width:12px;height:12px;border-radius:50%;background:var(--primary);justify-self:center;margin-top:.35rem;position:relative;z-index:1;}
+.tl-body h4{font-size:.9rem;font-weight:700;color:var(--dark);margin-bottom:.2rem;}
+.tl-body p{font-size:.83rem;color:var(--text-light);line-height:1.6;}
+.sample-note{font-size:.73rem;color:#bbb;font-style:italic;margin-top:.4rem;}
+@media(max-width:768px){
+  .tl-item{grid-template-columns:40px 16px 1fr;}
+  .timeline::before{left:46px;}
+}
+
+/* ===== 先輩の声 ===== */
+.voices{background:#fff;}
+.voices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+@media(max-width:768px){.voices-grid{grid-template-columns:1fr;}}
+.voice-card{border:1px solid #f0e0e0;border-radius:6px;overflow:hidden;}
+.voice-img-wrap{position:relative;}
+.voice-img{width:100%;height:220px;object-fit:cover;display:block;}
+.voice-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(16,8,8,.7));padding:1rem;}
+.voice-name{color:#fff;font-weight:700;font-size:.9rem;}
+.voice-role{color:var(--primary);font-size:.75rem;}
+.voice-body{padding:1.2rem;}
+.voice-body p{font-size:.85rem;color:var(--text);line-height:1.8;}
+
+/* ===== 募集要項 ===== */
+.req-section{background:var(--bg-warm);}
+.req-inner{max-width:760px;margin:0 auto;}
+.req-table{width:100%;border-collapse:collapse;font-size:.9rem;}
+.req-table th,.req-table td{padding:.9rem 1.1rem;border-bottom:1px solid #eedcc0;text-align:left;vertical-align:top;}
+.req-table th{width:150px;background:rgba(212,168,67,.08);color:var(--dark);font-weight:700;white-space:nowrap;}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{padding:.5rem .8rem;}
+  .req-table td{padding:.5rem .8rem 1rem;}
+}
+
+/* ===== FAQ ===== */
+.faq-section{background:#fff;}
+.faq-list{max-width:720px;margin:0 auto;}
+.faq-item{border-bottom:1px solid #f0e0d0;padding:1.2rem 0;}
+.faq-q{font-weight:700;color:var(--dark);margin-bottom:.5rem;font-size:.92rem;padding-left:1.2rem;position:relative;}
+.faq-q::before{content:'Q.';position:absolute;left:0;color:var(--primary);font-family:'Noto Serif JP',serif;}
+.faq-a{font-size:.88rem;color:var(--text-light);line-height:1.8;padding-left:1.2rem;position:relative;}
+.faq-a::before{content:'A.';position:absolute;left:0;color:var(--dark);font-family:'Noto Serif JP',serif;font-weight:700;}
+
+/* ===== CTA最終 ===== */
+.cta-section{background:var(--bg-dark);text-align:center;padding:6rem 1.5rem;position:relative;overflow:hidden;}
+.cta-section::before{
+  content:'EARTH';position:absolute;font-family:'Noto Serif JP',serif;
+  font-size:18vw;font-weight:700;color:rgba(255,255,255,.02);
+  left:50%;transform:translateX(-50%);top:50%;margin-top:-9vw;white-space:nowrap;
+}
+.cta-section h2{position:relative;font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,4vw,2.5rem);color:#fff;margin-bottom:1rem;}
+.cta-section p{position:relative;color:rgba(255,255,255,.7);margin-bottom:2.5rem;font-size:.95rem;line-height:1.8;}
+.cta-contacts{display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-bottom:2rem;}
+.cta-contact-item{
+  position:relative;background:rgba(255,255,255,.05);border:1px solid rgba(212,168,67,.3);
+  padding:.8rem 1.5rem;border-radius:4px;color:#fff;font-size:.88rem;
+}
+.cta-contact-item a{color:var(--primary);text-decoration:none;}
+
+footer{background:#080404;color:rgba(255,255,255,.5);text-align:center;padding:2.5rem 1.5rem;font-size:.8rem;line-height:2;border-top:1px solid rgba(212,168,67,.15);}
+</style>
+</head>
+<body id="top">
+
+<header class="site-header">
+  <a class="brand" href="#top">ACORDE<span>EARTH HAIR＆MAKE 浦安店</span></a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#features">魅力</a>
+    <a href="#timeline">1日の流れ</a>
+    <a href="#voices">先輩の声</a>
+    <a href="#req">募集要項</a>
+    <a href="#faq">FAQ</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">EARTH FC 加盟店 ｜ 浦安</p>
+    <h1>美の技術を、<br><strong>全国ブランドで</strong><br>高められる場所。</h1>
+    <p class="hero-desc">全国230店舗以上のEARTH HAIR＆MAKEで磨いた技術を。<br>浦安の地域密着サロンで、お客様と長く向き合う仕事を。</p>
+    <a href="#entry" class="btn-gold">採用情報を見る</a>
+  </div>
+  <div class="hero-scroll">SCROLL</div>
+</section>
+
+<section class="features" id="features">
+  <div class="container">
+    <div class="section-label"><span>Why Acorde</span></div>
+    <h2 class="section-title" style="color:#fff;">アコルデで働く3つの理由</h2>
+    <div class="features-grid">
+      <div class="feat-card">
+        <div class="feat-num">01</div>
+        <h3>全国ブランドの技術・教育基盤</h3>
+        <p>EARTH HAIR＆MAKEの確立された教育システムと技術基盤を持つ環境。カット・カラーだけでなくトータルビューティーのスキルも身につき、市場価値の高いスタイリストへ成長できます。</p>
+        <div class="feat-bar"></div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-num">02</div>
+        <h3>地域密着・安定した収入とキャリア</h3>
+        <p>月給280,000〜440,000円、正社員登用実績100%（過去3年）。浦安で長く腰を据えて働きながら、昇給（前年度5%実績）・皆勤手当・勤続手当・店販手当でしっかり収入を伸ばせます。</p>
+        <div class="feat-bar"></div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-num">03</div>
+        <h3>浦安駅2分・抜群のアクセスと休暇</h3>
+        <p>東京メトロ東西線・浦安駅から徒歩2分の好立地。週休2日制・年間休日107日と、仕事もプライベートもしっかり確保できる環境で、長く安心して働き続けられます。</p>
+        <div class="feat-bar"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="timeline-section" id="timeline">
+  <div class="container">
+    <div class="section-label"><span>A Day in Our Salon</span></div>
+    <h2 class="section-title">スタイリストの1日</h2>
+    <p class="sample-note" style="text-align:center;margin-bottom:2rem;">※ここはサンプルです。実際には御社スタイリストの1日に差し替えます</p>
+    <!-- 1日の流れ。実際のスタッフの1日に差し替えてください -->
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">9:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>開店準備・朝礼</h4><p>店内清掃・道具準備・当日予約確認。チームで一日の目標を共有します。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">10:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>施術開始・カウンセリング</h4><p>お客様のご要望を丁寧にヒアリング。カット・カラー・パーマの技術を存分に発揮します。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>ランチ（交代制・120分）</h4><p>しっかり120分の休憩。浦安駅周辺で気分転換できます。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">15:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>午後の施術・後輩指導</h4><p>施術を行いながら、アシスタントへの技術指導も担当。教えることで自身の技術も磨かれます。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>翌日準備・商品管理</h4><p>予約確認・商材補充・整理。次の日もスムーズにスタートできる準備を整えます。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">19:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>閉店・振り返り</h4><p>店内を清潔に整えて、1日の施術を振り返ります。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="voices" id="voices">
+  <div class="container">
+    <div class="section-label"><span>Our Team</span></div>
+    <h2 class="section-title">先輩スタイリストの声</h2>
+    <p class="sample-note" style="text-align:center;margin-bottom:2rem;">※ここはサンプルです。実際には御社スタッフの写真・メッセージに差し替えます</p>
+    <!-- 先輩の声カード。実際のスタッフ写真・メッセージに差し替えてください -->
+    <div class="voices-grid">
+      <div class="voice-card">
+        <div class="voice-img-wrap">
+          <img class="voice-img" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=330&fit=crop&crop=faces&q=80" alt="先輩スタイリスト（仮）">
+          <div class="voice-overlay">
+            <div class="voice-name">田中 彩奈（仮）</div>
+            <div class="voice-role">スタイリスト・入社3年目</div>
+          </div>
+        </div>
+        <div class="voice-body">
+          <p>EARTHのブランドがあるからお客様との信頼関係が作りやすい。技術研修も充実していて、入社以来カラー技術が格段に上がりました。浦安の常連様との繋がりが毎日の喜びです。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社スタッフのメッセージに差し替えます</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-img-wrap">
+          <img class="voice-img" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=330&fit=crop&crop=faces&q=80" alt="先輩スタイリスト（仮）">
+          <div class="voice-overlay">
+            <div class="voice-name">鈴木 健太（仮）</div>
+            <div class="voice-role">スタイリスト・入社5年目</div>
+          </div>
+        </div>
+        <div class="voice-body">
+          <p>3年目に正社員へ登用されました。技術と実績を正当に評価してもらえる環境で、昇給も毎年あります。トータルビューティーに関われることで、スタイリストとしての視野が広がっています。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社スタッフのメッセージに差し替えます</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-img-wrap">
+          <img class="voice-img" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=330&fit=crop&crop=faces&q=80" alt="先輩スタイリスト（仮）">
+          <div class="voice-overlay">
+            <div class="voice-name">佐藤 麗（仮）</div>
+            <div class="voice-role">スタイリスト・入社2年目</div>
+          </div>
+        </div>
+        <div class="voice-body">
+          <p>浦安駅から徒歩2分で通勤がとにかく楽。週休2日でオフもしっかり取れ、プライベートとのバランスも良好です。チームの雰囲気が良く、分からないことはすぐ先輩に相談できます。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社スタッフのメッセージに差し替えます</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="req-section" id="req">
+  <div class="container">
+    <div class="section-label"><span>Requirements</span></div>
+    <h2 class="section-title">募集要項</h2>
+    <div class="req-inner">
+      <table class="req-table">
+        <tr><th>職種</th><td>EARTH スタイリスト（美容師）</td></tr>
+        <tr><th>雇用形態</th><td>契約社員（正社員登用あり・過去3年間の登用実績100%）</td></tr>
+        <tr><th>必要資格</th><td>美容師免許（必須）・実務経験あり</td></tr>
+        <tr><th>月給</th><td>280,000円〜440,000円<br><small>（基本給225,000〜315,000円 + 固定残業代55,000〜125,000円）</small></td></tr>
+        <tr><th>昇給</th><td>あり（前年度実績5.00%）</td></tr>
+        <tr><th>賞与</th><td>なし</td></tr>
+        <tr><th>その他手当</th><td>皆勤手当3,000円 / 勤続手当2,000〜20,000円 / 店販手当（売上25%）</td></tr>
+        <tr><th>就業時間</th><td>9:00〜19:00（休憩120分・月平均残業30時間）</td></tr>
+        <tr><th>休日・休暇</th><td>週休2日制（シフト制）・年間休日107日・有給休暇10日〜</td></tr>
+        <tr><th>就業場所</th><td>EARTH HAIR＆MAKE 浦安店<br>〒279-0001 千葉県浦安市当代島1-4-28 西脇コーポ103<br>東京メトロ東西線 浦安駅 徒歩2分</td></tr>
+        <tr><th>採用人数</th><td>3名（増員）</td></tr>
+        <tr><th>加入保険</th><td>雇用・労災・健康・厚生年金</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="faq-section" id="faq">
+  <div class="container">
+    <div class="section-label"><span>FAQ</span></div>
+    <h2 class="section-title">よくある質問</h2>
+    <div class="faq-list">
+      <!-- FAQサンプル。実際の御社FAQに差し替えてください -->
+      <div class="faq-item">
+        <div class="faq-q">スタイリスト職に経験は必要ですか？</div>
+        <div class="faq-a">はい、スタイリスト職は美容師免許の保有と実務経験が必要です。アシスタント職については別途ご相談ください。<br><small>※ここはサンプルです。実際には御社のFAQに差し替えます</small></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">正社員になれますか？</div>
+        <div class="faq-a">正社員登用制度があり、過去3年間の登用実績は100%です。技術と実績をしっかり評価していただける環境が整っています。<br><small>※ここはサンプルです。実際には御社のFAQに差し替えます</small></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">株式会社アコルデとEARTHブランドの関係は？</div>
+        <div class="faq-a">当社はEARTH HAIR＆MAKEのフランチャイズ加盟店として、浦安で地域密着のサロン運営を行っています。全国230店舗以上のEARTHブランドの下、独立した経営で地域のお客様に向き合っています。<br><small>※ここはサンプルです。実際には御社のFAQに差し替えます</small></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">休暇はしっかり取れますか？</div>
+        <div class="faq-a">週休2日制（シフト制）、年間休日107日です。6ヶ月経過後は年次有給休暇（10日〜）も付与されます。<br><small>※ここはサンプルです。実際には御社のFAQに差し替えます</small></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">応募の方法を教えてください。</div>
+        <div class="faq-a">写真を貼付した履歴書をEメールにてご送付ください。書類選考後（14日以内）、面接（1回）を経て結果をご連絡します。ご質問はお電話・Eメールでもお気軽にどうぞ。<br><small>※ここはサンプルです。実際には御社のFAQに差し替えます</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="entry">
+  <h2>あなたの技術を、<br>EARTHで。浦安で。</h2>
+  <p>採用担当がご質問からしっかりお答えします。<br>まずは気軽にご連絡ください。</p>
+  <div class="cta-contacts">
+    <div class="cta-contact-item">📧 <a href="mailto:earthkyujin@hm-earth.com">earthkyujin@hm-earth.com</a></div>
+    <div class="cta-contact-item">📞 047-316-8281</div>
+  </div>
+  <a href="mailto:earthkyujin@hm-earth.com" class="btn-gold">メールで応募・問い合わせる</a>
+</section>
+
+<footer>
+  株式会社アコルデ<br>
+  〒279-0001 千葉県浦安市当代島1-4-28 西脇コーポ103<br>
+  TEL: 047-316-8281 / E-mail: earthkyujin@hm-earth.com
+</footer>
+
+<script>
+(function(){
+  var btn = document.querySelector('.hamburger');
+  var nav = document.querySelector('.site-nav');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  }
+})();
+</script>
+</body>
+</html>
