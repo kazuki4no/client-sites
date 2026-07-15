@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>採用情報 | 株式会社東京ロジマッチ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans JP',sans-serif;color:#1e293b;line-height:1.7;background:#fff;padding-bottom:80px}
+
+/* ===== ヘッダー ===== */
+.site-header{display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 1.5rem;background:#0369a1;position:sticky;top:0;z-index:100;}
+.brand{color:#fff;font-size:1rem;font-weight:700;text-decoration:none;white-space:nowrap}
+.site-nav{display:flex;gap:1.2rem;align-items:center}
+.site-nav a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.85rem;transition:color .2s}
+.site-nav a:hover{color:#fff}
+.site-nav .nav-cta{background:#f97316;color:#fff;padding:.4rem 1rem;border-radius:4px;font-weight:700}
+.hamburger{display:none;background:none;border:0;font-size:1.7rem;line-height:1;cursor:pointer;color:#fff}
+@media(max-width:768px){
+  .hamburger{display:block}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:#0369a1;box-shadow:0 8px 16px rgba(0,0,0,.3);padding:.5rem 1rem}
+  .site-nav.open{display:flex}
+  .site-nav a{padding:.8rem 0;border-bottom:1px solid rgba(255,255,255,.2);color:#fff}
+  .site-nav .nav-cta{margin:.5rem 0;text-align:center;border-radius:4px}
+}
+
+/* ===== LP ヒーロー ===== */
+.hero{background:linear-gradient(180deg,#0c4a80 0%,#0369a1 100%);padding:5rem 1.5rem 4rem;color:#fff;text-align:center}
+.hero .tag{background:#f97316;color:#fff;font-size:.8rem;font-weight:700;
+  padding:.25rem .8rem;border-radius:99px;display:inline-block;margin-bottom:1rem}
+.hero h1{font-size:clamp(1.8rem,5vw,3.2rem);font-weight:900;line-height:1.3;margin-bottom:1rem}
+.hero h1 em{color:#fde68a;font-style:normal}
+.hero .sub{font-size:clamp(.95rem,2vw,1.1rem);opacity:.9;margin-bottom:2rem}
+.hero-cta{background:#f97316;color:#fff;padding:1rem 3rem;border-radius:6px;
+  font-size:1.15rem;font-weight:700;text-decoration:none;display:inline-block;
+  box-shadow:0 4px 16px rgba(249,115,22,.5);transition:opacity .2s}
+.hero-cta:hover{opacity:.85}
+.hero-badges{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-top:2rem}
+.badge{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.4);
+  color:#fff;padding:.25rem .7rem;border-radius:99px;font-size:.8rem}
+
+/* ===== 共通 ===== */
+section{padding:4rem 1.5rem}
+.container{max-width:880px;margin:0 auto}
+.sec-title{font-size:clamp(1.4rem,3vw,2rem);font-weight:900;color:#0369a1;
+  text-align:center;margin-bottom:.4rem}
+.sec-sub{text-align:center;color:#64748b;margin-bottom:2rem;font-size:.93rem}
+.divider{width:48px;height:4px;background:#f97316;border-radius:2px;margin:.4rem auto 2rem}
+
+/* ===== 数字で見る ===== */
+.numbers{background:#f0f9ff}
+.num-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;text-align:center;flex-wrap:wrap}
+.num-card{background:#fff;border-radius:12px;padding:1.5rem 1rem;box-shadow:0 2px 10px rgba(0,0,0,.07)}
+.num-card .val{font-size:clamp(2rem,5vw,3rem);font-weight:900;color:#0369a1;line-height:1}
+.num-card .unit{font-size:.9rem;color:#0369a1;font-weight:700;margin-bottom:.3rem}
+.num-card .label{font-size:.85rem;color:#64748b}
+.num-note{font-size:.75rem;color:#94a3b8;text-align:center;margin-top:1.2rem}
+@media(max-width:768px){.num-grid{grid-template-columns:1fr 1fr}}
+
+/* ===== 訴求ブロック ===== */
+.appeal{background:#fff}
+.appeal-grid{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center}
+.appeal-img img{width:100%;border-radius:12px;display:block}
+.appeal-text h3{font-size:1.2rem;font-weight:700;color:#0369a1;margin-bottom:1rem}
+.appeal-text p{color:#475569;margin-bottom:.8rem;font-size:.95rem}
+.appeal-check{list-style:none;padding:0}
+.appeal-check li{padding:.4rem 0 .4rem 1.6rem;position:relative;color:#1e293b;
+  border-bottom:1px dashed #e2e8f0;font-size:.93rem}
+.appeal-check li::before{content:'✓';position:absolute;left:0;color:#f97316;font-weight:700}
+@media(max-width:768px){.appeal-grid{grid-template-columns:1fr}}
+
+/* ===== 仕事内容 ===== */
+.work-bg{background:#f0f9ff}
+.step-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
+.step-card{background:#fff;border-radius:10px;padding:1.2rem 1.5rem;
+  box-shadow:0 1px 8px rgba(0,0,0,.06);display:flex;gap:1rem;align-items:flex-start}
+.step-num{background:#0369a1;color:#fff;font-weight:900;font-size:1.1rem;
+  width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step-body h4{font-weight:700;color:#0369a1;margin-bottom:.3rem}
+.step-body p{font-size:.88rem;color:#475569}
+@media(max-width:768px){.step-grid{grid-template-columns:1fr}}
+
+/* ===== 中盤CTA ===== */
+.mid-cta{background:#0369a1;color:#fff;text-align:center;padding:3rem 1.5rem}
+.mid-cta h2{font-size:clamp(1.3rem,3vw,1.8rem);font-weight:900;margin-bottom:.8rem}
+.mid-cta p{opacity:.85;margin-bottom:1.5rem}
+.btn-orange{background:#f97316;color:#fff;padding:.85rem 2.5rem;border-radius:6px;
+  font-size:1.05rem;font-weight:700;text-decoration:none;display:inline-block;
+  box-shadow:0 4px 14px rgba(249,115,22,.4);transition:opacity .2s}
+.btn-orange:hover{opacity:.85}
+
+/* ===== 募集要項 ===== */
+.req-table{width:100%;border-collapse:collapse}
+.req-table th,.req-table td{text-align:left;padding:.75rem 1rem;border-bottom:1px solid #e2e8f0;font-size:.93rem}
+.req-table th{width:32%;background:#e0f2fe;color:#0369a1;font-weight:700;white-space:nowrap}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%}
+  .req-table th{background:#e0f2fe;padding:.5rem .8rem}
+  .req-table td{padding:.5rem .8rem 1rem}
+}
+
+/* ===== タイムライン ===== */
+.tl-section{background:#f0f9ff}
+.timeline{position:relative}
+.timeline::before{content:'';position:absolute;left:82px;top:0;bottom:0;width:2px;background:#bae6fd}
+.tl-item{display:grid;grid-template-columns:72px 20px 1fr;gap:0 .8rem;align-items:start;margin-bottom:1.4rem}
+.tl-time{text-align:right;font-weight:700;color:#0369a1;padding-top:.2rem;font-size:.93rem}
+.tl-dot{width:14px;height:14px;border-radius:50%;background:#f97316;border:3px solid #fff;
+  box-shadow:0 0 0 2px #f97316;justify-self:center;margin-top:.3rem}
+.tl-body h4{font-weight:700;color:#0369a1;margin-bottom:.2rem}
+.tl-body p{font-size:.88rem;color:#475569}
+@media(max-width:768px){
+  .timeline::before{left:50px}
+  .tl-item{grid-template-columns:40px 16px 1fr}
+  .tl-time{font-size:.8rem}
+}
+
+/* ===== 先輩の声 ===== */
+.voices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.voice-card{background:#f0f9ff;border-radius:12px;overflow:hidden;border:1px solid #bae6fd}
+.voice-card img{width:100%;display:block;object-fit:cover;aspect-ratio:1;height:auto}
+.voice-body{padding:1.2rem}
+.voice-name{font-weight:700;color:#0369a1;font-size:.95rem}
+.voice-role{font-size:.8rem;color:#64748b;margin-bottom:.6rem}
+.voice-body p{font-size:.88rem;color:#475569;line-height:1.6}
+.voice-note{font-size:.75rem;color:#94a3b8;margin-top:.5rem}
+@media(max-width:768px){.voices-grid{grid-template-columns:1fr}}
+
+/* ===== FAQ ===== */
+.faq-list{list-style:none}
+.faq-item{border-left:4px solid #0369a1;padding:1rem 1.5rem;margin-bottom:1rem;background:#f8fafc;border-radius:0 8px 8px 0}
+.faq-q{font-weight:700;color:#0369a1;margin-bottom:.5rem;display:flex;gap:.6rem}
+.faq-q::before{content:'Q';background:#f97316;color:#fff;font-size:.8rem;font-weight:900;
+  padding:.1rem .45rem;border-radius:4px;flex-shrink:0;margin-top:.1rem}
+.faq-a{display:flex;gap:.6rem;color:#475569;font-size:.9rem}
+.faq-a::before{content:'A';background:#0369a1;color:#fff;font-size:.8rem;font-weight:900;
+  padding:.1rem .45rem;border-radius:4px;flex-shrink:0;margin-top:.12rem}
+
+/* ===== 最終CTA ===== */
+.final-cta{background:linear-gradient(135deg,#0c4a80 0%,#0369a1 100%);color:#fff;text-align:center;padding:4rem 1.5rem}
+.final-cta h2{font-size:clamp(1.4rem,3vw,2.2rem);font-weight:900;margin-bottom:.8rem}
+.final-cta p{opacity:.85;margin-bottom:2rem}
+.entry-box{background:rgba(255,255,255,.12);border-radius:10px;padding:1.2rem 2rem;
+  display:inline-block;text-align:left;margin-bottom:2rem;font-size:.9rem}
+.entry-box p{margin:.2rem 0;opacity:1}
+.btn-final{background:#f97316;color:#fff;padding:1rem 3.5rem;border-radius:8px;
+  font-size:1.15rem;font-weight:700;text-decoration:none;display:inline-block;
+  box-shadow:0 4px 20px rgba(249,115,22,.5);transition:opacity .2s}
+.btn-final:hover{opacity:.85}
+
+/* ===== 固定CTAバー（スマホ） ===== */
+.fixed-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;
+  background:#f97316;padding:.8rem 1rem;text-align:center}
+.fixed-cta a{color:#fff;font-weight:700;font-size:1rem;text-decoration:none;display:block}
+@media(max-width:768px){.fixed-cta{display:block}}
+
+/* ===== フッター ===== */
+footer{background:#0a2540;color:rgba(255,255,255,.7);text-align:center;padding:2rem 1rem;font-size:.85rem}
+footer strong{color:#fff;display:block;margin-bottom:.4rem}
+footer p{margin:.2rem 0}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="#top">株式会社東京ロジマッチ 採用情報</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#numbers">数字で見る</a>
+    <a href="#work">仕事内容</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#faq">よくある質問</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<!-- ヒーロー -->
+<section id="top" class="hero">
+  <div class="container">
+    <span class="tag">正社員登用実績あり</span>
+    <h1>舞浜から10分。<br><em>大手ブランドの物流</em>を<br>支える仕事</h1>
+    <p class="sub">キヤノンマーケティングジャパンをはじめ有名ブランドのOA機器を扱う専門物流企業。時給1,350〜2,000円、年間休日120日、無料送迎バス完備。</p>
+    <a href="#entry" class="hero-cta">今すぐ応募する</a>
+    <div class="hero-badges">
+      <span class="badge">未経験歓迎</span>
+      <span class="badge">土日祝休み</span>
+      <span class="badge">無料送迎バス</span>
+      <span class="badge">社会保険完備</span>
+      <span class="badge">人間ドック会社負担</span>
+    </div>
+  </div>
+</section>
+
+<!-- 数字で見る -->
+<section id="numbers" class="numbers">
+  <div class="container">
+    <h2 class="sec-title">数字で見る東京ロジマッチ</h2>
+    <div class="divider"></div>
+    <p class="sec-sub">安定した待遇と長く続けられる環境</p>
+    <div class="num-grid">
+      <div class="num-card">
+        <div class="val">120</div>
+        <div class="unit">日</div>
+        <div class="label">年間休日</div>
+      </div>
+      <div class="num-card">
+        <div class="val">1,350<small style="font-size:.6em">〜</small>2,000</div>
+        <div class="unit">円</div>
+        <div class="label">時給レンジ</div>
+      </div>
+      <div class="num-card">
+        <div class="val">65</div>
+        <div class="unit">歳</div>
+        <div class="label">再雇用上限</div>
+      </div>
+    </div>
+    <p class="num-note">※ここはサンプルです。実際には御社の最新データに差し替えます</p>
+  </div>
+</section>
+
+<!-- 訴求ポイント -->
+<section class="appeal">
+  <div class="container">
+    <h2 class="sec-title">こんな環境で働けます</h2>
+    <div class="divider"></div>
+    <div class="appeal-grid">
+      <div class="appeal-img">
+        <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=640&h=500&fit=crop&q=80" alt="倉庫の作業風景（サンプル）">
+        <!-- ※ここはサンプルです。実際には御社の職場写真に差し替えます -->
+      </div>
+      <div class="appeal-text">
+        <h3>専門性が身につく物流の現場</h3>
+        <p>倉庫業を軸に精密機器の流通加工を手がける当社で、ただ荷物を動かすだけでなく、手順・品質を意識したプロの技術が身につきます。</p>
+        <ul class="appeal-check">
+          <li>OA機器（コピー機）の専門的な取り扱いスキル</li>
+          <li>キヤノンMJをはじめ大手ブランドの仕事</li>
+          <li>正社員登用の実績（過去3年間あり）</li>
+          <li>40歳以上の社員は人間ドックを会社負担</li>
+          <li>作業着貸与・安全靴費用一部負担</li>
+          <li>無料送迎バス（舞浜駅 1時間7〜8本）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 仕事内容 -->
+<section id="work" class="work-bg">
+  <div class="container">
+    <h2 class="sec-title">仕事の流れ</h2>
+    <div class="divider"></div>
+    <p class="sec-sub">1日の作業はこの4つのステップが中心です</p>
+    <div class="step-grid">
+      <div class="step-card">
+        <div class="step-num">1</div>
+        <div class="step-body">
+          <h4>開梱作業</h4>
+          <p>工場から届いた新品コピー機を箱から取り出し、上段・下段のドッキングを機械補助で行います。</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">2</div>
+        <div class="step-body">
+          <h4>梱包作業</h4>
+          <p>加工完了した商品を清掃し、扉が開かないようテーピングで仕上げます。</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">3</div>
+        <div class="step-body">
+          <h4>軽作業（ピッキング）</h4>
+          <p>商品の棚格納や付属品パーツのピッキング。手順書があるので初めてでも迷いません。</p>
+        </div>
+      </div>
+      <div class="step-card">
+        <div class="step-num">4</div>
+        <div class="step-body">
+          <h4>出庫作業</h4>
+          <p>当日出庫する商品を指定置き場へ移動し、出荷の準備を整えます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 中盤CTA -->
+<section class="mid-cta">
+  <div class="container">
+    <h2>あなたのやる気をお待ちしています</h2>
+    <p>書類選考＋面接1回のシンプルな選考です。<br>まずはお気軽にご連絡ください。</p>
+    <a href="#entry" class="btn-orange">応募フォームへ進む</a>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section id="requirements">
+  <div class="container">
+    <h2 class="sec-title">募集要項</h2>
+    <div class="divider"></div>
+    <table class="req-table">
+      <tr><th>職種</th><td>ＯＡ機器の開梱・梱包・軽作業・出庫</td></tr>
+      <tr><th>雇用形態</th><td>アルバイト（正社員登用実績あり）</td></tr>
+      <tr><th>給与</th><td>時給 1,350円〜2,000円<br>月換算：220,320〜326,400円（8h×20.4日）</td></tr>
+      <tr><th>就業時間</th><td>8:30〜17:30（休憩60分）</td></tr>
+      <tr><th>休日</th><td>土・日・祝・夏期休暇・年末年始　年間休日120日</td></tr>
+      <tr><th>就業場所</th><td>千葉県浦安市千鳥11-5 住友倉庫内東棟3F<br>舞浜駅より無料送迎バス約10分</td></tr>
+      <tr><th>交通費</th><td>実費支給（上限なし）</td></tr>
+      <tr><th>社会保険</th><td>雇用・労災・健康・厚生年金</td></tr>
+      <tr><th>昇給</th><td>あり（前年度実績：1時間5円〜）</td></tr>
+      <tr><th>定年・再雇用</th><td>定年60歳 / 再雇用制度あり（上限65歳）</td></tr>
+      <tr><th>その他</th><td>作業着貸与・安全靴費用一部負担（3,000円まで）<br>人間ドック会社負担（40歳以上）</td></tr>
+      <tr><th>試用期間</th><td>1か月（同条件）</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section id="day" class="tl-section">
+  <div class="container">
+    <h2 class="sec-title">社員の1日の流れ</h2>
+    <div class="divider"></div>
+    <p style="text-align:center;font-size:.82rem;color:#94a3b8;margin-bottom:1.5rem">※ここはサンプルです。実際には御社スタッフの1日のスケジュールに差し替えます</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">8:20</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>無料バスで出勤</h4><p>舞浜駅から無料送迎バス。1時間7〜8本あるので余裕をもって乗れます。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">8:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>朝礼・作業割り振り</h4><p>当日の出庫予定・作業量を確認してチームで分担。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">9:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>開梱・組み立て</h4><p>コピー機の箱出しと機械補助によるドッキング作業。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>昼休憩（60分）</h4><p>仕出し弁当（470〜580円）またはコンビニ自販機でランチタイム。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>梱包・ピッキング・出庫準備</h4><p>午後は梱包仕上げ・ピッキング・出庫商品の移動が中心。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>終業・帰宅</h4><p>作業完了後、無料バスで舞浜駅へ。残業はあっても月18時間が上限の見通し。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section id="voice">
+  <div class="container">
+    <h2 class="sec-title">先輩からのメッセージ</h2>
+    <div class="divider"></div>
+    <p style="text-align:center;font-size:.82rem;color:#94a3b8;margin-bottom:2rem">※ここはサンプルです。実際には御社スタッフのメッセージ・写真に差し替えます</p>
+    <div class="voices-grid">
+      <div class="voice-card">
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=280&fit=crop&crop=faces&q=80" alt="先輩スタッフ（サンプル）">
+        <div class="voice-body">
+          <p class="voice-name">木村 誠（仮名）</p>
+          <p class="voice-role">開梱・出庫担当 / 入社2年</p>
+          <p>「倉庫作業が初めてで不安でしたが、手順書があって覚えやすかったです。大手メーカーの商品を扱う仕事という誇りがあります。」</p>
+          <p class="voice-note">※サンプルです</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=280&fit=crop&crop=faces&q=80" alt="先輩スタッフ（サンプル）">
+        <div class="voice-body">
+          <p class="voice-name">松本 浩（仮名）</p>
+          <p class="voice-role">梱包・ピッキング担当 / 入社4年</p>
+          <p>「昇給があるので続けるほど収入が上がるのが嬉しい。40歳を超えてからは人間ドックも会社が払ってくれるのでありがたいです。」</p>
+          <p class="voice-note">※サンプルです</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=280&fit=crop&crop=faces&q=80" alt="先輩スタッフ（サンプル）">
+        <div class="voice-body">
+          <p class="voice-name">伊藤 明美（仮名）</p>
+          <p class="voice-role">軽作業担当 / 入社1年</p>
+          <p>「無料バスがあるから車を持っていない私でも通いやすい。土日がきちんと休めるので家族との時間を大切にできています。」</p>
+          <p class="voice-note">※サンプルです</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <h2 class="sec-title">よくある質問</h2>
+    <div class="divider"></div>
+    <ul class="faq-list">
+      <li class="faq-item">
+        <p class="faq-q">物流の経験がなくても応募できますか？</p>
+        <p class="faq-a">はい、未経験の方を歓迎しています。入社後に先輩が丁寧に教えますので、手順書に沿って作業できれば問題ありません。体力に自信がある方ならすぐに活躍できます。</p>
+      </li>
+      <li class="faq-item">
+        <p class="faq-q">通勤手段はどうすればよいですか？</p>
+        <p class="faq-a">舞浜駅から無料送迎バスをご利用ください。通勤時間帯は1時間7〜8本運行しているので待ち時間も少なく、マイカー不要で通えます。電車代等の交通費は実費支給（上限なし）です。</p>
+      </li>
+      <li class="faq-item">
+        <p class="faq-q">正社員になることはできますか？</p>
+        <p class="faq-a">正社員登用の実績があります（過去3年間）。本人の希望と業務実績をもとに検討しますので、長期的に活躍したい方に向いています。</p>
+      </li>
+      <li class="faq-item">
+        <p class="faq-q">採用の流れを教えてください。</p>
+        <p class="faq-a">応募→書類選考（5日以内に連絡）→面接（1回・千葉県浦安市の就業場所または書類選考と同時）→結果連絡（5日以内）となります。</p>
+      </li>
+      <li class="faq-item">
+        <p class="faq-q">残業はどのくらいありますか？</p>
+        <p class="faq-a">月平均残業18時間です。突発的な受注変更の際に延長する場合がありますが、月平均は比較的少なく、プライベートの時間を確保しやすい環境です。</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- 最終CTA -->
+<section id="entry" class="final-cta">
+  <div class="container">
+    <h2>ぜひ一度、お話しませんか</h2>
+    <p>書類選考→面接1回のシンプルな選考です。<br>お気軽にご応募ください。</p>
+    <div class="entry-box">
+      <p>📍 千葉県浦安市千鳥11-5 住友倉庫内東棟3F</p>
+      <p>📞 南部 俊介（舞浜事業所課長）　080-7205-5567</p>
+      <p>✉️ tlm-entry@logimatch.co.jp</p>
+    </div><br>
+    <a href="mailto:tlm-entry@logimatch.co.jp" class="btn-final">メールで応募する</a>
+  </div>
+</section>
+
+<footer>
+  <strong>株式会社東京ロジマッチ</strong>
+  <p>〒116-0014 東京都荒川区東日暮里5丁目34番1号 OAKビル202号</p>
+  <p>TEL：080-7205-5567　E-mail：tlm-entry@logimatch.co.jp</p>
+</footer>
+
+<!-- 固定CTAバー（スマホ） -->
+<div class="fixed-cta">
+  <a href="#entry">📩 今すぐ応募する（無料）</a>
+</div>
+
+<script>
+(function(){
+  var btn = document.querySelector('.hamburger');
+  var nav = document.querySelector('.site-nav');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  }
+})();
+</script>
+</body>
+</html>
