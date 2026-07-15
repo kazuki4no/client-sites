@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>採用情報 | 合同会社 真葉</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans JP',sans-serif;color:#1c1c1c;background:#fff;line-height:1.7}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;height:auto;display:block}
+
+/* ヘッダー */
+.site-header{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1.4rem;background:#1c1c1c;position:sticky;top:0;z-index:100}
+.brand{color:#fff;font-weight:900;font-size:1.05rem}
+.hamburger{display:none;background:none;border:0;font-size:1.7rem;line-height:1;cursor:pointer;color:#f5c518}
+.site-nav{display:flex;gap:1.4rem;align-items:center}
+.site-nav a{color:rgba(255,255,255,.8);font-size:.9rem;transition:color .2s}
+.site-nav a:hover{color:#f5c518}
+.nav-cta{background:#f5c518;color:#1c1c1c!important;padding:.45rem 1rem;border-radius:4px;font-weight:900}
+@media(max-width:768px){
+  .hamburger{display:block}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;position:absolute;top:100%;left:0;right:0;z-index:50;background:#1c1c1c;box-shadow:0 8px 16px rgba(0,0,0,.3);padding:.5rem 1.2rem}
+  .site-nav.open{display:flex}
+  .site-nav a{padding:.8rem 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:1rem}
+}
+
+/* ヒーロー */
+.hero{background:#1c1c1c;color:#fff;padding:5rem 1.5rem 4rem;text-align:center}
+.hero-eyebrow{font-size:.78rem;font-weight:700;color:#f5c518;letter-spacing:.15em;margin-bottom:1rem}
+.hero h1{font-size:clamp(1.8rem,6vw,3.2rem);font-weight:900;line-height:1.25;margin-bottom:1.2rem}
+.hero h1 span{color:#f5c518}
+.hero-sub{color:rgba(255,255,255,.75);font-size:clamp(.9rem,3vw,1.05rem);max-width:580px;margin:0 auto 2.5rem}
+.btn-yellow{display:inline-block;background:#f5c518;color:#1c1c1c;font-weight:900;font-size:1.05rem;padding:1rem 2.5rem;border-radius:50px;letter-spacing:.05em;transition:opacity .2s}
+.btn-yellow:hover{opacity:.88}
+.btn-yellow-outline{display:inline-block;border:2px solid #f5c518;color:#f5c518;font-weight:700;font-size:.95rem;padding:.7rem 1.8rem;border-radius:50px;transition:all .2s}
+.btn-yellow-outline:hover{background:#f5c518;color:#1c1c1c}
+.hero-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+
+/* セクション共通 */
+section{padding:4.5rem 1.5rem}
+.inner{max-width:880px;margin:0 auto}
+.sec-label{font-size:.72rem;font-weight:700;color:#f5c518;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.4rem}
+.sec-title{font-size:clamp(1.4rem,4vw,2rem);font-weight:900;line-height:1.3;margin-bottom:.8rem}
+.sec-sub{color:#555;font-size:.92rem;margin-bottom:2.5rem}
+
+/* 問題提起バナー */
+.issue{background:#f8f5e6;border-left:5px solid #f5c518;padding:2rem 1.5rem;border-radius:0 8px 8px 0;max-width:880px;margin:0 auto 2rem}
+.issue p{font-size:.95rem;line-height:1.8;color:#333}
+.issue strong{color:#1c1c1c;font-weight:900}
+
+/* 魅力リスト（LP横並び） */
+.merit-list{list-style:none;display:grid;grid-template-columns:1fr 1fr;gap:1.2rem}
+.merit-list li{background:#fafafa;border:1px solid #eee;border-radius:8px;padding:1.2rem 1.5rem;display:flex;align-items:flex-start;gap:.8rem}
+.merit-num{font-size:1.8rem;font-weight:900;color:#f5c518;line-height:1;flex-shrink:0}
+.merit-body h4{font-size:.95rem;font-weight:700;margin-bottom:.3rem}
+.merit-body p{font-size:.85rem;color:#555}
+@media(max-width:768px){.merit-list{grid-template-columns:1fr}}
+
+/* 実績バー（数字） */
+.stats{background:#1c1c1c;color:#fff;padding:4rem 1.5rem}
+.stat-grid{display:flex;flex-wrap:wrap;gap:2rem;justify-content:center;margin-top:2rem}
+.stat-item{text-align:center;min-width:130px}
+.stat-num{font-size:clamp(2.2rem,6vw,3.5rem);font-weight:900;color:#f5c518;line-height:1}
+.stat-unit{font-size:1rem;font-weight:700;color:#f5c518}
+.stat-label{font-size:.8rem;color:rgba(255,255,255,.7);margin-top:.3rem}
+.stat-sample{font-size:.68rem;color:rgba(255,255,255,.4)}
+
+/* 仕事内容 */
+.job-wrap{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center}
+.job-img img{width:100%;height:300px;object-fit:cover;border-radius:8px}
+.job-points{list-style:none;margin-top:1rem}
+.job-points li{padding:.7rem 0;border-bottom:1px solid #eee;font-size:.92rem;display:flex;align-items:baseline;gap:.6rem}
+.job-points li::before{content:'✓';color:#f5c518;font-weight:900;flex-shrink:0}
+@media(max-width:768px){.job-wrap{grid-template-columns:1fr}}
+
+/* CTA中間 */
+.cta-mid{background:#f5c518;padding:3.5rem 1.5rem;text-align:center}
+.cta-mid h2{font-size:clamp(1.3rem,4vw,1.9rem);font-weight:900;margin-bottom:.6rem}
+.cta-mid p{font-size:.92rem;color:#333;margin-bottom:1.8rem}
+.btn-dark{display:inline-block;background:#1c1c1c;color:#fff;font-weight:900;font-size:1rem;padding:.9rem 2.2rem;border-radius:50px;transition:opacity .2s}
+.btn-dark:hover{opacity:.8}
+
+/* タイムライン */
+.timeline{position:relative}
+.timeline::before{content:'';position:absolute;left:82px;top:0;bottom:0;width:2px;background:#f5c518;opacity:.35}
+.tl-item{display:grid;grid-template-columns:72px 20px 1fr;gap:0 .8rem;align-items:start;margin-bottom:1.6rem}
+.tl-time{text-align:right;font-size:.82rem;font-weight:700;color:#1c1c1c;padding-top:.15rem}
+.tl-dot{width:12px;height:12px;border-radius:50%;background:#f5c518;justify-self:center;margin-top:.3rem}
+.tl-body h4{font-size:.95rem;font-weight:700;margin-bottom:.2rem}
+.tl-body p{font-size:.85rem;color:#555}
+@media(max-width:768px){
+  .tl-item{grid-template-columns:44px 16px 1fr}
+  .timeline::before{left:52px}
+}
+
+/* 社員インタビュー */
+.interview{background:#f9f9f9}
+.int-card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07);display:grid;grid-template-columns:200px 1fr;margin-bottom:1.5rem}
+.int-card:last-child{margin-bottom:0}
+.int-img img{width:200px;height:240px;object-fit:cover}
+.int-body{padding:1.5rem 2rem}
+.int-name{font-weight:900;font-size:1rem}
+.int-role{font-size:.8rem;color:#888;margin-bottom:.8rem}
+.int-q{font-size:.82rem;font-weight:700;color:#f5c518;margin-bottom:.3rem}
+.int-a{font-size:.88rem;color:#444;line-height:1.65}
+.int-sample{font-size:.7rem;color:#ccc;margin-top:.5rem}
+@media(max-width:768px){
+  .int-card{grid-template-columns:1fr}
+  .int-img img{width:100%;height:200px}
+}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid #e5e5e5}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:1.1rem 0;cursor:pointer;font-weight:700;font-size:.95rem}
+.faq-badge{background:#f5c518;color:#1c1c1c;font-size:.75rem;font-weight:900;padding:.2rem .5rem;border-radius:4px;margin-right:.7rem;flex-shrink:0}
+.faq-ico{font-size:1.2rem;color:#f5c518;flex-shrink:0;transition:transform .2s}
+.faq-item.open .faq-ico{transform:rotate(45deg)}
+.faq-a{display:none;padding-bottom:1.1rem;color:#444;font-size:.9rem}
+.faq-item.open .faq-a{display:block}
+
+/* 募集要項テーブル */
+.req-table{width:100%;border-collapse:collapse;font-size:.9rem}
+.req-table th,.req-table td{padding:.8rem 1rem;border-bottom:1px solid #eee;text-align:left}
+.req-table th{background:#f7f7f7;font-weight:700;width:32%;white-space:nowrap}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%}
+  .req-table th{padding:.5rem .8rem;white-space:normal}
+  .req-table td{padding:.5rem .8rem 1rem}
+}
+
+/* 固定CTA（モバイル） */
+.fixed-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;background:#f5c518;padding:.9rem 1.5rem;text-align:center}
+.fixed-cta a{color:#1c1c1c;font-weight:900;font-size:1.05rem}
+@media(max-width:768px){.fixed-cta{display:block}}
+.cta-final{padding-bottom:4rem}
+
+/* フッター */
+footer{background:#111;color:rgba(255,255,255,.55);text-align:center;font-size:.82rem;padding:1.5rem}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="#top">合同会社 真葉</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#merit">魅力</a>
+    <a href="#job">仕事内容</a>
+    <a href="#interview">社員の声</a>
+    <a href="#req">募集要項</a>
+    <a href="#entry" class="nav-cta">応募する</a>
+  </nav>
+</header>
+
+<!-- ヒーロー -->
+<section class="hero" id="top">
+  <p class="hero-eyebrow">合同会社 真葉 ／ 採用情報</p>
+  <h1>シーリング防水の職人として、<br><span>確かな技術</span>を身につける</h1>
+  <p class="hero-sub">国家資格保有者が揃うチームで基礎から学べる。<br>残業月2時間・定時17時退社でプライベートも充実。</p>
+  <div class="hero-btns">
+    <a href="#entry" class="btn-yellow">採用に応募する</a>
+    <a href="#merit" class="btn-yellow-outline">まず詳細を見る</a>
+  </div>
+</section>
+
+<!-- 問題提起 -->
+<section style="padding:3rem 1.5rem">
+  <div class="inner">
+    <div class="issue">
+      <p>建設職で<strong>「残業が多い」「技術を教えてもらえない」「体力的にきつい」</strong>と感じていませんか？<br>真葉は7名の少数精鋭チーム。国家資格保有者が多く、丁寧な指導と働きやすい環境を両立しています。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 魅力 -->
+<section id="merit">
+  <div class="inner">
+    <p class="sec-label">Why Sinyo</p>
+    <h2 class="sec-title">真葉を選ぶ理由</h2>
+    <p class="sec-sub">少人数だからこそ、一人ひとりが大切にされます。</p>
+    <ul class="merit-list">
+      <li>
+        <span class="merit-num">01</span>
+        <div class="merit-body"><h4>残業は月平均わずか2時間</h4><p>8:00〜17:00の定時勤務が基本。建設業でも「帰れない日が続く」はありません。</p></div>
+      </li>
+      <li>
+        <span class="merit-num">02</span>
+        <div class="merit-body"><h4>国家資格保有者から直接学べる</h4><p>シーリング技能士など有資格者が多く在籍。技術が確実に身に付く環境です。</p></div>
+      </li>
+      <li>
+        <span class="merit-num">03</span>
+        <div class="merit-body"><h4>経験・学歴・資格一切不問</h4><p>書類選考もなし。「やる気」と「一生懸命さ」だけで入社できます。</p></div>
+      </li>
+      <li>
+        <span class="merit-num">04</span>
+        <div class="merit-body"><h4>月給20〜30万円・経験でアップ</h4><p>スキルが上がれば給与も上がる。昇給実績あり（前年：月+1,000円〜）。</p></div>
+      </li>
+      <li>
+        <span class="merit-num">05</span>
+        <div class="merit-body"><h4>明るく・まじめ・フラットなチーム</h4><p>「明るく楽しくまじめに一生懸命」が会社の合言葉。変な上下関係はありません。</p></div>
+      </li>
+      <li>
+        <span class="merit-num">06</span>
+        <div class="merit-body"><h4>社会保険完備・安定した雇用</h4><p>雇用・労災・健康・厚生年金すべて完備。正社員として長く安定して働けます。</p></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- 実績バー -->
+<section class="stats">
+  <div class="inner">
+    <p class="sec-label" style="color:rgba(255,255,255,.55)">Numbers</p>
+    <h2 class="sec-title" style="color:#fff">数字で見る真葉</h2>
+    <p style="font-size:.72rem;color:rgba(255,255,255,.38);margin-bottom:0">※ここはサンプルです。実際には御社の最新データに差し替えます</p>
+    <div class="stat-grid">
+      <div class="stat-item"><span class="stat-num">7</span><span class="stat-unit">名</span><p class="stat-label">従業員数</p><span class="stat-sample">※サンプル</span></div>
+      <div class="stat-item"><span class="stat-num">2</span><span class="stat-unit">h</span><p class="stat-label">月平均残業</p><span class="stat-sample">※サンプル</span></div>
+      <div class="stat-item"><span class="stat-num">20〜30</span><span class="stat-unit">万</span><p class="stat-label">月給レンジ</p><span class="stat-sample">※サンプル</span></div>
+      <div class="stat-item"><span class="stat-num">2017</span><span class="stat-unit">年</span><p class="stat-label">設立</p><span class="stat-sample">※サンプル</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 仕事内容 -->
+<section id="job">
+  <div class="inner">
+    <p class="sec-label">Job</p>
+    <h2 class="sec-title">シーリング防水の仕事について</h2>
+    <div class="job-wrap">
+      <div class="job-img">
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=640&h=380&fit=crop&q=80" alt="現場作業">
+      </div>
+      <div>
+        <p style="font-size:.92rem;color:#444;margin-bottom:1.2rem">建物の外壁や屋上などの隙間を専用のシーリング材で埋め、雨水や空気の侵入を防ぐ工事です。建物を長年にわたって守る、なくてはならない職人の仕事。</p>
+        <ul class="job-points">
+          <li>養生→既存シーリング撤去→下地処理の一連の流れ</li>
+          <li>シーリング材の充填・ヘラによる丁寧な仕上げ</li>
+          <li>施工後の品質確認（有資格者が最終チェック）</li>
+          <li>現場は東京都内及び近郊（浦安から2時間以内）</li>
+          <li>マイカー通勤可・通勤手当実費支給（上限なし）</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA中間 -->
+<section class="cta-mid">
+  <div class="inner">
+    <h2>まずは話を聞いてみませんか？</h2>
+    <p>書類選考なし・面接1回のシンプルな選考。オンライン応募も可能です。</p>
+    <a href="#entry" class="btn-dark">採用に応募する</a>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section>
+  <div class="inner">
+    <p class="sec-label">A Day</p>
+    <h2 class="sec-title">社員の1日の流れ</h2>
+    <p style="font-size:.78rem;color:#aaa;margin-bottom:2rem">※ここはサンプルです。実際には御社スタッフの1日に差し替えます</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <span class="tl-time">7:30</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body"><h4>事務所に集合</h4><p>浦安の事務所で道具・材料の確認。本日の現場の段取り打ち合わせ。</p></div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">8:00</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body"><h4>現場へ出発</h4><p>チームで移動。東京都内・近郊の現場へ向かいます（2時間以内）。</p></div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">9:00</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body"><h4>養生・準備作業</h4><p>周辺の養生を行い、既存のシーリング材を丁寧に撤去します。</p></div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">10:30</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body"><h4>シーリング充填・仕上げ</h4><p>プライマー塗布→充填→ヘラでならし。丁寧さが仕上がりに直結します。</p></div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">12:00</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body"><h4>昼食・休憩</h4><p>2時間のゆとりある休憩。しっかり体を休めて午後に備えます。</p></div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">14:00</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body"><h4>仕上げ確認・報告</h4><p>乾燥確認・仕上がりの品質チェック。施主への報告と片付けまで丁寧に。</p></div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">17:00</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body"><h4>退社</h4><p>残業は月平均2時間。定時に上がれるので、夕食をゆっくり食べられます。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 社員インタビュー -->
+<section class="interview" id="interview">
+  <div class="inner">
+    <p class="sec-label">Interviews</p>
+    <h2 class="sec-title">社員インタビュー</h2>
+    <p style="font-size:.78rem;color:#aaa;margin-bottom:2rem">※ここはサンプルです。実際には御社スタッフのインタビューに差し替えます</p>
+    <div class="int-card">
+      <div class="int-img">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=360&fit=crop&crop=faces&q=80" alt="田中さん">
+      </div>
+      <div class="int-body">
+        <p class="int-name">田中 洋介（仮名）</p>
+        <p class="int-role">シーリング作業員 / 入社3年 / 31歳</p>
+        <p class="int-q">真葉に入社したきっかけは？</p>
+        <p class="int-a">前職は全く別の業界でしたが、手に職をつけたいと思い応募しました。「経験不問・書類選考なし」というのが安心して飛び込めた理由です。</p>
+        <p class="int-q" style="margin-top:.8rem">入社してよかったことは？</p>
+        <p class="int-a">有資格者の先輩が丁寧に教えてくれるので、確実に技術が身に付きます。今は後輩に教える立場になり、成長を実感しています。</p>
+        <p class="int-sample">※サンプルです</p>
+      </div>
+    </div>
+    <div class="int-card">
+      <div class="int-img">
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=360&fit=crop&crop=faces&q=80" alt="鈴木さん">
+      </div>
+      <div class="int-body">
+        <p class="int-name">鈴木 大輔（仮名）</p>
+        <p class="int-role">シーリング作業員 / 入社1年 / 27歳</p>
+        <p class="int-q">入社前に不安はありましたか？</p>
+        <p class="int-a">建設業と聞くと「残業が多い」イメージがありましたが、実際は17時に上がれます。プライベートも充実させながら技術を身につけられています。</p>
+        <p class="int-q" style="margin-top:.8rem">チームの雰囲気は？</p>
+        <p class="int-a">7名のこぢんまりしたチームなので、コミュニケーションが取りやすいです。わからないことをすぐ聞ける環境が助かっています。</p>
+        <p class="int-sample">※サンプルです</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="inner">
+    <p class="sec-label">FAQ</p>
+    <h2 class="sec-title">よくある質問</h2>
+    <div class="faq-item">
+      <div class="faq-q"><span><span class="faq-badge">Q</span>未経験でも大丈夫ですか？</span><span class="faq-ico">＋</span></div>
+      <div class="faq-a">はい。職務経験不問・書類選考なしで採用しています。国家資格保有者が揃う職場で、基礎から丁寧に教えてもらえます。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span><span class="faq-badge">Q</span>どんな資格が取れますか？</span><span class="faq-ico">＋</span></div>
+      <div class="faq-a">シーリング技能士（国家資格）などの取得をサポートしています。職場に有資格者が多いので、日常業務の中で着実に技術が身に付きます。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span><span class="faq-badge">Q</span>現場の場所・通勤はどうなりますか？</span><span class="faq-ico">＋</span></div>
+      <div class="faq-a">東京都内及び近郊が中心（浦安から2時間以内）です。集合は浦安市内の事務所で、チームで現場へ向かいます。マイカー通勤可・通勤手当は実費全額支給です。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span><span class="faq-badge">Q</span>休日・残業について教えてください。</span><span class="faq-ico">＋</span></div>
+      <div class="faq-a">休日は日曜日と祝日。GW・夏季・年末年始の長期休暇もあります。月平均残業は2時間と非常に少なく、8:00〜17:00の規則正しい働き方が実現できます。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span><span class="faq-badge">Q</span>選考の流れを教えてください。</span><span class="faq-ico">＋</span></div>
+      <div class="faq-a">書類選考なし→面接1回（浦安市内・随時対応）→採用結果（3日以内）です。オンライン応募・メール応募どちらも可能です。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section id="req" style="background:#f8f8f8">
+  <div class="inner">
+    <p class="sec-label">Requirements</p>
+    <h2 class="sec-title">募集要項</h2>
+    <table class="req-table">
+      <tr><th>職種</th><td>建設現場におけるシーリング防水作業</td></tr>
+      <tr><th>雇用形態</th><td>正社員（試用期間3ヶ月・同条件）</td></tr>
+      <tr><th>給与</th><td>月給 200,000円〜300,000円</td></tr>
+      <tr><th>昇給</th><td>あり（月1,000円〜 / 前年度実績）</td></tr>
+      <tr><th>就業時間</th><td>8:00〜17:00（休憩120分）</td></tr>
+      <tr><th>残業</th><td>月平均2時間</td></tr>
+      <tr><th>休日</th><td>日曜日・祝日、年間休日72日、GW・夏季・年末年始あり</td></tr>
+      <tr><th>社会保険</th><td>雇用保険・労災保険・健康保険・厚生年金</td></tr>
+      <tr><th>通勤手当</th><td>実費全額支給</td></tr>
+      <tr><th>勤務地</th><td>千葉県浦安市北栄4-13-17（浦安駅徒歩15分）</td></tr>
+      <tr><th>応募条件</th><td>44歳以下・職務経験不問・書類選考なし</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 最終CTA -->
+<section id="entry" class="cta-final" style="background:#1c1c1c;color:#fff;text-align:center;padding:5rem 1.5rem 6rem">
+  <div class="inner">
+    <p class="sec-label" style="color:#f5c518">Entry</p>
+    <h2 class="sec-title" style="color:#fff">技術と仲間に出会う場所</h2>
+    <p style="color:rgba(255,255,255,.75);font-size:.95rem;margin-bottom:2rem">まずはメール・電話でお気軽にご連絡ください。<br>面接は随時受け付けています。オンライン応募も可能です。</p>
+    <a href="mailto:kondo@sinyo.club" class="btn-yellow" style="display:inline-block">メールで応募・問い合わせ</a>
+  </div>
+</section>
+
+<footer>
+  <p>合同会社 真葉</p>
+  <p>〒279-0002 千葉県浦安市北栄4-13-17</p>
+  <p>TEL: 047-770-0203 / E-mail: kondo@sinyo.club</p>
+</footer>
+
+<!-- 固定CTAバー（スマホ） -->
+<div class="fixed-cta">
+  <a href="mailto:kondo@sinyo.club">採用に応募する →</a>
+</div>
+
+<script>
+(function(){
+  var btn = document.querySelector('.hamburger');
+  var nav = document.querySelector('.site-nav');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  }
+  document.querySelectorAll('.faq-q').forEach(function(q){
+    q.addEventListener('click', function(){
+      this.closest('.faq-item').classList.toggle('open');
+    });
+  });
+})();
+</script>
+</body>
+</html>
