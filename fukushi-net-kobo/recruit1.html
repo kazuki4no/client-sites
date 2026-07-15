@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>採用情報 | 株式会社ふくしねっと工房</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;color:#1a2b1a;line-height:1.7;}
+img{max-width:100%;height:auto;display:block;}
+a{color:inherit;text-decoration:none;}
+
+/* ---- Header ---- */
+.site-header{display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 1.5rem;background:#fff;position:sticky;top:0;z-index:100;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);}
+.brand{font-weight:900;font-size:1rem;color:#2a6b3c;}
+.site-nav{display:flex;gap:1.4rem;align-items:center;}
+.site-nav a{font-size:.88rem;color:#444;transition:color .2s;}
+.site-nav a:hover{color:#2a6b3c;}
+.nav-cta{background:#2a6b3c;color:#fff !important;padding:.45rem 1.1rem;border-radius:4px;font-weight:700;}
+.nav-cta:hover{background:#1e5430 !important;}
+.hamburger{display:none;background:none;border:0;font-size:1.7rem;line-height:1;cursor:pointer;color:#2a6b3c;}
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:#fff;box-shadow:0 8px 16px rgba(0,0,0,.12);padding:.5rem 1rem;}
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.8rem 0;border-bottom:1px solid #eee;}
+}
+
+/* ---- Hero ---- */
+.hero{position:relative;min-height:72vh;display:flex;align-items:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1584515933487-779824d29309?w=1600&h=900&fit=crop&q=80');
+  background-size:cover;background-position:center;}
+.hero-overlay{position:absolute;inset:0;background:rgba(10,40,20,.62);}
+.hero-content{position:relative;z-index:1;max-width:760px;padding:3rem 2rem;color:#fff;}
+.hero-pill{display:inline-block;background:rgba(255,255,255,.2);border:1px solid rgba(255,255,255,.5);
+  padding:.3rem .9rem;border-radius:999px;font-size:.82rem;margin-bottom:1rem;letter-spacing:.05em;}
+.hero-title{font-size:clamp(1.8rem,5vw,3.2rem);font-weight:900;line-height:1.3;margin-bottom:1.2rem;}
+.hero-sub{font-size:clamp(.95rem,2.5vw,1.15rem);opacity:.9;margin-bottom:2rem;}
+.hero-nums{display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:2rem;}
+.hero-num{text-align:center;}
+.hero-num .n{font-size:clamp(1.8rem,5vw,2.8rem);font-weight:900;color:#7ee8a2;}
+.hero-num .u{font-size:.85rem;opacity:.85;}
+.btn-primary{display:inline-block;background:#2a6b3c;color:#fff;padding:.85rem 2.2rem;
+  border-radius:6px;font-weight:700;font-size:1rem;transition:background .2s;}
+.btn-primary:hover{background:#1e5430;}
+
+/* ---- Section common ---- */
+section{padding:4.5rem 1.5rem;}
+.sec-label{font-size:.8rem;letter-spacing:.12em;color:#2a6b3c;text-transform:uppercase;margin-bottom:.5rem;}
+.sec-title{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:900;margin-bottom:2.5rem;line-height:1.3;}
+.container{max-width:900px;margin:0 auto;}
+.bg-light{background:#f4f9f5;}
+
+/* ---- Merit cards ---- */
+.merit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.merit-card{background:#fff;border-radius:12px;padding:1.8rem 1.4rem;box-shadow:0 2px 12px rgba(0,0,0,.07);}
+.merit-icon{font-size:2.2rem;margin-bottom:.8rem;}
+.merit-card h3{font-size:1.05rem;font-weight:700;margin-bottom:.5rem;color:#1a2b1a;}
+.merit-card p{font-size:.9rem;color:#555;line-height:1.6;}
+@media(max-width:768px){.merit-grid{grid-template-columns:1fr;}}
+
+/* ---- Timeline ---- */
+.timeline{max-width:600px;margin:0 auto;position:relative;}
+.timeline::before{content:'';position:absolute;left:82px;top:0;bottom:0;width:2px;background:#b2dfbc;}
+.tl-item{display:grid;grid-template-columns:72px 20px 1fr;gap:0 .8rem;align-items:start;margin-bottom:1.8rem;}
+.tl-time{text-align:right;font-weight:700;font-size:.92rem;color:#2a6b3c;padding-top:.2rem;}
+.tl-dot{width:12px;height:12px;border-radius:50%;background:#2a6b3c;justify-self:center;margin-top:.35rem;
+  box-shadow:0 0 0 3px #f4f9f5,0 0 0 5px #b2dfbc;}
+.tl-body{padding-top:.15rem;}
+.tl-body strong{font-size:.95rem;display:block;margin-bottom:.2rem;}
+.tl-body span{font-size:.87rem;color:#555;}
+.sample-note{font-size:.78rem;color:#999;margin-top:2rem;text-align:center;}
+@media(max-width:768px){
+  .tl-item{grid-template-columns:40px 16px 1fr;}
+  .timeline::before{left:46px;}
+}
+
+/* ---- Staff cards ---- */
+.staff-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.staff-card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07);}
+.staff-img{width:100%;aspect-ratio:1/1;object-fit:cover;}
+.staff-body{padding:1.2rem;}
+.staff-name{font-weight:700;font-size:1rem;margin-bottom:.2rem;}
+.staff-meta{font-size:.8rem;color:#2a6b3c;margin-bottom:.7rem;}
+.staff-body p{font-size:.88rem;color:#555;line-height:1.6;}
+@media(max-width:768px){.staff-grid{grid-template-columns:1fr;}}
+
+/* ---- FAQ ---- */
+.faq-list{max-width:700px;margin:0 auto;}
+.faq-item{border-bottom:1px solid #d8ead1;padding:1.2rem 0;}
+.faq-q{font-weight:700;font-size:.97rem;color:#1a2b1a;display:flex;gap:.8rem;align-items:flex-start;}
+.faq-q::before{content:'Q';background:#2a6b3c;color:#fff;border-radius:4px;
+  padding:.15rem .5rem;font-size:.82rem;flex-shrink:0;margin-top:.1rem;}
+.faq-a{font-size:.9rem;color:#555;padding-top:.7rem;padding-left:2.4rem;line-height:1.7;}
+.faq-a::before{content:'A ';font-weight:700;color:#2a6b3c;}
+
+/* ---- Requirements table ---- */
+.req-table{width:100%;border-collapse:collapse;}
+.req-table th,.req-table td{padding:.9rem 1rem;border:1px solid #d8ead1;font-size:.93rem;text-align:left;vertical-align:top;}
+.req-table th{background:#f0f7f2;width:32%;font-weight:700;color:#2a6b3c;}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{background:#f4f9f5;padding:.5rem .8rem;}
+  .req-table td{padding:.5rem .8rem 1rem;}
+}
+
+/* ---- Manager card ---- */
+.manager-card{background:#fff;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,.07);
+  display:flex;gap:2rem;padding:2rem;align-items:flex-start;max-width:680px;margin:0 auto;}
+.manager-img{width:120px;height:120px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.manager-body h3{font-size:1.05rem;font-weight:700;margin-bottom:.3rem;}
+.manager-body .role{font-size:.82rem;color:#2a6b3c;margin-bottom:.6rem;}
+.manager-body p{font-size:.9rem;color:#555;line-height:1.6;}
+@media(max-width:768px){.manager-card{flex-direction:column;align-items:center;text-align:center;}}
+
+/* ---- CTA section ---- */
+.cta-section{background:linear-gradient(135deg,#1e5430,#2a6b3c);color:#fff;text-align:center;padding:4rem 1.5rem;}
+.cta-section h2{font-size:clamp(1.4rem,4vw,2rem);font-weight:900;margin-bottom:1rem;}
+.cta-section p{font-size:1rem;opacity:.9;margin-bottom:2rem;}
+.btn-outline{display:inline-block;border:2px solid #fff;color:#fff;padding:.85rem 2.2rem;
+  border-radius:6px;font-weight:700;font-size:1rem;transition:all .2s;margin:.4rem;}
+.btn-outline:hover{background:#fff;color:#2a6b3c;}
+.btn-white{display:inline-block;background:#fff;color:#2a6b3c;padding:.85rem 2.2rem;
+  border-radius:6px;font-weight:700;font-size:1rem;transition:all .2s;margin:.4rem;}
+.btn-white:hover{background:#e8f5ec;}
+
+/* ---- Footer ---- */
+footer{background:#1a2b1a;color:#ccc;padding:2.5rem 1.5rem;font-size:.85rem;}
+.footer-inner{max-width:900px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+footer h4{color:#fff;font-size:.95rem;margin-bottom:.6rem;}
+footer p{line-height:1.7;}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<header class="site-header">
+  <a class="brand" href="#top">株式会社ふくしねっと工房</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#about">仕事について</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#faq">よくある質問</a>
+    <a href="#requirements">募集要項</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-pill">グループホーム世話人 正社員募集</span>
+    <h1 class="hero-title">誰かの「おうち」を守る。<br>それが毎日の仕事です。</h1>
+    <p class="hero-sub">障がいのある方が安心して暮らせるグループホームで、<br>食事・入浴・生活全般のサポートをする仕事です。</p>
+    <div class="hero-nums">
+      <div class="hero-num"><div class="n">157</div><div class="u">年間休日</div></div>
+      <div class="hero-num"><div class="n">23.3<span style="font-size:1.2rem">万〜</span></div><div class="u">月給（各種手当込）</div></div>
+      <div class="hero-num"><div class="n">5</div><div class="u">名採用</div></div>
+    </div>
+    <a class="btn-primary" href="#entry">採用情報を見る</a>
+  </div>
+</section>
+
+<!-- About -->
+<section id="about" class="bg-light">
+  <div class="container">
+    <p class="sec-label">About Work</p>
+    <h2 class="sec-title">この仕事の3つの魅力</h2>
+    <div class="merit-grid">
+      <div class="merit-card">
+        <div class="merit-icon">🌿</div>
+        <h3>年間休日157日という余裕</h3>
+        <p>月の平均勤務日数は17.3日。夜勤明けの休みをしっかり取りながら、プライベートも充実させられます。月残業は10時間程度です。</p>
+      </div>
+      <div class="merit-card">
+        <div class="merit-icon">💴</div>
+        <h3>各種手当が充実した収入</h3>
+        <p>処遇改善手当・住宅手当・有資格手当・扶養手当に加え、ペット手当（2,000円）まで。月給の手取りは安定した水準です。</p>
+      </div>
+      <div class="merit-card">
+        <div class="merit-icon">📋</div>
+        <h3>未経験から資格が取れる</h3>
+        <p>介護職員初任者研修の資格取得を会社がサポート。資格手当（各10,000円）もあり、スキルアップが収入に直結します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Timeline -->
+<section id="day">
+  <div class="container">
+    <p class="sec-label">A Day in Life</p>
+    <h2 class="sec-title">1日の流れ（夜勤シフト）</h2>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">18:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><strong>出勤・申し送り</strong><span>日勤スタッフから利用者の様子を引き継ぐ</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">18:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><strong>夕食の準備・配膳</strong><span>利用者さんの好みや体調に合わせて食事をサポート</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">19:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><strong>入浴介助・余暇支援</strong><span>入浴のサポート。その後はテレビや会話でゆったりした時間</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">22:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><strong>就寝準備・巡回</strong><span>就寝のサポート。定期的に各部屋を巡回して安全を確認</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">23:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><strong>休憩（5時間）</strong><span>事務作業・記録を済ませた後、仮眠などで体を休める</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">6:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><strong>起床サポート・朝食</strong><span>起床の声かけから、朝食の準備・配膳・片付けまで</span></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">9:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><strong>日勤へ引き継ぎ・退勤</strong><span>利用者の夜間の様子を申し送りして勤務終了</span></div>
+      </div>
+    </div>
+    <p class="sample-note">※ここはサンプルです。実際には御社の実際の業務フローに差し替えます</p>
+  </div>
+</section>
+
+<!-- Staff voices -->
+<section id="voice" class="bg-light">
+  <div class="container">
+    <p class="sec-label">Staff Voice</p>
+    <h2 class="sec-title">先輩スタッフの声</h2>
+    <div class="staff-grid">
+      <div class="staff-card">
+        <!-- 人物写真（顔写真） -->
+        <img class="staff-img" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=280&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div class="staff-body">
+          <div class="staff-name">田中 美穂（仮名）</div>
+          <div class="staff-meta">世話人 / 入社3年目</div>
+          <p>「前職は全く別の業界でした。未経験でも研修制度があって、資格も一緒に取れました。利用者さんの『ありがとう』の一言が毎日の力になっています。」</p>
+        </div>
+        <p style="font-size:.75rem;color:#aaa;padding:.5rem 1rem;">※ここはサンプルです。実際には御社のスタッフ写真・コメントに差し替えます</p>
+      </div>
+      <div class="staff-card">
+        <!-- 人物写真（顔写真） -->
+        <img class="staff-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=280&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div class="staff-body">
+          <div class="staff-name">佐藤 健太（仮名）</div>
+          <div class="staff-meta">世話人 / 入社2年目</div>
+          <p>「夜勤は最初不安でしたが、休憩がしっかり取れるのと、休みが多いので体も慣れました。ペット手当など細かい手当が多くて、実際の収入は思ったより安定しています。」</p>
+        </div>
+        <p style="font-size:.75rem;color:#aaa;padding:.5rem 1rem;">※ここはサンプルです。実際には御社のスタッフ写真・コメントに差し替えます</p>
+      </div>
+      <div class="staff-card">
+        <!-- 人物写真（顔写真） -->
+        <img class="staff-img" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=280&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div class="staff-body">
+          <div class="staff-name">山本 裕子（仮名）</div>
+          <div class="staff-meta">世話人 / 入社5年目</div>
+          <p>「子育て中でも育児休業が取れました。復帰してからも無理のない配慮がある職場です。社宅制度もあるので、引っ越してきた同僚も多いですよ。」</p>
+        </div>
+        <p style="font-size:.75rem;color:#aaa;padding:.5rem 1rem;">※ここはサンプルです。実際には御社のスタッフ写真・コメントに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <p class="sec-label">FAQ</p>
+    <h2 class="sec-title">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">介護の経験がなくても応募できますか？</div>
+        <div class="faq-a">はい、未経験の方も大歓迎です。入社後に介護職員初任者研修の資格取得を会社がサポートしますので、知識ゼロからでも安心してスタートできます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">夜勤専従になりますか？</div>
+        <div class="faq-a">基本シフトは夜勤ですが、変形労働時間制での運用です。年間休日157日・月平均勤務17.3日と、しっかり休める設計になっています。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">どんな障がいをもつ方が入居していますか？</div>
+        <div class="faq-a">知的障がい・精神障がい・身体障がいのある方が入居しています。まずは一緒に働く先輩スタッフが丁寧にサポートしますのでご安心ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">選考の流れを教えてください。</div>
+        <div class="faq-a">応募→面接（1回）→採用通知（面接後7日以内）の流れです。書類選考はなく、まず面談でお話しする形になっています。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">社宅制度はありますか？</div>
+        <div class="faq-a">はい、あります。遠方からの方には引越し費用の相談にも応じていただけます（求人票記載）。詳しくは面接時にご確認ください。</div>
+      </div>
+    </div>
+    <p style="font-size:.78rem;color:#aaa;text-align:center;margin-top:1.5rem;">※ここはサンプルです。実際には御社のFAQに差し替えます</p>
+  </div>
+</section>
+
+<!-- Requirements -->
+<section id="requirements" class="bg-light">
+  <div class="container">
+    <p class="sec-label">Requirements</p>
+    <h2 class="sec-title">募集要項</h2>
+    <table class="req-table">
+      <tr><th>職種</th><td>グループホーム世話人（障害のある方の生活支援）</td></tr>
+      <tr><th>雇用形態</th><td>正社員（試用期間3ヶ月）</td></tr>
+      <tr><th>就業場所</th><td>千葉県浦安市富士見4-8-23（グループホーム「うらら」）<br>最寄り：新浦安駅バス10分、浦安駅バス10分</td></tr>
+      <tr><th>給与</th><td>月給 186,900円〜199,500円（基本給）<br>＋処遇改善基礎手当 30,000円<br>＋処遇改善特別手当 17,000円<br>＋処遇改善キャリア手当 〜40,000円<br>＋住宅手当 5,000円 / 有資格手当 各10,000円 など<br>月給総支給 233,900円〜246,500円（手当込）</td></tr>
+      <tr><th>就業時間</th><td>18:00〜翌9:00（実働10時間・変形労働時間制）<br>月平均時間外 10時間</td></tr>
+      <tr><th>休日・休暇</th><td>年間休日157日 / 有給休暇（6ヶ月後10日〜）/ 育児休業取得実績あり</td></tr>
+      <tr><th>待遇・福利厚生</th><td>雇用・労災・健康・厚生年金 / 確定拠出年金 / 退職金（3年以上）<br>社宅あり / 通勤手当（実費・上限25,000円）<br>資格取得支援（介護職員初任者研修）</td></tr>
+      <tr><th>対象</th><td>〜64歳（定年65歳・再雇用あり）/ 経験・学歴・資格不問<br>ミドルシニア世代歓迎 / 外国籍の方（日常会話程度）歓迎</td></tr>
+      <tr><th>採用人数</th><td>5名</td></tr>
+      <tr><th>選考方法</th><td>面接1回（書類選考なし）</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- Manager -->
+<section id="manager">
+  <div class="container">
+    <p class="sec-label">Message</p>
+    <h2 class="sec-title" style="text-align:center;">採用担当者より</h2>
+    <div class="manager-card">
+      <!-- 採用担当者顔写真（サンプル） -->
+      <img class="manager-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=240&h=240&fit=crop&crop=faces&q=80" alt="採用担当者写真（サンプル）">
+      <div class="manager-body">
+        <h3>森 信行（仮名）</h3>
+        <div class="role">管理者</div>
+        <p>「福祉の仕事は、誰かの日常を一番近くで支える仕事です。資格よりも、人と関わることが好きな方なら大丈夫。入社してから一緒に学びましょう。まずは気軽にご連絡ください。」</p>
+        <p style="font-size:.75rem;color:#aaa;margin-top:.8rem;">※ここはサンプルです。実際には担当者様のお写真・コメントに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="entry" class="cta-section">
+  <h2>「誰かの所属場所を守る」仕事に<br>関わってみませんか</h2>
+  <p>まずは気軽にお電話・メールでご連絡ください。面接は随時受付中です。</p>
+  <div>
+    <a class="btn-white" href="mailto:grass@hatarakimononoie.com">メールで問い合わせる</a>
+    <a class="btn-outline" href="tel:07015029313">電話する（070-1502-9313）</a>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <h4>株式会社ふくしねっと工房</h4>
+      <p>〒274-0075 千葉県船橋市滝台町33-4<br>
+      TEL: 070-1502-9313<br>
+      E-mail: grass@hatarakimononoie.com</p>
+    </div>
+    <div>
+      <h4>就業場所</h4>
+      <p>グループホーム「うらら」<br>
+      〒279-0043 千葉県浦安市富士見4-8-23</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var btn = document.querySelector('.hamburger');
+  var nav = document.querySelector('.site-nav');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  }
+})();
+</script>
+</body>
+</html>
