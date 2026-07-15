@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>保育士 採用情報 | エンゼルマミー保育園</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans JP',sans-serif;color:#333;line-height:1.7;background:#fff}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ---- ヘッダー ---- */
+.site-header{display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 1.4rem;position:sticky;top:0;z-index:100;
+  background:#fff;box-shadow:0 2px 8px rgba(0,0,0,.08);}
+.brand{font-size:1rem;font-weight:700;color:#2472a4;line-height:1.2}
+.brand span{display:block;font-size:.72rem;font-weight:400;color:#666}
+.site-nav{display:flex;gap:1.4rem;align-items:center}
+.site-nav a{font-size:.85rem;color:#555;font-weight:500;transition:color .2s}
+.site-nav a:hover{color:#2472a4}
+.site-nav .nav-cta{background:#2472a4;color:#fff;padding:.45rem 1rem;border-radius:20px;font-size:.82rem}
+.site-nav .nav-cta:hover{background:#1a5a8a}
+.hamburger{display:none;background:none;border:0;font-size:1.7rem;line-height:1;cursor:pointer;color:#333}
+@media(max-width:768px){
+  .hamburger{display:block}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:#fff;box-shadow:0 8px 16px rgba(0,0,0,.12);padding:.5rem 1rem}
+  .site-nav.open{display:flex}
+  .site-nav a{padding:.8rem 0;border-bottom:1px solid #eee;font-size:.9rem}
+  .site-nav .nav-cta{margin:.5rem 0;text-align:center;padding:.7rem}
+}
+
+/* ---- LP ヒーロー ---- */
+.hero{background:linear-gradient(135deg,#EBF4FB 60%,#d0e9f7 100%);
+  padding:5rem 1.2rem 4rem;text-align:center;position:relative}
+.hero-badge{display:inline-flex;align-items:center;gap:.4rem;
+  background:#2472a4;color:#fff;font-size:.78rem;font-weight:700;
+  padding:.3rem .9rem;border-radius:20px;margin-bottom:1.4rem;letter-spacing:.04em}
+.hero h1{font-size:clamp(1.7rem,4.5vw,2.7rem);font-weight:700;color:#0d3557;
+  line-height:1.4;margin-bottom:1rem}
+.hero h1 strong{color:#2472a4;display:block}
+.hero-sub{color:#445;font-size:.98rem;margin-bottom:.8rem;line-height:1.9;max-width:520px;margin-inline:auto}
+.hero-points{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;margin-bottom:2rem}
+.hero-points span{background:#fff;border:2px solid #2472a4;color:#2472a4;
+  font-size:.82rem;font-weight:700;padding:.3rem .9rem;border-radius:20px}
+.btn-blue{display:inline-block;background:#2472a4;color:#fff;padding:1rem 2.8rem;
+  border-radius:30px;font-weight:700;font-size:1.05rem;transition:background .2s;
+  box-shadow:0 4px 16px rgba(36,114,164,.35)}
+.btn-blue:hover{background:#1a5a8a}
+.hero-img-wrap{margin-top:2.5rem;max-width:680px;margin-inline:auto;border-radius:16px;overflow:hidden;box-shadow:0 8px 32px rgba(0,0,0,.12)}
+.hero-img-wrap img{width:100%;height:340px;object-fit:cover}
+@media(max-width:600px){.hero-img-wrap img{height:200px}}
+
+/* ---- セクション共通 ---- */
+.section{padding:4.5rem 1.2rem}
+.section-inner{max-width:860px;margin:0 auto}
+.sec-label{font-size:.75rem;font-weight:700;color:#2472a4;letter-spacing:.12em;
+  text-transform:uppercase;margin-bottom:.4rem}
+.sec-ttl{font-size:clamp(1.3rem,3.5vw,1.9rem);font-weight:700;color:#0d3557;margin-bottom:2rem}
+.section-alt{background:#f4f8fc}
+
+/* ---- 数字で見る会社 ---- */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-bottom:2rem}
+.stat-box{background:#fff;border-radius:12px;text-align:center;padding:1.6rem 1rem;
+  box-shadow:0 2px 12px rgba(0,0,0,.07);border-top:4px solid #2472a4}
+.stat-num{font-size:clamp(2rem,4.5vw,2.5rem);font-weight:700;color:#2472a4;line-height:1.1}
+.stat-unit{font-size:.85rem;font-weight:400}
+.stat-label{font-size:.78rem;color:#666;margin-top:.3rem}
+@media(max-width:600px){.stats{grid-template-columns:repeat(2,1fr)}}
+
+/* ---- 魅力リスト ---- */
+.merit-list{list-style:none;display:grid;gap:1rem}
+.merit-li{display:flex;gap:1rem;align-items:flex-start;
+  background:#fff;border-radius:10px;padding:1.2rem 1.4rem;
+  box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.merit-li .icon{font-size:1.6rem;flex-shrink:0}
+.merit-li-text h3{font-weight:700;font-size:.98rem;color:#0d3557;margin-bottom:.2rem}
+.merit-li-text p{font-size:.88rem;color:#555;line-height:1.7}
+
+/* ---- 募集要項 ---- */
+.req-table{width:100%;border-collapse:collapse;font-size:.92rem}
+.req-table th,.req-table td{padding:.9rem 1.1rem;border-bottom:1px solid #dce9f5;text-align:left;vertical-align:top}
+.req-table th{width:160px;font-weight:700;color:#2472a4;background:#EBF4FB;white-space:nowrap}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%}
+  .req-table th{white-space:normal;padding:.5rem .8rem}
+  .req-table td{padding:.5rem .8rem 1rem}
+}
+
+/* ---- タイムライン ---- */
+.timeline{position:relative;padding:1rem 0 1rem 1rem}
+.timeline::before{content:'';position:absolute;left:82px;top:0;bottom:0;width:2px;background:#9ac5e2}
+.tl-item{display:grid;grid-template-columns:72px 20px 1fr;gap:0 .8rem;align-items:start;margin-bottom:1.4rem}
+.tl-time{text-align:right;font-weight:700;color:#2472a4;font-size:.9rem;padding-top:.1rem}
+.tl-dot{width:12px;height:12px;border-radius:50%;background:#2472a4;justify-self:center;margin-top:.35rem}
+.tl-body h4{font-weight:700;font-size:.95rem;margin-bottom:.2rem}
+.tl-body p{font-size:.85rem;color:#555}
+@media(max-width:600px){
+  .timeline::before{left:52px}
+  .tl-item{grid-template-columns:45px 16px 1fr}
+  .tl-time{font-size:.8rem}
+}
+
+/* ---- 先輩インタビュー ---- */
+.interview{display:grid;gap:2rem}
+.ivw-card{display:grid;grid-template-columns:160px 1fr;gap:1.5rem;
+  background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07);padding:1.5rem}
+.ivw-img{width:160px;height:160px;border-radius:50%;overflow:hidden;flex-shrink:0;align-self:center}
+.ivw-img img{width:100%;height:100%;object-fit:cover}
+.ivw-name{font-weight:700;font-size:1rem;margin-bottom:.15rem}
+.ivw-role{font-size:.78rem;color:#2472a4;margin-bottom:.7rem}
+.ivw-q{font-size:.82rem;color:#2472a4;font-weight:700;margin-bottom:.2rem}
+.ivw-a{font-size:.88rem;color:#444;line-height:1.7;margin-bottom:.8rem}
+.sample-note{font-size:.75rem;color:#aaa}
+@media(max-width:600px){
+  .ivw-card{grid-template-columns:1fr;text-align:center}
+  .ivw-img{width:120px;height:120px;margin:0 auto}
+}
+
+/* ---- FAQ ---- */
+.faq-list{list-style:none}
+.faq-item{border-bottom:1px solid #d0e3f0;padding:1.1rem 0}
+.faq-q{font-weight:700;color:#0d3557;margin-bottom:.4rem;display:flex;gap:.6rem;align-items:flex-start}
+.faq-q::before{content:'Q';background:#2472a4;color:#fff;border-radius:50%;
+  width:24px;height:24px;min-width:24px;display:inline-flex;align-items:center;justify-content:center;
+  font-size:.8rem}
+.faq-a{padding-left:2rem;color:#555;font-size:.9rem;line-height:1.8}
+
+/* ---- スマホCTA固定バー ---- */
+.fixed-bar{display:none;position:fixed;bottom:0;left:0;right:0;
+  background:#2472a4;padding:.9rem 1rem;z-index:200;text-align:center}
+.fixed-bar a{color:#fff;font-weight:700;font-size:.95rem;display:block}
+@media(max-width:768px){.fixed-bar{display:block}}
+
+/* ---- CTA ---- */
+.cta-section{background:linear-gradient(135deg,#2472a4,#0d3557);padding:4rem 1.2rem;text-align:center;color:#fff}
+.cta-section h2{font-size:clamp(1.3rem,3.5vw,1.9rem);margin-bottom:.8rem}
+.cta-section p{font-size:.93rem;opacity:.9;margin-bottom:1.8rem;line-height:1.9}
+.btn-white{display:inline-block;background:#fff;color:#2472a4;padding:.9rem 2.4rem;
+  border-radius:30px;font-weight:700;font-size:1rem;transition:opacity .2s;margin:.4rem}
+.btn-white:hover{opacity:.9}
+.contact-info{font-size:.85rem;opacity:.8;margin-top:1rem}
+
+/* ---- フッター ---- */
+footer{background:#0d3557;color:#a8c8e0;padding:2.5rem 1.2rem;text-align:center;font-size:.85rem}
+footer p{margin-bottom:.3rem}
+@media(max-width:768px){body{padding-bottom:60px}}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="brand">
+    エンゼルマミー保育園
+    <span>株式会社 縁真美</span>
+  </div>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#about">保育士の働き方</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#day">1日の流れ</a>
+    <a href="#voices">スタッフの声</a>
+    <a href="#faq">FAQ</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<!-- ヒーロー（CTA①） -->
+<section class="hero">
+  <span class="hero-badge">保育士 募集中（増員）</span>
+  <h1>残業なし・土日祝休み。<br><strong>保育士の「働き方」、変えませんか？</strong></h1>
+  <p class="hero-sub">
+    新浦安駅から徒歩8分・定員12名の小規模保育園。<br>
+    縦割り保育でひとりひとりに寄り添い、<strong>定時で帰れる</strong>環境が整っています。
+  </p>
+  <div class="hero-points">
+    <span>残業ゼロ</span>
+    <span>年休120日</span>
+    <span>退職金あり</span>
+    <span>正社員登用あり</span>
+    <span>社保完備</span>
+  </div>
+  <a href="#entry" class="btn-blue">まずは応募する・お問い合わせ</a>
+  <!-- 保育室・子どもたちの写真に差し替えてください -->
+  <div class="hero-img-wrap">
+    <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?w=800&h=400&fit=crop&q=80" alt="保育の様子（サンプル）">
+  </div>
+</section>
+
+<!-- 数字で見る会社 -->
+<section class="section" id="about">
+  <div class="section-inner">
+    <p class="sec-label">Numbers</p>
+    <h2 class="sec-ttl">数字で見るエンゼルマミー</h2>
+    <p class="sample-note" style="margin-bottom:1.2rem">※ここはサンプルです。実際には御社の最新データに差し替えます</p>
+    <div class="stats">
+      <div class="stat-box">
+        <div class="stat-num">0<span class="stat-unit">h</span></div>
+        <div class="stat-label">月平均残業時間</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">120<span class="stat-unit">日</span></div>
+        <div class="stat-label">年間休日数</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">12<span class="stat-unit">名</span></div>
+        <div class="stat-label">少人数定員</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">94<span class="stat-unit">%</span></div>
+        <div class="stat-label">女性スタッフ比率</div>
+      </div>
+    </div>
+
+    <ul class="merit-list">
+      <li class="merit-li">
+        <span class="icon">⏰</span>
+        <div class="merit-li-text">
+          <h3>残業なし・定時退社が当たり前</h3>
+          <p>時間外労働は一切ありません。仕事とプライベートを両立しながら、長く保育士を続けられる職場です。</p>
+        </div>
+      </li>
+      <li class="merit-li">
+        <span class="icon">👶</span>
+        <div class="merit-li-text">
+          <h3>定員12名・縦割り保育で深く関われる</h3>
+          <p>大規模園では難しい「ひとりひとりへの寄り添い」が実現できます。0〜2歳の縦割り保育で、子どもたちが互いに成長しあう姿が見られます。</p>
+        </div>
+      </li>
+      <li class="merit-li">
+        <span class="icon">💰</span>
+        <div class="merit-li-text">
+          <h3>浦安市・千葉県手当で月収UP</h3>
+          <p>基本給に加え、浦安市手当・千葉県手当が月4.3〜6万円上乗せ。月収223,000〜257,000円で安心して働けます。退職金制度・厚生年金基金加入で将来も安心。</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="section section-alt" id="requirements">
+  <div class="section-inner">
+    <p class="sec-label">Recruit Info</p>
+    <h2 class="sec-ttl">募集要項</h2>
+    <table class="req-table">
+      <tbody>
+        <tr><th>職種</th><td>保育士</td></tr>
+        <tr><th>雇用形態</th><td>契約社員（正社員登用あり・実績1名）</td></tr>
+        <tr><th>仕事内容</th><td>0〜2歳児（定員12名）の保育業務全般。縦割り保育・個別対応・日々の記録、保護者へのDVD等の情報発信も担います。</td></tr>
+        <tr><th>給与</th><td>月給 223,000円〜257,000円<br><small>（基本給 180,000〜197,000円 ＋ 浦安市・千葉県手当 43,000〜60,000円）</small></td></tr>
+        <tr><th>就業時間</th><td>シフト制（7:45〜16:45 / 9:15〜18:15 など8時間勤務）<br><small>園児の保育時間により変動あり</small></td></tr>
+        <tr><th>残業</th><td>なし（時間外労働時間 0時間）</td></tr>
+        <tr><th>休日・休暇</th><td>土曜・日曜・祝日・年末年始（年間休日120日）</td></tr>
+        <tr><th>待遇・福利厚生</th><td>社会保険完備 / 退職金制度あり（勤続3年以上） / 厚生年金基金加入 / 退職金共済加入 / 昇給あり / 賞与あり / 通勤手当（上限10,000円）</td></tr>
+        <tr><th>必須資格</th><td>保育士資格（専修学校以上）</td></tr>
+        <tr><th>勤務地</th><td>千葉県浦安市入船4-9-16<br><small>JR京葉線 新浦安駅より徒歩8分</small></td></tr>
+        <tr><th>採用人数</th><td>1名（増員）</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 中盤CTA（CTA②） -->
+<section style="background:#2472a4;padding:2.5rem 1.2rem;text-align:center;color:#fff">
+  <p style="font-size:1rem;margin-bottom:1rem">「残業なし」「少人数保育」に興味はありますか？</p>
+  <a href="#entry" class="btn-white" style="display:inline-block;background:#fff;color:#2472a4;padding:.8rem 2.2rem;border-radius:30px;font-weight:700;font-size:.95rem">詳細を見る・応募する</a>
+</section>
+
+<!-- 1日の流れ -->
+<section class="section" id="day">
+  <div class="section-inner">
+    <p class="sec-label">A Day in Work</p>
+    <h2 class="sec-ttl">1日の流れ（例）</h2>
+    <p class="sample-note" style="margin-bottom:1.5rem">※ここはサンプルです。実際には御社の社員の1日のスケジュールに差し替えます</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">7:45</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>出勤・環境整備</h4><p>保育室の換気・消毒、連絡帳確認。笑顔でお子さまをお迎えします。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">9:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>自由遊び・設定保育</h4><p>子どもの主体性を大切にした遊び。縦割りならではの異年齢交流も生まれます。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">11:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>昼食・離乳食補助</h4><p>月齢別の丁寧な食事サポート。アレルギー管理も一人ひとりしっかり確認。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>午睡・記録作成</h4><p>子どもが眠っている間に連絡帳の記入や翌日の準備。落ち着いて取り組めます。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">15:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>おやつ・夕方の活動</h4><p>歌遊び・ふれあい遊び・絵本読み聞かせ。子どもの笑顔が輝く時間。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">16:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>お迎え・引き渡し</h4><p>1日の様子を保護者に一言お伝え。コミュニケーションを大切にしています。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">16:45</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>退勤（定時！）</h4><p>残業一切なし。充実した仕事のあとは、自分の時間を満喫してください。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- スタッフインタビュー -->
+<section class="section section-alt" id="voices">
+  <div class="section-inner">
+    <p class="sec-label">Staff Interview</p>
+    <h2 class="sec-ttl">スタッフインタビュー</h2>
+    <p class="sample-note" style="margin-bottom:1.5rem">※ここはサンプルです。実際には御社スタッフの写真・コメントに差し替えます</p>
+    <div class="interview">
+      <div class="ivw-card">
+        <!-- スタッフ写真（仮名：山田 恵子）に差し替えてください -->
+        <div class="ivw-img"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=240&h=240&fit=crop&crop=faces&q=80" alt="スタッフ（サンプル）"></div>
+        <div>
+          <div class="ivw-name">山田 恵子（仮名）</div>
+          <div class="ivw-role">保育士 / 入社3年目</div>
+          <div class="ivw-q">Q. 入職前と比べて変わったことは？</div>
+          <div class="ivw-a">前の職場は残業が当たり前でしたが、ここは本当に定時で帰れます。子どもひとりひとりと向き合う時間が増えて、「保育の本来の楽しさ」を取り戻せた気がしています。</div>
+          <div class="ivw-q">Q. 職場の雰囲気は？</div>
+          <div class="ivw-a">少人数だからこそ、先生同士が助け合えます。困ったときはすぐ相談できるアットホームな雰囲気です。</div>
+          <div class="sample-note">※ここはサンプルです。実際には御社スタッフの言葉に差し替えます</div>
+        </div>
+      </div>
+      <div class="ivw-card">
+        <!-- スタッフ写真（仮名：鈴木 美穂）に差し替えてください -->
+        <div class="ivw-img"><img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=240&h=240&fit=crop&crop=faces&q=80" alt="スタッフ（サンプル）"></div>
+        <div>
+          <div class="ivw-name">鈴木 美穂（仮名）</div>
+          <div class="ivw-role">保育士 / 入社2年目</div>
+          <div class="ivw-q">Q. 小規模保育園の良いところは？</div>
+          <div class="ivw-a">縦割り保育で、お兄ちゃん・お姉ちゃんが小さい子を気にかける場面が生まれます。子どもの「社会性が育つ瞬間」を間近で見られるのが大きな喜びです。</div>
+          <div class="ivw-q">Q. 給与・待遇の満足度は？</div>
+          <div class="ivw-a">浦安市・千葉県の手当が厚く、実際の手取りが想像以上でした。退職金制度もあるので将来も安心して働けています。</div>
+          <div class="sample-note">※ここはサンプルです。実際には御社スタッフの言葉に差し替えます</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="section-inner">
+    <p class="sec-label">FAQ</p>
+    <h2 class="sec-ttl">よくある質問</h2>
+    <p class="sample-note" style="margin-bottom:1.5rem">※ここはサンプルです。実際には御社のよくある質問に差し替えます</p>
+    <ul class="faq-list">
+      <li class="faq-item">
+        <div class="faq-q">保育士資格があれば経験不問で応募できますか？</div>
+        <div class="faq-a">はい、応募可能です。入職後は先輩スタッフがサポートしますのでご安心ください。「資格はあるけど実務は少ない」という方も歓迎しています。</div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q">契約社員から正社員になれますか？</div>
+        <div class="faq-a">はい、正社員登用実績があります（過去3年で1名）。双方の合意のうえで登用機会をご案内します。</div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q">就業時間・シフトの詳細を教えてください。</div>
+        <div class="faq-a">7:45〜16:45 / 9:15〜18:15などのシフト制（8時間勤務）です。園児の保育時間に応じて変動しますが、基本は規則的なシフトです。</div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q">選考の流れは？</div>
+        <div class="faq-a">①書類選考（履歴書・職務経歴書）→ ②面接（予定1回）→ ③結果通知（3日以内）の流れです。すぐに働ける方を優先的にご案内します。</div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q">退職金はどのくらいもらえますか？</div>
+        <div class="faq-a">退職金制度（勤続3年以上）および退職金共済に加入しています。詳細の金額は面接時にお伝えします。</div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- 最後のCTA（CTA③） -->
+<section class="cta-section" id="entry">
+  <h2>あなたの「保育したい」を活かせる職場です</h2>
+  <p>
+    残業なし・年休120日・少人数でゆったり。<br>
+    子ども一人ひとりと向き合える環境で、一緒に働きませんか。
+  </p>
+  <a href="mailto:hoiku@angelmommy.net" class="btn-white">メールで問い合わせる</a>
+  <p class="contact-info">
+    ハローワーク経由またはメール hoiku@angelmommy.net にてご連絡ください<br>
+    TEL: 047-355-8799（担当：原田）
+  </p>
+</section>
+
+<footer>
+  <p>株式会社 縁真美 エンゼルマミー保育園</p>
+  <p>〒279-0012 千葉県浦安市入船4-9-16</p>
+  <p>TEL: 047-355-8799 / E-mail: hoiku@angelmommy.net</p>
+</footer>
+
+<!-- スマホ固定CTA -->
+<div class="fixed-bar">
+  <a href="#entry">▶ 今すぐ応募・お問い合わせ</a>
+</div>
+
+<script>
+(function(){
+  var btn = document.querySelector('.hamburger');
+  var nav = document.querySelector('.site-nav');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  }
+})();
+</script>
+</body>
+</html>
