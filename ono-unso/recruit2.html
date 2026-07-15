@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>採用情報 | 小野運送株式会社</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;color:#222;line-height:1.75;background:#fff;}
+img{max-width:100%;height:auto;display:block;}
+a{color:inherit;text-decoration:none;}
+
+/* ---- ヘッダー ---- */
+.site-header{display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 1.5rem;background:#fff;border-bottom:2px solid #e3580a;position:sticky;top:0;z-index:100;box-shadow:0 1px 6px rgba(0,0,0,.08);}
+.brand{font-size:1rem;font-weight:900;color:#1a1a1a;letter-spacing:.04em;}
+.hamburger{display:none;background:none;border:0;font-size:1.7rem;line-height:1;cursor:pointer;color:#e3580a;}
+.site-nav{display:flex;gap:1.4rem;align-items:center;}
+.site-nav a{color:#333;font-size:.85rem;transition:color .2s;}
+.site-nav a:hover{color:#e3580a;}
+.nav-cta{background:#e3580a;color:#fff !important;padding:.45rem 1.1rem;border-radius:2rem;font-weight:700;font-size:.85rem;}
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:#fff;box-shadow:0 8px 16px rgba(0,0,0,.12);padding:.5rem 1.5rem;}
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.8rem 0;border-bottom:1px solid #eee;color:#333;}
+}
+
+/* ---- ヒーロー（LP型 縦長） ---- */
+.hero{position:relative;min-height:85vh;display:flex;align-items:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1553413077-190dd305871c?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(100deg,rgba(15,15,15,.80) 45%,rgba(15,15,15,.35));}
+.hero-content{position:relative;z-index:2;padding:3rem 2rem;color:#fff;max-width:640px;}
+.hero-eyebrow{font-size:.82rem;letter-spacing:.14em;color:#e3580a;background:rgba(255,255,255,.08);display:inline-block;padding:.3rem .9rem;border-radius:2rem;margin-bottom:1rem;}
+.hero-content h1{font-size:clamp(2rem,5.5vw,3.6rem);font-weight:900;line-height:1.2;margin-bottom:1.2rem;}
+.hero-content h1 em{color:#f5c842;font-style:normal;}
+.hero-content p{font-size:clamp(.9rem,2vw,1.1rem);color:#ddd;margin-bottom:2rem;max-width:480px;}
+.btn-main{display:inline-block;background:#e3580a;color:#fff;font-weight:700;font-size:1.05rem;padding:.9rem 2.5rem;border-radius:.4rem;transition:opacity .2s;}
+.btn-main:hover{opacity:.88;}
+.hero-tags{display:flex;gap:.6rem;flex-wrap:wrap;margin-bottom:1.6rem;}
+.hero-tag{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);color:#fff;font-size:.78rem;padding:.25rem .75rem;border-radius:2rem;}
+
+/* ---- 共通 ---- */
+section{padding:4.5rem 1.5rem;}
+.container{max-width:820px;margin:0 auto;}
+.sec-label{font-size:.75rem;letter-spacing:.16em;color:#e3580a;text-transform:uppercase;margin-bottom:.5rem;}
+.sec-title{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:900;color:#111;margin-bottom:2rem;}
+.sec-title span{color:#e3580a;}
+
+/* ---- 問題提起 ---- */
+.pain{background:#111;color:#fff;padding:4rem 1.5rem;}
+.pain .sec-title{color:#fff;}
+.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:1.5rem;}
+.pain-card{border:1px solid #333;border-radius:8px;padding:1.4rem;text-align:center;}
+.pain-card .icon{font-size:2rem;margin-bottom:.6rem;}
+.pain-card p{font-size:.88rem;color:#bbb;}
+@media(max-width:768px){.pain-grid{grid-template-columns:1fr;}}
+
+/* ---- 解決（魅力） ---- */
+.solution{background:#fff8f4;}
+.sol-item{display:grid;grid-template-columns:56px 1fr;gap:1rem;align-items:start;padding:1.4rem;background:#fff;border-radius:10px;border-left:4px solid #e3580a;margin-bottom:1rem;box-shadow:0 1px 6px rgba(0,0,0,.05);}
+.sol-num{font-size:1.8rem;font-weight:900;color:#e3580a;line-height:1;}
+.sol-body h3{font-size:1rem;font-weight:700;margin-bottom:.3rem;color:#111;}
+.sol-body p{font-size:.87rem;color:#555;}
+
+/* ---- 数字バー ---- */
+.stats{background:#e3580a;color:#fff;padding:4rem 1.5rem;}
+.stats .sec-title{color:#fff;}
+.stat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;flex-wrap:wrap;}
+.stat-item{border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:1.2rem;}
+.stat-num{font-size:2.4rem;font-weight:900;}
+.stat-unit{font-size:1rem;margin-left:.2rem;}
+.stat-label{font-size:.82rem;color:#ffd0b5;margin-top:.2rem;}
+.stat-bar{height:6px;background:rgba(255,255,255,.3);border-radius:3px;margin-top:.5rem;overflow:hidden;}
+.stat-bar-inner{height:100%;background:#fff;border-radius:3px;}
+.stat-note{font-size:.75rem;color:#ffd0b5;margin-top:1.2rem;}
+
+/* ---- タイムライン（Grid方式） ---- */
+.timeline-sec{background:#fff;}
+.timeline{position:relative;}
+.timeline::before{content:'';position:absolute;left:82px;top:0;bottom:0;width:2px;background:#e8d5cc;}
+.tl-item{display:grid;grid-template-columns:72px 20px 1fr;gap:0 .8rem;align-items:start;margin-bottom:1.5rem;}
+.tl-time{text-align:right;font-size:.88rem;font-weight:700;color:#e3580a;padding-top:.2rem;}
+.tl-dot{width:12px;height:12px;border-radius:50%;background:#e3580a;justify-self:center;margin-top:.3rem;}
+.tl-body h4{font-size:.92rem;font-weight:700;color:#111;margin-bottom:.2rem;}
+.tl-body p{font-size:.83rem;color:#555;}
+
+/* ---- 先輩の声 ---- */
+.voices{background:#f9f9f9;}
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;}
+.voice-card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.07);}
+.voice-card img{width:100%;height:220px;object-fit:cover;}
+.vc-body{padding:1.2rem;}
+.vc-meta{font-size:.77rem;color:#999;margin-bottom:.3rem;}
+.vc-name{font-size:1rem;font-weight:700;color:#111;margin-bottom:.4rem;}
+.vc-text{font-size:.85rem;color:#444;}
+.voice-note{font-size:.75rem;color:#bbb;text-align:center;margin-top:.8rem;}
+@media(max-width:768px){.voice-grid{grid-template-columns:1fr;}}
+
+/* ---- 募集要項 ---- */
+.req-table{width:100%;border-collapse:collapse;}
+.req-table th,.req-table td{padding:.9rem 1rem;border-bottom:1px solid #eee;text-align:left;vertical-align:top;font-size:.9rem;}
+.req-table th{width:30%;background:#fff8f4;font-weight:700;color:#e3580a;white-space:nowrap;}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{padding:.5rem .8rem;white-space:normal;}
+  .req-table td{padding:.5rem .8rem 1rem;}
+}
+
+/* ---- FAQ ---- */
+.faq-list{display:flex;flex-direction:column;gap:.8rem;}
+.faq-item{border:1px solid #ffe0cc;border-radius:8px;overflow:hidden;}
+.faq-q{background:#fff8f4;padding:1rem 1.2rem;font-weight:700;color:#e3580a;font-size:.92rem;}
+.faq-q::before{content:'Q. ';}
+.faq-a{padding:1rem 1.2rem;font-size:.88rem;color:#444;background:#fff;}
+.faq-a::before{content:'A. ';font-weight:700;color:#111;}
+
+/* ---- 中盤CTA ---- */
+.mid-cta{background:#111;color:#fff;text-align:center;padding:3.5rem 1.5rem;}
+.mid-cta h2{font-size:clamp(1.4rem,4vw,2rem);font-weight:900;margin-bottom:.8rem;}
+.mid-cta p{font-size:.9rem;color:#bbb;margin-bottom:1.6rem;}
+.btn-orange{display:inline-block;background:#e3580a;color:#fff;font-weight:700;font-size:1rem;padding:.85rem 2.4rem;border-radius:.4rem;transition:opacity .2s;}
+.btn-orange:hover{opacity:.88;}
+
+/* ---- 最終CTA ---- */
+.final-cta{background:linear-gradient(135deg,#e3580a 0%,#c0390a 100%);color:#fff;text-align:center;padding:4rem 1.5rem;}
+.final-cta h2{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:900;margin-bottom:1rem;}
+.final-cta p{font-size:.9rem;color:rgba(255,255,255,.85);margin-bottom:1.8rem;}
+.btn-white{display:inline-block;background:#fff;color:#e3580a;font-weight:700;font-size:1rem;padding:.85rem 2.4rem;border-radius:.4rem;transition:opacity .2s;margin:.4rem;}
+.btn-white:hover{opacity:.88;}
+
+/* ---- スマホ下固定CTAバー ---- */
+.fixed-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;background:#e3580a;padding:.8rem 1.5rem;text-align:center;}
+.fixed-bar a{color:#fff;font-weight:700;font-size:.95rem;}
+@media(max-width:768px){.fixed-bar{display:block;}body{padding-bottom:56px;}}
+
+/* ---- フッター ---- */
+footer{background:#0d0d0d;color:#888;text-align:center;padding:2rem 1.5rem;font-size:.82rem;}
+footer p+p{margin-top:.3rem;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="#top">小野運送株式会社</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#appeal">魅力</a>
+    <a href="#day">1日の流れ</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#req">募集要項</a>
+    <a href="#faq">FAQ</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<!-- ヒーロー（LP型・CTA1） -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">正社員 ／ 食品ルート配送 ／ 浦安市</div>
+    <h1>午前仕事で、<br><em>午後が自分の時間</em>に。</h1>
+    <p>早朝スタートで昼前に帰庫。体に優しいかご台車配送。<br>つばさHDグループで安心の職場環境。</p>
+    <div class="hero-tags">
+      <span class="hero-tag">未経験歓迎</span>
+      <span class="hero-tag">書類選考なし</span>
+      <span class="hero-tag">退職金あり</span>
+      <span class="hero-tag">再雇用70歳まで</span>
+    </div>
+    <a class="btn-main" href="#req">募集要項を確認する</a>
+  </div>
+</section>
+
+<!-- 問題提起 -->
+<section class="pain" id="pain">
+  <div class="container">
+    <div class="sec-label">こんなお悩みありませんか？</div>
+    <h2 class="sec-title">運送の仕事に<span>不安</span>を感じていませんか</h2>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="icon">💪</div>
+        <p>「体力的にきつそう」<br>重量物の積み下ろしが心配</p>
+      </div>
+      <div class="pain-card">
+        <div class="icon">🌙</div>
+        <p>「ずっと深夜早朝しかない」<br>生活リズムが不規則になりそう</p>
+      </div>
+      <div class="pain-card">
+        <div class="icon">📋</div>
+        <p>「未経験で入れるか不安」<br>研修がなくて心配</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 解決（魅力） -->
+<section class="solution" id="appeal">
+  <div class="container">
+    <div class="sec-label">小野運送なら解決できます</div>
+    <h2 class="sec-title">選ばれる<span>4つの理由</span></h2>
+    <div class="sol-item">
+      <div class="sol-num">01</div>
+      <div class="sol-body">
+        <h3>かご台車中心で体の負担が少ない</h3>
+        <p>積み下ろしは車輪付きのかご台車が中心。重量物を直接持ち運ぶ作業が少なく、腰や体への負担が少ないため長期間働き続けられます。1日の配達件数も2〜6件と少なめ設定です。</p>
+      </div>
+    </div>
+    <div class="sol-item">
+      <div class="sol-num">02</div>
+      <div class="sol-body">
+        <h3>早朝スタートで午後が自由になる</h3>
+        <p>出勤は2〜3時台、帰庫は10〜12時頃。昼前後には仕事が終わるので、午後の時間を自分の趣味・家族・資格取得などに使えます。夜の予定も立てやすい生活スタイルです。</p>
+      </div>
+    </div>
+    <div class="sol-item">
+      <div class="sol-num">03</div>
+      <div class="sol-body">
+        <h3>同乗研修で未経験でも安心スタート</h3>
+        <p>入社後は先輩ドライバーとの同乗研修を実施。ルートの覚え方・積み込みのコツ・安全確認のポイントを一つひとつ丁寧に教えます。AT限定可・書類選考なしでハードルを下げました。</p>
+      </div>
+    </div>
+    <div class="sol-item">
+      <div class="sol-num">04</div>
+      <div class="sol-body">
+        <h3>つばさHDグループで待遇改善が進行中</h3>
+        <p>2025年8月につばさホールディングスにグループイン。グループ全体の力で採用・職場環境・待遇の改善が積極的に進んでいます。退職金・厚生年金基金・再雇用70歳まで、長期安定の基盤が揃っています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 数字バー -->
+<section class="stats">
+  <div class="container">
+    <div class="sec-label" style="color:#ffd0b5;">数字で見る</div>
+    <h2 class="sec-title">小野運送の実績</h2>
+    <div class="stat-grid">
+      <div class="stat-item">
+        <div class="stat-num">280,000<span class="stat-unit">円〜</span></div>
+        <div class="stat-label">月給（配達手当込み）</div>
+        <div class="stat-bar"><div class="stat-bar-inner" style="width:70%"></div></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">108<span class="stat-unit">日</span></div>
+        <div class="stat-label">年間休日</div>
+        <div class="stat-bar"><div class="stat-bar-inner" style="width:60%"></div></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">70<span class="stat-unit">歳</span></div>
+        <div class="stat-label">勤務延長の上限年齢</div>
+        <div class="stat-bar"><div class="stat-bar-inner" style="width:80%"></div></div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">50<span class="stat-unit">年超</span></div>
+        <div class="stat-label">昭和47年設立・安定の実績</div>
+        <div class="stat-bar"><div class="stat-bar-inner" style="width:90%"></div></div>
+      </div>
+    </div>
+    <p class="stat-note">※ここはサンプルです。実際には御社の最新データに差し替えます<!-- 差し替え指示: 実績数値を最新に更新 --></p>
+  </div>
+</section>
+
+<!-- 中盤CTA（CTA2） -->
+<section class="mid-cta">
+  <h2>気になった方は、まずお問い合わせを</h2>
+  <p>面接は1回のみ・書類選考なし。お気軽にどうぞ。</p>
+  <a class="btn-orange" href="mailto:oubo@onounso.co.jp">メールで問い合わせる</a>
+</section>
+
+<!-- 1日の流れ -->
+<section class="timeline-sec" id="day">
+  <div class="container">
+    <div class="sec-label">働くイメージ</div>
+    <h2 class="sec-title">社員の<span>1日の流れ</span></h2>
+    <p style="font-size:.8rem;color:#bbb;margin-bottom:1.5rem;">※ここはサンプルです。実際には御社のドライバーの1日に差し替えます<!-- 差し替え指示: 実際のドライバーのスケジュールに合わせて更新 --></p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">02:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>出勤・トラック点検</h4><p>浦安車庫へ。安全確認を丁寧に行ってからスタート。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">03:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>ピッキング・積み込み</h4><p>配送センターで店舗別にピッキング。かご台車で効率的に。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">04:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>ルート配送スタート</h4><p>慣れた道を安全運転。2〜6店舗を順に配送。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">09:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>配送完了・帰庫</h4><p>全店舗へ配送完了。浦安車庫へ戻ります。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">10:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>後片付け・報告</h4><p>トラックの整備・日報を提出。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">11:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>業務終了 → 午後は自由時間</h4><p>昼前に終業。午後は趣味・家族・副業など自分の時間。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section class="voices" id="voice">
+  <div class="container">
+    <div class="sec-label">社員インタビュー</div>
+    <h2 class="sec-title">先輩ドライバーの<span>声</span></h2>
+    <!-- 差し替え指示: 実際の社員写真・名前・コメントに差し替えてください -->
+    <div class="voice-grid">
+      <div class="voice-card">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=280&fit=crop&crop=faces&q=80" alt="先輩社員A">
+        <div class="vc-body">
+          <div class="vc-meta">入社4年目 ／ ドライバー</div>
+          <div class="vc-name">Aさん（30代）</div>
+          <p class="vc-text">午後が自由なのが一番の魅力。子どもの送り迎えもできます。かご台車なので腰が痛くならないし、長く続けられると思っています。</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=280&fit=crop&crop=faces&q=80" alt="先輩社員B">
+        <div class="vc-body">
+          <div class="vc-meta">入社6年目 ／ ドライバー</div>
+          <div class="vc-name">Bさん（40代）</div>
+          <p class="vc-text">研修がしっかりしているので未経験でも安心でした。ルートが固定なので覚えてしまえばスムーズ。グループインで待遇も上がってきています。</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=280&fit=crop&crop=faces&q=80" alt="先輩社員C">
+        <div class="vc-body">
+          <div class="vc-meta">入社1年目 ／ ドライバー</div>
+          <div class="vc-name">Cさん（50代）</div>
+          <p class="vc-text">50代で転職したので不安でしたが、同乗研修が丁寧で助かりました。70歳まで働けると聞いて、長期的な計画が立てやすくなりました。</p>
+        </div>
+      </div>
+    </div>
+    <p class="voice-note">※ここはサンプルです。実際には御社の社員の声・写真に差し替えます</p>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section id="req">
+  <div class="container">
+    <div class="sec-label">募集情報</div>
+    <h2 class="sec-title">募集<span>要項</span></h2>
+    <table class="req-table">
+      <tbody>
+        <tr><th>職種</th><td>トラックドライバー（食品ルート配送）</td></tr>
+        <tr><th>就業場所</th><td>千葉県浦安市堀江1-26-17 浦安車庫<br>（東西線 浦安駅 徒歩15分）</td></tr>
+        <tr><th>雇用形態</th><td>正社員（試用期間3ヶ月・同条件）</td></tr>
+        <tr><th>給与</th><td>月給 280,000円〜320,000円<br>（基本給 209,891〜214,000円 ＋ 配達手当 70,109〜106,000円）<br>※日給 9,808〜10,000円 × 月平均21.4日</td></tr>
+        <tr><th>就業時間</th><td>（1）03:00〜12:00 （2）02:00〜11:00<br>ルートにより早く終了する場合あり（減額なし）</td></tr>
+        <tr><th>休日</th><td>週休2日制（毎週）／年間休日108日<br>希望に応じた休日調整可・特定曜日の休みも相談可</td></tr>
+        <tr><th>時間外</th><td>月平均20時間</td></tr>
+        <tr><th>必要免許</th><td>中型自動車免許（必須）<br>普通自動車運転免許（AT限定可）</td></tr>
+        <tr><th>応募資格</th><td>19〜64歳／書類選考なし／未経験歓迎</td></tr>
+        <tr><th>福利厚生</th><td>社会保険完備・退職金制度（3年以上）・厚生年金基金・通勤手当（実費・上限18,700円）・制服貸与・資格取得支援（運行管理者）・引っ越し支援・定年65歳・再雇用〜65歳・勤務延長〜70歳</td></tr>
+        <tr><th>採用人数</th><td>10名（増員）</td></tr>
+        <tr><th>選考方法</th><td>面接1回（ハローワーク紹介状・履歴書・職務経歴書を面接時持参）</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:#f9f9f9;" id="faq">
+  <div class="container">
+    <div class="sec-label">よくある質問</div>
+    <h2 class="sec-title">FAQ</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">運送業が未経験でも応募できますか？</div>
+        <div class="faq-a">はい、未経験の方を歓迎しています。入社後は同乗研修でルートと業務を丁寧にお教えします。書類選考もありません。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">早朝出勤ですが生活リズムは整いますか？</div>
+        <div class="faq-a">早朝スタートに慣れると、昼前後に仕事が終わるため午後の時間が充実します。多くのドライバーが「慣れると午後が使えて逆に良い」と感じています。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">体力に自信がなくても大丈夫ですか？</div>
+        <div class="faq-a">かご台車（車輪付き）を使った作業が中心で、重量物を直接持つ作業は最小限です。1日2〜6件という少ない件数設定も、体への負担を抑える工夫です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">中型免許は必要ですか？</div>
+        <div class="faq-a">中型自動車免許は必須要件となります。普通免許はAT限定でも可。中型免許をこれから取得予定の方はお問い合わせください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">定年後も働き続けられますか？</div>
+        <div class="faq-a">定年は65歳ですが、再雇用制度で65歳まで、さらに勤務延長制度で70歳まで働き続けることができます。長期的なキャリアを描けます。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 最終CTA（CTA3） -->
+<section class="final-cta" id="entry">
+  <h2>食卓を支える仕事、<br>一緒にやりませんか？</h2>
+  <p>未経験歓迎・書類選考なし・面接1回。まずは気軽にご連絡ください。</p>
+  <a class="btn-white" href="mailto:oubo@onounso.co.jp">メールで応募する</a>
+  <a class="btn-white" href="tel:047-382-3133">電話で問い合わせる</a>
+</section>
+
+<!-- フッター -->
+<footer>
+  <p>小野運送株式会社</p>
+  <p>〒134-0085 東京都江戸川区南葛西3-3-6</p>
+  <p>TEL: 047-382-3133 ／ E-mail: oubo@onounso.co.jp</p>
+</footer>
+
+<!-- スマホ下固定CTAバー -->
+<div class="fixed-bar">
+  <a href="mailto:oubo@onounso.co.jp">📧 メールで応募する</a>
+</div>
+
+<script>
+  (function(){
+    var btn = document.querySelector('.hamburger');
+    var nav = document.querySelector('.site-nav');
+    if(btn && nav){
+      btn.addEventListener('click', function(){
+        var open = nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open);
+      });
+    }
+  })();
+</script>
+</body>
+</html>
