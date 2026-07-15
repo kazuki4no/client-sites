@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>採用情報 | 株式会社チヨダ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;color:#1a1a1a;line-height:1.7;background:#fff;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+
+/* ===== カラー変数 ===== */
+:root{
+  --deep:#0d2137;
+  --rust:#bf3f2a;
+  --rust-light:#d45840;
+  --steel:#8799b0;
+  --light:#f6f7f9;
+  --border:#dde2ea;
+}
+
+/* ===== ヘッダー ===== */
+.site-header{
+  position:absolute;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:1.2rem 2rem;background:transparent;
+}
+.brand{color:#fff;font-weight:700;font-size:1rem;letter-spacing:.1em;font-family:'Noto Serif JP',serif;}
+.site-nav{display:flex;gap:1.5rem;align-items:center;}
+.site-nav a{color:rgba(255,255,255,.85);font-size:.85rem;transition:color .2s;letter-spacing:.04em;}
+.site-nav a:hover{color:#fff;}
+.site-nav .nav-cta{
+  background:var(--rust);color:#fff;padding:.4rem 1.2rem;
+  border-radius:3px;font-weight:700;font-size:.85rem;
+}
+.site-nav .nav-cta:hover{background:var(--rust-light);}
+.hamburger{display:none;background:none;border:0;color:#fff;font-size:1.8rem;line-height:1;cursor:pointer;}
+
+@media(max-width:768px){
+  .site-header{position:fixed;background:rgba(13,33,55,.92);backdrop-filter:blur(6px);}
+  .hamburger{display:block;}
+  .site-nav{
+    display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:rgba(13,33,55,.97);box-shadow:0 8px 16px rgba(0,0,0,.4);padding:.5rem 1rem;
+  }
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.8rem 0;border-bottom:1px solid rgba(255,255,255,.1);color:#fff;}
+  .site-nav .nav-cta{margin:.6rem 0;text-align:center;}
+}
+
+/* ===== フルスクリーンヒーロー ===== */
+.hero{
+  min-height:80vh;position:relative;display:flex;align-items:center;
+  justify-content:center;overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&h=900&fit=crop&q=80') center/cover;
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(160deg,rgba(13,33,55,.8) 0%,rgba(13,33,55,.55) 60%,rgba(30,30,30,.7) 100%);
+}
+.hero-content{position:relative;z-index:1;text-align:center;padding:6rem 1.5rem 4rem;color:#fff;}
+.hero-eyebrow{
+  display:inline-block;
+  font-size:.75rem;font-weight:700;letter-spacing:.2em;
+  color:var(--rust);border:1px solid var(--rust);
+  padding:.3rem 1.2rem;margin-bottom:1.5rem;text-transform:uppercase;
+}
+.hero h1{
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(2rem,6vw,3.8rem);font-weight:900;
+  line-height:1.2;margin-bottom:1.4rem;
+}
+.hero h1 strong{
+  color:var(--rust);display:block;
+  font-size:clamp(1rem,2.8vw,1.6rem);font-weight:700;margin-bottom:.5rem;letter-spacing:.1em;
+}
+.hero-sub{font-size:clamp(.9rem,2.2vw,1.1rem);opacity:.85;margin-bottom:2rem;letter-spacing:.05em;}
+.hero-pills{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-bottom:2.5rem;}
+.pill{
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);
+  color:#fff;font-size:.78rem;padding:.25rem .7rem;border-radius:20px;letter-spacing:.04em;
+}
+.btn-rust{
+  display:inline-block;background:var(--rust);color:#fff;
+  font-size:1rem;font-weight:700;padding:1rem 2.8rem;
+  border-radius:3px;letter-spacing:.08em;transition:background .2s;
+}
+.btn-rust:hover{background:var(--rust-light);}
+
+/* ===== セクション共通 ===== */
+.section{padding:5.5rem 1.5rem;}
+.section--dark{background:var(--deep);color:#fff;}
+.section--gray{background:var(--light);}
+.container{max-width:960px;margin:0 auto;}
+.section-label{font-size:.72rem;font-weight:700;letter-spacing:.2em;color:var(--rust);margin-bottom:.5rem;text-transform:uppercase;}
+.section-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,3.5vw,2rem);font-weight:900;margin-bottom:.8rem;}
+.section-title--light{color:#fff;}
+.section-lead{color:#666;font-size:.92rem;margin-bottom:2rem;}
+.section-lead--light{color:rgba(255,255,255,.65);}
+
+/* ===== 大見出し付き画像カード ===== */
+.feature-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+.feature-card{position:relative;border-radius:6px;overflow:hidden;min-height:280px;}
+.feature-card img{width:100%;height:280px;object-fit:cover;}
+.feature-card-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to top,rgba(13,33,55,.88) 0%,rgba(13,33,55,.2) 70%);
+  padding:1.5rem;display:flex;flex-direction:column;justify-content:flex-end;color:#fff;
+}
+.feature-card-overlay .fc-num{font-size:2.5rem;font-weight:900;color:var(--rust);line-height:1;font-family:'Noto Serif JP',serif;}
+.feature-card-overlay h3{font-size:1rem;font-weight:700;margin-bottom:.3rem;}
+.feature-card-overlay p{font-size:.82rem;opacity:.85;line-height:1.6;}
+
+/* ===== 強み縦リスト ===== */
+.merit-list{display:flex;flex-direction:column;gap:1.5rem;}
+.merit-row{
+  display:grid;grid-template-columns:48px 1fr;gap:1rem;
+  border-bottom:1px solid rgba(255,255,255,.1);padding-bottom:1.5rem;
+}
+.merit-row:last-child{border-bottom:none;padding-bottom:0;}
+.merit-row .m-num{
+  font-size:2rem;font-weight:900;color:var(--rust);font-family:'Noto Serif JP',serif;
+  line-height:1;
+}
+.merit-row h3{font-size:.97rem;font-weight:700;color:#fff;margin-bottom:.3rem;}
+.merit-row p{font-size:.85rem;color:rgba(255,255,255,.7);line-height:1.7;}
+
+/* ===== 採用担当者 ===== */
+.staff-wrap{
+  display:flex;gap:2rem;align-items:flex-start;
+  background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);
+  border-radius:6px;padding:2rem;max-width:540px;margin:0 auto 3rem;
+}
+.staff-img{width:90px;height:100px;border-radius:4px;object-fit:cover;flex-shrink:0;}
+.staff-name{font-size:1rem;font-weight:700;color:#fff;margin-bottom:.2rem;}
+.staff-role{font-size:.78rem;color:var(--rust);margin-bottom:.6rem;}
+.staff-wrap p{font-size:.85rem;color:rgba(255,255,255,.75);}
+
+/* ===== タイムライン ===== */
+.timeline{position:relative;}
+.timeline::before{
+  content:'';position:absolute;
+  left:calc(66px + 7px + 8px);
+  top:8px;bottom:8px;width:2px;background:var(--border);
+}
+.tl-item{display:grid;grid-template-columns:66px 18px 1fr;gap:0 .7rem;align-items:start;margin-bottom:1.4rem;}
+.tl-time{text-align:right;font-size:.82rem;font-weight:700;color:var(--rust);padding-top:.18rem;}
+.tl-dot{width:12px;height:12px;border-radius:50%;background:var(--rust);justify-self:center;margin-top:.25rem;position:relative;z-index:1;}
+.tl-body h4{font-size:.9rem;font-weight:700;color:#333;margin-bottom:.15rem;}
+.tl-body p{font-size:.82rem;color:#666;}
+
+/* ===== 先輩の声 ===== */
+.voices{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+.voice-card{background:#fff;border:1px solid var(--border);border-radius:6px;overflow:hidden;}
+.voice-img{width:100%;height:180px;object-fit:cover;}
+.voice-body{padding:1.1rem;}
+.voice-name{font-size:.93rem;font-weight:700;color:var(--deep);margin-bottom:.15rem;}
+.voice-meta{font-size:.75rem;color:var(--rust);margin-bottom:.6rem;font-weight:700;}
+.voice-body p{font-size:.83rem;color:#555;line-height:1.7;}
+.sample-note{font-size:.73rem;color:#bbb;margin-top:.4rem;}
+
+/* ===== 募集要項 ===== */
+.req-table{width:100%;border-collapse:collapse;font-size:.9rem;}
+.req-table th,.req-table td{padding:.9rem 1rem;border-bottom:1px solid var(--border);text-align:left;vertical-align:top;}
+.req-table th{background:var(--deep);color:#fff;font-weight:700;width:32%;}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{background:var(--light);color:var(--deep);padding:.5rem .8rem;}
+  .req-table td{padding:.5rem .8rem 1rem;}
+}
+
+/* ===== FAQ ===== */
+.faq-list{display:flex;flex-direction:column;gap:1rem;}
+.faq-item{border:1px solid var(--border);border-radius:4px;overflow:hidden;}
+.faq-q{
+  background:var(--deep);color:#fff;padding:1rem 1.2rem;
+  font-weight:700;font-size:.92rem;display:flex;gap:.6rem;
+}
+.faq-q::before{content:'Q';color:var(--rust);}
+.faq-a{padding:1rem 1.2rem;font-size:.88rem;color:#444;display:flex;gap:.6rem;}
+.faq-a::before{content:'A';color:var(--rust);font-weight:700;}
+
+/* ===== 最終CTA ===== */
+.cta-section{
+  background:var(--rust);color:#fff;text-align:center;
+  padding:5rem 1.5rem;
+}
+.cta-section h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,4vw,2rem);font-weight:900;margin-bottom:.8rem;}
+.cta-section p{opacity:.9;margin-bottom:2rem;font-size:.95rem;}
+.btn-white{
+  display:inline-block;background:#fff;color:var(--rust);
+  font-size:1rem;font-weight:700;padding:.9rem 2.5rem;
+  border-radius:3px;transition:all .2s;letter-spacing:.06em;
+}
+.btn-white:hover{background:rgba(255,255,255,.88);}
+
+/* ===== フッター ===== */
+.site-footer{background:var(--deep);color:rgba(255,255,255,.45);text-align:center;padding:2rem 1.5rem;font-size:.8rem;}
+
+/* ===== レスポンシブ ===== */
+@media(max-width:768px){
+  .section{padding:3.5rem 1.2rem;}
+  .feature-grid{grid-template-columns:1fr;}
+  .voices{grid-template-columns:1fr;}
+  .staff-wrap{flex-direction:column;align-items:center;text-align:center;}
+  .tl-item{grid-template-columns:50px 14px 1fr;}
+  .timeline::before{left:calc(50px + 5px + 7px);}
+  body{padding-top:64px;} /* fixed header分 */
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="#top">株式会社チヨダ</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#strength">チヨダの強み</a>
+    <a href="#recruit">募集要項</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#faq">FAQ</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<!-- フルスクリーンヒーロー -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-eyebrow">Recruit 2026</span>
+    <h1><strong>鋼材流通 × 加工の最前線</strong>チヨダで、<br>技術の手応えを感じる仕事を。</h1>
+    <p class="hero-sub">倉庫内作業スタッフ募集 ／ 浦安市 ／ 正社員登用あり</p>
+    <div class="hero-pills">
+      <span class="pill">昭和28年創業</span>
+      <span class="pill">年休123日・土日祝</span>
+      <span class="pill">未経験歓迎</span>
+      <span class="pill">資格取得費用 会社負担</span>
+    </div>
+    <a class="btn-rust" href="#recruit">募集要項を確認する</a>
+  </div>
+</section>
+
+<!-- チヨダの強み -->
+<section class="section section--dark" id="strength">
+  <div class="container">
+    <p class="section-label">Our Strengths</p>
+    <h2 class="section-title section-title--light">チヨダを選ぶ理由</h2>
+    <div class="merit-list">
+      <div class="merit-row">
+        <div class="m-num">01</div>
+        <div>
+          <h3>70年超の信頼と「加工機能」を持つ新しいチヨダ</h3>
+          <p>「まかせて安心信用チヨダ」を創業以来のモットーに、近年は鋼材素材流通に加工機能をセットにした次のステージへ進化中。歴史ある安定基盤と、成長する環境が両立しています。</p>
+        </div>
+      </div>
+      <div class="merit-row">
+        <div class="m-num">02</div>
+        <div>
+          <h3>未経験からでも資格取得できる育成環境</h3>
+          <p>クレーン・フォークリフトなど必要な資格は入社後に取得でき、費用は会社負担。17名のチームで先輩がOJTで丁寧に指導するので、初めての方も安心してスタートできます。</p>
+        </div>
+      </div>
+      <div class="merit-row">
+        <div class="m-num">03</div>
+        <div>
+          <h3>土日祝休み・年123日休日・正社員登用実績</h3>
+          <p>月平均残業15時間・退職金制度（3年以上）・昇給年3〜7%。過去3年で4名が正社員登用されており、長く安心して働けるキャリアパスがあります。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 仕事内容（画像グリッド） -->
+<section class="section section--gray">
+  <div class="container">
+    <p class="section-label">Job Detail</p>
+    <h2 class="section-title">仕事の内容</h2>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=640&h=380&fit=crop&q=80" alt="倉庫入出庫作業">
+        <div class="feature-card-overlay">
+          <div class="fc-num">01</div>
+          <h3>入出庫・クレーン操作</h3>
+          <p>山形鋼・H形鋼などの鋼材を、クレーンで荷下ろし・積み込み。機械を使うので力仕事のイメージよりずっと扱いやすい。</p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=640&h=380&fit=crop&q=80" alt="鋼材加工・切断">
+        <div class="feature-card-overlay">
+          <div class="fc-num">02</div>
+          <h3>切断・加工・在庫管理</h3>
+          <p>切断機でオーダーサイズに加工。在庫確認・数量チェックなども担当し、チームのキーパーソンになれる仕事です。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section class="section">
+  <div class="container">
+    <p class="section-label">A Day in the Life</p>
+    <h2 class="section-title">1日のスケジュール</h2>
+    <p style="font-size:.78rem;color:#aaa;margin-bottom:1.5rem;">※ここはサンプルです。実際には御社スタッフの1日に差し替えます</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">08:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>朝礼・業務確認</h4><p>当日の入出庫予定を確認。安全確認のうえ作業開始。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">08:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>入庫・クレーン操作</h4><p>鋼材の荷下ろし・積み込みをクレーンで実施。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">10:10</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>切断・加工</h4><p>切断機でオーダーサイズに加工。精度が求められる工程。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>昼休憩（90分）</h4><p>ゆっくりランチ。午後へのリフレッシュタイム。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>出庫・在庫管理</h4><p>出庫対応と在庫確認。数量チェックで正確性を発揮。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">15:40</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>翌日準備・清掃</h4><p>段取り確認と倉庫内整理。安全な環境を保つのもプロの仕事。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>終業</h4><p>定時退社が基本。メリハリある働き方を実感できます。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section class="section section--gray" id="voice">
+  <div class="container">
+    <p class="section-label">Staff Voice</p>
+    <h2 class="section-title">先輩からのメッセージ</h2>
+    <p style="font-size:.78rem;color:#aaa;margin-bottom:1.5rem;">※ここはサンプルです。実際には御社スタッフの写真・コメントに差し替えます</p>
+    <div class="voices">
+      <div class="voice-card">
+        <!-- 先輩写真（男性）に差し替えてください -->
+        <img class="voice-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=290&fit=crop&crop=faces&q=80" alt="田中さん（仮名）">
+        <div class="voice-body">
+          <div class="voice-name">田中 誠さん（仮名）</div>
+          <div class="voice-meta">倉庫スタッフ ／ 入社3年目</div>
+          <p>未経験でも先輩が丁寧に教えてくれます。クレーンの資格も会社負担で取れて、今は頼られる立場に。</p>
+          <p class="sample-note">※サンプル。御社スタッフの声に差し替えます</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <!-- 先輩写真（男性）に差し替えてください -->
+        <img class="voice-img" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=290&fit=crop&crop=faces&q=80" alt="鈴木さん（仮名）">
+        <div class="voice-body">
+          <div class="voice-name">鈴木 健さん（仮名）</div>
+          <div class="voice-meta">倉庫スタッフ ／ 入社1年目</div>
+          <p>土日祝が確実に休めて残業も少なめ。プライベートの時間が充実しています。職場の雰囲気も良くて続けられます。</p>
+          <p class="sample-note">※サンプル。御社スタッフの声に差し替えます</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <!-- 先輩写真（女性）に差し替えてください -->
+        <img class="voice-img" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=290&fit=crop&crop=faces&q=80" alt="山田さん（仮名）">
+        <div class="voice-body">
+          <div class="voice-name">山田 純子さん（仮名）</div>
+          <div class="voice-meta">倉庫スタッフ ／ 入社5年目</div>
+          <p>昇給の実績があり、長く安心して働けています。職場の雰囲気が温かく、チームでサポートし合えるのが良いところです。</p>
+          <p class="sample-note">※サンプル。御社スタッフの声に差し替えます</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="section" id="recruit">
+  <div class="container">
+    <p class="section-label">Requirements</p>
+    <h2 class="section-title">募集要項</h2>
+    <table class="req-table">
+      <tbody>
+        <tr><th>職種</th><td>倉庫内作業スタッフ（鋼材の保管・入出庫・切断・クレーン操作）</td></tr>
+        <tr><th>雇用形態</th><td>契約社員（6ヶ月更新・原則更新）｜正社員登用あり（過去3年で4名）</td></tr>
+        <tr><th>給与</th><td>日給 12,352円〜19,760円（月換算 約24.9〜39.8万円）<br>年齢・経験等を評価して決定</td></tr>
+        <tr><th>昇給・賞与</th><td>昇給年3〜7%（前年度実績）｜賞与年2回・計1ヶ月分（前年度実績）</td></tr>
+        <tr><th>勤務時間</th><td>8:00〜17:30（休憩90分）｜月平均残業 15時間</td></tr>
+        <tr><th>休日・休暇</th><td>土・日・祝日｜年間休日123日｜有給休暇（6ヶ月後 10日〜）</td></tr>
+        <tr><th>就業場所</th><td>〒279-0024 千葉県浦安市港55<br>JR京葉線 新浦安駅より徒歩約30分｜マイカー通勤可・駐車場あり</td></tr>
+        <tr><th>応募資格</th><td>高校卒以上｜普通自動車免許（AT可）あれば尚可<br>未経験・無資格歓迎（資格取得費用は会社負担）</td></tr>
+        <tr><th>福利厚生</th><td>社会保険完備・退職金制度（3年以上）・通勤手当（実費・上限3万円）・制服貸与</td></tr>
+        <tr><th>試用期間</th><td>3ヶ月（同条件）</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section section--gray" id="faq">
+  <div class="container">
+    <p class="section-label">FAQ</p>
+    <h2 class="section-title">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">未経験でも応募できますか？</div>
+        <div class="faq-a">はい。OJTで丁寧に指導します。必要な資格は入社後取得でき、費用は会社負担です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">正社員になれますか？</div>
+        <div class="faq-a">正社員登用制度があります。過去3年間で4名が登用されています。会社の基準を満たした場合に随時検討されます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">体力が必要な仕事ですか？</div>
+        <div class="faq-a">クレーン・機械を使うので重い鋼材を人力で持ち上げるわけではありません。機械操作が主です。女性スタッフも在籍しています。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">通勤方法を教えてください。</div>
+        <div class="faq-a">JR京葉線 新浦安駅から徒歩30分。マイカー通勤可（駐車場あり）。通勤手当は実費（上限月3万円）支給です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">残業は多いですか？</div>
+        <div class="faq-a">月平均15時間（求人票記載）です。土日祝休み・年間休日123日で、プライベートの時間も確保できます。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 採用担当者＋CTA -->
+<section class="section section--dark" id="entry">
+  <div class="container">
+    <p class="section-label" style="text-align:center;">Contact</p>
+    <h2 class="section-title section-title--light" style="text-align:center;">採用担当より</h2>
+    <div class="staff-wrap">
+      <!-- 採用担当者写真：実際の写真に差し替えてください -->
+      <img class="staff-img" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=220&fit=crop&crop=faces&q=80" alt="採用担当（仮）">
+      <div>
+        <div class="staff-name">小坂 雄一（仮名）</div>
+        <div class="staff-role">管理部 採用担当</div>
+        <p>「経験がないけど大丈夫か」とご不安な方も、ぜひ一度ご連絡ください。チームの雰囲気・仕事の具体的な内容など、気になることを何でも聞いてください。</p>
+        <p class="sample-note" style="color:rgba(255,255,255,.3);font-size:.73rem;margin-top:.5rem;">※写真・コメントはサンプルです。御社採用担当者の情報に差し替えます</p>
+      </div>
+    </div>
+    <div style="text-align:center;">
+      <a class="btn-rust" href="mailto:y-kosaka@chiyoda-kozai.co.jp">メールでお問い合わせ</a>
+      <p style="margin-top:1rem;font-size:.85rem;color:rgba(255,255,255,.6);">TEL: 03-3551-9114（管理部 平日 8:00〜17:30）</p>
+    </div>
+  </div>
+</section>
+
+<!-- 最終CTA -->
+<section class="cta-section">
+  <h2>「まかせて安心信用チヨダ」<br>70年の信頼と、あなたの力で。</h2>
+  <p>まずは気軽にお問い合わせください。選考前のご相談も歓迎しています。</p>
+  <a class="btn-white" href="mailto:y-kosaka@chiyoda-kozai.co.jp">お問い合わせ・ご応募はこちら</a>
+</section>
+
+<footer class="site-footer">
+  <p>株式会社チヨダ</p>
+  <p>〒279-0024 千葉県浦安市港55</p>
+  <p>TEL: 03-3551-9114 ／ E-mail: y-kosaka@chiyoda-kozai.co.jp</p>
+</footer>
+
+<script>
+(function(){
+  var btn = document.querySelector('.hamburger');
+  var nav = document.querySelector('.site-nav');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  }
+})();
+</script>
+</body>
+</html>
