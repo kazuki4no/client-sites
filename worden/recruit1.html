@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>採用情報 | 株式会社ワーデン</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;color:#1a1a2e;line-height:1.7;background:#f8f9fc;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;height:auto;display:block;}
+
+/* カラー変数 */
+:root{
+  --navy:#1A2F5C;
+  --navy-light:#2a4a8a;
+  --gold:#C8980E;
+  --gold-light:#F0C430;
+  --bg:#f8f9fc;
+  --white:#fff;
+  --gray:#f0f2f7;
+  --text:#1a1a2e;
+  --text-sub:#555;
+}
+
+/* ヘッダー */
+.site-header{background:var(--navy);padding:.8rem 1.5rem;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:100;}
+.brand{color:var(--white);font-weight:700;font-size:1.1rem;}
+.hamburger{display:none;background:none;border:0;color:var(--white);font-size:1.8rem;line-height:1;cursor:pointer;}
+.site-nav{display:flex;gap:1.5rem;align-items:center;}
+.site-nav a{color:rgba(255,255,255,.85);font-size:.9rem;transition:color .2s;}
+.site-nav a:hover{color:var(--gold-light);}
+.site-nav .nav-cta{background:var(--gold);color:var(--navy);font-weight:700;padding:.45rem 1.1rem;border-radius:4px;}
+.site-nav .nav-cta:hover{background:var(--gold-light);}
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:var(--navy);padding:.5rem 1.5rem;}
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.9rem 0;border-bottom:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.85);}
+  .site-nav .nav-cta{margin:.5rem 0;text-align:center;border-radius:4px;background:var(--gold);color:var(--navy);}
+}
+
+/* ヒーロー */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);position:relative;overflow:hidden;padding:5rem 1.5rem 4rem;}
+.hero::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&h=700&fit=crop&q=80') center/cover no-repeat;opacity:.18;}
+.hero-inner{position:relative;max-width:900px;margin:0 auto;text-align:center;}
+.hero-pill{display:inline-block;background:var(--gold);color:var(--navy);font-weight:700;font-size:.8rem;letter-spacing:.08em;padding:.3rem .9rem;border-radius:20px;margin-bottom:1.2rem;}
+.hero h1{font-size:clamp(1.9rem,5.5vw,3.2rem);color:var(--white);font-weight:900;line-height:1.25;margin-bottom:1.2rem;}
+.hero h1 span{color:var(--gold-light);}
+.hero p{color:rgba(255,255,255,.85);font-size:1.05rem;margin-bottom:2rem;max-width:600px;margin-left:auto;margin-right:auto;}
+.btn-primary{display:inline-block;background:var(--gold);color:var(--navy);font-weight:700;padding:.85rem 2.5rem;border-radius:6px;font-size:1.05rem;transition:transform .2s,box-shadow .2s;}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(200,152,14,.5);}
+
+/* セクション共通 */
+section{padding:4.5rem 1.5rem;}
+.section-title{text-align:center;margin-bottom:3rem;}
+.section-title h2{font-size:clamp(1.4rem,4vw,2rem);font-weight:900;color:var(--navy);position:relative;display:inline-block;padding-bottom:.6rem;}
+.section-title h2::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:40px;height:3px;background:var(--gold);border-radius:2px;}
+.section-title p{color:var(--text-sub);margin-top:.8rem;font-size:.97rem;}
+
+/* 魅力3点 */
+.appeals{background:var(--white);}
+.appeals-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:960px;margin:0 auto;}
+.appeal-card{text-align:center;padding:2rem 1.5rem;border-radius:12px;background:var(--bg);border:1px solid #e8eaf2;}
+.appeal-icon{width:60px;height:60px;background:var(--navy);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;}
+.appeal-icon svg{width:28px;height:28px;stroke:var(--gold-light);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.appeal-card h3{font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:.6rem;}
+.appeal-card p{font-size:.9rem;color:var(--text-sub);}
+@media(max-width:768px){.appeals-grid{grid-template-columns:1fr;}}
+
+/* 仕事内容 */
+.job-content{background:var(--gray);}
+.job-inner{max-width:900px;margin:0 auto;}
+.job-img{width:100%;height:280px;object-fit:cover;border-radius:12px;margin-bottom:2rem;}
+.job-tags{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.5rem;}
+.job-tag{background:var(--navy);color:var(--white);font-size:.8rem;font-weight:500;padding:.3rem .8rem;border-radius:20px;}
+.job-text{color:var(--text-sub);font-size:.95rem;line-height:1.85;}
+
+/* 数字 */
+.numbers{background:var(--navy);}
+.numbers .section-title h2{color:var(--white);}
+.numbers .section-title p{color:rgba(255,255,255,.7);}
+.numbers-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:900px;margin:0 auto;}
+.number-card{text-align:center;padding:1.5rem 1rem;}
+.number-card .num{font-size:clamp(2rem,5vw,2.8rem);font-weight:900;color:var(--gold-light);}
+.number-card .unit{font-size:.85rem;color:rgba(255,255,255,.7);margin-top:.3rem;}
+.sample-note{text-align:center;color:rgba(255,255,255,.45);font-size:.75rem;margin-top:1.5rem;}
+@media(max-width:768px){.numbers-grid{grid-template-columns:repeat(2,1fr);}}
+
+/* 1日の流れ */
+.timeline-section{background:var(--white);}
+.timeline{max-width:680px;margin:0 auto;position:relative;}
+.timeline::before{content:'';position:absolute;left:82px;top:0;bottom:0;width:2px;background:#dde2ef;}
+.tl-item{display:grid;grid-template-columns:72px 20px 1fr;gap:0 .8rem;align-items:start;margin-bottom:1.8rem;}
+.tl-time{text-align:right;font-weight:700;color:var(--navy);font-size:.95rem;padding-top:.2rem;}
+.tl-dot{width:14px;height:14px;border-radius:50%;background:var(--gold);justify-self:center;margin-top:.4rem;flex-shrink:0;}
+.tl-body{padding-bottom:1rem;}
+.tl-body h4{font-weight:700;color:var(--navy);margin-bottom:.25rem;font-size:.95rem;}
+.tl-body p{font-size:.87rem;color:var(--text-sub);}
+.tl-note{text-align:center;font-size:.75rem;color:#aaa;margin-top:1rem;}
+@media(max-width:768px){
+  .tl-item{grid-template-columns:40px 16px 1fr;}
+  .tl-time{font-size:.82rem;}
+  .timeline::before{left:46px;}
+}
+
+/* 先輩の声 */
+.voices{background:var(--gray);}
+.voices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:960px;margin:0 auto;}
+.voice-card{background:var(--white);border-radius:12px;padding:1.5rem;border:1px solid #e8eaf2;}
+.voice-head{display:flex;align-items:center;gap:1rem;margin-bottom:1rem;}
+.voice-img{width:64px;height:64px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.voice-meta h4{font-weight:700;font-size:.95rem;color:var(--navy);}
+.voice-meta span{font-size:.8rem;color:var(--text-sub);}
+.voice-card p{font-size:.88rem;color:var(--text-sub);line-height:1.75;}
+.voice-note{text-align:center;font-size:.75rem;color:#aaa;margin-top:1.2rem;}
+@media(max-width:768px){.voices-grid{grid-template-columns:1fr;}}
+
+/* よくある質問 */
+.faq-section{background:var(--white);}
+.faq-list{max-width:700px;margin:0 auto;}
+.faq-item{border:1px solid #e8eaf2;border-radius:8px;margin-bottom:1rem;overflow:hidden;}
+.faq-q{display:flex;align-items:flex-start;gap:.8rem;padding:1rem 1.2rem;font-weight:700;color:var(--navy);cursor:pointer;font-size:.95rem;}
+.faq-q-badge{background:var(--gold);color:var(--navy);font-weight:900;font-size:.85rem;padding:.1rem .5rem;border-radius:4px;flex-shrink:0;}
+.faq-a{padding:0 1.2rem 1rem 3rem;font-size:.9rem;color:var(--text-sub);line-height:1.75;}
+
+/* 募集要項 */
+.requirements{background:var(--gray);}
+.req-table{width:100%;max-width:800px;margin:0 auto;border-collapse:collapse;}
+.req-table th,.req-table td{padding:.9rem 1rem;border-bottom:1px solid #e8eaf2;text-align:left;font-size:.93rem;vertical-align:top;}
+.req-table th{background:var(--navy);color:var(--white);font-weight:700;width:30%;white-space:nowrap;}
+.req-table td{background:var(--white);}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{background:var(--navy);padding:.5rem .8rem;color:var(--white);font-size:.85rem;}
+  .req-table td{padding:.5rem .8rem 1rem;font-size:.9rem;}
+}
+
+/* 採用担当者 */
+.recruiter{background:var(--navy);}
+.recruiter-inner{max-width:600px;margin:0 auto;text-align:center;}
+.recruiter h2{font-size:clamp(1.2rem,3.5vw,1.7rem);color:var(--white);font-weight:900;margin-bottom:2rem;}
+.recruiter-card{background:rgba(255,255,255,.08);border-radius:12px;padding:2rem;display:flex;align-items:center;gap:1.5rem;text-align:left;}
+.recruiter-img{width:90px;height:90px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.recruiter-info h4{color:var(--gold-light);font-weight:700;margin-bottom:.3rem;}
+.recruiter-info p{color:rgba(255,255,255,.8);font-size:.9rem;line-height:1.65;}
+.recruiter-note{font-size:.75rem;color:rgba(255,255,255,.4);margin-top:1rem;text-align:center;}
+@media(max-width:768px){.recruiter-card{flex-direction:column;text-align:center;}}
+
+/* 応募CTA */
+.entry{background:var(--bg);text-align:center;}
+.entry h2{font-size:clamp(1.4rem,4vw,2rem);font-weight:900;color:var(--navy);margin-bottom:.8rem;}
+.entry p{color:var(--text-sub);margin-bottom:2rem;}
+.entry-buttons{display:flex;flex-wrap:wrap;justify-content:center;gap:1rem;}
+.btn-outline{display:inline-block;border:2px solid var(--navy);color:var(--navy);font-weight:700;padding:.8rem 2rem;border-radius:6px;font-size:1rem;transition:background .2s,color .2s;}
+.btn-outline:hover{background:var(--navy);color:var(--white);}
+
+/* フッター */
+footer{background:var(--navy);color:rgba(255,255,255,.7);text-align:center;padding:2rem 1.5rem;font-size:.85rem;}
+footer strong{color:var(--white);}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="#top">株式会社ワーデン</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">&#9776;</button>
+  <nav class="site-nav">
+    <a href="#job">仕事内容</a>
+    <a href="#timeline">1日の流れ</a>
+    <a href="#voices">先輩の声</a>
+    <a href="#faq">よくある質問</a>
+    <a href="#requirements">募集要項</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<!-- ヒーロー -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <span class="hero-pill">未経験者歓迎 ／ 電気工事のプロへ</span>
+    <h1>遊戯施設から学校まで、<br><span>スケールの大きな仕事</span>が待っている。</h1>
+    <p>浅海電気グループの安定基盤のもと、電気工事の現場で活躍するスタッフを募集中。<br>ゼロからのスタートでも、充実した研修で着実に成長できます。</p>
+    <a href="#entry" class="btn-primary">まずは詳細を確認する</a>
+  </div>
+</section>
+
+<!-- 魅力3点 -->
+<section class="appeals" id="appeals">
+  <div class="section-title">
+    <h2>株式会社ワーデンで働く3つの魅力</h2>
+    <p>未経験からでも安心してスタートできる理由があります</p>
+  </div>
+  <div class="appeals-grid">
+    <div class="appeal-card">
+      <div class="appeal-icon">
+        <svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+      </div>
+      <h3>遊戯施設など珍しい現場で経験を積む</h3>
+      <p>テーマパーク系施設・官公庁の学校・老人ホームなど、一般的な電気工事では経験できないスケールの大きい現場が豊富です。</p>
+    </div>
+    <div class="appeal-card">
+      <div class="appeal-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+      </div>
+      <h3>充実の資格サポートで着実にキャリアアップ</h3>
+      <p>受験料は全額会社負担。資格取得報奨金（1〜20万円）あり。若手講習会・社内勉強会も毎月開催し、未経験から電気のプロへ育てます。</p>
+    </div>
+    <div class="appeal-card">
+      <div class="appeal-icon">
+        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+      </div>
+      <h3>浅海電気グループの安定経営</h3>
+      <p>昭和61年創業39年。親会社・浅海電気（株）のグループ会社として安定した受注基盤を持ちます。賞与は年2〜3回、退職金制度も完備。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 仕事内容 -->
+<section class="job-content" id="job">
+  <div class="job-inner">
+    <div class="section-title">
+      <h2>仕事内容</h2>
+    </div>
+    <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=900&h=280&fit=crop&q=80" alt="電気工事の現場" class="job-img">
+    <div class="job-tags">
+      <span class="job-tag">現場代理人サポート</span>
+      <span class="job-tag">図面修正</span>
+      <span class="job-tag">材料発注</span>
+      <span class="job-tag">書類作成</span>
+      <span class="job-tag">写真撮影</span>
+      <span class="job-tag">未経験OK</span>
+    </div>
+    <p class="job-text">
+      電気工事の「現場代理人」のサポートとして、図面修正・写真撮影・材料発注・書類作成などをお任せします。分からないことだらけでもOK——先輩社員が親切・丁寧に指導します。<br><br>
+      案件の特徴は「遊戯施設」での電気工事があること。一般的な電気工事とは異なるスケール感と達成感が得られます。そのほかにも官公庁・学校・老人ホームなど、社会インフラに直結する現場を多数担当しています。就業場所は千葉県浦安市の千葉営業所。浦安駅から徒歩15分です。<br><br>
+      夜間作業（20:00〜5:00）が含まれる場合がありますが、日勤（9:00〜18:00）との選択制です。夜間対応分は固定残業代（月25時間分・40,000〜55,000円）に含まれており、超過分は別途全額支給されます。
+    </p>
+  </div>
+</section>
+
+<!-- 数字で見るワーデン -->
+<section class="numbers">
+  <div class="section-title">
+    <h2 style="color:#fff;">数字で見るワーデン</h2>
+    <p style="color:rgba(255,255,255,.7);">安定した経営基盤と充実の待遇</p>
+  </div>
+  <div class="numbers-grid">
+    <div class="number-card">
+      <div class="num">39<small style="font-size:1.1rem;">年</small></div>
+      <div class="unit">創業からの実績</div>
+    </div>
+    <div class="number-card">
+      <div class="num">113<small style="font-size:1.1rem;">日</small></div>
+      <div class="unit">年間休日</div>
+    </div>
+    <div class="number-card">
+      <div class="num">年3<small style="font-size:1.1rem;">回</small></div>
+      <div class="unit">賞与支給</div>
+    </div>
+    <div class="number-card">
+      <div class="num">46<small style="font-size:1.1rem;">名</small></div>
+      <div class="unit">従業員数</div>
+    </div>
+  </div>
+  <p class="sample-note">※ここはサンプルです。実際には御社の最新データに差し替えます</p>
+</section>
+
+<!-- 1日の流れ -->
+<section class="timeline-section" id="timeline">
+  <div class="section-title">
+    <h2>社員の1日の流れ（日勤の場合）</h2>
+    <p>電気工事の現場サポートとして、こんな1日を過ごしています</p>
+  </div>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-time">9:00</div>
+      <div class="tl-dot"></div>
+      <div class="tl-body"><h4>朝礼・現場確認</h4><p>千葉営業所でチームと情報共有。その日の現場・担当業務を確認します。</p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">10:00</div>
+      <div class="tl-dot"></div>
+      <div class="tl-body"><h4>現場でのサポート業務</h4><p>現場代理人と連携しながら、図面修正・写真撮影・材料の在庫確認などを担当します。</p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">12:00</div>
+      <div class="tl-dot"></div>
+      <div class="tl-body"><h4>昼食・休憩（60分）</h4><p>現場近くの食事処やお弁当でリフレッシュ。先輩と話せる貴重な時間です。</p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">13:00</div>
+      <div class="tl-dot"></div>
+      <div class="tl-body"><h4>書類作成・材料発注</h4><p>工事に必要な資材の発注手配や、現場で撮影した写真を整理して資料を作成します。</p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">15:30</div>
+      <div class="tl-dot"></div>
+      <div class="tl-body"><h4>翌日準備・勉強の時間</h4><p>翌日の現場段取りや、資格勉強・社内研修資料の復習にあてることも。</p></div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-time">18:00</div>
+      <div class="tl-dot"></div>
+      <div class="tl-body"><h4>退勤</h4><p>日勤シフトは定時退勤が基本です。有給休暇は30分単位で取得できます。</p></div>
+    </div>
+  </div>
+  <p class="tl-note">※ここはサンプルです。実際には御社の社員の1日に差し替えます</p>
+</section>
+
+<!-- 先輩の声 -->
+<section class="voices" id="voices">
+  <div class="section-title">
+    <h2>先輩からのメッセージ</h2>
+    <p>未経験からスタートした先輩たちが語ります</p>
+  </div>
+  <div class="voices-grid">
+    <div class="voice-card">
+      <div class="voice-head">
+        <!-- 先輩写真（仮名・男性） -->
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="Aさん" class="voice-img">
+        <div class="voice-meta">
+          <h4>田中 翔（仮名）</h4>
+          <span>現場サポート ／ 入社3年目</span>
+        </div>
+      </div>
+      <p>電気の「で」の字も知らないまま入社しましたが、先輩が現場でひとつひとつ教えてくれました。遊戯施設の工事は特別で、完成した施設に一般のお客さんが楽しそうに入っているのを見ると、やり甲斐を感じます。</p>
+    </div>
+    <div class="voice-card">
+      <div class="voice-head">
+        <!-- 先輩写真（仮名・男性） -->
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="Bさん" class="voice-img">
+        <div class="voice-meta">
+          <h4>佐藤 健（仮名）</h4>
+          <span>現場サポート ／ 入社5年目</span>
+        </div>
+      </div>
+      <p>入社2年目で第二種電気工事士を取得、費用は全部会社持ちでした。若手講習会も月1回あって、浅海電気の方から実務のコツを教われる機会もあります。スキルアップを応援してくれる環境に感謝しています。</p>
+    </div>
+    <div class="voice-card">
+      <div class="voice-head">
+        <!-- 先輩写真（仮名・男性） -->
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="Cさん" class="voice-img">
+        <div class="voice-meta">
+          <h4>山田 誠（仮名）</h4>
+          <span>現場サポート ／ 入社1年目</span>
+        </div>
+      </div>
+      <p>前職は全く異業種。最初は現場用語が分からなくて不安でしたが、先輩が丁寧に教えてくれて、今は書類作成を任せてもらえるようになりました。浦安という場所も好きです。</p>
+    </div>
+  </div>
+  <p class="voice-note">※ここはサンプルです。実際には御社の社員インタビューに差し替えます</p>
+</section>
+
+<!-- よくある質問 -->
+<section class="faq-section" id="faq">
+  <div class="section-title">
+    <h2>よくある質問</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-q-badge">Q</span>電気工事の経験が全くなくても応募できますか？</div>
+      <div class="faq-a">はい、未経験者歓迎です。分からないことだらけでもOK！先輩社員が親切・丁寧に指導します。月1回の若手講習会・資格取得勉強会もあり、着実に成長できる環境です。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-q-badge">Q</span>夜間作業は必ず発生しますか？</div>
+      <div class="faq-a">夜間作業（20:00〜5:00）が発生する場合があります。日勤（9:00〜18:00）との選択制です。固定残業代（月25時間分）に含まれており、25時間超過分は別途全額支給されます。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-q-badge">Q</span>資格取得のサポートはありますか？</div>
+      <div class="faq-a">はい、受験料・各種手数料は全額会社負担です。取得後は資格取得報奨金（1〜20万円）が支給されます。また、月1回の若手講習会・資格取得勉強会も実施しています。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-q-badge">Q</span>選考の流れを教えてください。</div>
+      <div class="faq-a">書類選考（3日以内に結果連絡）→ 面接（予定1回・3日以内に結果連絡）の流れです。応募書類はハローワーク紹介状・履歴書（写真貼付）が基本です。オンライン自主応募の方は紹介状不要。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-q-badge">Q</span>社宅・寮はありますか？</div>
+      <div class="faq-a">社宅制度があります。詳細は面接時にご確認ください。また、通勤手当は実費全額支給（上限月5万円）です。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="requirements" id="requirements">
+  <div class="section-title">
+    <h2>募集要項</h2>
+  </div>
+  <table class="req-table">
+    <tbody>
+      <tr><th>職種</th><td>電気工事の現場代理人のサポート（未経験者歓迎）</td></tr>
+      <tr><th>雇用形態</th><td>正社員（試用期間3ヶ月・同条件）</td></tr>
+      <tr><th>就業場所</th><td>千葉県浦安市堀江2-29-1（千葉営業所）／浦安駅 徒歩15分</td></tr>
+      <tr><th>給与</th><td>月給 250,000〜300,000円<br>（基本給210,000〜245,000円＋固定残業代40,000〜55,000円／25時間分。超過分は別途支給）<br>家族手当：配偶者20,000円・長子10,000円・二子以降10,000円</td></tr>
+      <tr><th>昇給・賞与</th><td>昇給あり（年5,000〜50,000円）／賞与年2〜3回（前年度実績500,000〜800,000円）</td></tr>
+      <tr><th>就業時間</th><td>日勤：9:00〜18:00 ／ 夜勤：20:00〜5:00（いずれか）<br>休憩60分</td></tr>
+      <tr><th>休日</th><td>土日・年末年始（4日）・夏季休暇（3日・7〜9月の自由取得）<br>年間休日113日</td></tr>
+      <tr><th>福利厚生</th><td>社会保険完備・退職金制度（3年以上）・社宅制度・財形貯蓄・資格取得報奨金・受験料全額会社負担・医療看護特別休暇・30分単位時間有休</td></tr>
+      <tr><th>対象年齢</th><td>18〜40歳（長期キャリア形成のため）</td></tr>
+      <tr><th>採用人数</th><td>2名</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<!-- 採用担当者 -->
+<section class="recruiter">
+  <div class="recruiter-inner">
+    <h2>採用担当者から一言</h2>
+    <div class="recruiter-card">
+      <!-- 採用担当者写真（仮名） -->
+      <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当" class="recruiter-img">
+      <div class="recruiter-info">
+        <h4>採用担当（総務部）</h4>
+        <p>「分からないことだらけでもやる気があればOK！」という言葉どおり、当社は未経験者を大切に育てる環境があります。ぜひ一度お気軽にお問い合わせください。お待ちしています。</p>
+      </div>
+    </div>
+    <p class="recruiter-note">※ここはサンプルです。実際には御社の採用担当者に差し替えます</p>
+  </div>
+</section>
+
+<!-- 応募CTA -->
+<section class="entry" id="entry">
+  <h2>一緒に働きませんか？</h2>
+  <p>まずはお気軽にお問い合わせください。</p>
+  <div class="entry-buttons">
+    <a href="mailto:wd_soumu@worden.co.jp" class="btn-primary">メールで問い合わせる</a>
+    <a href="tel:0339037332" class="btn-outline">電話で問い合わせる</a>
+  </div>
+</section>
+
+<footer>
+  <strong>株式会社ワーデン</strong><br>
+  〒279-0041 千葉県浦安市堀江2-29-1（千葉営業所）<br>
+  TEL: 03-3903-7332　E-mail: wd_soumu@worden.co.jp
+</footer>
+
+<script>
+(function(){
+  var btn = document.querySelector('.hamburger');
+  var nav = document.querySelector('.site-nav');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  }
+})();
+</script>
+</body>
+</html>
