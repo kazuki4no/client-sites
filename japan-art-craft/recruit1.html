@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>制作スタッフ（造形制作）募集 | 日本美術工芸株式会社</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:16px;scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;color:#333;background:#f9f7f4;line-height:1.7;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+:root{
+  --navy:#1a2744;
+  --gold:#b8902a;
+  --gold-lt:#f5e8c8;
+  --bg:#f9f7f4;
+  --white:#fff;
+  --muted:#666;
+  --border:#ddd;
+}
+
+/* ===== HEADER ===== */
+.site-header{display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 1.5rem;background:var(--navy);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.3);}
+.brand{font-family:'Noto Serif JP',serif;color:#fff;font-size:.95rem;font-weight:700;letter-spacing:.05em;}
+.brand span{color:var(--gold);}
+.site-nav{display:flex;gap:1.4rem;align-items:center;}
+.site-nav a{color:rgba(255,255,255,.85);font-size:.82rem;transition:color .2s;}
+.site-nav a:hover{color:#e8c96a;}
+.site-nav .nav-cta{background:var(--gold);color:#fff;padding:.4rem 1rem;border-radius:4px;font-weight:700;font-size:.85rem;transition:opacity .2s;}
+.site-nav .nav-cta:hover{opacity:.85;}
+.hamburger{display:none;background:none;border:0;color:#fff;font-size:1.7rem;line-height:1;cursor:pointer;padding:.2rem;}
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:var(--navy);padding:.5rem 1.2rem;}
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.75rem 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:.95rem;}
+  .site-nav .nav-cta{margin:.6rem 0 .3rem;text-align:center;padding:.6rem;}
+}
+
+/* ===== HERO ===== */
+.hero{position:relative;min-height:72vh;display:flex;align-items:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1545987796-200677ee1011?w=1600&h=900&fit=crop&q=80');
+  background-size:cover;background-position:center;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(10,18,44,.72) 50%,rgba(10,18,44,.45));}
+.hero-content{position:relative;z-index:1;max-width:1040px;margin:0 auto;padding:4rem 1.5rem;color:#fff;}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:var(--gold);color:#fff;padding:.32rem .9rem;border-radius:3px;font-size:.8rem;font-weight:700;margin-bottom:1.4rem;letter-spacing:.04em;}
+.hero h1{font-family:'Noto Serif JP',serif;font-size:clamp(1.75rem,5vw,3.1rem);line-height:1.35;margin-bottom:1.2rem;}
+.hero h1 em{font-style:normal;color:#e8c96a;}
+.hero-sub{font-size:clamp(.92rem,2.4vw,1.1rem);color:rgba(255,255,255,.88);margin-bottom:2.2rem;max-width:560px;line-height:1.85;}
+.btn-gold{display:inline-block;background:var(--gold);color:#fff;padding:.9rem 2.4rem;border-radius:5px;font-size:1rem;font-weight:700;letter-spacing:.03em;transition:opacity .2s;}
+.btn-gold:hover{opacity:.87;}
+
+/* ===== SECTION COMMON ===== */
+.section{padding:5rem 1.5rem;}
+.sec-inner{max-width:1040px;margin:0 auto;}
+.sec-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.45rem,4vw,2.1rem);color:var(--navy);text-align:center;margin-bottom:.5rem;}
+.sec-title span{color:var(--gold);}
+.divider{width:44px;height:3px;background:var(--gold);margin:.7rem auto 2.6rem;}
+.sec-sub{text-align:center;color:var(--muted);font-size:.9rem;margin-bottom:2.8rem;line-height:1.8;}
+
+/* ===== WORK ===== */
+.work-grid{display:grid;grid-template-columns:1fr 1fr;gap:2.4rem;align-items:center;margin-bottom:2.8rem;}
+.work-grid img{border-radius:10px;width:100%;height:280px;object-fit:cover;}
+.work-text h3{font-size:1.18rem;color:var(--navy);margin-bottom:.8rem;font-family:'Noto Serif JP',serif;line-height:1.4;}
+.work-text p{color:#555;line-height:1.85;margin-bottom:.9rem;font-size:.93rem;}
+.tag-row{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.4rem;}
+.tag{background:var(--gold-lt);color:var(--navy);border-radius:3px;padding:.22rem .65rem;font-size:.79rem;font-weight:700;}
+@media(max-width:768px){.work-grid{grid-template-columns:1fr;}.work-grid.rev img{order:-1;}}
+
+/* ===== FEATURES ===== */
+.features{background:var(--navy);}
+.features .sec-title{color:#fff;}
+.features .divider{background:#e8c96a;}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.feat-card{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:2rem 1.5rem;text-align:center;color:#fff;}
+.feat-icon{width:54px;height:54px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;margin:0 auto 1.2rem;color:#fff;}
+.feat-icon svg{width:26px;height:26px;stroke-width:2;stroke:#fff;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.feat-card h3{font-size:1.02rem;color:#e8c96a;margin-bottom:.7rem;font-weight:700;}
+.feat-card p{font-size:.88rem;color:rgba(255,255,255,.8);line-height:1.8;}
+@media(max-width:768px){.feat-grid{grid-template-columns:1fr;}}
+
+/* ===== NUMBERS ===== */
+.numbers-bg{background:var(--bg);}
+.num-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;text-align:center;}
+.num-item{background:var(--white);border-radius:12px;padding:1.8rem 1rem;box-shadow:0 2px 12px rgba(0,0,0,.06);}
+.num-val{font-family:'Noto Serif JP',serif;font-size:2.1rem;font-weight:700;color:var(--navy);line-height:1.1;}
+.num-val span{font-size:1rem;font-weight:400;}
+.num-label{font-size:.83rem;color:var(--muted);margin-top:.4rem;}
+.num-note{font-size:.72rem;color:#bbb;margin-top:.25rem;}
+@media(max-width:768px){.num-grid{grid-template-columns:1fr 1fr;}}
+
+/* ===== TIMELINE ===== */
+.timeline-bg{background:#f0ede8;}
+.timeline-wrap{position:relative;max-width:680px;margin:0 auto;}
+.timeline-wrap::before{content:'';position:absolute;left:82px;top:0;bottom:0;width:2px;background:var(--gold);z-index:0;}
+.tl-item{display:grid;grid-template-columns:72px 20px 1fr;gap:0 .8rem;align-items:start;margin-bottom:1.8rem;position:relative;z-index:1;}
+.tl-time{text-align:right;font-weight:700;color:var(--navy);font-size:.92rem;line-height:1.6;padding-top:.25rem;}
+.tl-dot{width:14px;height:14px;border-radius:50%;background:var(--gold);border:3px solid var(--bg);justify-self:center;margin-top:.35rem;box-shadow:0 0 0 2px var(--gold);}
+.tl-body h4{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:.3rem;}
+.tl-body p{font-size:.87rem;color:#555;line-height:1.75;}
+@media(max-width:768px){
+  .timeline-wrap::before{left:46px;}
+  .tl-item{grid-template-columns:40px 16px 1fr;gap:0 .5rem;}
+  .tl-time{font-size:.78rem;}
+  .tl-dot{width:12px;height:12px;}
+}
+
+/* ===== VOICES ===== */
+.voices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;}
+.voice-card{background:var(--white);border-radius:12px;padding:1.8rem;box-shadow:0 2px 12px rgba(0,0,0,.06);}
+.voice-head{display:flex;align-items:center;gap:.9rem;margin-bottom:1.1rem;}
+.voice-img{width:64px;height:64px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.voice-name{font-weight:700;color:var(--navy);font-size:.93rem;}
+.voice-role{font-size:.76rem;color:var(--muted);margin-top:.15rem;}
+.voice-card p{font-size:.88rem;line-height:1.85;color:#555;}
+.sample-note{font-size:.72rem;color:#bbb;margin-top:.7rem;}
+@media(max-width:768px){.voices-grid{grid-template-columns:1fr;}}
+
+/* ===== FAQ ===== */
+.faq-bg{background:var(--white);}
+.faq-list{max-width:760px;margin:0 auto;}
+.faq-item{border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:1rem;}
+.faq-q{background:var(--navy);color:#fff;padding:1rem 1.5rem;font-weight:700;font-size:.93rem;line-height:1.55;}
+.faq-q::before{content:'Q.';color:var(--gold);margin-right:.5rem;font-size:1rem;}
+.faq-a{padding:1.1rem 1.5rem;background:#fafafa;font-size:.9rem;line-height:1.85;color:#555;}
+.faq-a::before{content:'A.';color:var(--navy);font-weight:700;margin-right:.4rem;}
+
+/* ===== CONTACT PERSON ===== */
+.cp-bg{background:var(--navy);}
+.cp-box{display:flex;align-items:center;gap:2rem;max-width:680px;margin:0 auto;background:rgba(255,255,255,.07);border-radius:16px;padding:2rem 2.2rem;}
+.cp-img{width:90px;height:90px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.cp-text{color:rgba(255,255,255,.88);}
+.cp-text h3{font-size:1.05rem;color:#e8c96a;margin-bottom:.5rem;font-weight:700;}
+.cp-text p{font-size:.88rem;line-height:1.8;}
+@media(max-width:768px){.cp-box{flex-direction:column;text-align:center;}.cp-img{width:80px;height:80px;}}
+
+/* ===== REQUIREMENTS ===== */
+.req-table{width:100%;border-collapse:collapse;font-size:.92rem;}
+.req-table th,.req-table td{padding:.9rem 1.2rem;text-align:left;border-bottom:1px solid var(--border);vertical-align:top;line-height:1.7;}
+.req-table th{background:#f4f1eb;font-weight:700;color:var(--navy);width:28%;white-space:nowrap;}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{white-space:normal;padding:.5rem .9rem;}
+  .req-table td{padding:.5rem .9rem 1rem;}
+}
+
+/* ===== CTA ===== */
+.cta-sec{background:var(--gold);padding:4.5rem 1.5rem;text-align:center;}
+.cta-sec h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.35rem,4vw,1.9rem);color:#fff;margin-bottom:1rem;}
+.cta-sec p{color:rgba(255,255,255,.9);margin-bottom:2rem;font-size:.95rem;}
+.btn-navy{display:inline-block;background:var(--navy);color:#fff;padding:.9rem 2.6rem;border-radius:5px;font-size:1rem;font-weight:700;transition:opacity .2s;}
+.btn-navy:hover{opacity:.85;}
+
+/* ===== FOOTER ===== */
+footer{background:#0e1830;color:rgba(255,255,255,.6);text-align:center;padding:2.2rem 1.5rem;font-size:.83rem;line-height:1.9;}
+</style>
+</head>
+<body>
+
+<header class="site-header" id="top">
+  <a class="brand" href="#top">日本美術工芸<span>株式会社</span></a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#work">仕事内容</a>
+    <a href="#features">働く魅力</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#faq">よくある質問</a>
+    <a href="#requirements">募集要項</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">制作スタッフ（造形制作）正社員募集</div>
+    <h1>テーマパークを支える<br><em>ものづくり職人</em>、募集中。</h1>
+    <p class="hero-sub">美術館・テーマパークの造形物制作・施工・メンテナンス。<br>素材と技術で「非日常の空間」を形にする、誇れる仕事です。</p>
+    <a href="#entry" class="btn-gold">採用情報を見る・応募する</a>
+  </div>
+</section>
+
+<!-- WORK -->
+<section class="section" id="work">
+  <div class="sec-inner">
+    <h2 class="sec-title"><span>仕事内容</span></h2>
+    <div class="divider"></div>
+    <p class="sec-sub">テーマパーク・美術館の「夢の空間」を陰で支える、プロの造形技術を磨ける仕事です。</p>
+    <div class="work-grid">
+      <img src="https://images.unsplash.com/photo-1518998053901-5348d3961a04?w=640&h=380&fit=crop&q=80" alt="造形制作の様子" loading="lazy">
+      <div class="work-text">
+        <h3>造形物の制作・施工・メンテナンス</h3>
+        <p>テーマパークや美術館に設置される立体造形物（装飾物・オブジェ）の制作・施工・メンテナンスを担当します。塗装・木工加工・スチロール造形・粘土造形・FRP作業など、多彩な素材・技術が活きる現場です。</p>
+        <p>「ただ元通りにするだけでなく、壊れにくい素材への変更や創意工夫をプラスする」ことが日々のモチベーションになっています。</p>
+        <div class="tag-row">
+          <span class="tag">塗装</span>
+          <span class="tag">木工加工</span>
+          <span class="tag">スチロール造形</span>
+          <span class="tag">粘土造形</span>
+          <span class="tag">FRP作業</span>
+          <span class="tag">施工・メンテナンス</span>
+        </div>
+      </div>
+    </div>
+    <div class="work-grid rev">
+      <div class="work-text">
+        <h3>浦安営業所（舞浜駅徒歩10分）を拠点に活躍</h3>
+        <p>千葉県浦安市の浦安営業所が主な勤務地です。パーク内で破損した装飾物をオープン前に現場で補修したり、バックヤードに持ち帰り型取りして再製作したりと、パークの品質を守る重要な役割を担います。</p>
+        <p>現場移動は社用車（軽〜普通乗用車・荷物運搬時は3t車）を使用。神奈川・東京・千葉が中心エリアです。3t限定解除は入社後サポートあり。</p>
+      </div>
+      <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=640&h=380&fit=crop&q=80" alt="現場作業の様子" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="section features" id="features">
+  <div class="sec-inner">
+    <h2 class="sec-title">働く<span>魅力</span></h2>
+    <div class="divider"></div>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+        </div>
+        <h3>大手取引先・誇れるものづくり</h3>
+        <p>大成建設・乃村工藝社など大手企業との取引実績。テーマパーク・美術館という特別な場所の造形に関わる、職人として誇れる仕事です。</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <h3>年間休日125日・土日祝完全週休2日</h3>
+        <p>土日祝＋夏季・年末年始で年125日休めます。仕事のやりがいと私生活の充実を両立できる環境です。</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>
+        </div>
+        <h3>技術が収入に直結・着実な昇給</h3>
+        <p>月給20.5〜28万円。昇給は年間最大15,000円/月、賞与年2回計3ヶ月分。経験・スキルを正当に評価する給与体系です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<section class="section numbers-bg" id="numbers">
+  <div class="sec-inner">
+    <h2 class="sec-title">数字で見る<span>日本美術工芸</span></h2>
+    <div class="divider"></div>
+    <div class="num-grid">
+      <div class="num-item">
+        <div class="num-val">125<span>日</span></div>
+        <div class="num-label">年間休日</div>
+        <div class="num-note">土日祝+夏季・年末年始</div>
+      </div>
+      <div class="num-item">
+        <div class="num-val">45<span>年</span></div>
+        <div class="num-label">創業年数</div>
+        <div class="num-note">昭和55年（1980年）創業</div>
+      </div>
+      <div class="num-item">
+        <div class="num-val">3<span>ヶ月</span></div>
+        <div class="num-label">賞与実績</div>
+        <div class="num-note">年2回・計3ヶ月分（前年実績）</div>
+      </div>
+      <div class="num-item">
+        <div class="num-val">86<span>名</span></div>
+        <div class="num-label">全社員数</div>
+        <div class="num-note">浦安営業所29名（うち女性11名）</div>
+      </div>
+    </div>
+    <p class="sample-note" style="text-align:center;margin-top:1.2rem;">※ここはサンプルです。実際には御社の最新データに差し替えます</p>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="section timeline-bg" id="schedule">
+  <div class="sec-inner">
+    <h2 class="sec-title">1日の<span>流れ</span></h2>
+    <div class="divider"></div>
+    <p class="sec-sub">浦安営業所（舞浜駅徒歩10分）勤務の制作スタッフの1日の例です。</p>
+    <p class="sample-note" style="text-align:center;margin-bottom:2rem;">※ここはサンプルです。実際には御社スタッフの1日の流れに差し替えます</p>
+    <div class="timeline-wrap">
+      <div class="tl-item">
+        <div class="tl-time">8:45</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>出社・朝礼</h4><p>今日の担当工程・現場移動の有無を確認。材料・道具を準備して作業に入る。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">9:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>造形制作スタート</h4><p>塗装・スチロール造形・FRP作業など担当工程を集中して進める。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>昼休憩（60分）</h4><p>営業所近くの飲食店や持参のお弁当でゆっくり休憩。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>午後の制作・現場メンテナンス</h4><p>テーマパークへ社用車で移動し、オープン前に破損箇所を補修・施工するケースも。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">16:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>片付け・引継ぎ</h4><p>翌日の工程を先輩・リーダーと共有。材料補充・工具の整理整頓。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">18:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>退社</h4><p>定時退社を基本としています。繁忙期の残業は月平均27時間以内を目安に管理。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOICES -->
+<section class="section" id="voice">
+  <div class="sec-inner">
+    <h2 class="sec-title">先輩からの<span>メッセージ</span></h2>
+    <div class="divider"></div>
+    <p class="sample-note" style="text-align:center;margin-bottom:2rem;">※ここはサンプルです。実際には御社社員のインタビューに差し替えます</p>
+    <div class="voices-grid">
+      <div class="voice-card">
+        <div class="voice-head">
+          <img class="voice-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩社員">
+          <div>
+            <div class="voice-name">田中 誠（仮名）</div>
+            <div class="voice-role">制作スタッフ ／ 入社7年目</div>
+          </div>
+        </div>
+        <p>前職は建具職人でしたが、造形の仕事に興味を持って転職しました。テーマパークの大きなオブジェが完成した瞬間は本当に達成感があります。扱う素材が多いので日々勉強になりますよ。</p>
+        <div class="sample-note">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-head">
+          <img class="voice-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩社員">
+          <div>
+            <div class="voice-name">佐藤 健（仮名）</div>
+            <div class="voice-role">制作スタッフ ／ 入社4年目</div>
+          </div>
+        </div>
+        <p>美術系専門学校出身です。学校で覚えたスチロール造形や塗装の技術がそのまま使えて、入社した日から「自分の経験が活きる」と実感しました。先輩がていねいに教えてくれる職場です。</p>
+        <div class="sample-note">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-head">
+          <img class="voice-img" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩社員">
+          <div>
+            <div class="voice-name">山下 陽子（仮名）</div>
+            <div class="voice-role">制作スタッフ ／ 入社3年目</div>
+          </div>
+        </div>
+        <p>女性が活躍できるか心配でしたが、浦安営業所には女性スタッフが複数いて安心しました。土日祝がしっかり休めるので、休日は趣味の陶芸も続けられています。手仕事が好きな方にはきっと合う職場です。</p>
+        <div class="sample-note">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section faq-bg" id="faq">
+  <div class="sec-inner">
+    <h2 class="sec-title">よくある<span>質問</span></h2>
+    <div class="divider"></div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">テーマパーク造形の経験がなくても大丈夫ですか？</div>
+        <div class="faq-a">塗装・木工加工・スチロール造形・粘土造形・FRP作業のいずれかの経験があれば、他の技術は入社後OJTで習得できます。美術系の専門学校・短大・大学出身者も歓迎しています。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">勤務地はどこですか？現場への移動はありますか？</div>
+        <div class="faq-a">主な勤務地は千葉県浦安市（JR舞浜駅徒歩10分）の浦安営業所です。テーマパークなどの現場へは社用車で移動します（神奈川・東京・千葉が中心）。普通自動車免許（AT限定可）が必要です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">残業はどのくらいありますか？</div>
+        <div class="faq-a">月平均27時間です。受注集中・納期前は多くなる場合もありますが、チームで分担し管理しています。36協定の特別条項は年600時間・月70時間が上限です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">選考の流れを教えてください。</div>
+        <div class="faq-a">書類選考（14日以内に結果通知）→ 筆記試験・面接（1回）→ 内定のステップです。ポートフォリオ（作品集）の提出をお願いしています。オンライン自主応募も可能です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">退職金・育休制度はありますか？</div>
+        <div class="faq-a">勤続3年以上の方に退職金制度があります。育児休業取得実績もあり、ライフイベントに合わせて長く働ける環境を整えています。再雇用制度（65歳まで）もあります。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT PERSON -->
+<section class="section cp-bg" id="contact">
+  <div class="sec-inner">
+    <h2 class="sec-title" style="color:#fff;">採用担当<span>より</span></h2>
+    <div class="divider" style="background:#e8c96a;"></div>
+    <div class="cp-box">
+      <img class="cp-img" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当">
+      <div class="cp-text">
+        <h3>渋谷（仮名）／ 総務管理担当</h3>
+        <p>「ものづくりが好き」「手を動かして完成させる達成感が好き」という方を歓迎します。テーマパークや美術館の造形に関わりたい方は、ぜひ気軽にお問い合わせください。ポートフォリオは形式を問いません。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社採用担当者の写真・メッセージに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REQUIREMENTS -->
+<section class="section" id="requirements">
+  <div class="sec-inner">
+    <h2 class="sec-title">募集<span>要項</span></h2>
+    <div class="divider"></div>
+    <table class="req-table">
+      <tr><th>職種</th><td>制作スタッフ（造形制作）</td></tr>
+      <tr><th>雇用形態</th><td>正社員</td></tr>
+      <tr><th>仕事内容</th><td>テーマパーク・美術館の造形物（立体オブジェ・装飾物）の制作・施工・メンテナンス。塗装・木工加工・スチロール造形・粘土造形・FRP作業など。</td></tr>
+      <tr><th>勤務地</th><td>千葉県浦安市鉄鋼通り3丁目5-9（浦安営業所）<br>JR京葉線 舞浜駅 徒歩10分。バイク・自転車通勤可。</td></tr>
+      <tr><th>給与</th><td>月給 205,000円〜280,000円<br>（時間外・深夜・家族・住宅・技術手当 別途支給）<br>試用期間中: 時給1,250〜1,500円（2〜6ヶ月）</td></tr>
+      <tr><th>昇給</th><td>年間 5,000〜15,000円/月（前年度実績）</td></tr>
+      <tr><th>賞与</th><td>年2回・計3ヶ月分（前年度実績）</td></tr>
+      <tr><th>就業時間</th><td>9:00〜18:00（業務により変動あり）<br>月平均残業時間: 27時間</td></tr>
+      <tr><th>休日・休暇</th><td>土・日・祝日・夏季・年末年始<br>年間休日125日 ／ 有給休暇（6ヶ月後10日〜）</td></tr>
+      <tr><th>福利厚生</th><td>雇用・労災・健康・厚生年金完備。退職金制度（勤続3年以上）。再雇用制度（〜65歳）。育休取得実績あり。資格取得補助。制服貸与。健康相談サービス。</td></tr>
+      <tr><th>応募資格</th><td>高卒以上。塗装・木工加工・スチロール造形・粘土造形・FRP作業のいずれかの経験者。普通自動車免許（AT可）必須。美術系専門学校・短大・大学卒歓迎。</td></tr>
+      <tr><th>採用人数</th><td>1名（増員）</td></tr>
+      <tr><th>選考方法</th><td>書類選考 → 筆記試験・面接（1回）。ポートフォリオ提出あり。オンライン自主応募可。</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec" id="entry">
+  <h2>ものづくりで「夢の空間」を支えませんか？</h2>
+  <p>まずは気軽にお問い合わせください。ポートフォリオの形式は問いません。</p>
+  <a href="mailto:info@j-art-craft.com" class="btn-navy">採用担当に問い合わせる</a>
+</section>
+
+<footer>
+  <p>日本美術工芸 株式会社</p>
+  <p>〒279-0025 千葉県浦安市鉄鋼通り3丁目5-9（浦安営業所）</p>
+  <p>Tel: 042-796-0775 ／ E-mail: info@j-art-craft.com</p>
+</footer>
+
+<script>
+(function(){
+  var btn=document.querySelector('.hamburger');
+  var nav=document.querySelector('.site-nav');
+  if(btn&&nav){
+    btn.addEventListener('click',function(){
+      var open=nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded',open);
+    });
+  }
+})();
+</script>
+</body>
+</html>
