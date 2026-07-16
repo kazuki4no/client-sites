@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>採用情報（FVバナー型）| 株式会社 フィーリングエンジ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;color:#222;line-height:1.7;background:#111;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+
+/* ===== HEADER ===== */
+.site-header{display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 1.4rem;background:rgba(17,20,30,.92);position:fixed;top:0;left:0;right:0;z-index:100;
+  backdrop-filter:blur(8px);}
+.brand{color:#fff;font-weight:700;font-size:.9rem;letter-spacing:.06em;}
+.hamburger{display:none;background:none;border:0;color:#fff;font-size:1.8rem;line-height:1;cursor:pointer;}
+.site-nav{display:flex;gap:1.4rem;align-items:center;}
+.site-nav a{color:rgba(255,255,255,.8);font-size:.87rem;letter-spacing:.04em;transition:color .2s;}
+.site-nav a:hover{color:#00b8a9;}
+.site-nav .nav-cta{border:1px solid #00b8a9;color:#00b8a9;padding:.35rem .9rem;border-radius:3px;font-weight:700;}
+.site-nav .nav-cta:hover{background:#00b8a9;color:#111;}
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:rgba(17,20,30,.97);padding:.5rem 1rem;}
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.8rem 0;border-bottom:1px solid rgba(255,255,255,.1);}
+}
+
+/* ===== HERO ===== */
+.hero{min-height:100vh;position:relative;display:flex;align-items:center;justify-content:center;
+  text-align:center;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1473445730015-841f29a9490b?w=1600&h=900&fit=crop&q=80');
+  background-size:cover;background-position:center;}
+.hero-overlay{position:absolute;inset:0;background:rgba(14,18,28,.72);}
+.hero-content{position:relative;z-index:1;padding:7rem 1.4rem 4rem;color:#fff;max-width:820px;}
+.hero-eyebrow{font-size:.78rem;letter-spacing:.2em;color:#00b8a9;text-transform:uppercase;margin-bottom:1.4rem;}
+.hero h1{font-family:'Noto Serif JP',serif;font-size:clamp(2rem,7vw,3.8rem);font-weight:900;
+  line-height:1.2;margin-bottom:1.4rem;letter-spacing:.03em;}
+.hero-accent{color:#00b8a9;}
+.hero-lead{font-size:clamp(.95rem,2.5vw,1.1rem);opacity:.85;margin-bottom:2.4rem;line-height:1.8;}
+.hero-pills{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;margin-bottom:2.4rem;}
+.hero-pill{background:rgba(0,184,169,.15);border:1px solid rgba(0,184,169,.5);color:#00b8a9;
+  font-size:.8rem;padding:.3rem .8rem;border-radius:20px;letter-spacing:.04em;}
+.btn-hero{display:inline-block;background:#00b8a9;color:#fff;padding:1rem 2.8rem;border-radius:3px;
+  font-weight:700;font-size:1rem;letter-spacing:.05em;transition:transform .15s,box-shadow .15s;}
+.btn-hero:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,184,169,.4);}
+.hero-scroll{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);
+  color:rgba(255,255,255,.5);font-size:.75rem;letter-spacing:.1em;text-align:center;}
+.hero-scroll::before{content:'';display:block;width:1px;height:40px;background:rgba(255,255,255,.3);
+  margin:0 auto .5rem;}
+
+/* ===== SECTION BASE ===== */
+section{padding:5.5rem 1.4rem;}
+.container{max-width:980px;margin:0 auto;}
+.sec-eyebrow{font-size:.75rem;letter-spacing:.2em;color:#00b8a9;text-transform:uppercase;margin-bottom:.5rem;}
+.sec-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,4vw,2rem);font-weight:700;
+  color:#fff;margin-bottom:.6rem;}
+.sec-title.dark{color:#1c1f2a;}
+.divider{width:36px;height:2px;background:#00b8a9;margin:.6rem 0 2.2rem;}
+
+/* ===== FEATURES ===== */
+.features{background:#1c2433;}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;}
+.feat-card{border:1px solid rgba(0,184,169,.2);border-radius:6px;padding:2rem 1.5rem;
+  transition:border-color .2s,transform .2s;}
+.feat-card:hover{border-color:#00b8a9;transform:translateY(-3px);}
+.feat-num{font-family:'Noto Serif JP',serif;font-size:2.5rem;color:rgba(0,184,169,.25);font-weight:900;
+  line-height:1;margin-bottom:.7rem;}
+.feat-card h3{color:#fff;font-weight:700;margin-bottom:.6rem;font-size:1rem;}
+.feat-card p{font-size:.87rem;color:rgba(255,255,255,.6);line-height:1.7;}
+@media(max-width:768px){.features-grid{grid-template-columns:1fr;}}
+
+/* ===== JOB DETAIL ===== */
+.job-detail{background:#111720;}
+.job-flex{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.job-img{border-radius:6px;overflow:hidden;}
+.job-img img{width:100%;height:380px;object-fit:cover;}
+.job-body p.intro{font-size:.97rem;color:rgba(255,255,255,.75);margin-bottom:1.4rem;}
+.job-list{list-style:none;padding:0;}
+.job-list li{color:rgba(255,255,255,.75);font-size:.9rem;padding:.5rem 0;
+  border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:flex-start;gap:.6rem;}
+.job-list li::before{content:'→';color:#00b8a9;flex-shrink:0;margin-top:.05rem;}
+@media(max-width:768px){.job-flex{grid-template-columns:1fr;}}
+
+/* ===== NUMBERS ===== */
+.numbers{background:#0a0e17;}
+.num-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;margin-top:2rem;}
+.num-card{text-align:center;padding:1.8rem 1rem;border-top:2px solid #00b8a9;}
+.num-big{font-family:'Noto Serif JP',serif;font-size:clamp(2rem,5vw,3rem);
+  font-weight:700;color:#00b8a9;line-height:1.1;}
+.num-unit{font-size:.9rem;color:#fff;}
+.num-desc{font-size:.78rem;color:rgba(255,255,255,.5);margin-top:.4rem;}
+.num-sample{font-size:.72rem;color:rgba(255,255,255,.3);text-align:center;margin-top:1rem;}
+@media(max-width:768px){.num-grid{grid-template-columns:repeat(2,1fr);}}
+
+/* ===== TIMELINE ===== */
+.timeline-section{background:#1c2433;}
+.timeline{max-width:700px;margin:0 auto;position:relative;}
+.timeline::before{content:'';position:absolute;left:82px;top:0;bottom:0;width:1px;background:rgba(0,184,169,.25);}
+.tl-item{display:grid;grid-template-columns:72px 20px 1fr;gap:0 .8rem;align-items:start;margin-bottom:1.8rem;}
+.tl-time{text-align:right;font-weight:700;color:#00b8a9;font-size:.92rem;padding-top:.1rem;}
+.tl-dot{width:10px;height:10px;border-radius:50%;background:#00b8a9;justify-self:center;margin-top:.45rem;}
+.tl-body strong{display:block;color:#fff;font-weight:700;margin-bottom:.2rem;font-size:.95rem;}
+.tl-body p{font-size:.85rem;color:rgba(255,255,255,.55);}
+.tl-note{font-size:.75rem;color:rgba(255,255,255,.35);text-align:center;margin-top:.5rem;}
+@media(max-width:768px){
+  .tl-item{grid-template-columns:44px 16px 1fr;}
+  .timeline::before{left:52px;}
+  .tl-time{font-size:.8rem;}
+}
+
+/* ===== VOICES ===== */
+.voices{background:#111720;}
+.voices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;}
+.voice-card{background:#1c2433;border-radius:6px;overflow:hidden;}
+.voice-img{width:100%;padding-bottom:85%;position:relative;}
+.voice-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.voice-body{padding:1.3rem;}
+.voice-name{color:#fff;font-weight:700;font-size:.95rem;margin-bottom:.15rem;}
+.voice-meta{font-size:.75rem;color:#00b8a9;margin-bottom:.6rem;}
+.voice-text{font-size:.87rem;color:rgba(255,255,255,.65);line-height:1.6;}
+.voice-sample{font-size:.72rem;color:rgba(255,255,255,.3);margin-top:.5rem;display:block;}
+@media(max-width:768px){.voices-grid{grid-template-columns:1fr;}}
+
+/* ===== REQUIREMENTS ===== */
+.requirements{background:#0a0e17;}
+.req-table{width:100%;border-collapse:collapse;margin-top:1rem;}
+.req-table th,.req-table td{text-align:left;padding:.85rem 1rem;border-bottom:1px solid rgba(255,255,255,.08);font-size:.9rem;}
+.req-table th{width:150px;color:#00b8a9;font-weight:700;vertical-align:top;}
+.req-table td{color:rgba(255,255,255,.7);}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{border-bottom:none;padding:.5rem .8rem .2rem;}
+  .req-table td{padding:.2rem .8rem 1rem;}
+}
+
+/* ===== FAQ ===== */
+.faq{background:#1c2433;}
+.faq-list{max-width:760px;margin:0 auto;}
+.faq-item{border-bottom:1px solid rgba(255,255,255,.08);padding:1.2rem 0;}
+.faq-q{font-weight:700;color:#fff;margin-bottom:.5rem;display:flex;gap:.7rem;}
+.faq-q::before{content:'Q';background:#00b8a9;color:#fff;border-radius:50%;
+  width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;
+  font-size:.78rem;flex-shrink:0;margin-top:.05rem;}
+.faq-a{font-size:.9rem;color:rgba(255,255,255,.6);padding-left:2rem;}
+.faq-sample{font-size:.74rem;color:rgba(255,255,255,.25);margin-top:.4rem;}
+
+/* ===== CTA ===== */
+.cta-section{background:#0a0e17;text-align:center;padding:7rem 1.4rem;position:relative;overflow:hidden;}
+.cta-section::before{content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at center, rgba(0,184,169,.1) 0%, transparent 70%);}
+.cta-section h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.6rem,5vw,2.4rem);
+  color:#fff;margin-bottom:.8rem;position:relative;}
+.cta-section p{color:rgba(255,255,255,.65);margin-bottom:2.4rem;font-size:.97rem;position:relative;}
+.btn-cta{display:inline-block;background:#00b8a9;color:#fff;padding:1rem 2.8rem;border-radius:3px;
+  font-weight:700;font-size:1rem;position:relative;transition:transform .15s,box-shadow .15s;}
+.btn-cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,184,169,.4);}
+.cta-sub{font-size:.82rem;color:rgba(255,255,255,.4);margin-top:.7rem;position:relative;}
+
+/* ===== FOOTER ===== */
+footer{background:#060810;color:rgba(255,255,255,.4);text-align:center;padding:2.2rem 1rem;font-size:.8rem;}
+footer .co-name{color:rgba(255,255,255,.8);font-weight:700;font-size:.9rem;margin-bottom:.4rem;}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <a class="brand" href="#top">フィーリングエンジ</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#features">特徴</a>
+    <a href="#job">仕事内容</a>
+    <a href="#voices">先輩の声</a>
+    <a href="#requirements">募集要項</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">Field Engineer Recruitment 2026</p>
+    <h1>物流を、<br><span class="hero-accent">止めない</span>ために。</h1>
+    <p class="hero-lead">社員の8割が未経験スタート。<br>資格取得費用は全額会社負担。<br>あなたの「やってみたい」を、力に変える。</p>
+    <div class="hero-pills">
+      <span class="hero-pill">正社員5名募集</span>
+      <span class="hero-pill">未経験大歓迎</span>
+      <span class="hero-pill">月給24〜32万円</span>
+      <span class="hero-pill">年休125日</span>
+      <span class="hero-pill">書類選考なし</span>
+    </div>
+    <a class="btn-hero" href="#entry">採用に応募する</a>
+  </div>
+  <div class="hero-scroll">scroll</div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="container">
+    <p class="sec-eyebrow">Why Feeling Eng</p>
+    <h2 class="sec-title">選ばれる理由</h2>
+    <div class="divider"></div>
+    <div class="features-grid">
+      <div class="feat-card">
+        <div class="feat-num">01</div>
+        <h3>未経験8割が証明するサポート体制</h3>
+        <p>社員のうち約8割が異業種・未経験からのスタート。丁寧な新人研修とOJTで、機械の知識ゼロでも確実に技術が身につきます。</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-num">02</div>
+        <h3>資格費用全額会社負担でスキルアップ</h3>
+        <p>第二種電気工事士などの資格取得にかかる費用は会社が全額負担。資格手当も充実しており、スキルが増えるほど収入も上がります。</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-num">03</div>
+        <h3>月6万円の住宅手当で実質収入を底上げ</h3>
+        <p>住宅手当4万円＋マイホーム手当2万円＝月6万円が基本給に上乗せ。月給24〜32万円の額面以上の実質的な待遇が期待できます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOB DETAIL -->
+<section class="job-detail" id="job">
+  <div class="container">
+    <div class="job-flex">
+      <div class="job-img">
+        <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=800&h=760&fit=crop&q=80" alt="設備メンテナンス">
+      </div>
+      <div class="job-body">
+        <p class="sec-eyebrow">Job Description</p>
+        <h2 class="sec-title">物流倉庫の<br>設備メンテナンスエンジニア</h2>
+        <div class="divider"></div>
+        <p class="intro">関東エリアの物流倉庫でベルトコンベヤなどの機械設備を守る、インフラを支える専門職です。</p>
+        <ul class="job-list">
+          <li>ベルトコンベヤ等の機械設備の点検・保守・修理・部品交換</li>
+          <li>関東エリアの物流倉庫を社用車で巡回（直行直帰）</li>
+          <li>見積書・作業報告書の作成（PC基本操作レベルでOK）</li>
+          <li>4パターンの働き方（現場のみ・事務のみ・午前現場午後事務・午前事務午後現場）</li>
+          <li>株式会社ダイフクの倉庫設備を中心に担当</li>
+          <li>少人数チームで丁寧にサポートしながら成長できる</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<section class="numbers">
+  <div class="container">
+    <p class="sec-eyebrow">Numbers</p>
+    <h2 class="sec-title">数字で見る待遇</h2>
+    <div class="divider"></div>
+    <!-- ※ここはサンプルです。実際には御社の実績数字に差し替えます -->
+    <div class="num-grid">
+      <div class="num-card">
+        <div class="num-big">240〜<br>320<span class="num-unit">万円</span></div>
+        <div class="num-desc">年収目安（月給×12＋賞与）</div>
+      </div>
+      <div class="num-card">
+        <div class="num-big">125<span class="num-unit">日</span></div>
+        <div class="num-desc">年間休日（週休2日）</div>
+      </div>
+      <div class="num-card">
+        <div class="num-big">10<span class="num-unit">時間</span></div>
+        <div class="num-desc">月平均残業（少なめ）</div>
+      </div>
+      <div class="num-card">
+        <div class="num-big">全額<span class="num-unit">負担</span></div>
+        <div class="num-desc">資格取得費用（会社負担）</div>
+      </div>
+    </div>
+    <p class="num-sample">※ここはサンプルです。実際には御社の実績数字に差し替えます</p>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-section">
+  <div class="container">
+    <p class="sec-eyebrow">A Day in Life</p>
+    <h2 class="sec-title">1日の流れ（日勤パターン）</h2>
+    <div class="divider"></div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">08:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><strong>出社または現場へ直行</strong><p>その日の作業場所へ社用車で直行。通勤ストレスを最小化できます。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">09:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><strong>午前の点検・保守作業</strong><p>倉庫内の機械を一台ずつ確認。先輩が一緒にフォローしてくれます。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><strong>昼休憩（60分）</strong><p>自由時間。好きな場所でリフレッシュしてください。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><strong>修理・部品交換</strong><p>不具合箇所を特定し、部品交換・修理を行います。復旧した瞬間の達成感は格別です。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">15:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><strong>報告書・見積書の作成</strong><p>当日の作業をPCで記録。フォーマットがあるので迷わずに書けます。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><strong>作業終了・帰宅（直帰）</strong><p>社用車でそのまま帰宅。定時に上がれる日がほとんどです。</p></div>
+      </div>
+    </div>
+    <p class="tl-note">※ここはサンプルです。実際には御社の実際の1日の流れに差し替えます</p>
+  </div>
+</section>
+
+<!-- VOICES -->
+<section class="voices" id="voices">
+  <div class="container">
+    <p class="sec-eyebrow">Staff Voice</p>
+    <h2 class="sec-title">先輩の声</h2>
+    <div class="divider"></div>
+    <!-- ※ここはサンプルです。実際には御社スタッフのコメントと写真に差し替えます -->
+    <div class="voices-grid">
+      <div class="voice-card">
+        <div class="voice-img">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=260&fit=crop&crop=faces&q=80" alt="先輩社員">
+        </div>
+        <div class="voice-body">
+          <div class="voice-name">T.Y.（仮名）</div>
+          <div class="voice-meta">入社3年目</div>
+          <p class="voice-text">「前職はまったく別の仕事でしたが、今では自信を持って現場に臨めます。少人数で困ったことはすぐ相談できる環境が気に入っています。」</p>
+          <span class="voice-sample">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</span>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-img">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=260&fit=crop&crop=faces&q=80" alt="先輩社員">
+        </div>
+        <div class="voice-body">
+          <div class="voice-name">K.I.（仮名）</div>
+          <div class="voice-meta">入社5年目・リーダー</div>
+          <p class="voice-text">「資格を5つ取得しました。費用は全部会社持ちで、取得のたびに手当が増えるのでモチベーションが上がります。物流を止めない仕事に誇りを感じています。」</p>
+          <span class="voice-sample">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</span>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-img">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=260&fit=crop&crop=faces&q=80" alt="先輩社員">
+        </div>
+        <div class="voice-body">
+          <div class="voice-name">D.S.（仮名）</div>
+          <div class="voice-meta">入社1年目</div>
+          <p class="voice-text">「直行直帰できるので、以前より家族との時間が増えました。年休も取りやすく、メリハリのある働き方ができています。」</p>
+          <span class="voice-sample">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REQUIREMENTS -->
+<section class="requirements" id="requirements">
+  <div class="container">
+    <p class="sec-eyebrow">Requirements</p>
+    <h2 class="sec-title">募集要項</h2>
+    <div class="divider"></div>
+    <table class="req-table">
+      <tr><th>職種</th><td>フィールドエンジニア（千葉県浦安市）</td></tr>
+      <tr><th>雇用形態</th><td>正社員（試用期間3ヶ月）</td></tr>
+      <tr><th>就業場所</th><td>千葉県浦安市入船1-5-2 プライムタワー新浦安512（新浦安駅 徒歩7分）</td></tr>
+      <tr><th>給与</th><td>月給 240,000〜320,000円（試用期間中: 210,000円）<br>住宅手当 40,000円・マイホーム手当 20,000円・夜勤手当別途</td></tr>
+      <tr><th>昇給・賞与</th><td>昇給年1回（実績1.5%〜）／賞与年2回（実績計2ヶ月分）</td></tr>
+      <tr><th>就業時間</th><td>シフト制（日勤8:00〜17:00 ／ 夕勤17:00〜2:00 ／ 夜勤21:00〜6:00）</td></tr>
+      <tr><th>休日</th><td>週休2日・年間125日・夏季/GW/年末年始休暇・希望休提出可</td></tr>
+      <tr><th>応募資格</th><td>普通自動車免許（必須・AT限定可）、18〜40歳、学歴・経験不問</td></tr>
+      <tr><th>福利厚生</th><td>社会保険完備・退職金・資格取得支援（全額会社負担）・社用車貸与・作業服/工具/PCの支給・通勤手当</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <p class="sec-eyebrow">FAQ</p>
+    <h2 class="sec-title">よくある質問</h2>
+    <div class="divider"></div>
+    <!-- ※ここはサンプルです。実際には御社のFAQに差し替えます -->
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">機械の知識がなくても大丈夫ですか？</div>
+        <div class="faq-a">はい。社員の約8割が未経験入社です。新人研修とOJTで、ゼロから技術を身につけられます。<p class="faq-sample">※ここはサンプルです。実際には御社の実際の回答に差し替えます</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">必要な資格はありますか？</div>
+        <div class="faq-a">普通自動車免許（AT限定可）のみ必須です。その他の資格は入社後に会社費用で取得いただけます。<p class="faq-sample">※ここはサンプルです。実際には御社の実際の回答に差し替えます</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">夜勤はありますか？</div>
+        <div class="faq-a">シフト制で夜勤もありますが、希望休の事前提出が可能です。夜勤時は夜勤手当が加算されます。<p class="faq-sample">※ここはサンプルです。実際には御社の実際の回答に差し替えます</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">選考の流れを教えてください。</div>
+        <div class="faq-a">書類提出 → 一次面接（オンライン）→ 二次面接（対面）→ 内定。書類選考はなし、面接後3日以内に連絡します。<p class="faq-sample">※ここはサンプルです。実際には御社の実際の回答に差し替えます</p></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">外国籍の方も応募できますか？</div>
+        <div class="faq-a">はい、外国籍の方も歓迎しています。帰化申請支援制度もご利用いただけます。<p class="faq-sample">※ここはサンプルです。実際には御社の実際の回答に差し替えます</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="entry">
+  <h2>物流の「止まらない」を、<br>あなたの手で守りませんか。</h2>
+  <p>やってみたいという気持ちが一番大切です。<br>オンライン面接対応・書類選考なし。<br>いつでもお気軽にご連絡ください。</p>
+  <a class="btn-cta" href="mailto:info@feelingeng.com">採用に応募する</a>
+  <p class="cta-sub">TEL: 070-4226-2372（総務部 三浦）</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="co-name">株式会社 フィーリングエンジ</div>
+  <p>〒252-0243 神奈川県相模原市中央区上溝2452-15</p>
+  <p>TEL: 070-4226-2372 ／ MAIL: info@feelingeng.com</p>
+</footer>
+
+<script>
+(function(){
+  var btn = document.querySelector('.hamburger');
+  var nav = document.querySelector('.site-nav');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  }
+})();
+</script>
+</body>
+</html>
