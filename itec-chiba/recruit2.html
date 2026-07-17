@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>採用情報 | 株式会社アイテック 千葉支店</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    body { font-family: 'Noto Sans JP', sans-serif; color: #1a1a2e; background: #fff; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    :root {
+      --dark: #0d1b2a;
+      --accent: #ffa500;
+      --accent-d: #d48700;
+      --gray-bg: #f4f5f7;
+      --gray-text: #666;
+      --max-w: 860px;
+    }
+
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 20px; }
+    section { padding: 64px 0; }
+
+    /* Header */
+    .site-header { position: sticky; top: 0; z-index: 200; background: var(--dark); box-shadow: 0 2px 16px rgba(0,0,0,0.4); }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; height: 60px; display: flex; align-items: center; justify-content: space-between; }
+    .logo { font-size: 0.9rem; font-weight: 700; color: #fff; line-height: 1.4; }
+    .logo em { color: var(--accent); font-style: normal; }
+    .pc-nav { display: flex; gap: 24px; }
+    .pc-nav a { color: rgba(255,255,255,0.8); font-size: 0.82rem; font-weight: 500; transition: color 0.2s; }
+    .pc-nav a:hover { color: var(--accent); }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; }
+    .mobile-nav { display: none; background: var(--dark); padding: 12px 20px 20px; }
+    .mobile-nav a { display: block; padding: 12px 0; color: rgba(255,255,255,0.85); font-size: 0.95rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+    .mobile-nav.open { display: block; }
+
+    /* CTA buttons */
+    .btn-accent {
+      display: inline-block; background: var(--accent); color: #fff;
+      font-weight: 900; padding: 16px 40px; border-radius: 4px;
+      font-size: 1.05rem; letter-spacing: 0.04em;
+      transition: background 0.2s, transform 0.15s; cursor: pointer;
+    }
+    .btn-accent:hover { background: #ffb733; transform: translateY(-2px); }
+    .btn-accent-outline {
+      display: inline-block; border: 2px solid var(--accent); color: var(--accent);
+      font-weight: 700; padding: 13px 36px; border-radius: 4px; font-size: 1rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-accent-outline:hover { background: var(--accent); color: #fff; }
+
+    /* Hero (LP型) */
+    .hero { position: relative; min-height: 80vh; display: flex; align-items: center; background: var(--dark); overflow: hidden; }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1600&h=900&fit=crop&q=80');
+      background-size: cover; background-position: center; opacity: 0.18;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: var(--max-w); margin: 0 auto; padding: 80px 20px; text-align: center; }
+    .hero-eyebrow {
+      display: inline-block; border: 1px solid var(--accent); color: var(--accent);
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em;
+      padding: 5px 16px; border-radius: 2px; margin-bottom: 24px;
+    }
+    .hero-headline { font-size: clamp(1.9rem, 5.5vw, 3.4rem); font-weight: 900; color: #fff; line-height: 1.22; margin-bottom: 20px; }
+    .hero-headline strong { color: var(--accent); }
+    .hero-sub { color: rgba(255,255,255,0.75); font-size: clamp(0.95rem, 2.2vw, 1.1rem); line-height: 1.8; margin-bottom: 36px; }
+    .hero-badges { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 40px; }
+    .badge {
+      background: rgba(255,165,0,0.15); border: 1px solid rgba(255,165,0,0.4);
+      color: var(--accent); font-size: 0.78rem; font-weight: 700; padding: 5px 14px; border-radius: 20px;
+    }
+
+    /* Numbers bar */
+    .numbers { background: var(--dark); color: #fff; padding: 48px 0; }
+    .numbers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; text-align: center; }
+    .num-item { }
+    .num-val { font-size: clamp(1.8rem, 5vw, 2.8rem); font-weight: 900; color: var(--accent); line-height: 1; }
+    .num-label { font-size: 0.8rem; color: rgba(255,255,255,0.65); margin-top: 8px; }
+    .sample-note { font-size: 0.68rem; color: rgba(255,255,255,0.3); margin-top: 6px; }
+
+    /* Section */
+    .section-label {
+      display: inline-block; background: var(--accent); color: #fff;
+      font-size: 0.68rem; font-weight: 700; letter-spacing: 0.12em;
+      padding: 3px 10px; border-radius: 2px; margin-bottom: 10px;
+    }
+    .section-title { font-size: clamp(1.3rem, 4vw, 1.95rem); font-weight: 900; color: var(--dark); margin-bottom: 8px; }
+    .section-lead { color: var(--gray-text); font-size: 0.88rem; margin-bottom: 40px; }
+
+    /* 3 Points LP */
+    .point-list { display: flex; flex-direction: column; gap: 32px; }
+    .point-item { display: flex; gap: 24px; align-items: flex-start; background: var(--gray-bg); border-radius: 8px; padding: 28px 24px; }
+    .point-no {
+      flex-shrink: 0; width: 52px; height: 52px; border-radius: 50%;
+      background: var(--accent); color: #fff; font-weight: 900; font-size: 1.2rem;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .point-body {}
+    .point-title { font-size: 1.05rem; font-weight: 900; color: var(--dark); margin-bottom: 8px; }
+    .point-desc { font-size: 0.9rem; color: #555; line-height: 1.75; }
+    .point-note { font-size: 0.7rem; color: #bbb; margin-top: 8px; }
+
+    /* CTA block */
+    .cta-block { background: linear-gradient(135deg, var(--accent) 0%, var(--accent-d) 100%); padding: 56px 20px; text-align: center; }
+    .cta-block h2 { font-size: clamp(1.2rem, 3.5vw, 1.75rem); font-weight: 900; color: #fff; margin-bottom: 10px; }
+    .cta-block p { color: rgba(255,255,255,0.88); font-size: 0.95rem; margin-bottom: 28px; line-height: 1.65; }
+    .btn-white { display: inline-block; background: #fff; color: var(--accent); font-weight: 900; padding: 15px 44px; border-radius: 4px; font-size: 1.05rem; transition: transform 0.15s; }
+    .btn-white:hover { transform: translateY(-2px); }
+
+    /* Interview */
+    .interview-list { display: flex; flex-direction: column; gap: 40px; }
+    .interview-item { display: flex; gap: 28px; align-items: flex-start; }
+    .interview-item:nth-child(even) { flex-direction: row-reverse; }
+    .interview-photo { width: 120px; height: 120px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 3px solid var(--accent); }
+    .interview-body {}
+    .interview-name { font-size: 0.95rem; font-weight: 700; margin-bottom: 2px; }
+    .interview-role { font-size: 0.75rem; color: var(--accent); margin-bottom: 12px; }
+    .interview-text { font-size: 0.9rem; color: #444; line-height: 1.8; }
+    .interview-note { font-size: 0.7rem; color: #bbb; margin-top: 8px; }
+
+    /* Requirements */
+    .requirements-wrap { overflow-x: auto; }
+    .requirements-table { width: 100%; border-collapse: collapse; min-width: 400px; }
+    .requirements-table th, .requirements-table td {
+      padding: 13px 18px; text-align: left; border-bottom: 1px solid #e8eaed;
+      font-size: 0.9rem; line-height: 1.65; vertical-align: top;
+    }
+    .requirements-table th { width: 32%; background: var(--gray-bg); font-weight: 700; color: var(--dark); white-space: nowrap; }
+    .requirements-table td { background: #fff; }
+
+    @media (max-width: 640px) {
+      .requirements-wrap { overflow-x: visible; }
+      .requirements-table, .requirements-table tbody, .requirements-table tr,
+      .requirements-table th, .requirements-table td { display: block; width: 100%; }
+      .requirements-table th { white-space: normal; }
+    }
+
+    /* Timeline */
+    .timeline-list { display: flex; flex-direction: column; gap: 0; }
+    .timeline-item { display: flex; gap: 16px; position: relative; }
+    .timeline-item:not(:last-child)::before {
+      content: ''; position: absolute; left: 40px; top: 48px; bottom: -12px;
+      width: 2px; background: var(--accent); opacity: 0.2;
+    }
+    .timeline-left { flex-shrink: 0; display: flex; flex-direction: column; align-items: center; gap: 4px; }
+    .timeline-time { font-size: 0.72rem; font-weight: 700; color: var(--accent); white-space: nowrap; }
+    .timeline-dot { width: 32px; height: 32px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; color: #fff; font-weight: 900; font-size: 0.78rem; }
+    .timeline-body { background: var(--gray-bg); border-radius: 6px; padding: 14px 18px; margin-bottom: 12px; flex: 1; }
+    .timeline-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 3px; }
+    .timeline-desc { font-size: 0.83rem; color: var(--gray-text); line-height: 1.65; }
+
+    /* FAQ */
+    .faq-list { display: flex; flex-direction: column; gap: 0; }
+    .faq-item { border-bottom: 1px solid #e0e3e8; }
+    .faq-q { display: flex; align-items: flex-start; gap: 12px; padding: 18px 0; font-weight: 700; font-size: 0.93rem; cursor: pointer; }
+    .faq-q-icon { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: #fff; font-weight: 900; font-size: 0.82rem; display: flex; align-items: center; justify-content: center; }
+    .faq-a { display: flex; gap: 12px; padding: 0 0 18px 0; font-size: 0.9rem; color: #444; line-height: 1.75; }
+    .faq-a-icon { flex-shrink: 0; width: 26px; height: 26px; border-radius: 50%; background: var(--dark); color: #fff; font-weight: 900; font-size: 0.82rem; display: flex; align-items: center; justify-content: center; margin-top: 1px; }
+
+    /* Fixed CTA bar (mobile) */
+    .fixed-cta {
+      display: none;
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 300;
+      background: var(--accent); padding: 12px 20px;
+      box-shadow: 0 -4px 16px rgba(0,0,0,0.25);
+    }
+    .fixed-cta a { display: block; text-align: center; color: #fff; font-weight: 900; font-size: 1rem; letter-spacing: 0.04em; }
+    body { padding-bottom: 0; }
+
+    footer { background: #070e16; color: rgba(255,255,255,0.5); padding: 40px 20px; text-align: center; font-size: 0.85rem; line-height: 2.1; }
+
+    @media (max-width: 768px) {
+      .pc-nav { display: none; }
+      .hamburger { display: flex; }
+      section { padding: 48px 0; }
+      .numbers-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+      .interview-item { flex-direction: column !important; align-items: flex-start; }
+      .fixed-cta { display: block; }
+      body { padding-bottom: 60px; }
+      .point-item { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo">株式会社アイテック <em>千葉支店</em><br>採用情報</div>
+    <nav class="pc-nav" aria-label="メインナビゲーション">
+      <a href="#points">働く魅力</a>
+      <a href="#requirements">募集要項</a>
+      <a href="#interview">先輩の声</a>
+      <a href="#faq">FAQ</a>
+      <a href="#cta-final">応募する</a>
+    </nav>
+    <button class="hamburger" aria-label="メニューを開く" onclick="document.getElementById('mobileNav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav" aria-label="モバイルナビゲーション">
+    <a href="#points">働く魅力</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#interview">先輩の声</a>
+    <a href="#faq">FAQ</a>
+    <a href="#cta-final">応募する</a>
+  </nav>
+</header>
+
+<!-- Hero CTA 1 -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">印西市 ／ 工場内作業・半自動溶接スタッフ</div>
+    <h1 class="hero-headline">
+      溶接、<strong>ゼロから始めていい。</strong><br>
+      2〜3週間でモノになる<br>工場内の仕事
+    </h1>
+    <p class="hero-sub">
+      屋外現場なし・天候に左右されない工場内のみ。<br>
+      まずは3ヶ月でお試しください。延長ルートもあります。
+    </p>
+    <div class="hero-badges">
+      <span class="badge">未経験OK</span>
+      <span class="badge">土日祝休み</span>
+      <span class="badge">年間休日125日</span>
+      <span class="badge">マイカー通勤可</span>
+      <span class="badge">時給1,650円</span>
+      <span class="badge">社会保険完備</span>
+    </div>
+    <a href="#cta-final" class="btn-accent">まずは問い合わせる</a>
+  </div>
+</section>
+
+<!-- Numbers -->
+<div class="numbers">
+  <div class="container">
+    <div class="numbers-grid">
+      <div class="num-item">
+        <div class="num-val">125<span style="font-size:1.2rem">日</span></div>
+        <div class="num-label">年間休日数</div>
+        <div class="sample-note">※サンプル（御社の実数値に差し替えます）</div>
+      </div>
+      <div class="num-item">
+        <div class="num-val">1,650<span style="font-size:1.2rem">円</span></div>
+        <div class="num-label">時給（固定）</div>
+        <div class="sample-note">※サンプル（御社の実数値に差し替えます）</div>
+      </div>
+      <div class="num-item">
+        <div class="num-val">2〜3<span style="font-size:1.2rem">週</span></div>
+        <div class="num-label">で慣れる（未経験者平均）</div>
+        <div class="sample-note">※サンプル（御社の実数値に差し替えます）</div>
+      </div>
+      <div class="num-item">
+        <div class="num-val">0<span style="font-size:1.2rem">円</span></div>
+        <div class="num-label">駐車場代</div>
+        <div class="sample-note">※サンプル（御社の実数値に差し替えます）</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Points -->
+<section id="points">
+  <div class="container">
+    <div class="section-label">POINT</div>
+    <h2 class="section-title">ここで働くと、こう変わる</h2>
+    <p class="section-lead">※ここはサンプルです。実際には御社の情報に差し替えます</p>
+    <div class="point-list">
+      <div class="point-item">
+        <div class="point-no">1</div>
+        <div class="point-body">
+          <div class="point-title">「溶接の経験がない」は理由にならない</div>
+          <p class="point-desc">半自動アーク溶接は、最初から「難しそう」と思う方がほとんど。でも実際は工具の扱いとコツを覚えれば、2〜3週間で標準的な作業ができるようになります。資格なし・経験ゼロからスタートした先輩が現場にたくさんいます。</p>
+          <p class="point-note">※ここはサンプルです。実際には御社の指導体制・実績に差し替えます</p>
+        </div>
+      </div>
+      <div class="point-item">
+        <div class="point-no">2</div>
+        <div class="point-body">
+          <div class="point-title">工場内のみ。天気も季節も関係ない</div>
+          <p class="point-desc">仕事の現場は屋内工場のみ。雨の日も台風の日も、外に出ることはありません。「現場仕事で体を酷使したくない」「安定した環境で技術を身につけたい」という方に向いている仕事です。</p>
+          <p class="point-note">※ここはサンプルです。実際には御社の職場環境に差し替えます</p>
+        </div>
+      </div>
+      <div class="point-item">
+        <div class="point-no">3</div>
+        <div class="point-body">
+          <div class="point-title">3ヶ月のお試しから始められる。延長ルートあり</div>
+          <p class="point-desc">「いきなり長期契約は不安」という方も安心。まずは3ヶ月の有期契約でスタートでき、生産状況によって延長の可能性もあります。無期雇用への転換ルートも用意されています（上限3年・社内規定による）。</p>
+          <p class="point-note">※ここはサンプルです。実際には御社の雇用制度に差し替えます</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA 2 (中盤) -->
+<div class="cta-block" id="cta-mid">
+  <div class="container">
+    <h2>「まず話だけ聞きたい」でも大丈夫です</h2>
+    <p>見学・質問だけでも歓迎。お気軽にどうぞ。</p>
+    <a href="mailto:chiba@itec-web.com" class="btn-white">メールで問い合わせる</a>
+  </div>
+</div>
+
+<!-- Requirements -->
+<section id="requirements">
+  <div class="container">
+    <div class="section-label">REQUIREMENTS</div>
+    <h2 class="section-title">募集要項</h2>
+    <p class="section-lead">※ここはサンプルです。実際には御社の最新情報に差し替えます</p>
+    <div class="requirements-wrap">
+      <table class="requirements-table">
+        <tr><th>職種</th><td>工場内作業・半自動溶接スタッフ（印西市）</td></tr>
+        <tr><th>仕事内容</th><td>建築金具・立体駐車場パレットの金属加工（プレス・シャーリング）および半自動アーク溶接（鉄・ステンレス、板厚1〜12mm）。屋外現場なし・工場内のみ</td></tr>
+        <tr><th>雇用形態</th><td>有期雇用派遣（3ヶ月・延長可能性あり。上限3年、無期雇用転換ルートあり）</td></tr>
+        <tr><th>給与</th><td>時給 1,650円（月換算 264,000円目安・時給制）昇給・賞与なし</td></tr>
+        <tr><th>就業時間</th><td>8:30〜17:30（実働8時間・休憩60分）月平均残業約10時間</td></tr>
+        <tr><th>休日・休暇</th><td>土・日・祝日（年間休日125日）有給休暇（6ヶ月後10日付与）</td></tr>
+        <tr><th>就業場所</th><td>千葉県印西市みどり台（北総線 印旛日本医大駅 車6分）</td></tr>
+        <tr><th>交通・駐車場</th><td>マイカー通勤可・駐車場あり・通勤手当実費支給（上限なし）</td></tr>
+        <tr><th>資格・経験</th><td>不問（あれば尚可：アーク溶接技能者・溶接経験）</td></tr>
+        <tr><th>加入保険</th><td>雇用保険・労災保険・健康保険・厚生年金</td></tr>
+        <tr><th>選考方法</th><td>書類選考（7日以内通知）→ 面接（WEB・来所どちらも可）・適性検査あり</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- Timeline -->
+<section style="background:var(--gray-bg)">
+  <div class="container">
+    <div class="section-label">A DAY</div>
+    <h2 class="section-title">1日のながれ</h2>
+    <p class="section-lead">※ここはサンプルです。実際には御社スタッフの1日に差し替えます</p>
+    <div class="timeline-list">
+      <div class="timeline-item">
+        <div class="timeline-left"><div class="timeline-time">8:30</div><div class="timeline-dot">1</div></div>
+        <div class="timeline-body"><div class="timeline-title">始業・朝礼・安全確認</div><div class="timeline-desc">道具・機材の状態チェックと当日の作業指示を確認してスタート。</div></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-left"><div class="timeline-time">9:00</div><div class="timeline-dot">2</div></div>
+        <div class="timeline-body"><div class="timeline-title">金属加工（プレス・シャーリング）</div><div class="timeline-desc">建築金具・駐車場パレットを機械で加工。操作は入社後すぐに覚えられます。</div></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-left"><div class="timeline-time">12:00</div><div class="timeline-dot">3</div></div>
+        <div class="timeline-body"><div class="timeline-title">昼休憩（60分）</div><div class="timeline-desc">休憩スペースでゆっくり過ごせます。持参弁当・コンビニどちらも。</div></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-left"><div class="timeline-time">13:00</div><div class="timeline-dot">4</div></div>
+        <div class="timeline-body"><div class="timeline-title">半自動アーク溶接作業</div><div class="timeline-desc">鉄・ステンレスの板を接合。午後は溶接がメインです。資格があれば複雑な工程も担当可。</div></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-left"><div class="timeline-time">15:30</div><div class="timeline-dot">5</div></div>
+        <div class="timeline-body"><div class="timeline-title">品質確認・仕分け</div><div class="timeline-desc">完成品の寸法・品質確認と整理。チームで声を掛け合いながら進めます。</div></div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-left"><div class="timeline-time">17:30</div><div class="timeline-dot">6</div></div>
+        <div class="timeline-body"><div class="timeline-title">終業・清掃・退勤</div><div class="timeline-desc">作業場を清掃して退勤。残業は月平均10時間程度です。</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Interview / Voice -->
+<section id="interview">
+  <div class="container">
+    <div class="section-label">VOICE</div>
+    <h2 class="section-title">先輩スタッフの声</h2>
+    <p class="section-lead">※ここはサンプルです。実際には御社スタッフの写真・コメントに差し替えます</p>
+    <div class="interview-list">
+      <div class="interview-item">
+        <!-- サンプル顔写真（男性）差し替え予定 -->
+        <img class="interview-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div class="interview-body">
+          <div class="interview-name">田中 翔太（仮名）</div>
+          <div class="interview-role">溶接スタッフ・入社8ヶ月 / 25歳</div>
+          <p class="interview-text">「溶接ってムズかしそう」と思いながら入りましたが、全然でした。最初の2週間で基本操作を覚えて、3週目には普通に作業できていました。工場内なので天気の影響がなく、夏でも涼しい環境で働けています。短期スタートでしたが、今は延長で続けています。</p>
+          <p class="interview-note">※ここはサンプルです。実際には御社社員の声に差し替えます</p>
+        </div>
+      </div>
+      <div class="interview-item">
+        <!-- サンプル顔写真（女性）差し替え予定 -->
+        <img class="interview-photo" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div class="interview-body">
+          <div class="interview-name">高橋 美咲（仮名）</div>
+          <div class="interview-role">金属加工スタッフ・入社5ヶ月 / 29歳</div>
+          <p class="interview-text">女性ってどうなの？と思っている方、大丈夫です。力仕事というより技術仕事なので、体力に自信がなくてもこなせます。土日祝がしっかり休めるので、友人との予定が立てやすいのも嬉しいです。マイカーで通えているので通勤がラクです。</p>
+          <p class="interview-note">※ここはサンプルです。実際には御社社員の声に差し替えます</p>
+        </div>
+      </div>
+      <div class="interview-item">
+        <!-- サンプル顔写真（男性）差し替え予定 -->
+        <img class="interview-photo" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div class="interview-body">
+          <div class="interview-name">渡辺 健（仮名）</div>
+          <div class="interview-role">溶接スタッフ・入社1年2ヶ月 / 34歳</div>
+          <p class="interview-text">30代で転職を考えたとき、「今さら溶接を覚えられるか」と思いましたが、実際には想像より全然ハードルが低かった。時給が安定しているので毎月の収入が計算しやすく、家計の管理がしやすいのもメリットだと思っています。</p>
+          <p class="interview-note">※ここはサンプルです。実際には御社社員の声に差し替えます</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:var(--gray-bg)" id="faq">
+  <div class="container">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">よくある質問</h2>
+    <p class="section-lead">※ここはサンプルです。実際には御社のよくある質問に差し替えます</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q"><div class="faq-q-icon">Q</div>溶接の経験や資格がなくても大丈夫ですか？</div>
+        <div class="faq-a"><div class="faq-a-icon">A</div>はい、問題ありません。入社後の指導で2〜3週間で慣れることができます。アーク溶接の資格があれば尚可ですが、必須ではありません。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><div class="faq-q-icon">Q</div>3ヶ月の短期ですが、終了後はどうなりますか？</div>
+        <div class="faq-a"><div class="faq-a-icon">A</div>生産状況によって延長の可能性があります。契約更新上限は3年で、無期雇用への転換ルートもあります（社内規定による）。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><div class="faq-q-icon">Q</div>選考の流れを教えてください。</div>
+        <div class="faq-a"><div class="faq-a-icon">A</div>書類選考（7日以内に通知）→ 面接（WEB・来所どちらも可）→ 採用内定の流れです。適性検査もあります。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><div class="faq-q-icon">Q</div>昇給・賞与はありませんが、給与面の不安が…</div>
+        <div class="faq-a"><div class="faq-a-icon">A</div>昇給・賞与なしの代わりに、時給1,650円・月換算264,000円目安とシンプルで計算しやすい賃金です。通勤手当は実費全額支給、社会保険も完備しています。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><div class="faq-q-icon">Q</div>女性でも働けますか？</div>
+        <div class="faq-a"><div class="faq-a-icon">A</div>はい、女性スタッフも活躍しています。屋外現場なしの工場内作業で、力仕事より技術重視の仕事です。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA Final -->
+<div class="cta-block" id="cta-final">
+  <div class="container">
+    <h2>まずは1通、メールしてみてください</h2>
+    <p>
+      「話を聞きたいだけ」「まだ迷っている」でも大丈夫です。<br>
+      担当の野元が丁寧に対応します。
+    </p>
+    <a href="mailto:chiba@itec-web.com" class="btn-white">メールで問い合わせる</a>
+    <p style="color:rgba(255,255,255,0.7); font-size:0.85rem; margin-top:16px;">または TEL: 043-310-6701</p>
+  </div>
+</div>
+
+<footer>
+  <p>株式会社アイテック 千葉支店</p>
+  <p>〒284-0005 千葉県四街道市四街道1-22-7 サンデイズ1階</p>
+  <p>TEL: 043-310-6701　MAIL: chiba@itec-web.com</p>
+</footer>
+
+<!-- Mobile fixed CTA -->
+<div class="fixed-cta">
+  <a href="mailto:chiba@itec-web.com">メールで問い合わせる</a>
+</div>
+
+</body>
+</html>

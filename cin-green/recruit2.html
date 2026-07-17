@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>採用情報 | ＣＩＮグリーンパートナーズ協同組合</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; max-width: 100%; overflow-x: hidden; font-family: 'Noto Sans JP', sans-serif; color: #333; background: #fff; }
+    img { max-width: 100%; height: auto; display: block; }
+    :root { --navy: #0f2847; --orange: #e07c2a; --light-orange: #fef6ed; --light: #f4f7fb; --gray: #666; }
+
+    /* Header */
+    header { background: var(--navy); position: sticky; top: 0; z-index: 200; box-shadow: 0 2px 8px rgba(0,0,0,0.25); }
+    .header-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .logo { color: #fff; font-size: clamp(0.78rem, 2vw, 0.9rem); font-weight: 700; }
+    nav { display: flex; gap: 4px; }
+    nav a { color: rgba(255,255,255,0.82); text-decoration: none; font-size: 0.83rem; padding: 7px 10px; border-radius: 4px; transition: background 0.2s; }
+    nav a:hover { background: rgba(255,255,255,0.12); }
+    .nav-cta { background: var(--orange) !important; color: #fff !important; font-weight: 700; border-radius: 6px; padding: 7px 16px !important; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; background: none; border: none; cursor: pointer; padding: 8px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; }
+    .mobile-nav { display: none; background: var(--navy); border-top: 1px solid rgba(255,255,255,0.1); }
+    .mobile-nav.open { display: block; }
+    .mobile-nav a { display: block; color: rgba(255,255,255,0.85); text-decoration: none; padding: 12px 20px; font-size: 0.9rem; border-bottom: 1px solid rgba(255,255,255,0.07); }
+    @media (max-width: 768px) { nav { display: none; } .hamburger { display: flex; } }
+
+    /* Hero */
+    .hero { position: relative; min-height: 520px; display: flex; align-items: center; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1600&h=700&fit=crop&q=80'); background-size: cover; background-position: center; }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(100deg, rgba(15,40,71,0.92) 40%, rgba(224,124,42,0.45) 100%); }
+    .hero-content { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 70px 20px; color: #fff; }
+    .hero-eyebrow { font-size: 0.82rem; font-weight: 700; letter-spacing: 0.12em; color: var(--orange); margin-bottom: 16px; }
+    .hero-title { font-size: clamp(1.7rem, 5.5vw, 3rem); font-weight: 900; line-height: 1.3; margin: 0 0 20px; max-width: 760px; }
+    .hero-title em { font-style: normal; color: #ffd580; }
+    .hero-sub { font-size: clamp(0.88rem, 2.4vw, 1rem); opacity: 0.88; margin: 0 0 34px; line-height: 1.8; max-width: 600px; }
+    .hero-numbers { display: flex; flex-wrap: wrap; gap: 14px; margin-bottom: 38px; }
+    .h-num { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.3); border-radius: 10px; padding: 14px 20px; min-width: 120px; }
+    .h-num-val { font-size: 1.4rem; font-weight: 900; color: #ffd580; line-height: 1; }
+    .h-num-label { font-size: 0.73rem; color: rgba(255,255,255,0.75); margin-top: 4px; }
+    .btn-hero { display: inline-block; background: var(--orange); color: #fff; text-decoration: none; font-weight: 700; font-size: 1.05rem; padding: 17px 44px; border-radius: 8px; transition: background 0.2s, transform 0.1s; }
+    .btn-hero:hover { background: #c76b1a; transform: translateY(-2px); }
+    @media (max-width: 768px) { .hero-numbers { gap: 8px; } .h-num { min-width: 100px; padding: 10px 14px; } .h-num-val { font-size: 1.2rem; } }
+
+    /* General */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+    .container-narrow { max-width: 800px; margin: 0 auto; padding: 0 20px; }
+    section { padding: 72px 0; }
+    .section-label { display: inline-block; background: var(--orange); color: #fff; font-size: 0.72rem; font-weight: 700; padding: 4px 14px; border-radius: 999px; letter-spacing: 0.1em; margin-bottom: 14px; }
+    .section-title { font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 900; color: var(--navy); margin: 0 0 10px; }
+    .section-title.center { text-align: center; }
+    .section-bar { width: 44px; height: 4px; background: var(--orange); border-radius: 2px; margin: 10px 0 40px; }
+    .section-bar.center { margin: 10px auto 40px; }
+    .sample-note { font-size: 0.78rem; color: #bbb; text-align: center; margin-top: 16px; }
+    .bg-light { background: var(--light); }
+    .bg-light-orange { background: var(--light-orange); }
+    .bg-navy { background: var(--navy); }
+
+    /* Why section */
+    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .why-img img { width: 100%; border-radius: 14px; height: 380px; object-fit: cover; }
+    .why-list { list-style: none; padding: 0; margin: 0; }
+    .why-item { display: flex; gap: 16px; padding: 18px 0; border-bottom: 1px solid #eee; align-items: flex-start; }
+    .why-item:last-child { border-bottom: none; }
+    .why-icon { width: 44px; height: 44px; background: var(--light-orange); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+    .why-txt h3 { font-size: 0.95rem; font-weight: 700; color: var(--navy); margin: 0 0 4px; }
+    .why-txt p { font-size: 0.87rem; color: var(--gray); line-height: 1.7; margin: 0; }
+    @media (max-width: 768px) { .why-grid { grid-template-columns: 1fr; } }
+
+    /* Numbers bar */
+    .nums-section { color: #fff; }
+    .nums-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px; }
+    .num-box { background: rgba(255,255,255,0.06); padding: 34px 20px; text-align: center; }
+    .num-val { font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 900; color: #ffd580; line-height: 1; }
+    .num-unit { font-size: 1rem; font-weight: 700; color: #ffd580; }
+    .num-label { font-size: 0.83rem; color: rgba(255,255,255,0.75); margin-top: 8px; }
+    @media (max-width: 768px) { .nums-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    /* What work */
+    .work-lead { font-size: 1rem; color: #444; line-height: 1.85; margin-bottom: 28px; }
+    .work-list { list-style: none; padding: 0; margin: 0 0 28px; }
+    .work-list li { padding: 11px 0 11px 24px; border-bottom: 1px solid #eee; font-size: 0.9rem; color: #444; position: relative; }
+    .work-list li:last-child { border-bottom: none; }
+    .work-list li::before { content: ''; position: absolute; left: 6px; top: 50%; transform: translateY(-50%); width: 8px; height: 8px; background: var(--orange); border-radius: 50%; }
+    .ideal-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .ideal-box { background: var(--light); border-left: 4px solid var(--orange); border-radius: 0 8px 8px 0; padding: 16px; }
+    .ideal-box p { font-size: 0.88rem; color: #444; margin: 0; line-height: 1.7; }
+    @media (max-width: 768px) { .ideal-grid { grid-template-columns: 1fr; } }
+
+    /* CTA mid */
+    .cta-mid { background: var(--orange); color: #fff; text-align: center; padding: 50px 20px; }
+    .cta-mid h2 { font-size: clamp(1.2rem, 3.5vw, 1.6rem); font-weight: 900; margin-bottom: 14px; }
+    .cta-mid p { font-size: 0.92rem; opacity: 0.9; margin-bottom: 28px; }
+    .btn-white { display: inline-block; background: #fff; color: var(--orange); text-decoration: none; font-weight: 700; font-size: 1rem; padding: 14px 40px; border-radius: 8px; transition: background 0.2s; }
+    .btn-white:hover { background: #fff5ec; }
+
+    /* Requirements */
+    .req-table { width: 100%; border-collapse: collapse; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 18px rgba(0,0,0,0.07); }
+    .req-table tr { border-bottom: 1px solid #eee; }
+    .req-table tr:last-child { border-bottom: none; }
+    .req-table th { background: var(--navy); color: #fff; font-size: 0.85rem; font-weight: 700; padding: 13px 18px; width: 28%; vertical-align: top; text-align: left; }
+    .req-table td { padding: 13px 18px; font-size: 0.9rem; color: #444; line-height: 1.65; vertical-align: top; }
+    .salary-em { font-size: 1.1rem; font-weight: 700; color: var(--orange); }
+    @media (max-width: 768px) {
+      .req-table th, .req-table td { display: block; width: 100%; }
+      .req-table th { padding-bottom: 4px; }
+      .req-table td { padding-top: 6px; }
+    }
+
+    /* FAQ */
+    .faq-item { border: 1px solid #e2e8f0; border-radius: 10px; margin-bottom: 10px; overflow: hidden; }
+    .faq-q { background: var(--light); padding: 15px 18px; font-weight: 700; font-size: 0.93rem; color: var(--navy); cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 12px; user-select: none; }
+    .faq-q::after { content: '＋'; font-size: 1.1rem; color: var(--orange); flex-shrink: 0; }
+    .faq-q.open::after { content: '−'; }
+    .faq-a { display: none; padding: 14px 18px; font-size: 0.9rem; line-height: 1.75; color: #444; }
+    .faq-a.open { display: block; }
+
+    /* Timeline */
+    .tl-wrap { max-width: 700px; margin: 0 auto; }
+    .tl-item { display: flex; gap: 18px; }
+    .tl-left { display: flex; flex-direction: column; align-items: center; width: 44px; flex-shrink: 0; }
+    .tl-dot { width: 40px; height: 40px; background: var(--orange); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; font-weight: 700; flex-shrink: 0; }
+    .tl-line { flex: 1; width: 2px; background: #e2c4a0; margin: 0 auto; min-height: 36px; }
+    .tl-body { padding: 4px 0 30px; }
+    .tl-time { font-size: 0.85rem; font-weight: 700; color: var(--orange); margin-bottom: 4px; }
+    .tl-desc { font-size: 0.9rem; color: #444; line-height: 1.7; }
+
+    /* Staff */
+    .staff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+    .staff-card { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 18px rgba(0,0,0,0.07); }
+    .staff-photo { width: 100%; height: 160px; object-fit: cover; object-position: top; }
+    .staff-body { padding: 20px; }
+    .staff-name { font-weight: 700; color: var(--navy); font-size: 0.93rem; margin-bottom: 4px; }
+    .staff-role { font-size: 0.78rem; color: var(--gray); margin-bottom: 12px; }
+    .staff-msg { font-size: 0.87rem; color: #555; line-height: 1.75; }
+    @media (max-width: 768px) { .staff-grid { grid-template-columns: 1fr; } }
+
+    /* CTA final */
+    .cta-final { background: var(--navy); color: #fff; text-align: center; }
+    .cta-final h2 { font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 900; margin-bottom: 14px; }
+    .cta-final p { font-size: 0.95rem; opacity: 0.85; margin-bottom: 34px; line-height: 1.75; }
+    .btn-orange { display: inline-block; background: var(--orange); color: #fff; text-decoration: none; font-weight: 700; font-size: 1.1rem; padding: 18px 54px; border-radius: 8px; transition: background 0.2s; }
+    .btn-orange:hover { background: #c76b1a; }
+
+    /* Mobile fixed CTA */
+    .mobile-cta-bar { display: none; position: fixed; bottom: 0; left: 0; right: 0; z-index: 300; background: var(--orange); padding: 12px 20px; text-align: center; box-shadow: 0 -3px 12px rgba(0,0,0,0.2); }
+    .mobile-cta-bar a { color: #fff; text-decoration: none; font-weight: 700; font-size: 1rem; }
+    body { padding-bottom: 0; }
+    @media (max-width: 768px) { .mobile-cta-bar { display: block; } body { padding-bottom: 56px; } }
+
+    /* Footer */
+    footer { background: #070f1d; color: rgba(255,255,255,0.65); padding: 34px 20px; text-align: center; }
+    .f-name { color: #fff; font-weight: 700; margin-bottom: 8px; font-size: 0.92rem; }
+    footer p { font-size: 0.82rem; margin: 4px 0; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">ＣＩＮグリーンパートナーズ協同組合｜採用情報</div>
+    <nav>
+      <a href="#why">この仕事の魅力</a>
+      <a href="#work">仕事内容</a>
+      <a href="#requirements">募集要項</a>
+      <a href="#voice">先輩の声</a>
+      <a href="#apply" class="nav-cta">応募する</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#why">この仕事の魅力</a>
+    <a href="#work">仕事内容</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#apply">応募する</a>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">✦ 千葉県印西市 ／ 正社員募集</div>
+    <h1 class="hero-title">月給<em>24〜30万円</em>、<br>年間休日<em>120日</em>。<br>知られていなかった<br>好条件の事務職があります。</h1>
+    <p class="hero-sub">外国人技能実習生の受け入れを支援する事務職。書類作成・日常サポートを通じて、世界と地域をつなぐ仕事です。残業月5時間・土日祝休み・退職金制度あり。</p>
+    <div class="hero-numbers">
+      <div class="h-num"><div class="h-num-val">24〜30<span style="font-size:1rem">万</span></div><div class="h-num-label">月給（住宅手当込）</div></div>
+      <div class="h-num"><div class="h-num-val">120<span style="font-size:1rem">日</span></div><div class="h-num-label">年間休日</div></div>
+      <div class="h-num"><div class="h-num-val">5<span style="font-size:1rem">h</span></div><div class="h-num-label">月平均残業</div></div>
+      <div class="h-num"><div class="h-num-val">年2<span style="font-size:1rem">回</span></div><div class="h-num-label">賞与実績</div></div>
+    </div>
+    <a href="#apply" class="btn-hero">採用情報を見る</a>
+  </div>
+</section>
+
+<!-- Why -->
+<section id="why">
+  <div class="container">
+    <div class="section-label">REASON</div>
+    <h2 class="section-title">なぜこの職場が選ばれるのか</h2>
+    <div class="section-bar"></div>
+    <div class="why-grid">
+      <div class="why-img">
+        <img src="https://images.unsplash.com/photo-1571260899304-425eee4c7efc?w=640&h=480&fit=crop&q=80" alt="職場環境">
+      </div>
+      <ul class="why-list">
+        <li class="why-item">
+          <div class="why-icon">💰</div>
+          <div class="why-txt"><h3>事務職として高水準の月給24〜30万円</h3><p>住宅手当2万円（世帯主不問・一律）込み。昇給は年3〜4%実績。賞与年2回（計2ヶ月分実績）。退職金制度（勤続3年以上）もあります。</p></div>
+        </li>
+        <li class="why-item">
+          <div class="why-icon">📅</div>
+          <div class="why-txt"><h3>土日祝休み・年120日・残業月5時間以内</h3><p>36協定の特別条項なし。本当に休める職場です。平日の夜も、土日も、自分の時間として使えます。</p></div>
+        </li>
+        <li class="why-item">
+          <div class="why-icon">🌏</div>
+          <div class="why-txt"><h3>国際業務の経験・語学力を活かせる</h3><p>東南アジア出身でN1をお持ちの方、インドネシア語スキルがある方を特に歓迎。未経験の方もOJTでしっかりサポートします。</p></div>
+        </li>
+        <li class="why-item">
+          <div class="why-icon">🏢</div>
+          <div class="why-txt"><h3>社員6名のコンパクトな組織で全体が見える</h3><p>少人数だからこそ、業務の全体像が見渡せて裁量も大きい。行政手続きから日常サポートまで、幅広いスキルが身につきます。</p></div>
+        </li>
+      </ul>
+    </div>
+    <p class="sample-note">※ここはサンプルです。実際には御社の魅力・職場の写真に差し替えます</p>
+  </div>
+</section>
+
+<!-- Numbers -->
+<section class="bg-navy nums-section">
+  <div class="container">
+    <div class="nums-grid">
+      <div class="num-box"><div class="num-val">3〜4<span class="num-unit">%</span></div><div class="num-label">昇給率（前年実績）</div></div>
+      <div class="num-box"><div class="num-val">2<span class="num-unit">ヶ月</span></div><div class="num-label">賞与実績（年2回・計）</div></div>
+      <div class="num-box"><div class="num-val">120<span class="num-unit">日</span></div><div class="num-label">年間休日</div></div>
+      <div class="num-box"><div class="num-val">5<span class="num-unit">h</span></div><div class="num-label">月平均残業</div></div>
+    </div>
+    <p style="text-align:center;font-size:0.78rem;color:rgba(255,255,255,0.4);margin-top:16px;">※ここはサンプルです。実際には御社の実績数値に差し替えます</p>
+  </div>
+</section>
+
+<!-- CTA mid -->
+<div class="cta-mid">
+  <h2>「話を聞くだけ」でも大丈夫です。<br>まずはお気軽にハローワークへご相談を。</h2>
+  <p>未経験歓迎・土日祝休み・残業月5時間以内。あなたのライフスタイルに合った職場があります。</p>
+  <a href="#apply" class="btn-white">応募・お問い合わせへ</a>
+</div>
+
+<!-- Work -->
+<section class="bg-light" id="work">
+  <div class="container">
+    <div class="section-label">WORK</div>
+    <h2 class="section-title">仕事内容・求める人材</h2>
+    <div class="section-bar"></div>
+    <p class="work-lead">外国人技能実習生・特定技能生の<strong>受け入れから日本生活のすべてをサポートするコーディネーター職</strong>です。書類作成・行政手続きを軸に、スタッフの困り事を解決するフィールドワークも担当します。</p>
+    <ul class="work-list">
+      <li>技能実習生・特定技能生の受入書類作成・行政機関への提出（入管・労基等）</li>
+      <li>技能実習生の日常サポート（口座開設同行・日常生活の相談・生活指導）</li>
+      <li>農業資材の発注・ETCカード申込等の事務処理・請求書作成</li>
+      <li>入社・退社手続き等の総務的業務（組合員企業との連絡調整含む）</li>
+      <li>社用車での外出業務（普通免許AT可・社用車あり）</li>
+    </ul>
+    <div class="section-label" style="margin-top:40px">IDEAL</div>
+    <h3 style="font-size:1.05rem;font-weight:700;color:var(--navy);margin:8px 0 20px">こんな方に向いています</h3>
+    <div class="ideal-grid">
+      <div class="ideal-box"><p>✅ 書類作成・行政手続きを丁寧にこなせる方</p></div>
+      <div class="ideal-box"><p>✅ 外国人と関わる仕事に興味・関心がある方</p></div>
+      <div class="ideal-box"><p>✅ インドネシア語や日本語N1があり語学を活かしたい方</p></div>
+      <div class="ideal-box"><p>✅ 外国人受け入れ・総務経理の経験者</p></div>
+      <div class="ideal-box"><p>✅ 残業が少ない安定した職場で長く働きたい方</p></div>
+      <div class="ideal-box"><p>✅ 東南アジアにルーツがある・海外文化に関心がある方</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- Requirements -->
+<section id="requirements">
+  <div class="container">
+    <div class="section-label">REQUIREMENTS</div>
+    <h2 class="section-title">募集要項</h2>
+    <div class="section-bar"></div>
+    <table class="req-table">
+      <tbody>
+        <tr><th>職種</th><td>外国人人材の受け入れ業務（事務）</td></tr>
+        <tr><th>雇用形態</th><td>正社員（試用期間3ヶ月・同条件）</td></tr>
+        <tr><th>給与</th><td><span class="salary-em">月給240,000円〜300,000円</span><br>基本給220,000〜280,000円 ＋ 住宅手当20,000円（世帯主不問・一律）<br>昇給あり（前年実績：月3〜4%）</td></tr>
+        <tr><th>賞与</th><td>年2回（前年実績：計2ヶ月分）</td></tr>
+        <tr><th>就業時間</th><td>8:30〜17:30（休憩60分）　月平均残業5時間</td></tr>
+        <tr><th>休日・休暇</th><td>土曜・日曜・祝日・年末年始　年間休日120日<br>年次有給休暇10日（6ヶ月経過後）</td></tr>
+        <tr><th>勤務地</th><td>千葉県印西市木下1521-172　JR木下駅 徒歩1分<br>マイカー通勤可・駐車場あり</td></tr>
+        <tr><th>応募資格</th><td>普通自動車免許（AT限定可）・学歴不問・64歳以下<br>外国人受け入れ業務・総務経理経験者尚可<br>インドネシア語・日本語N1所持の東南アジア出身者歓迎</td></tr>
+        <tr><th>待遇</th><td>社会保険完備・通勤手当実費（上限2万円）・退職金（3年〜）・屋内禁煙</td></tr>
+        <tr><th>採用人数</th><td>1名（増員）</td></tr>
+        <tr><th>選考</th><td>書類選考 → 面接2回（随時）→ 内定　※ハローワーク紹介状が必要です</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="bg-light" id="faq">
+  <div class="container container-narrow">
+    <div class="section-label" style="display:block;text-align:center">FAQ</div>
+    <h2 class="section-title center">よくある質問</h2>
+    <div class="section-bar center"></div>
+    <div class="faq-item">
+      <div class="faq-q">外国人受け入れ業務の経験がなくても応募できますか？</div>
+      <div class="faq-a">はい、応募いただけます。経験は「あれば尚可」の条件です。書類作成・行政手続きの基礎はOJTで覚えていただけます。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">語学力がなくても応募できますか？</div>
+      <div class="faq-a">大丈夫です。日本語での業務がメインです。ただし語学力があると業務の幅が広がり、より貢献できる場面が増えます。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">選考の流れを教えてください。</div>
+      <div class="faq-a">書類選考（7日以内通知）→ 面接2回（随時）→ 内定の流れです。ハローワークの紹介状が必要となりますので、まずはハローワークにご相談ください。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">マイカー通勤は可能ですか？</div>
+      <div class="faq-a">はい、マイカー通勤可能・駐車場完備です。JR木下駅から徒歩1分のため電車通勤でも問題ありません。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">残業や休日出勤はありますか？</div>
+      <div class="faq-a">月平均残業は5時間程度です。36協定の特別条項もなく、土日祝はしっかり休める職場環境です。</div>
+    </div>
+    <p class="sample-note">※ここはサンプルです。実際には御社の実際のFAQに差し替えます</p>
+  </div>
+</section>
+
+<!-- Timeline -->
+<section>
+  <div class="container">
+    <div class="section-label" style="display:block;text-align:center">A DAY</div>
+    <h2 class="section-title center">社員の1日の流れ</h2>
+    <p style="text-align:center;color:var(--gray);font-size:0.92rem;margin-bottom:40px">書類対応とフィールドワーク、メリハリある1日</p>
+    <div class="section-bar center"></div>
+    <div class="tl-wrap">
+      <div class="tl-item"><div class="tl-left"><div class="tl-dot">8:30</div><div class="tl-line"></div></div><div class="tl-body"><div class="tl-time">8:30 出社・メール・書類確認</div><p class="tl-desc">メールと書類を確認し、行政提出物の期限・今日の優先順位を整理。</p></div></div>
+      <div class="tl-item"><div class="tl-left"><div class="tl-dot">9:00</div><div class="tl-line"></div></div><div class="tl-body"><div class="tl-time">9:00 書類作成・申請対応</div><p class="tl-desc">技能実習・特定技能に関する書類を作成し関係機関へ提出。集中して取り組む時間です。</p></div></div>
+      <div class="tl-item"><div class="tl-left"><div class="tl-dot">12:00</div><div class="tl-line"></div></div><div class="tl-body"><div class="tl-time">12:00 ランチ休憩（60分）</div><p class="tl-desc">しっかり1時間休憩。木下駅周辺のカフェやランチスポットでリフレッシュ。</p></div></div>
+      <div class="tl-item"><div class="tl-left"><div class="tl-dot">13:00</div><div class="tl-line"></div></div><div class="tl-body"><div class="tl-time">13:00 外出・スタッフサポート</div><p class="tl-desc">社用車で外出し、技能実習生の口座開設同行・行政窓口対応・日常生活の相談。</p></div></div>
+      <div class="tl-item"><div class="tl-left"><div class="tl-dot">15:00</div><div class="tl-line"></div></div><div class="tl-body"><div class="tl-time">15:00 事務・発注業務</div><p class="tl-desc">農業資材の発注・請求書作成・総務書類の処理をこなしてデスクワークを締めます。</p></div></div>
+      <div class="tl-item"><div class="tl-left"><div class="tl-dot">17:30</div></div><div class="tl-body"><div class="tl-time">17:30 退社</div><p class="tl-desc">翌日確認メモを残して退社。平均残業5時間以内なので、夕方もプライベートを充実させられます。</p></div></div>
+    </div>
+    <p class="sample-note">※ここはサンプルです。実際には御社の1日のスケジュールに差し替えます</p>
+  </div>
+</section>
+
+<!-- Staff Voice -->
+<section class="bg-light" id="voice">
+  <div class="container">
+    <div class="section-label" style="display:block;text-align:center">VOICE</div>
+    <h2 class="section-title center">先輩からのメッセージ</h2>
+    <div class="section-bar center"></div>
+    <div class="staff-grid">
+      <div class="staff-card">
+        <img class="staff-photo" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=640&h=320&fit=crop&crop=faces&q=80" alt="先輩スタッフ">
+        <div class="staff-body">
+          <div class="staff-name">田中 美咲（仮名）</div>
+          <div class="staff-role">事務担当 ／ 入社3年目</div>
+          <p class="staff-msg">最初は業務内容がよく分からなかったですが、先輩が丁寧に教えてくれました。外国人スタッフが日本に馴染んでいく様子を見るのがやりがいです。</p>
+        </div>
+      </div>
+      <div class="staff-card">
+        <img class="staff-photo" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=640&h=320&fit=crop&crop=faces&q=80" alt="先輩スタッフ">
+        <div class="staff-body">
+          <div class="staff-name">佐藤 健太（仮名）</div>
+          <div class="staff-role">総務・サポート担当 ／ 入社5年目</div>
+          <p class="staff-msg">前職と比べて残業が激減して驚きました。月給も上がり、土日もしっかり休める。行政手続きに詳しくなり、自分でも成長を実感しています。</p>
+        </div>
+      </div>
+      <div class="staff-card">
+        <img class="staff-photo" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=640&h=320&fit=crop&crop=faces&q=80" alt="先輩スタッフ">
+        <div class="staff-body">
+          <div class="staff-name">鈴木 雄一（仮名）</div>
+          <div class="staff-role">書類・サポート担当 ／ 入社4年目</div>
+          <p class="staff-msg">インドネシア語を少し話せることが役立っています。外国人スタッフが「ありがとう」と言ってくれるとき、この仕事を選んでよかったと思います。</p>
+        </div>
+      </div>
+    </div>
+    <p class="sample-note">※ここはサンプルです。実際には御社の社員の方のメッセージ・写真に差し替えます</p>
+  </div>
+</section>
+
+<!-- CTA final -->
+<section class="cta-final" id="apply">
+  <div class="container">
+    <h2>まずは話を聞くだけで大丈夫です</h2>
+    <p>ハローワークを通じてお気軽にお問い合わせください。<br>世界と千葉をつなぐ仕事に、あなたの力を活かしませんか。</p>
+    <a href="https://www.hellowork.mhlw.go.jp/" class="btn-orange" target="_blank" rel="noopener">ハローワークに相談する</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <p class="f-name">ＣＩＮグリーンパートナーズ協同組合</p>
+    <p>〒270-1326 千葉県印西市木下1521-172</p>
+    <p>TEL: 0476-42-6880　／　E-mail: kinka@jsjardin.co.jp</p>
+  </div>
+</footer>
+
+<!-- Mobile fixed CTA -->
+<div class="mobile-cta-bar">
+  <a href="#apply">📩 ハローワークに相談する</a>
+</div>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  hamburger.addEventListener('click', () => mobileNav.classList.toggle('open'));
+  mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      q.classList.toggle('open');
+      q.nextElementSibling.classList.toggle('open');
+    });
+  });
+</script>
+</body>
+</html>

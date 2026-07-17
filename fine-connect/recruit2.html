@@ -22,6 +22,18 @@
 
   .topbar{background:var(--teal-d);color:#fff;text-align:center;font-size:.82rem;padding:9px 12px;font-weight:500}
 
+  /* nav */
+  nav{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:100}
+  .nav-inner{max-width:960px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between}
+  .nav-logo{font-weight:900;color:var(--teal-d);font-size:.95rem}
+  .nav-cta{background:var(--coral);color:#fff;font-weight:700;font-size:.82rem;padding:9px 18px;border-radius:999px}
+  .hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px}
+  .hamburger span{display:block;width:22px;height:2px;background:var(--teal-d)}
+  .mobile-menu{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(11,84,78,.97);z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:26px}
+  .mobile-menu.open{display:flex}
+  .mobile-menu a{color:#fff;font-size:1.15rem;font-weight:700}
+  .mobile-menu-close{position:absolute;top:22px;right:26px;color:#fff;font-size:1.6rem;cursor:pointer}
+
   /* hero */
   .hero{background:linear-gradient(160deg,#0f766e,#0b544e 70%);color:#fff;position:relative;overflow:hidden;padding:56px 0 70px}
   .hero::before{content:"";position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=1200&h=700&fit=crop&q=80');background-size:cover;background-position:center;opacity:.16}
@@ -115,6 +127,24 @@
 <body>
 <div class="topbar">＼ 成田空港インフォメーション・案内スタッフ募集中 ／ 未経験・語学これから歓迎</div>
 
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">株式会社ファインコネクト｜採用情報</div>
+    <a href="#entry" class="nav-cta">応募する</a>
+    <button class="hamburger" id="hamburger" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <span class="mobile-menu-close" id="menuClose">✕</span>
+  <a href="#reasons">選ばれる理由</a>
+  <a href="#day">1日の流れ</a>
+  <a href="#voices">先輩の声</a>
+  <a href="#faq">FAQ</a>
+  <a href="#entry">応募する</a>
+</div>
+
 <!-- ヒーロー -->
 <section class="hero">
   <div class="wrap">
@@ -138,7 +168,7 @@
 </div>
 
 <!-- 選ばれる理由 -->
-<section>
+<section id="reasons">
   <div class="wrap">
     <div class="sh"><span class="en">3 REASONS</span><h2>ファインコネクトが選ばれる理由</h2></div>
 
@@ -169,7 +199,7 @@
 </div>
 
 <!-- 1日の流れ -->
-<section class="day">
+<section class="day" id="day">
   <div class="wrap">
     <div class="sh"><span class="en">A DAY</span><h2>当社スタッフの1日</h2></div>
     <div class="timeline">
@@ -184,7 +214,7 @@
 </section>
 
 <!-- 先輩の声 -->
-<section>
+<section id="voices">
   <div class="wrap">
     <div class="sh"><span class="en">VOICE</span><h2>先輩スタッフの声</h2></div>
     <div class="voices">
@@ -201,7 +231,7 @@
 </section>
 
 <!-- FAQ -->
-<section class="day">
+<section class="day" id="faq">
   <div class="wrap">
     <div class="sh"><span class="en">FAQ</span><h2>よくあるご質問</h2></div>
     <div class="faq">
@@ -226,8 +256,17 @@
 <footer>
   <b>株式会社ファインコネクト</b>
   成田空港インフォメーションセンター 案内業務<br>© FINE CONNECT Co., Ltd.
+  E-mail: info-fc@fine-c.net<br>
 </footer>
 
 <div class="fixbar"><a href="#entry">1分で応募・話を聞く</a></div>
+<script>
+const hamburger = document.getElementById('hamburger');
+const mobileMenu = document.getElementById('mobileMenu');
+const menuClose = document.getElementById('menuClose');
+hamburger.addEventListener('click', () => mobileMenu.classList.add('open'));
+menuClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
+mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+</script>
 </body>
 </html>

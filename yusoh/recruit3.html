@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>採用情報（C案） | 株式会社ユソー</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    body { font-family: 'Noto Sans JP', sans-serif; color: #1a2a3a; background: #fff; line-height: 1.7; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    :root {
+      --primary: #0d1f35;
+      --accent: #22c55e;
+      --accent2: #16a34a;
+      --light: #f0f7f3;
+      --white: #ffffff;
+      --text: #1a2a3a;
+      --gray: #5a6a7a;
+      --border: #cdd8e3;
+    }
+
+    /* ナビ */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(13,31,53,0.92); backdrop-filter: blur(8px);
+      color: var(--white); padding: 0 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 62px;
+    }
+    .nav-logo { font-size: 1rem; font-weight: 700; }
+    .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+    .nav-links a { color: rgba(255,255,255,0.88); text-decoration: none; font-size: 0.88rem; }
+    .nav-links a:hover { color: var(--accent); }
+    .nav-cta-link {
+      background: var(--accent); color: var(--primary) !important;
+      padding: 0.4rem 1rem; border-radius: 4px; font-weight: 700; font-size: 0.85rem !important;
+    }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--white); border-radius: 2px; }
+    .mobile-menu { display: none; position: fixed; top: 62px; left: 0; right: 0; background: var(--primary); padding: 1rem 1.5rem; z-index: 99; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu ul { list-style: none; display: flex; flex-direction: column; gap: 0.8rem; }
+    .mobile-menu a { color: var(--white); text-decoration: none; font-size: 1rem; padding: 0.5rem 0; display: block; border-bottom: 1px solid rgba(255,255,255,0.12); }
+
+    /* フルスクリーンヒーロー */
+    .hero {
+      position: relative; min-height: 80vh;
+      display: flex; align-items: center; justify-content: center;
+      text-align: center; overflow: hidden; padding-top: 62px;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&h=900&fit=crop&q=80');
+      background-size: cover; background-position: center;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: rgba(13,31,53,0.60);
+    }
+    .hero-content {
+      position: relative; z-index: 1; color: var(--white);
+      padding: 2rem 1.5rem; max-width: 780px;
+    }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: var(--accent); color: var(--primary);
+      font-size: 0.8rem; font-weight: 700; letter-spacing: 0.08em;
+      padding: 0.35rem 1rem; border-radius: 20px; margin-bottom: 1.2rem;
+    }
+    .hero-title {
+      font-family: 'Noto Serif JP', serif;
+      font-size: clamp(2rem, 7vw, 3.8rem);
+      font-weight: 900; line-height: 1.2; margin-bottom: 1.2rem;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+    }
+    .hero-sub {
+      font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+      opacity: 0.9; line-height: 1.85; margin-bottom: 2.5rem;
+    }
+    .hero-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+    .btn-primary, .btn-outline, .btn-green {
+      display: inline-block; font-weight: 700; font-size: 1rem;
+      padding: 0.9rem 2.4rem; border-radius: 4px; text-decoration: none;
+      transition: all 0.2s; letter-spacing: 0.04em;
+    }
+    .btn-primary { background: var(--accent); color: var(--primary); }
+    .btn-primary:hover { background: var(--accent2); }
+    .btn-outline { border: 2px solid rgba(255,255,255,0.75); color: var(--white); }
+    .btn-outline:hover { background: rgba(255,255,255,0.12); }
+    .btn-green { background: var(--accent); color: var(--primary); }
+    .btn-green:hover { background: var(--accent2); }
+
+    /* スクロール誘導 */
+    .scroll-hint {
+      position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      z-index: 1; color: rgba(255,255,255,0.65); font-size: 0.75rem;
+      display: flex; flex-direction: column; align-items: center; gap: 0.4rem;
+    }
+    .scroll-arrow { width: 1px; height: 40px; background: linear-gradient(to bottom, rgba(255,255,255,0.6), transparent); margin: 0 auto; }
+
+    /* 共通 */
+    section { padding: 5rem 1.5rem; }
+    .container { max-width: 920px; margin: 0 auto; }
+    .section-label {
+      display: block; font-size: 0.72rem; font-weight: 700;
+      letter-spacing: 0.18em; color: var(--accent); text-transform: uppercase; margin-bottom: 0.4rem;
+    }
+    .section-title {
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 900; color: var(--primary); margin-bottom: 2rem;
+    }
+    .sample-note { font-size: 0.73rem; color: #bbb; margin-top: 0.7rem; }
+
+    /* 職種紹介（写真カード） */
+    .intro { background: var(--light); }
+    .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: center; }
+    .intro-img { border-radius: 12px; overflow: hidden; }
+    .intro-img img { width: 100%; height: 320px; object-fit: cover; }
+    .intro-text h3 { font-size: 1.25rem; font-weight: 900; color: var(--primary); margin-bottom: 1rem; }
+    .intro-text p { font-size: 0.93rem; color: var(--gray); line-height: 1.8; }
+    .intro-highlights { display: flex; flex-direction: column; gap: 0.7rem; margin-top: 1.2rem; }
+    .intro-highlight {
+      display: flex; align-items: center; gap: 0.6rem;
+      font-size: 0.9rem; font-weight: 700; color: var(--primary);
+    }
+    .intro-highlight .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent); flex-shrink: 0; }
+
+    /* 働く魅力 */
+    .merits { background: var(--primary); color: var(--white); }
+    .merits .section-label { color: rgba(255,255,255,0.45); }
+    .merits .section-title { color: var(--white); }
+    .merits-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    .merit-card {
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 8px; padding: 2rem 1.4rem;
+      background: rgba(255,255,255,0.05);
+      transition: background 0.2s;
+    }
+    .merit-card:hover { background: rgba(255,255,255,0.09); }
+    .merit-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+    .merit-title { font-size: 1rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--accent); }
+    .merit-text { font-size: 0.87rem; opacity: 0.8; line-height: 1.7; }
+
+    /* 1日の流れ */
+    .timeline { background: #fff; }
+    .tl-list { list-style: none; position: relative; padding-left: 2.2rem; }
+    .tl-list::before { content: ''; position: absolute; left: 9px; top: 0; bottom: 0; width: 2px; background: var(--accent); opacity: 0.4; }
+    .tl-item { position: relative; margin-bottom: 2.2rem; }
+    .tl-item::before {
+      content: ''; position: absolute; left: -1.8rem; top: 0.45rem;
+      width: 16px; height: 16px; border-radius: 50%;
+      background: var(--accent); border: 3px solid var(--white);
+      box-shadow: 0 0 0 2px var(--accent);
+    }
+    .tl-time { font-size: 0.8rem; font-weight: 700; color: var(--accent); letter-spacing: 0.06em; }
+    .tl-action { font-size: 1rem; font-weight: 700; color: var(--primary); margin: 0.2rem 0; }
+    .tl-desc { font-size: 0.88rem; color: var(--gray); line-height: 1.65; }
+
+    /* 先輩メッセージ */
+    .voices { background: var(--light); }
+    .voices-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    .voice-card {
+      background: var(--white); border-radius: 10px; overflow: hidden;
+      box-shadow: 0 3px 16px rgba(0,0,0,0.06);
+    }
+    .voice-card img { width: 100%; height: 200px; object-fit: cover; }
+    .voice-body { padding: 1.3rem; }
+    .voice-name { font-weight: 700; color: var(--primary); }
+    .voice-role { font-size: 0.78rem; color: var(--gray); margin-bottom: 0.8rem; }
+    .voice-text { font-size: 0.88rem; color: var(--text); line-height: 1.7; }
+    .voice-accent { display: inline-block; background: var(--accent); color: var(--primary); font-size: 0.75rem; font-weight: 700; padding: 0.2rem 0.6rem; border-radius: 12px; margin-bottom: 0.6rem; }
+
+    /* FAQ */
+    .faq { background: var(--white); }
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+    .faq-item { border: 1px solid var(--border); border-radius: 8px; overflow: hidden; }
+    .faq-q { padding: 1rem 1.2rem; font-weight: 700; color: var(--primary); display: flex; gap: 0.7rem; background: var(--light); }
+    .faq-q .icon { color: var(--accent); }
+    .faq-a { padding: 0.9rem 1.2rem; font-size: 0.88rem; color: var(--gray); line-height: 1.7; }
+    .ans-icon { color: var(--accent2); font-weight: 700; margin-right: 0.3rem; }
+
+    /* 募集要項 */
+    .requirements { background: var(--light); }
+    .req-table { width: 100%; border-collapse: collapse; font-size: 0.93rem; background: var(--white); border-radius: 8px; overflow: hidden; }
+    .req-table th, .req-table td { padding: 1rem 1.3rem; border-bottom: 1px solid var(--border); text-align: left; vertical-align: top; }
+    .req-table th { width: 30%; background: var(--primary); color: var(--white); font-weight: 700; white-space: nowrap; }
+    .req-table tr:last-child th, .req-table tr:last-child td { border-bottom: none; }
+
+    /* CTA -->最終 */
+    .cta-section {
+      background: linear-gradient(135deg, var(--primary) 0%, #1a3a5c 100%);
+      color: var(--white); text-align: center; padding: 6rem 1.5rem;
+    }
+    .cta-section .section-label { color: rgba(255,255,255,0.45); }
+    .cta-title { font-family: 'Noto Serif JP', serif; font-size: clamp(1.5rem,5vw,2.5rem); font-weight: 900; margin-bottom: 0.8rem; }
+    .cta-sub { font-size: 0.98rem; opacity: 0.82; line-height: 1.85; margin-bottom: 2.5rem; }
+    .cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+    footer { background: #06111e; color: rgba(255,255,255,0.42); text-align: center; padding: 1.5rem; font-size: 0.78rem; }
+
+    /* レスポンシブ */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .intro-grid { grid-template-columns: 1fr; }
+      .merits-grid { grid-template-columns: 1fr; }
+      .voices-grid { grid-template-columns: 1fr; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .req-table tr { display: block; margin-bottom: 1rem; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+      .req-table th, .req-table td { display: block; width: 100%; }
+      .req-table th { white-space: normal; }
+      .tl-list { padding-left: 1.8rem; }
+      .hero-btns { flex-direction: column; align-items: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ナビ -->
+<nav class="nav">
+  <div class="nav-logo">株式会社 ユソー｜採用情報</div>
+  <ul class="nav-links">
+    <li><a href="#intro">仕事について</a></li>
+    <li><a href="#merits">働く魅力</a></li>
+    <li><a href="#voices">先輩の声</a></li>
+    <li><a href="#requirements">募集要項</a></li>
+    <li><a href="#cta" class="nav-cta-link">応募する</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <ul>
+    <li><a href="#intro" onclick="closeMenu()">仕事について</a></li>
+    <li><a href="#merits" onclick="closeMenu()">働く魅力</a></li>
+    <li><a href="#voices" onclick="closeMenu()">先輩の声</a></li>
+    <li><a href="#requirements" onclick="closeMenu()">募集要項</a></li>
+    <li><a href="#cta" onclick="closeMenu()">応募する</a></li>
+  </ul>
+</div>
+
+<!-- フルスクリーンヒーロー -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag">🚛 トラック運転手（２ｔ車）募集</div>
+    <h1 class="hero-title">毎日の「届ける」が、<br>この地域を動かしている。</h1>
+    <p class="hero-sub">求人票では伝わらない「1日何件配送するか」「何を運ぶのか」——<br>働く現場のリアルを、このページで見てください。</p>
+    <div class="hero-btns">
+      <a href="#cta" class="btn-primary">採用に応募する</a>
+      <a href="#intro" class="btn-outline">仕事の中身を見る</a>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <span>scroll</span>
+    <div class="scroll-arrow"></div>
+  </div>
+</section>
+
+<!-- 仕事の中身 -->
+<section class="intro" id="intro">
+  <div class="container">
+    <span class="section-label">The Job</span>
+    <h2 class="section-title">「何を運ぶのか」を正直に伝えます</h2>
+    <div class="intro-grid">
+      <div class="intro-img">
+        <!-- 運送・倉庫サンプル画像 -->
+        <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=640&h=380&fit=crop&q=80" alt="配送業務イメージ（サンプル）">
+      </div>
+      <div class="intro-text">
+        <h3>2tトラックで成田エリアを担当する仕事</h3>
+        <p>ハローワークの求人票だけでは伝わらなかったことを、ここでお伝えします。担当する荷物は主に日用品・食料品・小型家電などの生活用品。2tトラックのサイズに合った荷物が中心なので、体への負担が少なく、長く続けやすい仕事です。</p>
+        <div class="intro-highlights">
+          <div class="intro-highlight"><span class="dot"></span>1日の配送件数: 10〜15件が目安</div>
+          <div class="intro-highlight"><span class="dot"></span>扱う荷物: 日用品・食料品・小型家電など</div>
+          <div class="intro-highlight"><span class="dot"></span>担当エリア: 成田市内・固定ルート</div>
+          <div class="intro-highlight"><span class="dot"></span>トラック: 2t車（体への負担が少ない）</div>
+        </div>
+        <p class="sample-note">※ここはサンプルです。実際の件数・扱う荷物・エリアに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 働く魅力 -->
+<section class="merits" id="merits">
+  <div class="container">
+    <span class="section-label">Why Join Us</span>
+    <h2 class="section-title">ユソーを選ぶ3つの理由</h2>
+    <div class="merits-grid">
+      <div class="merit-card">
+        <div class="merit-icon">🛣️</div>
+        <div class="merit-title">担当ルート固定で見通しが立つ</div>
+        <p class="merit-text">毎日同じエリアを担当するので、道や顧客の顔を覚えれば安心して働けます。「今日何件回るのか」が事前にわかる安心感。</p>
+      </div>
+      <div class="merit-card">
+        <div class="merit-icon">📦</div>
+        <div class="merit-title">2tトラック・体への負担が少ない</div>
+        <p class="merit-text">大型車不要。生活用品中心の荷物なので重量物の連続作業がなく、長期間無理なく続けられる環境です。</p>
+      </div>
+      <div class="merit-card">
+        <div class="merit-icon">🏠</div>
+        <div class="merit-title">年間105日休み・残業少なめ</div>
+        <p class="merit-text">シフトが事前に決まるのでプライベートも計画的に。家族との時間を大切にしながら、しっかり休んで働けます。</p>
+        <p class="sample-note" style="color:rgba(255,255,255,0.4);">※ここはサンプルです。実際の休日数に差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section class="timeline" id="timeline">
+  <div class="container">
+    <span class="section-label">Daily Schedule</span>
+    <h2 class="section-title">1日の流れ（2tドライバー・入社3年目）</h2>
+    <ul class="tl-list">
+      <li class="tl-item">
+        <div class="tl-time">08:00</div>
+        <div class="tl-action">出社・朝礼・積み込み確認</div>
+        <div class="tl-desc">点呼と安全確認。当日の荷物（日用品・食料品など）を確認し、荷崩れしないよう丁寧に積み込みます。</div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-time">09:00〜12:00</div>
+        <div class="tl-action">午前の配送（6〜8件）</div>
+        <div class="tl-desc">担当ルートを効率よく巡回。顔なじみのお客様への声かけも楽しみのひとつです。</div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-time">12:00〜13:00</div>
+        <div class="tl-action">昼食休憩（1時間）</div>
+        <div class="tl-desc">お気に入りのランチスポットでしっかり休憩。体を休められる時間です。</div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-time">13:00〜16:30</div>
+        <div class="tl-action">午後の配送（5〜7件）</div>
+        <div class="tl-desc">午後は比較的余裕があり、丁寧な対応ができます。慣れてくるとテンポよく動けます。</div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-time">17:00</div>
+        <div class="tl-action">帰社・日報・退勤</div>
+        <div class="tl-desc">車両の点検・清掃と日報提出後に退勤。夕方にはしっかり帰れます。</div>
+      </li>
+    </ul>
+    <p class="sample-note">※ここはサンプルです。実際の1日の流れ・件数に差し替えます</p>
+  </div>
+</section>
+
+<!-- 先輩メッセージ -->
+<section class="voices" id="voices">
+  <div class="container">
+    <span class="section-label">Voices</span>
+    <h2 class="section-title">先輩社員からのメッセージ</h2>
+    <div class="voices-grid">
+      <div class="voice-card">
+        <!-- 男性顔写真サンプル -->
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=640&h=380&fit=crop&crop=faces&q=80" alt="先輩社員（仮）">
+        <div class="voice-body">
+          <span class="voice-accent">入社3年目</span>
+          <div class="voice-name">田中 誠也（仮名）</div>
+          <div class="voice-role">ドライバー / 前職: 製造業</div>
+          <p class="voice-text">転職前に一番心配だったのは「荷物が重くて体を壊すんじゃないか」ということ。実際には日用品や食料品が中心で思ったより楽でした。2週間で先輩に同乗してもらい、ルートはすぐ覚えられました。</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <!-- 男性顔写真サンプル -->
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=640&h=380&fit=crop&crop=faces&q=80" alt="先輩社員（仮）">
+        <div class="voice-body">
+          <span class="voice-accent">入社5年目</span>
+          <div class="voice-name">佐々木 健（仮名）</div>
+          <div class="voice-role">ドライバー</div>
+          <p class="voice-text">担当エリアが固定なのが自分には合っていました。お客様と顔なじみになれるのがこの仕事の醍醐味。「いつもありがとう」という一言が、次の日の仕事への活力になります。</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <!-- 男性顔写真サンプル -->
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=640&h=380&fit=crop&crop=faces&q=80" alt="先輩社員（仮）">
+        <div class="voice-body">
+          <span class="voice-accent">入社1年目</span>
+          <div class="voice-name">山口 大輔（仮名）</div>
+          <div class="voice-role">ドライバー / 前職: 飲食業</div>
+          <p class="voice-text">求人票を見た段階では「具体的に何をするのか分からなくて不安」でした。でも面接で丁寧に説明してもらい、入社してみると職場の雰囲気がとても良くてすぐに馴染めました。</p>
+        </div>
+      </div>
+    </div>
+    <p class="sample-note">※ここはサンプルです。実際には御社の社員の方々のメッセージ・顔写真に差し替えます</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="container">
+    <span class="section-label">FAQ</span>
+    <h2 class="section-title">よくある質問</h2>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <div class="faq-q"><span class="icon">Q</span>未経験でも応募できますか？</div>
+        <div class="faq-a"><span class="ans-icon">A</span>はい、歓迎します。先輩が同行してOJTで教えます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="icon">Q</span>1日の配送件数は？</div>
+        <div class="faq-a"><span class="ans-icon">A</span>目安は10〜15件。担当ルートが固定なので安心です。<br><span class="sample-note">※ここはサンプルです。実際の件数に差し替えます</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="icon">Q</span>どんな荷物を運びますか？</div>
+        <div class="faq-a"><span class="ans-icon">A</span>主に日用品・食料品・小型家電など。体への負担が少ない荷物が中心です。<br><span class="sample-note">※ここはサンプルです。実際の品目に差し替えます</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="icon">Q</span>AT限定でも応募できますか？</div>
+        <div class="faq-a"><span class="ans-icon">A</span>2tトラックはMT車のため、AT限定の方は対応外となります。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="icon">Q</span>選考はどのくらいかかりますか？</div>
+        <div class="faq-a"><span class="ans-icon">A</span>書類選考＋面接（1〜2回）で最短2週間が目安です。<br><span class="sample-note">※ここはサンプルです。実際のフローに差し替えます</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="icon">Q</span>マイカー通勤はできますか？</div>
+        <div class="faq-a"><span class="ans-icon">A</span>可能です。駐車スペースはございます。</div>
+      </div>
+    </div>
+    <p class="sample-note">※ここはサンプルです。実際には御社でよくいただくご質問・回答に差し替えます</p>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="requirements" id="requirements">
+  <div class="container">
+    <span class="section-label">Recruitment Info</span>
+    <h2 class="section-title">募集要項</h2>
+    <table class="req-table">
+      <tr><th>職種</th><td>トラック運転手（２ｔ車）</td></tr>
+      <tr>
+        <th>雇用形態</th>
+        <td>正社員（試用期間あり）<br><span class="sample-note">※ここはサンプルです。実際には御社の雇用形態に差し替えます</span></td>
+      </tr>
+      <tr>
+        <th>給与</th>
+        <td>月給 200,000円〜250,000円（経験・能力考慮）<br><span class="sample-note">※ここはサンプルです。実際には御社の給与に差し替えます</span></td>
+      </tr>
+      <tr>
+        <th>就業時間</th>
+        <td>8:00〜17:00（実働8時間）<br><span class="sample-note">※ここはサンプルです。実際には御社の就業時間に差し替えます</span></td>
+      </tr>
+      <tr>
+        <th>休日・休暇</th>
+        <td>週休2日制（土日を中心にシフト制）／年間休日105日<br>有給休暇・慶弔休暇<br><span class="sample-note">※ここはサンプルです。実際には御社の休日に差し替えます</span></td>
+      </tr>
+      <tr><th>応募資格</th><td>普通自動車免許（MT・AT限定不可）必須<br>運送業経験者歓迎・未経験応募可</td></tr>
+      <tr><th>勤務地</th><td>千葉県成田市（マイカー通勤可）</td></tr>
+      <tr>
+        <th>待遇・福利厚生</th>
+        <td>社会保険完備 / 交通費支給 / 制服貸与<br><span class="sample-note">※ここはサンプルです。実際には御社の福利厚生に差し替えます</span></td>
+      </tr>
+      <tr>
+        <th>選考フロー</th>
+        <td>書類選考 → 面接（1〜2回） → 内定<br><span class="sample-note">※ここはサンプルです。実際には御社のフローに差し替えます</span></td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<!-- 最終CTA -->
+<section class="cta-section" id="cta">
+  <div class="container">
+    <span class="section-label">Apply Now</span>
+    <p class="cta-title">地域の物流を、<br>あなたと一緒に支えたい。</p>
+    <p class="cta-sub">「転職してうまくやっていけるか」「体力的についていけるか」——<br>どんな不安でも、まず話を聞かせてください。</p>
+    <div class="cta-btns">
+      <a href="mailto:toshiyuki.okano@yusoh.co.jp" class="btn-primary">メールで応募・問い合わせ</a>
+      <a href="tel:0476326373" class="btn-outline">電話: 0476-32-6373</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>© 株式会社 ユソー. All rights reserved.</p>
+  <p>E-mail: toshiyuki.okano@yusoh.co.jp</p>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+  function closeMenu() { mobileMenu.classList.remove('open'); }
+</script>
+</body>
+</html>

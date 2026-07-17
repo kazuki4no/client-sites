@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>営業職 採用情報 | 麻布成形株式会社</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;color:#1a202c;line-height:1.7;background:#fff;}
+
+/* ナビ */
+.site-header{display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 1.5rem;background:#1e3a5f;position:sticky;top:0;z-index:100;}
+.brand{color:#fff;font-weight:700;font-size:1rem;text-decoration:none;}
+.brand span{color:#c9a227;}
+.site-nav{display:flex;gap:1.4rem;align-items:center;}
+.site-nav a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.9rem;transition:color .2s;}
+.site-nav a:hover{color:#c9a227;}
+.site-nav .nav-cta{background:#c9a227;color:#1e3a5f;padding:.4rem 1rem;border-radius:4px;font-weight:700;}
+.hamburger{display:none;background:none;border:0;font-size:1.7rem;line-height:1;cursor:pointer;color:#fff;}
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:#1e3a5f;box-shadow:0 8px 16px rgba(0,0,0,.3);padding:.5rem 1rem;}
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.8rem 0;border-bottom:1px solid rgba(255,255,255,.15);color:#fff;}
+  .site-nav .nav-cta{margin:.5rem 0;border-radius:4px;}
+}
+
+/* ヒーロー */
+.hero{background:linear-gradient(135deg,#0f2442 0%,#1e3a5f 60%,#2d5282 100%);
+  padding:5rem 1.5rem 4rem;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=1600&h=900&fit=crop&q=80') center/cover;
+  opacity:.18;}
+.hero-inner{position:relative;z-index:1;max-width:720px;margin:0 auto;}
+.hero-pill{display:inline-block;background:rgba(201,162,39,.2);color:#f6c930;
+  border:1px solid #c9a227;border-radius:20px;padding:.3rem 1rem;font-size:.85rem;margin-bottom:1.2rem;}
+.hero h1{font-size:clamp(1.8rem,5vw,3rem);color:#fff;font-weight:900;line-height:1.3;margin-bottom:1rem;}
+.hero h1 span{color:#c9a227;}
+.hero p{color:rgba(255,255,255,.85);font-size:1.05rem;margin-bottom:2rem;}
+.btn-primary{display:inline-block;background:#c9a227;color:#1e3a5f;
+  padding:.85rem 2.2rem;border-radius:4px;font-weight:700;font-size:1rem;text-decoration:none;
+  transition:background .2s,transform .2s;}
+.btn-primary:hover{background:#b08c1a;transform:translateY(-2px);}
+
+/* セクション共通 */
+.section{padding:4rem 1.5rem;}
+.section-inner{max-width:900px;margin:0 auto;}
+.section-title{font-size:clamp(1.4rem,4vw,2rem);font-weight:900;color:#1e3a5f;margin-bottom:.5rem;}
+.section-title span{color:#c9a227;}
+.section-lead{color:#555;margin-bottom:2.5rem;}
+.divider{width:48px;height:4px;background:#c9a227;margin:.6rem 0 2rem;}
+.bg-gray{background:#f7f8fa;}
+
+/* 魅力3点 */
+.appeal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.appeal-card{background:#fff;border-radius:8px;padding:1.8rem 1.5rem;
+  border-top:4px solid #c9a227;box-shadow:0 2px 12px rgba(0,0,0,.07);}
+.appeal-icon{font-size:2.2rem;margin-bottom:.8rem;}
+.appeal-card h3{font-size:1.05rem;font-weight:700;color:#1e3a5f;margin-bottom:.6rem;}
+.appeal-card p{font-size:.9rem;color:#555;}
+@media(max-width:768px){.appeal-grid{grid-template-columns:1fr;}}
+
+/* 数字で見る会社 */
+.stats-grid{display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:center;}
+.stat-box{background:#fff;border-radius:8px;padding:1.5rem 2rem;text-align:center;
+  min-width:160px;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+.stat-num{font-size:2rem;font-weight:900;color:#1e3a5f;}
+.stat-unit{font-size:.9rem;color:#555;margin-left:.2rem;}
+.stat-label{font-size:.8rem;color:#777;margin-top:.3rem;}
+.stat-note{font-size:.7rem;color:#aaa;margin-top:1.5rem;text-align:center;}
+
+/* 先輩の声 */
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.voice-card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.07);}
+.voice-img{width:100%;height:200px;object-fit:cover;}
+.voice-body{padding:1.2rem;}
+.voice-name{font-weight:700;color:#1e3a5f;font-size:.95rem;}
+.voice-meta{font-size:.8rem;color:#888;margin-bottom:.6rem;}
+.voice-text{font-size:.87rem;color:#555;}
+.voice-note{font-size:.72rem;color:#aaa;margin-top:.5rem;}
+@media(max-width:768px){.voice-grid{grid-template-columns:1fr;}}
+
+/* 1日の流れ */
+.timeline{position:relative;max-width:600px;margin:0 auto;}
+.tl-item{display:grid;grid-template-columns:72px 20px 1fr;gap:0 .8rem;align-items:start;margin-bottom:1.5rem;}
+.tl-time{text-align:right;font-weight:700;color:#1e3a5f;font-size:.9rem;padding-top:.1rem;}
+.tl-dot-col{display:flex;flex-direction:column;align-items:center;}
+.tl-dot{width:14px;height:14px;border-radius:50%;background:#c9a227;flex-shrink:0;margin-top:.18rem;}
+.tl-line{width:2px;background:#d4a017;flex:1;min-height:32px;}
+.tl-item:last-child .tl-line{display:none;}
+.tl-body h4{font-size:.95rem;font-weight:700;color:#1e3a5f;margin-bottom:.2rem;}
+.tl-body p{font-size:.85rem;color:#555;}
+.tl-note{font-size:.72rem;color:#aaa;margin-top:.3rem;}
+@media(max-width:768px){
+  .tl-item{grid-template-columns:40px 16px 1fr;}
+  .tl-time{font-size:.8rem;}
+}
+
+/* 募集要項テーブル */
+.req-table{width:100%;border-collapse:collapse;}
+.req-table th,.req-table td{padding:.9rem 1rem;border-bottom:1px solid #e2e8f0;text-align:left;font-size:.9rem;vertical-align:top;}
+.req-table th{width:30%;background:#eef1f8;color:#1e3a5f;font-weight:700;}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{background:#f4f6f8;padding:.5rem .8rem;}
+  .req-table td{padding:.5rem .8rem 1rem;}
+}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:1rem;}
+.faq-item{background:#fff;border-radius:8px;border:1px solid #e2e8f0;overflow:hidden;}
+.faq-q{padding:1rem 1.2rem;font-weight:700;color:#1e3a5f;font-size:.95rem;cursor:pointer;
+  display:flex;justify-content:space-between;align-items:center;}
+.faq-q::after{content:'＋';font-size:1.2rem;color:#c9a227;}
+.faq-q.open::after{content:'－';}
+.faq-a{padding:0 1.2rem;max-height:0;overflow:hidden;transition:max-height .3s,padding .3s;
+  font-size:.87rem;color:#555;}
+.faq-a.open{max-height:300px;padding:.6rem 1.2rem 1rem;}
+
+/* 採用担当者 */
+.manager{display:flex;align-items:center;gap:1.5rem;background:#fff;
+  border-radius:8px;padding:1.5rem;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+.manager-img{width:90px;height:90px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.manager-name{font-weight:700;color:#1e3a5f;margin-bottom:.3rem;}
+.manager-role{font-size:.8rem;color:#888;margin-bottom:.5rem;}
+.manager-msg{font-size:.87rem;color:#555;}
+.manager-note{font-size:.72rem;color:#aaa;margin-top:.4rem;}
+@media(max-width:768px){.manager{flex-direction:column;text-align:center;}}
+
+/* CTA */
+.cta-section{background:linear-gradient(135deg,#1e3a5f,#2d5282);
+  padding:4rem 1.5rem;text-align:center;color:#fff;}
+.cta-section h2{font-size:clamp(1.4rem,4vw,2rem);margin-bottom:.8rem;}
+.cta-section p{font-size:1rem;opacity:.9;margin-bottom:2rem;}
+.btn-outline{display:inline-block;border:2px solid #c9a227;color:#c9a227;
+  padding:.85rem 2.2rem;border-radius:4px;font-weight:700;font-size:1rem;text-decoration:none;
+  transition:background .2s,color .2s;}
+.btn-outline:hover{background:#c9a227;color:#1e3a5f;}
+
+/* フッター */
+footer{background:#0f2442;color:rgba(255,255,255,.7);text-align:center;padding:2rem 1.5rem;font-size:.85rem;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="#top">麻布成形<span>株式会社</span></a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#about">仕事内容</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#schedule">1日の流れ</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#faq">よくある質問</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <div class="hero-pill">正社員 / 営業職 / 経験不問</div>
+    <h1>鉄鋼商社で<span>安定した営業キャリア</span>を<br>一緒に築きませんか。</h1>
+    <p>自動車・住宅関連の大手メーカーへ特殊加工鋼材を提案する、<br>技術力のある仕事。年間休日122日・賞与5ヶ月の安定した環境。</p>
+    <a href="#entry" class="btn-primary">採用情報を見る</a>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="section-inner">
+    <div class="section-title">仕事内容</div>
+    <div class="divider"></div>
+    <p class="section-lead">麻布成形は1980年創業の鉄鋼流通商社。特殊な鋼管・異形管の加工販売を通じて、自動車・住宅関連の産業を支えています。</p>
+    <div class="appeal-grid">
+      <div class="appeal-card">
+        <div class="appeal-icon">🏭</div>
+        <h3>特殊技術を売る営業</h3>
+        <p>一般的な商社と違い、特殊技術の施工を中心に鋼材の加工販売まで一気通貫。「モノを知っている」強みで取引先の課題を解決します。</p>
+      </div>
+      <div class="appeal-card">
+        <div class="appeal-icon">🚗</div>
+        <h3>大手メーカーとのお取引</h3>
+        <p>自動車関連・住宅関連を主力に、あらゆる業界の企業とお取引。既存のお客様への提案営業がメインで、関係構築型の仕事です。</p>
+      </div>
+      <div class="appeal-card">
+        <div class="appeal-icon">📊</div>
+        <h3>デリバリー管理まで担当</h3>
+        <p>提案から受発注、デリバリー管理まで担当。「一気通貫」でお客様に向き合える仕事に、やりがいと責任を感じられます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-gray">
+  <div class="section-inner">
+    <div class="section-title">数字で見る<span>麻布成形</span></div>
+    <div class="divider"></div>
+    <div class="stats-grid">
+      <div class="stat-box">
+        <div class="stat-num">122<span class="stat-unit">日</span></div>
+        <div class="stat-label">年間休日数</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">5<span class="stat-unit">ヶ月</span></div>
+        <div class="stat-label">賞与（前年度実績）</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">15<span class="stat-unit">時間</span></div>
+        <div class="stat-label">月平均残業時間</div>
+      </div>
+      <div class="stat-box">
+        <div class="stat-num">44<span class="stat-unit">年</span></div>
+        <div class="stat-label">創業からの歴史（2024年時点）</div>
+      </div>
+    </div>
+    <p class="stat-note">※ここはサンプルです。実際には御社の最新数字に差し替えます。</p>
+  </div>
+</section>
+
+<section class="section" id="voice">
+  <div class="section-inner">
+    <div class="section-title">先輩からの<span>メッセージ</span></div>
+    <div class="divider"></div>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <!-- ※先輩写真（仮）: 顔写真男性 photo-1507003211169-0a1dd7228f2d -->
+        <img class="voice-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=280&fit=crop&crop=faces&q=80" alt="田中さん（仮名）">
+        <div class="voice-body">
+          <div class="voice-name">田中 K.（仮名）</div>
+          <div class="voice-meta">営業 / 入社6年目</div>
+          <p class="voice-text">鉄鋼の知識はゼロからのスタートでした。先輩が丁寧に教えてくれて、今は自分でお客様の課題を提案で解決できています。専門性がつくのが実感できます。</p>
+          <p class="voice-note">※ここはサンプルです。実際には御社のスタッフ写真・コメントに差し替えます。</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <!-- ※先輩写真（仮）: 顔写真女性 photo-1494790108377-be9c29b29330 -->
+        <img class="voice-img" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=280&fit=crop&crop=faces&q=80" alt="鈴木さん（仮名）">
+        <div class="voice-body">
+          <div class="voice-name">鈴木 M.（仮名）</div>
+          <div class="voice-meta">営業 / 入社3年目</div>
+          <p class="voice-text">土日祝休みでプライベートも充実しています。繁忙期でも月15時間程度の残業なので、メリハリをつけて働けます。女性でも長く続けやすい職場です。</p>
+          <p class="voice-note">※ここはサンプルです。実際には御社のスタッフ写真・コメントに差し替えます。</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <!-- ※先輩写真（仮）: 顔写真男性 photo-1472099645785-5658abf4ff4e -->
+        <img class="voice-img" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=280&fit=crop&crop=faces&q=80" alt="山本さん（仮名）">
+        <div class="voice-body">
+          <div class="voice-name">山本 T.（仮名）</div>
+          <div class="voice-meta">営業 / 入社10年目</div>
+          <p class="voice-text">入社時から昇給・賞与の実績がしっかりしていて、将来が見通せる安心感があります。退職金制度もあり、長く腰を据えて働ける会社です。</p>
+          <p class="voice-note">※ここはサンプルです。実際には御社のスタッフ写真・コメントに差し替えます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-gray" id="schedule">
+  <div class="section-inner">
+    <div class="section-title">1日の<span>流れ</span></div>
+    <div class="divider"></div>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">8:30</div>
+        <div class="tl-dot-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <h4>出社・朝礼</h4>
+          <p>メールチェックと1日のスケジュール確認。チームで情報を共有します。</p>
+          <p class="tl-note">※ここはサンプルです。実際には御社の1日の流れに差し替えます。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">9:00</div>
+        <div class="tl-dot-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <h4>顧客対応・受発注</h4>
+          <p>既存取引先からの問い合わせ対応・受発注処理。電話やメールで丁寧に対応します。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">11:00</div>
+        <div class="tl-dot-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <h4>企画提案の準備</h4>
+          <p>取引先への提案資料作成。ワード・エクセルを使って内容をまとめます。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:30</div>
+        <div class="tl-dot-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <h4>昼休憩</h4>
+          <p>ランチタイム。近くのお店に行ったり、持参のお弁当を食べたりと自由に過ごします。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:30</div>
+        <div class="tl-dot-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <h4>取引先への訪問・提案</h4>
+          <p>マイカーまたは公共交通機関で取引先へ。企画提案やデリバリー状況の確認を行います。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">16:00</div>
+        <div class="tl-dot-col"><div class="tl-dot"></div><div class="tl-line"></div></div>
+        <div class="tl-body">
+          <h4>社内作業・報告</h4>
+          <p>訪問報告や翌日の準備。デリバリー確認・納期調整など事務処理を行います。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:30</div>
+        <div class="tl-dot-col"><div class="tl-dot"></div></div>
+        <div class="tl-body">
+          <h4>退社</h4>
+          <p>月平均残業15時間。メリハリをつけてオンとオフを切り替えられます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="requirements">
+  <div class="section-inner">
+    <div class="section-title">募集<span>要項</span></div>
+    <div class="divider"></div>
+    <table class="req-table">
+      <tbody>
+        <tr><th>職種</th><td>営業（取引先への企画提案・デリバリー管理）</td></tr>
+        <tr><th>雇用形態</th><td>正社員（試用期間最長3ヶ月 / 時給1,200円）</td></tr>
+        <tr><th>給与</th><td>月給 238,000円〜400,000円<br>※昇給あり（年1〜5%実績）</td></tr>
+        <tr><th>賞与</th><td>年2回・計5ヶ月分（前年度実績）</td></tr>
+        <tr><th>勤務時間</th><td>8:30〜17:30（休憩60分）<br>月平均残業15時間</td></tr>
+        <tr><th>休日・休暇</th><td>土・日・祝日、夏季休暇、年末年始<br>年間休日122日 / 年次有給休暇（6ヶ月後10日〜）</td></tr>
+        <tr><th>勤務地</th><td>千葉県浦安市鉄鋼通り１－９－３<br>JR京葉線 舞浜駅よりバス「弁天第二」下車 徒歩3分<br>マイカー通勤可（駐車場あり）</td></tr>
+        <tr><th>応募資格</th><td>高校以上 / 普通自動車運転免許（AT限定可）<br>PCスキル（ワード・エクセル）/ 経験不問</td></tr>
+        <tr><th>福利厚生</th><td>雇用・労災・健康・厚生年金 / 財形・確定拠出年金<br>退職金制度（勤続5年以上）/ 通勤手当（実費・上限5万円）<br>定年60歳・再雇用制度あり（65歳まで）</td></tr>
+        <tr><th>採用人数</th><td>1名</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section bg-gray" id="faq">
+  <div class="section-inner">
+    <div class="section-title">よくある<span>質問</span></div>
+    <div class="divider"></div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">鉄鋼業界の経験がなくても大丈夫ですか？</div>
+        <div class="faq-a">はい、経験不問です。入社後、先輩スタッフが製品知識から営業の進め方まで丁寧にサポートします。他業界からの転職者も活躍しています。<br><small>※ここはサンプルです。実際の回答に差し替えてください。</small></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">選考の流れを教えてください。</div>
+        <div class="faq-a">書類選考（7日以内に連絡）→ 面接（予定2回）→ 合否通知（面接後10日以内）の流れです。応募書類（ハローワーク紹介状・履歴書・職務経歴書）を郵送またはメールでお送りください。<br><small>※ここはサンプルです。実際の選考フローに差し替えてください。</small></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">マイカー通勤はできますか？</div>
+        <div class="faq-a">可能です（要相談）。駐車場が完備されています。JR京葉線 舞浜駅からバスでのアクセスもできます。<br><small>※ここはサンプルです。実際のルールに差し替えてください。</small></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">残業はどのくらいありますか？</div>
+        <div class="faq-a">月平均15時間です。36協定の特別条項（クレーム等の特別な事情時）もありますが、通常はしっかり定時に上がれる環境を整えています。<br><small>※ここはサンプルです。実際のコメントに差し替えてください。</small></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">将来のキャリアパスについて教えてください。</div>
+        <div class="faq-a">昇給制度（年1〜5%実績）があり、成果に応じたキャリアアップが可能です。営業としてスペシャリストを目指すほか、管理職へのキャリアアップルートもあります。<br><small>※ここはサンプルです。実際のキャリアパスに差し替えてください。</small></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="section-title">採用<span>担当者</span>より</div>
+    <div class="divider"></div>
+    <div class="manager">
+      <!-- ※担当者写真（仮）: 顔写真男性 photo-1560250097-0b93528c311a -->
+      <img class="manager-img" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=faces&q=80" alt="山崎（仮名）">
+      <div>
+        <div class="manager-role">管理部 課長</div>
+        <div class="manager-name">山崎（仮名）</div>
+        <p class="manager-msg">鉄鋼の専門知識はゼロからでも大丈夫です。コツコツと顧客との関係を積み上げるのが好きな方、ものづくりの現場を支える仕事に興味のある方をお待ちしています。まずはお気軽にお問い合わせください。</p>
+        <p class="manager-note">※ここはサンプルです。実際の担当者写真・コメントに差し替えます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="entry">
+  <h2>まずはお気軽に<br>お問い合わせください。</h2>
+  <p>書類選考後7日以内にご連絡します。<br>ご不明な点はメール・お電話でもどうぞ。</p>
+  <a href="mailto:info@az-azabu.com" class="btn-outline">応募・お問い合わせはこちら</a>
+</section>
+
+<footer>
+  <p>麻布成形 株式会社</p>
+  <p>〒279-0025 千葉県浦安市鉄鋼通り１－９－３</p>
+  <p>TEL: 047-353-9101　E-mail: info@az-azabu.com</p>
+</footer>
+
+<script>
+(function(){
+  var btn = document.querySelector('.hamburger');
+  var nav = document.querySelector('.site-nav');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  }
+
+  // FAQ アコーディオン
+  document.querySelectorAll('.faq-q').forEach(function(q){
+    q.addEventListener('click', function(){
+      q.classList.toggle('open');
+      var a = q.nextElementSibling;
+      a.classList.toggle('open');
+    });
+  });
+})();
+</script>
+</body>
+</html>

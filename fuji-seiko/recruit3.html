@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>採用情報（FVバナー型）| フジセイコー株式会社</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans JP',sans-serif;color:#1a1a1a;line-height:1.7;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+:root{--dark:#0a1931;--cyan:#00a8cc;--gold:#c9a800;--light:#f0f4f8;}
+
+/* ヘッダー配管（FVの上に重ねる） */
+.site-header{position:absolute;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 1.8rem;background:rgba(10,25,49,.4);}
+.brand{font-weight:700;font-size:1rem;color:#fff;}
+.site-nav{display:flex;gap:1.5rem;align-items:center;}
+.site-nav a{font-size:.87rem;color:rgba(255,255,255,.85);transition:color .2s;}
+.site-nav a:hover{color:#fff;}
+.site-nav .nav-cta{background:var(--cyan);color:#fff;padding:.45rem 1.1rem;border-radius:4px;font-weight:700;}
+.hamburger{display:none;background:none;border:0;font-size:1.7rem;line-height:1;cursor:pointer;color:#fff;}
+
+/* ★スクロール後のヘッダー（固定・暗め背景） */
+.site-header.scrolled{position:fixed;background:rgba(10,25,49,.95);box-shadow:0 2px 8px rgba(0,0,0,.3);}
+
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;position:absolute;top:100%;left:0;right:0;z-index:50;background:rgba(10,25,49,.97);padding:.5rem 1.2rem;}
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.8rem 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:1rem;}
+  .site-nav .nav-cta{margin:.6rem 0 .4rem;text-align:center;border-bottom:0;}
+}
+
+/* ===== FVバナー（全画面背景） ===== */
+.hero{position:relative;min-height:85vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center;}
+.hero-overlay{position:absolute;inset:0;background:rgba(10,25,49,.6);}
+.hero-content{position:relative;z-index:1;padding:clamp(5rem,10vw,8rem) 1.4rem 4rem;max-width:840px;margin:0 auto;}
+.hero-tag{display:inline-block;background:var(--cyan);color:#fff;font-size:.82rem;font-weight:700;padding:.3rem 1rem;border-radius:20px;margin-bottom:1.5rem;letter-spacing:.05em;}
+.hero h1{font-family:'Noto Serif JP',serif;font-size:clamp(2rem,6vw,3.6rem);font-weight:700;line-height:1.28;margin-bottom:1.4rem;text-shadow:0 2px 8px rgba(0,0,0,.35);}
+.hero-lead{font-size:1rem;opacity:.9;margin-bottom:2.4rem;max-width:600px;margin-left:auto;margin-right:auto;}
+.hero-cta{display:inline-block;background:var(--cyan);color:#fff;font-size:1.05rem;font-weight:700;padding:1rem 2.8rem;border-radius:6px;transition:opacity .2s;}
+.hero-cta:hover{opacity:.85;}
+
+/* セクション共通 */
+section{padding:clamp(3rem,6vw,5rem) 1.4rem;}
+.container{max-width:960px;margin:0 auto;}
+.sec-title{font-size:clamp(1.4rem,3.5vw,2rem);font-weight:700;color:var(--dark);text-align:center;margin-bottom:.5rem;}
+.sec-sub{text-align:center;color:#777;font-size:.92rem;margin-bottom:2.5rem;}
+.sample-note{font-size:.75rem;color:#bbb;margin-top:.7rem;}
+
+/* 魅力3点（ダーク背景） */
+.points{background:var(--dark);color:#fff;}
+.points .sec-title{color:#fff;}
+.points .sec-sub{color:rgba(255,255,255,.6);}
+.point-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.point-card{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:2rem 1.4rem;text-align:center;transition:background .2s;}
+.point-card:hover{background:rgba(255,255,255,.12);}
+.point-icon{width:48px;height:48px;color:var(--cyan);margin:0 auto 1rem;}
+.point-card h3{font-size:1rem;color:#fff;font-weight:700;margin-bottom:.6rem;}
+.point-card p{font-size:.87rem;color:rgba(255,255,255,.7);line-height:1.75;}
+@media(max-width:768px){.point-grid{grid-template-columns:1fr;}}
+
+/* 先輩の声 */
+.voices{background:var(--light);}
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.voice-card{background:#fff;border-radius:8px;padding:1.6rem;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+.voice-head{display:flex;align-items:center;gap:.9rem;margin-bottom:.9rem;}
+.voice-img{width:68px;height:68px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--cyan);}
+.voice-name{font-weight:700;font-size:.93rem;color:var(--dark);}
+.voice-role{font-size:.8rem;color:#888;margin-top:.1rem;}
+.voice-text{font-size:.87rem;color:#555;line-height:1.75;}
+@media(max-width:768px){.voice-grid{grid-template-columns:1fr;}}
+
+/* タイムライン CSS Grid 配管 */
+.timeline-sec{background:#fff;}
+.timeline{position:relative;max-width:700px;margin:0 auto;}
+.timeline::before{content:'';position:absolute;left:82px;top:0;bottom:0;width:2px;background:#d0d5de;}
+.tl-item{display:grid;grid-template-columns:72px 20px 1fr;gap:0 .8rem;align-items:start;margin-bottom:1.8rem;}
+.tl-time{text-align:right;font-weight:700;color:var(--cyan);padding-top:.22rem;font-size:.9rem;}
+.tl-dot{width:12px;height:12px;border-radius:50%;background:var(--cyan);border:2px solid #fff;box-shadow:0 0 0 2px var(--cyan);justify-self:center;margin-top:.32rem;}
+.tl-body strong{display:block;margin-bottom:.2rem;font-size:.95rem;color:var(--dark);}
+.tl-body p{font-size:.87rem;color:#666;}
+@media(max-width:768px){
+  .timeline::before{left:52px;}
+  .tl-item{grid-template-columns:44px 16px 1fr;}
+  .tl-time{font-size:.82rem;}
+}
+
+/* 募集要項テーブル配管 */
+.req-sec{background:var(--light);}
+.req-table{width:100%;border-collapse:collapse;margin-top:1rem;}
+.req-table th,.req-table td{border:1px solid #dde0e6;padding:.8rem 1rem;text-align:left;vertical-align:top;}
+.req-table th{background:var(--dark);color:#fff;width:28%;font-weight:700;white-space:nowrap;}
+.req-table tr:nth-child(even) td{background:#f9fafb;}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{padding:.5rem .8rem;}
+  .req-table td{padding:.5rem .8rem 1rem;border-top:0;}
+}
+
+/* FAQ */
+.faq-sec{background:#fff;}
+.faq-list{max-width:760px;margin:0 auto;}
+.faq-item{border-bottom:1px solid #e5e7eb;padding:1.2rem 0;}
+.faq-q{font-weight:700;color:var(--dark);margin-bottom:.4rem;font-size:.95rem;}
+.faq-q::before{content:'Q.  ';}
+.faq-a{font-size:.9rem;color:#555;}
+.faq-a::before{content:'A.  ';font-weight:700;color:var(--cyan);}
+
+/* 採用担当者 */
+.recruiter-sec{background:var(--light);}
+.recruiter-card{display:flex;align-items:center;gap:2rem;max-width:600px;margin:0 auto;background:#fff;border-radius:8px;padding:2rem;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+.recruiter-img{width:96px;height:96px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--cyan);}
+.recruiter-name{font-weight:700;font-size:1.05rem;color:var(--dark);margin-bottom:.2rem;}
+.recruiter-role{font-size:.82rem;color:#888;margin-bottom:.6rem;}
+.recruiter-msg{font-size:.88rem;color:#555;line-height:1.75;}
+@media(max-width:768px){.recruiter-card{flex-direction:column;text-align:center;gap:1rem;}}
+
+/* CTA最終 */
+.cta-final{background:linear-gradient(135deg,var(--dark) 0%,#0d2d52 100%);color:#fff;text-align:center;padding:clamp(3.5rem,8vw,6rem) 1.4rem;}
+.cta-final h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,4vw,2.2rem);margin-bottom:.8rem;}
+.cta-final p{font-size:.95rem;opacity:.85;margin-bottom:2rem;}
+.cta-btn{display:inline-block;background:var(--cyan);color:#fff;font-size:1.1rem;font-weight:700;padding:1rem 2.8rem;border-radius:6px;transition:opacity .2s;}
+.cta-btn:hover{opacity:.85;}
+
+/* フッター */
+.site-footer{background:#050d1a;color:#777;text-align:center;padding:2rem 1.4rem;font-size:.84rem;}
+.site-footer p{margin:.2rem 0;}
+</style>
+</head>
+<body id="top">
+
+<header class="site-header" id="siteHeader">
+  <a class="brand" href="#top">フジセイコー株式会社</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#points">魅力</a>
+    <a href="#voices">先輩の声</a>
+    <a href="#day">1日の流れ</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#faq">よくある質問</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<!-- FVバナー（全画面） -->
+<section class="hero" id="top">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag">正社員 / 営業職 / 八千代・船橋エリア</div>
+    <h1>地域のライフラインを、<br>78年支え続けてきた会社の<br>営業チームへ。</h1>
+    <p class="hero-lead">管材・設備機器の総合卸売業。県内トップクラスの実績と、確かな信頼基盤があなたを迎えます。</p>
+    <a class="hero-cta" href="#entry">求人の詳細を確認する</a>
+  </div>
+</section>
+
+<!-- 魅力3点 -->
+<section class="points" id="points">
+  <div class="container">
+    <h2 class="sec-title">フジセイコーで働く魅力</h2>
+    <p class="sec-sub">安定・待遇・成長環境——3つの観点からご紹介します</p>
+    <div class="point-grid">
+      <div class="point-card">
+        <svg class="point-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21"/>
+        </svg>
+        <h3>創業78年・県内11拠点の安定基盤</h3>
+        <p>昭和23年創業。千葉県内に11の営業所を展開し、当業界において県内トップクラスの実績を誇ります。長年のネットワークがあなたの営業活動を支えます。</p>
+      </div>
+      <div class="point-card">
+        <svg class="point-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m-3-2.818l.879.659c1.171.879 3.07.879 4.242 0 1.172-.879 1.172-2.303 0-3.182C13.536 12.219 12.768 12 12 12c-.725 0-1.45-.22-2.003-.659-1.106-.879-1.106-2.303 0-3.182s2.9-.879 4.006 0l.415.33M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+        </svg>
+        <h3>月収26〜33万円と充実の福利厚生</h3>
+        <p>月給266,500〜335,500円（固定残業代込み）。年間休日124日・賞与年2回・退職金・家族手当・育児休業取得実績あり。将来も見据えた働き方ができます。</p>
+      </div>
+      <div class="point-card">
+        <svg class="point-icon" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M18 18.72a9.094 9.094 0 003.741-.479 3 3 0 00-4.682-2.72m.94 3.198l.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0112 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 016 18.719m12 0a5.971 5.971 0 00-.941-3.197m0 0A5.995 5.995 0 0012 12.75a5.995 5.995 0 00-5.058 2.772m0 0a3 3 0 00-4.681 2.72 8.986 8.986 0 003.74.477m.94-3.197a5.971 5.971 0 00-.94 3.197M15 6.75a3 3 0 11-6 0 3 3 0 016 0zm6 3a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0zm-13.5 0a2.25 2.25 0 11-4.5 0 2.25 2.25 0 014.5 0z"/>
+        </svg>
+        <h3>知識ゼロからのサポート体制</h3>
+        <p>管材・設備機器の商品知識やパソコン操作は入社後に丁寧に指導します。業界未経験でも、コミュニケーション力があれば大丈夫です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section class="voices" id="voices">
+  <div class="container">
+    <h2 class="sec-title">先輩からのメッセージ</h2>
+    <p class="sec-sub">※ここはサンプルです。実際には御社の社員の声に差し替えます。</p>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="voice-head">
+          <!-- サンプル：実際の社員写真に差し替えてください -->
+          <img class="voice-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=faces&q=80" alt="社員写真（サンプル）">
+          <div>
+            <div class="voice-name">田中 健一（仮名）</div>
+            <div class="voice-role">営業担当 / 入社3年目</div>
+          </div>
+        </div>
+        <p class="voice-text">入社前は管材の「か」の字も知りませんでした。でも先輩が一から教えてくれて、今では得意先から「田中さんに聞けばわかる」と言ってもらえるまでに成長しました。</p>
+        <div class="sample-note">※こちらはサンプルです。実際の社員の声に差し替えます。</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-head">
+          <!-- サンプル：実際の社員写真に差し替えてください -->
+          <img class="voice-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=faces&q=80" alt="社員写真（サンプル）">
+          <div>
+            <div class="voice-name">佐藤 大輔（仮名）</div>
+            <div class="voice-role">営業チーフ / 入社6年目</div>
+          </div>
+        </div>
+        <p class="voice-text">ルート営業なので同じお客様と長くお付き合いできます。顔なじみになってくると相手も安心して相談してくれる。そこが一番のやりがいです。</p>
+        <div class="sample-note">※こちらはサンプルです。実際の社員の声に差し替えます。</div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-head">
+          <!-- サンプル：実際の社員写真に差し替えてください -->
+          <img class="voice-img" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=300&fit=crop&crop=faces&q=80" alt="社員写真（サンプル）">
+          <div>
+            <div class="voice-name">中村 美香（仮名）</div>
+            <div class="voice-role">営業担当 / 入社4年目</div>
+          </div>
+        </div>
+        <p class="voice-text">育児休業の取得実績があり、実際に先輩が利用して戻ってきています。子育てしながらでも長く働ける職場環境を体で感じています。</p>
+        <div class="sample-note">※こちらはサンプルです。実際の社員の声に差し替えます。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section class="timeline-sec" id="day">
+  <div class="container">
+    <h2 class="sec-title">1日の流れ</h2>
+    <p class="sec-sub">※ここはサンプルです。実際には御社の社員の1日に差し替えます。</p>
+    <div class="timeline">
+      <!-- サンプル：実際の社員の1日に差し替えてください -->
+      <div class="tl-item">
+        <div class="tl-time">8:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><strong>出社・朝礼</strong><p>当日の訪問スケジュールを確認。チームで情報を共有してから外回りへ。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">9:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><strong>外回り（ルート訪問）</strong><p>八千代市・船橋市エリアの得意先を訪問。工事の状況を確認しながら必要な商品を提案します。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><strong>昼休憩</strong><p>担当エリアで自由に過ごします。マイカー通勤・直行直帰でそのまま移動できる日も。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><strong>見積り提出・新規訪問</strong><p>午前中の依頼をもとに見積書を作成・提出。新規顧客への挨拶も組み込みます。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">15:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><strong>帰社・事務作業</strong><p>日報入力・在庫確認・翌日の訪問準備。チームメンバーと情報を共有します。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><strong>退社</strong><p>固定残業代には45〜50時間分が含まれています。超過時間は別途支給されます。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="req-sec" id="requirements">
+  <div class="container">
+    <h2 class="sec-title">募集要項</h2>
+    <p class="sec-sub">詳しい条件をご確認ください</p>
+    <table class="req-table">
+      <tbody>
+        <tr><th>職種</th><td>営業（ルート営業・新規開拓）八千代市・船橋市方面</td></tr>
+        <tr><th>雇用形態</th><td>正社員（試用期間6ヶ月・同条件）</td></tr>
+        <tr><th>給与</th><td>月給266,500〜335,500円（固定残業代45〜50時間分込み）<br>基本給200,500〜239,500円 / 超過分は別途支給</td></tr>
+        <tr><th>昇給・賞与</th><td>昇給あり（月1,500〜4,000円・前年度実績）／賞与年2回（計2.5ヶ月分・前年度実績）</td></tr>
+        <tr><th>就業時間</th><td>変形労働時間制（8:00〜17:00）休憩60分</td></tr>
+        <tr><th>休日・休暇</th><td>日曜・祝日・その他 年間休日124日（夏季・年末年始含む）</td></tr>
+        <tr><th>勤務地</th><td>千葉県八千代市大和田新田312-13（八千代営業所）<br>転勤は自宅から通勤可能な範囲</td></tr>
+        <tr><th>応募資格</th><td>高校卒業以上 / 普通自動車免許（MT）必須 / 34歳以下</td></tr>
+        <tr><th>福利厚生</th><td>社会保険完備 / 退職金（確定拠出年金・会社全額負担）/ 家族手当 / 育児休業取得実績 / 再雇用（65歳）/ 制服貸与 / 慶弔見舞金</td></tr>
+        <tr><th>選考</th><td>書類選考 → 面接1回 → 内定（ハローワーク経由でご応募ください）</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-sec" id="faq">
+  <div class="container">
+    <h2 class="sec-title">よくある質問</h2>
+    <p class="sec-sub">応募前にご確認ください</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <p class="faq-q">管材・設備機器の知識がなくても応募できますか？</p>
+        <p class="faq-a">はい、問題ありません。商品知識もパソコン操作も入社後に丁寧に指導します。業界未経験の方が多く活躍しています。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">ルート営業がメインですか？新規開拓もありますか？</p>
+        <p class="faq-a">まずはルート営業がメインです。慣れてきたら新規開拓も担当しますが、先輩と一緒に取り組むので安心です。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">転勤はどのくらいの頻度で発生しますか？</p>
+        <p class="faq-a">自宅から通勤可能な範囲での異動が基本です。異動の際は事前に相談のうえ決定されます。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">固定残業代が含まれているとのことですが、実際の残業はどうですか？</p>
+        <p class="faq-a">月給に45〜50時間分の固定残業代が含まれています。それを超えた分は別途支給されます。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">選考にはどのくらい時間がかかりますか？</p>
+        <p class="faq-a">書類選考後7日以内・面接後7日以内にご連絡します。まずはハローワークを通じてご応募ください。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 採用担当者 -->
+<section class="recruiter-sec" id="recruiter">
+  <div class="container">
+    <h2 class="sec-title">採用担当者より</h2>
+    <div class="recruiter-card">
+      <!-- サンプル：実際の採用担当者写真・情報に差し替えてください -->
+      <img class="recruiter-img" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=300&fit=crop&crop=faces&q=80" alt="採用担当者（サンプル）">
+      <div>
+        <div class="recruiter-name">阿達 和義（仮名）</div>
+        <div class="recruiter-role">取締役 管理部長</div>
+        <p class="recruiter-msg">「管材って何？」という方でも大丈夫です。大切なのは、地域のお客様と誠実に向き合える姿勢。78年分の信頼が、あなたの営業活動をしっかり後押しします。まずはお気軽にご連絡ください。</p>
+        <div class="sample-note">※こちらはサンプルです。実際の担当者情報に差し替えます。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA最終 -->
+<section class="cta-final" id="entry">
+  <div class="container">
+    <h2>78年の信頼を、<br>あなたと共に次の時代へ。</h2>
+    <p>まずはお気軽にお問い合わせください。<br>ハローワーク経由での応募もお待ちしています。</p>
+    <a class="cta-btn" href="tel:043-231-1011">電話でお問い合わせ（043-231-1011）</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <p>フジセイコー株式会社</p>
+  <p>〒260-0001 千葉県千葉市中央区都町1丁目18-13</p>
+  <p>TEL: 043-231-1011 / E-mail: saiyo@fujiseiko-net.co.jp</p>
+</footer>
+
+<script>
+(function(){
+  var btn = document.querySelector('.hamburger');
+  var nav = document.querySelector('.site-nav');
+  var header = document.getElementById('siteHeader');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  }
+  if(header){
+    window.addEventListener('scroll', function(){
+      if(window.scrollY > 80){
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  }
+})();
+</script>
+</body>
+</html>

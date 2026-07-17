@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 株式会社イーパック千葉工場</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;color:#333;background:#f8f9fc;line-height:1.7;}
+a{text-decoration:none;color:inherit;}
+img{max-width:100%;display:block;}
+
+/* ヘッダー */
+.site-header{display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 1.5rem;position:sticky;top:0;background:#1e3a5f;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.3);}
+.brand{color:#fff;font-size:.95rem;font-weight:700;}
+.site-nav{display:flex;gap:1.2rem;align-items:center;}
+.site-nav a{color:rgba(255,255,255,.85);font-size:.88rem;}
+.site-nav a:hover{color:#fff;}
+.nav-cta{background:#f07820;color:#fff!important;padding:.35rem .9rem;border-radius:4px;font-weight:700;}
+.hamburger{display:none;background:none;border:0;color:#fff;font-size:1.7rem;line-height:1;cursor:pointer;}
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:#1e3a5f;box-shadow:0 8px 16px rgba(0,0,0,.3);padding:.5rem 1rem;}
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.8rem 0;border-bottom:1px solid rgba(255,255,255,.15);color:#fff;}
+}
+
+/* ヒーロー */
+.hero{position:relative;min-height:68vh;display:flex;align-items:center;}
+.hero-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
+.hero-overlay{position:absolute;inset:0;background:rgba(10,22,50,.62);}
+.hero-content{position:relative;z-index:1;max-width:900px;margin:0 auto;padding:4rem 1.5rem;color:#fff;}
+.hero-tag{display:inline-block;background:#f07820;color:#fff;font-size:.78rem;font-weight:700;
+  padding:.25rem .75rem;border-radius:4px;margin-bottom:1rem;}
+.hero-title{font-size:clamp(1.8rem,5vw,3rem);font-weight:700;line-height:1.35;margin-bottom:1rem;}
+.hero-sub{font-size:clamp(.92rem,2vw,1.05rem);margin-bottom:2rem;opacity:.9;max-width:600px;}
+.btn-primary{display:inline-block;background:#f07820;color:#fff;font-weight:700;
+  padding:.9rem 2.4rem;border-radius:4px;font-size:1rem;transition:.2s;}
+.btn-primary:hover{background:#d96500;}
+
+/* セクション共通 */
+section{padding:4rem 1.5rem;}
+.section-inner{max-width:1000px;margin:0 auto;}
+.section-title{font-size:clamp(1.4rem,3.5vw,2rem);font-weight:700;color:#1e3a5f;text-align:center;margin-bottom:.5rem;}
+.section-sub{text-align:center;color:#666;margin-bottom:2.5rem;font-size:.93rem;}
+.divider{width:48px;height:4px;background:#f07820;border-radius:2px;margin:.5rem auto 2.5rem;}
+.sample-note{font-size:.78rem;color:#bbb;margin-top:.6rem;}
+
+/* 働く魅力 */
+.benefits{background:#fff;}
+.benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.benefit-card{background:#f4f7fb;border-radius:8px;padding:1.5rem;text-align:center;border-top:4px solid #f07820;}
+.benefit-icon{font-size:2rem;margin-bottom:.7rem;}
+.benefit-title{font-weight:700;color:#1e3a5f;margin-bottom:.5rem;}
+.benefit-text{font-size:.88rem;color:#555;line-height:1.65;}
+
+/* 仕事内容 */
+.work{background:#f4f7fb;}
+.work-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.work-card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.07);}
+.work-card img{width:100%;height:200px;object-fit:cover;}
+.work-card-body{padding:1.2rem;}
+.work-card-title{font-weight:700;color:#1e3a5f;margin-bottom:.5rem;}
+.work-card-text{font-size:.88rem;color:#555;line-height:1.65;}
+
+/* 先輩の声 */
+.voices{background:#fff;}
+.voices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.voice-card{background:#f4f7fb;border-radius:8px;padding:1.5rem;border-left:4px solid #f07820;}
+.voice-img{width:68px;height:68px;border-radius:50%;object-fit:cover;margin-bottom:.8rem;}
+.voice-name{font-weight:700;color:#1e3a5f;font-size:.93rem;}
+.voice-meta{font-size:.78rem;color:#888;margin-bottom:.7rem;}
+.voice-text{font-size:.88rem;color:#555;line-height:1.7;}
+
+/* 1日の流れ */
+.timeline{background:#f4f7fb;}
+.timeline-list{max-width:640px;margin:0 auto;position:relative;}
+.timeline-list::before{content:'';position:absolute;left:82px;top:0;bottom:0;width:2px;background:#c9d9ec;}
+.timeline-item{display:grid;grid-template-columns:72px 20px 1fr;gap:.15rem 0;align-items:start;margin-bottom:1.5rem;}
+.tl-time{text-align:right;font-weight:700;color:#1e3a5f;font-size:.93rem;padding-top:.15rem;padding-right:6px;}
+.tl-dot{justify-self:center;margin-top:.35rem;width:12px;height:12px;border-radius:50%;background:#f07820;border:2px solid #fff;box-shadow:0 0 0 2px #f07820;}
+.tl-body{background:#fff;border-radius:6px;padding:1rem 1.2rem;box-shadow:0 1px 4px rgba(0,0,0,.07);}
+.tl-title{font-weight:700;color:#1e3a5f;margin-bottom:.3rem;font-size:.93rem;}
+.tl-text{font-size:.85rem;color:#555;}
+
+/* 募集要項 */
+.requirements{background:#fff;}
+.req-table{width:100%;border-collapse:collapse;}
+.req-table th{background:#1e3a5f;color:#fff;padding:.9rem 1rem;text-align:left;width:28%;font-size:.9rem;vertical-align:top;}
+.req-table td{padding:.9rem 1rem;border-bottom:1px solid #e4eaf4;font-size:.9rem;vertical-align:top;}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{padding:.6rem .8rem;}
+  .req-table td{padding:.6rem .8rem 1rem;}
+}
+
+/* FAQ */
+.faq{background:#f4f7fb;}
+.faq-list{max-width:720px;margin:0 auto;}
+.faq-item{background:#fff;border-radius:8px;margin-bottom:1rem;overflow:hidden;box-shadow:0 1px 4px rgba(0,0,0,.06);}
+.faq-q{padding:1rem 1.4rem;font-weight:700;color:#1e3a5f;display:flex;align-items:flex-start;gap:.7rem;font-size:.93rem;}
+.faq-q::before{content:'Q';background:#f07820;color:#fff;padding:.1rem .5rem;border-radius:4px;font-size:.82rem;flex-shrink:0;margin-top:.15rem;}
+.faq-a{padding:.7rem 1.4rem 1rem;font-size:.88rem;color:#555;border-top:1px solid #eef1f8;display:flex;align-items:flex-start;gap:.7rem;}
+.faq-a::before{content:'A';background:#1e3a5f;color:#fff;padding:.1rem .5rem;border-radius:4px;font-size:.82rem;flex-shrink:0;margin-top:.1rem;}
+
+/* CTA */
+.cta-section{background:#1e3a5f;text-align:center;padding:4.5rem 1.5rem;}
+.cta-title{font-size:clamp(1.3rem,3vw,1.8rem);color:#fff;font-weight:700;margin-bottom:.8rem;}
+.cta-sub{color:rgba(255,255,255,.8);margin-bottom:2rem;font-size:.93rem;}
+.btn-primary.large{padding:1.1rem 3rem;font-size:1.05rem;}
+
+footer{background:#0f1e38;color:rgba(255,255,255,.65);text-align:center;padding:2rem 1.5rem;font-size:.82rem;line-height:2;}
+
+@media(max-width:768px){
+  .benefits-grid,.work-cards,.voices-grid{grid-template-columns:1fr;}
+  .timeline-list::before{left:68px;}
+  .timeline-item{grid-template-columns:60px 16px 1fr;}
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="#top">株式会社イーパック千葉工場 採用サイト</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#work">仕事内容</a>
+    <a href="#voices">先輩の声</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#faq">よくある質問</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <img class="hero-img" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&h=900&fit=crop&q=80" alt="工場内物流の様子">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-tag">佐倉市 ／ 正社員募集</span>
+    <h1 class="hero-title">フォークリフトのスキルを、<br>安定した職場で活かしませんか</h1>
+    <p class="hero-sub">業界シェアトップクラスの包装資材メーカー。昭和28年創業・安定経営の千葉工場でお待ちしています。</p>
+    <a class="btn-primary" href="#entry">採用に応募する</a>
+  </div>
+</section>
+
+<section class="benefits" id="benefits">
+  <div class="section-inner">
+    <h2 class="section-title">イーパック千葉工場で働く魅力</h2>
+    <p class="section-sub">長く安心して働き続けられる環境があります</p>
+    <div class="divider"></div>
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <div class="benefit-icon">💰</div>
+        <div class="benefit-title">月収20〜25.7万円</div>
+        <p class="benefit-text">食事手当・職能手当・暫定手当を含む月給制。昇給（年1回）・賞与（年2回）あり。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社の給与体系に差し替えます</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">🏭</div>
+        <div class="benefit-title">創業70年超の安定企業</div>
+        <p class="benefit-text">昭和28年創業・業界シェアトップクラス。退職金制度＋確定給付年金で将来も安心。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社の特長に差し替えます</p>
+      </div>
+      <div class="benefit-card">
+        <div class="benefit-icon">📅</div>
+        <div class="benefit-title">年間休日116日</div>
+        <p class="benefit-text">日祝・週休2日制。年末年始・夏期連続休暇あり。マイカー通勤可・無料駐車場完備。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社の休日情報に差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="work" id="work">
+  <div class="section-inner">
+    <h2 class="section-title">仕事内容</h2>
+    <p class="section-sub">フォークリフト技能者として、工場の物流を支えます</p>
+    <div class="divider"></div>
+    <div class="work-cards">
+      <div class="work-card">
+        <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=640&h=400&fit=crop&q=80" alt="フォークリフト搬送作業">
+        <div class="work-card-body">
+          <div class="work-card-title">フォークリフト搬送（主業務）</div>
+          <p class="work-card-text">原材料・製品の搬入搬出がメインです。製造ラインへの資材補給、完成品の出荷準備をフォークリフトで担います。</p>
+          <p class="sample-note">※ここはサンプルです。実際の業務内容に差し替えます</p>
+        </div>
+      </div>
+      <div class="work-card">
+        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=640&h=400&fit=crop&q=80" alt="検品・荷扱い作業">
+        <div class="work-card-body">
+          <div class="work-card-title">検品・荷扱い作業（手作業）</div>
+          <p class="work-card-text">入荷品の数量・品質確認、出荷前の最終チェックや梱包補助・仕分けなど手作業も担当します。丁寧さが求められる仕事です。</p>
+          <p class="sample-note">※ここはサンプルです。実際の業務内容に差し替えます</p>
+        </div>
+      </div>
+      <div class="work-card">
+        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=640&h=400&fit=crop&q=80" alt="安全な職場環境">
+        <div class="work-card-body">
+          <div class="work-card-title">安全・快適な職場環境</div>
+          <p class="work-card-text">作業服・帽子・安全靴は会社支給。安全管理を徹底した環境でチームと協力しながら働けます。</p>
+          <p class="sample-note">※ここはサンプルです。実際の職場環境情報に差し替えます</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="voices" id="voices">
+  <div class="section-inner">
+    <h2 class="section-title">先輩からのメッセージ</h2>
+    <p class="section-sub">一緒に働く仲間の声をご紹介します</p>
+    <div class="divider"></div>
+    <p style="text-align:center;font-size:.78rem;color:#bbb;margin-bottom:1.5rem;">※以下はサンプルです。実際には御社スタッフの写真・コメントに差し替えます</p>
+    <div class="voices-grid">
+      <div class="voice-card">
+        <!-- 先輩スタッフ1の顔写真（男性）を差し替えます -->
+        <img class="voice-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩スタッフ">
+        <div class="voice-name">田中 誠さん（仮名）</div>
+        <div class="voice-meta">フォークリフトオペレーター / 入社5年目</div>
+        <p class="voice-text">前職でもフォークリフトに乗っていましたが、こちらの方が待遇が充実していると聞いて転職しました。食事手当・住宅手当など各種手当が揃っているので安心感が違います。職場の雰囲気もよく、先輩が丁寧に教えてくれました。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</p>
+      </div>
+      <div class="voice-card">
+        <!-- 先輩スタッフ2の顔写真（男性）を差し替えます -->
+        <img class="voice-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩スタッフ">
+        <div class="voice-name">佐藤 健二さん（仮名）</div>
+        <div class="voice-meta">フォークリフトオペレーター / 入社3年目</div>
+        <p class="voice-text">フォーク作業だけでなく検品や梱包補助もあるので、1日の中に適度な変化があって飽きません。「その他の業務って何？」と最初は不安でしたが、入社後に丁寧に説明してもらえます。チームワークが良い職場です。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</p>
+      </div>
+      <div class="voice-card">
+        <!-- 先輩スタッフ3の顔写真（男性）を差し替えます -->
+        <img class="voice-img" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩スタッフ">
+        <div class="voice-name">山田 博さん（仮名）</div>
+        <div class="voice-meta">フォークリフトオペレーター / 入社8年目</div>
+        <p class="voice-text">創業70年を超える老舗で業界シェアもトップクラス。会社の安定感が入社の決め手でした。退職金制度も確定給付年金もあるので老後も安心です。家族ぐるみのイベントもあり、アットホームな職場です。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="timeline" id="timeline">
+  <div class="section-inner">
+    <h2 class="section-title">1日の仕事の流れ</h2>
+    <p class="section-sub">フォークリフトオペレーターの典型的な1日をご紹介します</p>
+    <div class="divider"></div>
+    <p style="text-align:center;font-size:.78rem;color:#bbb;margin-bottom:2rem;">※ここはサンプルです。実際には御社の1日スケジュールに差し替えます</p>
+    <div class="timeline-list">
+      <div class="timeline-item">
+        <div class="tl-time">8:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-title">朝礼・フォークリフト始業点検</div>
+          <p class="tl-text">その日の搬入出スケジュールを確認。フォークリフトの安全点検を行いスタート。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">8:45</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-title">原材料の搬入作業</div>
+          <p class="tl-text">入荷した原材料をフォークリフトで所定の保管場所へ搬送。数量確認も同時に実施。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">10:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-title">製造ラインへの資材補給</div>
+          <p class="tl-text">製造部門と連携しながら必要な資材をラインまで運搬。スムーズなライン稼働を支えます。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">12:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-title">昼休憩（60分）</div>
+          <p class="tl-text">食堂・休憩室でゆっくりお昼。同僚とコミュニケーションを取れる時間でもあります。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-title">午後の搬送・検品</div>
+          <p class="tl-text">製品の搬出準備と並行して検品作業（手作業）を実施。入荷・出荷数の記録管理も行います。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">15:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-title">出荷前梱包・仕分け補助</div>
+          <p class="tl-text">完成品の梱包確認や仕分け補助（手作業）。出荷ミスがないよう丁寧にチェックします。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">16:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-title">終業点検・片付け</div>
+          <p class="tl-text">フォークリフトの終業点検と作業スペースの整理整頓。安全確認を行い退社へ。</p>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="tl-time">17:15</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <div class="tl-title">退社</div>
+          <p class="tl-text">月平均残業15時間（残業代全額支給）。プライベートの時間もしっかり確保できます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="requirements" id="requirements">
+  <div class="section-inner">
+    <h2 class="section-title">募集要項</h2>
+    <p class="section-sub">正社員募集</p>
+    <div class="divider"></div>
+    <p style="text-align:center;font-size:.78rem;color:#bbb;margin-bottom:1.5rem;">※ここはサンプルです。実際には御社の最新情報に差し替えます</p>
+    <table class="req-table">
+      <tr><th>職種</th><td>工場内の配送作業（フォークリフト運転）・検品・荷扱い作業</td></tr>
+      <tr><th>雇用形態</th><td>正社員（試用期間3か月・同条件）</td></tr>
+      <tr><th>給与</th><td>月給 200,000〜257,000円<br>（基本給160,000〜217,000円＋食事手当5,000円＋職能手当20,000円＋暫定手当15,000円）<br>住宅手当10,000円（世帯主）・扶養家族手当・昇給（年1回）・賞与（年2回）</td></tr>
+      <tr><th>勤務時間</th><td>8:30〜17:15（実労働7時間45分・休憩60分）<br>変形労働時間制（1年単位）・月平均残業15時間</td></tr>
+      <tr><th>休日・休暇</th><td>年間休日116日（日祝・週休2日制）<br>年末年始・夏期連続休暇あり・有給休暇（6か月後10日）</td></tr>
+      <tr><th>必要資格</th><td>フォークリフト運転技能者（必須）</td></tr>
+      <tr><th>対象年齢</th><td>44歳以下（長期勤続によるキャリア形成のため）</td></tr>
+      <tr><th>勤務地</th><td>千葉県佐倉市太田2056-1<br>JR佐倉駅より徒歩20分／マイカー通勤可（無料駐車場あり）</td></tr>
+      <tr><th>待遇・福利厚生</th><td>雇用・労災・健康・厚生年金完備<br>退職金制度（勤続1年〜）・確定給付年金<br>作業服・帽子・安全靴貸与・支給</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="faq" id="faq">
+  <div class="section-inner">
+    <h2 class="section-title">よくある質問</h2>
+    <p class="section-sub">応募前の疑問にお答えします</p>
+    <div class="divider"></div>
+    <p style="text-align:center;font-size:.78rem;color:#bbb;margin-bottom:1.5rem;">※ここはサンプルです。実際には御社のQ&Aに差し替えます</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">フォークリフト作業以外に、どんな仕事がありますか？</div>
+        <div class="faq-a">搬入搬出のフォークリフト作業がメインですが、入荷品の検品（数量・品質確認）、出荷前の梱包補助・仕分けなど手作業も担当します。日によって内容が変わりますが、チームで分担して進めるので安心です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">フォークリフト資格があれば、包装資材業界が初めてでも応募できますか？</div>
+        <div class="faq-a">はい、大丈夫です。フォークリフト運転技能者の資格をお持ちであれば、業界が初めての方でも歓迎します。入社後は先輩が丁寧にサポートします。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">残業はどのくらいありますか？</div>
+        <div class="faq-a">月平均15時間程度です。製品・機械トラブル時に特別条項が適用されることがありますが、通常期は定時退社が基本です。残業代は全額支給します。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">試用期間の待遇はどうなりますか？</div>
+        <div class="faq-a">試用期間は3か月ですが、本採用と同条件の給与・待遇です。ご安心ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">応募の流れを教えてください。</div>
+        <div class="faq-a">まずハローワークにてご相談ください。紹介状をお持ちのうえ、履歴書（写真貼付）をご準備いただき面接（1回）となります。結果は面接後7日以内にご連絡します。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="entry">
+  <div class="section-inner">
+    <h2 class="cta-title">一緒に働きましょう</h2>
+    <p class="cta-sub">まずはお気軽にハローワークへご相談ください。<br>フォークリフトのスキルを活かせる安定した職場でお待ちしています。</p>
+    <a class="btn-primary large" href="tel:043-483-0089">☎ 043-483-0089（採用担当）</a>
+    <p style="color:rgba(255,255,255,.6);margin-top:1.2rem;font-size:.82rem;">
+      ※応募にはハローワークの紹介状が必要です。
+    </p>
+  </div>
+</section>
+
+<footer>
+  <p>株式会社イーパック千葉工場</p>
+  <p>〒285-0808 千葉県佐倉市太田2056-1</p>
+  <p>TEL: 043-483-0089 ／ E-mail: chiba-riku@e-pack.co.jp</p>
+</footer>
+
+<script>
+  (function(){
+    var btn = document.querySelector('.hamburger');
+    var nav = document.querySelector('.site-nav');
+    if(btn && nav){
+      btn.addEventListener('click', function(){
+        var open = nav.classList.toggle('open');
+        btn.setAttribute('aria-expanded', open);
+      });
+    }
+  })();
+</script>
+</body>
+</html>

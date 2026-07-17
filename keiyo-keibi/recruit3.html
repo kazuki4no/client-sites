@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>警備員 採用情報 | 有限会社 京葉警備保障</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{--dark:#111827;--navy:#1b3068;--orange:#ff6a00;--amber:#ffa500;--bg:#f4f7fb;--gray:#6b7280;--text:#2c2c2c;}
+body{font-family:'Noto Sans JP',sans-serif;color:var(--text);line-height:1.7;background:#fff;}
+img{max-width:100%;}
+a{color:inherit;text-decoration:none;}
+
+/* Header */
+.site-header{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1.5rem;background:rgba(17,24,39,.92);backdrop-filter:blur(6px);position:fixed;top:0;left:0;right:0;z-index:100;}
+.brand{font-size:1rem;font-weight:700;color:#fff;}
+.brand em{color:var(--orange);font-style:normal;}
+.hamburger{display:none;background:none;border:0;font-size:1.7rem;line-height:1;cursor:pointer;color:#fff;}
+.site-nav{display:flex;gap:1.4rem;align-items:center;}
+.site-nav a{font-size:.88rem;font-weight:500;color:rgba(255,255,255,.8);transition:color .2s;}
+.site-nav a:hover{color:var(--orange);}
+.nav-cta{background:var(--orange);color:#fff !important;padding:.4rem 1rem;border-radius:20px;}
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;position:absolute;top:100%;left:0;right:0;z-index:50;background:rgba(17,24,39,.97);padding:.5rem 1rem;}
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.8rem 0;border-bottom:1px solid rgba(255,255,255,.1);}
+}
+
+/* Hero FV */
+.hero{position:relative;min-height:80vh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding-top:60px;}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center;}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(17,24,39,.82) 0%,rgba(27,48,104,.65) 100%);}
+.hero-content{position:relative;z-index:2;text-align:center;color:#fff;padding:2rem 1.5rem;max-width:800px;}
+.hero-eyebrow{display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap;margin-bottom:1.2rem;}
+.pill{border:1px solid rgba(255,106,0,.7);color:var(--orange);font-size:.78rem;font-weight:700;padding:.25rem .7rem;border-radius:20px;}
+.hero-content h1{font-family:'Noto Serif JP',serif;font-size:clamp(2rem,6.5vw,3.8rem);font-weight:700;line-height:1.2;margin-bottom:.8rem;text-shadow:0 2px 8px rgba(0,0,0,.5);}
+.hero-content h1 em{color:var(--orange);font-style:normal;}
+.hero-sub{font-size:clamp(.9rem,2.2vw,1.1rem);opacity:.85;margin-bottom:2rem;}
+.hero-btns{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;}
+.btn-orange{display:inline-block;background:var(--orange);color:#fff;font-weight:700;padding:.9rem 2.4rem;border-radius:4px;font-size:1rem;}
+.btn-ghost{display:inline-block;border:2px solid rgba(255,255,255,.6);color:#fff;font-weight:700;padding:.85rem 1.8rem;border-radius:4px;font-size:.95rem;}
+.hero-data{display:flex;flex-wrap:wrap;justify-content:center;gap:1.2rem;margin-top:1.8rem;}
+.hero-data span{font-size:.82rem;color:rgba(255,255,255,.7);}
+.hero-data strong{color:var(--amber);}
+
+/* Sections */
+section{padding:4rem 1.5rem;}
+.section-inner{max-width:900px;margin:0 auto;}
+.eyebrow{font-size:.82rem;font-weight:700;color:var(--orange);letter-spacing:.06em;margin-bottom:.4rem;}
+.section-title{font-size:clamp(1.4rem,4vw,2rem);font-weight:700;color:var(--dark);margin-bottom:.4rem;}
+.accent-line{display:block;width:40px;height:3px;background:var(--orange);margin-bottom:2rem;}
+
+/* Features Dark */
+.dark-section{background:var(--dark);padding:4rem 1.5rem;}
+.dark-section .section-title{color:#fff;}
+.dark-section .eyebrow{color:var(--orange);}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+@media(max-width:640px){.features-grid{grid-template-columns:1fr;}}
+.feature-card{border:1px solid rgba(255,106,0,.25);border-radius:8px;padding:1.8rem;text-align:center;}
+.feature-icon{width:56px;height:56px;border-radius:50%;background:rgba(255,106,0,.15);display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;}
+.feature-icon svg{width:28px;height:28px;stroke:var(--orange);fill:none;stroke-width:2;}
+.feature-card h3{font-size:1rem;color:#fff;margin-bottom:.5rem;}
+.feature-card p{font-size:.87rem;color:rgba(255,255,255,.6);line-height:1.65;}
+
+/* Voice */
+.bg-light{background:var(--bg);}
+.voices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+@media(max-width:640px){.voices-grid{grid-template-columns:1fr;}}
+.voice-card{background:#fff;border-radius:8px;padding:1.5rem;box-shadow:0 2px 10px rgba(0,0,0,.06);}
+.voice-head{display:flex;align-items:center;gap:.8rem;margin-bottom:1rem;}
+.voice-img{width:60px;height:60px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.voice-meta h4{font-size:.88rem;font-weight:700;color:var(--dark);}
+.voice-meta p{font-size:.76rem;color:var(--gray);}
+.voice-card blockquote{font-size:.88rem;color:var(--text);line-height:1.7;border-left:3px solid var(--orange);padding-left:.8rem;}
+.voice-sample{font-size:.72rem;color:#bbb;margin-top:.5rem;}
+
+/* Timeline */
+.tl-wrap{max-width:640px;margin:0 auto;}
+.timeline{position:relative;}
+.timeline::before{content:'';position:absolute;left:82px;top:0;bottom:0;width:2px;background:var(--orange);opacity:.3;}
+.tl-item{display:grid;grid-template-columns:72px 20px 1fr;gap:0 .8rem;align-items:start;margin-bottom:1.6rem;}
+.tl-time{text-align:right;font-weight:700;color:var(--orange);font-size:.95rem;padding-top:.1rem;}
+.tl-dot{width:12px;height:12px;border-radius:50%;background:var(--orange);justify-self:center;margin-top:.35rem;}
+.tl-body h4{font-weight:700;font-size:.95rem;color:var(--dark);}
+.tl-body p{font-size:.87rem;color:var(--gray);}
+.tl-sample{text-align:center;font-size:.78rem;color:#bbb;margin-top:1rem;}
+
+/* FAQ */
+.faq-list{max-width:720px;margin:0 auto;}
+.faq-item{border-bottom:1px solid #e5e7eb;padding:1rem 0;}
+.faq-q{font-weight:700;color:var(--dark);margin-bottom:.4rem;display:flex;align-items:center;gap:.6rem;}
+.faq-q::before{content:'Q';background:var(--orange);color:#fff;font-size:.75rem;padding:.1rem .45rem;border-radius:3px;flex-shrink:0;}
+.faq-a{font-size:.9rem;color:var(--gray);display:flex;gap:.6rem;}
+.faq-a::before{content:'A';background:var(--navy);color:#fff;font-size:.75rem;padding:.1rem .45rem;border-radius:3px;flex-shrink:0;margin-top:.05rem;}
+
+/* Requirement */
+.req-table{width:100%;border-collapse:collapse;}
+.req-table th,.req-table td{padding:.75rem 1rem;text-align:left;border-bottom:1px solid #e5e7eb;font-size:.92rem;vertical-align:top;}
+.req-table th{background:var(--bg);color:var(--dark);font-weight:700;width:35%;}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{background:var(--bg);padding:.5rem .8rem;}
+  .req-table td{padding:.5rem .8rem 1rem;}
+}
+
+/* CTA section */
+.cta-section{background:var(--navy);text-align:center;padding:4rem 1.5rem;}
+.cta-section h2{font-size:clamp(1.4rem,4vw,2rem);color:#fff;margin-bottom:.6rem;}
+.cta-section p{color:rgba(255,255,255,.75);margin-bottom:2rem;}
+.btn-cta{display:inline-block;background:var(--orange);color:#fff;font-weight:700;padding:.9rem 2.8rem;border-radius:4px;font-size:1rem;}
+.cta-tel{font-size:.85rem;color:rgba(255,255,255,.55);margin-top:.8rem;}
+
+/* Footer */
+footer{background:var(--dark);color:#6b7280;text-align:center;padding:2rem 1rem;font-size:.83rem;}
+footer p{margin:.3rem 0;}
+</style>
+</head>
+<body id="top">
+
+<header class="site-header">
+  <a class="brand" href="#top">有限会社 <em>京葉警備保障</em></a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#features">特長</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#day">1日の流れ</a>
+    <a href="#req">募集要項</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<!-- Hero FV -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span class="pill">正社員募集</span>
+      <span class="pill">未経験歓迎</span>
+      <span class="pill">シニア活躍中</span>
+    </div>
+    <h1><em>地域の安全</em>を守る仕事、<br>はじめてみませんか。</h1>
+    <p class="hero-sub">有限会社 京葉警備保障では、交通誘導・雑踏警備の警備員を募集しています。<br>未経験・異業種出身の方でも、丁寧な研修で安心してスタートできます。</p>
+    <div class="hero-btns">
+      <a class="btn-orange" href="#entry">まずは詳細を見る</a>
+      <a class="btn-ghost" href="#req">募集要項を確認する</a>
+    </div>
+    <div class="hero-data">
+      <span>日給 <strong>9,600〜13,000円</strong></span>
+      <span>年間休日 <strong>105日</strong></span>
+      <span>直行直帰 <strong>OK</strong></span>
+      <span>残業 <strong>月平均1時間</strong></span>
+    </div>
+  </div>
+</section>
+
+<!-- Features -->
+<div class="dark-section" id="features">
+  <div class="section-inner">
+    <p class="eyebrow">WHY CHOOSE US</p>
+    <h2 class="section-title" style="margin-bottom:2rem;">京葉警備保障で働く3つの理由</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>未経験・異業種歓迎<br>丁寧な研修で安心スタート</h3>
+        <p>まったく別の業界から転職された方が多数在籍。入社後はきめ細かな研修を実施し、資格取得もサポートします。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>直行直帰・自由シフトで<br>ワークライフバランス充実</h3>
+        <p>現場への直行直帰が基本。勤務日と休日はご自身のペースで選べます。残業は月平均1時間で、家族や趣味の時間を大切にできます。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <h3>昭和63年創業の安定した<br>会社で長く続けられる</h3>
+        <p>創業38年の地域密着企業。離職率の低さが自慢のアットホームな職場で、シニア世代を中心に幅広い年代が長く活躍しています。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Voice -->
+<section class="bg-light" id="voice">
+  <div class="section-inner">
+    <p class="eyebrow">VOICE</p>
+    <h2 class="section-title">先輩からのメッセージ</h2>
+    <span class="accent-line"></span>
+    <div class="voices-grid">
+      <div class="voice-card">
+        <div class="voice-head">
+          <img class="voice-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩（仮名）">
+          <div class="voice-meta"><h4>田中 健二（仮名）</h4><p>交通誘導警備 ／ 入社3年目</p></div>
+        </div>
+        <blockquote>前職は全然違う仕事でしたが、研修が充実していてすぐに現場で活躍できるようになりました。直行直帰で体への負担も少ないです。</blockquote>
+        <p class="voice-sample">※ここはサンプルです。実際には御社スタッフの声に差し替えます</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-head">
+          <img class="voice-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩（仮名）">
+          <div class="voice-meta"><h4>佐藤 正男（仮名）</h4><p>雑踏警備 ／ 60代・入社5年目</p></div>
+        </div>
+        <blockquote>60歳で入社しました。人生経験が活きる仕事で、同僚みんな家族みたいに温かく迎えてくれました。離職率が低い理由がよく分かります。</blockquote>
+        <p class="voice-sample">※ここはサンプルです。実際には御社スタッフの声に差し替えます</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-head">
+          <img class="voice-img" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩（仮名）">
+          <div class="voice-meta"><h4>鈴木 和美（仮名）</h4><p>交通誘導警備 ／ 入社1年半</p></div>
+        </div>
+        <blockquote>女性でも無理なく続けられています。現場が終われば直帰できるので、子どもの迎えにも間に合います。働きやすさが気に入っています。</blockquote>
+        <p class="voice-sample">※ここはサンプルです。実際には御社スタッフの声に差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Timeline -->
+<section id="day">
+  <div class="section-inner">
+    <p class="eyebrow">A DAY IN THE LIFE</p>
+    <h2 class="section-title">当社社員の1日の流れ</h2>
+    <p style="color:var(--gray);font-size:.9rem;margin-bottom:.4rem;">日勤モデル（8:00〜17:00）</p>
+    <span class="accent-line"></span>
+    <div class="tl-wrap">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-time">8:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body"><h4>現場へ直行・準備</h4><p>自宅から現場へ直行。装備・器材を確認。</p></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">8:30</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body"><h4>朝礼・ブリーフィング</h4><p>その日の担当エリア・注意事項を共有。</p></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">9:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body"><h4>警備業務開始</h4><p>交通誘導・歩行者安全確保にあたります。</p></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">12:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body"><h4>昼食休憩（60分）</h4><p>交代制でしっかり休憩。残業はほぼありません。</p></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">13:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body"><h4>午後の業務再開</h4><p>引き続き現場の安全管理を担当。</p></div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">17:00</div>
+          <div class="tl-dot"></div>
+          <div class="tl-body"><h4>業務終了・直帰</h4><p>現場からそのまま自宅へ。月平均残業1時間。</p></div>
+        </div>
+      </div>
+      <p class="tl-sample">※ここはサンプルです。実際には御社のスケジュールに差し替えます</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="bg-light" id="faq">
+  <div class="section-inner">
+    <p class="eyebrow">FAQ</p>
+    <h2 class="section-title">よくある質問</h2>
+    <span class="accent-line"></span>
+    <div class="faq-list">
+      <div class="faq-item">
+        <p class="faq-q">警備未経験でも応募できますか？</p>
+        <p class="faq-a">はい、ぜひどうぞ。入社後は先輩スタッフによる実践的な研修を実施します。異業種からの転職者が多数活躍しています。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">資格は必要ですか？</p>
+        <p class="faq-a">入社時は不要です。働きながら資格（交通誘導・雑踏警備業務検定2級等）の取得を目指せます。取得後は月5,000円の資格手当が付きます。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">何歳まで応募できますか？</p>
+        <p class="faq-a">18歳以上であれば年齢上限はありません。現在も60代・70代のスタッフが活躍しています。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">勤務日・休日は自分で選べますか？</p>
+        <p class="faq-a">はい、勤務日と休日はご自身で調整できます。週休2日制（毎週）・年間休日105日。ライフスタイルに合わせた働き方ができます。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">現場が早く終わっても給与はもらえますか？</p>
+        <p class="faq-a">はい、現場が短時間で終了した場合でも1日分の日給を全額保証します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Requirement -->
+<section id="req">
+  <div class="section-inner">
+    <p class="eyebrow">RECRUITMENT</p>
+    <h2 class="section-title">募集要項</h2>
+    <span class="accent-line"></span>
+    <table class="req-table">
+      <tbody>
+        <tr><th>職種</th><td>警備員（交通誘導・雑踏警備）</td></tr>
+        <tr><th>雇用形態</th><td>正社員（試用期間3ヶ月・同条件）</td></tr>
+        <tr><th>給与</th><td>日給 9,600円〜13,000円<br>（月換算 207,360円〜280,800円）<br>資格手当：警備2級以上で月5,000円</td></tr>
+        <tr><th>昇給</th><td>あり（年4〜5%・前年度実績）</td></tr>
+        <tr><th>賞与</th><td>なし</td></tr>
+        <tr><th>就業時間</th><td>8:00〜17:00 ／ 20:00〜5:00（現場による）<br>現場が早く終了しても日給を保証</td></tr>
+        <tr><th>就業場所</th><td>船橋市・習志野市・八千代市の現場<br>（直行直帰可・転勤なし）</td></tr>
+        <tr><th>休日・休暇</th><td>週休2日制（毎週）／ 年間休日105日<br>勤務日・休日はご自身で調整可能</td></tr>
+        <tr><th>通勤手当</th><td>実費支給（上限なし）</td></tr>
+        <tr><th>各種保険</th><td>雇用・労災・健康・厚生年金</td></tr>
+        <tr><th>マイカー通勤</th><td>可（駐車場あり）</td></tr>
+        <tr><th>必要な資格</th><td>不要（入社後取得支援あり）<br>交通誘導・雑踏・施設警備業務検定2級、普通免許はあれば尚可</td></tr>
+        <tr><th>採用人数</th><td>10名（増員中）</td></tr>
+        <tr><th>選考方法</th><td>面接1回 ／ 書類選考なし ／ オンライン応募可</td></tr>
+        <tr><th>所在地</th><td>千葉県八千代市八千代台西3-5-1 ケイズ八千代台<br>京成線 八千代台駅 徒歩3分</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- Entry CTA -->
+<section class="cta-section" id="entry">
+  <h2>あなたの誠実さが、地域の安全を守ります</h2>
+  <p>面接は1回のみ。書類選考なし。オンライン応募も歓迎しています。<br>まずはお気軽にご連絡ください。</p>
+  <a class="btn-cta" href="mailto:k.takahashi@keiyo-keibi.com">応募・お問い合わせ</a>
+  <p class="cta-tel">お電話でのお問い合わせ: 047-429-8444</p>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>有限会社 京葉警備保障</p>
+  <p>千葉県八千代市八千代台西3-5-1 ケイズ八千代台</p>
+  <p>TEL: 047-429-8444 ／ E-mail: k.takahashi@keiyo-keibi.com</p>
+</footer>
+
+<script>
+(function(){
+  var btn = document.querySelector('.hamburger');
+  var nav = document.querySelector('.site-nav');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  }
+})();
+</script>
+</body>
+</html>

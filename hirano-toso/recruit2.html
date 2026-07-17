@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 有限会社ヒラノ塗装</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#222;background:#fff}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+:root{
+  --dark:#0e1a2b;
+  --accent:#ff6d00;
+  --accent2:#ffab40;
+  --gray:#f5f6f8;
+  --muted:#888;
+}
+
+/* ===== HEADER ===== */
+header{background:var(--dark);position:sticky;top:0;z-index:100}
+.header-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{color:#fff;font-size:1rem;font-weight:700}
+nav.pc-nav{display:flex;gap:28px}
+nav.pc-nav a{color:rgba(255,255,255,0.8);font-size:0.88rem;transition:color 0.2s}
+nav.pc-nav a:hover{color:var(--accent2)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px}
+.mobile-menu{display:none;position:fixed;inset:0;background:rgba(14,26,43,0.97);z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:32px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:#fff;font-size:1.3rem;font-weight:700}
+.mobile-close{position:absolute;top:20px;right:24px;background:none;border:none;color:#fff;font-size:1.8rem;cursor:pointer}
+
+/* ===== HERO (LP型) ===== */
+.hero{background:var(--dark);min-height:80vh;display:flex;align-items:center;padding:80px 20px;position:relative;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&h=900&fit=crop&q=80') center/cover no-repeat;opacity:0.22}
+.hero-inner{position:relative;z-index:1;max-width:700px}
+.hero .eyebrow{display:inline-block;border:2px solid var(--accent);color:var(--accent);font-size:0.82rem;font-weight:700;padding:4px 14px;border-radius:2px;margin-bottom:20px;letter-spacing:0.1em}
+.hero h1{font-size:clamp(2rem,6.5vw,3.5rem);font-weight:900;color:#fff;line-height:1.25;margin-bottom:24px}
+.hero h1 em{font-style:normal;color:var(--accent2)}
+.hero p{color:rgba(255,255,255,0.85);font-size:clamp(0.95rem,2.5vw,1.1rem);line-height:1.85;margin-bottom:36px}
+.btn-hero{display:inline-block;background:var(--accent);color:#fff;font-size:1.1rem;font-weight:700;padding:16px 48px;border-radius:3px;transition:background 0.2s}
+.btn-hero:hover{background:#e65100}
+.hero-sub{display:flex;gap:24px;margin-top:20px;flex-wrap:wrap}
+.hero-tag{background:rgba(255,255,255,0.12);color:#fff;font-size:0.82rem;padding:4px 12px;border-radius:20px}
+
+/* ===== SECTION ===== */
+section{padding:72px 20px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-label{font-size:0.78rem;font-weight:700;color:var(--accent);letter-spacing:0.14em;margin-bottom:8px;text-transform:uppercase}
+.section-title{margin-bottom:40px}
+.section-title h2{font-size:clamp(1.5rem,4vw,2.1rem);font-weight:900;color:var(--dark);line-height:1.3}
+.section-title p{color:var(--muted);margin-top:8px;font-size:0.95rem;line-height:1.7}
+
+/* ===== NUMBERS ===== */
+.numbers-section{background:var(--accent)}
+.numbers-grid{display:flex;gap:0;flex-wrap:wrap}
+.num-item{flex:1;min-width:180px;padding:32px 24px;text-align:center;border-right:1px solid rgba(255,255,255,0.25)}
+.num-item:last-child{border-right:none}
+.num-val{font-size:clamp(2.2rem,6vw,3.2rem);font-weight:900;color:#fff;line-height:1}
+.num-unit{font-size:1rem;color:rgba(255,255,255,0.85);font-weight:700}
+.num-label{font-size:0.82rem;color:rgba(255,255,255,0.85);margin-top:6px}
+.num-note{font-size:0.72rem;color:rgba(255,255,255,0.65);margin-top:4px}
+
+/* ===== APPEAL ===== */
+.appeal-section{background:var(--gray)}
+.appeal-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
+.appeal-img{border-radius:6px;overflow:hidden;height:360px;object-fit:cover;width:100%}
+.appeal-list{display:flex;flex-direction:column;gap:20px}
+.appeal-item{display:flex;align-items:flex-start;gap:16px;background:#fff;padding:20px;border-radius:6px;box-shadow:0 2px 8px rgba(0,0,0,0.06)}
+.appeal-icon{width:44px;height:44px;background:var(--accent);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.appeal-body h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:4px}
+.appeal-body p{font-size:0.88rem;color:var(--muted);line-height:1.6}
+
+/* ===== INTERVIEW ===== */
+.interview-section{}
+.interview-grid{display:flex;flex-direction:column;gap:40px}
+.interview-card{display:grid;grid-template-columns:220px 1fr;gap:28px;align-items:start;background:var(--gray);border-radius:8px;overflow:hidden;padding:0}
+.interview-card:nth-child(even){direction:rtl}
+.interview-card:nth-child(even)>*{direction:ltr}
+.interview-card img{width:100%;height:100%;object-fit:cover;min-height:220px}
+.interview-body{padding:28px 24px 28px 0}
+.interview-card:nth-child(even) .interview-body{padding:28px 0 28px 24px}
+.interview-tag{font-size:0.78rem;font-weight:700;color:var(--accent);letter-spacing:0.1em;margin-bottom:4px}
+.interview-name{font-size:1.1rem;font-weight:900;color:var(--dark);margin-bottom:4px}
+.interview-meta{font-size:0.82rem;color:var(--muted);margin-bottom:12px}
+.interview-q{font-size:0.85rem;font-weight:700;color:var(--accent);margin-bottom:4px}
+.interview-a{font-size:0.9rem;line-height:1.75;color:#333;margin-bottom:14px}
+.interview-sample{font-size:0.75rem;color:#bbb}
+
+/* ===== JOB TABLE ===== */
+.job-section{background:var(--dark)}
+.job-section .section-title h2,.job-section .section-label{color:#fff}
+.job-section .section-title p{color:rgba(255,255,255,0.6)}
+.job-table{width:100%;border-collapse:collapse;font-size:0.95rem}
+.job-table th,.job-table td{border:1px solid rgba(255,255,255,0.1);padding:14px 18px;text-align:left;vertical-align:top}
+.job-table th{background:rgba(255,107,0,0.15);color:var(--accent2);width:150px;font-weight:700;white-space:nowrap}
+.job-table td{background:rgba(255,255,255,0.04);color:rgba(255,255,255,0.9);line-height:1.7}
+
+/* ===== TIMELINE ===== */
+.tl-section{}
+.tl-wrap{max-width:660px;margin:0 auto}
+.tl-row{display:flex;gap:20px;align-items:flex-start;padding-bottom:24px;position:relative}
+.tl-row::before{content:'';position:absolute;left:43px;top:36px;bottom:0;width:2px;background:#e8e8e8}
+.tl-row:last-child::before{display:none}
+.tl-time{width:60px;flex-shrink:0;font-size:0.88rem;font-weight:700;color:var(--accent);text-align:right;padding-top:6px}
+.tl-dot2{width:16px;height:16px;background:var(--accent);border-radius:50%;flex-shrink:0;margin-top:6px}
+.tl-text h4{font-size:0.95rem;font-weight:700;color:var(--dark);margin-bottom:2px;padding-top:2px}
+.tl-text p{font-size:0.85rem;color:var(--muted);line-height:1.6}
+.tl-sample{font-size:0.75rem;color:#bbb;text-align:center;margin-top:4px}
+
+/* ===== FAQ ===== */
+.faq-section{background:var(--gray)}
+.faq-list{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.faq-item{background:#fff;border-radius:6px;overflow:hidden;border:1px solid #eee}
+.faq-q{display:flex;gap:12px;align-items:flex-start;padding:16px 20px;font-weight:700;color:var(--dark);font-size:0.95rem}
+.faq-q .ico{color:var(--accent);font-weight:900}
+.faq-a{display:flex;gap:12px;align-items:flex-start;padding:0 20px 16px;font-size:0.9rem;line-height:1.7;color:#555}
+.faq-a .ico{color:var(--muted);font-weight:700}
+.faq-sample{font-size:0.75rem;color:#bbb;text-align:center;margin-top:4px}
+
+/* ===== CTA mid ===== */
+.cta-mid{background:linear-gradient(135deg,var(--accent) 0%,#e65100 100%);padding:60px 20px;text-align:center}
+.cta-mid h2{font-size:clamp(1.3rem,4vw,1.9rem);font-weight:900;color:#fff;margin-bottom:12px}
+.cta-mid p{color:rgba(255,255,255,0.9);margin-bottom:28px;line-height:1.7}
+.btn-white{display:inline-block;background:#fff;color:var(--accent);font-size:1rem;font-weight:700;padding:14px 40px;border-radius:3px;transition:opacity 0.2s}
+.btn-white:hover{opacity:0.9}
+
+/* ===== CTA final ===== */
+.cta-final{background:var(--dark);text-align:center;padding:80px 20px}
+.cta-final h2{font-size:clamp(1.6rem,5vw,2.4rem);font-weight:900;color:#fff;margin-bottom:16px}
+.cta-final p{color:rgba(255,255,255,0.8);margin-bottom:36px;line-height:1.8;font-size:1.05rem}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-accent{display:inline-block;background:var(--accent);color:#fff;font-size:1.05rem;font-weight:700;padding:14px 40px;border-radius:3px;transition:background 0.2s}
+.btn-accent:hover{background:#e65100}
+
+/* fixed CTA bar (mobile) */
+.fixed-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:150;background:var(--accent);text-align:center;padding:12px 20px}
+.fixed-cta a{color:#fff;font-weight:700;font-size:1rem}
+@media(max-width:768px){.fixed-cta{display:block}body{padding-bottom:56px}}
+
+/* ===== FOOTER ===== */
+footer{background:#07111f;color:rgba(255,255,255,0.6);text-align:center;padding:32px 20px;font-size:0.85rem;line-height:1.9}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  nav.pc-nav{display:none}
+  .hamburger{display:flex}
+  .numbers-grid{flex-direction:column}
+  .num-item{border-right:none;border-bottom:1px solid rgba(255,255,255,0.2)}
+  .num-item:last-child{border-bottom:none}
+  .appeal-grid{grid-template-columns:1fr}
+  .appeal-img{height:220px}
+  .interview-card{grid-template-columns:1fr}
+  .interview-card:nth-child(even){direction:ltr}
+  .interview-body,.interview-card:nth-child(even) .interview-body{padding:20px}
+  .interview-card img{min-height:200px;max-height:220px}
+  /* 募集要項縦積み */
+  .job-table,.job-table tbody,.job-table tr{display:block;width:100%}
+  .job-table tr{border-bottom:1px solid rgba(255,255,255,0.1);margin-bottom:4px}
+  .job-table th{display:block;width:100%;border:none;border-bottom:1px solid rgba(255,255,255,0.1)}
+  .job-table td{display:block;width:100%;border:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">有限会社 ヒラノ塗装 | 採用情報</div>
+    <nav class="pc-nav">
+      <a href="#appeal">働く理由</a>
+      <a href="#interview">先輩の声</a>
+      <a href="#job">募集要項</a>
+      <a href="#faq">FAQ</a>
+      <a href="#apply">応募する</a>
+    </nav>
+    <button class="hamburger" aria-label="メニュー" onclick="document.getElementById('mobileMenu').classList.add('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="document.getElementById('mobileMenu').classList.remove('open')">✕</button>
+  <a href="#appeal" onclick="document.getElementById('mobileMenu').classList.remove('open')">働く理由</a>
+  <a href="#interview" onclick="document.getElementById('mobileMenu').classList.remove('open')">先輩の声</a>
+  <a href="#job" onclick="document.getElementById('mobileMenu').classList.remove('open')">募集要項</a>
+  <a href="#faq" onclick="document.getElementById('mobileMenu').classList.remove('open')">FAQ</a>
+  <a href="#apply" onclick="document.getElementById('mobileMenu').classList.remove('open')">応募する</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <span class="eyebrow">塗装工 正社員 / 香取市</span>
+    <h1>仕事を終えて<br>振り返ると、<br><em>自分が塗った建物</em>が<br>そこにある。</h1>
+    <p>ヒラノ塗装では、千葉・東京・茨城の現場で活躍する仲間を募集中です。<br>経験不問・残業なし・マイカー通勤OK。まずは気軽に採用情報をご覧ください。</p>
+    <a href="#apply" class="btn-hero">採用情報を見て応募する</a>
+    <div class="hero-sub">
+      <span class="hero-tag">未経験OK</span>
+      <span class="hero-tag">残業なし</span>
+      <span class="hero-tag">マイカー通勤可</span>
+      <span class="hero-tag">書類選考なし</span>
+    </div>
+  </div>
+</section>
+
+<!-- NUMBERS -->
+<section class="numbers-section">
+  <div class="numbers-grid">
+    <div class="num-item">
+      <div class="num-val">11<span class="num-unit">K</span></div>
+      <div class="num-label">日給（円）</div>
+      <div class="num-note">※サンプル・実際の数字に差し替えます</div>
+    </div>
+    <div class="num-item">
+      <div class="num-val">0<span class="num-unit">h</span></div>
+      <div class="num-label">平均残業時間</div>
+      <div class="num-note">時間外労働なし</div>
+    </div>
+    <div class="num-item">
+      <div class="num-val">87<span class="num-unit">日</span></div>
+      <div class="num-label">年間休日数</div>
+      <div class="num-note">日曜＋年末年始・お盆</div>
+    </div>
+    <div class="num-item">
+      <div class="num-val">3<span class="num-unit">県</span></div>
+      <div class="num-label">活躍できるエリア</div>
+      <div class="num-note">千葉・茨城・東京</div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA mid 1 -->
+<div class="cta-mid">
+  <h2>まずは気軽に話を聞いてみませんか？</h2>
+  <p>経験ゼロからでも、仲間がそばにいれば大丈夫です。</p>
+  <a href="#apply" class="btn-white">募集要項を見る</a>
+</div>
+
+<!-- APPEAL -->
+<section id="appeal" class="appeal-section">
+  <div class="section-inner">
+    <div class="section-label">WHY HIRANO</div>
+    <div class="section-title">
+      <h2>ここで働く3つの理由</h2>
+      <p>求人票では伝えきれなかった、ヒラノ塗装の「本当の強み」をお伝えします。</p>
+    </div>
+    <div class="appeal-grid">
+      <!-- 建設現場作業員ダミー画像 -->
+      <img class="appeal-img" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=640&h=360&fit=crop&q=80" alt="現場で働くスタッフ（ダミー画像）">
+      <div class="appeal-list">
+        <div class="appeal-item">
+          <div class="appeal-icon">🏗️</div>
+          <div class="appeal-body">
+            <h3>大きい物から小さい物まで、幅広い技術が身につく</h3>
+            <p>鉄骨・外壁・吹付けなどジャンルを問わず多様な現場に関われます。経験を重ねるごとに「自分にできること」が広がっていきます。</p>
+          </div>
+        </div>
+        <div class="appeal-item">
+          <div class="appeal-icon">🌅</div>
+          <div class="appeal-body">
+            <h3>8〜17時のきれいな勤務。残業ゼロ</h3>
+            <p>時間外労働なし。仕事に全力を尽くしたあと、プライベートも大切にできます。雨天時は早めに切り上げることも。</p>
+          </div>
+        </div>
+        <div class="appeal-item">
+          <div class="appeal-icon">🚗</div>
+          <div class="appeal-body">
+            <h3>マイカーで通勤。AT限定可の普通免許でOK</h3>
+            <p>駐車場完備でマイカー通勤歓迎。普通免許（AT限定可）さえあれば、塗装の経験はゼロからスタートできます。</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERVIEW -->
+<section id="interview">
+  <div class="section-inner">
+    <div class="section-label">VOICE</div>
+    <div class="section-title">
+      <h2>先輩スタッフの声</h2>
+      <p>実際に働く仲間から、リアルな声を届けます。</p>
+    </div>
+    <div class="interview-grid">
+      <div class="interview-card">
+        <!-- 先輩顔写真ダミー（男性1） -->
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=220&h=280&fit=crop&crop=faces&q=80" alt="先輩スタッフ（仮名）">
+        <div class="interview-body">
+          <div class="interview-tag">STAFF INTERVIEW</div>
+          <div class="interview-name">田中 健太（仮名）</div>
+          <div class="interview-meta">塗装工 / 入社3年目</div>
+          <div class="interview-q">Q. 入社前はどんな不安がありましたか？</div>
+          <div class="interview-a">工具すら触ったことがなかったので、「本当についていけるのか」と不安でした。でも先輩が道具の持ち方から丁寧に教えてくれて、気づいたら一人で任せてもらえるようになっていました。</div>
+          <div class="interview-q">Q. 働いてみてよかったことは？</div>
+          <div class="interview-a">完成した建物を見るたびに達成感があります。残業がないので、仕事終わりに自分の時間を作れるのも気に入っています。</div>
+          <div class="interview-sample">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</div>
+        </div>
+      </div>
+      <div class="interview-card">
+        <!-- 先輩顔写真ダミー（男性2） -->
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=220&h=280&fit=crop&crop=faces&q=80" alt="先輩スタッフ（仮名）">
+        <div class="interview-body">
+          <div class="interview-tag">STAFF INTERVIEW</div>
+          <div class="interview-name">佐藤 亮（仮名）</div>
+          <div class="interview-meta">塗装工 / 入社5年目</div>
+          <div class="interview-q">Q. ヒラノ塗装の仕事の特徴は？</div>
+          <div class="interview-a">千葉だけでなく東京・茨城の現場もあるので、仕事の幅が広いと思います。大きな鉄骨案件を無事に終えたときの充実感はひとしおです。</div>
+          <div class="interview-q">Q. これから入社する人へ一言</div>
+          <div class="interview-a">とにかく1日目が一番ドキドキするはずです。でも周りが助けてくれるので、安心してください。技術は現場で自然と身につきます。</div>
+          <div class="interview-sample">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOB TABLE -->
+<section id="job" class="job-section">
+  <div class="section-inner">
+    <div class="section-label">REQUIREMENTS</div>
+    <div class="section-title">
+      <h2>募集要項</h2>
+    </div>
+    <table class="job-table">
+      <tr><th>職種</th><td>塗装工</td></tr>
+      <tr><th>雇用形態</th><td>正社員（試用期間なし）</td></tr>
+      <tr><th>仕事内容</th><td>建築物の塗装工事全般（外壁・鉄骨・吹付け等）<br>主に建設会社の下請け塗装。千葉県・茨城県・東京都内が現場エリア</td></tr>
+      <tr><th>給与</th><td>日給 11,000円（月額換算264,000円・24日勤務の場合）<br>昇給制度あり・賞与制度あり</td></tr>
+      <tr><th>就業時間</th><td>8:00〜17:00（休憩120分）/ 時間外労働なし</td></tr>
+      <tr><th>休日</th><td>日曜日・その他（週休2日）/ 年末年始・お盆 / 年間休日87日<br>※天候により休みになる場合があります</td></tr>
+      <tr><th>待遇</th><td>雇用・労災・健康・厚生年金 / 通勤手当（実費）/ マイカー通勤可・駐車場あり</td></tr>
+      <tr><th>応募資格</th><td>普通自動車免許（AT限定可）必須 / 経験不問・学歴不問・年齢不問</td></tr>
+      <tr><th>勤務地</th><td>〒289-0422 千葉県香取市桐谷313-1</td></tr>
+      <tr><th>選考</th><td>書類選考なし・面接1回 / 面接後3日以内に結果通知</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section>
+  <div class="section-inner">
+    <div class="section-label">DAILY FLOW</div>
+    <div class="section-title">
+      <h2>社員の1日の流れ</h2>
+      <p>（※サンプルです。実際には御社の一日に合わせて作成します）</p>
+    </div>
+    <div class="tl-wrap">
+      <div class="tl-row"><div class="tl-time">8:00</div><div class="tl-dot2"></div><div class="tl-text"><h4>事業所集合・準備</h4><p>道具・材料を確認し、現場へ出発</p></div></div>
+      <div class="tl-row"><div class="tl-time">8:30</div><div class="tl-dot2"></div><div class="tl-text"><h4>現場へ移動</h4><p>マイカーや社用車で出発。現場ごとにルートが変わるのも楽しみの一つ</p></div></div>
+      <div class="tl-row"><div class="tl-time">9:00</div><div class="tl-dot2"></div><div class="tl-text"><h4>午前の作業</h4><p>下地処理・養生・塗装。先輩のそばで技術を習得しながら進める</p></div></div>
+      <div class="tl-row"><div class="tl-time">12:00</div><div class="tl-dot2"></div><div class="tl-text"><h4>昼休憩（60分）</h4><p>ゆっくり1時間。仲間と昼食をとりリフレッシュ</p></div></div>
+      <div class="tl-row"><div class="tl-time">13:00</div><div class="tl-dot2"></div><div class="tl-text"><h4>午後の作業</h4><p>仕上げ塗装・細部の確認。丁寧な仕事が評価されます</p></div></div>
+      <div class="tl-row"><div class="tl-time">14:30</div><div class="tl-dot2"></div><div class="tl-text"><h4>午後の休憩（30分）</h4><p>水分補給・一息ついてラストスパート</p></div></div>
+      <div class="tl-row"><div class="tl-time">16:30</div><div class="tl-dot2"></div><div class="tl-text"><h4>片付け・仕上がり確認</h4><p>後片付けまでが仕事。きれいな現場を心がけます</p></div></div>
+      <div class="tl-row"><div class="tl-time">17:00</div><div class="tl-dot2"></div><div class="tl-text"><h4>終業</h4><p>定時で終業。今日も一つ建物が美しくなりました</p></div></div>
+    </div>
+    <p class="tl-sample">※ここはサンプルです。実際には御社の1日の流れに差し替えます</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="faq-section">
+  <div class="section-inner">
+    <div class="section-label">FAQ</div>
+    <div class="section-title">
+      <h2>よくある質問</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q"><span class="ico">Q.</span>塗装の経験がなくても応募できますか？</div>
+        <div class="faq-a"><span class="ico">A.</span>はい。経験不問・学歴不問です。先輩のそばで道具の使い方から丁寧に教えます。「やる気がある人」を最優先に考えています。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="ico">Q.</span>必要な資格は何ですか？</div>
+        <div class="faq-a"><span class="ico">A.</span>普通自動車免許（AT限定可）があれば大丈夫です。現場への移動に必要です。塗装関連の資格は入社後に相談しながら取得を支援します。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="ico">Q.</span>残業や休日出勤はありますか？</div>
+        <div class="faq-a"><span class="ico">A.</span>時間外労働なしで原則定時終業です。8:00〜17:00でメリハリよく働けます。雨天時は早上がりになることもあります。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="ico">Q.</span>現場はどのエリアが多いですか？</div>
+        <div class="faq-a"><span class="ico">A.</span>主に千葉県・茨城県・東京都内です。事業所（香取市）に集合後、各現場へ移動します。遠方への転勤はありません。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="ico">Q.</span>選考の流れを教えてください。</div>
+        <div class="faq-a"><span class="ico">A.</span>書類選考なし・面接1回のみです。ハローワーク紹介状と履歴書（写真付き）を面接当日にお持ちください。結果は3日以内にご連絡します。</div>
+      </div>
+    </div>
+    <p class="faq-sample">※ここはサンプルです。実際には御社のよくある質問に差し替えます</p>
+  </div>
+</section>
+
+<!-- CTA mid 2 -->
+<div class="cta-mid">
+  <h2>気になる点があれば、まずメールでお気軽に</h2>
+  <p>「まずは話を聞いてみたい」だけでも大歓迎です。</p>
+  <a href="mailto:hirano@joybb.jp" class="btn-white">問い合わせる（無料）</a>
+</div>
+
+<!-- FINAL CTA -->
+<section id="apply" class="cta-final">
+  <div class="section-inner">
+    <h2>一緒に現場をつくる仲間を<br>待っています</h2>
+    <p>未経験でも、腕を磨きたい気持ちさえあれば大丈夫。<br>まずはお気軽にご連絡ください。</p>
+    <div class="cta-btns">
+      <a href="mailto:hirano@joybb.jp" class="btn-accent">メールで応募・問い合わせ</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>有限会社 ヒラノ塗装</p>
+  <p>〒289-0422 千葉県香取市桐谷313-1</p>
+  <p>TEL: 0478-78-3629 / E-mail: hirano@joybb.jp</p>
+</footer>
+
+<!-- fixed CTA for mobile -->
+<div class="fixed-cta">
+  <a href="mailto:hirano@joybb.jp">📩 今すぐ応募・問い合わせる</a>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 株式会社 藤崎建設</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#222;background:#fff}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+/* 変数 */
+:root{
+  --navy:#1a2744;
+  --orange:#f47c20;
+  --light:#f5f6f8;
+  --border:#dce0e8;
+}
+
+/* ヘッダー */
+header{background:var(--navy);position:sticky;top:0;z-index:100}
+.header-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{color:#fff;font-weight:900;font-size:1.1rem;letter-spacing:.05em}
+nav ul{list-style:none;display:flex;gap:24px}
+nav ul li a{color:#fff;font-size:.85rem;opacity:.85;transition:.2s}
+nav ul li a:hover{opacity:1;color:var(--orange)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;transition:.3s}
+
+/* ヒーロー */
+.hero{position:relative;min-height:70vh;display:flex;align-items:center}
+.hero-img{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center}
+.hero-overlay{position:absolute;inset:0;background:rgba(10,20,50,.65)}
+.hero-content{position:relative;max-width:1100px;margin:0 auto;padding:60px 20px;color:#fff}
+.hero-pill{display:inline-block;background:var(--orange);color:#fff;font-size:.8rem;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:16px;letter-spacing:.05em}
+.hero h1{font-size:clamp(1.8rem,5vw,3.2rem);font-weight:900;line-height:1.3;margin-bottom:20px}
+.hero h1 span{color:var(--orange)}
+.hero p{font-size:clamp(.95rem,2.5vw,1.1rem);opacity:.9;max-width:600px;margin-bottom:32px;line-height:1.8}
+.btn-primary{display:inline-block;background:var(--orange);color:#fff;font-weight:700;font-size:1rem;padding:14px 36px;border-radius:4px;transition:.2s}
+.btn-primary:hover{opacity:.85}
+
+/* セクション共通 */
+section{padding:72px 20px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-label{font-size:.78rem;color:var(--orange);font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+.section-title{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:900;margin-bottom:12px;color:var(--navy)}
+.section-sub{color:#555;font-size:.95rem;line-height:1.8;margin-bottom:40px}
+
+/* 魅力3点 */
+.merits{background:var(--light)}
+.merit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.merit-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:28px 24px;border-top:4px solid var(--orange)}
+.merit-card .icon{font-size:2rem;margin-bottom:12px}
+.merit-card h3{font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:10px}
+.merit-card p{font-size:.9rem;color:#555;line-height:1.8}
+
+/* 募集要項 */
+.table-wrap{overflow-x:auto}
+table.spec{width:100%;border-collapse:collapse;font-size:.92rem}
+table.spec th,table.spec td{border:1px solid var(--border);padding:12px 16px;text-align:left;vertical-align:top}
+table.spec th{background:var(--navy);color:#fff;width:30%;white-space:nowrap;font-weight:700}
+table.spec tr:nth-child(even) td{background:#f9f9fb}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:16px}
+.faq-item{border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.faq-q{background:var(--navy);color:#fff;padding:14px 18px;font-weight:700;font-size:.95rem}
+.faq-q::before{content:"Q. ";color:var(--orange)}
+.faq-a{padding:14px 18px;font-size:.9rem;color:#444;line-height:1.8;background:#fff}
+.faq-a::before{content:"A. ";color:var(--orange);font-weight:700}
+
+/* 1日の流れ */
+.timeline-bg{background:var(--navy)}
+.timeline-bg .section-title{color:#fff}
+.timeline-bg .section-label{color:var(--orange)}
+.timeline-bg .section-sub{color:rgba(255,255,255,.75)}
+.timeline{display:flex;flex-direction:column;gap:0}
+.tl-item{display:flex;gap:20px;align-items:flex-start;position:relative;padding-bottom:24px}
+.tl-item:last-child{padding-bottom:0}
+.tl-item:not(:last-child) .tl-line::after{content:'';position:absolute;left:36px;top:44px;bottom:0;width:2px;background:rgba(255,255,255,.2)}
+.tl-time{min-width:72px;color:var(--orange);font-weight:700;font-size:.95rem;padding-top:10px}
+.tl-dot{width:36px;height:36px;border-radius:50%;background:var(--orange);display:flex;align-items:center;justify-content:center;font-size:.8rem;color:#fff;font-weight:700;flex-shrink:0;position:relative}
+.tl-body{padding-top:6px}
+.tl-body h4{color:#fff;font-weight:700;font-size:.95rem;margin-bottom:4px}
+.tl-body p{color:rgba(255,255,255,.7);font-size:.85rem;line-height:1.7}
+
+/* 先輩メッセージ */
+.voices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.voice-card{background:#fff;border:1px solid var(--border);border-radius:8px;padding:24px;display:flex;flex-direction:column;gap:12px}
+.voice-card img{width:64px;height:64px;border-radius:50%;object-fit:cover}
+.voice-meta{font-size:.8rem;color:#888}
+.voice-name{font-weight:700;color:var(--navy);font-size:.95rem}
+.voice-text{font-size:.88rem;color:#555;line-height:1.8}
+.sample-note{font-size:.75rem;color:#aaa;margin-top:6px}
+
+/* 採用担当者 */
+.recruiter{background:var(--light)}
+.recruiter-inner{display:flex;gap:40px;align-items:center}
+.recruiter-img{width:120px;height:120px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.recruiter-body h3{font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:6px}
+.recruiter-body p{font-size:.9rem;color:#555;line-height:1.8;margin-bottom:12px}
+
+/* 応募CTA */
+.cta-section{background:var(--navy);text-align:center}
+.cta-section h2{color:#fff;font-size:clamp(1.4rem,4vw,2rem);font-weight:900;margin-bottom:16px}
+.cta-section p{color:rgba(255,255,255,.8);font-size:.95rem;margin-bottom:32px}
+
+/* フッター */
+footer{background:#111;color:#aaa;font-size:.82rem;padding:30px 20px;text-align:center}
+footer p+p{margin-top:6px}
+
+/* スマホ */
+@media(max-width:768px){
+  nav ul{display:none}
+  .hamburger{display:flex}
+  nav.open ul{display:flex;flex-direction:column;position:absolute;top:60px;left:0;right:0;background:var(--navy);padding:16px 20px;gap:16px}
+  .merit-grid{grid-template-columns:1fr}
+  .voices-grid{grid-template-columns:1fr}
+  .recruiter-inner{flex-direction:column;text-align:center}
+  table.spec th,table.spec td{display:block;width:100%}
+  table.spec th{border-bottom:none}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">株式会社 藤崎建設</div>
+    <nav id="nav">
+      <ul>
+        <li><a href="#merit">魅力</a></li>
+        <li><a href="#spec">募集要項</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#voices">先輩の声</a></li>
+        <li><a href="#apply">応募</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger" aria-label="メニュー" onclick="document.getElementById('nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-pill">建設現場管理 ／ 正社員募集</div>
+    <h1>幅広い工事で<br><span>確かな技術</span>を身につける。<br>少人数・アットホームな環境</h1>
+    <p>内装から外壁塗装・水回り・解体まで、さまざまな現場を経験できます。<br>20〜30代中心のチームで、未経験の方も安心してスタートできます。</p>
+    <a href="#apply" class="btn-primary">まずは話を聞いてみる</a>
+  </div>
+</section>
+
+<section class="merits" id="merit">
+  <div class="section-inner">
+    <p class="section-label">Why Fujisaki</p>
+    <h2 class="section-title">藤崎建設で働く3つの魅力</h2>
+    <p class="section-sub">求人票だけでは伝わりにくい「ここで働く理由」を正直にお伝えします。</p>
+    <div class="merit-grid">
+      <div class="merit-card">
+        <div class="icon">🔨</div>
+        <h3>幅広い現場で技術が育つ</h3>
+        <p>内装（壁紙・床）、外壁・屋根塗装、水回り設備交換、リフォーム、解体工事まで対応。元請け・下請けを問わず多彩な案件を経験でき、1〜2年で幅広い知識が身につきます。</p>
+      </div>
+      <div class="merit-card">
+        <div class="icon">👥</div>
+        <h3>20〜30代中心・相談しやすい職場</h3>
+        <p>スタッフは9名（女性3名含む）。少人数だからこそ困ったことや疑問がすぐに相談できます。未経験スタートの仲間が複数いるので、遠慮なく聞ける環境です。</p>
+      </div>
+      <div class="merit-card">
+        <div class="icon">💰</div>
+        <h3>頑張りを給与に反映する評価制度</h3>
+        <p>月給は経験・能力を考慮のうえ決定（基本給20万〜＋固定残業代5万＋インセンティブ）。昇給は年1回＋実力に応じた随時調整。資格取得費用は全額会社負担です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="spec">
+  <div class="section-inner">
+    <p class="section-label">Recruitment</p>
+    <h2 class="section-title">募集要項</h2>
+    <div class="table-wrap">
+      <table class="spec">
+        <tr><th>職種</th><td>建設現場管理（正社員）</td></tr>
+        <tr><th>仕事内容</th><td>住宅リフォームから大規模改修工事まで幅広い建設工事。内装工事（壁紙・床）、外壁・屋根塗装、水回り設備交換、解体工事など。現場は千葉県内・東京都内が中心。</td></tr>
+        <tr><th>給与</th><td>月給25万〜60万円（基本給20万〜55万円＋固定残業代5万円／月10時間分。超過分は別途支給）<br>インセンティブ・歩合制度あり。経験・能力を考慮のうえ決定。</td></tr>
+        <tr><th>勤務時間</th><td>8:30〜17:30（休憩120分）／時間外労働なし</td></tr>
+        <tr><th>休日・休暇</th><td>日曜・祝日・週1〜2日（月2〜3日は曜日指定なしで休み取得可）<br>年間休日105日／年次有給休暇10日（6か月後）</td></tr>
+        <tr><th>勤務地</th><td>〒270-1342 千葉県印西市高花5-10-11（各現場へ直行直帰・マイカー通勤可）</td></tr>
+        <tr><th>待遇・福利厚生</th><td>社会保険完備／交通費全額支給／昇給年1回＋実力随時調整／賞与年1回（業績連動）<br>資格支援制度（合格で受験費用全額支給）／スポーツクラブ無料利用<br>ホワイトニング・脱毛機無料利用／社員旅行（業績に応じて）</td></tr>
+        <tr><th>必要資格</th><td>普通自動車免許（AT限定可）必須<br>建築士・施工管理技士・電気工事士などあれば尚可（未経験歓迎）</td></tr>
+        <tr><th>選考方法</th><td>書類選考 → 面接（1回）。随時募集。</td></tr>
+        <tr><th>採用人数</th><td>3名</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="faq-list-section" id="faq">
+  <div class="section-inner">
+    <p class="section-label">FAQ</p>
+    <h2 class="section-title">よくある質問</h2>
+    <p class="section-sub">応募前の疑問にお答えします。</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">建設の経験がまったくありませんが大丈夫ですか？</div>
+        <div class="faq-a">大丈夫です。現在のスタッフにも未経験スタートのメンバーが複数います。最初は先輩と一緒に現場に入り、仕事を見ながら覚えていただけます。「手に職をつけたい」という意欲を最重視しています。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">給与の幅（25万〜60万）が大きいですが、入社直後はどのくらいですか？</div>
+        <div class="faq-a">基本給は経験・能力を考慮のうえ面談で決定します。未経験の方は基本給20万円〜が目安で、固定残業代5万円を含めた月給25万円スタートが一般的です。資格取得・現場経験を積むほど昇給・インセンティブで収入が上がる仕組みです。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">年間休日105日は少なく感じます。実際の休みはどうですか？</div>
+        <div class="faq-a">日曜・祝日に加え、月2〜3日は曜日指定なしで休みを取れます。また就業時間は8:30〜17:30で、求人票どおり時間外労働なし。プライベートの時間は確保しやすい環境です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">どんな現場が多いですか？一人で任される不安があります。</div>
+        <div class="faq-a">千葉県内・東京都内の住宅リフォームから大規模改修まで様々です。最初は先輩スタッフと一緒に現場に入るので、一人で放り込まれることはありません。少人数チームなので困ったときはすぐ相談できます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">資格は必要ですか？取得支援はありますか？</div>
+        <div class="faq-a">普通自動車免許（AT可）があれば応募できます。建築士・施工管理技士などの資格は入社後に取得を目指せます。合格した場合の受験費用は全額会社負担です。資格が増えるほど給与にも反映されます。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="timeline-bg" id="day">
+  <div class="section-inner">
+    <p class="section-label">A Day in the Life</p>
+    <h2 class="section-title">社員の1日の流れ</h2>
+    <p class="section-sub">建設現場管理スタッフのある1日（サンプル）をご紹介します。</p>
+    <!-- サンプルパーツ：実際には在籍スタッフの1日に差し替えます -->
+    <p class="sample-note" style="color:rgba(255,255,255,.45);font-size:.78rem;margin-bottom:28px">※ここはサンプルです。実際には在籍スタッフの1日の流れに差し替えます。</p>
+    <div class="timeline">
+      <div class="tl-item tl-line">
+        <div class="tl-time">8:15</div>
+        <div class="tl-dot">1</div>
+        <div class="tl-body">
+          <h4>現場へ直行 / 朝礼・安全確認</h4>
+          <p>マイカーで直接現場へ。チームで当日の作業内容・安全ポイントを確認します。</p>
+        </div>
+      </div>
+      <div class="tl-item tl-line">
+        <div class="tl-time">8:30</div>
+        <div class="tl-dot">2</div>
+        <div class="tl-body">
+          <h4>午前の施工作業</h4>
+          <p>内装工事・外壁塗装・水回り設備交換など、その日の案件に合わせて施工を進めます。</p>
+        </div>
+      </div>
+      <div class="tl-item tl-line">
+        <div class="tl-time">12:00</div>
+        <div class="tl-dot">3</div>
+        <div class="tl-body">
+          <h4>昼休み（60分）</h4>
+          <p>現場近くの食堂やコンビニで昼食。同僚と気軽に話せる時間です。</p>
+        </div>
+      </div>
+      <div class="tl-item tl-line">
+        <div class="tl-time">13:00</div>
+        <div class="tl-dot">4</div>
+        <div class="tl-body">
+          <h4>午後の施工・進捗確認</h4>
+          <p>午前に続き施工を進め、作業の仕上がりや進捗を先輩と確認しながら対応します。</p>
+        </div>
+      </div>
+      <div class="tl-item tl-line">
+        <div class="tl-time">17:00</div>
+        <div class="tl-dot">5</div>
+        <div class="tl-body">
+          <h4>片付け・報告</h4>
+          <p>道具の片付けと現場の清掃。作業記録を共有してチームの終礼。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:30</div>
+        <div class="tl-dot">6</div>
+        <div class="tl-body">
+          <h4>退勤（直帰）</h4>
+          <p>現場から自宅へ直帰が基本。残業なしで毎日定時上がりです。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="voices">
+  <div class="section-inner">
+    <p class="section-label">Voices</p>
+    <h2 class="section-title">先輩からのメッセージ</h2>
+    <p class="section-sub">実際に働くメンバーの声（サンプル）をご紹介します。</p>
+    <div class="voices-grid">
+      <div class="voice-card">
+        <!-- 先輩写真サンプル（男性スタッフ想定） -->
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div class="voice-name">Kさん（仮名）</div>
+        <div class="voice-meta">入社2年目 / 建設現場管理</div>
+        <div class="voice-text">前職は全然関係ない仕事だったので、最初は不安でした。でも先輩が「見てて、やってみて、やってみよう」のペースで教えてくれるので、気づいたら壁紙も水回りも自分でできるようになっていました。</div>
+        <div class="sample-note">※ここはサンプルです。実際には在籍スタッフのメッセージに差し替えます。</div>
+      </div>
+      <div class="voice-card">
+        <!-- 先輩写真サンプル（男性スタッフ） -->
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div class="voice-name">Tさん（仮名）</div>
+        <div class="voice-meta">入社4年目 / 建設現場管理</div>
+        <div class="voice-text">元請け・下請けを問わずいろんな案件を経験できるのが面白い。大規模改修から個人宅のリフォームまで幅広いので、飽きることがないし技術の幅がどんどん広がります。資格も会社のサポートで取れました。</div>
+        <div class="sample-note">※ここはサンプルです。実際には在籍スタッフのメッセージに差し替えます。</div>
+      </div>
+      <div class="voice-card">
+        <!-- 先輩写真サンプル（女性スタッフ） -->
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div class="voice-name">Yさん（仮名）</div>
+        <div class="voice-meta">入社1年半 / 現場補助・内装</div>
+        <div class="voice-text">女性スタッフは3名います。「建設現場で女性は…」と心配でしたが、職場の雰囲気はとてもフラット。休みも相談しやすく、プライベートとのバランスが取りやすい点が気に入っています。</div>
+        <div class="sample-note">※ここはサンプルです。実際には在籍スタッフのメッセージに差し替えます。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="recruiter" id="recruiter">
+  <div class="section-inner">
+    <p class="section-label">Recruiter</p>
+    <h2 class="section-title">採用担当者より</h2>
+    <div class="recruiter-inner">
+      <!-- 採用担当写真サンプル -->
+      <img class="recruiter-img" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当者写真（サンプル）">
+      <div class="recruiter-body">
+        <h3>長廻（人事課）</h3>
+        <p>「建設の仕事をやってみたい」「手に職をつけたい」という気持ちがあれば大歓迎です。経験の有無より、意欲と人柄を重視しています。気になることは何でも聞いてください。お待ちしています。</p>
+        <p class="sample-note" style="font-size:.75rem;color:#aaa;">※写真・コメントはサンプルです。実際の担当者の情報に差し替えます。</p>
+        <a href="#apply" class="btn-primary" style="margin-top:16px;display:inline-block">応募・問い合わせはこちら</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" id="apply">
+  <div class="section-inner">
+    <h2>千葉・東京の現場で、<br>一緒に技術を磨きませんか？</h2>
+    <p>まずはお気軽にご連絡ください。見学・質問だけでも歓迎です。</p>
+    <a href="mailto:fujiken0803.pon@gmail.com" class="btn-primary">メールで問い合わせる</a>
+    <p style="color:rgba(255,255,255,.6);font-size:.82rem;margin-top:16px">TEL: 050-5846-1081（人事課 長廻）</p>
+  </div>
+</section>
+
+<footer>
+  <p>株式会社 藤崎建設</p>
+  <p>〒270-1342 千葉県印西市高花5-10-11</p>
+  <p>TEL: 050-5846-1081 ／ E-mail: fujiken0803.pon@gmail.com</p>
+</footer>
+
+</body>
+</html>

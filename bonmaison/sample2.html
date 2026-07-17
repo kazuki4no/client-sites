@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>生活雑貨ボンメゾン | 暮らしを彩るギフトギャラリー</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: "Noto Sans JP", "Hiragino Kaku Gothic ProN", "Yu Gothic", sans-serif;
+    color: #3d3226;
+    line-height: 1.8;
+    background: #fff;
+    width: 100%;
+    overflow-x: hidden;
+  }
+  img { max-width: 100%; display: block; }
+  a { text-decoration: none; color: inherit; }
+  .container { max-width: 1080px; margin: 0 auto; padding: 0 20px; }
+
+  /* Header - full bleed gallery hero */
+  .fv {
+    position: relative;
+    min-height: 92vh;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 4px;
+    overflow: hidden;
+  }
+  .fv img { width: 100%; height: 100%; object-fit: cover; }
+  .fv-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(58,42,26,0.45);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    padding: 20px;
+  }
+  .fv-badge {
+    background: #fff;
+    color: #b5622f;
+    font-weight: 700;
+    padding: 7px 20px;
+    border-radius: 30px;
+    font-size: clamp(0.75rem, 2vw, 0.95rem);
+    margin-bottom: 18px;
+  }
+  .fv h1 {
+    font-size: clamp(1.7rem, 5.5vw, 3.3rem);
+    font-weight: 900;
+    line-height: 1.45;
+    margin-bottom: 16px;
+    text-shadow: 0 2px 12px rgba(0,0,0,0.4);
+  }
+  .fv p.sub { font-size: clamp(0.95rem, 2.2vw, 1.2rem); margin-bottom: 26px; }
+  .cta-btn {
+    display: inline-block;
+    background: #b5622f;
+    color: #fff;
+    font-weight: 700;
+    font-size: clamp(1rem, 2.4vw, 1.2rem);
+    padding: 17px 42px;
+    border-radius: 6px;
+    box-shadow: 0 8px 22px rgba(0,0,0,0.3);
+  }
+
+  section { padding: 75px 0; }
+  .sec-label {
+    text-align: center;
+    color: #b5622f;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    font-size: 0.8rem;
+    margin-bottom: 8px;
+  }
+  .sec-title {
+    text-align: center;
+    font-size: clamp(1.5rem, 3.8vw, 2.1rem);
+    font-weight: 900;
+    margin-bottom: 45px;
+    color: #3d3226;
+  }
+
+  /* Gallery grid */
+  .gallery { background: #faf6f0; }
+  .gal-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 22px;
+  }
+  .gal-card {
+    background: #fff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+    transition: transform 0.2s;
+  }
+  .gal-card:hover { transform: translateY(-4px); }
+  .gal-card img { height: 220px; width: 100%; object-fit: cover; }
+  .gal-card .info { padding: 16px 18px; }
+  .gal-card .cat { font-size: 0.72rem; color: #7a8c5f; font-weight: 700; letter-spacing: 0.05em; }
+  .gal-card h3 { font-size: 1rem; margin: 6px 0; color: #3d3226; }
+  .gal-card p { font-size: 0.82rem; color: #6b5c4a; }
+
+  /* Feature strip */
+  .feature { background: #fff; }
+  .feature-row { display: flex; align-items: center; gap: 40px; flex-wrap: wrap; margin-bottom: 60px; }
+  .feature-row:nth-child(even) { flex-direction: row-reverse; }
+  .feature-row img { flex: 1 1 340px; border-radius: 8px; }
+  .feature-text { flex: 1 1 300px; }
+  .feature-text .tag { color: #b5622f; font-weight: 700; font-size: 0.85rem; letter-spacing: 0.05em; }
+  .feature-text h3 { font-size: 1.5rem; margin: 10px 0 14px; color: #3d3226; }
+  .feature-text p { color: #5c4e3d; }
+
+  /* Store banner */
+  .store-band {
+    background: #7a8c5f;
+    color: #fff;
+    text-align: center;
+    padding: 60px 20px;
+  }
+  .store-band h2 { font-size: clamp(1.3rem, 3.2vw, 1.8rem); margin-bottom: 16px; }
+  .store-nums { display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; margin-top: 30px; }
+  .store-nums div { text-align: center; }
+  .store-nums .n { font-size: 2rem; font-weight: 900; }
+  .store-nums .l { font-size: 0.85rem; opacity: 0.9; }
+
+  /* Instagram-style grid */
+  .insta { background: #faf6f0; }
+  .insta-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 6px;
+  }
+  .insta-grid img { width: 100%; height: 180px; object-fit: cover; border-radius: 4px; }
+
+  /* Final CTA */
+  .final-cta {
+    background: #3d3226;
+    color: #fff;
+    text-align: center;
+  }
+  .final-cta h2 { font-size: clamp(1.4rem, 3.6vw, 2rem); margin-bottom: 24px; }
+  .final-cta .cta-group { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .final-cta .cta-tel { font-size: clamp(1.3rem, 4vw, 1.8rem); font-weight: 900; }
+  .final-cta .cta-tel small { display: block; font-size: 0.8rem; font-weight: 400; opacity: 0.85; }
+
+  footer {
+    background: #2a2119;
+    color: #b8a894;
+    text-align: center;
+    padding: 30px 20px;
+    font-size: 0.8rem;
+  }
+
+  .floating-cta {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    display: flex;
+    z-index: 999;
+    box-shadow: 0 -4px 15px rgba(0,0,0,0.15);
+  }
+  .floating-cta a {
+    flex: 1;
+    text-align: center;
+    padding: 14px 10px;
+    font-weight: 700;
+    font-size: 0.9rem;
+    color: #fff;
+  }
+  .floating-cta .tel { background: #b5622f; }
+  .floating-cta .shop { background: #7a8c5f; }
+  .floating-cta .form { background: #3d3226; }
+
+  @media (max-width: 700px) {
+    .fv { grid-template-columns: repeat(2, 1fr); }
+    section { padding: 50px 0; }
+    .feature-row { flex-direction: column !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- FV gallery -->
+<header class="fv">
+  <!-- 元画像URL: 商品陳列写真1 → images/fv-gal-1.jpg -->
+  <img src="https://loremflickr.com/500/500/japanese,zakka,tableware" alt="雑貨1">
+  <!-- 元画像URL: 商品陳列写真2 → images/fv-gal-2.jpg -->
+  <img src="https://loremflickr.com/500/500/interior,goods,shop" alt="雑貨2">
+  <!-- 元画像URL: 商品陳列写真3 → images/fv-gal-3.jpg -->
+  <img src="https://loremflickr.com/500/500/gift,box,ribbon" alt="雑貨3">
+  <!-- 元画像URL: 商品陳列写真4 → images/fv-gal-4.jpg -->
+  <img src="https://loremflickr.com/500/500/kitchen,goods,natural" alt="雑貨4">
+  <!-- 元画像URL: 商品陳列写真5 → images/fv-gal-5.jpg -->
+  <img src="https://loremflickr.com/500/500/flowers,gift,arrangement" alt="雑貨5">
+  <!-- 元画像URL: 商品陳列写真6 → images/fv-gal-6.jpg -->
+  <img src="https://loremflickr.com/500/500/lifestyle,shop,cozy" alt="雑貨6">
+  <div class="fv-overlay">
+    <div class="fv-badge">生活雑貨ボンメゾン ギフトギャラリー</div>
+    <h1>見ているだけで、<br>ワクワクする暮らしの道具</h1>
+    <p class="sub">千葉・茨城・神奈川 27店舗と、オンラインショップから</p>
+    <a href="https://bonmaison.official.ec/" class="cta-btn">ギフトを探しに行く</a>
+  </div>
+</header>
+
+<!-- Gallery -->
+<section class="gallery">
+  <div class="container">
+    <p class="sec-label">GIFT COLLECTION</p>
+    <h2 class="sec-title">今の季節におすすめのギフト</h2>
+    <div class="gal-grid">
+      <div class="gal-card">
+        <!-- 元画像URL: おすすめ商品1 → images/gal-1.jpg -->
+        <img src="https://loremflickr.com/400/300/kitchenware,ceramic" alt="キッチン雑貨">
+        <div class="info"><div class="cat">KITCHEN</div><h3>キッチン雑貨セット</h3><p>毎日の食卓を彩る、ぬくもりある器たち</p></div>
+      </div>
+      <div class="gal-card">
+        <!-- 元画像URL: おすすめ商品2 → images/gal-2.jpg -->
+        <img src="https://loremflickr.com/400/300/towel,bath,gift" alt="タオルギフト">
+        <div class="info"><div class="cat">TEXTILE</div><h3>今治タオルギフトセット</h3><p>肌ざわりの良さで選ぶ、贈って喜ばれる一品</p></div>
+      </div>
+      <div class="gal-card">
+        <!-- 元画像URL: おすすめ商品3 → images/gal-3.jpg -->
+        <img src="https://loremflickr.com/400/300/aroma,candle,relax" alt="癒しギフト">
+        <div class="info"><div class="cat">RELAX</div><h3>癒しのアロマセット</h3><p>忙しい毎日にほっと一息つける香りのギフト</p></div>
+      </div>
+      <div class="gal-card">
+        <!-- 元画像URL: おすすめ商品4 → images/gal-4.jpg -->
+        <img src="https://loremflickr.com/400/300/stationery,japanese,craft" alt="雑貨小物">
+        <div class="info"><div class="cat">ZAKKA</div><h3>和のインテリア小物</h3><p>季節の移ろいを感じる、上質な暮らしの雑貨</p></div>
+      </div>
+      <div class="gal-card">
+        <!-- 元画像URL: おすすめ商品5 → images/gal-5.jpg -->
+        <img src="https://loremflickr.com/400/300/gift,basket,fruit" alt="ギフトセット">
+        <div class="info"><div class="cat">GIFT SET</div><h3>詰め合わせギフトボックス</h3><p>のし・ラッピング対応で贈り物にぴったり</p></div>
+      </div>
+      <div class="gal-card">
+        <!-- 元画像URL: おすすめ商品6 → images/gal-6.jpg -->
+        <img src="https://loremflickr.com/400/300/home,decor,plant" alt="インテリア雑貨">
+        <div class="info"><div class="cat">INTERIOR</div><h3>グリーンのある暮らし雑貨</h3><p>お部屋を明るくする、ちいさな贈り物</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Feature -->
+<section class="feature">
+  <div class="container">
+    <p class="sec-label" style="margin-bottom:45px;">WHY BONMAISON</p>
+    <div class="feature-row">
+      <!-- 元画像URL: 店内の様子 → images/feature-1.jpg -->
+      <img src="https://loremflickr.com/600/420/shop,interior,cozy" alt="店内の様子">
+      <div class="feature-text">
+        <div class="tag">POINT 1</div>
+        <h3>手にとって選べる、リアル店舗の安心感</h3>
+        <p>千葉県21店舗・茨城県5店舗・神奈川県1店舗。お近くの店舗で実際に商品を見て、質感を確かめてからお選びいただけます。</p>
+      </div>
+    </div>
+    <div class="feature-row">
+      <!-- 元画像URL: スタッフ接客の様子 → images/feature-2.jpg -->
+      <img src="https://loremflickr.com/600/420/shop,staff,service" alt="スタッフ接客">
+      <div class="feature-text">
+        <div class="tag">POINT 2</div>
+        <h3>ギフト選びのご相談も気軽に</h3>
+        <p>贈る相手やご予算に応じて、スタッフが丁寧にご提案。のし・ラッピングのご相談も承っております。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Store band -->
+<section class="store-band">
+  <h2>1976年創業、地域とともに歩む55年</h2>
+  <div class="store-nums">
+    <div><div class="n">27</div><div class="l">店舗</div></div>
+    <div><div class="n">3</div><div class="l">県で展開</div></div>
+    <div><div class="n">55</div><div class="l">周年</div></div>
+  </div>
+</section>
+
+<!-- Instagram-style -->
+<section class="insta">
+  <div class="container">
+    <p class="sec-label">SNAP GALLERY</p>
+    <h2 class="sec-title">お店の日常</h2>
+    <div class="insta-grid">
+      <!-- 元画像URL: 店舗スナップ1 → images/insta-1.jpg -->
+      <img src="https://loremflickr.com/300/300/shop,display,gift">
+      <!-- 元画像URL: 店舗スナップ2 → images/insta-2.jpg -->
+      <img src="https://loremflickr.com/300/300/interior,cozy,shelf">
+      <!-- 元画像URL: 店舗スナップ3 → images/insta-3.jpg -->
+      <img src="https://loremflickr.com/300/300/tableware,ceramic,natural">
+      <!-- 元画像URL: 店舗スナップ4 → images/insta-4.jpg -->
+      <img src="https://loremflickr.com/300/300/flowers,gift,arrangement">
+      <!-- 元画像URL: 店舗スナップ5 → images/insta-5.jpg -->
+      <img src="https://loremflickr.com/300/300/kitchen,goods,warm">
+      <!-- 元画像URL: 店舗スナップ6 → images/insta-6.jpg -->
+      <img src="https://loremflickr.com/300/300/gift,box,wrap">
+    </div>
+  </div>
+</section>
+
+<!-- Final CTA -->
+<section class="final-cta">
+  <div class="container">
+    <h2>あなたの暮らしに、<br>ちいさな幸せを見つけに</h2>
+    <div class="cta-group">
+      <a href="https://bonmaison.official.ec/" class="cta-btn">オンラインショップを見る</a>
+      <a href="tel:0432956414" class="cta-tel">043-295-6414<small>平日9:00〜18:00（土日休）</small></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>株式会社ボンメゾン（BONMAISON CO., LTD.）</p>
+  <p>本ページはLP提案サンプルです。© BONMAISON</p>
+</footer>
+
+<div class="floating-cta">
+  <a class="tel" href="tel:0432956414">📞 電話で相談</a>
+  <a class="shop" href="https://bonmaison.official.ec/">🛍️ オンラインショップ</a>
+  <a class="form" href="https://bonmaison.co.jp/contact/">✉️ お問い合わせ</a>
+</div>
+
+</body>
+</html>

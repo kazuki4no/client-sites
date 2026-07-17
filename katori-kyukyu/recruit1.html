@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | かとり民間救急サービス株式会社</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#1a1a1a;background:#fff}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ナビ */
+header{background:#1a3a6b;position:sticky;top:0;z-index:100}
+.header-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{color:#fff;font-weight:700;font-size:1rem;line-height:1.3}
+nav.pc-nav{display:flex;gap:28px}
+nav.pc-nav a{color:#fff;font-size:.88rem;opacity:.9;white-space:nowrap}
+nav.pc-nav a:hover{opacity:1}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px}
+.sp-nav{display:none;background:#1a3a6b;padding:16px 20px}
+.sp-nav a{display:block;color:#fff;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.15);font-size:.9rem}
+
+/* ヒーロー */
+.hero{background:#1a3a6b;color:#fff;text-align:center;padding:64px 20px 72px}
+.hero-img{width:100%;max-height:440px;object-fit:cover;filter:brightness(.7)}
+.hero-content{max-width:760px;margin:0 auto}
+.hero-badge{display:inline-block;background:#2e86de;color:#fff;font-size:.8rem;font-weight:700;padding:5px 14px;border-radius:20px;margin-bottom:18px;letter-spacing:.04em}
+.hero h1{font-size:clamp(1.6rem,5vw,2.8rem);font-weight:700;line-height:1.4;margin-bottom:16px}
+.hero p{font-size:clamp(.95rem,2.5vw,1.15rem);opacity:.9;line-height:1.7;margin-bottom:32px}
+.btn-hero{display:inline-block;background:#f0a500;color:#fff;font-weight:700;font-size:1rem;padding:14px 36px;border-radius:4px;letter-spacing:.04em}
+.btn-hero:hover{background:#d4920a}
+
+/* セクション共通 */
+section{padding:56px 20px}
+.section-inner{max-width:1100px;margin:0 auto}
+.sec-label{color:#2e86de;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+.sec-title{font-size:clamp(1.35rem,4vw,2rem);font-weight:700;line-height:1.4;margin-bottom:32px}
+
+/* 特徴3点 */
+.features{background:#f5f8fc}
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.feature-card{background:#fff;border-radius:8px;padding:28px 22px;box-shadow:0 2px 12px rgba(0,0,0,.06);text-align:center}
+.feature-icon{font-size:2.4rem;margin-bottom:12px}
+.feature-card h3{font-size:1.05rem;font-weight:700;margin-bottom:8px;color:#1a3a6b}
+.feature-card p{font-size:.9rem;line-height:1.7;color:#444}
+
+/* 先輩の声 */
+.voices{background:#fff}
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.voice-card{border:1px solid #e0e8f4;border-radius:8px;overflow:hidden}
+.voice-img{width:100%;height:180px;object-fit:cover}
+.voice-body{padding:18px 16px}
+.voice-name{font-weight:700;font-size:.95rem;color:#1a3a6b;margin-bottom:2px}
+.voice-role{font-size:.78rem;color:#666;margin-bottom:10px}
+.voice-text{font-size:.88rem;line-height:1.7;color:#333}
+.voice-sample{display:block;margin-top:10px;font-size:.72rem;color:#aaa}
+/* ※サンプル明記 */
+
+/* 1日の流れ */
+.timeline-bg{background:#f5f8fc}
+.timeline{max-width:640px;margin:0 auto}
+.tl-item{display:flex;gap:16px;margin-bottom:28px;align-items:flex-start}
+.tl-time{min-width:72px;font-weight:700;font-size:.95rem;color:#2e86de;padding-top:2px}
+.tl-dot{width:12px;height:12px;background:#2e86de;border-radius:50%;margin-top:6px;flex-shrink:0}
+.tl-content h4{font-size:.95rem;font-weight:700;margin-bottom:4px}
+.tl-content p{font-size:.85rem;color:#555;line-height:1.6}
+.tl-sample{display:block;margin-top:6px;font-size:.72rem;color:#aaa}
+
+/* FAQ */
+.faq{background:#fff}
+.faq-list{max-width:760px}
+.faq-item{border-bottom:1px solid #e5e5e5;padding:20px 0}
+.faq-q{font-weight:700;font-size:.97rem;color:#1a3a6b;margin-bottom:8px;display:flex;gap:10px;align-items:flex-start}
+.faq-q::before{content:'Q';background:#2e86de;color:#fff;font-size:.8rem;font-weight:700;padding:2px 7px;border-radius:4px;flex-shrink:0;margin-top:1px}
+.faq-a{font-size:.9rem;line-height:1.7;color:#444;padding-left:30px}
+.faq-sample{display:block;margin-top:6px;font-size:.72rem;color:#aaa}
+
+/* 募集要項 */
+.requirements{background:#f5f8fc}
+.req-table{width:100%;border-collapse:collapse;font-size:.92rem}
+.req-table th{width:160px;background:#1a3a6b;color:#fff;padding:14px 16px;text-align:left;vertical-align:top;font-weight:700;white-space:nowrap}
+.req-table td{padding:14px 16px;border-bottom:1px solid #ddd;background:#fff;line-height:1.7;vertical-align:top}
+
+/* 応募CTA */
+.apply{background:#1a3a6b;color:#fff;text-align:center;padding:60px 20px}
+.apply h2{font-size:clamp(1.3rem,4vw,1.9rem);font-weight:700;margin-bottom:12px}
+.apply p{font-size:.95rem;opacity:.9;margin-bottom:28px;line-height:1.7}
+.btn-apply{display:inline-block;background:#f0a500;color:#fff;font-weight:700;font-size:1rem;padding:14px 40px;border-radius:4px}
+.btn-apply:hover{background:#d4920a}
+
+/* フッター */
+footer{background:#111;color:#ccc;text-align:center;padding:28px 20px;font-size:.82rem;line-height:1.8}
+
+/* スマホ対応 */
+@media(max-width:768px){
+  nav.pc-nav{display:none}
+  .hamburger{display:flex}
+  .feature-grid{grid-template-columns:1fr}
+  .voice-grid{grid-template-columns:1fr}
+  .req-table thead{display:none}
+  .req-table tr{display:block;margin-bottom:16px;border:1px solid #ddd;border-radius:6px;overflow:hidden}
+  .req-table th{display:none}
+  .req-table td{display:block;padding:10px 12px;border-bottom:1px solid #eee}
+  .req-table td::before{content:attr(data-label);display:block;font-weight:700;font-size:.78rem;color:#1a3a6b;margin-bottom:4px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">かとり民間救急サービス株式会社<br><span style="font-size:.75rem;font-weight:400;opacity:.8">採用情報</span></div>
+    <nav class="pc-nav">
+      <a href="#about">仕事について</a>
+      <a href="#voices">先輩の声</a>
+      <a href="#timeline">1日の流れ</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#requirements">募集要項</a>
+      <a href="#apply">応募する</a>
+    </nav>
+    <button class="hamburger" aria-label="メニュー" onclick="document.querySelector('.sp-nav').style.display=document.querySelector('.sp-nav').style.display==='block'?'none':'block'">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="sp-nav">
+    <a href="#about">仕事について</a>
+    <a href="#voices">先輩の声</a>
+    <a href="#timeline">1日の流れ</a>
+    <a href="#faq">よくある質問</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#apply">応募する</a>
+  </nav>
+</header>
+
+<!-- ヒーロー -->
+<div style="position:relative;overflow:hidden;max-height:480px">
+  <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1600&h=700&fit=crop&q=80" alt="医療搬送のイメージ" style="width:100%;max-height:480px;object-fit:cover;filter:brightness(.55)">
+  <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center">
+    <div style="text-align:center;color:#fff;padding:20px">
+      <span style="display:inline-block;background:#2e86de;font-size:.78rem;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:16px;letter-spacing:.06em">民間救急・福祉タクシー・霊柩搬送</span>
+      <h1 style="font-size:clamp(1.5rem,5vw,2.7rem);font-weight:700;line-height:1.4;margin-bottom:14px;text-shadow:0 2px 8px rgba(0,0,0,.4)">「未経験でも大丈夫」<br>地域に寄り添う仕事、<br>始めませんか</h1>
+      <p style="font-size:clamp(.88rem,2.5vw,1.05rem);opacity:.92;margin-bottom:28px;line-height:1.7">研修・資格取得支援あり｜年間休日120日｜月給195,000円〜</p>
+      <a href="#apply" class="btn-hero">採用に応募する</a>
+    </div>
+  </div>
+</div>
+
+<!-- 仕事の特徴 -->
+<section class="features" id="about">
+  <div class="section-inner">
+    <div class="sec-label">ABOUT WORK</div>
+    <h2 class="sec-title">「難しそう」より<br>「やりがいがある」仕事です</h2>
+    <p style="font-size:.95rem;line-height:1.8;color:#444;margin-bottom:36px;max-width:720px">民間救急・福祉タクシー・霊柩搬送と聞くとハードルが高そうに感じるかもしれません。でも実際は、地域の方々の大切な移動を支える、感謝の声がいちばん近くに届く仕事です。入社後の研修・資格取得支援が整っているので、未経験の方もご安心ください。</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🚐</div>
+        <h3>地域の移動を支える</h3>
+        <p>通院・通所・医療施設への搬送など、公共交通では難しい移動をサポート。利用者さんから直接「ありがとう」の声をもらえます。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">📋</div>
+        <h3>未経験から始められる</h3>
+        <p>入社後の研修で業務を覚え、第二種免許やホームヘルパー2級の取得支援も。資格がなくても、やる気があれば大丈夫です。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏖️</div>
+        <h3>年間休日120日・土日祝休み</h3>
+        <p>月給195,000〜220,000円＋各種手当。搬送手当・資格手当で着実に収入アップ。社会保険完備で安心して長く働けます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section class="voices" id="voices">
+  <div class="section-inner">
+    <div class="sec-label">STAFF VOICE</div>
+    <h2 class="sec-title">先輩スタッフからのメッセージ</h2>
+    <p style="font-size:.78rem;color:#aaa;margin-bottom:24px">※ここはサンプルです。実際には御社スタッフの写真・プロフィール・コメントに差し替えます</p>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <!-- サンプル顔写真：実際には御社スタッフの写真に差し替えてください -->
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=640&h=360&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）" class="voice-img">
+        <div class="voice-body">
+          <div class="voice-name">田中 浩二（仮名）</div>
+          <div class="voice-role">民間救急スタッフ・入社3年目</div>
+          <p class="voice-text">最初は「霊柩搬送」という言葉だけで怖気づいていましたが、実際はご遺族から深く感謝されます。この仕事だからこそ届く「ありがとう」があることを知り、今は誇りに思っています。</p>
+          <span class="voice-sample">※このコメントはサンプルです</span>
+        </div>
+      </div>
+      <div class="voice-card">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=640&h=360&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）" class="voice-img">
+        <div class="voice-body">
+          <div class="voice-name">鈴木 美恵（仮名）</div>
+          <div class="voice-role">福祉タクシードライバー・入社4年目</div>
+          <p class="voice-text">「あなたが来てくれると安心する」と利用者さんに言ってもらえたときは本当に嬉しかった。ドライバーという仕事を超えた、人と人とのつながりを感じられる職場です。</p>
+          <span class="voice-sample">※このコメントはサンプルです</span>
+        </div>
+      </div>
+      <div class="voice-card">
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=640&h=360&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）" class="voice-img">
+        <div class="voice-body">
+          <div class="voice-name">佐藤 雄一（仮名）</div>
+          <div class="voice-role">搬送スタッフ・入社2年目</div>
+          <p class="voice-text">入社前は普通免許しか持っていませんでしたが、会社の支援でアット限定解除→第二種免許まで取得できました。丁寧に教えてもらえる環境なので、未経験でも大丈夫です。</p>
+          <span class="voice-sample">※このコメントはサンプルです</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section class="timeline-bg" id="timeline">
+  <div class="section-inner">
+    <div class="sec-label">A DAY IN THE LIFE</div>
+    <h2 class="sec-title">1日の流れ</h2>
+    <p style="font-size:.78rem;color:#aaa;margin-bottom:28px">※ここはサンプルです。実際の御社の1日のスケジュールに差し替えます</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">08:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>出勤・朝礼・当日配車確認</h4>
+          <p>その日の搬送スケジュールを確認。車両点検と衛生チェックを行い、1日の準備を整えます。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">09:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>午前の搬送業務</h4>
+          <p>利用者さんのご自宅〜病院・通所施設への搬送。車椅子・ストレッチャーへの乗降介助も行います。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>昼休憩</h4>
+          <p>事務所に戻り、午後の配車確認をしながら休憩。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>午後の搬送・福祉タクシー業務</h4>
+          <p>通所施設からの送迎や、病院間の患者搬送など。民間救急対応も含まれる場合があります。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">16:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>業務報告・車両清掃</h4>
+          <p>当日の搬送記録をまとめ、車内の清潔・衛生管理を実施します。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-content">
+          <h4>退勤</h4>
+          <p>基本は定時退勤。予約状況によっては早出・残業・休日出勤が発生することもあります。</p>
+          <span class="tl-sample">※このタイムラインはサンプルです</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="section-inner">
+    <div class="sec-label">FAQ</div>
+    <h2 class="sec-title">よくある質問</h2>
+    <p style="font-size:.78rem;color:#aaa;margin-bottom:24px">※ここはサンプルです。実際には御社のFAQに差し替えます</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">未経験でも応募できますか？</div>
+        <div class="faq-a">はい、大歓迎です。入社後の研修で業務を習得いただけます。第二種免許やホームヘルパー2級の資格取得支援も行っています。「やってみたい」という気持ちが一番大切です。<span class="faq-sample">※このFAQはサンプルです</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">霊柩搬送とはどんな仕事ですか？</div>
+        <div class="faq-a">医療機関や施設から安置場所まで、ご遺族に寄り添いながら丁寧に搬送するお仕事です。ご遺族からの感謝の言葉が一番の支えになります。研修でしっかり学べるので安心してください。<span class="faq-sample">※このFAQはサンプルです</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">普通免許（AT限定）しかありませんが大丈夫ですか？</div>
+        <div class="faq-a">AT限定の普通自動車免許で応募できます。第二種免許については、入社後に会社のサポートで取得いただける仕組みがあります。介護・医療の経験がなくても問題ありません。<span class="faq-sample">※このFAQはサンプルです</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">休日はきちんと取れますか？</div>
+        <div class="faq-a">基本は土・日・祝休みで年間休日120日です。ただし、搬送の予約状況によっては早出・残業・休日出勤が発生することがあります。詳しくは面接時にご確認ください。<span class="faq-sample">※このFAQはサンプルです</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">女性でも働けますか？</div>
+        <div class="faq-a">現在、スタッフ7名中3名が女性です。福祉タクシーや通院搬送では女性の利用者さんも多く、女性スタッフの存在はとても心強いと感じていただけます。<span class="faq-sample">※このFAQはサンプルです</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="requirements" id="requirements">
+  <div class="section-inner">
+    <div class="sec-label">REQUIREMENTS</div>
+    <h2 class="sec-title">募集要項</h2>
+    <table class="req-table">
+      <tr>
+        <th>職種</th>
+        <td data-label="職種">民間救急・福祉タクシー・霊柩搬送スタッフ</td>
+      </tr>
+      <tr>
+        <th>雇用形態</th>
+        <td data-label="雇用形態">正社員（雇用期間の定めなし）</td>
+      </tr>
+      <tr>
+        <th>給与</th>
+        <td data-label="給与">月給195,000円〜220,000円<br>搬送手当（搬送毎）・第二種免許手当3,000円・介護資格手当3,000〜5,000円</td>
+      </tr>
+      <tr>
+        <th>就業時間</th>
+        <td data-label="就業時間">8:00〜17:00（休憩60分）<br>※予約状況により早出・残業・深夜・休日出勤あり</td>
+      </tr>
+      <tr>
+        <th>休日・休暇</th>
+        <td data-label="休日・休暇">土・日・祝日・その他　年間休日120日<br>年次有給休暇（6カ月経過後10日〜）</td>
+      </tr>
+      <tr>
+        <th>必要免許・資格</th>
+        <td data-label="必要免許・資格">普通自動車第二種免許（必須）<br>普通自動車運転免許 AT限定可（必須）<br>ホームヘルパー2級（あれば尚可・資格取得支援あり）</td>
+      </tr>
+      <tr>
+        <th>加入保険</th>
+        <td data-label="加入保険">雇用保険・労災保険・健康保険・厚生年金</td>
+      </tr>
+      <tr>
+        <th>勤務地</th>
+        <td data-label="勤務地">千葉県香取市大根1892-22</td>
+      </tr>
+      <tr>
+        <th>試用期間</th>
+        <td data-label="試用期間">あり（3カ月・同条件）</td>
+      </tr>
+      <tr>
+        <th>選考方法</th>
+        <td data-label="選考方法">書類選考→面接（1回）<br>ハローワーク紹介状・履歴書（写真貼付）が必要です</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<!-- 応募CTA -->
+<section class="apply" id="apply">
+  <div class="section-inner">
+    <h2>地域の「移動」を支える仕事へ</h2>
+    <p>未経験の方も、資格のない方も、まずはお気軽にご連絡ください。<br>研修・資格取得支援が整っているので、一緒に成長できます。</p>
+    <a href="mailto:katori-pams@ever.ocn.ne.jp" class="btn-apply">メールで問い合わせる</a>
+    <p style="margin-top:18px;font-size:.85rem;opacity:.75">または　お電話: 0478-50-7119　まで</p>
+  </div>
+</section>
+
+<footer>
+  <p>かとり民間救急サービス株式会社</p>
+  <p>〒287-0026 千葉県香取市大根1892-22</p>
+  <p>TEL: 0478-50-7119　MAIL: katori-pams@ever.ocn.ne.jp</p>
+</footer>
+
+</body>
+</html>

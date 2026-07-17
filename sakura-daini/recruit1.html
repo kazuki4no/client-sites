@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 特定非営利活動法人 さくら第二</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#333;background:#fff}
+img{max-width:100%;height:auto;display:block}
+
+/* カラー変数 */
+:root{
+  --green:#2a8a50;
+  --green-light:#e8f5ee;
+  --green-dark:#1e6a3c;
+  --orange:#f07b2a;
+  --text:#333;
+  --gray:#666;
+  --gray-light:#f7f7f7;
+  --border:#ddd;
+}
+
+/* ナビ */
+header{background:#fff;border-bottom:2px solid var(--green);position:sticky;top:0;z-index:100}
+.nav-inner{max-width:1000px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-weight:700;color:var(--green);font-size:1rem;line-height:1.3}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{text-decoration:none;color:#333;font-size:0.9rem;font-weight:500}
+.nav-links a:hover{color:var(--green)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px}
+.hamburger span{display:block;width:24px;height:2px;background:#333;transition:.3s}
+.nav-mobile{display:none;background:#fff;border-top:1px solid var(--border)}
+.nav-mobile.open{display:block}
+.nav-mobile a{display:block;padding:14px 20px;text-decoration:none;color:#333;border-bottom:1px solid var(--border);font-size:0.95rem}
+
+/* ヒーロー */
+.hero{position:relative;overflow:hidden}
+.hero-img{width:100%;height:480px;object-fit:cover;object-position:center}
+.hero-overlay{position:absolute;inset:0;background:rgba(20,60,30,0.52)}
+.hero-content{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px}
+.hero-pill{display:inline-block;background:var(--orange);color:#fff;border-radius:20px;padding:6px 18px;font-size:0.85rem;font-weight:700;margin-bottom:18px}
+.hero h1{color:#fff;font-size:clamp(1.6rem,5vw,2.8rem);line-height:1.4;margin-bottom:10px;text-shadow:0 2px 8px rgba(0,0,0,.4)}
+.hero-sub{color:rgba(255,255,255,.9);font-size:clamp(0.85rem,2.5vw,1rem);margin-bottom:28px}
+.btn-primary{display:inline-block;background:var(--orange);color:#fff;padding:14px 36px;border-radius:4px;text-decoration:none;font-weight:700;font-size:1rem;transition:background .2s}
+.btn-primary:hover{background:#d96820}
+
+/* セクション共通 */
+section{padding:64px 20px}
+.section-inner{max-width:1000px;margin:0 auto}
+.section-title{font-size:clamp(1.3rem,4vw,1.8rem);color:var(--green);text-align:center;margin-bottom:8px}
+.section-sub{text-align:center;color:var(--gray);font-size:0.9rem;margin-bottom:40px}
+.divider{width:48px;height:3px;background:var(--green);margin:12px auto 40px}
+
+/* 魅力 */
+.appeal-bg{background:var(--green-light)}
+.appeal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.appeal-card{background:#fff;border-radius:8px;padding:28px 20px;text-align:center;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.appeal-icon{font-size:2.4rem;margin-bottom:12px}
+.appeal-card h3{color:var(--green);font-size:1rem;margin-bottom:10px}
+.appeal-card p{font-size:0.88rem;line-height:1.8;color:var(--gray)}
+
+/* 募集要項 */
+.job-table{width:100%;border-collapse:collapse}
+.job-table th,.job-table td{padding:14px 16px;border:1px solid var(--border);text-align:left;font-size:0.9rem;line-height:1.8}
+.job-table th{background:var(--green-light);color:var(--green-dark);font-weight:700;width:30%;white-space:nowrap}
+.job-table tr:nth-child(even) td{background:#fafcfb}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:16px}
+.faq-item{border:1px solid var(--border);border-radius:6px;overflow:hidden}
+.faq-q{display:flex;align-items:flex-start;gap:12px;padding:16px 20px;cursor:pointer;background:#fff}
+.faq-q-badge{background:var(--green);color:#fff;border-radius:4px;padding:2px 8px;font-size:0.8rem;font-weight:700;flex-shrink:0;margin-top:2px}
+.faq-q-text{font-weight:700;font-size:0.95rem;line-height:1.5}
+.faq-a{padding:0 20px 16px 20px;padding-left:calc(20px + 36px + 12px);font-size:0.9rem;line-height:1.8;color:var(--gray)}
+.sample-note{font-size:0.75rem;color:#bbb;margin-top:8px;display:block}
+
+/* 1日の流れ */
+.flow-bg{background:var(--green-light)}
+.timeline{display:flex;flex-direction:column;gap:0;max-width:640px;margin:0 auto}
+.tl-item{display:grid;grid-template-columns:80px 1fr;gap:0;position:relative}
+.tl-item:not(:last-child)::before{content:'';position:absolute;left:79px;top:28px;bottom:-20px;width:2px;background:var(--green);opacity:.3}
+.tl-time{font-size:0.85rem;font-weight:700;color:var(--green);padding-top:6px;text-align:right;padding-right:16px}
+.tl-dot{width:12px;height:12px;background:var(--green);border-radius:50%;position:absolute;left:74px;top:8px}
+.tl-body{padding:0 0 28px 20px}
+.tl-body h4{font-size:0.95rem;font-weight:700;margin-bottom:4px}
+.tl-body p{font-size:0.85rem;color:var(--gray);line-height:1.6}
+
+/* 先輩メッセージ */
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.voice-card{background:#fff;border-radius:8px;padding:20px;box-shadow:0 2px 8px rgba(0,0,0,.07);border-top:4px solid var(--green)}
+.voice-card img{width:64px;height:64px;border-radius:50%;object-fit:cover;margin:0 auto 12px}
+.voice-card .name{text-align:center;font-weight:700;font-size:0.9rem;margin-bottom:2px}
+.voice-card .role{text-align:center;font-size:0.78rem;color:var(--gray);margin-bottom:12px}
+.voice-card p{font-size:0.85rem;line-height:1.8;color:#444}
+
+/* 採用担当 */
+.recruiter-wrap{display:flex;gap:28px;align-items:center;max-width:640px;margin:0 auto;background:var(--green-light);border-radius:8px;padding:28px}
+.recruiter-wrap img{width:96px;height:96px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.recruiter-info h3{font-size:1rem;font-weight:700;margin-bottom:4px}
+.recruiter-info .title{font-size:0.82rem;color:var(--gray);margin-bottom:10px}
+.recruiter-info p{font-size:0.88rem;line-height:1.8}
+
+/* 応募CTA */
+.cta-bg{background:var(--green);text-align:center;padding:60px 20px}
+.cta-bg h2{color:#fff;font-size:clamp(1.3rem,4vw,1.9rem);margin-bottom:12px}
+.cta-bg p{color:rgba(255,255,255,.9);font-size:0.95rem;margin-bottom:28px}
+.btn-white{display:inline-block;background:#fff;color:var(--green);padding:14px 40px;border-radius:4px;text-decoration:none;font-weight:700;font-size:1rem;transition:opacity .2s}
+.btn-white:hover{opacity:.9}
+
+/* フッター */
+footer{background:#1a1a1a;color:#ccc;padding:32px 20px;text-align:center}
+footer p{font-size:0.82rem;line-height:2}
+
+/* レスポンシブ */
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero-img{height:300px}
+  .appeal-grid{grid-template-columns:1fr}
+  .voice-grid{grid-template-columns:1fr}
+  .job-table th,.job-table td{display:block;width:100%}
+  .job-table th{border-bottom:none;padding-bottom:4px}
+  .tl-item{grid-template-columns:64px 1fr}
+  .tl-dot{left:58px}
+  .tl-item:not(:last-child)::before{left:63px}
+  .recruiter-wrap{flex-direction:column;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="logo">特定非営利活動法人<br>さくら第二</div>
+    <nav>
+      <ul class="nav-links">
+        <li><a href="#appeal">魅力</a></li>
+        <li><a href="#jobs">募集要項</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#voice">先輩の声</a></li>
+        <li><a href="#apply" class="btn-primary" style="padding:8px 18px;font-size:0.85rem">応募する</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger" onclick="document.querySelector('.nav-mobile').classList.toggle('open')" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="nav-mobile">
+    <a href="#appeal">魅力</a>
+    <a href="#jobs">募集要項</a>
+    <a href="#faq">FAQ</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#apply">応募する</a>
+  </nav>
+</header>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <!-- 教育・子ども関連の業種に合う画像。実際には御社の職場写真に差し替えます -->
+  <img class="hero-img" src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=1600&h=700&fit=crop&q=80" alt="さくら第二 採用">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-pill">正社員 / 未経験歓迎</span>
+    <h1>子どもの成長を、<br>チームで支える仕事</h1>
+    <p class="hero-sub">定員10名の小さなチームだから、一人ひとりとしっかり向き合える</p>
+    <a href="#apply" class="btn-primary">応募・お問い合わせ</a>
+  </div>
+</section>
+
+<!-- 魅力 -->
+<section class="appeal-bg" id="appeal">
+  <div class="section-inner">
+    <h2 class="section-title">さくら第二で働く魅力</h2>
+    <div class="divider"></div>
+    <div class="appeal-grid">
+      <div class="appeal-card">
+        <div class="appeal-icon">🌱</div>
+        <h3>無資格からスタートOK</h3>
+        <p>経験のある先輩スタッフが丁寧に指導します。PCが苦手でも業務内容を相談できる環境が整っています。資格手当（最大1.2万円/月）でキャリアアップも応援。</p>
+      </div>
+      <div class="appeal-card">
+        <div class="appeal-icon">👫</div>
+        <h3>定員10名・小規模だから安心</h3>
+        <p>大きな施設とは違い、子どもたちの顔と名前を全員把握できる規模感。「目が届く」「声をかけやすい」と好評です。チームワークが生まれやすい職場です。</p>
+      </div>
+      <div class="appeal-card">
+        <div class="appeal-icon">☀️</div>
+        <h3>残業なし・年間休日112日</h3>
+        <p>36協定の特別条項なし＝原則残業ゼロ。日曜・祝日・年末年始・夏季休暇あり。手作り昼食を法人が半額負担（約300円で食べられます）するなど、働く環境を整えています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section id="jobs">
+  <div class="section-inner">
+    <h2 class="section-title">募集要項</h2>
+    <div class="divider"></div>
+    <table class="job-table">
+      <tr><th>職種</th><td>児童支援員（放課後等デイサービス・児童発達支援）</td></tr>
+      <tr><th>雇用形態</th><td>正社員（雇用期間の定めなし）</td></tr>
+      <tr><th>仕事内容</th><td>散歩・宿題のお手伝い・学校からの送迎など、子どもの成長にかかわるサポート全般。定員10名の小規模施設です。</td></tr>
+      <tr><th>必要資格</th><td>普通自動車免許（AT限定可）／無資格スタートOK</td></tr>
+      <tr><th>給与</th><td>月給 201,600円〜（基本給193,200円＋食事手当8,400円）<br>※資格手当：保育士・社会福祉士・介護福祉士・教員免許 各12,000円/月<br>※送迎手当：3,000〜12,000円/月（送迎担当者）<br>※職務手当：法人規程により支給</td></tr>
+      <tr><th>就業時間</th><td>9:00〜18:00（長期休暇・土曜は変更あり）</td></tr>
+      <tr><th>休日・休暇</th><td>日曜・祝日・その他（シフト制）／年末年始6日・夏季4日<br>年間休日112日／年次有給休暇（6ヵ月後10日付与）</td></tr>
+      <tr><th>時間外労働</th><td>なし（36協定特別条項なし）</td></tr>
+      <tr><th>各種保険</th><td>雇用・労災・健康・厚生年金 ／ 養老保険（法人負担・65歳まで）</td></tr>
+      <tr><th>昇給・賞与</th><td>昇給制度あり ／ 賞与制度あり</td></tr>
+      <tr><th>勤務地</th><td>千葉県印西市小林2486-4「さくら第二」<br>または印西市中根上水入717「さくら3」（JR小林駅からバス）</td></tr>
+      <tr><th>採用人数</th><td>1名</td></tr>
+      <tr><th>選考方法</th><td>面接1回（随時受付）</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section style="background:var(--gray-light)" id="faq">
+  <div class="section-inner">
+    <h2 class="section-title">よくある質問</h2>
+    <div class="divider"></div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-badge">Q</span><span class="faq-q-text">資格なしでも応募できますか？</span></div>
+        <div class="faq-a">はい、大丈夫です。未経験・無資格でもご応募いただけます。経験者スタッフが丁寧に業務を教えますので、安心してスタートできます。就業後に保育士・社会福祉士などの資格を取得すると資格手当（12,000円/月）が加算されます。<span class="sample-note">※ここはサンプルです。実際には御社の内容に差し替えます</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-badge">Q</span><span class="faq-q-text">残業はありますか？</span></div>
+        <div class="faq-a">36協定の特別条項なし、つまり原則残業ゼロの職場です。子どもたちが帰宅した後は記録業務が中心で、長時間の残業が慢性化しにくい環境です。<span class="sample-note">※ここはサンプルです。実際には御社の内容に差し替えます</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-badge">Q</span><span class="faq-q-text">施設の定員が10名と聞きました。職場の雰囲気はどうですか？</span></div>
+        <div class="faq-a">小規模施設だからこそ、スタッフ全員が子どもたちの顔と名前を把握できています。「大きな施設では自分の担当しか見えないけれど、ここは全員のことを知れる」と話すスタッフが多いです。<span class="sample-note">※ここはサンプルです。実際には御社の内容に差し替えます</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-badge">Q</span><span class="faq-q-text">選考の流れを教えてください。</span></div>
+        <div class="faq-a">ハローワークの紹介状をご用意のうえご連絡ください→面接（1回・随時）→面接後3日以内に郵送または電話でご連絡します。ご希望があれば施設見学も可能です（お子さまの状況によりご遠慮いただく場合があります）。<span class="sample-note">※ここはサンプルです。実際には御社の内容に差し替えます</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-badge">Q</span><span class="faq-q-text">パソコンが苦手でも大丈夫ですか？</span></div>
+        <div class="faq-a">大丈夫です。求人票にも記載のとおり、「PC操作等に不安がある方は業務内容の相談に応じます」としています。強みを活かせる役割で活躍していただけます。<span class="sample-note">※ここはサンプルです。実際には御社の内容に差し替えます</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section class="flow-bg" id="flow">
+  <div class="section-inner">
+    <h2 class="section-title">スタッフの1日の流れ</h2>
+    <p class="section-sub">放課後デイサービスのスタッフの1日（平日・例）</p>
+    <div class="divider"></div>
+    <div class="timeline" style="position:relative">
+      <div class="tl-item">
+        <div class="tl-time">9:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>朝礼・申し送り</h4><p>前日の子どもたちの様子を共有。その日の担当・送迎ルートを確認します。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">10:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>午前のプログラム</h4><p>個別支援・制作活動・散歩など。小規模なので一人ひとりのペースに合わせやすいです。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>昼食・休憩</h4><p>手作り昼食（法人が半額負担）。スタッフも子どもたちと一緒に食べる時間です。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">14:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>学校送迎・放課後受け入れ</h4><p>法人車で学校まで送迎。到着後は宿題のお手伝いや活動サポートをします。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">16:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>自宅送迎</h4><p>お子さまを順番に送り届けます。保護者の方への一言メモを準備することも。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>記録・片付け</h4><p>支援記録を入力。翌日の準備をして終礼へ。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">18:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>退勤</h4><p>定時退勤が基本です。残業が慢性化しにくい環境です。</p></div>
+      </div>
+    </div>
+    <p class="sample-note" style="text-align:center;margin-top:20px">※ここはサンプルです。実際には御社の1日の流れに差し替えます</p>
+  </div>
+</section>
+
+<!-- 先輩メッセージ -->
+<section id="voice">
+  <div class="section-inner">
+    <h2 class="section-title">先輩スタッフの声</h2>
+    <div class="divider"></div>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <!-- 顔写真ダミー。実際には御社スタッフの写真に差し替えます -->
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩スタッフ">
+        <div class="name">田中 さゆり（仮名）</div>
+        <div class="role">児童支援員 / 入職3年目</div>
+        <p>前職は事務職で、福祉は未経験でした。最初は「自分にできるかな」と不安でしたが、先輩が一つひとつ丁寧に教えてくれて、今は子どもたちの笑顔が何より楽しみになっています。</p>
+        <span class="sample-note">※ここはサンプルです。実際には御社スタッフの声に差し替えます</span>
+      </div>
+      <div class="voice-card">
+        <!-- 顔写真ダミー。実際には御社スタッフの写真に差し替えます -->
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩スタッフ">
+        <div class="name">佐藤 健太（仮名）</div>
+        <div class="role">児童支援員 / 入職5年目</div>
+        <p>定員10名の小規模施設なので、子どもたちの変化を見逃さずに済みます。「あの子は昨日こんなことができた」という積み重ねが、この仕事のやりがいです。資格手当で収入もステップアップできました。</p>
+        <span class="sample-note">※ここはサンプルです。実際には御社スタッフの声に差し替えます</span>
+      </div>
+      <div class="voice-card">
+        <!-- 顔写真ダミー。実際には御社スタッフの写真に差し替えます -->
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩スタッフ">
+        <div class="name">鈴木 あかね（仮名）</div>
+        <div class="role">児童支援員 / 入職2年目</div>
+        <p>残業がないので、仕事後も自分の時間を大切にできています。ランチが手作りで安くておいしいのも地味にうれしい点です。チームの仲が良く、毎日通うのが苦になりません。</p>
+        <span class="sample-note">※ここはサンプルです。実際には御社スタッフの声に差し替えます</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 採用担当者 -->
+<section style="background:var(--gray-light)">
+  <div class="section-inner">
+    <h2 class="section-title">採用担当者より</h2>
+    <div class="divider"></div>
+    <div class="recruiter-wrap">
+      <!-- 顔写真ダミー。実際には採用担当者の写真に差し替えます -->
+      <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当">
+      <div class="recruiter-info">
+        <h3>採用担当（仮名）</h3>
+        <div class="title">特定非営利活動法人 さくら第二</div>
+        <p>「子どもたちの成長を一緒に喜べる方」なら、経験・資格は問いません。施設見学も随時受け付けています。まずは気軽にお声がけください。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社担当者の写真・コメントに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 応募CTA -->
+<section class="cta-bg" id="apply">
+  <h2>応募・お問い合わせ</h2>
+  <p>まずはハローワークへご相談のうえ、紹介状をご用意ください。<br>施設見学のご希望も歓迎しています。</p>
+  <a href="tel:0476333741" class="btn-white">📞 0476-33-3741</a>
+</section>
+
+<footer>
+  <p>特定非営利活動法人 さくら第二<br>
+  〒270-1318 千葉県印西市小林2486-4<br>
+  TEL: 0476-33-3741 ／ E-mail: npo.sakura2@ark.ocn.ne.jp</p>
+</footer>
+
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}
+  });
+});
+</script>
+</body>
+</html>

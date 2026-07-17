@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>採用情報 | 株式会社 未来夢</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { max-width: 100%; overflow-x: hidden; margin: 0; padding: 0; }
+    body { font-family: 'Noto Sans JP', sans-serif; color: #333; background: #fff; line-height: 1.7; padding-bottom: 72px; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    /* Header */
+    header { background: #fff; border-bottom: 3px solid #1B6B4A; padding: 0 24px; position: sticky; top: 0; z-index: 200; }
+    .header-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    .logo { font-size: clamp(1rem, 3vw, 1.15rem); font-weight: 900; color: #1B6B4A; text-decoration: none; }
+    nav ul { display: flex; gap: 20px; list-style: none; margin: 0; padding: 0; }
+    nav a { text-decoration: none; color: #444; font-size: 0.875rem; font-weight: 500; }
+    nav a:hover { color: #1B6B4A; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #333; }
+    .mobile-nav { display: none; background: #fff; border-top: 1px solid #e8e8e8; }
+    .mobile-nav.open { display: block; }
+    .mobile-nav ul { list-style: none; margin: 0; padding: 0; }
+    .mobile-nav a { display: block; padding: 14px 24px; color: #444; text-decoration: none; border-bottom: 1px solid #f0f0f0; font-size: 0.95rem; }
+
+    /* Hero */
+    .hero { position: relative; min-height: 80vh; display: flex; align-items: center; }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=1600&h=900&fit=crop&q=80');
+      background-size: cover; background-position: center;
+    }
+    .hero-overlay { position: absolute; inset: 0; background: linear-gradient(135deg, rgba(27,107,74,0.78) 0%, rgba(10,40,28,0.7) 100%); }
+    .hero-content { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 80px 24px; color: #fff; }
+    .hero-eyebrow { font-size: 0.85rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.8; margin-bottom: 16px; }
+    .hero-title { font-size: clamp(2rem, 5.5vw, 3.6rem); font-weight: 900; line-height: 1.2; margin: 0 0 20px; }
+    .hero-title em { color: #FBBF24; font-style: normal; }
+    .hero-sub { font-size: clamp(0.9rem, 2.5vw, 1.1rem); opacity: 0.9; max-width: 600px; margin-bottom: 28px; }
+    .stat-row { display: flex; flex-wrap: wrap; gap: 20px; margin-bottom: 36px; }
+    .stat-item { text-align: center; background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.25); border-radius: 8px; padding: 14px 20px; }
+    .stat-num { font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 900; color: #FBBF24; line-height: 1; }
+    .stat-label { font-size: 0.75rem; opacity: 0.8; margin-top: 4px; }
+    .btn-cta { display: inline-block; background: #E07B00; color: #fff; font-weight: 900; font-size: 1.05rem; padding: 16px 48px; border-radius: 50px; text-decoration: none; transition: background 0.2s; box-shadow: 0 4px 16px rgba(0,0,0,0.3); }
+    .btn-cta:hover { background: #C06800; }
+    .btn-outline { display: inline-block; border: 2px solid #fff; color: #fff; font-weight: 700; font-size: 1rem; padding: 14px 36px; border-radius: 50px; text-decoration: none; margin-left: 14px; transition: background 0.2s; }
+    .btn-outline:hover { background: rgba(255,255,255,0.15); }
+
+    /* Sections */
+    section { padding: 72px 24px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-title { font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 900; text-align: center; color: #0F3B22; margin-bottom: 12px; }
+    .section-divider { width: 48px; height: 4px; background: #1B6B4A; margin: 0 auto 40px; border-radius: 2px; }
+    .section-lead { text-align: center; color: #666; font-size: 0.95rem; margin-bottom: 40px; }
+    .sample-note { font-size: 0.75rem; color: #aaa; margin-top: 8px; }
+
+    /* Numbers */
+    .numbers-section { background: #0F3B22; color: #fff; padding: 64px 24px; }
+    .numbers-grid { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+    .num-card { text-align: center; }
+    .num-val { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 900; color: #FBBF24; line-height: 1; }
+    .num-unit { font-size: 0.9rem; opacity: 0.7; }
+    .num-label { font-size: 0.85rem; opacity: 0.8; margin-top: 8px; }
+    .num-note { font-size: 0.7rem; opacity: 0.5; margin-top: 4px; }
+
+    /* Point blocks */
+    .point-block { display: flex; gap: 40px; align-items: center; margin-bottom: 60px; }
+    .point-block.reverse { flex-direction: row-reverse; }
+    .point-block img { width: 45%; border-radius: 8px; flex-shrink: 0; height: 280px; object-fit: cover; }
+    .point-num { font-size: 0.75rem; font-weight: 900; color: #1B6B4A; letter-spacing: 0.1em; margin-bottom: 8px; }
+    .point-title { font-size: clamp(1.1rem, 3vw, 1.5rem); font-weight: 900; color: #0F3B22; margin: 0 0 12px; }
+    .point-body { font-size: 0.9rem; color: #555; }
+
+    /* CTA mid */
+    .cta-mid { background: linear-gradient(90deg, #1B6B4A, #3A9E72); padding: 48px 24px; text-align: center; color: #fff; }
+    .cta-mid p { font-size: 1.05rem; font-weight: 700; margin-bottom: 20px; }
+
+    /* Timeline */
+    .timeline { max-width: 680px; margin: 0 auto; }
+    .tl-item { display: flex; gap: 20px; margin-bottom: 24px; }
+    .tl-time { min-width: 58px; font-size: 0.85rem; font-weight: 700; color: #1B6B4A; padding-top: 4px; }
+    .tl-body { position: relative; padding-left: 16px; border-left: 2px solid #C4E2D4; flex: 1; }
+    .tl-body::before { content: ''; position: absolute; left: -6px; top: 7px; width: 10px; height: 10px; background: #1B6B4A; border-radius: 50%; }
+    .tl-body h4 { margin: 0 0 4px; font-size: 0.95rem; font-weight: 700; color: #222; }
+    .tl-body p { margin: 0; font-size: 0.85rem; color: #666; }
+
+    /* Interview */
+    .interview-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .iv-card { border-radius: 8px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.08); }
+    .iv-card img { width: 100%; height: 200px; object-fit: cover; }
+    .iv-card-body { padding: 20px; }
+    .iv-name { font-weight: 700; color: #0F3B22; font-size: 0.95rem; margin-bottom: 4px; }
+    .iv-meta { font-size: 0.75rem; color: #888; margin-bottom: 12px; }
+    .iv-msg { font-size: 0.85rem; color: #555; }
+
+    /* FAQ */
+    .faq-list { max-width: 760px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid #e0e0e0; padding: 20px 0; }
+    .faq-q { font-weight: 700; color: #0F3B22; font-size: 0.95rem; display: flex; gap: 12px; align-items: flex-start; }
+    .faq-q::before { content: 'Q'; background: #1B6B4A; color: #fff; font-size: 0.8rem; font-weight: 900; padding: 2px 8px; border-radius: 4px; flex-shrink: 0; margin-top: 2px; }
+    .faq-a { margin-top: 12px; font-size: 0.875rem; color: #555; padding-left: 36px; }
+    .faq-a::before { content: 'A. '; font-weight: 700; color: #E07B00; }
+
+    /* 募集要項 */
+    .req-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden; }
+    .req-item { display: flex; border-bottom: 1px solid #e0e0e0; }
+    .req-item:last-child, .req-item:nth-last-child(2) { border-bottom: none; }
+    .req-label { background: #EDF7F1; color: #0F3B22; font-weight: 700; font-size: 0.85rem; padding: 14px 16px; min-width: 120px; flex-shrink: 0; border-right: 1px solid #e0e0e0; }
+    .req-val { padding: 14px 16px; font-size: 0.875rem; color: #444; }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag { background: #EDF7F1; color: #1B6B4A; font-size: 0.72rem; font-weight: 700; padding: 3px 10px; border-radius: 12px; }
+
+    /* CTA bottom */
+    .cta-bottom { background: linear-gradient(135deg, #0F3B22 0%, #1B6B4A 100%); padding: 72px 24px; text-align: center; color: #fff; }
+    .cta-bottom h2 { font-size: clamp(1.5rem, 4vw, 2.2rem); margin: 0 0 12px; }
+    .cta-bottom p { opacity: 0.9; margin-bottom: 32px; }
+    .btn-cta-lg { display: inline-block; background: #FBBF24; color: #0F3B22; font-weight: 900; font-size: 1.1rem; padding: 18px 56px; border-radius: 50px; text-decoration: none; box-shadow: 0 4px 20px rgba(0,0,0,0.25); transition: transform 0.2s; margin: 8px; }
+    .btn-cta-lg:hover { transform: translateY(-2px); }
+    .btn-outline-wh { display: inline-block; border: 2px solid #fff; color: #fff; font-weight: 700; font-size: 1rem; padding: 16px 40px; border-radius: 50px; text-decoration: none; margin: 8px; }
+
+    footer { background: #0A2018; color: #aaa; padding: 32px 24px; text-align: center; font-size: 0.85rem; }
+    footer .footer-name { color: #fff; font-weight: 700; font-size: 1rem; margin-bottom: 6px; }
+    footer a { color: #88C4A0; text-decoration: none; }
+
+    /* Fixed bottom bar */
+    .fixed-cta {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 300;
+      background: #0F3B22; padding: 12px 16px;
+      display: flex; align-items: center; justify-content: center; gap: 12px;
+      box-shadow: 0 -2px 12px rgba(0,0,0,0.25);
+    }
+    .fixed-cta span { color: #FBBF24; font-weight: 700; font-size: 0.85rem; }
+    .fixed-cta a { display: inline-block; background: #E07B00; color: #fff; font-weight: 700; padding: 10px 28px; border-radius: 50px; text-decoration: none; font-size: 0.9rem; white-space: nowrap; }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav { display: none; }
+      .hamburger { display: flex; }
+      .numbers-grid { grid-template-columns: repeat(2, 1fr); }
+      .point-block { flex-direction: column; }
+      .point-block.reverse { flex-direction: column; }
+      .point-block img { width: 100%; height: 220px; }
+      .interview-grid { grid-template-columns: 1fr; }
+      .req-grid { grid-template-columns: 1fr; }
+      .req-item:nth-last-child(2) { border-bottom: 1px solid #e0e0e0; }
+      .btn-outline { display: block; margin: 12px 0 0; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a class="logo" href="#">株式会社 未来夢</a>
+    <nav>
+      <ul>
+        <li><a href="#numbers">数字で見る</a></li>
+        <li><a href="#points">働く魅力</a></li>
+        <li><a href="#flow">1日の流れ</a></li>
+        <li><a href="#requirements">募集要項</a></li>
+        <li><a href="#faq">FAQ</a></li>
+        <li><a href="#apply">応募する</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger" aria-label="メニュー" onclick="document.querySelector('.mobile-nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-nav">
+    <ul>
+      <li><a href="#numbers">数字で見る</a></li>
+      <li><a href="#points">働く魅力</a></li>
+      <li><a href="#flow">1日の流れ</a></li>
+      <li><a href="#requirements">募集要項</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#apply">応募する</a></li>
+    </ul>
+  </div>
+</header>
+
+<!-- Hero (CTA 1) -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">就労継続支援B型事業所 ／ サービス管理責任者 正社員</p>
+    <h1 class="hero-title">有資格者こそ<br><em>残業4時間・127日休</em>の<br>職場を選ぼう。</h1>
+    <p class="hero-sub">月給以上の強みを持つ職場があります。印西市の就労継続支援B型事業所「未来夢」で、利用者さんの働く力を育ててみませんか。</p>
+    <div class="stat-row">
+      <div class="stat-item"><div class="stat-num">127</div><div class="stat-label">年間休日（日）</div></div>
+      <div class="stat-item"><div class="stat-num">4h</div><div class="stat-label">月平均残業</div></div>
+      <div class="stat-item"><div class="stat-num">70歳</div><div class="stat-label">定年（再雇用75歳）</div></div>
+    </div>
+    <a href="#apply" class="btn-cta">採用情報を確認する</a>
+    <a href="#requirements" class="btn-outline">募集要項を見る</a>
+  </div>
+</section>
+
+<!-- 数字で見る未来夢 -->
+<div class="numbers-section" id="numbers">
+  <div class="numbers-grid">
+    <div class="num-card">
+      <div class="stat-num" style="font-size:clamp(1.8rem,4vw,3rem);color:#FBBF24;">127<span class="num-unit">日</span></div>
+      <div class="num-label">年間休日</div>
+      <div class="num-note">土日祝＋夏季・年末年始（※サンプル）</div>
+    </div>
+    <div class="num-card">
+      <div class="stat-num" style="font-size:clamp(1.8rem,4vw,3rem);color:#FBBF24;">4<span class="num-unit">h</span></div>
+      <div class="num-label">月平均残業時間</div>
+      <div class="num-note">（※サンプル）</div>
+    </div>
+    <div class="num-card">
+      <div class="stat-num" style="font-size:clamp(1.8rem,4vw,3rem);color:#FBBF24;">70<span class="num-unit">歳</span></div>
+      <div class="num-label">定年（再雇用75歳）</div>
+      <div class="num-note">（※サンプル）</div>
+    </div>
+    <div class="num-card">
+      <div class="stat-num" style="font-size:clamp(1.8rem,4vw,3rem);color:#FBBF24;">2016<span class="num-unit">年</span></div>
+      <div class="num-label">創業</div>
+      <div class="num-note">（※サンプル）</div>
+    </div>
+  </div>
+  <p style="text-align:center;font-size:0.72rem;color:rgba(255,255,255,0.3);margin-top:20px;">※ここはサンプルです。実際には御社の数字に差し替えます</p>
+</div>
+
+<!-- 働く魅力 (CTA 2) -->
+<section id="points">
+  <div class="section-inner">
+    <p class="section-title">「未来夢」で働く3つの魅力</p>
+    <div class="section-divider"></div>
+    <p class="section-lead">月給の数字だけで判断するのは、もったいない。</p>
+
+    <div class="point-block">
+      <!-- サンプル画像（研修・指導イメージ） -->
+      <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=640&h=380&fit=crop&q=80" alt="支援業務イメージ（サンプル）">
+      <div>
+        <div class="point-num">POINT 01</div>
+        <h3 class="point-title">年間休日127日・残業月4時間——<br>時間の余裕が、支援の質を高める。</h3>
+        <p class="point-body">サービス管理責任者は資格を持つプロです。しかし疲弊した状態では、利用者さんひとりひとりに向き合う余力が生まれません。未来夢では土日祝＋夏季・年末年始の年間127日休暇と、月平均4時間という少ない残業時間で、心のゆとりを確保できる環境を整えています。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社の強みに差し替えます</p>
+      </div>
+    </div>
+
+    <div class="point-block reverse">
+      <!-- サンプル画像（チームワークイメージ） -->
+      <img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=640&h=380&fit=crop&q=80" alt="職場イメージ（サンプル）">
+      <div>
+        <div class="point-num">POINT 02</div>
+        <h3 class="point-title">スタッフ7名の小さな職場だから、<br>1人ひとりと深く関われる。</h3>
+        <p class="point-body">大規模施設では難しい「利用者さんの顔と名前が全員わかる」関わり方が、ここでは自然にできます。個別支援計画の立案から実践まで一貫して担当できるので、支援の手応えを感じやすい職場です。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社の強みに差し替えます</p>
+      </div>
+    </div>
+
+    <div class="point-block">
+      <!-- サンプル画像（成長イメージ） -->
+      <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=640&h=380&fit=crop&q=80" alt="成長イメージ（サンプル）">
+      <div>
+        <div class="point-num">POINT 03</div>
+        <h3 class="point-title">処遇改善手当＋退職金共済——<br>長く続けるほど安心できる仕組み。</h3>
+        <p class="point-body">基本給に処遇改善手当・運転手当を加算。退職金共済（1年以上）・昇給制度・賞与制度も整備しており、定年は70歳・再雇用は75歳まで対応しています。「ここで長く働き続けたい」と思える基盤が揃っています。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社の強みに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA 2 -->
+<div class="cta-mid">
+  <p>「年間127日休み・残業月4時間」の環境でサビ管として活躍しませんか？</p>
+  <a href="#apply" class="btn-cta">今すぐ応募情報を確認する →</a>
+</div>
+
+<!-- 1日の流れ -->
+<section id="flow" style="background:#F5FAF7;">
+  <div class="section-inner">
+    <p class="section-title">サビ管の1日の流れ</p>
+    <div class="section-divider"></div>
+    <p class="sample-note" style="text-align:center;margin-bottom:32px;">※ここはサンプルです。実際には御社スタッフの1日のスケジュールに差し替えます</p>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-time">8:45</div><div class="tl-body"><h4>出勤・開所準備</h4><p>事業所の開所準備と前日の記録確認。支援方針を整えます。</p></div></div>
+      <div class="tl-item"><div class="tl-time">9:00</div><div class="tl-body"><h4>利用者さん受け入れ・朝礼</h4><p>笑顔でお迎えし、本日の作業内容と体調を確認。</p></div></div>
+      <div class="tl-item"><div class="tl-time">10:00</div><div class="tl-body"><h4>個別支援計画の作成・面談</h4><p>利用者さんの目標に合わせた支援計画を作成・更新。必要に応じて個別面談を行います。</p></div></div>
+      <div class="tl-item"><div class="tl-time">12:00</div><div class="tl-body"><h4>昼食・休憩（45分）</h4><p>スタッフと情報共有しながらリフレッシュ。</p></div></div>
+      <div class="tl-item"><div class="tl-time">13:00</div><div class="tl-body"><h4>午後の作業支援・スタッフ連携</h4><p>スタッフと連携しながら午後の支援を進めます。ミーティングで気になる点を共有。</p></div></div>
+      <div class="tl-item"><div class="tl-time">15:00</div><div class="tl-body"><h4>利用者さん送り出し・記録整理</h4><p>一日の記録を整理し、引き継ぎ事項をスタッフへ共有。</p></div></div>
+      <div class="tl-item"><div class="tl-time">17:30</div><div class="tl-body"><h4>退勤</h4><p>月平均残業4時間と少なく、定時退勤が叶いやすい職場です。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩インタビュー -->
+<section id="staff">
+  <div class="section-inner">
+    <p class="section-title">先輩スタッフに聞きました</p>
+    <div class="section-divider"></div>
+    <p class="sample-note" style="text-align:center;margin-bottom:32px;">※ここはサンプルです。実際には御社スタッフのコメント・写真に差し替えます</p>
+    <div class="interview-grid">
+      <div class="iv-card">
+        <!-- 顔写真サンプル（差し替え） -->
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=640&h=380&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div class="iv-card-body">
+          <div class="iv-name">田中 美幸（仮名）</div>
+          <div class="iv-meta">サービス管理責任者 ／ 入社3年目</div>
+          <p class="iv-msg">「前職は残業が多く体が心配でしたが、ここは月4時間ほど。育児と両立できています。利用者さんとゆっくり向き合える規模感が好きです。」</p>
+        </div>
+      </div>
+      <div class="iv-card">
+        <!-- 顔写真サンプル（差し替え） -->
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=640&h=380&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div class="iv-card-body">
+          <div class="iv-name">佐藤 健二（仮名）</div>
+          <div class="iv-meta">サービス管理責任者 ／ 入社5年目</div>
+          <p class="iv-msg">「資格を活かして働ける職場を探していて、ここに決めました。年間127日の休日と処遇改善手当があり、長く続けられる安心感があります。」</p>
+        </div>
+      </div>
+      <div class="iv-card">
+        <!-- 顔写真サンプル（差し替え） -->
+        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=640&h=380&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <div class="iv-card-body">
+          <div class="iv-name">鈴木 和子（仮名）</div>
+          <div class="iv-meta">生活支援員 ／ 入社2年目</div>
+          <p class="iv-msg">「代表の方針に共感して入職しました。チームの雰囲気がよく、わからないことはすぐ相談できます。アットホームな職場です。」</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section id="requirements" style="background:#F5FAF7;">
+  <div class="section-inner">
+    <p class="section-title">募集要項</p>
+    <div class="section-divider"></div>
+    <div class="req-grid">
+      <div class="req-item"><div class="req-label">職種</div><div class="req-val">就労継続支援事業所 サービス管理責任者</div></div>
+      <div class="req-item"><div class="req-label">雇用形態</div><div class="req-val">正社員（試用期間14日間・同条件）</div></div>
+      <div class="req-item"><div class="req-label">仕事内容</div><div class="req-val">個別支援計画の作成・利用者との面談・利用者支援業務・買い出し等の運転業務（免許保有者）</div></div>
+      <div class="req-item"><div class="req-label">給与</div><div class="req-val">月給 190,000〜210,000円＋処遇改善手当＋運転手当 ／ 通勤手当: 実費全額</div></div>
+      <div class="req-item"><div class="req-label">就業時間</div><div class="req-val">8:45〜17:30（休憩45分）／ 時間外: 月平均4時間</div></div>
+      <div class="req-item"><div class="req-label">休日</div><div class="req-val">土日祝＋夏季・年末年始 ／ 年間休日127日 ／ 有給10日（6か月後）</div></div>
+      <div class="req-item"><div class="req-label">必要資格</div><div class="req-val">福祉・介護系資格（サービス管理責任者研修修了等）必須 ／ 普通自動車免許（あれば尚可・AT限定可）</div></div>
+      <div class="req-item"><div class="req-label">福利厚生</div><div class="req-val">各種社会保険完備 ／ 退職金共済（1年以上）／ 昇給・賞与制度あり ／ 定年70歳・再雇用75歳まで</div></div>
+      <div class="req-item"><div class="req-label">勤務地</div><div class="req-val">千葉県印西市草深1084番地1 ／ 北総線 千葉ニュータウン中央駅 徒歩20分 ／ マイカー通勤可・駐車場あり</div></div>
+      <div class="req-item"><div class="req-label">選考</div><div class="req-val">面接1回（書類選考なし）※ハローワーク紹介状必要 ／ 結果は7日以内にご連絡</div></div>
+      <div class="req-item" style="grid-column: span 2;">
+        <div class="req-label">特徴</div>
+        <div class="req-val">
+          <div class="tag-row">
+            <span class="tag">週休2日（土日）</span>
+            <span class="tag">年間休日127日</span>
+            <span class="tag">転勤なし</span>
+            <span class="tag">書類選考なし</span>
+            <span class="tag">マイカー通勤可</span>
+            <span class="tag">屋内禁煙</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="sample-note" style="margin-top:12px;">※ここはサンプルです。実際の求人内容は御社にてご確認・差し替えください</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <p class="section-title">よくある質問</p>
+    <div class="section-divider"></div>
+    <p class="sample-note" style="text-align:center;margin-bottom:32px;">※ここはサンプルです。実際には御社の採用FAQに差し替えます</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">サービス管理責任者の資格は必須ですか？</div>
+        <div class="faq-a">はい、サービス管理責任者研修修了証など、該当する福祉・介護系資格が必須です。詳細はハローワークにてご確認ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">就労継続支援B型での勤務が初めてでも応募できますか？</div>
+        <div class="faq-a">福祉・障害支援の経験は「あれば尚可」です。資格をお持ちであれば、B型が初めての方もぜひご応募ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">残業や休日出勤はありますか？</div>
+        <div class="faq-a">月平均の時間外労働は4時間と非常に少なく、土日祝はお休みです。年間127日の休日を確保しています。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">選考の流れを教えてください。</div>
+        <div class="faq-a">書類選考はなく、面接1回で選考します。まずハローワークで紹介状を取得し、書類を事前郵送してください。結果は7日以内にご連絡します。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">給与はどのくらいになりますか？</div>
+        <div class="faq-a">基本給190,000〜210,000円に加え、処遇改善手当・運転手当が支給されます。通勤手当は実費全額支給です。昇給制度・賞与制度もあります。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA 3 -->
+<div class="cta-bottom" id="apply">
+  <h2>ご応募・お問い合わせはこちら</h2>
+  <p>まずはハローワーク（印西公共職業安定所）にてご相談ください。<br>直接のお問い合わせもお気軽にどうぞ。</p>
+  <a href="tel:0476336755" class="btn-cta-lg">📞 0476-33-6755</a>
+  <a href="mailto:miraimu2016@gmail.com" class="btn-outline-wh">✉ メールで問い合わせ</a>
+</div>
+
+<footer>
+  <div class="footer-name">株式会社 未来夢</div>
+  〒270-1337 千葉県印西市草深1084番地1<br>
+  TEL: <a href="tel:0476336755">0476-33-6755</a> ／ E-mail: <a href="mailto:miraimu2016@gmail.com">miraimu2016@gmail.com</a>
+</footer>
+
+<!-- スマホ固定CTAバー -->
+<div class="fixed-cta" id="fixedCta" style="display:none;">
+  <span>未来夢 採用</span>
+  <a href="tel:0476336755">📞 電話で問い合わせ</a>
+  <a href="mailto:miraimu2016@gmail.com">✉ メール</a>
+</div>
+
+<script>
+  document.querySelector('.hamburger').addEventListener('click', function() {
+    document.querySelector('.mobile-nav').classList.toggle('open');
+  });
+  // モバイルのみ固定バー表示
+  if (window.innerWidth <= 768) {
+    var fixedCta = document.getElementById('fixedCta');
+    fixedCta.style.display = 'flex';
+    window.addEventListener('scroll', function() {
+      fixedCta.style.display = window.scrollY > 300 ? 'flex' : 'none';
+    });
+  }
+</script>
+</body>
+</html>

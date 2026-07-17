@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>管工事スタッフ募集 | 株式会社 浦安設備管工</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;color:#1a2533;line-height:1.7;padding-bottom:70px;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+
+/* ヘッダー */
+.site-header{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1.5rem;background:#1a2533;position:sticky;top:0;z-index:100;}
+.brand{font-family:'Noto Serif JP',serif;font-size:.95rem;color:#fff;font-weight:600;letter-spacing:.04em;}
+.hamburger{display:none;background:none;border:0;font-size:1.7rem;line-height:1;cursor:pointer;color:#fff;}
+.site-nav{display:flex;gap:1.4rem;align-items:center;}
+.site-nav a{color:#b0c4de;font-size:.85rem;}
+.site-nav a:hover{color:#fff;}
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:#1a2533;box-shadow:0 8px 16px rgba(0,0,0,.3);padding:.5rem 1.2rem;}
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.8rem 0;border-bottom:1px solid rgba(255,255,255,.1);color:#b0c4de;}
+}
+
+/* ヒーロー LP型 */
+.hero{background:linear-gradient(135deg,#1a2533 0%,#2c4a7a 100%);min-height:80vh;display:flex;align-items:center;padding:5rem 1.5rem;}
+.hero-inner{max-width:860px;margin:0 auto;text-align:center;}
+.hero-badge{display:inline-block;background:#f59e0b;color:#1a2533;font-size:.78rem;font-weight:700;padding:.35rem 1rem;border-radius:20px;letter-spacing:.1em;margin-bottom:1.4rem;}
+.hero h1{font-family:'Noto Serif JP',serif;font-size:clamp(1.7rem,5.5vw,2.9rem);color:#fff;font-weight:700;line-height:1.35;margin-bottom:1.2rem;}
+.hero-sub{color:#90afd0;font-size:clamp(.9rem,2.5vw,1.05rem);margin-bottom:2.2rem;line-height:1.9;}
+.hero-cta{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.btn-amber{display:inline-block;background:#f59e0b;color:#1a2533;font-size:1.05rem;font-weight:700;padding:.9rem 2.6rem;border-radius:6px;transition:background .2s;}
+.btn-amber:hover{background:#d97706;}
+.btn-ghost{display:inline-block;border:2px solid #90afd0;color:#90afd0;font-size:.95rem;font-weight:700;padding:.8rem 2rem;border-radius:6px;transition:all .2s;}
+.btn-ghost:hover{border-color:#fff;color:#fff;}
+
+/* 数字バー */
+.numbers{background:#f59e0b;padding:2.5rem 1.5rem;}
+.numbers-grid{max-width:860px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;text-align:center;}
+.num-item h3{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,4vw,2.2rem);color:#1a2533;font-weight:700;}
+.num-item p{font-size:.8rem;color:#5d4a00;font-weight:500;margin-top:.2rem;}
+.num-note{font-size:.68rem;color:#7d6600;margin-top:.2rem;}
+@media(max-width:768px){.numbers-grid{grid-template-columns:repeat(2,1fr);}}
+
+/* セクション共通 */
+section{padding:4.5rem 1.5rem;}
+.container{max-width:860px;margin:0 auto;}
+.sec-label{font-size:.75rem;font-weight:700;letter-spacing:.18em;color:#2c4a7a;margin-bottom:.5rem;}
+.sec-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,4vw,2rem);font-weight:700;margin-bottom:1rem;}
+.sec-lead{color:#4a5568;font-size:.95rem;line-height:1.85;}
+
+/* 課題→解決 */
+.problem{background:#f7f9fc;}
+.prob-cards{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2.5rem;}
+.prob-card{border-left:4px solid #2c4a7a;background:#fff;border-radius:0 8px 8px 0;padding:1.4rem 1.3rem;}
+.prob-card.sol{border-left-color:#f59e0b;}
+.prob-tag{font-size:.72rem;font-weight:700;letter-spacing:.1em;color:#2c4a7a;margin-bottom:.5rem;}
+.prob-card.sol .prob-tag{color:#b45309;}
+.prob-card h3{font-size:.95rem;font-weight:700;color:#1a2533;margin-bottom:.5rem;}
+.prob-card p{font-size:.85rem;color:#4a5568;line-height:1.7;}
+@media(max-width:768px){.prob-cards{grid-template-columns:1fr;}}
+
+/* 仕事 */
+.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.3rem;margin-top:2.2rem;}
+.work-item{background:#f7f9fc;border-radius:8px;padding:1.3rem;display:flex;flex-direction:column;gap:.5rem;}
+.work-num{font-family:'Noto Serif JP',serif;font-size:1.5rem;font-weight:700;color:#2c4a7a;}
+.work-item h4{font-size:.9rem;font-weight:700;color:#1a2533;}
+.work-item p{font-size:.83rem;color:#4a5568;line-height:1.6;}
+@media(max-width:768px){.work-grid{grid-template-columns:1fr;}}
+
+/* 募集要項 */
+.req-table{width:100%;border-collapse:collapse;margin-top:1.8rem;}
+.req-table th,.req-table td{padding:.9rem 1.2rem;text-align:left;border-bottom:1px solid #e2e8f0;font-size:.9rem;}
+.req-table th{width:30%;background:#f0f4fa;font-weight:700;color:#1a2533;vertical-align:top;}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{background:#f0f4fa;padding:.5rem .8rem;}
+  .req-table td{padding:.5rem .8rem 1rem;}
+}
+
+/* タイムライン */
+.tl-wrap{margin-top:2.2rem;}
+.tl-item{display:grid;grid-template-columns:72px 20px 1fr;gap:0 .8rem;align-items:start;margin-bottom:1.4rem;}
+.tl-time{text-align:right;font-size:.8rem;font-weight:700;color:#2c4a7a;padding-top:.25rem;}
+.tl-dot{width:12px;height:12px;border-radius:50%;background:#f59e0b;justify-self:center;margin-top:.3rem;}
+.tl-body h4{font-size:.88rem;font-weight:700;color:#1a2533;margin-bottom:.15rem;}
+.tl-body p{font-size:.82rem;color:#4a5568;}
+.tl-wrap{position:relative;}
+.tl-wrap::before{content:'';position:absolute;left:82px;top:0;bottom:0;width:2px;background:#e2e8f0;}
+@media(max-width:768px){
+  .tl-item{grid-template-columns:40px 16px 1fr;}
+  .tl-wrap::before{left:48px;}
+}
+
+/* 先輩の声 */
+.voice-bg{background:#1a2533;}
+.voice-bg .sec-label{color:#f59e0b;}
+.voice-bg .sec-title{color:#fff;}
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.2rem;}
+.voice-card{background:#243450;border-radius:10px;overflow:hidden;}
+.voice-card img{width:100%;height:190px;object-fit:cover;}
+.voice-body{padding:1.2rem;}
+.voice-name{font-weight:700;color:#fff;font-size:.9rem;}
+.voice-role{font-size:.75rem;color:#90afd0;margin-bottom:.6rem;}
+.voice-text{font-size:.82rem;color:#c0d4e8;line-height:1.7;}
+.voice-note{font-size:.7rem;color:#6a87a8;margin-top:.5rem;}
+@media(max-width:768px){.voice-grid{grid-template-columns:1fr;}}
+
+/* FAQ */
+.faq-list{margin-top:2rem;}
+.faq-item{border-bottom:1px solid #e2e8f0;padding:1.2rem 0;}
+.faq-q{font-weight:700;color:#1a2533;display:flex;gap:.7rem;font-size:.92rem;}
+.faq-q::before{content:'Q';background:#2c4a7a;color:#fff;font-size:.72rem;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem;}
+.faq-a{display:flex;gap:.7rem;margin-top:.6rem;font-size:.87rem;color:#4a5568;line-height:1.75;}
+.faq-a::before{content:'A';background:#f59e0b;color:#1a2533;font-size:.72rem;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem;}
+
+/* CTA 中盤 */
+.mid-cta{background:linear-gradient(135deg,#2c4a7a 0%,#1a2533 100%);text-align:center;padding:4rem 1.5rem;}
+.mid-cta h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.3rem,4vw,1.8rem);color:#fff;margin-bottom:.8rem;}
+.mid-cta p{color:#90afd0;font-size:.9rem;margin-bottom:2rem;}
+
+/* CTA 最後 */
+.final-cta{background:#f59e0b;text-align:center;padding:4.5rem 1.5rem;}
+.final-cta h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,4vw,2rem);color:#1a2533;margin-bottom:1rem;font-weight:700;}
+.final-cta p{color:#5d4a00;font-size:.92rem;margin-bottom:2rem;line-height:1.8;}
+.btn-dark{display:inline-block;background:#1a2533;color:#fff;font-size:1rem;font-weight:700;padding:.9rem 2.8rem;border-radius:6px;transition:background .2s;}
+.btn-dark:hover{background:#0d1520;}
+
+/* 固定CTAバー（SP） */
+.fixed-bar{display:none;position:fixed;bottom:0;left:0;right:0;background:#f59e0b;padding:.9rem 1.5rem;text-align:center;z-index:200;}
+.fixed-bar a{color:#1a2533;font-weight:700;font-size:.95rem;letter-spacing:.05em;}
+@media(max-width:768px){.fixed-bar{display:block;}}
+
+/* フッター */
+footer{background:#0d1520;color:#6a87a8;font-size:.8rem;padding:2.2rem 1.5rem;text-align:center;}
+footer .co{color:#b0c4de;font-weight:700;margin-bottom:.5rem;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="#top">株式会社 浦安設備管工</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#problem">お悩み</a>
+    <a href="#work">仕事内容</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#faq">FAQ</a>
+    <a href="#entry">応募する</a>
+  </nav>
+</header>
+
+<!-- ヒーロー -->
+<section class="hero" id="top">
+  <div class="hero-inner">
+    <span class="hero-badge">正社員募集</span>
+    <h1>「設備工事って大変そう」と思ってる方へ。<br>浦安の公共工事で、安定して長く働けます</h1>
+    <p class="hero-sub">月給25〜35万円。賞与年2回（4ヶ月分）。年間休日115日。昭和47年創業の管工事会社が、<br>未経験・資格なしのあなたのやる気を待っています。</p>
+    <div class="hero-cta">
+      <a class="btn-amber" href="#entry">応募する</a>
+      <a class="btn-ghost" href="#req">募集要項を見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- 数字バー -->
+<div class="numbers">
+  <div class="numbers-grid">
+    <div class="num-item">
+      <h3>50<span style="font-size:1rem;">年超</span></h3>
+      <p>創業からの歴史</p>
+      <p class="num-note">※ここはサンプルです</p>
+    </div>
+    <div class="num-item">
+      <h3>115<span style="font-size:1rem;">日</span></h3>
+      <p>年間休日数</p>
+    </div>
+    <div class="num-item">
+      <h3>4<span style="font-size:1rem;">ヶ月</span></h3>
+      <p>賞与（前年度実績）</p>
+    </div>
+    <div class="num-item">
+      <h3>3<span style="font-size:1rem;">名</span></h3>
+      <p>女性スタッフ（7名中）</p>
+    </div>
+  </div>
+</div>
+
+<!-- 課題→解決 -->
+<section class="problem" id="problem">
+  <div class="container">
+    <p class="sec-label">ABOUT</p>
+    <h2 class="sec-title">「設備工事は不人気」は、本当でしょうか？</h2>
+    <p class="sec-lead">「きつそう」「資格が必要そう」というイメージが先行しがちです。でも実際はどうでしょうか。</p>
+    <div class="prob-cards">
+      <div class="prob-card">
+        <div class="prob-tag">よくある誤解</div>
+        <h3>ハードな肉体労働ばかり？</h3>
+        <p>設計・積算・CAD・書類作成など内勤業務も多く、女性スタッフも3名活躍しています。</p>
+      </div>
+      <div class="prob-card sol">
+        <div class="prob-tag">実際は</div>
+        <h3>浦安市の公共工事が安定受注。<br>長く働ける環境</h3>
+        <p>行政から継続受注の公共工事がベース。昭和47年から50年以上、地域インフラを支えてきた実績がある安定企業です。</p>
+      </div>
+      <div class="prob-card">
+        <div class="prob-tag">よくある誤解</div>
+        <h3>資格や経験がないと無理？</h3>
+        <p>資格・経験は「あれば尚可」。やる気と誠実な姿勢があれば未経験者でも応募できます。</p>
+      </div>
+      <div class="prob-card sol">
+        <div class="prob-tag">実際は</div>
+        <h3>月給25〜35万・賞与4ヶ月分、<br>退職金制度で長期安定</h3>
+        <p>月給250,000〜350,000円、昇給あり、賞与年2回・年間4ヶ月分（前年度実績）。3年以上の勤続から退職金も。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 仕事内容 -->
+<section id="work">
+  <div class="container">
+    <p class="sec-label">WORK</p>
+    <h2 class="sec-title">仕事内容</h2>
+    <p class="sec-lead">給排水・衛生設備の施工から現場管理、設計・積算・CADまで。あなたの得意を活かせます。</p>
+    <div class="work-grid">
+      <div class="work-item">
+        <div class="work-num">01</div>
+        <h4>施工（給排水・衛生設備）</h4>
+        <p>水道管・給排水管の設置・修繕工事。公共施設の改修が中心です。</p>
+      </div>
+      <div class="work-item">
+        <div class="work-num">02</div>
+        <h4>現場管理（管・土木）</h4>
+        <p>工程・安全・品質の管理。水道本管工事の現場監督業務も含まれます。</p>
+      </div>
+      <div class="work-item">
+        <div class="work-num">03</div>
+        <h4>設計・積算・CAD</h4>
+        <p>図面作成（CAD）・工事の積算・見積もり。内勤業務として女性スタッフも担当しています。</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:2rem;">
+      <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=860&h=380&fit=crop&q=80" alt="管工事の図面・技術作業" style="width:100%;height:300px;object-fit:cover;border-radius:10px;">
+    </div>
+  </div>
+</section>
+
+<!-- 中盤CTA -->
+<div class="mid-cta" id="cta1">
+  <h2>まずは募集要項を確認してみませんか？</h2>
+  <p>書類選考後3日以内にご連絡。土曜日の面接にも対応しています。</p>
+  <a class="btn-amber" href="#entry">応募する</a>
+</div>
+
+<!-- 募集要項 -->
+<section id="req">
+  <div class="container">
+    <p class="sec-label">REQUIREMENTS</p>
+    <h2 class="sec-title">募集要項</h2>
+    <table class="req-table">
+      <tr><th>職種</th><td>管工事スタッフ（施工・現場管理・設計・積算・CAD）</td></tr>
+      <tr><th>雇用形態</th><td>正社員</td></tr>
+      <tr><th>給与</th><td>月給 250,000円〜350,000円<br><small style="color:#718096;">家族手当・資格手当あり</small></td></tr>
+      <tr><th>昇給・賞与</th><td>昇給あり（月2,000円〜）／賞与年2回（前年度実績 年4ヶ月分）</td></tr>
+      <tr><th>退職金</th><td>あり（勤続3年以上）</td></tr>
+      <tr><th>就業時間</th><td>8:00〜17:00（休憩90分）月平均時間外20時間（割増手当支給）</td></tr>
+      <tr><th>年間休日</th><td>115日（日曜・祝日・年末年始・GW・夏季ほか）</td></tr>
+      <tr><th>勤務地</th><td>千葉県浦安市富士見1丁目16-15（社内および現場）</td></tr>
+      <tr><th>応募資格</th><td>準中型自動車免許（必須）。管工事経験・資格は「あれば尚可」。未経験者歓迎</td></tr>
+      <tr><th>採用人数</th><td>2名</td></tr>
+      <tr><th>社会保険</th><td>雇用・労災・健康・厚生年金完備</td></tr>
+      <tr><th>選考フロー</th><td>書類選考（3日以内）→面接（1回・土曜可）→採用決定</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section style="background:#f7f9fc;" id="day">
+  <div class="container">
+    <p class="sec-label">A DAY</p>
+    <h2 class="sec-title">社員の1日の流れ</h2>
+    <p style="font-size:.78rem;color:#a0aec0;margin-bottom:.5rem;">※ここはサンプルです。実際には御社の社員の1日に差し替えます</p>
+    <div class="tl-wrap">
+      <div class="tl-item">
+        <div class="tl-time">7:30</div><div class="tl-dot"></div>
+        <div class="tl-body"><h4>出社・朝礼（安全確認）</h4><p>当日の現場と作業内容を全員で共有。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">8:00</div><div class="tl-dot"></div>
+        <div class="tl-body"><h4>現場へ移動（車）</h4><p>浦安市内および周辺の現場へ。社用車で移動。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">9:00</div><div class="tl-dot"></div>
+        <div class="tl-body"><h4>現場施工・管工事作業</h4><p>給排水・衛生設備の施工。公共施設の改修が中心。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:00</div><div class="tl-dot"></div>
+        <div class="tl-body"><h4>昼休憩（90分）</h4><p>現場近くまたは会社でゆっくり休憩。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:00</div><div class="tl-dot"></div>
+        <div class="tl-body"><h4>午後の施工・CAD・積算</h4><p>現場作業の続き、または内勤でCAD図面・積算対応。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">15:30</div><div class="tl-dot"></div>
+        <div class="tl-body"><h4>進捗確認・翌日段取り</h4><p>工程の確認と翌日の準備を整えます。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:00</div><div class="tl-dot"></div>
+        <div class="tl-body"><h4>帰社・日報・終業</h4><p>定時に合わせた終業。残業は月平均20時間程度（割増手当あり）。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section class="voice-bg" id="voice">
+  <div class="container">
+    <p class="sec-label">VOICE</p>
+    <h2 class="sec-title">先輩スタッフの声</h2>
+    <p style="font-size:.78rem;color:#6a87a8;margin-bottom:2rem;">※ここはサンプルです。実際には御社スタッフの声と写真に差し替えます</p>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=280&fit=crop&crop=faces&q=80" alt="鈴木 大輔さん（仮名）">
+        <div class="voice-body">
+          <div class="voice-name">鈴木 大輔（仮名）</div>
+          <div class="voice-role">現場施工 / 入社8年</div>
+          <p class="voice-text">「公共工事がメインなので受注が安定しています。賞与もしっかりもらえて、ここで長く働こうと決めました。」</p>
+          <p class="voice-note">※ここはサンプルです</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=280&fit=crop&crop=faces&q=80" alt="中村 さやかさん（仮名）">
+        <div class="voice-body">
+          <div class="voice-name">中村 さやか（仮名）</div>
+          <div class="voice-role">CAD・積算担当 / 入社4年</div>
+          <p class="voice-text">「図面やExcel・Wordが得意で採用してもらいました。内勤業務が多く、産育休を取った先輩もいるので安心して働けています。」</p>
+          <p class="voice-note">※ここはサンプルです</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=280&fit=crop&crop=faces&q=80" alt="山本 浩二さん（仮名）">
+        <div class="voice-body">
+          <div class="voice-name">山本 浩二（仮名）</div>
+          <div class="voice-role">現場管理 / 入社15年</div>
+          <p class="voice-text">「浦安市や県企業局の工事を毎年担当しています。地域のインフラを支えているという誇りが、長く続けられる理由です。」</p>
+          <p class="voice-note">※ここはサンプルです</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <p class="sec-label">FAQ</p>
+    <h2 class="sec-title">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">未経験でも応募できますか？</div>
+        <div class="faq-a">はい、応募可能です。管工事の経験・資格は「あれば尚可」で、やる気と作業への真摯な姿勢を重視しています。入社後に資格を目指すことも可能です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">運転免許は必要ですか？</div>
+        <div class="faq-a">準中型自動車免許が必要です。普通自動車免許（AT限定可）をお持ちの方も歓迎しています。現場への移動に使用します。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">どんな現場が中心ですか？</div>
+        <div class="faq-a">浦安市や千葉県企業局（旧水道局）から受注した公共施設の改修・修繕工事や、水道本管の現場管理が中心です。民間工事と比べて受注が安定しています。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">選考の流れを教えてください。</div>
+        <div class="faq-a">書類選考（3日以内にご連絡）→面接（1回・土曜日も対応可）→採用決定の流れです。オンライン自主応募も可能です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">女性でも働けますか？</div>
+        <div class="faq-a">はい。現在7名中3名が女性スタッフとして活躍しています。CAD・積算・書類作成など内勤業務もあり、女性が長く働きやすい環境です。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 最終CTA -->
+<section class="final-cta" id="entry">
+  <h2>まずは気軽にご連絡ください</h2>
+  <p>「まだ迷っている」という方も歓迎です。<br>書類選考後3日以内にご連絡。土曜日面接も対応しています。</p>
+  <a class="btn-dark" href="mailto:ust@urasetsu.com">メールで問い合わせる</a>
+</section>
+
+<footer>
+  <p class="co">株式会社 浦安設備管工</p>
+  <p>〒279-0043 千葉県浦安市富士見1丁目16-15</p>
+  <p>TEL: 047-352-0268 / E-mail: ust@urasetsu.com</p>
+</footer>
+
+<!-- SP固定CTAバー -->
+<div class="fixed-bar">
+  <a href="#entry">今すぐ応募する →</a>
+</div>
+
+<script>
+(function(){
+  var btn = document.querySelector('.hamburger');
+  var nav = document.querySelector('.site-nav');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  }
+})();
+</script>
+</body>
+</html>

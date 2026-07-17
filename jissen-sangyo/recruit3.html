@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>エクステリア施工スタッフ募集 ｜ 有限会社 実践産業</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#1a1a1a;background:#fff}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+:root{
+  --black:#111;
+  --dark:#1c1c1c;
+  --gold:#d4a843;
+  --gold-light:#e8c56a;
+  --gold-dark:#b88a2e;
+  --off-white:#f9f7f3;
+  --text-gray:#5a5a5a;
+}
+
+/* ===== HEADER ===== */
+header{position:fixed;top:0;left:0;right:0;z-index:200;background:rgba(17,17,17,.88);backdrop-filter:blur(8px);border-bottom:1px solid rgba(212,168,67,.2)}
+.header-inner{max-width:1100px;margin:0 auto;padding:0 24px;height:62px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-family:'Noto Serif JP',serif;font-size:.95rem;font-weight:700;color:#fff;line-height:1.3}
+.logo span{display:block;font-size:.62rem;font-weight:400;color:var(--gold);letter-spacing:.15em;font-family:'Noto Sans JP',sans-serif}
+nav.pc-nav{display:flex;gap:24px}
+nav.pc-nav a{color:rgba(255,255,255,.75);font-size:.8rem;letter-spacing:.05em;transition:.2s}
+nav.pc-nav a:hover{color:var(--gold)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:rgba(255,255,255,.8);border-radius:2px;transition:.3s}
+.mobile-menu{display:none;flex-direction:column;background:var(--black);padding:16px 24px;gap:12px;position:fixed;top:62px;left:0;right:0;z-index:199;border-bottom:1px solid rgba(212,168,67,.2)}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:rgba(255,255,255,.8);font-size:.9rem;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.07)}
+
+/* ===== HERO (FVバナー型) ===== */
+.hero{position:relative;min-height:82vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(17,17,17,.72) 0%,rgba(17,17,17,.52) 50%,rgba(17,17,17,.8) 100%)}
+.hero-content{position:relative;z-index:2;padding:120px 24px 80px;max-width:820px;margin:0 auto}
+.hero-pill{display:inline-flex;align-items:center;gap:8px;background:rgba(212,168,67,.18);border:1px solid rgba(212,168,67,.45);color:var(--gold-light);font-size:.72rem;font-weight:700;letter-spacing:.14em;padding:6px 18px;border-radius:20px;margin-bottom:22px}
+.hero-pill::before{content:'';display:block;width:6px;height:6px;background:var(--gold);border-radius:50%}
+.hero h1{font-family:'Noto Serif JP',serif;font-size:clamp(2rem,7vw,4rem);font-weight:900;color:#fff;line-height:1.18;margin-bottom:24px;text-shadow:0 2px 20px rgba(0,0,0,.5)}
+.hero h1 em{font-style:normal;color:var(--gold-light)}
+.hero-sub{font-size:clamp(1rem,2.5vw,1.2rem);color:rgba(255,255,255,.82);line-height:1.8;margin-bottom:40px;text-shadow:0 1px 6px rgba(0,0,0,.4)}
+.hero-badges{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-bottom:44px}
+.badge{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:.76rem;padding:6px 16px;border-radius:20px;backdrop-filter:blur(4px)}
+.btn-gold{display:inline-block;background:linear-gradient(135deg,var(--gold-light),var(--gold));color:var(--black);font-size:1.05rem;font-weight:900;padding:16px 42px;border-radius:4px;letter-spacing:.04em;transition:.2s;border:none;cursor:pointer;box-shadow:0 4px 20px rgba(212,168,67,.3)}
+.btn-gold:hover{background:linear-gradient(135deg,var(--gold),var(--gold-dark));box-shadow:0 6px 28px rgba(212,168,67,.45)}
+.btn-outline{display:inline-block;background:transparent;color:#fff;font-size:.95rem;font-weight:700;padding:15px 30px;border-radius:4px;border:2px solid rgba(255,255,255,.45);margin-left:14px;transition:.2s}
+.btn-outline:hover{border-color:#fff;background:rgba(255,255,255,.08)}
+.btn-primary{display:inline-block;background:var(--gold);color:var(--black);font-size:1rem;font-weight:900;padding:14px 36px;border-radius:4px;transition:.2s;border:none;cursor:pointer}
+.btn-primary:hover{background:var(--gold-dark)}
+.btn-green{display:inline-block;background:#2a9d5c;color:#fff;font-size:.95rem;font-weight:700;padding:14px 30px;border-radius:4px;border:none;transition:.2s;cursor:pointer}
+.btn-green:hover{background:#228048}
+
+.hero-scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,.45);font-size:.7rem;letter-spacing:.12em;z-index:2}
+.scroll-line{width:1px;height:32px;background:linear-gradient(180deg,transparent,var(--gold))}
+
+/* ===== SECTION BASE ===== */
+section{padding:80px 0}
+.section-inner{max-width:1060px;margin:0 auto;padding:0 24px}
+.gold-label{font-size:.7rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);display:flex;align-items:center;gap:8px;margin-bottom:12px}
+.gold-label::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+.section-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.7rem,4.5vw,2.6rem);font-weight:900;color:var(--black);line-height:1.22;margin-bottom:16px}
+.section-lead{font-size:.95rem;color:var(--text-gray);line-height:1.9;max-width:620px}
+
+/* ===== 条件バー ===== */
+.bar-section{background:var(--dark);padding:56px 24px}
+.bars-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;margin-top:44px;max-width:900px;margin-left:auto;margin-right:auto}
+.bar-item{text-align:center}
+.bar-val{font-family:'Noto Serif JP',serif;font-size:clamp(2rem,5vw,3rem);font-weight:900;color:var(--gold-light);line-height:1;margin-bottom:8px}
+.bar-unit{font-size:.7rem;color:rgba(255,255,255,.5);letter-spacing:.08em;line-height:1.6}
+.bar-divider{width:1px;height:100%;background:rgba(255,255,255,.08);position:absolute;right:0;top:0}
+
+/* ===== 仕事の魅力 ===== */
+.appeal-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;margin-top:56px;background:var(--black)}
+.appeal-item{background:var(--off-white);padding:44px 32px;position:relative;overflow:hidden}
+.appeal-item::before{content:attr(data-num);position:absolute;top:-12px;right:16px;font-family:'Noto Serif JP',serif;font-size:5rem;font-weight:900;color:rgba(0,0,0,.05);line-height:1;pointer-events:none}
+.appeal-item-gold{background:var(--black)}
+.appeal-item-gold::before{color:rgba(212,168,67,.08)}
+.appeal-icon{width:44px;height:44px;background:linear-gradient(135deg,var(--gold-light),var(--gold));border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;margin-bottom:18px;box-shadow:0 4px 12px rgba(212,168,67,.2)}
+.appeal-item-gold .appeal-icon{background:linear-gradient(135deg,rgba(255,255,255,.15),rgba(255,255,255,.05));box-shadow:none;border:1px solid rgba(212,168,67,.3)}
+.appeal-h{font-size:1.05rem;font-weight:700;color:var(--black);margin-bottom:10px;line-height:1.4}
+.appeal-item-gold .appeal-h{color:#fff}
+.appeal-p{font-size:.87rem;color:var(--text-gray);line-height:1.85}
+.appeal-item-gold .appeal-p{color:rgba(255,255,255,.68)}
+
+/* ===== 募集要項 ===== */
+.req-section{background:var(--dark)}
+.req-section .section-title{color:#fff}
+.req-section .gold-label{color:var(--gold)}
+.req-table{width:100%;border-collapse:collapse;margin-top:48px}
+.req-table tr{border-bottom:1px solid rgba(255,255,255,.07)}
+.req-table th,.req-table td{padding:18px 20px;font-size:.93rem;vertical-align:top;line-height:1.7;text-align:left}
+.req-table th{color:var(--gold);font-weight:700;width:140px;white-space:nowrap}
+.req-table td{color:rgba(255,255,255,.8)}
+.req-table td strong{color:var(--gold-light)}
+
+/* ===== 1日の流れ ===== */
+.tl-grid{display:grid;grid-template-columns:1fr 1fr;gap:1px;margin-top:56px;background:rgba(0,0,0,.08)}
+.tl-cell{background:#fff;padding:28px 28px}
+.tl-time-big{font-family:'Noto Serif JP',serif;font-size:1.8rem;font-weight:900;color:var(--gold-dark);line-height:1;margin-bottom:6px}
+.tl-title{font-size:.95rem;font-weight:700;color:var(--black);margin-bottom:8px}
+.tl-desc{font-size:.85rem;color:var(--text-gray);line-height:1.8}
+.tl-cell.dark{background:var(--dark)}
+.tl-cell.dark .tl-time-big{color:var(--gold)}
+.tl-cell.dark .tl-title{color:#fff}
+.tl-cell.dark .tl-desc{color:rgba(255,255,255,.6)}
+
+/* ===== 先輩の声 ===== */
+.voices-section{background:var(--off-white)}
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
+.voice-card{background:#fff;border-radius:0;padding:0;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.07)}
+.voice-card-top{background:var(--black);padding:24px;display:flex;align-items:center;gap:14px}
+.voice-card-top img{width:60px;height:60px;border-radius:50%;object-fit:cover;border:2px solid var(--gold)}
+.voice-card-name{font-size:.9rem;font-weight:700;color:#fff}
+.voice-card-meta{font-size:.72rem;color:rgba(255,255,255,.55);margin-top:2px}
+.voice-card-body{padding:24px}
+.voice-card-body p{font-size:.88rem;color:#333;line-height:1.82}
+.sample-note{font-size:.73rem;color:#999;margin-top:10px}
+
+/* ===== FAQ ===== */
+.faq-list{display:flex;flex-direction:column;gap:0;margin-top:56px;border:1px solid rgba(0,0,0,.1);border-radius:4px;overflow:hidden}
+.faq-item{border-bottom:1px solid rgba(0,0,0,.08)}
+.faq-item:last-child{border-bottom:none}
+.faq-q{display:flex;align-items:flex-start;gap:16px;padding:20px 24px;background:#fff}
+.faq-q-mark{font-family:'Noto Serif JP',serif;font-size:1.1rem;font-weight:900;color:var(--gold-dark);min-width:20px;flex-shrink:0;line-height:1.4}
+.faq-q-text{font-size:.93rem;font-weight:700;color:var(--black);line-height:1.55}
+.faq-a{display:flex;align-items:flex-start;gap:16px;padding:14px 24px 20px;background:var(--off-white)}
+.faq-a-mark{font-family:'Noto Serif JP',serif;font-size:1.1rem;font-weight:900;color:var(--text-gray);min-width:20px;flex-shrink:0;line-height:1.4}
+.faq-a-text{font-size:.88rem;color:var(--text-gray);line-height:1.82}
+
+/* ===== CTA ===== */
+.cta-section{position:relative;padding:100px 24px;text-align:center;overflow:hidden}
+.cta-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&h=700&fit=crop&q=80');background-size:cover;background-position:center}
+.cta-overlay{position:absolute;inset:0;background:rgba(17,17,17,.82)}
+.cta-content{position:relative;z-index:2}
+.cta-content h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.7rem,5vw,3rem);font-weight:900;color:#fff;margin-bottom:16px;line-height:1.2}
+.cta-content h2 em{font-style:normal;color:var(--gold-light)}
+.cta-content p{font-size:1rem;color:rgba(255,255,255,.8);line-height:1.8;margin-bottom:36px;max-width:500px;margin-left:auto;margin-right:auto}
+.cta-btns{display:flex;justify-content:center;gap:16px;flex-wrap:wrap}
+
+/* ===== 担当者 ===== */
+.contact-card{display:flex;align-items:center;gap:36px;background:var(--dark);border-radius:4px;padding:40px;margin-top:56px;border-left:4px solid var(--gold)}
+.contact-card img{width:90px;height:90px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid var(--gold)}
+.contact-body{flex:1}
+.contact-note{font-size:.73rem;color:rgba(255,255,255,.35);margin-bottom:10px}
+.contact-name{font-size:1rem;font-weight:700;color:#fff;margin-bottom:8px}
+.contact-text{font-size:.88rem;color:rgba(255,255,255,.72);line-height:1.8;margin-bottom:18px}
+
+/* ===== FOOTER ===== */
+footer{background:var(--black);color:rgba(255,255,255,.5);padding:44px 24px;text-align:center;border-top:1px solid rgba(212,168,67,.15)}
+footer .footer-logo{font-family:'Noto Serif JP',serif;font-size:1rem;color:#fff;margin-bottom:10px;letter-spacing:.05em}
+footer address{font-style:normal;font-size:.82rem;line-height:1.9}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+  nav.pc-nav{display:none}
+  .hamburger{display:flex}
+  .hero-content{padding:96px 20px 64px}
+  .btn-outline{margin-left:0;margin-top:12px}
+  .bars-grid{grid-template-columns:repeat(2,1fr);gap:24px}
+  .appeal-grid{grid-template-columns:1fr}
+  .tl-grid{grid-template-columns:1fr}
+  .voice-grid{grid-template-columns:1fr}
+  .req-table th,.req-table td{display:block;width:100%;padding:8px 14px}
+  .req-table th{padding-bottom:2px;font-size:.78rem;white-space:normal}
+  .req-table tr{display:block;border-bottom:none;padding:12px 0;border-top:1px solid rgba(255,255,255,.07)}
+  .contact-card{flex-direction:column;text-align:center;padding:28px 20px}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <div class="logo">有限会社 実践産業<span>EXTERIOR STAFF RECRUITING</span></div>
+    <nav class="pc-nav" aria-label="ページ内ナビ">
+      <a href="#appeal">仕事の魅力</a>
+      <a href="#requirements">募集要項</a>
+      <a href="#voices">先輩の声</a>
+      <a href="#faq">FAQ</a>
+      <a href="#apply">応募する</a>
+    </nav>
+    <button class="hamburger" aria-label="メニュー" onclick="document.querySelector('.mobile-menu').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-menu">
+    <a href="#appeal" onclick="this.closest('.mobile-menu').classList.remove('open')">仕事の魅力</a>
+    <a href="#requirements" onclick="this.closest('.mobile-menu').classList.remove('open')">募集要項</a>
+    <a href="#voices" onclick="this.closest('.mobile-menu').classList.remove('open')">先輩の声</a>
+    <a href="#faq" onclick="this.closest('.mobile-menu').classList.remove('open')">FAQ</a>
+    <a href="#apply" onclick="this.closest('.mobile-menu').classList.remove('open')">応募する</a>
+  </nav>
+</header>
+
+<!-- HERO (FVバナー型) -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-pill">エクステリア施工スタッフ募集</div>
+    <h1>街に美しさをつくる仕事、<br><em>ここで始まる。</em></h1>
+    <p class="hero-sub">月給32.2万〜・土日祝休み・年間休日125日・時間外なし。<br>未経験・学歴不問。技術は入社後にゼロから磨けます。</p>
+    <div class="hero-badges">
+      <span class="badge">月給322,000円〜</span>
+      <span class="badge">土日祝休み</span>
+      <span class="badge">年間休日125日</span>
+      <span class="badge">時間外なし</span>
+      <span class="badge">未経験歓迎</span>
+      <span class="badge">資格取得支援</span>
+      <span class="badge">書類選考なし</span>
+    </div>
+    <a href="#apply" class="btn-gold">応募・お問い合わせ</a>
+    <a href="#requirements" class="btn-outline">募集要項を見る</a>
+  </div>
+  <div class="hero-scroll"><div class="scroll-line"></div>SCROLL</div>
+</section>
+
+<!-- 条件バー -->
+<section class="bar-section">
+  <div class="section-inner">
+    <div class="gold-label" style="color:var(--gold);margin-bottom:16px">NUMBERS ——</div>
+    <div class="bars-grid">
+      <div class="bar-item">
+        <div class="bar-val">322<span style="font-size:1.2rem">万〜</span></div>
+        <div class="bar-unit">月給（万円〜）<br>経験不問</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-val">125</div>
+        <div class="bar-unit">年間休日（日）<br>土日祝休み</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-val">0</div>
+        <div class="bar-unit">残業時間（h）<br>時間外なし</div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-val">1-2<span style="font-size:1.2rem">万</span></div>
+        <div class="bar-unit">昇給額（月・前年度）<br>スキルで評価</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 仕事の魅力 -->
+<section id="appeal">
+  <div class="section-inner">
+    <div class="gold-label">APPEAL ——</div>
+    <h2 class="section-title">エクステリアで働く、<br>3つの理由。</h2>
+  </div>
+  <div style="max-width:1060px;margin:0 auto;padding:0 24px;margin-top:0">
+    <div class="appeal-grid">
+      <div class="appeal-item" data-num="01">
+        <div class="appeal-icon">📅</div>
+        <h3 class="appeal-h">職人仕事で、週休2日・残業なし</h3>
+        <p class="appeal-p">土日祝休み・年間休日125日・時間外労働なし。「体力仕事は休みが少ない」を覆す環境です。プライベートを大切にしながら、誇れる技術職として長く続けられます。</p>
+      </div>
+      <div class="appeal-item appeal-item-gold" data-num="02">
+        <div class="appeal-icon">💴</div>
+        <h3 class="appeal-h">月給32.2万〜、実績で昇給</h3>
+        <p class="appeal-p">入社時点から月給322,000円〜。昇給実績は月1〜2万円（前年度）。通勤手当は実費支給（上限なし）。スキルが上がるほど評価に反映されます。</p>
+      </div>
+      <div class="appeal-item" data-num="03">
+        <div class="appeal-icon">🎓</div>
+        <h3 class="appeal-h">未経験から、会社が全面サポート</h3>
+        <p class="appeal-p">専門知識・技術はゼロからOK。資格取得費用は会社が全額負担。一生モノの技術を身につけながら、「住まいの外回りを美しくする」仕事を誇れるようになります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="req-section" id="requirements">
+  <div class="section-inner">
+    <div class="gold-label">REQUIREMENTS ——</div>
+    <h2 class="section-title">募集要項</h2>
+    <table class="req-table">
+      <tbody>
+        <tr>
+          <th>職種</th>
+          <td><strong>エクステリア施工スタッフ（正社員）</strong></td>
+        </tr>
+        <tr>
+          <th>仕事内容</th>
+          <td>一般住宅の外装工事（外壁・フェンス・庭・門扉・ウッドデッキ・ガレージ等）。現場は主に千葉県内。</td>
+        </tr>
+        <tr>
+          <th>給与</th>
+          <td><strong>月給 322,000円〜414,000円</strong>（昇給 月1〜2万円・前年度実績）</td>
+        </tr>
+        <tr>
+          <th>勤務時間</th>
+          <td>8:00〜17:00（休憩90分）<strong>／時間外労働なし</strong></td>
+        </tr>
+        <tr>
+          <th>休日・休暇</th>
+          <td><strong>土日祝・年間休日125日</strong>／GW・夏季・年末年始休暇／有給10日〜</td>
+        </tr>
+        <tr>
+          <th>応募資格</th>
+          <td>未経験歓迎・学歴不問／普通自動車AT限定不可（必須）</td>
+        </tr>
+        <tr>
+          <th>勤務地</th>
+          <td>千葉県印西市鎌苅（転勤なし／マイカー通勤可・駐車場完備）</td>
+        </tr>
+        <tr>
+          <th>待遇・福利厚生</th>
+          <td>社保完備／通勤手当実費（上限なし）／資格取得支援制度あり</td>
+        </tr>
+        <tr>
+          <th>採用人数</th>
+          <td>2名（増員）／書類選考なし・面接1回・結果7日以内</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section id="schedule">
+  <div class="section-inner">
+    <div class="gold-label">DAILY SCHEDULE ——</div>
+    <h2 class="section-title">当社社員の1日の流れ</h2>
+    <p style="font-size:.82rem;color:#999;margin-bottom:0">
+      ※ここはサンプルです。実際には御社スタッフの1日の流れに差し替えます
+    </p>
+  </div>
+  <!-- サンプルパーツ：御社スタッフの1日の流れに差し替えてください -->
+  <div style="max-width:1060px;margin:0 auto;padding:0 24px">
+    <div class="tl-grid">
+      <div class="tl-cell dark">
+        <div class="tl-time-big">7:50</div>
+        <div class="tl-title">出社・朝礼</div>
+        <div class="tl-desc">当日の現場確認と段取り合わせ。先輩スタッフと一日の流れをすり合わせます。</div>
+      </div>
+      <div class="tl-cell">
+        <div class="tl-time-big">8:00</div>
+        <div class="tl-title">現場へ出発</div>
+        <div class="tl-desc">資材を積み込み、千葉県内の施工現場へ。入社後は先輩と行動します。</div>
+      </div>
+      <div class="tl-cell">
+        <div class="tl-time-big">12:00</div>
+        <div class="tl-title">昼休み（60〜90分）</div>
+        <div class="tl-desc">現場近くで昼食。先輩と過ごすリラックスタイムです。</div>
+      </div>
+      <div class="tl-cell dark">
+        <div class="tl-time-big">13:00</div>
+        <div class="tl-title">午後の施工作業</div>
+        <div class="tl-desc">フェンス設置・庭整備など。経験とともに任せてもらえる範囲が広がります。</div>
+      </div>
+      <div class="tl-cell dark">
+        <div class="tl-time-big">16:30</div>
+        <div class="tl-title">片付け・仕上がり確認</div>
+        <div class="tl-desc">「きれいになった」という達成感が、この仕事の一番の魅力です。</div>
+      </div>
+      <div class="tl-cell">
+        <div class="tl-time-big">17:00</div>
+        <div class="tl-title">帰社・定時終業</div>
+        <div class="tl-desc">残業なし。夕食も趣味も、プライベートをしっかり楽しめます。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section class="voices-section" id="voices">
+  <div class="section-inner">
+    <div class="gold-label">VOICES ——</div>
+    <h2 class="section-title">先輩スタッフの声</h2>
+    <p style="font-size:.82rem;color:#888;margin-bottom:0">
+      ※ここはサンプルです。実際には御社スタッフのプロフィールと写真に差し替えます
+    </p>
+    <!-- サンプルパーツ：御社スタッフの声・写真に差し替えてください -->
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="voice-card-top">
+          <!-- スタッフ顔写真（ダミー） -->
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="スタッフ顔写真（サンプル画像）">
+          <div>
+            <div class="voice-card-name">田中 健太（仮名）</div>
+            <div class="voice-card-meta">エクステリア施工 ｜ 入社3年目</div>
+          </div>
+        </div>
+        <div class="voice-card-body">
+          <p>前職は全く別の仕事でしたが、未経験で入社しました。先輩に一つひとつ教えてもらい、3ヶ月でひと通りできるように。土日がしっかり休めるので、趣味の時間も大切にできています。</p>
+          <div class="sample-note">※ここはサンプルです。実際のコメント・写真に差し替えます</div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-top">
+          <!-- スタッフ顔写真（ダミー） -->
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="スタッフ顔写真（サンプル画像）">
+          <div>
+            <div class="voice-card-name">鈴木 大輔（仮名）</div>
+            <div class="voice-card-meta">エクステリア施工 ｜ 入社1年目</div>
+          </div>
+        </div>
+        <div class="voice-card-body">
+          <p>「職人仕事は体力勝負で残業も多い」と思っていましたが、ここは17時ぴったりに上がれます。資格取得費用も出してもらえるので、将来に向けて着実に力をつけています。</p>
+          <div class="sample-note">※ここはサンプルです。実際のコメント・写真に差し替えます</div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-top">
+          <!-- スタッフ顔写真（ダミー） -->
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="スタッフ顔写真（サンプル画像）">
+          <div>
+            <div class="voice-card-name">佐藤 翔（仮名）</div>
+            <div class="voice-card-meta">エクステリア施工 ｜ 入社5年目</div>
+          </div>
+        </div>
+        <div class="voice-card-body">
+          <p>施工後にお客様から「きれいになった」と言われるのが一番やりがいを感じる瞬間です。千葉県内が現場なので転勤もなく、給料も上がり、長く続けられています。</p>
+          <div class="sample-note">※ここはサンプルです。実際のコメント・写真に差し替えます</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <div class="gold-label">FAQ ——</div>
+    <h2 class="section-title">よくある質問</h2>
+    <p style="font-size:.82rem;color:#888;margin-bottom:0">
+      ※ここはサンプルです。実際には御社のQ&Aに差し替えます
+    </p>
+    <!-- サンプルパーツ：御社のFAQに差し替えてください -->
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q"><div class="faq-q-mark">Q</div><div class="faq-q-text">エクステリアや建設の経験がなくても応募できますか？</div></div>
+        <div class="faq-a"><div class="faq-a-mark">A</div><div class="faq-a-text">はい、未経験・学歴不問で歓迎です。専門知識・技術は入社後に一から丁寧に教えます。資格取得も会社が全額サポート。「やってみたい」気持ちがあれば十分です。</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><div class="faq-q-mark">Q</div><div class="faq-q-text">残業はありますか？</div></div>
+        <div class="faq-a"><div class="faq-a-mark">A</div><div class="faq-a-text">原則残業はありません。就業時間は8:00〜17:00で、36協定の特別条項なし。定時に上がれる環境を守っています。</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><div class="faq-q-mark">Q</div><div class="faq-q-text">選考の流れを教えてください。</div></div>
+        <div class="faq-a"><div class="faq-a-mark">A</div><div class="faq-a-text">書類選考はありません。面接1回のみで、結果は7日以内にご連絡します。面接は随時受け付けていますので、お気軽にご連絡ください。</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><div class="faq-q-mark">Q</div><div class="faq-q-text">転勤や異動はありますか？</div></div>
+        <div class="faq-a"><div class="faq-a-mark">A</div><div class="faq-a-text">転勤はありません。勤務地は千葉県印西市で固定。現場も主に千葉県内です。マイカー通勤可で駐車場も完備しています。</div></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><div class="faq-q-mark">Q</div><div class="faq-q-text">試用期間中の条件は変わりますか？</div></div>
+        <div class="faq-a"><div class="faq-a-mark">A</div><div class="faq-a-text">試用期間（3ヶ月）中も本採用と同条件です。入社初日から同じ給与・待遇で働けます。</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 採用担当者 -->
+<section>
+  <div class="section-inner">
+    <div class="gold-label">CONTACT ——</div>
+    <h2 class="section-title">採用担当者より</h2>
+    <!-- サンプルパーツ：御社採用担当者の顔写真・コメントに差し替えてください -->
+    <div class="contact-card">
+      <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当者写真（サンプル画像）">
+      <div class="contact-body">
+        <div class="contact-note">※ここはサンプルです。実際には採用担当者のコメント・写真に差し替えます</div>
+        <div class="contact-name">採用担当 ○○（仮名）</div>
+        <p class="contact-text">職人の仕事で年間休日125日・残業なし——その実績が、うちの定着率の高さにつながっています。「技術を身につけて長く働きたい」という方、まずは気軽に連絡してください。</p>
+        <a href="#apply" class="btn-primary">応募・お問い合わせはこちら</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="apply">
+  <div class="cta-bg"></div>
+  <div class="cta-overlay"></div>
+  <div class="cta-content">
+    <h2>まず、<em>話だけ</em>聞いてみませんか？</h2>
+    <p>書類選考なし・面接1回・結果は7日以内。<br>「条件だけ確認したい」だけでもご連絡ください。</p>
+    <div class="cta-btns">
+      <a href="https://zissensangyo.co.jp/contact/" class="btn-gold" target="_blank" rel="noopener">お問い合わせフォームから応募する</a>
+      <a href="tel:0297-35-8748" class="btn-outline">📞 0297-35-8748</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">有限会社 実践産業</div>
+  <address>
+    〒270-1613 千葉県印西市鎌苅<br>
+    TEL: 0297-35-8748
+  </address>
+</footer>
+
+</body>
+</html>

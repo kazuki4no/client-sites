@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>採用情報 | 株式会社 長岡工作所</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;color:#1a1a1a;line-height:1.75;background:#fff;padding-bottom:70px;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+
+/* HEADER */
+.site-header{display:flex;align-items:center;justify-content:space-between;padding:.7rem 1.5rem;background:#0b1e3a;position:sticky;top:0;z-index:100;}
+.brand{color:#fff;font-weight:900;font-size:1rem;}
+.hamburger{display:none;background:none;border:0;font-size:1.8rem;color:#fff;cursor:pointer;line-height:1;}
+.site-nav{display:flex;gap:1.2rem;align-items:center;}
+.site-nav a{color:#b0c4d8;font-size:.88rem;}
+.site-nav a:hover{color:#fff;}
+.site-nav .nav-cta{background:#f39c12;color:#fff;padding:.4rem 1rem;border-radius:4px;font-weight:700;}
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:#0b1e3a;padding:.5rem 1.5rem;}
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.8rem 0;border-bottom:1px solid #1c3458;color:#b0c4d8;}
+  .site-nav .nav-cta{margin:.8rem 0;text-align:center;border-bottom:0;}
+}
+
+/* HERO LP */
+.hero{background:#0b1e3a;padding:4.5rem 1.5rem;text-align:center;}
+.hero-img{width:100%;max-height:380px;object-fit:cover;border-radius:8px;margin:0 auto 2rem;max-width:860px;}
+.hero-kw{color:#f39c12;font-weight:900;font-size:.9rem;letter-spacing:.1em;margin-bottom:.8rem;}
+.hero h1{font-size:clamp(1.7rem,4.5vw,2.8rem);color:#fff;font-weight:900;line-height:1.35;margin-bottom:1.2rem;}
+.hero-sub{color:#92afc8;font-size:1rem;margin-bottom:2rem;}
+.btn-hero{display:inline-block;background:#f39c12;color:#fff;font-weight:700;padding:1rem 2.8rem;border-radius:50px;font-size:1.05rem;box-shadow:0 4px 16px rgba(243,156,18,.4);}
+.btn-hero:hover{background:#e67e22;}
+
+/* NUMBERS */
+.numbers{background:#f4f7fb;padding:3rem 1.5rem;text-align:center;}
+.numbers-inner{max-width:860px;margin:0 auto;}
+.num-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1.8rem;}
+.num-item{background:#fff;border-radius:8px;padding:1.4rem .8rem;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+.num-value{font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;color:#0b1e3a;line-height:1;}
+.num-value span{font-size:.9rem;font-weight:700;}
+.num-label{font-size:.8rem;color:#666;margin-top:.4rem;}
+.num-note{font-size:.72rem;color:#aaa;margin-top:.2rem;}
+@media(max-width:600px){.num-grid{grid-template-columns:repeat(2,1fr);}}
+
+/* SECTION */
+.sec{padding:3.5rem 1.5rem;}
+.sec-inner{max-width:860px;margin:0 auto;}
+.sec-tag{display:inline-block;background:#f39c12;color:#fff;font-size:.75rem;font-weight:700;padding:.25rem .75rem;border-radius:2px;letter-spacing:.08em;margin-bottom:.7rem;}
+.sec-h{font-size:clamp(1.3rem,3.5vw,1.8rem);font-weight:900;margin-bottom:.5rem;color:#0b1e3a;}
+.sec-lead{color:#666;font-size:.93rem;margin-bottom:2rem;}
+
+/* APPEAL CARDS */
+.ap-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+.ap-card{border:2px solid #e0eaf4;border-radius:8px;padding:1.6rem 1.2rem;}
+.ap-num{font-size:2.2rem;font-weight:900;color:#e0eaf4;line-height:1;margin-bottom:.5rem;}
+.ap-card h3{font-weight:700;font-size:.98rem;margin-bottom:.5rem;color:#0b1e3a;}
+.ap-card p{font-size:.88rem;color:#555;}
+@media(max-width:768px){.ap-grid{grid-template-columns:1fr;}}
+
+/* INTERVIEW */
+.interview-list{display:flex;flex-direction:column;gap:2rem;}
+.interview-item{display:grid;grid-template-columns:140px 1fr;gap:1.5rem;align-items:start;}
+.interview-item:nth-child(even){direction:rtl;}
+.interview-item:nth-child(even)>*{direction:ltr;}
+.interview-img{border-radius:8px;overflow:hidden;}
+.interview-img img{width:140px;height:140px;object-fit:cover;}
+.interview-body{}
+.i-name{font-weight:700;font-size:.95rem;}
+.i-role{font-size:.8rem;color:#f39c12;margin-bottom:.6rem;}
+.i-text{font-size:.9rem;color:#444;line-height:1.7;}
+.i-note{font-size:.74rem;color:#aaa;margin-top:.5rem;}
+@media(max-width:600px){
+  .interview-item,.interview-item:nth-child(even){grid-template-columns:1fr;direction:ltr;}
+  .interview-img img{width:100%;height:180px;}
+}
+
+/* TABLE */
+.req-table{width:100%;border-collapse:collapse;}
+.req-table th,.req-table td{padding:.85rem 1rem;border-bottom:1px solid #e8eef6;text-align:left;vertical-align:top;}
+.req-table th{width:28%;background:#f4f7fb;font-weight:700;font-size:.9rem;color:#0b1e3a;}
+.req-table td{font-size:.93rem;color:#333;}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{padding:.5rem .8rem;background:#f4f7fb;}
+  .req-table td{padding:.5rem .8rem 1rem;}
+}
+
+/* TIMELINE */
+.timeline{position:relative;max-width:700px;margin:0 auto;}
+.timeline::before{content:'';position:absolute;left:82px;top:0;bottom:0;width:2px;background:#dde6f0;}
+.tl-item{display:grid;grid-template-columns:72px 20px 1fr;gap:0 .8rem;margin-bottom:1.5rem;align-items:start;}
+.tl-time{text-align:right;font-weight:700;font-size:.9rem;color:#0b1e3a;padding-top:.15rem;}
+.tl-dot{width:12px;height:12px;border-radius:50%;background:#f39c12;justify-self:center;margin-top:.35rem;}
+.tl-body h4{font-weight:700;font-size:.95rem;margin-bottom:.2rem;}
+.tl-body p{font-size:.87rem;color:#666;}
+@media(max-width:768px){.tl-item{grid-template-columns:40px 16px 1fr;} .timeline::before{left:46px;}}
+
+/* FAQ */
+.faq-list{max-width:720px;margin:0 auto;}
+.faq-item{border-bottom:1px solid #e8eef6;padding:1.1rem 0;}
+.faq-q{font-weight:700;display:flex;gap:.6rem;align-items:baseline;color:#0b1e3a;}
+.faq-q::before{content:'Q';background:#0b1e3a;color:#fff;font-size:.78rem;padding:.12rem .45rem;border-radius:3px;flex-shrink:0;}
+.faq-a{margin-top:.5rem;color:#555;font-size:.9rem;padding-left:2rem;}
+
+/* CTA SECTIONS */
+.cta-mid{background:#f39c12;padding:2.5rem 1.5rem;text-align:center;}
+.cta-mid h2{color:#fff;font-weight:900;font-size:clamp(1.2rem,3.5vw,1.7rem);margin-bottom:.5rem;}
+.cta-mid p{color:#fff4e0;margin-bottom:1.5rem;font-size:.95rem;}
+.btn-white{display:inline-block;background:#fff;color:#f39c12;font-weight:700;padding:.85rem 2.2rem;border-radius:50px;font-size:1rem;}
+.btn-white:hover{background:#fff4e0;}
+
+.entry-sec{background:#0b1e3a;padding:4rem 1.5rem;text-align:center;}
+.entry-sec h2{color:#fff;font-size:clamp(1.3rem,3.5vw,1.9rem);font-weight:900;margin-bottom:.8rem;}
+.entry-sec p{color:#92afc8;margin-bottom:.6rem;}
+.entry-tel{color:#f39c12;font-size:1.4rem;font-weight:900;margin:1rem 0 1.5rem;}
+.btn-entry{display:inline-block;background:#f39c12;color:#fff;font-weight:700;padding:.9rem 2.5rem;border-radius:50px;font-size:1.05rem;}
+.btn-entry:hover{background:#e67e22;}
+
+/* FIXED CTA BAR */
+.fixed-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;background:#f39c12;padding:.8rem 1rem;text-align:center;}
+.fixed-cta a{color:#fff;font-weight:700;font-size:1rem;display:block;}
+@media(max-width:768px){.fixed-cta{display:block;}}
+
+footer{background:#060e1c;color:#6a82a0;padding:1.8rem 1.5rem;text-align:center;font-size:.83rem;}
+footer strong{color:#fff;display:block;margin-bottom:.3rem;}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="#top">株式会社 長岡工作所</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#appeal">魅力</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#detail">募集要項</a>
+    <a href="#faq">FAQ</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <img class="hero-img" src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1200&h=500&fit=crop&q=80" alt="設備工事の現場（サンプル）">
+  <div class="hero-kw">未経験歓迎 ／ 給排水設備工事 ／ 正社員</div>
+  <h1>「ありがとう」が<br>仕事になる場所がある。</h1>
+  <p class="hero-sub">水まわりのプロとして、千葉県八千代市で活躍しませんか。<br>昭和24年創業・75年以上の信頼の会社です。</p>
+  <a class="btn-hero" href="#entry">まずは話を聞いてみる</a>
+</section>
+
+<!-- NUMBERS -->
+<div class="numbers">
+  <div class="numbers-inner">
+    <p style="font-weight:700;color:#0b1e3a;">数字で見る長岡工作所</p>
+    <p style="font-size:.8rem;color:#aaa;margin-top:.3rem;">※ここはサンプルです。実際には御社の数字に差し替えます</p>
+    <div class="num-grid">
+      <div class="num-item"><div class="num-value">75<span>年</span></div><div class="num-label">創業からの歴史</div><div class="num-note">昭和24年〜</div></div>
+      <div class="num-item"><div class="num-value">36<span>〜50万</span></div><div class="num-label">月収目安（円）</div><div class="num-note">資格・経験考慮</div></div>
+      <div class="num-item"><div class="num-value">16<span>名</span></div><div class="num-label">全員が一緒に働く仲間</div><div class="num-note">アットホームな職場</div></div>
+      <div class="num-item"><div class="num-value">80<span>日</span></div><div class="num-label">年間休日数</div><div class="num-note">日祝＋第2土曜</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- APPEAL -->
+<section class="sec" id="appeal" style="background:#fff;">
+  <div class="sec-inner">
+    <span class="sec-tag">APPEAL</span>
+    <h2 class="sec-h">設備職の「本当のこと」を<br>知ってほしい</h2>
+    <p class="sec-lead">「設備工事は大変そう」と思っていませんか？実は知れば知るほど魅力的な仕事です。</p>
+    <div class="ap-grid">
+      <div class="ap-card">
+        <div class="ap-num">01</div>
+        <h3>水まわりのプロとして一生食べていける</h3>
+        <p>管工事施工管理技士などの国家資格を取れば、どこでも通用するスキルが身につきます。会社が資格取得をバックアップ。</p>
+      </div>
+      <div class="ap-card">
+        <div class="ap-num">02</div>
+        <h3>毎日「ありがとう」と言われる仕事</h3>
+        <p>水が使えなくて困っている方を助け、「直してもらえて助かった」と感謝される。やりがいがダイレクトに感じられます。</p>
+      </div>
+      <div class="ap-card">
+        <div class="ap-num">03</div>
+        <h3>未経験でも月収36万円からスタート</h3>
+        <p>設備工事の経験がなくても大丈夫。先輩が丁寧に指導します。実績に応じて昇給・資格手当が加算されます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MID CTA -->
+<div class="cta-mid">
+  <h2>まずは話を聞くだけでも大丈夫です</h2>
+  <p>「資格も経験もないけど大丈夫？」という方こそ、ぜひご連絡ください。</p>
+  <a class="btn-white" href="#entry">お問い合わせはこちら</a>
+</div>
+
+<!-- INTERVIEW / VOICE -->
+<section class="sec" id="voice" style="background:#f4f7fb;">
+  <div class="sec-inner">
+    <span class="sec-tag">VOICE</span>
+    <h2 class="sec-h">先輩の声</h2>
+    <p class="sec-lead">※ここはサンプルです。実際には御社スタッフの写真・コメントに差し替えます</p>
+    <div class="interview-list">
+      <div class="interview-item">
+        <div class="interview-img">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=300&fit=crop&crop=faces&q=80" alt="先輩（サンプル）">
+        </div>
+        <div class="interview-body">
+          <div class="i-name">田中 雄一さん（仮名）</div>
+          <div class="i-role">給排水担当 ／ 入社5年</div>
+          <p class="i-text">前の仕事は全く別の業種でした。「設備なんて難しそう」と思っていたけど、入ってみたら先輩が丁寧に教えてくれて。今は一人で現場を任されることも。工事が完成したとき「ありがとう」と言われる瞬間が最高です。</p>
+          <p class="i-note">※このコメントはサンプルです</p>
+        </div>
+      </div>
+      <div class="interview-item">
+        <div class="interview-img">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=300&fit=crop&crop=faces&q=80" alt="先輩（サンプル）">
+        </div>
+        <div class="interview-body">
+          <div class="i-name">鈴木 健太さん（仮名）</div>
+          <div class="i-role">施工管理担当 ／ 入社8年</div>
+          <p class="i-text">2級管工事施工管理技士を取得してから、収入も仕事の幅も広がりました。会社が資格取得をしっかりサポートしてくれたおかげです。技術職は「手に職」が本当に身につくので、将来の安心感が違います。</p>
+          <p class="i-note">※このコメントはサンプルです</p>
+        </div>
+      </div>
+      <div class="interview-item">
+        <div class="interview-img">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=300&h=300&fit=crop&crop=faces&q=80" alt="先輩（サンプル）">
+        </div>
+        <div class="interview-body">
+          <div class="i-name">山田 誠さん（仮名）</div>
+          <div class="i-role">配管工 ／ 入社3年</div>
+          <p class="i-text">毎日同じ作業じゃなくて、現場によって課題が違うのが面白い。「こうすればもっとうまくいく」と自分で考えながら仕事できる。それが楽しいですね。八千代中央駅から徒歩10分で通いやすいのも助かっています。</p>
+          <p class="i-note">※このコメントはサンプルです</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DAY -->
+<section class="sec" id="day" style="background:#fff;">
+  <div class="sec-inner">
+    <span class="sec-tag">1 DAY</span>
+    <h2 class="sec-h">社員の1日の流れ</h2>
+    <p class="sec-lead">※ここはサンプルです。実際には御社スタッフの1日に差し替えます</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">8:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>朝礼・安全確認</h4><p>当日の工程・役割を確認。安全第一でスタート。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">8:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>現場へ移動・準備</h4><p>車で現場へ。資材の搬入・作業スペース確保。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">9:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>施工作業</h4><p>配管工事・接続・固定など。先輩の指示に従いながら技術を習得。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>昼休憩（120分）</h4><p>ゆっくり体を休めてからの午後へ。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>午後の施工・仕上げ</h4><p>漏水テスト・仕上げ確認。完璧な状態でお客様へ。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">16:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>片付け・報告</h4><p>工具整理・作業内容を記録。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>退社</h4><p>月平均残業10時間。メリハリある働き方。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DETAIL -->
+<section class="sec" id="detail" style="background:#f4f7fb;">
+  <div class="sec-inner">
+    <span class="sec-tag">DETAIL</span>
+    <h2 class="sec-h">募集要項</h2>
+    <p class="sec-lead">※ここはサンプルです。実際には御社の最新情報に差し替えます</p>
+    <table class="req-table">
+      <tr><th>職種</th><td>給排水設備工事（未経験者歓迎）</td></tr>
+      <tr><th>仕事内容</th><td>住宅・公共施設の給排水設備工事の現場作業および管理</td></tr>
+      <tr><th>雇用形態</th><td>正社員（試用期間3ヶ月・同条件）</td></tr>
+      <tr><th>給与</th><td>月給360,000円〜500,000円（各種手当含む）</td></tr>
+      <tr><th>勤務時間</th><td>8:00〜17:00（実働7時間・休憩120分）</td></tr>
+      <tr><th>休日</th><td>日祝・第2土曜 ／ 年間休日80日 ／ 有給10日（6ヶ月後）</td></tr>
+      <tr><th>勤務地</th><td>千葉県八千代市萱田2285（八千代中央駅 徒歩10分）</td></tr>
+      <tr><th>必要資格</th><td>普通自動車免許（必須）。管工事施工管理技士（あれば尚可・未経験歓迎）</td></tr>
+      <tr><th>待遇</th><td>各種保険完備・退職金共済・昇給年1回・賞与年2回・通勤手当</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="sec" id="faq" style="background:#fff;">
+  <div class="sec-inner">
+    <span class="sec-tag">FAQ</span>
+    <h2 class="sec-h">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">未経験でも本当に大丈夫ですか？</div>
+        <div class="faq-a">はい、未経験者歓迎です。先輩スタッフが現場で丁寧に指導します。「水回りに興味がある」気持ちがあれば十分です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">選考の流れは？</div>
+        <div class="faq-a">お電話かメールでご連絡→面接日程の調整→面接1回→7日以内に結果連絡。気軽にお問い合わせください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">資格なしでも応募できますか？</div>
+        <div class="faq-a">普通自動車免許があれば大丈夫です。管工事施工管理技士は入社後に取得サポートを受けられます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">転勤はありますか？</div>
+        <div class="faq-a">転勤なし。千葉県八千代市の地元で長く働けます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">残業はどのくらいですか？</div>
+        <div class="faq-a">月平均10時間程度です。17時退社を基本とした働き方ができます。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="entry-sec" id="entry">
+  <h2>あなたの「働いてみたい」を<br>大切にしています</h2>
+  <p>まずはお電話でもメールでも、気軽にご連絡ください。</p>
+  <div class="entry-tel">📞 047-483-4051</div>
+  <a class="btn-entry" href="mailto:109.nagaoka@gmail.com">メールでお問い合わせ</a>
+</section>
+
+<div class="fixed-cta">
+  <a href="#entry">📞 採用担当に問い合わせる（無料）</a>
+</div>
+
+<footer>
+  <strong>株式会社 長岡工作所</strong>
+  〒276-0043 千葉県八千代市萱田2285<br>
+  TEL: 047-483-4051 ／ E-mail: 109.nagaoka@gmail.com
+</footer>
+
+<script>
+(function(){
+  var btn=document.querySelector('.hamburger');
+  var nav=document.querySelector('.site-nav');
+  if(btn&&nav){
+    btn.addEventListener('click',function(){
+      var open=nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded',open);
+    });
+  }
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 大塚メカトロニクス株式会社</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#1a1a1a;background:#fff}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ===== カラー変数 ===== */
+:root{
+  --navy:#1a3a5c;
+  --navy-dark:#0d2340;
+  --gold:#c8a96e;
+  --accent:#e8c97a;
+  --light:#f4f8fc;
+  --text:#333;
+  --gray:#666;
+}
+
+/* ===== ヘッダー ===== */
+header{
+  background:var(--navy);
+  padding:0 24px;
+  position:sticky;top:0;z-index:100;
+  box-shadow:0 2px 8px rgba(0,0,0,0.3);
+}
+.header-inner{
+  max-width:1100px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;
+  height:64px;
+}
+.logo{color:#fff;font-size:1rem;font-weight:700;letter-spacing:.04em;line-height:1.3}
+.logo span{display:block;font-size:.72rem;font-weight:400;opacity:.8;letter-spacing:.06em}
+nav.pc-nav{display:flex;gap:28px;align-items:center}
+nav.pc-nav a{color:rgba(255,255,255,.88);font-size:.85rem;font-weight:500;transition:color .2s}
+nav.pc-nav a:hover{color:var(--accent)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:6px}
+.hamburger span{width:26px;height:2px;background:#fff;display:block;transition:.3s}
+.mobile-nav{display:none;position:fixed;top:64px;left:0;right:0;bottom:0;background:var(--navy-dark);z-index:99;flex-direction:column;padding:32px 24px;gap:20px}
+.mobile-nav.open{display:flex}
+.mobile-nav a{color:#fff;font-size:1.1rem;font-weight:500;padding:12px 0;border-bottom:1px solid rgba(255,255,255,.12)}
+
+/* ===== ヒーロー ===== */
+.hero{
+  background:linear-gradient(135deg, var(--navy-dark) 0%, var(--navy) 60%, #2a527a 100%);
+  padding:72px 24px 80px;
+  text-align:center;
+  position:relative;
+  overflow:hidden;
+}
+.hero::before{
+  content:'';
+  position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1600&h=900&fit=crop&q=80');
+  background-size:cover;background-position:center;
+  opacity:.15;
+}
+.hero-content{position:relative;z-index:1;max-width:820px;margin:0 auto}
+.hero-tag{
+  display:inline-block;
+  background:var(--gold);color:var(--navy-dark);
+  font-size:.78rem;font-weight:700;letter-spacing:.12em;
+  padding:5px 16px;border-radius:2px;margin-bottom:20px;
+}
+.hero h1{
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(1.8rem,5vw,3rem);
+  color:#fff;line-height:1.35;
+  margin-bottom:16px;
+  text-shadow:0 2px 12px rgba(0,0,0,.4);
+}
+.hero-sub{
+  color:rgba(255,255,255,.85);font-size:clamp(.92rem,2.5vw,1.08rem);
+  line-height:1.7;margin-bottom:32px;
+}
+.hero-pills{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:36px}
+.pill{
+  background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);
+  color:#fff;font-size:.8rem;padding:5px 14px;border-radius:20px;
+}
+.btn-primary{
+  display:inline-block;
+  background:var(--gold);color:var(--navy-dark);
+  font-size:1rem;font-weight:700;
+  padding:14px 40px;border-radius:4px;
+  transition:background .2s,transform .2s;
+  letter-spacing:.04em;
+}
+.btn-primary:hover{background:var(--accent);transform:translateY(-2px)}
+
+/* ===== セクション共通 ===== */
+section{padding:64px 24px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-label{
+  font-size:.78rem;font-weight:700;letter-spacing:.14em;
+  color:var(--gold);text-transform:uppercase;margin-bottom:8px;
+}
+.section-title{
+  font-size:clamp(1.5rem,4vw,2.2rem);font-weight:900;
+  color:var(--navy);line-height:1.3;margin-bottom:16px;
+}
+.section-lead{color:var(--gray);font-size:1rem;line-height:1.8;max-width:680px}
+
+/* ===== 特徴 3カラム ===== */
+.features{background:var(--light)}
+.features-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+  margin-top:40px;
+}
+.feature-card{
+  background:#fff;border-radius:8px;overflow:hidden;
+  box-shadow:0 2px 12px rgba(0,0,0,.08);
+  transition:transform .25s,box-shadow .25s;
+}
+.feature-card:hover{transform:translateY(-4px);box-shadow:0 8px 24px rgba(0,0,0,.12)}
+.feature-card img{width:100%;height:200px;object-fit:cover}
+.feature-card-body{padding:20px}
+.feature-card-body h3{font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:8px}
+.feature-card-body p{font-size:.88rem;color:var(--gray);line-height:1.7}
+
+/* ===== 募集要項 ===== */
+.job-table{width:100%;border-collapse:collapse;margin-top:36px}
+.job-table tr{border-bottom:1px solid #e8edf2}
+.job-table th{
+  width:140px;min-width:100px;
+  padding:16px 20px 16px 0;
+  font-size:.88rem;font-weight:700;color:var(--navy);
+  vertical-align:top;
+  white-space:nowrap;
+}
+.job-table td{
+  padding:16px 0;
+  font-size:.9rem;color:var(--text);line-height:1.7;
+}
+
+/* ===== 数字で見る ===== */
+.stats{background:var(--navy)}
+.stats-grid{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:24px;
+  margin-top:40px;
+}
+.stat-item{text-align:center;padding:24px 16px}
+.stat-num{
+  font-size:clamp(2rem,5vw,3.2rem);font-weight:900;
+  color:var(--gold);line-height:1;
+}
+.stat-num span{font-size:.55em;font-weight:400}
+.stat-label{color:rgba(255,255,255,.8);font-size:.82rem;margin-top:8px}
+.stats .section-title{color:#fff}
+.stats .section-label{color:var(--gold)}
+.stats .section-lead{color:rgba(255,255,255,.7)}
+
+/* ===== 1日の流れ ===== */
+.timeline{margin-top:40px}
+.tl-item{
+  display:flex;gap:20px;align-items:flex-start;
+  padding:16px 0;border-bottom:1px solid #e8edf2;
+}
+.tl-time{
+  min-width:58px;font-weight:700;color:var(--navy);
+  font-size:.9rem;padding-top:2px;
+}
+.tl-content h4{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:4px}
+.tl-content p{font-size:.85rem;color:var(--gray);line-height:1.6}
+.timeline-note{font-size:.78rem;color:#999;margin-top:12px;font-style:italic}
+/* ※サンプル */
+.sample-note{font-size:.72rem;color:#bbb;margin-top:6px;font-style:italic}
+
+/* ===== 先輩の声 ===== */
+.voice-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;
+}
+.voice-card{
+  background:#fff;border:1px solid #e8edf2;border-radius:8px;
+  padding:24px;box-shadow:0 1px 8px rgba(0,0,0,.06);
+}
+.voice-header{display:flex;align-items:center;gap:14px;margin-bottom:16px}
+.voice-avatar{
+  width:60px;height:60px;border-radius:50%;object-fit:cover;flex-shrink:0;
+  border:2px solid var(--gold);
+}
+.voice-name{font-weight:700;color:var(--navy);font-size:.95rem}
+.voice-role{font-size:.78rem;color:var(--gray);margin-top:2px}
+.voice-text{font-size:.88rem;color:var(--text);line-height:1.75}
+.voice-grid .sample-note{color:#bbb;font-size:.72rem;font-style:italic;margin-top:10px}
+
+/* ===== FAQ ===== */
+.faq{background:var(--light)}
+.faq-list{margin-top:36px;display:flex;flex-direction:column;gap:16px}
+.faq-item{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 1px 6px rgba(0,0,0,.07)}
+.faq-q{
+  padding:18px 20px;font-weight:700;font-size:.95rem;color:var(--navy);
+  display:flex;gap:12px;align-items:flex-start;
+}
+.faq-q::before{content:'Q';font-weight:900;color:var(--gold);font-size:1.1rem;flex-shrink:0}
+.faq-a{
+  padding:0 20px 18px 44px;font-size:.9rem;color:var(--gray);line-height:1.75;
+  display:flex;gap:8px;align-items:flex-start;
+}
+.faq-a::before{content:'A';font-weight:700;color:var(--navy);flex-shrink:0}
+
+/* ===== 採用担当者 ===== */
+.recruiter{background:var(--navy);padding:48px 24px}
+.recruiter-inner{max-width:700px;margin:0 auto;text-align:center}
+.recruiter-img{
+  width:100px;height:100px;border-radius:50%;object-fit:cover;
+  margin:0 auto 16px;border:3px solid var(--gold);
+}
+.recruiter h3{color:#fff;font-size:1.1rem;font-weight:700;margin-bottom:6px}
+.recruiter-role{color:var(--gold);font-size:.82rem;margin-bottom:16px}
+.recruiter-text{color:rgba(255,255,255,.82);font-size:.9rem;line-height:1.8;max-width:500px;margin:0 auto 24px}
+.recruiter .sample-note{color:rgba(255,255,255,.4);text-align:center}
+.btn-outline{
+  display:inline-block;
+  border:2px solid var(--gold);color:var(--gold);
+  font-size:.92rem;font-weight:700;
+  padding:11px 32px;border-radius:4px;
+  transition:background .2s,color .2s;
+}
+.btn-outline:hover{background:var(--gold);color:var(--navy-dark)}
+
+/* ===== CTA ===== */
+.cta{text-align:center;padding:72px 24px}
+.cta-title{
+  font-size:clamp(1.4rem,4vw,2rem);font-weight:900;
+  color:var(--navy);margin-bottom:12px;
+}
+.cta-sub{color:var(--gray);font-size:.95rem;margin-bottom:32px;line-height:1.7}
+
+/* ===== フッター ===== */
+footer{background:var(--navy-dark);padding:32px 24px;text-align:center}
+footer p{color:rgba(255,255,255,.6);font-size:.8rem;line-height:1.8}
+
+/* ===== レスポンシブ ===== */
+@media(max-width:768px){
+  nav.pc-nav{display:none}
+  .hamburger{display:flex}
+  .features-grid{grid-template-columns:1fr}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .voice-grid{grid-template-columns:1fr}
+  .job-table th{width:90px;padding:12px 12px 12px 0;font-size:.82rem}
+  .job-table td{padding:12px 0;font-size:.85rem}
+  section{padding:48px 20px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      大塚メカトロニクス株式会社
+      <span>大塚グループ | 採用情報</span>
+    </div>
+    <nav class="pc-nav">
+      <a href="#features">働く魅力</a>
+      <a href="#requirements">募集要項</a>
+      <a href="#voice">先輩の声</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#apply" style="background:var(--gold);color:var(--navy-dark);padding:7px 18px;border-radius:3px;font-weight:700">応募する</a>
+    </nav>
+    <button class="hamburger" onclick="document.querySelector('.mobile-nav').classList.toggle('open')" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+<nav class="mobile-nav">
+  <a href="#features" onclick="this.closest('.mobile-nav').classList.remove('open')">働く魅力</a>
+  <a href="#requirements" onclick="this.closest('.mobile-nav').classList.remove('open')">募集要項</a>
+  <a href="#voice" onclick="this.closest('.mobile-nav').classList.remove('open')">先輩の声</a>
+  <a href="#faq" onclick="this.closest('.mobile-nav').classList.remove('open')">よくある質問</a>
+  <a href="#apply" onclick="this.closest('.mobile-nav').classList.remove('open')" style="color:var(--gold)">応募する</a>
+</nav>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-tag">RECRUIT 2025</div>
+    <h1>課題を解決する「技術の橋渡し役」<br>提案型営業職を募集しています</h1>
+    <p class="hero-sub">自動車検査機器メーカー・大塚グループの一員として、<br>お客様の現場を変える提案営業に挑戦しませんか。</p>
+    <div class="hero-pills">
+      <span class="pill">転勤なし（印西市固定）</span>
+      <span class="pill">月残業 平均5時間</span>
+      <span class="pill">年間休日123日</span>
+      <span class="pill">大塚グループの福利厚生</span>
+      <span class="pill">管理職候補</span>
+    </div>
+    <a href="#apply" class="btn-primary">採用情報を見る・応募する</a>
+  </div>
+</section>
+
+<!-- 働く魅力 -->
+<section class="features" id="features">
+  <div class="section-inner">
+    <p class="section-label">WHY US</p>
+    <h2 class="section-title">大塚メカトロニクスで<br>働く3つの魅力</h2>
+    <p class="section-lead">小規模ならではのスピード感と、大塚グループならではの安定・充実した環境。両方を手に入れられる職場です。</p>
+    <div class="features-grid">
+      <div class="feature-card">
+        <!-- 画像: オフィスビジネス会議 -->
+        <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=640&h=200&fit=crop&q=80" alt="課題解決型の提案営業">
+        <div class="feature-card-body">
+          <h3>カタログ販売ではない「課題解決型」の提案</h3>
+          <p>お客様の抱える問題をヒアリングし、技術部門と連携しながら最適な検査システムを一緒に企画・提案します。「モノを売る」より「課題を解く」仕事です。</p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <!-- 画像: 工場・技術 -->
+        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=640&h=200&fit=crop&q=80" alt="大塚グループの安定基盤">
+        <div class="feature-card-body">
+          <h3>大塚グループの安定基盤と充実した福利厚生</h3>
+          <p>大塚電子株式会社（大塚製薬グループ）の子会社として、大手と同水準の社会保険・人間ドック全額補助・医療保険会社負担など手厚い福利厚生が整っています。</p>
+        </div>
+      </div>
+      <div class="feature-card">
+        <!-- 画像: ビジネスパーソン -->
+        <img src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=640&h=200&fit=crop&q=80" alt="自由な社風とキャリアアップ">
+        <div class="feature-card-body">
+          <h3>意見が届く自由な社風と明確なキャリアパス</h3>
+          <p>63名の組織で、あなたの提案が幹部に直接届きます。将来的には管理職候補として活躍できるキャリアパスがあり、健康経営優良法人に3年連続認定されています。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 数字で見る -->
+<section class="stats" id="stats">
+  <div class="section-inner">
+    <p class="section-label">NUMBERS</p>
+    <h2 class="section-title">数字で見る大塚メカトロニクス</h2>
+    <p class="section-lead" style="color:rgba(255,255,255,.7)">働きやすさを、数字でご確認ください。</p>
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-num">123<span>日</span></div>
+        <div class="stat-label">年間休日数（土日祝＋盆・年末年始）</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">5<span>時間</span></div>
+        <div class="stat-label">月平均残業時間（前年度実績）</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">4<span>ヶ月</span></div>
+        <div class="stat-label">賞与（年2回・前年度実績）</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">40<span>年以上</span></div>
+        <div class="stat-label">創業からの歴史（昭和58年設立）</div>
+      </div>
+    </div>
+    <p class="sample-note" style="color:rgba(255,255,255,.3);text-align:center;margin-top:20px">※ここはサンプルです。実際には御社の最新データに差し替えます</p>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section id="requirements">
+  <div class="section-inner">
+    <p class="section-label">REQUIREMENTS</p>
+    <h2 class="section-title">募集要項</h2>
+    <table class="job-table">
+      <tr><th>職種</th><td>提案型営業職（自動車関連検査装置）</td></tr>
+      <tr><th>雇用形態</th><td>正社員（試用期間3ヶ月・同条件）</td></tr>
+      <tr><th>就業場所</th><td>千葉県印西市 大塚メカトロニクス株式会社 東京工場・営業所<br><small style="color:#999">※転勤なし・リモート勤務可（勤続3ヶ月以上・所属長許可）</small></td></tr>
+      <tr><th>給与</th><td>月給 260,000円〜370,000円（基本給＋ステージ手当）<br><small style="color:#999">昇給：年1回 5,000〜15,000円 ／ 賞与：年2回・4ヶ月分（前年実績）</small></td></tr>
+      <tr><th>就業時間</th><td>8:30〜17:00（休憩60分）/ 月平均残業5時間</td></tr>
+      <tr><th>休日・休暇</th><td>土日祝・年間123日（盆休・年末年始含む）／年次有給休暇10日〜</td></tr>
+      <tr><th>応募資格</th><td>専修学校以上（理系学部・学科が望ましい。理系素養があれば文系可）<br><small style="color:#999">普通自動車免許（AT限定可）必須</small></td></tr>
+      <tr><th>歓迎経験</th><td>精密機械メーカーでの営業経験／車検場・ディーラーでの整備士経験</td></tr>
+      <tr><th>福利厚生</th><td>雇用・労災・健康・厚生年金 ／ 住宅手当（上限35,000円）・家族手当<br>通勤手当（実費・上限なし）・昼食代補助・人間ドック会社負担（30歳〜）<br>歯科クリーニング補助・医療保険会社負担・中小企業退職金共済<br>健康経営優良法人3年連続認定／マイカー通勤可・駐車場無料</td></tr>
+      <tr><th>選考の流れ</th><td>書類選考（7日以内）→ 一次面接（WEB可）→ 適性検査 → 二次面接</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section style="background:var(--light)">
+  <div class="section-inner">
+    <p class="section-label">A DAY IN THE LIFE</p>
+    <h2 class="section-title">社員の1日の流れ</h2>
+    <p class="section-lead">提案型営業の1日をご紹介します。</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">8:30</div>
+        <div class="tl-content">
+          <h4>出社・メール確認・当日の訪問準備</h4>
+          <p>メールをチェックし、顧客からの問い合わせに返信。午前中の訪問資料を最終確認します。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">9:30</div>
+        <div class="tl-content">
+          <h4>既存顧客へのフォロー電話・提案資料作成</h4>
+          <p>先日訪問したお客様の検討状況を確認。同時並行で新規提案用のシステム仕様資料を作成します。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">11:00</div>
+        <div class="tl-content">
+          <h4>技術部門とのミーティング</h4>
+          <p>顧客の課題を技術担当者と共有し、最適な検査システムの構成についてブレストします。一人で抱え込まず、社内の知恵を集めて提案します。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">12:00</div>
+        <div class="tl-content">
+          <h4>昼食休憩（昼食代補助あり）</h4>
+          <p>会社の昼食代補助制度を利用して、近くの飲食店でリフレッシュ。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-content">
+          <h4>顧客先への訪問・提案プレゼン</h4>
+          <p>自動車メーカーや車検場への訪問。お客様の検査ラインの課題をヒアリングし、最適な検査システムを提案します。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">16:00</div>
+        <div class="tl-content">
+          <h4>帰社・商談まとめ・見積もり作成</h4>
+          <p>訪問のメモを整理し、次回提案に向けた見積もりを作成。急ぎの案件は翌朝に回さず当日中に対応します。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:00</div>
+        <div class="tl-content">
+          <h4>翌日の準備をして退勤</h4>
+          <p>月平均残業5時間なので、定時での退勤がほとんど。プライベートの時間をしっかり確保できます。</p>
+        </div>
+      </div>
+    </div>
+    <p class="sample-note">※ここはサンプルです。実際には御社の社員の方の1日の流れに差し替えます</p>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section id="voice">
+  <div class="section-inner">
+    <p class="section-label">VOICES</p>
+    <h2 class="section-title">先輩からのメッセージ</h2>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="voice-header">
+          <!-- 顔写真ダミー（男性） -->
+          <img class="voice-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="田中 誠（仮名）">
+          <div>
+            <div class="voice-name">田中 誠（仮名）</div>
+            <div class="voice-role">営業職 ／ 入社3年目</div>
+          </div>
+        </div>
+        <p class="voice-text">入社前は「自動車検査装置」という専門分野に不安を感じていました。でも、技術部門の方が丁寧にサポートしてくれるので、知識は自然と身についていきました。今では「この装置だとお客様の〇〇が解決できる」と自信を持って提案できています。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社の社員の方のコメントに差し替えます</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-header">
+          <!-- 顔写真ダミー（男性） -->
+          <img class="voice-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="木村 翔太（仮名）">
+          <div>
+            <div class="voice-name">木村 翔太（仮名）</div>
+            <div class="voice-role">営業職 ／ 入社5年目</div>
+          </div>
+        </div>
+        <p class="voice-text">お客様の検査ラインの課題をゼロから聞いて、技術チームと一緒に最適なシステムを考え、導入後に「生産性が上がった」と言っていただけたときの達成感は格別です。管理職候補としての期待も感じながら、やりがいを持って働けています。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社の社員の方のコメントに差し替えます</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-header">
+          <!-- 顔写真ダミー（女性） -->
+          <img class="voice-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=faces&q=80" alt="山田 陽子（仮名）">
+          <div>
+            <div class="voice-name">山田 陽子（仮名）</div>
+            <div class="voice-role">営業サポート ／ 入社2年目</div>
+          </div>
+        </div>
+        <p class="voice-text">残業が月平均5時間なので、仕事後に習い事をしたり、家族との時間を大切にできています。大塚グループの福利厚生で人間ドックの費用が会社負担なのも安心です。「健康経営優良法人」の認定は、社員のことを本当に考えてくれている証だと思います。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社の社員の方のコメントに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="section-inner">
+    <p class="section-label">FAQ</p>
+    <h2 class="section-title">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">入社前に自動車検査機器の専門知識は必要ですか？</div>
+        <div class="faq-a">入社前に専門知識がなくても大丈夫です。技術部門と一緒に動きながら、現場で自然と知識が身についていきます。理系素養（理系学部卒または同等の理解力）があれば歓迎です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">本社は広島とのことですが、転勤はありますか？</div>
+        <div class="faq-a">転勤はありません。勤務地は千葉県印西市の東京工場・営業所に固定されています。リモート勤務も条件を満たせば利用可能です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">残業はどのくらいですか？</div>
+        <div class="faq-a">前年度実績で月平均5時間程度です。特に納期がひっ迫する時期を除き、基本的に定時退勤ができる環境です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">一次面接はオンラインで受けられますか？</div>
+        <div class="faq-a">一次面接はWEBでの受験が可能です。書類選考通過後（7日以内通知）、日程を調整します。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">大塚グループとはどのような関係ですか？</div>
+        <div class="faq-a">大塚電子株式会社（大塚製薬グループ）の子会社として2010年よりグループに加わりました。グループの医療保険・健康保険組合・退職金共済など、大手と同水準の福利厚生を受けられます。</div>
+      </div>
+    </div>
+    <p class="sample-note" style="margin-top:16px">※ここはサンプルです。実際には御社のよくある質問に差し替えます</p>
+  </div>
+</section>
+
+<!-- 採用担当者 -->
+<section class="recruiter" id="apply">
+  <div class="recruiter-inner">
+    <!-- 採用担当者写真ダミー -->
+    <img class="recruiter-img" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当 中村（仮名）">
+    <h3>採用担当 中村（仮名）</h3>
+    <div class="recruiter-role">人事部</div>
+    <p class="recruiter-text">「自動車検査装置って難しそう…」と思っているあなたへ。入社時点で専門知識がある方は多くありません。まずは話を聞きに来てください。一次面接はWEBでも大丈夫です。</p>
+    <a href="https://www.hellowork.mhlw.go.jp/" target="_blank" class="btn-outline">ハローワークから応募する</a>
+    <p class="sample-note" style="margin-top:20px">※ここはサンプルです。実際には御社の採用担当者のお写真・コメントに差し替えます</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="section-inner">
+    <h2 class="cta-title">まずはお気軽にご応募ください</h2>
+    <p class="cta-sub">一次面接はWEBでOK。書類選考通過後、7日以内にご連絡します。</p>
+    <a href="https://www.hellowork.mhlw.go.jp/" target="_blank" class="btn-primary">ハローワークから応募する</a>
+  </div>
+</section>
+
+<footer>
+  <p>大塚メカトロニクス株式会社</p>
+  <p>〒270-1338 千葉県印西市松崎台１－８－５（東京工場・営業所）</p>
+  <p>TEL: 090-3143-9761 ／ E-mail: m.nakamura@otsukamec.jp</p>
+</footer>
+
+<script>
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}
+  });
+});
+</script>
+</body>
+</html>

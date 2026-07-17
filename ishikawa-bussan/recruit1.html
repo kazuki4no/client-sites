@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>採用情報｜株式会社石川物産 ルート営業スタッフ募集</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    body { margin: 0; font-family: 'Noto Sans JP', sans-serif; background: #FDF8F0; color: #333; line-height: 1.7; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ナビ */
+    .nav { position: sticky; top: 0; background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.08); z-index: 100; }
+    .nav-inner { max-width: 1100px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; height: 60px; }
+    .nav-logo { font-family: 'Noto Serif JP', serif; font-size: 1rem; font-weight: 700; color: #B03A2E; }
+    .nav-links { display: flex; gap: 24px; list-style: none; margin: 0; padding: 0; align-items: center; }
+    .nav-links a { font-size: 0.84rem; color: #555; font-weight: 500; }
+    .nav-links a:hover { color: #B03A2E; }
+    .nav-apply { background: #B03A2E !important; color: #fff !important; padding: 8px 18px; border-radius: 4px; font-weight: 700; }
+    .nav-apply:hover { background: #922B21 !important; opacity: 1; }
+    .hamburger { display: none; background: none; border: none; cursor: pointer; padding: 8px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #444; margin: 5px 0; }
+
+    /* ヒーロー */
+    .hero { position: relative; min-height: 62vh; display: flex; align-items: center; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background-image: url('https://images.unsplash.com/photo-1480796927426-f609979314bd?w=1600&h=700&fit=crop&q=80'); background-size: cover; background-position: center; }
+    .hero-overlay { position: absolute; inset: 0; background: rgba(28, 14, 8, 0.62); }
+    .hero-content { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 80px 20px; color: #fff; }
+    .hero-pill { display: inline-block; background: #B03A2E; color: #fff; font-size: 0.78rem; font-weight: 700; padding: 4px 14px; border-radius: 20px; margin-bottom: 18px; letter-spacing: 0.06em; }
+    .hero-title { font-family: 'Noto Serif JP', serif; font-size: clamp(1.8rem, 5.5vw, 3rem); font-weight: 700; line-height: 1.45; margin: 0 0 18px; }
+    .hero-sub { font-size: clamp(0.92rem, 2.5vw, 1.1rem); color: rgba(255,255,255,0.88); margin: 0 0 32px; line-height: 1.8; }
+    .btn-primary { display: inline-block; background: #B03A2E; color: #fff; font-size: 1rem; font-weight: 700; padding: 14px 38px; border-radius: 4px; transition: background 0.2s; }
+    .btn-primary:hover { background: #922B21; }
+
+    /* セクション共通 */
+    section { padding: 80px 20px; }
+    .section-inner { max-width: 1100px; margin: 0 auto; }
+    .section-label { font-size: 0.75rem; font-weight: 700; color: #B03A2E; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 8px; }
+    .section-title { font-family: 'Noto Serif JP', serif; font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 700; color: #222; margin: 0 0 16px; line-height: 1.45; }
+    .section-lead { font-size: 0.9rem; color: #666; margin: 0 0 40px; }
+
+    /* 数字バー */
+    .numbers { background: #B03A2E; color: #fff; padding: 48px 20px; }
+    .numbers-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; }
+    .num-item { text-align: center; padding: 16px 10px; }
+    .num-num { font-size: clamp(2rem, 5.5vw, 2.8rem); font-weight: 700; font-family: 'Noto Serif JP', serif; line-height: 1.1; }
+    .num-unit { font-size: 1rem; }
+    .num-desc { font-size: 0.82rem; margin-top: 6px; opacity: 0.9; }
+
+    /* 仕事内容カード */
+    .job-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+    .job-card { background: #fff; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 14px rgba(0,0,0,0.07); }
+    .job-card img { width: 100%; height: 180px; object-fit: cover; }
+    .job-card-body { padding: 22px; }
+    .job-num { font-size: 0.73rem; font-weight: 700; color: #B03A2E; letter-spacing: 0.08em; margin-bottom: 8px; }
+    .job-card-title { font-size: 1.05rem; font-weight: 700; color: #222; margin: 0 0 8px; }
+    .job-card-text { font-size: 0.87rem; color: #555; line-height: 1.75; margin: 0; }
+
+    /* 1日の流れ */
+    .timeline-list { list-style: none; margin: 0; padding: 0; max-width: 700px; }
+    .tl-item { display: flex; gap: 20px; padding: 20px 0; border-bottom: 1px solid #EEDDD5; }
+    .tl-item:last-child { border-bottom: none; }
+    .tl-time { flex-shrink: 0; width: 58px; font-size: 0.88rem; font-weight: 700; color: #B03A2E; padding-top: 2px; }
+    .tl-body .tl-title { font-size: 0.95rem; font-weight: 700; color: #222; margin: 0 0 4px; }
+    .tl-body .tl-desc { font-size: 0.85rem; color: #666; line-height: 1.7; margin: 0; }
+
+    /* 先輩メッセージ */
+    .voices-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
+    .voice-card { background: #fff; border-radius: 8px; padding: 24px; box-shadow: 0 2px 14px rgba(0,0,0,0.07); }
+    .voice-top { display: flex; align-items: center; gap: 14px; margin-bottom: 16px; }
+    .voice-avatar { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+    .voice-name { font-size: 0.95rem; font-weight: 700; color: #222; }
+    .voice-role { font-size: 0.77rem; color: #888; margin-top: 2px; }
+    .voice-text { font-size: 0.87rem; color: #444; line-height: 1.8; margin: 0; }
+    .sample-note { font-size: 0.72rem; color: #bbb; margin-top: 12px; }
+
+    /* 募集要項 */
+    .recruit-table { width: 100%; border-collapse: collapse; }
+    .recruit-table th, .recruit-table td { padding: 14px 20px; border-bottom: 1px solid #EEDDD5; font-size: 0.88rem; text-align: left; vertical-align: top; }
+    .recruit-table th { background: #FDF0EC; color: #B03A2E; font-weight: 700; width: 150px; white-space: nowrap; }
+    .recruit-table td { color: #444; line-height: 1.7; }
+
+    /* FAQ */
+    .faq-list { max-width: 780px; }
+    .faq-item { border-bottom: 1px solid #EEDDD5; }
+    .faq-q { display: flex; align-items: flex-start; gap: 14px; padding: 20px 0; cursor: pointer; list-style: none; }
+    .faq-badge { flex-shrink: 0; width: 26px; height: 26px; background: #B03A2E; color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.75rem; font-weight: 700; margin-top: 2px; }
+    .faq-q-text { font-size: 0.93rem; font-weight: 700; color: #222; flex: 1; line-height: 1.5; padding-top: 3px; }
+    .faq-arrow { flex-shrink: 0; font-size: 0.75rem; color: #bbb; padding-top: 5px; transition: transform 0.25s; }
+    details[open] .faq-arrow { transform: rotate(180deg); }
+    .faq-a { padding: 0 0 20px 40px; font-size: 0.87rem; color: #555; line-height: 1.75; }
+
+    /* CTA */
+    .cta-section { background: #B03A2E; color: #fff; text-align: center; }
+    .cta-title { font-family: 'Noto Serif JP', serif; font-size: clamp(1.3rem, 4vw, 1.9rem); font-weight: 700; margin: 0 0 12px; line-height: 1.5; }
+    .cta-sub { font-size: 0.9rem; opacity: 0.88; margin: 0 0 30px; }
+    .btn-white { display: inline-block; background: #fff; color: #B03A2E; font-size: 1rem; font-weight: 700; padding: 14px 44px; border-radius: 4px; transition: opacity 0.2s; }
+    .btn-white:hover { opacity: 0.88; }
+
+    /* フッター */
+    footer { background: #1C1C1C; color: #aaa; text-align: center; padding: 40px 20px; font-size: 0.8rem; }
+    .footer-company { color: #ddd; font-size: 0.9rem; font-weight: 700; margin-bottom: 6px; }
+
+    /* スマホ */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .nav-links.open { display: flex; flex-direction: column; position: absolute; top: 60px; left: 0; right: 0; background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.1); padding: 20px; gap: 16px; z-index: 99; }
+      .hamburger { display: block; }
+      .numbers-inner { grid-template-columns: 1fr 1fr; }
+      .numbers-inner .num-item:last-child { grid-column: span 2; }
+      .job-cards { grid-template-columns: 1fr; }
+      .voices-grid { grid-template-columns: 1fr; }
+      .recruit-table th, .recruit-table td { display: block; width: 100%; }
+      .recruit-table th { background: #FDF0EC; padding-bottom: 4px; border-bottom: none; }
+      .recruit-table td { padding-top: 4px; padding-bottom: 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ナビ -->
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">株式会社石川物産</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#job">仕事内容</a></li>
+      <li><a href="#day">1日の流れ</a></li>
+      <li><a href="#voices">先輩の声</a></li>
+      <li><a href="#recruit">募集要項</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#apply" class="nav-apply">応募する</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ヒーロー -->
+<!-- 既存HP: http://www.ishikawa-bsn.co.jp/ あり。実際の社員・商品・店舗写真があれば差し替えると効果的 -->
+<div class="hero" style="padding:0;">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-pill">ルート営業スタッフ 正社員募集</div>
+    <h1 class="hero-title">成田のお土産を届ける、<br>やりがいある仕事があります。</h1>
+    <p class="hero-sub">空港・成田山を支えるみやげ品卸売業。<br>年間休日120日・週休2日（土日祝）・未経験OK・AT限定可の正社員です。</p>
+    <a href="#apply" class="btn-primary">応募・お問い合わせ</a>
+  </div>
+</div>
+
+<!-- 数字で見る -->
+<!-- ※ここはサンプルです。実際には御社の実績データに差し替えます -->
+<div class="numbers">
+  <div class="numbers-inner">
+    <div class="num-item">
+      <div class="num-num">120<span class="num-unit">日</span></div>
+      <div class="num-desc">年間休日（土日祝・週休2日）</div>
+    </div>
+    <div class="num-item">
+      <div class="num-num">40<span class="num-unit">年超</span></div>
+      <div class="num-desc">昭和58年創業・安定経営</div>
+    </div>
+    <div class="num-item">
+      <div class="num-num">50<span class="num-unit">%</span></div>
+      <div class="num-desc">女性スタッフ比率</div>
+    </div>
+  </div>
+  <p style="text-align:center;margin:12px 0 0;font-size:0.72rem;opacity:0.65;">※ここはサンプルです。実際には御社の実績データに差し替えます</p>
+</div>
+
+<!-- 仕事内容 -->
+<section id="job" style="background:#FDF8F0;">
+  <div class="section-inner">
+    <div class="section-label">WORK</div>
+    <h2 class="section-title">3つの仕事でつながる、<br>お得意様との信頼関係</h2>
+    <p class="section-lead">国内・海外向けみやげ品の卸売を通じて、成田山・成田空港エリアの観光を支えています。</p>
+    <!-- ※ここはサンプルです。実際には御社の業務内容・写真に差し替えます -->
+    <div class="job-cards">
+      <div class="job-card">
+        <!-- 写真: 物流・倉庫シーン（サンプル）。実際の倉庫・商品の写真に差し替え推奨 -->
+        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=640&h=360&fit=crop&q=80" alt="納品準備の様子（サンプル画像）">
+        <div class="job-card-body">
+          <div class="job-num">WORK 01</div>
+          <h3 class="job-card-title">納品準備</h3>
+          <p class="job-card-text">お得意様の注文商品を倉庫から揃え、値札付けなどの準備作業を行います。丁寧な仕込みがスムーズな配送につながります。</p>
+        </div>
+      </div>
+      <div class="job-card">
+        <!-- 写真: 配送・物流シーン（サンプル）。実際の車両・配送シーンに差し替え推奨 -->
+        <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=640&h=360&fit=crop&q=80" alt="配送業務の様子（サンプル画像）">
+        <div class="job-card-body">
+          <div class="job-num">WORK 02</div>
+          <h3 class="job-card-title">配送業務</h3>
+          <p class="job-card-text">お得意様のお店へ商品をお届けします。1日平均7〜8件、固定ルートなので道も覚えやすく、AT限定免許でも安心です。</p>
+        </div>
+      </div>
+      <div class="job-card">
+        <!-- 写真: 物販・商品シーン（サンプル）。実際のお土産品・商談シーンに差し替え推奨 -->
+        <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=640&h=360&fit=crop&q=80" alt="営業活動の様子（サンプル画像）">
+        <div class="job-card-body">
+          <div class="job-num">WORK 03</div>
+          <h3 class="job-card-title">営業活動</h3>
+          <p class="job-card-text">次の受注や新商品のご提案を行います。固定のお得意様と長くお付き合いできるので、信頼関係が生まれやりがいにつながります。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section id="day">
+  <div class="section-inner">
+    <div class="section-label">A DAY IN THE LIFE</div>
+    <h2 class="section-title">ルート営業スタッフの<br>1日の流れ</h2>
+    <p class="section-lead">1日平均7〜8件のお得意様を回ります。固定ルートなのでペースが掴みやすく、月平均残業はわずか2時間です。</p>
+    <!-- ※ここはサンプルです。実際には御社の業務スケジュールに差し替えます -->
+    <p class="sample-note" style="font-size:0.8rem;color:#bbb;margin:-20px 0 28px;">※ここはサンプルです。実際には御社の業務スケジュールに差し替えます</p>
+    <ul class="timeline-list">
+      <li class="tl-item">
+        <div class="tl-time">8:45</div>
+        <div class="tl-body">
+          <p class="tl-title">出社・朝礼</p>
+          <p class="tl-desc">当日の配送件数・ルートを確認。新商品情報の共有も朝礼で行います。</p>
+        </div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-time">9:00</div>
+        <div class="tl-body">
+          <p class="tl-title">午前の納品準備（3〜4件分）</p>
+          <p class="tl-desc">午前に回るお得意様の注文品を倉庫からピッキング。値札付け・袋詰めなど丁寧に準備します。</p>
+        </div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-time">10:00</div>
+        <div class="tl-body">
+          <p class="tl-title">午前の配送スタート（3〜4件）</p>
+          <p class="tl-desc">成田山・空港周辺の固定ルートを車でまわります。慣れれば安心してこなせるルートです。</p>
+        </div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-time">12:00</div>
+        <div class="tl-body">
+          <p class="tl-title">昼休憩（60分）</p>
+          <p class="tl-desc">会社に戻ってゆっくり昼食。周辺には飲食店も多く、気分転換できます。</p>
+        </div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-body">
+          <p class="tl-title">午後の配送＋新商品のご提案（3〜4件）</p>
+          <p class="tl-desc">午後は配達に加えて、新着商品のサンプルを持参して次の受注も取ります。お客さまとの会話が仕事の醍醐味です。</p>
+        </div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-time">15:30</div>
+        <div class="tl-body">
+          <p class="tl-title">翌日分の注文取りまとめ・発注業務</p>
+          <p class="tl-desc">翌日の配送分をまとめて倉庫に引き継ぎ。日報を記入します。</p>
+        </div>
+      </li>
+      <li class="tl-item">
+        <div class="tl-time">18:00</div>
+        <div class="tl-body">
+          <p class="tl-title">退社</p>
+          <p class="tl-desc">月平均残業2時間。メリハリをつけて定時に帰れる日がほとんどです。</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- 先輩メッセージ -->
+<section id="voices" style="background:#FDF8F0;">
+  <div class="section-inner">
+    <div class="section-label">VOICES</div>
+    <h2 class="section-title">先輩スタッフからの<br>メッセージ</h2>
+    <!-- ※ここはサンプルです。実際には御社スタッフのコメント・写真に差し替えます -->
+    <p class="sample-note" style="font-size:0.8rem;color:#bbb;margin:-10px 0 36px;">※ここはサンプルです。実際には御社スタッフのコメント・写真に差し替えます</p>
+    <div class="voices-grid">
+      <div class="voice-card">
+        <!-- サンプル顔写真（男性）。実際のスタッフ写真に差し替え推奨 -->
+        <div class="voice-top">
+          <img class="voice-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="田中さん（サンプル）">
+          <div>
+            <div class="voice-name">田中 拓也（仮名）</div>
+            <div class="voice-role">ルート営業 / 入社4年目</div>
+          </div>
+        </div>
+        <p class="voice-text">「最初は覚えることが多くて不安でしたが、毎日同じルートを走るうちに担当者さんとも顔なじみに。1日7〜8件、自分のペースで回れるのでプレッシャーも少ないです。休みがしっかり取れるので、プライベートも充実しています。」</p>
+        <p class="sample-note">※ここはサンプルです。実際のスタッフのコメントに差し替えます</p>
+      </div>
+      <div class="voice-card">
+        <!-- サンプル顔写真（女性）。実際のスタッフ写真に差し替え推奨 -->
+        <div class="voice-top">
+          <img class="voice-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=faces&q=80" alt="鈴木さん（サンプル）">
+          <div>
+            <div class="voice-name">鈴木 美咲（仮名）</div>
+            <div class="voice-role">営業サポート / 入社2年目</div>
+          </div>
+        </div>
+        <p class="voice-text">「女性が半数いてとても働きやすいです。お土産品って季節ごとに種類が変わるので、仕事を通じてどんどん詳しくなれる楽しさがあります。最初は商品知識ゼロでしたが、先輩が丁寧に教えてくれました。」</p>
+        <p class="sample-note">※ここはサンプルです。実際のスタッフのコメントに差し替えます</p>
+      </div>
+      <div class="voice-card">
+        <!-- サンプル顔写真（男性）。実際のスタッフ写真に差し替え推奨 -->
+        <div class="voice-top">
+          <img class="voice-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="山田さん（サンプル）">
+          <div>
+            <div class="voice-name">山田 健太（仮名）</div>
+            <div class="voice-role">ルート営業 / 入社8年目</div>
+          </div>
+        </div>
+        <p class="voice-text">「長く続けていると、お客さまと本当に仲良くなれます。成田山や空港周辺の観光地を支えているというやりがいも大きいです。土日は確実に休めるので、家族との時間も大切にできています。」</p>
+        <p class="sample-note">※ここはサンプルです。実際のスタッフのコメントに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section id="recruit">
+  <div class="section-inner">
+    <div class="section-label">RECRUIT</div>
+    <h2 class="section-title">募集要項</h2>
+    <table class="recruit-table">
+      <tr><th>職種</th><td>ルート営業スタッフ（正社員）</td></tr>
+      <tr><th>仕事内容</th><td>みやげ品の納品準備・ルート配送・お得意様への営業活動</td></tr>
+      <tr><th>給与</th><td>月給 23万円（基本給21万円＋営業手当2万円）<br>試用期間中（最長3ヶ月）は手当なし・基本給のみ<br>昇給あり（前年実績：年3〜6.5%）<br>賞与年2回（前年実績 計4ヶ月分）</td></tr>
+      <tr><th>就業時間</th><td>9:00〜18:00（休憩60分）<br>月平均残業2時間</td></tr>
+      <tr><th>休日・休暇</th><td>週休2日制（土曜・日曜・祝日）<br>年間休日120日<br>夏季休暇・年末年始休暇<br>年次有給休暇（6ヶ月後10日付与）</td></tr>
+      <tr><th>応募資格</th><td>普通自動車運転免許（AT限定可）必須<br>経験不問・学歴不問・年齢59歳以下（定年年齢の上限）</td></tr>
+      <tr><th>勤務地</th><td>千葉県成田市大清水214-3（転勤なし・最寄りJR成田駅）</td></tr>
+      <tr><th>待遇</th><td>雇用保険・労災・健康保険・厚生年金完備<br>通勤手当（実費・上限なし）<br>マイカー通勤可・駐車場完備<br>家族手当・営業報奨金・特別手当<br>退職金制度あり（勤続10年以上）<br>再雇用制度あり（最大65歳まで）</td></tr>
+      <tr><th>選考方法</th><td>書類選考なし → 面接1回 → 7日以内に結果通知</td></tr>
+      <tr><th>募集人数</th><td>1名（欠員補充）</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="background:#FDF8F0;">
+  <div class="section-inner">
+    <div class="section-label">FAQ</div>
+    <h2 class="section-title">よくあるご質問</h2>
+    <div class="faq-list">
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span class="faq-badge">Q</span>
+          <span class="faq-q-text">配送は1日に何件くらいあるのですか？</span>
+          <span class="faq-arrow">▼</span>
+        </summary>
+        <p class="faq-a">1日平均7〜8件（午前3〜4件・午後3〜4件）です。成田山・空港周辺の固定ルートなので、慣れれば無理なくこなせます。急な件数増加はほとんどありません。</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span class="faq-badge">Q</span>
+          <span class="faq-q-text">運転があまり得意でないのですが大丈夫ですか？</span>
+          <span class="faq-arrow">▼</span>
+        </summary>
+        <p class="faq-a">普通自動車免許（AT限定可）があれば問題ありません。固定ルートなので同じ道を繰り返し走るうちに自然と慣れます。入社後は先輩が同行してフォローします。</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span class="faq-badge">Q</span>
+          <span class="faq-q-text">お土産品の知識がゼロでも大丈夫ですか？</span>
+          <span class="faq-arrow">▼</span>
+        </summary>
+        <p class="faq-a">もちろんです。商品知識は入社後に先輩から丁寧に教えます。経験不問・学歴不問で採用していますので、やる気があれば十分です。</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span class="faq-badge">Q</span>
+          <span class="faq-q-text">女性でも応募できますか？</span>
+          <span class="faq-arrow">▼</span>
+        </summary>
+        <p class="faq-a">はい、ぜひご応募ください。社員10名のうち5名が女性です。何かあれば気軽に相談できる環境です。</p>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">
+          <span class="faq-badge">Q</span>
+          <span class="faq-q-text">選考の流れを教えてください。</span>
+          <span class="faq-arrow">▼</span>
+        </summary>
+        <p class="faq-a">書類選考なしで、面接1回のみです。結果は面接後7日以内にお知らせします。まずはお気軽にご連絡ください。</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="apply" class="cta-section">
+  <div class="section-inner">
+    <h2 class="cta-title">成田のお土産を届ける仕事を、<br>一緒にはじめませんか。</h2>
+    <p class="cta-sub">未経験・学歴不問。土日祝休み・年120日。まずはお気軽にご連絡ください。</p>
+    <a href="mailto:isb-gm1@ishikawa-bsn.co.jp" class="btn-white">メールで問い合わせる</a>
+    <p style="font-size:0.82rem;margin-top:20px;opacity:0.82;">お電話: 0476-35-7131（担当: 石川）</p>
+  </div>
+</section>
+
+<!-- フッター -->
+<footer>
+  <p class="footer-company">株式会社石川物産</p>
+  <p>〒286-0122 千葉県成田市大清水214-3　TEL: 0476-35-7131　E-mail: isb-gm1@ishikawa-bsn.co.jp</p>
+  
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => navLinks.classList.toggle('open'));
+  }
+</script>
+</body>
+</html>

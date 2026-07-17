@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>採用情報 | 長野計装株式会社</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;color:#1a1a2e;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;height:auto;display:block;}
+
+/* ヘッダー */
+.site-header{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1.4rem;background:#0d2137;position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.3);}
+.brand{color:#fff;font-weight:700;font-size:1.1rem;letter-spacing:.05em;}
+.site-nav{display:flex;gap:1.4rem;align-items:center;}
+.site-nav a{color:rgba(255,255,255,.85);font-size:.9rem;transition:color .2s;}
+.site-nav a:hover{color:#e07540;}
+.nav-cta{background:#e07540;color:#fff !important;padding:.45rem 1.1rem;border-radius:4px;font-weight:700;}
+.hamburger{display:none;background:none;border:0;font-size:1.8rem;color:#fff;cursor:pointer;line-height:1;}
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;position:absolute;top:100%;left:0;right:0;z-index:50;background:#0d2137;padding:.5rem 1.4rem;}
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.8rem 0;border-bottom:1px solid rgba(255,255,255,.1);color:#fff;font-size:1rem;}
+  .nav-cta{margin:.8rem 0;text-align:center;}
+}
+
+/* ヒーロー */
+.hero{position:relative;min-height:72vh;display:flex;align-items:center;background:#0d2137;overflow:hidden;}
+.hero-img{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center;opacity:.35;}
+.hero-content{position:relative;z-index:1;padding:3rem 2rem;max-width:780px;margin:0 auto;}
+.hero-pill{display:inline-block;background:#e07540;color:#fff;font-size:.8rem;font-weight:700;padding:.35rem .9rem;border-radius:20px;letter-spacing:.08em;margin-bottom:1.2rem;}
+.hero h1{font-size:clamp(1.8rem,5.5vw,3.2rem);font-weight:900;color:#fff;line-height:1.25;margin-bottom:1rem;}
+.hero h1 span{color:#f09060;}
+.hero-sub{color:rgba(255,255,255,.85);font-size:clamp(.95rem,2.5vw,1.15rem);margin-bottom:2rem;max-width:520px;}
+.btn-primary{display:inline-block;background:#e07540;color:#fff;font-weight:700;font-size:1rem;padding:.85rem 2.2rem;border-radius:6px;box-shadow:0 4px 16px rgba(224,117,64,.45);transition:background .2s,transform .15s;}
+.btn-primary:hover{background:#c9612d;transform:translateY(-2px);}
+
+/* セクション共通 */
+.section{padding:5rem 1.4rem;}
+.section-inner{max-width:960px;margin:0 auto;}
+.section-label{font-size:.78rem;font-weight:700;color:#e07540;letter-spacing:.15em;text-transform:uppercase;margin-bottom:.5rem;}
+.section-title{font-size:clamp(1.5rem,4vw,2.3rem);font-weight:900;color:#0d2137;line-height:1.3;margin-bottom:.8rem;}
+.section-lead{color:#555;font-size:1rem;max-width:640px;margin-bottom:3rem;}
+
+/* 訴求3点 */
+.features{background:#f4f7fa;}
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;}
+@media(max-width:768px){.feat-grid{grid-template-columns:1fr;}}
+.feat-card{background:#fff;border-radius:10px;padding:2rem 1.5rem;box-shadow:0 2px 12px rgba(0,0,0,.06);}
+.feat-icon{width:52px;height:52px;background:#e07540;border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:1rem;}
+.feat-icon svg{width:26px;height:26px;stroke:#fff;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;}
+.feat-card h3{font-size:1.05rem;font-weight:700;color:#0d2137;margin-bottom:.6rem;}
+.feat-card p{font-size:.92rem;color:#555;line-height:1.65;}
+
+/* 仕事内容 */
+.job-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+@media(max-width:768px){.job-wrap{grid-template-columns:1fr;}}
+.job-img{border-radius:10px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.12);}
+.job-img img{width:100%;height:340px;object-fit:cover;}
+.job-list{list-style:none;}
+.job-list li{padding:.75rem 0;border-bottom:1px solid #e8edf2;display:flex;gap:.8rem;align-items:flex-start;color:#333;font-size:.97rem;}
+.job-list li::before{content:'✦';color:#e07540;font-size:.8rem;flex-shrink:0;margin-top:.25rem;}
+
+/* タイムライン */
+.timeline-section{background:#f4f7fa;}
+.tl-list{max-width:620px;}
+.tl-item{display:grid;grid-template-columns:72px 20px 1fr;gap:0 .8rem;align-items:start;margin-bottom:1.6rem;}
+.tl-time{text-align:right;font-weight:700;color:#0d2137;font-size:.95rem;padding-top:.3rem;}
+.tl-dot{width:14px;height:14px;border-radius:50%;background:#e07540;justify-self:center;margin-top:.3rem;flex-shrink:0;}
+.tl-body strong{display:block;font-size:.97rem;color:#0d2137;margin-bottom:.2rem;}
+.tl-body p{font-size:.87rem;color:#555;}
+.tl-list{position:relative;}
+.tl-list::before{content:'';position:absolute;left:82px;top:6px;bottom:6px;width:2px;background:#d0dce8;}
+
+/* 先輩の声 */
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.8rem;}
+@media(max-width:768px){.voice-grid{grid-template-columns:1fr;}}
+.voice-card{background:#fff;border-radius:10px;box-shadow:0 2px 12px rgba(0,0,0,.07);overflow:hidden;}
+.voice-card-img{width:100%;height:220px;object-fit:cover;}
+.voice-card-body{padding:1.5rem;}
+.voice-name{font-weight:700;color:#0d2137;font-size:1rem;}
+.voice-meta{font-size:.8rem;color:#888;margin-bottom:.8rem;}
+.voice-text{font-size:.9rem;color:#444;line-height:1.7;}
+.voice-sample{font-size:.78rem;color:#aaa;margin-top:.6rem;}
+
+/* 募集要項 */
+.req-section{background:#f4f7fa;}
+.req-table{width:100%;border-collapse:collapse;}
+.req-table th,.req-table td{padding:1rem 1.2rem;border-bottom:1px solid #dde3ec;text-align:left;font-size:.97rem;}
+.req-table th{width:30%;background:#e8edf2;color:#0d2137;font-weight:700;}
+.req-table td{color:#333;}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{background:#e8edf2;padding:.5rem .8rem;}
+  .req-table td{padding:.5rem .8rem 1rem;}
+}
+
+/* FAQ */
+.faq-list{max-width:720px;}
+.faq-item{border-bottom:1px solid #dde3ec;padding:1.4rem 0;}
+.faq-q{font-weight:700;color:#0d2137;font-size:.97rem;display:flex;gap:.8rem;align-items:flex-start;}
+.faq-q::before{content:'Q';background:#0d2137;color:#fff;font-size:.8rem;font-weight:900;width:24px;height:24px;display:flex;align-items:center;justify-content:center;border-radius:4px;flex-shrink:0;margin-top:.05rem;}
+.faq-a{margin-top:.7rem;font-size:.92rem;color:#444;padding-left:2rem;line-height:1.7;}
+.faq-a::before{content:'A';background:#e07540;color:#fff;font-size:.8rem;font-weight:900;width:24px;height:24px;display:inline-flex;align-items:center;justify-content:center;border-radius:4px;margin-right:.6rem;vertical-align:middle;}
+
+/* 担当者 */
+.contact-wrap{display:grid;grid-template-columns:200px 1fr;gap:2.5rem;align-items:center;background:#fff;border-radius:12px;padding:2.5rem;box-shadow:0 2px 16px rgba(0,0,0,.07);}
+@media(max-width:768px){.contact-wrap{grid-template-columns:1fr;text-align:center;}}
+.contact-img{border-radius:50%;width:160px;height:160px;object-fit:cover;margin:0 auto;}
+.contact-name{font-size:1.15rem;font-weight:700;color:#0d2137;margin-bottom:.3rem;}
+.contact-role{font-size:.85rem;color:#888;margin-bottom:.8rem;}
+.contact-msg{font-size:.95rem;color:#444;line-height:1.75;margin-bottom:1.2rem;}
+.contact-sample{font-size:.78rem;color:#aaa;}
+
+/* CTA */
+.cta-section{background:#0d2137;text-align:center;padding:5rem 1.4rem;}
+.cta-section h2{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:900;color:#fff;margin-bottom:.8rem;}
+.cta-section p{color:rgba(255,255,255,.8);margin-bottom:2.2rem;font-size:1rem;}
+.btn-outline{display:inline-block;border:2px solid #fff;color:#fff;font-weight:700;font-size:1rem;padding:.8rem 2.4rem;border-radius:6px;margin:.4rem;transition:background .2s,color .2s;}
+.btn-outline:hover{background:#fff;color:#0d2137;}
+
+/* フッター */
+footer{background:#081520;color:rgba(255,255,255,.6);text-align:center;padding:2rem 1.4rem;font-size:.85rem;}
+footer strong{color:#fff;}
+</style>
+</head>
+<body>
+
+<header class="site-header" id="top">
+  <a class="brand" href="#top">長野計装株式会社</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#job">仕事内容</a>
+    <a href="#day">1日の流れ</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#faq">よくある質問</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-content">
+    <span class="hero-pill">正社員募集 ／ 未経験歓迎</span>
+    <h1>空港・病院を守る、<br><span>電気設備のプロへ。</span></h1>
+    <p class="hero-sub">空調自動制御の保守・点検スタッフを募集。未経験でも大丈夫、先輩が丁寧に指導します。資格取得も全面サポート。</p>
+    <a class="btn-primary" href="#entry">まずは話だけでも聞いてみる</a>
+  </div>
+</section>
+
+<!-- 訴求3点 -->
+<section class="section features" id="job">
+  <div class="section-inner">
+    <p class="section-label">Why Join Us</p>
+    <h2 class="section-title">長野計装で働く3つの理由</h2>
+    <p class="section-lead">手に職をつけて、社会インフラを支える仕事。あなたの成長を全力でサポートします。</p>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+        <h3>未経験でも安心のOJT研修</h3>
+        <p>入社後は先輩社員と二人一組で現場を回ります。実務を通じてマンツーマン指導するので、電気の知識がなくても心配いりません。</p>
+        <!-- ※ここはサンプルです。実際には御社の研修制度の詳細に差し替えます -->
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+        </div>
+        <h3>空港・病院など大型施設を担当</h3>
+        <p>社会インフラを支える大型施設の空調自動制御設備を守ります。「自分の仕事が街を動かしている」と実感できる、やりがいの大きな仕事です。</p>
+        <!-- ※ここはサンプルです。実際には御社が担当する施設の実績に差し替えます -->
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3>資格取得を全面バックアップ</h3>
+        <p>電気工事士・設備管理士など、キャリアに直結する資格の取得を会社が支援。受験費用の補助や勉強時間の確保など、ステップアップを応援します。</p>
+        <!-- ※ここはサンプルです。実際には御社の資格支援制度の詳細に差し替えます -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 仕事内容 -->
+<section class="section" style="background:#fff;">
+  <div class="section-inner">
+    <p class="section-label">Our Work</p>
+    <h2 class="section-title">仕事内容</h2>
+    <div class="job-wrap">
+      <div class="job-img">
+        <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&h=680&fit=crop&q=80" alt="設備点検の様子">
+      </div>
+      <div>
+        <p style="font-size:.97rem;color:#333;margin-bottom:1.4rem;line-height:1.75;">空調自動制御システムの保守・点検が主な業務です。機器が正常に動いているかを確認し、問題があれば修理・調整を行います。担当施設は病院・空港・商業施設など、私たちの生活を支える大型建物が中心です。</p>
+        <ul class="job-list">
+          <li>空調制御設備の定期点検・動作確認</li>
+          <li>フィルター清掃・消耗品の交換</li>
+          <li>計器類の数値記録・報告書作成</li>
+          <li>不具合発生時の応急処置・修理依頼</li>
+          <li>各種設備の保守管理スケジュール管理</li>
+        </ul>
+        <!-- ※ここはサンプルです。実際には御社の業務内容の詳細に差し替えます -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- タイムライン -->
+<section class="section timeline-section" id="day">
+  <div class="section-inner">
+    <p class="section-label">Daily Schedule</p>
+    <h2 class="section-title">当社社員の1日の流れ</h2>
+    <p class="section-lead">入社後の先輩社員（電気設備点検担当・入社3年目）のある日のスケジュールです。</p>
+    <!-- ※ここはサンプルです。実際には御社スタッフの実際の1日に差し替えます -->
+    <div class="tl-list">
+      <div class="tl-item">
+        <span class="tl-time">8:30</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body"><strong>出社・朝礼</strong><p>当日の現場と担当を確認。先輩から注意事項を聞き、準備を整えます。</p></div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">9:00</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body"><strong>現場へ移動</strong><p>会社車で担当施設へ。空港や病院など普段入れない場所へ行くこともあります。</p></div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">10:00</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body"><strong>点検・保守作業</strong><p>空調設備の動作確認、フィルター清掃、計器の読み取りなど。先輩が隣でサポート。</p></div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">12:00</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body"><strong>昼休み</strong><p>現場近くで昼食。仲間と情報交換しながらリフレッシュ。</p></div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">13:00</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body"><strong>午後の作業</strong><p>午前の続きや別施設での点検へ。1日に1〜2現場を担当します。</p></div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">16:30</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body"><strong>報告書作成・確認</strong><p>作業内容をタブレットへ入力。書き物が苦手でも安心の簡単入力です。</p></div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">17:30</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body"><strong>退社</strong><p>残業は少なめ。メリハリのある働き方ができます。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section class="section" id="voice">
+  <div class="section-inner">
+    <p class="section-label">Staff Voice</p>
+    <h2 class="section-title">先輩からのメッセージ</h2>
+    <p class="section-lead">実際に働く先輩スタッフの声をご紹介します。</p>
+    <!-- ※ここはサンプルです。実際には御社スタッフの写真・プロフィール・コメントに差し替えます -->
+    <div class="voice-grid">
+      <div class="voice-card">
+        <img class="voice-card-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=640&h=440&fit=crop&crop=faces&q=80" alt="先輩スタッフA">
+        <div class="voice-card-body">
+          <p class="voice-name">山田 健太（仮名）</p>
+          <p class="voice-meta">28歳 ／ 入社3年 ／ 電気設備点検担当</p>
+          <p class="voice-text">前職は全く別の仕事をしていました。未経験でも丁寧に教えてもらえると聞いて入社。先輩が一緒に現場を回ってくれるので自然と覚えられ、今は資格も2つ取得しました。</p>
+          <p class="voice-sample">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <img class="voice-card-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=640&h=440&fit=crop&crop=faces&q=80" alt="先輩スタッフB">
+        <div class="voice-card-body">
+          <p class="voice-name">佐藤 誠（仮名）</p>
+          <p class="voice-meta">35歳 ／ 入社5年 ／ チームリーダー</p>
+          <p class="voice-text">空港の設備を担当したとき、自分たちの仕事が空港全体を支えているんだと実感しました。少人数でも助け合う文化があり、困ったときすぐ相談できる環境です。</p>
+          <p class="voice-sample">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <img class="voice-card-img" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=640&h=440&fit=crop&crop=faces&q=80" alt="先輩スタッフC">
+        <div class="voice-card-body">
+          <p class="voice-name">鈴木 彩香（仮名）</p>
+          <p class="voice-meta">26歳 ／ 入社2年 ／ 現場サポート・書類担当</p>
+          <p class="voice-text">先輩たちがとても優しく、分からないことを気軽に質問できる雰囲気です。書類作業が中心なので、技術職が未経験でも無理なく続けられています。</p>
+          <p class="voice-sample">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="section req-section" id="req">
+  <div class="section-inner">
+    <p class="section-label">Requirements</p>
+    <h2 class="section-title">募集要項</h2>
+    <!-- ※ここはサンプルです。実際には御社の正確な募集情報に差し替えます -->
+    <table class="req-table">
+      <tr><th>職種</th><td>電気設備の保守・点検スタッフ（正社員）</td></tr>
+      <tr><th>仕事内容</th><td>空調自動制御設備の保守・点検。空港・病院・商業施設など大型施設が中心。先輩と二人一組でスタート。</td></tr>
+      <tr><th>応募資格</th><td>学歴・経験不問。資格は入社後取得できます。「手に職をつけたい」という意欲があればOK。</td></tr>
+      <tr><th>勤務地</th><td>千葉県浦安市富士見（本社）／担当現場は千葉県内各地</td></tr>
+      <tr><th>就業時間</th><td>8:30〜17:30（実働8時間）</td></tr>
+      <tr><th>休日・休暇</th><td>週休2日制（土日）、祝日、年末年始、有給休暇</td></tr>
+      <tr><th>給与</th><td>月給制（詳細は面接時にご案内）</td></tr>
+      <tr><th>福利厚生</th><td>資格取得支援（受験費用補助）、社会保険完備、制服支給、会社車通勤</td></tr>
+      <tr><th>従業員数</th><td>9名（少人数で働きやすい環境）</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="section-inner">
+    <p class="section-label">FAQ</p>
+    <h2 class="section-title">よくある質問</h2>
+    <!-- ※ここはサンプルです。実際には御社へのよくある質問と回答に差し替えます -->
+    <div class="faq-list">
+      <div class="faq-item">
+        <p class="faq-q">未経験でも応募できますか？</p>
+        <p class="faq-a">はい、大歓迎です。入社後は先輩社員がマンツーマンで指導します。電気の基礎知識から実際の現場作業まで丁寧に教えるので、安心してください。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">どんな施設を担当しますか？</p>
+        <p class="faq-a">空港・病院・商業施設・学校など、社会インフラを支える大型施設の空調・電気設備を担当します。普段なかなか入れない場所を仕事で訪れる機会もあります。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">資格の取得支援はありますか？</p>
+        <p class="faq-a">はい、電気工事士・設備管理士など、キャリアに直結する資格の取得を全面的にサポートします。受験費用の補助や学習時間の確保など、会社を挙げて応援します。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">勤務地はどこですか？転勤はありますか？</p>
+        <p class="faq-a">本社は千葉県浦安市にあり、担当現場は千葉県内各地です。現時点では県外への転勤は想定していません。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">他業種・他職種からの転職は可能ですか？</p>
+        <p class="faq-a">もちろんです。現在の社員も異業種から入社した方がいます。「手に職をつけたい」という気持ちがあれば電気の知識ゼロでも大丈夫です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 担当者紹介 -->
+<section class="section" style="background:#f4f7fa;">
+  <div class="section-inner">
+    <p class="section-label">From Staff</p>
+    <h2 class="section-title">採用担当より</h2>
+    <!-- ※ここはサンプルです。実際には採用担当者の写真・プロフィール・メッセージに差し替えます -->
+    <div class="contact-wrap">
+      <img class="contact-img" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop&crop=faces&q=80" alt="採用担当者">
+      <div>
+        <p class="contact-name">長野 〇〇（仮名）</p>
+        <p class="contact-role">採用担当 ／ 入社10年</p>
+        <p class="contact-msg">「電気設備の仕事に興味はあるけど、難しそう…」と感じている方こそ、ぜひ一度話を聞きに来てください。未経験から資格を取り、プロとして活躍しているスタッフがいます。少人数だからこそ、一人ひとりをしっかり育てられる自信があります。</p>
+        <p class="contact-sample">※ここはサンプルです。実際には採用担当者のお顔写真とメッセージに差し替えます</p>
+        <a class="btn-primary" href="#entry" style="font-size:.9rem;padding:.7rem 1.8rem;">気軽に問い合わせてみる</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="entry">
+  <h2>まずは気軽にお問い合わせください</h2>
+  <p>書類選考なし・見学だけでもOKです。<br>「話だけ聞いてみたい」という方もどうぞ。</p>
+  <a class="btn-primary" href="mailto:y4e0204@gmail.com" style="margin:.4rem;">メールで問い合わせる</a>
+  <a class="btn-outline" href="tel:08071205658">電話で問い合わせる<br><small>080-7120-5658</small></a>
+</section>
+
+<footer>
+  <strong>長野計装株式会社</strong><br>
+  〒279-0031 千葉県浦安市富士見5丁目8-23<br>
+  TEL: 080-7120-5658 ／ MAIL: y4e0204@gmail.com
+</footer>
+
+<script>
+(function(){
+  var btn=document.querySelector('.hamburger');
+  var nav=document.querySelector('.site-nav');
+  if(btn&&nav){btn.addEventListener('click',function(){var o=nav.classList.toggle('open');btn.setAttribute('aria-expanded',o);});}
+})();
+</script>
+</body>
+</html>

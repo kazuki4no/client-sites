@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | アエベ（古民家イタリアン）</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#333;line-height:1.7}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+:root{
+  --primary:#D4541E;
+  --primary-dark:#A93C12;
+  --accent:#F5C842;
+  --bg:#FFF8F4;
+  --border:#F0D5C8;
+}
+
+/* ヘッダー */
+header{background:#fff;border-bottom:2px solid var(--border);position:sticky;top:0;z-index:100;box-shadow:0 2px 6px rgba(0,0,0,.08)}
+.header-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo-lp{font-family:'Noto Serif JP',serif;font-size:1.1rem;color:var(--primary);font-weight:700}
+.logo-lp small{font-size:.72rem;font-family:'Noto Sans JP',sans-serif;font-weight:400;color:#888;margin-left:8px}
+nav.pc-nav{display:flex;gap:24px;align-items:center}
+nav.pc-nav a{font-size:.88rem;font-weight:500;color:#555;transition:color .2s}
+nav.pc-nav a:hover{color:var(--primary)}
+nav.pc-nav .nav-cta{background:var(--primary);color:#fff;padding:8px 20px;border-radius:24px;font-weight:700}
+nav.pc-nav .nav-cta:hover{background:var(--primary-dark)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.hamburger span{display:block;width:24px;height:2px;background:var(--primary);transition:.3s}
+.mobile-menu{display:none;position:fixed;top:60px;left:0;right:0;background:#fff;border-top:1px solid #eee;padding:20px;z-index:99;flex-direction:column;gap:14px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{font-size:.95rem;padding:10px 0;border-bottom:1px solid #f5f5f5;color:#333}
+.mobile-menu a:last-child{background:var(--primary);color:#fff;text-align:center;border-radius:24px;border:none;padding:12px;font-weight:700}
+
+/* ヒーロー LP型 */
+.hero-lp{background:linear-gradient(135deg,#4A1500 0%,var(--primary) 60%,#E8724B 100%);min-height:78vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:60px 20px;position:relative;overflow:hidden}
+.hero-lp::before{content:'';position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center;opacity:.18}
+.hero-lp-inner{position:relative;z-index:1;max-width:700px;margin:0 auto}
+.pill-row{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:20px}
+.pill{background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.4);font-size:.8rem;padding:4px 14px;border-radius:20px}
+.hero-lp h1{font-family:'Noto Serif JP',serif;font-size:clamp(1.7rem,5.5vw,3rem);color:#fff;line-height:1.35;margin-bottom:20px;font-weight:700}
+.hero-lp h1 em{color:var(--accent);font-style:normal}
+.hero-lp p{color:rgba(255,255,255,.88);font-size:clamp(.9rem,2vw,1.05rem);margin-bottom:32px}
+.hero-cta{display:inline-block;background:var(--accent);color:#333;font-weight:700;font-size:1.05rem;padding:16px 52px;border-radius:40px;transition:all .2s;box-shadow:0 4px 16px rgba(0,0,0,.2)}
+.hero-cta:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(0,0,0,.3)}
+.hero-note{color:rgba(255,255,255,.65);font-size:.82rem;margin-top:12px}
+
+/* 数字バー */
+.numbers-section{background:var(--primary);padding:40px 20px}
+.numbers-inner{max-width:900px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:0}
+.num-item{flex:1 1 180px;text-align:center;color:#fff;padding:20px;border-right:1px solid rgba(255,255,255,.2)}
+.num-item:last-child{border-right:none}
+.num-value{font-family:'Noto Serif JP',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:700;color:var(--accent);display:block;line-height:1}
+.num-label{font-size:.82rem;color:rgba(255,255,255,.8);margin-top:6px;display:block}
+.numbers-sample{text-align:center;color:rgba(255,255,255,.5);font-size:.75rem;margin-top:16px}
+
+/* セクション共通 */
+section{padding:72px 20px}
+.section-inner{max-width:960px;margin:0 auto}
+h2.lp-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,4vw,2rem);text-align:center;margin-bottom:8px;color:var(--primary)}
+.lp-sub{text-align:center;color:#777;font-size:.92rem;margin-bottom:48px}
+.lp-lead{font-size:1.05rem;line-height:1.9;text-align:center;max-width:680px;margin:0 auto 48px;color:#444}
+
+/* 働く理由 */
+.reasons{background:var(--bg)}
+.reason-list{display:flex;flex-direction:column;gap:32px}
+.reason-item{display:flex;align-items:flex-start;gap:24px;background:#fff;border-radius:12px;padding:28px;box-shadow:0 2px 12px rgba(0,0,0,.06);border-left:5px solid var(--primary)}
+.reason-num{font-family:'Noto Serif JP',serif;font-size:2.5rem;color:var(--primary);opacity:.25;line-height:1;flex-shrink:0;min-width:44px}
+.reason-body h3{font-weight:700;font-size:1.05rem;color:var(--primary);margin-bottom:8px}
+.reason-body p{font-size:.92rem;color:#555;line-height:1.8}
+
+/* 社員インタビュー */
+.interview-section{background:#fff}
+.interview-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px}
+.interview-card{border-radius:12px;overflow:hidden;border:1px solid var(--border)}
+.interview-card img{width:100%;height:220px;object-fit:cover}
+.interview-card-body{padding:20px}
+.interview-name{font-weight:700;color:var(--primary);margin-bottom:4px}
+.interview-role{font-size:.82rem;color:#888;margin-bottom:12px}
+.interview-q{font-size:.88rem;font-weight:700;color:#333;margin-bottom:6px}
+.interview-a{font-size:.88rem;color:#555;line-height:1.8}
+.interview-sample{font-size:.75rem;color:#bbb;margin-top:10px}
+
+/* 1日の流れ */
+.flow-section{background:var(--bg)}
+.flow-list{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.flow-item{background:#fff;border-radius:10px;padding:20px;border-top:4px solid var(--primary);text-align:center}
+.flow-time{font-family:'Noto Serif JP',serif;font-size:1.3rem;color:var(--primary);font-weight:700;margin-bottom:8px}
+.flow-title{font-weight:700;font-size:.9rem;margin-bottom:4px}
+.flow-desc{font-size:.83rem;color:#666;line-height:1.7}
+
+/* FAQ */
+.faq-section{background:#fff}
+.faq-list{display:flex;flex-direction:column;gap:12px}
+.faq-item{background:var(--bg);border-radius:8px;border:1px solid var(--border);overflow:hidden}
+.faq-q{display:flex;align-items:center;gap:12px;padding:16px 20px;cursor:pointer;font-weight:700;font-size:.93rem}
+.faq-q .q-badge{background:var(--primary);color:#fff;font-size:.78rem;padding:3px 10px;border-radius:4px;flex-shrink:0}
+.faq-a{padding:0 20px 16px;font-size:.88rem;color:#555;line-height:1.8;display:none}
+.faq-item.open .faq-a{display:block}
+.faq-arrow{margin-left:auto;transition:transform .3s}
+.faq-item.open .faq-arrow{transform:rotate(180deg)}
+
+/* 募集要項 */
+.req-section{background:var(--bg)}
+.req-table{width:100%;border-collapse:collapse;font-size:.93rem;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.05)}
+.req-table tr{border-bottom:1px solid #f5ece6}
+.req-table th{background:#FDF0E8;color:var(--primary-dark);font-weight:700;padding:14px 20px;width:160px;text-align:left;vertical-align:top}
+.req-table td{padding:14px 20px;color:#444}
+.tag2{display:inline-block;background:#fff3ed;color:var(--primary);border:1px solid var(--border);font-size:.77rem;padding:3px 10px;border-radius:12px;margin:2px}
+
+/* CTA中間 */
+.mid-cta{background:linear-gradient(135deg,var(--primary) 0%,#E8724B 100%);padding:48px 20px;text-align:center;color:#fff}
+.mid-cta h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.2rem,3.5vw,1.7rem);margin-bottom:12px}
+.mid-cta p{font-size:.93rem;color:rgba(255,255,255,.85);margin-bottom:24px}
+.mid-cta a{display:inline-block;background:var(--accent);color:#333;font-weight:700;padding:14px 44px;border-radius:40px;font-size:1rem;transition:all .2s}
+.mid-cta a:hover{transform:translateY(-2px)}
+
+/* 先輩 */
+.voice-section2{background:#fff}
+.voice-grid2{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.voice-card2{border-radius:10px;border:1px solid var(--border);padding:20px;display:flex;flex-direction:column;gap:12px}
+.voice-top{display:flex;align-items:center;gap:12px}
+.voice-top img{width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid var(--accent)}
+.voice-top .vname{font-weight:700;font-size:.9rem}
+.voice-top .vrole{font-size:.78rem;color:#888}
+.voice-card2 p{font-size:.88rem;color:#555;line-height:1.8;flex:1}
+.voice-note{font-size:.73rem;color:#bbb;text-align:right}
+
+/* 最終CTA */
+.final-cta{background:var(--primary);padding:72px 20px;text-align:center;color:#fff}
+.final-cta h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,4vw,2rem);margin-bottom:12px}
+.final-cta p{font-size:.95rem;color:rgba(255,255,255,.85);margin-bottom:32px}
+.final-cta a{display:inline-block;background:var(--accent);color:#333;font-weight:700;padding:18px 60px;border-radius:40px;font-size:1.1rem;box-shadow:0 4px 16px rgba(0,0,0,.25)}
+.final-cta a:hover{transform:translateY(-2px)}
+
+/* スマホ固定CTA */
+.fixed-cta{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--primary);padding:12px 20px;z-index:200;text-align:center}
+.fixed-cta a{display:block;background:var(--accent);color:#333;font-weight:700;padding:13px;border-radius:8px;font-size:1rem}
+
+footer{background:#1a0a00;color:#ccc;text-align:center;padding:36px 20px;font-size:.85rem}
+footer .company{color:#fff;font-weight:700;font-size:1rem;margin-bottom:6px}
+footer p{margin:3px 0}
+
+@media(max-width:768px){
+  nav.pc-nav{display:none}
+  .hamburger{display:flex}
+  .numbers-inner{gap:0}
+  .num-item{flex:1 1 45%;border-bottom:1px solid rgba(255,255,255,.2)}
+  .num-item:last-child{border-bottom:none}
+  .interview-grid{grid-template-columns:1fr}
+  .flow-list{grid-template-columns:1fr}
+  .voice-grid2{grid-template-columns:1fr}
+  .req-table th,.req-table td{display:block;width:100%}
+  .req-table th{border-bottom:none;padding-bottom:4px}
+  .req-table td{padding-top:4px}
+  .reason-item{flex-direction:column;gap:8px}
+  .fixed-cta{display:block}
+  body{padding-bottom:64px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo-lp">アエベ<small>古民家イタリアン 採用サイト</small></div>
+    <nav class="pc-nav">
+      <a href="#reasons">働く理由</a>
+      <a href="#faq">FAQ</a>
+      <a href="#requirements">募集要項</a>
+      <a href="#apply" class="nav-cta">応募する</a>
+    </nav>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#reasons" onclick="closeMenu()">働く理由</a>
+    <a href="#faq" onclick="closeMenu()">FAQ</a>
+    <a href="#requirements" onclick="closeMenu()">募集要項</a>
+    <a href="#apply" onclick="closeMenu()">応募する</a>
+  </div>
+</header>
+
+<!-- ヒーロー -->
+<section class="hero-lp">
+  <div class="hero-lp-inner">
+    <div class="pill-row">
+      <span class="pill">正社員</span>
+      <span class="pill">ホールスタッフ・調理補助</span>
+      <span class="pill">未経験歓迎</span>
+      <span class="pill">月給22万〜</span>
+    </div>
+    <h1><em>国登録有形文化財</em>の古民家で<br>「食」と「場所」に関わる仕事</h1>
+    <p>千葉県印西市の古民家イタリアン「アエベ」。<br>他にはない環境で、あなたのホスピタリティを育ててみませんか。</p>
+    <a href="#apply" class="hero-cta">まず採用情報を見てみる</a>
+    <p class="hero-note">▼ まずは詳細をスクロールしてご確認ください</p>
+  </div>
+</section>
+
+<!-- 数字 -->
+<div class="numbers-section">
+  <div class="numbers-inner">
+    <div class="num-item">
+      <span class="num-value">22〜30万</span>
+      <span class="num-label">月給</span>
+    </div>
+    <div class="num-item">
+      <span class="num-value">108日</span>
+      <span class="num-label">年間休日</span>
+    </div>
+    <div class="num-item">
+      <span class="num-value">週2日</span>
+      <span class="num-label">定休（火・水）</span>
+    </div>
+    <div class="num-item">
+      <span class="num-value">3分</span>
+      <span class="num-label">木下駅から徒歩</span>
+    </div>
+  </div>
+  <p class="numbers-sample">※ここはサンプルです。実際には御社の情報に差し替えます</p>
+</div>
+
+<!-- リード -->
+<section style="padding:60px 20px;background:#fff">
+  <div class="section-inner">
+    <p class="lp-lead">この職場の良さを、もっと知ってほしい。<br><strong>国登録有形文化財での仕事</strong>という、なかなか出会えない魅力があります。<br>まずは、ここで働くイメージをふくらませてみてください。</p>
+  </div>
+</section>
+
+<!-- 働く理由 -->
+<section class="reasons" id="reasons">
+  <div class="section-inner">
+    <h2 class="lp-title">ここで働く理由</h2>
+    <p class="lp-sub">一般的な飲食店では味わえない価値があります</p>
+    <div class="reason-list">
+      <div class="reason-item">
+        <div class="reason-num">01</div>
+        <div class="reason-body">
+          <h3>「古民家×イタリアン」という稀少な職場</h3>
+          <p>国登録有形文化財「武蔵屋」という歴史的建築物の中で、イタリア料理を提供する飲食店は全国でも稀です。「あそこで働いている」と話すだけで会話が生まれる、誇りある職場です。モノを丁寧に扱うことを大切にする文化が息づいています。</p>
+        </div>
+      </div>
+      <div class="reason-item">
+        <div class="reason-num">02</div>
+        <div class="reason-body">
+          <h3>未経験スタート・正社員で月給22万〜</h3>
+          <p>飲食経験・学歴・資格は一切不問。正社員として月給22万〜30万円からスタートできます。昇給制度（実績：月最大5,000円）と賞与制度もあり。将来イタリア料理を学びたい・飲食店を開きたいという方にも、現場経験を積める環境です。</p>
+        </div>
+      </div>
+      <div class="reason-item">
+        <div class="reason-num">03</div>
+        <div class="reason-body">
+          <h3>週2日の定休でメリハリのある働き方</h3>
+          <p>火曜・水曜が定休（週休2日制）。シフト制のため勤務曜日はご相談できます。年間休日108日・通勤手当実費支給・マイカー通勤可と、働きやすい環境を整えています。採用後は必要な保険にも加入します（詳細は面接でご確認ください）。</p>
+        </div>
+      </div>
+    </div>
+    <p style="font-size:.8rem;color:#aaa;margin-top:16px;text-align:right">※ここはサンプルです。実際には御社の情報に差し替えます</p>
+  </div>
+</section>
+
+<!-- CTA中間1 -->
+<div class="mid-cta">
+  <h2>まずは気軽に話を聞いてみませんか？</h2>
+  <p>応募するか迷っている段階でも大丈夫です。ご質問だけでも歓迎します。</p>
+  <a href="#apply">応募・問い合わせへ</a>
+</div>
+
+<!-- 社員インタビュー -->
+<section class="interview-section" id="interview">
+  <div class="section-inner">
+    <h2 class="lp-title">スタッフインタビュー</h2>
+    <p class="lp-sub">実際に働くメンバーの本音を聞きました</p>
+    <div class="interview-grid">
+      <div class="interview-card">
+        <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=640&h=380&fit=crop&crop=faces&q=80" alt="スタッフD（仮名）">
+        <!-- ※ここはサンプルです。実際には御社スタッフの写真に差し替えます -->
+        <div class="interview-card-body">
+          <div class="interview-name">Dさん（仮名）</div>
+          <div class="interview-role">ホールスタッフ ／ 入社3年</div>
+          <div class="interview-q">Q. この店を選んだ理由は？</div>
+          <div class="interview-a">「古民家という言葉に惹かれました。実際に来てみたら建物の雰囲気が素晴らしくて、すぐに『ここで働きたい』と思いました。」</div>
+          <div class="interview-sample">※ここはサンプルです。実際には御社スタッフのインタビューに差し替えます</div>
+        </div>
+      </div>
+      <div class="interview-card">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=640&h=380&fit=crop&crop=faces&q=80" alt="スタッフE（仮名）">
+        <!-- ※ここはサンプルです。実際には御社スタッフの写真に差し替えます -->
+        <div class="interview-card-body">
+          <div class="interview-name">Eさん（仮名）</div>
+          <div class="interview-role">調理補助 ／ 入社2年</div>
+          <div class="interview-q">Q. 入社してよかったことは？</div>
+          <div class="interview-a">「ホールだけじゃなく調理補助もできるので、食のことを幅広く学べます。少人数で和気あいあいとした雰囲気が気に入っています。」</div>
+          <div class="interview-sample">※ここはサンプルです。実際には御社スタッフのインタビューに差し替えます</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section class="flow-section" id="flow">
+  <div class="section-inner">
+    <h2 class="lp-title">1日の流れ</h2>
+    <p class="lp-sub">典型的なシフトの一日をご紹介します</p>
+    <div class="flow-list">
+      <div class="flow-item">
+        <div class="flow-time">10:45</div>
+        <div class="flow-title">出勤・準備</div>
+        <div class="flow-desc">制服に着替え、テーブルセッティングと開店準備。</div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-time">11:00</div>
+        <div class="flow-title">開店・ランチ</div>
+        <div class="flow-desc">接客・配膳・ドリンク提供など。古民家の空間を楽しんでいただきます。</div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-time">14:00</div>
+        <div class="flow-title">休憩</div>
+        <div class="flow-desc">60分の休憩。まかない食事でリフレッシュ。</div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-time">16:00</div>
+        <div class="flow-title">ディナー準備</div>
+        <div class="flow-desc">テーブルリセット・食材補充。調理補助もあり。</div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-time">17:00</div>
+        <div class="flow-title">ディナー営業</div>
+        <div class="flow-desc">コース料理のお客様をゆったり丁寧にご対応。</div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-time">20:00</div>
+        <div class="flow-title">閉店・退勤</div>
+        <div class="flow-desc">清掃・片付け後に退勤。次の日の準備メモを残すことも。</div>
+      </div>
+    </div>
+    <p style="font-size:.8rem;color:#aaa;margin-top:16px;text-align:right">※ここはサンプルです。実際には御社の流れに差し替えます</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="section-inner">
+    <h2 class="lp-title">よくある質問</h2>
+    <p class="lp-sub">応募前のよくある疑問にお答えします</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="q-badge">Q</span>
+          飲食未経験でも大丈夫ですか？
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">はい、未経験の方も歓迎です。接客や料理に興味があれば十分です。先輩スタッフがサポートします。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="q-badge">Q</span>
+          社会保険について詳しく知りたいです
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">採用後に必要な保険（労災保険ほか）へ加入します。具体的な加入内容や時期については、面接の場でご確認いただけます。気になる点はお気軽にお問い合わせください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="q-badge">Q</span>
+          シフトはどうやって決まりますか？
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">シフト制で、ご希望を考慮しながら相談して決めます。定休日は火曜・水曜の週2日制です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="q-badge">Q</span>
+          「国登録有形文化財」って何ですか？
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">国が文化的・歴史的に価値があると認めた建物です。「武蔵屋」という古民家建築がその対象で、中でイタリア料理を提供しています。歴史ある空間での仕事が楽しめます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="q-badge">Q</span>
+          選考の流れを教えてください
+          <span class="faq-arrow">▼</span>
+        </div>
+        <div class="faq-a">書類選考はありません。面接1回（履歴書・職歴書を持参）、面接後7日以内に電話でご連絡します。ハローワークの紹介状が必要です。</div>
+      </div>
+    </div>
+    <p style="font-size:.8rem;color:#aaa;margin-top:16px;text-align:right">※ここはサンプルです。実際には御社のFAQに差し替えます</p>
+  </div>
+</section>
+
+<!-- CTA中間2 -->
+<div class="mid-cta">
+  <h2>少しでも気になったら、まずは見るだけでOK</h2>
+  <p>プレッシャーなく、お気軽にご連絡ください。</p>
+  <a href="#apply">応募・お問い合わせはこちら</a>
+</div>
+
+<!-- 先輩メッセージ -->
+<section class="voice-section2" id="voices">
+  <div class="section-inner">
+    <h2 class="lp-title">先輩からのメッセージ</h2>
+    <p class="lp-sub">実際に働くメンバーの声です</p>
+    <div class="voice-grid2">
+      <div class="voice-card2">
+        <div class="voice-top">
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&crop=faces&q=80" alt="Fさん">
+          <div><div class="vname">Fさん（仮名）</div><div class="vrole">ホールスタッフ・入社2年</div></div>
+        </div>
+        <p>「最初は不安でしたが、先輩がとても丁寧に教えてくれました。古民家の空間でお客様が笑顔になる瞬間がやりがいです。」</p>
+        <div class="voice-note">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</div>
+      </div>
+      <div class="voice-card2">
+        <div class="voice-top">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=faces&q=80" alt="Gさん">
+          <div><div class="vname">Gさん（仮名）</div><div class="vrole">調理補助・入社3年</div></div>
+        </div>
+        <p>「食に携わる仕事がしたくて選びました。少人数のアットホームな職場で、相談しやすい環境が気に入っています。」</p>
+        <div class="voice-note">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</div>
+      </div>
+      <div class="voice-card2">
+        <div class="voice-top">
+          <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=faces&q=80" alt="Hさん">
+          <div><div class="vname">Hさん（仮名）</div><div class="vrole">ホールスタッフ・入社1年</div></div>
+        </div>
+        <p>「シフト制で休みが取りやすいのが嬉しいです。週2日の定休がしっかりあるので、メリハリをつけて働けています。」</p>
+        <div class="voice-note">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="req-section" id="requirements">
+  <div class="section-inner">
+    <h2 class="lp-title">募集要項</h2>
+    <p class="lp-sub">詳細はお気軽にお問い合わせください</p>
+    <table class="req-table">
+      <tr><th>職種</th><td>ホールスタッフ・調理補助</td></tr>
+      <tr><th>仕事内容</th><td>料理の配膳・ドリンク提供・会計・清掃などホール業務全般。状況に応じて調理補助も担当します。</td></tr>
+      <tr><th>雇用形態</th><td>正社員（試用期間1ヶ月・同条件）</td></tr>
+      <tr><th>給与</th><td>月給 220,000円〜300,000円　昇給あり（実績：月最大5,000円）　賞与あり</td></tr>
+      <tr><th>就業時間</th><td>11:00〜20:00（シフト制）　休憩60分</td></tr>
+      <tr><th>休日</th><td>火曜・水曜（週休2日）　年間休日108日　年末年始休暇あり</td></tr>
+      <tr><th>交通・勤務地</th><td>千葉県印西市木下1645　JR成田線 木下駅 徒歩3分<br>マイカー通勤可・駐車場あり　通勤手当 実費支給（上限月2万円）</td></tr>
+      <tr><th>応募資格</th><td>
+        <span class="tag2">経験不問</span>
+        <span class="tag2">学歴不問</span>
+        <span class="tag2">資格不問</span>
+        <span class="tag2">59歳以下</span>
+      </td></tr>
+      <tr><th>保険・待遇</th><td>採用後に必要な保険へ加入　制服貸与あり　屋内禁煙</td></tr>
+      <tr><th>選考</th><td>書類選考なし。面接1回（履歴書・職歴書持参）。ハローワーク紹介状が必要です。</td></tr>
+    </table>
+    <p style="font-size:.8rem;color:#aaa;margin-top:12px;text-align:right">※ここはサンプルです。実際には御社の募集要項に差し替えます</p>
+  </div>
+</section>
+
+<!-- 最終CTA -->
+<section class="final-cta" id="apply">
+  <div class="section-inner">
+    <h2>古民家イタリアン「アエベ」で<br>一緒に働きませんか？</h2>
+    <p>まずはハローワーク経由でご応募いただくか、<br>メールでお気軽にお問い合わせください。</p>
+    <a href="mailto:aebe.inzai@gmail.com">応募・お問い合わせはこちら</a>
+  </div>
+</section>
+
+<footer>
+  <div class="company">アエベ</div>
+  <p>〒270-1326 千葉県印西市木下1645</p>
+  <p>E-mail: aebe.inzai@gmail.com</p>
+</footer>
+
+<!-- スマホ固定CTA -->
+<div class="fixed-cta">
+  <a href="mailto:aebe.inzai@gmail.com">応募・お問い合わせ</a>
+</div>
+
+<script>
+function toggleMenu(){
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+function toggleFaq(el){
+  el.parentElement.classList.toggle('open');
+}
+</script>
+</body>
+</html>

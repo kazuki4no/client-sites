@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>スタッフ募集｜企業組合 とも</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#333;background:#fff}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+:root{
+  --forest:#1b4332;
+  --green:#2d6a4f;
+  --green-mid:#40916c;
+  --green-light:#d8f3dc;
+  --accent:#f4a261;
+  --warm:#fdf6ec;
+  --text:#2a2a2a;
+  --gray:#666;
+  --border:#ddd;
+}
+
+/* ヘッダー */
+header{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 24px;transition:background .3s}
+header.scrolled{background:var(--forest);box-shadow:0 2px 16px rgba(0,0,0,.3)}
+.header-inner{max-width:1200px;margin:0 auto;height:68px;display:flex;align-items:center;justify-content:space-between}
+.logo{color:#fff;font-family:'Noto Serif JP',serif;font-size:1.05rem;font-weight:700;text-shadow:0 1px 4px rgba(0,0,0,.4)}
+.logo span{font-size:.7rem;font-weight:400;opacity:.8;display:block;font-family:'Noto Sans JP',sans-serif}
+nav.pc-nav{display:flex;gap:24px}
+nav.pc-nav a{font-size:.85rem;color:rgba(255,255,255,.9);transition:color .2s;text-shadow:0 1px 3px rgba(0,0,0,.3)}
+nav.pc-nav a:hover{color:#fff}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px}
+.nav-mobile{display:none;position:fixed;top:68px;left:0;right:0;background:var(--forest);z-index:199;flex-direction:column}
+.nav-mobile.open{display:flex}
+.nav-mobile a{padding:14px 24px;border-bottom:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.9);font-size:.9rem}
+@media(max-width:768px){nav.pc-nav{display:none}.hamburger{display:flex}}
+
+/* FVバナー */
+.hero{position:relative;min-height:80vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center}
+/* パターンB: 公式HP・採用ページなし。社員・職場の写真に差し替えると応募率が上がります */
+.hero-overlay{position:absolute;inset:0;background:rgba(15,40,25,0.62)}
+.hero-content{position:relative;z-index:1;text-align:center;color:#fff;padding:80px 24px 60px;max-width:860px;margin:0 auto}
+.hero-pill{display:inline-flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-bottom:28px}
+.hero-pill span{display:inline-block;background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4);color:#fff;font-size:.75rem;padding:5px 14px;border-radius:20px;backdrop-filter:blur(4px)}
+.hero h1{font-family:'Noto Serif JP',serif;font-size:clamp(2rem,7vw,4rem);font-weight:700;line-height:1.3;margin-bottom:20px;text-shadow:0 2px 8px rgba(0,0,0,.3)}
+.hero h1 em{font-style:normal;color:var(--accent)}
+.hero-lead{font-size:clamp(.9rem,2.5vw,1.1rem);line-height:1.9;opacity:.92;margin-bottom:36px;text-shadow:0 1px 4px rgba(0,0,0,.2)}
+.hero-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-accent{display:inline-block;background:var(--accent);color:#fff;padding:16px 44px;border-radius:8px;font-size:1rem;font-weight:700;transition:background .2s;box-shadow:0 4px 20px rgba(244,162,97,.4)}
+.btn-accent:hover{background:#e08848}
+.btn-ghost{display:inline-block;border:2px solid rgba(255,255,255,.7);color:#fff;padding:14px 36px;border-radius:8px;font-size:1rem;transition:background .2s}
+.btn-ghost:hover{background:rgba(255,255,255,.1)}
+
+/* スクロール矢印 */
+.scroll-arrow{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:1;animation:bounce 1.6s infinite}
+.scroll-arrow svg{width:28px;height:28px;fill:none;stroke:#fff;stroke-width:2;opacity:.7}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+/* セクション共通 */
+section{padding:88px 24px}
+.inner{max-width:1100px;margin:0 auto}
+.label-tag{display:inline-block;font-size:.72rem;font-weight:700;color:var(--green);letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px;padding:3px 12px;border-left:3px solid var(--accent);background:var(--green-light)}
+.sec-title{font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;color:var(--forest);margin-bottom:8px;font-family:'Noto Serif JP',serif}
+.sec-sub{color:var(--gray);font-size:.88rem;margin-bottom:52px;line-height:1.6}
+
+/* 働く魅力 グリッド */
+.features{background:var(--warm)}
+.features-bento{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto;gap:20px}
+.feature-card{background:#fff;border-radius:16px;padding:32px 24px;box-shadow:0 2px 16px rgba(0,0,0,.06)}
+.feature-card.wide{grid-column:1/3}
+.feature-card.tall{grid-row:1/3;display:flex;flex-direction:column;justify-content:space-between}
+.feature-icon{font-size:2.2rem;margin-bottom:14px}
+.feature-card h3{font-size:1rem;font-weight:700;color:var(--forest);margin-bottom:10px}
+.feature-card p{font-size:.87rem;line-height:1.7;color:var(--gray)}
+.feature-img{border-radius:10px;overflow:hidden;margin-top:20px;flex:1;min-height:180px}
+.feature-img img{width:100%;height:100%;object-fit:cover}
+@media(max-width:768px){
+  .features-bento{grid-template-columns:1fr}
+  .feature-card.wide,.feature-card.tall{grid-column:auto;grid-row:auto}
+}
+
+/* 採用情報カード */
+.job-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+.job-card{background:var(--green-light);border-radius:12px;padding:28px 24px}
+.job-card h3{font-size:.85rem;font-weight:700;color:var(--forest);margin-bottom:10px;border-bottom:1px solid var(--green-mid);padding-bottom:8px}
+.job-card p{font-size:.88rem;line-height:1.7;color:var(--text)}
+@media(max-width:600px){.job-cards{grid-template-columns:1fr}}
+
+/* フル幅テーブル */
+.job-table{width:100%;border-collapse:collapse;margin-top:28px}
+.job-table tr{border-bottom:1px solid var(--border)}
+.job-table th{width:150px;padding:14px 18px;background:var(--green-light);font-size:.87rem;font-weight:700;color:var(--forest);text-align:left;vertical-align:top}
+.job-table td{padding:14px 18px;font-size:.87rem;line-height:1.7}
+@media(max-width:600px){
+  .job-table th,.job-table td{display:block;width:100%}
+  .job-table th{padding:10px 14px;border-bottom:none}
+  .job-table td{padding:10px 14px}
+}
+
+/* 1日の流れ */
+.tl-section{background:var(--forest);color:#fff}
+.tl-section .sec-title{color:#fff}
+.tl-section .sec-sub{color:rgba(255,255,255,.7)}
+.tl-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+.tl-steps::before{display:none}
+.tl-step{padding:20px 12px;text-align:center;position:relative}
+.tl-dot{width:20px;height:20px;background:var(--accent);border-radius:50%;margin:0 auto 14px;border:3px solid var(--forest);box-shadow:0 0 0 3px var(--accent)}
+.tl-time{font-size:.75rem;font-weight:700;color:var(--accent);margin-bottom:6px}
+.tl-step-title{font-size:.85rem;font-weight:700;margin-bottom:6px}
+.tl-step-text{font-size:.78rem;line-height:1.6;color:rgba(255,255,255,.75)}
+@media(max-width:768px){
+  .tl-steps{grid-template-columns:repeat(2,1fr)}
+  .tl-steps::before{display:none}
+}
+@media(max-width:480px){.tl-steps{grid-template-columns:1fr}}
+
+/* 先輩の声 */
+.voices-masonry{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.voice-card{background:var(--warm);border-radius:14px;padding:24px;position:relative;overflow:hidden}
+.voice-card::before{content:'"';position:absolute;top:-16px;right:16px;font-size:7rem;color:var(--green-light);font-family:'Noto Serif JP',serif;line-height:1;z-index:0}
+.voice-head{display:flex;gap:14px;align-items:center;margin-bottom:16px;position:relative;z-index:1}
+.voice-img{width:60px;height:60px;border-radius:50%;object-fit:cover}
+.voice-name{font-size:.85rem;font-weight:700;color:var(--forest)}
+.voice-role{font-size:.73rem;color:var(--green)}
+.voice-text{font-size:.85rem;line-height:1.75;color:var(--text);position:relative;z-index:1}
+.voice-sample{font-size:.7rem;color:#bbb;margin-top:10px;display:block}
+@media(max-width:768px){.voices-masonry{grid-template-columns:1fr}}
+
+/* FAQ */
+.faq-section{background:var(--forest);color:#fff;padding:88px 24px}
+.faq-section .sec-title{color:#fff}
+.faq-section .sec-sub{color:rgba(255,255,255,.7)}
+.faq-inner{max-width:760px;margin:0 auto}
+.faq-item{border-bottom:1px solid rgba(255,255,255,.15)}
+.faq-q{display:flex;gap:14px;align-items:flex-start;padding:18px 0;cursor:pointer;font-weight:700;font-size:.92rem;color:#fff}
+.faq-badge{min-width:28px;height:28px;background:var(--accent);color:#fff;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.8rem;font-weight:700;flex-shrink:0}
+.faq-a{padding:0 0 18px 42px;font-size:.87rem;line-height:1.75;color:rgba(255,255,255,.8);display:none}
+.faq-a.open{display:block}
+
+/* CTA */
+.cta-final{position:relative;min-height:60vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.cta-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1600&h=700&fit=crop&q=80');background-size:cover;background-position:center}
+/* パターンB: 公式HP・採用ページなし。社員・職場の写真に差し替えると効果的です */
+.cta-overlay{position:absolute;inset:0;background:rgba(10,30,18,.65)}
+.cta-content{position:relative;z-index:1;text-align:center;color:#fff;padding:60px 24px;max-width:680px;margin:0 auto}
+.cta-content h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.6rem,5vw,2.8rem);font-weight:700;margin-bottom:16px;text-shadow:0 2px 8px rgba(0,0,0,.3)}
+.cta-content p{font-size:clamp(.9rem,2.5vw,1.05rem);opacity:.92;line-height:1.85;margin-bottom:36px}
+.cta-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-filled{display:inline-block;background:var(--accent);color:#fff;padding:16px 44px;border-radius:8px;font-weight:700;font-size:1rem;transition:background .2s;box-shadow:0 4px 20px rgba(244,162,97,.5)}
+.btn-filled:hover{background:#e08848}
+.btn-ring{display:inline-block;border:2px solid rgba(255,255,255,.75);color:#fff;padding:14px 36px;border-radius:8px;font-weight:700;font-size:1rem}
+
+/* フッター */
+footer{background:#0a1e10;color:rgba(255,255,255,.6);text-align:center;padding:44px 24px;font-size:.83rem;line-height:1.85}
+footer strong{color:#fff;display:block;margin-bottom:8px;font-size:.92rem}
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="header-inner">
+    <div class="logo">企業組合 とも<span>障がい者福祉サービス｜酒々井町</span></div>
+    <nav class="pc-nav">
+      <a href="#features">働く魅力</a>
+      <a href="#job">募集要項</a>
+      <a href="#voices">先輩の声</a>
+      <a href="#faq">FAQ</a>
+      <a href="#cta">応募する</a>
+    </nav>
+    <button class="hamburger" aria-label="メニュー" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="nav-mobile" id="mobileNav">
+    <a href="#features" onclick="toggleMenu()">働く魅力</a>
+    <a href="#job" onclick="toggleMenu()">募集要項</a>
+    <a href="#voices" onclick="toggleMenu()">先輩の声</a>
+    <a href="#faq" onclick="toggleMenu()">FAQ</a>
+    <a href="#cta" onclick="toggleMenu()">応募する</a>
+  </nav>
+</header>
+
+<!-- FVバナー -->
+<section class="hero">
+  <!-- パターンB: 公式HP・採用ページなし。社員・職場の写真に差し替えると応募率が上がります -->
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-pill">
+      <span>パートスタッフ募集</span>
+      <span>週1日〜OK</span>
+      <span>経験不問</span>
+      <span>9:00〜15:00</span>
+    </div>
+    <h1>人と人とが<br>支え合う場所で、<br><em>働きませんか</em></h1>
+    <p class="hero-lead">企業組合 ともは、千葉県酒々井町で障がいのある方が自分らしく暮らせる場をつくっています。事務スタッフとして、一緒に地域の福祉を支えませんか。</p>
+    <div class="hero-btns">
+      <a href="#cta" class="btn-accent">応募・お問い合わせ</a>
+      <a href="#job" class="btn-ghost">募集要項を見る</a>
+    </div>
+  </div>
+  <div class="scroll-arrow">
+    <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+  </div>
+</section>
+
+<!-- 働く魅力 -->
+<section class="features" id="features">
+  <div class="inner">
+    <span class="label-tag">Why Choose Us</span>
+    <h2 class="sec-title">働く魅力</h2>
+    <p class="sec-sub">無理なく、長く続けられる職場があります</p>
+    <div class="features-bento">
+      <div class="feature-card tall">
+        <div>
+          <div class="feature-icon">📅</div>
+          <h3>週1日〜・時間相談OK</h3>
+          <p>就業時間（9:00〜15:00）も勤務日数（週1〜5日）も、あなたのペースに合わせて相談可能。家事・育児・介護と両立したい方を応援しています。</p>
+        </div>
+        <div class="feature-img">
+          <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?w=640&h=380&fit=crop&q=80" alt="職場イメージ（サンプル）">
+        </div>
+        <p style="font-size:.7rem;color:#bbb;margin-top:10px">※ここはサンプルです。実際には御社の写真に差し替えます</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌱</div>
+        <h3>経験・学歴不問</h3>
+        <p>福祉の知識がなくても大丈夫。ワード・エクセルの基本操作ができれば、入社後に先輩がサポートします。ブランクがある方も歓迎。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🚗</div>
+        <h3>マイカー通勤OK・AT限定可</h3>
+        <p>駐車場完備・通勤手当実費支給（月2万円上限）。AT限定の普通免許があれば問題ありません。</p>
+      </div>
+      <div class="feature-card wide">
+        <div class="feature-icon">💚</div>
+        <h3>地域の誰かを支えるやりがい</h3>
+        <p>障がいのある方が地域で笑顔でいられる場の支援に、あなたの事務サポートが直接つながります。ホームページがなかったこの職場ですが、一人ひとりの利用者さんと関わるスタッフ全員が「ここで働いてよかった」と感じています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section id="job">
+  <div class="inner">
+    <span class="label-tag">Job Details</span>
+    <h2 class="sec-title">募集要項</h2>
+    <p class="sec-sub">詳しい内容はお気軽にお問い合わせください</p>
+    <div class="job-cards">
+      <div class="job-card">
+        <h3>就業時間・日数</h3>
+        <p>9:00〜15:00（相談可）<br>週1日〜週5日（相談可）<br>残業：月平均4時間程度</p>
+      </div>
+      <div class="job-card">
+        <h3>待遇・環境</h3>
+        <p>時給1,140円〜1,300円<br>通勤手当実費支給（月2万円上限）<br>マイカー通勤可・駐車場あり・昇給あり</p>
+      </div>
+      <div class="job-card">
+        <h3>休日</h3>
+        <p>土曜・日曜・祝日<br>（月1回土曜出勤あり）<br>年末年始6日</p>
+      </div>
+      <div class="job-card">
+        <h3>応募資格</h3>
+        <p>普通自動車運転免許（AT限定可）<br>ワード・エクセル基本操作<br>経験・学歴不問</p>
+      </div>
+    </div>
+    <table class="job-table">
+      <tr><th>職種</th><td>福祉事業所における事務全般</td></tr>
+      <tr><th>仕事内容</th><td>書類の準備・経理帳簿記帳・給与関係事務・来客電話応対・社用車での納品物運搬・利用者様の送迎（週3日程度）など</td></tr>
+      <tr><th>雇用形態</th><td>パート（正社員登用制度あり）</td></tr>
+      <tr><th>勤務地</th><td>千葉県印旛郡酒々井町本佐倉430番地（JR酒々井駅より車10分）</td></tr>
+      <tr><th>採用人数</th><td>2名</td></tr>
+    </table>
+    <p style="font-size:.75rem;color:#aaa;margin-top:10px;text-align:right">※ここはサンプルです。実際には御社の最新の募集要項に差し替えます</p>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section class="tl-section">
+  <div class="inner">
+    <span class="label-tag" style="background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);border-left-color:var(--accent)">Daily Flow</span>
+    <h2 class="sec-title">スタッフの1日</h2>
+    <p class="sec-sub">9:00〜15:00のシフト例（※ここはサンプルです。実際には御社の1日の流れに差し替えます）</p>
+    <!-- ここはサンプルです。実際には御社の1日の流れに差し替えてください -->
+    <div class="tl-steps">
+      <div class="tl-step">
+        <div class="tl-dot"></div>
+        <div class="tl-time">9:00</div>
+        <div class="tl-step-title">出勤・情報共有</div>
+        <div class="tl-step-text">メールチェックとスタッフ間のミーティングで1日をスタート</div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-dot"></div>
+        <div class="tl-time">9:30</div>
+        <div class="tl-step-title">書類作成・経理</div>
+        <div class="tl-step-text">書類の準備、帳簿記帳、給与関係の入力作業</div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-dot"></div>
+        <div class="tl-time">11:00</div>
+        <div class="tl-step-title">来客・電話対応</div>
+        <div class="tl-step-text">来客・電話応対、社用車での納品物の運搬も担当</div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-dot"></div>
+        <div class="tl-time">12:00</div>
+        <div class="tl-step-title">昼休憩（60分）</div>
+        <div class="tl-step-text">スタッフと和やかにランチ</div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-dot"></div>
+        <div class="tl-time">13:00</div>
+        <div class="tl-step-title">利用者様の送迎</div>
+        <div class="tl-step-text">社用車で送迎（週3日程度・AT限定可）</div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-dot"></div>
+        <div class="tl-time">14:30</div>
+        <div class="tl-step-title">翌日準備・申し送り</div>
+        <div class="tl-step-text">書類を整えてスタッフへ申し送り</div>
+      </div>
+      <div class="tl-step">
+        <div class="tl-dot"></div>
+        <div class="tl-time">15:00</div>
+        <div class="tl-step-title">退勤</div>
+        <div class="tl-step-text">残業は月平均4時間程度。予定が立てやすい</div>
+      </div>
+    </div>
+    <p style="font-size:.73rem;color:rgba(255,255,255,.5);text-align:center;margin-top:24px">※ここはサンプルです。実際には御社の1日の流れに差し替えます</p>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section id="voices">
+  <div class="inner">
+    <span class="label-tag">Staff Voice</span>
+    <h2 class="sec-title">先輩からのメッセージ</h2>
+    <p class="sec-sub">実際に働くスタッフの言葉（すべてサンプルです）</p>
+    <!-- ここはサンプルです。実際には御社のスタッフコメントと写真に差し替えます -->
+    <div class="voices-masonry">
+      <div class="voice-card">
+        <div class="voice-head">
+          <img class="voice-img" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=faces&q=80" alt="スタッフ（サンプル）">
+          <div><div class="voice-name">田中 さおり（仮名）</div><div class="voice-role">事務スタッフ・3年目</div></div>
+        </div>
+        <p class="voice-text">週3日・短時間でお願いしましたが、快く調整してもらえました。利用者さんの笑顔が見られる日は、本当に来てよかったと思います。</p>
+        <span class="voice-sample">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</span>
+      </div>
+      <div class="voice-card">
+        <div class="voice-head">
+          <img class="voice-img" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&crop=faces&q=80" alt="スタッフ（サンプル）">
+          <div><div class="voice-name">山田 みほ（仮名）</div><div class="voice-role">事務スタッフ・5年目</div></div>
+        </div>
+        <p class="voice-text">経理は未経験でしたが、ゆっくり教えてもらい今では一人でこなせます。少人数だからこそ、一人ひとりの役割がはっきりしていてやりがいがあります。</p>
+        <span class="voice-sample">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</span>
+      </div>
+      <div class="voice-card">
+        <div class="voice-head">
+          <img class="voice-img" src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&crop=faces&q=80" alt="スタッフ（サンプル）">
+          <div><div class="voice-name">鈴木 あかり（仮名）</div><div class="voice-role">事務スタッフ・1年目</div></div>
+        </div>
+        <p class="voice-text">「ホームページがないから情報が少なくて…」と最初は不安でしたが、実際に来てみると和やかな雰囲気でした。地域に必要な場所だと実感しています。</p>
+        <span class="voice-sample">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="inner">
+    <span class="label-tag" style="background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);border-left-color:var(--accent)">FAQ</span>
+    <h2 class="sec-title">よくある質問</h2>
+    <p class="sec-sub">応募前の疑問を解消してください</p>
+    <!-- ここはサンプルです。実際には御社のFAQに差し替えます -->
+    <div class="faq-inner">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-badge">Q</span>福祉未経験でも応募できますか？</div>
+        <div class="faq-a">はい、経験不問・学歴不問です。業務は入社後にていねいにお教えします。福祉関係の資格をお持ちの方は優遇いたします。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-badge">Q</span>週1日だけの勤務でも大丈夫ですか？</div>
+        <div class="faq-a">週1日〜週5日の範囲でご相談に応じます。ライフスタイルに合わせた働き方を歓迎しています。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-badge">Q</span>パソコンは得意ではありませんが…</div>
+        <div class="faq-a">ワード・エクセルの基本操作ができれば問題ありません。専門的なスキルは不要です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-badge">Q</span>選考の流れを教えてください。</div>
+        <div class="faq-a">書類選考なし・面接1回（随時受付）。面接後5日以内に郵送でご連絡します。当日は履歴書（写真貼付）とハローワークの紹介状をご持参ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)"><span class="faq-badge">Q</span>正社員登用はありますか？</div>
+        <div class="faq-a">正社員登用制度があります。詳細は面接時にご相談ください。</div>
+      </div>
+    </div>
+    <p style="font-size:.72rem;color:rgba(255,255,255,.4);text-align:center;margin-top:20px">※ここはサンプルです。実際には御社のFAQに差し替えます</p>
+  </div>
+</section>
+
+<!-- 最終CTA -->
+<section class="cta-final" id="cta">
+  <!-- パターンB: 公式HP・採用ページなし。社員・職場の写真に差し替えると効果的です -->
+  <div class="cta-bg"></div>
+  <div class="cta-overlay"></div>
+  <div class="cta-content">
+    <h2>一緒に、この場所を<br>つくりませんか</h2>
+    <p>週1日〜・9:00〜15:00・経験不問。<br>まずはお気軽にご連絡ください。</p>
+    <div class="cta-btns">
+      <a href="mailto:saiwai2023@outlook.jp" class="btn-filled">メールでお問い合わせ</a>
+      <a href="tel:043-420-8212" class="btn-ring">電話: 043-420-8212</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <strong>企業組合 とも</strong>
+  千葉県印旛郡酒々井町本佐倉430番地<br>
+  TEL: 043-420-8212　E-mail: saiwai2023@outlook.jp
+</footer>
+
+<script>
+window.addEventListener('scroll',function(){
+  document.getElementById('siteHeader').classList.toggle('scrolled',window.scrollY>60);
+});
+function toggleMenu(){
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+function toggleFaq(el){
+  el.nextElementSibling.classList.toggle('open');
+}
+</script>
+</body>
+</html>

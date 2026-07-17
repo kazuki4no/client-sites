@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | Next Air株式会社</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#e8ecf4;background:#0f2044}
+img{max-width:100%;height:auto;display:block}
+:root{--navy:#0f2044;--cyan:#29abe2;--light-navy:#1a3060;--pale:#e8ecf4;--gray:#8fa0c0;--accent:#ff9d3d}
+/* ナビ */
+header{position:sticky;top:0;z-index:100;background:var(--navy);border-bottom:1px solid rgba(41,171,226,.25)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{font-size:1.05rem;font-weight:700;color:#fff;text-decoration:none}
+.logo span{color:var(--cyan)}
+.pc-nav{display:flex;gap:24px;list-style:none}
+.pc-nav a{color:var(--gray);text-decoration:none;font-size:.85rem;font-weight:500;transition:color .2s}
+.pc-nav a:hover{color:var(--cyan)}
+.pc-nav .nav-cta a{background:var(--cyan);color:#fff;padding:8px 18px;border-radius:4px;font-weight:700}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;transition:.3s}
+.mobile-menu{display:none;position:fixed;inset:0;background:rgba(15,32,68,.97);z-index:200;flex-direction:column;align-items:center;justify-content:center;gap:32px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:#fff;font-size:1.1rem;text-decoration:none;font-weight:500}
+.mobile-menu .close-btn{position:absolute;top:20px;right:24px;background:none;border:none;color:#fff;font-size:1.8rem;cursor:pointer}
+/* ヒーロー */
+.hero{padding:80px 24px 60px;text-align:center;background:linear-gradient(180deg,var(--navy) 0%,#112240 100%);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(41,171,226,.15) 0%,transparent 70%);top:-200px;right:-100px;pointer-events:none}
+.hero-tag{display:inline-block;border:1px solid var(--cyan);color:var(--cyan);padding:4px 16px;border-radius:20px;font-size:.75rem;font-weight:700;letter-spacing:.08em;margin-bottom:24px}
+.hero h1{font-size:clamp(1.6rem,5vw,3rem);font-weight:900;color:#fff;line-height:1.3;margin-bottom:20px}
+.hero h1 em{color:var(--cyan);font-style:normal}
+.hero p{font-size:clamp(.88rem,1.8vw,1rem);color:var(--gray);line-height:1.8;margin-bottom:40px;max-width:680px;margin-left:auto;margin-right:auto}
+.btn-primary{display:inline-block;background:var(--cyan);color:#fff;padding:16px 44px;border-radius:4px;text-decoration:none;font-weight:700;font-size:1rem;transition:background .2s;margin-right:12px}
+.btn-primary:hover{background:#1a90c5}
+.btn-outline{display:inline-block;border:1px solid var(--gray);color:var(--gray);padding:14px 32px;border-radius:4px;text-decoration:none;font-weight:500;font-size:.9rem;transition:all .2s}
+.btn-outline:hover{border-color:var(--cyan);color:var(--cyan)}
+/* 数字バー */
+.stats-section{padding:56px 24px;background:#112240}
+.stats-inner{max-width:1100px;margin:0 auto}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;background:rgba(41,171,226,.12);border-radius:12px;overflow:hidden}
+.stat-item{background:var(--light-navy);padding:28px 20px;text-align:center}
+.stat-num{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:900;color:var(--cyan);line-height:1}
+.stat-unit{font-size:.78rem;color:var(--gray);margin-top:6px}
+.stat-label{font-size:.75rem;color:var(--gray);margin-top:4px;line-height:1.4}
+.sample-note{font-size:.7rem;color:rgba(255,255,255,.25);text-align:center;margin-top:12px}
+/* セクション共通 */
+.section{padding:72px 24px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-label{font-size:.72rem;font-weight:700;color:var(--cyan);letter-spacing:.15em;margin-bottom:8px}
+.section-title{font-size:clamp(1.3rem,3vw,1.8rem);font-weight:700;color:#fff;margin-bottom:14px;line-height:1.4}
+.section-lead{font-size:.9rem;color:var(--gray);line-height:1.75;margin-bottom:48px}
+.alt-bg{background:#112240}
+.alt-bg2{background:#0d1c38}
+/* 課題→解決 */
+.problem-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;align-items:center}
+.problem-list{list-style:none;display:flex;flex-direction:column;gap:14px}
+.problem-list li{display:flex;align-items:flex-start;gap:12px;font-size:.9rem;color:var(--gray);line-height:1.65}
+.problem-list li::before{content:'×';color:#e84040;font-weight:700;flex-shrink:0;margin-top:1px}
+.solve-list{list-style:none;display:flex;flex-direction:column;gap:14px}
+.solve-list li{display:flex;align-items:flex-start;gap:12px;font-size:.9rem;color:var(--pale);line-height:1.65}
+.solve-list li::before{content:'✓';color:var(--cyan);font-weight:700;flex-shrink:0;margin-top:1px}
+.arrow-box{text-align:center;font-size:2rem;color:var(--cyan)}
+/* 給与しくみ */
+.salary-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px}
+.salary-card{border:1px solid rgba(41,171,226,.3);border-radius:10px;padding:24px;background:rgba(41,171,226,.05)}
+.salary-card .label{font-size:.75rem;color:var(--cyan);font-weight:700;margin-bottom:10px;letter-spacing:.05em}
+.salary-card .num{font-size:clamp(1.4rem,3vw,1.9rem);font-weight:900;color:#fff;line-height:1;margin-bottom:6px}
+.salary-card .desc{font-size:.78rem;color:var(--gray);line-height:1.6}
+.salary-note{font-size:.78rem;color:var(--gray);line-height:1.7;padding:16px;background:rgba(255,255,255,.04);border-radius:8px}
+/* CTA中間 */
+.cta-mid{padding:56px 24px;background:var(--cyan);text-align:center}
+.cta-mid h2{font-size:clamp(1.2rem,3vw,1.6rem);color:#fff;font-weight:700;margin-bottom:14px}
+.cta-mid p{color:rgba(255,255,255,.88);font-size:.88rem;line-height:1.7;margin-bottom:28px}
+.btn-dark{display:inline-block;background:var(--navy);color:#fff;padding:16px 42px;border-radius:4px;text-decoration:none;font-weight:700;font-size:1rem}
+.btn-dark:hover{background:#060e20}
+/* タイムライン */
+.tl-row{display:flex;gap:0;overflow-x:auto;padding-bottom:8px}
+.tl-col{flex:1;min-width:140px;text-align:center;position:relative;padding:0 8px}
+.tl-col::after{content:'';position:absolute;top:20px;right:-1px;width:calc(100% - 40px);height:2px;background:linear-gradient(to right,var(--cyan),rgba(41,171,226,.2));z-index:0}
+.tl-col:last-child::after{display:none}
+.tl-time{font-size:.72rem;font-weight:700;color:var(--cyan);margin-bottom:6px}
+.tl-dot-h{width:12px;height:12px;background:var(--cyan);border-radius:50%;margin:0 auto 10px;position:relative;z-index:1;border:2px solid var(--navy)}
+.tl-title{font-size:.8rem;font-weight:700;color:#fff;margin-bottom:4px}
+.tl-body{font-size:.72rem;color:var(--gray);line-height:1.55}
+/* 社員インタビュー */
+.interview-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.interview-card{background:var(--light-navy);border-radius:12px;padding:28px;border:1px solid rgba(41,171,226,.15)}
+.interview-head{display:flex;gap:16px;align-items:center;margin-bottom:18px}
+.interview-head img{width:72px;height:72px;border-radius:50%;object-fit:cover;border:2px solid var(--cyan)}
+.interview-name{font-weight:700;color:#fff;font-size:.95rem}
+.interview-sub{font-size:.75rem;color:var(--cyan);margin-top:4px}
+.interview-q{font-size:.78rem;color:var(--cyan);font-weight:700;margin-bottom:6px}
+.interview-a{font-size:.85rem;color:var(--pale);line-height:1.75;margin-bottom:14px}
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:10px;max-width:800px;margin:0 auto}
+.faq-item{background:var(--light-navy);border-radius:10px;border:1px solid rgba(41,171,226,.12)}
+.faq-q{display:flex;align-items:flex-start;gap:14px;padding:18px 22px;font-weight:700;color:#fff;font-size:.88rem;cursor:pointer;user-select:none}
+.faq-q-badge{min-width:26px;height:26px;background:var(--cyan);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.78rem;font-weight:700;flex-shrink:0;margin-top:1px}
+.faq-a{padding:0 22px 18px 62px;font-size:.84rem;color:var(--gray);line-height:1.75;display:none}
+.faq-item.open .faq-a{display:block}
+/* 先輩カード */
+.voices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.voice-card{background:var(--light-navy);border-radius:10px;padding:24px 20px}
+.voice-head{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.voice-head img{width:52px;height:52px;border-radius:50%;object-fit:cover}
+.voice-name{font-weight:700;color:#fff;font-size:.88rem}
+.voice-sub{font-size:.72rem;color:var(--cyan)}
+.voice-card p{font-size:.82rem;color:var(--gray);line-height:1.7}
+.sample-note-s{font-size:.7rem;color:rgba(255,255,255,.25);margin-top:8px}
+/* CTA最終 */
+.cta-final{padding:80px 24px;text-align:center;background:linear-gradient(135deg,#112240 0%,#0f2044 100%)}
+.cta-final h2{font-size:clamp(1.3rem,3vw,1.9rem);font-weight:700;color:#fff;margin-bottom:16px;line-height:1.4}
+.cta-final p{color:var(--gray);font-size:.9rem;line-height:1.75;margin-bottom:36px}
+/* フッター */
+footer{background:#060e20;color:rgba(255,255,255,.45);text-align:center;padding:36px 24px;font-size:.78rem;line-height:1.9}
+/* スマホ固定CTA */
+.fixed-cta{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--cyan);padding:14px 24px;z-index:90;text-align:center}
+.fixed-cta a{color:#fff;font-weight:700;font-size:.9rem;text-decoration:none}
+/* レスポンシブ */
+@media(max-width:768px){
+  .pc-nav{display:none}
+  .hamburger{display:flex}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .problem-grid{grid-template-columns:1fr}
+  .arrow-box{transform:rotate(90deg)}
+  .salary-cards{grid-template-columns:1fr}
+  .interview-grid{grid-template-columns:1fr}
+  .voices-grid{grid-template-columns:1fr}
+  .tl-row{flex-direction:column;gap:20px}
+  .tl-col::after{display:none}
+  .fixed-cta{display:block}
+  body{padding-bottom:60px}
+}
+</style>
+</head>
+<body>
+
+<!-- ナビ -->
+<header>
+  <div class="nav-inner">
+    <a href="#" class="logo">Next <span>Air</span> 株式会社</a>
+    <ul class="pc-nav">
+      <li><a href="#appeal">課題と解決</a></li>
+      <li><a href="#salary">給与</a></li>
+      <li><a href="#day">1日の流れ</a></li>
+      <li><a href="#interview">社員の声</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li class="nav-cta"><a href="#entry">応募する</a></li>
+    </ul>
+    <button class="hamburger" onclick="document.querySelector('.mobile-menu').classList.add('open')" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="mobile-menu">
+  <button class="close-btn" onclick="document.querySelector('.mobile-menu').classList.remove('open')">✕</button>
+  <a href="#appeal" onclick="document.querySelector('.mobile-menu').classList.remove('open')">課題と解決</a>
+  <a href="#salary" onclick="document.querySelector('.mobile-menu').classList.remove('open')">給与のしくみ</a>
+  <a href="#day" onclick="document.querySelector('.mobile-menu').classList.remove('open')">1日の流れ</a>
+  <a href="#interview" onclick="document.querySelector('.mobile-menu').classList.remove('open')">社員の声</a>
+  <a href="#faq" onclick="document.querySelector('.mobile-menu').classList.remove('open')">FAQ</a>
+  <a href="#entry" onclick="document.querySelector('.mobile-menu').classList.remove('open')" style="color:var(--cyan)">今すぐ応募</a>
+</div>
+
+<!-- ヒーロー -->
+<div class="hero">
+  <p class="hero-tag">冷媒配管工・空調設備工 正社員募集</p>
+  <h1>資格があれば、<em>月給35万</em>を目指せる。<br>未経験でも丁寧なOJTで安心スタート。</h1>
+  <p>求人票の2行では伝わらない、Next Airの働き方をこのページで全部お見せします。<br>給与の決まり方・1日の流れ・先輩のリアルな声——気になることを全部確かめてから応募してください。</p>
+  <div>
+    <a href="#entry" class="btn-primary">今すぐ応募する</a>
+    <a href="#salary" class="btn-outline">給与のしくみを知る</a>
+  </div>
+</div>
+
+<!-- 数字で見る会社 -->
+<div class="stats-section">
+  <div class="stats-inner">
+    <div class="stats-grid">
+      <div class="stat-item">
+        <div class="stat-num">20<span style="font-size:.9rem">〜</span>35</div>
+        <div class="stat-unit">万円 / 月</div>
+        <div class="stat-label">基本給<br>（資格・経験で決まる）</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">105</div>
+        <div class="stat-unit">日</div>
+        <div class="stat-label">年間休日<br>（日曜・祝日・夏冬休み）</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">8〜17</div>
+        <div class="stat-unit">時</div>
+        <div class="stat-label">就業時間<br>（残業ほぼなし）</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">年2</div>
+        <div class="stat-unit">回</div>
+        <div class="stat-label">賞与<br>（計1.5か月分 / 前年度実績）</div>
+      </div>
+    </div>
+    <p class="sample-note">※数値はサンプルです。実際には御社の正確な数値に差し替えます</p>
+  </div>
+</div>
+
+<!-- 課題と解決 -->
+<section class="section" id="appeal">
+  <div class="section-inner">
+    <p class="section-label">PAIN → SOLUTION</p>
+    <h2 class="section-title">「求人票だけじゃ、判断できない」<br>そのお悩みに、このページが答えます。</h2>
+    <p class="section-lead">Next Airの求人票は情報が少ないのが正直なところ。だからこのページで全部補います。</p>
+    <div class="problem-grid">
+      <div>
+        <p style="font-size:.8rem;font-weight:700;color:#e84040;margin-bottom:12px">▼ 従来の求人票では分からなかったこと</p>
+        <ul class="problem-list">
+          <li>給与20〜35万の幅、なぜそんなに違う？</li>
+          <li>空調の仕事内容が2行しか書かれていない</li>
+          <li>採用ページが簡素で、職場の雰囲気が全くわからない</li>
+          <li>資格はあるけど経験ゼロでも本当に大丈夫？</li>
+        </ul>
+      </div>
+      <div>
+        <p style="font-size:.8rem;font-weight:700;color:var(--cyan);margin-bottom:12px">▲ このページで分かること</p>
+        <ul class="solve-list">
+          <li>給与は「資格・経験年数」で決まる。資格手当も別途加算</li>
+          <li>現場管理・施工・試運転調整まで詳しく解説</li>
+          <li>1日の流れ・先輩インタビューで職場をリアルに見せます</li>
+          <li>資格あり未経験者向けのOJT制度あり・実績あり</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 給与のしくみ -->
+<section class="section alt-bg" id="salary">
+  <div class="section-inner">
+    <p class="section-label">SALARY SYSTEM</p>
+    <h2 class="section-title">給与の決まり方を、正直に説明します。</h2>
+    <p class="section-lead">「資格及び経験年数に応じる」——これが給与幅の答えです。具体的に分解します。</p>
+    <div class="salary-cards">
+      <div class="salary-card">
+        <div class="label">基本給（資格・経験年数ベース）</div>
+        <div class="num">20〜35万円</div>
+        <div class="desc">管工事施工管理技士（1級・2級）等の資格保有者、経験年数が多い方ほど上位ラインに。資格を取ったばかりでも経験を積むことで昇給します。</div>
+      </div>
+      <div class="salary-card">
+        <div class="label">資格手当（毎月・別途加算）</div>
+        <div class="num">+5,000〜10,000円</div>
+        <div class="desc">基本給に上乗せされる固定手当。資格の内容・レベルに応じて変動します。1つ資格を取るたびに収入に直結します。</div>
+      </div>
+      <div class="salary-card">
+        <div class="label">昇給（前年度実績）</div>
+        <div class="num">最大+10,000円/月</div>
+        <div class="desc">前年度実績で月最大1万円アップ。10年続ければ月額换算で大きな差になります。退職金共済（10年以上）＋再雇用68歳まで対応。</div>
+      </div>
+    </div>
+    <div class="salary-note">
+      ※賞与は年2回（前年度実績：計1.5か月分）。昇給・賞与は会社業績によります。<br>
+      ※通勤手当：実費支給（上限月1万円）。試用期間3か月（同条件）。
+    </div>
+    <p style="font-size:.75rem;color:rgba(255,255,255,.3);margin-top:10px">※ここはサンプルです。実際には御社の正確な情報に差し替えます</p>
+  </div>
+</section>
+
+<!-- CTA中間1 -->
+<div class="cta-mid" id="cta1">
+  <h2>給与の仕組みが分かったら、次は仕事内容を見てみましょう。</h2>
+  <p>空調設備工事の現場で、あなたがどんな役割を担うかを詳しく説明します。</p>
+  <a href="#day" class="btn-dark">1日の流れを見る</a>
+</div>
+
+<!-- 1日の流れ -->
+<section class="section alt-bg2" id="day">
+  <div class="section-inner">
+    <p class="section-label">A DAY IN LIFE</p>
+    <h2 class="section-title">現場スタッフの、ある1日。</h2>
+    <p class="section-lead">朝から現場移動が多いNext Airのリズムを、タイムラインで見てみましょう。</p>
+    <p class="sample-note" style="text-align:center;margin-bottom:28px">※ここはサンプルです。実際には御社の実例に差し替えます</p>
+    <div class="tl-row">
+      <div class="tl-col">
+        <div class="tl-time">8:00</div>
+        <div class="tl-dot-h"></div>
+        <div class="tl-title">出社・朝礼</div>
+        <div class="tl-body">現場・作業内容の確認。安全注意事項を共有</div>
+      </div>
+      <div class="tl-col">
+        <div class="tl-time">8:30</div>
+        <div class="tl-dot-h"></div>
+        <div class="tl-title">現場へ移動</div>
+        <div class="tl-body">マイカーで印西市近郊の現場へ直行</div>
+      </div>
+      <div class="tl-col">
+        <div class="tl-time">9:00</div>
+        <div class="tl-dot-h"></div>
+        <div class="tl-title">施工作業</div>
+        <div class="tl-body">冷媒配管・空調機器設置・試運転調整など</div>
+      </div>
+      <div class="tl-col">
+        <div class="tl-time">12:00</div>
+        <div class="tl-dot-h"></div>
+        <div class="tl-title">昼休憩 60分</div>
+        <div class="tl-body">現場近くで昼食。チームでの雑談タイム</div>
+      </div>
+      <div class="tl-col">
+        <div class="tl-time">13:00</div>
+        <div class="tl-dot-h"></div>
+        <div class="tl-title">午後の作業</div>
+        <div class="tl-body">品質チェック・現場管理・後片付け</div>
+      </div>
+      <div class="tl-col">
+        <div class="tl-time">17:00</div>
+        <div class="tl-dot-h"></div>
+        <div class="tl-title">終業・帰社</div>
+        <div class="tl-body">日報記入で完了。残業ほぼなし</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 社員インタビュー -->
+<section class="section" id="interview">
+  <div class="section-inner">
+    <p class="section-label">INTERVIEW</p>
+    <h2 class="section-title">先輩スタッフに聞きました。</h2>
+    <p class="section-lead">入社前の不安・現在の仕事ぶり・これからの夢を本音で語ってもらいました。</p>
+    <p class="sample-note" style="text-align:center;margin-bottom:32px">※ここはサンプルです。実際には御社スタッフの写真・コメントに差し替えます</p>
+    <div class="interview-grid">
+      <div class="interview-card">
+        <div class="interview-head">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="田中さん（仮名）">
+          <div>
+            <div class="interview-name">田中 誠（仮名）</div>
+            <div class="interview-sub">冷媒配管工・入社2年</div>
+          </div>
+        </div>
+        <p class="interview-q">Q. 入社前の不安は何でしたか？</p>
+        <p class="interview-a">「資格は2級管工事を持っていたけど現場経験がゼロで、自分に務まるか心配でした。でも先輩が最初は横についてくれて、徐々にひとりでできる範囲を広げてもらいました。」</p>
+        <p class="interview-q">Q. 今はどんな仕事を担当していますか？</p>
+        <p class="interview-a">「冷媒配管の施工と現場の段取り管理です。入社時より給与も上がって、仕事の達成感があります。」</p>
+        <p class="sample-note-s">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</p>
+      </div>
+      <div class="interview-card">
+        <div class="interview-head">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="佐藤さん（仮名）">
+          <div>
+            <div class="interview-name">佐藤 剛（仮名）</div>
+            <div class="interview-sub">空調設備工・入社3年</div>
+          </div>
+        </div>
+        <p class="interview-q">Q. 転職のきっかけは何でしたか？</p>
+        <p class="interview-a">「前の職場は残業が多くて体がきつかった。Next Airは残業ほぼなしで年間休日105日。実際に入ってみて働き方が全然違うと感じています。」</p>
+        <p class="interview-q">Q. これからの目標を教えてください。</p>
+        <p class="interview-a">「1級管工事施工管理技士を取って、現場責任者として大きな案件に携わりたいです。資格を取れば給与も上がりますし、モチベーションが続きます。」</p>
+        <p class="sample-note-s">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA中間2 -->
+<div class="cta-mid" id="cta2" style="background:var(--light-navy)">
+  <h2>先輩の話を聞いて、もっと気になってきましたか？</h2>
+  <p>よくある質問に答えてから、あなたも一緒に働きませんか。</p>
+  <a href="#faq" class="btn-dark">よくある質問を見る</a>
+</div>
+
+<!-- FAQ -->
+<section class="section" id="faq">
+  <div class="section-inner">
+    <p class="section-label">FAQ</p>
+    <h2 class="section-title">よくある質問</h2>
+    <p class="section-lead" style="margin-bottom:32px">応募前の疑問を解決します。</p>
+    <p class="sample-note" style="text-align:center;margin-bottom:20px">※ここはサンプルです。実際には御社のご回答に差し替えます</p>
+    <div class="faq-list">
+      <div class="faq-item open">
+        <div class="faq-q">
+          <span class="faq-q-badge">Q</span>資格はあるけど現場経験ゼロ。本当に大丈夫？
+        </div>
+        <div class="faq-a">大歓迎です。「資格取得済みで業務経験なし」という方を歓迎するため、求人票にも明記しています。入社後は先輩がマンツーマンでOJT指導します。普通自動車免許（AT限定可）があれば他は問いません。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-badge">Q</span>月給の幅が広いのはなぜ？入社時はどれくらい？
+        </div>
+        <div class="faq-a">基本給は資格・経験年数で個別に決定するため幅があります。面接時にご経歴を聞いたうえで提示します。資格手当（月5,000〜10,000円）が基本給に上乗せされ、昇給・賞与も毎年あります。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-badge">Q</span>残業はどれくらいありますか？
+        </div>
+        <div class="faq-a">ほぼありません。就業時間は8:00〜17:00で、36協定は特別条項なしです。プライベートの時間をしっかり確保できる環境です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-badge">Q</span>選考の流れを教えてください。
+        </div>
+        <div class="faq-a">まずお電話で面接日をご調整します（事前連絡後に日程をお伝えします）。当日はハローワーク紹介状・履歴書・職務経歴書・資格証をご持参ください。面接は1回で、7日以内に電話でご連絡します。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">
+          <span class="faq-q-badge">Q</span>マイカー通勤できますか？
+        </div>
+        <div class="faq-a">はい、マイカー通勤可能です。無料駐車場を完備しており、朝から現場移動がメインなので、車があると動きやすいです。通勤手当は実費支給（上限月1万円）です。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩メッセージ（簡易カード） -->
+<section class="section alt-bg" id="voices">
+  <div class="section-inner">
+    <p class="section-label">VOICES</p>
+    <h2 class="section-title">先輩からひと言</h2>
+    <p class="sample-note" style="text-align:center;margin-bottom:28px">※ここはサンプルです。実際には御社スタッフのコメント・写真に差し替えます</p>
+    <div class="voices-grid">
+      <div class="voice-card">
+        <div class="voice-head">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="">
+          <div><div class="voice-name">田中（仮名）</div><div class="voice-sub">冷媒配管工・2年</div></div>
+        </div>
+        <p>OJTが本当に充実していて、未経験でも安心できました。資格手当がついて想像より早く給与アップしました。</p>
+        <p class="sample-note-s">※ここはサンプルです。実際のコメントに差し替えます</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-head">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="">
+          <div><div class="voice-name">佐藤（仮名）</div><div class="voice-sub">空調設備工・3年</div></div>
+        </div>
+        <p>残業がほぼなく年間休日105日。入社前と後でギャップがなかったのが嬉しかったです。長く働けると感じています。</p>
+        <p class="sample-note-s">※ここはサンプルです。実際のコメントに差し替えます</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-head">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="">
+          <div><div class="voice-name">鈴木（仮名）</div><div class="voice-sub">空調設備工・1年</div></div>
+        </div>
+        <p>マイカー通勤できて駐車場無料なのが助かります。千葉ニュータウン周辺で現場が近くて移動も楽です。</p>
+        <p class="sample-note-s">※ここはサンプルです。実際のコメントに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA最終 -->
+<div class="cta-final" id="entry">
+  <h2>空調職人として、あなたの技術を活かしませんか。</h2>
+  <p>資格と経験を正当に評価する環境で、腰を据えて働ける職場です。<br>まずはお気軽にお問い合わせください。面接前の質問も歓迎します。</p>
+  <a href="mailto:info@next-air.jp" class="btn-primary" style="font-size:1.05rem;padding:18px 48px">応募・問い合わせはこちら</a>
+  <p style="margin-top:18px;font-size:.78rem;color:var(--gray)">電話でも受け付けています: 0476-29-5050（採用担当：松下）</p>
+</div>
+
+<!-- フッター -->
+<footer>
+  <p>Next Air株式会社</p>
+  <p>〒270-1349 千葉県印西市戸神台２丁目１番地５棟２４７号</p>
+  <p>TEL: 0476-29-5050 / E-mail: info@next-air.jp</p>
+</footer>
+
+<!-- スマホ固定CTA -->
+<div class="fixed-cta">
+  <a href="#entry">今すぐ応募する →</a>
+</div>
+
+<script>
+document.querySelectorAll('.faq-q').forEach(function(el){
+  el.addEventListener('click',function(){this.parentElement.classList.toggle('open')});
+});
+</script>
+</body>
+</html>

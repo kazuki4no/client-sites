@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 B案 | 株式会社　トップ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#222;background:#fff}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+:root{--navy:#0e4a8e;--blue:#1d6cbf;--light:#f0f7ff;--accent:#d4830a}
+
+/* ヘッダー */
+header{position:sticky;top:0;z-index:100;background:var(--navy);color:#fff;box-shadow:0 2px 8px rgba(0,0,0,.2)}
+.header-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;height:64px}
+.logo{font-weight:700;font-size:1rem}
+nav.pc-nav{display:flex;gap:1.5rem}
+nav.pc-nav a{font-size:.85rem;color:#fff;opacity:.85;transition:opacity .2s}
+nav.pc-nav a:hover{opacity:1}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px;background:none;border:none}
+.hamburger span{display:block;width:26px;height:2px;background:#fff;border-radius:2px}
+.nav-mobile{display:none;background:var(--navy);padding:1rem 1.5rem}
+.nav-mobile.open{display:block}
+.nav-mobile a{display:block;color:#fff;padding:.7rem 0;border-bottom:1px solid rgba(255,255,255,.15);font-size:.9rem}
+@media(max-width:768px){nav.pc-nav{display:none}.hamburger{display:flex}}
+
+/* ヒーロー */
+.hero{position:relative;min-height:80vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center}
+.hero-overlay{position:absolute;inset:0;background:rgba(10,35,75,.7)}
+.hero-content{position:relative;z-index:1;color:#fff;padding:2rem 1.5rem;max-width:820px}
+.hero-tag{display:inline-block;background:var(--accent);color:#fff;font-size:.75rem;padding:.3rem .9rem;border-radius:20px;margin-bottom:1.2rem;font-weight:500;letter-spacing:.05em}
+.hero-content h1{font-size:clamp(1.8rem,5.5vw,3.2rem);font-weight:700;line-height:1.3;margin-bottom:1.2rem}
+.hero-content p{font-size:clamp(.9rem,2.5vw,1.1rem);opacity:.9;margin-bottom:2rem;line-height:2}
+.btn-hero{display:inline-block;background:var(--accent);color:#fff;padding:.9rem 3rem;border-radius:4px;font-weight:700;font-size:1rem;transition:.2s;margin-bottom:.8rem}
+.btn-hero:hover{opacity:.9;transform:translateY(-1px)}
+.hero-sub{font-size:.8rem;opacity:.65}
+
+/* セクション共通 */
+section{padding:4rem 1.5rem}
+.section-inner{max-width:1000px;margin:0 auto}
+h2.sec-title{font-size:clamp(1.4rem,4vw,2.2rem);font-weight:700;text-align:center;color:var(--navy);margin-bottom:2.5rem;position:relative;padding-bottom:1rem}
+h2.sec-title::after{content:'';position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:50px;height:3px;background:var(--blue)}
+
+/* 数字で見る会社 */
+.numbers{background:var(--navy);color:#fff;padding:4rem 1.5rem}
+.numbers h2.sec-title{color:#fff}
+.numbers h2.sec-title::after{background:var(--accent)}
+.num-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;text-align:center}
+.num-item{padding:1.5rem 1rem}
+.num-val{font-size:clamp(2rem,5vw,3rem);font-weight:700;color:var(--accent);display:block;margin-bottom:.3rem}
+.num-label{font-size:.83rem;opacity:.85;line-height:1.5}
+.num-note{font-size:.72rem;opacity:.55;display:block;margin-top:.2rem}
+@media(max-width:600px){.num-grid{grid-template-columns:repeat(2,1fr)}}
+.sample-note{text-align:center;font-size:.72rem;color:rgba(255,255,255,.35);margin-top:1.5rem}
+
+/* CTA中間 */
+.cta-mid{background:var(--light);text-align:center;padding:3rem 1.5rem}
+.cta-mid p{font-size:.95rem;color:#444;margin-bottom:1.5rem;line-height:1.8}
+.btn-primary{display:inline-block;background:var(--accent);color:#fff;padding:.85rem 2.5rem;border-radius:4px;font-weight:700;font-size:1rem;transition:.2s}
+.btn-primary:hover{opacity:.9;transform:translateY(-1px)}
+
+/* 仕事内容 */
+.job-blocks{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center}
+.job-img img{border-radius:8px;width:100%;height:280px;object-fit:cover}
+.job-text h3{font-size:1.15rem;color:var(--navy);font-weight:700;margin-bottom:1rem}
+.job-text p{font-size:.92rem;color:#444;line-height:1.9;margin-bottom:1rem}
+@media(max-width:768px){.job-blocks{grid-template-columns:1fr}}
+
+/* 応募の流れ（LP型） */
+.steps{background:var(--light);padding:4rem 1.5rem}
+.step-list{max-width:680px;margin:0 auto;display:grid;gap:1.2rem}
+.step-item{background:#fff;border-radius:8px;padding:1.2rem 1.5rem;display:flex;align-items:flex-start;gap:1rem;box-shadow:0 1px 6px rgba(0,0,0,.05)}
+.step-num{flex-shrink:0;width:36px;height:36px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;font-size:.9rem;display:flex;align-items:center;justify-content:center}
+.step-body h4{font-weight:700;font-size:.93rem;color:var(--navy);margin-bottom:.3rem}
+.step-body p{font-size:.85rem;color:#555;line-height:1.7}
+
+/* タイムライン */
+.timeline-list{list-style:none;max-width:580px;margin:0 auto;position:relative;padding-left:2rem}
+.timeline-list::before{content:'';position:absolute;left:.9rem;top:0;bottom:0;width:2px;background:var(--blue);opacity:.2}
+.timeline-list li{position:relative;margin-bottom:1.8rem;padding-left:1.5rem}
+.timeline-list li::before{content:'';position:absolute;left:-1.1rem;top:.35rem;width:12px;height:12px;border-radius:50%;background:var(--blue)}
+.tl-time{font-size:.78rem;color:var(--blue);font-weight:700;margin-bottom:.2rem}
+.tl-action{font-size:.92rem;color:#333;line-height:1.6}
+.sample-note-dark{text-align:center;font-size:.72rem;color:#bbb;margin-top:1rem}
+
+/* 社員インタビュー */
+.interview-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.iv-card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.06)}
+.iv-card img{width:100%;height:180px;object-fit:cover}
+.iv-body{padding:1.2rem}
+.iv-name{font-weight:700;font-size:.9rem;color:var(--navy)}
+.iv-meta{font-size:.75rem;color:#888;margin-bottom:.7rem}
+.iv-q{font-size:.78rem;color:var(--blue);font-weight:700;margin-bottom:.3rem}
+.iv-body p{font-size:.87rem;color:#444;line-height:1.7}
+.sample-badge{font-size:.7rem;color:#bbb;display:block;margin-top:.5rem}
+@media(max-width:768px){.interview-grid{grid-template-columns:1fr}}
+
+/* FAQ */
+.faq-list{max-width:780px;margin:0 auto}
+.faq-item{border:1px solid #d0dcea;border-radius:8px;margin-bottom:.8rem;overflow:hidden}
+.faq-q{padding:1.1rem 1.5rem;background:#f4f8ff;font-weight:600;font-size:.93rem;color:var(--navy);cursor:pointer;display:flex;justify-content:space-between;align-items:center;user-select:none}
+.faq-q::after{content:'▼';font-size:.72rem;color:var(--blue);transition:.3s}
+.faq-q.open::after{transform:rotate(180deg)}
+.faq-a{display:none;padding:1.1rem 1.5rem;font-size:.9rem;color:#444;line-height:1.8}
+.faq-a.open{display:block}
+
+/* 募集要項 */
+.req-table{width:100%;border-collapse:collapse}
+.req-table tr{border-bottom:1px solid #d0dcea}
+.req-table th,.req-table td{padding:1rem;text-align:left;font-size:.92rem;line-height:1.7}
+.req-table th{width:35%;font-weight:600;color:var(--navy);background:rgba(30,100,190,.05)}
+@media(max-width:600px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%}
+  .req-table th{background:none;color:var(--navy);font-weight:700;padding-bottom:.3rem;border-bottom:none}
+  .req-table td{padding-top:0;padding-bottom:1.2rem}
+}
+
+/* CTA最終 */
+.cta-final{background:var(--navy);text-align:center;padding:4rem 1.5rem;color:#fff}
+.cta-final h2{font-size:clamp(1.4rem,4vw,2.1rem);margin-bottom:1rem}
+.cta-final p{font-size:.93rem;opacity:.85;margin-bottom:2rem;line-height:1.9}
+.btn-white{display:inline-block;background:#fff;color:var(--navy);padding:.9rem 2.5rem;border-radius:4px;font-weight:700;font-size:1rem;transition:.2s}
+.btn-white:hover{opacity:.9;transform:translateY(-1px)}
+
+/* フッター */
+footer{background:#071a35;color:rgba(255,255,255,.65);text-align:center;padding:2rem 1.5rem;font-size:.83rem;line-height:2.2}
+
+/* スマホ固定CTA */
+.fixed-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;padding:.9rem 1.5rem;background:var(--accent);text-align:center}
+.fixed-cta a{color:#fff;font-weight:700;font-size:.95rem;display:block}
+@media(max-width:768px){.fixed-cta{display:block}body{padding-bottom:56px}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">株式会社　トップ 採用情報</div>
+    <nav class="pc-nav">
+      <a href="#numbers">数字で見る</a>
+      <a href="#job">仕事内容</a>
+      <a href="#timeline">1日の流れ</a>
+      <a href="#voices">先輩の声</a>
+      <a href="#faq">FAQ</a>
+      <a href="#apply">応募する</a>
+    </nav>
+    <button class="hamburger" id="hamBtn" aria-label="メニューを開く">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="nav-mobile" id="mobileNav">
+    <a href="#numbers" onclick="closeMobile()">数字で見る</a>
+    <a href="#job" onclick="closeMobile()">仕事内容</a>
+    <a href="#timeline" onclick="closeMobile()">1日の流れ</a>
+    <a href="#voices" onclick="closeMobile()">先輩の声</a>
+    <a href="#faq" onclick="closeMobile()">FAQ</a>
+    <a href="#apply" onclick="closeMobile()">応募する</a>
+  </nav>
+</header>
+
+<!-- ヒーロー CTA①-->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag">正社員募集 ／ 書類仕分け・発送業務</div>
+    <h1>年間125日の休み、<br>賞与3ヶ月分。<br>数字が語る、安定した職場。</h1>
+    <p>三井住友海上の事務センター内でのオフィスワーク。<br>経験不問。コツコツ型の方、長く安定して働きたい方を歓迎。</p>
+    <a href="#apply" class="btn-hero">まずは詳細を見る</a>
+    <div class="hero-sub">↓ 数字で見る →</div>
+  </div>
+</section>
+
+<!-- 数字で見る会社 -->
+<section class="numbers" id="numbers">
+  <div class="section-inner">
+    <h2 class="sec-title">数字で見る、株式会社トップ</h2>
+    <div class="num-grid">
+      <div class="num-item">
+        <span class="num-val">125</span>
+        <span class="num-label">年間休日数<br>（土日祝＋年末年始）</span>
+      </div>
+      <div class="num-item">
+        <span class="num-val">3ヶ月</span>
+        <span class="num-label">賞与計（前年度実績）<br>年2回支給</span>
+      </div>
+      <div class="num-item">
+        <span class="num-val">+3〜10K</span>
+        <span class="num-label">昇給額/月（前年度実績）<br>着実にアップ</span>
+        <span class="num-note">※サンプル。実際には御社実績を表示</span>
+      </div>
+      <div class="num-item">
+        <span class="num-val">65歳</span>
+        <span class="num-label">再雇用上限<br>退職金制度も完備</span>
+      </div>
+    </div>
+    <p class="sample-note">※ここはサンプルです。数字は求人票・会社情報をもとにした参考値です</p>
+  </div>
+</section>
+
+<!-- CTA② -->
+<div class="cta-mid">
+  <p>安定した働き方を探している方へ。<br>まずは応募書類を送ってみませんか？</p>
+  <a href="#apply" class="btn-primary">応募方法を確認する</a>
+</div>
+
+<!-- 仕事内容 -->
+<section id="job" style="background:#fff;padding:4rem 1.5rem">
+  <div class="section-inner">
+    <h2 class="sec-title">仕事内容</h2>
+    <div class="job-blocks">
+      <div class="job-img">
+        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=640&h=380&fit=crop&q=80" alt="オフィス業務">
+      </div>
+      <div class="job-text">
+        <h3>落ち着いた環境でのオフィスワーク</h3>
+        <p>千葉ニュータウン中央駅から徒歩10分、三井住友海上千葉ニュータウンセンター内の当社事務所でのお仕事です。</p>
+        <p>社内向け印刷物を送付先ごとに仕分け・封入する業務を中心に、各種業務補助や電話受付にも携わっていただきます。決められたフローを丁寧にこなすお仕事なので、未経験の方にも安心です。</p>
+        <p>「即戦力は望まない。着実に業務を習得し、まじめにコツコツ働いてもらえれば」——そんな職場です。大手企業に準じた労働環境で、長く無理なく働けます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section id="timeline" style="background:var(--light);padding:4rem 1.5rem">
+  <div class="section-inner">
+    <h2 class="sec-title">1日の流れ</h2>
+    <ul class="timeline-list">
+      <li><div class="tl-time">9:00</div><div class="tl-action">出社・メール確認・当日の作業量を把握</div></li>
+      <li><div class="tl-time">9:15</div><div class="tl-action">印刷物の仕分け作業スタート。送付先リストと照合しながら進める</div></li>
+      <li><div class="tl-time">12:00</div><div class="tl-action">昼休憩（60分）</div></li>
+      <li><div class="tl-time">13:00</div><div class="tl-action">封入・梱包・発送準備</div></li>
+      <li><div class="tl-time">15:00</div><div class="tl-action">各種業務補助・電話受付対応</div></li>
+      <li><div class="tl-time">17:30</div><div class="tl-action">翌日作業確認・清掃・退勤準備</div></li>
+      <li><div class="tl-time">18:00</div><div class="tl-action">定時退勤</div></li>
+    </ul>
+    <p class="sample-note-dark">※ここはサンプルです。実際には御社の1日の流れに差し替えます</p>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section id="voices" style="background:#fff;padding:4rem 1.5rem">
+  <div class="section-inner">
+    <h2 class="sec-title">社員インタビュー</h2>
+    <div class="interview-grid">
+      <div class="iv-card">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=640&h=380&fit=crop&crop=faces&q=80" alt="社員">
+        <div class="iv-body">
+          <div class="iv-name">田中 さおり（仮名）</div>
+          <div class="iv-meta">一般事務・入社4年目</div>
+          <div class="iv-q">Q. 入社してよかった点は？</div>
+          <p>業務の流れが決まっているので、毎日落ち着いて働けるのが一番です。前職は全く違う仕事でしたが、先輩が丁寧に教えてくれたのですぐ慣れました。</p>
+          <span class="sample-badge">※ここはサンプルです。実際には御社社員の声に差し替えます</span>
+        </div>
+      </div>
+      <div class="iv-card">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=640&h=380&fit=crop&crop=faces&q=80" alt="社員">
+        <div class="iv-body">
+          <div class="iv-name">鈴木 健太（仮名）</div>
+          <div class="iv-meta">業務担当・入社2年目</div>
+          <div class="iv-q">Q. この仕事で大変なことは？</div>
+          <p>量が多い日はテキパキ動く必要があります。でも業務手順が決まっているので、慣れればペースをつかみやすい。土日祝が休みで残業も管理されているので長く続けられそうです。</p>
+          <span class="sample-badge">※ここはサンプルです。実際には御社社員の声に差し替えます</span>
+        </div>
+      </div>
+      <div class="iv-card">
+        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=640&h=380&fit=crop&crop=faces&q=80" alt="社員">
+        <div class="iv-body">
+          <div class="iv-name">山本 みか（仮名）</div>
+          <div class="iv-meta">一般事務・入社6年目</div>
+          <div class="iv-q">Q. 長く続けられる理由は？</div>
+          <p>大手企業のビル内なので職場環境が整っていて安心感があります。賞与もしっかり出るし退職金制度があるので、将来を見据えて腰を据えて働けています。</p>
+          <span class="sample-badge">※ここはサンプルです。実際には御社社員の声に差し替えます</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="background:var(--light);padding:4rem 1.5rem">
+  <div class="section-inner">
+    <h2 class="sec-title">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">事務・仕分け未経験でも応募できますか？</div>
+        <div class="faq-a">はい、経験不問です。Word・Excelの基本操作があれば大丈夫。入社後は先輩が一から業務の流れをお教えします。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">選考の流れを教えてください。</div>
+        <div class="faq-a">書類選考（到着後7日以内に結果連絡）→面接（1回）→内定の流れです。応募書類はハローワーク紹介状・履歴書（写真貼付）・職務経歴書を郵送にてお送りください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">マイカー通勤は可能ですか？</div>
+        <div class="faq-a">可能です。駐車場代補助とガソリン代支給があります。詳細は面接時にご確認ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">月の残業はどのくらいですか？</div>
+        <div class="faq-a">月平均20時間程度です。36協定の特別条項はなく、上限内で業務量を管理しています。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section id="requirements" style="background:#fff;padding:4rem 1.5rem">
+  <div class="section-inner">
+    <h2 class="sec-title">募集要項</h2>
+    <table class="req-table">
+      <tr><th>職種</th><td>書類仕分け・発送業務</td></tr>
+      <tr><th>雇用形態</th><td>正社員（試用期間3ヶ月・同条件）</td></tr>
+      <tr><th>就業場所</th><td>千葉県印西市大塚2丁目2番1号<br>三井住友海上千葉ニュータウンセンター内当社事務所<br>北総線 千葉ニュータウン中央駅 徒歩10分</td></tr>
+      <tr><th>月給</th><td>185,000円〜200,000円<br>（基本給150,000〜160,000円＋業務手当35,000〜40,000円）</td></tr>
+      <tr><th>賞与</th><td>年2回・計3ヶ月分（前年度実績）</td></tr>
+      <tr><th>昇給</th><td>あり（前年度実績：月3,000〜10,000円）</td></tr>
+      <tr><th>就業時間</th><td>9:00〜18:00 または 8:00〜17:00（月平均残業20時間）</td></tr>
+      <tr><th>休日</th><td>土・日・祝・年末年始（年間休日125日）</td></tr>
+      <tr><th>応募資格</th><td>高卒以上・Word/Excel基本操作可・経験不問・59歳以下</td></tr>
+      <tr><th>福利厚生</th><td>各種社会保険完備・財形・退職金（勤続4年以上）・再雇用（65歳まで）<br>マイカー通勤可・通勤手当実費支給（上限35,000円）</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- CTA最終③ -->
+<section class="cta-final" id="apply">
+  <h2>あなたの「コツコツ」を活かせる職場があります</h2>
+  <p>応募書類はハローワーク紹介状・履歴書・職務経歴書を郵送にて。<br>ご質問は採用係（03-5615-2251 ／ saiyo@top-top.co.jp）まで。</p>
+  <a href="mailto:saiyo@top-top.co.jp" class="btn-white">採用担当にメールを送る</a>
+</section>
+
+<footer>
+  株式会社　トップ<br>
+  〒116-0013 東京都荒川区西日暮里2丁目22番2号<br>
+  採用係: 03-5615-2251 ／ saiyo@top-top.co.jp
+</footer>
+
+<!-- スマホ固定CTA -->
+<div class="fixed-cta">
+  <a href="#apply">▶ 応募方法を確認する</a>
+</div>
+
+<script>
+const hamBtn=document.getElementById('hamBtn');
+const mobileNav=document.getElementById('mobileNav');
+hamBtn.addEventListener('click',()=>{mobileNav.classList.toggle('open')});
+function closeMobile(){mobileNav.classList.remove('open')}
+function toggleFaq(el){
+  el.classList.toggle('open');
+  el.nextElementSibling.classList.toggle('open');
+}
+</script>
+</body>
+</html>

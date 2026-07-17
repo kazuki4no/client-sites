@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>相談支援員 採用情報 | 社会福祉法人千楽</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;color:#222;line-height:1.75;background:#fff;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;height:auto;display:block;}
+
+/* Header */
+.site-header{display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 1.5rem;position:sticky;top:0;background:#fff;
+  box-shadow:0 1px 6px rgba(0,0,0,.1);z-index:100;}
+.brand{font-size:1rem;font-weight:700;color:#1a7a62;}
+.site-nav{display:flex;gap:1.5rem;align-items:center;}
+.site-nav a{font-size:.875rem;font-weight:500;color:#444;transition:color .2s;}
+.site-nav a:hover{color:#1a7a62;}
+.nav-cta{background:#1a7a62;color:#fff!important;padding:.45rem 1.1rem;border-radius:4px;font-weight:700;}
+.hamburger{display:none;background:none;border:0;font-size:1.7rem;line-height:1;cursor:pointer;color:#1a7a62;}
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:#fff;box-shadow:0 8px 16px rgba(0,0,0,.12);padding:.5rem 1.5rem;}
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.8rem 0;border-bottom:1px solid #eee;font-size:1rem;}
+}
+
+/* Hero */
+.hero{position:relative;overflow:hidden;}
+.hero-img{width:100%;height:520px;object-fit:cover;object-position:center;}
+.hero-overlay{position:absolute;inset:0;background:rgba(10,50,40,.52);}
+.hero-content{position:absolute;inset:0;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;text-align:center;padding:1.5rem;}
+.hero-pill{display:inline-block;background:#fff;color:#1a7a62;font-size:.8rem;font-weight:700;
+  padding:.3rem .9rem;border-radius:20px;letter-spacing:.05em;margin-bottom:1rem;}
+.hero-ttl{font-size:clamp(1.6rem,5vw,2.8rem);font-weight:700;color:#fff;line-height:1.3;
+  margin-bottom:1rem;text-shadow:0 2px 8px rgba(0,0,0,.4);}
+.hero-sub{color:rgba(255,255,255,.88);font-size:clamp(.9rem,2.5vw,1.1rem);margin-bottom:1.5rem;}
+.btn-primary{display:inline-block;background:#e9c46a;color:#1a3a2a;font-weight:700;
+  padding:.8rem 2rem;border-radius:4px;font-size:1rem;transition:opacity .2s;}
+.btn-primary:hover{opacity:.88;}
+@media(max-width:768px){.hero-img{height:360px;}}
+
+/* Sections */
+.section{padding:4rem 1.5rem;}
+.section-alt{background:#f4fbf9;}
+.inner{max-width:960px;margin:0 auto;}
+.sec-label{font-size:.75rem;font-weight:700;color:#1a7a62;letter-spacing:.12em;
+  text-transform:uppercase;margin-bottom:.5rem;}
+.sec-ttl{font-size:clamp(1.3rem,4vw,2rem);font-weight:700;margin-bottom:.5rem;}
+.sec-lead{color:#555;margin-bottom:2.5rem;}
+
+/* Appeal cards */
+.appeal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.appeal-card{background:#fff;border-radius:10px;padding:1.8rem 1.4rem;text-align:center;
+  border:1px solid #d9efe9;box-shadow:0 2px 8px rgba(26,122,98,.08);}
+.appeal-icon{width:52px;height:52px;border-radius:50%;background:#e6f5f1;
+  display:flex;align-items:center;justify-content:center;margin:0 auto 1rem;}
+.appeal-icon svg{width:26px;height:26px;stroke:#1a7a62;stroke-width:2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.appeal-card h3{font-size:1rem;font-weight:700;margin-bottom:.5rem;color:#1a3a2a;}
+.appeal-card p{font-size:.875rem;color:#555;}
+@media(max-width:768px){.appeal-grid{grid-template-columns:1fr;}}
+
+/* 仕事内容 */
+.work-wrap{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center;}
+.work-img{border-radius:10px;width:100%;height:320px;object-fit:cover;}
+.work-list{list-style:none;}
+.work-list li{display:flex;gap:.6rem;align-items:flex-start;padding:.6rem 0;border-bottom:1px solid #eee;}
+.work-list li:last-child{border-bottom:0;}
+.work-list li::before{content:'✓';color:#1a7a62;font-weight:700;flex-shrink:0;margin-top:.05rem;}
+@media(max-width:768px){.work-wrap{grid-template-columns:1fr;}}
+
+/* 募集要項 */
+.req-table{width:100%;border-collapse:collapse;font-size:.9rem;}
+.req-table th,.req-table td{padding:.9rem 1rem;border-bottom:1px solid #ddd;text-align:left;vertical-align:top;}
+.req-table th{background:#f4fbf9;font-weight:700;white-space:nowrap;width:9rem;color:#1a3a2a;}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{background:#f0f9f6;padding:.5rem .8rem;border-bottom:0;}
+  .req-table td{padding:.5rem .8rem 1rem;}
+}
+
+/* Timeline */
+.timeline{position:relative;margin-top:1.5rem;}
+.timeline::before{content:'';position:absolute;left:82px;top:0;bottom:0;width:2px;background:#c1e8de;}
+.tl-item{display:grid;grid-template-columns:72px 20px 1fr;gap:0 .8rem;align-items:start;padding:.8rem 0;}
+.tl-time{text-align:right;font-size:.85rem;font-weight:700;color:#1a7a62;padding-top:.2rem;}
+.tl-dot{width:12px;height:12px;border-radius:50%;background:#1a7a62;justify-self:center;margin-top:.35rem;flex-shrink:0;}
+.tl-body h4{font-size:.95rem;font-weight:700;color:#1a3a2a;}
+.tl-body p{font-size:.85rem;color:#555;}
+@media(max-width:768px){
+  .timeline::before{left:50px;}
+  .tl-item{grid-template-columns:42px 16px 1fr;}
+  .tl-time{font-size:.78rem;}
+}
+
+/* 先輩の声 */
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.voice-card{background:#fff;border-radius:10px;overflow:hidden;border:1px solid #d9efe9;}
+.voice-card img{width:100%;height:200px;object-fit:cover;object-position:top;}
+.voice-body{padding:1.2rem;}
+.voice-name{font-weight:700;color:#1a3a2a;font-size:.9rem;}
+.voice-role{font-size:.78rem;color:#1a7a62;margin-bottom:.6rem;}
+.voice-body p{font-size:.85rem;color:#444;line-height:1.7;}
+.sample-note{font-size:.72rem;color:#aaa;margin-top:.5rem;}
+@media(max-width:768px){.voice-grid{grid-template-columns:1fr;}}
+
+/* FAQ */
+.faq-list{list-style:none;}
+.faq-item{border-bottom:1px solid #d9efe9;padding:1.2rem 0;}
+.faq-q{font-weight:700;color:#1a3a2a;margin-bottom:.4rem;padding-left:1.6rem;position:relative;}
+.faq-q::before{content:'Q';position:absolute;left:0;color:#1a7a62;font-weight:700;}
+.faq-a{font-size:.9rem;color:#555;padding-left:1.6rem;position:relative;}
+.faq-a::before{content:'A';position:absolute;left:0;color:#e9c46a;font-weight:700;}
+
+/* CTA */
+.cta-section{background:#1a3a2a;text-align:center;padding:4rem 1.5rem;}
+.cta-section h2{color:#fff;font-size:clamp(1.3rem,4vw,2rem);margin-bottom:.75rem;}
+.cta-section p{color:rgba(255,255,255,.78);margin-bottom:2rem;}
+.cta-section .btn-primary{font-size:1.05rem;}
+
+/* Entry form area */
+.entry-box{background:#f4fbf9;border-radius:10px;padding:2rem;text-align:center;border:1px solid #c1e8de;}
+.entry-box p{margin-bottom:1.2rem;color:#444;}
+.entry-contacts{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1rem;}
+.entry-contact-item{font-size:.9rem;color:#555;}
+
+/* Footer */
+footer{background:#1a3a2a;color:rgba(255,255,255,.7);text-align:center;padding:1.8rem 1rem;font-size:.82rem;}
+footer p{margin:.2rem 0;}
+</style>
+</head>
+<body id="top">
+
+<header class="site-header">
+  <a class="brand" href="#top">社会福祉法人千楽</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#work">仕事内容</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#day">1日の流れ</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#faq">よくある質問</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <img class="hero-img" src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1600&h=700&fit=crop&q=80" alt="明るいオフィスで働くスタッフ">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-pill">千葉県浦安市 ／ 相談支援員</span>
+    <h1 class="hero-ttl">地域に生きる人の<br>「困った」に寄り添う仕事</h1>
+    <p class="hero-sub">浦安駅から徒歩3分。週休2日・残業なし。<br>資格を活かして、公的相談窓口で活躍しませんか。</p>
+    <a class="btn-primary" href="#entry">採用情報を見る</a>
+  </div>
+</section>
+
+<section class="section" id="appeal">
+  <div class="inner">
+    <p class="sec-label">私たちが選ばれる理由</p>
+    <h2 class="sec-ttl">千楽で働く3つの魅力</h2>
+    <p class="sec-lead">行政委託の公的相談窓口で、専門資格をフルに活かして働けます。</p>
+    <div class="appeal-grid">
+      <div class="appeal-card">
+        <div class="appeal-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M8 12l2 2 4-4"/></svg>
+        </div>
+        <h3>残業なし・年113日休暇</h3>
+        <p>土日祝休みで、年間休日は113日。時間外労働なし（36協定で特別条項なし）。オン・オフのメリハリをつけて長く働けます。</p>
+      </div>
+      <div class="appeal-card">
+        <div class="appeal-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>ブランクのある方も歓迎</h3>
+        <p>「育児・介護でブランクがある」「資格はあるが現場から離れていた」という方も大歓迎。幅広い年代のスタッフが一緒に働いています。</p>
+      </div>
+      <div class="appeal-card">
+        <div class="appeal-icon">
+          <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>浦安駅から徒歩3分</h3>
+        <p>東京メトロ東西線「浦安駅」から徒歩3分の中核地域生活支援センターが職場。通勤手当は全額実費支給です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="work">
+  <div class="inner">
+    <p class="sec-label">Job Description</p>
+    <h2 class="sec-ttl">仕事内容</h2>
+    <p class="sec-lead">浦安市から委託を受けた「中核地域生活支援センターくらっち」で、生きづらさを抱えるご本人やご家族の相談を受け付けます。</p>
+    <div class="work-wrap">
+      <img class="work-img" src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&h=640&fit=crop&q=80" alt="相談対応のイメージ">
+      <div>
+        <p style="margin-bottom:1rem;color:#444;">電話・来所・訪問・メールなど多様な方法で相談を受け、適切な支援につなぐ公的窓口の仕事です。</p>
+        <ul class="work-list">
+          <li>電話対応・来所・訪問・メール・同行による相談業務</li>
+          <li>相談記録・会議録の作成</li>
+          <li>居場所（コミュニティスペース）の運営</li>
+          <li>就労準備支援プログラムの運営サポート</li>
+          <li>書類・文書管理</li>
+        </ul>
+        <p style="margin-top:1rem;font-size:.85rem;color:#888;">※行政から委託を受けた窓口のため、地域に根ざした安定した業務環境です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="requirements">
+  <div class="inner">
+    <p class="sec-label">Requirements</p>
+    <h2 class="sec-ttl">募集要項</h2>
+    <table class="req-table">
+      <tr><th>職種</th><td>相談支援員</td></tr>
+      <tr><th>雇用形態</th><td>非常勤職員（契約社員）</td></tr>
+      <tr><th>契約期間</th><td>2026年6月1日〜2027年3月31日（業務量・勤務態度により更新あり）</td></tr>
+      <tr><th>給与</th><td>時給 1,250円（月換算 210,000円 ／ 8時間×21日）<br>通勤手当：実費全額支給</td></tr>
+      <tr><th>昇給</th><td>あり（前年度実績：時給+10円〜）</td></tr>
+      <tr><th>就業時間</th><td>9:00〜18:00（休憩60分）／ 時間外労働なし</td></tr>
+      <tr><th>休日</th><td>土曜日・日曜日・祝日・年末年始（年間休日113日）</td></tr>
+      <tr><th>勤務地</th><td>千葉県浦安市北栄1-16-30 レドンド・ビル303<br>「中核地域生活支援センターくらっち」<br>東京メトロ東西線 浦安駅 徒歩3分</td></tr>
+      <tr><th>必須資格</th><td>社会福祉士 / 精神保健福祉士 / 公認心理師 / 産業カウンセラー / キャリアコンサルタント のいずれか<br>＋ 相談業務または対人支援の経験</td></tr>
+      <tr><th>歓迎スキル</th><td>Word（文書作成）・Excel（データ入力・集計）・メールソフト操作<br>普通自動車免許（AT限定可・あれば尚可）</td></tr>
+      <tr><th>社会保険</th><td>雇用保険・労災保険・健康保険・厚生年金</td></tr>
+      <tr><th>採用人数</th><td>1名</td></tr>
+      <tr><th>試用期間</th><td>3ヶ月（同条件）</td></tr>
+      <tr><th>選考方法</th><td>書類選考 → 面接（1回）</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="section section-alt" id="day">
+  <div class="inner">
+    <p class="sec-label">A Day in the Life</p>
+    <h2 class="sec-ttl">1日の流れ</h2>
+    <p class="sec-lead">相談支援員の標準的な1日のスケジュール例です。</p>
+    <p class="sample-note" style="color:#aaa;font-size:.78rem;margin-bottom:1.5rem;">※ここはサンプルです。実際には御社のスタッフの1日に差し替えます。</p>
+    <!-- sample: 1日の流れ -->
+    <div class="timeline">
+      <div class="tl-item">
+        <span class="tl-time">9:00</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body"><h4>出勤・朝礼</h4><p>メールとスケジュールを確認。チームで当日の相談予約を共有します。</p></div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">9:30</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body"><h4>電話・来所対応</h4><p>ご本人やご家族からの相談に対応。必要に応じて関係機関へ連絡・調整します。</p></div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">11:30</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body"><h4>相談記録の作成</h4><p>午前中の対応を記録。会議録や書類の整理も行います。</p></div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">12:00</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body"><h4>昼休み（60分）</h4><p>近隣のカフェやコンビニで休憩。職場は浦安駅そば。</p></div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">13:00</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body"><h4>訪問・同行支援</h4><p>必要な方のご自宅や施設を訪問、または同行支援を行います。</p></div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">15:30</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body"><h4>居場所プログラム支援</h4><p>就労準備支援プログラムや居場所運営のサポートを行います。</p></div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">17:00</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body"><h4>記録・翌日準備</h4><p>午後の対応を記録し、翌日のスケジュールを確認。</p></div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">18:00</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body"><h4>退勤</h4><p>残業なし。メリハリのある働き方でプライベートも充実できます。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="voice">
+  <div class="inner">
+    <p class="sec-label">Staff Voice</p>
+    <h2 class="sec-ttl">先輩からのメッセージ</h2>
+    <p class="sec-lead">千楽で活躍するスタッフの声をご紹介します。</p>
+    <p class="sample-note" style="color:#aaa;font-size:.78rem;margin-bottom:1.5rem;">※ここはサンプルです。実際には御社スタッフの写真・コメントに差し替えます。</p>
+    <!-- sample: 先輩スタッフの声 -->
+    <div class="voice-grid">
+      <div class="voice-card">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=340&fit=crop&crop=faces&q=80" alt="田中さん（仮名）">
+        <div class="voice-body">
+          <p class="voice-name">田中 さや（仮名）</p>
+          <p class="voice-role">相談支援員 ／ 入職3年目</p>
+          <p>精神保健福祉士の資格を活かしたくて入職しました。育児のブランクがあって不安でしたが、周りのサポートが厚くて安心できました。「ありがとう」の一言がやりがいになっています。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社のスタッフの声に差し替えます。</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=340&fit=crop&crop=faces&q=80" alt="鈴木さん（仮名）">
+        <div class="voice-body">
+          <p class="voice-name">鈴木 浩（仮名）</p>
+          <p class="voice-role">相談支援員 ／ 入職1年目</p>
+          <p>前職から転職して入りましたが、先輩がわかりやすく教えてくれるので不安は少なかったです。残業がなくて家族との時間も取れる点が気に入っています。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社のスタッフの声に差し替えます。</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=340&fit=crop&crop=faces&q=80" alt="佐藤さん（仮名）">
+        <div class="voice-body">
+          <p class="voice-name">佐藤 みな（仮名）</p>
+          <p class="voice-role">相談支援員 ／ 入職5年目</p>
+          <p>資格を持ちながら長く相談現場で働きたいと思い入職しました。地域の方々に頼られる存在になれることが、この仕事の一番のやりがいです。チームの雰囲気もよく、長く続けられています。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社のスタッフの声に差し替えます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section section-alt" id="faq">
+  <div class="inner">
+    <p class="sec-label">FAQ</p>
+    <h2 class="sec-ttl">よくある質問</h2>
+    <p class="sample-note" style="color:#aaa;font-size:.78rem;margin-bottom:1.5rem;">※ここはサンプルです。実際には御社のFAQに差し替えます。</p>
+    <!-- sample: FAQ -->
+    <ul class="faq-list">
+      <li class="faq-item">
+        <p class="faq-q">ブランクがあっても応募できますか？</p>
+        <p class="faq-a">はい、大歓迎です。育児・介護・療養などでのブランクがある方も多数活躍しています。資格・経験があれば、ブランクの長さは問いません。</p>
+      </li>
+      <li class="faq-item">
+        <p class="faq-q">必要な資格はどれか1つでよいですか？</p>
+        <p class="faq-a">社会福祉士・精神保健福祉士・公認心理師・産業カウンセラー・キャリアコンサルタントのいずれか1つをお持ちで、かつ相談業務または対人支援の経験があれば応募いただけます。</p>
+      </li>
+      <li class="faq-item">
+        <p class="faq-q">契約期間が決まっていますが、更新はありますか？</p>
+        <p class="faq-a">業務量（事業受託の状況）や勤務態度によっては更新の可能性があります。詳細は選考過程でお伝えします。</p>
+      </li>
+      <li class="faq-item">
+        <p class="faq-q">選考はどのように進みますか？</p>
+        <p class="faq-a">書類選考 → 面接（予定1回）の流れです。書類到着後7日以内、面接後7日以内に選考結果をお知らせします。</p>
+      </li>
+      <li class="faq-item">
+        <p class="faq-q">どんな人が活躍していますか？</p>
+        <p class="faq-a">「地域の方の役に立ちたい」という思いのある方、幅広い年代のスタッフが活躍中です。20代から50代まで多様なバックグラウンドを持つメンバーが一緒に働いています。</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="section" id="entry">
+  <div class="inner">
+    <p class="sec-label">Apply</p>
+    <h2 class="sec-ttl">応募・お問い合わせ</h2>
+    <p class="sec-lead">ご不明な点はお気軽にお問い合わせください。まずはお問い合わせだけでも歓迎です。</p>
+    <div class="entry-box">
+      <p>〒279-0042 千葉県浦安市東野１丁目７－５<br>社会福祉法人千楽</p>
+      <p>採用担当（相談支援窓口）: 和田</p>
+      <div class="entry-contacts">
+        <span class="entry-contact-item">📞 <a href="tel:0473189500">047-318-9500</a></span>
+        <span class="entry-contact-item">✉ <a href="mailto:como.soudan@chiraku.com">como.soudan@chiraku.com</a></span>
+      </div>
+      <p style="margin-top:1rem;font-size:.85rem;color:#777;">ハローワークの紹介状・履歴書（写真貼付）・職務経歴書をご用意ください。</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>社会福祉法人千楽</p>
+  <p>〒279-0042 千葉県浦安市東野１丁目７－５</p>
+  <p>TEL: 047-318-9500 ／ E-mail: como.soudan@chiraku.com</p>
+</footer>
+
+<script>
+(function(){
+  var btn=document.querySelector('.hamburger');
+  var nav=document.querySelector('.site-nav');
+  if(btn&&nav){
+    btn.addEventListener('click',function(){
+      var open=nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded',open);
+    });
+  }
+})();
+</script>
+</body>
+</html>

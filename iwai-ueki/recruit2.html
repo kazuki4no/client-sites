@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>造園工 採用情報 | 有限会社 岩井植木</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;color:#2c2c2c;background:#fff;line-height:1.7;}
+a{color:inherit;text-decoration:none;}
+img{max-width:100%;display:block;}
+
+/* ヘッダー */
+.site-header{display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 1.4rem;background:#fff;border-bottom:2px solid #4a7c59;position:sticky;top:0;z-index:100;}
+.brand{font-size:1rem;font-weight:700;color:#4a7c59;}
+.site-nav{display:flex;gap:1.4rem;align-items:center;}
+.site-nav a{font-size:.88rem;color:#444;transition:color .2s;}
+.site-nav a:hover{color:#4a7c59;}
+.site-nav .nav-cta{background:#4a7c59;color:#fff;padding:.35rem .9rem;border-radius:20px;font-weight:700;}
+.hamburger{display:none;background:none;border:0;font-size:1.7rem;line-height:1;cursor:pointer;color:#4a7c59;}
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:#fff;border-bottom:2px solid #4a7c59;padding:.5rem 1rem;}
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.8rem 0;border-bottom:1px solid #eee;}
+  .site-nav .nav-cta{background:#4a7c59;color:#fff;border-radius:0;text-align:center;}
+}
+
+/* ヒーロー */
+.hero{position:relative;min-height:75vh;display:flex;align-items:center;overflow:hidden;background:#1a3a2b;}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=1600&h=900&fit=crop&q=80');
+  background-size:cover;background-position:center;opacity:.45;}
+.hero-content{position:relative;z-index:1;width:100%;max-width:900px;margin:0 auto;padding:4rem 1.5rem;color:#fff;}
+.hero-label{display:inline-block;background:#a8d5b5;color:#1a3a2b;font-size:.78rem;font-weight:700;
+  padding:.3rem .9rem;border-radius:3px;margin-bottom:1.2rem;letter-spacing:.1em;text-transform:uppercase;}
+.hero-title{font-size:clamp(2rem,7vw,3.6rem);font-weight:900;line-height:1.2;margin-bottom:1.2rem;}
+.hero-title em{color:#a8d5b5;font-style:normal;}
+.hero-sub{font-size:clamp(.95rem,2.5vw,1.15rem);opacity:.88;max-width:640px;margin-bottom:.5rem;line-height:1.7;}
+.hero-note{font-size:.85rem;opacity:.65;margin-bottom:2.5rem;}
+.hero-cta-wrap{display:flex;gap:1rem;flex-wrap:wrap;align-items:center;}
+.hero-cta{background:#a8d5b5;color:#1a3a2b;font-weight:700;padding:1rem 2.4rem;border-radius:4px;font-size:1.05rem;}
+.hero-cta:hover{opacity:.87;}
+
+/* 数字バー */
+.nums{background:#4a7c59;padding:2.8rem 1.4rem;}
+.nums-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:2rem;max-width:900px;margin:0 auto;}
+.num-item{text-align:center;color:#fff;min-width:140px;}
+.num-item .num{font-size:clamp(2rem,5vw,2.8rem);font-weight:900;line-height:1;}
+.num-item .num-unit{font-size:.8rem;font-weight:400;margin-left:.1em;}
+.num-item .num-label{font-size:.82rem;opacity:.8;margin-top:.3rem;}
+.num-sample{width:100%;text-align:center;color:rgba(255,255,255,.5);font-size:.75rem;margin-top:1rem;}
+
+/* セクション共通 */
+section{padding:5rem 1.4rem;}
+.section-inner{max-width:960px;margin:0 auto;}
+.section-badge{display:inline-block;background:#e8f5e9;color:#4a7c59;font-size:.78rem;font-weight:700;
+  padding:.25rem .8rem;border-radius:3px;margin-bottom:.7rem;letter-spacing:.08em;}
+.section-title{font-size:clamp(1.5rem,4vw,2.1rem);font-weight:900;color:#1a3a2b;margin-bottom:.5rem;}
+.section-sub{color:#777;font-size:.9rem;margin-bottom:2.5rem;}
+.section-divider{width:40px;height:3px;background:#4a7c59;margin:.6rem 0 2rem;}
+
+/* 課題解決LP型 */
+.problem{background:#f8faf9;}
+.problem-box{background:#fff;border-left:4px solid #4a7c59;padding:1.4rem 1.6rem;border-radius:0 8px 8px 0;margin-bottom:1rem;font-size:.95rem;color:#444;}
+.problem-box strong{color:#1a3a2b;}
+
+/* 強み3点 */
+.strengths{background:#fff;}
+.strength-list{display:flex;flex-direction:column;gap:2rem;}
+.strength-item{display:flex;gap:1.6rem;align-items:flex-start;}
+.strength-num{font-size:2.5rem;font-weight:900;color:#d0e8d8;line-height:1;min-width:2rem;}
+.strength-body h3{font-size:1.05rem;font-weight:700;color:#4a7c59;margin-bottom:.4rem;}
+.strength-body p{font-size:.9rem;color:#555;line-height:1.7;}
+
+/* 募集要項 */
+.req-section{background:#f8faf9;}
+.req-table{width:100%;border-collapse:collapse;font-size:.92rem;}
+.req-table th{background:#4a7c59;color:#fff;padding:.9rem 1rem;text-align:left;width:25%;font-weight:500;vertical-align:top;}
+.req-table td{padding:.9rem 1rem;border-bottom:1px solid #e0eae3;vertical-align:top;}
+.req-table tr:last-child td{border-bottom:0;}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{padding:.6rem 1rem;}
+  .req-table td{padding:.7rem 1rem 1.2rem;}
+}
+
+/* タイムライン */
+.timeline{background:#fff;}
+.tl-wrap{max-width:680px;margin:0 auto;position:relative;}
+.tl-wrap::before{content:'';position:absolute;left:64px;top:0;bottom:0;width:2px;background:#c8e6c9;}
+.tl-item{display:flex;margin-bottom:1.8rem;position:relative;}
+.tl-time{width:56px;min-width:56px;font-size:.82rem;font-weight:700;color:#4a7c59;padding-top:.15rem;text-align:right;padding-right:8px;}
+.tl-dot{width:16px;min-width:16px;display:flex;justify-content:center;margin-top:.25rem;}
+.tl-dot::before{content:'';display:block;width:12px;height:12px;border-radius:50%;background:#4a7c59;border:2px solid #fff;box-shadow:0 0 0 2px #4a7c59;}
+.tl-body{padding-left:1rem;flex:1;}
+.tl-body strong{display:block;font-size:.93rem;font-weight:700;color:#1a3a2b;}
+.tl-body span{font-size:.85rem;color:#666;}
+@media(max-width:768px){
+  .tl-wrap::before{left:44px;}
+  .tl-time{width:38px;min-width:38px;font-size:.75rem;}
+}
+
+/* 先輩インタビュー */
+.voices{background:#f8faf9;}
+.voice-cards{display:flex;flex-direction:column;gap:2.4rem;}
+.voice-card{display:flex;gap:1.6rem;background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06);}
+.voice-img{width:180px;min-width:180px;object-fit:cover;}
+.voice-body{padding:1.4rem 1.4rem 1.4rem 0;flex:1;}
+.voice-name{font-size:.88rem;font-weight:700;color:#4a7c59;margin-bottom:.15rem;}
+.voice-role{font-size:.78rem;color:#999;margin-bottom:.7rem;}
+.voice-quote{font-size:.92rem;color:#333;line-height:1.75;}
+.voice-sample{font-size:.75rem;color:#bbb;margin-top:.6rem;}
+@media(max-width:768px){
+  .voice-card{flex-direction:column;}
+  .voice-img{width:100%;min-width:auto;height:180px;}
+  .voice-body{padding:1rem;}
+}
+
+/* FAQ */
+.faq-section{background:#fff;}
+.faq-wrap{max-width:720px;margin:0 auto;}
+.faq-item{border:1px solid #ddeae0;border-radius:8px;margin-bottom:.9rem;overflow:hidden;}
+.faq-q{background:#f1f8f3;padding:1rem 1.2rem;font-weight:700;font-size:.93rem;color:#1a3a2b;}
+.faq-q::before{content:'Q. ';color:#4a7c59;}
+.faq-a{padding:1rem 1.2rem;font-size:.9rem;color:#555;line-height:1.7;}
+
+/* CTA中盤 */
+.mid-cta{background:#4a7c59;color:#fff;text-align:center;padding:3.5rem 1.4rem;}
+.mid-cta-title{font-size:clamp(1.2rem,3.5vw,1.7rem);font-weight:700;margin-bottom:.8rem;}
+.mid-cta-sub{font-size:.93rem;opacity:.85;margin-bottom:1.8rem;}
+.mid-cta-btn{display:inline-block;background:#fff;color:#4a7c59;font-weight:700;padding:.9rem 2.4rem;border-radius:4px;font-size:1rem;}
+.mid-cta-btn:hover{opacity:.87;}
+
+/* 最終CTA */
+.entry{background:#1a3a2b;color:#fff;text-align:center;padding:5rem 1.4rem;}
+.entry-title{font-size:clamp(1.4rem,4vw,2rem);font-weight:900;margin-bottom:.8rem;}
+.entry-sub{font-size:.93rem;opacity:.82;margin-bottom:2rem;}
+.entry-btn{display:inline-block;background:#a8d5b5;color:#1a3a2b;font-weight:700;
+  padding:1rem 2.8rem;border-radius:4px;font-size:1.05rem;}
+.entry-btn:hover{opacity:.87;}
+
+/* スマホ固定CTA */
+.fixed-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;
+  background:#4a7c59;padding:.9rem 1.4rem;text-align:center;}
+.fixed-cta a{color:#fff;font-weight:700;font-size:1rem;}
+@media(max-width:768px){.fixed-cta{display:block;}
+  body{padding-bottom:60px;}}
+
+footer{background:#0e2218;color:rgba(255,255,255,.65);text-align:center;padding:2rem 1.4rem;font-size:.83rem;}
+footer .company{color:#fff;font-weight:700;margin-bottom:.4rem;}
+</style>
+</head>
+<body id="top">
+
+<header class="site-header">
+  <a class="brand" href="#top">有限会社 岩井植木</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#strength">強み</a>
+    <a href="#req">募集要項</a>
+    <a href="#flow">1日の流れ</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#faq">FAQ</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-content">
+    <span class="hero-label">未経験歓迎 ｜ 正社員 ｜ 印西市</span>
+    <h1 class="hero-title">本物の造園技術を、<br><em>ゼロから身につける。</em></h1>
+    <p class="hero-sub">大手ゼネコン登録会社として大径木移植まで手がける岩井植木で、<br>一生モノの職人スキルを一緒に磨きませんか。</p>
+    <p class="hero-note">日給10,000〜14,000円 ｜ 年間休日89日 ｜ 賞与年2回</p>
+    <div class="hero-cta-wrap">
+      <a class="hero-cta" href="#entry">まずはお問い合わせ</a>
+    </div>
+  </div>
+</section>
+
+<!-- 数字バー -->
+<div class="nums">
+  <div class="nums-grid">
+    <div class="num-item">
+      <p class="num">10,000<span class="num-unit">円〜</span></p>
+      <p class="num-label">日給（経験・技術で上昇）</p>
+    </div>
+    <div class="num-item">
+      <p class="num">89<span class="num-unit">日</span></p>
+      <p class="num-label">年間休日</p>
+    </div>
+    <div class="num-item">
+      <p class="num">年2<span class="num-unit">回</span></p>
+      <p class="num-label">賞与（前年度実績あり）</p>
+    </div>
+    <div class="num-item">
+      <p class="num">昭和<span class="num-unit">48年</span></p>
+      <p class="num-label">創業の老舗造園会社</p>
+    </div>
+  </div>
+  <p class="num-sample">※ここはサンプルです。実際には御社の数値に差し替えます。</p>
+</div>
+
+<!-- 課題・気づき -->
+<section class="problem" id="about">
+  <div class="section-inner">
+    <span class="section-badge">ABOUT</span>
+    <h2 class="section-title">こんな気持ちで迷っていませんか？</h2>
+    <div class="section-divider"></div>
+    <div class="problem-box"><strong>「日給制って聞くと月収が不安定そう…」</strong></div>
+    <div class="problem-box"><strong>「造園の経験がないから無理かも…」</strong></div>
+    <div class="problem-box"><strong>「小さい会社だと将来性が心配」</strong></div>
+    <p style="margin-top:1.5rem;font-size:.93rem;color:#555;line-height:1.8;">
+      岩井植木では、日給10,000〜14,000円（月換算23〜32万円）に昇給・賞与が加わり、
+      安定した収入を実現しています。未経験者への丁寧な指導体制と、
+      大手ゼネコンからも信頼される技術力で、長く働ける職場環境を整えています。
+    </p>
+  </div>
+</section>
+
+<!-- 強み3点 -->
+<section class="strengths" id="strength">
+  <div class="section-inner">
+    <span class="section-badge">STRENGTH</span>
+    <h2 class="section-title">岩井植木が選ばれる3つの理由</h2>
+    <div class="section-divider"></div>
+    <div class="strength-list">
+      <div class="strength-item">
+        <span class="strength-num">01</span>
+        <div class="strength-body">
+          <h3>大手ゼネコン登録会社という実績と信頼</h3>
+          <p>創業昭和48年。大手建設会社からも直接依頼が来る、業界で認められた技術力をもつ会社です。大型工事の現場を経験でき、履歴書に書ける実績が積めます。</p>
+        </div>
+      </div>
+      <div class="strength-item">
+        <span class="strength-num">02</span>
+        <div class="strength-body">
+          <h3>大径木移植という希少技術が身につく</h3>
+          <p>大きな樹木の移植は、技術と経験がないと任せてもらえない仕事。岩井植木では日常的にこの仕事を行っており、他では経験しにくいスキルが身につきます。</p>
+        </div>
+      </div>
+      <div class="strength-item">
+        <span class="strength-num">03</span>
+        <div class="strength-body">
+          <h3>日給制×昇給で着実に収入アップ</h3>
+          <p>技術が上がるほど日給が上がる仕組み。月3,000〜10,000円の昇給（前年度実績）＋賞与年2回で、努力がそのまま収入に反映されます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 中盤CTA -->
+<div class="mid-cta">
+  <p class="mid-cta-title">まずは3案のサンプルページをご覧ください。<br>お気軽にご連絡を。</p>
+  <p class="mid-cta-sub">書類選考なし・面接1回。選考はシンプルです。</p>
+  <a class="mid-cta-btn" href="#entry">応募・問い合わせ</a>
+</div>
+
+<!-- 募集要項 -->
+<section class="req-section" id="req">
+  <div class="section-inner">
+    <span class="section-badge">REQUIREMENTS</span>
+    <h2 class="section-title">募集要項</h2>
+    <div class="section-divider"></div>
+    <table class="req-table">
+      <tbody>
+        <tr><th>職種</th><td>造園工</td></tr>
+        <tr><th>仕事内容</th><td>苗木の生産・管理・植樹、街路樹の剪定、大径木移植を含む造園工事全般。未経験の方も先輩が丁寧に指導します。</td></tr>
+        <tr><th>雇用形態</th><td>正社員（試用期間3ヶ月・試用中日給9,000円）</td></tr>
+        <tr><th>給与</th><td>日給10,000〜14,000円（月換算230,000〜322,000円）<br>昇給：月3,000〜10,000円 ／ 賞与：年2回（計2ヶ月分）</td></tr>
+        <tr><th>勤務時間</th><td>8:00〜17:00（休憩90分）</td></tr>
+        <tr><th>休日・休暇</th><td>年89日（日曜・第2第4土曜・年末年始・夏季）／有給10日（6ヶ月後）</td></tr>
+        <tr><th>福利厚生</th><td>社保完備（雇用・労災・健康・厚生年金）／退職金共済／通勤手当（実費・月上限10,000円）／マイカー通勤可・駐車場有／作業服貸与</td></tr>
+        <tr><th>応募資格</th><td>普通自動車免許（AT限定不可）※学歴・経験不問</td></tr>
+        <tr><th>勤務地</th><td>千葉県印西市船尾613</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section class="timeline" id="flow">
+  <div class="section-inner">
+    <span class="section-badge">A DAY</span>
+    <h2 class="section-title">社員の1日の流れ</h2>
+    <p class="section-sub">※ここはサンプルです。実際には御社のスタッフの1日に差し替えます。</p>
+    <div class="section-divider"></div>
+    <div class="tl-wrap">
+      <!-- 以下の内容はサンプルです -->
+      <div class="tl-item">
+        <span class="tl-time">8:00</span>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><strong>事務所に集合・朝礼</strong><span>本日の現場と作業内容を確認。道具を積んで出発。</span></div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">8:30</span>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><strong>作業車で現場へ</strong><span>先輩と道中でその日の段取りを確認します。</span></div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">9:00</span>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><strong>現場作業開始</strong><span>植栽・剪定・移植など多様な作業。先輩がそばで指導します。</span></div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">12:00</span>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><strong>昼休憩（60分）</strong><span>気軽に話せる雰囲気で、先輩と一緒に昼食。</span></div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">13:00</span>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><strong>午後の作業</strong><span>大径木の移植現場に入ることも。達成感のある仕事です。</span></div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">16:30</span>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><strong>後片付け・帰社</strong><span>道具の手入れ・洗浄も造園師の大切な仕事です。</span></div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">17:00</span>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><strong>退社</strong><span>基本的に残業なし。メリハリのある働き方ができます。</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩インタビュー -->
+<section class="voices" id="voice">
+  <div class="section-inner">
+    <span class="section-badge">STAFF VOICE</span>
+    <h2 class="section-title">先輩スタッフの声</h2>
+    <p class="section-sub">※ここはサンプルです。実際には御社のスタッフの写真・コメントに差し替えます。</p>
+    <div class="section-divider"></div>
+    <!-- 以下はサンプルです -->
+    <div class="voice-cards">
+      <div class="voice-card">
+        <img class="voice-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=360&h=400&fit=crop&crop=faces&q=80" alt="先輩スタッフ（サンプル）">
+        <div class="voice-body">
+          <p class="voice-name">田中 大輝（仮名）</p>
+          <p class="voice-role">造園工・入社3年目</p>
+          <p class="voice-quote">造園の"そ"の字も知らない状態で入りましたが、毎日少しずつ技術が増えていく感じが楽しくて。今はゼネコン案件でも自分の判断で動けるようになりました。入って良かったと本当に思っています。</p>
+          <p class="voice-sample">※サンプルです。実際のスタッフのコメントに差し替えます。</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <img class="voice-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=360&h=400&fit=crop&crop=faces&q=80" alt="先輩スタッフ（サンプル）">
+        <div class="voice-body">
+          <p class="voice-name">鈴木 健太（仮名）</p>
+          <p class="voice-role">造園工・入社5年目</p>
+          <p class="voice-quote">大径木の移植は本当に迫力があります。重機と職人の連携で大きな木が新しい場所に根付く瞬間、何度見ても感動します。日給制も技術が上がるほど収入が増えるので、モチベーションになっています。</p>
+          <p class="voice-sample">※サンプルです。実際のスタッフのコメントに差し替えます。</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <img class="voice-img" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=360&h=400&fit=crop&crop=faces&q=80" alt="先輩スタッフ（サンプル）">
+        <div class="voice-body">
+          <p class="voice-name">山本 洋二（仮名）</p>
+          <p class="voice-role">造園工・入社1年目</p>
+          <p class="voice-quote">面接のときに「未経験でも絶対に大丈夫」と言われて。実際に入ってみると、先輩たちが本当に丁寧に教えてくれて安心しました。職場の雰囲気が温かくて、毎日が楽しいです。</p>
+          <p class="voice-sample">※サンプルです。実際のスタッフのコメントに差し替えます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-section" id="faq">
+  <div class="section-inner">
+    <span class="section-badge">FAQ</span>
+    <h2 class="section-title">よくある質問</h2>
+    <div class="section-divider"></div>
+    <div class="faq-wrap">
+      <div class="faq-item">
+        <p class="faq-q">未経験でも大丈夫ですか？</p>
+        <p class="faq-a">はい、大歓迎です。先輩スタッフが草刈りや道具の使い方から丁寧に指導します。多くのスタッフが未経験スタートです。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">日給制ですが、月収の目安を教えてください。</p>
+        <p class="faq-a">日給10,000〜14,000円×月23日稼働で、月収230,000〜322,000円が目安です。昇給（月3,000〜10,000円）と賞与（年2回・計2ヶ月）も加わります。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">休日はどのくらいありますか？</p>
+        <p class="faq-a">年間89日。毎週日曜日、第2・第4土曜日、年末年始、夏季休暇があります。6ヶ月後に有給休暇10日も付きます。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">普通免許がオートマしか持っていません。応募できますか？</p>
+        <p class="faq-a">大変申し訳ありませんが、作業車の運転があるため、MT（マニュアル）免許が必要です。AT限定の解除をご検討ください。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">選考方法を教えてください。</p>
+        <p class="faq-a">書類選考なしで、面接1回のみです。随時募集していますのでお気軽にご連絡ください。面接日は応相談です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 最終CTA -->
+<section class="entry" id="entry">
+  <h2 class="entry-title">木と向き合う仕事、<br>一緒にやりませんか？</h2>
+  <p class="entry-sub">書類選考なし・面接1回。まずは話を聞きに来てください。</p>
+  <a class="entry-btn" href="mailto:iwai-u@athena.ocn.ne.jp">メールでお問い合わせ</a>
+</section>
+
+<!-- スマホ固定バー -->
+<div class="fixed-cta">
+  <a href="#entry">📩 まずは気軽にお問い合わせ</a>
+</div>
+
+<footer>
+  <p class="company">有限会社 岩井植木</p>
+  <p>〒270-1345 千葉県印西市船尾613</p>
+  <p>TEL: 0476-46-0848 ／ E-mail: iwai-u@athena.ocn.ne.jp</p>
+</footer>
+
+<script>
+(function(){
+  var btn=document.querySelector('.hamburger');
+  var nav=document.querySelector('.site-nav');
+  if(btn&&nav){btn.addEventListener('click',function(){var open=nav.classList.toggle('open');btn.setAttribute('aria-expanded',open);});}
+})();
+</script>
+</body>
+</html>

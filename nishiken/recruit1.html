@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>採用情報 | 株式会社西建</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body { max-width: 100%; overflow-x: hidden; }
+    body { font-family: 'Noto Sans JP', sans-serif; color: #222; background: #fff; line-height: 1.7; }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ========= HEADER / NAV ========= */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      background: #1e3a5f; padding: 0 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 60px; box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .logo { color: #fff; font-weight: 900; font-size: 1.1rem; letter-spacing: 0.04em; }
+    .logo span { color: #f5922e; }
+    .nav-links { display: flex; gap: 24px; list-style: none; }
+    .nav-links a { color: #dde4f0; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
+    .nav-links a:hover { color: #f5922e; }
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: #fff; border-radius: 2px; transition: 0.3s; }
+    .mobile-menu { display: none; position: fixed; top: 60px; left: 0; right: 0; background: #1e3a5f; padding: 16px 24px; z-index: 99; }
+    .mobile-menu.open { display: block; }
+    .mobile-menu a { display: block; color: #dde4f0; padding: 12px 0; font-size: 1rem; border-bottom: 1px solid rgba(255,255,255,0.1); }
+
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+    }
+
+    /* ========= HERO ========= */
+    .hero {
+      position: relative; min-height: 70vh; display: flex; align-items: center;
+      background: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&h=900&fit=crop&q=80') center/cover no-repeat;
+    }
+    .hero::before { content: ''; position: absolute; inset: 0; background: rgba(10,22,42,0.62); }
+    .hero-inner { position: relative; max-width: 800px; padding: 60px 24px; }
+    .hero-label { display: inline-block; background: #f5922e; color: #fff; font-size: 0.8rem; font-weight: 700; padding: 4px 14px; border-radius: 20px; margin-bottom: 16px; letter-spacing: 0.08em; }
+    .hero h1 { color: #fff; font-size: clamp(1.7rem, 5vw, 2.8rem); font-weight: 900; line-height: 1.35; margin-bottom: 20px; }
+    .hero p { color: #c9d8ee; font-size: clamp(0.95rem, 2.5vw, 1.1rem); margin-bottom: 32px; }
+    .btn-primary {
+      display: inline-block; background: #f5922e; color: #fff; font-weight: 700;
+      padding: 14px 36px; border-radius: 4px; font-size: 1rem; letter-spacing: 0.04em;
+      transition: background 0.2s, transform 0.15s;
+    }
+    .btn-primary:hover { background: #d97c1e; transform: translateY(-1px); }
+    .btn-outline {
+      display: inline-block; border: 2px solid #fff; color: #fff; font-weight: 700;
+      padding: 13px 28px; border-radius: 4px; font-size: 1rem; margin-left: 12px;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { background: #fff; color: #1e3a5f; }
+    .btn-primary, .btn-outline, .btn-green { display: inline-block; }
+
+    /* ========= HIGHLIGHTS (弱点対策・待遇数字) ========= */
+    .highlights { background: #1e3a5f; padding: 40px 24px; }
+    .highlights-inner { max-width: 900px; margin: 0 auto; display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; }
+    .hl-card { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 8px; padding: 24px 28px; text-align: center; flex: 1; min-width: 200px; }
+    .hl-num { color: #f5922e; font-size: clamp(2rem, 5vw, 2.8rem); font-weight: 900; line-height: 1; }
+    .hl-unit { color: #f5922e; font-size: 1rem; font-weight: 700; }
+    .hl-label { color: #c9d8ee; font-size: 0.85rem; margin-top: 8px; }
+
+    /* ========= SECTION COMMON ========= */
+    section { padding: 72px 24px; }
+    .section-inner { max-width: 900px; margin: 0 auto; }
+    .section-title { font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 900; color: #1e3a5f; margin-bottom: 12px; }
+    .section-sub { color: #666; font-size: 0.95rem; margin-bottom: 44px; }
+    .accent-bar { display: inline-block; width: 40px; height: 4px; background: #f5922e; border-radius: 2px; margin-bottom: 16px; }
+
+    /* ========= FEATURES (魅力3点) ========= */
+    .features { background: #f7f9fc; }
+    .feat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .feat-card { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.07); }
+    .feat-card img { width: 100%; height: 200px; object-fit: cover; }
+    .feat-body { padding: 20px; }
+    .feat-icon { font-size: 1.6rem; margin-bottom: 8px; }
+    .feat-body h3 { font-size: 1.05rem; font-weight: 700; color: #1e3a5f; margin-bottom: 8px; }
+    .feat-body p { font-size: 0.9rem; color: #555; line-height: 1.65; }
+    .sample-note { color: #aaa; font-size: 0.75rem; margin-top: 8px; }
+
+    @media (max-width: 768px) { .feat-grid { grid-template-columns: 1fr; } }
+
+    /* ========= TABLE ========= */
+    .table-wrap { overflow-x: auto; }
+    .req-table { width: 100%; border-collapse: collapse; }
+    .req-table th, .req-table td { padding: 14px 16px; text-align: left; border-bottom: 1px solid #e8edf2; font-size: 0.95rem; }
+    .req-table th { background: #1e3a5f; color: #fff; font-weight: 700; white-space: nowrap; width: 160px; }
+    .req-table tr:last-child th, .req-table tr:last-child td { border-bottom: none; }
+    .req-table tr:nth-child(even) td { background: #f7f9fc; }
+
+    @media (max-width: 768px) {
+      .req-table, .req-table tbody, .req-table tr { display: block; }
+      .req-table tr { margin-bottom: 16px; border: 1px solid #e8edf2; border-radius: 6px; overflow: hidden; }
+      .req-table th { display: block; width: 100%; padding: 10px 14px; font-size: 0.85rem; }
+      .req-table td { display: block; width: 100%; padding: 10px 14px; }
+      .req-table tr:nth-child(even) td { background: #f7f9fc; }
+    }
+
+    /* ========= FAQ ========= */
+    .faq { background: #f7f9fc; }
+    .faq-item { background: #fff; border-radius: 8px; margin-bottom: 12px; overflow: hidden; border: 1px solid #e2e8f0; }
+    .faq-q { display: flex; align-items: flex-start; gap: 14px; padding: 18px 20px; cursor: pointer; font-weight: 700; color: #1e3a5f; }
+    .faq-mark { flex-shrink: 0; background: #f5922e; color: #fff; width: 28px; height: 28px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; font-weight: 700; }
+    .faq-a { padding: 0 20px 18px 62px; color: #444; font-size: 0.95rem; line-height: 1.7; }
+
+    /* ========= TIMELINE ========= */
+    .timeline { position: relative; padding-left: 32px; }
+    .timeline::before { content: ''; position: absolute; left: 14px; top: 0; bottom: 0; width: 2px; background: #e2e8f0; }
+    .tl-item { position: relative; margin-bottom: 28px; }
+    .tl-dot { position: absolute; left: -26px; top: 4px; width: 14px; height: 14px; border-radius: 50%; background: #f5922e; border: 2px solid #fff; box-shadow: 0 0 0 2px #f5922e; }
+    .tl-time { font-size: 0.85rem; font-weight: 700; color: #f5922e; margin-bottom: 4px; }
+    .tl-text { font-size: 0.95rem; color: #444; }
+
+    /* ========= STAFF ========= */
+    .staff-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+    .staff-card { background: #fff; border-radius: 10px; padding: 24px; box-shadow: 0 2px 12px rgba(0,0,0,0.07); display: flex; gap: 16px; }
+    .staff-photo { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+    .staff-info h4 { font-weight: 700; color: #1e3a5f; font-size: 1rem; margin-bottom: 4px; }
+    .staff-meta { font-size: 0.8rem; color: #888; margin-bottom: 8px; }
+    .staff-info p { font-size: 0.9rem; color: #555; line-height: 1.65; }
+
+    @media (max-width: 768px) {
+      .staff-grid { grid-template-columns: 1fr; }
+      .staff-card { flex-direction: column; align-items: center; text-align: center; }
+    }
+
+    /* ========= RECRUITER ========= */
+    .recruiter-card { background: #f7f9fc; border-radius: 10px; padding: 28px; display: flex; gap: 24px; align-items: center; }
+    .rec-photo { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; flex-shrink: 0; }
+    .rec-info h3 { font-size: 1.1rem; font-weight: 700; color: #1e3a5f; margin-bottom: 4px; }
+    .rec-role { font-size: 0.85rem; color: #888; margin-bottom: 10px; }
+    .rec-info p { font-size: 0.95rem; color: #555; line-height: 1.7; }
+
+    @media (max-width: 768px) {
+      .recruiter-card { flex-direction: column; text-align: center; }
+    }
+
+    /* ========= CTA SECTION ========= */
+    .cta-section { background: linear-gradient(135deg, #1e3a5f 0%, #0f2040 100%); text-align: center; }
+    .cta-section h2 { color: #fff; font-size: clamp(1.4rem, 4vw, 2rem); font-weight: 900; margin-bottom: 12px; }
+    .cta-section p { color: #c9d8ee; margin-bottom: 32px; }
+
+    /* ========= FOOTER ========= */
+    footer { background: #111; color: #aaa; padding: 32px 24px; text-align: center; font-size: 0.85rem; line-height: 1.9; }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="logo">株式会社<span>西建</span></div>
+  <ul class="nav-links">
+    <li><a href="#features">働く魅力</a></li>
+    <li><a href="#requirements">募集要項</a></li>
+    <li><a href="#faq">よくある質問</a></li>
+    <li><a href="#staff">先輩の声</a></li>
+    <li><a href="#apply" style="background:#f5922e;color:#fff;padding:8px 18px;border-radius:4px;">応募する</a></li>
+  </ul>
+  <button class="hamburger" id="hamburger" aria-label="メニューを開く">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+<nav class="mobile-menu" id="mobileMenu">
+  <a href="#features">働く魅力</a>
+  <a href="#requirements">募集要項</a>
+  <a href="#faq">よくある質問</a>
+  <a href="#staff">先輩の声</a>
+  <a href="#apply">応募する</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-label">採用情報 2026</span>
+    <h1>待遇の中身を、ちゃんと見てほしい。<br>未経験から稼げる舗装スタッフ募集</h1>
+    <p>成田空港・北総エリアの舗装工事を手がける西建。<br>時間外労働なし・月29.9万〜・日払い可・社宅完備。<br>「きつそう」という先入観の前に、まずこのページをご覧ください。</p>
+    <a href="#apply" class="btn-primary">まずは話を聞いてみる</a>
+    <a href="#requirements" class="btn-outline">募集要項を見る</a>
+  </div>
+</section>
+
+<!-- HIGHLIGHTS -->
+<div class="highlights">
+  <div class="highlights-inner">
+    <div class="hl-card">
+      <div class="hl-num">29.9<span class="hl-unit">万〜</span></div>
+      <div class="hl-label">月収（日給14,000〜）<br>日払い・週払いも可</div>
+    </div>
+    <div class="hl-card">
+      <div class="hl-num">0<span class="hl-unit">h</span></div>
+      <div class="hl-label">時間外労働<br>残業なし</div>
+    </div>
+    <div class="hl-card">
+      <div class="hl-num">110<span class="hl-unit">日</span></div>
+      <div class="hl-label">年間休日<br>土日休み</div>
+    </div>
+    <div class="hl-card">
+      <div class="hl-num">3<span class="hl-unit">名</span></div>
+      <div class="hl-label">今回の採用予定数<br>未経験・経験者ともに歓迎</div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="section-inner">
+    <div class="accent-bar"></div>
+    <h2 class="section-title">西建で働く3つの魅力</h2>
+    <p class="section-sub">「建設はきつい」という先入観を覆す、西建の職場環境をご紹介します。</p>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <!-- 建設現場のダミー画像 -->
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=640&h=380&fit=crop&q=80" alt="舗装工事の現場">
+        <div class="feat-body">
+          <div class="feat-icon">💰</div>
+          <h3>充実した待遇・各種手当</h3>
+          <p>日給14,000〜21,000円。皆勤手当・家族手当・資格手当など複数の手当で、毎月の収入を底上げ。日払い・週払いも相談可能です。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社の手当詳細に差し替えます</p>
+        </div>
+      </div>
+      <div class="feat-card">
+        <!-- 建設技術系のダミー画像 -->
+        <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=640&h=380&fit=crop&q=80" alt="資格取得・スキルアップ">
+        <div class="feat-body">
+          <div class="feat-icon">📋</div>
+          <h3>資格取得支援でスキルアップ</h3>
+          <p>大型特殊・中型免許・施工管理技士など、会社規定の補助制度を活用してキャリアアップ。資格が増えるほど資格手当で収入も増えます。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社の制度詳細に差し替えます</p>
+        </div>
+      </div>
+      <div class="feat-card">
+        <!-- 空港・成田 →西建の主な現場 -->
+        <img src="https://images.unsplash.com/photo-1436491865332-7a61a109cc05?w=640&h=380&fit=crop&q=80" alt="成田空港周辺の工事現場">
+        <div class="feat-body">
+          <div class="feat-icon">✈️</div>
+          <h3>成田空港内も手がける誇れる現場</h3>
+          <p>成田空港内の舗装工事を担う、北総エリアを代表する舗装専門会社。地域インフラを支える仕事に誇りが持てます。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社の実績・写真に差し替えます</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REQUIREMENTS -->
+<section id="requirements">
+  <div class="section-inner">
+    <div class="accent-bar"></div>
+    <h2 class="section-title">募集要項</h2>
+    <p class="section-sub">アスファルト舗装スタッフ（正社員）</p>
+    <div class="table-wrap">
+      <table class="req-table">
+        <tbody>
+          <tr><th>職種</th><td>アスファルト舗装スタッフ（正社員）</td></tr>
+          <tr><th>仕事内容</th><td>成田空港内・道路のアスファルト舗装工事 / 重機オペレーター（資格取得支援あり）<br>印西作業所を拠点に千葉県北総エリアの現場へ</td></tr>
+          <tr><th>給与</th><td>日給 14,000円〜21,000円<br>月収換算 299,800円〜465,200円<br>皆勤手当（10,000〜30,000円）・家族手当・資格手当あり</td></tr>
+          <tr><th>給与支払</th><td>月払い（翌月10日）・週払い・日払い（相談可）</td></tr>
+          <tr><th>就業時間</th><td>8:00〜17:00（昼間） または 20:00〜5:00（夜間）のうち8時間<br>時間外労働：なし</td></tr>
+          <tr><th>休日・休暇</th><td>土曜・日曜・年末年始・夏季・GW<br>年間休日 110日</td></tr>
+          <tr><th>勤務地</th><td>〒270-1603 千葉県印西市吉高1505-4（印西作業所）<br>成田市・北総エリアの各現場</td></tr>
+          <tr><th>交通</th><td>マイカー通勤可（駐車場あり）<br>最寄駅：安食駅より車5分</td></tr>
+          <tr><th>待遇・福利厚生</th><td>社会保険完備・借り上げ社宅（単身用）・資格取得補助・作業服貸与<br>昇給あり（月10,000〜30,000円実績）・賞与年2回実績</td></tr>
+          <tr><th>応募資格</th><td>未経験歓迎 / 経験者優遇 / 59歳以下（定年制のため）<br>普通自動車免許（AT可）があれば尚可</td></tr>
+          <tr><th>採用人数</th><td>3名（増員）</td></tr>
+          <tr><th>選考方法</th><td>面接1回（随時受付・結果は7日以内に連絡）</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="section-inner">
+    <div class="accent-bar"></div>
+    <h2 class="section-title">よくある質問</h2>
+    <p class="section-sub">応募前に気になる疑問にお答えします。</p>
+
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-mark">Q</span>未経験でも本当に大丈夫ですか？</div>
+      <div class="faq-a">はい。現在のスタッフの多くが異業種からの転職・未経験スタートです。ベテラン社員が丁寧に指導しますので、舗装や重機の知識がゼロでも安心してご応募ください。<br><span class="sample-note">※ここはサンプルです。実際には御社のエピソードに差し替えます</span></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-mark">Q</span>夜間工事はどのくらいありますか？</div>
+      <div class="faq-a">案件によって夜間シフト（20:00〜5:00）がある現場もあります。事前にスケジュールをお伝えしますので、生活リズムを確認しながら働けます。日勤の現場が中心です。<br><span class="sample-note">※ここはサンプルです。実際には御社の実態に合わせて差し替えます</span></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-mark">Q</span>資格取得の費用はサポートしてもらえますか？</div>
+      <div class="faq-a">はい。会社規定の補助制度があります。大型特殊・中型免許・施工管理技士など、取得した資格は資格手当としても毎月給与に上乗せされます。<br><span class="sample-note">※ここはサンプルです。実際には御社の補助制度に差し替えます</span></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-mark">Q</span>日払い・週払いは実際に使えますか？</div>
+      <div class="faq-a">対応しています。給与は原則月払い（翌月10日）ですが、週払い・日払いも相談ください。入社後すぐにご利用いただけます。<br><span class="sample-note">※ここはサンプルです。実際には御社の制度に差し替えます</span></div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q"><span class="faq-mark">Q</span>女性でも働けますか？</div>
+      <div class="faq-a">はい、女性スタッフも活躍しています。現場での役割分担があり、体力的なハードルは入社後に自分のペースで上げていけます。<br><span class="sample-note">※ここはサンプルです。実際には御社の女性スタッフの声に差し替えます</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section id="timeline">
+  <div class="section-inner">
+    <div class="accent-bar"></div>
+    <h2 class="section-title">1日の流れ（日勤現場の例）</h2>
+    <p class="section-sub">時間外労働なし。オンとオフのメリハリがしっかりあります。</p>
+    <p class="sample-note" style="margin-bottom:28px;">※ここはサンプルです。実際には御社スタッフの1日に差し替えます</p>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">7:30</div><div class="tl-text">印西作業所に集合・朝礼・本日の現場確認</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">8:00</div><div class="tl-text">社有車で現場へ出発（千葉県北総エリア・成田空港周辺）</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">8:30</div><div class="tl-text">現場到着・安全確認・資材・重機の準備</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">9:00〜</div><div class="tl-text">舗装工事・重機オペレーション（先輩と組んで作業）</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">12:00</div><div class="tl-text">昼休憩（1時間）</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">13:00〜</div><div class="tl-text">午後の施工・仕上げ確認</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">16:00</div><div class="tl-text">後片付け・資機材の搬出</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">17:00</div><div class="tl-text">作業所へ帰所・報告・終業。残業なし！</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STAFF VOICE -->
+<section class="features" id="staff">
+  <div class="section-inner">
+    <div class="accent-bar"></div>
+    <h2 class="section-title">先輩スタッフの声</h2>
+    <p class="section-sub">実際に働くメンバーのリアルな感想をご紹介します。</p>
+    <p class="sample-note" style="margin-bottom:28px;">※ここはサンプルです。実際には御社スタッフの写真・コメントに差し替えます</p>
+    <div class="staff-grid">
+      <div class="staff-card">
+        <!-- 男性スタッフ顔写真ダミー -->
+        <img class="staff-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="田中 拓海">
+        <div class="staff-info">
+          <h4>田中 拓海（仮名）</h4>
+          <p class="staff-meta">舗装リーダー / 入社3年 / 30代</p>
+          <p>最初は「体力仕事で大変そう」と思っていましたが、技術を身につけてこそ稼げる仕事だと実感しています。資格手当で収入が上がるのが毎月の励みです。</p>
+        </div>
+      </div>
+      <div class="staff-card">
+        <!-- 男性スタッフ顔写真ダミー -->
+        <img class="staff-photo" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="鈴木 健一">
+        <div class="staff-info">
+          <h4>鈴木 健一（仮名）</h4>
+          <p class="staff-meta">オペレーター見習い / 入社1年 / 20代</p>
+          <p>前職は全く別の仕事でした。先輩が丁寧に教えてくれるので、入社して1年で重機の基礎を覚えられました。日払い可能で収入面も安心でした。</p>
+        </div>
+      </div>
+      <div class="staff-card">
+        <!-- 男性スタッフ顔写真ダミー -->
+        <img class="staff-photo" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="佐藤 雄二">
+        <div class="staff-info">
+          <h4>佐藤 雄二（仮名）</h4>
+          <p class="staff-meta">舗装スタッフ / 入社4年 / 40代</p>
+          <p>家族手当・資格手当があって、子どもが生まれてから収入が安定しました。社宅制度のおかげで住居費の心配もなく、腰を据えて働けています。</p>
+        </div>
+      </div>
+      <div class="staff-card">
+        <!-- 女性スタッフ顔写真ダミー -->
+        <img class="staff-photo" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=faces&q=80" alt="山本 恵">
+        <div class="staff-info">
+          <h4>山本 恵（仮名）</h4>
+          <p class="staff-meta">舗装スタッフ / 入社2年 / 20代</p>
+          <p>「力仕事ばかり」と思っていましたが、現場では役割分担があります。残業なし・土日休みで、プライベートの時間もしっかり確保できています。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECRUITER -->
+<section id="recruiter">
+  <div class="section-inner">
+    <div class="accent-bar"></div>
+    <h2 class="section-title">採用担当者から</h2>
+    <div class="recruiter-card">
+      <!-- 採用担当者顔写真ダミー -->
+      <img class="rec-photo" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当">
+      <div class="rec-info">
+        <h3>西山（仮名）</h3>
+        <p class="rec-role">採用担当 / 代表取締役</p>
+        <p>「建設は大変そう」という先入観で、あと一歩が踏み出せない方に、ぜひ一度話を聞いてほしいと思っています。未経験でも資格を取りながら成長できる環境を整えています。小さな疑問でもお気軽にお問い合わせください。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社担当者の写真・コメントに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="apply">
+  <div class="section-inner" style="text-align:center;">
+    <div class="accent-bar" style="background:#f5922e;"></div>
+    <h2 style="color:#fff;font-size:clamp(1.4rem,4vw,2rem);font-weight:900;margin-bottom:12px;">まずは話を聞くだけでも大丈夫です</h2>
+    <p style="color:#c9d8ee;margin-bottom:32px;">選考は面接1回・書類選考なし。気軽にお問い合わせください。</p>
+    <a href="mailto:nishiyama@nishiken.co.jp" class="btn-primary" style="font-size:1.1rem;padding:16px 48px;">メールで問い合わせる</a>
+    <p style="color:#aaa;margin-top:20px;font-size:0.85rem;">お電話でのご相談: 090-2750-5745</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>株式会社西建</p>
+  <p>〒286-0045 千葉県成田市並木町139-35</p>
+  <p>TEL: 090-2750-5745 / MAIL: nishiyama@nishiken.co.jp</p>
+</footer>
+
+<script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamburger.addEventListener('click', () => {
+    mobileMenu.classList.toggle('open');
+  });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+</script>
+</body>
+</html>

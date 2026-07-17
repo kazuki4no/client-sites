@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 株式会社コンフォートビルド</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#222;background:#111}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+:root{
+  --orange:#e87820;
+  --orange-light:#ff9a3c;
+  --dark:#111;
+  --mid:#1a1a2e;
+  --navy:#0d1b2e;
+  --bg-light:#f4f5f8;
+  --gray:#777;
+}
+
+/* ── ヘッダー ── */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  background:rgba(0,0,0,.55);backdrop-filter:blur(12px);
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 24px;height:58px;border-bottom:1px solid rgba(255,255,255,.1);
+}
+.logo{color:#fff;font-family:'Noto Serif JP',serif;font-weight:700;font-size:.9rem;letter-spacing:.05em}
+nav.pc-nav a{
+  color:rgba(255,255,255,.8);font-size:.82rem;margin-left:24px;
+  transition:color .2s;
+}
+nav.pc-nav a:hover{color:var(--orange-light)}
+.hamburger{
+  display:none;flex-direction:column;justify-content:space-between;
+  width:26px;height:18px;cursor:pointer;
+}
+.hamburger span{display:block;height:2px;background:#fff;border-radius:2px}
+.mobile-nav{
+  display:none;position:fixed;inset:0;background:rgba(0,0,0,.96);
+  flex-direction:column;align-items:center;justify-content:center;z-index:199;
+}
+.mobile-nav.open{display:flex}
+.mobile-nav a{color:#fff;font-size:1.2rem;font-weight:700;margin:14px 0}
+.close-nav{position:absolute;top:18px;right:22px;background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer}
+
+@media(max-width:768px){
+  nav.pc-nav{display:none}
+  .hamburger{display:flex}
+}
+
+/* ── FVヒーロー（全画面背景＋オーバーレイ） ── */
+.hero{
+  position:relative;min-height:85vh;
+  display:flex;align-items:center;justify-content:flex-start;
+  overflow:hidden;padding-top:58px;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&h=900&fit=crop&q=80');
+  background-size:cover;background-position:center;
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(105deg,rgba(10,15,35,.88) 0%,rgba(10,15,35,.5) 60%,rgba(0,0,0,.1) 100%);
+}
+.hero-content{
+  position:relative;z-index:1;
+  padding:60px 48px;max-width:680px;
+}
+.hero-label{
+  display:inline-flex;align-items:center;gap:8px;
+  background:var(--orange);
+  color:#fff;font-size:.75rem;font-weight:700;
+  padding:5px 14px;border-radius:100px;margin-bottom:20px;
+  letter-spacing:.1em;
+}
+.hero-title{
+  font-family:'Noto Serif JP',serif;
+  color:#fff;font-weight:900;line-height:1.25;
+  font-size:clamp(2.2rem,7vw,4rem);margin-bottom:20px;
+}
+.hero-title em{color:var(--orange-light);font-style:normal}
+.hero-desc{
+  color:rgba(255,255,255,.8);font-size:clamp(.9rem,2.2vw,1rem);
+  line-height:1.9;margin-bottom:36px;
+}
+.hero-badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:36px}
+.hero-badge{
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);
+  color:rgba(255,255,255,.9);font-size:.78rem;padding:5px 14px;border-radius:100px;
+}
+.btn-hero{
+  display:inline-block;background:var(--orange);color:#fff;
+  font-weight:900;font-size:1rem;padding:16px 44px;border-radius:8px;
+  transition:background .2s;letter-spacing:.03em;
+}
+.btn-hero:hover{background:var(--orange-light)}
+
+/* ── 特長バッジ ── */
+.feature-strip{
+  background:var(--mid);
+  padding:32px 20px;
+}
+.feature-inner{
+  max-width:880px;margin:0 auto;
+  display:flex;flex-wrap:wrap;justify-content:center;gap:16px;
+}
+.feature-chip{
+  display:flex;align-items:center;gap:8px;
+  background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);
+  color:rgba(255,255,255,.85);
+  font-size:.85rem;font-weight:500;
+  padding:10px 20px;border-radius:100px;
+}
+.feature-chip svg{width:18px;height:18px;fill:var(--orange-light)}
+
+/* ── セクション共通（明部） ── */
+.section-light{background:var(--bg-light);padding:72px 20px}
+.section-dark{background:var(--dark);padding:72px 20px}
+.container{max-width:960px;margin:0 auto}
+
+.kicker-orange{
+  font-size:.72rem;font-weight:700;letter-spacing:.15em;
+  color:var(--orange);text-transform:uppercase;display:block;margin-bottom:8px;
+}
+.section-h2{
+  font-size:clamp(1.4rem,4vw,2rem);font-weight:900;
+  margin-bottom:48px;line-height:1.3;
+}
+.section-light .section-h2{color:var(--dark)}
+.section-dark .section-h2{color:#fff}
+
+/* ── 働く魅力カード ── */
+.merit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.merit-card{
+  background:#fff;border-radius:12px;padding:28px;
+  border-bottom:4px solid var(--orange);
+  box-shadow:0 2px 12px rgba(0,0,0,.06);
+}
+.merit-icon{
+  width:48px;height:48px;border-radius:12px;
+  background:var(--orange);color:#fff;font-size:1.4rem;
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:16px;
+}
+.merit-card h3{font-size:1rem;font-weight:700;color:var(--dark);margin-bottom:10px}
+.merit-card p{font-size:.85rem;color:#555;line-height:1.75}
+
+/* ── 募集要項 ── */
+.job-table{width:100%;border-collapse:collapse}
+.job-table tr{border-bottom:1px solid rgba(255,255,255,.1)}
+.job-table th{
+  width:130px;padding:14px 12px;font-size:.82rem;
+  font-weight:700;color:rgba(255,255,255,.7);
+  background:rgba(255,255,255,.05);vertical-align:top;text-align:left;
+}
+.job-table td{
+  padding:14px 12px;font-size:.875rem;
+  color:rgba(255,255,255,.85);line-height:1.7;vertical-align:top;
+}
+
+/* ── FAQ ── */
+.faq-list-dark{list-style:none}
+.faq-item-dark{
+  border-bottom:1px solid rgba(255,255,255,.1);
+}
+.faq-q-dark{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:18px 4px;cursor:pointer;
+  font-weight:700;color:rgba(255,255,255,.88);font-size:.95rem;
+}
+.faq-q-dark::after{
+  content:'＋';color:var(--orange);font-size:1.1rem;margin-left:12px;flex-shrink:0;
+}
+.faq-item-dark.open .faq-q-dark::after{content:'－'}
+.faq-a-dark{
+  display:none;padding:0 4px 16px;
+  font-size:.875rem;color:rgba(255,255,255,.65);line-height:1.8;
+}
+.faq-item-dark.open .faq-a-dark{display:block}
+
+/* ── タイムライン ── */
+.timeline-dark{list-style:none}
+.tl-dark-item{
+  display:flex;gap:20px;padding-bottom:24px;
+  border-left:2px solid rgba(232,120,32,.4);
+  margin-left:20px;padding-left:24px;position:relative;
+}
+.tl-dark-item::before{
+  content:'';position:absolute;left:-8px;top:4px;
+  width:14px;height:14px;border-radius:50%;
+  background:var(--orange);
+}
+.tl-dark-item .t-time{
+  font-size:.78rem;font-weight:700;color:var(--orange-light);
+  display:block;margin-bottom:4px;
+}
+.tl-dark-item .t-title{
+  font-weight:700;color:#fff;font-size:.95rem;margin-bottom:4px;
+}
+.tl-dark-item .t-body{font-size:.85rem;color:rgba(255,255,255,.6);line-height:1.65}
+
+/* ── 先輩の声 ── */
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.voice-card-dark{
+  background:rgba(255,255,255,.05);
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:12px;padding:24px;
+}
+.voice-avatar{width:56px;height:56px;border-radius:50%;object-fit:cover;margin-bottom:12px;border:2px solid var(--orange)}
+.voice-name-dark{font-weight:700;font-size:.9rem;color:#fff}
+.voice-role-dark{font-size:.75rem;color:rgba(255,255,255,.5);margin-bottom:12px}
+.voice-text-dark{font-size:.85rem;color:rgba(255,255,255,.75);line-height:1.8}
+.sample-note-dark{font-size:.7rem;color:rgba(255,255,255,.3);margin-top:8px;font-style:italic}
+
+/* ── 応募CTA ── */
+.cta-section-fire{
+  background:linear-gradient(135deg,#0d1220 0%,var(--navy) 100%);
+  text-align:center;padding:80px 20px;
+}
+.cta-section-fire h2{
+  color:#fff;font-family:'Noto Serif JP',serif;
+  font-size:clamp(1.8rem,5vw,2.8rem);font-weight:900;
+  margin-bottom:16px;line-height:1.3;
+}
+.cta-section-fire h2 em{color:var(--orange-light);font-style:normal}
+.cta-section-fire p{
+  color:rgba(255,255,255,.7);font-size:.95rem;
+  margin-bottom:36px;line-height:1.75;
+}
+.btn-fire{
+  display:inline-block;background:var(--orange);color:#fff;
+  font-weight:900;font-size:1.05rem;padding:16px 48px;
+  border-radius:8px;transition:background .2s;
+}
+.btn-fire:hover{background:var(--orange-light)}
+.btn-phone{
+  display:inline-block;color:rgba(255,255,255,.8);
+  font-size:.9rem;margin-top:16px;
+  border-bottom:1px solid rgba(255,255,255,.3);padding-bottom:2px;
+}
+
+/* ── フッター ── */
+footer{
+  background:#000;color:rgba(255,255,255,.45);
+  font-size:.78rem;text-align:center;padding:32px 20px;
+}
+footer p{margin-bottom:4px}
+
+.sample-note{font-size:.72rem;color:#aaa;margin-top:10px;font-style:italic;text-align:center}
+
+/* ── スマホ ── */
+@media(max-width:768px){
+  .hero-content{padding:48px 24px}
+  .merit-grid{grid-template-columns:1fr}
+  .voice-grid{grid-template-columns:1fr}
+  .feature-chip{font-size:.78rem;padding:8px 14px}
+  .job-table th{width:80px}
+  .section-light,.section-dark{padding:52px 16px}
+}
+</style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<header>
+  <div class="logo">株式会社コンフォートビルド</div>
+  <nav class="pc-nav">
+    <a href="#merit">働く魅力</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#faq">FAQ</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#apply">応募する</a>
+  </nav>
+  <div class="hamburger" onclick="openNav()">
+    <span></span><span></span><span></span>
+  </div>
+</header>
+
+<div class="mobile-nav" id="mobileNav">
+  <button class="close-nav" onclick="closeNav()">✕</button>
+  <a href="#merit" onclick="closeNav()">働く魅力</a>
+  <a href="#requirements" onclick="closeNav()">募集要項</a>
+  <a href="#faq" onclick="closeNav()">FAQ</a>
+  <a href="#voice" onclick="closeNav()">先輩の声</a>
+  <a href="#apply" onclick="closeNav()">応募する</a>
+</div>
+
+<!-- FVバナー型ヒーロー -->
+<section class="hero" id="top">
+  <!-- ヒーロー背景画像 / 建設現場・作業員のサンプル画像です。御社の写真に差し替えます -->
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-label">正社員募集 ／ 電気工事士・見習い</span>
+    <h1 class="hero-title">腕一本で、<br><em>月54万。</em></h1>
+    <p class="hero-desc">
+      一般住宅・店舗の電気工事（LED・エアコン・配線）。<br>
+      直行直帰・得意工事中心の自分ペース。<br>
+      未経験から資格まで、会社が全力でバックアップします。
+    </p>
+    <div class="hero-badges">
+      <span class="hero-badge">直行直帰OK</span>
+      <span class="hero-badge">未経験歓迎</span>
+      <span class="hero-badge">資格取得補助</span>
+      <span class="hero-badge">書類選考なし</span>
+      <span class="hero-badge">社員寮あり</span>
+    </div>
+    <a href="https://www.comfort-bld.com/inquiries" class="btn-hero">まずは応募してみる</a>
+  </div>
+</section>
+
+<!-- 特長バッジ -->
+<div class="feature-strip">
+  <div class="feature-inner">
+    <div class="feature-chip">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+      月収最大540,000円
+    </div>
+    <div class="feature-chip">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm0 18a8 8 0 110-16 8 8 0 010 16zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67V7z"/></svg>
+      直行直帰・自分ペース
+    </div>
+    <div class="feature-chip">
+      <svg viewBox="0 0 24 24"><path d="M9 11.75a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5zm6 0a1.25 1.25 0 100 2.5 1.25 1.25 0 000-2.5zM12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
+      20代〜60代活躍中
+    </div>
+    <div class="feature-chip">
+      <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-7 3c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6zm7 13H5v-.23c0-.62.28-1.2.76-1.58C7.47 15.82 9.64 15 12 15s4.53.82 6.24 2.19c.48.38.76.97.76 1.58V19z"/></svg>
+      資格取得補助あり
+    </div>
+    <div class="feature-chip">
+      <svg viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+      社員寮あり（月25,000円・光熱費込）
+    </div>
+  </div>
+</div>
+
+<!-- 働く魅力 -->
+<section class="section-light" id="merit">
+  <div class="container">
+    <span class="kicker-orange">Merit</span>
+    <h2 class="section-h2">コンフォートビルドを<br>選ぶ理由</h2>
+    <div class="merit-grid">
+      <div class="merit-card">
+        <div class="merit-icon">💴</div>
+        <h3>稼ぎに直結する日給制・月54万狙える</h3>
+        <p>日給10,600〜25,000円。資格取得・経験積み上げで日給は上がり続けます（昇給月3,000〜5,000円）。頑張りが数字に出る、シンプルな実力主義です。</p>
+      </div>
+      <div class="merit-card">
+        <div class="merit-icon">🚐</div>
+        <h3>直行直帰・得意な工事に集中できる</h3>
+        <p>本社（東金市）への出勤は1〜2週間に1回のみ。現場（成田市・印西市・佐倉市周辺）へ直行直帰。社用車（軽ワゴン・AT）使用可。自分のペースで動けます。</p>
+      </div>
+      <div class="merit-card">
+        <div class="merit-icon">📋</div>
+        <h3>未経験歓迎・資格を取るほど稼げる</h3>
+        <p>電気工事士の資格取得を会社が補助。未経験、ミドルシニア（中高年層歓迎求人）、外国人（日本語会話可）も歓迎。20代〜60代のスタッフが現在活躍中。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="section-dark" id="requirements">
+  <div class="container">
+    <span class="kicker-orange">Requirements</span>
+    <h2 class="section-h2">募集要項</h2>
+    <table class="job-table">
+      <tr>
+        <th>職種</th>
+        <td>電気工事士及び見習い（成田市・印西市・佐倉市周辺）</td>
+      </tr>
+      <tr>
+        <th>仕事内容</th>
+        <td>一般住宅・店舗の配線工事、LED工事、エアコン工事、メンテナンス工事<br>直行直帰 / 社用車（軽ワゴン・AT）使用可</td>
+      </tr>
+      <tr>
+        <th>雇用形態</th>
+        <td>正社員</td>
+      </tr>
+      <tr>
+        <th>賃金</th>
+        <td>日給 10,600円〜25,000円（月換算228,960円〜540,000円）<br>試用期間3ヶ月：日給9,500円〜</td>
+      </tr>
+      <tr>
+        <th>就業時間</th>
+        <td>8:30〜17:30（休憩60分）/ 月平均残業30時間</td>
+      </tr>
+      <tr>
+        <th>休日</th>
+        <td>シフト制（月7〜8日）/ 年間休日105日<br>年末年始・お盆・GW / 年次有給休暇10日（6ヶ月後）</td>
+      </tr>
+      <tr>
+        <th>応募資格</th>
+        <td>普通自動車免許（AT限定可）/ 年齢・経験不問<br>外国人可（日本語会話できる方）</td>
+      </tr>
+      <tr>
+        <th>各種保険</th>
+        <td>雇用・労災・健康・厚生年金</td>
+      </tr>
+      <tr>
+        <th>福利厚生</th>
+        <td>昇給あり / 賞与年2回 / 通勤手当（上限月10,000円）<br>社員寮（単身用・月25,000円・光熱費込）/ 資格取得補助</td>
+      </tr>
+      <tr>
+        <th>勤務場所</th>
+        <td>千葉県東金市南上宿38-29（本社）<br>現場：成田市・印西市・佐倉市周辺（直行直帰）</td>
+      </tr>
+      <tr>
+        <th>選考</th>
+        <td>書類選考なし → 面接1回 → 内定（7日以内に連絡）</td>
+      </tr>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section-dark" id="faq" style="padding-top:0">
+  <div class="container">
+    <span class="kicker-orange">FAQ</span>
+    <h2 class="section-h2">よくある質問</h2>
+    <ul class="faq-list-dark">
+      <li class="faq-item-dark">
+        <div class="faq-q-dark" onclick="toggleFaq(this)">未経験でも応募できますか？</div>
+        <div class="faq-a-dark">はい、歓迎です。先輩スタッフが現場でひとつひとつ教えます。資格取得も会社が費用を補助します。電気関係の職業訓練修了者も歓迎。</div>
+      </li>
+      <li class="faq-item-dark">
+        <div class="faq-q-dark" onclick="toggleFaq(this)">電気工事士の資格は必須ですか？</div>
+        <div class="faq-a-dark">必須ではありません。普通自動車免許（AT限定可）があれば応募できます。入社後に資格取得を目指せる環境です。</div>
+      </li>
+      <li class="faq-item-dark">
+        <div class="faq-q-dark" onclick="toggleFaq(this)">毎日本社に通う必要がありますか？</div>
+        <div class="faq-a-dark">基本的に直行直帰です。本社（東金市）への出社は1〜2週間に1回程度のみです。</div>
+      </li>
+      <li class="faq-item-dark">
+        <div class="faq-q-dark" onclick="toggleFaq(this)">年齢制限はありますか？</div>
+        <div class="faq-a-dark">年齢不問です。20代〜60代のスタッフが活躍中で、シニア・ミドル層も歓迎しています。</div>
+      </li>
+      <li class="faq-item-dark">
+        <div class="faq-q-dark" onclick="toggleFaq(this)">社員寮はどんな環境ですか？</div>
+        <div class="faq-a-dark">単身用の1ルームです。月額25,000円（光熱費込み）で、本社に併設されています。遠方からの移住の方も安心です。</div>
+      </li>
+    </ul>
+    <p style="font-size:.7rem;color:rgba(255,255,255,.3);text-align:center;margin-top:16px;font-style:italic">※ここはサンプルです。実際には御社のよくある質問に差し替えます</p>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section class="section-dark" id="timeline" style="padding-top:0">
+  <div class="container">
+    <span class="kicker-orange">A Day</span>
+    <h2 class="section-h2">電気工事士の1日</h2>
+    <ul class="timeline-dark">
+      <li class="tl-dark-item">
+        <div>
+          <span class="t-time">8:30</span>
+          <div class="t-title">現場へ直行</div>
+          <div class="t-body">社用車または自家用車（ガソリン代支給）で担当エリアの現場へ。</div>
+        </div>
+      </li>
+      <li class="tl-dark-item">
+        <div>
+          <span class="t-time">9:00</span>
+          <div class="t-title">作業開始</div>
+          <div class="t-body">LED工事・エアコン工事・配線工事など、得意な工事を中心に担当。1日1〜3件。</div>
+        </div>
+      </li>
+      <li class="tl-dark-item">
+        <div>
+          <span class="t-time">12:00</span>
+          <div class="t-title">昼休憩（60分）</div>
+          <div class="t-body">現場付近で自由に休憩。</div>
+        </div>
+      </li>
+      <li class="tl-dark-item">
+        <div>
+          <span class="t-time">13:00</span>
+          <div class="t-title">午後の作業</div>
+          <div class="t-body">メンテナンス・追加工事など継続。</div>
+        </div>
+      </li>
+      <li class="tl-dark-item" style="border-left:none;padding-bottom:0">
+        <div>
+          <span class="t-time">17:30</span>
+          <div class="t-title">作業終了・直帰</div>
+          <div class="t-body">本社に戻る必要はなし。1〜2週間に1回だけ本社で報告業務。</div>
+        </div>
+      </li>
+    </ul>
+    <p style="font-size:.7rem;color:rgba(255,255,255,.3);margin-top:20px;font-style:italic;text-align:center">※ここはサンプルです。実際の1日の流れに差し替えます</p>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section class="section-dark" id="voice" style="padding-top:0">
+  <div class="container">
+    <span class="kicker-orange">Voice</span>
+    <h2 class="section-h2">先輩からのメッセージ</h2>
+    <div class="voice-grid">
+      <div class="voice-card-dark">
+        <!-- サンプル顔写真。御社スタッフの写真に差し替えます -->
+        <img class="voice-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="田中（仮名）">
+        <div class="voice-name-dark">田中 拓也（仮名）</div>
+        <div class="voice-role-dark">電気工事士 / 入社3年目 / 20代</div>
+        <p class="voice-text-dark">未経験でも先輩が丁寧に教えてくれました。直行直帰なのでプライベートとの両立もできています。日給が着実に上がっているのが一番のやりがいです。</p>
+        <p class="sample-note-dark">※ここはサンプルです。御社スタッフの声に差し替えます</p>
+      </div>
+      <div class="voice-card-dark">
+        <!-- サンプル顔写真。御社スタッフの写真に差し替えます -->
+        <img class="voice-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="鈴木（仮名）">
+        <div class="voice-name-dark">鈴木 正人（仮名）</div>
+        <div class="voice-role-dark">電気工事士 / 入社7年目 / 50代</div>
+        <p class="voice-text-dark">年齢を問わず評価してもらえる職場です。得意な工事に集中できるので、50代になっても体への負担が少なく長く続けられています。</p>
+        <p class="sample-note-dark">※ここはサンプルです。御社スタッフの声に差し替えます</p>
+      </div>
+      <div class="voice-card-dark">
+        <!-- サンプル顔写真。御社スタッフの写真に差し替えます -->
+        <img class="voice-avatar" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="伊藤（仮名）">
+        <div class="voice-name-dark">伊藤 翔（仮名）</div>
+        <div class="voice-role-dark">見習い / 入社1年目 / 30代</div>
+        <p class="voice-text-dark">社員寮のおかげで移住のハードルが下がりました。「稼ぎたい」と思っている方には本当におすすめできる職場です。</p>
+        <p class="sample-note-dark">※ここはサンプルです。御社スタッフの声に差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 応募CTA -->
+<section class="cta-section-fire" id="apply">
+  <div class="container">
+    <h2>腕と稼ぎを<br><em>両立させる仕事へ。</em></h2>
+    <p>書類選考なし・面接1回・経験不問。<br>まずは気軽にフォームからご連絡ください。</p>
+    <a href="https://www.comfort-bld.com/inquiries" class="btn-fire">採用フォームから応募する</a><br>
+    <a href="tel:0475500306" class="btn-phone" style="display:inline-block;margin-top:20px;color:rgba(255,255,255,.65)">☎ 0475-50-0306（電話でのお問い合わせも歓迎）</a>
+  </div>
+</section>
+
+<!-- フッター -->
+<footer>
+  <p>株式会社コンフォートビルド</p>
+  <p>〒283-0066 千葉県東金市南上宿38-29</p>
+  <p>TEL: 0475-50-0306</p>
+</footer>
+
+<script>
+function openNav(){document.getElementById('mobileNav').classList.add('open')}
+function closeNav(){document.getElementById('mobileNav').classList.remove('open')}
+function toggleFaq(el){el.parentElement.classList.toggle('open')}
+</script>
+</body>
+</html>

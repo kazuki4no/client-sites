@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>採用情報 | 株式会社ソウケン</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;color:#1c1c1c;line-height:1.75;background:#fff;}
+a{color:inherit;text-decoration:none;}
+img{display:block;max-width:100%;height:auto;}
+
+:root{
+  --black:#1c1c1c;
+  --rust:#e0622a;
+  --rust-d:#c04f18;
+  --amber:#f5a623;
+  --white:#fff;
+  --bg:#f5f4f2;
+  --gray:#888;
+  --dark-sub:#2d2d2d;
+}
+
+/* ===== ヘッダー ===== */
+.site-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.9rem 2rem;background:rgba(28,28,28,.95);backdrop-filter:blur(8px);
+  position:fixed;top:0;left:0;right:0;z-index:200;
+}
+.brand{color:var(--white);font-family:'Noto Serif JP',serif;font-weight:900;font-size:1rem;letter-spacing:.05em;}
+.hamburger{display:none;background:none;border:0;color:var(--white);font-size:1.7rem;line-height:1;cursor:pointer;}
+.site-nav{display:flex;gap:1.5rem;align-items:center;}
+.site-nav a{color:rgba(255,255,255,.75);font-size:.85rem;letter-spacing:.04em;}
+.site-nav a:hover{color:var(--white);}
+.site-nav .nav-cta{background:var(--rust);color:var(--white);padding:.4rem 1.1rem;border-radius:3px;font-weight:700;}
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{
+    display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:fixed;top:56px;left:0;right:0;z-index:199;
+    background:rgba(28,28,28,.97);padding:.5rem 1.5rem;
+  }
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.9rem 0;border-bottom:1px solid rgba(255,255,255,.1);color:var(--white);}
+  .site-nav .nav-cta{margin:.8rem 0;text-align:center;border:none;}
+}
+
+/* ===== FVヒーロー ===== */
+.hero{
+  position:relative;min-height:80vh;display:flex;align-items:flex-end;padding-bottom:5rem;
+  padding-top:56px;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&h=900&fit=crop&q=80') center/cover no-repeat;
+}
+.hero-overlay{position:absolute;inset:0;background:rgba(20,20,20,.58);}
+.hero-content{
+  position:relative;z-index:1;max-width:680px;margin-left:8%;padding:0 1.5rem;
+}
+.hero-tag{
+  display:inline-block;background:var(--rust);color:var(--white);
+  font-size:.75rem;font-weight:700;letter-spacing:.12em;padding:.3rem .9rem;border-radius:2px;margin-bottom:1.4rem;
+}
+.hero h1{
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(2rem,6vw,3.8rem);font-weight:900;color:var(--white);line-height:1.3;margin-bottom:1.4rem;
+}
+.hero h1 em{color:var(--amber);font-style:normal;}
+.hero-sub{font-size:clamp(.9rem,2.2vw,1.05rem);color:rgba(255,255,255,.85);margin-bottom:2rem;max-width:500px;}
+.btn-hero3{display:inline-block;background:var(--rust);color:var(--white);font-weight:700;font-size:1rem;padding:1rem 2.5rem;border-radius:3px;letter-spacing:.05em;}
+.btn-hero3:hover{background:var(--rust-d);}
+.btn-sec3{display:inline-block;border:1px solid rgba(255,255,255,.6);color:var(--white);font-size:.9rem;font-weight:700;padding:.85rem 1.8rem;border-radius:3px;margin-left:.8rem;}
+.btn-sec3:hover{background:rgba(255,255,255,.1);}
+
+/* ===== スクロール誘導 ===== */
+.scroll-hint{position:absolute;bottom:1.5rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.6);font-size:.75rem;letter-spacing:.1em;text-align:center;z-index:2;}
+.scroll-hint::after{content:'↓';display:block;font-size:1rem;margin-top:.3rem;}
+
+/* ===== セクション共通 ===== */
+section.sec3{padding:5rem 1.5rem;}
+.sec3-inner{max-width:900px;margin:0 auto;}
+.sec3-label{font-size:.7rem;font-weight:700;letter-spacing:.2em;color:var(--rust);text-transform:uppercase;margin-bottom:.5rem;}
+.sec3-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,4vw,2.2rem);font-weight:900;color:var(--black);margin-bottom:.6rem;}
+.sec3-divider{width:2.5rem;height:3px;background:var(--rust);margin:.6rem 0 2.5rem;}
+.sec3-sample{font-size:.75rem;color:var(--gray);margin-bottom:1.5rem;}
+
+/* ===== 強み（黒背景帯） ===== */
+.strengths-bg{background:var(--black);color:var(--white);}
+.strengths-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+.str-item{border-top:2px solid var(--rust);padding-top:1.5rem;}
+.str-num{font-size:2.8rem;font-weight:900;color:var(--rust);line-height:1;margin-bottom:.6rem;}
+.str-title{font-size:1rem;font-weight:700;color:var(--white);margin-bottom:.5rem;}
+.str-desc{font-size:.85rem;color:rgba(255,255,255,.7);}
+@media(max-width:768px){.strengths-grid{grid-template-columns:1fr;}}
+
+/* ===== 仕事内容 ===== */
+.work3-bg{background:var(--bg);}
+.work3-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+.work3-img{width:100%;height:380px;object-fit:cover;border-radius:4px;}
+.work3-list{list-style:none;display:flex;flex-direction:column;gap:.7rem;}
+.work3-list li{display:flex;gap:.8rem;font-size:.9rem;color:#333;align-items:flex-start;}
+.work3-list li::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--rust);flex-shrink:0;margin-top:.55rem;}
+@media(max-width:768px){.work3-wrap{grid-template-columns:1fr;}  .work3-img{height:220px;}}
+
+/* ===== タイムライン ===== */
+.tl3-sample{font-size:.75rem;color:var(--gray);margin-bottom:1.5rem;}
+.timeline3{position:relative;}
+.tl3-item{display:grid;grid-template-columns:72px 20px 1fr;gap:0 .8rem;align-items:start;margin-bottom:1.8rem;}
+.tl3-time{text-align:right;font-size:.85rem;font-weight:700;color:var(--rust);padding-top:.15rem;}
+.tl3-dot{width:14px;height:14px;border-radius:50%;background:var(--rust);justify-self:center;margin-top:.2rem;position:relative;z-index:1;}
+.tl3-body strong{font-size:.92rem;color:var(--black);display:block;margin-bottom:.2rem;font-weight:700;}
+.tl3-body p{font-size:.85rem;color:#555;}
+.timeline3::before{content:'';position:absolute;left:82px;top:0;bottom:0;width:2px;background:#ddd;}
+@media(max-width:768px){
+  .tl3-item{grid-template-columns:40px 16px 1fr;}
+  .timeline3::before{left:46px;}
+}
+
+/* ===== 先輩の声 ===== */
+.voices3-bg{background:var(--bg);}
+.voices3-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.voice3-card{background:var(--white);border-radius:4px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.08);}
+.voice3-card img{width:100%;height:230px;object-fit:cover;}
+.voice3-body{padding:1.2rem;}
+.voice3-quote{font-size:2rem;color:var(--rust);line-height:.8;margin-bottom:.4rem;}
+.voice3-text{font-size:.85rem;color:#333;line-height:1.8;margin-bottom:.8rem;}
+.voice3-name{font-size:.82rem;font-weight:700;color:var(--black);}
+.voice3-role{font-size:.75rem;color:var(--gray);}
+.voice3-sample{font-size:.72rem;color:var(--gray);margin-top:.5rem;}
+@media(max-width:768px){.voices3-grid{grid-template-columns:1fr;}}
+
+/* ===== FAQ ===== */
+.faq3-list{display:flex;flex-direction:column;gap:1rem;}
+.faq3-item{border:1px solid #e0ddd9;border-radius:4px;overflow:hidden;}
+.faq3-q{background:var(--black);color:var(--white);padding:1rem 1.2rem;font-weight:700;font-size:.9rem;display:flex;gap:.8rem;}
+.faq3-q::before{content:'Q.';color:var(--rust);font-weight:900;flex-shrink:0;}
+.faq3-a{padding:1rem 1.2rem;font-size:.87rem;color:#333;display:flex;gap:.8rem;line-height:1.75;}
+.faq3-a::before{content:'A.';color:var(--rust);font-weight:700;flex-shrink:0;}
+
+/* ===== 募集要項 ===== */
+.req3-table{width:100%;border-collapse:collapse;}
+.req3-table th,.req3-table td{padding:.85rem 1rem;border-bottom:1px solid #e0ddd9;text-align:left;font-size:.88rem;}
+.req3-table th{background:var(--dark-sub);color:var(--white);width:8rem;font-weight:700;}
+.req3-table tr:last-child th,.req3-table tr:last-child td{border-bottom:none;}
+@media(max-width:768px){
+  .req3-table,.req3-table tbody,.req3-table tr,.req3-table th,.req3-table td{display:block;width:100%;}
+  .req3-table th{padding:.5rem .8rem;}
+  .req3-table td{padding:.5rem .8rem 1rem;}
+}
+
+/* ===== 最終CTA ===== */
+.cta3-final{
+  background:url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1600&h=600&fit=crop&q=80') center/cover no-repeat;
+  position:relative;text-align:center;padding:6rem 1.5rem;
+}
+.cta3-final::before{content:'';position:absolute;inset:0;background:rgba(20,20,20,.7);}
+.cta3-inner{position:relative;z-index:1;}
+.cta3-final h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,4vw,2rem);color:var(--white);font-weight:900;margin-bottom:.8rem;}
+.cta3-final p{color:rgba(255,255,255,.85);font-size:.92rem;margin-bottom:2rem;}
+.btn-cta3{display:inline-block;background:var(--rust);color:var(--white);font-weight:700;font-size:1.05rem;padding:1rem 2.8rem;border-radius:3px;}
+.btn-cta3:hover{background:var(--rust-d);}
+
+/* ===== フッター ===== */
+footer{background:var(--black);color:rgba(255,255,255,.5);text-align:center;padding:1.8rem;font-size:.8rem;}
+</style>
+</head>
+<body id="top">
+
+<!-- ヘッダー -->
+<header class="site-header">
+  <a class="brand" href="#top">株式会社ソウケン</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#strength">強み</a>
+    <a href="#work">仕事内容</a>
+    <a href="#day">1日の流れ</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#faq">FAQ</a>
+    <a href="#req">募集要項</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<!-- FVヒーロー -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-tag">現場管理・現場代理人 募集</span>
+    <h1>浦安を支える<br><em>施工管理</em>の<br>プロフェッショナル</h1>
+    <p class="hero-sub">教育・保育施設の改修、地域への貢献。<br>出張なし、定時退社が当たり前の現場で、<br>あなたのキャリアを長く生かしてください。</p>
+    <a class="btn-hero3" href="#entry">まずはお問い合わせ</a>
+    <a class="btn-sec3" href="#req">募集要項を見る</a>
+  </div>
+  <p class="scroll-hint">SCROLL</p>
+</section>
+
+<!-- 強み -->
+<section class="sec3 strengths-bg" id="strength">
+<div class="sec3-inner">
+  <p class="sec3-label">Our Strengths</p>
+  <h2 class="sec3-title" style="color:var(--white);">ソウケンで働く理由</h2>
+  <div class="sec3-divider"></div>
+  <div class="strengths-grid">
+    <div class="str-item">
+      <div class="str-num">120</div>
+      <div class="str-title">年間休日120日・土日祝休み</div>
+      <p class="str-desc">定時退社が基本、月平均残業は20時間以内。プライベートをしっかり確保できる環境です。</p>
+    </div>
+    <div class="str-item">
+      <div class="str-num">60<span style="font-size:1.5rem;"> 万</span></div>
+      <div class="str-title">月収最大60万円・賞与年2回</div>
+      <p class="str-desc">経験・資格を正当評価。固定残業代込みで月収35〜60万円。昇給制度・退職金共済も完備。</p>
+    </div>
+    <div class="str-item">
+      <div class="str-num">28<span style="font-size:1.5rem;">年</span></div>
+      <div class="str-title">創業28年・浦安市発注工事で安定</div>
+      <p class="str-desc">平成10年創業。官公庁・教育施設の改修受注が続く安定基盤で、長く働ける会社です。</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 仕事内容 -->
+<section class="sec3 work3-bg" id="work">
+<div class="sec3-inner">
+  <p class="sec3-label">Work</p>
+  <h2 class="sec3-title">仕事内容</h2>
+  <div class="sec3-divider"></div>
+  <div class="work3-wrap">
+    <img class="work3-img" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=380&fit=crop&q=80" alt="施工現場のイメージ">
+    <div>
+      <p style="font-size:.92rem;color:#333;margin-bottom:1.5rem;">浦安市内の公共工事（教育施設・保育施設等）の大規模改修・修繕と住宅リフォーム工事の積算・施工管理を担当します。地域の大切な施設を守るやりがいのある仕事です。</p>
+      <ul class="work3-list">
+        <li>工程・品質・安全・原価管理</li>
+        <li>発注者・協力会社との打ち合わせ</li>
+        <li>工程確認・進捗把握・書類作成</li>
+        <li>積算業務（JWCADできると尚可）</li>
+        <li>現場管理補助作業全般</li>
+        <li>現場は浦安市内中心・出張なし</li>
+      </ul>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 1日の流れ -->
+<section class="sec3" id="day">
+<div class="sec3-inner">
+  <p class="sec3-label">A Day</p>
+  <h2 class="sec3-title">社員の1日の流れ</h2>
+  <div class="sec3-divider"></div>
+  <p class="tl3-sample">※ここはサンプルです。実際には御社の社員の1日に差し替えます。<!-- 以下はサンプルです。差し替えてください --></p>
+  <div class="timeline3">
+    <div class="tl3-item">
+      <span class="tl3-time">8:30</span>
+      <span class="tl3-dot"></span>
+      <div class="tl3-body">
+        <strong>出社・朝礼</strong>
+        <p>安全確認・当日の工程共有。チームと顔を合わせてスタート。</p>
+      </div>
+    </div>
+    <div class="tl3-item">
+      <span class="tl3-time">9:00</span>
+      <span class="tl3-dot"></span>
+      <div class="tl3-body">
+        <strong>施工現場へ</strong>
+        <p>浦安市内の工事現場を巡回。品質・安全の確認と作業員への指示。</p>
+      </div>
+    </div>
+    <div class="tl3-item">
+      <span class="tl3-time">11:00</span>
+      <span class="tl3-dot"></span>
+      <div class="tl3-body">
+        <strong>発注者・協力会社との調整</strong>
+        <p>工程変更・設計確認があれば早めに対応。積算・書類確認も並行。</p>
+      </div>
+    </div>
+    <div class="tl3-item">
+      <span class="tl3-time">12:00</span>
+      <span class="tl3-dot"></span>
+      <div class="tl3-body">
+        <strong>昼休み（60分）</strong>
+        <p>チームの距離が近いので、和やかなランチタイム。</p>
+      </div>
+    </div>
+    <div class="tl3-item">
+      <span class="tl3-time">13:00</span>
+      <span class="tl3-dot"></span>
+      <div class="tl3-body">
+        <strong>書類整理・工程表作成</strong>
+        <p>工事写真・施工管理書類を整理し、翌日の工程を準備。</p>
+      </div>
+    </div>
+    <div class="tl3-item">
+      <span class="tl3-time">15:30</span>
+      <span class="tl3-dot"></span>
+      <div class="tl3-body">
+        <strong>現場最終確認・終礼</strong>
+        <p>1日の作業を締め、安全確認・記録で業務終了。</p>
+      </div>
+    </div>
+    <div class="tl3-item">
+      <span class="tl3-time">17:30</span>
+      <span class="tl3-dot"></span>
+      <div class="tl3-body">
+        <strong>退社</strong>
+        <p>定時退社が当たり前。夜間作業はほとんどありません。</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 先輩の声 -->
+<section class="sec3 voices3-bg" id="voice">
+<div class="sec3-inner">
+  <p class="sec3-label">Voice</p>
+  <h2 class="sec3-title">先輩社員の声</h2>
+  <div class="sec3-divider"></div>
+  <p class="sec3-sample">※ここはサンプルです。実際には御社の社員の声・写真に差し替えます。<!-- 以下はサンプルです。差し替えてください --></p>
+  <div class="voices3-grid">
+    <div class="voice3-card">
+      <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=300&h=280&fit=crop&crop=faces&q=80" alt="社員写真（サンプル）">
+      <div class="voice3-body">
+        <div class="voice3-quote">"</div>
+        <p class="voice3-text">公共施設の改修が終わって竣工したとき、子どもたちが学ぶ場所を整えられた達成感は格別です。地元密着の仕事の良さを毎回感じています。</p>
+        <div class="voice3-name">大野 S（仮名）</div>
+        <div class="voice3-role">現場管理・入社9年</div>
+        <p class="voice3-sample">※サンプルです。実際の社員の声に差し替えます。</p>
+      </div>
+    </div>
+    <div class="voice3-card">
+      <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=300&h=280&fit=crop&crop=faces&q=80" alt="社員写真（サンプル）">
+      <div class="voice3-body">
+        <div class="voice3-quote">"</div>
+        <p class="voice3-text">浦安市内の現場だけなので移動のムダがない。その分、仕事の質を上げることに集中できます。土日がしっかり休めるのも、長く働いている大きな理由です。</p>
+        <div class="voice3-name">原田 T（仮名）</div>
+        <div class="voice3-role">現場代理人・入社14年</div>
+        <p class="voice3-sample">※サンプルです。実際の社員の声に差し替えます。</p>
+      </div>
+    </div>
+    <div class="voice3-card">
+      <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=300&h=280&fit=crop&crop=faces&q=80" alt="社員写真（サンプル）">
+      <div class="voice3-body">
+        <div class="voice3-quote">"</div>
+        <p class="voice3-text">穏やかなベテランが多く、新しいことに挑戦しても温かく見守ってもらえる環境。会社の安定と職場の雰囲気の良さが両立しているのが、ここの魅力だと思います。</p>
+        <div class="voice3-name">藤井 A（仮名）</div>
+        <div class="voice3-role">施工管理事務・入社4年</div>
+        <p class="voice3-sample">※サンプルです。実際の社員の声に差し替えます。</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FAQ -->
+<section class="sec3" id="faq">
+<div class="sec3-inner">
+  <p class="sec3-label">FAQ</p>
+  <h2 class="sec3-title">よくある質問</h2>
+  <div class="sec3-divider"></div>
+  <p class="sec3-sample">※ここはサンプルです。実際には御社のFAQに差し替えます。<!-- 以下はサンプルです。差し替えてください --></p>
+  <div class="faq3-list">
+    <div class="faq3-item">
+      <div class="faq3-q">応募に必要な経験を教えてください。</div>
+      <div class="faq3-a">建築施工管理の実務経験が3年以上ある方を対象としています。公共工事の経験者を特に歓迎しますが、民間工事や新築工事のご経験もぜひご相談ください。</div>
+    </div>
+    <div class="faq3-item">
+      <div class="faq3-q">CADのスキルは必須ですか？</div>
+      <div class="faq3-a">JWCAD等のCADスキルは「あれば尚可」です。必須ではありませんが、図面確認の場面で活用できます。Word・Excelの基本操作は必要です。</div>
+    </div>
+    <div class="faq3-item">
+      <div class="faq3-q">現場はどのエリアですか？</div>
+      <div class="faq3-a">浦安市内が中心です。長距離の移動・出張・転勤はありません。事業所所在地と同じ千葉県浦安市猫実が就業場所となります。</div>
+    </div>
+    <div class="faq3-item">
+      <div class="faq3-q">職場の年齢層・雰囲気はどうですか？</div>
+      <div class="faq3-a">50代以上のベテランが中心で、穏やかで落ち着いた職場です。小規模ながらチームの距離が近く、困ったときに相談しやすい環境です。</div>
+    </div>
+    <div class="faq3-item">
+      <div class="faq3-q">選考について教えてください。</div>
+      <div class="faq3-a">書類選考（履歴書・職務経歴書）の後、面接を1回実施します。応募前にまずはご連絡いただけると、面接日時の調整がスムーズです。</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- 募集要項 -->
+<section class="sec3" id="req" style="background:var(--bg);">
+<div class="sec3-inner">
+  <p class="sec3-label">Requirements</p>
+  <h2 class="sec3-title">募集要項</h2>
+  <div class="sec3-divider"></div>
+  <table class="req3-table">
+    <tbody>
+      <tr><th>職種</th><td>現場管理・現場代理人</td></tr>
+      <tr><th>雇用形態</th><td>正社員（試用期間2ヶ月・同条件）</td></tr>
+      <tr><th>給与</th><td>月給 350,000円〜600,000円<br>（基本給 303,000〜520,000円＋固定残業代 47,000〜80,000円・20時間分）<br>経験・資格・スキルを考慮して決定</td></tr>
+      <tr><th>賞与・昇給</th><td>賞与 年2回（計2ヶ月分・前年度実績）／昇給 あり</td></tr>
+      <tr><th>勤務時間</th><td>8:30〜17:30（休憩60分）／月平均残業20時間以内・定時退社が基本</td></tr>
+      <tr><th>休日</th><td>土・日・祝日（年間休日120日）／年次有給休暇10日（6ヶ月後付与）</td></tr>
+      <tr><th>勤務地</th><td>千葉県浦安市猫実３－１６－２９（現場は浦安市内中心・出張・転勤なし）</td></tr>
+      <tr><th>必要経験</th><td>建築施工管理経験3年以上（公共工事経験者歓迎）</td></tr>
+      <tr><th>必要免許</th><td>普通自動車運転免許（AT限定可）必須<br>1・2級建築施工管理技士・補、その他建築技術関係資格 あれば尚可</td></tr>
+      <tr><th>年齢</th><td>59歳以下（定年60歳のため）</td></tr>
+      <tr><th>保険・制度</th><td>雇用・労災・健康・厚生年金 完備<br>退職金共済 加入／再雇用制度（65歳まで）</td></tr>
+      <tr><th>通勤手当</th><td>実費支給（上限月30,000円）</td></tr>
+    </tbody>
+  </table>
+</div>
+</section>
+
+<!-- 最終CTA -->
+<section class="cta3-final" id="entry">
+  <div class="cta3-inner">
+    <h2>浦安の公共施設を一緒に守りませんか</h2>
+    <p>まずはお気軽にご連絡ください。面接日時を調整してお待ちしています。</p>
+    <a class="btn-cta3" href="mailto:souken@plum.ocn.ne.jp">メールでお問い合わせ</a>
+    <p style="margin-top:1rem;font-size:.85rem;color:rgba(255,255,255,.7);">TEL: 047-355-2012（担当：黒田）</p>
+  </div>
+</section>
+
+<footer>
+  <p>株式会社ソウケン</p>
+  <p>〒279-0004 千葉県浦安市猫実３－１６－２９</p>
+  <p>TEL: 047-355-2012 / E-mail: souken@plum.ocn.ne.jp</p>
+</footer>
+
+<script>
+(function(){
+  var btn = document.querySelector('.hamburger');
+  var nav = document.querySelector('.site-nav');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  }
+})();
+</script>
+</body>
+</html>

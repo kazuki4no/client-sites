@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>採用情報 | 株式会社ケインズ auショップ八千代村上</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans JP',sans-serif;color:#1a1a1a;line-height:1.7}
+a{color:inherit;text-decoration:none}
+img{max-width:100%;display:block}
+:root{
+  --navy:#0a2463;
+  --navy-dark:#061845;
+  --orange:#ff6b00;
+  --orange-lt:#fff3e8;
+  --gray:#f4f6fb;
+  --textgray:#555;
+}
+
+/* ── header ── */
+.site-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 1.5rem;background:#fff;
+  box-shadow:0 2px 8px rgba(0,0,0,.08);
+  position:sticky;top:0;z-index:100;
+  /* position:relative は position:sticky と共存させるため下でモバイルに限定 */
+}
+.site-header-inner{display:contents} /* wrapperなし */
+.brand{font-weight:700;color:var(--navy);font-size:.95rem;line-height:1.3}
+.site-nav{display:flex;gap:1.4rem;align-items:center}
+.site-nav a{font-size:.85rem;font-weight:500;color:#333;white-space:nowrap}
+.nav-cta{
+  background:var(--orange);color:#fff!important;
+  padding:.4rem 1rem;border-radius:4px;font-weight:700
+}
+.hamburger{
+  display:none;background:none;border:0;
+  font-size:1.7rem;line-height:1;cursor:pointer;color:var(--navy)
+}
+@media(max-width:768px){
+  .site-header{position:relative}
+  .hamburger{display:block}
+  .site-nav{
+    display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:#fff;box-shadow:0 8px 16px rgba(0,0,0,.12);padding:.5rem 1rem
+  }
+  .site-nav.open{display:flex}
+  .site-nav a{padding:.8rem 0;border-bottom:1px solid #eee}
+}
+
+/* ── hero ── */
+.hero{
+  background:linear-gradient(135deg,var(--navy) 55%,var(--navy-dark) 100%);
+  color:#fff;text-align:center;padding:5rem 1.5rem 4rem
+}
+.hero-pill{
+  display:inline-block;background:var(--orange);color:#fff;
+  font-size:.78rem;font-weight:700;padding:.25rem 1rem;border-radius:20px;
+  margin-bottom:1.2rem;letter-spacing:.03em
+}
+.hero h1{
+  font-size:clamp(1.8rem,5vw,3rem);font-weight:900;
+  line-height:1.3;margin-bottom:1rem
+}
+.hero p{font-size:.97rem;opacity:.85;margin-bottom:2.2rem;max-width:500px;margin-left:auto;margin-right:auto}
+.btn-primary{
+  display:inline-block;background:var(--orange);color:#fff;
+  font-weight:700;font-size:1rem;padding:.9rem 2.6rem;border-radius:6px;
+  box-shadow:0 4px 14px rgba(255,107,0,.4)
+}
+
+/* ── section base ── */
+section{padding:4.5rem 1.5rem}
+.container{max-width:900px;margin:0 auto}
+.sec-label{
+  display:block;font-size:.72rem;font-weight:700;letter-spacing:.12em;
+  color:var(--orange);margin-bottom:.5rem;text-transform:uppercase
+}
+.sec-title{
+  font-size:clamp(1.4rem,4vw,2rem);font-weight:900;
+  color:var(--navy);margin-bottom:.4rem
+}
+.sec-sub{color:var(--textgray);margin-bottom:2.5rem;font-size:.92rem}
+.sample-note{color:#bbb;font-size:.74rem;margin-top:.7rem}
+
+/* ── merits ── */
+.merits-bg{background:var(--gray)}
+.merits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+@media(max-width:768px){.merits-grid{grid-template-columns:1fr}}
+.merit-card{
+  background:#fff;border-radius:10px;padding:1.8rem 1.5rem;text-align:center;
+  box-shadow:0 2px 12px rgba(0,0,0,.06)
+}
+.merit-icon{
+  width:52px;height:52px;border-radius:50%;background:var(--orange-lt);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 1rem;font-size:1.4rem
+}
+.merit-card h3{font-size:.97rem;font-weight:700;color:var(--navy);margin-bottom:.5rem}
+.merit-card p{font-size:.85rem;color:var(--textgray)}
+
+/* ── work ── */
+.work-wrap{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center}
+@media(max-width:768px){.work-wrap{grid-template-columns:1fr}}
+.work-img{border-radius:10px;overflow:hidden}
+.work-img img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.work-text p{font-size:.9rem;color:var(--textgray);margin-bottom:1.2rem}
+.tags{display:flex;flex-wrap:wrap;gap:.5rem}
+.tag{
+  background:var(--navy);color:#fff;font-size:.76rem;font-weight:700;
+  padding:.22rem .8rem;border-radius:20px
+}
+
+/* ── stats ── */
+.stats-bg{background:var(--navy);color:#fff}
+.stats-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;text-align:center
+}
+@media(max-width:600px){.stats-grid{grid-template-columns:1fr 1fr}}
+.stat-num{font-size:clamp(2rem,6vw,3rem);font-weight:900;color:var(--orange)}
+.stat-unit{font-size:.9rem;margin-left:.15rem}
+.stat-label{font-size:.82rem;opacity:.75;margin-top:.3rem}
+.stats-note{text-align:center;font-size:.74rem;opacity:.5;margin-top:1.5rem}
+
+/* ── timeline (CSS Grid 3列) ── */
+.timeline{position:relative}
+.timeline::before{
+  content:'';position:absolute;
+  left:82px;top:8px;bottom:8px;width:2px;
+  background:var(--orange);opacity:.25
+}
+.tl-item{
+  display:grid;grid-template-columns:72px 20px 1fr;
+  gap:0 .8rem;align-items:start;margin-bottom:1.6rem
+}
+.tl-time{
+  font-size:.82rem;font-weight:700;color:var(--navy);
+  text-align:right;padding-top:.25rem
+}
+.tl-dot{
+  width:12px;height:12px;border-radius:50%;
+  background:var(--orange);justify-self:center;margin-top:.35rem
+}
+.tl-body h4{font-size:.93rem;font-weight:700;color:var(--navy);margin-bottom:.2rem}
+.tl-body p{font-size:.83rem;color:var(--textgray)}
+@media(max-width:768px){
+  .tl-item{grid-template-columns:40px 16px 1fr}
+  .timeline::before{left:48px}
+  .tl-time{font-size:.76rem}
+}
+
+/* ── voice ── */
+.voice-bg{background:var(--gray)}
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+@media(max-width:768px){.voice-grid{grid-template-columns:1fr}}
+.voice-card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.voice-photo{width:100%;height:200px;object-fit:cover}
+.voice-body{padding:1.2rem 1.3rem}
+.v-name strong{display:block;font-size:.95rem;color:var(--navy);font-weight:700}
+.v-name span{font-size:.78rem;color:var(--textgray)}
+.v-body{font-size:.84rem;color:#444;line-height:1.85;margin-top:.6rem}
+
+/* ── faq ── */
+.faq-list{max-width:720px;margin:0 auto}
+.faq-item{border-bottom:1px solid #e8e8e8;padding:1.2rem 0}
+.faq-q{font-weight:700;color:var(--navy);margin-bottom:.4rem;font-size:.93rem}
+.faq-q::before{content:"Q. ";color:var(--orange)}
+.faq-a{font-size:.85rem;color:var(--textgray);padding-left:1.6rem}
+.faq-a::before{content:"A. ";color:var(--navy);font-weight:700}
+
+/* ── manager ── */
+.manager-bg{background:var(--gray)}
+.manager-card{
+  display:flex;gap:2rem;align-items:center;
+  background:#fff;border-radius:12px;padding:2rem;
+  box-shadow:0 2px 12px rgba(0,0,0,.06);max-width:640px;margin:0 auto
+}
+@media(max-width:560px){.manager-card{flex-direction:column;text-align:center}}
+.manager-photo{width:110px;height:110px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.manager-name{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:.2rem}
+.manager-role{font-size:.78rem;color:var(--textgray);margin-bottom:.6rem}
+.manager-msg{font-size:.85rem;color:#444;line-height:1.85}
+
+/* ── requirements table ── */
+.req-table{width:100%;border-collapse:collapse}
+.req-table th,.req-table td{
+  border:1px solid #ddd;padding:.75rem 1rem;
+  text-align:left;font-size:.85rem
+}
+.req-table th{
+  background:#eef1f8;color:var(--navy);
+  font-weight:700;white-space:nowrap;width:28%
+}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{
+    display:block;width:100%
+  }
+  .req-table th{
+    background:var(--gray);border-bottom:none;
+    padding:.5rem .8rem
+  }
+  .req-table td{padding:.5rem .8rem 1.1rem}
+}
+
+/* ── cta section ── */
+.cta-sec{background:var(--navy);color:#fff;text-align:center;padding:4.5rem 1.5rem}
+.cta-sec h2{font-size:clamp(1.4rem,4vw,2rem);font-weight:900;margin-bottom:.7rem}
+.cta-sec p{opacity:.82;margin-bottom:2rem;font-size:.92rem}
+.btn-orange{
+  display:inline-block;background:var(--orange);color:#fff;
+  font-weight:700;font-size:1rem;padding:1rem 3rem;border-radius:6px;
+  box-shadow:0 4px 14px rgba(255,107,0,.35)
+}
+
+/* ── footer ── */
+footer{
+  background:#111;color:#999;
+  text-align:center;padding:2.2rem 1rem;font-size:.8rem
+}
+footer strong{display:block;color:#fff;margin-bottom:.5rem;font-size:.88rem}
+</style>
+</head>
+<body id="top">
+
+<!-- ── Header ── -->
+<header class="site-header">
+  <a class="brand" href="#top">株式会社ケインズ<br><small style="font-size:.72rem;font-weight:400;opacity:.7">auショップ八千代村上</small></a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#merits">働く魅力</a>
+    <a href="#work">仕事内容</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#faq">よくある質問</a>
+    <a href="#entry" class="nav-cta">応募する</a>
+  </nav>
+</header>
+
+<!-- ── Hero ── -->
+<section class="hero">
+  <span class="hero-pill">八千代市 ／ auショップ正社員募集</span>
+  <h1>あなたの提案が、<br>誰かの毎日を豊かにする。</h1>
+  <p>経験・学歴・資格一切不要。KDDIパートナーショップで、<br>通信を通じて地域のお客様の生活を支えるお仕事です。</p>
+  <a href="#entry" class="btn-primary">採用担当へ問い合わせる</a>
+</section>
+
+<!-- ── 働く魅力 ── -->
+<section class="merits-bg" id="merits">
+  <div class="container">
+    <span class="sec-label">Merit</span>
+    <h2 class="sec-title">ケインズで働く3つの魅力</h2>
+    <p class="sec-sub">経験ゼロから始めて、将来の店長を目指せる職場です。</p>
+    <div class="merits-grid">
+      <div class="merit-card">
+        <!-- SVGアイコン：キャリア -->
+        <div class="merit-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#ff6b00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>
+          </svg>
+        </div>
+        <h3>20代でも店長になれる</h3>
+        <p>実力主義の文化が根付いており、若手がリーダーを担う機会が豊富。やる気がそのままキャリアアップにつながります。</p>
+      </div>
+      <div class="merit-card">
+        <div class="merit-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#ff6b00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+        </div>
+        <h3>月給22〜29.6万円＋各種手当</h3>
+        <p>窓口手当・家族手当・住宅手当・役職手当など充実。昇給・賞与（年2回）もあり、長期安定した収入が見込めます。</p>
+      </div>
+      <div class="merit-card">
+        <div class="merit-icon">
+          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#ff6b00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/>
+          </svg>
+        </div>
+        <h3>未経験でも安心の研修制度</h3>
+        <p>入社後に携帯・料金プランの知識を基礎から学べます。経験・学歴・資格は不問。コミュニケーションが好きな方なら活躍できます。</p>
+      </div>
+    </div>
+    <p class="sample-note">※上記はサンプルです。実際には御社の強みや制度に差し替えます</p>
+  </div>
+</section>
+
+<!-- ── 仕事内容 ── -->
+<section id="work">
+  <div class="container">
+    <span class="sec-label">Work</span>
+    <h2 class="sec-title">仕事内容</h2>
+    <p class="sec-sub">日々のお客様との対話が、地域の生活インフラを支えます。</p>
+    <div class="work-wrap">
+      <div class="work-img">
+        <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=640&h=480&fit=crop&q=80"
+             alt="携帯ショップでの販売業務イメージ">
+      </div>
+      <div class="work-text">
+        <p>KDDIとパートナーシップを結んだ当社のauショップで、携帯電話の販売や料金プランのご提案など、通信に関わる業務全般を担当します。</p>
+        <p>お客様一人ひとりのライフスタイルに合ったご提案をすることで、「ありがとう」と言っていただける瞬間がこの仕事の醍醐味です。</p>
+        <div class="tags">
+          <span class="tag">経験不問</span>
+          <span class="tag">学歴不問</span>
+          <span class="tag">資格不問</span>
+          <span class="tag">書類選考なし</span>
+          <span class="tag">駅徒歩5分</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 数字で見る ── -->
+<section class="stats-bg">
+  <div class="container">
+    <span class="sec-label" style="color:var(--orange);text-align:center;display:block">Numbers</span>
+    <h2 class="sec-title" style="color:#fff;text-align:center;margin-bottom:2.5rem">数字で見るケインズ</h2>
+    <div class="stats-grid">
+      <div>
+        <div class="stat-num">112<span class="stat-unit">日</span></div>
+        <div class="stat-label">年間休日数（週休2日）</div>
+      </div>
+      <div>
+        <div class="stat-num">20<span class="stat-unit">代</span></div>
+        <div class="stat-label">で店長を担う実力主義の文化</div>
+      </div>
+      <div>
+        <div class="stat-num">2<span class="stat-unit">回</span></div>
+        <div class="stat-label">年2回の賞与制度あり</div>
+      </div>
+    </div>
+    <p class="stats-note">※数字はサンプルです。実際には御社の実績値に差し替えます</p>
+  </div>
+</section>
+
+<!-- ── 1日の流れ ── -->
+<section>
+  <div class="container">
+    <span class="sec-label">Daily Flow</span>
+    <h2 class="sec-title">スタッフの1日の流れ</h2>
+    <p class="sec-sub" style="margin-bottom:.6rem">典型的な1日のスケジュールをご紹介します。</p>
+    <p class="sample-note" style="margin-bottom:1.8rem;text-align:left">※ここはサンプルです。実際には御社スタッフの1日の流れに差し替えます</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">10:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>出勤・朝礼</h4><p>当日の目標を共有。チームで一日のスタートを切ります。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">11:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>店頭対応・来店接客</h4><p>お客様の相談に丁寧にお応えします。新規契約や機種変更が多い時間帯です。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>昼食・休憩</h4><p>シフトで交代しながらしっかり休憩。近くに飲食店も多いです。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">14:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>午後の接客・提案業務</h4><p>料金プランのご提案や各種手続きなど、お客様のニーズに合わせた対応を行います。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>チームミーティング</h4><p>当日の成果を振り返り、翌日の準備。チームで情報を共有します。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">18:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>閉店準備・引き継ぎ</h4><p>レジ締め・翌日の準備を終えて退勤前のチェックを行います。</p></div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">19:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body"><h4>退勤</h4><p>定時退勤が基本。月平均残業15時間の適正な労働環境です。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 先輩の声 ── -->
+<section class="voice-bg" id="voice">
+  <div class="container">
+    <span class="sec-label">Voice</span>
+    <h2 class="sec-title">先輩からのメッセージ</h2>
+    <p class="sec-sub" style="margin-bottom:.6rem">実際に働くスタッフの声をご紹介します。</p>
+    <p class="sample-note" style="margin-bottom:1.8rem;text-align:left">※ここはサンプルです。実際には御社スタッフのお写真・コメントに差し替えます</p>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <!-- スタッフ写真（仮名：鈴木 直美）：御社スタッフの写真に差し替えてください -->
+        <img class="voice-photo"
+          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=360&h=280&fit=crop&crop=faces&q=80"
+          alt="スタッフ写真（サンプル）">
+        <div class="voice-body">
+          <div class="v-name">
+            <strong>鈴木 直美（仮名）</strong>
+            <span>携帯販売スタッフ ／ 入社2年目</span>
+          </div>
+          <p class="v-body">「最初はプランの説明が難しくて不安でしたが、先輩がとても丁寧に教えてくれました。今はお客様に『あなたに相談してよかった』と言ってもらえるのが一番の喜びです。」</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <!-- スタッフ写真（仮名：田中 雄太）：御社スタッフの写真に差し替えてください -->
+        <img class="voice-photo"
+          src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=360&h=280&fit=crop&crop=faces&q=80"
+          alt="スタッフ写真（サンプル）">
+        <div class="voice-body">
+          <div class="v-name">
+            <strong>田中 雄太（仮名）</strong>
+            <span>副店長 ／ 入社3年目</span>
+          </div>
+          <p class="v-body">「20代でリーダーを任せてもらえる環境が気に入っています。自分の提案でチームの数字が上がったときの達成感は格別。若手が活躍できる会社だと実感しています。」</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <!-- スタッフ写真（仮名：山田 里奈）：御社スタッフの写真に差し替えてください -->
+        <img class="voice-photo"
+          src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=360&h=280&fit=crop&crop=faces&q=80"
+          alt="スタッフ写真（サンプル）">
+        <div class="voice-body">
+          <div class="v-name">
+            <strong>山田 里奈（仮名）</strong>
+            <span>販売スタッフ ／ 入社1年目</span>
+          </div>
+          <p class="v-body">「未経験での入社でしたが、研修がしっかりしていたので安心でした。村上駅から徒歩5分で通勤も楽。休日もしっかり取れていてプライベートも充実しています。」</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FAQ ── -->
+<section id="faq">
+  <div class="container">
+    <span class="sec-label">FAQ</span>
+    <h2 class="sec-title">よくある質問</h2>
+    <p class="sec-sub" style="margin-bottom:.6rem">応募前のよくある疑問をまとめました。</p>
+    <p class="sample-note" style="margin-bottom:2rem;text-align:left">※ここはサンプルです。実際には御社のFAQに差し替えます</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <p class="faq-q">携帯の知識がなくても応募できますか？</p>
+        <p class="faq-a">はい、未経験の方でも歓迎です。入社後の研修でプランや機種の基礎から丁寧に学べます。コミュニケーションが好きな方なら活躍できます。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">選考の流れを教えてください。</p>
+        <p class="faq-a">応募→面接（予定2回）→内定の流れです。書類選考はありません。面接後7日以内に結果をご連絡します。オンライン自主応募も可能です。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">転勤はありますか？</p>
+        <p class="faq-a">千葉・埼玉エリア内での転勤の可能性があります。詳しい勤務地については面接時にご確認ください。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">試用期間はありますか？</p>
+        <p class="faq-a">入社後6ヶ月の試用期間があります。試用期間中も給与・待遇は本採用と同じ条件です。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">店長になるのにどのくらいかかりますか？</p>
+        <p class="faq-a">年齢・年数の制限はなく、20代で店長に就く社員もいます。実力と意欲次第でキャリアアップのチャンスがあります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 採用担当者 ── -->
+<section class="manager-bg">
+  <div class="container">
+    <span class="sec-label">Recruiter</span>
+    <h2 class="sec-title">採用担当者より</h2>
+    <p class="sec-sub" style="margin-bottom:.6rem">お気軽にご連絡ください。</p>
+    <p class="sample-note" style="margin-bottom:2rem;text-align:left">※ここはサンプルです。採用担当者の写真・コメントに差し替えます</p>
+    <div class="manager-card">
+      <!-- 採用担当者写真（仮名）：実際の担当者写真に差し替えてください -->
+      <img class="manager-photo"
+        src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=220&h=220&fit=crop&crop=faces&q=80"
+        alt="採用担当者（サンプル）">
+      <div>
+        <div class="manager-name">新井 ○○（仮名）</div>
+        <div class="manager-role">人事部 次長</div>
+        <p class="manager-msg">「ケインズは、やる気のある方を全力でサポートする会社です。携帯の知識より『お客様の役に立ちたい』という気持ちを大切にしています。まずはお気軽にご連絡ください。」</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 募集要項 ── -->
+<section id="requirements">
+  <div class="container">
+    <span class="sec-label">Requirements</span>
+    <h2 class="sec-title">募集要項</h2>
+    <p class="sec-sub" style="margin-bottom:2rem">詳しい条件は面接時にご確認ください。</p>
+    <table class="req-table">
+      <tbody>
+        <tr><th>職種</th><td>携帯電話の販売職（auショップ八千代村上）</td></tr>
+        <tr><th>雇用形態</th><td>正社員（試用期間6ヶ月・同条件）</td></tr>
+        <tr><th>給与</th><td>月給 22万円〜29.6万円（基本給18.1万〜23万円 ＋ 窓口手当3万円 ＋ 固定残業代等）</td></tr>
+        <tr><th>各種手当</th><td>家族手当・住宅手当・役職手当・資格手当・通勤手当（上限5.5万円）</td></tr>
+        <tr><th>昇給・賞与</th><td>昇給あり（年1回実績）／賞与年2回（前年度実績：22〜65万円）</td></tr>
+        <tr><th>勤務時間</th><td>変形労働時間制 10:00〜19:00（月平均残業15時間）</td></tr>
+        <tr><th>休日・休暇</th><td>年間休日112日／週休2日（シフト制）／有給休暇（6ヶ月後10日）</td></tr>
+        <tr><th>勤務地</th><td>千葉県八千代市村上南3丁目10-10（村上駅 徒歩5分／マイカー通勤可・駐車場あり）</td></tr>
+        <tr><th>転勤</th><td>あり（千葉・埼玉エリア）</td></tr>
+        <tr><th>応募資格</th><td>経験不問・学歴不問・資格不問（〜59歳）</td></tr>
+        <tr><th>保険</th><td>雇用保険・労災保険・健康保険・厚生年金</td></tr>
+        <tr><th>退職金</th><td>あり（勤続3年以上）／再雇用制度あり（上限65歳）</td></tr>
+        <tr><th>選考方法</th><td>面接（予定2回）／書類選考なし</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ── Entry CTA ── -->
+<section class="cta-sec" id="entry">
+  <div class="container">
+    <h2>まずはお気軽にご連絡ください</h2>
+    <p>書類選考なし。あなたの意欲を直接お聞かせください。</p>
+    <a href="mailto:arai@kynes.jp" class="btn-orange">採用担当へメールで問い合わせる</a>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer>
+  <strong>株式会社ケインズ</strong>
+  〒276-0029 千葉県八千代市村上南3丁目10-10（auショップ八千代村上）<br>
+  TEL: 0555-24-7001　E-mail: arai@kynes.jp
+</footer>
+
+<script>
+(function(){
+  var btn = document.querySelector('.hamburger');
+  var nav = document.querySelector('.site-nav');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  }
+})();
+</script>
+</body>
+</html>

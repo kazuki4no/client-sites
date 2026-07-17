@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 有限会社 京葉工業所</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#1a1a2e;background:#fff}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+/* カラー変数 */
+:root{
+  --navy:#1a2744;
+  --orange:#e8600a;
+  --orange-light:#f5a623;
+  --gray-bg:#f5f6fa;
+  --gray-text:#666;
+  --border:#dde1ec;
+}
+
+/* ナビゲーション */
+header{background:var(--navy);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{color:#fff;font-weight:900;font-size:clamp(1rem,3vw,1.2rem);letter-spacing:.05em}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:#ccc;font-size:.85rem;transition:color .2s}
+.nav-links a:hover{color:#fff}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:8px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;transition:.3s}
+.nav-mobile{display:none;background:var(--navy);padding:16px 20px}
+.nav-mobile.open{display:block}
+.nav-mobile a{display:block;color:#ccc;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:.95rem}
+
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+}
+
+/* ヒーロー */
+.hero{background:linear-gradient(135deg,var(--navy) 0%,#2a3f6a 100%);padding:80px 20px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center;opacity:.18}
+.hero-content{position:relative;z-index:1}
+.hero-pill{display:inline-block;background:var(--orange);color:#fff;font-size:.8rem;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:20px;letter-spacing:.1em}
+.hero h1{font-size:clamp(2rem,7vw,3.4rem);font-weight:900;color:#fff;line-height:1.25;margin-bottom:16px}
+.hero h1 span{color:var(--orange-light)}
+.hero-sub{color:#bcd;font-size:clamp(.95rem,2.5vw,1.1rem);margin-bottom:32px;line-height:1.7}
+.btn-hero{display:inline-block;background:var(--orange);color:#fff;font-weight:700;font-size:1.05rem;padding:14px 40px;border-radius:4px;letter-spacing:.05em;transition:background .2s}
+.btn-hero:hover{background:#c44e00}
+
+/* セクション共通 */
+section{padding:70px 20px}
+.section-inner{max-width:1000px;margin:0 auto}
+.section-label{font-size:.75rem;font-weight:700;letter-spacing:.15em;color:var(--orange);text-transform:uppercase;margin-bottom:10px}
+.section-title{font-size:clamp(1.5rem,5vw,2.2rem);font-weight:900;color:var(--navy);margin-bottom:40px;line-height:1.3}
+.section-title span{color:var(--orange)}
+
+/* 魅力3点 */
+.features{background:var(--gray-bg)}
+.features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.feature-card{background:#fff;border-radius:8px;padding:32px 24px;text-align:center;border-top:4px solid var(--orange)}
+.feature-icon{font-size:2.4rem;margin-bottom:16px}
+.feature-card h3{font-size:1.05rem;font-weight:700;color:var(--navy);margin-bottom:10px}
+.feature-card p{font-size:.9rem;color:var(--gray-text);line-height:1.7}
+@media(max-width:768px){.features-grid{grid-template-columns:1fr}}
+
+/* 募集要項 */
+.table-wrap{overflow-x:auto}
+.recruit-table{width:100%;border-collapse:collapse;font-size:.95rem}
+.recruit-table th,.recruit-table td{padding:14px 16px;border:1px solid var(--border);vertical-align:top}
+.recruit-table th{background:var(--navy);color:#fff;font-weight:700;width:140px;white-space:nowrap}
+@media(max-width:640px){
+  .recruit-table thead{display:none}
+  .recruit-table tr{display:block;margin-bottom:16px;border:1px solid var(--border);border-radius:6px;overflow:hidden}
+  .recruit-table th,.recruit-table td{display:block;width:100%;border:none;border-bottom:1px solid var(--border)}
+  .recruit-table th{background:var(--navy);color:#fff}
+}
+
+/* FAQ */
+.faq-list{list-style:none}
+.faq-item{border-bottom:1px solid var(--border);padding:0}
+.faq-q{font-weight:700;padding:18px 0 8px;color:var(--navy);cursor:pointer;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;font-size:.95rem}
+.faq-q::after{content:'＋';font-size:1.2rem;color:var(--orange);flex-shrink:0;margin-top:-2px}
+.faq-q.open::after{content:'－'}
+.faq-a{padding:0 0 18px;color:var(--gray-text);line-height:1.75;font-size:.9rem;display:none}
+.faq-a.open{display:block}
+.sample-note{font-size:.75rem;color:#aaa;font-style:italic;margin-top:8px}
+
+/* タイムライン */
+.timeline{position:relative;padding-left:28px}
+.timeline::before{content:'';position:absolute;left:8px;top:0;bottom:0;width:2px;background:var(--orange);opacity:.3}
+.timeline-item{position:relative;margin-bottom:28px}
+.timeline-item::before{content:'';position:absolute;left:-24px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--orange);border:3px solid #fff;box-shadow:0 0 0 2px var(--orange)}
+.timeline-time{font-size:.8rem;font-weight:700;color:var(--orange);margin-bottom:4px}
+.timeline-item p{font-size:.9rem;color:#444;line-height:1.6}
+
+/* 先輩メッセージ */
+.voices{background:var(--gray-bg)}
+.voices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.voice-card{background:#fff;border-radius:8px;padding:28px 24px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.voice-header{display:flex;align-items:center;gap:16px;margin-bottom:16px}
+.voice-avatar{width:56px;height:56px;border-radius:50%;object-fit:cover;flex-shrink:0}
+.voice-info h4{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:2px}
+.voice-info p{font-size:.8rem;color:var(--gray-text)}
+.voice-text{font-size:.875rem;color:#444;line-height:1.75}
+@media(max-width:768px){.voices-grid{grid-template-columns:1fr}}
+
+/* CTA セクション */
+.cta-section{background:var(--navy);text-align:center}
+.cta-section h2{font-size:clamp(1.4rem,4vw,2rem);font-weight:900;color:#fff;margin-bottom:16px}
+.cta-section p{color:#bcd;margin-bottom:32px;font-size:.95rem;line-height:1.7}
+.btn-cta{display:inline-block;background:var(--orange);color:#fff;font-weight:700;padding:14px 48px;border-radius:4px;font-size:1.05rem;transition:background .2s}
+.btn-cta:hover{background:#c44e00}
+
+/* フッター */
+footer{background:#111;color:#888;padding:32px 20px;font-size:.82rem;text-align:center;line-height:2}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="logo">有限会社 京葉工業所</div>
+    <ul class="nav-links">
+      <li><a href="#features">働く魅力</a></li>
+      <li><a href="#requirements">募集要項</a></li>
+      <li><a href="#faq">よくある質問</a></li>
+      <li><a href="#voices">先輩の声</a></li>
+      <li><a href="#apply">応募する</a></li>
+    </ul>
+    <button class="hamburger" id="hamburgerBtn" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="nav-mobile" id="navMobile">
+    <a href="#features">働く魅力</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#faq">よくある質問</a>
+    <a href="#voices">先輩の声</a>
+    <a href="#apply">応募する</a>
+  </nav>
+</header>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-pill">製造作業員 募集中</div>
+    <h1>モノづくりの<span>縁の下</span>で、<br>日本のモーターを支える。</h1>
+    <p class="hero-sub">千葉県八千代市の工場で、産業機械の部品（モーター等）を仕上げる研磨スタッフを募集しています。<br>経験・学歴・資格は問いません。マイカー通勤歓迎。</p>
+    <a href="#apply" class="btn-hero">採用ページを見る</a>
+  </div>
+</section>
+
+<!-- 働く魅力 -->
+<section class="features" id="features">
+  <div class="section-inner">
+    <p class="section-label">Features</p>
+    <h2 class="section-title">京葉工業所で<span>働く3つの魅力</span></h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🚗</div>
+        <h3>マイカー通勤OK<br>駐車場無料</h3>
+        <p>駐車場完備で駐車費用は無料。最寄りの第4工業団地バス停から徒歩3分のアクセス。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🏭</div>
+        <h3>昭和46年創業の<br>安定した職場</h3>
+        <p>創業50年以上。従業員10名のアットホームな環境で、先輩との距離が近く技術を学びやすい。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">⚙️</div>
+        <h3>資格・経験不問<br>手に職がつく仕事</h3>
+        <p>グラインダー・サンダーを使った研磨の技術は入社後に習得できます。ものづくりに興味がある方歓迎。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section id="requirements">
+  <div class="section-inner">
+    <p class="section-label">Requirements</p>
+    <h2 class="section-title">募集<span>要項</span></h2>
+    <div class="table-wrap">
+      <table class="recruit-table">
+        <tr><th>職種</th><td>製造作業員（鋳鉄品研磨）</td></tr>
+        <tr><th>仕事内容</th><td>両刀グラインダー・サンダーを使用した鋳鉄品の研磨作業。加工した製品は産業機械の部品（モーター等）に使用されます。</td></tr>
+        <tr><th>雇用形態</th><td>正社員</td></tr>
+        <tr><th>給与</th><td>日給 8,740円〜11,200円（月換算：197,524円〜253,120円）<br><small>試用期間1か月：時給1,140円</small></td></tr>
+        <tr><th>就業時間</th><td>8:00〜17:00（休憩80分）</td></tr>
+        <tr><th>年間休日</th><td>93日（日曜・祝日・第1土曜・年末年始・夏季休暇）</td></tr>
+        <tr><th>賞与</th><td>年2回（前年度実績：計1か月分）</td></tr>
+        <tr><th>交通費</th><td>実費支給（上限月額20,000円）</td></tr>
+        <tr><th>福利厚生</th><td>雇用・労災・健康・厚生年金保険／退職金共済加入／昼食弁当あり（200円）</td></tr>
+        <tr><th>応募資格</th><td>経験不問・学歴不問・資格不問（〜69歳まで）</td></tr>
+        <tr><th>勤務地</th><td>千葉県八千代市大和田新田657-8<br>（八千代中央駅より東洋バス「第4工業団地」下車 徒歩3分）</td></tr>
+        <tr><th>採用人数</th><td>1名</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="background:var(--gray-bg)">
+  <div class="section-inner">
+    <p class="section-label">FAQ</p>
+    <h2 class="section-title">よくある<span>ご質問</span></h2>
+    <ul class="faq-list">
+      <li class="faq-item">
+        <div class="faq-q">グラインダーやサンダーを使ったことがありませんが大丈夫ですか？</div>
+        <div class="faq-a">はい、問題ありません。入社後に先輩スタッフが丁寧にお教えします。まず安全な使い方から始めて、少しずつ技術を身につけていただいています。
+          <p class="sample-note">※ここはサンプルです。実際には御社の採用FAQ・面接でよく聞かれる内容に差し替えます。</p>
+        </div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q">選考はどのような流れになりますか？</div>
+        <div class="faq-a">書類選考後、1回の面接（面接後3日以内に結果をお電話でご連絡）となります。面接の日程は随時調整しておりますので、まずはお問い合わせください。
+          <p class="sample-note">※ここはサンプルです。実際には御社の採用フローに差し替えます。</p>
+        </div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q">職場の雰囲気はどんな感じですか？</div>
+        <div class="faq-a">従業員10名の小規模な工場で、社長も現場と近い距離で働いています。わからないことはすぐ聞ける環境で、長く働いているベテランスタッフも多く、安心して技術を覚えられます。
+          <p class="sample-note">※ここはサンプルです。実際には御社の雰囲気に合わせて差し替えます。</p>
+        </div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q">試用期間はありますか？</div>
+        <div class="faq-a">試用期間は1か月（時給1,140円）です。終了後は日給制に変わります。試用期間中も社会保険は全額適用されます。
+          <p class="sample-note">※ここはサンプルです。実際には御社の条件をご確認ください。</p>
+        </div>
+      </li>
+      <li class="faq-item">
+        <div class="faq-q">お昼はどうしていますか？</div>
+        <div class="faq-a">会社で手配した弁当を200円でご利用いただけます。もちろん持参も大歓迎です。
+          <p class="sample-note">※ここはサンプルです。実際には御社の福利厚生情報に差し替えます。</p>
+        </div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section id="timeline">
+  <div class="section-inner">
+    <p class="section-label">A Day</p>
+    <h2 class="section-title">社員の<span>1日の流れ</span></h2>
+    <p style="color:var(--gray-text);font-size:.85rem;margin-bottom:8px">※ここはサンプルです。実際には御社スタッフの1日に差し替えます。</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-time">08:00</div>
+        <p>出勤・始業。朝礼で当日の作業内容を確認。マイカー駐車場へ車を停めて着替え。</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">08:15</div>
+        <p>グラインダー・サンダーの点検後、鋳鉄品の研磨作業開始。一つひとつ丁寧に仕上げます。</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">10:00</div>
+        <p>AM休憩（10:00〜10:15）。先輩と雑談しながらひと息。</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">12:00</div>
+        <p>お昼休憩（12:00〜12:50）。社内で弁当（200円）を食べる人が多数。</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">15:00</div>
+        <p>PM休憩（15:00〜15:15）。再開後、仕上がり検品と次のロットの準備。</p>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-time">17:00</div>
+        <p>終業。後片付けと工具の清掃。時間外ナシが基本で、定時上がりがほとんどです。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section class="voices" id="voices">
+  <div class="section-inner">
+    <p class="section-label">Voices</p>
+    <h2 class="section-title">先輩<span>スタッフの声</span></h2>
+    <p style="color:var(--gray-text);font-size:.85rem;margin-bottom:24px">※ここはサンプルです。実際には御社スタッフのコメントと写真に差し替えます。</p>
+    <div class="voices-grid">
+      <div class="voice-card">
+        <div class="voice-header">
+          <!-- 先輩スタッフ顔写真（ダミー）。御社の実写真に差し替えてください -->
+          <img class="voice-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="田中さん">
+          <div class="voice-info">
+            <h4>田中 誠（仮名）</h4>
+            <p>入社7年 / 製造作業員</p>
+          </div>
+        </div>
+        <p class="voice-text">グラインダーを最初は不安に思っていましたが、先輩が一から教えてくれて、3か月後には一人でこなせるようになりました。作った部品がどこに使われるか分かると、やりがいが全然違います。</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-header">
+          <!-- 先輩スタッフ顔写真（ダミー）。御社の実写真に差し替えてください -->
+          <img class="voice-avatar" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&h=200&fit=crop&crop=faces&q=80" alt="鈴木さん">
+          <div class="voice-info">
+            <h4>鈴木 和子（仮名）</h4>
+            <p>入社3年 / 製造作業員</p>
+          </div>
+        </div>
+        <p class="voice-text">少人数なので何でも聞きやすいのが一番の魅力です。分からないことをそのままにしない文化が好きです。マイカー通勤で渋滞も気にならず、帰宅してからの時間を大切にできています。</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-header">
+          <!-- 先輩スタッフ顔写真（ダミー）。御社の実写真に差し替えてください -->
+          <img class="voice-avatar" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="佐藤さん">
+          <div class="voice-info">
+            <h4>佐藤 浩二（仮名）</h4>
+            <p>入社15年 / ベテランスタッフ</p>
+          </div>
+        </div>
+        <p class="voice-text">気づいたら15年経っていました（笑）。定時上がりがほぼ毎日なので、プライベートも充実させやすい。ベテランが後輩に技術を受け渡す雰囲気がずっと続いていて、働きやすい現場だと思います。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 採用担当者紹介 -->
+<section id="manager" style="background:#f0f4fa">
+  <div class="section-inner" style="display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center">
+    <!-- 採用担当者写真（ダミー）。実際の担当者写真に差し替えてください -->
+    <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当" style="width:100px;height:100px;border-radius:50%;object-fit:cover;border:4px solid var(--orange)">
+    <div>
+      <p style="font-size:.75rem;color:var(--orange);font-weight:700;letter-spacing:.1em;margin-bottom:4px">RECRUITER</p>
+      <h3 style="font-size:1.1rem;font-weight:900;color:var(--navy);margin-bottom:8px">採用担当（仮名）</h3>
+      <p style="font-size:.9rem;color:#444;line-height:1.7">工場見学も随時受け付けています。「実際の現場を見てみたい」という方も、お気軽にご連絡ください。</p>
+      <p class="sample-note" style="margin-top:6px">※ここはサンプルです。実際の採用担当者の紹介に差し替えます。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 応募CTA -->
+<section class="cta-section" id="apply">
+  <div class="section-inner">
+    <h2>まずはお気軽にご連絡ください</h2>
+    <p>書類選考・1回の面接のみ。選考結果は3日以内にお電話でご連絡します。<br>見学や質問だけでも歓迎しています。</p>
+    <a href="mailto:yuki0703sincere@gmail.com" class="btn-cta">メールで問い合わせる</a>
+  </div>
+</section>
+
+<footer>
+  <p>有限会社 京葉工業所</p>
+  <p>〒276-0046 千葉県八千代市大和田新田657-8</p>
+  <p>TEL: 080-5022-1078</p>
+  <p>Mail: yuki0703sincere@gmail.com</p>
+</footer>
+
+<script>
+const btn=document.getElementById('hamburgerBtn');
+const nav=document.getElementById('navMobile');
+btn.addEventListener('click',()=>nav.classList.toggle('open'));
+document.querySelectorAll('.nav-mobile a').forEach(a=>a.addEventListener('click',()=>nav.classList.remove('open')));
+document.querySelectorAll('.faq-q').forEach(q=>{
+  q.addEventListener('click',()=>{
+    q.classList.toggle('open');
+    q.nextElementSibling.classList.toggle('open');
+  });
+});
+</script>
+</body>
+</html>

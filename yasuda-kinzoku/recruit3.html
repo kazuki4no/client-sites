@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 安田金属株式会社</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&family=Noto+Serif+JP:wght@700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#1a1a1a;background:#1a1a2e}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+:root{
+  --steel:#1a1a2e;
+  --steel-mid:#2a2a4e;
+  --gold:#ffb347;
+  --gold-dark:#e09030;
+  --white:#fff;
+  --off:#f4f6fa;
+}
+
+/* ヘッダー（透明→スクロールで暗転） */
+header{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 20px;transition:background 0.3s}
+header.scrolled{background:rgba(26,26,46,0.95);box-shadow:0 2px 12px rgba(0,0,0,0.5)}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:70px}
+.logo{color:#fff;font-family:'Noto Serif JP',serif;font-size:clamp(1rem,2.5vw,1.2rem);font-weight:700;letter-spacing:0.08em}
+.logo em{color:var(--gold);font-style:normal}
+nav.desktop-nav{display:flex;gap:32px}
+nav.desktop-nav a{font-size:0.88rem;color:rgba(255,255,255,0.8);transition:color 0.2s;letter-spacing:0.03em}
+nav.desktop-nav a:hover{color:var(--gold)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:26px;height:2px;background:#fff;transition:all 0.3s}
+.mobile-nav{display:none;position:fixed;top:70px;left:0;right:0;background:rgba(26,26,46,0.97);z-index:199}
+.mobile-nav.open{display:block}
+.mobile-nav a{display:block;padding:16px 28px;color:rgba(255,255,255,0.8);font-size:0.95rem;border-bottom:1px solid rgba(255,255,255,0.06)}
+
+/* FVヒーロー */
+.hero{position:relative;min-height:85vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center}
+.hero-overlay{position:absolute;inset:0;background:rgba(10,15,30,0.65)}
+.hero-content{position:relative;z-index:1;padding:100px 20px 60px;color:#fff;max-width:860px}
+.hero-label{display:inline-block;border:1px solid var(--gold);color:var(--gold);font-size:0.8rem;font-weight:700;padding:5px 18px;letter-spacing:0.15em;margin-bottom:32px}
+.hero h1{font-family:'Noto Serif JP',serif;font-size:clamp(2rem,7vw,4rem);font-weight:900;line-height:1.2;letter-spacing:0.04em;margin-bottom:24px;text-shadow:0 2px 12px rgba(0,0,0,0.5)}
+.hero h1 em{color:var(--gold);font-style:normal;display:block}
+.hero .catch{font-size:clamp(0.9rem,2.5vw,1.1rem);color:rgba(255,255,255,0.85);line-height:1.9;margin-bottom:44px}
+.btn-gold{display:inline-block;background:var(--gold);color:#1a1a1a;font-size:1.05rem;font-weight:700;padding:18px 52px;border-radius:2px;letter-spacing:0.08em;transition:background 0.2s}
+.btn-gold:hover{background:#ffc96a}
+.hero-scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.5);font-size:0.75rem;letter-spacing:0.1em}
+.hero-scroll::after{content:'▼';display:block;text-align:center;animation:bounce 1.5s infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+
+/* 実績ライン */
+.stats-line{background:var(--gold);padding:20px;text-align:center}
+.stats-inner{display:flex;justify-content:center;gap:48px;flex-wrap:wrap;color:#1a1a1a}
+.stat-item strong{font-size:clamp(1.3rem,3vw,2rem);font-weight:900}
+.stat-item span{font-size:0.8rem;display:block}
+.stat-note{text-align:center;background:var(--gold);color:rgba(26,26,26,0.6);font-size:0.72rem;padding-bottom:8px}
+/* ※ここはサンプルです */
+
+/* セクション共通（ライト背景） */
+.light-section{background:var(--off);padding:80px 20px}
+.dark-section{background:var(--steel);padding:80px 20px;color:#fff}
+.mid-section{background:var(--steel-mid);padding:80px 20px;color:#fff}
+.section-inner{max-width:1050px;margin:0 auto}
+.sec-title{text-align:center;margin-bottom:52px}
+.sec-title .en{font-size:0.78rem;letter-spacing:0.18em;color:var(--gold);display:block;margin-bottom:8px;text-transform:uppercase}
+.sec-title h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,4vw,2rem);font-weight:900;line-height:1.4}
+.sec-title h2.light{color:var(--white)}
+.sec-title p{color:#777;margin-top:12px;font-size:0.9rem;line-height:1.8}
+.sec-title p.light{color:#aab5c8}
+
+/* 特徴カード */
+.feature-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px}
+.feature-card{background:var(--steel-mid);color:#fff;padding:48px 32px;text-align:center}
+.f-icon{font-size:2.8rem;margin-bottom:20px}
+.f-num{font-size:3rem;font-weight:900;color:var(--gold);line-height:1;margin-bottom:6px}
+.f-num small{font-size:1.2rem}
+.feature-card h3{font-size:1rem;font-weight:700;color:#fff;margin-bottom:12px;line-height:1.4}
+.feature-card p{font-size:0.85rem;color:rgba(255,255,255,0.7);line-height:1.8}
+.f-note{font-size:0.72rem;color:rgba(255,255,255,0.4);margin-top:8px}
+/* ※ここはサンプルです */
+
+/* 仕事内容 2カラム */
+.work-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.work-img img{width:100%;height:360px;object-fit:cover;border-radius:4px}
+.work-text .gold-bar{display:inline-block;width:40px;height:3px;background:var(--gold);margin-bottom:20px}
+.work-text h3{font-family:'Noto Serif JP',serif;font-size:1.4rem;font-weight:700;color:#fff;margin-bottom:16px;line-height:1.5}
+.work-text p{color:rgba(255,255,255,0.75);font-size:0.9rem;line-height:1.9;margin-bottom:12px}
+.tag-list{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.tag-item{border:1px solid rgba(255,179,71,0.5);color:var(--gold);font-size:0.8rem;padding:5px 14px;border-radius:2px}
+
+/* 1日の流れ */
+.tl-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0}
+.tl-card{border-bottom:1px solid rgba(255,255,255,0.08);border-right:1px solid rgba(255,255,255,0.08);padding:28px}
+.tl-card:nth-child(2n){border-right:none}
+.tl-time{color:var(--gold);font-size:1.2rem;font-weight:700;margin-bottom:6px}
+.tl-card h4{color:#fff;font-size:0.95rem;font-weight:700;margin-bottom:6px}
+.tl-card p{color:rgba(255,255,255,0.65);font-size:0.83rem;line-height:1.7}
+.tl-sample{font-size:0.72rem;color:rgba(255,255,255,0.35);font-style:italic;margin-top:4px}
+
+/* 先輩メッセージ（ライト） */
+.voice-list{display:flex;flex-direction:column;gap:0}
+.voice-item{display:grid;grid-template-columns:120px 1fr;gap:0;border-bottom:1px solid #dde3ec}
+.voice-img img{width:120px;height:120px;object-fit:cover}
+.voice-body{padding:24px 28px}
+.v-meta{display:flex;gap:16px;align-items:baseline;margin-bottom:10px}
+.v-name{font-weight:700;color:#1a1a2e}
+.v-role{font-size:0.8rem;color:#888}
+.voice-body p{font-size:0.9rem;color:#444;line-height:1.8}
+.v-sample{font-size:0.75rem;color:#aaa;font-style:italic;margin-top:6px}
+
+/* 募集要項テーブル */
+.table-wrap{border-radius:4px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.08)}
+table{width:100%;border-collapse:collapse;background:#fff}
+th,td{padding:15px 20px;text-align:left;border-bottom:1px solid #e8ecf4}
+th{background:#1a1a2e;color:#fff;font-size:0.88rem;font-weight:700;width:150px;vertical-align:top}
+td{color:#333;line-height:1.7;font-size:0.88rem}
+tr:last-child th,tr:last-child td{border-bottom:none}
+
+/* FAQ ダーク */
+.faq-dark{max-width:800px;margin:0 auto}
+.faq-dark .faq-item{border-bottom:1px solid rgba(255,255,255,0.1)}
+.faq-q-d{padding:20px 0;font-weight:700;color:#fff;cursor:pointer;display:flex;justify-content:space-between;font-size:0.93rem}
+.faq-q-d::after{content:'＋';color:var(--gold);font-size:1.1rem;flex-shrink:0}
+.faq-q-d.open::after{content:'－'}
+.faq-a-d{padding:0 0 18px;color:rgba(255,255,255,0.65);font-size:0.88rem;line-height:1.8;display:none}
+.faq-a-d.open{display:block}
+
+/* CTA */
+.cta-hero{position:relative;min-height:40vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden;padding:80px 20px}
+.cta-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1553413077-190dd305871c?w=1600&h=600&fit=crop&q=80') center/cover}
+.cta-overlay{position:absolute;inset:0;background:rgba(10,15,30,0.78)}
+.cta-content{position:relative;z-index:1;color:#fff}
+.cta-content h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,4vw,2.2rem);font-weight:900;margin-bottom:16px}
+.cta-content p{color:rgba(255,255,255,0.8);font-size:0.95rem;line-height:1.9;margin-bottom:36px}
+
+footer{background:#0a0f1e;color:#3a4a5a;text-align:center;padding:32px 20px;font-size:0.82rem;line-height:1.9}
+
+@media(max-width:768px){
+  nav.desktop-nav{display:none}
+  .hamburger{display:flex}
+  .feature-grid{grid-template-columns:1fr}
+  .work-grid{grid-template-columns:1fr}
+  .tl-grid{grid-template-columns:1fr}
+  .tl-card:nth-child(2n){border-right:none}
+  .voice-item{grid-template-columns:80px 1fr}
+  .voice-img img{width:80px;height:80px}
+  table th{width:110px;white-space:normal}
+  .stats-inner{gap:24px}
+}
+</style>
+</head>
+<body>
+
+<header id="siteHeader">
+  <div class="nav-inner">
+    <div class="logo">安田金属<em>株式会社</em></div>
+    <nav class="desktop-nav">
+      <a href="#features">魅力</a>
+      <a href="#work">仕事内容</a>
+      <a href="#day">1日の流れ</a>
+      <a href="#voices">先輩の声</a>
+      <a href="#requirements">募集要項</a>
+      <a href="#apply">応募する</a>
+    </nav>
+    <div class="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="#features" onclick="closeMenu()">魅力</a>
+    <a href="#work" onclick="closeMenu()">仕事内容</a>
+    <a href="#day" onclick="closeMenu()">1日の流れ</a>
+    <a href="#voices" onclick="closeMenu()">先輩の声</a>
+    <a href="#requirements" onclick="closeMenu()">募集要項</a>
+    <a href="#apply" onclick="closeMenu()">応募する</a>
+  </nav>
+</header>
+
+<!-- FVヒーロー -->
+<div class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-label">RECRUIT 2026 — 倉庫作業員 正社員</div>
+    <h1>鉄が、社会を<br><em>支えている。</em></h1>
+    <p class="catch">創業70年。浦安の鋼材卸メーカーで<br>未経験から「ものづくり」のプロになる</p>
+    <a href="#apply" class="btn-gold">応募する・見学申込</a>
+  </div>
+  <div class="hero-scroll">SCROLL</div>
+</div>
+
+<!-- 実績ライン -->
+<div class="stats-line">
+  <div class="stats-inner">
+    <div class="stat-item"><strong>昭和42年</strong><span>創業</span></div>
+    <div class="stat-item"><strong>100社</strong><span>安定取引先</span></div>
+    <div class="stat-item"><strong>年間124日</strong><span>休日数</span></div>
+    <div class="stat-item"><strong>月28万円</strong><span>手当込み月収</span></div>
+  </div>
+</div>
+<p class="stat-note">※ここはサンプルです。実際には御社のデータに差し替えます</p>
+
+<!-- 特徴 -->
+<div id="features">
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="f-icon">🏭</div>
+      <div class="f-num">70<small>年</small></div>
+      <h3>創業70年の安定経営</h3>
+      <p>浦安・東京100社へ安定した販売実績。地味に見える業界だからこそ競合が少なく安定しています。</p>
+      <p class="f-note">※ここはサンプルです。実際には御社のデータに差し替えます</p>
+    </div>
+    <div class="feature-card">
+      <div class="f-icon">💴</div>
+      <div class="f-num">28<small>万円</small></div>
+      <h3>物価手当・昼食補助込みの月収</h3>
+      <p>各種手当が充実。物価手当・昼食補助が毎日の生活を支えます。賞与は年2回（実績最大270万円）。</p>
+      <p class="f-note">※ここはサンプルです。実際には御社のデータに差し替えます</p>
+    </div>
+    <div class="feature-card">
+      <div class="f-icon">📅</div>
+      <div class="f-num">124<small>日</small></div>
+      <h3>年間休日124日・土日祝休み</h3>
+      <p>土日祝・年末年始・夏季休暇。仕事とプライベートの両立がしやすい環境です。</p>
+      <p class="f-note">※ここはサンプルです。実際には御社のデータに差し替えます</p>
+    </div>
+  </div>
+</div>
+
+<!-- 仕事内容 -->
+<div class="dark-section" id="work">
+  <div class="section-inner">
+    <div class="sec-title">
+      <span class="en">WHAT WE DO</span>
+      <h2 class="light">仕事内容</h2>
+    </div>
+    <div class="work-grid">
+      <div class="work-img">
+        <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=640&h=420&fit=crop&q=80" alt="倉庫作業の様子">
+      </div>
+      <div class="work-text">
+        <div class="gold-bar"></div>
+        <h3>鋼材の入出庫・<br>切断・曲げ加工</h3>
+        <p>倉庫にて鋼材の入出庫管理、最新の切断機・曲げ機を使った加工作業をお任せします。最初は先輩が丁寧に指導するので、鋼材業界の知識がなくても大丈夫です。</p>
+        <p>今年新たに切断機と曲げ機を導入。より安全・効率的な作業環境が整いました。12人の少人数チームで、意見が通りやすくコミュニケーションしやすい職場です。</p>
+        <div class="tag-list">
+          <span class="tag-item">未経験歓迎</span>
+          <span class="tag-item">正社員</span>
+          <span class="tag-item">最新機械</span>
+          <span class="tag-item">少人数チーム</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 1日の流れ -->
+<div class="mid-section" id="day">
+  <div class="section-inner">
+    <div class="sec-title">
+      <span class="en">A DAY IN THE LIFE</span>
+      <h2 class="light">先輩社員の1日の流れ</h2>
+      <p class="light">倉庫作業員の典型的な1日をご紹介します</p>
+    </div>
+    <div class="tl-grid">
+      <div class="tl-card">
+        <div class="tl-time">7:00</div>
+        <h4>出勤・朝ミーティング</h4>
+        <p>当日の入出庫予定を確認。チームで段取りを共有します。</p>
+        <p class="tl-sample">※ここはサンプルです。実際には御社の流れに差し替えます</p>
+      </div>
+      <div class="tl-card">
+        <div class="tl-time">7:30</div>
+        <h4>入庫確認・仕分け</h4>
+        <p>納品された鋼材の種類・数量をチェックし、棚に仕分けします。</p>
+        <p class="tl-sample">※ここはサンプルです。実際には御社の流れに差し替えます</p>
+      </div>
+      <div class="tl-card">
+        <div class="tl-time">10:00</div>
+        <h4>切断・曲げ加工</h4>
+        <p>最新の機械を使い、注文仕様に合わせた加工を進めます。</p>
+        <p class="tl-sample">※ここはサンプルです。実際には御社の流れに差し替えます</p>
+      </div>
+      <div class="tl-card">
+        <div class="tl-time">12:00</div>
+        <h4>昼食休憩（補助あり）</h4>
+        <p>昼食補助制度を利用してリフレッシュ。チームとの会話も楽しい時間です。</p>
+        <p class="tl-sample">※ここはサンプルです。実際には御社の流れに差し替えます</p>
+      </div>
+      <div class="tl-card">
+        <div class="tl-time">13:00</div>
+        <h4>出庫作業・積み込み</h4>
+        <p>取引先の注文に合わせて鋼材をピッキング・積み込み準備します。</p>
+        <p class="tl-sample">※ここはサンプルです。実際には御社の流れに差し替えます</p>
+      </div>
+      <div class="tl-card">
+        <div class="tl-time">15:00</div>
+        <h4>在庫整理・清掃</h4>
+        <p>在庫確認と倉庫の整理整頓。安全な職場を保つ大切な業務です。</p>
+        <p class="tl-sample">※ここはサンプルです。実際には御社の流れに差し替えます</p>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:32px;color:rgba(255,255,255,0.6);font-size:0.9rem">16:00 退勤　時間外労働は月平均10時間程度</div>
+  </div>
+</div>
+
+<!-- 先輩の声 -->
+<div class="light-section" id="voices">
+  <div class="section-inner">
+    <div class="sec-title">
+      <span class="en">VOICES</span>
+      <h2>先輩社員の声</h2>
+      <p>実際に働くメンバーのコメントです</p>
+    </div>
+    <div class="voice-list">
+      <!-- ※ここはサンプルです。実際には御社スタッフの顔写真・コメントに差し替えます -->
+      <div class="voice-item">
+        <div class="voice-img">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩A">
+        </div>
+        <div class="voice-body">
+          <div class="v-meta">
+            <span class="v-name">山田 健二（仮名）</span>
+            <span class="v-role">倉庫作業員・入社3年目</span>
+          </div>
+          <p>「前職はまったく違う仕事をしていて、金属のことは何も知りませんでした。入社後、先輩が基礎から教えてくれたので3ヶ月後には一人で作業できるようになりました。今は切断・曲げ加工が一番楽しいですね」</p>
+          <p class="v-sample">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</p>
+        </div>
+      </div>
+      <div class="voice-item">
+        <div class="voice-img">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩B">
+        </div>
+        <div class="voice-body">
+          <div class="v-meta">
+            <span class="v-name">鈴木 大輝（仮名）</span>
+            <span class="v-role">倉庫作業員・入社5年目</span>
+          </div>
+          <p>「物価手当や昼食補助があって、手取りが想定以上でした。土日祝休みで残業も少ないので、家族との時間もしっかり取れています。少人数なので社長ともすぐ話せる距離感がいいです」</p>
+          <p class="v-sample">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</p>
+        </div>
+      </div>
+      <div class="voice-item">
+        <div class="voice-img">
+          <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩C">
+        </div>
+        <div class="voice-body">
+          <div class="v-meta">
+            <span class="v-name">木村 さやか（仮名）</span>
+            <span class="v-role">営業事務・入社4年目</span>
+          </div>
+          <p>「入社前は鉄・金属の会社というと男性が多いイメージでした。でも職場はとても話しやすく、女性でも働きやすい雰囲気です。困ったときにすぐ相談できる人がいるのが一番助かっています」</p>
+          <p class="v-sample">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 募集要項 -->
+<div class="light-section" id="requirements" style="padding-top:0">
+  <div class="section-inner">
+    <div class="sec-title" style="padding-top:80px">
+      <span class="en">REQUIREMENTS</span>
+      <h2>募集要項</h2>
+    </div>
+    <div class="table-wrap">
+      <table>
+        <tr><th>職種</th><td>倉庫作業員（鋼材の入出庫・切断・曲げ加工）</td></tr>
+        <tr><th>雇用形態</th><td>正社員</td></tr>
+        <tr><th>給与</th><td>月給 280,000円（基本給150,000円＋各種手当）<br>昇給あり / 賞与年2回（前年度実績最大2,700,000円）</td></tr>
+        <tr><th>手当</th><td>職務手当・皆勤手当・家族手当・住宅手当・物価手当・昼食補助・通勤手当（月2万円上限）</td></tr>
+        <tr><th>就業時間</th><td>7:00〜16:00 ／ 残業月平均10時間</td></tr>
+        <tr><th>休日・休暇</th><td>土日祝・年末年始・夏季 ／ 年間124日 ／ 有給休暇あり（6ヶ月後10日〜）</td></tr>
+        <tr><th>勤務地</th><td>千葉県浦安市鉄鋼通り２－６－３（JR京葉線 舞浜駅 徒歩20分）<br>マイカー通勤可・駐車場あり</td></tr>
+        <tr><th>応募資格</th><td>普通自動車免許（AT限定可）必須 ／ 高校卒業以上 ／ 40歳以下</td></tr>
+        <tr><th>保険</th><td>雇用・労災・健康・厚生年金 ／ 退職金制度あり</td></tr>
+        <tr><th>定年</th><td>65歳（再雇用最大70歳）</td></tr>
+        <tr><th>採用人数</th><td>2名</td></tr>
+        <tr><th>選考</th><td>面接1回（履歴書持参）→ 7日以内に結果通知</td></tr>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- FAQ（ダーク） -->
+<div class="dark-section">
+  <div class="section-inner">
+    <div class="sec-title">
+      <span class="en">FAQ</span>
+      <h2 class="light">よくある質問</h2>
+    </div>
+    <div class="faq-dark">
+      <div class="faq-item">
+        <div class="faq-q-d" onclick="toggleFaqD(this)">未経験でも応募できますか？</div>
+        <div class="faq-a-d">はい、問題ありません。入社後は先輩が丁寧に指導します。鋼材業界の知識は入社後に習得できます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q-d" onclick="toggleFaqD(this)">普通免許以外に必要な資格はありますか？</div>
+        <div class="faq-a-d">入社時点では普通自動車免許（AT限定可）のみです。ペーパードライバーの方はご遠慮ください。機械関連の資格は入社後に取得を検討できます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q-d" onclick="toggleFaqD(this)">40歳以上は応募できませんか？</div>
+        <div class="faq-a-d">今回の募集は長期勤続によるキャリア形成を目的として40歳以下を対象としています。予めご了承ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q-d" onclick="toggleFaqD(this)">職場の雰囲気はどうですか？</div>
+        <div class="faq-a-d">社員12人の少数精鋭。全員の名前と顔がわかる距離感で、年齢・社歴に関わらず意見が出しやすい雰囲気です。チャレンジを歓迎する風土があります。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q-d" onclick="toggleFaqD(this)">選考から採用まで、どのくらいかかりますか？</div>
+        <div class="faq-a-d">まずお電話またはメールでご連絡ください。面接日時を調整し、面接後7日以内に結果をお知らせします。入社日はご相談ください。</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CTA最終 -->
+<div class="cta-hero" id="apply">
+  <div class="cta-bg"></div>
+  <div class="cta-overlay"></div>
+  <div class="cta-content">
+    <h2>まずは見るだけでも、歓迎します</h2>
+    <p>見学・質問だけでも大丈夫です。<br>面接日時はご都合に合わせて調整します。</p>
+    <a href="mailto:hironaka@yasudakinzoku.co.jp" class="btn-gold">メールで問い合わせる</a>
+    <p style="margin-top:20px;color:rgba(255,255,255,0.65);font-size:0.85rem">TEL: 047-350-1355（月〜金 7:00〜16:00）</p>
+  </div>
+</div>
+
+<footer>
+  <p>安田金属株式会社</p>
+  <p>〒279-0025 千葉県浦安市鉄鋼通り２－６－３</p>
+  <p>TEL: 047-350-1355　E-mail: hironaka@yasudakinzoku.co.jp</p>
+</footer>
+
+<script>
+window.addEventListener('scroll',()=>{
+  document.getElementById('siteHeader').classList.toggle('scrolled',window.scrollY>50);
+});
+function toggleMenu(){
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('mobileNav').classList.remove('open');
+}
+function toggleFaqD(el){
+  el.classList.toggle('open');
+  el.nextElementSibling.classList.toggle('open');
+}
+</script>
+</body>
+</html>

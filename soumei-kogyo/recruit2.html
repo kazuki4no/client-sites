@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 株式会社双盟工業</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#1a1a1a;background:#fafaf8}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+:root{
+  --dkgreen:#1e4d2b;
+  --green:#2e8b57;
+  --orange:#ff6b35;
+  --light:#fafaf8;
+  --gray:#f0eeeb;
+}
+
+/* ヘッダー */
+header{background:var(--dkgreen);position:sticky;top:0;z-index:100;box-shadow:0 2px 8px rgba(0,0,0,.25)}
+.header-inner{max-width:1100px;margin:0 auto;padding:0 1.2rem;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{color:#fff;font-weight:900;font-size:1.05rem;letter-spacing:.04em}
+.logo span{display:block;font-size:.68rem;font-weight:400;opacity:.8}
+nav.pc{display:flex;gap:1.6rem}
+nav.pc a{color:#fff;font-size:.88rem;font-weight:500;opacity:.9;transition:opacity .2s}
+nav.pc a:hover{opacity:1}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;transition:.3s}
+.mobile-nav{display:none;background:var(--dkgreen);padding:1rem 1.2rem 1.5rem}
+.mobile-nav.open{display:block}
+.mobile-nav a{display:block;color:#fff;font-size:1rem;padding:.6rem 0;border-bottom:1px solid rgba(255,255,255,.12)}
+
+/* ヒーロー（LP型） */
+.hero{position:relative;min-height:80vh;display:flex;align-items:center}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to right,rgba(30,77,43,.9) 40%,rgba(30,77,43,.55))}
+.hero-content{position:relative;max-width:1100px;margin:0 auto;padding:4rem 1.2rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.hero-left{}
+.hero-badge{display:inline-flex;gap:.5rem;margin-bottom:1rem;flex-wrap:wrap}
+.pill{background:var(--orange);color:#fff;font-size:.76rem;font-weight:700;padding:.25rem .8rem;border-radius:2rem;letter-spacing:.06em}
+.pill-sub{background:rgba(255,255,255,.2);color:#fff;font-size:.76rem;font-weight:700;padding:.25rem .8rem;border-radius:2rem}
+.hero h1{color:#fff;font-size:clamp(1.8rem,4.5vw,3.2rem);font-weight:900;line-height:1.2;margin-bottom:1.2rem}
+.hero h1 em{color:var(--orange);font-style:normal;display:block}
+.hero-sub{color:rgba(255,255,255,.88);font-size:.95rem;line-height:1.8;margin-bottom:2rem}
+.hero-cta-box{display:flex;flex-direction:column;gap:.8rem}
+.btn-orange{display:block;background:var(--orange);color:#fff;font-size:1.05rem;font-weight:900;padding:1rem 2rem;border-radius:6px;text-align:center;letter-spacing:.05em;transition:background .2s}
+.btn-orange:hover{background:#e55a25}
+.btn-white{display:block;border:2px solid rgba(255,255,255,.6);color:#fff;font-size:.95rem;font-weight:700;padding:.8rem 2rem;border-radius:6px;text-align:center;transition:.2s}
+.btn-white:hover{background:rgba(255,255,255,.1)}
+.hero-right{background:rgba(255,255,255,.12);backdrop-filter:blur(4px);border-radius:12px;padding:1.8rem;border:1px solid rgba(255,255,255,.2)}
+.hero-card-title{color:rgba(255,255,255,.7);font-size:.8rem;font-weight:700;letter-spacing:.1em;margin-bottom:1rem}
+.hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.hero-stat{text-align:center}
+.hero-stat .num{color:var(--orange);font-size:1.9rem;font-weight:900;line-height:1}
+.hero-stat .num sup{font-size:.9rem}
+.hero-stat .label{color:rgba(255,255,255,.8);font-size:.72rem;margin-top:.3rem}
+
+/* 信頼バー */
+.trust-bar{background:#fff;padding:1.5rem 1.2rem;border-bottom:1px solid #e8e6e2}
+.trust-inner{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:center;align-items:center}
+.trust-item{display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:#444;font-weight:500}
+.trust-icon{font-size:1.2rem}
+
+/* 問題提起 → 解決提案（LP構成） */
+.problem{background:var(--gray);padding:4rem 1.2rem;text-align:center}
+.problem-inner{max-width:700px;margin:0 auto}
+.problem h2{font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;color:#1a1a1a;margin-bottom:1.2rem;line-height:1.4}
+.problem h2 em{color:var(--orange);font-style:normal}
+.problem p{font-size:.95rem;line-height:1.8;color:#444;margin-bottom:1rem}
+.problem-list{text-align:left;display:inline-block;margin-top:1rem}
+.problem-list li{font-size:.9rem;line-height:1.8;color:#555;padding:.3rem 0;padding-left:1.5rem;position:relative}
+.problem-list li::before{content:"✗";color:var(--orange);position:absolute;left:0;font-weight:700}
+
+/* 解決 */
+.solution{background:#fff;padding:4rem 1.2rem}
+.solution-inner{max-width:1100px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center}
+.solution-img img{border-radius:12px;width:100%;height:340px;object-fit:cover}
+.solution-text h2{font-size:clamp(1.3rem,3vw,1.9rem);font-weight:900;color:var(--dkgreen);margin-bottom:1.2rem;line-height:1.4}
+.solution-text h2 em{color:var(--orange);font-style:normal}
+.solution-text p{font-size:.93rem;line-height:1.8;color:#444;margin-bottom:1rem}
+.check-list{list-style:none;margin-top:1rem}
+.check-list li{font-size:.93rem;line-height:1.8;color:#333;padding:.3rem 0 .3rem 2rem;position:relative}
+.check-list li::before{content:"✓";color:var(--green);position:absolute;left:0;font-weight:700;font-size:1.1rem}
+
+/* 数字で見る会社 */
+.numbers{background:var(--dkgreen);padding:4rem 1.2rem;text-align:center}
+.numbers h2{color:#fff;font-size:clamp(1.3rem,3.5vw,2rem);font-weight:900;margin-bottom:.5rem}
+.numbers-note{color:rgba(255,255,255,.65);font-size:.82rem;margin-bottom:2.5rem}
+.numbers-note em{color:#aaa;font-style:normal;font-size:.72rem}
+.num-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;max-width:900px;margin:0 auto}
+.num-card{background:rgba(255,255,255,.08);border-radius:10px;padding:1.5rem 1rem;border:1px solid rgba(255,255,255,.12)}
+.num-card .n{color:var(--orange);font-size:2rem;font-weight:900;line-height:1}
+.num-card .n sup{font-size:.95rem}
+.num-card .l{color:rgba(255,255,255,.8);font-size:.78rem;margin-top:.4rem}
+.num-card .sample-note{font-size:.65rem;color:rgba(255,255,255,.35);margin-top:.3rem}
+
+/* 待遇詳細 */
+.benefits{background:var(--light);padding:4rem 1.2rem}
+.benefits-inner{max-width:1100px;margin:0 auto}
+.benefits-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;margin-top:1.5rem}
+.benefit-item{background:#fff;border-radius:8px;padding:1.4rem 1.2rem;border-left:4px solid var(--green)}
+.benefit-item h4{font-size:.92rem;font-weight:700;color:var(--dkgreen);margin-bottom:.4rem}
+.benefit-item p{font-size:.84rem;line-height:1.7;color:#555}
+
+/* タイムライン */
+.timeline-section{background:#fff;padding:4rem 1.2rem}
+.tl-inner{max-width:800px;margin:0 auto}
+.tl-row{display:flex;gap:1rem;margin-bottom:1.5rem}
+.tl-time{background:var(--dkgreen);color:#fff;font-size:.82rem;font-weight:700;padding:.25rem .6rem;border-radius:4px;white-space:nowrap;min-width:65px;text-align:center;height:fit-content;margin-top:.15rem}
+.tl-body{border-left:3px solid var(--orange);padding:.1rem 1rem 1rem;flex:1}
+.tl-body h4{font-size:.93rem;font-weight:700;color:var(--dkgreen);margin-bottom:.15rem}
+.tl-body p{font-size:.86rem;color:#555;line-height:1.65}
+
+/* 先輩の声 */
+.voices{background:var(--gray);padding:4rem 1.2rem}
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;max-width:1100px;margin:.5rem auto 0}
+.voice-card{background:#fff;border-radius:10px;padding:1.5rem;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.v-header{display:flex;gap:.8rem;align-items:center;margin-bottom:.9rem}
+.v-photo{width:60px;height:60px;border-radius:50%;object-fit:cover;border:3px solid var(--orange)}
+.v-name{font-weight:700;font-size:.9rem;color:var(--dkgreen)}
+.v-role{font-size:.75rem;color:#888;margin-top:.15rem}
+.v-text{font-size:.87rem;line-height:1.75;color:#444}
+.v-sample{font-size:.7rem;color:#bbb;margin-top:.7rem;display:block}
+
+/* 募集要項LP */
+.specs-section{background:var(--light);padding:4rem 1.2rem}
+.spec-lp{max-width:800px;margin:0 auto}
+.spec-lp-table{width:100%;border-collapse:collapse}
+.spec-lp-table th,.spec-lp-table td{padding:.9rem 1rem;border-bottom:1px solid #e0deda;font-size:.92rem;line-height:1.7;vertical-align:top}
+.spec-lp-table th{background:var(--dkgreen);color:#fff;width:30%;font-weight:700}
+.spec-lp-table tr:last-child th,.spec-lp-table tr:last-child td{border-bottom:none}
+
+/* FAQ */
+.faq{background:#fff;padding:4rem 1.2rem}
+.faq-inner{max-width:800px;margin:0 auto}
+.faq-item{border:1px solid #e8e6e2;border-radius:8px;overflow:hidden;margin-bottom:.8rem}
+.faq-q{font-size:.93rem;font-weight:700;color:var(--dkgreen);padding:1rem 1.2rem;display:flex;align-items:flex-start;gap:.7rem}
+.faq-q::before{content:"Q";background:var(--orange);color:#fff;font-size:.78rem;font-weight:900;padding:.1rem .45rem;border-radius:3px;flex-shrink:0;margin-top:.1rem}
+.faq-a{font-size:.88rem;line-height:1.8;color:#444;padding:0 1.2rem 1rem 2.8rem}
+.faq-a::before{content:"A. "}
+
+/* CTA（中盤・最終） */
+.cta-mid{background:var(--orange);padding:3.5rem 1.2rem;text-align:center}
+.cta-mid h2{color:#fff;font-size:clamp(1.3rem,3.5vw,1.9rem);font-weight:900;margin-bottom:.7rem}
+.cta-mid p{color:rgba(255,255,255,.9);font-size:.93rem;margin-bottom:1.8rem;line-height:1.7}
+
+.cta-final{background:var(--dkgreen);padding:5rem 1.2rem;text-align:center}
+.cta-final h2{color:#fff;font-size:clamp(1.4rem,3.5vw,2.1rem);font-weight:900;margin-bottom:.8rem}
+.cta-final p{color:rgba(255,255,255,.8);font-size:.93rem;margin-bottom:2rem;line-height:1.7}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+.btn-lg-orange{background:var(--orange);color:#fff;font-size:1.05rem;font-weight:900;padding:1rem 2.5rem;border-radius:6px;display:inline-block;transition:background .2s}
+.btn-lg-orange:hover{background:#e55a25}
+.btn-lg-outline{border:2px solid rgba(255,255,255,.6);color:#fff;font-size:.95rem;font-weight:700;padding:.9rem 2rem;border-radius:6px;display:inline-block;transition:.2s}
+.btn-lg-outline:hover{background:rgba(255,255,255,.1)}
+
+/* スマホ固定CTA */
+.fixed-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;background:var(--orange);text-align:center;padding:.9rem 1.2rem}
+.fixed-cta a{color:#fff;font-size:.95rem;font-weight:700;letter-spacing:.05em}
+
+footer{background:#0f2918;color:rgba(255,255,255,.65);text-align:center;padding:2rem 1.2rem;font-size:.8rem;line-height:1.9}
+
+/* セクション共通見出し */
+.s-tag{display:inline-block;background:var(--green);color:#fff;font-size:.72rem;font-weight:700;padding:.2rem .75rem;border-radius:2rem;letter-spacing:.1em;margin-bottom:.6rem}
+.s-title{font-size:clamp(1.4rem,3.5vw,2rem);font-weight:900;margin-bottom:.3rem}
+.s-title span{color:var(--orange)}
+.center{text-align:center}
+
+@media(max-width:768px){
+  nav.pc{display:none}
+  .hamburger{display:flex}
+  .hero-content{grid-template-columns:1fr}
+  .hero-right{margin-top:1rem}
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .solution-inner{grid-template-columns:1fr}
+  .num-grid{grid-template-columns:repeat(2,1fr)}
+  .benefits-grid{grid-template-columns:1fr}
+  .voice-grid{grid-template-columns:1fr}
+  .spec-lp-table th,.spec-lp-table td{display:block;width:100%}
+  .spec-lp-table th{border-bottom:none}
+  .cta-btns{flex-direction:column;align-items:center}
+  .fixed-cta{display:block}
+  body{padding-bottom:56px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">株式会社 双盟工業<span>造園・土木・公共施設維持管理</span></div>
+    <nav class="pc">
+      <a href="#solution">選ばれる理由</a>
+      <a href="#specs-section">募集要項</a>
+      <a href="#voices">先輩の声</a>
+      <a href="#faq">FAQ</a>
+      <a href="#cta-final">応募する</a>
+    </nav>
+    <button class="hamburger" id="ham" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav">
+    <a href="#solution">選ばれる理由</a>
+    <a href="#specs-section">募集要項</a>
+    <a href="#voices">先輩の声</a>
+    <a href="#faq">FAQ</a>
+    <a href="#cta-final">応募する</a>
+  </nav>
+</header>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-left">
+      <div class="hero-badge">
+        <span class="pill">造園・土木作業員 募集</span>
+        <span class="pill-sub">千葉県印西市</span>
+      </div>
+      <h1>「日給制は不安」と<br>思っていませんか？<br><em>月25.9万円〜の安定収入、<br>公共工事で仕事が途切れない。</em></h1>
+      <p class="hero-sub">株式会社双盟工業は、千葉県内の公共施設・公園・道路の造園・維持管理を手がけています。公共工事中心の安定した受注基盤で、若い仲間と一緒に長く活躍できる環境があります。</p>
+      <div class="hero-cta-box">
+        <a href="#cta-final" class="btn-orange">今すぐ応募する</a>
+        <a href="#specs-section" class="btn-white">募集要項を確認する</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="hero-card-title">COMPANY DATA</div>
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="num">25.9<sup>万〜</sup></div>
+          <div class="label">月収換算</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">105<sup>日</sup></div>
+          <div class="label">年間休日</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">2<sup>名</sup></div>
+          <div class="label">採用予定</div>
+        </div>
+        <div class="hero-stat">
+          <div class="num">65<sup>歳</sup></div>
+          <div class="label">再雇用上限</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 信頼バー -->
+<div class="trust-bar">
+  <div class="trust-inner">
+    <div class="trust-item"><span class="trust-icon">🏛️</span>公共工事中心で安定</div>
+    <div class="trust-item"><span class="trust-icon">🛡️</span>熱中症補償制度あり</div>
+    <div class="trust-item"><span class="trust-icon">📜</span>資格取得費用補助</div>
+    <div class="trust-item"><span class="trust-icon">🚗</span>マイカー通勤可</div>
+    <div class="trust-item"><span class="trust-icon">👔</span>作業服支給</div>
+    <div class="trust-item"><span class="trust-icon">🏦</span>退職金制度あり</div>
+  </div>
+</div>
+
+<!-- 問題提起 -->
+<div class="problem">
+  <div class="problem-inner">
+    <h2>造園・土木の求人を見て<br><em>「なんとなく不安」</em>を感じていませんか？</h2>
+    <p>「日給制だと収入が不安定そう」「屋外作業はきつそう」「公共施設の維持管理って具体的にどんな仕事？」そんなお声をよく聞きます。</p>
+    <ul class="problem-list">
+      <li>日給制だから月収が読めない気がする</li>
+      <li>残業が多くて体がもたないのでは…</li>
+      <li>夏場の屋外作業が心配</li>
+      <li>採用情報が少なくて職場の雰囲気が分からない</li>
+    </ul>
+  </div>
+</div>
+
+<!-- 解決 -->
+<section id="solution" class="solution">
+  <div class="solution-inner">
+    <div class="solution-img">
+      <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=640&h=380&fit=crop&q=80" alt="造園・緑の現場">
+    </div>
+    <div class="solution-text">
+      <h2>双盟工業なら、<br><em>その不安を一つひとつ解消できます。</em></h2>
+      <p>公共工事が中心なので季節・景気に関わらず安定した仕事量があります。日給制でも月25.9万〜34.5万円が月収換算の目安。昇給・賞与制度も整っています。</p>
+      <ul class="check-list">
+        <li>日給12,000〜16,000円 → <strong>月収25.9〜34.5万円</strong></li>
+        <li>熱中症補償・業務災害総合保険で屋外作業も安心</li>
+        <li>資格取得費用を会社が補助（中型・大型・施工管理技士）</li>
+        <li>若い社員中心で活気ある職場・丁寧な指導</li>
+        <li>退職金制度あり（勤続10年〜）・再雇用65歳まで</li>
+        <li>千葉県内の現場のみ・転勤なし</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CTA（中盤） -->
+<div class="cta-mid">
+  <h2>まずは話を聞いてみませんか？</h2>
+  <p>選考は面接1回・書類は面接時持参でOK。お気軽にご連絡ください。</p>
+  <a href="mailto:info@soumei-group.co.jp" class="btn-lg-orange" style="background:#fff;color:var(--orange)">メールで問い合わせる</a>
+</div>
+
+<!-- 数字で見る会社 -->
+<section class="numbers">
+  <h2>数字で見る 双盟工業</h2>
+  <p class="numbers-note">※ここはサンプルです。実際には御社の数字・実績に差し替えます。<em>（実績欄も含む）</em></p>
+  <div class="num-grid">
+    <div class="num-card">
+      <div class="n">1億<sup>超</sup></div>
+      <div class="l">年商（R7実績）</div>
+      <div class="sample-note">※サンプル数値</div>
+    </div>
+    <div class="num-card">
+      <div class="n">13<sup>名</sup></div>
+      <div class="l">在籍社員数</div>
+      <div class="sample-note">※サンプル数値</div>
+    </div>
+    <div class="num-card">
+      <div class="n">65<sup>歳</sup></div>
+      <div class="l">再雇用制度の上限</div>
+      <div class="sample-note">※サンプル数値</div>
+    </div>
+    <div class="num-card">
+      <div class="n">10<sup>年〜</sup></div>
+      <div class="l">退職金制度の対象</div>
+      <div class="sample-note">※サンプル数値</div>
+    </div>
+  </div>
+</section>
+
+<!-- 待遇詳細 -->
+<section class="benefits">
+  <div class="benefits-inner">
+    <div class="center">
+      <div class="s-tag">BENEFITS</div>
+      <h2 class="s-title">充実した<span>待遇・福利厚生</span></h2>
+    </div>
+    <div class="benefits-grid">
+      <div class="benefit-item">
+        <h4>💰 安定した月収</h4>
+        <p>日給12,000〜16,000円。月平均21.6日稼働で25.9万〜34.5万円。昇給・賞与制度あり。</p>
+      </div>
+      <div class="benefit-item">
+        <h4>🛡️ 充実した補償</h4>
+        <p>雇用・労災・健康・厚生年金の社会保険に加え、業務災害総合保険・熱中症補償・入院手術補償。</p>
+      </div>
+      <div class="benefit-item">
+        <h4>📜 資格取得支援</h4>
+        <p>中型・大型免許、2級土木施工管理技士などの取得費用を会社が補助。キャリアアップを後押し。</p>
+      </div>
+      <div class="benefit-item">
+        <h4>🏦 長期安定</h4>
+        <p>退職金制度（勤続10年以上）・再雇用制度（〜65歳）。長く働き続けられる環境。</p>
+      </div>
+      <div class="benefit-item">
+        <h4>🚗 通勤・装備</h4>
+        <p>マイカー通勤可・無料駐車場完備。作業服支給で、入社初日から装備の心配なし。</p>
+      </div>
+      <div class="benefit-item">
+        <h4>📅 働きやすい環境</h4>
+        <p>年間休日105日（日・祝・GW・夏季・年末年始）。転勤なし・千葉県内勤務のみ。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- タイムライン -->
+<section class="timeline-section">
+  <div class="tl-inner">
+    <div class="center">
+      <div class="s-tag">A DAY IN THE LIFE</div>
+      <h2 class="s-title">社員の<span>1日の流れ</span></h2>
+      <p style="font-size:.78rem;color:#aaa;margin-bottom:1.5rem">※ここはサンプルです。実際には担当社員の1日に差し替えます。</p>
+    </div>
+    <!-- 1日サンプル -->
+    <div class="tl-row">
+      <div class="tl-time">7:45</div>
+      <div class="tl-body"><h4>出社・朝礼・積み込み</h4><p>今日の現場と作業内容を確認。道具や資材をトラックへ積み込んで出発準備。</p></div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-time">8:00</div>
+      <div class="tl-body"><h4>現場へ移動・作業開始</h4><p>千葉県内の公共施設・公園・道路沿いへ。草刈り・伐採・造園作業に取り掛かります。</p></div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-time">12:00</div>
+      <div class="tl-body"><h4>昼休憩（60分）</h4><p>現場または近くで昼食。チームメンバーと話しながらしっかり休憩。</p></div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-time">13:00</div>
+      <div class="tl-body"><h4>午後の作業</h4><p>引き続き作業を進め、現場を丁寧に整えていきます。天候次第でペースを調整。</p></div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-time">16:30</div>
+      <div class="tl-body"><h4>片付け・撤収</h4><p>道具の片付けと清掃。安全確認を済ませて事務所へ戻ります。</p></div>
+    </div>
+    <div class="tl-row">
+      <div class="tl-time">17:00</div>
+      <div class="tl-body"><h4>帰社・日報・退社</h4><p>道具を返却し、翌日の確認が済んだら終業です。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section id="voices" class="voices">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="center">
+      <div class="s-tag">VOICE</div>
+      <h2 class="s-title">先輩社員からの<span>メッセージ</span></h2>
+      <p style="font-size:.78rem;color:#aaa;margin-bottom:1.5rem">※ここはサンプルです。実際には御社の社員の声・写真に差し替えます。</p>
+    </div>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="v-header">
+          <img class="v-photo" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="田中 誠（仮名）">
+          <div><div class="v-name">田中 誠（仮名）</div><div class="v-role">造園作業員 / 入社3年目</div></div>
+        </div>
+        <p class="v-text">「日給制だから不安定かも」と思っていましたが、公共工事が安定して入るのでほぼ毎月同じペースで働けています。先輩たちに丁寧に教えてもらって、仕事の幅が広がりました。</p>
+        <span class="v-sample">※サンプルです。実際には担当社員のコメントに差し替えます。</span>
+      </div>
+      <div class="voice-card">
+        <div class="v-header">
+          <img class="v-photo" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="佐藤 健（仮名）">
+          <div><div class="v-name">佐藤 健（仮名）</div><div class="v-role">土木作業員 / 入社2年目</div></div>
+        </div>
+        <p class="v-text">中型免許を会社の補助で取得しました。資格が増えると仕事の選択肢が広がって日給も上がる仕組みが嬉しいです。熱中症補償や業務災害保険があるので安心して働けています。</p>
+        <span class="v-sample">※サンプルです。実際には担当社員のコメントに差し替えます。</span>
+      </div>
+      <div class="voice-card">
+        <div class="v-header">
+          <img class="v-photo" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="山田 浩（仮名）">
+          <div><div class="v-name">山田 浩（仮名）</div><div class="v-role">造園・土木作業員 / 入社5年目</div></div>
+        </div>
+        <p class="v-text">地元の公園や公共施設を整備しているという実感があって、仕事に誇りを持てます。退職金制度があることも長く続けられる理由の一つ。転勤がないのも千葉で暮らす自分にはありがたいです。</p>
+        <span class="v-sample">※サンプルです。実際には担当社員のコメントに差し替えます。</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section id="specs-section" class="specs-section">
+  <div class="spec-lp">
+    <div class="center">
+      <div class="s-tag">RECRUIT</div>
+      <h2 class="s-title">募集要項</h2>
+    </div>
+    <br>
+    <table class="spec-lp-table">
+      <tr><th>職種</th><td>造園・土木作業員</td></tr>
+      <tr><th>仕事内容</th><td>公共施設等の草刈り・伐採・造園作業。千葉県内現場中心。資材運搬・車両運転あり。</td></tr>
+      <tr><th>給与</th><td>日給12,000〜16,000円（月収換算25.9万〜34.5万円）／昇給・賞与制度あり</td></tr>
+      <tr><th>就業時間</th><td>8:00〜17:00（休憩60分）／時間外平均30時間/月</td></tr>
+      <tr><th>休日</th><td>日曜・祝日・その他／年間休日105日／GW・夏季・年末年始休暇あり</td></tr>
+      <tr><th>必要資格</th><td>普通自動車免許（AT限定可）必須／中型・大型・施工管理技士は優遇・取得支援あり</td></tr>
+      <tr><th>応募資格</th><td>59歳以下・学歴不問・未経験可（丁寧に指導）・経験者歓迎</td></tr>
+      <tr><th>福利厚生</th><td>社会保険完備／業務災害保険・熱中症補償・入院手術補償／退職金制度／再雇用65歳まで／資格取得補助／作業服支給／無料駐車場</td></tr>
+      <tr><th>勤務地</th><td>千葉県印西市平岡1030（小林駅から車5分）転勤なし</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" class="faq">
+  <div class="faq-inner">
+    <div class="center">
+      <div class="s-tag">FAQ</div>
+      <h2 class="s-title">よくある<span>ご質問</span></h2>
+    </div>
+    <br>
+    <div class="faq-item">
+      <div class="faq-q">未経験でも応募できますか？</div>
+      <div class="faq-a">はい。先輩が丁寧に指導します。普通自動車免許（AT限定可）があればOKです。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">日給制で月収はどのくらいになりますか？</div>
+      <div class="faq-a">日給12,000〜16,000円、月平均21.6日稼働で月収25.9万〜34.5万円が目安です。昇給・賞与制度もあります。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">夏場の熱中症対策はしていますか？</div>
+      <div class="faq-a">熱中症補償制度・業務災害総合保険・入院手術補償に加入しています。休憩の確保など現場での安全管理も徹底しています。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">資格がなくても大丈夫ですか？</div>
+      <div class="faq-a">普通自動車免許（AT限定可）があれば入社できます。中型・大型・施工管理技士は入社後に会社の費用補助で取得できます。</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">選考の流れを教えてください。</div>
+      <div class="faq-a">ハローワーク紹介状と履歴書（写真貼付）をお持ちいただき、面接1回で選考します。オンライン自主応募も可能です。結果は2日以内にご連絡します。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 最終CTA -->
+<section id="cta-final" class="cta-final">
+  <h2>千葉の緑を守る仕事に、一緒に取り組みませんか？</h2>
+  <p>公共工事の安定した仕事量・充実した補償・資格取得支援で長く活躍できる職場です。<br>まずはお気軽にご連絡ください。</p>
+  <div class="cta-btns">
+    <a href="mailto:info@soumei-group.co.jp" class="btn-lg-orange">メールで応募・問い合わせる</a>
+    <a href="tel:0476554224" class="btn-lg-outline">☎ 0476-55-4224</a>
+  </div>
+  <p style="color:rgba(255,255,255,.5);font-size:.8rem;margin-top:1.5rem">平日 8:00〜17:00</p>
+</section>
+
+<footer>
+  <p>株式会社 双盟工業</p>
+  <p>〒270-1324 千葉県印西市大森2041-1</p>
+  <p>TEL: 0476-55-4224　E-mail: info@soumei-group.co.jp</p>
+</footer>
+
+<div class="fixed-cta">
+  <a href="mailto:info@soumei-group.co.jp">📧 今すぐ採用に応募する</a>
+</div>
+
+<script>
+const ham = document.getElementById('ham');
+const mobileNav = document.getElementById('mobileNav');
+ham.addEventListener('click', () => mobileNav.classList.toggle('open'));
+mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileNav.classList.remove('open')));
+</script>
+</body>
+</html>

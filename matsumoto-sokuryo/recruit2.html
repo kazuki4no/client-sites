@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>採用情報 | 株式会社 松本測量</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#222;background:#fff}
+    img{max-width:100%;height:auto;display:block}
+    a{color:inherit;text-decoration:none}
+
+    /* ナビ */
+    header{position:sticky;top:0;z-index:200;background:#0d1f3c;box-shadow:0 2px 8px rgba(0,0,0,.4)}
+    .nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;height:60px;display:flex;align-items:center;justify-content:space-between}
+    .logo{color:#fff;font-size:1.05rem;font-weight:900;letter-spacing:.06em}
+    .logo em{color:#f5c518;font-style:normal}
+    .pc-nav{display:flex;gap:24px;list-style:none}
+    .pc-nav a{color:rgba(255,255,255,.8);font-size:.88rem;transition:color .2s}
+    .pc-nav a:hover{color:#f5c518}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+    .hamburger span{display:block;width:25px;height:3px;background:#fff;border-radius:2px}
+    .mobile-menu{display:none;flex-direction:column;background:#0d1f3c;padding:12px 20px}
+    .mobile-menu a{color:#fff;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:.95rem}
+    .mobile-menu.open{display:flex}
+
+    /* ヒーロー (CTA①) */
+    .hero{background:#0d1f3c;color:#fff;padding:80px 20px;text-align:center;position:relative;overflow:hidden}
+    .hero::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&h=700&fit=crop&q=80') center/cover;opacity:.15;z-index:0}
+    .hero-inner{position:relative;z-index:1;max-width:820px;margin:0 auto}
+    .hero-badge{display:inline-block;background:#f5c518;color:#0d1f3c;font-size:.78rem;font-weight:900;padding:5px 18px;border-radius:20px;margin-bottom:20px;letter-spacing:.12em}
+    .hero h1{font-size:clamp(1.9rem,6.5vw,3.4rem);font-weight:900;line-height:1.25;margin-bottom:20px}
+    .hero h1 strong{color:#f5c518}
+    .hero-lead{font-size:clamp(.95rem,3vw,1.1rem);color:rgba(255,255,255,.85);margin-bottom:16px;line-height:1.9}
+    .hero-points{display:flex;justify-content:center;gap:28px;flex-wrap:wrap;margin-bottom:40px}
+    .hero-point{font-size:.85rem;color:rgba(255,255,255,.75);display:flex;align-items:center;gap:6px}
+    .hero-point::before{content:'✔';color:#f5c518;font-weight:700}
+    .btn-cta{display:inline-block;background:#f5c518;color:#0d1f3c;font-size:1rem;font-weight:900;padding:16px 48px;border-radius:4px;transition:opacity .2s;letter-spacing:.04em}
+    .btn-cta:hover{opacity:.88}
+    .hero-sub{margin-top:14px;font-size:.8rem;color:rgba(255,255,255,.5)}
+
+    /* 数字バー */
+    .numbers-sec{background:#f5c518;padding:36px 20px}
+    .numbers-grid{max-width:900px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:center;gap:28px 48px}
+    .num-item{text-align:center}
+    .num-value{font-size:clamp(2rem,6vw,2.8rem);font-weight:900;color:#0d1f3c;line-height:1}
+    .num-unit{font-size:.85rem;font-weight:700;color:#0d1f3c}
+    .num-label{font-size:.78rem;color:#333;margin-top:4px}
+    .num-note{font-size:.68rem;color:#555}
+
+    /* 共通 */
+    section{padding:72px 20px}
+    .section-inner{max-width:1100px;margin:0 auto}
+    .sec-title{text-align:center;font-size:clamp(1.4rem,4vw,2rem);font-weight:900;color:#0d1f3c;margin-bottom:12px}
+    .sec-bar{width:48px;height:4px;background:#f5c518;margin:12px auto 48px}
+    .sample-note{text-align:center;font-size:.73rem;color:#aaa;margin-bottom:28px}
+
+    /* 魅力 */
+    .features-sec{background:#f8f9fd}
+    .features-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .feat-card{background:#fff;border-radius:10px;padding:36px 24px;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.06);border-top:4px solid #f5c518}
+    .feat-icon{font-size:2.6rem;margin-bottom:16px}
+    .feat-title{font-size:1.05rem;font-weight:700;color:#0d1f3c;margin-bottom:12px;line-height:1.4}
+    .feat-text{font-size:.88rem;color:#555;line-height:1.8}
+
+    /* 仕事内容 */
+    .work-sec{background:#0d1f3c;color:#fff}
+    .work-sec .sec-title{color:#fff}
+    .work-sec .sec-bar{background:#f5c518}
+    .work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .work-card{background:rgba(255,255,255,.07);border-radius:8px;padding:28px 20px;border:1px solid rgba(255,255,255,.12)}
+    .work-no{font-size:2rem;font-weight:900;color:#f5c518;line-height:1;margin-bottom:10px}
+    .work-title{font-size:1rem;font-weight:700;margin-bottom:10px}
+    .work-text{font-size:.85rem;color:rgba(255,255,255,.7);line-height:1.75}
+
+    /* 社員インタビュー */
+    .interview-sec{background:#fff}
+    .interview-list{display:flex;flex-direction:column;gap:40px;max-width:820px;margin:0 auto}
+    .interview-item{display:grid;grid-template-columns:120px 1fr;gap:28px;align-items:start}
+    .interview-item:nth-child(even){direction:rtl}
+    .interview-item:nth-child(even)>*{direction:ltr}
+    .interview-img{width:120px;height:120px;border-radius:50%;object-fit:cover;border:4px solid #f5c518}
+    .interview-body{}
+    .interview-name{font-size:1rem;font-weight:700;color:#0d1f3c;margin-bottom:2px}
+    .interview-role{font-size:.78rem;color:#888;margin-bottom:12px}
+    .interview-q{font-size:.85rem;font-weight:700;color:#0d1f3c;margin-bottom:6px;background:#f8f9fd;padding:8px 12px;border-left:3px solid #f5c518}
+    .interview-a{font-size:.88rem;color:#555;line-height:1.8}
+
+    /* 募集要項 */
+    .req-sec{background:#f8f9fd}
+    .req-table{width:100%;border-collapse:collapse}
+    .req-table tr{border-bottom:1px solid #d8e0ec}
+    .req-table th{width:26%;background:#0d1f3c;color:#fff;padding:16px 20px;font-size:.9rem;text-align:left;vertical-align:top}
+    .req-table td{padding:16px 20px;font-size:.9rem;color:#444;vertical-align:top;line-height:1.75;background:#fff}
+
+    /* FAQ */
+    .faq-sec{background:#fff}
+    .faq-list{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:14px}
+    .faq-item{border:1px solid #e0e8f0;border-radius:8px;overflow:hidden}
+    .faq-q{background:#f5f9fd;padding:15px 20px;font-weight:700;font-size:.95rem;color:#0d1f3c;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .faq-q::after{content:'＋';font-size:1.1rem;color:#f5c518;flex-shrink:0}
+    .faq-q.open::after{content:'－'}
+    .faq-a{display:none;padding:14px 20px;font-size:.88rem;color:#555;line-height:1.8}
+    .faq-a.open{display:block}
+
+    /* タイムライン */
+    .tl-sec{background:#0d1f3c;color:#fff}
+    .tl-sec .sec-title{color:#fff}
+    .tl-sec .sec-bar{background:#f5c518}
+    .tl-sec .sample-note{color:rgba(255,255,255,.38)}
+    .tl-wrap{max-width:680px;margin:0 auto}
+    .tl-item{display:grid;grid-template-columns:72px 1fr;gap:14px;padding:18px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+    .tl-item:last-child{border:none}
+    .tl-time{font-size:1.05rem;font-weight:700;color:#f5c518}
+    .tl-body h4{font-size:.95rem;font-weight:700;margin-bottom:4px}
+    .tl-body p{font-size:.83rem;color:rgba(255,255,255,.65);line-height:1.6}
+
+    /* 先輩 */
+    .voices-sec{background:#f8f9fd}
+    .voices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .voice-card{background:#fff;border-radius:10px;padding:24px 20px;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+    .voice-hd{display:flex;align-items:center;gap:12px;margin-bottom:12px}
+    .voice-img{width:52px;height:52px;border-radius:50%;object-fit:cover;flex-shrink:0;border:3px solid #f5c518}
+    .voice-name{font-weight:700;font-size:.88rem;color:#0d1f3c}
+    .voice-role{font-size:.75rem;color:#888;margin-top:1px}
+    .voice-text{font-size:.85rem;color:#555;line-height:1.75}
+
+    /* CTA中盤 (CTA②) */
+    .mid-cta{background:linear-gradient(135deg,#f5c518 0%,#e8a800 100%);text-align:center;padding:60px 20px}
+    .mid-cta h2{font-size:clamp(1.4rem,4vw,2rem);font-weight:900;color:#0d1f3c;margin-bottom:14px}
+    .mid-cta p{font-size:1rem;color:#333;margin-bottom:32px}
+    .btn-dark{display:inline-block;background:#0d1f3c;color:#fff;font-size:1rem;font-weight:900;padding:15px 48px;border-radius:4px;transition:opacity .2s}
+    .btn-dark:hover{opacity:.85}
+
+    /* CTA最後 (CTA③) */
+    .final-cta{background:#0d1f3c;text-align:center;padding:88px 20px;color:#fff}
+    .final-cta h2{font-size:clamp(1.6rem,5vw,2.4rem);font-weight:900;margin-bottom:14px}
+    .final-cta p{font-size:1rem;margin-bottom:36px;color:rgba(255,255,255,.8)}
+    .btn-yellow{display:inline-block;background:#f5c518;color:#0d1f3c;font-size:1.05rem;font-weight:900;padding:16px 52px;border-radius:4px;transition:opacity .2s}
+    .btn-yellow:hover{opacity:.88}
+    .cta-tel{margin-top:20px;font-size:.9rem;color:rgba(255,255,255,.6)}
+    .cta-tel a{color:#f5c518;text-decoration:underline}
+
+    footer{background:#060f1e;color:rgba(255,255,255,.5);text-align:center;padding:36px 20px}
+    footer p{font-size:.83rem;line-height:2.2}
+
+    /* スマホ下固定バー */
+    .fixed-cta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:300;background:#f5c518}
+    .fixed-cta a{display:block;text-align:center;padding:16px;font-size:1rem;font-weight:900;color:#0d1f3c}
+
+    @media(max-width:768px){
+      .pc-nav{display:none}
+      .hamburger{display:flex}
+      .features-grid,.work-grid,.voices-grid{grid-template-columns:1fr}
+      .req-table th,.req-table td{display:block;width:100%}
+      .req-table th{padding:10px 16px 4px}
+      .req-table td{padding:4px 16px 14px}
+      .interview-item,.interview-item:nth-child(even){direction:ltr;grid-template-columns:80px 1fr;gap:16px}
+      .interview-img{width:80px;height:80px}
+      .tl-item{grid-template-columns:64px 1fr}
+      .fixed-cta{display:block}
+      body{padding-bottom:58px}
+      .numbers-grid{gap:20px 36px}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="logo">松本測量 <em>RECRUIT</em></div>
+    <ul class="pc-nav">
+      <li><a href="#features">働く魅力</a></li>
+      <li><a href="#work">仕事内容</a></li>
+      <li><a href="#requirements">募集要項</a></li>
+      <li><a href="#voices">先輩の声</a></li>
+      <li><a href="#final-cta">応募する</a></li>
+    </ul>
+    <button class="hamburger" id="hamBtn" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-menu" id="mobileMenu">
+    <a href="#features">働く魅力</a>
+    <a href="#work">仕事内容</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#voices">先輩の声</a>
+    <a href="#final-cta">応募する</a>
+  </nav>
+</header>
+
+<!-- CTA① ヒーロー -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">建築測量・施工管理 正社員募集</div>
+    <h1>ドローンと3D計測で、<br><strong>建設の未来をつくる。</strong></h1>
+    <p class="hero-lead">地図に残る有名大型工事を手がける建築測量会社。<br>技術力より人間力。賞与3.5ヶ月＋最先端の現場で一緒に成長しませんか。</p>
+    <div class="hero-points">
+      <span class="hero-point">未経験歓迎・資格取得支援あり</span>
+      <span class="hero-point">賞与年2回・計3.5ヶ月（前年実績）</span>
+      <span class="hero-point">月平均残業10時間</span>
+    </div>
+    <a href="mailto:k.takeda@matu-soku.co.jp" class="btn-cta">まずはメールで問い合わせる</a>
+    <p class="hero-sub">ご質問だけでも大歓迎です。お気軽にどうぞ。</p>
+  </div>
+</section>
+
+<!-- 数字バー -->
+<div class="numbers-sec">
+  <div class="numbers-grid">
+    <div class="num-item">
+      <div class="num-value">3.5<span class="num-unit">ヶ月</span></div>
+      <div class="num-label">賞与（前年実績）</div>
+    </div>
+    <div class="num-item">
+      <div class="num-value">37<span class="num-unit">歳</span></div>
+      <div class="num-label">平均年齢</div>
+    </div>
+    <div class="num-item">
+      <div class="num-value">10<span class="num-unit">h</span></div>
+      <div class="num-label">月平均残業</div>
+    </div>
+    <div class="num-item">
+      <div class="num-value">3<span class="num-unit">名</span></div>
+      <div class="num-label">今回募集人数</div>
+    </div>
+    <div class="num-item">
+      <div class="num-value">100<span class="num-unit">%</span></div>
+      <div class="num-label">資格取得費用負担<br><span class="num-note">（会社が必要と判断した資格）</span></div>
+    </div>
+  </div>
+</div>
+
+<section class="features-sec" id="features">
+  <div class="section-inner">
+    <div class="sec-title">松本測量で働く3つの理由</div>
+    <div class="sec-bar"></div>
+    <div class="features-grid">
+      <div class="feat-card">
+        <div class="feat-icon">🚁</div>
+        <div class="feat-title">ドローン3D計測で<br>建設DXの最前線に立てる</div>
+        <p class="feat-text">3Dスキャン・3D点群計測・DXシステム開発。大手ゼネコンと共同で建築工事のデジタル化を推進。最先端の仕事に携われる数少ない職場です。</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">🏆</div>
+        <div class="feat-title">有名大型工事で<br>「地図に残る仕事」ができる</div>
+        <p class="feat-text">手がけた建物が地図に載り、何十年も残る。目に見える成果と誇りが積み上がる仕事です。有名大型工事を数多く受注しています。</p>
+      </div>
+      <div class="feat-card">
+        <div class="feat-icon">💛</div>
+        <div class="feat-title">技術より人間力を重視。<br>未経験でも大丈夫</div>
+        <p class="feat-text">採用で最重視するのは挨拶・好奇心・チャレンジ精神。資格取得費用は全額会社負担。スキルは入ってから磨けます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="work-sec" id="work">
+  <div class="section-inner">
+    <div class="sec-title">3つの仕事内容</div>
+    <div class="sec-bar"></div>
+    <div class="work-grid">
+      <div class="work-card">
+        <div class="work-no">01</div>
+        <div class="work-title">建築測量（墨出し）</div>
+        <p class="work-text">建築工事の現場で図面通りに正確な位置出し。ミリ単位の精度が求められる、プロならではの仕事です。</p>
+      </div>
+      <div class="work-card">
+        <div class="work-no">02</div>
+        <div class="work-title">施工管理</div>
+        <p class="work-text">建築工事の施工管理・図面確認・工事計画の立案。担当工事の品質・安全・工程を一貫して管理します。</p>
+      </div>
+      <div class="work-card">
+        <div class="work-no">03</div>
+        <div class="work-title">土木測量＋3D計測</div>
+        <p class="work-text">都市計画に基づく測量・位置出し・CADデータ作成。ドローン3D解析など最先端技術も担当します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 社員インタビュー -->
+<section class="interview-sec">
+  <div class="section-inner">
+    <div class="sec-title">社員インタビュー</div>
+    <div class="sec-bar"></div>
+    <p class="sample-note">※ここはサンプルです。実際には御社の社員の写真・インタビューに差し替えます</p>
+    <!-- 社員インタビューサンプル：御社の社員情報に差し替えてください -->
+    <div class="interview-list">
+      <div class="interview-item">
+        <img class="interview-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩社員の写真（サンプル）">
+        <div class="interview-body">
+          <div class="interview-name">田中 一郎（仮名）29歳</div>
+          <div class="interview-role">建築測量 / 入社3年目</div>
+          <div class="interview-q">「入社前と後で、一番変わったことは何ですか？」</div>
+          <p class="interview-a">最初は測量の「そ」の字も知らなかったです。でも先輩が丁寧に教えてくれて、今では大型現場を任せてもらえるようになりました。ドローンを飛ばす仕事が一番の楽しみで、毎日新しいことを学んでいます。</p>
+        </div>
+      </div>
+      <div class="interview-item">
+        <img class="interview-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩社員の写真（サンプル）">
+        <div class="interview-body">
+          <div class="interview-name">鈴木 健太（仮名）34歳</div>
+          <div class="interview-role">施工管理 / 入社7年目</div>
+          <div class="interview-q">「この会社のいちばんの魅力を教えてください」</div>
+          <p class="interview-a">地図に残る建物に携われることです。工事が完成して「俺が測ったんだ」と思える瞬間は格別。賞与3.5ヶ月と安定した評価制度があるので、長く腰を落ち着けて働けます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA② 中盤 -->
+<div class="mid-cta">
+  <h2>まずは気軽にお問い合わせください</h2>
+  <p>ご質問だけでも大歓迎。採用担当が丁寧にお答えします。</p>
+  <a href="mailto:k.takeda@matu-soku.co.jp" class="btn-dark">採用担当にメールで問い合わせる</a>
+</div>
+
+<section class="req-sec" id="requirements">
+  <div class="section-inner">
+    <div class="sec-title">募集要項</div>
+    <div class="sec-bar"></div>
+    <table class="req-table">
+      <tr><th>職種</th><td>建築測量・施工管理・土木測量</td></tr>
+      <tr><th>雇用形態</th><td>正社員（試用期間3ヶ月・同条件）</td></tr>
+      <tr><th>給与</th><td>月給 200,000円〜400,000円（年齢・経験に応じて要相談）<br>昇給：年1回（4月）/ 賞与：年2回（6月・12月）計3.5ヶ月分（前年実績）</td></tr>
+      <tr><th>勤務時間</th><td>8:00〜17:00（休憩120分）/ 時間外：月平均10時間</td></tr>
+      <tr><th>休日・休暇</th><td>日曜・その他（4週6休）/ 年間休日85日<br>夏季・年末年始休暇 / 年次有給休暇（6ヶ月経過後10日）</td></tr>
+      <tr><th>勤務地</th><td>千葉県印西市（事業所）→ 東京・千葉の建築現場<br>転勤なし / マイカー通勤可 / 最寄り駅徒歩4分</td></tr>
+      <tr><th>応募資格</th><td>高校卒業以上 / 未経験・業界未経験者歓迎<br>建築・土木測量経験、AutoCAD、測量士補などはあれば尚可</td></tr>
+      <tr><th>待遇・福利厚生</th><td>社会保険完備 / 退職金制度（勤続3年以上）<br>通勤手当実費支給 / 資格取得支援（費用全額会社負担）<br>借り上げ社宅制度 / 作業服・備品会社支給<br>各種手当（扶養・住宅・資格・等級）</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="faq-sec" id="faq">
+  <div class="section-inner">
+    <div class="sec-title">よくある質問</div>
+    <div class="sec-bar"></div>
+    <p class="sample-note">※ここはサンプルです。実際には御社のよくある質問に差し替えます</p>
+    <!-- FAQサンプル：御社の内容に差し替えてください -->
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">測量の経験がなくても応募できますか？</div>
+        <div class="faq-a">はい、未経験でもご応募いただけます。技術力より人間力を重視しており、先輩が丁寧にサポートします。資格取得費用も会社が全額負担します。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">ドローンや3D計測はすぐに覚えられますか？</div>
+        <div class="faq-a">OJTで段階的に習得できます。まずは現場の基礎から丁寧に指導し、習熟度に合わせてドローン計測や3Dスキャンも担当できるようになります。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">どんな現場に行くことが多いですか？</div>
+        <div class="faq-a">主に東京・千葉の大型建築現場が中心です。地図に残る大型工事を多数手がけており、やりがいのある案件が豊富です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">借り上げ社宅制度はどのように利用できますか？</div>
+        <div class="faq-a">遠方からの転職の方も安心してご応募いただけます。詳細は採用担当までお気軽にご相談ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">選考の流れを教えてください。</div>
+        <div class="faq-a">①書類選考（7日以内に連絡）→ ②面接1回 → ③内定です。ハローワーク紹介状の持参またはオンライン自主応募でもご応募いただけます。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="tl-sec" id="day">
+  <div class="section-inner">
+    <div class="sec-title">社員の1日の流れ</div>
+    <div class="sec-bar"></div>
+    <p class="sample-note">※ここはサンプルです。実際には御社の社員の1日に差し替えます</p>
+    <!-- タイムラインサンプル：御社の実際の1日に差し替えてください -->
+    <div class="tl-wrap">
+      <div class="tl-item"><div class="tl-time">7:50</div><div class="tl-body"><h4>出社・朝礼</h4><p>今日の現場と担当を確認。機材の準備をして出発します。</p></div></div>
+      <div class="tl-item"><div class="tl-time">8:30</div><div class="tl-body"><h4>担当現場へ移動</h4><p>東京・千葉の建築現場へ。図面を確認しながら段取りを組みます。</p></div></div>
+      <div class="tl-item"><div class="tl-time">9:00</div><div class="tl-body"><h4>午前作業（墨出し・測量）</h4><p>図面通りの位置出しや施工管理。精度と安全を最優先に進めます。</p></div></div>
+      <div class="tl-item"><div class="tl-time">12:00</div><div class="tl-body"><h4>昼休み</h4><p>チームメンバーと昼食。休憩でエネルギーを充電します。</p></div></div>
+      <div class="tl-item"><div class="tl-time">13:00</div><div class="tl-body"><h4>午後作業（3Dスキャン・施工管理）</h4><p>ドローンや3Dスキャナーを使った計測業務も担当。最先端機材を活用します。</p></div></div>
+      <div class="tl-item"><div class="tl-time">16:30</div><div class="tl-body"><h4>撤収・CADデータ作成</h4><p>計測結果をAutoCADでデータ化。品質を確認してから提出します。</p></div></div>
+      <div class="tl-item"><div class="tl-time">17:00</div><div class="tl-body"><h4>退勤</h4><p>月平均残業10時間。メリハリのある働き方でプライベートも充実。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="voices-sec" id="voices">
+  <div class="section-inner">
+    <div class="sec-title">先輩からのメッセージ</div>
+    <div class="sec-bar"></div>
+    <p class="sample-note">※ここはサンプルです。実際には御社の社員の写真・メッセージに差し替えます</p>
+    <!-- 先輩メッセージサンプル：御社の社員情報に差し替えてください -->
+    <div class="voices-grid">
+      <div class="voice-card">
+        <div class="voice-hd">
+          <img class="voice-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩社員の写真（サンプル）">
+          <div><div class="voice-name">田中 一郎（仮名）</div><div class="voice-role">建築測量 / 入社3年目</div></div>
+        </div>
+        <p class="voice-text">未経験から3年で大型現場を担当できるようになりました。資格も会社のサポートで取れて、着実に成長できています。</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-hd">
+          <img class="voice-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩社員の写真（サンプル）">
+          <div><div class="voice-name">鈴木 健太（仮名）</div><div class="voice-role">施工管理 / 入社7年目</div></div>
+        </div>
+        <p class="voice-text">賞与3.5ヶ月と安定した評価制度が決め手でした。地図に残る大型工事に関われることが誇りです。</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-hd">
+          <img class="voice-img" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩社員の写真（サンプル）">
+          <div><div class="voice-name">山田 翔（仮名）</div><div class="voice-role">土木測量 / 入社2年目</div></div>
+        </div>
+        <p class="voice-text">ドローンを操作できる日が楽しみで毎日来ています。先輩との距離も近くて相談しやすい職場です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA③ 最後 -->
+<section class="final-cta" id="final-cta">
+  <div class="section-inner">
+    <h2>地図に残る仕事を、一緒に。</h2>
+    <p>まずは採用担当に気軽にご連絡ください。ご質問だけでも大歓迎です。</p>
+    <a href="mailto:k.takeda@matu-soku.co.jp" class="btn-yellow">採用担当にメールする</a>
+    <p class="cta-tel">お電話でも: <a href="tel:0476854780">0476-85-4780</a>（人事部 武田まで）</p>
+  </div>
+</section>
+
+<footer>
+  <p>株式会社 松本測量<br>
+  〒270-1335 千葉県印西市原1-2 BIG-HOPガーデンモール印西E-204<br>
+  TEL: 0476-85-4780　MAIL: k.takeda@matu-soku.co.jp</p>
+</footer>
+
+<!-- スマホ下固定バー -->
+<div class="fixed-cta">
+  <a href="mailto:k.takeda@matu-soku.co.jp">📩 採用担当にメールで問い合わせる</a>
+</div>
+
+<script>
+  const hamBtn = document.getElementById('hamBtn');
+  const mobileMenu = document.getElementById('mobileMenu');
+  hamBtn.addEventListener('click', () => { mobileMenu.classList.toggle('open'); });
+  mobileMenu.querySelectorAll('a').forEach(a => {
+    a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+  });
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => {
+      q.classList.toggle('open');
+      q.nextElementSibling.classList.toggle('open');
+    });
+  });
+</script>
+</body>
+</html>

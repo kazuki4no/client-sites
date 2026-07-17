@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>営業職 採用情報 | ユーザー株式会社</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --dark:#0d1b2a;
+  --navy:#1a2e4a;
+  --cyan:#38bdf8;
+  --cyan-d:#0ea5e9;
+  --bg:#f4f7fb;
+  --text:#1a2233;
+  --subtle:#5e6e82;
+  --border:#d4dcea;
+}
+body{font-family:'Noto Sans JP',sans-serif;color:var(--text);background:var(--bg);line-height:1.75;}
+img{display:block;max-width:100%;}
+
+/* ===== HEADER ===== */
+.site-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.75rem 1.5rem;background:rgba(13,27,42,.92);
+  position:sticky;top:0;z-index:100;backdrop-filter:blur(8px);
+}
+.brand{color:#fff;font-family:'Noto Serif JP',serif;font-weight:700;font-size:.97rem;text-decoration:none;letter-spacing:.06em;}
+.hamburger{display:none;background:none;border:0;font-size:1.7rem;line-height:1;cursor:pointer;color:#fff;}
+.site-nav{display:flex;gap:1.4rem;align-items:center;}
+.site-nav a{color:rgba(255,255,255,.78);text-decoration:none;font-size:.87rem;transition:color .2s;}
+.site-nav a:hover{color:#fff;}
+.nav-cta{background:var(--cyan)!important;color:var(--dark)!important;padding:.38rem 1rem;border-radius:4px;font-weight:700;}
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{
+    display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:rgba(13,27,42,.97);box-shadow:0 8px 20px rgba(0,0,0,.3);padding:.5rem 1.5rem;
+  }
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.85rem 0;border-bottom:1px solid rgba(255,255,255,.1);}
+  .nav-cta{margin:.6rem 0;text-align:center;border-radius:4px;}
+}
+
+/* ===== HERO (FVバナー型・全画面) ===== */
+.hero{
+  position:relative;overflow:hidden;
+  min-height:80vh;display:flex;align-items:center;justify-content:center;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1521791136064-7986c2920216?w=1600&h=900&fit=crop&q=80') center/cover no-repeat;
+  background-size:cover;background-position:center;
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(160deg,rgba(13,27,42,.88) 0%,rgba(10,22,40,.82) 100%);
+}
+.hero-content{
+  position:relative;text-align:center;color:#fff;padding:4rem 1.5rem;
+  max-width:760px;margin:0 auto;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.76rem;letter-spacing:.14em;color:var(--cyan);font-weight:700;
+  text-transform:uppercase;margin-bottom:1.6rem;
+}
+.hero-eyebrow::before,.hero-eyebrow::after{
+  content:'';display:block;height:1px;width:32px;background:var(--cyan);
+}
+.hero h1{
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(2rem,5.5vw,3.2rem);font-weight:900;line-height:1.25;
+  margin-bottom:1.4rem;letter-spacing:.02em;
+}
+.hero h1 em{color:var(--cyan);font-style:normal;}
+.hero p{
+  font-size:clamp(.9rem,2.2vw,1.05rem);opacity:.88;
+  margin-bottom:2.4rem;line-height:1.85;
+}
+.btn-cyan{
+  display:inline-block;background:var(--cyan);color:var(--dark);
+  padding:.9rem 2.6rem;border-radius:6px;font-weight:700;font-size:1rem;
+  text-decoration:none;transition:filter .2s;
+}
+.btn-cyan:hover{filter:brightness(1.08);}
+.hero-scroll{
+  position:absolute;bottom:1.8rem;left:50%;transform:translateX(-50%);
+  color:rgba(255,255,255,.5);font-size:.75rem;letter-spacing:.1em;
+  display:flex;flex-direction:column;align-items:center;gap:.4rem;
+}
+.hero-scroll span{display:block;width:1px;height:32px;background:rgba(255,255,255,.3);margin:0 auto;}
+
+/* ===== SECTION ===== */
+.section{padding:4.5rem 1.5rem;max-width:960px;margin:0 auto;}
+.section-white{background:#fff;}
+.section-white .inner{max-width:960px;margin:0 auto;padding:4.5rem 1.5rem;}
+.section-dark{background:var(--dark);}
+.section-dark .inner{max-width:960px;margin:0 auto;padding:4.5rem 1.5rem;}
+.section-title{
+  font-size:clamp(1.25rem,3.5vw,1.7rem);font-weight:700;color:var(--navy);
+  margin-bottom:2.4rem;padding-bottom:.55rem;border-bottom:3px solid var(--cyan-d);
+}
+.section-title-light{
+  font-size:clamp(1.25rem,3.5vw,1.7rem);font-weight:700;color:#fff;
+  margin-bottom:2.4rem;padding-bottom:.55rem;border-bottom:3px solid var(--cyan);
+}
+
+/* ===== APPEAL CARDS ===== */
+.appeal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+@media(max-width:768px){.appeal-grid{grid-template-columns:1fr;}}
+.appeal-card{
+  background:#fff;border-radius:12px;padding:2rem 1.5rem;text-align:center;
+  box-shadow:0 4px 20px rgba(0,0,0,.07);border-top:3px solid var(--cyan-d);
+}
+.appeal-icon{width:52px;height:52px;margin:0 auto 1.1rem;}
+.appeal-icon svg{width:100%;height:100%;}
+.appeal-card h3{font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:.6rem;}
+.appeal-card p{font-size:.86rem;color:var(--subtle);line-height:1.7;}
+
+/* ===== IMAGE + TEXT ===== */
+.img-text{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center;}
+@media(max-width:768px){.img-text{grid-template-columns:1fr;}}
+.img-text img{width:100%;border-radius:12px;object-fit:cover;height:300px;}
+.img-text-body h3{font-size:1.1rem;font-weight:700;color:var(--navy);margin-bottom:.8rem;}
+.img-text-body p{font-size:.9rem;line-height:1.85;margin-bottom:1rem;color:var(--subtle);}
+
+/* ===== TIMELINE ===== */
+.timeline{position:relative;}
+.timeline::before{
+  content:'';position:absolute;left:82px;top:0;bottom:0;
+  width:2px;background:var(--cyan-d);opacity:.35;
+}
+.tl-item{
+  display:grid;grid-template-columns:72px 20px 1fr;gap:0 .85rem;
+  align-items:start;margin-bottom:1.7rem;
+}
+.tl-time{text-align:right;font-size:.83rem;font-weight:700;color:var(--navy);padding-top:.28rem;}
+.tl-dot{
+  width:12px;height:12px;border-radius:50%;background:var(--cyan-d);
+  justify-self:center;margin-top:.4rem;
+  border:2px solid #fff;box-shadow:0 0 0 2px var(--cyan-d);
+}
+.tl-body h4{font-size:.9rem;font-weight:700;color:var(--navy);margin-bottom:.18rem;}
+.tl-body p{font-size:.84rem;color:var(--subtle);}
+@media(max-width:768px){
+  .tl-item{grid-template-columns:40px 16px 1fr;}
+  .timeline::before{left:48px;}
+}
+
+/* ===== VOICE (dark bg) ===== */
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+@media(max-width:768px){.voice-grid{grid-template-columns:1fr;}}
+.voice-card{background:rgba(255,255,255,.07);border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.1);}
+.voice-card-top{display:flex;gap:1rem;align-items:center;padding:1.3rem 1.3rem .8rem;}
+.voice-card-top img{width:64px;height:64px;border-radius:50%;object-fit:cover;flex-shrink:0;}
+.voice-card-name{font-size:.8rem;font-weight:700;color:var(--cyan);line-height:1.4;}
+.voice-card-body{padding:0 1.3rem 1.3rem;}
+.voice-card-text{font-size:.84rem;color:rgba(255,255,255,.75);line-height:1.75;}
+.sample-note{font-size:.7rem;color:rgba(255,255,255,.3);margin-top:.5rem;}
+
+/* ===== RECRUIT TABLE ===== */
+.req-table{width:100%;border-collapse:collapse;background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 16px rgba(0,0,0,.07);}
+.req-table th,.req-table td{padding:1rem 1.3rem;text-align:left;border-bottom:1px solid var(--border);vertical-align:top;}
+.req-table th{width:28%;background:#e8eef8;font-weight:700;color:var(--navy);font-size:.88rem;}
+.req-table td{font-size:.88rem;}
+.req-table tr:last-child th,.req-table tr:last-child td{border-bottom:none;}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{background:#e8eef8;padding:.5rem .9rem;}
+  .req-table td{padding:.5rem .9rem 1rem;}
+}
+
+/* ===== FAQ ===== */
+.faq-list{display:flex;flex-direction:column;gap:1rem;}
+.faq-item{background:#fff;border-radius:8px;padding:1.4rem 1.5rem;box-shadow:0 2px 8px rgba(0,0,0,.05);}
+.faq-q{font-weight:700;color:var(--navy);margin-bottom:.55rem;font-size:.93rem;}
+.faq-q::before{content:'Q.  ';color:var(--cyan-d);}
+.faq-a{font-size:.87rem;color:var(--subtle);line-height:1.75;}
+.faq-a::before{content:'A.  ';font-weight:700;color:var(--navy);}
+
+/* ===== ENTRY ===== */
+.entry-section{
+  position:relative;overflow:hidden;
+  background:var(--dark);color:#fff;text-align:center;padding:6rem 1.5rem;
+}
+.entry-section::before{
+  content:'';position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1600&h=700&fit=crop&q=80') center/cover no-repeat;
+  opacity:.08;
+}
+.entry-content{position:relative;}
+.entry-section h2{
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(1.4rem,4vw,2.1rem);font-weight:900;margin-bottom:1rem;
+  letter-spacing:.04em;
+}
+.entry-section h2 em{color:var(--cyan);font-style:normal;}
+.entry-section p{font-size:.95rem;opacity:.85;margin-bottom:2.2rem;line-height:1.85;}
+.btn-outline{
+  display:inline-block;border:2px solid var(--cyan);color:var(--cyan);
+  padding:.9rem 2.4rem;border-radius:6px;font-weight:700;text-decoration:none;
+  transition:background .2s,color .2s;
+}
+.btn-outline:hover{background:var(--cyan);color:var(--dark);}
+
+/* ===== FOOTER ===== */
+footer{background:#060e18;color:rgba(255,255,255,.4);text-align:center;padding:2.2rem 1.5rem;font-size:.8rem;line-height:1.9;}
+</style>
+</head>
+<body>
+
+<header class="site-header" id="top">
+  <a class="brand" href="#top">ユーザー株式会社</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#about">仕事の魅力</a>
+    <a href="#work">仕事内容</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#recruit">募集要項</a>
+    <a href="#faq">よくある質問</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<!-- HERO (FVバナー型) -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">Recruit 2025</div>
+    <h1>強い集団を、<br><em>一緒に作ろう。</em></h1>
+    <p>
+      1969年創業のアウトドア用品・日用品メーカー「ユーザー株式会社」。<br>
+      全国のホームセンターへ自社製品を届ける営業職を募集しています。<br>
+      年間128日休日 / 残業なし / 自宅からのリモート営業。
+    </p>
+    <a class="btn-cyan" href="#entry">採用情報を見る</a>
+  </div>
+  <div class="hero-scroll">SCROLL<span></span></div>
+</section>
+
+<!-- APPEAL -->
+<div class="section" id="about">
+  <h2 class="section-title">この仕事で得られる3つのこと</h2>
+  <div class="appeal-grid">
+    <div class="appeal-card">
+      <div class="appeal-icon">
+        <svg viewBox="0 0 52 52" fill="none" stroke="#0ea5e9" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 26L26 8l20 18"/>
+          <path d="M10 22v18h12v-10h8v10h12V22"/>
+        </svg>
+      </div>
+      <h3>自由な働き方</h3>
+      <p>自宅からの直行直帰が基本スタイル。年間128日の休日と残業なしで、プライベートと仕事を本当の意味で両立できます。</p>
+    </div>
+    <div class="appeal-card">
+      <div class="appeal-icon">
+        <svg viewBox="0 0 52 52" fill="none" stroke="#0ea5e9" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="26" cy="20" r="10"/>
+          <path d="M8 44c0-9.94 8.06-18 18-18s18 8.06 18 18"/>
+        </svg>
+      </div>
+      <h3>仲間との絆</h3>
+      <p>「強い集団を作る」という創業以来の理念を大切にする会社。チームで支え合いながら、一人ひとりが自分らしく成長できます。</p>
+    </div>
+    <div class="appeal-card">
+      <div class="appeal-icon">
+        <svg viewBox="0 0 52 52" fill="none" stroke="#0ea5e9" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M8 40l10-14 10 8 10-16 10 12"/>
+          <path d="M8 40h36"/>
+        </svg>
+      </div>
+      <h3>メーカー営業の達成感</h3>
+      <p>ホームセンターに並ぶ自社製品を提案し、棚に陳列される喜び。55年以上の製品力と信頼が、営業活動を後押しします。</p>
+    </div>
+  </div>
+</div>
+
+<!-- 仕事内容 -->
+<div class="section-white">
+  <div class="inner" id="work">
+    <h2 class="section-title">仕事内容</h2>
+    <div class="img-text">
+      <img src="https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=640&h=420&fit=crop&q=80" alt="営業の様子">
+      <div class="img-text-body">
+        <h3>ホームセンター・商社への<br>ルート営業職</h3>
+        <p>自社のアウトドア用品・省エネ日用品・産業資材をホームセンターバイヤーや商社の担当者へ提案します。基本は自宅からの直行直帰。新製品のプレゼンから受発注管理まで一貫して担当できます。</p>
+        <p>初めての遠方出張は先輩が同行するので、徐々に自信をつけながら独り立ちできます。月1回程度、大阪本社（河内長野市）での全体会議があります。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 1日の流れ -->
+<div class="section">
+  <h2 class="section-title">社員の1日の流れ（営業職）</h2>
+  <p style="font-size:.83rem;color:#bbb;margin-bottom:1.6rem;">※ここはサンプルです。実際には御社の実際のスケジュールに差し替えます</p>
+  <!-- HTML内差し替え指示: 実際の1日の流れに更新してください -->
+  <div class="timeline">
+    <div class="tl-item">
+      <span class="tl-time">9:00</span>
+      <span class="tl-dot"></span>
+      <div class="tl-body">
+        <h4>自宅から出発</h4>
+        <p>通勤なし。訪問先の資料・サンプルを確認して直接出発。</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-time">10:00</span>
+      <span class="tl-dot"></span>
+      <div class="tl-body">
+        <h4>ホームセンター訪問</h4>
+        <p>バイヤーと商品提案・フェア企画の打ち合わせ。既存ルートを効率よく回ります。</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-time">12:00</span>
+      <span class="tl-dot"></span>
+      <div class="tl-body">
+        <h4>昼食・移動</h4>
+        <p>外食費・ガソリン代は会社負担。ゆとりを持って次の訪問先へ向かいます。</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-time">13:30</span>
+      <span class="tl-dot"></span>
+      <div class="tl-body">
+        <h4>商社・問屋訪問</h4>
+        <p>長年のパートナーとの信頼関係を育てながら、在庫確認・新製品提案を行います。</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-time">15:30</span>
+      <span class="tl-dot"></span>
+      <div class="tl-body">
+        <h4>報告書作成・翌日準備</h4>
+        <p>自宅やお気に入りのカフェで落ち着いて作業。場所を選ばないのが強みです。</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-time">17:00</span>
+      <span class="tl-dot"></span>
+      <div class="tl-body">
+        <h4>オンラインチームミーティング</h4>
+        <p>全国の仲間と情報共有・新製品勉強会。物理的に離れていても繋がれる環境。</p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <span class="tl-time">18:00</span>
+      <span class="tl-dot"></span>
+      <div class="tl-body">
+        <h4>業務終了</h4>
+        <p>残業なし。家族・趣味・自己投資にしっかり時間を使えます。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 先輩の声（ダーク背景） -->
+<div class="section-dark">
+  <div class="inner" id="voice">
+    <h2 class="section-title-light">先輩からのメッセージ</h2>
+    <p style="font-size:.83rem;color:rgba(255,255,255,.35);margin-bottom:1.8rem;">※ここはサンプルです。実際には御社スタッフの写真・コメントに差し替えます</p>
+    <!-- HTML内差し替え指示: 実際のスタッフ顔写真・名前・コメントに変更してください -->
+    <div class="voice-grid">
+      <div class="voice-card">
+        <div class="voice-card-top">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩スタッフ">
+          <div class="voice-card-name">田中 裕（仮名）<br>営業職・入社5年</div>
+        </div>
+        <div class="voice-card-body">
+          <p class="voice-card-text">「出張は先輩と一緒に行けるので、最初から不安はありませんでした。今は一人でどのお客様のところにも行けますし、リモート営業は本当に自分に合っています。」</p>
+          <p class="sample-note">※サンプルです。実際のスタッフ情報に差し替えます</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-top">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩スタッフ">
+          <div class="voice-card-name">山田 健二（仮名）<br>営業職・入社3年</div>
+        </div>
+        <div class="voice-card-body">
+          <p class="voice-card-text">「ホームセンターに自分が提案した商品が並ぶのを見ると、何年経っても感動します。自社製品を売れるこの仕事の誇りが、毎日の原動力です。」</p>
+          <p class="sample-note">※サンプルです。実際のスタッフ情報に差し替えます</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <div class="voice-card-top">
+          <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩スタッフ">
+          <div class="voice-card-name">佐々木 麻衣（仮名）<br>営業職・入社2年</div>
+        </div>
+        <div class="voice-card-body">
+          <p class="voice-card-text">「子どものお迎えがあるので自宅発着が助かっています。休みもちゃんと取れて、有給も消化できる職場。毎日気持ちよく働けています。」</p>
+          <p class="sample-note">※サンプルです。実際のスタッフ情報に差し替えます</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 募集要項 -->
+<div class="section" id="recruit">
+  <h2 class="section-title">募集要項</h2>
+  <table class="req-table">
+    <tbody>
+      <tr><th>職種</th><td>営業職（ホームセンター・商社向けルート営業）</td></tr>
+      <tr><th>雇用形態</th><td>正社員（試用期間3ヶ月・同条件）</td></tr>
+      <tr><th>給与</th><td>月給 250,000円〜340,000円<br>昇給あり（前年実績 月1,000〜10,000円）<br>賞与年2回（前年実績 計300,000〜600,000円）<br>通勤手当（実費・上限なし）</td></tr>
+      <tr><th>勤務地</th><td>関東地方中心（自宅からのリモート営業）<br>東北・北海道出張あり（先輩同行）<br>月1回程度 大阪本社（河内長野市）会議</td></tr>
+      <tr><th>勤務時間</th><td>9:00〜18:00（休憩60分）・時間外労働なし</td></tr>
+      <tr><th>休日・休暇</th><td>完全週休2日（土・日）・祝日・年間休日128日<br>年次有給休暇・育児休業取得実績あり</td></tr>
+      <tr><th>待遇・福利厚生</th><td>各種社会保険完備・マイカー通勤可・ガソリン代支給<br>退職金制度（勤続5年以上）・再雇用制度（65歳まで）</td></tr>
+      <tr><th>応募資格</th><td>高卒以上・59歳以下<br>普通自動車免許（AT限定可）必須<br>エクセル・メール基本操作</td></tr>
+      <tr><th>選考方法</th><td>書類選考 → 面接2回（オンライン可）<br>結果通知：面接後7日以内</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- FAQ -->
+<div class="section-white">
+  <div class="inner" id="faq">
+    <h2 class="section-title">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <p class="faq-q">営業未経験でも応募できますか？</p>
+        <p class="faq-a">はい、歓迎しています。普通自動車免許（AT限定可）とエクセル・メールの基本スキルがあれば大丈夫です。初めての遠方出張は先輩が同行するので、安心してスタートできます。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">「自宅からのリモート営業」とは具体的にどのような働き方ですか？</p>
+        <p class="faq-a">固定の営業所を持たず、担当エリア（主に関東）のお客様を自宅から直接訪問する形です。交通費・ガソリン代は全額会社負担。月1回程度、大阪本社への出張があります。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">どのような商品を扱いますか？</p>
+        <p class="faq-a">レジャーシート・キャンピングマット・クーラーバッグ等のアウトドア用品から、収納シート・省エネ日用品・産業資材（目地シート）まで、自社製造の幅広い商品を担当します。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">育児・介護をしながら働いている方はいますか？</p>
+        <p class="faq-a">はい、複数名が活躍中です。自宅からの直行直帰・残業なしの働き方なので、家族のスケジュールに合わせやすく、育児休業取得実績もあります。</p>
+      </div>
+      <div class="faq-item">
+        <p class="faq-q">選考の流れを教えてください。</p>
+        <p class="faq-a">書類選考 → 面接2回（オンライン面接対応可）。書類は面接時に持参でOK。結果は面接後7日以内に電話でご連絡します。遠方の方もオンラインで選考を受けていただけます。</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ENTRY -->
+<section class="entry-section" id="entry">
+  <div class="entry-content">
+    <h2>「強い集団」を、<br><em>あなたと作りたい。</em></h2>
+    <p>1969年創業、自社製品を持つメーカーの営業職。<br>年間128日の休日・残業なし・リモート中心の環境で、<br>ものづくりに誇りを持ちながら長く働けます。<br>まずはお気軽にご連絡ください。</p>
+    <a class="btn-outline" href="mailto:kawamura@user.co.jp">応募・お問い合わせはこちら</a>
+  </div>
+</section>
+
+<footer>
+  <p>ユーザー株式会社</p>
+  <p>〒586-0026 大阪府河内長野市寿町２－４０</p>
+  <p>TEL: 0721-54-1621　E-mail: kawamura@user.co.jp</p>
+</footer>
+
+<script>
+(function(){
+  var btn = document.querySelector('.hamburger');
+  var nav = document.querySelector('.site-nav');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  }
+})();
+</script>
+</body>
+</html>

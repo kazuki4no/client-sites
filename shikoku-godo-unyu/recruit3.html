@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>リフト運転手 採用情報 | 四国合同通運株式会社</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#1a2340;background:#fff}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+:root{
+  --navy:#0b1d3f;
+  --navy2:#0d2152;
+  --sky:#0b6bc8;
+  --accent:#e8620a;
+  --gray-bg:#f5f7fa;
+  --text:#1a2340;
+  --text-sub:#4a5568;
+}
+
+/* Header */
+header{position:fixed;top:0;left:0;right:0;z-index:200;padding:0 5%;height:68px;display:flex;align-items:center;justify-content:space-between;transition:background 0.3s}
+header.scrolled{background:var(--navy);box-shadow:0 2px 20px rgba(0,0,0,0.3)}
+.logo{color:#fff;font-family:'Noto Serif JP',serif;font-weight:900;font-size:clamp(0.85rem,2.2vw,1rem);letter-spacing:0.08em;text-shadow:0 1px 4px rgba(0,0,0,0.4)}
+nav{display:flex;gap:1.75rem;align-items:center}
+nav a{color:#fff;font-size:0.82rem;font-weight:500;transition:opacity 0.2s;text-shadow:0 1px 3px rgba(0,0,0,0.4)}
+nav a:hover{opacity:0.8}
+.nav-apply{background:var(--accent);padding:0.45rem 1.25rem;border-radius:4px;text-shadow:none!important}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px}
+.mobile-nav{display:none;position:fixed;top:68px;left:0;right:0;background:rgba(11,29,63,0.97);backdrop-filter:blur(8px);padding:1.5rem 5%;z-index:199}
+.mobile-nav a{display:block;color:#fff;padding:0.8rem 0;border-bottom:1px solid rgba(255,255,255,0.1);font-weight:500}
+.mobile-nav.open{display:block}
+
+/* FV Hero */
+.fv{position:relative;min-height:80vh;display:flex;align-items:center;overflow:hidden}
+.fv-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1553413077-190dd305871c?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center}
+.fv-overlay{position:absolute;inset:0;background:linear-gradient(130deg,rgba(11,29,63,0.82) 0%,rgba(11,29,63,0.55) 60%,rgba(11,29,63,0.35) 100%)}
+.fv-content{position:relative;z-index:1;padding:8rem 5% 5rem;max-width:760px}
+.fv-tag{display:inline-flex;gap:0.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.fv-tag span{background:rgba(255,255,255,0.18);backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.3);color:#fff;font-size:0.72rem;font-weight:700;padding:0.3rem 0.85rem;border-radius:2rem;letter-spacing:0.08em}
+.fv-tag span.hot{background:var(--accent);border-color:var(--accent)}
+.fv h1{font-family:'Noto Serif JP',serif;color:#fff;font-size:clamp(2.2rem,6vw,4rem);font-weight:900;line-height:1.2;margin-bottom:1.25rem;text-shadow:0 2px 20px rgba(0,0,0,0.3)}
+.fv h1 .line2{display:block;font-size:clamp(1.1rem,2.8vw,1.8rem);font-weight:400;font-family:'Noto Sans JP',sans-serif;color:rgba(255,255,255,0.85);letter-spacing:0.05em;margin-top:0.5rem}
+.fv-sub{color:rgba(255,255,255,0.85);font-size:clamp(0.95rem,2vw,1.1rem);line-height:1.7;margin-bottom:2.5rem;max-width:500px}
+.fv-btns{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-accent{display:inline-block;background:var(--accent);color:#fff;padding:1rem 2.5rem;border-radius:4px;font-weight:700;font-size:1rem;transition:background 0.2s;letter-spacing:0.05em}
+.btn-accent:hover{background:#f47c38}
+.btn-ghost{display:inline-block;border:2px solid rgba(255,255,255,0.7);color:#fff;padding:0.95rem 2rem;border-radius:4px;font-weight:700;font-size:1rem;transition:all 0.2s}
+.btn-ghost:hover{background:rgba(255,255,255,0.12)}
+
+/* Scroll indicator */
+.scroll-hint{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);color:rgba(255,255,255,0.6);font-size:0.75rem;text-align:center;animation:bounce 1.5s infinite}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(6px)}}
+.scroll-hint::after{content:'↓';display:block;font-size:1.2rem;margin-top:0.25rem}
+
+/* Stats bar */
+.stats-bar{background:var(--navy);padding:2rem 5%;display:flex;justify-content:space-around;flex-wrap:wrap;gap:1rem}
+.stat{text-align:center;color:#fff}
+.stat .num{font-family:'Noto Serif JP',serif;font-size:clamp(2rem,4vw,2.8rem);font-weight:900;line-height:1;color:#fff}
+.stat .num em{font-size:0.5em;font-style:normal;font-family:'Noto Sans JP',sans-serif}
+.stat .label{font-size:0.75rem;color:rgba(255,255,255,0.65);margin-top:0.35rem}
+.stat-note{font-size:0.7rem;color:rgba(255,255,255,0.4);text-align:center;width:100%;margin-top:0.25rem}
+
+/* Section */
+section{padding:5rem 5%}
+.container{max-width:1050px;margin:0 auto}
+.s-label{display:inline-block;font-size:0.72rem;font-weight:700;letter-spacing:0.15em;color:var(--accent);text-transform:uppercase;margin-bottom:0.5rem}
+h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,4vw,2.2rem);font-weight:900;color:var(--navy);margin-bottom:1rem}
+.lead{font-size:0.9rem;color:var(--text-sub);line-height:1.7;margin-bottom:2.5rem}
+.sample-note{font-size:0.75rem;color:#9aa5b8}
+
+/* Features */
+.feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem}
+.feat-card{position:relative;border-radius:12px;overflow:hidden;min-height:280px;display:flex;align-items:flex-end}
+.feat-img{position:absolute;inset:0;background-size:cover;background-position:center}
+.feat-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(11,29,63,0.85) 40%,rgba(11,29,63,0.1) 100%)}
+.feat-body{position:relative;z-index:1;padding:1.5rem;width:100%}
+.feat-body h3{color:#fff;font-size:1rem;font-weight:700;margin-bottom:0.5rem}
+.feat-body p{color:rgba(255,255,255,0.8);font-size:0.82rem;line-height:1.6}
+.feat-num{font-family:'Noto Serif JP',serif;font-size:2.5rem;font-weight:900;color:rgba(255,255,255,0.15);line-height:1;margin-bottom:0.25rem}
+
+/* Messages */
+.msg-wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+.msg-card{border-radius:12px;overflow:hidden;box-shadow:0 4px 20px rgba(11,29,63,0.08);background:#fff}
+.msg-img{height:180px;overflow:hidden}
+.msg-img img{width:100%;height:100%;object-fit:cover}
+.msg-body{padding:1.25rem}
+.msg-name{font-weight:700;color:var(--navy);font-size:0.88rem;margin-bottom:0.2rem}
+.msg-role{font-size:0.72rem;color:var(--text-sub);margin-bottom:0.75rem}
+.msg-text{font-size:0.82rem;color:var(--text);line-height:1.65}
+
+/* Timeline */
+.tl{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.tl-col{border-right:1px solid #e2e8f0;padding:1.5rem 1rem;text-align:center}
+.tl-col:last-child{border-right:none}
+.tl-time{font-family:'Noto Serif JP',serif;font-size:1.5rem;font-weight:900;color:var(--accent);margin-bottom:0.5rem}
+.tl-col p{font-size:0.8rem;color:var(--text);line-height:1.55}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:0.75rem;max-width:780px;margin:0 auto}
+.faq-item{border-radius:8px;overflow:hidden;box-shadow:0 1px 8px rgba(11,29,63,0.06)}
+.faq-q{background:#fff;padding:1.1rem 1.5rem;font-weight:700;font-size:0.88rem;color:var(--navy);cursor:pointer;display:flex;justify-content:space-between;align-items:center;border-left:4px solid var(--accent)}
+.faq-q::after{content:'＋';font-size:1.1rem;color:var(--accent);flex-shrink:0;margin-left:1rem}
+.faq-q.open::after{content:'－'}
+.faq-a{padding:1.1rem 1.5rem;font-size:0.85rem;color:var(--text);line-height:1.7;display:none;background:var(--gray-bg)}
+.faq-a.open{display:block}
+
+/* Req */
+.req-table{width:100%;border-collapse:collapse;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(11,29,63,0.07)}
+.req-table tr{border-bottom:1px solid #e2e8f0}
+.req-table tr:last-child{border-bottom:none}
+.req-table th{background:var(--navy);color:#fff;padding:0.9rem 1.5rem;width:30%;font-size:0.85rem;font-weight:700;text-align:left;vertical-align:top}
+.req-table td{padding:0.9rem 1.5rem;font-size:0.85rem;color:var(--text);line-height:1.6}
+
+/* CTA */
+.cta{position:relative;min-height:60vh;display:flex;align-items:center;justify-content:center;text-align:center;overflow:hidden}
+.cta-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&h=700&fit=crop&q=80');background-size:cover;background-position:center}
+.cta-overlay{position:absolute;inset:0;background:rgba(11,29,63,0.88)}
+.cta-body{position:relative;z-index:1;padding:5rem 5%;max-width:640px}
+.cta-body h2{font-family:'Noto Serif JP',serif;color:#fff;font-size:clamp(1.6rem,4vw,2.4rem);font-weight:900;margin-bottom:1rem}
+.cta-body p{color:rgba(255,255,255,0.8);margin-bottom:2rem;font-size:0.95rem;line-height:1.7}
+
+footer{background:#050e22;padding:2.5rem 5%;text-align:center;color:rgba(255,255,255,0.4);font-size:0.78rem;line-height:1.8}
+
+@media(max-width:768px){
+  nav{display:none}
+  .hamburger{display:flex}
+  .fv-content{padding:7rem 5% 4rem}
+  .btn-ghost{display:none}
+  .stats-bar{gap:1.5rem}
+  .feat-grid{grid-template-columns:1fr}
+  .msg-wrap{grid-template-columns:1fr}
+  .tl{grid-template-columns:repeat(2,1fr)}
+  .tl-col:nth-child(2){border-right:none}
+  .tl-col:nth-child(3){border-top:1px solid #e2e8f0}
+  .req-table th,.req-table td{display:block;width:100%;padding:0.75rem 1rem}
+  .req-table th{background:var(--navy)}
+}
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div class="logo">四国合同通運株式会社</div>
+  <nav>
+    <a href="#about">魅力</a>
+    <a href="#voices">先輩の声</a>
+    <a href="#day">1日の流れ</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#faq">FAQ</a>
+    <a href="#apply" class="nav-apply">応募する</a>
+  </nav>
+  <button class="hamburger" onclick="toggleNav()" aria-label="メニュー">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+<div class="mobile-nav" id="mobileNav">
+  <a href="#about" onclick="closeNav()">働く魅力</a>
+  <a href="#voices" onclick="closeNav()">先輩の声</a>
+  <a href="#day" onclick="closeNav()">1日の流れ</a>
+  <a href="#requirements" onclick="closeNav()">募集要項</a>
+  <a href="#faq" onclick="closeNav()">FAQ</a>
+  <a href="#apply" onclick="closeNav()">応募する</a>
+</div>
+
+<!-- FV -->
+<div class="fv" id="fv">
+  <div class="fv-bg"></div>
+  <div class="fv-overlay"></div>
+  <div class="fv-content">
+    <div class="fv-tag">
+      <span class="hot">🏭 正社員募集</span>
+      <span>千葉県浦安市勤務</span>
+      <span>土日祝休み・年休120日</span>
+    </div>
+    <h1>医薬品を届ける力。<span class="line2">フォークリフトオペレーター、正社員採用。</span></h1>
+    <p class="fv-sub">大塚倉庫での医薬品入出荷業務。月給28〜35万円。<br>あなたのリフトスキルが、社会のインフラを支えます。</p>
+    <div class="fv-btns">
+      <a href="#apply" class="btn-accent">今すぐ応募する</a>
+      <a href="#about" class="btn-ghost">詳細を見る</a>
+    </div>
+  </div>
+  <div class="scroll-hint">詳細はスクロール</div>
+</div>
+
+<!-- Stats bar -->
+<div class="stats-bar">
+  <div class="stat">
+    <div class="num">120<em>日</em></div>
+    <div class="label">年間休日</div>
+  </div>
+  <div class="stat">
+    <div class="num">28<em>〜</em>35<em>万</em></div>
+    <div class="label">月給</div>
+  </div>
+  <div class="stat">
+    <div class="num">1990<em>年</em></div>
+    <div class="label">設立</div>
+  </div>
+  <div class="stat">
+    <div class="num">87<em>名</em></div>
+    <div class="label">従業員数</div>
+  </div>
+  <div class="stat-note">※ここはサンプルです。実際には御社の実数値に差し替えます</div>
+</div>
+
+<!-- Features -->
+<section id="about" style="background:var(--gray-bg)">
+  <div class="container">
+    <div class="s-label">Why us</div>
+    <h2>四国合同通運で働く4つの理由</h2>
+    <p class="lead">フォークリフト経験者が安心して長く活躍できる環境を整えています</p>
+    <div class="feat-grid">
+      <div class="feat-card">
+        <div class="feat-img" style="background-image:url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=640&h=380&fit=crop&q=80')"></div>
+        <div class="feat-overlay"></div>
+        <div class="feat-body">
+          <div class="feat-num">01</div>
+          <h3>土日祝休み・年間120日休暇</h3>
+          <p>毎週確実に休める週休2日制。プライベートとの両立が実現します。</p>
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-img" style="background-image:url('https://images.unsplash.com/photo-1473445730015-841f29a9490b?w=640&h=380&fit=crop&q=80')"></div>
+        <div class="feat-overlay"></div>
+        <div class="feat-body">
+          <div class="feat-num">02</div>
+          <h3>月給28〜35万円＋残業手当</h3>
+          <p>経験・スキルに応じた給与。残業手当は全額別途支給されます。</p>
+        </div>
+      </div>
+      <div class="feat-card">
+        <div class="feat-img" style="background-image:url('https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=640&h=380&fit=crop&q=80')"></div>
+        <div class="feat-overlay"></div>
+        <div class="feat-body">
+          <div class="feat-num">03</div>
+          <h3>医薬品物流という社会的使命</h3>
+          <p>大塚倉庫での医薬品入出荷。リフトの専門技術が社会を支えます。</p>
+        </div>
+      </div>
+      <div class="feat-card" style="background:var(--navy)">
+        <div class="feat-img" style="background-image:url('https://images.unsplash.com/photo-1553413077-190dd305871c?w=640&h=380&fit=crop&q=80')"></div>        <div class="feat-overlay" style="background:linear-gradient(135deg,rgba(11,29,63,0.5) 0%,transparent 100%)"></div>
+        <div class="feat-body">
+          <div class="feat-num">04</div>
+          <h3>社会保険完備・定年65歳</h3>
+          <p>雇用・労災・健康保険・厚生年金完備。勤務延長制度もあり、長期安定就業が可能です。マイカー通勤OK・駐車場完備。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Messages -->
+<section id="voices">
+  <div class="container">
+    <div class="s-label">Staff Voice</div>
+    <h2>先輩からのメッセージ</h2>
+    <p class="lead sample-note">※ここはサンプルです。実際には御社スタッフのメッセージ・写真に差し替えます</p>
+    <div class="msg-wrap">
+      <!-- ※以下3件はサンプルです。御社スタッフの実際のコメントと写真に差し替えてください -->
+      <div class="msg-card">
+        <div class="msg-img">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=280&fit=crop&crop=faces&q=80" alt="先輩スタッフ">
+        </div>
+        <div class="msg-body">
+          <div class="msg-name">田中 誠（仮名）</div>
+          <div class="msg-role">リフト運転手 / 入社3年目 / 30代</div>
+          <p class="msg-text">土日がちゃんと休めるので、子どもの行事に参加できています。医薬品の取り扱いは最初緊張しましたが、チームで丁寧に確認しながら進むので安心です。</p>
+        </div>
+      </div>
+      <div class="msg-card">
+        <div class="msg-img">
+          <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=280&fit=crop&crop=faces&q=80" alt="先輩スタッフ">
+        </div>
+        <div class="msg-body">
+          <div class="msg-name">中村 健司（仮名）</div>
+          <div class="msg-role">リフト運転手 / 入社5年目 / 40代</div>
+          <p class="msg-text">少人数（8名）のチームなので、困ったらすぐ相談できる。マイカー通勤で駐車場もあるので通勤がラク。勤務時間が規則正しくて助かっています。</p>
+        </div>
+      </div>
+      <div class="msg-card">
+        <div class="msg-img">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=280&fit=crop&crop=faces&q=80" alt="先輩スタッフ">
+        </div>
+        <div class="msg-body">
+          <div class="msg-name">松本 幸雄（仮名）</div>
+          <div class="msg-role">リフト運転手 / 入社2年目 / 50代</div>
+          <p class="msg-text">前職も物流でしたが、医薬品という重要な商品に関われることで仕事への誇りが違います。試用期間も条件が変わらず、安心して入社できました。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Timeline -->
+<section id="day" style="background:var(--gray-bg)">
+  <div class="container">
+    <div class="s-label">Daily Schedule</div>
+    <h2>社員の1日の流れ</h2>
+    <p class="lead sample-note">※ここはサンプルです。実際には御社スタッフの実際のスケジュールに差し替えます</p>
+    <div class="tl">
+      <!-- ※以下はサンプルです -->
+      <div class="tl-col">
+        <div class="tl-time">07:50</div>
+        <p>出社・朝礼<br>当日スケジュール確認・安全確認</p>
+      </div>
+      <div class="tl-col">
+        <div class="tl-time">08:00</div>
+        <p>入荷作業<br>医薬品パレットをフォークリフトで棚へ格納</p>
+      </div>
+      <div class="tl-col">
+        <div class="tl-time">10:00</div>
+        <p>出荷ピッキング<br>伝票確認・正確な商品集荷</p>
+      </div>
+      <div class="tl-col">
+        <div class="tl-time">12:00</div>
+        <p>昼食・休憩<br>60分のリフレッシュタイム</p>
+      </div>
+      <div class="tl-col">
+        <div class="tl-time">13:00</div>
+        <p>午後の入出荷<br>トラック積み付け・付帯作業</p>
+      </div>
+      <div class="tl-col">
+        <div class="tl-time">16:00</div>
+        <p>後片付け<br>フォークリフト点検・倉庫清掃・在庫確認</p>
+      </div>
+      <div class="tl-col">
+        <div class="tl-time">17:00</div>
+        <p>退勤<br>残業は月平均20h（手当全額支給）</p>
+      </div>
+      <div class="tl-col" style="background:rgba(232,98,10,0.05);border-left:3px solid var(--accent)">
+        <div class="tl-time" style="color:var(--navy)">Point</div>
+        <p>定時退勤が基本。残業は業務状況に応じて発生しますが、手当は全額支給されます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Requirements -->
+<section id="requirements">
+  <div class="container">
+    <div class="s-label">Requirements</div>
+    <h2>募集要項</h2>
+    <table class="req-table">
+      <tr><th>職種</th><td>リフト運転手（医薬品入出荷・フォークリフト業務）</td></tr>
+      <tr><th>就業場所</th><td>千葉県浦安市千鳥11番地1（大塚倉庫内・転勤なし）</td></tr>
+      <tr><th>雇用形態</th><td>正社員（請負就業）</td></tr>
+      <tr><th>仕事内容</th><td>リーチ型フォークリフトを使用した医薬品の入出荷作業・付帯作業</td></tr>
+      <tr><th>給与</th><td>月給 280,000円〜350,000円（残業手当別途支給）</td></tr>
+      <tr><th>就業時間</th><td>8:00〜17:00 または 7:00〜16:00（休憩60分）</td></tr>
+      <tr><th>休日・休暇</th><td>土曜・日曜・祝日・年末年始 / 年間120日 / 有給休暇10日（6ヶ月後）</td></tr>
+      <tr><th>時間外</th><td>月平均20時間（残業手当支給 / 36協定締結済）</td></tr>
+      <tr><th>必要資格</th><td>フォークリフト運転技能者 / 実務経験6ヶ月以上</td></tr>
+      <tr><th>年齢</th><td>〜64歳（定年65歳のため）</td></tr>
+      <tr><th>試用期間</th><td>2ヶ月（条件変更なし）</td></tr>
+      <tr><th>社会保険</th><td>雇用保険・労災保険・健康保険・厚生年金完備</td></tr>
+      <tr><th>マイカー通勤</th><td>可（駐車場完備）</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq" style="background:var(--gray-bg)">
+  <div class="container">
+    <div class="s-label">FAQ</div>
+    <h2>よくある質問</h2>
+    <p class="lead sample-note">※ここはサンプルです。実際には御社でよくいただく質問に差し替えます</p>
+    <div class="faq-list">
+      <!-- ※以下はサンプルです -->
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">フォークリフト免許は必須ですか？</div>
+        <div class="faq-a">はい、フォークリフト運転技能者の資格と、実務経験6ヶ月以上が必須です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">本社は徳島ですが、就業場所はどこですか？</div>
+        <div class="faq-a">この求人の就業場所は千葉県浦安市千鳥11番地1（大塚倉庫内）です。転勤はなく、浦安固定での勤務となります。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">試用期間中の待遇は変わりますか？</div>
+        <div class="faq-a">試用期間（2ヶ月）中も給与・社会保険等はすべて正式採用後と同じ条件です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">残業はどのくらいありますか？</div>
+        <div class="faq-a">月平均20時間程度です。残業手当は全額別途支給されます。36協定を締結しており、法定の範囲内で管理しています。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">選考の流れを教えてください</div>
+        <div class="faq-a">ハローワークの紹介状と履歴書（写真貼付）をお持ちの上、選考場所（浦安市）での面接（1回）に参加していただきます。結果は面接後7日以内に電話でご連絡します。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<div id="apply" class="cta">
+  <div class="cta-bg"></div>
+  <div class="cta-overlay"></div>
+  <div class="cta-body">
+    <div class="s-label" style="color:var(--accent)">Apply Now</div>
+    <h2>あなたのリフトスキルで、<br>医薬品物流を支えませんか</h2>
+    <p>ハローワーク紹介状をご持参の上、お気軽にご連絡ください。<br>採用担当がご対応します。</p>
+    <a href="tel:088-696-3497" class="btn-accent">採用担当へ電話する<br><span style="font-weight:400;font-size:0.85rem">088-696-3497（採用担当：篠原）</span></a>
+  </div>
+</div>
+
+<footer>
+  <p>四国合同通運株式会社</p>
+  <p>〒771-1403 徳島県阿波市吉野町五条字北原452-1</p>
+  <p>TEL: 088-696-3497 / Email: task-c@shikokugotsu.jp</p>
+</footer>
+
+<script>
+function toggleNav(){document.getElementById('mobileNav').classList.toggle('open')}
+function closeNav(){document.getElementById('mobileNav').classList.remove('open')}
+function toggleFaq(el){
+  el.classList.toggle('open');
+  el.nextElementSibling.classList.toggle('open');
+}
+window.addEventListener('scroll',function(){
+  var h=document.getElementById('header');
+  if(window.scrollY>50)h.classList.add('scrolled');
+  else h.classList.remove('scrolled');
+});
+</script>
+</body>
+</html>

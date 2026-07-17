@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>採用情報 | 株式会社ＥＯＳ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#222;background:#fff}
+    img{max-width:100%;height:auto;display:block}
+    a{color:inherit;text-decoration:none}
+
+    /* ナビ */
+    header{background:#1b3a5c;position:sticky;top:0;z-index:100;box-shadow:0 2px 6px rgba(0,0,0,.3)}
+    .nav-inner{max-width:1100px;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:64px}
+    .logo{color:#fff;font-size:1.1rem;font-weight:700;letter-spacing:.04em}
+    nav.pc-nav{display:flex;gap:28px}
+    nav.pc-nav a{color:#dce8f5;font-size:.9rem;transition:color .2s}
+    nav.pc-nav a:hover{color:#fff}
+    .hamburger{display:none;background:none;border:none;cursor:pointer;padding:4px}
+    .hamburger span{display:block;width:24px;height:2px;background:#fff;margin:5px 0;transition:.3s}
+    .mobile-nav{display:none;background:#1b3a5c;padding:12px 20px 20px}
+    .mobile-nav a{display:block;color:#dce8f5;padding:10px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:.95rem}
+    .mobile-nav.open{display:block}
+
+    /* ヒーロー */
+    .hero{position:relative;min-height:72vh;display:flex;align-items:center;overflow:hidden}
+    .hero-img{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=1600&h=900&fit=crop&q=80') center/cover no-repeat}
+    .hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(15,30,60,.8) 0%,rgba(15,30,60,.55) 100%)}
+    .hero-content{position:relative;max-width:1100px;margin:0 auto;padding:60px 20px;color:#fff}
+    .hero-tag{display:inline-block;background:#3a9fd5;color:#fff;font-size:.8rem;font-weight:700;padding:4px 14px;border-radius:20px;margin-bottom:18px;letter-spacing:.06em}
+    .hero-title{font-size:clamp(1.8rem,5vw,3.2rem);font-weight:700;line-height:1.35;margin-bottom:20px}
+    .hero-title em{display:block;color:#7ecfff;font-style:normal;font-size:clamp(1.1rem,3vw,1.8rem);margin-bottom:8px}
+    .hero-sub{font-size:clamp(.95rem,2vw,1.15rem);line-height:1.8;margin-bottom:32px;opacity:.9}
+    .btn-hero{display:inline-block;background:#e85d04;color:#fff;font-size:1rem;font-weight:700;padding:16px 40px;border-radius:4px;transition:background .2s}
+    .btn-hero:hover{background:#c1440b}
+
+    /* セクション共通 */
+    .section{padding:70px 20px}
+    .section-inner{max-width:1100px;margin:0 auto}
+    .section-label{font-size:.8rem;font-weight:700;color:#3a9fd5;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+    .section-title{font-size:clamp(1.4rem,4vw,2.2rem);font-weight:700;color:#1b3a5c;margin-bottom:16px}
+    .section-lead{font-size:.97rem;color:#555;line-height:1.9;margin-bottom:48px}
+    .bg-light{background:#f4f7fb}
+    .bg-dark{background:#1b3a5c;color:#fff}
+    .bg-dark .section-title{color:#7ecfff}
+
+    /* 魅力3点 */
+    .merits{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:0}
+    .merit-card{background:#fff;border-radius:8px;padding:32px 24px;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,.07)}
+    .merit-icon{font-size:2.8rem;margin-bottom:14px}
+    .merit-num{font-size:2rem;font-weight:700;color:#1b3a5c;margin-bottom:6px}
+    .merit-num span{font-size:1rem;font-weight:500}
+    .merit-title{font-size:1.05rem;font-weight:700;color:#1b3a5c;margin-bottom:10px}
+    .merit-body{font-size:.88rem;color:#555;line-height:1.8}
+    .merit-sample{display:block;font-size:.75rem;color:#aaa;margin-top:8px}
+
+    /* 募集要項 */
+    .job-table{width:100%;border-collapse:collapse}
+    .job-table th,.job-table td{padding:14px 18px;border-bottom:1px solid #e0e8f2;font-size:.92rem;text-align:left;vertical-align:top}
+    .job-table th{width:28%;background:#eef3fa;color:#1b3a5c;font-weight:700;white-space:nowrap}
+    .job-table td{line-height:1.8}
+    .salary-highlight{color:#c0392b;font-weight:700;font-size:1.05rem}
+
+    /* 応募CTA */
+    .cta-box{background:#e85d04;border-radius:10px;padding:48px 32px;text-align:center;margin-top:48px}
+    .cta-box h3{font-size:clamp(1.2rem,3vw,1.8rem);color:#fff;font-weight:700;margin-bottom:14px}
+    .cta-box p{color:rgba(255,255,255,.9);font-size:.95rem;margin-bottom:28px}
+    .btn-cta{display:inline-block;background:#fff;color:#e85d04;font-size:1rem;font-weight:700;padding:16px 44px;border-radius:4px;transition:opacity .2s}
+    .btn-cta:hover{opacity:.85}
+
+    /* FAQ */
+    .faq-list{display:flex;flex-direction:column;gap:16px}
+    .faq-item{background:#fff;border:1px solid #d8e4f0;border-radius:8px;overflow:hidden}
+    .faq-q{display:flex;align-items:flex-start;gap:12px;padding:20px 24px;cursor:pointer;font-weight:700;color:#1b3a5c;font-size:.95rem}
+    .faq-q span.q-mark{flex-shrink:0;background:#1b3a5c;color:#fff;border-radius:50%;width:28px;height:28px;display:flex;align-items:center;justify-content:center;font-size:.85rem;margin-top:1px}
+    .faq-a{padding:0 24px 20px 64px;font-size:.9rem;color:#444;line-height:1.9;display:none}
+    .faq-item.open .faq-a{display:block}
+
+    /* タイムライン */
+    .timeline{position:relative;padding-left:32px}
+    .timeline::before{content:'';position:absolute;left:14px;top:0;bottom:0;width:2px;background:#d0e0f0}
+    .tl-item{position:relative;margin-bottom:28px}
+    .tl-dot{position:absolute;left:-23px;top:4px;width:14px;height:14px;background:#3a9fd5;border-radius:50%;border:2px solid #fff;box-shadow:0 0 0 2px #3a9fd5}
+    .tl-time{font-size:.82rem;font-weight:700;color:#3a9fd5;margin-bottom:4px}
+    .tl-body{font-size:.92rem;color:#333;line-height:1.7}
+
+    /* 先輩の声 */
+    .voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+    .voice-card{background:#fff;border-radius:10px;box-shadow:0 2px 12px rgba(0,0,0,.07);overflow:hidden}
+    .voice-img{width:100%;height:180px;object-fit:cover}
+    .voice-body{padding:20px}
+    .voice-name{font-size:.9rem;font-weight:700;color:#1b3a5c;margin-bottom:4px}
+    .voice-meta{font-size:.78rem;color:#888;margin-bottom:12px}
+    .voice-text{font-size:.87rem;color:#444;line-height:1.85}
+    .voice-sample{font-size:.72rem;color:#bbb;margin-top:10px;display:block}
+
+    /* 採用担当 */
+    .recruiter{display:flex;gap:32px;align-items:center;background:#fff;border-radius:10px;padding:32px;box-shadow:0 2px 12px rgba(0,0,0,.07)}
+    .recruiter-img{width:120px;height:120px;border-radius:50%;object-fit:cover;flex-shrink:0}
+    .recruiter-name{font-size:1.05rem;font-weight:700;color:#1b3a5c;margin-bottom:6px}
+    .recruiter-role{font-size:.82rem;color:#888;margin-bottom:12px}
+    .recruiter-msg{font-size:.9rem;color:#444;line-height:1.85}
+    .recruiter-sample{font-size:.75rem;color:#bbb;margin-top:8px}
+
+    /* フッター */
+    footer{background:#111d2e;color:#aab8c8;padding:32px 20px;text-align:center;font-size:.85rem;line-height:1.9}
+
+    /* レスポンシブ */
+    @media(max-width:768px){
+      nav.pc-nav{display:none}
+      .hamburger{display:block}
+      .merits{grid-template-columns:1fr}
+      .voice-grid{grid-template-columns:1fr}
+      .recruiter{flex-direction:column;text-align:center}
+      .job-table th,.job-table td{display:block;width:100%}
+      .job-table th{border-bottom:none;padding-bottom:6px}
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="logo">株式会社ＥＯＳ</div>
+    <nav class="pc-nav">
+      <a href="#appeal">働く魅力</a>
+      <a href="#jobs">募集要項</a>
+      <a href="#voice">先輩の声</a>
+      <a href="#faq">よくある質問</a>
+      <a href="#apply">応募する</a>
+    </nav>
+    <button class="hamburger" onclick="toggleMenu()" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="#appeal" onclick="toggleMenu()">働く魅力</a>
+    <a href="#jobs" onclick="toggleMenu()">募集要項</a>
+    <a href="#voice" onclick="toggleMenu()">先輩の声</a>
+    <a href="#faq" onclick="toggleMenu()">よくある質問</a>
+    <a href="#apply" onclick="toggleMenu()">応募する</a>
+  </div>
+</header>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-tag">基盤系インフラ技術者 募集</span>
+    <h1 class="hero-title">
+      <em>スキルが、収入になる環境。</em>
+      月給最大50万円で、<br>一流企業のシステムを支えるプロへ。
+    </h1>
+    <p class="hero-sub">千葉ニュータウン（印西市）勤務／無期雇用／年間休日125日<br>実務3年以上の技術者が実力を最大限に発揮できるフィールド</p>
+    <a href="#apply" class="btn-hero">採用情報を見る</a>
+  </div>
+</section>
+
+<!-- 働く魅力 -->
+<section class="section bg-light" id="appeal">
+  <div class="section-inner">
+    <p class="section-label">Appeal</p>
+    <h2 class="section-title">ＥＯＳで働く3つの魅力</h2>
+    <p class="section-lead">「派遣だから不安定」という先入観を覆す、安定とやりがいのある働き方を提供しています。</p>
+    <div class="merits">
+      <div class="merit-card">
+        <div class="merit-icon">💰</div>
+        <div class="merit-num">最大<strong>50</strong><span>万円/月</span></div>
+        <div class="merit-title">スキルに直結する高収入</div>
+        <p class="merit-body">基本給20万円＋職務手当5〜30万円。担当するプロジェクトのレベルと自分のスキルが収入に直結します。昇給制度はありませんが、「より高い案件を担当する」ことで収入を自ら引き上げられる環境です。</p>
+        <span class="merit-sample">※ここはサンプルです。実際には御社の報酬体系の詳細に差し替えます</span>
+      </div>
+      <div class="merit-card">
+        <div class="merit-icon">🛡️</div>
+        <div class="merit-num">雇用期間<strong>無期限</strong></div>
+        <div class="merit-title">「無期雇用」だから長く安心</div>
+        <p class="merit-body">有期契約（期間限定）と違い、無期雇用は雇用期間の定めなし。プロジェクトが変わっても雇用は継続され、社会保険も完備しています。スキルを積みながら長く安定して働ける環境です。</p>
+        <span class="merit-sample">※ここはサンプルです。実際には御社の雇用体制の詳細に差し替えます</span>
+      </div>
+      <div class="merit-card">
+        <div class="merit-icon">🏢</div>
+        <div class="merit-num">一流企業の<strong>現場</strong></div>
+        <div class="merit-title">最前線プロジェクトでスキルを磨く</div>
+        <p class="merit-body">千葉を中心に大手・優良企業の基盤インフラ案件に携わります。サーバー構築・DB設計・システムテストと幅広く経験でき、エンジニアとしてのキャリアを着実に広げられます。</p>
+        <span class="merit-sample">※ここはサンプルです。実際には御社の案件例・実績に差し替えます</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="section" id="jobs">
+  <div class="section-inner">
+    <p class="section-label">Requirements</p>
+    <h2 class="section-title">募集要項</h2>
+    <table class="job-table">
+      <tr><th>職種</th><td>基盤系インフラ技術者（印西勤務）</td></tr>
+      <tr><th>仕事内容</th><td>・サーバー構築<br>・データベース設計<br>・システムテスト（構築計画・移行計画・テスト計画など）<br>【変更範囲：会社の定める業務】</td></tr>
+      <tr><th>雇用形態</th><td>無期雇用派遣（雇用期間の定めなし）</td></tr>
+      <tr><th>就業場所</th><td>千葉県印西市<br>千葉ニュータウン中央駅 徒歩15分</td></tr>
+      <tr><th>月給</th><td class="salary-highlight">200,000円〜500,000円<br><small style="font-weight:400;color:#555">（基本給20万円＋職務手当5〜30万円）</small></td></tr>
+      <tr><th>就業時間</th><td>9:00〜18:00（休憩60分）</td></tr>
+      <tr><th>残業</th><td>月平均20時間程度</td></tr>
+      <tr><th>年間休日</th><td>125日（土曜・日曜・祝日、夏季・冬季・GW）</td></tr>
+      <tr><th>通勤手当</th><td>実費支給（上限月5万円）</td></tr>
+      <tr><th>昇給・賞与</th><td>昇給制度なし・賞与制度なし<br><small style="color:#555">（職務手当でスキルに見合った収入が実現します）</small></td></tr>
+      <tr><th>試用期間</th><td>6ヶ月（同条件）</td></tr>
+      <tr><th>必要経験</th><td>実務経験3年以上（高卒以上）</td></tr>
+      <tr><th>年齢</th><td>〜59歳（定年60歳のため）</td></tr>
+      <tr><th>社会保険</th><td>雇用保険・労災保険・健康保険・厚生年金</td></tr>
+      <tr><th>定年</th><td>60歳（65歳まで勤務延長あり）</td></tr>
+      <tr><th>採用人数</th><td>1名</td></tr>
+      <tr><th>選考方法</th><td>書類選考（到着後7日以内）→面接（1回）</td></tr>
+      <tr><th>応募方法</th><td>履歴書・職務経歴書・ハローワーク紹介状を郵送またはメールで事前送付のうえ、担当・遠田（043-350-0155）へご連絡ください。<br>メール: recruit@eos2001.co.jp</td></tr>
+    </table>
+
+    <div class="cta-box" id="apply">
+      <h3>まずは書類をお送りください</h3>
+      <p>選考に関するご質問もお気軽にどうぞ。</p>
+      <a href="mailto:recruit@eos2001.co.jp" class="btn-cta">メールで問い合わせる</a>
+    </div>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section class="section bg-light" id="day">
+  <div class="section-inner">
+    <p class="section-label">A Day in the Life</p>
+    <h2 class="section-title">社員の1日の流れ</h2>
+    <p class="section-lead">インフラエンジニアとして、実際にどんな1日を過ごしているのかご紹介します。</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">09:00</div>
+        <div class="tl-body"><strong>出社・メール確認・タスク整理</strong><br>当日の作業タスクを確認し、チームと軽く情報共有します。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">09:30</div>
+        <div class="tl-body"><strong>サーバー構築・インフラ作業</strong><br>担当プロジェクトのサーバー構築や移行作業を進めます。集中して作業できる時間帯です。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">12:00</div>
+        <div class="tl-body"><strong>昼休憩（60分）</strong><br>社内や近隣で食事。オフの時間もエンジニア同士で情報交換することも。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">13:00</div>
+        <div class="tl-body"><strong>データベース設計レビュー・ドキュメント作成</strong><br>設計内容を確認し、ドキュメントを更新。品質を保つための重要な工程です。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">15:00</div>
+        <div class="tl-body"><strong>チームミーティング・進捗共有</strong><br>進捗や課題を確認し、翌日以降のスケジュールをすり合わせます。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">16:30</div>
+        <div class="tl-body"><strong>システムテスト・検証作業</strong><br>テスト計画に沿って動作確認を実施。ミスなく完成させる達成感があります。</div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-dot"></div>
+        <div class="tl-time">18:00</div>
+        <div class="tl-body"><strong>退勤</strong><br>定時退勤が基本。残業は月平均20時間程度です。</div>
+      </div>
+    </div>
+    <p style="font-size:.78rem;color:#bbb;margin-top:20px">※ここはサンプルです。実際には御社の典型的な1日の流れに差し替えます</p>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section class="section" id="voice">
+  <div class="section-inner">
+    <p class="section-label">Voice</p>
+    <h2 class="section-title">先輩からのメッセージ</h2>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <!-- 先輩スタッフ写真：社員の顔写真に差し替えください -->
+        <img class="voice-img" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=640&h=380&fit=crop&crop=faces&q=80" alt="田中さん">
+        <div class="voice-body">
+          <div class="voice-name">田中 ○○（仮名）</div>
+          <div class="voice-meta">インフラエンジニア｜入社3年目</div>
+          <p class="voice-text">「無期雇用派遣」という言葉に最初は正直ためらいましたが、雇用期間に定めがないとわかって安心しました。担当する案件が上がるにつれ職務手当も上がり、前職より収入が増えました。技術の幅を広げながら稼げる環境です。</p>
+          <span class="voice-sample">※ここはサンプルです。実際には御社スタッフのメッセージ・写真に差し替えます</span>
+        </div>
+      </div>
+      <div class="voice-card">
+        <!-- 先輩スタッフ写真：社員の顔写真に差し替えください -->
+        <img class="voice-img" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=640&h=380&fit=crop&crop=faces&q=80" alt="鈴木さん">
+        <div class="voice-body">
+          <div class="voice-name">鈴木 ○○（仮名）</div>
+          <div class="voice-meta">シニアインフラエンジニア｜入社5年目</div>
+          <p class="voice-text">幕張テクノガーデンの本社に面接に行ったとき「自分が想像していた会社より規模感がある」と驚きました。一流企業のインフラを任せてもらえる緊張感と達成感がエンジニアとして成長させてくれています。休日125日でプライベートも充実できます。</p>
+          <span class="voice-sample">※ここはサンプルです。実際には御社スタッフのメッセージ・写真に差し替えます</span>
+        </div>
+      </div>
+      <div class="voice-card">
+        <!-- 先輩スタッフ写真：社員の顔写真に差し替えください -->
+        <img class="voice-img" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=640&h=380&fit=crop&crop=faces&q=80" alt="山田さん">
+        <div class="voice-body">
+          <div class="voice-name">山田 ○○（仮名）</div>
+          <div class="voice-meta">インフラエンジニア｜入社1年目</div>
+          <p class="voice-text">千葉ニュータウン中央駅から歩いて通えるのが気に入っています。毎日同じ職場で腰を据えて作業できるので、集中してスキルを伸ばせる環境です。書類選考から内定まで約2週間と、選考スピードも早くて安心でした。</p>
+          <span class="voice-sample">※ここはサンプルです。実際には御社スタッフのメッセージ・写真に差し替えます</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section bg-light" id="faq">
+  <div class="section-inner">
+    <p class="section-label">FAQ</p>
+    <h2 class="section-title">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="q-mark">Q</span>「無期雇用派遣」とは正社員とどう違うのですか？
+        </div>
+        <div class="faq-a">「無期雇用派遣」は雇用期間に定めのない派遣の形態です。有期の派遣（数ヶ月ごとに契約更新）と違い、雇用が継続されます。就業場所はプロジェクトによって変わりますが、ＥＯＳとの雇用関係は長期にわたって安定します。社会保険も完備しています。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="q-mark">Q</span>月給の幅が大きいですが、どう決まりますか？
+        </div>
+        <div class="faq-a">基本給は20万円で固定ですが、職務手当が5〜30万円と担当するプロジェクトのレベルによって変わります。より高度なインフラ案件を担当するほど職務手当が上がる仕組みです。昇給制度はありませんが、スキルと実績が直接収入に反映されます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="q-mark">Q</span>どんな経験があれば応募できますか？
+        </div>
+        <div class="faq-a">サーバー構築・データベース設計・システムテストなどの実務経験が3年以上あれば対象です。学歴は高卒以上で、資格は必須ではありません。年齢は〜59歳まで（定年60歳のため）。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="q-mark">Q</span>選考の流れを教えてください。
+        </div>
+        <div class="faq-a">①履歴書・職務経歴書・ハローワーク紹介状を郵送またはメールで事前送付 → ②書類選考（到着後7日以内にご連絡） → ③面接（1回・幕張テクノガーデン本社） → ④内定。書類は先にお送りいただく形をとっています。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">
+          <span class="q-mark">Q</span>転勤はありますか？
+        </div>
+        <div class="faq-a">片道1.5時間以内の近隣への異動の可能性があります（就業場所は会社が定める範囲）。基本的な勤務地は千葉県印西市（千葉ニュータウン中央駅 徒歩15分）です。</div>
+      </div>
+    </div>
+    <p style="font-size:.78rem;color:#bbb;margin-top:20px">※ここはサンプルです。実際には御社の実態に合わせたQ&Aに差し替えます</p>
+  </div>
+</section>
+
+<!-- 採用担当者 -->
+<section class="section">
+  <div class="section-inner">
+    <p class="section-label">Recruiter</p>
+    <h2 class="section-title">採用担当よりひと言</h2>
+    <div class="recruiter">
+      <!-- 採用担当者写真：担当者の写真に差し替えください -->
+      <img class="recruiter-img" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=faces&q=80" alt="採用担当・遠田">
+      <div>
+        <div class="recruiter-name">遠田（仮名）</div>
+        <div class="recruiter-role">採用担当</div>
+        <p class="recruiter-msg">「月給50万円」と聞いてピンとこない方も、「無期雇用派遣ってどういう仕組み？」という方も、まずは気軽にご連絡ください。皆さんの経験とスキルがどう活かせるか、一緒に考えます。書類選考後7日以内に必ずご連絡します。</p>
+        <p class="recruiter-sample">※ここはサンプルです。実際には担当者の写真・メッセージに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 最終CTA -->
+<section class="section bg-dark">
+  <div class="section-inner" style="text-align:center">
+    <h2 class="section-title" style="color:#7ecfff;margin-bottom:16px">スキルを、もっと高い収入に変えませんか？</h2>
+    <p style="color:rgba(255,255,255,.85);margin-bottom:32px;font-size:.97rem">まずは書類をお送りいただくだけでOKです。お電話でのご質問もどうぞ。</p>
+    <a href="mailto:recruit@eos2001.co.jp" class="btn-hero" style="margin-right:16px;display:inline-block;margin-bottom:12px">メールで応募する</a>
+    <a href="tel:0433500155" class="btn-hero" style="background:#3a9fd5;display:inline-block">電話で問い合わせる</a>
+  </div>
+</section>
+
+<footer>
+  <p>株式会社ＥＯＳ</p>
+  <p>〒261-0023 千葉県千葉市美浜区中瀬1-3 幕張テクノガーデンB棟9F</p>
+  <p>TEL: 043-350-0155 ／ E-mail: recruit@eos2001.co.jp</p>
+</footer>
+
+<script>
+function toggleMenu(){
+  document.getElementById('mobileNav').classList.toggle('open');
+}
+function toggleFaq(el){
+  var item=el.parentElement;
+  item.classList.toggle('open');
+}
+</script>
+</body>
+</html>

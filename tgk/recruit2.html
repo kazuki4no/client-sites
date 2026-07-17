@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>採用情報 | ＴＧＫ株式会社</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans JP',sans-serif;color:#e8e8e8;background:#08162a;line-height:1.7;padding-bottom:70px}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ヘッダー */
+.site-header{display:flex;align-items:center;justify-content:space-between;padding:.8rem 1.8rem;background:#040e1c;position:sticky;top:0;z-index:100;border-bottom:1px solid rgba(200,160,0,.25)}
+.brand{color:#c8a000;font-size:.97rem;font-weight:700;letter-spacing:.05em}
+.site-nav{display:flex;gap:1.5rem;align-items:center}
+.site-nav a{color:rgba(255,255,255,.75);font-size:.82rem;font-weight:500;transition:color .2s}
+.site-nav a:hover{color:#c8a000}
+.site-nav .nav-cta{background:#c8a000;color:#08162a;padding:.4rem 1.1rem;border-radius:4px;font-weight:700}
+.site-nav .nav-cta:hover{background:#e0b800}
+.hamburger{display:none;background:none;border:0;color:#c8a000;font-size:1.7rem;line-height:1;cursor:pointer;padding:.2rem}
+@media(max-width:768px){
+  .hamburger{display:block}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:#040e1c;box-shadow:0 8px 24px rgba(0,0,0,.5);padding:.5rem 1.4rem}
+  .site-nav.open{display:flex}
+  .site-nav a{padding:.78rem 0;border-bottom:1px solid rgba(255,255,255,.08);color:rgba(255,255,255,.85);font-size:.95rem}
+  .site-nav .nav-cta{margin:.6rem 0;text-align:center;border-radius:4px;padding:.78rem 0;border-bottom:none}
+}
+
+/* ヒーロー */
+.hero{position:relative;min-height:80vh;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(4,14,28,.92) 40%,rgba(4,14,28,.7))}
+.hero-content{position:relative;z-index:2;text-align:center;padding:3rem 1.5rem;max-width:760px}
+.hero-pill{display:inline-block;border:1px solid #c8a000;color:#c8a000;font-size:.76rem;font-weight:700;padding:.28rem .95rem;border-radius:20px;margin-bottom:1.2rem;letter-spacing:.08em}
+.hero-content h1{font-size:clamp(2rem,5.5vw,3.8rem);color:#fff;font-weight:900;line-height:1.22;margin-bottom:1.2rem}
+.hero-content h1 span{color:#c8a000}
+.hero-content p{color:rgba(255,255,255,.82);font-size:clamp(.92rem,2vw,1.07rem);margin-bottom:2.2rem;line-height:1.8}
+.btn-gold{display:inline-block;background:#c8a000;color:#08162a;padding:.88rem 2.4rem;border-radius:4px;font-weight:900;font-size:1rem;transition:background .2s}
+.btn-gold:hover{background:#e0b800}
+.btn-ghost{display:inline-block;border:2px solid rgba(255,255,255,.5);color:rgba(255,255,255,.85);padding:.82rem 2rem;border-radius:4px;font-weight:700;font-size:.95rem;margin-left:1rem;transition:border-color .2s,color .2s}
+.btn-ghost:hover{border-color:#c8a000;color:#c8a000}
+
+/* 数字バナー */
+.stats-bar{background:#c8a000;padding:2rem 1.5rem}
+.stats-inner{max-width:900px;margin:0 auto;display:flex;gap:1.5rem;justify-content:center;flex-wrap:wrap}
+.stat-item{text-align:center;color:#08162a;min-width:140px}
+.stat-num{font-size:clamp(2rem,5vw,2.8rem);font-weight:900;line-height:1;display:block}
+.stat-label{font-size:.78rem;font-weight:700;margin-top:.3rem;opacity:.85}
+.stat-unit{font-size:1rem;font-weight:700}
+
+/* 共通 */
+section{padding:4.5rem 1.5rem}
+.inner{max-width:900px;margin:0 auto}
+.section-label{color:#c8a000;font-size:.74rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;margin-bottom:.4rem}
+.section-title{font-size:clamp(1.35rem,3.5vw,2rem);font-weight:900;color:#fff;margin-bottom:1.4rem}
+.section-desc{color:rgba(255,255,255,.7);margin-bottom:2.5rem;line-height:1.8}
+.sample-note{font-size:.74rem;color:rgba(255,255,255,.35);margin-top:.5rem;font-style:italic}
+
+/* 魅力グリッド */
+.merit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.merit-card{background:rgba(255,255,255,.04);border:1px solid rgba(200,160,0,.25);border-radius:8px;padding:1.8rem 1.5rem}
+.merit-icon{color:#c8a000;margin-bottom:.9rem}
+.merit-card h3{font-size:.97rem;font-weight:700;color:#e8e8e8;margin-bottom:.6rem}
+.merit-card p{font-size:.87rem;color:rgba(255,255,255,.65);line-height:1.75}
+@media(max-width:768px){.merit-grid{grid-template-columns:1fr}}
+
+/* 社員インタビュー */
+.interview-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem}
+.interview-card{display:flex;gap:1.2rem;align-items:flex-start;background:rgba(255,255,255,.04);border-radius:10px;padding:1.5rem}
+.interview-card img{width:72px;height:72px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid #c8a000}
+.interview-name{font-size:.78rem;font-weight:700;color:#c8a000;margin-bottom:.2rem}
+.interview-role{font-size:.76rem;color:rgba(255,255,255,.5);margin-bottom:.6rem}
+.interview-card p{font-size:.86rem;color:rgba(255,255,255,.72);line-height:1.75}
+@media(max-width:768px){.interview-grid{grid-template-columns:1fr}.interview-card{flex-direction:column}}
+
+/* タイムライン */
+.timeline{list-style:none}
+.tl-item{display:grid;grid-template-columns:72px 18px 1fr;column-gap:.9rem;margin-bottom:1.6rem;align-items:start}
+.tl-time{font-size:.82rem;font-weight:700;color:#c8a000;text-align:right;padding-top:.32rem;white-space:nowrap}
+.tl-dot-col{display:flex;flex-direction:column;align-items:center}
+.tl-dot{width:13px;height:13px;border-radius:50%;background:#c8a000;margin-top:.36rem;flex-shrink:0}
+.tl-line{width:2px;flex:1;background:rgba(200,160,0,.25);min-height:28px;margin-top:3px}
+.tl-last .tl-line{display:none}
+.tl-body h4{font-size:.92rem;font-weight:700;color:#e8e8e8;margin-bottom:.25rem}
+.tl-body p{font-size:.85rem;color:rgba(255,255,255,.62);line-height:1.7}
+
+/* FAQ */
+.faq-list{list-style:none}
+.faq-item{border-bottom:1px solid rgba(255,255,255,.08);padding:1.2rem 0}
+.faq-q{font-size:.93rem;font-weight:700;color:#e8e8e8;padding-left:1.6rem;position:relative;margin-bottom:.45rem}
+.faq-q::before{content:'Q';position:absolute;left:0;color:#c8a000;font-weight:900}
+.faq-a{font-size:.89rem;color:rgba(255,255,255,.65);padding-left:1.6rem;position:relative;line-height:1.75}
+.faq-a::before{content:'A';position:absolute;left:0;color:rgba(200,160,0,.7);font-weight:700}
+
+/* 募集要項テーブル */
+.req-table{width:100%;border-collapse:collapse}
+.req-table th{width:150px;background:rgba(200,160,0,.12);color:#c8a000;font-weight:700;font-size:.88rem;padding:.9rem 1rem;text-align:left;vertical-align:top;border-bottom:1px solid rgba(200,160,0,.15)}
+.req-table td{padding:.9rem 1rem;font-size:.88rem;color:rgba(255,255,255,.72);border-bottom:1px solid rgba(255,255,255,.06);vertical-align:top}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%}
+  .req-table th{background:rgba(200,160,0,.12);padding:.55rem .9rem;border-bottom:none;font-size:.84rem}
+  .req-table td{padding:.45rem .9rem 1rem}
+}
+
+/* 中間CTA */
+.mid-cta{background:rgba(200,160,0,.1);border:1px solid rgba(200,160,0,.3);border-radius:10px;padding:2.5rem 2rem;text-align:center}
+.mid-cta h3{font-size:clamp(1.2rem,3vw,1.6rem);font-weight:900;color:#fff;margin-bottom:.8rem}
+.mid-cta p{color:rgba(255,255,255,.7);margin-bottom:1.5rem;font-size:.93rem}
+
+/* フッターCTA */
+.footer-cta{background:#c8a000;text-align:center;padding:3.5rem 1.5rem}
+.footer-cta h2{font-size:clamp(1.3rem,3.5vw,2rem);font-weight:900;color:#08162a;margin-bottom:.9rem}
+.footer-cta p{color:rgba(8,22,42,.75);margin-bottom:2rem;font-size:.95rem}
+.btn-dark{display:inline-block;background:#08162a;color:#c8a000;padding:.9rem 2.5rem;border-radius:4px;font-weight:900;font-size:1rem;transition:background .2s}
+.btn-dark:hover{background:#0d2040}
+
+/* スマホ固定CTAバー */
+.sticky-bar{display:none;position:fixed;bottom:0;left:0;right:0;z-index:200;background:#c8a000;padding:.9rem 1.2rem;text-align:center}
+.sticky-bar a{color:#08162a;font-weight:900;font-size:.97rem;display:block}
+@media(max-width:768px){.sticky-bar{display:block}}
+
+/* フッター */
+footer{background:#020a14;color:rgba(255,255,255,.4);text-align:center;padding:2rem 1.5rem;font-size:.83rem}
+footer p+p{margin-top:.35rem}
+</style>
+</head>
+<body id="top">
+
+<header class="site-header">
+  <a class="brand" href="#top">ＴＧＫ株式会社 採用情報</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#stats">待遇</a>
+    <a href="#merit">特徴</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#faq">FAQ</a>
+    <a class="nav-cta" href="#entry">エントリー</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-pill">発注者支援業務（工事監督支援）募集</span>
+    <h1>月給<span>42万〜55万</span>。<br>年間休日<span>125日</span>。<br>国交省案件で腰を据えて働く。</h1>
+    <p>昭和44年創業、55年以上の実績。無期雇用で雇用期間の定めなし。<br>公共インフラを支える専門職として、長期的に活躍できる環境があります。</p>
+    <a class="btn-gold" href="#entry">エントリーする</a>
+    <a class="btn-ghost" href="#requirements">募集要項を見る</a>
+  </div>
+</section>
+
+<div id="stats" class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <span class="stat-num">42<span class="stat-unit">万〜</span></span>
+      <div class="stat-label">月給（円）</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">125<span class="stat-unit">日</span></span>
+      <div class="stat-label">年間休日</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">20<span class="stat-unit">h</span></span>
+      <div class="stat-label">月平均残業</div>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">55<span class="stat-unit">年</span></span>
+      <div class="stat-label">創業からの実績</div>
+    </div>
+  </div>
+</div>
+
+<section id="merit">
+  <div class="inner">
+    <p class="section-label">WHY TGK</p>
+    <h2 class="section-title">ＴＧＫで働く3つの理由</h2>
+    <div class="merit-grid">
+      <div class="merit-card">
+        <div class="merit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="36" height="36"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>発注者側で得られる圧倒的な視野</h3>
+        <p>現場を「管理する側」から俯瞰できるのが発注者支援業務の醍醐味です。工程・品質・安全を総合的に把握するスキルは、市場価値を高める専門性になります。</p>
+      </div>
+      <div class="merit-card">
+        <div class="merit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="36" height="36"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8m-4-4v4"/></svg>
+        </div>
+        <h3>無期雇用で案件をまたいで継続雇用</h3>
+        <p>雇用期間の定めがなく、案件が終わっても当社との雇用は継続します。「案件ごとに職を探す」不安なく、腰を据えてキャリアを積めます。</p>
+      </div>
+      <div class="merit-card">
+        <div class="merit-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="36" height="36"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+        </div>
+        <h3>宿舎手配＋旅費支給で転職ハードル低</h3>
+        <p>遠方からの方には単身用宿舎をご用意。赴任・帰任・帰省の旅費も支給します（社内規定による）。Web面接のみで選考が完結するので、県外からでも気軽にご応募いただけます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 中間CTA1 -->
+<section style="padding:3rem 1.5rem;background:rgba(0,0,0,.15)">
+  <div class="inner">
+    <div class="mid-cta">
+      <h3>まずは話を聞いてみませんか？</h3>
+      <p>選考はWeb面接1回のみ。遠方の方も歓迎します。</p>
+      <a class="btn-gold" href="#entry">エントリーする</a>
+    </div>
+  </div>
+</section>
+
+<section id="voice">
+  <div class="inner">
+    <p class="section-label">VOICE</p>
+    <h2 class="section-title">先輩社員の声</h2>
+    <p class="sample-note" style="margin-bottom:2rem">※ここはサンプルです。実際には御社社員のお名前・写真・コメントに差し替えます</p>
+    <div class="interview-grid">
+      <div class="interview-card">
+        <!-- サンプル顔写真。御社社員の写真に差し替えてください -->
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩社員（仮名）">
+        <div>
+          <div class="interview-name">田中 誠（仮名・50代）</div>
+          <div class="interview-role">入社8年目 / 1級土木施工管理技士</div>
+          <p>発注者側から現場を見ると、工事全体の流れが見えてくる。管理する側の醍醐味を実感しています。55年続く会社の安定感が、長く続けられる理由です。</p>
+          <p class="sample-note">※サンプルです</p>
+        </div>
+      </div>
+      <div class="interview-card">
+        <!-- サンプル顔写真。御社社員の写真に差し替えてください -->
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩社員（仮名）">
+        <div>
+          <div class="interview-name">佐藤 健二（仮名・40代）</div>
+          <div class="interview-role">入社5年目 / 2級土木施工管理技士</div>
+          <p>月給の高さと残業の少なさを両立できているのは、発注者支援という専門性があるから。年間休日125日はメリハリのある生活につながっています。</p>
+          <p class="sample-note">※サンプルです</p>
+        </div>
+      </div>
+      <div class="interview-card">
+        <!-- サンプル顔写真。御社社員の写真に差し替えてください -->
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩社員（仮名）">
+        <div>
+          <div class="interview-name">渡辺 裕樹（仮名・30代）</div>
+          <div class="interview-role">入社3年目 / 土木施工管理経験者</div>
+          <p>県外から転職でしたが、宿舎と旅費補助があったので引越しの負担がほとんどありませんでした。Web面接で選考が完結したのも助かりました。</p>
+          <p class="sample-note">※サンプルです</p>
+        </div>
+      </div>
+      <div class="interview-card">
+        <!-- サンプル顔写真。御社社員の写真に差し替えてください -->
+        <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩社員（仮名）">
+        <div>
+          <div class="interview-name">中村 達也（仮名・40代）</div>
+          <div class="interview-role">入社6年目 / 発注者支援業務経験者</div>
+          <p>国交省案件に長く携わることで、公共工事の全体像が見えてきた。ゼネコン・コンサルとの折衝経験は、どこでも通用するスキルになっています。</p>
+          <p class="sample-note">※サンプルです</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="inner">
+    <p class="section-label">DAILY WORK</p>
+    <h2 class="section-title">社員の1日の流れ</h2>
+    <p class="sample-note" style="margin-bottom:2rem">※ここはサンプルです。実際には御社スタッフの1日に差し替えます</p>
+    <ul class="timeline">
+      <li class="tl-item">
+        <span class="tl-time">8:30</span>
+        <span class="tl-dot-col"><span class="tl-dot"></span><span class="tl-line"></span></span>
+        <div class="tl-body"><h4>出社・朝礼</h4><p>現場事務所で工程・安全を確認。発注者側担当者との情報共有も朝のうちに行います。</p></div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">9:00</span>
+        <span class="tl-dot-col"><span class="tl-dot"></span><span class="tl-line"></span></span>
+        <div class="tl-body"><h4>現場巡回・施工状況確認</h4><p>進捗・品質・安全状況をチェック。課題は早期に対策を検討します。</p></div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">11:00</span>
+        <span class="tl-dot-col"><span class="tl-dot"></span><span class="tl-line"></span></span>
+        <div class="tl-body"><h4>書類作成・資料整理</h4><p>施工管理書類や打合せ用資料を作成。午後の打合せに備えます。</p></div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">12:00</span>
+        <span class="tl-dot-col"><span class="tl-dot"></span><span class="tl-line"></span></span>
+        <div class="tl-body"><h4>昼休み（60分）</h4><p>仲間とリフレッシュタイム。</p></div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">13:00</span>
+        <span class="tl-dot-col"><span class="tl-dot"></span><span class="tl-line"></span></span>
+        <div class="tl-body"><h4>発注者職員との打合せ</h4><p>国交省担当者と工程・品質について協議。的確な提案で発注者の信頼を積み上げます。</p></div>
+      </li>
+      <li class="tl-item">
+        <span class="tl-time">15:30</span>
+        <span class="tl-dot-col"><span class="tl-dot"></span><span class="tl-line"></span></span>
+        <div class="tl-body"><h4>午後の現場確認・写真撮影</h4><p>施工状況を記録。書類添付用資料を整えます。</p></div>
+      </li>
+      <li class="tl-item tl-last">
+        <span class="tl-time">17:15</span>
+        <span class="tl-dot-col"><span class="tl-dot"></span><span class="tl-line"></span></span>
+        <div class="tl-body"><h4>定時退社</h4><p>月平均残業約20時間。プライベートの時間も大切にできます。</p></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section id="requirements" style="background:rgba(255,255,255,.02)">
+  <div class="inner">
+    <p class="section-label">REQUIREMENTS</p>
+    <h2 class="section-title">募集要項</h2>
+    <table class="req-table">
+      <tbody>
+        <tr><th>職種</th><td>発注者支援業務（工事監督支援）</td></tr>
+        <tr><th>就業場所</th><td>千葉県印西市発作（成田線 布佐駅 徒歩10分）<br>マイカー通勤可・駐車場あり</td></tr>
+        <tr><th>雇用形態</th><td>無期雇用派遣労働者（雇用期間の定めなし）</td></tr>
+        <tr><th>給与</th><td>月給 420,000円〜550,000円<br>通勤手当：実費全額支給（上限なし）</td></tr>
+        <tr><th>勤務時間</th><td>8:30〜17:15（休憩60分）/ 月平均残業 約20時間</td></tr>
+        <tr><th>休日・休暇</th><td>土曜・日曜・祝日、GW、夏季休暇、年末年始<br>年間休日 125日 / 有給休暇（6ヶ月後 10日〜）</td></tr>
+        <tr><th>必要な経験</th><td>発注者支援業務または土木施工管理の経験（必須）<br>普通自動車運転免許 AT限定可（必須）<br>1・2級土木施工管理技士（あれば尚可）</td></tr>
+        <tr><th>待遇・福利厚生</th><td>各種社会保険完備（雇用・労災・健康・厚生年金）<br>宿舎あり（単身用・遠方者向け）<br>赴任・帰任・帰省旅費支給（社内規定による）</td></tr>
+        <tr><th>採用人数</th><td>1名</td></tr>
+        <tr><th>選考方法</th><td>書類選考 → Web面接（1回） → 内定<br>書類到着後7日以内にご連絡</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="inner">
+    <p class="section-label">FAQ</p>
+    <h2 class="section-title">よくある質問</h2>
+    <ul class="faq-list">
+      <li class="faq-item">
+        <p class="faq-q">無期雇用派遣とはどのような働き方ですか？</p>
+        <p class="faq-a">当社の正社員として雇用期間の定めなく採用された後、国交省管轄の現場に常駐します。案件が変わっても当社との雇用は継続するため、有期派遣とは異なる安定した働き方です。</p>
+      </li>
+      <li class="faq-item">
+        <p class="faq-q">昇給・賞与がない分、給与の上がり方は？</p>
+        <p class="faq-a">月給420,000〜550,000円の範囲で、経験・スキル・案件難易度をもとに決定します。実績に応じて上位案件への配置で収入アップが期待できます。詳細はご面談でお伝えします。</p>
+      </li>
+      <li class="faq-item">
+        <p class="faq-q">遠方からの応募は可能ですか？</p>
+        <p class="faq-a">はい。遠方の方には単身用宿舎をご用意し、赴任・帰任・帰省旅費も支給します。選考はWeb面接（1回）で完結するので、県外からでも安心してご応募ください。</p>
+      </li>
+      <li class="faq-item">
+        <p class="faq-q">必要な資格・経験は？</p>
+        <p class="faq-a">発注者支援業務または土木施工管理の経験が必須です。普通自動車運転免許（AT限定可）も必要。1・2級土木施工管理技士はあれば尚可（必須ではありません）。</p>
+      </li>
+      <li class="faq-item">
+        <p class="faq-q">残業・休日の実態は？</p>
+        <p class="faq-a">月平均残業は約20時間。年間休日125日（土日祝＋GW・夏季・年末年始）で、ワークライフバランスを大切にしています。</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- 最終CTA -->
+<section id="entry" class="footer-cta">
+  <div class="inner">
+    <h2>土木のプロとして、腰を据えて働ける場所があります</h2>
+    <p>専門性を評価する環境で、長期的なキャリアを築きませんか。<br>Web面接1回のみ。遠方の方もお気軽にどうぞ。</p>
+    <a class="btn-dark" href="mailto:y-morimoto@tgk.ne.jp">メールでエントリーする</a>
+  </div>
+</section>
+
+<footer>
+  <p>ＴＧＫ株式会社</p>
+  <p>〒160-0022 東京都新宿区新宿１－１１－１２ 岩下ビル７Ｆ</p>
+  <p>TEL: 03-6679-6718　／　E-mail: y-morimoto@tgk.ne.jp</p>
+</footer>
+
+<!-- スマホ固定CTAバー -->
+<div class="sticky-bar">
+  <a href="mailto:y-morimoto@tgk.ne.jp">今すぐエントリーする（無料・Web面接）</a>
+</div>
+
+<script>
+(function(){
+  var btn = document.querySelector('.hamburger');
+  var nav = document.querySelector('.site-nav');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  }
+})();
+</script>
+</body>
+</html>

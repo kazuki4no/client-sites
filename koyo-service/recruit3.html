@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 株式会社 江陽サービス</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#222;background:#fff}
+img{max-width:100%;height:auto;display:block}
+
+/* ===== ナビ ===== */
+header{position:fixed;top:0;left:0;right:0;z-index:100;background:transparent;transition:background .3s}
+header.scrolled{background:rgba(10,22,40,.92);box-shadow:0 2px 8px rgba(0,0,0,.3)}
+.header-inner{display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto;padding:0 24px;height:68px}
+.logo{color:#fff;font-size:.95rem;font-weight:700;text-decoration:none;line-height:1.3}
+.logo span{display:block;font-size:.6rem;font-weight:400;opacity:.75}
+nav.pc-nav{display:flex;gap:0}
+nav.pc-nav a{color:#fff;text-decoration:none;font-size:.82rem;padding:22px 13px;opacity:.8;transition:opacity .2s}
+nav.pc-nav a:hover{opacity:1}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.hamburger span{display:block;width:26px;height:2px;background:#fff;border-radius:2px}
+.mobile-nav{display:none;position:fixed;top:68px;left:0;right:0;z-index:99;background:rgba(10,22,40,.96)}
+.mobile-nav.open{display:block}
+.mobile-nav a{display:block;color:#fff;text-decoration:none;padding:16px 24px;font-size:.9rem;border-bottom:1px solid rgba(255,255,255,.1)}
+@media(max-width:768px){nav.pc-nav{display:none}.hamburger{display:flex}}
+
+/* ===== FVバナー（ヒーロー） ===== */
+.hero{position:relative;min-height:85vh;display:flex;align-items:center;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=1600&h=900&fit=crop&q=80') center/cover no-repeat}
+.hero-overlay{position:absolute;inset:0;background:rgba(10,20,40,.58)}
+.hero-content{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:100px 24px 72px;text-align:center}
+.hero-pill{display:inline-block;border:1px solid rgba(255,255,255,.5);color:rgba(255,255,255,.9);font-size:.72rem;padding:5px 18px;border-radius:24px;margin-bottom:24px;letter-spacing:.12em;background:rgba(255,255,255,.08)}
+.hero-content h1{font-family:'Noto Serif JP',serif;color:#fff;font-size:clamp(2rem,6vw,4rem);line-height:1.25;margin-bottom:24px;font-weight:700;text-shadow:0 2px 16px rgba(0,0,0,.4)}
+.hero-content h1 .accent{color:#f0c040}
+.hero-sub{color:rgba(255,255,255,.85);font-size:clamp(.88rem,2vw,1.1rem);margin-bottom:40px;line-height:1.75;max-width:560px;margin-left:auto;margin-right:auto}
+.btn-hero{display:inline-block;background:#f0c040;color:#0a1628;text-decoration:none;padding:16px 48px;border-radius:50px;font-weight:700;font-size:1rem;letter-spacing:.04em;transition:background .2s,transform .2s;box-shadow:0 4px 20px rgba(240,192,64,.4)}
+.btn-hero:hover{background:#e0b030;transform:translateY(-3px)}
+.hero-scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.5);font-size:.72rem;letter-spacing:.12em;display:flex;flex-direction:column;align-items:center;gap:6px}
+.scroll-line{width:1px;height:36px;background:rgba(255,255,255,.4);animation:scrollline 1.8s infinite}
+@keyframes scrollline{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ===== セクション共通 ===== */
+section{padding:80px 24px}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.2em;color:#c09030;text-transform:uppercase;margin-bottom:8px}
+.section-title{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,3.5vw,2.2rem);font-weight:700;color:#0a1628;margin-bottom:48px;line-height:1.35}
+.sample-note{font-size:.7rem;color:#aaa;margin-top:6px}
+
+/* ===== 仕事カード ===== */
+.work-bg{background:#f8f6f0}
+.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.work-card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 3px 14px rgba(0,0,0,.08)}
+.work-card-img{width:100%;height:180px;object-fit:cover}
+.work-card-body{padding:24px}
+.work-card-body h3{font-size:1rem;font-weight:700;color:#0a1628;margin-bottom:10px}
+.work-card-body p{font-size:.85rem;color:#555;line-height:1.7}
+@media(max-width:768px){.work-grid{grid-template-columns:1fr}}
+
+/* ===== 特徴（交互レイアウト） ===== */
+.feature{display:flex;gap:48px;align-items:center;margin-bottom:64px}
+.feature:last-child{margin-bottom:0}
+.feature.reverse{flex-direction:row-reverse}
+.feature-img{flex:1;border-radius:14px;overflow:hidden}
+.feature-img img{width:100%;height:300px;object-fit:cover}
+.feature-text{flex:1}
+.feature-text h3{font-size:1.2rem;font-weight:700;color:#0a1628;margin-bottom:14px;line-height:1.4}
+.feature-text p{font-size:.9rem;color:#444;line-height:1.8;margin-bottom:12px}
+.feature-text ul{list-style:none;margin-top:16px}
+.feature-text ul li{font-size:.87rem;color:#555;padding:6px 0;border-bottom:1px solid #eee;display:flex;align-items:center;gap:8px}
+.feature-text ul li::before{content:'✓';color:#c09030;font-weight:700;flex-shrink:0}
+@media(max-width:768px){.feature,.feature.reverse{flex-direction:column}.feature-img img{height:220px}}
+
+/* ===== 数字バー ===== */
+.stats-section{background:#0a1628;padding:60px 24px}
+.stats-inner{max-width:900px;margin:0 auto;display:flex;flex-wrap:wrap;justify-content:space-around;gap:20px}
+.stat{text-align:center;padding:16px}
+.stat-num{font-size:clamp(2.2rem,5vw,3.2rem);font-weight:700;color:#f0c040;line-height:1}
+.stat-desc{font-size:.78rem;color:rgba(255,255,255,.65);margin-top:6px}
+.stat-note{font-size:.62rem;color:rgba(255,255,255,.35);margin-top:2px}
+
+/* ===== 1日の流れ ===== */
+.timeline-bg{background:#f8f6f0}
+.timeline{max-width:680px;display:flex;flex-direction:column}
+.tl-item{display:flex;gap:24px;padding:22px 0;border-bottom:1px solid #e8e0d0}
+.tl-item:last-child{border-bottom:none}
+.tl-time{min-width:76px;font-size:.88rem;font-weight:700;color:#c09030;padding-top:2px}
+.tl-body h4{font-size:.9rem;font-weight:700;color:#0a1628;margin-bottom:4px}
+.tl-body p{font-size:.82rem;color:#555;line-height:1.65}
+
+/* ===== FAQ ===== */
+.faq-list{display:flex;flex-direction:column;gap:14px;max-width:800px}
+.faq-item{border-left:3px solid #f0c040;background:#fff;padding:18px 22px;border-radius:0 10px 10px 0;box-shadow:0 2px 8px rgba(0,0,0,.05)}
+.faq-q{font-weight:700;color:#0a1628;font-size:.9rem;margin-bottom:10px}
+.faq-a{font-size:.85rem;color:#444;line-height:1.7}
+
+/* ===== 先輩の声 ===== */
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.voice-card{background:#fff;border-radius:14px;padding:28px 22px;box-shadow:0 2px 12px rgba(0,0,0,.07)}
+.voice-avatar{width:72px;height:72px;border-radius:50%;object-fit:cover;margin-bottom:16px;border:3px solid #f0c040}
+.voice-name{font-size:.82rem;font-weight:700;color:#0a1628;margin-bottom:2px}
+.voice-meta{font-size:.7rem;color:#888;margin-bottom:12px}
+.voice-text{font-size:.84rem;color:#444;line-height:1.7}
+@media(max-width:768px){.voice-grid{grid-template-columns:1fr}}
+
+/* ===== 募集要項 ===== */
+.spec-bg{background:#f8f6f0}
+.spec-table{width:100%;border-collapse:collapse}
+.spec-table tr{border-bottom:1px solid #e0d8c8}
+.spec-table th{text-align:left;padding:16px 20px;background:rgba(240,192,64,.15);color:#0a1628;font-size:.83rem;font-weight:700;width:160px;vertical-align:top}
+.spec-table td{padding:16px 20px;font-size:.875rem;color:#444;line-height:1.7}
+@media(max-width:600px){.spec-table th,.spec-table td{display:block;width:100%}.spec-table th{padding:12px 16px 4px}.spec-table td{padding:4px 16px 14px}}
+
+/* ===== CTA ===== */
+.cta-section{background:url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=1600&h=700&fit=crop&q=80') center/cover no-repeat;position:relative;padding:96px 24px;text-align:center}
+.cta-overlay{position:absolute;inset:0;background:rgba(10,22,40,.72)}
+.cta-content{position:relative;z-index:1}
+.cta-content h2{font-family:'Noto Serif JP',serif;color:#fff;font-size:clamp(1.5rem,3.5vw,2.4rem);margin-bottom:16px}
+.cta-content p{color:rgba(255,255,255,.85);font-size:.95rem;margin-bottom:32px}
+
+/* ===== フッター ===== */
+footer{background:#071020;color:rgba(255,255,255,.55);text-align:center;padding:32px 24px;font-size:.78rem;line-height:1.9}
+</style>
+<script>
+window.addEventListener('scroll',function(){
+  var h=document.querySelector('header');
+  if(window.scrollY>60){h.classList.add('scrolled')}else{h.classList.remove('scrolled')}
+});
+</script>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">株式会社 江陽サービス<span>採用情報</span></a>
+    <nav class="pc-nav">
+      <a href="#work">仕事内容</a>
+      <a href="#features">特徴</a>
+      <a href="#spec">募集要項</a>
+      <a href="#faq">FAQ</a>
+      <a href="#apply">応募する</a>
+    </nav>
+    <button class="hamburger" aria-label="メニュー" onclick="document.querySelector('.mobile-nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav">
+    <a href="#work" onclick="document.querySelector('.mobile-nav').classList.remove('open')">仕事内容</a>
+    <a href="#features" onclick="document.querySelector('.mobile-nav').classList.remove('open')">特徴</a>
+    <a href="#spec" onclick="document.querySelector('.mobile-nav').classList.remove('open')">募集要項</a>
+    <a href="#faq" onclick="document.querySelector('.mobile-nav').classList.remove('open')">FAQ</a>
+    <a href="#apply" onclick="document.querySelector('.mobile-nav').classList.remove('open')">応募する</a>
+  </nav>
+</header>
+
+<!-- FVバナー（全画面写真ヒーロー） -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-pill">ビル管理スタッフ 募集中</div>
+    <h1>建物を、<span class="accent">きれいに。</span><br>人を、大切に。</h1>
+    <p class="hero-sub">設立35年以上、浦安・千葉エリアで地道に信頼を積み上げてきた<br>ビルメンテナンスの会社です。<br>定年なし、年齢不問。チームで育てます。</p>
+    <a href="#apply" class="btn-hero">採用情報を見る</a>
+  </div>
+  <div class="hero-scroll">
+    <div class="scroll-line"></div>
+    <span>SCROLL</span>
+  </div>
+</section>
+
+<!-- 仕事内容カード -->
+<section class="work-bg" id="work">
+  <div class="section-inner">
+    <div class="section-eyebrow">OUR WORK</div>
+    <h2 class="section-title">私たちの仕事</h2>
+    <div class="work-grid">
+      <div class="work-card">
+        <img class="work-card-img" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=640&h=380&fit=crop&q=80" alt="清掃業務">
+        <div class="work-card-body">
+          <h3>🧹 清掃業務</h3>
+          <p>マンション・ビルの共用部・エントランスの日常清掃から、床面洗浄・ガラス清掃・貯水槽清掃などの定期清掃まで担当します。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社の業務に差し替えます</p>
+        </div>
+      </div>
+      <div class="work-card">
+        <img class="work-card-img" src="https://images.unsplash.com/photo-1567016432779-094069958ea5?w=640&h=380&fit=crop&q=80" alt="点検・検針業務">
+        <div class="work-card-body">
+          <h3>📋 点検・検針業務</h3>
+          <p>水道・ガスなどの定期検針、設備の目視確認を行います。建物を「守る」視点でチェックする、ビル管理の重要な仕事です。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社の業務に差し替えます</p>
+        </div>
+      </div>
+      <div class="work-card">
+        <img class="work-card-img" src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=640&h=380&fit=crop&q=80" alt="管理・書類対応">
+        <div class="work-card-body">
+          <h3>🔍 管理・書類対応</h3>
+          <p>現地調査・作業報告書の作成など、建物管理に付随する業務も担当。清掃以外のスキルも身につきます。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社の業務に差し替えます</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 数字で見る実績 -->
+<div class="stats-section">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">35+</div>
+      <div class="stat-desc">年の実績</div>
+      <div class="stat-note">※サンプル</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">18名</div>
+      <div class="stat-desc">少数精鋭チーム</div>
+      <div class="stat-note">※サンプル</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">70代</div>
+      <div class="stat-desc">が活躍中・定年なし</div>
+      <div class="stat-note">※サンプル</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">105日</div>
+      <div class="stat-desc">年間休日</div>
+      <div class="stat-note">※サンプル</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">年2回</div>
+      <div class="stat-desc">賞与あり</div>
+      <div class="stat-note">※サンプル</div>
+    </div>
+  </div>
+</div>
+
+<!-- 特徴（交互レイアウト） -->
+<section id="features">
+  <div class="section-inner">
+    <div class="section-eyebrow">FEATURES</div>
+    <h2 class="section-title">江陽サービスが選ばれる理由</h2>
+    <div class="feature">
+      <div class="feature-img">
+        <img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=640&h=380&fit=crop&q=80" alt="実績ある建物管理">
+      </div>
+      <div class="feature-text">
+        <h3>定年なし。70代も現役で活躍するチーム。</h3>
+        <p>当社に定年制はありません。「年齢を理由に辞めなければならない」職場ではなく、体が動く限り長く続けられる環境です。</p>
+        <p>現在のスタッフは20代〜70代まで幅広い年齢層。それぞれのペースで、チームの一員として活躍しています。</p>
+        <ul>
+          <li>年齢不問の採用（学歴不問）</li>
+          <li>70代のベテランが活躍中</li>
+          <li>ご自身のペースで続けられる</li>
+        </ul>
+        <p class="sample-note" style="margin-top:12px">※ここはサンプルです。実際には御社の特徴に差し替えます</p>
+      </div>
+    </div>
+    <div class="feature reverse">
+      <div class="feature-img">
+        <img src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=640&h=380&fit=crop&q=80" alt="昇給・賞与の安定収入">
+      </div>
+      <div class="feature-text">
+        <h3>昇給実績あり、賞与年2回。収入が安定します。</h3>
+        <p>「ビルの清掃は収入が低そう」というイメージを持たれがちですが、当社は月給23〜28万円で昇給制度も整っています。</p>
+        <p>前年度の昇給実績は月額2〜3万円。賞与は年2回（合計20〜35万円）。真面目に続ければ収入も上がっていきます。</p>
+        <ul>
+          <li>月給 230,000〜280,000円</li>
+          <li>昇給あり（前年度：月2〜3万円）</li>
+          <li>賞与年2回（前年度：20〜35万円）</li>
+        </ul>
+        <p class="sample-note" style="margin-top:12px">※ここはサンプルです。実際には御社の実績に差し替えます</p>
+      </div>
+    </div>
+    <div class="feature">
+      <div class="feature-img">
+        <img src="https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?w=640&h=380&fit=crop&q=80" alt="チームで育てる環境">
+      </div>
+      <div class="feature-text">
+        <h3>未経験でも、チームで育てます。</h3>
+        <p>入社後は先輩スタッフが現場に同行し、清掃の手順・道具の使い方・点検のポイントを丁寧に指導します。</p>
+        <p>18名の少人数チームなので、困ったことがあればすぐ相談できる環境。「一人でいきなり任される」ことはありません。</p>
+        <ul>
+          <li>先輩スタッフが現場同行で指導</li>
+          <li>少人数チームで相談しやすい</li>
+          <li>清掃・ビル管理の経験がゼロでもOK</li>
+        </ul>
+        <p class="sample-note" style="margin-top:12px">※ここはサンプルです。実際には御社の研修内容に差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section class="work-bg">
+  <div class="section-inner">
+    <div class="section-eyebrow">VOICES</div>
+    <h2 class="section-title">先輩スタッフの声</h2>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <img class="voice-avatar" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="（仮名）">
+        <div class="voice-name">田中 宏さん（仮名）</div>
+        <div class="voice-meta">入社4年目 / ビル管理スタッフ</div>
+        <p class="voice-text">製造業から転職。清掃は未経験でしたが、先輩がゼロから教えてくれました。毎日きれいになった建物を見る達成感が好きです。</p>
+        <p class="sample-note">※ここはサンプルです</p>
+      </div>
+      <div class="voice-card">
+        <img class="voice-avatar" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=faces&q=80" alt="（仮名）">
+        <div class="voice-name">鈴木 恵子さん（仮名）</div>
+        <div class="voice-meta">入社7年目 / 清掃スタッフ</div>
+        <p class="voice-text">子育てが一段落して再就職。年齢を一切気にせず採用してくれました。今は後輩の指導もしています。長く続けられる職場です。</p>
+        <p class="sample-note">※ここはサンプルです</p>
+      </div>
+      <div class="voice-card">
+        <img class="voice-avatar" src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=200&h=200&fit=crop&crop=faces&q=80" alt="（仮名）">
+        <div class="voice-name">佐々木 義男さん（仮名）</div>
+        <div class="voice-meta">入社12年目 / ベテランスタッフ</div>
+        <p class="voice-text">65歳で入社して12年。定年がないと聞いて入りましたが、本当にその通りでした。体を動かしていると元気でいられます。</p>
+        <p class="sample-note">※ここはサンプルです</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 1日の流れ -->
+<section>
+  <div class="section-inner">
+    <div class="section-eyebrow">DAILY FLOW</div>
+    <h2 class="section-title">スタッフの1日の流れ</h2>
+    <div class="timeline">
+      <div class="tl-item"><div class="tl-time">08:00</div><div class="tl-body"><h4>出勤・朝礼</h4><p>担当現場へ。当日の作業内容と安全確認を行います。</p></div></div>
+      <div class="tl-item"><div class="tl-time">09:00</div><div class="tl-body"><h4>共用部清掃</h4><p>エントランス・廊下・エレベーターなどを丁寧に清掃。</p></div></div>
+      <div class="tl-item"><div class="tl-time">11:30</div><div class="tl-body"><h4>定期作業・特定箇所</h4><p>床面洗浄・ガラス清掃など月次スケジュールの作業を実施。</p></div></div>
+      <div class="tl-item"><div class="tl-time">12:00</div><div class="tl-body"><h4>昼休憩</h4><p>1時間のリラックスタイム。チームの仲間と過ごすことも。</p></div></div>
+      <div class="tl-item"><div class="tl-time">13:00</div><div class="tl-body"><h4>午後の業務・検針等</h4><p>検針・書類整理・現地調査。業務は幅広く、スキルが広がります。</p></div></div>
+      <div class="tl-item"><div class="tl-time">16:00</div><div class="tl-body"><h4>片付け・報告書記入</h4><p>道具を洗浄・整理し、当日の作業内容を記録。</p></div></div>
+      <div class="tl-item"><div class="tl-time">17:00</div><div class="tl-body"><h4>退勤</h4><p>残業ほぼなし。オンとオフのメリハリがはっきりした職場です。</p></div></div>
+    </div>
+    <p class="sample-note" style="margin-top:14px">※ここはサンプルです。実際には御社の1日の流れに差し替えます</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="work-bg" id="faq">
+  <div class="section-inner">
+    <div class="section-eyebrow">FAQ</div>
+    <h2 class="section-title">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">Q. 未経験でも大丈夫ですか？</div>
+        <div class="faq-a">はい。清掃・ビル管理が初めての方がほとんどです。先輩スタッフが現場で丁寧に指導します。<br><span class="sample-note">※ここはサンプルです</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Q. 貯水槽清掃はどんな作業ですか？</div>
+        <div class="faq-a">天井からはしごで入る作業のため体力が必要ですが、必ず複数人で対応します。慣れれば無理なくできる作業です。<br><span class="sample-note">※ここはサンプルです</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Q. 何歳まで応募できますか？</div>
+        <div class="faq-a">年齢不問です。定年制はなく、現在70代のスタッフが活躍中です。<br><span class="sample-note">※ここはサンプルです</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Q. 正社員になれますか？</div>
+        <div class="faq-a">契約社員（1年）での採用ですが、終了後に正社員登用の可能性があります。<br><span class="sample-note">※ここはサンプルです</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Q. 選考の流れを教えてください。</div>
+        <div class="faq-a">書類選考（3日以内）→面接（1回）→内定（7日以内）。ハローワーク紹介状と履歴書をご用意ください。<br><span class="sample-note">※ここはサンプルです</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="spec-bg" id="spec">
+  <div class="section-inner">
+    <div class="section-eyebrow">RECRUITMENT</div>
+    <h2 class="section-title">募集要項</h2>
+    <table class="spec-table">
+      <tr><th>職種</th><td>ビル管理業務（清掃・その他）</td></tr>
+      <tr><th>雇用形態</th><td>契約社員（1年）→ 正社員登用可能性あり</td></tr>
+      <tr><th>給与</th><td>月額 230,000〜280,000円<br>昇給・賞与年2回あり（前年度実績あり）</td></tr>
+      <tr><th>就業時間</th><td>シフト制 8:00〜17:00（担当地により異なる）</td></tr>
+      <tr><th>休日</th><td>週休2日　年間休日105日　有給休暇10日</td></tr>
+      <tr><th>勤務地</th><td>浦安市・千葉エリアのマンション・ビル（転勤なし）</td></tr>
+      <tr><th>応募資格</th><td>普通自動車免許（AT可）必須　学歴・年齢不問</td></tr>
+      <tr><th>社会保険</th><td>雇用・労災・健康・厚生年金　通勤手当あり</td></tr>
+    </table>
+    <p class="sample-note" style="margin-top:12px">※ここはサンプルです。実際には御社の最新要項に差し替えます</p>
+  </div>
+</section>
+
+<!-- CTA（全画面写真バナー） -->
+<div class="cta-section" id="apply">
+  <div class="cta-overlay"></div>
+  <div class="cta-content">
+    <h2>「少し気になる」で<br>大丈夫です</h2>
+    <p>選考前のご質問・年収・働き方など、気軽にお問い合わせください。<br>メールでも電話でも、いつでもどうぞ。</p>
+    <p style="color:rgba(255,255,255,.9);font-size:1.1rem;margin-bottom:6px">📞 047-352-5920</p>
+    <p style="color:rgba(255,255,255,.75);font-size:.88rem;margin-bottom:32px">✉ koyo-mori@jcom.home.ne.jp</p>
+    <a href="mailto:koyo-mori@jcom.home.ne.jp" class="btn-hero">📩 メールで問い合わせる</a>
+  </div>
+</div>
+
+<footer>
+  <p>株式会社 江陽サービス</p>
+  <p>〒279-0003 千葉県浦安市海楽１－２６－７</p>
+  <p>TEL: 047-352-5920　E-mail: koyo-mori@jcom.home.ne.jp</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 C案 | Sky Global Logistics Services Japan 株式会社</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#0f172a;line-height:1.7}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+
+/* nav */
+.nav{position:absolute;top:0;left:0;right:0;z-index:100;padding:0 32px;display:flex;align-items:center;justify-content:space-between;height:70px}
+.nav-logo{color:#fff;font-weight:700;font-size:.9rem;line-height:1.2;text-shadow:0 1px 4px rgba(0,0,0,.5)}
+.nav-logo span{display:block;font-size:.6rem;font-weight:400;opacity:.8}
+.nav-links{display:flex;gap:24px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.85);font-size:.82rem;transition:color .2s}
+.nav-links a:hover{color:#7dd3fc}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff}
+.mobile-menu{display:none;position:fixed;inset:0;background:rgba(5,15,50,.96);z-index:200;padding:32px;flex-direction:column;justify-content:center;gap:0}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:#fff;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.12);font-size:1.1rem;font-weight:700}
+.mobile-close{position:absolute;top:20px;right:24px;color:#fff;font-size:1.5rem;cursor:pointer;background:none;border:none}
+
+/* hero */
+.hero{position:relative;min-height:85vh;display:flex;align-items:flex-end;padding-bottom:80px}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1542296332-2e4473faf563?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center 30%}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(5,15,50,.3) 0%,rgba(5,15,50,.5) 40%,rgba(5,15,50,.82) 100%)}
+.hero-content{position:relative;z-index:1;width:100%;max-width:1100px;margin:0 auto;padding:0 32px}
+.hero-eyecatch{font-family:'Noto Serif JP',serif;font-size:clamp(2rem,6.5vw,4rem);font-weight:900;color:#fff;line-height:1.2;text-shadow:0 2px 24px rgba(0,0,0,.6);margin-bottom:16px}
+.hero-eyecatch em{color:#7dd3fc;font-style:normal}
+.hero-sub{color:rgba(255,255,255,.88);font-size:clamp(.88rem,2vw,1.05rem);margin-bottom:28px;max-width:560px}
+.hero-tags{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:32px}
+.hero-tag{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.35);color:#fff;font-size:.75rem;font-weight:700;padding:5px 14px;border-radius:999px;backdrop-filter:blur(4px)}
+.btn-primary{display:inline-block;background:#0ea5e9;color:#fff;font-weight:700;font-size:1rem;padding:15px 44px;border-radius:7px;transition:.2s;box-shadow:0 4px 20px rgba(14,165,233,.5)}
+.btn-primary:hover{background:#0284c7;transform:translateY(-2px)}
+.btn-line{display:inline-block;background:transparent;border:2px solid rgba(255,255,255,.6);color:#fff;font-weight:700;font-size:.9rem;padding:13px 28px;border-radius:7px;margin-left:14px;transition:.2s}
+.btn-line:hover{background:rgba(255,255,255,.12);border-color:#fff}
+
+/* scroll down */
+.scroll-hint{position:absolute;bottom:28px;right:40px;z-index:10;display:flex;flex-direction:column;align-items:center;gap:6px;color:rgba(255,255,255,.55);font-size:.68rem;letter-spacing:.1em}
+.scroll-hint::after{content:'';display:block;width:1px;height:48px;background:rgba(255,255,255,.3);margin-top:6px}
+
+/* intro */
+.intro{background:#05111f;color:#fff;padding:64px 32px;text-align:center}
+.intro h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.3rem,3.5vw,2rem);font-weight:900;margin-bottom:16px;line-height:1.4}
+.intro h2 span{color:#7dd3fc}
+.intro p{color:rgba(255,255,255,.7);font-size:.9rem;max-width:640px;margin:0 auto;line-height:1.85}
+
+/* section wrapper */
+section.page{padding:72px 32px}
+.page-inner{max-width:1000px;margin:0 auto}
+.label{font-size:.72rem;font-weight:700;letter-spacing:.14em;color:#0ea5e9;text-transform:uppercase;margin-bottom:8px}
+.title{font-family:'Noto Serif JP',serif;font-size:clamp(1.4rem,3.5vw,2rem);font-weight:900;margin-bottom:20px;line-height:1.3;color:#0f172a}
+
+/* 3column features */
+.feat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#e2e8f0;margin-top:40px;border-radius:12px;overflow:hidden}
+.feat-item{background:#fff;padding:36px 24px;text-align:center}
+.feat-num{font-size:2rem;font-weight:900;color:#0ea5e9;line-height:1}
+.feat-unit{font-size:.8rem;font-weight:700;color:#0ea5e9}
+.feat-label{font-size:.75rem;color:#64748b;margin:8px 0}
+.feat-text{font-size:.85rem;color:#334155;line-height:1.7}
+.sample-note{font-size:.7rem;color:#9ca3af;margin-top:6px}
+
+/* image banner */
+.img-banner{height:260px;overflow:hidden;position:relative}
+.img-banner img{width:100%;height:100%;object-fit:cover}
+.img-banner-overlay{position:absolute;inset:0;background:rgba(5,15,50,.45);display:flex;align-items:center;justify-content:center}
+.img-banner-text{color:#fff;font-size:clamp(1rem,2.5vw,1.4rem);font-weight:700;text-align:center;text-shadow:0 2px 12px rgba(0,0,0,.5);letter-spacing:.04em}
+
+/* jobs section */
+.job-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px}
+.job-card{border:2px solid #e2e8f0;border-radius:10px;padding:28px 20px}
+.job-card-num{font-size:1.5rem;font-weight:900;color:#0ea5e9;margin-bottom:12px}
+.job-card h3{font-size:1rem;font-weight:700;color:#0f172a;margin-bottom:8px}
+.job-card p{font-size:.85rem;color:#475569;line-height:1.75}
+.warn-box{background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:20px 24px;margin-top:24px}
+.warn-box p{font-size:.875rem;color:#1e40af;line-height:1.75}
+
+/* testimonials */
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+.voice-card{position:relative;border-radius:12px;overflow:hidden;height:280px}
+.voice-card-img{width:100%;height:100%;object-fit:cover}
+.voice-card-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(5,15,60,.9) 0%,rgba(5,15,60,.2) 60%)}
+.voice-card-body{position:absolute;bottom:0;left:0;right:0;padding:20px 16px;color:#fff}
+.voice-name{font-weight:700;font-size:.9rem;margin-bottom:2px}
+.voice-role{font-size:.7rem;opacity:.75;margin-bottom:8px}
+.voice-text{font-size:.8rem;line-height:1.65;opacity:.9}
+.voice-sample{font-size:.68rem;opacity:.55;margin-top:6px}
+
+/* timeline */
+.tl-wrap{margin-top:40px}
+.tl-row{display:flex;gap:20px;padding:18px 0;border-bottom:1px solid #e2e8f0;align-items:flex-start}
+.tl-row:last-child{border-bottom:none}
+.tl-t{flex-shrink:0;width:72px;font-weight:900;color:#0ea5e9;font-size:.9rem;padding-top:2px}
+.tl-body h4{font-size:.9rem;font-weight:700;color:#0f172a;margin-bottom:2px}
+.tl-body p{font-size:.82rem;color:#475569;line-height:1.7}
+
+/* req */
+.req-table{width:100%;border-collapse:collapse;margin-top:36px}
+.req-table th,.req-table td{padding:14px 16px;border:1px solid #e2e8f0;font-size:.875rem;vertical-align:top}
+.req-table th{background:#0c2466;color:#fff;font-weight:700;width:30%;min-width:120px;text-align:left}
+.req-table tr:nth-child(even) td{background:#f0f8ff}
+
+/* FAQ */
+.faq-list{margin-top:32px}
+.faq-item{border-bottom:1px solid #e2e8f0}
+.faq-q{display:flex;justify-content:space-between;align-items:center;padding:18px 0;cursor:pointer;font-weight:700;font-size:.9rem;color:#0f172a;gap:12px}
+.faq-q .toggle{flex-shrink:0;width:26px;height:26px;background:#0ea5e9;color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;transition:transform .3s}
+.faq-a{padding:0 0 18px;font-size:.85rem;color:#475569;line-height:1.8;display:none}
+.faq-item.open .faq-a{display:block}
+.faq-item.open .toggle{transform:rotate(45deg)}
+
+/* CTA */
+.cta{background:#05111f;color:#fff;padding:80px 32px;text-align:center}
+.cta h2{font-family:'Noto Serif JP',serif;font-size:clamp(1.5rem,4vw,2.2rem);font-weight:900;margin-bottom:12px}
+.cta p{color:rgba(255,255,255,.75);margin-bottom:32px;font-size:.95rem}
+.cta-contact{margin-top:20px;font-size:.82rem;color:rgba(255,255,255,.55)}
+
+footer{background:#020c1b;color:rgba(255,255,255,.45);font-size:.78rem;padding:28px 32px;text-align:center}
+footer p{margin-bottom:5px}
+
+@media(max-width:768px){
+  .nav-links{display:none}
+  .hamburger{display:flex}
+  .hero-content{padding:0 20px}
+  .btn-line{margin-left:0;margin-top:12px;display:block}
+  .feat-grid{grid-template-columns:1fr}
+  .job-grid{grid-template-columns:1fr}
+  .voice-grid{grid-template-columns:1fr}
+  .voice-card{height:220px}
+  .req-table th,.req-table td{display:block;width:100%}
+  .req-table th{border-bottom:none}
+  .scroll-hint{display:none}
+  section.page{padding:56px 20px}
+  .img-banner{height:200px}
+  .intro{padding:48px 20px}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-logo">Sky Global Logistics<span>Services Japan 株式会社</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">仕事内容</a></li>
+    <li><a href="#voice">先輩の声</a></li>
+    <li><a href="#requirements">募集要項</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <div class="hamburger" onclick="toggleMenu()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <button class="mobile-close" onclick="toggleMenu()">✕</button>
+  <a href="#about" onclick="toggleMenu()">仕事内容</a>
+  <a href="#voice" onclick="toggleMenu()">先輩の声</a>
+  <a href="#requirements" onclick="toggleMenu()">募集要項</a>
+  <a href="#faq" onclick="toggleMenu()">FAQ</a>
+  <a href="#apply" onclick="toggleMenu()">応募する</a>
+</div>
+
+<!-- Hero -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyecatch">空を、舞台に。<br>世界規模の物流を、<em>酒々井</em>から。</div>
+    <p class="hero-sub">シンガポール本社を持つ国際物流企業で、航空貨物スペシャリストとして活躍しませんか。英語は実務の中で伸ばせる環境です。</p>
+    <div class="hero-tags">
+      <span class="hero-tag">正社員</span>
+      <span class="hero-tag">月給28万円〜</span>
+      <span class="hero-tag">年間休日107日</span>
+      <span class="hero-tag">JR酒々井駅 徒歩2分</span>
+      <span class="hero-tag">リモート可</span>
+    </div>
+    <a href="#apply" class="btn-primary">採用に応募する</a>
+    <a href="#requirements" class="btn-line">募集要項を見る</a>
+  </div>
+  <div class="scroll-hint">SCROLL</div>
+</section>
+
+<!-- Intro -->
+<div class="intro">
+  <h2>世界の空を飛ぶ貨物を、<span>あなたの手</span>でつなぐ</h2>
+  <p>航空貨物の物流は、見えないところで世界経済を支えています。Sky Global Logistics では、24時間365日の国際物流体制を支えるスペシャリストを募集しています。英語が少し不安でも大丈夫。実務の中で、着実に伸びていけます。</p>
+</div>
+
+<!-- About -->
+<section class="page" id="about">
+  <div class="page-inner">
+    <div class="label">About the Job</div>
+    <h2 class="title">仕事内容 — 3つのフェーズ</h2>
+    <div class="job-grid">
+      <div class="job-card">
+        <div class="job-card-num">01</div>
+        <h3>コーディネーション</h3>
+        <p>お客様からの依頼を受け、航空会社・運送会社と連携して配送・集荷を手配します。国際電話・メール（英語・日本語）が主役の仕事です。</p>
+      </div>
+      <div class="job-card">
+        <div class="job-card-num">02</div>
+        <h3>トラッキング</h3>
+        <p>貨物がどこにあるかを24時間把握し、お客様へ最新情報を届けます。正確で迅速な情報提供が顧客の信頼を生みます。</p>
+      </div>
+      <div class="job-card">
+        <div class="job-card-num">03</div>
+        <h3>ネゴシエーション</h3>
+        <p>通関業者・運送会社など関係各所と折衝・連携しながら業務を推進します。英語での交渉力が実務の中で身につきます。</p>
+      </div>
+    </div>
+    <div class="warn-box">
+      <p>💡 <strong>英語に不安がある方へ</strong>：基本的なビジネス英語ができれば、あとは実務の中で自然と伸びていきます。シンガポールを含む多国籍チームとの日々のやり取りがそのまま英語研修になります。社内OJT・勉強会でも継続サポートします。</p>
+    </div>
+  </div>
+</section>
+
+<!-- Image banner -->
+<div class="img-banner">
+  <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=1600&h=260&fit=crop&q=80" alt="物流イメージ">
+  <div class="img-banner-overlay">
+    <div class="img-banner-text">世界をつなぐ航空貨物の最前線へ</div>
+  </div>
+</div>
+
+<!-- Features numeric -->
+<section class="page" style="background:#f0f8ff">
+  <div class="page-inner">
+    <div class="label">Highlights</div>
+    <h2 class="title">数字で見るSky Globalの環境</h2>
+    <div class="feat-grid">
+      <div class="feat-item">
+        <div><span class="feat-num">28</span><span class="feat-unit">万円〜</span></div>
+        <div class="feat-label">未経験スタート月給</div>
+        <div class="feat-text">経験・スキルに応じて最大40万円。スキルが正当に評価されます。</div>
+        <div class="sample-note">※ここはサンプルです。実際の実績値に差し替えます</div>
+      </div>
+      <div class="feat-item">
+        <div><span class="feat-num">107</span><span class="feat-unit">日</span></div>
+        <div class="feat-label">年間休日数</div>
+        <div class="feat-text">シフト制で希望申請が可能。プライベートとの両立を大切にしています。</div>
+        <div class="sample-note">※ここはサンプルです。実際の実績値に差し替えます</div>
+      </div>
+      <div class="feat-item">
+        <div><span class="feat-num">2</span><span class="feat-unit">分</span></div>
+        <div class="feat-label">JR酒々井駅から徒歩</div>
+        <div class="feat-text">マイカー通勤・駐車場も完備。リモートワークも要相談で可能です。</div>
+        <div class="sample-note">※ここはサンプルです。実際の内容に差し替えます</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Voice -->
+<section class="page" id="voice">
+  <div class="page-inner">
+    <div class="label">Voice</div>
+    <h2 class="title">先輩からのメッセージ</h2>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=280&fit=crop&crop=faces&q=80" alt="先輩" class="voice-card-img">
+        <div class="voice-card-overlay"></div>
+        <div class="voice-card-body">
+          <div class="voice-name">田中 美帆（仮名）</div>
+          <div class="voice-role">物流オペレーター ／ 入社2年目</div>
+          <div class="voice-text">「英語が苦手でしたが、半年後には英語でお客様へ報告できるようになりました。実務が一番の先生です。」</div>
+          <div class="voice-sample">※ここはサンプルです。実際には御社スタッフのメッセージに差し替えます</div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=280&fit=crop&crop=faces&q=80" alt="先輩" class="voice-card-img">
+        <div class="voice-card-overlay"></div>
+        <div class="voice-card-body">
+          <div class="voice-name">佐藤 健太（仮名）</div>
+          <div class="voice-role">物流オペレーター ／ 入社3年目</div>
+          <div class="voice-text">「世界中の航空貨物が自分を経由して動く仕事は、やりがいが全然違います。スケールの大きさに最初は驚きました。」</div>
+          <div class="voice-sample">※ここはサンプルです。実際には御社スタッフのメッセージに差し替えます</div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=280&fit=crop&crop=faces&q=80" alt="先輩" class="voice-card-img">
+        <div class="voice-card-overlay"></div>
+        <div class="voice-card-body">
+          <div class="voice-name">中村 さやか（仮名）</div>
+          <div class="voice-role">アポインター ／ 入社1年目</div>
+          <div class="voice-text">「シフト希望が通りやすく、毎週の計画が立てやすいです。ベンチャーのスピード感が楽しい職場です。」</div>
+          <div class="voice-sample">※ここはサンプルです。実際には御社スタッフのメッセージに差し替えます</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Image banner 2 -->
+<div class="img-banner">
+  <img src="https://images.unsplash.com/photo-1474302770737-173ee21bab63?w=1600&h=260&fit=crop&q=80" alt="航空機イメージ">
+  <div class="img-banner-overlay">
+    <div class="img-banner-text">24時間365日、世界の空をつなぐ</div>
+  </div>
+</div>
+
+<!-- Timeline -->
+<section class="page" style="background:#f8faff">
+  <div class="page-inner">
+    <div class="label">A Day</div>
+    <h2 class="title">社員の1日の流れ（Aシフト 9:00〜）</h2>
+    <p style="font-size:.78rem;color:#9ca3af;margin-bottom:8px">※ここはサンプルです。実際には御社の1日の流れに差し替えます</p>
+    <div class="tl-wrap">
+      <div class="tl-row"><div class="tl-t">9:00</div><div class="tl-body"><h4>出勤・貨物状況確認</h4><p>海外チームからの引き継ぎを受け、優先対応案件を整理します</p></div></div>
+      <div class="tl-row"><div class="tl-t">10:00</div><div class="tl-body"><h4>顧客対応・問い合わせ返答</h4><p>国内外のお客様から届く問い合わせへ英語・日本語で対応</p></div></div>
+      <div class="tl-row"><div class="tl-t">12:00</div><div class="tl-body"><h4>昼食休憩（1時間）</h4><p>駅徒歩2分の立地でランチの選択肢も豊富です</p></div></div>
+      <div class="tl-row"><div class="tl-t">13:00</div><div class="tl-body"><h4>午後便の配送・集荷手配</h4><p>航空会社・運送会社と英語でスケジュール調整</p></div></div>
+      <div class="tl-row"><div class="tl-t">15:00</div><div class="tl-body"><h4>通関業者との連携・進捗報告</h4><p>書類確認・折衝を経て最新ステータスをお客様へ報告</p></div></div>
+      <div class="tl-row"><div class="tl-t">16:30</div><div class="tl-body"><h4>翌日準備・海外チームへ引き継ぎ</h4><p>シンガポール等の海外チームへ業務を引き継ぎ</p></div></div>
+      <div class="tl-row"><div class="tl-t">18:00</div><div class="tl-body"><h4>退勤</h4><p>残業は月平均20時間。プライベートも大切にできます</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Requirements -->
+<section class="page" id="requirements">
+  <div class="page-inner">
+    <div class="label">Requirements</div>
+    <h2 class="title">募集要項</h2>
+    <table class="req-table">
+      <tr><th>職種</th><td>物流オペレーター・アポインター</td></tr>
+      <tr><th>雇用形態</th><td>正社員（試用期間3か月・同条件）</td></tr>
+      <tr><th>給与</th><td>月給 280,000円〜400,000円（固定残業40時間分含む）<br>・未経験：28万円〜 ／ 貿易実務経験者：33万円〜 ／ フォワーダー経験者：38万円〜</td></tr>
+      <tr><th>就業時間</th><td>シフト制（希望申請可・毎週木曜申請→日曜確定）<br>A：9:00〜18:00 ／ B：13:00〜22:00 ／ C：23:00〜8:00</td></tr>
+      <tr><th>休日</th><td>年間107日（週休2日・シフト制）</td></tr>
+      <tr><th>勤務地</th><td>千葉県印旛郡酒々井町中央台１－６－１３<br>JR酒々井駅 徒歩2分</td></tr>
+      <tr><th>リモートワーク</th><td>可（要相談）</td></tr>
+      <tr><th>交通</th><td>マイカー通勤可（駐車場あり）・通勤手当月25,000円まで</td></tr>
+      <tr><th>保険</th><td>雇用・労災・健康・厚生年金</td></tr>
+      <tr><th>賞与・昇給</th><td>賞与あり（業績連動）・昇給あり</td></tr>
+      <tr><th>必須</th><td>ビジネス英語・英会話ができる方<br>（コールセンター・貿易実務・フォワーダー経験者優遇）</td></tr>
+      <tr><th>選考</th><td>書類選考（7日以内通知）→ 面接×2回（英語面接・リモート可）</td></tr>
+      <tr><th>採用人数</th><td>1名</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="page" style="background:#f0f8ff" id="faq">
+  <div class="page-inner">
+    <div class="label">FAQ</div>
+    <h2 class="title">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">英語が少し不安でも応募できますか？<span class="toggle">＋</span></div>
+        <div class="faq-a">ビジネス英語・英会話ができる方を募集しています。完璧な英語より「使いたい」という意欲を重視します。入社後はOJT・社内勉強会でしっかりサポートします。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">物流・貿易の経験は必須ですか？<span class="toggle">＋</span></div>
+        <div class="faq-a">必須ではありません。未経験の方も歓迎しています。コールセンター・カスタマーサービス経験がある方は特に歓迎です。経験者は優遇します。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">シフト希望は通りますか？<span class="toggle">＋</span></div>
+        <div class="faq-a">毎週木曜日に翌週の希望を申請できます。プライベートに合わせた働き方が可能です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">選考はオンラインで受けられますか？<span class="toggle">＋</span></div>
+        <div class="faq-a">はい、リモート面接も可能です。詳細は応募後にご案内します。英語での面接も含まれます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q" onclick="toggleFaq(this)">車通勤はできますか？<span class="toggle">＋</span></div>
+        <div class="faq-a">可能です。駐車場を完備しています。JR酒々井駅からは徒歩2分です。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="apply">
+  <h2>「空を舞台に」一緒に働きましょう</h2>
+  <p>国際物流スペシャリストへの第一歩。まずはお気軽にご連絡ください。</p>
+  <a href="mailto:mtogo@skygls.com" style="display:inline-block;background:#0ea5e9;color:#fff;font-weight:700;font-size:1rem;padding:15px 44px;border-radius:7px;transition:.2s">メールで応募する</a>
+  <p class="cta-contact">mtogo@skygls.com ／ 080-3080-9966（担当：都甲）</p>
+</section>
+
+<footer>
+  <p>Sky Global Logistics Services Japan 株式会社</p>
+  <p>〒285-0922 千葉県印旛郡酒々井町中央台１－６－１３ ／ JR酒々井駅 徒歩2分</p>
+  <p>E-mail: mtogo@skygls.com</p>
+</footer>
+
+<script>
+function toggleMenu(){document.getElementById('mobileMenu').classList.toggle('open')}
+function toggleFaq(el){el.parentElement.classList.toggle('open')}
+</script>
+</body>
+</html>

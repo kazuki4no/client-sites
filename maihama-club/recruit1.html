@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>採用情報 | 株式会社 舞浜倶楽部</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Noto Sans JP',sans-serif;color:#2d2d2d;line-height:1.75;background:#fff;}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+:root{
+  --green:#3a7d5e;
+  --green-dark:#1d5033;
+  --green-light:#e9f4ed;
+  --accent:#c4783a;
+  --cream:#fafaf6;
+}
+
+/* HEADER */
+.site-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 1.4rem;position:sticky;top:0;z-index:100;
+  background:#fff;box-shadow:0 1px 6px rgba(0,0,0,.09);
+  position:relative;
+}
+.brand{font-size:.95rem;font-weight:700;color:var(--green-dark);}
+.site-nav{display:flex;gap:1.4rem;align-items:center;}
+.site-nav a{font-size:.88rem;color:#444;transition:color .2s;}
+.site-nav a:hover{color:var(--green);}
+.site-nav .nav-cta{
+  background:var(--green);color:#fff;padding:.4rem 1rem;
+  border-radius:20px;font-weight:700;font-size:.88rem;transition:background .2s;
+}
+.site-nav .nav-cta:hover{background:var(--green-dark);}
+.hamburger{display:none;background:none;border:0;font-size:1.7rem;line-height:1;cursor:pointer;color:var(--green-dark);}
+@media(max-width:768px){
+  .site-header{position:sticky;top:0;z-index:100;}
+  .hamburger{display:block;}
+  .site-nav{
+    display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:#fff;box-shadow:0 8px 16px rgba(0,0,0,.12);padding:.5rem 1rem;
+  }
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.8rem 0;border-bottom:1px solid #eee;}
+  .site-nav .nav-cta{margin:.7rem 0;text-align:center;border-radius:6px;padding:.7rem;}
+}
+
+/* HERO */
+.hero{
+  position:relative;min-height:75vh;display:flex;align-items:center;
+  overflow:hidden;background:var(--green-dark);
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:url('https://images.unsplash.com/photo-1584515933487-779824d29309?w=1600&h=900&fit=crop&q=80') center/cover no-repeat;
+  opacity:.38;
+}
+.hero-content{
+  position:relative;z-index:2;max-width:720px;
+  padding:4rem 1.5rem;color:#fff;
+}
+.hero-tag{
+  display:inline-block;background:var(--accent);color:#fff;
+  padding:.28rem .8rem;border-radius:4px;font-size:.82rem;font-weight:700;margin-bottom:1rem;
+}
+.hero h1{font-size:clamp(1.9rem,6vw,3.4rem);font-weight:700;line-height:1.25;margin-bottom:1rem;}
+.hero p{font-size:clamp(.95rem,2.4vw,1.1rem);color:#c8e6d4;margin-bottom:2rem;}
+.btn-accent{
+  display:inline-block;background:var(--accent);color:#fff;
+  padding:.85rem 2.4rem;border-radius:6px;font-weight:700;font-size:1rem;
+  transition:background .2s;
+}
+.btn-accent:hover{background:#a0602a;}
+
+/* COMMON */
+section{padding:4.5rem 1.2rem;}
+.inner{max-width:920px;margin:0 auto;}
+.sec-title{font-size:clamp(1.4rem,4vw,2rem);font-weight:700;text-align:center;color:var(--green-dark);margin-bottom:.4rem;}
+.sec-sub{text-align:center;color:#888;font-size:.9rem;margin-bottom:2.6rem;}
+
+/* POINTS */
+.points{background:var(--green-light);}
+.points-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.point-card{background:#fff;border-radius:12px;padding:2rem 1.4rem;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.06);}
+.point-icon{display:flex;justify-content:center;margin-bottom:1rem;color:var(--green);}
+.point-icon svg{width:44px;height:44px;}
+.point-card h3{font-size:1rem;font-weight:700;color:var(--green-dark);margin-bottom:.6rem;line-height:1.5;}
+.point-card p{font-size:.88rem;color:#555;line-height:1.8;}
+@media(max-width:768px){.points-grid{grid-template-columns:1fr;}}
+
+/* VOICES */
+.voices{background:#fff;}
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.voice-card{border-radius:10px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.08);}
+.voice-card img{width:100%;height:210px;object-fit:cover;}
+.voice-body{padding:1.2rem;}
+.voice-name{font-weight:700;color:var(--green-dark);font-size:.95rem;}
+.voice-role{font-size:.78rem;color:#999;margin:.15rem 0 .6rem;}
+.voice-text{font-size:.88rem;color:#444;line-height:1.75;}
+.sample-note{font-size:.75rem;color:#c0c0c0;margin-top:.6rem;}
+@media(max-width:768px){.voice-grid{grid-template-columns:1fr;}}
+
+/* TIMELINE */
+.timeline-sec{background:var(--cream);}
+.timeline{max-width:660px;margin:0 auto;position:relative;}
+.timeline::before{
+  content:'';position:absolute;left:82px;top:.8rem;bottom:.8rem;
+  width:2px;background:#b8d8c4;
+}
+.tl-item{
+  display:grid;grid-template-columns:72px 20px 1fr;
+  gap:0 .8rem;align-items:start;margin-bottom:1.6rem;
+}
+.tl-time{text-align:right;font-weight:700;font-size:.88rem;color:var(--green);padding-top:.25rem;}
+.tl-dot{
+  width:12px;height:12px;border-radius:50%;background:var(--green);
+  justify-self:center;margin-top:.4rem;position:relative;z-index:1;
+}
+.tl-body h4{font-size:.93rem;font-weight:700;color:#2d2d2d;margin-bottom:.18rem;}
+.tl-body p{font-size:.85rem;color:#666;}
+@media(max-width:768px){
+  .tl-item{grid-template-columns:42px 16px 1fr;}
+  .timeline::before{left:50px;}
+  .tl-time{font-size:.78rem;}
+}
+
+/* REQUIREMENTS */
+.requirements{background:#fff;}
+.req-table{width:100%;border-collapse:collapse;}
+.req-table th,.req-table td{
+  padding:.9rem 1rem;border-bottom:1px solid #e5e5e5;
+  font-size:.92rem;text-align:left;vertical-align:top;
+}
+.req-table th{
+  background:#f0f7f3;width:150px;font-weight:700;
+  color:var(--green-dark);white-space:nowrap;
+}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%;}
+  .req-table th{padding:.5rem .8rem;white-space:normal;}
+  .req-table td{padding:.5rem .8rem 1rem;}
+}
+
+/* FAQ */
+.faq{background:var(--green-light);}
+.faq-list{max-width:720px;margin:0 auto;}
+.faq-item{background:#fff;border-radius:8px;margin-bottom:.9rem;box-shadow:0 1px 5px rgba(0,0,0,.06);}
+.faq-q{
+  padding:1rem 1.2rem;font-weight:700;color:var(--green-dark);
+  display:flex;align-items:flex-start;gap:.8rem;font-size:.93rem;
+}
+.faq-badge{
+  flex-shrink:0;background:var(--green);color:#fff;
+  width:1.7rem;height:1.7rem;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-size:.78rem;margin-top:.05rem;
+}
+.faq-a{padding:.2rem 1.2rem 1rem 3.5rem;color:#444;font-size:.9rem;line-height:1.8;}
+
+/* RECRUITER */
+.recruiter-sec{background:var(--cream);}
+.recruiter-card{
+  max-width:500px;margin:0 auto;background:#fff;border-radius:12px;
+  padding:2rem;text-align:center;box-shadow:0 2px 10px rgba(0,0,0,.07);
+}
+.recruiter-card img{
+  width:110px;height:110px;border-radius:50%;object-fit:cover;margin:0 auto 1rem;
+}
+.rec-name{font-weight:700;color:var(--green-dark);margin-bottom:.25rem;}
+.rec-msg{font-size:.9rem;color:#444;line-height:1.8;margin-bottom:.3rem;}
+
+/* CTA SECTION */
+.cta-sec{background:var(--green-dark);padding:5rem 1.2rem;text-align:center;}
+.cta-sec h2{color:#fff;font-size:clamp(1.4rem,4vw,2rem);margin-bottom:.7rem;}
+.cta-sec p{color:#a8d4b8;margin-bottom:2rem;font-size:.95rem;}
+.btn-white{
+  display:inline-block;background:#fff;color:var(--green-dark);
+  padding:.85rem 2.4rem;border-radius:6px;font-weight:700;font-size:1rem;
+  transition:background .2s;
+}
+.btn-white:hover{background:var(--green-light);}
+
+/* FOOTER */
+footer{background:#12301f;color:#8ab89a;padding:2.2rem 1rem;text-align:center;font-size:.84rem;line-height:1.9;}
+</style>
+</head>
+<body>
+
+<header class="site-header" id="top">
+  <a class="brand" href="#top">株式会社 舞浜倶楽部</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#about">私たちについて</a>
+    <a href="#voices">先輩の声</a>
+    <a href="#flow">1日の流れ</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#faq">よくある質問</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="about">
+  <div class="hero-bg"></div>
+  <div class="hero-content inner">
+    <span class="hero-tag">介護職 / 小規模多機能型施設「きはち」</span>
+    <h1>人の尊厳を守る、<br>北欧スタイルのケアを。</h1>
+    <p>スウェーデンのケア技術で、ご利用者一人ひとりの「その人らしさ」を大切にする仕事です。経験は問いません。ここから始めましょう。</p>
+    <a href="#entry" class="btn-accent">まずは話を聞いてみる</a>
+  </div>
+</section>
+
+<!-- POINTS -->
+<section class="points" id="points">
+  <div class="inner">
+    <p class="sec-title">舞浜倶楽部で働く3つの魅力</p>
+    <p class="sec-sub">ここでしか学べない、北欧スタイル介護のプロフェッショナルへ</p>
+    <div class="points-grid">
+      <div class="point-card">
+        <div class="point-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="2" y1="12" x2="22" y2="12"/>
+            <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+          </svg>
+        </div>
+        <h3>スウェーデン式ケアで<br>本物のスキルが身につく</h3>
+        <p>福祉先進国の技術を浦安で実践。「人格の尊厳」を理念に、認知症の方と丁寧に向き合うケア力が自然と育ちます。</p>
+      </div>
+      <div class="point-card">
+        <div class="point-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 22V12"/>
+            <path d="M5 15l7-7 7 7"/>
+            <path d="M3 22h18"/>
+          </svg>
+        </div>
+        <h3>未経験でも安心して<br>スタートできる</h3>
+        <p>平均介護度1.41で身体介助はほぼなし。先輩スタッフが丁寧に指導するので、ゼロからでも無理なく覚えられます。</p>
+      </div>
+      <div class="point-card">
+        <div class="point-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 11l19-9-9 19-2-8-8-2z"/>
+          </svg>
+        </div>
+        <h3>直営の調理師が作る<br>手作り食事が自慢</h3>
+        <p>介護施設では珍しい直営厨房。利用者様もスタッフも、毎日おいしい手作りの食事を一緒に楽しめます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOICES -->
+<section class="voices" id="voices">
+  <div class="inner">
+    <p class="sec-title">先輩スタッフの声</p>
+    <p class="sec-sub">※ここはサンプルです。実際には御社スタッフの声・写真に差し替えます</p>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=300&h=280&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <!-- ※御社スタッフの写真に差し替えてください -->
+        <div class="voice-body">
+          <p class="voice-name">田中 みわ（仮名）</p>
+          <p class="voice-role">介護職・入社3年目</p>
+          <p class="voice-text">未経験でも「人の役に立ちたい」という気持ちだけで入社しました。スウェーデンケアの考え方を学んで、利用者様の笑顔がやりがいに変わりました。</p>
+          <p class="sample-note">※サンプルです。実際のスタッフ写真・コメントに差し替えます</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=300&h=280&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <!-- ※御社スタッフの写真に差し替えてください -->
+        <div class="voice-body">
+          <p class="voice-name">佐藤 はるか（仮名）</p>
+          <p class="voice-role">介護職・入社5年目</p>
+          <p class="voice-text">認知症の方とのコミュニケーションのコツが、自然と身につきました。体力的な負担も少なく、長く続けられる職場です。</p>
+          <p class="sample-note">※サンプルです。実際のスタッフ写真・コメントに差し替えます</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=300&h=280&fit=crop&crop=faces&q=80" alt="スタッフ写真（サンプル）">
+        <!-- ※御社スタッフの写真に差し替えてください -->
+        <div class="voice-body">
+          <p class="voice-name">鈴木 けんじ（仮名）</p>
+          <p class="voice-role">介護職・入社2年目</p>
+          <p class="voice-text">小さな施設なのでスタッフ同士の距離が近く、何でも相談できる雰囲気。毎日の手作り食事もうれしい驚きでした。</p>
+          <p class="sample-note">※サンプルです。実際のスタッフ写真・コメントに差し替えます</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TIMELINE -->
+<section class="timeline-sec" id="flow">
+  <div class="inner">
+    <p class="sec-title">スタッフの1日の流れ</p>
+    <p class="sec-sub">日勤スタッフの典型的な1日（サンプル）<br>※ここはサンプルです。実際のスケジュールに差し替えます</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <div class="tl-time">9:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <h4>出勤・朝礼</h4>
+          <p>夜勤スタッフから申し送りを受け、利用者様の体調変化を確認します。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">9:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <h4>利用者様のお迎え・入浴介助</h4>
+          <p>「きはち」に来られた方をお迎えし、ご希望に応じて入浴介助を行います。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">11:30</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <h4>昼食サポート</h4>
+          <p>直営調理師が作った手作り昼食を一緒にいただきます。会話も弾む和やかな時間です。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">13:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <h4>午後の活動・レクリエーション</h4>
+          <p>利用者様が楽しめる活動を企画・実施します。「その人らしさ」を引き出す大切な場面です。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">15:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <h4>おやつ・コミュニケーション</h4>
+          <p>ゆっくり対話しながら、利用者様の状態を丁寧に観察します。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">17:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <h4>お送り・引き継ぎ準備</h4>
+          <p>ご自宅へのお送りを行い、夜勤スタッフへの申し送り内容を整理します。</p>
+        </div>
+      </div>
+      <div class="tl-item">
+        <div class="tl-time">18:00</div>
+        <div class="tl-dot"></div>
+        <div class="tl-body">
+          <h4>申し送り・退勤</h4>
+          <p>夜勤スタッフへ引き継いで退勤。残業は月平均4時間程度です。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REQUIREMENTS -->
+<section class="requirements" id="requirements">
+  <div class="inner">
+    <p class="sec-title">募集要項</p>
+    <p class="sec-sub">小規模多機能型施設「きはち」介護職スタッフ</p>
+    <table class="req-table">
+      <tr><th>職種</th><td>介護職／小規模多機能型施設「きはち」</td></tr>
+      <tr><th>雇用形態</th><td>正社員（雇用期間の定めなし）</td></tr>
+      <tr><th>給与</th><td>月給 222,000円〜278,000円<br>（基本給185,000〜236,000円 ＋ 処遇改善手当・夜勤手当を含む）</td></tr>
+      <tr><th>勤務時間</th><td>9:00〜18:00（変形労働時間制）<br>夜勤シフトあり：17:00〜翌10:00（休憩3時間）</td></tr>
+      <tr><th>休日・休暇</th><td>年間休日115日 / 有給休暇（法定付与）/ 育児・介護・看護休暇実績あり</td></tr>
+      <tr><th>就業場所</th><td>〒279-0023 千葉県浦安市高洲１－２－１<br>JR京葉線 新浦安駅より徒歩17分</td></tr>
+      <tr><th>応募資格</th><td>学歴不問・経験不問（介護職資格があれば尚可）<br>年齢：18〜59歳（定年60歳のため）</td></tr>
+      <tr><th>昇給・賞与</th><td>昇給あり（月500〜2,000円・前年実績）/ 賞与年2回（計2.80ヶ月・前年実績）</td></tr>
+      <tr><th>待遇</th><td>雇用・労災・健康・厚生年金完備 / 退職金制度（3年以上）/ 再雇用制度（65歳まで）</td></tr>
+      <tr><th>通勤手当</th><td>実費支給（上限月50,000円）/ 自転車通勤（2km以上）手当あり</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="inner">
+    <p class="sec-title">よくある質問</p>
+    <p class="sec-sub">※ここはサンプルです。実際には御社のFAQに差し替えます</p>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-badge">Q</span>介護経験がなくても応募できますか？</div>
+        <div class="faq-a">はい、未経験の方を歓迎しています。当施設は平均介護度1.41と低く、身体介助がほぼないため、基本から無理なく学べます。先輩スタッフが丁寧に指導しますのでご安心ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-badge">Q</span>スウェーデン式ケアとはどんなものですか？</div>
+        <div class="faq-a">福祉先進国スウェーデンのケア技術を取り入れた、「その人らしさ」と「人格の尊厳」を大切にする介護スタイルです。入社後の研修や日常業務を通じて自然に習得できます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-badge">Q</span>夜勤はどのくらいありますか？</div>
+        <div class="faq-a">月4回程度の夜勤シフトがあります（17:00〜翌10:00・休憩3時間）。夜勤手当は1回8,000円です。夜勤の頻度についてはご相談いただけます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-badge">Q</span>選考の流れを教えてください。</div>
+        <div class="faq-a">履歴書・職務経歴書等をメールまたは郵送 → 書類選考（7日以内にご連絡）→ 面接1回 → 内定のご連絡、という流れです。オンライン自主応募も受け付けています。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-badge">Q</span>職場の雰囲気を教えてください。</div>
+        <div class="faq-a">「きはち」は定員29名の小規模施設です。スタッフ同士の距離が近く、何でも気軽に相談できる温かい雰囲気。直営調理師の手作り食事を一緒に楽しめるのも自慢のひとつです。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RECRUITER -->
+<section class="recruiter-sec" id="recruiter">
+  <div class="inner">
+    <p class="sec-title">採用担当者より</p>
+    <div class="recruiter-card">
+      <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=240&h=240&fit=crop&crop=faces&q=80" alt="採用担当（サンプル）">
+      <!-- ※採用担当者の実際の写真に差し替えてください -->
+      <p class="rec-name">原田 一樹（採用担当）</p>
+      <p class="rec-msg">「スウェーデン式ケアに興味がある」「介護を始めてみたい」という気持ちだけで十分です。まずは施設を見学しに来てください。どんな小さな疑問でもお気軽にご連絡ください。</p>
+      <p class="sample-note">※ここはサンプルです。実際の採用担当者の写真・メッセージに差し替えます</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec" id="entry">
+  <h2>まずはお気軽にご連絡ください</h2>
+  <p>「見学だけしたい」「話を聞くだけでも」という方も歓迎しています。<br>メール・電話・オンラインのご都合のよい方法でどうぞ。</p>
+  <a href="mailto:recruit@maihama.co.jp" class="btn-white">メールで問い合わせる</a>
+</section>
+
+<footer>
+  <p>株式会社 舞浜倶楽部</p>
+  <p>〒279-0023 千葉県浦安市高洲１－２－１</p>
+  <p>TEL: 047-304-2400 ／ recruit@maihama.co.jp</p>
+</footer>
+
+<script>
+(function(){
+  var btn = document.querySelector('.hamburger');
+  var nav = document.querySelector('.site-nav');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  }
+})();
+</script>
+</body>
+</html>

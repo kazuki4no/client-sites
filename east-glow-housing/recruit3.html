@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 ｜ イーストグローハウジング株式会社</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@700&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#1F2937;line-height:1.7}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
+:root{
+  --deep:#0A1F3A;
+  --teal:#2AA89C;
+  --teal-light:#40C4B8;
+  --accent:#1B7A70;
+  --bg:#F4F8F7;
+  --white:#fff;
+  --gray:#6B7280;
+  --gray-light:#E5E7EB;
+  --text:#1F2937;
+}
+
+/* ナビ（透明→スクロールで不透明） */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  background:rgba(10,31,58,0);
+  padding:0 24px;height:68px;
+  display:flex;align-items:center;justify-content:space-between;
+  transition:background .35s;
+}
+.nav.scrolled{background:rgba(10,31,58,.97)}
+.nav-logo{color:var(--white);font-size:.9rem;font-weight:700;letter-spacing:.04em;text-shadow:0 1px 4px rgba(0,0,0,.4)}
+.nav-menu{display:flex;align-items:center;gap:24px}
+.nav-links{display:flex;gap:18px;list-style:none}
+.nav-links a{color:rgba(255,255,255,.85);font-size:.8rem;transition:color .2s}
+.nav-links a:hover{color:var(--teal-light)}
+.nav-cta{
+  background:var(--teal);color:var(--white);
+  padding:8px 20px;border-radius:24px;
+  font-size:.8125rem;font-weight:700;transition:background .2s;
+}
+.nav-cta:hover{background:var(--teal-light)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer}
+.hamburger span{width:24px;height:2px;background:var(--white);border-radius:2px}
+
+/* FV バナー */
+.hero{
+  position:relative;min-height:85vh;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background-image:url('https://images.unsplash.com/photo-1567016432779-094069958ea5?w=1600&h=900&fit=crop&q=80');
+  background-size:cover;background-position:center;
+}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to bottom,rgba(10,31,58,.72) 0%,rgba(10,31,58,.55) 50%,rgba(10,31,58,.78) 100%);
+}
+.hero-content{
+  position:relative;z-index:2;
+  text-align:center;color:var(--white);
+  padding:120px 24px 80px;max-width:800px;
+}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  background:rgba(42,168,156,.85);
+  color:var(--white);padding:6px 20px;border-radius:24px;
+  font-size:.8rem;font-weight:700;letter-spacing:.08em;
+  margin-bottom:28px;
+}
+.hero h1{
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(2rem,7vw,3.8rem);
+  font-weight:700;line-height:1.2;margin-bottom:24px;
+  text-shadow:0 2px 12px rgba(0,0,0,.4);
+}
+.hero-sub{
+  font-size:clamp(.9rem,2.5vw,1.1rem);
+  opacity:.9;margin-bottom:36px;line-height:1.9;
+}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-hero{
+  display:inline-block;
+  background:var(--teal);color:var(--white);
+  padding:15px 38px;border-radius:36px;
+  font-size:1rem;font-weight:700;
+  box-shadow:0 4px 16px rgba(0,0,0,.3);
+  transition:background .2s,transform .1s;
+}
+.btn-hero:hover{background:var(--teal-light);transform:translateY(-2px)}
+.btn-ghost{
+  display:inline-block;
+  border:2px solid rgba(255,255,255,.75);color:var(--white);
+  padding:13px 28px;border-radius:36px;
+  font-size:.9rem;font-weight:700;transition:.2s;
+}
+.btn-ghost:hover{background:rgba(255,255,255,.15)}
+
+/* スクロール示唆 */
+.scroll-hint{
+  position:absolute;bottom:24px;left:50%;transform:translateX(-50%);
+  color:rgba(255,255,255,.6);font-size:.75rem;letter-spacing:.08em;
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+}
+.scroll-hint::after{
+  content:"";
+  display:block;width:2px;height:30px;
+  background:linear-gradient(to bottom,rgba(255,255,255,.7),transparent);
+  border-radius:2px;
+  animation:scrollline 1.8s ease-in-out infinite;
+}
+@keyframes scrollline{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* セクション共通 */
+section{padding:72px 24px}
+.section-inner{max-width:1000px;margin:0 auto}
+.sec-label{
+  display:inline-block;color:var(--teal);
+  font-size:.75rem;font-weight:700;letter-spacing:.15em;margin-bottom:10px;
+}
+.sec-title{
+  font-size:clamp(1.4rem,4vw,2rem);
+  font-weight:700;color:var(--deep);margin-bottom:12px;line-height:1.3;
+}
+.sec-desc{color:var(--gray);font-size:.9375rem;margin-bottom:44px;max-width:640px}
+.bg-light{background:var(--bg)}
+.sample-note{font-size:.72rem;color:#bbb;margin-top:8px}
+
+/* 魅力カード（アイコン大） */
+.appeal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.appeal-card{
+  border-radius:16px;overflow:hidden;
+  box-shadow:0 4px 20px rgba(0,0,0,.08);
+  background:var(--white);
+}
+.appeal-img{
+  width:100%;height:180px;
+  object-fit:cover;
+}
+.appeal-body{padding:24px}
+.appeal-tag{
+  display:inline-block;background:rgba(42,168,156,.12);
+  color:var(--teal);font-size:.72rem;font-weight:700;
+  padding:3px 10px;border-radius:8px;margin-bottom:10px;
+}
+.appeal-card h3{font-size:1rem;font-weight:700;color:var(--deep);margin-bottom:8px}
+.appeal-card p{font-size:.875rem;color:var(--gray);line-height:1.75}
+
+/* 特徴リスト */
+.feature-split{display:flex;gap:48px;align-items:center}
+.feature-img{
+  flex:1;border-radius:16px;overflow:hidden;
+  box-shadow:0 6px 24px rgba(0,0,0,.1);
+  min-height:320px;
+}
+.feature-img img{width:100%;height:100%;object-fit:cover}
+.feature-text{flex:1}
+.feature-list{list-style:none;display:flex;flex-direction:column;gap:18px}
+.feature-list li{display:flex;gap:14px;align-items:flex-start}
+.feature-icon{
+  flex-shrink:0;
+  width:40px;height:40px;border-radius:10px;
+  background:rgba(42,168,156,.12);
+  color:var(--teal);font-size:1.2rem;
+  display:flex;align-items:center;justify-content:center;
+}
+.feature-list h4{font-size:.9375rem;font-weight:700;color:var(--deep);margin-bottom:4px}
+.feature-list p{font-size:.875rem;color:var(--gray)}
+
+/* 募集要項 */
+.job-table{width:100%;border-collapse:collapse;font-size:.9375rem}
+.job-table th,.job-table td{
+  padding:14px 18px;border-bottom:1px solid var(--gray-light);
+  text-align:left;vertical-align:top;
+}
+.job-table th{width:28%;color:var(--deep);font-weight:700;white-space:nowrap;background:#EDF5F4}
+.job-table small{font-size:.8125rem;color:var(--gray)}
+
+/* FAQ */
+.faq-list{display:flex;flex-direction:column;gap:12px}
+.faq-item{background:var(--white);border-radius:10px;border:1px solid var(--gray-light);padding:20px}
+.faq-q{font-weight:700;color:var(--deep);margin-bottom:8px;display:flex;gap:10px}
+.faq-q-mark{color:var(--teal);font-weight:900;flex-shrink:0}
+.faq-a{font-size:.875rem;color:var(--gray);line-height:1.8;padding-left:22px}
+
+/* タイムライン */
+.tl-list{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.tl-card{
+  background:var(--white);border-radius:12px;padding:20px 16px;
+  border-top:4px solid var(--teal);
+  box-shadow:0 2px 10px rgba(0,0,0,.06);
+}
+.tl-time{font-size:.8rem;font-weight:700;color:var(--teal);margin-bottom:6px}
+.tl-card h4{font-size:.9rem;font-weight:700;color:var(--deep);margin-bottom:6px}
+.tl-card p{font-size:.8125rem;color:var(--gray)}
+
+/* 先輩の声 */
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.voice-card{
+  background:var(--white);border-radius:14px;padding:28px 22px;
+  box-shadow:0 3px 14px rgba(0,0,0,.07);
+  position:relative;
+}
+.voice-card::before{
+  content:"\201C";
+  position:absolute;top:16px;left:18px;
+  font-size:3rem;color:rgba(42,168,156,.2);
+  font-family:serif;line-height:1;
+}
+.voice-photo{
+  width:68px;height:68px;border-radius:50%;
+  object-fit:cover;margin-bottom:14px;
+  border:3px solid var(--teal-light);
+}
+.voice-name{font-size:.875rem;font-weight:700;color:var(--deep);margin-bottom:2px}
+.voice-role{font-size:.75rem;color:var(--gray);margin-bottom:12px}
+.voice-text{font-size:.875rem;color:var(--text);line-height:1.85}
+
+/* CTA */
+.cta-section{
+  background:linear-gradient(135deg,var(--deep) 0%,#0D3D5E 50%,var(--accent) 100%);
+  text-align:center;padding:80px 24px;
+}
+.cta-section h2{
+  font-family:'Noto Serif JP',serif;
+  font-size:clamp(1.5rem,4vw,2.2rem);
+  font-weight:700;color:var(--white);margin-bottom:14px;
+}
+.cta-section p{color:rgba(255,255,255,.78);font-size:.9375rem;margin-bottom:32px;max-width:520px;margin-left:auto;margin-right:auto}
+.btn-cta-main{
+  display:inline-block;
+  background:var(--teal);color:var(--white);
+  padding:16px 44px;border-radius:40px;
+  font-size:1.05rem;font-weight:700;
+  box-shadow:0 6px 20px rgba(0,0,0,.3);
+  transition:background .2s,transform .1s;
+}
+.btn-cta-main:hover{background:var(--teal-light);transform:translateY(-2px)}
+
+/* フッター */
+.footer{background:#060f1a;color:rgba(255,255,255,.45);text-align:center;padding:24px;font-size:.8125rem}
+
+/* スマホ */
+@media(max-width:768px){
+  .nav-menu{
+    display:none;position:fixed;inset:68px 0 0;
+    background:rgba(10,31,58,.97);flex-direction:column;
+    align-items:center;justify-content:center;gap:28px;z-index:199;
+  }
+  .nav-menu.open{display:flex}
+  .nav-links{flex-direction:column;text-align:center}
+  .hamburger{display:flex}
+  .appeal-grid,.voice-grid{grid-template-columns:1fr}
+  .feature-split{flex-direction:column}
+  .feature-img{width:100%;min-height:220px}
+  .tl-list{grid-template-columns:1fr 1fr;gap:12px}
+  .job-table tr{display:block;margin-bottom:12px;border-bottom:2px solid var(--gray-light)}
+  .job-table th,.job-table td{display:block;width:100%}
+  .hero-btns{flex-direction:column;align-items:center}
+}
+@media(max-width:480px){
+  .tl-list{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- ナビ（透明・スクロールで変色） -->
+<nav class="nav" id="siteNav">
+  <div class="nav-logo">イーストグローハウジング株式会社</div>
+  <div class="nav-menu" id="navMenu">
+    <ul class="nav-links">
+      <li><a href="#appeal">働く魅力</a></li>
+      <li><a href="#jobs">募集要項</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#voice">先輩の声</a></li>
+    </ul>
+    <a href="#apply" class="nav-cta">応募する</a>
+  </div>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- FVバナー（全画面インテリア写真・3層） -->
+<section class="hero">
+  <!-- サンプル写真：インテリア・内装バンクより -->
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-eyebrow">
+      <span>🏡</span><span>千葉・成田 ／ 正社員 賃貸営業スタッフ 募集</span>
+    </div>
+    <h1>好きな部屋を、<br>仕事にしよう。</h1>
+    <p class="hero-sub">エイブルFC加盟・地域密着30年のイーストグローハウジング。<br>インテリア・間取り好き歓迎。未経験から活躍できる採用ページです。</p>
+    <div class="hero-btns">
+      <a href="#apply" class="btn-hero">採用情報を見る</a>
+      <a href="#voice" class="btn-ghost">先輩の声を読む</a>
+    </div>
+  </div>
+  <div class="scroll-hint">SCROLL</div>
+</section>
+
+<!-- 働く魅力 -->
+<section class="bg-light" id="appeal">
+  <div class="section-inner">
+    <p class="sec-label">APPEAL</p>
+    <h2 class="sec-title">「営業が怖い」を覆す、<br>3つの働き方の魅力</h2>
+    <p class="sec-desc">「提案営業」と聞くとハードルが高く感じるかもしれません。でも私たちは来店型。お客様が「こんな部屋を探しているんです」と来てくれる、コーディネーター的なスタイルです。</p>
+    <div class="appeal-grid">
+      <div class="appeal-card">
+        <!-- サンプル写真：インテリアバンクより -->
+        <img class="appeal-img" src="https://images.unsplash.com/photo-1555041469-a586c61ea9bc?w=640&h=380&fit=crop&q=80" alt="インテリアイメージ">
+        <div class="appeal-body">
+          <span class="appeal-tag">営業スタイル</span>
+          <h3>来店型・飛び込みなし</h3>
+          <p>お客様が来店してくれる反響型。電話やドア営業はなく、目の前のお客様に丁寧に向き合えます。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社の営業スタイルに差し替えます</p>
+        </div>
+      </div>
+      <div class="appeal-card">
+        <!-- サンプル写真：建築・建物バンクより -->
+        <img class="appeal-img" src="https://images.unsplash.com/photo-1568605114967-8130f3a36994?w=640&h=380&fit=crop&q=80" alt="住宅イメージ">
+        <div class="appeal-body">
+          <span class="appeal-tag">仕事の幅</span>
+          <h3>間取図＆リノベ提案まで</h3>
+          <p>物件ご案内だけでなく、間取図の作成・リノベーション提案まで担当。インテリアや建築の知識が活きます。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社の業務範囲に差し替えます</p>
+        </div>
+      </div>
+      <div class="appeal-card">
+        <!-- サンプル写真：オフィスバンクより -->
+        <img class="appeal-img" src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=640&h=380&fit=crop&q=80" alt="職場イメージ">
+        <div class="appeal-body">
+          <span class="appeal-tag">職場環境</span>
+          <h3>年間115日休み・成田駅1分</h3>
+          <p>週休2日（水曜＋他1日）、年間休日115日。女性スタッフも多く活躍し、アットホームで働きやすい環境です。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社の環境に差し替えます</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 特徴（画像＋テキスト分割） -->
+<section>
+  <div class="section-inner">
+    <p class="sec-label">FEATURE</p>
+    <h2 class="sec-title">「住まいが好き」が<br>そのまま強みになる職場</h2>
+    <p class="sec-desc">弱点メモにある「提案営業のハードル」を乗り越えるのは、資格や経験より「住まいへの関心」です。</p>
+    <div class="feature-split">
+      <!-- サンプル写真：インテリアバンクより -->
+      <div class="feature-img">
+        <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=640&h=520&fit=crop&q=80" alt="インテリア提案イメージ">
+      </div>
+      <div class="feature-text">
+        <ul class="feature-list">
+          <li>
+            <span class="feature-icon">🏠</span>
+            <div>
+              <h4>間取り好きはそのまま武器になる</h4>
+              <p>間取図の作成・物件コーディネートは日常業務。「家を見るのが好き」という感性がお客様への説明力に直結します。</p>
+              <p class="sample-note">※ここはサンプルです。実際には御社の業務に差し替えます</p>
+            </div>
+          </li>
+          <li>
+            <span class="feature-icon">📋</span>
+            <div>
+              <h4>未経験でも接客から始められる</h4>
+              <p>最初は来店対応・ヒアリングから。「何を大切にしたいか」を聞く力が一番求められます。知識は後からついてきます。</p>
+              <p class="sample-note">※ここはサンプルです。実際には御社の育成方針に差し替えます</p>
+            </div>
+          </li>
+          <li>
+            <span class="feature-icon">🎓</span>
+            <div>
+              <h4>宅建を取れば収入もアップ</h4>
+              <p>入社後に宅建を取得する方も多数。資格手当が支給され、スキルアップが直接収入に反映される環境です。</p>
+              <p class="sample-note">※ここはサンプルです。実際には御社の制度に差し替えます</p>
+            </div>
+          </li>
+          <li>
+            <span class="feature-icon">🌏</span>
+            <div>
+              <h4>国際色豊かな成田という舞台</h4>
+              <p>エイブルFC成田店として20年以上展開。外国人のお客様も多く、多様な来客との関わりがやりがいになります。</p>
+              <p class="sample-note">※ここはサンプルです。実際には御社の特徴に差し替えます</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 1日の流れ（グリッドカード型） -->
+<section class="bg-light" id="timeline">
+  <div class="section-inner">
+    <p class="sec-label">A DAY IN THE LIFE</p>
+    <h2 class="sec-title">社員の1日の流れ</h2>
+    <p class="sample-note" style="margin-bottom:28px">※ここはサンプルです。実際には御社スタッフの1日に差し替えます</p>
+    <div class="tl-list">
+      <div class="tl-card"><div class="tl-time">9:30</div><h4>出勤・朝礼</h4><p>物件情報と来客予定を確認</p></div>
+      <div class="tl-card"><div class="tl-time">10:00</div><h4>来店対応</h4><p>ご希望ヒアリング・条件整理</p></div>
+      <div class="tl-card"><div class="tl-time">11:00</div><h4>物件提案</h4><p>間取図作成・周辺情報整理</p></div>
+      <div class="tl-card"><div class="tl-time">12:30</div><h4>ランチ休憩</h4><p>成田駅周辺の飲食店へ</p></div>
+      <div class="tl-card"><div class="tl-time">13:30</div><h4>内見同行</h4><p>お客様と一緒に物件を見学</p></div>
+      <div class="tl-card"><div class="tl-time">15:30</div><h4>条件交渉</h4><p>オーナー様との橋渡し・申込サポート</p></div>
+      <div class="tl-card"><div class="tl-time">16:30</div><h4>事務処理</h4><p>契約事務・物件情報更新</p></div>
+      <div class="tl-card"><div class="tl-time">18:30</div><h4>退勤</h4><p>翌日の準備をして退勤</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩の声 -->
+<section id="voice">
+  <div class="section-inner">
+    <p class="sec-label">VOICE</p>
+    <h2 class="sec-title">先輩スタッフからのメッセージ</h2>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <!-- サンプル写真：顔写真（女性）バンクより -->
+        <img class="voice-photo" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=200&h=200&fit=crop&crop=faces&q=80" alt="田中さくら（仮名）">
+        <div class="voice-name">田中 さくら（仮名）</div>
+        <div class="voice-role">賃貸営業スタッフ・入社3年目</div>
+        <p class="voice-text">間取り図を見るのが趣味で入社しました。プランを提案して「ここに決めた！」とお客様が笑顔になる瞬間が、毎回やりがいになります。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</p>
+      </div>
+      <div class="voice-card">
+        <!-- サンプル写真：顔写真（男性）バンクより -->
+        <img class="voice-photo" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="鈴木健太（仮名）">
+        <div class="voice-name">鈴木 健太（仮名）</div>
+        <div class="voice-role">賃貸営業スタッフ・入社1年目</div>
+        <p class="voice-text">「営業＝きつい」と思っていましたが、来店してくれたお客様に寄り添う接客型。自分のペースで丁寧にできる環境が気に入っています。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</p>
+      </div>
+      <div class="voice-card">
+        <!-- サンプル写真：顔写真（女性）バンクより -->
+        <img class="voice-photo" src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&crop=faces&q=80" alt="山田麻衣（仮名）">
+        <div class="voice-name">山田 麻衣（仮名）</div>
+        <div class="voice-role">営業リーダー・入社5年目</div>
+        <p class="voice-text">宅建を入社後に取得してキャリアアップ。女性スタッフが多く、相談しやすい環境です。成田駅1分の通いやすさも長続きの理由のひとつです。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社スタッフのコメントに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="bg-light" id="jobs">
+  <div class="section-inner">
+    <p class="sec-label">REQUIREMENTS</p>
+    <h2 class="sec-title">募集要項</h2>
+    <table class="job-table">
+      <tbody>
+        <tr><th>職種</th><td>賃貸営業スタッフ（成田店）</td></tr>
+        <tr><th>仕事内容</th><td>入居希望のお客様への物件提案・ご案内、賃貸条件交渉、契約事務、物件情報入力、間取図製作。物件仕入・リノベーション提案なども担当します。</td></tr>
+        <tr><th>雇用形態</th><td>正社員（試用期間3か月・同条件）</td></tr>
+        <tr><th>給与</th><td>月給 240,000円〜480,000円<br><small>（基本給192,000〜384,000円 ＋ 固定残業代48,000〜96,000円。30時間超は追加支給）<br>昇給あり（月2,000〜60,000円／前年度実績）</small></td></tr>
+        <tr><th>賞与</th><td>年2回（計1.6か月分・前年度実績）＋決算賞与あり</td></tr>
+        <tr><th>就業時間</th><td>9:30〜18:30（休憩60分）月平均時間外20時間</td></tr>
+        <tr><th>休日・休暇</th><td>水曜日＋他1日　週休2日制 ／ 年間休日：115日<br>年末年始休暇7日・夏季休暇7日・有給休暇（6か月後10日）</td></tr>
+        <tr><th>勤務地</th><td>千葉県成田市花崎町814-36 玉川ビル（成田店）<br>京成本線 成田駅 徒歩1分</td></tr>
+        <tr><th>応募資格</th><td>経験不問・学歴不問（64歳以下）<br>普通自動車免許必須（AT限定可）<br>宅地建物取引士：あれば資格手当支給</td></tr>
+        <tr><th>待遇・福利厚生</th><td>雇用・労災・健康・厚生年金加入<br>通勤手当（実費・上限なし）・皆勤手当5,000円<br>資格手当あり・再雇用制度（68歳まで）</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="section-inner">
+    <p class="sec-label">FAQ</p>
+    <h2 class="sec-title">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-mark">Q.</span>営業経験がなくても応募できますか？</div>
+        <div class="faq-a">はい。来店されたお客様への接客スタイルなので、飛び込みや電話営業はありません。異業種からの転職者も多く活躍しています。<br><span class="sample-note">※ここはサンプルです。実際には御社のご回答に差し替えます</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-mark">Q.</span>宅建の資格は必須ですか？</div>
+        <div class="faq-a">入社時は必須ではありません。保有している場合は資格手当が支給されます。入社後に取得する方も多く、スキルアップと収入アップを同時に実現できます。<br><span class="sample-note">※ここはサンプルです。実際には御社のご回答に差し替えます</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-mark">Q.</span>インテリアや建築への興味は活かせますか？</div>
+        <div class="faq-a">はい。間取図の作成・リノベーション提案など、センスが活きる場面が多くあります。「住まいが好き」という気持ちがそのまま強みになります。<br><span class="sample-note">※ここはサンプルです。実際には御社のご回答に差し替えます</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-mark">Q.</span>休日の取り方を教えてください。</div>
+        <div class="faq-a">水曜日＋他1日の週休2日制で、年間休日は115日。年末年始・夏季の長期休暇もあります。<br><span class="sample-note">※ここはサンプルです。実際には御社のご回答に差し替えます</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span class="faq-q-mark">Q.</span>転勤はありますか？</div>
+        <div class="faq-a">成田・市原・四街道の各店舗への転勤の可能性があります。ご希望や生活状況を考慮して相談できますので、面接時にご確認ください。<br><span class="sample-note">※ここはサンプルです。実際には御社のご回答に差し替えます</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA末尾 -->
+<section class="cta-section" id="apply">
+  <h2>好きな部屋を、<br>仕事にしよう。</h2>
+  <p>経験不問・未経験歓迎。「住まいが好き」という気持ちがあれば大丈夫です。まずはお気軽にお問い合わせください。</p>
+  <a href="https://www.egh.jp" class="btn-cta-main">求人詳細・応募はこちら（会社HP）</a>
+</section>
+
+<footer class="footer">
+  <p>© イーストグローハウジング株式会社</p>
+  <p>E-mail: mfukuda@egh.jp</p>
+</footer>
+
+<script>
+(function(){
+  var nav=document.getElementById('siteNav');
+  var btn=document.getElementById('hamburger');
+  var menu=document.getElementById('navMenu');
+  window.addEventListener('scroll',function(){
+    if(window.scrollY>80) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
+  });
+  if(btn&&menu) btn.addEventListener('click',function(){ menu.classList.toggle('open'); });
+})();
+</script>
+</body>
+</html>

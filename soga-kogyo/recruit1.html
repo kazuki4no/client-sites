@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>採用情報 | 株式会社曽我興業</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Noto Sans JP',sans-serif;color:#1a2540;line-height:1.7;background:#fff}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ヘッダー */
+.site-header{display:flex;align-items:center;justify-content:space-between;
+  padding:.8rem 1.5rem;background:#1a2540;position:sticky;top:0;z-index:100}
+.brand{font-size:1rem;font-weight:900;color:#fff;letter-spacing:.05em}
+.site-nav{display:flex;gap:1.4rem;align-items:center}
+.site-nav a{color:#cdd5e0;font-size:.88rem;transition:color .2s}
+.site-nav a:hover{color:#f59e0b}
+.site-nav .nav-cta{background:#f59e0b;color:#1a2540;padding:.4rem 1rem;border-radius:4px;font-weight:700;font-size:.85rem}
+.hamburger{display:none;background:none;border:0;font-size:1.8rem;color:#fff;line-height:1;cursor:pointer}
+@media(max-width:768px){
+  .hamburger{display:block}
+  .site-nav{display:none;flex-direction:column;align-items:stretch;gap:0;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:#1a2540;box-shadow:0 8px 16px rgba(0,0,0,.3);padding:.5rem 1.5rem}
+  .site-nav.open{display:flex}
+  .site-nav a{color:#cdd5e0;padding:.8rem 0;border-bottom:1px solid #2c3c5a;font-size:.95rem}
+  .site-nav a:last-child{border-bottom:none}
+}
+
+/* ヒーロー */
+.hero{position:relative;min-height:65vh;display:flex;align-items:center;overflow:hidden}
+.hero-img{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&h=900&fit=crop&q=80') center/cover no-repeat;z-index:0}
+.hero-overlay{position:absolute;inset:0;background:rgba(15,25,48,.65);z-index:1}
+.hero-content{position:relative;z-index:2;max-width:700px;padding:3rem 1.5rem;color:#fff}
+.hero-tag{display:inline-block;background:#f59e0b;color:#1a2540;font-size:.78rem;font-weight:700;padding:.3rem .8rem;border-radius:3px;margin-bottom:1rem;letter-spacing:.08em}
+.hero h1{font-size:clamp(1.7rem,5vw,2.8rem);font-weight:900;line-height:1.3;margin-bottom:1rem}
+.hero p{font-size:clamp(.95rem,2vw,1.1rem);color:#d1d9e6;margin-bottom:2rem}
+.btn-primary{display:inline-block;background:#f59e0b;color:#1a2540;font-weight:700;padding:.85rem 2.2rem;border-radius:5px;font-size:1rem;transition:background .2s}
+.btn-primary:hover{background:#e08d00}
+
+/* セクション共通 */
+.section{padding:4rem 1.5rem}
+.section-inner{max-width:960px;margin:0 auto}
+.section-title{font-size:clamp(1.3rem,4vw,2rem);font-weight:900;text-align:center;margin-bottom:.5rem;color:#1a2540}
+.section-sub{text-align:center;color:#6b7a99;font-size:.9rem;margin-bottom:2.5rem}
+.divider{width:48px;height:4px;background:#f59e0b;border-radius:2px;margin:.8rem auto 2.5rem}
+
+/* 魅力3点 */
+.merit-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.merit-card{background:#f4f7fb;border-radius:8px;padding:1.8rem 1.4rem;text-align:center}
+.merit-icon{font-size:2.2rem;margin-bottom:.8rem}
+.merit-card h3{font-size:1rem;font-weight:700;margin-bottom:.5rem;color:#1a2540}
+.merit-card p{font-size:.88rem;color:#4b5a7a;line-height:1.6}
+@media(max-width:768px){.merit-grid{grid-template-columns:1fr}}
+
+/* 仕事内容 */
+.work-wrap{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:center}
+.work-wrap img{border-radius:8px;height:280px;object-fit:cover;width:100%}
+.work-text h3{font-size:1.2rem;font-weight:700;margin-bottom:.8rem}
+.work-text p{color:#4b5a7a;font-size:.92rem;line-height:1.8}
+@media(max-width:768px){.work-wrap{grid-template-columns:1fr}}
+
+/* 募集要項 */
+.req-table{width:100%;border-collapse:collapse;font-size:.92rem}
+.req-table th,.req-table td{padding:.9rem 1rem;border-bottom:1px solid #e5eaf5;text-align:left;vertical-align:top}
+.req-table th{width:30%;background:#f4f7fb;font-weight:700;color:#1a2540;white-space:nowrap}
+.req-table td{color:#4b5a7a}
+@media(max-width:768px){
+  .req-table,.req-table tbody,.req-table tr,.req-table th,.req-table td{display:block;width:100%}
+  .req-table th{background:#f4f7fb;padding:.5rem .8rem;white-space:normal}
+  .req-table td{padding:.5rem .8rem 1rem}
+}
+
+/* タイムライン */
+.timeline{position:relative;padding-left:100px}
+.timeline::before{content:'';position:absolute;left:80px;top:8px;bottom:8px;width:2px;background:#e5eaf5}
+.tl-item{position:relative;margin-bottom:1.6rem;display:flex;align-items:flex-start;gap:1rem}
+.tl-time{position:absolute;left:-100px;width:80px;text-align:right;font-size:.85rem;font-weight:700;color:#f59e0b;padding-top:.1rem}
+.tl-dot{position:absolute;left:-14px;top:.3rem;width:12px;height:12px;border-radius:50%;background:#f59e0b;border:2px solid #fff;box-shadow:0 0 0 2px #f59e0b;flex-shrink:0}
+.tl-body{padding-left:.5rem}
+.tl-body strong{font-size:.92rem;font-weight:700;color:#1a2540;display:block}
+.tl-body span{font-size:.82rem;color:#6b7a99}
+@media(max-width:768px){
+  .timeline{padding-left:80px}
+  .timeline::before{left:60px}
+  .tl-time{left:-80px;width:60px;font-size:.78rem}
+  .tl-dot{left:-14px}
+}
+
+/* 先輩の声 */
+.voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.voice-card{background:#fff;border:1px solid #e5eaf5;border-radius:8px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06)}
+.voice-card img{width:100%;height:255px;object-fit:cover}
+.voice-body{padding:1.2rem}
+.voice-name{font-weight:700;font-size:.92rem;color:#1a2540}
+.voice-role{font-size:.78rem;color:#f59e0b;margin-bottom:.6rem}
+.voice-text{font-size:.85rem;color:#4b5a7a;line-height:1.7}
+.sample-note{font-size:.72rem;color:#aab4c8;margin-top:.4rem}
+@media(max-width:768px){.voice-grid{grid-template-columns:1fr}}
+
+/* FAQ */
+.faq-list{max-width:720px;margin:0 auto}
+.faq-item{border-bottom:1px solid #e5eaf5;padding:1.2rem 0}
+.faq-q{font-weight:700;font-size:.95rem;color:#1a2540;margin-bottom:.5rem;display:flex;gap:.6rem}
+.faq-q::before{content:'Q.';color:#f59e0b;font-weight:900;flex-shrink:0}
+.faq-a{font-size:.88rem;color:#4b5a7a;padding-left:1.6rem;line-height:1.7}
+
+/* CTA */
+.cta-sec{background:#1a2540;color:#fff;text-align:center;padding:4rem 1.5rem}
+.cta-sec h2{font-size:clamp(1.3rem,4vw,1.9rem);font-weight:900;margin-bottom:1rem}
+.cta-sec p{color:#cdd5e0;font-size:.92rem;margin-bottom:2rem}
+.btn-outline{display:inline-block;border:2px solid #f59e0b;color:#f59e0b;font-weight:700;padding:.8rem 2.2rem;border-radius:5px;font-size:.95rem;transition:all .2s}
+.btn-outline:hover{background:#f59e0b;color:#1a2540}
+
+/* フッター */
+footer{background:#111b2e;color:#7a889e;text-align:center;padding:2rem 1rem;font-size:.82rem}
+
+/* 背景交互 */
+.bg-light{background:#f9fafd}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand" href="#top">株式会社曽我興業</a>
+  <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">☰</button>
+  <nav class="site-nav">
+    <a href="#work">仕事内容</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#voice">先輩の声</a>
+    <a href="#faq">よくある質問</a>
+    <a class="nav-cta" href="#entry">応募する</a>
+  </nav>
+</header>
+
+<section class="hero" id="top">
+  <div class="hero-img"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-tag">鉄筋工 ／ 未経験歓迎</span>
+    <h1>資格をとりながら、<br>一緒に強くなろう。</h1>
+    <p>鉄筋加工・組立の現場で働きませんか。<br>資格取得費用は全額会社負担。未経験から始めた仲間が大勢います。</p>
+    <a class="btn-primary" href="#entry">まずは詳細を見る</a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <h2 class="section-title">ここで働く3つの理由</h2>
+    <div class="divider"></div>
+    <div class="merit-grid">
+      <div class="merit-card">
+        <div class="merit-icon">📋</div>
+        <h3>資格取得費用を全額負担</h3>
+        <p>鉄筋施工技能士などの資格取得にかかる費用はすべて会社が負担します。入社後に手に職をつけ、確実にキャリアアップできます。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社の資格支援内容に差し替えます</p>
+      </div>
+      <div class="merit-card">
+        <div class="merit-icon">🤝</div>
+        <h3>未経験から安心してスタート</h3>
+        <p>入社後は先輩が丁寧に指導します。職人の仕事は技術と段取りが中心なので、体力より「覚えたい気持ち」が大切です。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社の研修内容に差し替えます</p>
+      </div>
+      <div class="merit-card">
+        <div class="merit-icon">😊</div>
+        <h3>チームワークを大切にする職場</h3>
+        <p>現場は「仲の良さ」が安全と効率につながります。困ったことはすぐ相談できる、風通しのよい職場環境です。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社の職場環境エピソードに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-light" id="work">
+  <div class="section-inner">
+    <h2 class="section-title">仕事内容</h2>
+    <div class="divider"></div>
+    <div class="work-wrap">
+      <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=640&h=380&fit=crop&q=80" alt="鉄筋加工・組立の作業風景">
+      <div class="work-text">
+        <h3>鉄筋工（加工・組立）</h3>
+        <p>建物の骨組みとなる鉄筋を、図面に沿って加工・組み立てる仕事です。マンションや商業施設・公共施設など、さまざまな建設現場で活躍できます。</p>
+        <br>
+        <p>最初は基本的な材料の運搬・整理から始め、徐々に加工・組立の技術を習得します。先輩と一緒に作業するので、「何もわからない」状態でも安心してください。</p>
+        <p class="sample-note" style="margin-top:.6rem">※ここはサンプルです。実際には御社の具体的な仕事内容に差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="requirements">
+  <div class="section-inner">
+    <h2 class="section-title">募集要項</h2>
+    <div class="divider"></div>
+    <p class="sample-note" style="text-align:center;font-size:.8rem;color:#aab4c8;margin-bottom:1.2rem">※以下はサンプルです。実際には御社の求人内容に差し替えます</p>
+    <table class="req-table">
+      <tbody>
+        <tr><th>職種</th><td>鉄筋工（加工・組立）</td></tr>
+        <tr><th>雇用形態</th><td>正社員（試用期間あり）</td></tr>
+        <tr><th>勤務地</th><td>千葉県八千代市およびその近郊の各建設現場</td></tr>
+        <tr><th>給与</th><td>月給 〇〇万円〜（経験・スキルに応じて）</td></tr>
+        <tr><th>勤務時間</th><td>7:30〜17:30（休憩1時間）</td></tr>
+        <tr><th>休日・休暇</th><td>日曜・祝日・会社カレンダーによる休日</td></tr>
+        <tr><th>資格・経験</th><td>未経験歓迎。普通自動車免許（AT限定可）あれば尚可</td></tr>
+        <tr><th>資格支援</th><td>鉄筋施工技能士等の資格取得費用を全額会社負担</td></tr>
+        <tr><th>待遇・福利厚生</th><td>社会保険完備・制服支給・マイカー通勤可</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="section bg-light">
+  <div class="section-inner">
+    <h2 class="section-title">社員の1日の流れ</h2>
+    <p class="section-sub">鉄筋工（入社2年目・サンプル）</p>
+    <div class="divider"></div>
+    <p class="sample-note" style="text-align:center;font-size:.8rem;color:#aab4c8;margin-bottom:1.8rem">※ここはサンプルです。実際には御社社員の1日に差し替えます</p>
+    <div class="timeline">
+      <div class="tl-item">
+        <span class="tl-time">7:30</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body">
+          <strong>集合・朝礼</strong>
+          <span>その日の現場と作業内容を確認。安全の声かけも。</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">8:00</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body">
+          <strong>午前の作業開始</strong>
+          <span>図面を確認しながら鉄筋の加工・組立。先輩と一緒に進めます。</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">12:00</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body">
+          <strong>昼食・休憩</strong>
+          <span>現場近くで弁当。仲間とのリラックスタイム。</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">13:00</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body">
+          <strong>午後の作業再開</strong>
+          <span>組立の続き。コツをつかむと作業効率がグッと上がります。</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">15:00</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body">
+          <strong>小休憩</strong>
+          <span>水分補給・軽いストレッチ。</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">17:00</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body">
+          <strong>後片付け・終礼</strong>
+          <span>翌日の段取りを確認して1日終了。残業は少なめです。</span>
+        </div>
+      </div>
+      <div class="tl-item">
+        <span class="tl-time">17:30</span>
+        <span class="tl-dot"></span>
+        <div class="tl-body">
+          <strong>退勤</strong>
+          <span>マイカーで帰宅。オフは趣味でリフレッシュ。</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="voice">
+  <div class="section-inner">
+    <h2 class="section-title">先輩からのメッセージ</h2>
+    <div class="divider"></div>
+    <p class="sample-note" style="text-align:center;font-size:.8rem;color:#aab4c8;margin-bottom:1.8rem">※ここはサンプルです。実際には御社の先輩社員のコメントに差し替えます</p>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <!-- 人物写真（男性・顔写真）に差し替えてください -->
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=640&h=540&fit=crop&crop=faces&q=80" alt="先輩社員（サンプル）">
+        <div class="voice-body">
+          <div class="voice-name">田中 〇〇（仮名）</div>
+          <div class="voice-role">鉄筋工 ／ 入社3年目</div>
+          <p class="voice-text">「最初は不安でしたが、先輩が丁寧に教えてくれるのですぐに慣れました。資格取得の費用を会社が出してくれるのは本当に助かりました。」</p>
+          <p class="sample-note">※サンプルです。御社の社員に差し替えます</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <!-- 人物写真（男性・顔写真）に差し替えてください -->
+        <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=640&h=540&fit=crop&crop=faces&q=80" alt="先輩社員（サンプル）">
+        <div class="voice-body">
+          <div class="voice-name">鈴木 〇〇（仮名）</div>
+          <div class="voice-role">鉄筋工 ／ 入社5年目</div>
+          <p class="voice-text">「現場は体力より段取りと技術が大事。慣れると無駄な動きがなくなり、意外とラクになります。職場の雰囲気も良く、相談しやすい環境です。」</p>
+          <p class="sample-note">※サンプルです。御社の社員に差し替えます</p>
+        </div>
+      </div>
+      <div class="voice-card">
+        <!-- 人物写真（男性・顔写真）に差し替えてください -->
+        <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=640&h=540&fit=crop&crop=faces&q=80" alt="先輩社員（サンプル）">
+        <div class="voice-body">
+          <div class="voice-name">佐藤 〇〇（仮名）</div>
+          <div class="voice-role">現場リーダー ／ 入社8年目</div>
+          <p class="voice-text">「技能士の資格をとってから仕事の幅が広がりました。若い人にもどんどん資格を取ってほしい。チームで一緒に成長できる会社です。」</p>
+          <p class="sample-note">※サンプルです。御社の社員に差し替えます</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section bg-light" id="faq">
+  <div class="section-inner">
+    <h2 class="section-title">よくある質問</h2>
+    <div class="divider"></div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">未経験でも応募できますか？</div>
+        <div class="faq-a">はい、大歓迎です。入社後は先輩社員が基礎からていねいに教えます。やる気があれば経験・知識は問いません。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">取得できる資格はどんなものがありますか？</div>
+        <div class="faq-a">鉄筋施工技能士（1級・2級）をはじめ、玉掛け・フォークリフトなど現場で役立つ資格の取得を会社が全面的にサポートします。費用は全額会社負担です。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">体力に自信がなくても大丈夫ですか？</div>
+        <div class="faq-a">鉄筋の仕事は技術と段取りが中心です。最初は基本的な作業から始め、慣れるにつれて体への負担も自然と減っていきます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">職場の雰囲気はどうですか？</div>
+        <div class="faq-a">先輩が気軽に声をかけてくれる、アットホームな職場です。分からないことはすぐ聞ける環境を大切にしています。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">将来のキャリアアップは可能ですか？</div>
+        <div class="faq-a">資格取得でスキルを積めば、リーダーや現場監督へのキャリアアップが可能です。長く働ける環境を整えています。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-sec" id="entry">
+  <h2>まずは気軽にお問い合わせください</h2>
+  <p>未経験でも大丈夫。一緒に働く仲間を探しています。<br>ご不明な点もお気軽にどうぞ。</p>
+  <a class="btn-outline" href="mailto:info@example.com">メール・お電話でお問い合わせ</a>
+  <p style="margin-top:1.2rem;font-size:.8rem;color:#7a889e">※サンプルです。実際の連絡先に差し替えます</p>
+</section>
+
+<footer>
+  <p>株式会社曽我興業</p>
+  <p>千葉県八千代市（住所サンプル） ／ TEL：〇〇〇-〇〇〇-〇〇〇〇</p>
+</footer>
+
+<script>
+(function(){
+  var btn = document.querySelector('.hamburger');
+  var nav = document.querySelector('.site-nav');
+  if(btn && nav){
+    btn.addEventListener('click', function(){
+      var open = nav.classList.toggle('open');
+      btn.setAttribute('aria-expanded', open);
+    });
+  }
+})();
+</script>
+</body>
+</html>

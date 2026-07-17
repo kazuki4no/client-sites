@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 株式会社 瑞希</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@700;900&family=Noto+Sans+JP:wght@400;600;700;900&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{max-width:100%;overflow-x:hidden;font-family:'Noto Sans JP',sans-serif;color:#1a1a1a;background:#fff}
+img{max-width:100%;height:auto;display:block}
+:root{
+  --ink:#0c1820;
+  --navy:#15293f;
+  --orange:#f07a00;
+  --gold:#f5b800;
+  --white:#ffffff;
+  --gray:#f4f5f7;
+  --text-sub:#5a6472;
+}
+
+/* === HEADER === */
+header{background:rgba(12,24,32,.92);backdrop-filter:blur(8px);position:fixed;top:0;left:0;right:0;z-index:100}
+.header-inner{max-width:1100px;margin:0 auto;padding:0 24px;display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{color:#fff;font-size:.92rem;font-weight:700;text-decoration:none;letter-spacing:.04em}
+nav.pc-nav{display:flex;gap:22px}
+nav.pc-nav a{color:rgba(255,255,255,.7);text-decoration:none;font-size:.84rem;font-weight:600;transition:color .2s}
+nav.pc-nav a:hover{color:var(--gold)}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px}
+.mobile-nav{display:none;flex-direction:column;background:rgba(12,24,32,.97);position:fixed;top:64px;left:0;right:0;z-index:99}
+.mobile-nav a{color:rgba(255,255,255,.75);padding:14px 24px;text-decoration:none;font-size:.9rem;border-bottom:1px solid rgba(255,255,255,.07)}
+.mobile-nav.open{display:flex}
+
+/* === HERO (全画面FV) === */
+.hero{position:relative;min-height:85vh;display:flex;align-items:center;justify-content:center;overflow:hidden;margin-top:64px}
+.hero-bg{position:absolute;inset:0;background-image:url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?w=1600&h=900&fit=crop&q=80');background-size:cover;background-position:center}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(160deg,rgba(12,24,32,.75) 0%,rgba(21,41,63,.6) 60%,rgba(12,24,32,.8) 100%)}
+.hero-content{position:relative;z-index:1;text-align:center;padding:60px 24px;max-width:900px}
+.hero-catch{font-family:'Noto Serif JP',serif;font-size:clamp(2.2rem,7vw,4.5rem);font-weight:900;color:#fff;line-height:1.2;letter-spacing:.05em;text-shadow:0 2px 16px rgba(0,0,0,.4);margin-bottom:20px}
+.hero-catch .accent{color:var(--gold)}
+.hero-sub-catch{font-size:clamp(1rem,2.8vw,1.4rem);color:rgba(255,255,255,.8);font-weight:600;margin-bottom:32px;line-height:1.6;letter-spacing:.02em}
+.hero-pills{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-bottom:36px}
+.pill{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);color:#fff;font-size:.8rem;font-weight:700;padding:6px 16px;border-radius:20px;backdrop-filter:blur(4px)}
+.pill.hot{background:var(--orange);border-color:var(--orange)}
+.hero-btns{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.btn-hero-main{display:inline-block;background:var(--orange);color:#fff;text-decoration:none;padding:17px 52px;border-radius:3px;font-size:1.05rem;font-weight:700;letter-spacing:.08em;transition:background .2s;box-shadow:0 4px 20px rgba(240,122,0,.45)}
+.btn-hero-main:hover{background:var(--gold);color:var(--ink)}
+.btn-hero-sub{display:inline-block;border:2px solid rgba(255,255,255,.5);color:#fff;text-decoration:none;padding:15px 40px;border-radius:3px;font-size:.95rem;font-weight:700;letter-spacing:.06em;transition:.2s}
+.btn-hero-sub:hover{background:rgba(255,255,255,.15)}
+
+/* === SECTION === */
+section{padding:80px 24px}
+.s-inner{max-width:1060px;margin:0 auto}
+.s-tag{font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--orange);margin-bottom:8px}
+.s-title{font-size:clamp(1.5rem,4vw,2.3rem);font-weight:900;color:var(--ink);margin-bottom:44px;line-height:1.25}
+.s-title em{color:var(--orange);font-style:normal}
+.sample-note{font-size:.72rem;color:#aaa;margin-top:8px}
+
+/* === STRENGTHS === */
+.str-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.str-card{border-radius:8px;overflow:hidden;box-shadow:0 4px 20px rgba(0,0,0,.08)}
+.str-img{position:relative}
+.str-img img{width:100%;height:180px;object-fit:cover}
+.str-num{position:absolute;top:12px;left:12px;background:var(--orange);color:#fff;font-size:.85rem;font-weight:900;padding:4px 10px;border-radius:2px}
+.str-body{padding:20px}
+.str-body h3{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:8px}
+.str-body p{font-size:.83rem;color:var(--text-sub);line-height:1.7}
+
+/* === FLOW (仕事の流れ) === */
+.flow-section{background:var(--ink)}
+.flow-section .s-title{color:#fff}
+.flow-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.flow-img img{width:100%;height:380px;object-fit:cover;border-radius:6px;opacity:.85}
+.flow-steps{display:flex;flex-direction:column;gap:0}
+.flow-step{display:grid;grid-template-columns:auto 1fr;gap:18px;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.1)}
+.flow-step:last-child{border-bottom:none}
+.fstep-num{width:36px;height:36px;border-radius:50%;background:var(--orange);color:#fff;font-size:.9rem;font-weight:900;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.fstep-title{font-size:.95rem;font-weight:700;color:#fff;margin-bottom:4px}
+.fstep-desc{font-size:.82rem;color:rgba(255,255,255,.65);line-height:1.65}
+
+/* === TIMELINE === */
+.tl-bg{background:var(--gray)}
+.tl-list{display:flex;flex-direction:column;gap:0;position:relative;padding-left:36px}
+.tl-list::before{content:'';position:absolute;left:9px;top:4px;bottom:4px;width:2px;background:linear-gradient(180deg,var(--orange) 0%,var(--gold) 100%)}
+.tl-item{position:relative;margin-bottom:20px}
+.tl-dot{position:absolute;left:-32px;top:3px;width:16px;height:16px;border-radius:50%;background:var(--orange);border:2px solid #fff;box-shadow:0 0 0 2px var(--orange)}
+.tl-time{font-size:.76rem;font-weight:700;color:var(--orange)}
+.tl-title{font-size:.93rem;font-weight:700;color:var(--ink)}
+.tl-desc{font-size:.8rem;color:var(--text-sub);margin-top:2px;line-height:1.6}
+
+/* === VOICES === */
+.voices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.voice-card{background:#fff;border-radius:8px;padding:24px 20px;box-shadow:0 2px 14px rgba(0,0,0,.06)}
+.voice-top{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.voice-top img{width:56px;height:56px;border-radius:50%;object-fit:cover;border:2px solid var(--orange)}
+.voice-name{font-size:.86rem;font-weight:700;color:var(--ink)}
+.voice-role{font-size:.73rem;color:var(--text-sub)}
+.voice-msg{font-size:.83rem;color:#444;line-height:1.8}
+.voice-msg::before{content:'"';font-size:1.8rem;color:var(--orange);line-height:0;vertical-align:-0.4rem;margin-right:2px}
+
+/* === REQUIREMENTS === */
+.req-bg{background:var(--gray)}
+.req-card{background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,.06)}
+.req-table{width:100%;border-collapse:collapse}
+.req-table tr{border-bottom:1px solid #f0f0f0}
+.req-table th{background:#fafafa;color:#888;font-size:.78rem;padding:14px 20px;text-align:left;width:130px;font-weight:600;white-space:nowrap;vertical-align:top}
+.req-table td{font-size:.88rem;padding:14px 20px;color:#333;line-height:1.7}
+
+/* === FAQ === */
+.faq-list{display:flex;flex-direction:column;gap:12px}
+.faq-item{border-left:3px solid var(--orange);padding-left:16px;background:#fff;border-radius:0 6px 6px 0;box-shadow:0 1px 6px rgba(0,0,0,.05)}
+.faq-q{padding:16px 16px 16px 0;font-size:.92rem;font-weight:700;cursor:pointer;display:flex;justify-content:space-between;align-items:center;color:var(--ink)}
+.faq-q::after{content:'+';font-size:1.2rem;color:var(--orange);flex-shrink:0;margin-left:8px}
+.faq-item.open .faq-q::after{content:'−'}
+.faq-a{display:none;padding:0 16px 14px 0;font-size:.85rem;color:var(--text-sub);line-height:1.8}
+.faq-item.open .faq-a{display:block}
+.faq-note{font-size:.7rem;color:#ccc;margin-top:6px}
+
+/* === FINAL CTA === */
+.final-cta{background:linear-gradient(135deg,var(--navy) 0%,var(--ink) 100%);text-align:center;padding:90px 24px;position:relative;overflow:hidden}
+.final-cta::before{content:'';position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=1600&h=600&fit=crop&q=80') center/cover no-repeat;opacity:.08}
+.final-cta h2{position:relative;font-family:'Noto Serif JP',serif;font-size:clamp(1.6rem,4.5vw,2.8rem);font-weight:900;color:#fff;margin-bottom:20px;line-height:1.3}
+.final-cta p{position:relative;color:rgba(255,255,255,.75);font-size:1rem;margin-bottom:36px;line-height:1.9}
+.btn-final{position:relative;display:inline-block;background:var(--orange);color:#fff;text-decoration:none;padding:18px 60px;border-radius:3px;font-size:1.1rem;font-weight:700;letter-spacing:.08em;transition:background .2s;box-shadow:0 4px 24px rgba(240,122,0,.4)}
+.btn-final:hover{background:var(--gold);color:var(--ink)}
+.cta-contact{position:relative;margin-top:16px;font-size:.8rem;color:rgba(255,255,255,.5)}
+
+/* === FOOTER === */
+footer{background:var(--ink);color:rgba(255,255,255,.45);padding:32px 24px;text-align:center}
+footer p{font-size:.8rem;line-height:1.9}
+
+/* === RESPONSIVE === */
+@media(max-width:768px){
+  nav.pc-nav{display:none}
+  .hamburger{display:flex}
+  .str-grid{grid-template-columns:1fr}
+  .flow-grid{grid-template-columns:1fr}
+  .flow-img img{height:220px}
+  .voices-grid{grid-template-columns:1fr}
+  .req-table th,.req-table td{display:block;width:100%}
+  .req-table th{border-bottom:none;padding-bottom:4px}
+  .req-table td{padding-top:4px}
+  .hero-btns{flex-direction:column;align-items:center}
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">株式会社 瑞希 — 採用情報</a>
+    <nav class="pc-nav">
+      <a href="#strengths">魅力</a>
+      <a href="#flow">仕事の流れ</a>
+      <a href="#voices">先輩の声</a>
+      <a href="#requirements">募集要項</a>
+      <a href="#faq">FAQ</a>
+      <a href="#apply">応募する</a>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="メニュー">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav">
+    <a href="#strengths">魅力</a>
+    <a href="#flow">仕事の流れ</a>
+    <a href="#voices">先輩の声</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#faq">FAQ</a>
+    <a href="#apply">応募する</a>
+  </nav>
+</header>
+
+<!-- ===== HERO (全画面FVバナー型) ===== -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 class="hero-catch">
+      みんなで<span class="accent">分担</span>して、<br>
+      一緒に作る。
+    </h1>
+    <p class="hero-sub-catch">
+      千葉県香取市のプラスチックリサイクル工場で、<br>正社員募集中。
+    </p>
+    <div class="hero-pills">
+      <span class="pill hot">月給26〜30万円</span>
+      <span class="pill">年間休日105日</span>
+      <span class="pill">賞与あり</span>
+      <span class="pill">未経験OK</span>
+      <span class="pill">チームワーク重視</span>
+    </div>
+    <div class="hero-btns">
+      <a href="#apply" class="btn-hero-main">応募する・お問い合わせ</a>
+      <a href="#requirements" class="btn-hero-sub">募集要項を確認</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STRENGTHS ===== -->
+<section id="strengths" style="background:var(--gray)">
+  <div class="s-inner">
+    <p class="s-tag">Strengths</p>
+    <h2 class="s-title">瑞希で働く<em>3つの特徴</em></h2>
+    <div class="str-grid">
+      <div class="str-card">
+        <div class="str-img">
+          <!-- 工場イメージ写真。実際には御社の写真に差し替えます -->
+          <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=640&h=380&fit=crop&q=80" alt="工場作業イメージ">
+          <span class="str-num">01</span>
+        </div>
+        <div class="str-body">
+          <h3>担当を明確に分けて協力する</h3>
+          <p>加工機担当・フォークリフト担当・仕分け担当と分業。「自分の仕事」が明確で、一人で抱え込まない体制です。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社の業務体制に差し替えます</p>
+        </div>
+      </div>
+      <div class="str-card">
+        <div class="str-img">
+          <!-- 倉庫・フォークリフトイメージ。実際には御社の写真に差し替えます -->
+          <img src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=640&h=380&fit=crop&q=80" alt="フォークリフト運搬イメージ">
+          <span class="str-num">02</span>
+        </div>
+        <div class="str-body">
+          <h3>月給26〜30万円＋賞与</h3>
+          <p>基本給260,000〜300,000円の正社員。賞与制度もあり、働いた分だけ安定した収入を得られます。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社の給与制度に差し替えます</p>
+        </div>
+      </div>
+      <div class="str-card">
+        <div class="str-img">
+          <!-- エコ・リサイクルイメージ。実際には御社の写真に差し替えます -->
+          <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=640&h=380&fit=crop&q=80" alt="環境・リサイクルイメージ">
+          <span class="str-num">03</span>
+        </div>
+        <div class="str-body">
+          <h3>廃プラを価値に変える仕事</h3>
+          <p>プラスチックをリサイクルしてペレットに再生し、次の製品に命を吹き込む仕事。環境問題に直接貢献できます。</p>
+          <p class="sample-note">※ここはサンプルです。実際には御社の強みに差し替えます</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FLOW ===== -->
+<section class="flow-section" id="flow">
+  <div class="s-inner">
+    <p class="s-tag" style="color:var(--orange)">Work Flow</p>
+    <h2 class="s-title">誰が何をするか、<em>工場の役割分担</em></h2>
+    <div class="flow-grid">
+      <div class="flow-img">
+        <!-- 製造工場イメージ。実際には御社の工場写真に差し替えます -->
+        <img src="https://images.unsplash.com/photo-1532187863486-abf9dbad1b69?w=640&h=400&fit=crop&q=80" alt="製造工程のイメージ">
+        <p class="sample-note" style="color:rgba(255,255,255,.3);margin-top:8px">※ここはサンプルです。実際には御社の工場写真に差し替えます</p>
+      </div>
+      <div class="flow-steps">
+        <div class="flow-step">
+          <div class="fstep-num">1</div>
+          <div>
+            <div class="fstep-title">原料の受け入れ・搬入</div>
+            <div class="fstep-desc">フォークリフト担当が原料ヤードへ搬入。在庫状況をチームで共有します。</div>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="fstep-num">2</div>
+          <div>
+            <div class="fstep-title">加工機への原料投入・製造</div>
+            <div class="fstep-desc">加工機担当がプラスチック原料を熱加工機へ投入。温度・速度を管理しながらペレットを製造。</div>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="fstep-num">3</div>
+          <div>
+            <div class="fstep-title">製品の仕分け・品質確認</div>
+            <div class="fstep-desc">製造されたペレットを品質確認しながら仕分け。規格外品は適切に処理します。</div>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="fstep-num">4</div>
+          <div>
+            <div class="fstep-title">梱包・出荷準備</div>
+            <div class="fstep-desc">梱包・ラベル貼りを行い、フォークリフトで出荷エリアへ搬送。全員で手際よく仕上げます。</div>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="fstep-num">5</div>
+          <div>
+            <div class="fstep-title">機器点検・清掃</div>
+            <div class="fstep-desc">加工機の日常点検と工場内清掃を分担。安全で清潔な職場環境を維持します。</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="sample-note" style="color:rgba(255,255,255,.3);margin-top:16px">※ここはサンプルです。実際には御社の製造フローに差し替えます</p>
+  </div>
+</section>
+
+<!-- ===== TIMELINE ===== -->
+<section class="tl-bg">
+  <div class="s-inner">
+    <p class="s-tag">Timeline</p>
+    <h2 class="s-title">社員の<em>1日の流れ</em>（早出シフト）</h2>
+    <div class="tl-list">
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">6:00</div><div class="tl-title">出勤・朝礼・今日の担当確認</div><div class="tl-desc">持ち場を全員で確認。加工機 or フォークリフト or 仕分けを割り振ってスタート。</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">6:20</div><div class="tl-title">持ち場の準備</div><div class="tl-desc">加工機担当は暖機運転、フォークリフト担当は原料の在庫チェックと搬入準備。</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">7:00</div><div class="tl-title">製造ライン稼働</div><div class="tl-desc">本格的な製造スタート。担当持ち場で集中して作業。</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">10:00</div><div class="tl-title">中間確認・ローテーション</div><div class="tl-desc">進捗を全員で共有。必要に応じて担当をローテーションし疲労を分散。</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">12:00</div><div class="tl-title">昼休憩（60分）</div><div class="tl-desc">チームでゆっくり過ごせる時間。</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">13:00</div><div class="tl-title">午後の製造・出荷準備</div><div class="tl-desc">製品の仕分け・梱包・出荷準備を分担して進める。</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">14:30</div><div class="tl-title">機器点検・清掃</div><div class="tl-desc">全員で分担して工場内を整備。</div></div>
+      <div class="tl-item"><div class="tl-dot"></div><div class="tl-time">15:00</div><div class="tl-title">退勤</div><div class="tl-desc">定時退勤。翌日のシフト確認後に退場。</div></div>
+    </div>
+    <p class="sample-note" style="margin-top:16px;text-align:center">※ここはサンプルです。実際には御社の1日のスケジュールに差し替えます</p>
+  </div>
+</section>
+
+<!-- ===== VOICES ===== -->
+<section id="voices" style="background:#fff">
+  <div class="s-inner">
+    <p class="s-tag">Staff Voice</p>
+    <h2 class="s-title">先輩スタッフからの<em>メッセージ</em></h2>
+    <div class="voices-grid">
+      <div class="voice-card">
+        <div class="voice-top">
+          <!-- 先輩写真。実際には御社スタッフの写真に差し替えます -->
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩">
+          <div><div class="voice-name">山本 勇（仮名）</div><div class="voice-role">フォークリフト担当｜入社4年目</div></div>
+        </div>
+        <p class="voice-msg">自分の担当（フォークリフト）が明確なので、毎日やることがはっきりしていてやりやすいです。チームへの貢献がわかりやすいのもやりがいになっています。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社スタッフの写真・コメントに差し替えます</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-top">
+          <!-- 先輩写真。実際には御社スタッフの写真に差し替えます -->
+          <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩">
+          <div><div class="voice-name">木村 奈々（仮名）</div><div class="voice-role">製品仕分け担当｜入社2年目</div></div>
+        </div>
+        <p class="voice-msg">工場と聞いて「体力が必要で大変そう」と思っていましたが、重い荷物はフォークリフトが担うので、仕分けや品質確認なら女性でも無理なくできます。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社スタッフの写真・コメントに差し替えます</p>
+      </div>
+      <div class="voice-card">
+        <div class="voice-top">
+          <!-- 先輩写真。実際には御社スタッフの写真に差し替えます -->
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=faces&q=80" alt="先輩">
+          <div><div class="voice-name">中島 健太（仮名）</div><div class="voice-role">加工機担当｜入社1年目</div></div>
+        </div>
+        <p class="voice-msg">プラスチックリサイクルって、環境に直接貢献できる仕事なんだと実感しています。少人数だから自分の仕事が「製品」として目に見えるのも達成感があります。</p>
+        <p class="sample-note">※ここはサンプルです。実際には御社スタッフの写真・コメントに差し替えます</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== REQUIREMENTS ===== -->
+<section class="req-bg" id="requirements">
+  <div class="s-inner">
+    <p class="s-tag">Requirements</p>
+    <h2 class="s-title">募集<em>要項</em></h2>
+    <div class="req-card">
+      <div style="overflow-x:auto">
+        <table class="req-table">
+          <tr><th>職種</th><td>工場作業員（プラスチックリサイクル製造）</td></tr>
+          <tr><th>雇用形態</th><td>正社員（試用期間3ヶ月・同条件）</td></tr>
+          <tr><th>就業場所</th><td>千葉県香取市山倉16（千葉工場）<br>マイカー・バイク・自転車通勤可（駐車場あり）</td></tr>
+          <tr><th>給与</th><td>月給 260,000〜300,000円<br>通勤手当：実費 上限10,000円</td></tr>
+          <tr><th>就業時間</th><td>交替制　早出 6:00〜15:00 ／ 遅出 8:00〜17:00<br>休憩60分　時間外：月平均30時間</td></tr>
+          <tr><th>休日</th><td>日曜・祝日・隔週土曜（年間休日105日）</td></tr>
+          <tr><th>賞与</th><td>あり</td></tr>
+          <tr><th>社会保険</th><td>雇用・労災・健康・厚生年金</td></tr>
+          <tr><th>必要免許</th><td>普通自動車免許（AT限定可）必須<br>フォークリフト免許 あれば尚可・経験者優遇</td></tr>
+          <tr><th>募集対象</th><td>学歴不問・年齢不問・UIJターン歓迎<br>外国籍の方も就労可能なビザがあれば歓迎</td></tr>
+          <tr><th>選考</th><td>書類選考 → 面接（1回）<br>事前ご連絡のうえメール or 郵送で書類をお送りください</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section style="background:#fff" id="faq">
+  <div class="s-inner">
+    <p class="s-tag">FAQ</p>
+    <h2 class="s-title">よくある<em>ご質問</em></h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">製造・工場未経験でも応募できますか？</div>
+        <div class="faq-a">はい、歓迎しています。担当を決めてからOJT指導しますので、覚えることが絞られ、短期間でもスムーズに習得できます。<br><span class="faq-note">※ここはサンプルです。実際には御社の研修内容に差し替えます</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">仕事量が多そうに見えますが、実際はどうですか？</div>
+        <div class="faq-a">役割を明確に分担しているため、一人が全業務を担うことはありません。担当範囲内の仕事に集中でき、困ったときは全員でカバーし合う体制です。<br><span class="faq-note">※ここはサンプルです。実際には御社の運用に差し替えます</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">フォークリフト免許がなくても大丈夫ですか？</div>
+        <div class="faq-a">普通自動車免許（AT限定可）があれば応募可能です。フォークリフト免許は「あれば尚可」で、未取得でも仕分け担当などで活躍できます。<br><span class="faq-note">※ここはサンプルです。実際には御社の資格要件に差し替えます</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">香取市まで車で通えますか？</div>
+        <div class="faq-a">千葉工場（香取市山倉16）はマイカー・バイク・自転車での通勤が基本です（駐車場あり・通勤手当あり）。公共交通機関は少ないエリアのため、自動車通勤が便利です。<br><span class="faq-note">※ここはサンプルです。実際には御社のアクセス情報に差し替えます</span></div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">外国籍ですが応募できますか？</div>
+        <div class="faq-a">就労可能なビザをお持ちであれば歓迎しています。現在も外国籍スタッフが活躍中です。日本語での日常会話が可能な方を想定しています。<br><span class="faq-note">※ここはサンプルです。実際には御社の受け入れ体制に差し替えます</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FINAL CTA ===== -->
+<section class="final-cta" id="apply">
+  <h2>プラスチックをよみがえらせる仕事、<br>一緒にやりませんか。</h2>
+  <p>
+    担当が明確で、チームで支え合える工場です。<br>
+    書類選考→1回の面接で進めます。お気軽にどうぞ。
+  </p>
+  <a href="mailto:sonoda@mizukijp.com" class="btn-final">メールで応募する</a>
+  <p class="cta-contact">担当：代表取締役 園田 宛　sonoda@mizukijp.com</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>株式会社 瑞希</p>
+  <p>千葉県香取市山倉16（千葉工場）</p>
+  <p>TEL: 03-6459-0466 　E-mail: sonoda@mizukijp.com</p>
+</footer>
+
+<script>
+document.getElementById('hamburger').addEventListener('click',function(){
+  document.getElementById('mobile-nav').classList.toggle('open');
+});
+document.querySelectorAll('.faq-q').forEach(function(q){
+  q.addEventListener('click',function(){this.parentElement.classList.toggle('open');});
+});
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var t=document.querySelector(this.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'});}
+  });
+});
+</script>
+</body>
+</html>
