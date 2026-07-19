@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>株式会社塚原緑地研究所｜みどりの力で地域を元気にする</title>
+<style>
+  :root{
+    --green-deep:#1F4A32;
+    --green-main:#2C5F3D;
+    --green-light:#EAF2EC;
+    --gold:#C98A3E;
+    --text:#2A2A24;
+    --sub:#5C6B60;
+    --bg:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    color:var(--text);
+    line-height:1.8;
+    background:var(--bg);
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1100px;margin:0 auto;padding:0 24px;}
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(255,255,255,0.97);
+    border-bottom:1px solid #e4e8e4;
+  }
+  .header-inner{
+    display:flex;align-items:center;justify-content:space-between;
+    padding:16px 24px;max-width:1100px;margin:0 auto;
+  }
+  .logo{font-size:1.3rem;font-weight:700;color:var(--green-deep);letter-spacing:.03em;}
+  .logo small{display:block;font-size:.6rem;font-weight:400;color:var(--sub);letter-spacing:.1em;}
+  nav ul{display:flex;gap:28px;list-style:none;}
+  nav a{font-size:.92rem;font-weight:600;color:var(--text);position:relative;}
+  nav a:hover{color:var(--green-main);}
+  .nav-toggle{display:none;}
+  .hero{
+    position:relative;height:78vh;min-height:480px;
+    background:linear-gradient(180deg,rgba(20,40,28,.35),rgba(20,40,28,.55)),
+      url('https://loremflickr.com/1600/900/forest,park,japan') center/cover no-repeat;
+    <!-- 元画像URL: https://www.tsukahara-li.co.jp/wp-tsukahara/wp-content/uploads/2021/09/shouwanomori01.jpg / images/hero-main.jpg -->
+    display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;
+  }
+  .hero-content h1{
+    font-size:clamp(1.8rem,4.5vw,3.2rem);
+    font-weight:700;letter-spacing:.04em;line-height:1.5;
+    text-shadow:0 2px 12px rgba(0,0,0,.35);
+  }
+  .hero-content p{margin-top:18px;font-size:1.05rem;letter-spacing:.05em;opacity:.95;}
+  .hero-scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);font-size:.75rem;letter-spacing:.15em;}
+  section{padding:88px 0;}
+  .section-head{text-align:center;margin-bottom:56px;}
+  .section-head .en{color:var(--gold);font-size:.78rem;letter-spacing:.25em;font-weight:700;}
+  .section-head h2{margin-top:10px;font-size:clamp(1.5rem,3vw,2.1rem);color:var(--green-deep);letter-spacing:.03em;}
+  .section-head p{margin-top:14px;color:var(--sub);font-size:.95rem;}
+  .bg-light{background:var(--green-light);}
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;}
+  .card{
+    background:#fff;border:1px solid #e4e8e4;border-radius:8px;padding:32px 24px;
+    text-align:center;transition:transform .2s, box-shadow .2s;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(44,95,61,.12);}
+  .card-num{font-size:.75rem;color:var(--gold);font-weight:700;letter-spacing:.1em;}
+  .card h3{margin:12px 0 12px;font-size:1.05rem;color:var(--green-deep);}
+  .card p{font-size:.88rem;color:var(--sub);}
+  .biz-list{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+  .biz-item{
+    display:flex;gap:18px;align-items:flex-start;
+    background:#fff;border-left:4px solid var(--gold);padding:22px 24px;border-radius:4px;
+    box-shadow:0 2px 10px rgba(0,0,0,.04);
+  }
+  .biz-item .num{font-size:1.4rem;font-weight:700;color:var(--green-light);
+    -webkit-text-stroke:1.4px var(--green-main);color:transparent;min-width:38px;}
+  .biz-item h4{color:var(--green-deep);font-size:1rem;margin-bottom:6px;}
+  .biz-item p{font-size:.85rem;color:var(--sub);}
+  .facility-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .facility{border-radius:8px;overflow:hidden;box-shadow:0 4px 16px rgba(0,0,0,.08);background:#fff;}
+  .facility img{height:180px;object-fit:cover;}
+  .facility .fbody{padding:18px 20px;}
+  .facility h4{color:var(--green-deep);font-size:.98rem;margin-bottom:6px;}
+  .facility p{font-size:.82rem;color:var(--sub);}
+  .about-wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+  .about-wrap img{border-radius:8px;}
+  .about-text .en{color:var(--gold);font-size:.78rem;letter-spacing:.25em;font-weight:700;}
+  .about-text h2{margin:10px 0 20px;font-size:1.7rem;color:var(--green-deep);}
+  .about-text p{font-size:.92rem;color:var(--sub);margin-bottom:14px;}
+  table.overview{width:100%;border-collapse:collapse;font-size:.9rem;}
+  table.overview th,table.overview td{padding:16px 18px;border-bottom:1px solid #e4e8e4;text-align:left;}
+  table.overview th{width:180px;color:var(--green-deep);font-weight:700;background:var(--green-light);}
+  .cta{
+    background:linear-gradient(135deg,var(--green-deep),var(--green-main));
+    color:#fff;text-align:center;padding:80px 24px;
+  }
+  .cta h2{font-size:1.7rem;margin-bottom:16px;}
+  .cta p{opacity:.9;margin-bottom:32px;font-size:.95rem;}
+  .btn{
+    display:inline-block;background:var(--gold);color:#fff;padding:16px 44px;
+    border-radius:40px;font-weight:700;letter-spacing:.05em;font-size:.95rem;
+    box-shadow:0 8px 20px rgba(201,138,62,.35);transition:transform .2s;
+  }
+  .btn:hover{transform:translateY(-2px);}
+  .btn-outline{border:1px solid #fff;background:transparent;margin-left:12px;}
+  footer{background:var(--green-deep);color:#fff;padding:56px 24px 28px;}
+  .footer-grid{display:flex;justify-content:space-between;flex-wrap:wrap;gap:32px;margin-bottom:32px;}
+  .footer-grid h3{font-size:1.1rem;margin-bottom:12px;}
+  .footer-grid p{font-size:.85rem;opacity:.85;line-height:2;}
+  .footer-nav{display:flex;gap:24px;flex-wrap:wrap;list-style:none;}
+  .footer-nav a{font-size:.85rem;opacity:.85;}
+  .copyright{text-align:center;font-size:.75rem;opacity:.6;border-top:1px solid rgba(255,255,255,.15);padding-top:20px;}
+  @media(max-width:900px){
+    nav{display:none;}
+    .cards{grid-template-columns:repeat(2,1fr);}
+    .biz-list{grid-template-columns:1fr;}
+    .facility-grid{grid-template-columns:1fr;}
+    .about-wrap{grid-template-columns:1fr;}
+    table.overview th{width:120px;font-size:.8rem;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">株式会社塚原緑地研究所<small>TSUKAHARA RYOKUCHI KENKYUJO</small></div>
+    <nav>
+      <ul>
+        <li><a href="#about">法人について</a></li>
+        <li><a href="#strength">強み</a></li>
+        <li><a href="#business">事業内容</a></li>
+        <li><a href="#facility">運営施設</a></li>
+        <li><a href="#company">会社概要</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-content">
+    <h1>みどりの力で<br>地域を元気にする</h1>
+    <p>公共施設の管理運営から地域づくりまで、民間活力で課題解決に取り組む「みどりの企業」</p>
+  </div>
+  <div class="hero-scroll">SCROLL ▾</div>
+</div>
+
+<section id="about" class="bg-light">
+  <div class="container about-wrap">
+    <img src="https://loremflickr.com/700/500/landscape,architect" alt="法人について">
+    <!-- 元画像URL: 新規手配 / images/about-main.jpg -->
+    <div class="about-text">
+      <div class="en">ABOUT US</div>
+      <h2>私たちは、公共施設の再生請負人<br>地域づくりのコーディネーターです</h2>
+      <p>当社はみどりの企業として出発し、みどりを守り、つくり、育てる事業に取り組んできました。今では公園などの公共施設の設計と運営、地域の環境保全、地域づくりに取り組んでいます。</p>
+      <p>平成15年度の地方自治法改正により導入された指定管理者制度のもと、公園、キャンプ場、森林レクリエーション施設、農業体験施設、宿泊施設、入浴施設、観光施設など多岐にわたる公共施設の管理運営を行っています。</p>
+      <p>地域が抱える課題は行政の力だけでは解決が困難です。私たちは民間パワーで公共施設を活性化させ、地域の課題解決に取り組んでいます。</p>
+    </div>
+  </div>
+</section>
+
+<section id="strength">
+  <div class="container">
+    <div class="section-head">
+      <div class="en">STRENGTH</div>
+      <h2>選ばれる4つの理由</h2>
+      <p>創業から40年、地域とともに歩んできた実績と理念</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <div class="card-num">01</div>
+        <h3>みどりの専門技術</h3>
+        <p>造園・緑化・樹木診断治療など、みどりに関する高い技術と豊富な実績を有しています。</p>
+      </div>
+      <div class="card">
+        <div class="card-num">02</div>
+        <h3>全国10エリアの実績</h3>
+        <p>千葉・茨城・栃木・神奈川・山梨・長野など全国10の事業所で公共施設を運営しています。</p>
+      </div>
+      <div class="card">
+        <div class="card-num">03</div>
+        <h3>幅広い事業領域</h3>
+        <p>飲食・宿泊・温泉・道の駅・博物館など、16分野にわたる多角的な事業を展開しています。</p>
+      </div>
+      <div class="card">
+        <div class="card-num">04</div>
+        <h3>208名の社員体制</h3>
+        <p>資本金5,000万円・社員数208名（令和7年9月時点）の安定した経営基盤があります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="business" class="bg-light">
+  <div class="container">
+    <div class="section-head">
+      <div class="en">BUSINESS</div>
+      <h2>事業内容</h2>
+      <p>公共サービス事業を中心に、地域の魅力を引き出す多彩な事業を展開</p>
+    </div>
+    <div class="biz-list">
+      <div class="biz-item"><div class="num">01</div><div><h4>公共サービス事業</h4><p>公共施設の管理運営（指定管理者）</p></div></div>
+      <div class="biz-item"><div class="num">02</div><div><h4>みどりの社会事業</h4><p>里山学校、婚活支援事業、体験農園</p></div></div>
+      <div class="biz-item"><div class="num">03</div><div><h4>飲食業</h4><p>レストラン、バーベキュー</p></div></div>
+      <div class="biz-item"><div class="num">04</div><div><h4>宿泊業</h4><p>旅館、ロッジ、コテージ</p></div></div>
+      <div class="biz-item"><div class="num">05</div><div><h4>アウトドア</h4><p>キャンプ場、オートキャンプ場、グランピング</p></div></div>
+      <div class="biz-item"><div class="num">06</div><div><h4>公衆浴場業</h4><p>温泉、日帰り入浴施設</p></div></div>
+      <div class="biz-item"><div class="num">07</div><div><h4>エンジニアリング事業</h4><p>造園、緑化、樹木診断治療</p></div></div>
+      <div class="biz-item"><div class="num">08</div><div><h4>コンサルタント事業</h4><p>計画設計、市民活動支援、人材育成</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="facility">
+  <div class="container">
+    <div class="section-head">
+      <div class="en">FACILITY</div>
+      <h2>運営施設のご紹介</h2>
+      <p>全国各地で、地域の資産を活かした施設運営を行っています</p>
+    </div>
+    <div class="facility-grid">
+      <div class="facility">
+        <img src="https://loremflickr.com/500/360/castle,japan" alt="館山城">
+        <!-- 元画像URL: 新規手配 / images/facility-tateyama.jpg -->
+        <div class="fbody"><h4>館山城</h4><p>歴史の資産を受け継ぎ、人と人、人と地域をつなぎ続ける博物館。</p></div>
+      </div>
+      <div class="facility">
+        <img src="https://loremflickr.com/500/360/lake,resort" alt="里沼リゾートKOMORINU">
+        <!-- 元画像URL: 新規手配 / images/facility-komorinu.jpg -->
+        <div class="fbody"><h4>里沼リゾート「KOMORINU」</h4><p>豊かな自然が人々に豊かな時間を与えるリゾート施設。</p></div>
+      </div>
+      <div class="facility">
+        <img src="https://loremflickr.com/500/360/camping,nature" alt="柳島キャンプ場">
+        <!-- 元画像URL: 新規手配 / images/facility-yanagishima.jpg -->
+        <div class="fbody"><h4>ちがさき柳島キャンプ場</h4><p>自然の中に人々が集い、愉しむ時間を共有するキャンプ場。</p></div>
+      </div>
+      <div class="facility">
+        <img src="https://loremflickr.com/500/360/onsen,japan" alt="やしおの湯">
+        <!-- 元画像URL: 新規手配 / images/facility-yashio.jpg -->
+        <div class="fbody"><h4>日光市温泉保養センター やしおの湯</h4><p>街の喧騒を離れ、自然の静寂の中で心を洗う温泉施設。</p></div>
+      </div>
+      <div class="facility">
+        <img src="https://loremflickr.com/500/360/roadside,market" alt="道の駅あずの里いちはら">
+        <!-- 元画像URL: 新規手配 / images/facility-azunosato.jpg -->
+        <div class="fbody"><h4>道の駅あずの里いちはら</h4><p>目的地までの移動中、ちょっと一休みできる道の駅。</p></div>
+      </div>
+      <div class="facility">
+        <img src="https://loremflickr.com/500/360/cliff,ocean" alt="刑部岬展望台">
+        <!-- 元画像URL: 新規手配 / images/facility-gyobumisaki.jpg -->
+        <div class="fbody"><h4>刑部岬展望台</h4><p>太平洋の大海原、はるか水平線を一望できる展望スポット。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="company" class="bg-light">
+  <div class="container">
+    <div class="section-head">
+      <div class="en">COMPANY</div>
+      <h2>会社概要</h2>
+    </div>
+    <table class="overview">
+      <tr><th>会社名</th><td>株式会社塚原緑地研究所</td></tr>
+      <tr><th>代表者</th><td>代表取締役　塚原 道夫</td></tr>
+      <tr><th>本社所在地</th><td>〒261-0004　千葉市美浜区高洲3丁目11番3号 第2並木ビル</td></tr>
+      <tr><th>TEL / FAX</th><td>TEL. 043-306-8446　／　FAX. 043-306-8447</td></tr>
+      <tr><th>設立</th><td>1985年12月25日</td></tr>
+      <tr><th>資本金</th><td>5,000万円</td></tr>
+      <tr><th>社員数</th><td>208名（令和7年9月1日現在）</td></tr>
+      <tr><th>事業所</th><td>千葉市中央区／旭市／館山市／市原市／勝浦市／神栖市／日光市／茅ケ崎市／北杜市／南牧村（全10拠点）</td></tr>
+      <tr><th>登録・許可等</th><td>食品営業許可／旅館業許可／公衆浴場許可／酒類販売許可／警備業認可／建設業許可（造園工事業）／建設コンサルタント登録（造園）</td></tr>
+    </table>
+  </div>
+</section>
+
+<section id="contact" class="cta">
+  <div class="container">
+    <h2>お問い合わせ</h2>
+    <p>公共施設のご利用、事業についてのお問い合わせ・ご要望は下記までお気軽にご連絡ください</p>
+    <a href="tel:0433068446" class="btn">043-306-8446 に電話する</a>
+    <a href="#" class="btn btn-outline">お問い合わせフォーム</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <h3>株式会社塚原緑地研究所</h3>
+        <p>〒261-0004　千葉市美浜区高洲3丁目11番3号第2並木ビル<br>
+        TEL. 043-306-8446　FAX. 043-306-8447</p>
+      </div>
+      <ul class="footer-nav">
+        <li><a href="#about">法人について</a></li>
+        <li><a href="#business">事業内容</a></li>
+        <li><a href="#facility">運営施設</a></li>
+        <li><a href="recruit.html">採用情報</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
+      </ul>
+    </div>
+    <div class="copyright">&copy; TSUKAHARA RYOKUCHI KENKYUJO. All rights reserved.</div>
+  </div>
+</footer>
+
+</body>
+</html>

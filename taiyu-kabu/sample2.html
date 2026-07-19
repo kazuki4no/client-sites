@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大有株式会社（タイユー）| オーダーメイドのマテハン機器メーカー</title>
+<style>
+  :root{
+    --blue:#155ed3;
+    --blue-dark:#0a2e6e;
+    --orange:#ff6900;
+    --dark:#1a1c1f;
+    --gray:#5a6169;
+    --line:#e4e7ec;
+    --bg:#f7f9fc;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans",-apple-system,BlinkMacSystemFont,"Yu Gothic",sans-serif;
+    color:var(--dark);line-height:1.8;background:#fff;-webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{text-decoration:none;color:inherit;}
+  .container{max-width:1140px;margin:0 auto;padding:0 24px;}
+  section{padding:96px 0;}
+
+  header{
+    position:absolute;top:0;left:0;width:100%;z-index:50;
+  }
+  .header-inner{
+    max-width:1140px;margin:0 auto;padding:24px;
+    display:flex;justify-content:space-between;align-items:center;
+  }
+  .logo{color:#fff;font-weight:800;font-size:19px;letter-spacing:.03em;}
+  nav ul{list-style:none;display:flex;gap:30px;}
+  nav a{color:#fff;font-size:13.5px;font-weight:600;}
+
+  /* FV full screen hero */
+  .fv{
+    position:relative;height:100vh;min-height:640px;
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    background:linear-gradient(180deg,rgba(10,46,110,.55) 0%,rgba(10,46,110,.82) 100%),url('https://loremflickr.com/1920/1080/factory,machine,industrial') center/cover no-repeat;
+    color:#fff;
+  }
+  .fv-inner{max-width:780px;padding:0 24px;}
+  .fv-eyebrow{
+    font-size:13px;letter-spacing:.3em;color:var(--orange);font-weight:800;margin-bottom:24px;
+  }
+  .fv h1{
+    font-size:54px;font-weight:800;line-height:1.45;margin-bottom:28px;
+  }
+  .fv p{font-size:16px;color:#dce7fb;margin-bottom:40px;}
+  .fv-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .btn{display:inline-block;padding:17px 38px;border-radius:2px;font-weight:700;font-size:15px;transition:.2s;}
+  .btn-primary{background:var(--orange);color:#fff;}
+  .btn-primary:hover{background:#e05e00;}
+  .btn-outline{border:1.5px solid #fff;color:#fff;}
+  .btn-outline:hover{background:#fff;color:var(--blue-dark);}
+  .scroll-cue{
+    position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+    color:#fff;font-size:11px;letter-spacing:.2em;display:flex;flex-direction:column;align-items:center;gap:8px;
+  }
+  .scroll-cue::after{content:"";width:1px;height:36px;background:#fff;opacity:.6;}
+
+  /* stats band */
+  .stats{background:var(--blue-dark);color:#fff;padding:56px 0;}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);text-align:center;gap:24px;}
+  .stat-num{font-size:42px;font-weight:800;color:var(--orange);}
+  .stat-label{font-size:13px;color:#c7dbf9;margin-top:6px;}
+
+  /* about full bleed split */
+  .about-split{display:grid;grid-template-columns:1fr 1fr;}
+  .about-split img{height:100%;min-height:480px;object-fit:cover;}
+  .about-text{
+    display:flex;flex-direction:column;justify-content:center;padding:64px;background:var(--bg);
+  }
+  .eyebrow{color:var(--blue);font-weight:800;font-size:13px;letter-spacing:.15em;margin-bottom:16px;}
+  .about-text h2{font-size:30px;font-weight:800;margin-bottom:20px;line-height:1.5;}
+  .about-text p{color:var(--gray);font-size:14.5px;margin-bottom:14px;}
+
+  /* products showcase */
+  .showcase{background:#fff;}
+  .showcase-head{text-align:center;margin-bottom:56px;}
+  .showcase-head h2{font-size:32px;font-weight:800;}
+  .show-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;}
+  .show-card{position:relative;overflow:hidden;height:280px;}
+  .show-card img{width:100%;height:100%;object-fit:cover;transition:.4s;}
+  .show-card:hover img{transform:scale(1.08);}
+  .show-card-label{
+    position:absolute;bottom:0;left:0;right:0;padding:20px 16px;
+    background:linear-gradient(0deg,rgba(10,46,110,.85),transparent);
+    color:#fff;font-weight:700;font-size:14px;
+  }
+
+  /* clients marquee-like */
+  .clients{background:var(--bg);text-align:center;}
+  .clients h2{font-size:26px;font-weight:800;margin-bottom:12px;}
+  .clients p.sub{color:var(--gray);margin-bottom:40px;font-size:14px;}
+  .client-strip{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;}
+  .client-strip span{background:#fff;border:1px solid var(--line);padding:9px 18px;border-radius:3px;font-size:13px;}
+
+  /* company data */
+  .data-band{background:var(--blue-dark);color:#fff;}
+  .data-band .eyebrow{color:var(--orange);}
+  .data-band h2{font-size:28px;font-weight:800;margin-bottom:40px;}
+  table.overview{width:100%;border-collapse:collapse;font-size:14px;}
+  table.overview th,table.overview td{
+    text-align:left;padding:16px 8px;border-bottom:1px solid rgba(255,255,255,.15);vertical-align:top;
+  }
+  table.overview th{width:28%;color:#9dc0f8;font-weight:700;}
+  table.overview td{color:#e6edfa;}
+
+  /* final cta */
+  .fcta{
+    text-align:center;padding:100px 24px;
+    background:linear-gradient(120deg,var(--blue),var(--blue-dark));color:#fff;
+  }
+  .fcta h2{font-size:32px;font-weight:800;margin-bottom:16px;}
+  .fcta p{color:#dce7fb;margin-bottom:36px;}
+
+  footer{background:var(--dark);color:#a9adb3;padding:40px 0;font-size:12.5px;text-align:center;}
+
+  @media(max-width:900px){
+    .fv h1{font-size:36px;}
+    .stats-grid{grid-template-columns:repeat(2,1fr);}
+    .about-split{grid-template-columns:1fr;}
+    .about-split img{min-height:280px;}
+    .about-text{padding:48px 28px;}
+    .show-grid{grid-template-columns:repeat(2,1fr);}
+    nav{display:none;}
+    section{padding:64px 0;}
+  }
+  @media(max-width:560px){
+    .fv h1{font-size:28px;}
+    .stats-grid{grid-template-columns:1fr 1fr;}
+    .show-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">大有株式会社</div>
+    <nav><ul>
+      <li><a href="#about">私たちについて</a></li>
+      <li><a href="#showcase">製品</a></li>
+      <li><a href="#company">会社概要</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul></nav>
+  </div>
+</header>
+
+<section class="fv">
+  <div class="fv-inner">
+    <p class="fv-eyebrow">SINCE 1950 — ORDER MADE MATERIAL HANDLING</p>
+    <h1>現場のマテハンのお悩みに、<br>オーダーメイドの製品で応える。</h1>
+    <p>大有株式会社は、原材料・仕掛品・完成品の運搬に用いるマテリアルハンドリング機器を、お客様の現場ひとつひとつにあわせて設計・製作するメーカーです。</p>
+    <div class="fv-btns">
+      <a href="#contact" class="btn btn-primary">お問い合わせ</a>
+      <a href="#showcase" class="btn btn-outline">製品を見る</a>
+    </div>
+  </div>
+  <div class="scroll-cue">SCROLL</div>
+</section>
+<!-- 元画像URL: https://taiyu-kabu.co.jp/dev/wp-content/uploads/2024/04/TOP製品紹介_2.png / images/hero-fv.jpg -->
+
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div><div class="stat-num">1950</div><div class="stat-label">創業年</div></div>
+      <div><div class="stat-num">75年+</div><div class="stat-label">オーダーメイドの実績</div></div>
+      <div><div class="stat-num">100%</div><div class="stat-label">現場にあわせた個別設計</div></div>
+      <div><div class="stat-num">全国</div><div class="stat-label">関東・中部・関西の3拠点</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="about-split" id="about">
+  <img src="https://loremflickr.com/800/900/engineer,factory" alt="製造現場">
+  <!-- 元画像URL: 現サイトの工場・製造現場写真（要現地取材） / images/about-factory.jpg -->
+  <div class="about-text">
+    <p class="eyebrow">ABOUT US</p>
+    <h2>「オーダーメイドの大有」<br>すべてはユーザーのために。</h2>
+    <p>大有株式会社は創業者・宮永進により1950年に創業。1953年には日本初のドラム缶運搬車「ドラムポーター」を開発し、マテリアルハンドリング機器メーカーとして歩みを始めました。</p>
+    <p>以来、当社は製品のほぼ全てを、お客様からのご要望やご相談に応えるオーダーメイドで製作し、世に送り出してきました。私たちの開発・製造技術は、お客様の数々のご要望をもとに蓄積されたものです。</p>
+    <p>「すべてはユーザーのために」という信条のもと、100年企業へ向けて新たな変革の時代へ踏み出しています。</p>
+  </div>
+</section>
+
+<section class="showcase" id="showcase">
+  <div class="container">
+    <div class="showcase-head">
+      <p class="eyebrow" style="text-align:center;">PRODUCT</p>
+      <h2>取扱製品ラインナップ</h2>
+    </div>
+    <div class="show-grid">
+      <div class="show-card">
+        <img src="https://loremflickr.com/400/500/machine,steel" alt="ドラムハンドリング機器">
+        <!-- 元画像URL: 現サイトの製品写真（要現地取材） / images/product-drum2.jpg -->
+        <div class="show-card-label">ドラムハンドリング機器</div>
+      </div>
+      <div class="show-card">
+        <img src="https://loremflickr.com/400/500/crane,industrial" alt="特殊リフター">
+        <!-- 元画像URL: 現サイトの製品写真（要現地取材） / images/product-lifter2.jpg -->
+        <div class="show-card-label">特殊リフター</div>
+      </div>
+      <div class="show-card">
+        <img src="https://loremflickr.com/400/500/conveyor,warehouse" alt="投入/反転機">
+        <!-- 元画像URL: 現サイトの製品写真（要現地取材） / images/product-invert.jpg -->
+        <div class="show-card-label">投入/反転機</div>
+      </div>
+      <div class="show-card">
+        <img src="https://loremflickr.com/400/500/factory,equipment" alt="垂直搬送機・粉砕機">
+        <!-- 元画像URL: 現サイトの製品写真（要現地取材） / images/product-vertical.jpg -->
+        <div class="show-card-label">垂直搬送機・粉砕機</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="clients">
+  <div class="container">
+    <h2>主な取引実績</h2>
+    <p class="sub">食品・化学・製薬・化粧品・自動車など幅広い業界の大手企業様と（五十音順・敬称略）</p>
+    <div class="client-strip">
+      <span>味の素</span><span>旭化成</span><span>花王</span><span>カルビー</span>
+      <span>資生堂</span><span>信越化学工業</span><span>住友化学</span><span>第一三共</span>
+      <span>中外製薬</span><span>デンソー</span><span>日東電工</span><span>三菱ケミカルグループ</span>
+      <span>森永製菓</span><span>ロート製薬</span><span>鹿島建設</span><span>清水建設</span>
+    </div>
+  </div>
+</section>
+
+<section class="data-band" id="company">
+  <div class="container">
+    <p class="eyebrow">COMPANY</p>
+    <h2>会社概要</h2>
+    <table class="overview">
+      <tr><th>商号</th><td>大有株式会社（TAIYU CO., LTD.）</td></tr>
+      <tr><th>創業</th><td>1950年11月3日</td></tr>
+      <tr><th>資本金</th><td>1,000万円</td></tr>
+      <tr><th>本社所在地</th><td>千葉県千葉市美浜区新港13</td></tr>
+      <tr><th>代表者</th><td>代表取締役会長　宮永 万理　／　代表取締役社長　田中 良和</td></tr>
+      <tr><th>事業内容</th><td>マテリアルハンドリング機器のオーダーメイド設計・製作・販売</td></tr>
+      <tr><th>加盟団体</th><td>一般社団法人 日本物流システム機器協会／一般社団法人 日本運搬車両機器協会</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="fcta" id="contact">
+  <div class="container">
+    <h2>マテハンのお悩み、まずはご相談ください</h2>
+    <p>お見積り・製品検討・カタログ請求など、お問い合わせフォームより承ります。</p>
+    <a href="#" class="btn btn-primary">お問い合わせフォームへ進む</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    大有株式会社　〒261-0002 千葉県千葉市美浜区新港13　TEL 043-204-5061<br>
+    Copyright (C) TAIYU CO., LTD. All Rights Reserved.（本サイトはご提案用のサンプルです）
+  </div>
+</footer>
+
+</body>
+</html>
