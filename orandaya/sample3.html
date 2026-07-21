@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>オランダ家｜千葉県の洋和菓子専門店（C案）</title>
+<meta name="description" content="千葉県千葉市の洋和菓子製造販売「オランダ家」。創業75年、千葉県産素材にこだわった本物のおいしさをお届けします。">
+<style>
+  :root{
+    --main:#B5652D;
+    --main-dark:#8C4A1E;
+    --sub:#D9A441;
+    --accent:#3B7A57; /* 差し色グリーン(落花生の葉をイメージ) */
+    --cream:#FBF3E7;
+    --text:#3A2A1D;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",sans-serif;
+    color:var(--text);line-height:1.85;background:#fffaf3;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .inner{max-width:1140px;margin:0 auto;padding:0 24px;}
+  .section{padding:100px 0;}
+  .tag{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--sub);color:#3b2414;font-weight:700;font-size:12px;
+    padding:6px 16px;border-radius:20px;letter-spacing:.1em;margin-bottom:20px;
+  }
+  h2.title{
+    font-size:clamp(26px,4.5vw,40px);color:var(--main-dark);margin-bottom:16px;
+    line-height:1.5;
+  }
+  /* header */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    background:#fffaf3;border-bottom:3px solid var(--main);
+  }
+  .header-inner{max-width:1140px;margin:0 auto;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;}
+  .logo{font-size:22px;font-weight:700;color:var(--main-dark);position:relative;}
+  .logo::after{content:"peanut pie & sweets";display:block;font-size:9px;letter-spacing:.15em;color:var(--accent);font-weight:400;}
+  nav ul{list-style:none;display:flex;gap:26px;}
+  nav a{font-size:13px;font-weight:700;position:relative;}
+  nav a::after{content:"";position:absolute;left:0;bottom:-6px;width:0;height:2px;background:var(--accent);transition:.25s;}
+  nav a:hover::after{width:100%;}
+  @media(max-width:900px){nav{display:none;}}
+  main{padding-top:80px;}
+  /* hero asymmetric */
+  .hero{
+    position:relative;
+    background:var(--cream);
+    padding:70px 0;
+    clip-path: polygon(0 0,100% 0,100% 92%,0 100%);
+  }
+  .hero-inner{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:center;}
+  .hero-text{padding-right:40px;}
+  .hero-text h1{
+    font-size:clamp(32px,5vw,52px);color:var(--main-dark);line-height:1.4;margin:18px 0 26px;
+  }
+  .hero-text h1 em{color:var(--accent);font-style:normal;border-bottom:4px solid var(--sub);}
+  .hero-text p{font-size:15px;color:#5c4632;margin-bottom:32px;max-width:440px;}
+  .btn{display:inline-block;padding:16px 32px;border-radius:4px;font-weight:700;font-size:14px;transition:.2s;}
+  .btn-solid{background:var(--accent);color:#fff;}
+  .btn-solid:hover{background:#2c5f43;}
+  .hero-visual{position:relative;}
+  .hero-visual .stack{position:relative;}
+  .hero-visual img{border-radius:6px;}
+  .hero-visual .img-main{width:80%;box-shadow:0 20px 40px rgba(140,74,30,.25);}
+  .hero-visual .img-sub{
+    position:absolute;bottom:-30px;right:0;width:55%;border:6px solid #fffaf3;
+    box-shadow:0 14px 30px rgba(140,74,30,.3);
+  }
+  @media(max-width:900px){
+    .hero{clip-path:none;}
+    .hero-inner{grid-template-columns:1fr;}
+    .hero-text{padding-right:0;margin-bottom:60px;}
+    .hero-visual .img-sub{width:60%;}
+  }
+  /* diagonal feature strip */
+  .strip{
+    background:var(--main-dark);color:#fff;padding:60px 0;
+    display:flex;overflow-x:auto;gap:0;
+  }
+  .strip-item{
+    flex:1;min-width:220px;text-align:center;padding:0 30px;border-right:1px solid rgba(255,255,255,.2);
+  }
+  .strip-item:last-child{border-right:none;}
+  .strip-item .n{font-size:34px;font-weight:700;color:var(--sub);margin-bottom:8px;}
+  .strip-item p{font-size:13px;color:#f1e2d3;}
+  /* zigzag features */
+  .zig{display:flex;flex-direction:column;gap:110px;}
+  .zig-row{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;}
+  .zig-row:nth-child(even) .zig-text{order:2;}
+  .zig-row img{border-radius:8px;box-shadow:0 16px 30px rgba(0,0,0,.08);}
+  .zig-text .tag{background:var(--accent);color:#fff;}
+  .zig-text h3{font-size:22px;color:var(--main-dark);margin-bottom:16px;}
+  .zig-text p{font-size:14px;color:#5c4632;}
+  @media(max-width:900px){
+    .zig-row{grid-template-columns:1fr;}
+    .zig-row:nth-child(even) .zig-text{order:0;}
+  }
+  /* product cards accent */
+  .card-wall{
+    background:var(--cream);
+  }
+  .card-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #e8d4b8;}
+  .card-item{
+    background:#fff;padding:30px 20px;text-align:center;border-right:1px solid #e8d4b8;border-bottom:1px solid #e8d4b8;
+    transition:.25s;
+  }
+  .card-item:hover{background:var(--sub);}
+  .card-item img{aspect-ratio:1/1;object-fit:cover;border-radius:50%;margin:0 auto 16px;width:100px;}
+  .card-item h4{font-size:14px;color:var(--main-dark);font-weight:700;}
+  @media(max-width:900px){.card-grid{grid-template-columns:1fr 1fr;}}
+  /* company card */
+  .company-panel{
+    background:#fff;border:1px solid #e8d4b8;border-radius:10px;overflow:hidden;
+  }
+  .company-panel table{width:100%;border-collapse:collapse;}
+  .company-panel td,.company-panel th{padding:18px 24px;border-bottom:1px solid #f0e5d3;text-align:left;font-size:14px;}
+  .company-panel th{width:180px;color:var(--main-dark);background:var(--cream);font-weight:700;border-right:3px solid var(--accent);}
+  /* contact */
+  .contact-block{
+    background:var(--accent);color:#fff;border-radius:10px;padding:70px 40px;text-align:center;
+    position:relative;overflow:hidden;
+  }
+  .contact-block::before{
+    content:"";position:absolute;width:300px;height:300px;background:rgba(255,255,255,.08);border-radius:50%;
+    top:-120px;right:-100px;
+  }
+  .contact-block h2{font-size:clamp(22px,4vw,32px);margin-bottom:16px;}
+  .contact-block p{margin-bottom:30px;opacity:.95;}
+  .contact-block .btn{background:var(--sub);color:#3b2414;}
+  .contact-block .btn:hover{background:#fff;}
+  footer{background:#2c1b10;color:#e8d8c6;padding:50px 0 24px;}
+  .footer-inner{max-width:1140px;margin:0 auto;padding:0 24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:30px;}
+  .footer-logo{font-size:20px;font-weight:700;color:#fff;margin-bottom:10px;}
+  .footer-nav ul{list-style:none;display:flex;gap:20px;flex-wrap:wrap;font-size:13px;}
+  .copyright{text-align:center;margin-top:34px;font-size:12px;color:#a58b70;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <a href="#" class="logo">オランダ家</a>
+    <nav>
+      <ul>
+        <li><a href="#feature">こだわり</a></li>
+        <li><a href="#products">商品</a></li>
+        <li><a href="#company">会社概要</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="inner hero-inner">
+    <div class="hero-text">
+      <span class="tag">CHIBA・SINCE 1949</span>
+      <h1>千葉の畑から、<br><em>本物</em>のおいしさへ。</h1>
+      <p>生産量日本一の千葉県産落花生をはじめ、地元の恵みを活かした洋和菓子を届けて75年。保存料に頼らない、素材を活かした味づくりです。</p>
+      <a href="https://orandaya.jp/form/inquiry/" class="btn btn-solid" target="_blank" rel="noopener">お問い合わせはこちら</a>
+    </div>
+    <div class="hero-visual">
+      <div class="stack">
+        <!-- 元画像URL: https://orandaya.jp/img/common/img_recommend.jpg / images/hero-main.jpg -->
+        <img class="img-main" src="https://loremflickr.com/700/560/peanutpie,dessert" alt="オランダ家 看板商品">
+        <!-- 元画像URL: https://orandaya.jp/img/common/img_recommend2.jpg / images/hero-sub.jpg -->
+        <img class="img-sub" src="https://loremflickr.com/500/400/pastryshop" alt="店内風景">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="strip">
+  <div class="strip-item"><div class="n">75年</div><p>創業からの歴史</p></div>
+  <div class="strip-item"><div class="n">540名</div><p>従業員数</p></div>
+  <div class="strip-item"><div class="n">20市+</div><p>千葉県内の展開エリア</p></div>
+  <div class="strip-item"><div class="n">No.1</div><p>千葉県産落花生の生産量</p></div>
+</section>
+
+<section class="section" id="feature">
+  <div class="inner zig">
+    <div class="zig-row">
+      <div class="zig-text">
+        <span class="tag">Commitment 01</span>
+        <h3>千葉県産素材へのこだわり</h3>
+        <p>高級品種「千葉半立」やあっさりとした甘みの「ナカテユタカ」など、地元千葉で採れた落花生・さつま芋を積極的に使用。楽花生パイをはじめとする看板商品を生み出しています。</p>
+      </div>
+      <!-- 元画像URL: https://orandaya.jp/img/common/img_baked-goods1.jpg / images/feature-peanut.jpg -->
+      <img src="https://loremflickr.com/600/440/peanut,farmproduce" alt="千葉県産落花生">
+    </div>
+    <div class="zig-row">
+      <div class="zig-text">
+        <span class="tag">Commitment 02</span>
+        <h3>保存料に頼らないやさしい味</h3>
+        <p>賞味期限を伸ばすための保存料や過剰な糖度に頼らず、素材本来の風味を活かした「一番おいしい甘さ」を追求。まごころを込めたお菓子づくりを続けています。</p>
+      </div>
+      <!-- 元画像URL: https://orandaya.jp/img/common/img_western-sweets.jpg / images/feature-fresh.jpg -->
+      <img src="https://loremflickr.com/600/440/freshbakery,pastry" alt="やさしい味わいの洋菓子">
+    </div>
+  </div>
+</section>
+
+<section class="section card-wall" id="products">
+  <div class="inner">
+    <span class="tag">Products</span>
+    <h2 class="title">商品ラインナップ</h2>
+    <div class="card-grid">
+      <div class="card-item">
+        <!-- 元画像URL: https://orandaya.jp/img/common/img_western-sweets.jpg / images/card-yougashi.jpg -->
+        <img src="https://loremflickr.com/200/200/pastry,pie" alt="洋生菓子">
+        <h4>洋生菓子</h4>
+      </div>
+      <div class="card-item">
+        <!-- 元画像URL: https://orandaya.jp/img/common/img_japanese-sweets.jpg / images/card-wagashi.jpg -->
+        <img src="https://loremflickr.com/200/200/japanesesweets,wagashi" alt="和生菓子">
+        <h4>和生菓子</h4>
+      </div>
+      <div class="card-item">
+        <!-- 元画像URL: https://orandaya.jp/img/common/img_deco-cake.jpg / images/card-deco.jpg -->
+        <img src="https://loremflickr.com/200/200/birthdaycake" alt="デコレーションケーキ">
+        <h4>デコレーションケーキ</h4>
+      </div>
+      <div class="card-item">
+        <!-- 元画像URL: https://orandaya.jp/img/common/img_condolence-sweets.jpg / images/card-keityou.jpg -->
+        <img src="https://loremflickr.com/200/200/traditional,giftbox" alt="慶弔菓子">
+        <h4>慶弔菓子</h4>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="company">
+  <div class="inner">
+    <span class="tag">Company</span>
+    <h2 class="title">会社概要</h2>
+    <div class="company-panel">
+      <table>
+        <tr><th>会社名</th><td>株式会社オランダ家</td></tr>
+        <tr><th>代表者</th><td>代表取締役社長　鬼澤 修</td></tr>
+        <tr><th>本社所在地</th><td>〒261-0002　千葉県千葉市美浜区新港211番地</td></tr>
+        <tr><th>電話番号</th><td>043(241)4111（代表）</td></tr>
+        <tr><th>創業</th><td>昭和24年10月（2024年に75周年）</td></tr>
+        <tr><th>資本金</th><td>1,000万円</td></tr>
+        <tr><th>従業員数</th><td>540名</td></tr>
+        <tr><th>事業内容</th><td>洋和菓子製造販売</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="inner">
+    <div class="contact-block">
+      <h2>ご予約・お問い合わせはこちら</h2>
+      <p>デコレーションケーキのご予約や慶弔菓子のご相談など、お気軽にお問い合わせください。</p>
+      <a href="https://orandaya.jp/form/inquiry/" class="btn" target="_blank" rel="noopener">お問い合わせフォームへ</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">オランダ家</div>
+      <p style="font-size:13px;color:#c9b39c;">〒261-0002　千葉県千葉市美浜区新港211番地<br>TEL：043(241)4111</p>
+    </div>
+    <nav class="footer-nav">
+      <ul>
+        <li><a href="#feature">こだわり</a></li>
+        <li><a href="#products">商品</a></li>
+        <li><a href="#company">会社概要</a></li>
+        <li><a href="recruit.html">採用情報</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
+      </ul>
+    </nav>
+  </div>
+  <p class="copyright">&copy; 株式会社オランダ家 All Rights Reserved.（本ページはホームページ制作提案用のサンプルです）</p>
+</footer>
+
+</body>
+</html>
