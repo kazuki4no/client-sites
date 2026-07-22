@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報｜SEADS BASE（シーズベース）</title>
+<style>
+  :root{
+    --main:#123A5E;
+    --main-dark:#0A2036;
+    --accent:#C9A24B;
+    --accent-light:#F4EDDD;
+    --text:#2B2B2B;
+    --sub:#6B6B6B;
+    --bg:#FCFCFA;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.8;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .section{padding:88px 0;}
+  .section-title{font-size:14px;letter-spacing:0.2em;color:var(--main);font-weight:700;text-align:center;margin-bottom:12px;}
+  .section-heading{font-size:30px;font-weight:700;text-align:center;margin-bottom:16px;letter-spacing:0.03em;}
+  .section-lead{text-align:center;color:var(--sub);max-width:640px;margin:0 auto 56px;font-size:15px;}
+
+  .notice{
+    background:#FFF6E0;border-bottom:1px solid #EAD9A8;color:#7A5B12;
+    text-align:center;font-size:13.5px;font-weight:600;padding:12px 24px;
+  }
+
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(255,255,255,0.96);
+    border-bottom:1px solid #eee;
+    backdrop-filter:blur(6px);
+  }
+  .header-inner{
+    max-width:1080px;margin:0 auto;padding:16px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .logo{font-size:19px;font-weight:800;color:var(--main-dark);letter-spacing:0.02em;}
+  .logo span{color:var(--accent);}
+  nav ul{display:flex;gap:32px;list-style:none;}
+  nav a{font-size:14px;font-weight:600;}
+  nav a:hover{color:var(--main);}
+  .header-cta{display:flex;gap:10px;}
+  .btn{display:inline-block;padding:12px 28px;border-radius:4px;font-size:14px;font-weight:700;text-align:center;}
+  .btn-primary{background:var(--main);color:#fff;}
+  .btn-primary:hover{background:var(--main-dark);}
+  .btn-outline{border:1px solid var(--main);color:var(--main);}
+  .btn-outline:hover{background:var(--accent-light);}
+  .btn-small{padding:9px 18px;font-size:13px;}
+  .menu-toggle{display:none;font-size:26px;background:none;border:none;cursor:pointer;color:var(--main-dark);}
+
+  .hero{
+    position:relative;
+    min-height:520px;
+    display:flex;align-items:center;
+    background:linear-gradient(120deg, rgba(10,32,54,0.86), rgba(18,58,94,0.72)), url('https://loremflickr.com/1600/900/team,office,japan') center/cover no-repeat;
+    color:#fff;
+  }
+  .hero-inner{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .hero-tag{
+    display:inline-block;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.5);
+    padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600;letter-spacing:0.05em;margin-bottom:24px;
+  }
+  .hero h1{font-size:36px;font-weight:800;line-height:1.5;margin-bottom:22px;max-width:680px;}
+  .hero p{font-size:16px;max-width:560px;margin-bottom:36px;opacity:0.95;}
+  .hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
+  .hero .btn-outline{border-color:#fff;color:#fff;}
+  .hero .btn-outline:hover{background:rgba(255,255,255,0.15);}
+
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .card{
+    background:var(--white);border:1px solid #ececec;border-radius:10px;padding:32px 24px;
+    transition:transform .2s, box-shadow .2s;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,0.08);}
+  .card-num{font-size:13px;color:var(--accent);font-weight:800;letter-spacing:0.1em;margin-bottom:14px;}
+  .card h3{font-size:17px;font-weight:700;margin-bottom:12px;}
+  .card p{font-size:13.5px;color:var(--sub);}
+
+  .job-list{display:flex;flex-direction:column;gap:20px;}
+  .job-row{
+    background:var(--white);border:1px solid #ececec;border-radius:10px;padding:28px 32px;
+  }
+  .job-row .job-title{font-size:18px;font-weight:700;color:var(--main-dark);margin-bottom:10px;}
+  .job-row .job-tags{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:14px;}
+  .job-tag{background:var(--accent-light);color:var(--main-dark);font-size:12px;font-weight:700;padding:5px 12px;border-radius:14px;}
+  .job-row p{font-size:14px;color:var(--sub);}
+
+  .company-table{
+    width:100%;border-collapse:collapse;max-width:760px;margin:0 auto;background:#fff;border-radius:10px;overflow:hidden;border:1px solid #ececec;
+  }
+  .company-table th,.company-table td{padding:18px 24px;text-align:left;font-size:14.5px;border-bottom:1px solid #eee;}
+  .company-table th{width:160px;background:var(--accent-light);color:var(--main-dark);font-weight:700;}
+  .company-table tr:last-child th, .company-table tr:last-child td{border-bottom:none;}
+
+  .flow-list{display:flex;flex-direction:column;gap:0;}
+  .flow-item{display:flex;gap:24px;padding:24px 0;border-bottom:1px solid #eee;align-items:flex-start;}
+  .flow-item:last-child{border-bottom:none;}
+  .flow-num{
+    width:52px;height:52px;border-radius:50%;background:var(--main);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;flex-shrink:0;
+  }
+  .flow-body h3{font-size:16.5px;font-weight:700;margin-bottom:6px;}
+  .flow-body p{font-size:14px;color:var(--sub);}
+
+  .cta{background:var(--main-dark);color:#fff;text-align:center;padding:80px 24px;}
+  .cta h2{font-size:26px;font-weight:800;margin-bottom:16px;}
+  .cta p{color:#d9e2ec;margin-bottom:32px;}
+  .cta .btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .cta .btn-primary{background:var(--accent);color:var(--main-dark);}
+  .cta .btn-outline{border-color:#fff;color:#fff;}
+
+  footer{background:#0A2036;color:#c9d2db;padding:48px 24px 24px;font-size:13px;}
+  .footer-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .footer-logo{font-size:17px;font-weight:800;color:#fff;margin-bottom:10px;}
+  .footer-links{display:flex;gap:24px;list-style:none;flex-wrap:wrap;}
+  .copyright{text-align:center;margin-top:32px;color:#7d8a97;}
+
+  @media (max-width:900px){
+    .cards{grid-template-columns:1fr;}
+  }
+  @media (max-width:700px){
+    nav, .header-cta{display:none;}
+    .menu-toggle{display:block;}
+    .hero h1{font-size:26px;}
+    .hero{min-height:440px;}
+    .section{padding:60px 0;}
+    .company-table th{width:110px;font-size:13px;padding:14px;}
+    .company-table td{font-size:13px;padding:14px;}
+    .job-row{padding:22px 20px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="notice">※本ページは提案用の仮構成です。実際の募集職種・雇用条件・選考フローは別途ご確認のうえ確定いたします。</div>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">SEADS<span> BASE</span></div>
+    <nav><ul>
+      <li><a href="#about">私たちについて</a></li>
+      <li><a href="#job">募集職種</a></li>
+      <li><a href="#flow">選考の流れ</a></li>
+      <li><a href="#company">会社概要</a></li>
+    </ul></nav>
+    <div class="header-cta">
+      <a href="sample1.html" class="btn btn-outline btn-small">サービスサイトへ</a>
+      <a href="#contact" class="btn btn-primary btn-small">応募する</a>
+    </div>
+    <button class="menu-toggle">≡</button>
+  </div>
+</header>
+
+<!-- 元画像URL：不明（差し替え前提のダミー画像／LoremFlickr使用） / images/recruit-hero.jpg -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">財務コンサルタント・アドバイザー職 採用</span>
+    <h1>起業と発展の「種」を、<br>この街に蒔く仕事。</h1>
+    <p>SEADS BASEは、市川市を拠点に千葉県・東京都東部地区の起業家・経営者を、元銀行員の視点で支える財務コンサルティングファームです。600社の支援実績を共に積み重ねてきた仲間を募集しています。</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-primary">エントリーする</a>
+      <a href="#job" class="btn btn-outline">募集職種を見る</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container">
+    <p class="section-title">ABOUT</p>
+    <h2 class="section-heading">私たちが目指すもの</h2>
+    <p class="section-lead">「国内屈指の創業の聖地を、この街に創る」というVISIONのもと、経営者の伴走者として共に成長できる仲間を求めています。</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-num">MISSION</div>
+        <h3>事業の発展を通じて、豊かな地域社会の礎を築く</h3>
+        <p>お客様の事業成長にとことん向き合い、地域に根ざした支援を大切にしています。</p>
+      </div>
+      <div class="card">
+        <div class="card-num">VISION</div>
+        <h3>国内屈指の「創業の聖地」を、この街に創る</h3>
+        <p>市川市を拠点に、起業家・経営者が集まり育つ街づくりに挑戦しています。</p>
+      </div>
+      <div class="card">
+        <div class="card-num">CULTURE</div>
+        <h3>銀行目線と経営者目線、両方を扱えるプロへ</h3>
+        <p>元銀行員のノウハウをチーム全体で共有し、専門性を磨き合う文化があります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="job" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">JOB</p>
+    <h2 class="section-heading">募集職種（仮）</h2>
+    <p class="section-lead">下記は提案用の仮の職種例です。実際の募集内容は貴社にて確定のうえご提示ください。</p>
+    <div class="job-list">
+      <div class="job-row">
+        <div class="job-title">財務コンサルタント（創業融資・資金繰り支援）</div>
+        <div class="job-tags"><span class="job-tag">正社員</span><span class="job-tag">経験者歓迎</span><span class="job-tag">市川市</span></div>
+        <p>起業家・経営者への無料相談対応から、事業計画書の作成支援、金融機関との交渉サポートまでを担当。金融機関出身者や財務・会計知識をお持ちの方を歓迎します。</p>
+      </div>
+      <div class="job-row">
+        <div class="job-title">アシスタント・アドバイザー（未経験可）</div>
+        <div class="job-tags"><span class="job-tag">正社員</span><span class="job-tag">未経験可</span><span class="job-tag">研修あり</span></div>
+        <p>先輩コンサルタントのもとで事業計画書の作成補助やヒアリング同席、顧客対応を経験しながら、財務コンサルタントとしてのスキルを身につけていきます。</p>
+      </div>
+      <div class="job-row">
+        <div class="job-title">営業・広報担当</div>
+        <div class="job-tags"><span class="job-tag">正社員／業務委託</span><span class="job-tag">地域密着</span></div>
+        <p>市川市・千葉県・東京都東部地区の起業家・経営者との接点づくりや、AI無料簡易診断・無料相談の周知活動を担当します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="flow">
+  <div class="container">
+    <p class="section-title">FLOW</p>
+    <h2 class="section-heading">選考の流れ（仮）</h2>
+    <div class="flow-list">
+      <div class="flow-item">
+        <div class="flow-num">01</div>
+        <div class="flow-body">
+          <h3>エントリー</h3>
+          <p>採用フォームより応募情報をお送りください。</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">02</div>
+        <div class="flow-body">
+          <h3>書類選考</h3>
+          <p>履歴書・職務経歴書をもとに選考いたします。</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">03</div>
+        <div class="flow-body">
+          <h3>面接（1〜2回）</h3>
+          <p>経歴やご経験、入社後に担っていただきたい役割についてお話しします。</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">04</div>
+        <div class="flow-body">
+          <h3>内定・入社</h3>
+          <p>条件面談を経て、内定・入社となります。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="company" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">COMPANY</p>
+    <h2 class="section-heading">会社概要</h2>
+    <table class="company-table">
+      <tr><th>会社名</th><td>株式会社シーズベース（SEADS BASE）</td></tr>
+      <tr><th>事業内容</th><td>創業融資・資金繰り・事業計画支援（元銀行員による財務コンサルティング）</td></tr>
+      <tr><th>拠点</th><td>市川市を拠点に、千葉県・東京都東部地区（江東区・葛飾区・江戸川区・荒川区）</td></tr>
+      <tr><th>実績</th><td>企業支援実績600社、融資案件取組実績1,000件</td></tr>
+      <tr><th>MISSION</th><td>お客様の事業の発展を通じて、豊かな地域社会の礎を築く</td></tr>
+      <tr><th>VISION</th><td>国内屈指の「創業の聖地」を、この街に創る</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2>私たちと一緒に、創業の聖地を創りませんか</h2>
+  <p>まずはお気軽にエントリーください。実際の募集要項・条件は貴社にて確定のうえご提示ください。</p>
+  <div class="btns">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeE1-LOMU7pz5V_r9toBToVhYIMSEryY06-aCaFOHWsWJKsPA/viewform" class="btn btn-primary">エントリーフォームへ（仮）</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">SEADS BASE</div>
+      <p>市川市を拠点に、千葉県・東京都東部地区の<br>起業家・経営者を支援</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#about">私たちについて</a></li>
+      <li><a href="#job">募集職種</a></li>
+      <li><a href="sample1.html">サービスサイト</a></li>
+      <li><a href="#contact">応募する</a></li>
+    </ul>
+  </div>
+  <p class="copyright">©SEADS BASE All rights reserved.</p>
+</footer>
+
+</body>
+</html>
