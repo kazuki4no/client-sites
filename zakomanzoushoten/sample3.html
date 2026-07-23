@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>座古萬蔵商店｜銚子葡萄酒醸造所 ブランドサイト提案</title>
+<style>
+  :root{
+    --main:#6E1F3D;
+    --main-dark:#4F1329;
+    --gold:#C9A227;
+    --gold-light:#F5EEDB;
+    --text:#2B2B2B;
+    --sub:#6B6B6B;
+    --bg:#FCFAF6;
+    --white:#FFFFFF;
+    --dark-panel:#211014;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Hiragino Mincho ProN","Hiragino Kaku Gothic ProN","Yu Gothic",serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.8;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1100px;margin:0 auto;padding:0 24px;}
+  .section{padding:88px 0;}
+  .section-title{font-size:14px;letter-spacing:0.2em;color:var(--gold);font-weight:700;text-align:center;margin-bottom:12px;}
+  .section-heading{font-size:30px;font-weight:700;text-align:center;margin-bottom:16px;}
+  .section-lead{text-align:center;color:var(--sub);max-width:640px;margin:0 auto 56px;font-size:15px;}
+
+  header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.96);border-bottom:1px solid #eee;backdrop-filter:blur(6px);}
+  .header-inner{max-width:1100px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-size:18px;font-weight:800;color:var(--main-dark);}
+  .logo span{color:var(--gold);}
+  nav ul{display:flex;gap:32px;list-style:none;}
+  nav a{font-size:14px;font-weight:600;}
+  nav a:hover{color:var(--main);}
+  .header-cta{display:flex;gap:10px;}
+  .btn{display:inline-block;padding:12px 28px;border-radius:4px;font-size:14px;font-weight:700;text-align:center;}
+  .btn-primary{background:var(--main);color:#fff;}
+  .btn-primary:hover{background:var(--main-dark);}
+  .btn-outline{border:1px solid var(--main);color:var(--main);}
+  .btn-outline:hover{background:var(--gold-light);}
+  .btn-small{padding:9px 18px;font-size:13px;}
+  .menu-toggle{display:none;font-size:26px;background:none;border:none;cursor:pointer;color:var(--main-dark);}
+
+  /* Asymmetric hero */
+  .hero{display:flex;min-height:600px;}
+  .hero-left{flex:1.1;background:var(--main-dark);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:60px 60px;position:relative;}
+  .hero-left::after{content:"鶴";position:absolute;top:24px;right:36px;font-size:80px;color:rgba(201,162,39,0.15);font-weight:800;}
+  .hero-tag{display:inline-block;border:1px solid var(--gold);color:var(--gold);padding:6px 18px;border-radius:20px;font-size:12.5px;letter-spacing:0.1em;margin-bottom:26px;width:fit-content;}
+  .hero-left h1{font-size:34px;font-weight:800;line-height:1.6;margin-bottom:22px;}
+  .hero-left p{font-size:14.5px;opacity:0.9;max-width:460px;margin-bottom:32px;}
+  .hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+  .hero-left .btn-primary{background:var(--gold);color:var(--main-dark);}
+  .hero-left .btn-outline{border-color:#fff;color:#fff;}
+  .hero-right{flex:1;background-size:cover;background-position:center;}
+
+  /* Horizontal scroll cards */
+  .hscroll{display:flex;gap:20px;overflow-x:auto;padding:8px 4px 24px;scrollbar-width:thin;}
+  .hcard{flex:0 0 260px;background:var(--white);border:1px solid #ece3d3;border-radius:12px;padding:28px 24px;}
+  .hcard-num{font-size:12px;color:var(--gold);font-weight:800;letter-spacing:0.1em;margin-bottom:12px;}
+  .hcard h3{font-size:16px;font-weight:700;margin-bottom:10px;color:var(--main-dark);}
+  .hcard p{font-size:13.5px;color:var(--sub);}
+
+  /* Product panels 3col, center dark */
+  .panels{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-radius:14px;overflow:hidden;}
+  .panel{padding:44px 32px;background:var(--white);border:1px solid #ece3d3;}
+  .panel.dark{background:var(--dark-panel);color:#f2e8ec;border-color:var(--dark-panel);}
+  .panel-img{width:100%;height:180px;object-fit:cover;border-radius:8px;margin-bottom:20px;}
+  .panel-tag{font-size:11.5px;letter-spacing:0.12em;color:var(--gold);font-weight:700;margin-bottom:10px;}
+  .panel h3{font-size:18px;font-weight:800;margin-bottom:12px;}
+  .panel.dark h3{color:#fff;}
+  .panel p{font-size:13.5px;color:var(--sub);}
+  .panel.dark p{color:#d6c3ca;}
+  .panel .price{display:inline-block;margin-top:14px;font-size:13px;font-weight:700;color:var(--main);}
+  .panel.dark .price{color:var(--gold);}
+
+  /* Company dark panel */
+  .company-dark{background:var(--dark-panel);color:#f2e8ec;}
+  .company-dark .section-title{color:var(--gold);}
+  .company-dark .section-heading{color:#fff;}
+  .company-table{width:100%;border-collapse:collapse;max-width:760px;margin:0 auto;}
+  .company-table th,.company-table td{padding:18px 24px;text-align:left;font-size:14.5px;border-bottom:1px solid rgba(255,255,255,0.12);}
+  .company-table th{width:160px;color:var(--gold);font-weight:700;}
+  .company-table tr:last-child th,.company-table tr:last-child td{border-bottom:none;}
+  .age-note{max-width:760px;margin:24px auto 0;font-size:12.5px;color:#c9b6bd;text-align:center;border-top:1px dashed rgba(255,255,255,0.15);padding-top:18px;}
+
+  .cta{background:var(--main);color:#fff;text-align:center;padding:80px 24px;}
+  .cta h2{font-size:26px;font-weight:800;margin-bottom:16px;}
+  .cta p{color:#f2dde3;margin-bottom:32px;}
+  .cta .btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .cta .btn-primary{background:var(--gold);color:var(--main-dark);}
+  .cta .btn-outline{border-color:#fff;color:#fff;}
+
+  footer{background:#150709;color:#e6d3d9;padding:48px 24px 24px;font-size:13px;}
+  .footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .footer-logo{font-size:17px;font-weight:800;color:#fff;margin-bottom:10px;}
+  .footer-links{display:flex;gap:24px;list-style:none;flex-wrap:wrap;}
+  .copyright{text-align:center;margin-top:32px;color:#a08999;}
+
+  @media (max-width:900px){
+    .hero{flex-direction:column;min-height:auto;}
+    .hero-left{padding:48px 32px;}
+    .hero-right{min-height:260px;}
+    .panels{grid-template-columns:1fr;}
+  }
+  @media (max-width:700px){
+    nav, .header-cta{display:none;}
+    .menu-toggle{display:block;}
+    .hero-left h1{font-size:25px;}
+    .section{padding:60px 0;}
+    .hcard{flex:0 0 220px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">座古萬蔵商店<span>｜銚子葡萄酒醸造所</span></div>
+    <nav><ul>
+      <li><a href="#story">こだわり</a></li>
+      <li><a href="#products">商品ラインナップ</a></li>
+      <li><a href="#company">会社概要</a></li>
+    </ul></nav>
+    <div class="header-cta">
+      <a href="recruit.html" class="btn btn-outline btn-small">採用情報</a>
+      <a href="#contact" class="btn btn-primary btn-small">お問い合わせ</a>
+    </div>
+    <button class="menu-toggle">≡</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-left">
+    <span class="hero-tag">CHOSHI WINERY</span>
+    <h1>漁師町の食卓に、<br>寄り添うワインを。</h1>
+    <p>江戸から続く醸造の文化と、銚子産・国産ぶどうへのこだわり。フラッグシップ「KISSAKI」と、気軽に楽しめる「漁師は歌う」。万祝の鶴を背負い、銚子の海と食卓を彩ります。</p>
+    <div class="hero-btns">
+      <a href="#products" class="btn btn-primary">商品ラインナップを見る</a>
+      <a href="#contact" class="btn btn-outline">お問い合わせ</a>
+    </div>
+  </div>
+  <!-- 元画像URL：不明・差し替え前提 / images/hero-right-vineyard.jpg（背景画像としてCSSで指定） -->
+  <div class="hero-right" style="background-image:url('https://loremflickr.com/900/900/vineyard,sea');"></div>
+</section>
+
+<section class="section" id="story">
+  <div class="container">
+    <p class="section-title">STORY & STRENGTH</p>
+    <h2 class="section-heading">座古萬蔵商店のこだわり</h2>
+    <p class="section-lead">横にスクロールしてご覧ください。醸造の背景から味わいの設計まで、私たちのこだわりをご紹介します。</p>
+    <div class="hscroll">
+      <div class="hcard"><div class="hcard-num">01</div><h3>江戸から続く醸造の文化</h3><p>醤油・酒づくりで培われた発酵の伝統を受け継ぎ、銚子の気候風土を活かした醸造を行っています。</p></div>
+      <div class="hcard"><div class="hcard-num">02</div><h3>銚子産・国産ぶどう</h3><p>地元銚子産を中心とした国産ぶどうのみを使用し、土地の個性を味わいに映し出します。</p></div>
+      <div class="hcard"><div class="hcard-num">03</div><h3>魚とのマリアージュ設計</h3><p>銚子港の新鮮な魚介と合わせることを前提に、後味の切れや香りのバランスを設計しています。</p></div>
+      <div class="hcard"><div class="hcard-num">04</div><h3>万祝の鶴のラベル</h3><p>漁師の晴れ着「万祝」の意匠から。豊漁と幸せを願う地域の文化をボトルに宿しています。</p></div>
+      <div class="hcard"><div class="hcard-num">05</div><h3>ブログ「銚子はどうだい？」</h3><p>銚子の様子やワインづくりに関わる人・土地・文化を綴っています。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section products" id="products" style="background:var(--gold-light);">
+  <div class="container">
+    <p class="section-title">PRODUCTS</p>
+    <h2 class="section-heading">商品ラインナップ</h2>
+    <p class="section-lead">フラッグシップ「KISSAKI」と、日常に寄り添う「漁師は歌う」。用途に合わせてお選びいただけます。</p>
+    <div class="panels">
+      <div class="panel">
+        <!-- 元画像URL：不明・差し替え前提 / images/panel-kissaki.jpg -->
+        <img class="panel-img" src="https://loremflickr.com/500/360/wine,bottle" alt="KISSAKI">
+        <div class="panel-tag">FLAGSHIP LINE</div>
+        <h3>KISSAKI（キッサキ）</h3>
+        <p>白（シャルドネ）・赤（メルロー樽熟）の2種。銚子の海風が育てたぶどうを丁寧に醸したフラッグシップワイン。</p>
+        <span class="price">各￥3,960（税込）</span>
+      </div>
+      <div class="panel dark">
+        <!-- 元画像URL：不明・差し替え前提 / images/panel-ryoushi.jpg -->
+        <img class="panel-img" src="https://loremflickr.com/500/360/wine,vineyard" alt="漁師は歌う">
+        <div class="panel-tag">CASUAL LINE</div>
+        <h3>漁師は歌う</h3>
+        <p>白（ソーヴィニヨンブラン・デラウェア・甲州）、赤（カベルネフラン）、ロゼ（メルロー）の5種。気軽に楽しめる定番ライン。</p>
+        <span class="price">￥2,530〜￥3,190（税込）</span>
+      </div>
+      <div class="panel">
+        <!-- 元画像URL：不明・差し替え前提 / images/panel-gift.jpg -->
+        <img class="panel-img" src="https://loremflickr.com/500/360/giftbox,japan" alt="贈答用ギフト・グッズ">
+        <div class="panel-tag">GIFT & GOODS</div>
+        <h3>贈答用化粧箱・オリジナルグッズ</h3>
+        <p>化粧箱・手提げ袋のほか、オリジナルTシャツや漁網モチーフのワインバッグなど銚子らしいグッズも展開。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section company-dark" id="company">
+  <div class="container">
+    <p class="section-title">COMPANY</p>
+    <h2 class="section-heading">会社概要</h2>
+    <table class="company-table">
+      <tr><th>会社名</th><td>銚子葡萄酒醸造所　座古萬蔵商店</td></tr>
+      <tr><th>所在地</th><td>〒288-0043　千葉県銚子市東芝町9番地の1</td></tr>
+      <tr><th>代表者</th><td>坐古 拓也</td></tr>
+      <tr><th>電話番号</th><td>0479-22-2861</td></tr>
+      <tr><th>事業内容</th><td>銚子ワインの醸造・販売</td></tr>
+    </table>
+    <p class="age-note">20歳未満の飲酒は法律で禁止されています。お酒は20歳になってから、ゆっくりと楽しみましょう。</p>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2>銚子のワインを、食卓へ。</h2>
+  <p>商品に関するお問い合わせ、取材のご依頼など、お気軽にご連絡ください。</p>
+  <div class="btns">
+    <a href="tel:0479-22-2861" class="btn btn-primary">お電話でのお問い合わせ　0479-22-2861</a>
+    <a href="https://zakomanzoushoten.com/contact" class="btn btn-outline">お問い合わせフォームへ</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">座古萬蔵商店｜銚子葡萄酒醸造所</div>
+      <p>〒288-0043　千葉県銚子市東芝町9番地の1<br>TEL：0479-22-2861</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#story">こだわり</a></li>
+      <li><a href="#products">商品ラインナップ</a></li>
+      <li><a href="recruit.html">採用情報</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </div>
+  <p class="copyright">©銚子葡萄酒醸造所 座古萬蔵商店 All rights reserved.</p>
+</footer>
+
+</body>
+</html>

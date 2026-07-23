@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UrboLab まちげー学会｜まちづくりゲームという体験デザイン</title>
+<style>
+  :root{
+    --main:#E8963C;
+    --main-dark:#1F3547;
+    --accent:#F4B942;
+    --accent-light:#FDF1DE;
+    --text:#2B2B2B;
+    --sub:#6B6B6B;
+    --bg:#FFFDF9;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:var(--text);background:var(--bg);line-height:1.8;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .section{padding:88px 0;}
+  .section-title{font-size:14px;letter-spacing:0.2em;color:var(--main);font-weight:700;text-align:center;margin-bottom:12px;}
+  .section-heading{font-size:30px;font-weight:700;text-align:center;margin-bottom:16px;letter-spacing:0.03em;color:var(--main-dark);}
+  .section-lead{text-align:center;color:var(--sub);max-width:640px;margin:0 auto 56px;font-size:15px;}
+
+  header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.96);border-bottom:1px solid #eee;backdrop-filter:blur(6px);}
+  .header-inner{max-width:1080px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-size:19px;font-weight:800;color:var(--main-dark);}
+  .logo span{color:var(--main);}
+  nav ul{display:flex;gap:32px;list-style:none;}
+  nav a{font-size:14px;font-weight:600;}
+  nav a:hover{color:var(--main);}
+  .header-cta{display:flex;gap:10px;}
+  .btn{display:inline-block;padding:12px 28px;border-radius:4px;font-size:14px;font-weight:700;text-align:center;}
+  .btn-primary{background:var(--main);color:#fff;}
+  .btn-primary:hover{background:#d17f27;}
+  .btn-outline{border:1px solid var(--main);color:var(--main-dark);}
+  .btn-outline:hover{background:var(--accent-light);}
+  .btn-small{padding:9px 18px;font-size:13px;}
+  .menu-toggle{display:none;font-size:26px;background:none;border:none;cursor:pointer;color:var(--main-dark);}
+
+  /* Asymmetric hero */
+  .hero{
+    display:grid;grid-template-columns:1.1fr 0.9fr;min-height:600px;
+  }
+  .hero-left{
+    background:var(--main-dark);color:#fff;display:flex;flex-direction:column;justify-content:center;
+    padding:60px 64px;position:relative;overflow:hidden;
+  }
+  .hero-left::before{
+    content:"";position:absolute;right:-60px;top:-60px;width:220px;height:220px;
+    background:var(--main);border-radius:50%;opacity:0.25;
+  }
+  .hero-tag{
+    display:inline-block;background:rgba(244,185,66,0.18);border:1px solid var(--accent);
+    color:var(--accent);padding:6px 16px;border-radius:20px;font-size:13px;font-weight:700;
+    letter-spacing:0.05em;margin-bottom:24px;width:fit-content;
+  }
+  .hero-left h1{font-size:34px;font-weight:800;line-height:1.55;margin-bottom:20px;position:relative;z-index:1;}
+  .hero-left p{font-size:15px;max-width:460px;opacity:0.9;margin-bottom:32px;position:relative;z-index:1;}
+  .hero-btns{display:flex;gap:14px;flex-wrap:wrap;position:relative;z-index:1;}
+  .hero-left .btn-outline{border-color:#fff;color:#fff;}
+  .hero-left .btn-outline:hover{background:rgba(255,255,255,0.15);}
+  .hero-right{position:relative;}
+  .hero-right img{width:100%;height:100%;object-fit:cover;}
+
+  /* Horizontal scroll cards */
+  .hscroll{display:flex;gap:22px;overflow-x:auto;padding:8px 4px 24px;scroll-snap-type:x mandatory;}
+  .hscroll::-webkit-scrollbar{height:6px;}
+  .hscroll::-webkit-scrollbar-thumb{background:var(--main);border-radius:3px;}
+  .hcard{
+    flex:0 0 280px;scroll-snap-align:start;background:var(--white);border:1px solid #ececec;
+    border-radius:12px;overflow:hidden;transition:transform .2s;
+  }
+  .hcard:hover{transform:translateY(-4px);}
+  .hcard img{width:100%;height:170px;object-fit:cover;}
+  .hcard-body{padding:22px;}
+  .hcard-no{font-size:12px;color:var(--main);font-weight:800;letter-spacing:0.1em;}
+  .hcard-body h3{font-size:16.5px;font-weight:700;margin:8px 0 10px;color:var(--main-dark);}
+  .hcard-body p{font-size:13px;color:var(--sub);}
+
+  /* 3 panel achievement (center dark) */
+  .panels{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-radius:14px;overflow:hidden;}
+  .panel{padding:44px 32px;}
+  .panel:nth-child(1),.panel:nth-child(3){background:var(--white);border:1px solid #ececec;}
+  .panel:nth-child(2){background:var(--main-dark);color:#fff;}
+  .panel .num{font-size:13px;font-weight:800;letter-spacing:0.1em;color:var(--main);margin-bottom:14px;}
+  .panel:nth-child(2) .num{color:var(--accent);}
+  .panel h3{font-size:18px;font-weight:700;margin-bottom:12px;}
+  .panel:nth-child(1) h3,.panel:nth-child(3) h3{color:var(--main-dark);}
+  .panel p{font-size:13.5px;}
+  .panel:nth-child(1) p,.panel:nth-child(3) p{color:var(--sub);}
+  .panel:nth-child(2) p{color:#d8e0e6;}
+
+  /* CTA */
+  .cta{background:var(--main-dark);color:#fff;text-align:center;padding:80px 24px;position:relative;overflow:hidden;}
+  .cta::before{content:"";position:absolute;left:-80px;bottom:-80px;width:260px;height:260px;background:var(--main);opacity:0.2;border-radius:50%;}
+  .cta h2{font-size:26px;font-weight:800;margin-bottom:16px;position:relative;}
+  .cta p{color:#d9e2e8;margin-bottom:32px;position:relative;}
+  .cta .btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;position:relative;}
+  .cta .btn-primary{background:var(--accent);color:var(--main-dark);}
+  .cta .btn-outline{border-color:#fff;color:#fff;}
+
+  footer{background:#16232E;color:#c8d2da;padding:48px 24px 24px;font-size:13px;}
+  .footer-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .footer-logo{font-size:17px;font-weight:800;color:#fff;margin-bottom:10px;}
+  .footer-links{display:flex;gap:24px;list-style:none;flex-wrap:wrap;}
+  .copyright{text-align:center;margin-top:32px;color:#7c8790;}
+
+  @media (max-width:900px){
+    .hero{grid-template-columns:1fr;}
+    .hero-right{height:280px;}
+    .panels{grid-template-columns:1fr;}
+  }
+  @media (max-width:700px){
+    nav, .header-cta{display:none;}
+    .menu-toggle{display:block;}
+    .hero-left{padding:44px 28px;}
+    .hero-left h1{font-size:25px;}
+    .section{padding:60px 0;}
+    .hcard{flex:0 0 240px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">Urbo<span>Lab</span></div>
+    <nav><ul>
+      <li><a href="#mission">MISSION</a></li>
+      <li><a href="#activity">活動内容</a></li>
+      <li><a href="#achievement">実績</a></li>
+    </ul></nav>
+    <div class="header-cta">
+      <a href="recruit.html" class="btn btn-outline btn-small">メンバー募集</a>
+      <a href="#contact" class="btn btn-primary btn-small">お問い合わせ</a>
+    </div>
+    <button class="menu-toggle">≡</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-left">
+    <span class="hero-tag">一般社団法人 UrboLab（うぼらぼ）</span>
+    <h1>まちづくりゲームという、<br>体験デザイン。</h1>
+    <p>「無関心」から「関心」へ、「関心」から「行動」へ。100種類以上のまちづくりゲームで、社会課題を自分ごととして楽しく体験する場をつくっています。</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-primary">お問い合わせ</a>
+      <a href="#activity" class="btn btn-outline">活動内容を見る</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <!-- 元画像URL：不明・差し替え前提 / images/hero-side.jpg -->
+    <img src="https://loremflickr.com/900/1000/boardgame,people,japan" alt="まちづくりゲームを体験する参加者">
+  </div>
+</section>
+
+<section class="section" id="mission">
+  <div class="container">
+    <p class="section-title">MISSION</p>
+    <h2 class="section-heading">一人ひとりが「１マス進む」ために</h2>
+    <p class="section-lead">Urboはエスペラント語で「まち」を意味します。UrboLabは、まちづくりゲームを体験することで、無関心だった一人ひとりの気持ちに小さな関心の種をまき、その関心を行動へとつなげる活動をしています。</p>
+  </div>
+</section>
+
+<section class="section" id="activity" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">ACTIVITY</p>
+    <h2 class="section-heading">活動内容</h2>
+    <p class="section-lead">横にスクロールしてご覧ください。体験・学び・対話・創作、4つの活動を展開しています。</p>
+    <div class="hscroll">
+      <div class="hcard">
+        <!-- 元画像URL：不明・差し替え前提 / images/activity-workshop.jpg -->
+        <img src="https://loremflickr.com/500/340/boardgame,workshop,discussion" alt="まちづくりゲーム体験ワークショップ">
+        <div class="hcard-body">
+          <div class="hcard-no">01</div>
+          <h3>まちづくりゲーム体験ワークショップ</h3>
+          <p>ゲーム開発者を招き、楽しく対話しながら体験する場を各地で開催。</p>
+        </div>
+      </div>
+      <div class="hcard">
+        <!-- 元画像URL：不明・差し替え前提 / images/activity-lecture.jpg -->
+        <img src="https://loremflickr.com/500/340/university,classroom,japan" alt="まちづくりゲームデザイン講座">
+        <div class="hcard-body">
+          <div class="hcard-no">02</div>
+          <h3>まちづくりゲームデザイン講座</h3>
+          <p>千葉商科大学「シリアスゲームデザイン」等で2022年から継続開催。</p>
+        </div>
+      </div>
+      <div class="hcard">
+        <!-- 元画像URL：不明・差し替え前提 / images/activity-speech.jpg -->
+        <img src="https://loremflickr.com/500/340/seminar,speaker,audience" alt="まちづくりゲームに関する講演">
+        <div class="hcard-body">
+          <div class="hcard-no">03</div>
+          <h3>まちづくりゲームに関する講演</h3>
+          <p>武蔵野大学「ソーシャルアントレプレナー論」等に登壇。</p>
+        </div>
+      </div>
+      <div class="hcard">
+        <!-- 元画像URL：不明・差し替え前提 / images/activity-design.jpg -->
+        <img src="https://loremflickr.com/500/340/design,prototype,cards" alt="オリジナルアナログゲーム制作">
+        <div class="hcard-body">
+          <div class="hcard-no">04</div>
+          <h3>オリジナルアナログゲーム制作</h3>
+          <p>地域・行政と連携し、テーマに合わせたオリジナルゲームを企画・制作。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="achievement">
+  <div class="container">
+    <p class="section-title">ACHIEVEMENT</p>
+    <h2 class="section-heading">実績</h2>
+    <p class="section-lead">大学での継続講座・講演を通じて、まちづくりゲームの価値を伝え続けています。</p>
+    <div class="panels">
+      <div class="panel">
+        <div class="num">01</div>
+        <h3>千葉商科大学</h3>
+        <p>「シリアスゲームデザイン」講座を2022年から継続、全13回構成を複数年にわたり実施。</p>
+      </div>
+      <div class="panel">
+        <div class="num">02</div>
+        <h3>100種類以上のテーマ</h3>
+        <p>SDGs、地方行政、防災、医療、農林水産、生態系、法律、地域コミュニティなど幅広いテーマを扱っています。</p>
+      </div>
+      <div class="panel">
+        <div class="num">03</div>
+        <h3>武蔵野大学</h3>
+        <p>「ソーシャルアントレプレナー論」に登壇し、社会啓発の実践例を紹介しています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2>まちづくりゲームで、あなたの地域・組織にも「１マス進む」きっかけを</h2>
+  <p>ワークショップのご依頼、講座・講演のご相談、オリジナルゲーム制作のご相談など、お気軽にお問い合わせください。</p>
+  <div class="btns">
+    <a href="https://urbolab.info/?page_id=117" class="btn btn-primary">お問い合わせフォームへ</a>
+    <a href="recruit.html" class="btn btn-outline">メンバー募集について</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">UrboLab まちげー学会</div>
+      <p>一般社団法人 UrboLab（うぼらぼ）<br>まちづくりゲームを通じた社会啓発活動</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#mission">MISSION</a></li>
+      <li><a href="#activity">活動内容</a></li>
+      <li><a href="recruit.html">メンバー募集</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </div>
+  <p class="copyright">©UrboLab まちげー学会 All rights reserved.</p>
+</footer>
+
+</body>
+</html>

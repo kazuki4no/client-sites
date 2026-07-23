@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>データムエンパクト合同会社｜戦略だけでは終わらない、実装と定着まで伴走するデータ活用パートナー</title>
+<style>
+  :root{
+    --main:#1A2B4A;
+    --main-dark:#0F1B31;
+    --accent:#2DD4BF;
+    --accent-dark:#0D9488;
+    --accent-light:#E6FBF8;
+    --text:#232A36;
+    --sub:#636B79;
+    --bg:#FBFCFD;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:var(--text);background:var(--bg);line-height:1.8;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .section{padding:96px 0;}
+  .section-title{font-size:14px;letter-spacing:0.2em;color:var(--accent-dark);font-weight:700;text-align:center;margin-bottom:12px;}
+  .section-heading{font-size:32px;font-weight:700;text-align:center;margin-bottom:16px;letter-spacing:0.03em;color:var(--main);}
+  .section-lead{text-align:center;color:var(--sub);max-width:640px;margin:0 auto 56px;font-size:15px;}
+
+  header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.97);border-bottom:1px solid #eee;backdrop-filter:blur(6px);}
+  .header-inner{max-width:1080px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-size:18px;font-weight:800;color:var(--main);}
+  .logo span{color:var(--accent-dark);}
+  nav ul{display:flex;gap:32px;list-style:none;}
+  nav a{font-size:14px;font-weight:600;}
+  nav a:hover{color:var(--accent-dark);}
+  .header-cta{display:flex;gap:10px;}
+  .btn{display:inline-block;padding:13px 30px;border-radius:4px;font-size:14px;font-weight:700;text-align:center;}
+  .btn-primary{background:var(--accent-dark);color:#fff;}
+  .btn-primary:hover{background:var(--main);}
+  .btn-outline{border:1px solid var(--main);color:var(--main);}
+  .btn-outline:hover{background:var(--accent-light);}
+  .btn-small{padding:9px 18px;font-size:13px;}
+  .menu-toggle{display:none;font-size:26px;background:none;border:none;cursor:pointer;color:var(--main);}
+
+  /* Full FV Hero */
+  .fv{
+    position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;
+    background:linear-gradient(180deg, rgba(15,27,49,0.55), rgba(15,27,49,0.88)), url('https://loremflickr.com/1920/1080/data,network,japan') center/cover no-repeat;
+  }
+  .fv-inner{max-width:820px;padding:0 24px;}
+  .fv-tag{display:inline-block;background:rgba(45,212,191,0.2);border:1px solid rgba(45,212,191,0.6);padding:8px 20px;border-radius:24px;font-size:13px;font-weight:700;letter-spacing:0.08em;margin-bottom:28px;}
+  .fv h1{font-size:44px;font-weight:800;line-height:1.6;margin-bottom:26px;}
+  .fv p{font-size:17px;opacity:0.95;margin-bottom:40px;max-width:600px;margin-left:auto;margin-right:auto;}
+  .fv-btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .fv .btn-outline{border-color:#fff;color:#fff;}
+  .fv .btn-outline:hover{background:rgba(255,255,255,0.15);}
+  .fv-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);font-size:12px;letter-spacing:0.2em;color:#cfe9e5;}
+
+  /* Strength 2-col */
+  .strength-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;}
+  .strength-item{
+    background:var(--white);border:1px solid #ececec;border-radius:14px;padding:40px 36px;
+    display:flex;gap:24px;align-items:flex-start;
+  }
+  .strength-icon{
+    width:56px;height:56px;flex-shrink:0;border-radius:50%;background:var(--accent-light);
+    display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;color:var(--accent-dark);
+  }
+  .strength-item h3{font-size:19px;font-weight:700;color:var(--main);margin-bottom:10px;}
+  .strength-item p{font-size:14px;color:var(--sub);}
+
+  /* Service Banners */
+  .banner{
+    position:relative;min-height:260px;display:flex;align-items:center;border-radius:14px;overflow:hidden;margin-bottom:24px;color:#fff;
+  }
+  .banner-inner{position:relative;z-index:2;padding:40px 48px;max-width:640px;}
+  .banner-no{font-size:13px;color:var(--accent);font-weight:800;letter-spacing:0.15em;margin-bottom:10px;}
+  .banner h3{font-size:22px;font-weight:800;margin-bottom:12px;}
+  .banner p{font-size:14.5px;opacity:0.92;}
+  .banner-overlay{position:absolute;inset:0;background:linear-gradient(90deg, rgba(15,27,49,0.92) 40%, rgba(15,27,49,0.55));z-index:1;}
+  .banner-bg{position:absolute;inset:0;object-fit:cover;width:100%;height:100%;}
+
+  /* Rep + Company split */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:0;background:var(--white);border-radius:14px;overflow:hidden;border:1px solid #ececec;}
+  .split-img{min-height:100%;}
+  .split-img img{width:100%;height:100%;object-fit:cover;min-height:420px;}
+  .split-body{padding:48px;}
+  .split-body .rep-title{font-size:14px;color:var(--accent-dark);font-weight:700;margin-bottom:6px;}
+  .split-body h3{font-size:24px;font-weight:800;color:var(--main);margin-bottom:18px;}
+  .split-body p{font-size:14.5px;color:var(--sub);margin-bottom:14px;}
+  .mini-table{width:100%;border-collapse:collapse;margin-top:20px;}
+  .mini-table th,.mini-table td{text-align:left;padding:10px 0;font-size:13.5px;border-bottom:1px solid #eee;}
+  .mini-table th{width:110px;color:var(--main);font-weight:700;}
+
+  /* CTA gradient */
+  .cta{
+    background:linear-gradient(120deg, var(--main-dark), var(--main), var(--accent-dark));
+    color:#fff;text-align:center;padding:96px 24px;
+  }
+  .cta h2{font-size:28px;font-weight:800;margin-bottom:18px;}
+  .cta p{color:#d3ecec;margin-bottom:36px;}
+  .cta .btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .cta .btn-primary{background:var(--accent);color:var(--main-dark);}
+  .cta .btn-outline{border-color:#fff;color:#fff;}
+
+  footer{background:#0B1424;color:#c3cad9;padding:48px 24px 24px;font-size:13px;}
+  .footer-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .footer-logo{font-size:17px;font-weight:800;color:#fff;margin-bottom:10px;}
+  .footer-links{display:flex;gap:24px;list-style:none;flex-wrap:wrap;}
+  .copyright{text-align:center;margin-top:32px;color:#7c869b;}
+
+  @media (max-width:900px){
+    .strength-grid{grid-template-columns:1fr;}
+    .split{grid-template-columns:1fr;}
+    .split-img img{min-height:260px;}
+    .banner-inner{padding:32px 28px;}
+  }
+  @media (max-width:700px){
+    nav, .header-cta{display:none;}
+    .menu-toggle{display:block;}
+    .fv h1{font-size:28px;}
+    .section{padding:64px 0;}
+    .banner{min-height:auto;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">Datum<span>Empact</span></div>
+    <nav><ul>
+      <li><a href="#strength">強み</a></li>
+      <li><a href="#service">事業内容</a></li>
+      <li><a href="#about">代表・会社概要</a></li>
+    </ul></nav>
+    <div class="header-cta">
+      <a href="recruit.html" class="btn btn-outline btn-small">採用情報</a>
+      <a href="#contact" class="btn btn-primary btn-small">お問い合わせ</a>
+    </div>
+    <button class="menu-toggle">≡</button>
+  </div>
+</header>
+
+<!-- 元画像URL：不明（現サイトに該当写真なし・差し替え前提のダミー画像） / images/fv-main.jpg -->
+<section class="fv">
+  <div class="fv-inner">
+    <span class="fv-tag">Empower and create Impact from every Datum.</span>
+    <h1>ひとつひとつのデータの力を引き出し、<br>価値あるインパクトを創出する。</h1>
+    <p>戦略だけでは終わらない。データマネジメントを核に、DX・AI活用戦略の立案から現場への実装・定着まで伴走します。館山発、地域活性化にも挑むデータ活用パートナー。</p>
+    <div class="fv-btns">
+      <a href="#contact" class="btn btn-primary">お問い合わせはこちら</a>
+      <a href="#service" class="btn btn-outline">事業内容を見る</a>
+    </div>
+  </div>
+  <div class="fv-scroll">SCROLL ▾</div>
+</section>
+
+<section class="section" id="strength">
+  <div class="container">
+    <p class="section-title">STRENGTH</p>
+    <h2 class="section-heading">データムエンパクトの強み</h2>
+    <p class="section-lead">MISSION「埋もれたデータを資産に変え、経営の確かな原動力に。」を実現する2つの強みです。</p>
+    <div class="strength-grid">
+      <div class="strength-item">
+        <div class="strength-icon">01</div>
+        <div>
+          <h3>戦略立案から実装・定着までの一気通貫伴走</h3>
+          <p>データマネジメント、DX、AIを含むデータ活用領域を中心に、多数の企業変革プロジェクトを推進。戦略立案だけでなく、現場への実装・定着まで伴走するスタイルが強みです。</p>
+        </div>
+      </div>
+      <div class="strength-item">
+        <div class="strength-icon">02</div>
+        <div>
+          <h3>データ資産化×地域活性化の二軸展開</h3>
+          <p>データガバナンス・品質管理・マスターデータ管理等の専門性に加え、千葉県館山市を拠点に地域資源とデータを活用した持続可能な地域づくりにも取り組んでいます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="service" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">SERVICE</p>
+    <h2 class="section-heading">事業内容</h2>
+    <p class="section-lead">データマネジメントを核に、DX・IT・AI活用・地域活性化まで4つの領域を横断的に支援します。</p>
+
+    <!-- 元画像URL：不明（現サイトに該当写真なし・差し替え前提のダミー画像） / images/service-datamanagement.jpg -->
+    <div class="banner">
+      <img class="banner-bg" src="https://loremflickr.com/1200/500/database,server" alt="データマネジメント支援">
+      <div class="banner-overlay"></div>
+      <div class="banner-inner">
+        <div class="banner-no">01 / DATA MANAGEMENT</div>
+        <h3>データマネジメント支援</h3>
+        <p>データガバナンス、データ品質管理、マスターデータ管理、メタデータ管理等でデータ資産価値を最大化します。</p>
+      </div>
+    </div>
+
+    <!-- 元画像URL：不明（現サイトに該当写真なし・差し替え前提のダミー画像） / images/service-dx.jpg -->
+    <div class="banner">
+      <img class="banner-bg" src="https://loremflickr.com/1200/500/office,architecture" alt="DX・ITアーキテクチャ支援">
+      <div class="banner-overlay"></div>
+      <div class="banner-inner">
+        <div class="banner-no">02 / DX & IT ARCHITECTURE</div>
+        <h3>DX・ITアーキテクチャ支援</h3>
+        <p>DX戦略の策定からシステム構想、ITアーキテクチャ設計まで一貫して支援します。</p>
+      </div>
+    </div>
+
+    <!-- 元画像URL：不明（現サイトに該当写真なし・差し替え前提のダミー画像） / images/service-ai.jpg -->
+    <div class="banner">
+      <img class="banner-bg" src="https://loremflickr.com/1200/500/artificial-intelligence,technology" alt="データ&AI活用戦略・導入支援">
+      <div class="banner-overlay"></div>
+      <div class="banner-inner">
+        <div class="banner-no">03 / DATA & AI</div>
+        <h3>データ&AI活用戦略・導入支援</h3>
+        <p>生成AIを含むデータとAI活用戦略の立案、PoC推進、業務定着までを支援します。</p>
+      </div>
+    </div>
+
+    <!-- 元画像URL：不明（現サイトに該当写真なし・差し替え前提のダミー画像） / images/service-region.jpg -->
+    <div class="banner">
+      <img class="banner-bg" src="https://loremflickr.com/1200/500/tateyama,coast,japan" alt="地域活性化支援">
+      <div class="banner-overlay"></div>
+      <div class="banner-inner">
+        <div class="banner-no">04 / REGIONAL REVITALIZATION</div>
+        <h3>地域活性化支援</h3>
+        <p>館山を拠点に、地域資源とデータを活用した持続可能な地域づくりに取り組みます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container">
+    <p class="section-title">ABOUT</p>
+    <h2 class="section-heading">代表挨拶・会社概要</h2>
+    <div class="split">
+      <!-- 元画像URL：不明（現サイトに該当写真なし・差し替え前提のダミー画像） / images/representative.jpg -->
+      <div class="split-img"><img src="https://loremflickr.com/700/900/portrait,businessman,japan" alt="髙橋功"></div>
+      <div class="split-body">
+        <p class="rep-title">エグゼクティブコンサルタント</p>
+        <h3>髙橋 功</h3>
+        <p>データマネジメント、DX、AIを含むデータ活用領域を中心に、数多くの企業変革プロジェクトを推進してまいりました。戦略立案だけに終わらせず、現場への実装・定着まで伴走することが私たちの信条です。</p>
+        <p>不確実な時代だからこそ、迅速な意思決定を支える「確かなデータ資産」が経営の原動力になると考えています。千葉県館山市を拠点に、地域活性化・地方創生にも力を注いでいます。</p>
+        <table class="mini-table">
+          <tr><th>会社名</th><td>データムエンパクト合同会社</td></tr>
+          <tr><th>所在地</th><td>〒294-0042　千葉県館山市沼895番地4</td></tr>
+          <tr><th>設立</th><td>2026年6月</td></tr>
+          <tr><th>連絡先</th><td><a href="mailto:info@datumempact.jp">info@datumempact.jp</a></td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2>データ活用のご相談は、お気軽にお声がけください</h2>
+  <p>戦略立案から現場への実装・定着まで、貴社のデータ活用を伴走支援いたします。</p>
+  <div class="btns">
+    <a href="mailto:info@datumempact.jp" class="btn btn-primary">メールでのお問い合わせ　info@datumempact.jp</a>
+    <a href="recruit.html" class="btn btn-outline">採用情報はこちら</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">データムエンパクト合同会社</div>
+      <p>〒294-0042　千葉県館山市沼895番地4</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#strength">強み</a></li>
+      <li><a href="#service">事業内容</a></li>
+      <li><a href="recruit.html">採用情報</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </div>
+  <p class="copyright">©Datum Empact LLC All rights reserved.</p>
+</footer>
+
+</body>
+</html>

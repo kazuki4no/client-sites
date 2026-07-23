@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>飯田水産株式会社｜銚子港から、鮮度と信頼を届ける水産卸</title>
+<style>
+  :root{
+    --main:#0F3B5F;
+    --main-dark:#0A2740;
+    --accent:#1F9E8C;
+    --accent-light:#E4F5F2;
+    --coral:#FF7A59;
+    --text:#2B2B2B;
+    --sub:#6B6B6B;
+    --bg:#FCFCFA;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.8;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .section{padding:88px 0;}
+  .section-title{
+    font-size:14px;letter-spacing:0.2em;color:var(--accent);font-weight:700;text-align:center;margin-bottom:12px;
+  }
+  .section-heading{font-size:30px;font-weight:700;text-align:center;margin-bottom:16px;letter-spacing:0.03em;}
+  .section-lead{text-align:center;color:var(--sub);max-width:640px;margin:0 auto 56px;font-size:15px;}
+
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(10,39,64,0.9);
+    backdrop-filter:blur(6px);
+  }
+  .header-inner{max-width:1080px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-size:19px;font-weight:800;color:#fff;letter-spacing:0.02em;}
+  .logo span{color:var(--accent);}
+  nav ul{display:flex;gap:32px;list-style:none;}
+  nav a{font-size:14px;font-weight:600;color:#fff;}
+  nav a:hover{color:var(--accent);}
+  .header-cta{display:flex;gap:10px;}
+  .btn{display:inline-block;padding:12px 28px;border-radius:4px;font-size:14px;font-weight:700;text-align:center;}
+  .btn-primary{background:var(--coral);color:#fff;}
+  .btn-primary:hover{opacity:0.9;}
+  .btn-outline{border:1px solid #fff;color:#fff;}
+  .btn-outline:hover{background:rgba(255,255,255,0.15);}
+  .btn-small{padding:9px 18px;font-size:13px;}
+  .menu-toggle{display:none;font-size:26px;background:none;border:none;cursor:pointer;color:#fff;}
+
+  /* FV Hero */
+  .fv{
+    position:relative;
+    min-height:100vh;
+    display:flex;align-items:center;justify-content:center;
+    text-align:center;
+    background:linear-gradient(180deg, rgba(10,39,64,0.55), rgba(10,39,64,0.85)), url('https://loremflickr.com/1920/1080/fishingboat,ocean,japan') center/cover no-repeat;
+    color:#fff;
+  }
+  .fv-inner{max-width:820px;margin:0 auto;padding:0 24px;}
+  .fv-tag{
+    display:inline-block;background:rgba(31,158,140,0.25);border:1px solid var(--accent);
+    padding:8px 20px;border-radius:24px;font-size:13px;font-weight:700;letter-spacing:0.1em;margin-bottom:28px;
+  }
+  .fv h1{font-size:46px;font-weight:800;line-height:1.6;margin-bottom:26px;}
+  .fv p{font-size:16.5px;max-width:600px;margin:0 auto 40px;opacity:0.95;}
+  .fv-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+
+  /* Stats band */
+  .stats{background:var(--main-dark);color:#fff;padding:48px 24px;}
+  .stats-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-around;flex-wrap:wrap;gap:24px;text-align:center;}
+  .stat-num{font-size:38px;font-weight:800;color:var(--accent);}
+  .stat-label{font-size:13.5px;color:#cfe3ea;margin-top:6px;}
+
+  /* Strength 2-col */
+  .strength-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;}
+  .strength-item{
+    background:var(--white);border:1px solid #ececec;border-radius:10px;padding:36px 32px;
+    display:flex;gap:20px;align-items:flex-start;
+  }
+  .strength-icon{
+    width:52px;height:52px;flex-shrink:0;border-radius:50%;background:var(--accent-light);
+    display:flex;align-items:center;justify-content:center;color:var(--accent);font-weight:800;font-size:18px;
+  }
+  .strength-item h3{font-size:17px;font-weight:700;margin-bottom:10px;}
+  .strength-item p{font-size:13.5px;color:var(--sub);}
+
+  /* Service banners */
+  .banner-list{display:flex;flex-direction:column;gap:24px;}
+  .banner{
+    position:relative;border-radius:12px;overflow:hidden;min-height:220px;
+    display:flex;align-items:center;color:#fff;
+  }
+  .banner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;}
+  .banner::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg, rgba(10,39,64,0.88), rgba(10,39,64,0.35));z-index:1;}
+  .banner-body{position:relative;z-index:2;padding:32px 40px;max-width:560px;}
+  .banner-no{font-size:12px;color:var(--accent);font-weight:800;letter-spacing:0.15em;}
+  .banner-body h3{font-size:21px;font-weight:700;margin:10px 0 12px;}
+  .banner-body p{font-size:14px;opacity:0.92;}
+
+  /* Company split */
+  .company-split{display:grid;grid-template-columns:1fr 1fr;gap:0;background:#fff;border-radius:10px;overflow:hidden;border:1px solid #ececec;}
+  .company-split img{height:100%;object-fit:cover;}
+  .company-table{width:100%;border-collapse:collapse;}
+  .company-table th,.company-table td{padding:16px 24px;text-align:left;font-size:14px;border-bottom:1px solid #eee;}
+  .company-table th{width:120px;background:var(--accent-light);color:var(--main-dark);font-weight:700;}
+  .company-table tr:last-child th,.company-table tr:last-child td{border-bottom:none;}
+
+  /* CTA gradient */
+  .cta{
+    background:linear-gradient(120deg, var(--main-dark), var(--main));
+    color:#fff;text-align:center;padding:88px 24px;
+  }
+  .cta h2{font-size:27px;font-weight:800;margin-bottom:16px;}
+  .cta p{color:#cfe3ea;margin-bottom:32px;}
+  .cta .btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .cta .btn-primary{background:var(--coral);color:#fff;}
+  .cta .btn-outline{border-color:#fff;color:#fff;}
+
+  footer{background:#0A1B29;color:#c9d6dc;padding:48px 24px 24px;font-size:13px;}
+  .footer-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .footer-logo{font-size:17px;font-weight:800;color:#fff;margin-bottom:10px;}
+  .footer-links{display:flex;gap:24px;list-style:none;flex-wrap:wrap;}
+  .copyright{text-align:center;margin-top:32px;color:#7f929c;}
+
+  @media (max-width:900px){
+    .strength-grid{grid-template-columns:1fr;}
+    .company-split{grid-template-columns:1fr;}
+    .company-split img{height:220px;}
+  }
+  @media (max-width:700px){
+    nav, .header-cta{display:none;}
+    .menu-toggle{display:block;}
+    .fv h1{font-size:30px;}
+    .section{padding:60px 0;}
+    .stats-inner{gap:16px;}
+    .banner-body{padding:24px;max-width:100%;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">飯田<span>水産</span>株式会社</div>
+    <nav><ul>
+      <li><a href="#about">私たちについて</a></li>
+      <li><a href="#service">事業内容</a></li>
+      <li><a href="#strength">強み</a></li>
+      <li><a href="#company">会社概要</a></li>
+    </ul></nav>
+    <div class="header-cta">
+      <a href="recruit.html" class="btn btn-outline btn-small">採用情報</a>
+      <a href="#contact" class="btn btn-primary btn-small">お問い合わせ</a>
+    </div>
+    <button class="menu-toggle">≡</button>
+  </div>
+</header>
+
+<!-- 元画像URL：不明（現サイトに掲載写真なし・新規手配前提） / images/fv-main.jpg -->
+<section class="fv" style="background:linear-gradient(180deg, rgba(10,39,64,0.55), rgba(10,39,64,0.85)), url('https://loremflickr.com/1920/1080/fishingboat,ocean,japan') center/cover no-repeat;">
+  <div class="fv-inner">
+    <span class="fv-tag">CHOSHI PORT No.1 SUISAN OROSHI</span>
+    <h1>水揚げ量日本一の銚子港から、<br>確かな鮮度を、世界へ。</h1>
+    <p>イワシ・サバ・サンマ・アジ・イナダ・マグロ・鮭・ホッケ・イカ――。銚子で水揚げされる恵みを、加工原料販売から輸出入、冷凍冷蔵、廻船問屋まで一気通貫で扱う水産卸として、確かな品質でお届けします。</p>
+    <div class="fv-btns">
+      <a href="#contact" class="btn btn-primary">お問い合わせはこちら</a>
+      <a href="#service" class="btn btn-outline">事業内容を見る</a>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="stats-inner">
+    <div>
+      <div class="stat-num">2007</div>
+      <div class="stat-label">設立年（2007年2月14日）</div>
+    </div>
+    <div>
+      <div class="stat-num">12名</div>
+      <div class="stat-label">少数精鋭の社員体制</div>
+    </div>
+    <div>
+      <div class="stat-num">6事業</div>
+      <div class="stat-label">調達から物流までワンストップ</div>
+    </div>
+    <div>
+      <div class="stat-num">日本一</div>
+      <div class="stat-label">銚子港の水揚げ量</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="strength">
+  <div class="container">
+    <p class="section-title">STRENGTH</p>
+    <h2 class="section-heading">飯田水産が選ばれる理由</h2>
+    <p class="section-lead">銚子港という好立地と、少数精鋭ならではの機動力で、水産流通のあらゆるご要望に応えます。</p>
+    <div class="strength-grid">
+      <div class="strength-item">
+        <div class="strength-icon">01</div>
+        <div>
+          <h3>水揚げ量日本一・銚子港拠点</h3>
+          <p>全国屈指の水揚げ量を誇る千葉県銚子市に本拠を置き、多彩な魚種を安定的に仕入れています。</p>
+        </div>
+      </div>
+      <div class="strength-item">
+        <div class="strength-icon">02</div>
+        <div>
+          <h3>調達から輸出入まで一気通貫</h3>
+          <p>加工原料の販売はもちろん、水産物の輸出入業まで自社で対応。国内外の需要に柔軟に応えます。</p>
+        </div>
+      </div>
+      <div class="strength-item">
+        <div class="strength-icon">03</div>
+        <div>
+          <h3>冷凍冷蔵・営業倉庫を自社保有</h3>
+          <p>自社設備で品質と鮮度を保持。飼料出荷問屋としての実績も豊富です。</p>
+        </div>
+      </div>
+      <div class="strength-item">
+        <div class="strength-icon">04</div>
+        <div>
+          <h3>12名の少数精鋭による機動力</h3>
+          <p>2007年設立以来、少数精鋭だからこそ実現できる柔軟な対応力とスピード感が強みです。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="service" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">SERVICE</p>
+    <h2 class="section-heading">事業内容</h2>
+    <p class="section-lead">加工原料販売を中核に、輸出入・飼料出荷・冷凍冷蔵・営業倉庫・廻船問屋の機能を自社一貫体制で提供します。</p>
+    <div class="banner-list">
+      <div class="banner">
+        <!-- 元画像URL：不明（現サイトに掲載写真なし・新規手配前提） / images/service-material.jpg -->
+        <img src="https://loremflickr.com/1200/500/sardine,fishmarket" alt="加工原料販売">
+        <div class="banner-body">
+          <div class="banner-no">01</div>
+          <h3>加工原料販売</h3>
+          <p>イワシ・サバ・サンマ・アジ・イナダ・マグロ・鮭・ホッケ・イカなど、幅広い魚種の加工原料を安定的に供給します。</p>
+        </div>
+      </div>
+      <div class="banner">
+        <!-- 元画像URL：不明（現サイトに掲載写真なし・新規手配前提） / images/service-export.jpg -->
+        <img src="https://loremflickr.com/1200/500/cargoship,port" alt="水産物輸出入業">
+        <div class="banner-body">
+          <div class="banner-no">02</div>
+          <h3>水産物輸出入業</h3>
+          <p>国内外のネットワークを活かし、水産物の輸出入をワンストップで対応します。</p>
+        </div>
+      </div>
+      <div class="banner">
+        <!-- 元画像URL：不明（現サイトに掲載写真なし・新規手配前提） / images/service-coldstorage.jpg -->
+        <img src="https://loremflickr.com/1200/500/coldstorage,industrial" alt="冷凍冷蔵業・営業倉庫・廻船問屋">
+        <div class="banner-body">
+          <div class="banner-no">03</div>
+          <h3>冷凍冷蔵業・営業倉庫／飼料出荷問屋・廻船問屋</h3>
+          <p>自社の冷凍冷蔵設備と営業倉庫で鮮度を保持し、飼料出荷問屋・廻船問屋としての物流ノウハウも兼ね備えています。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="company">
+  <div class="container">
+    <p class="section-title">COMPANY</p>
+    <h2 class="section-heading">会社概要</h2>
+    <div class="company-split">
+      <!-- 元画像URL：不明（現サイトに掲載写真なし・新規手配前提） / images/company-port.jpg -->
+      <img src="https://loremflickr.com/600/500/choshi,fishingport" alt="銚子港の様子">
+      <table class="company-table">
+        <tr><th>会社名</th><td>飯田水産株式会社</td></tr>
+        <tr><th>所在地</th><td>〒288-0002　千葉県銚子市明神町1丁目59番地</td></tr>
+        <tr><th>電話番号</th><td>070-2671-4504</td></tr>
+        <tr><th>設立</th><td>2007年2月14日</td></tr>
+        <tr><th>社員数</th><td>12名</td></tr>
+        <tr><th>事業内容</th><td>加工原料販売／水産物輸出入業／飼料出荷問屋／冷凍冷蔵業／営業倉庫／廻船問屋</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2>まずはお気軽にお問い合わせください</h2>
+  <p>原料調達・輸出入・保管・物流など、水産流通に関するご相談を承ります。お電話またはお問い合わせフォームよりご連絡ください。</p>
+  <div class="btns">
+    <a href="tel:070-2671-4504" class="btn btn-primary">お電話でのお問い合わせ　070-2671-4504</a>
+    <a href="https://www.big-advance.site/c/177/1315/contact" class="btn btn-outline">お問い合わせフォームへ</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">飯田水産株式会社</div>
+      <p>〒288-0002　千葉県銚子市明神町1丁目59番地</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#about">私たちについて</a></li>
+      <li><a href="#service">事業内容</a></li>
+      <li><a href="recruit.html">採用情報</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </div>
+  <p class="copyright">©飯田水産株式会社 All rights reserved.</p>
+</footer>
+
+</body>
+</html>

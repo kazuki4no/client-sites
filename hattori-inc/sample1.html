@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>株式会社服部｜人知れず社会の土台を創る 海ノ士と山ノ士たち（千葉県館山市）</title>
+<style>
+  :root{
+    --main:#0F2E4C;
+    --main-dark:#0A1F35;
+    --accent:#B5714A;
+    --accent-light:#F4EAE2;
+    --text:#2B2B2B;
+    --sub:#6B6B6B;
+    --bg:#FCFBFA;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.8;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .section{padding:88px 0;}
+  .section-title{
+    font-size:14px;
+    letter-spacing:0.2em;
+    color:var(--accent);
+    font-weight:700;
+    text-align:center;
+    margin-bottom:12px;
+  }
+  .section-heading{
+    font-size:30px;
+    font-weight:700;
+    text-align:center;
+    margin-bottom:16px;
+    letter-spacing:0.03em;
+    color:var(--main);
+  }
+  .section-lead{
+    text-align:center;
+    color:var(--sub);
+    max-width:640px;
+    margin:0 auto 56px;
+    font-size:15px;
+  }
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(255,255,255,0.96);
+    border-bottom:1px solid #eee;
+    backdrop-filter:blur(6px);
+  }
+  .header-inner{
+    max-width:1080px;margin:0 auto;padding:16px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .logo{
+    font-size:19px;font-weight:800;color:var(--main);letter-spacing:0.02em;
+  }
+  .logo span{color:var(--accent);}
+  nav ul{display:flex;gap:32px;list-style:none;}
+  nav a{font-size:14px;font-weight:600;}
+  nav a:hover{color:var(--accent);}
+  .header-cta{display:flex;gap:10px;}
+  .btn{
+    display:inline-block;
+    padding:12px 28px;
+    border-radius:4px;
+    font-size:14px;
+    font-weight:700;
+    text-align:center;
+  }
+  .btn-primary{background:var(--main);color:#fff;}
+  .btn-primary:hover{background:var(--main-dark);}
+  .btn-outline{border:1px solid var(--main);color:var(--main);}
+  .btn-outline:hover{background:var(--accent-light);}
+  .btn-small{padding:9px 18px;font-size:13px;}
+  .menu-toggle{display:none;font-size:26px;background:none;border:none;cursor:pointer;color:var(--main);}
+
+  .hero{
+    position:relative;
+    min-height:640px;
+    display:flex;align-items:center;
+    background:linear-gradient(120deg, rgba(10,31,53,0.86), rgba(15,46,76,0.72)), url('https://loremflickr.com/1600/900/cargo,ship,japan') center/cover no-repeat;
+    color:#fff;
+  }
+  .hero-inner{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .hero-tag{
+    display:inline-block;
+    background:rgba(255,255,255,0.15);
+    border:1px solid rgba(255,255,255,0.5);
+    padding:6px 16px;border-radius:20px;
+    font-size:13px;font-weight:600;letter-spacing:0.05em;
+    margin-bottom:24px;
+  }
+  .hero h1{
+    font-size:38px;font-weight:800;line-height:1.6;margin-bottom:22px;
+    max-width:700px;
+  }
+  .hero p{
+    font-size:16px;max-width:580px;margin-bottom:36px;opacity:0.95;
+  }
+  .hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
+  .hero .btn-outline{border-color:#fff;color:#fff;}
+  .hero .btn-outline:hover{background:rgba(255,255,255,0.15);}
+
+  /* Concept */
+  .concept-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:28px;}
+  .concept-card{
+    background:var(--white);border:1px solid #ececec;border-radius:10px;overflow:hidden;
+  }
+  .concept-card img{width:100%;height:220px;object-fit:cover;}
+  .concept-body{padding:28px 26px;}
+  .concept-body .tag{font-size:12px;font-weight:800;letter-spacing:0.1em;color:var(--accent);}
+  .concept-body h3{font-size:20px;font-weight:700;margin:8px 0 12px;color:var(--main);}
+  .concept-body p{font-size:14px;color:var(--sub);}
+
+  /* Flow */
+  .flow{display:flex;flex-direction:column;gap:0;}
+  .flow-step{
+    display:flex;gap:28px;align-items:center;
+    background:var(--white);border:1px solid #ececec;border-radius:10px;overflow:hidden;margin-bottom:20px;
+  }
+  .flow-step img{width:260px;height:180px;object-fit:cover;flex-shrink:0;}
+  .flow-body{padding:24px 28px 24px 0;position:relative;}
+  .flow-num{
+    font-size:13px;color:#fff;font-weight:800;letter-spacing:0.05em;
+    background:var(--main);display:inline-block;padding:4px 14px;border-radius:20px;margin-bottom:10px;
+  }
+  .flow-body h3{font-size:18px;font-weight:700;margin-bottom:8px;color:var(--main);}
+  .flow-body p{font-size:14px;color:var(--sub);}
+  .flow-arrow{text-align:center;color:var(--accent);font-size:20px;margin:-8px 0 8px;}
+
+  /* Strengths */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .card{
+    background:var(--white);
+    border:1px solid #ececec;
+    border-radius:10px;
+    padding:32px 24px;
+    transition:transform .2s, box-shadow .2s;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,0.08);}
+  .card-num{font-size:13px;color:var(--accent);font-weight:800;letter-spacing:0.1em;margin-bottom:14px;}
+  .card h3{font-size:17px;font-weight:700;margin-bottom:12px;color:var(--main);}
+  .card p{font-size:13.5px;color:var(--sub);}
+
+  /* Community */
+  .community{background:var(--accent-light);}
+  .community-list{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .community-item{
+    background:#fff;border-radius:8px;padding:22px 20px;font-size:14px;font-weight:600;
+    border-left:4px solid var(--accent);
+  }
+  .community-item .num{font-size:12px;color:var(--accent);font-weight:800;display:block;margin-bottom:6px;}
+
+  /* Company */
+  .company-table{
+    width:100%;border-collapse:collapse;max-width:760px;margin:0 auto;background:#fff;border-radius:10px;overflow:hidden;border:1px solid #ececec;
+  }
+  .company-table th,.company-table td{
+    padding:18px 24px;text-align:left;font-size:14.5px;border-bottom:1px solid #eee;
+  }
+  .company-table th{width:160px;background:var(--accent-light);color:var(--main);font-weight:700;}
+  .company-table tr:last-child th, .company-table tr:last-child td{border-bottom:none;}
+
+  .cta{background:var(--main-dark);color:#fff;text-align:center;padding:80px 24px;}
+  .cta h2{font-size:26px;font-weight:800;margin-bottom:16px;}
+  .cta p{color:#d9d9d9;margin-bottom:32px;}
+  .cta .btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .cta .btn-primary{background:var(--accent);color:#fff;}
+  .cta .btn-outline{border-color:#fff;color:#fff;}
+
+  footer{background:#0A1520;color:#c9d0d6;padding:48px 24px 24px;font-size:13px;}
+  .footer-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .footer-logo{font-size:17px;font-weight:800;color:#fff;margin-bottom:10px;}
+  .footer-links{display:flex;gap:24px;list-style:none;flex-wrap:wrap;}
+  .copyright{text-align:center;margin-top:32px;color:#7a838a;}
+
+  @media (max-width:900px){
+    .cards{grid-template-columns:repeat(2,1fr);}
+    .concept-cards{grid-template-columns:1fr;}
+    .flow-step{flex-direction:column;}
+    .flow-step img{width:100%;height:200px;}
+    .flow-body{padding:0 24px 24px;}
+    .community-list{grid-template-columns:1fr;}
+  }
+  @media (max-width:700px){
+    nav, .header-cta{display:none;}
+    .menu-toggle{display:block;}
+    .hero h1{font-size:26px;}
+    .hero{min-height:520px;}
+    .cards{grid-template-columns:1fr;}
+    .section{padding:60px 0;}
+    .company-table th{width:110px;font-size:13px;padding:14px;}
+    .company-table td{font-size:13px;padding:14px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">株式会社<span>服部</span></div>
+    <nav><ul>
+      <li><a href="#concept">事業コンセプト</a></li>
+      <li><a href="#flow">事業フロー</a></li>
+      <li><a href="#strength">強み</a></li>
+      <li><a href="#community">地域貢献</a></li>
+      <li><a href="#company">会社概要</a></li>
+    </ul></nav>
+    <div class="header-cta">
+      <a href="recruit.html" class="btn btn-outline btn-small">採用情報</a>
+      <a href="#contact" class="btn btn-primary btn-small">お問い合わせ</a>
+    </div>
+    <button class="menu-toggle">≡</button>
+  </div>
+</header>
+
+<!-- 元画像URL：不明（現サイト未取得のため差し替え前提） / images/hero-main.jpg -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">千葉県館山市・南房総　建設発生土の回収／海上輸送／土地造成・開発</span>
+    <h1>人知れず　社会の土台を創る<br>海ノ士と山ノ士たち。</h1>
+    <p>都心の建設現場から生まれる土を海路で館山へ届け、陸で切り拓き、南房総に新たな価値を創る。私たち服部は、日本の発展を陰で支えながら、愛する地元を活性化させる仕事をしています。</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-primary">お問い合わせ</a>
+      <a href="#concept" class="btn btn-outline">事業を知る</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="concept">
+  <div class="container">
+    <p class="section-title">CONCEPT</p>
+    <h2 class="section-heading">海ノ士、山ノ士。</h2>
+    <p class="section-lead">日本という島国の中で、社会の土台を創る仕事がある。服部は「海」と「山」、二つの現場で日本を支えています。</p>
+    <div class="concept-cards">
+      <div class="concept-card">
+        <!-- 元画像URL：不明（現サイト未取得のため差し替え前提） / images/concept-sea.jpg -->
+        <img src="https://loremflickr.com/700/500/cargo,ship,ocean" alt="海ノ士">
+        <div class="concept-body">
+          <span class="tag">海ノ士</span>
+          <h3>海路で、社会の土台を届ける。</h3>
+          <p>東京・神奈川など都心で発生した建設発生土を、船で館山へ回収・輸送する仕事。目には見えないところで、日本という島国の発展を支えています。</p>
+        </div>
+      </div>
+      <div class="concept-card">
+        <!-- 元画像URL：不明（現サイト未取得のため差し替え前提） / images/concept-land.jpg -->
+        <img src="https://loremflickr.com/700/500/land,development,construction" alt="山ノ士">
+        <div class="concept-body">
+          <span class="tag">山ノ士</span>
+          <h3>陸で、名もなき場所を切り拓く。</h3>
+          <p>名もなき場所を切り拓き、埋め立て、社会に活用される新たな場所を創る陸の仕事。造成した土地は南房総の新たな魅力へと生まれ変わります。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="flow" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">BUSINESS FLOW</p>
+    <h2 class="section-heading">服部の事業フロー</h2>
+    <p class="section-lead">回収から開発まで、一気通貫の体制で「海」と「山」をつなぎます。</p>
+    <div class="flow">
+      <div class="flow-step">
+        <!-- 元画像URL：不明（現サイト未取得のため差し替え前提） / images/flow01.jpg -->
+        <img src="https://loremflickr.com/560/380/cargo,ship,tokyo" alt="建設発生土の回収">
+        <div class="flow-body">
+          <div class="flow-num">STEP 01</div>
+          <h3>建設発生土の回収</h3>
+          <p>主に東京・神奈川等で発生した建設発生土を、海路で館山へ回収します。</p>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <!-- 元画像URL：不明（現サイト未取得のため差し替え前提） / images/flow02.jpg -->
+        <img src="https://loremflickr.com/560/380/truck,road,japan" alt="開発現場への運搬">
+        <div class="flow-body">
+          <div class="flow-num">STEP 02</div>
+          <h3>開発現場への運搬</h3>
+          <p>陸路で南房総にある服部所持の現場へ、土砂を輸送します。</p>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <!-- 元画像URL：不明（現サイト未取得のため差し替え前提） / images/flow03.jpg -->
+        <img src="https://loremflickr.com/560/380/land,soil,construction" alt="土地の造成">
+        <div class="flow-body">
+          <div class="flow-num">STEP 03</div>
+          <h3>土地の造成</h3>
+          <p>運んだ土砂で現場の土地を造成し、新たな活用の土台を築きます。</p>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step" style="margin-bottom:0;">
+        <!-- 元画像URL：不明（現サイト未取得のため差し替え前提） / images/flow04.jpg -->
+        <img src="https://loremflickr.com/560/380/countryside,japan,farm" alt="開発">
+        <div class="flow-body">
+          <div class="flow-num">STEP 04</div>
+          <h3>開発</h3>
+          <p>造成した土地でエネルギー開発、農園開設、サッカーコート運営等を行い、南房総の魅力を引き上げます。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="strength">
+  <div class="container">
+    <p class="section-title">STRENGTH</p>
+    <h2 class="section-heading">服部が選ばれる理由</h2>
+    <p class="section-lead">建設発生土回収から土地造成・開発まで、一貫して手がけられる体制が服部の強みです。</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-num">01</div>
+        <h3>回収から開発までの一気通貫体制</h3>
+        <p>海上輸送・陸路運搬・造成・開発までを自社で完結できるため、地域や環境に合わせた柔軟な対応が可能です。</p>
+      </div>
+      <div class="card">
+        <div class="card-num">02</div>
+        <h3>都心の発展を陰で支える仕事</h3>
+        <p>建設発生土の回収は人知れず行われる仕事ですが、都心の再開発を支える欠かせない役割を担っています。</p>
+      </div>
+      <div class="card">
+        <div class="card-num">03</div>
+        <h3>愛する地元・南房総への還元</h3>
+        <p>造成した土地でエネルギー開発や農園、スポーツ施設等を展開し、地域の魅力向上に還元しています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section community" id="community">
+  <div class="container">
+    <p class="section-title">COMMUNITY</p>
+    <h2 class="section-heading">地域貢献プロジェクト</h2>
+    <p class="section-lead">館山・南房総への恩返しとして、さまざまな地域貢献に取り組んでいます。</p>
+    <div class="community-list">
+      <div class="community-item"><span class="num">01</span>エネルギー開発</div>
+      <div class="community-item"><span class="num">02</span>アクティビティスペース運営</div>
+      <div class="community-item"><span class="num">03</span>館山湾花火大会協賛</div>
+      <div class="community-item"><span class="num">04</span>館山祭礼参加</div>
+      <div class="community-item"><span class="num">05</span>観光みかん園の造成</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="company">
+  <div class="container">
+    <p class="section-title">COMPANY</p>
+    <h2 class="section-heading">会社概要</h2>
+    <table class="company-table">
+      <tr><th>会社名</th><td>株式会社服部</td></tr>
+      <tr><th>所在地</th><td>〒294-0034　千葉県館山市沼927-3</td></tr>
+      <tr><th>事業内容</th><td>建設発生土の回収・海上輸送、土地造成・開発（千葉県館山市・南房総地域）</td></tr>
+      <tr><th>事業エリア</th><td>東京・神奈川（回収）／千葉県館山市・南房総地域（造成・開発）</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2>お問い合わせ</h2>
+  <p>建設発生土の回収・海上輸送、土地造成・開発に関するご相談は、お気軽にお問い合わせフォームよりご連絡ください。</p>
+  <div class="btns">
+    <a href="http://www.hattori-inc.co.jp/contact" class="btn btn-primary">お問い合わせフォームへ</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">株式会社服部</div>
+      <p>〒294-0034　千葉県館山市沼927-3</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#concept">事業コンセプト</a></li>
+      <li><a href="#flow">事業フロー</a></li>
+      <li><a href="recruit.html">採用情報</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </div>
+  <p class="copyright">©株式会社服部 All rights reserved.</p>
+</footer>
+
+</body>
+</html>

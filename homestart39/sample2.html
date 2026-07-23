@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ホームスタートしゅっぽっぽ｜家庭訪問型子育て支援ボランティア（船橋地域）</title>
+<style>
+  :root{
+    --main:#E2795C;
+    --main-dark:#8F3E27;
+    --accent:#7C9473;
+    --accent-light:#FFF3E6;
+    --text:#232323;
+    --sub:#6B6058;
+    --white:#fff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:var(--text);line-height:1.85;background:#fff;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1100px;margin:0 auto;padding:0 24px;}
+  .btn{display:inline-block;padding:14px 32px;border-radius:26px;font-weight:700;font-size:14.5px;letter-spacing:0.03em;}
+  .btn-primary{background:var(--main);color:#fff;}
+  .btn-primary:hover{background:var(--main-dark);}
+  .btn-line{border:1px solid #fff;color:#fff;}
+  .btn-line:hover{background:rgba(255,255,255,0.15);}
+
+  /* Header overlay */
+  header{position:absolute;top:0;left:0;right:0;z-index:50;}
+  .header-inner{max-width:1200px;margin:0 auto;padding:28px 32px;display:flex;justify-content:space-between;align-items:center;}
+  .logo{color:#fff;font-size:18px;font-weight:800;letter-spacing:0.03em;}
+  .logo span{color:var(--accent);}
+  nav ul{display:flex;gap:30px;list-style:none;}
+  nav a{color:#fff;font-size:13.5px;font-weight:600;}
+
+  /* Full-screen FV */
+  .fv{
+    position:relative;height:100vh;min-height:680px;
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    background:linear-gradient(180deg, rgba(143,62,39,0.55), rgba(90,40,25,0.82)), url('https://loremflickr.com/1920/1080/mother,child,park,japan') center/cover no-repeat;
+    color:#fff;
+  }
+  .fv-content{max-width:760px;padding:0 24px;}
+  .fv-eyebrow{
+    font-size:13px;letter-spacing:0.3em;color:var(--accent-light);font-weight:700;margin-bottom:24px;
+  }
+  .fv h1{font-size:42px;font-weight:800;line-height:1.6;margin-bottom:24px;}
+  .fv p{font-size:16px;opacity:0.92;margin-bottom:40px;}
+  .fv-btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .scroll-cue{
+    position:absolute;bottom:36px;left:50%;transform:translateX(-50%);
+    color:#fff;font-size:11px;letter-spacing:0.2em;
+    display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0.8;
+  }
+  .scroll-cue::after{content:"";width:1px;height:40px;background:#fff;display:block;}
+
+  .band{
+    background:var(--main-dark);color:#fff;padding:22px 0;
+  }
+  .band-inner{display:flex;justify-content:center;gap:56px;flex-wrap:wrap;text-align:center;}
+  .band-item .num{font-size:26px;font-weight:800;color:var(--accent-light);}
+  .band-item .label{font-size:12px;letter-spacing:0.05em;margin-top:4px;}
+
+  .section{padding:100px 0;}
+  .section-title{font-size:13px;letter-spacing:0.25em;color:var(--main);font-weight:700;text-align:center;margin-bottom:14px;}
+  .section-heading{font-size:32px;font-weight:800;text-align:center;margin-bottom:20px;}
+  .section-lead{text-align:center;color:var(--sub);max-width:620px;margin:0 auto 60px;font-size:15px;}
+
+  .strength-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:#f0e6da;}
+  .strength-item{background:#fff;padding:44px 40px;}
+  .strength-item .idx{font-size:38px;font-weight:800;-webkit-text-stroke:1.5px var(--main);color:transparent;margin-bottom:16px;}
+  .strength-item h3{font-size:18px;font-weight:700;margin-bottom:12px;color:var(--main-dark);}
+  .strength-item p{font-size:13.5px;color:var(--sub);}
+
+  .service-banner{
+    position:relative;height:400px;display:flex;align-items:center;
+    background-size:cover;background-position:center;color:#fff;margin-bottom:24px;border-radius:14px;overflow:hidden;
+  }
+  .service-banner::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg, rgba(143,62,39,0.88), rgba(143,62,39,0.15));}
+  .service-banner-body{position:relative;padding:0 56px;max-width:520px;}
+  .service-banner .tag{font-size:12px;letter-spacing:0.15em;color:var(--accent-light);font-weight:700;margin-bottom:14px;}
+  .service-banner h3{font-size:23px;font-weight:800;margin-bottom:16px;}
+  .service-banner p{font-size:13.5px;opacity:0.92;}
+
+  .cta-full{
+    background:linear-gradient(120deg, var(--main-dark), var(--main)); color:#fff;text-align:center;padding:90px 24px;
+  }
+  .cta-full h2{font-size:27px;font-weight:800;margin-bottom:18px;}
+  .cta-full p{opacity:0.92;margin-bottom:36px;}
+  .cta-full .btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .cta-full .btn-primary{background:#fff;color:var(--main-dark);}
+
+  footer{background:#2E2620;color:#d8cdc2;padding:48px 24px 24px;font-size:13px;text-align:center;}
+  footer .footer-logo{color:#fff;font-size:17px;font-weight:800;margin-bottom:14px;}
+  footer .footer-links{display:flex;gap:24px;justify-content:center;list-style:none;flex-wrap:wrap;margin-bottom:20px;}
+  footer .copyright{color:#93877b;margin-top:20px;}
+
+  @media (max-width:900px){
+    .strength-grid{grid-template-columns:1fr;}
+    .service-banner{height:auto;padding:40px 0;}
+    .service-banner-body{padding:0 28px;max-width:100%;}
+  }
+  @media (max-width:700px){
+    nav{display:none;}
+    .fv h1{font-size:26px;}
+    .band-inner{gap:28px;}
+    .section{padding:64px 0;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">ホームスタート<span>しゅっぽっぽ</span></div>
+    <nav><ul>
+      <li><a href="#about">活動について</a></li>
+      <li><a href="#service">サービス</a></li>
+      <li><a href="recruit.html">ボランティア募集</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul></nav>
+  </div>
+</header>
+
+<!-- 元画像URL：現サイト未取得のため差し替え前提のダミー画像 / images/fv-main.jpg -->
+<section class="fv">
+  <div class="fv-content">
+    <p class="fv-eyebrow">HOME-VISITING FAMILY SUPPORT</p>
+    <h1>友人のように気軽に話を聞く。<br>子育てにそっと寄り添う地域の力。</h1>
+    <p>研修を受けた地域のボランティア「ビジター」が、未就学児のいるご家庭をご家庭を訪問。傾聴と協働で、すべての子どもがより良きスタートを切れるように支援します。</p>
+    <div class="fv-btns">
+      <a href="https://forms.gle/XpNjVziMGbFiSEm78" class="btn btn-primary" target="_blank" rel="noopener">お問い合わせ</a>
+      <a href="#service" class="btn btn-line">サービス内容を見る</a>
+    </div>
+  </div>
+  <div class="scroll-cue">SCROLL</div>
+</section>
+
+<div class="band">
+  <div class="container band-inner">
+    <div class="band-item"><div class="num">122ヶ所+</div><div class="label">全国のホームスタートネットワーク</div></div>
+    <div class="band-item"><div class="num">掲載実績</div><div class="label">ふなばし子育てナビゲーション</div></div>
+    <div class="band-item"><div class="num">助成実績</div><div class="label">赤い羽根共同募金</div></div>
+  </div>
+</div>
+
+<section class="section" id="about">
+  <div class="container">
+    <p class="section-title">STRENGTH</p>
+    <h2 class="section-heading">しゅっぽっぽが大切にしていること</h2>
+    <p class="section-lead">「支援する・される」ではなく、地域の友人としてご家庭に寄り添う。それがホームスタートの考え方です。</p>
+  </div>
+  <div class="strength-grid">
+    <div class="strength-item">
+      <div class="idx">01</div>
+      <h3>傾聴と協働</h3>
+      <p>友人のように気楽に話を聞き（傾聴）、一緒に子どもと遊んだり買い物をしたりしながら（協働）子育てを応援します。</p>
+    </div>
+    <div class="strength-item">
+      <div class="idx">02</div>
+      <h3>研修を受けたビジター</h3>
+      <p>子育て・保育経験者が研修を修了した上で訪問。安心してお迎えいただける体制を整えています。</p>
+    </div>
+    <div class="strength-item">
+      <div class="idx">03</div>
+      <h3>全国122ヶ所以上のネットワーク</h3>
+      <p>NPOホームスタート・ジャパンのもと、全国に広がる仕組みの一拠点として船橋地域で活動しています。</p>
+    </div>
+    <div class="strength-item">
+      <div class="idx">04</div>
+      <h3>地域に根ざした継続支援</h3>
+      <p>船橋市の子育て情報誌への掲載や赤い羽根共同募金の助成を受けながら、地域に根ざした活動を継続しています。</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="service" style="padding-top:0;">
+  <div class="container">
+    <p class="section-title">SERVICE</p>
+    <h2 class="section-heading">サービス内容</h2>
+    <p class="section-lead">ご家庭の状況に合わせた3つの支援をご紹介します。</p>
+
+    <div class="service-banner" style="background-image:url('https://loremflickr.com/1200/600/mother,baby,japan');">
+      <!-- 元画像URL：現サイト未取得のため差し替え前提のダミー画像 / images/service-visit.jpg -->
+      <div class="service-banner-body">
+        <p class="tag">01 / VISIT SUPPORT</p>
+        <h3>ホームスタートを利用したい方へ</h3>
+        <p>研修を受けたホームビジターが定期的にご家庭を訪問し、傾聴と協働でサポートします。</p>
+      </div>
+    </div>
+    <div class="service-banner" style="background-image:url('https://loremflickr.com/1200/600/hospital,child,japan');">
+      <!-- 元画像URL：現サイト未取得のため差し替え前提のダミー画像 / images/service-hospital.jpg -->
+      <div class="service-banner-body">
+        <p class="tag">02 / しゅっぽっぽ臨時便</p>
+        <h3>予防接種・検診の付き添い</h3>
+        <p>予防接種や検診の付き添いで、一緒に病院へ行くお手伝いをします。一人での通院への不安に寄り添います。</p>
+      </div>
+    </div>
+    <div class="service-banner" style="background-image:url('https://loremflickr.com/1200/600/first-aid,child,training');">
+      <!-- 元画像URL：現サイト未取得のため差し替え前提のダミー画像 / images/service-firstaid.jpg -->
+      <div class="service-banner-body">
+        <p class="tag">03 / 乳幼児救命救急体験会</p>
+        <h3>もしもの不安に備える体験会</h3>
+        <p>「何か起きたときにどうしよう」という不安に応える、乳幼児の救命救急に関する情報提供の場を開催しています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-full" id="contact">
+  <h2>ご利用・ボランティア、どちらもお気軽にご相談ください</h2>
+  <p>Googleフォームより、ホームスタートのご利用希望、訪問ボランティアへのご興味など、お気軽にお問い合わせください。</p>
+  <div class="btns">
+    <a href="https://forms.gle/XpNjVziMGbFiSEm78" class="btn btn-primary" target="_blank" rel="noopener">お問い合わせフォームへ</a>
+    <a href="recruit.html" class="btn btn-line">ボランティア募集を見る</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">ホームスタートしゅっぽっぽ</div>
+  <ul class="footer-links">
+    <li><a href="#about">活動について</a></li>
+    <li><a href="#service">サービス</a></li>
+    <li><a href="recruit.html">ボランティア募集</a></li>
+    <li><a href="#contact">お問い合わせ</a></li>
+  </ul>
+  <p>船橋地域を中心とした家庭訪問型子育て支援ボランティア団体（NPOホームスタート・ジャパン加盟拠点）</p>
+  <p class="copyright">©ホームスタートしゅっぽっぽ All rights reserved.</p>
+</footer>
+
+</body>
+</html>
