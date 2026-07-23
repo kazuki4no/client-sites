@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reframe and Bloom Center｜心理カウンセリング「＋u」（C案・アクセント）</title>
+<style>
+  :root{
+    --main:#0B504C;
+    --sub:#D9E8ED;
+    --sub2:#F4F9F8;
+    --accent:#E4707A;
+    --accent-light:#FBE3E5;
+    --text:#333;
+    --white:#fff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans","Yu Gothic",sans-serif;color:var(--text);line-height:1.9;overflow-x:hidden;}
+  a{text-decoration:none;color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 24px;}
+
+  header{
+    padding:20px 0;background:var(--white);
+  }
+  .header-inner{display:flex;justify-content:space-between;align-items:center;}
+  .logo{font-weight:700;color:var(--main);font-size:1.1rem;}
+  .logo span{display:block;font-size:.6rem;color:var(--accent);letter-spacing:.15em;font-weight:600;}
+  nav ul{list-style:none;display:flex;gap:24px;}
+  nav a{font-size:.85rem;color:var(--main);position:relative;}
+  .nav-cta{
+    background:var(--accent);color:#fff;padding:10px 22px;border-radius:4px;font-size:.85rem;font-weight:600;
+  }
+  @media(max-width:820px){nav ul{display:none;}}
+
+  /* Hero - asymmetric split */
+  .hero{
+    position:relative;
+    display:grid;grid-template-columns:1.1fr .9fr;min-height:600px;
+  }
+  .hero-left{
+    background:var(--main);color:#fff;display:flex;flex-direction:column;justify-content:center;
+    padding:60px 60px 60px 5vw;position:relative;
+  }
+  .hero-left::after{
+    content:"";position:absolute;right:-40px;top:0;bottom:0;width:80px;
+    background:var(--main);transform:skewX(-6deg);z-index:1;
+  }
+  .hero-left .eyebrow{
+    display:inline-block;background:var(--accent);color:#fff;padding:6px 16px;border-radius:20px;
+    font-size:.75rem;letter-spacing:.1em;margin-bottom:24px;width:fit-content;font-weight:600;
+  }
+  .hero-left h1{font-size:2.2rem;line-height:1.7;margin-bottom:22px;position:relative;z-index:2;}
+  .hero-left p{opacity:.9;font-size:.95rem;margin-bottom:30px;max-width:480px;position:relative;z-index:2;}
+  .btn-accent{
+    display:inline-block;background:var(--accent);color:#fff;font-weight:700;
+    padding:16px 38px;border-radius:6px;font-size:.95rem;width:fit-content;
+    box-shadow:0 10px 24px rgba(228,112,122,.35);
+  }
+  .hero-right{position:relative;}
+  .hero-right img{width:100%;height:100%;object-fit:cover;}
+
+  @media(max-width:900px){
+    .hero{grid-template-columns:1fr;}
+    .hero-left::after{display:none;}
+    .hero-right{height:320px;}
+  }
+
+  section{padding:90px 0;}
+  .section-head{margin-bottom:50px;}
+  .section-head .en{color:var(--accent);font-size:.8rem;letter-spacing:.2em;font-weight:700;}
+  .section-head h2{font-size:1.8rem;color:var(--main);margin-top:10px;}
+  .section-head.center{text-align:center;}
+
+  /* Strength - offset cards */
+  .strength-list{display:flex;flex-direction:column;gap:0;}
+  .strength-row{
+    display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:40px;
+    padding:40px 0;border-bottom:1px solid var(--sub);
+  }
+  .strength-row:nth-child(even){direction:rtl;}
+  .strength-row:nth-child(even) > *{direction:ltr;}
+  .strength-row .num-big{
+    font-size:3.4rem;font-weight:800;color:var(--accent-light);
+    -webkit-text-stroke:1.5px var(--accent);
+    line-height:1;margin-bottom:14px;
+  }
+  .strength-row h3{color:var(--main);font-size:1.2rem;margin-bottom:12px;}
+  .strength-row p{color:#555;font-size:.92rem;}
+  .strength-row img{border-radius:10px;}
+
+  @media(max-width:820px){
+    .strength-row{grid-template-columns:1fr;direction:ltr!important;}
+    .strength-row > *{direction:ltr!important;}
+  }
+
+  /* Service band with diagonal */
+  .service-band{
+    background:var(--accent-light);position:relative;
+  }
+  .service-cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .service-card{
+    background:#fff;border-radius:10px;padding:26px 20px;text-align:center;
+    border-top:4px solid var(--accent);
+  }
+  .service-card h4{color:var(--main);font-size:.95rem;margin-bottom:10px;}
+  .service-card p{font-size:.8rem;color:#666;}
+  @media(max-width:900px){.service-cards{grid-template-columns:1fr 1fr;}}
+  @media(max-width:520px){.service-cards{grid-template-columns:1fr;}}
+
+  /* overview */
+  .overview-table{width:100%;border-collapse:collapse;}
+  .overview-table th,.overview-table td{
+    padding:18px 22px;border-bottom:1px solid var(--sub);text-align:left;font-size:.92rem;
+  }
+  .overview-table th{width:170px;color:var(--main);font-weight:600;background:var(--sub2);}
+
+  /* cta */
+  .cta{
+    background:linear-gradient(120deg,var(--main) 60%, var(--accent) 100%);
+    color:#fff;text-align:center;
+  }
+  .cta h2{font-size:1.7rem;margin-bottom:16px;}
+  .cta p{opacity:.9;margin-bottom:30px;}
+  .cta .btn-accent{background:#fff;color:var(--accent);margin:0 auto;}
+
+  footer{background:#0a3835;color:#cfe4e1;padding:48px 0 24px;text-align:center;font-size:.85rem;}
+  footer .fname{font-size:1rem;color:#fff;margin-bottom:10px;}
+  footer .copyright{margin-top:24px;opacity:.6;font-size:.75rem;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner wrap">
+    <div class="logo">Reframe and Bloom Center<span>心理カウンセリング「＋u」</span></div>
+    <nav>
+      <ul>
+        <li><a href="#strength">特徴</a></li>
+        <li><a href="#service">サービス</a></li>
+        <li><a href="#overview">会社概要</a></li>
+      </ul>
+    </nav>
+    <a href="#contact" class="nav-cta">無料相談</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-left">
+    <div class="eyebrow">ADULT CHILDREN ・ 生きづらさ専門</div>
+    <h1>その生きづらさ、<br>あなたのせいじゃない</h1>
+    <p>子どもの頃から作られた「心のクセ」に、臨床心理士・公認心理師が寄り添う心理カウンセリング。あなたの中にある回復の力を、一緒に見つけていきます。</p>
+    <a href="#contact" class="btn-accent">無料カウンセリングを申し込む</a>
+  </div>
+  <div class="hero-right">
+    <!-- 元画像URL: 新規手配（現サイトはWixオリジナル背景画像） / images/hero-c.jpg -->
+    <img src="https://loremflickr.com/900/1000/flower,bloom,pink" alt="花が咲くイメージ（Bloom）">
+  </div>
+</section>
+
+<section id="strength">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="en">STRENGTH</div>
+      <h2>「＋u」が大切にしていること</h2>
+    </div>
+    <div class="strength-list">
+      <div class="strength-row">
+        <div>
+          <div class="num-big">01</div>
+          <h3>アダルトチルドレン専門</h3>
+          <p>幼少期の家庭環境が今の生きづらさに影響していることを深く理解した専門家が、インナーチャイルドにも対応しながら寄り添います。</p>
+        </div>
+        <!-- 元画像URL: 新規手配 / images/strength1-c.jpg -->
+        <img src="https://loremflickr.com/600/420/childhood,family" alt="アダルトチルドレンのイメージ">
+      </div>
+      <div class="strength-row">
+        <div>
+          <div class="num-big">02</div>
+          <h3>オープンダイアローグの理念</h3>
+          <p>「ジャッジしない、大事に聴く」対話の姿勢を大切にしています。正解を求めず、あなたの言葉をそのまま受け取ります。</p>
+        </div>
+        <!-- 元画像URL: 新規手配 / images/strength2-c.jpg -->
+        <img src="https://loremflickr.com/600/420/dialogue,conversation" alt="対話のイメージ">
+      </div>
+      <div class="strength-row">
+        <div>
+          <div class="num-big">03</div>
+          <h3>あなたの中にある力を信じる</h3>
+          <p>あなた自身が持っている回復の力を最大限引き出し、悩みの根本にアプローチします。無理な勧誘は一切ありません。</p>
+        </div>
+        <!-- 元画像URL: 新規手配 / images/strength3-c.jpg -->
+        <img src="https://loremflickr.com/600/420/hope,light,bloom" alt="回復のイメージ">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="service-band" id="service">
+  <div class="wrap">
+    <div class="section-head center">
+      <div class="en">SERVICE</div>
+      <h2>＋uカウンセリングでできること</h2>
+    </div>
+    <div class="service-cards">
+      <div class="service-card">
+        <h4>個人カウンセリング</h4>
+        <p>アダルトチルドレン・インナーチャイルドに特化した対話</p>
+      </div>
+      <div class="service-card">
+        <h4>子育て相談</h4>
+        <p>親子のコミュニケーションに関する具体的なサポート</p>
+      </div>
+      <div class="service-card">
+        <h4>パートナーシップ相談</h4>
+        <p>大切な人との関係を良好に保つ考え方をご提案</p>
+      </div>
+      <div class="service-card">
+        <h4>初回無料相談</h4>
+        <p>約50分。その場で契約を強いることはありません</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="overview">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="en">COMPANY</div>
+      <h2>会社概要</h2>
+    </div>
+    <table class="overview-table">
+      <tr><th>会社名</th><td>Reframe and Bloom Center 合同会社</td></tr>
+      <tr><th>サービス名</th><td>＋uカウンセリング</td></tr>
+      <tr><th>代表者</th><td>名越 たみい（臨床心理士・公認心理師／カウンセリング歴20年・延べ20,000件以上）</td></tr>
+      <tr><th>所在地</th><td>〒261-0013　千葉県千葉市美浜区打瀬１丁目１１番１</td></tr>
+      <tr><th>連絡先</th><td>TEL：090-5494-5560（受付時間：平日10:00〜17:00）<br>E-Mail：tamii_nagoshi@reframeandbloom.jp</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="wrap">
+    <h2>あなたが欲しかった場所が、ここにあります。</h2>
+    <p>急がなくていい。完璧に話せなくていい。ただ勇気を出して、ここに来てください。</p>
+    <a href="mailto:tamii_nagoshi@reframeandbloom.jp" class="btn-accent">メールで問い合わせる</a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="fname">Reframe and Bloom Center 合同会社</div>
+    <div>心理カウンセリングサービス「＋u」</div>
+    <div class="copyright">© 2026 Reframe and Bloom Center 合同会社</div>
+  </div>
+</footer>
+
+</body>
+</html>

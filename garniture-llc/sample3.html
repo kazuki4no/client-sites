@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>合同会社GARNITURE｜医療業界特化の採用パートナー</title>
+<style>
+  :root{
+    --main:#125C66;
+    --main-dark:#0B3D44;
+    --accent:#E8935B;
+    --accent-dark:#C96E38;
+    --accent-light:#FCEEE3;
+    --teal-light:#E4F0F1;
+    --text:#2B2B2B;
+    --sub:#6B6B6B;
+    --bg:#FCFCFA;
+    --white:#FFFFFF;
+    --dark:#0B3D44;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    color:var(--text);background:var(--bg);line-height:1.8;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .section{padding:88px 0;}
+  .section-title{
+    font-size:14px;letter-spacing:0.2em;color:var(--accent);font-weight:700;
+    text-align:center;margin-bottom:12px;
+  }
+  .section-heading{
+    font-size:30px;font-weight:700;text-align:center;margin-bottom:16px;letter-spacing:0.03em;
+  }
+  .section-lead{
+    text-align:center;color:var(--sub);max-width:640px;margin:0 auto 56px;font-size:15px;
+  }
+  header{
+    position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.96);
+    border-bottom:1px solid #eee;backdrop-filter:blur(6px);
+  }
+  .header-inner{
+    max-width:1080px;margin:0 auto;padding:16px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .logo{font-size:19px;font-weight:800;color:var(--main-dark);letter-spacing:0.02em;}
+  .logo span{color:var(--accent);}
+  nav ul{display:flex;gap:32px;list-style:none;}
+  nav a{font-size:14px;font-weight:600;}
+  nav a:hover{color:var(--main);}
+  .header-cta{display:flex;gap:10px;}
+  .btn{display:inline-block;padding:12px 28px;border-radius:4px;font-size:14px;font-weight:700;text-align:center;}
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-primary:hover{background:var(--accent-dark);}
+  .btn-outline{border:1px solid var(--main);color:var(--main);}
+  .btn-outline:hover{background:var(--teal-light);}
+  .btn-small{padding:9px 18px;font-size:13px;}
+  .menu-toggle{display:none;font-size:26px;background:none;border:none;cursor:pointer;color:var(--main-dark);}
+
+  /* Asymmetric Hero */
+  .hero{
+    background:var(--main-dark);color:#fff;padding:100px 0 0;overflow:hidden;
+  }
+  .hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:40px;align-items:center;}
+  .hero-tag{
+    display:inline-block;background:rgba(232,147,91,0.2);border:1px solid var(--accent);color:var(--accent);
+    padding:6px 16px;border-radius:20px;font-size:13px;font-weight:700;letter-spacing:0.05em;margin-bottom:24px;
+  }
+  .hero h1{font-size:36px;font-weight:800;line-height:1.5;margin-bottom:22px;}
+  .hero p{font-size:15.5px;max-width:480px;margin-bottom:32px;opacity:0.9;}
+  .hero-btns{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:40px;}
+  .hero .btn-outline{border-color:#fff;color:#fff;}
+  .hero .btn-outline:hover{background:rgba(255,255,255,0.1);}
+  .hero-img{position:relative;}
+  .hero-img img{border-radius:16px 16px 0 0;}
+
+  /* Horizontal scroll cards */
+  .hscroll{
+    display:flex;gap:20px;overflow-x:auto;padding-bottom:16px;
+    scrollbar-width:thin;
+  }
+  .hscroll::-webkit-scrollbar{height:6px;}
+  .hscroll::-webkit-scrollbar-thumb{background:#ddd;border-radius:3px;}
+  .hcard{
+    flex:0 0 260px;background:var(--white);border:1px solid #ececec;border-radius:12px;padding:28px 24px;
+    border-top:4px solid var(--accent);
+  }
+  .hcard-num{font-size:13px;color:var(--accent);font-weight:800;letter-spacing:0.1em;margin-bottom:14px;}
+  .hcard h3{font-size:16.5px;font-weight:700;margin-bottom:10px;}
+  .hcard p{font-size:13.5px;color:var(--sub);}
+
+  /* Flow 3 panels */
+  .panels{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-radius:14px;overflow:hidden;}
+  .panel{padding:40px 32px;background:var(--white);border:1px solid #ececec;}
+  .panel.dark{background:var(--main-dark);color:#fff;transform:scale(1.04);z-index:2;position:relative;box-shadow:0 20px 40px rgba(0,0,0,0.15);}
+  .panel-tag{font-size:12px;font-weight:800;letter-spacing:0.1em;color:var(--accent);margin-bottom:14px;}
+  .panel h3{font-size:18px;font-weight:700;margin-bottom:12px;}
+  .panel p{font-size:13.5px;}
+  .panel:not(.dark) p{color:var(--sub);}
+  .panel.dark p{color:#cfe4e6;}
+
+  /* Company dark */
+  .company-dark{background:var(--main-dark);color:#fff;border-radius:16px;padding:56px;}
+  .company-dark .section-title{color:var(--accent);}
+  .company-table{width:100%;border-collapse:collapse;max-width:760px;margin:0 auto;}
+  .company-table th,.company-table td{
+    padding:16px 0;text-align:left;font-size:14.5px;border-bottom:1px solid rgba(255,255,255,0.15);
+  }
+  .company-table th{width:160px;color:var(--accent);font-weight:700;}
+  .company-table tr:last-child th, .company-table tr:last-child td{border-bottom:none;}
+
+  /* CTA */
+  .cta{background:var(--accent);color:#fff;text-align:center;padding:80px 24px;}
+  .cta h2{font-size:26px;font-weight:800;margin-bottom:16px;}
+  .cta p{margin-bottom:32px;opacity:0.95;}
+  .cta .btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .cta .btn-primary{background:#fff;color:var(--accent-dark);}
+  .cta .btn-outline{border-color:#fff;color:#fff;}
+
+  footer{background:#0B1F22;color:#c8d4d5;padding:48px 24px 24px;font-size:13px;}
+  .footer-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .footer-logo{font-size:17px;font-weight:800;color:#fff;margin-bottom:10px;}
+  .footer-links{display:flex;gap:24px;list-style:none;flex-wrap:wrap;}
+  .copyright{text-align:center;margin-top:32px;color:#7d9092;}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-img{max-width:480px;}
+    .panels{grid-template-columns:1fr;}
+    .panel.dark{transform:none;}
+    .company-dark{padding:36px 24px;}
+  }
+  @media (max-width:700px){
+    nav, .header-cta{display:none;}
+    .menu-toggle{display:block;}
+    .hero{padding:60px 0 0;}
+    .hero h1{font-size:26px;}
+    .section{padding:60px 0;}
+    .company-table th{width:110px;font-size:13px;}
+    .company-table td{font-size:13px;}
+    .hcard{flex:0 0 220px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">GARN<span>ITURE</span></div>
+    <nav><ul>
+      <li><a href="#about">私たちについて</a></li>
+      <li><a href="#service">サービス</a></li>
+      <li><a href="#flow">流れ</a></li>
+      <li><a href="#company">会社概要</a></li>
+    </ul></nav>
+    <div class="header-cta">
+      <a href="recruit.html" class="btn btn-outline btn-small">採用情報</a>
+      <a href="#contact" class="btn btn-primary btn-small">お問い合わせ</a>
+    </div>
+    <button class="menu-toggle">≡</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <span class="hero-tag">医療業界特化の人材紹介</span>
+      <h1>医師から事務まで一社で完結する、<br>誠実で透明な採用支援。</h1>
+      <p>病院・クリニック・介護施設・調剤薬局・検査機関まで、医療業界全般をカバー。丁寧なヒアリングとマッチングで、貴院・貴施設と求職者双方が納得できる採用を実現します。</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn btn-primary">無料相談を申し込む</a>
+        <a href="#service" class="btn btn-outline">サービスを見る</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <!-- 元画像URL：不明・差し替え前提（LoremFlickrダミー使用） / images/hero-side.jpg -->
+      <img src="https://loremflickr.com/640/560/medical,clinic,japan" alt="医療現場イメージ">
+    </div>
+  </div>
+</section>
+
+<section class="section" id="service">
+  <div class="container">
+    <p class="section-title">STRENGTH</p>
+    <h2 class="section-heading">GARNITUREが選ばれる理由</h2>
+    <p class="section-lead">医療業界に特化しているからこそ提供できる、一気通貫の採用支援体制です。</p>
+    <div class="hscroll">
+      <div class="hcard">
+        <div class="hcard-num">01</div>
+        <h3>医療業界全般をカバー</h3>
+        <p>病院・クリニック・介護施設・調剤薬局・検査機関まで幅広く対応します。</p>
+      </div>
+      <div class="hcard">
+        <div class="hcard-num">02</div>
+        <h3>医師から事務員まで一気通貫</h3>
+        <p>ドクター・看護師・コメディカルから医療事務・バックオフィスまで対応。</p>
+      </div>
+      <div class="hcard">
+        <div class="hcard-num">03</div>
+        <h3>採用要件の整理からサポート</h3>
+        <p>事務長候補等の難しいポジションも要件の言語化からご一緒します。</p>
+      </div>
+      <div class="hcard">
+        <div class="hcard-num">04</div>
+        <h3>ミスマッチを防ぐ丁寧なマッチング</h3>
+        <p>現場の状況と候補者の想いを踏まえた誠実で透明な採用支援を行います。</p>
+      </div>
+      <div class="hcard">
+        <div class="hcard-num">05</div>
+        <h3>開業・立ち上げ支援も対応</h3>
+        <p>新規開業に伴うまとめての採用にも柔軟に対応いたします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="flow" style="background:var(--teal-light);">
+  <div class="container">
+    <p class="section-title">SERVICE FLOW</p>
+    <h2 class="section-heading">ご利用の流れ</h2>
+    <p class="section-lead">お問い合わせから入職後のフォローまで、丁寧に伴走します。</p>
+    <div class="panels">
+      <div class="panel">
+        <div class="panel-tag">STEP 01-02</div>
+        <h3>お問い合わせ・ヒアリング</h3>
+        <p>まずはお気軽にご相談ください。採用要件・現場の状況を丁寧にお伺いします。</p>
+      </div>
+      <div class="panel dark">
+        <div class="panel-tag">STEP 03-04</div>
+        <h3>ご紹介・選考</h3>
+        <p>医療業界に特化したネットワークから最適な候補者をお探しし、書類選考・面接の調整までサポートします。</p>
+      </div>
+      <div class="panel">
+        <div class="panel-tag">STEP 05-06</div>
+        <h3>内定・入職後フォロー</h3>
+        <p>条件調整・内定はもちろん、入職後の定着までしっかりフォローいたします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container">
+    <p class="section-title">MESSAGE</p>
+    <h2 class="section-heading">医師から事務まで、一社で完結する。</h2>
+    <p class="section-lead">医療機関も求職者も、納得して進められる誠実で透明な採用支援を。それが合同会社GARNITUREの変わらない姿勢です。</p>
+  </div>
+</section>
+
+<section class="section" id="company">
+  <div class="container">
+    <p class="section-title">COMPANY</p>
+    <div class="company-dark">
+      <h2 class="section-heading" style="color:#fff;">会社概要</h2>
+      <table class="company-table">
+        <tr><th>会社名</th><td>合同会社GARNITURE</td></tr>
+        <tr><th>所在地</th><td>〒288-0855　千葉県銚子市猿田町1179番地の2</td></tr>
+        <tr><th>代表者</th><td>寺嶋 一成</td></tr>
+        <tr><th>許可</th><td>有料職業紹介事業許可番号　12-ユ-301303</td></tr>
+        <tr><th>事業内容</th><td>医療業界に特化した人材紹介業、採用コンサルティング、採用計画設計、面接調整・条件交渉サポート、入職後のフォロー</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2>まずはお気軽にご相談ください</h2>
+  <p>貴院・貴施設の採用課題をヒアリングし、最適な人材のご紹介方法をご提案いたします。</p>
+  <div class="btns">
+    <a href="https://garniture-llc.com/contact/" class="btn btn-primary">お問い合わせフォームへ</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">合同会社GARNITURE</div>
+      <p>〒288-0855　千葉県銚子市猿田町1179番地の2</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#about">私たちについて</a></li>
+      <li><a href="#service">サービス</a></li>
+      <li><a href="recruit.html">採用情報</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </div>
+  <p class="copyright">©合同会社GARNITURE All rights reserved.</p>
+</footer>
+
+</body>
+</html>

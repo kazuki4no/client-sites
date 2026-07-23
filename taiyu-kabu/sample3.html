@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>大有株式会社（タイユー）| Order Made Material Handling</title>
+<style>
+  :root{
+    --blue:#155ed3;
+    --blue-dark:#0a2e6e;
+    --orange:#ff6900;
+    --dark:#141517;
+    --gray:#5c6169;
+    --line:#e6e8ec;
+    --paper:#f4f0e8;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    font-family:"Hiragino Kaku Gothic ProN","Hiragino Sans",-apple-system,BlinkMacSystemFont,"Yu Gothic",sans-serif;
+    color:var(--dark);line-height:1.8;background:var(--paper);-webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+  a{text-decoration:none;color:inherit;}
+  .container{max-width:1180px;margin:0 auto;padding:0 28px;}
+
+  /* header - asymmetric */
+  header{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:22px 28px;background:var(--dark);color:#fff;position:sticky;top:0;z-index:100;
+  }
+  .logo{font-weight:800;font-size:18px;letter-spacing:.02em;}
+  .logo em{color:var(--orange);font-style:normal;}
+  nav ul{list-style:none;display:flex;gap:26px;}
+  nav a{font-size:12.5px;font-weight:700;letter-spacing:.05em;color:#d7d9dc;}
+  nav a:hover{color:var(--orange);}
+  .header-cta{background:var(--orange);color:#fff;padding:9px 20px;font-size:12px;font-weight:800;}
+
+  /* hero - split diagonal accent */
+  .hero{
+    position:relative;padding:80px 0 0;overflow:hidden;
+  }
+  .hero-grid{
+    display:grid;grid-template-columns:1.1fr .9fr;min-height:600px;
+  }
+  .hero-copy{
+    background:var(--dark);color:#fff;padding:80px 60px;display:flex;flex-direction:column;justify-content:center;
+    position:relative;
+  }
+  .hero-copy::before{
+    content:"";position:absolute;top:0;right:-2px;width:2px;height:100%;background:var(--orange);
+  }
+  .hero-eyebrow{color:var(--orange);font-weight:800;font-size:12px;letter-spacing:.25em;margin-bottom:22px;}
+  .hero-copy h1{font-size:42px;font-weight:800;line-height:1.5;margin-bottom:24px;}
+  .hero-copy p{color:#c6c9ce;font-size:14.5px;margin-bottom:32px;max-width:440px;}
+  .hero-img{position:relative;overflow:hidden;}
+  .hero-img img{width:100%;height:100%;object-fit:cover;min-height:600px;}
+  .hero-img::after{
+    content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(21,94,211,.35),transparent 60%);
+  }
+  .btn{display:inline-block;padding:16px 34px;font-weight:800;font-size:14px;letter-spacing:.03em;}
+  .btn-orange{background:var(--orange);color:#fff;}
+  .btn-orange:hover{background:#e05e00;}
+  .btn-line{border:1.5px solid #fff;color:#fff;}
+  .btn-line:hover{background:#fff;color:var(--dark);}
+  .hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+
+  /* marquee strip */
+  .marquee{
+    background:var(--orange);color:#fff;padding:14px 0;overflow:hidden;white-space:nowrap;
+    font-weight:800;font-size:13px;letter-spacing:.1em;
+  }
+  .marquee span{margin-right:48px;}
+
+  section{padding:100px 0;}
+  .eyebrow{color:var(--blue);font-weight:800;font-size:12.5px;letter-spacing:.2em;margin-bottom:14px;}
+  h2.sec-title{font-size:34px;font-weight:800;margin-bottom:20px;line-height:1.4;}
+
+  /* strengths - offset cards */
+  .strength-list{display:flex;flex-direction:column;gap:0;}
+  .strength-row{
+    display:grid;grid-template-columns:120px 1fr;gap:32px;padding:36px 0;border-top:1px solid #d8d3c6;
+    align-items:start;
+  }
+  .strength-row:last-child{border-bottom:1px solid #d8d3c6;}
+  .strength-row .num{font-size:48px;font-weight:800;color:var(--orange);line-height:1;}
+  .strength-row h3{font-size:19px;font-weight:800;margin-bottom:10px;}
+  .strength-row p{color:var(--gray);font-size:14px;max-width:640px;}
+
+  /* products - card carousel style */
+  .products{background:var(--dark);color:#fff;}
+  .products .eyebrow{color:var(--orange);}
+  .prod-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:48px;}
+  .prod-card{background:#1e2024;padding:0;position:relative;}
+  .prod-card img{height:220px;object-fit:cover;width:100%;filter:grayscale(20%);}
+  .prod-body{padding:26px;}
+  .prod-body h3{font-size:16px;margin-bottom:8px;color:var(--orange);font-weight:800;}
+  .prod-body p{font-size:13px;color:#b6bac0;}
+
+  /* company - angled panel */
+  .company{
+    background:linear-gradient(100deg,var(--blue) 0%, var(--blue-dark) 100%);color:#fff;
+  }
+  .company .eyebrow{color:#ffd9b3;}
+  .company-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;}
+  table.overview{width:100%;border-collapse:collapse;font-size:13.5px;}
+  table.overview th,table.overview td{text-align:left;padding:14px 6px;border-bottom:1px solid rgba(255,255,255,.2);vertical-align:top;}
+  table.overview th{width:34%;color:#ffd9b3;font-weight:700;}
+
+  .clients{text-align:center;}
+  .client-strip{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:40px;}
+  .client-strip span{
+    background:#fff;border:1.5px solid var(--dark);padding:8px 16px;font-size:12.5px;font-weight:700;
+  }
+
+  /* cta - bold block */
+  .cta{
+    background:var(--orange);color:#fff;padding:100px 0;text-align:center;
+    clip-path:polygon(0 6%,100% 0,100% 94%,0 100%);
+  }
+  .cta h2{font-size:32px;font-weight:800;margin-bottom:18px;}
+  .cta p{margin-bottom:36px;}
+
+  footer{background:var(--dark);color:#9a9ea3;padding:44px 0;font-size:12.5px;text-align:center;}
+
+  @media(max-width:900px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-copy{padding:56px 32px;}
+    .hero-img img{min-height:340px;}
+    .strength-row{grid-template-columns:70px 1fr;}
+    .prod-grid{grid-template-columns:1fr 1fr;}
+    .company-grid{grid-template-columns:1fr;}
+    nav{display:none;}
+    section{padding:64px 0;}
+  }
+  @media(max-width:560px){
+    .hero-copy h1{font-size:28px;}
+    .prod-grid{grid-template-columns:1fr;}
+    .header-cta{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">大有<em>TAIYU</em></div>
+  <nav><ul>
+    <li><a href="#strength">強み</a></li>
+    <li><a href="#products">製品</a></li>
+    <li><a href="#company">会社概要</a></li>
+  </ul></nav>
+  <a href="#contact" class="header-cta">お問い合わせ</a>
+</header>
+
+<section class="hero">
+  <div class="hero-grid">
+    <div class="hero-copy">
+      <p class="hero-eyebrow">ORDER MADE MATERIAL HANDLING SINCE 1950</p>
+      <h1>「モノ」を動かす現場に、<br>ジャストフィットする一台を。</h1>
+      <p>大有株式会社は、原材料・仕掛品・完成品の運搬に用いるマテリアルハンドリング機器を、お客様の現場ごとにオーダーメイドで設計・製作するメーカーです。</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn btn-orange">お問い合わせ</a>
+        <a href="#products" class="btn btn-line">製品を見る</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="https://loremflickr.com/900/1200/factory,machine" alt="マテハン機器の製造現場">
+      <!-- 元画像URL: https://taiyu-kabu.co.jp/dev/wp-content/uploads/2024/04/TOP製品紹介_2.png / images/hero-accent.jpg -->
+    </div>
+  </div>
+</section>
+
+<div class="marquee">
+  <span>ORDER MADE ★ オーダーメイドの大有 ★ SINCE 1950 ★ すべてはユーザーのために ★ ORDER MADE ★ オーダーメイドの大有 ★ SINCE 1950 ★ すべてはユーザーのために ★</span>
+</div>
+
+<section id="strength">
+  <div class="container">
+    <p class="eyebrow">WHY TAIYU</p>
+    <h2 class="sec-title">大有が選ばれる4つの理由</h2>
+    <div class="strength-list">
+      <div class="strength-row">
+        <div class="num">01</div>
+        <div>
+          <h3>75年のオーダーメイド実績</h3>
+          <p>1953年、日本初のドラム缶運搬車「ドラムポーター」を開発。以来、製品のほぼ全てをお客様の要望に応えるオーダーメイドで製作してきました。</p>
+        </div>
+      </div>
+      <div class="strength-row">
+        <div class="num">02</div>
+        <div>
+          <h3>大手企業との豊富な取引実績</h3>
+          <p>味の素、旭化成、花王、資生堂、三菱ケミカルグループなど、食品・化学・製薬業界を代表する企業様にご採用いただいています。</p>
+        </div>
+      </div>
+      <div class="strength-row">
+        <div class="num">03</div>
+        <div>
+          <h3>ラインと連動した自動化提案</h3>
+          <p>AGV等との組み合わせによる自動化ニーズにも対応。周辺のマテハンまで見据えたご提案で、お客様の選択肢を広げます。</p>
+        </div>
+      </div>
+      <div class="strength-row">
+        <div class="num">04</div>
+        <div>
+          <h3>モジュール化による品質とコストの両立</h3>
+          <p>設計のモジュール化・部材や工程の標準化を推進。個人に依存しがちなオーダーメイドの知見を組織で共有し、生産性向上につなげています。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="products" id="products">
+  <div class="container">
+    <p class="eyebrow">PRODUCT</p>
+    <h2 class="sec-title">取扱製品</h2>
+    <div class="prod-grid">
+      <div class="prod-card">
+        <img src="https://loremflickr.com/500/400/machine,steel" alt="ドラムハンドリング機器">
+        <!-- 元画像URL: 現サイトの製品写真（要現地取材） / images/product-drum3.jpg -->
+        <div class="prod-body"><h3>ドラムハンドリング機器</h3><p>ドラム缶の運搬・昇降・反転を安全かつ効率的に。</p></div>
+      </div>
+      <div class="prod-card">
+        <img src="https://loremflickr.com/500/400/crane,industrial" alt="特殊リフター">
+        <!-- 元画像URL: 現サイトの製品写真（要現地取材） / images/product-lifter3.jpg -->
+        <div class="prod-body"><h3>特殊リフター</h3><p>現場の形状・用途にあわせたオーダーメイド昇降機器。</p></div>
+      </div>
+      <div class="prod-card">
+        <img src="https://loremflickr.com/500/400/conveyor,factory" alt="投入/反転機">
+        <!-- 元画像URL: 現サイトの製品写真（要現地取材） / images/product-invert3.jpg -->
+        <div class="prod-body"><h3>投入/反転機</h3><p>原料投入・反転作業を省力化する専用機器。</p></div>
+      </div>
+      <div class="prod-card">
+        <img src="https://loremflickr.com/500/400/warehouse,equipment" alt="垂直搬送機">
+        <!-- 元画像URL: 現サイトの製品写真（要現地取材） / images/product-vertical3.jpg -->
+        <div class="prod-body"><h3>垂直搬送機</h3><p>フロア間の搬送を効率化するオーダーメイド機器。</p></div>
+      </div>
+      <div class="prod-card">
+        <img src="https://loremflickr.com/500/400/factory,industrial" alt="粉砕機">
+        <!-- 元画像URL: 現サイトの製品写真（要現地取材） / images/product-crusher.jpg -->
+        <div class="prod-body"><h3>粉砕機</h3><p>原料の粉砕工程に対応する専用設計機器。</p></div>
+      </div>
+      <div class="prod-card">
+        <img src="https://loremflickr.com/500/400/robot,automation" alt="その他特殊マテハン機器">
+        <!-- 元画像URL: 現サイトの製品写真（要現地取材） / images/product-other.jpg -->
+        <div class="prod-body"><h3>その他特殊マテハン機器</h3><p>AGV連携など自動化ニーズにあわせたオーダーメイド提案。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="clients">
+  <div class="container">
+    <p class="eyebrow">CLIENT</p>
+    <h2 class="sec-title">主な取引実績（一部・敬称略）</h2>
+    <div class="client-strip">
+      <span>味の素</span><span>旭化成</span><span>花王</span><span>カルビー</span>
+      <span>資生堂</span><span>信越化学工業</span><span>住友化学</span><span>第一三共</span>
+      <span>中外製薬</span><span>デンソー</span><span>日東電工</span><span>三菱ケミカルグループ</span>
+      <span>森永製菓</span><span>ロート製薬</span>
+    </div>
+  </div>
+</section>
+
+<section class="company" id="company">
+  <div class="container">
+    <p class="eyebrow">COMPANY</p>
+    <h2 class="sec-title">会社概要</h2>
+    <div class="company-grid">
+      <table class="overview">
+        <tr><th>商号</th><td>大有株式会社（TAIYU CO., LTD.）</td></tr>
+        <tr><th>創業</th><td>1950年11月3日</td></tr>
+        <tr><th>資本金</th><td>1,000万円</td></tr>
+        <tr><th>本社所在地</th><td>千葉県千葉市美浜区新港13</td></tr>
+      </table>
+      <table class="overview">
+        <tr><th>代表者</th><td>代表取締役会長　宮永 万理<br>代表取締役社長　田中 良和</td></tr>
+        <tr><th>事業内容</th><td>マテリアルハンドリング機器のオーダーメイド設計・製作・販売</td></tr>
+        <tr><th>加盟団体</th><td>日本物流システム機器協会／日本運搬車両機器協会</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="container">
+    <h2>まずはお気軽にご相談ください</h2>
+    <p>お見積り・製品検討・カタログ請求など、お問い合わせフォームより承ります。</p>
+    <a href="#" class="btn btn-line" style="border-color:#fff;">お問い合わせフォームへ</a>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    大有株式会社　〒261-0002 千葉県千葉市美浜区新港13　TEL 043-204-5061<br>
+    Copyright (C) TAIYU CO., LTD. All Rights Reserved.（本サイトはご提案用のサンプルです）
+  </div>
+</footer>
+
+</body>
+</html>

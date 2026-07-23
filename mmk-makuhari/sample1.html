@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>幕張新都心まちづくり協議会｜A案</title>
+<style>
+  :root{
+    --navy:#1B4F72;
+    --navy-dark:#123A56;
+    --green:#7CB342;
+    --bg:#F7F9FA;
+    --text:#2B2B2B;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:var(--text);background:var(--bg);line-height:1.8;}
+  a{color:inherit;text-decoration:none;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:1100px;margin:0 auto;padding:0 20px;}
+  header.site-header{background:var(--white);border-bottom:1px solid #e3e8ea;position:sticky;top:0;z-index:100;}
+  .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 20px;max-width:1100px;margin:0 auto;}
+  .logo{font-size:1.15rem;font-weight:700;color:var(--navy);}
+  .logo small{display:block;font-size:.6rem;font-weight:400;color:#666;letter-spacing:.05em;}
+  nav ul{display:flex;gap:26px;list-style:none;}
+  nav a{font-size:.9rem;font-weight:600;color:var(--navy-dark);}
+  .tel-badge{font-size:.85rem;font-weight:700;color:var(--navy);}
+  .hero{position:relative;background:linear-gradient(135deg,var(--navy) 0%,var(--navy-dark) 100%);color:#fff;padding:90px 20px 100px;text-align:center;overflow:hidden;}
+  .hero::after{content:"";position:absolute;inset:0;background:url('https://loremflickr.com/1600/900/city,bay,skyline') center/cover;opacity:.25;}
+  .hero-content{position:relative;z-index:2;}
+  .hero h1{font-size:2.3rem;font-weight:800;margin-bottom:18px;letter-spacing:.03em;}
+  .hero p{font-size:1.05rem;opacity:.95;margin-bottom:32px;}
+  .btn{display:inline-block;background:var(--green);color:#fff;padding:14px 34px;border-radius:6px;font-weight:700;font-size:.95rem;box-shadow:0 6px 16px rgba(0,0,0,.2);transition:.2s;}
+  .btn:hover{opacity:.9;transform:translateY(-2px);}
+  .btn-outline{border:2px solid #fff;margin-left:12px;background:transparent;}
+  section{padding:70px 20px;}
+  .section-title{text-align:center;margin-bottom:48px;}
+  .section-title h2{font-size:1.7rem;font-weight:800;color:var(--navy);letter-spacing:.04em;}
+  .section-title p{color:#777;margin-top:10px;font-size:.9rem;}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;}
+  .card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.06);transition:.2s;}
+  .card:hover{transform:translateY(-4px);box-shadow:0 10px 26px rgba(0,0,0,.1);}
+  .card img{height:180px;object-fit:cover;width:100%;}
+  .card-body{padding:22px;}
+  .card-body h3{color:var(--navy);font-size:1.05rem;margin-bottom:10px;}
+  .card-body p{font-size:.88rem;color:#555;}
+  .bg-alt{background:#fff;}
+  .biz-list{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:10px;}
+  .biz-item{display:flex;gap:16px;background:var(--bg);padding:20px;border-radius:8px;border-left:4px solid var(--green);}
+  .biz-item h4{color:var(--navy);margin-bottom:6px;font-size:1rem;}
+  .biz-item p{font-size:.86rem;color:#555;}
+  .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;text-align:center;margin-top:10px;}
+  .stat{background:var(--navy);color:#fff;padding:30px 10px;border-radius:10px;}
+  .stat .num{font-size:2.2rem;font-weight:800;color:var(--green);}
+  .stat .label{font-size:.85rem;margin-top:6px;}
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center;}
+  .about-grid img{border-radius:10px;}
+  table.profile{width:100%;border-collapse:collapse;margin-top:20px;}
+  table.profile th,table.profile td{text-align:left;padding:14px 12px;border-bottom:1px solid #e3e8ea;font-size:.9rem;}
+  table.profile th{width:150px;color:var(--navy);white-space:nowrap;}
+  .officers{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:24px;}
+  .officer{background:var(--bg);padding:14px 18px;border-radius:8px;font-size:.88rem;}
+  .officer b{color:var(--navy);}
+  .cta{background:linear-gradient(135deg,var(--green),#5a9130);color:#fff;text-align:center;padding:70px 20px;}
+  .cta h2{font-size:1.6rem;margin-bottom:16px;}
+  .cta p{margin-bottom:26px;}
+  .contact-box{background:#fff;color:var(--text);display:inline-block;padding:24px 40px;border-radius:10px;margin-top:10px;}
+  .contact-box p{color:var(--text);font-size:1rem;margin:4px 0;}
+  footer{background:var(--navy-dark);color:#cdd7de;padding:40px 20px 24px;text-align:center;font-size:.82rem;}
+  footer .fnav{display:flex;justify-content:center;gap:22px;margin-bottom:18px;flex-wrap:wrap;}
+  footer a{color:#cdd7de;}
+  @media(max-width:768px){
+    nav{display:none;}
+    .hero h1{font-size:1.6rem;}
+    .cards{grid-template-columns:1fr;}
+    .biz-list{grid-template-columns:1fr;}
+    .stats{grid-template-columns:1fr;}
+    .about-grid{grid-template-columns:1fr;}
+    .officers{grid-template-columns:1fr;}
+    .btn-outline{margin-left:0;margin-top:10px;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo">幕張新都心まちづくり協議会<small>MAKUHARI SHINTOSHIN MACHIZUKURI KYOGIKAI</small></div>
+    <nav>
+      <ul>
+        <li><a href="#about">団体情報</a></li>
+        <li><a href="#activity">活動内容</a></li>
+        <li><a href="#member">会員について</a></li>
+        <li><a href="#contact">お問い合わせ</a></li>
+      </ul>
+    </nav>
+    <div class="tel-badge">TEL 043-307-5177</div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-content">
+    <h1>幕張新都心の、<br>あしたを共につくる。</h1>
+    <p>正会員40社・特別会員8社・賛助会員3社が力を合わせ、<br>景観づくり・環境美化・防犯防災を推進する地域団体です。</p>
+    <a href="#contact" class="btn">入会・お問い合わせ</a>
+    <a href="#activity" class="btn btn-outline">活動内容を見る</a>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-title">
+      <h2>私たちの取り組み</h2>
+      <p>OUR STRENGTH</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <!-- 元画像URL: https://www.mmk-makuhari.jp/images/topcon1.png / images/strength-landscape.jpg -->
+        <img src="https://loremflickr.com/800/600/cityscape,garden" alt="景観づくり">
+        <div class="card-body">
+          <h3>調和ある景観づくり</h3>
+          <p>「幕張新都心環境デザインマニュアル」に基づき、進出企業と協力して屋外広告物などの景観ルールを審議。千葉市都市景観形成推進地区としての美しいまち並みを守っています。</p>
+        </div>
+      </div>
+      <div class="card">
+        <!-- 元画像URL: https://www.mmk-makuhari.jp/images/opengarden2026_07.png / images/strength-flower.jpg -->
+        <img src="https://loremflickr.com/800/600/flowers,street,planter" alt="環境美化活動">
+        <div class="card-body">
+          <h3>環境美化活動</h3>
+          <p>国際大通りに設置された100基のプランターに花苗を植える「街なかオープンガーデン作戦」を年2回実施。まちの表情を彩る取り組みを続けています。</p>
+        </div>
+      </div>
+      <div class="card">
+        <!-- 元画像URL: https://www.mmk-makuhari.jp/images/2026crean_06.png / images/strength-clean.jpg -->
+        <img src="https://loremflickr.com/800/600/volunteer,cleaning,city" alt="クリーンの日">
+        <div class="card-body">
+          <h3>幕張新都心クリーンの日</h3>
+          <p>2004年から千葉市との共催で続く一斉清掃ボランティア（年2回）。毎回1,000名以上の会員関係者が参加し、住む人・働く人・訪れる人が気持ちよく過ごせるまちを目指します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-alt">
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><div class="num">40社</div><div class="label">正会員企業数</div></div>
+      <div class="stat"><div class="num">35年+</div><div class="label">活動の歴史</div></div>
+      <div class="stat"><div class="num">1,000名+</div><div class="label">清掃活動 参加実績（1回あたり）</div></div>
+    </div>
+  </div>
+</section>
+
+<section id="activity">
+  <div class="wrap">
+    <div class="section-title">
+      <h2>事業内容</h2>
+      <p>ACTIVITY</p>
+    </div>
+    <div class="biz-list">
+      <div class="biz-item">
+        <div>
+          <h4>幕張新都心の活性化</h4>
+          <p>マリーンズ応援会やビアガーデン協賛など、地域の魅力を高めるイベントを企業横断で実施しています。</p>
+        </div>
+      </div>
+      <div class="biz-item">
+        <div>
+          <h4>景観づくり・環境美化</h4>
+          <p>景観デザイン基準の運用や、プランターの花植え・清掃活動を通じてまちの美しさを保全しています。</p>
+        </div>
+      </div>
+      <div class="biz-item">
+        <div>
+          <h4>防犯・防災体制づくり</h4>
+          <p>立地企業が連携し、安心して働き・訪れることができるまちの安全体制を構築しています。</p>
+        </div>
+      </div>
+      <div class="biz-item">
+        <div>
+          <h4>行政・交通機関への要望活動</h4>
+          <p>千葉市やJR東日本、東京臨海高速鉄道等に対し、ダイヤ改正や施設整備等の要望書を継続的に提出しています。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="member" class="bg-alt">
+  <div class="wrap">
+    <div class="section-title">
+      <h2>団体概要</h2>
+      <p>PROFILE</p>
+    </div>
+    <div class="about-grid">
+      <!-- 元画像URL: https://www.mmk-makuhari.jp/images/2026top.png / images/about-photo.jpg -->
+      <img src="https://loremflickr.com/800/900/business,district,japan" alt="幕張新都心">
+      <div>
+        <p>幕張新都心まちづくり協議会は、1988年（昭和63年）、幕張新都心に立地する企業群が抱えていたテレビ電波障害を取り除くことを目的に、全企業によって設立されました。以来35年以上にわたり地域活動を継続し、電波障害対策終了後は快適な都市環境の形成・保全と調和あるまちづくりを推進しています。</p>
+        <p style="margin-top:14px;">令和8年4月1日には、より安定的かつ強力な推進力を持つ組織体制とすべく「一般社団法人幕張新都心まちづくり協議会」を設立。行政・関係機関との連携を強化しながら、新たな価値創出に取り組んでいます。</p>
+        <table class="profile">
+          <tr><th>団体名称</th><td>幕張新都心まちづくり協議会（一般社団法人幕張新都心まちづくり協議会）</td></tr>
+          <tr><th>設立</th><td>1988年（昭和63年）／法人化 令和8年4月1日</td></tr>
+          <tr><th>会員構成</th><td>正会員40社、特別会員8社、賛助会員3社</td></tr>
+          <tr><th>所在地</th><td>〒261-0023　千葉県千葉市美浜区中瀬1-7-1（事務局）</td></tr>
+          <tr><th>電話／FAX</th><td>TEL 043-307-5177／FAX 043-310-0155</td></tr>
+        </table>
+        <div class="officers">
+          <div class="officer"><b>会長</b><br>久保木 尚志（東方地所株式会社）</div>
+          <div class="officer"><b>副会長</b><br>竹澤 拓人（スターツアメニティー株式会社）</div>
+          <div class="officer"><b>副会長</b><br>赤羽 勇樹（株式会社かねたや家具店）</div>
+          <div class="officer"><b>事務局長</b><br>天野 恵</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="cta">
+  <h2>入会・お問い合わせはこちら</h2>
+  <p>新しく会員になっていただける企業・団体を募集しています。ご質問等ございましたら事務局までお気軽にお問い合わせください。</p>
+  <div class="contact-box">
+    <p><strong>幕張新都心まちづくり協議会 事務局</strong></p>
+    <p>TEL：043-307-5177　／　FAX：043-310-0155</p>
+    <p>Mail：mmk-jimukyoku@aq.wakwak.com</p>
+  </div>
+</section>
+
+<footer>
+  <div class="fnav">
+    <a href="#about">団体情報</a>
+    <a href="#activity">活動内容</a>
+    <a href="#member">団体概要</a>
+    <a href="#contact">お問い合わせ</a>
+    <a href="recruit.html">採用情報</a>
+  </div>
+  <p>&copy; 幕張新都心まちづくり協議会</p>
+</footer>
+
+</body>
+</html>

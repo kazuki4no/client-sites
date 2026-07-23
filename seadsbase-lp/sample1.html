@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SEADS BASE（シーズベース）｜元銀行員による創業融資・資金繰り支援</title>
+<style>
+  :root{
+    --main:#123A5E;
+    --main-dark:#0A2036;
+    --accent:#C9A24B;
+    --accent-light:#F4EDDD;
+    --text:#2B2B2B;
+    --sub:#6B6B6B;
+    --bg:#FCFCFA;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.8;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .section{padding:88px 0;}
+  .section-title{
+    font-size:14px;
+    letter-spacing:0.2em;
+    color:var(--main);
+    font-weight:700;
+    text-align:center;
+    margin-bottom:12px;
+  }
+  .section-heading{
+    font-size:30px;
+    font-weight:700;
+    text-align:center;
+    margin-bottom:16px;
+    letter-spacing:0.03em;
+  }
+  .section-lead{
+    text-align:center;
+    color:var(--sub);
+    max-width:640px;
+    margin:0 auto 56px;
+    font-size:15px;
+  }
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(255,255,255,0.96);
+    border-bottom:1px solid #eee;
+    backdrop-filter:blur(6px);
+  }
+  .header-inner{
+    max-width:1080px;margin:0 auto;padding:16px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .logo{
+    font-size:19px;font-weight:800;color:var(--main-dark);letter-spacing:0.02em;
+  }
+  .logo span{color:var(--accent);}
+  nav ul{display:flex;gap:32px;list-style:none;}
+  nav a{font-size:14px;font-weight:600;}
+  nav a:hover{color:var(--main);}
+  .header-cta{display:flex;gap:10px;}
+  .btn{
+    display:inline-block;
+    padding:12px 28px;
+    border-radius:4px;
+    font-size:14px;
+    font-weight:700;
+    text-align:center;
+  }
+  .btn-primary{background:var(--main);color:#fff;}
+  .btn-primary:hover{background:var(--main-dark);}
+  .btn-outline{border:1px solid var(--main);color:var(--main);}
+  .btn-outline:hover{background:var(--accent-light);}
+  .btn-small{padding:9px 18px;font-size:13px;}
+  .menu-toggle{display:none;font-size:26px;background:none;border:none;cursor:pointer;color:var(--main-dark);}
+
+  .hero{
+    position:relative;
+    min-height:640px;
+    display:flex;align-items:center;
+    background:linear-gradient(120deg, rgba(10,32,54,0.88), rgba(18,58,94,0.74)), url('https://loremflickr.com/1600/900/business,meeting,japan') center/cover no-repeat;
+    color:#fff;
+  }
+  .hero-inner{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .hero-tag{
+    display:inline-block;
+    background:rgba(255,255,255,0.15);
+    border:1px solid rgba(255,255,255,0.5);
+    padding:6px 16px;border-radius:20px;
+    font-size:13px;font-weight:600;letter-spacing:0.05em;
+    margin-bottom:24px;
+  }
+  .hero h1{
+    font-size:38px;font-weight:800;line-height:1.5;margin-bottom:22px;
+    max-width:700px;
+  }
+  .hero p{
+    font-size:16px;max-width:580px;margin-bottom:36px;opacity:0.95;
+  }
+  .hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
+  .hero .btn-outline{border-color:#fff;color:#fff;}
+  .hero .btn-outline:hover{background:rgba(255,255,255,0.15);}
+
+  /* 実績数値帯 */
+  .stats{background:var(--main-dark);color:#fff;padding:48px 0;}
+  .stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;text-align:center;}
+  .stat-num{font-size:40px;font-weight:800;color:var(--accent);}
+  .stat-num span{font-size:20px;font-weight:700;margin-left:4px;}
+  .stat-label{font-size:14px;margin-top:8px;color:#cdd8e4;}
+
+  /* Concerns */
+  .concerns{background:var(--accent-light);}
+  .concern-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .concern-card{
+    background:#fff;border-radius:10px;padding:28px 24px;border-top:4px solid var(--main);
+  }
+  .concern-card .qmark{font-size:26px;color:var(--main);font-weight:800;margin-bottom:12px;}
+  .concern-card h3{font-size:16.5px;font-weight:700;margin-bottom:10px;}
+  .concern-card p{font-size:13.5px;color:var(--sub);}
+
+  /* Strength */
+  .strength-row{
+    display:flex;gap:32px;align-items:center;margin-bottom:48px;
+    background:var(--white);border:1px solid #ececec;border-radius:10px;overflow:hidden;
+  }
+  .strength-row img{width:340px;height:240px;object-fit:cover;flex-shrink:0;}
+  .strength-body{padding:28px 32px 28px 0;}
+  .strength-body .quote{font-size:19px;font-weight:700;color:var(--main-dark);margin-bottom:14px;line-height:1.6;}
+  .strength-body p{font-size:14.5px;color:var(--sub);}
+
+  /* Flow */
+  .flow-list{display:flex;flex-direction:column;gap:0;}
+  .flow-item{
+    display:flex;gap:24px;padding:24px 0;border-bottom:1px solid #eee;align-items:flex-start;
+  }
+  .flow-item:last-child{border-bottom:none;}
+  .flow-num{
+    width:52px;height:52px;border-radius:50%;background:var(--main);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:18px;flex-shrink:0;
+  }
+  .flow-body h3{font-size:16.5px;font-weight:700;margin-bottom:6px;}
+  .flow-body p{font-size:14px;color:var(--sub);}
+
+  .company-table{
+    width:100%;border-collapse:collapse;max-width:760px;margin:0 auto;background:#fff;border-radius:10px;overflow:hidden;border:1px solid #ececec;
+  }
+  .company-table th,.company-table td{
+    padding:18px 24px;text-align:left;font-size:14.5px;border-bottom:1px solid #eee;
+  }
+  .company-table th{
+    width:160px;background:var(--accent-light);color:var(--main-dark);font-weight:700;
+  }
+  .company-table tr:last-child th, .company-table tr:last-child td{border-bottom:none;}
+
+  .cta{
+    background:var(--main-dark);color:#fff;text-align:center;padding:80px 24px;
+  }
+  .cta h2{font-size:26px;font-weight:800;margin-bottom:16px;}
+  .cta p{color:#d9e2ec;margin-bottom:32px;}
+  .cta .btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .cta .btn-primary{background:var(--accent);color:var(--main-dark);}
+  .cta .btn-outline{border-color:#fff;color:#fff;}
+
+  footer{background:#0A2036;color:#c9d2db;padding:48px 24px 24px;font-size:13px;}
+  .footer-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .footer-logo{font-size:17px;font-weight:800;color:#fff;margin-bottom:10px;}
+  .footer-links{display:flex;gap:24px;list-style:none;flex-wrap:wrap;}
+  .copyright{text-align:center;margin-top:32px;color:#7d8a97;}
+
+  @media (max-width:900px){
+    .concern-cards{grid-template-columns:1fr;}
+    .strength-row{flex-direction:column;}
+    .strength-row img{width:100%;height:200px;}
+    .strength-body{padding:0 24px 24px;}
+    .stats-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:700px){
+    nav, .header-cta{display:none;}
+    .menu-toggle{display:block;}
+    .hero h1{font-size:26px;}
+    .hero{min-height:520px;}
+    .section{padding:60px 0;}
+    .company-table th{width:110px;font-size:13px;padding:14px;}
+    .company-table td{font-size:13px;padding:14px;}
+    .flow-item{gap:16px;}
+    .flow-num{width:42px;height:42px;font-size:15px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">SEADS<span> BASE</span></div>
+    <nav><ul>
+      <li><a href="#concern">お悩み</a></li>
+      <li><a href="#strength">強み</a></li>
+      <li><a href="#flow">流れ</a></li>
+      <li><a href="#company">会社概要</a></li>
+    </ul></nav>
+    <div class="header-cta">
+      <a href="recruit.html" class="btn btn-outline btn-small">採用情報</a>
+      <a href="#contact" class="btn btn-primary btn-small">無料相談</a>
+    </div>
+    <button class="menu-toggle">≡</button>
+  </div>
+</header>
+
+<!-- 元画像URL：不明（差し替え前提のダミー画像／LoremFlickr使用） / images/hero-main.jpg -->
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">元銀行員による創業融資・資金繰り支援</span>
+    <h1>その決算書、<br>まだ「銀行に伝わる武器」に<br>なっていません。</h1>
+    <p>創業融資を断られた、事業計画書が伝わらない、黒字なのに資金繰りが不安——。市川市を拠点に千葉県・東京都東部地区の起業家・経営者様に、元銀行員だからわかる「銀行目線」で融資・資金繰りをサポートします。初期相談費用は¥0。</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-primary">無料相談を申し込む</a>
+      <a href="#concern" class="btn btn-outline">こんなお悩みありませんか</a>
+    </div>
+  </div>
+</section>
+
+<section class="stats">
+  <div class="container">
+    <div class="stats-grid">
+      <div>
+        <div class="stat-num">600<span>社</span></div>
+        <div class="stat-label">企業支援実績</div>
+      </div>
+      <div>
+        <div class="stat-num">1,000<span>件</span></div>
+        <div class="stat-label">融資案件取組実績</div>
+      </div>
+      <div>
+        <div class="stat-num">¥0</div>
+        <div class="stat-label">初期相談費用</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section concerns" id="concern">
+  <div class="container">
+    <p class="section-title">CONCERN</p>
+    <h2 class="section-heading">こんなお悩みをお持ちではありませんか</h2>
+    <p class="section-lead">1つでも当てはまる経営者様は、お気軽にご相談ください。初回相談は完全無料です。</p>
+    <div class="concern-cards">
+      <div class="concern-card">
+        <div class="qmark">01</div>
+        <h3>創業融資・事業融資で断られた</h3>
+        <p>「実績がない」「自己資金が足りない」という理由で融資を断られ、次にどう動けばよいか分からず立ち止まっていませんか。</p>
+      </div>
+      <div class="concern-card">
+        <div class="qmark">02</div>
+        <h3>事業計画書が伝わらない</h3>
+        <p>時間をかけて作成した事業計画書を提出したのに、金融機関からは門前払い。何が足りなかったのか分からないまま終わっていませんか。</p>
+      </div>
+      <div class="concern-card">
+        <div class="qmark">03</div>
+        <h3>黒字なのに資金繰りが不安</h3>
+        <p>税務的には問題がなくても、銀行目線では「貸せない」と判断されるケースがあります。決算書の見え方に不安を感じていませんか。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="strength">
+  <div class="container">
+    <p class="section-title">STRENGTH</p>
+    <h2 class="section-heading">SEADS BASEが選ばれる理由</h2>
+    <p class="section-lead">経営者が伝えたいことと、銀行が知りたいことは、必ずしも同じではありません。銀行目線を知ることで、決算書は「武器」に変わります。</p>
+
+    <!-- 元画像URL：不明（差し替え前提のダミー画像／LoremFlickr使用） / images/strength-banker.jpg -->
+    <div class="strength-row">
+      <img src="https://loremflickr.com/560/400/banker,finance,japan" alt="元銀行員による銀行目線のコンサルティング">
+      <div class="strength-body">
+        <p class="quote">元銀行員だからわかる「銀行目線」</p>
+        <p>金融機関で融資審査に携わってきた経験をもとに、「銀行がどこを見て、何を懸念するのか」を熟知したうえでサポートします。表面的な数字の整理ではなく、審査担当者の視点に立った資料作りと交渉支援が強みです。</p>
+      </div>
+    </div>
+
+    <!-- 元画像URL：不明（差し替え前提のダミー画像／LoremFlickr使用） / images/strength-support.jpg -->
+    <div class="strength-row">
+      <img src="https://loremflickr.com/560/400/consulting,office,japan" alt="600社の支援実績">
+      <div class="strength-body">
+        <p class="quote">600社・1,000件の実績に裏付けられた提案力</p>
+        <p>市川市を拠点に、千葉県・東京都東部地区（江東区・葛飾区・江戸川区・荒川区）の幅広い業種の起業家・経営者を支援してきた実績があります。業種や事業フェーズに応じた最適な資金調達の道筋をご提案します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="flow" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">FLOW</p>
+    <h2 class="section-heading">ご相談の流れ</h2>
+    <p class="section-lead">初回相談は完全無料。まずはAI無料簡易診断からでもお気軽にご利用いただけます。</p>
+    <div class="flow-list">
+      <div class="flow-item">
+        <div class="flow-num">01</div>
+        <div class="flow-body">
+          <h3>AI無料簡易診断・お問い合わせ</h3>
+          <p>フォームより現状の課題やご相談内容をお送りください。AI無料簡易診断で大まかな方向性も確認できます。</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">02</div>
+        <div class="flow-body">
+          <h3>無料相談（ヒアリング）</h3>
+          <p>事業内容・資金繰り状況・融資の希望条件などを丁寧にヒアリングし、現状を整理します。初期相談費用は¥0です。</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">03</div>
+        <div class="flow-body">
+          <h3>事業計画・資料の伴走作成</h3>
+          <p>銀行目線を踏まえた事業計画書・資料の作成を伴走支援。「伝わる」資料に仕上げます。</p>
+        </div>
+      </div>
+      <div class="flow-item">
+        <div class="flow-num">04</div>
+        <div class="flow-body">
+          <h3>金融機関との交渉・実行支援</h3>
+          <p>融資実行、資金繰り改善まで継続的にサポート。単発ではなく事業の発展を見据えて伴走します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="company">
+  <div class="container">
+    <p class="section-title">COMPANY</p>
+    <h2 class="section-heading">会社概要</h2>
+    <table class="company-table">
+      <tr><th>会社名</th><td>株式会社シーズベース（SEADS BASE）</td></tr>
+      <tr><th>ブランド名由来</th><td>Seed of Enterprise And Development Support の頭文字。起業と発展の「種」を蒔き、育てる基地。</td></tr>
+      <tr><th>事業内容</th><td>創業融資・資金繰り・事業計画支援（元銀行員による財務コンサルティング）</td></tr>
+      <tr><th>拠点</th><td>市川市を拠点に、千葉県・東京都東部地区（江東区・葛飾区・江戸川区・荒川区）</td></tr>
+      <tr><th>MISSION</th><td>お客様の事業の発展を通じて、豊かな地域社会の礎を築く</td></tr>
+      <tr><th>VISION</th><td>国内屈指の「創業の聖地」を、この街に創る</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2>まずは無料相談から、お気軽にご相談ください</h2>
+  <p>初期相談費用は¥0。あなたの決算書を「武器」に変えるお手伝いをいたします。無理な営業は一切行いません。</p>
+  <div class="btns">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSeE1-LOMU7pz5V_r9toBToVhYIMSEryY06-aCaFOHWsWJKsPA/viewform" class="btn btn-primary">無料相談フォームへ</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">SEADS BASE</div>
+      <p>市川市を拠点に、千葉県・東京都東部地区の<br>起業家・経営者を支援</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#concern">お悩み</a></li>
+      <li><a href="#strength">強み</a></li>
+      <li><a href="recruit.html">採用情報</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </div>
+  <p class="copyright">©SEADS BASE All rights reserved.</p>
+</footer>
+
+</body>
+</html>

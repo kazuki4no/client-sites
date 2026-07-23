@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>株式会社Lixia（りくしあ）｜Link×幸せ　人と企業をつなぐ総合パートナー</title>
+<style>
+  :root{
+    --main:#5B8FD9;
+    --main-dark:#3D6BB0;
+    --accent:#F2857C;
+    --accent-light:#FBEDEC;
+    --blue-light:#EAF1FC;
+    --text:#2B2B2B;
+    --sub:#6B6B6B;
+    --bg:#FCFCFA;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:var(--text);background:var(--bg);line-height:1.8;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .section{padding:88px 0;}
+  .section-title{font-size:14px;letter-spacing:0.2em;color:var(--main);font-weight:700;text-align:center;margin-bottom:12px;}
+  .section-heading{font-size:30px;font-weight:700;text-align:center;margin-bottom:16px;letter-spacing:0.03em;}
+  .section-lead{text-align:center;color:var(--sub);max-width:640px;margin:0 auto 56px;font-size:15px;}
+
+  header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.96);border-bottom:1px solid #eee;backdrop-filter:blur(6px);}
+  .header-inner{max-width:1080px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-size:19px;font-weight:800;color:var(--main-dark);letter-spacing:0.02em;}
+  .logo span{color:var(--accent);}
+  nav ul{display:flex;gap:32px;list-style:none;}
+  nav a{font-size:14px;font-weight:600;}
+  nav a:hover{color:var(--main);}
+  .header-cta{display:flex;gap:10px;}
+  .btn{display:inline-block;padding:12px 28px;border-radius:4px;font-size:14px;font-weight:700;text-align:center;}
+  .btn-primary{background:linear-gradient(120deg,var(--main),var(--accent));color:#fff;}
+  .btn-primary:hover{opacity:0.9;}
+  .btn-outline{border:1px solid var(--main);color:var(--main);}
+  .btn-outline:hover{background:var(--blue-light);}
+  .btn-small{padding:9px 18px;font-size:13px;}
+  .menu-toggle{display:none;font-size:26px;background:none;border:none;cursor:pointer;color:var(--main-dark);}
+
+  /* FV Hero */
+  /* 元画像URL：不明（新規手配） / images/fv-main.jpg */
+  .fv{
+    position:relative;height:92vh;min-height:620px;display:flex;align-items:center;justify-content:center;text-align:center;
+    background:linear-gradient(160deg, rgba(61,107,176,0.82), rgba(242,133,124,0.62)), url('https://loremflickr.com/1920/1080/city,business,japan') center/cover no-repeat;
+    color:#fff;
+  }
+  .fv-inner{max-width:760px;padding:0 24px;}
+  .fv-tag{display:inline-block;background:rgba(255,255,255,0.18);border:1px solid rgba(255,255,255,0.55);padding:7px 20px;border-radius:24px;font-size:13px;font-weight:600;letter-spacing:0.08em;margin-bottom:28px;}
+  .fv h1{font-size:44px;font-weight:800;line-height:1.5;margin-bottom:24px;}
+  .fv p{font-size:16px;opacity:0.96;margin-bottom:40px;}
+  .fv-btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .fv .btn-outline{border-color:#fff;color:#fff;}
+  .fv .btn-outline:hover{background:rgba(255,255,255,0.15);}
+  .fv-scroll{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);font-size:12px;letter-spacing:0.2em;opacity:0.85;}
+
+  /* Strength 2 col */
+  .strength-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+  .strength-item{background:#fff;border-radius:14px;padding:36px 32px;border:1px solid #ececec;box-shadow:0 6px 20px rgba(0,0,0,0.04);}
+  .strength-item .num{font-size:34px;font-weight:800;color:var(--accent);margin-bottom:14px;}
+  .strength-item h3{font-size:19px;font-weight:700;margin-bottom:12px;}
+  .strength-item p{font-size:14px;color:var(--sub);}
+
+  /* Service banners */
+  .banner-list{display:flex;flex-direction:column;gap:24px;}
+  .banner{
+    position:relative;border-radius:14px;overflow:hidden;min-height:200px;display:flex;align-items:center;color:#fff;
+  }
+  .banner-bg{position:absolute;inset:0;object-fit:cover;width:100%;height:100%;z-index:0;}
+  .banner-overlay{position:absolute;inset:0;background:linear-gradient(100deg, rgba(61,107,176,0.88), rgba(61,107,176,0.35));z-index:1;}
+  .banner-body{position:relative;z-index:2;padding:36px 44px;max-width:600px;}
+  .banner-no{font-size:12px;letter-spacing:0.15em;opacity:0.85;margin-bottom:10px;}
+  .banner-body h3{font-size:21px;font-weight:800;margin-bottom:12px;}
+  .banner-body p{font-size:14px;opacity:0.95;}
+
+  /* Message + company split */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:0;background:#fff;border-radius:14px;overflow:hidden;border:1px solid #ececec;}
+  .split-left{padding:48px 44px;}
+  .split-left h3{font-size:21px;font-weight:700;margin-bottom:18px;color:var(--main-dark);}
+  .split-left p{font-size:14.5px;color:var(--sub);margin-bottom:12px;}
+  .split-left .position{font-size:13px;color:var(--main);font-weight:700;margin-top:14px;}
+  .split-right{background:var(--blue-light);padding:48px 40px;}
+  .mini-table{width:100%;border-collapse:collapse;}
+  .mini-table th,.mini-table td{padding:12px 0;text-align:left;font-size:13.5px;border-bottom:1px solid #dbe6f7;}
+  .mini-table th{width:110px;color:var(--main-dark);font-weight:700;}
+  .mini-table tr:last-child th,.mini-table tr:last-child td{border-bottom:none;}
+
+  /* CTA gradient */
+  .cta{background:linear-gradient(120deg,var(--main),var(--accent));color:#fff;text-align:center;padding:90px 24px;}
+  .cta h2{font-size:28px;font-weight:800;margin-bottom:16px;}
+  .cta p{color:#fdf1f0;margin-bottom:32px;}
+  .cta .btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .cta .btn-primary{background:#fff;color:var(--main-dark);}
+  .cta .btn-outline{border-color:#fff;color:#fff;}
+
+  footer{background:#1c2740;color:#c9d3e6;padding:48px 24px 24px;font-size:13px;}
+  .footer-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .footer-logo{font-size:17px;font-weight:800;color:#fff;margin-bottom:10px;}
+  .footer-links{display:flex;gap:24px;list-style:none;flex-wrap:wrap;}
+  .copyright{text-align:center;margin-top:32px;color:#8894ac;}
+
+  @media (max-width:900px){
+    .strength-grid{grid-template-columns:1fr;}
+    .split{grid-template-columns:1fr;}
+    .banner{min-height:180px;}
+  }
+  @media (max-width:700px){
+    nav, .header-cta{display:none;}
+    .menu-toggle{display:block;}
+    .fv h1{font-size:28px;}
+    .fv{height:auto;min-height:520px;padding:80px 0;}
+    .section{padding:60px 0;}
+    .banner-body{padding:26px 24px;}
+    .split-left,.split-right{padding:32px 24px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">株式会社<span>Lixia</span></div>
+    <nav><ul>
+      <li><a href="#strength">強み</a></li>
+      <li><a href="#service">事業内容</a></li>
+      <li><a href="#message">代表挨拶</a></li>
+      <li><a href="#company">会社概要</a></li>
+    </ul></nav>
+    <div class="header-cta">
+      <a href="recruit.html" class="btn btn-outline btn-small">採用情報</a>
+      <a href="#contact" class="btn btn-primary btn-small">お問い合わせ</a>
+    </div>
+    <button class="menu-toggle">≡</button>
+  </div>
+</header>
+
+<section class="fv">
+  <div class="fv-inner">
+    <span class="fv-tag">Link × 幸せ　人と企業をつなぎ、幸せな未来をつくる</span>
+    <h1>広告・Web・コンサル・人材。<br>4つの力で、企業の"つながり"をデザインする。</h1>
+    <p>株式会社Lixiaは、人と人、企業と企業、アイデアとアイデアを丁寧につなぐことで、関わるすべての人に幸せをもたらす会社でありたいと考えています。</p>
+    <div class="fv-btns">
+      <a href="#contact" class="btn btn-primary">無料相談を申し込む</a>
+      <a href="#service" class="btn btn-outline">事業内容を見る</a>
+    </div>
+  </div>
+  <div class="fv-scroll">SCROLL ▾</div>
+</section>
+
+<section class="section" id="strength">
+  <div class="container">
+    <p class="section-title">STRENGTH</p>
+    <h2 class="section-heading">Lixiaが選ばれる理由</h2>
+    <p class="section-lead">代表自身が鉄鋼商社・大手人材会社・ベンチャー企業と多様な業種・フェーズを経験してきたからこそ、業種を横断した提案ができます。</p>
+    <div class="strength-grid">
+      <div class="strength-item">
+        <div class="num">01</div>
+        <h3>4領域をワンストップで提供</h3>
+        <p>広告・Web・経営コンサル・人材育成という異なる専門領域を、社内窓口ひとつでまとめて相談できます。個別発注の手間とコミュニケーションロスを削減します。</p>
+      </div>
+      <div class="strength-item">
+        <div class="num">02</div>
+        <h3>多業種キャリアを活かした支援</h3>
+        <p>鉄鋼商社での営業実務、大手人材会社でのマネジメント経験、ベンチャーでのスピード感ある意思決定——代表の多様な経験が、業種を問わない柔軟な提案力の源です。</p>
+      </div>
+      <div class="strength-item">
+        <div class="num">03</div>
+        <h3>「つなぐ」を軸にしたシナジー設計</h3>
+        <p>単発の施策ではなく、広告・Web・人材・経営の各施策を有機的につなぎ合わせ、企業全体の成長シナジーを生み出す設計を行います。</p>
+      </div>
+      <div class="strength-item">
+        <div class="num">04</div>
+        <h3>誠実さを根幹にした長期的信頼関係</h3>
+        <p>短期的な成果だけを追わず、誠実であることを何より大切に。長期的なパートナーとしてお客様の成長に伴走します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="service" style="background:var(--blue-light);">
+  <div class="container">
+    <p class="section-title">SERVICE</p>
+    <h2 class="section-heading">事業内容</h2>
+    <p class="section-lead">広告・Web・コンサルティング・人材育成の4領域から、企業の成長フェーズに合わせた最適な支援をご提供します。</p>
+    <div class="banner-list">
+      <div class="banner">
+        <!-- 元画像URL：不明（新規手配） / images/service-ad.jpg -->
+        <img class="banner-bg" src="https://loremflickr.com/1200/400/marketing,advertising,digital" alt="インターネット広告">
+        <div class="banner-overlay"></div>
+        <div class="banner-body">
+          <div class="banner-no">01 ／ ADVERTISING</div>
+          <h3>インターネット広告の企画・制作・運用・管理</h3>
+          <p>企画立案から制作、運用、効果検証までを一貫して担当。費用対効果の高い広告運用を実現します。</p>
+        </div>
+      </div>
+      <div class="banner">
+        <!-- 元画像URL：不明（新規手配） / images/service-web.jpg -->
+        <img class="banner-bg" src="https://loremflickr.com/1200/400/webdesign,laptop,office" alt="Webサイト制作・運営">
+        <div class="banner-overlay"></div>
+        <div class="banner-body">
+          <div class="banner-no">02 ／ WEB</div>
+          <h3>Webサイトの企画・設計・開発・運営・保守管理</h3>
+          <p>企画・設計・開発を一気通貫で対応し、公開後の運営・保守管理まで見据えたWeb資産をつくります。</p>
+        </div>
+      </div>
+      <div class="banner">
+        <!-- 元画像URL：不明（新規手配） / images/service-consulting.jpg -->
+        <img class="banner-bg" src="https://loremflickr.com/1200/400/business,meeting,strategy" alt="経営コンサルティング・M&A">
+        <div class="banner-overlay"></div>
+        <div class="banner-body">
+          <div class="banner-no">03 ／ CONSULTING</div>
+          <h3>経営コンサルティング・企業顧問・M&A仲介</h3>
+          <p>スピード感ある意思決定と新規事業開発の経験を活かし、企業顧問やM&A仲介にも対応します。</p>
+        </div>
+      </div>
+      <div class="banner">
+        <!-- 元画像URL：不明（新規手配） / images/service-hr.jpg -->
+        <img class="banner-bg" src="https://loremflickr.com/1200/400/recruitment,team,people" alt="採用コンサルティング・人材育成">
+        <div class="banner-overlay"></div>
+        <div class="banner-body">
+          <div class="banner-no">04 ／ HR</div>
+          <h3>採用コンサルティング・有料職業紹介・人材育成教育</h3>
+          <p>採用戦略の設計から有料職業紹介、入社後の人材育成教育までをトータルで支援します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="message">
+  <div class="container">
+    <p class="section-title">MESSAGE ＆ COMPANY</p>
+    <h2 class="section-heading">代表挨拶と会社概要</h2>
+    <div class="split">
+      <div class="split-left">
+        <h3>多様な業種・業態の企業様と向き合い、「つながること」の価値を最大化する</h3>
+        <p>大学卒業後、鉄鋼商社で営業・交渉・取引実務の基礎を学び、大手人材会社ではチームマネジメントと組織運営を経験。その後ベンチャー企業で経営の最前線に携わり、スピード感ある意思決定と新規事業開発を経験したのち独立し、株式会社Lixiaを創業いたしました。</p>
+        <p>広告・Web・コンサルティング・人材育成という4つの領域を軸に、お客様一社一社の成長を全力でサポートしてまいります。</p>
+        <p class="position">代表取締役　滝口 雄太</p>
+      </div>
+      <div class="split-right">
+        <table class="mini-table">
+          <tr><th>会社名</th><td>株式会社Lixia（りくしあ）</td></tr>
+          <tr><th>所在地</th><td>〒273-0014　千葉県船橋市湊町1-18-8-201</td></tr>
+          <tr><th>代表者</th><td>代表取締役　滝口 雄太</td></tr>
+          <tr><th>資本金</th><td>100万円</td></tr>
+          <tr><th>設立</th><td>2026年5月</td></tr>
+          <tr><th>電話番号</th><td>090-7846-8268</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2>Link×幸せ　まずはお気軽にご相談ください</h2>
+  <p>広告・Web・経営・採用、どの領域のご相談でも構いません。貴社の課題をヒアリングし、最適なご提案をいたします。</p>
+  <div class="btns">
+    <a href="tel:090-7846-8268" class="btn btn-primary">お電話でのお問い合わせ　090-7846-8268</a>
+    <a href="https://lixia.co.jp/#contact" class="btn btn-outline">お問い合わせフォームへ</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">株式会社Lixia</div>
+      <p>〒273-0014　千葉県船橋市湊町1-18-8-201</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#strength">強み</a></li>
+      <li><a href="#service">事業内容</a></li>
+      <li><a href="recruit.html">採用情報</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </div>
+  <p class="copyright">©株式会社Lixia All rights reserved.</p>
+</footer>
+
+</body>
+</html>
