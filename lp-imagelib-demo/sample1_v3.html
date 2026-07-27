@@ -35,17 +35,18 @@
 .cta-under .pills .pill:not(:first-child){border-left:1px solid var(--line);}
 .pill-check{display:none;}   /* チェックはスマホのみ表示（PCはヘアライン区切りのまま） */
 
-/* ---- PC：test版の再現（h1を画像の左上に重ねる） ---- */
-@media(min-width:1025px){
+/* ---- PC・タブレット共通（769px〜）：test版の再現（h1を画像の左上に重ねる） ---- */
+@media(min-width:769px){
   .t-a .hero-a .wrap{position:relative;align-items:flex-end;}
   .h1-wrap{position:absolute;top:0;left:1.2rem;z-index:2;}
   .t-a .hero-copy h1{text-shadow:0 1px 12px rgba(250,248,245,.9);}
 }
 
-/* ---- タブレット：この幅で重ねると顔にかかるため、従来の左右分割のまま ---- */
+/* ---- タブレット幅はフォントを絞り（2行目が人物に届かない上限）、
+        絶対配置のh1とリード文が重ならないようh1の高さ分の余白をリード文の上に確保 ---- */
 @media(min-width:769px) and (max-width:1024px){
-  .t-a .hero-copy h1{font-size:clamp(1.6rem,3.3vw,2.3rem);}
-  .br-sp{display:inline;}
+  .t-a .hero-copy h1{font-size:clamp(1.6rem,4.6vw,3rem);}
+  .t-a .hero-copy{padding-top:calc(4rem + 14vw);}
 }
 
 /* ---- スマホ：h1だけを絵の中（画像左側の壁の余白）に組み込む ---- */
