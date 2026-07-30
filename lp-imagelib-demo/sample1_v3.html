@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>hair atelier Sora（デモ）｜A案・信頼王道型（FV改修版v3）｜大人がくつろぐ、上質マンツーマンサロン</title>
+<meta name="description" content="社内画像ライブラリ活用検証用のデモLP（架空店舗）。A案＝信頼・王道型／スマホはh1を絵の中に組み込むポスター風FVに改修した版。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* =====================================================
+   FV改修 v3 — v2への依頼主フィードバック反映版。
+   ・画像の配置・サイズ・トリミングは sample1 のまま一切変えない
+     （右側4:3カード・角丸・影・object-position 72%）
+   ・PC(1025px〜)・タブレット(769〜1024px)は v2 と同じ
+   ・スマホ(〜768px)だけ変更：
+     - h1を「絵の中」＝画像左側の壁の余白に縦積みで組み込む（ポスター風・一体感）
+       1行最大6文字×フォント5.6vw なので、どの端末幅でも人物（画像の右半分）に届かない
+     - eyebrow（小さい文字）は画像の下の通常フローに移動
+   ・style.css は編集せず、このファイル内で完結
+   ===================================================== */
+.br-sp{display:none;}
+.br-sp2{display:none;}   /* スマホ専用の追加改行（h1を6文字以下の短い行に割る） */
+
+/* CTA・信頼要素（FV直下・中央寄せ）
+   丸ボタンの連発を避ける：ボタンは画像カードと同じ角丸6pxの矩形に、
+   信頼ピルは枠を外してヘアライン区切りのテキスト列に整理 */
+.cta-under .hero-cta{justify-content:center;}
+.cta-under .btn-primary,.cta-under .btn-outline{border-radius:6px;}
+.cta-under .pills{justify-content:center;gap:.5rem 0;}
+.cta-under .pills .pill{background:none;border:none;border-radius:0;padding:0 1.2rem;
+  font-size:.82rem;color:#6d645b;}
+.cta-under .pills .pill:not(:first-child){border-left:1px solid var(--line);}
+.pill-check{display:none;}   /* チェックはスマホのみ表示（PCはヘアライン区切りのまま） */
+
+/* ---- PC・タブレット共通（769px〜）：test版の再現（h1を画像の左上に重ねる） ---- */
+@media(min-width:769px){
+  .t-a .hero-a .wrap{position:relative;align-items:flex-end;}
+  .h1-wrap{position:absolute;top:0;left:1.2rem;z-index:2;}
+  .t-a .hero-copy h1{text-shadow:0 1px 12px rgba(250,248,245,.9);}
+}
+
+/* ---- タブレット幅はフォントを絞り（2行目が人物に届かない上限）、
+        絶対配置のh1とリード文が重ならないようh1の高さ分の余白をリード文の上に確保 ---- */
+@media(min-width:769px) and (max-width:1024px){
+  .t-a .hero-copy h1{font-size:clamp(1.6rem,4.6vw,3rem);}
+  .t-a .hero-copy{padding-top:calc(4rem + 14vw);}
+}
+
+/* ---- スマホ：h1だけを絵の中（画像左側の壁の余白）に組み込む ---- */
+@media(max-width:768px){
+  .br-sp,.br-sp2{display:inline;}
+  .t-a .hero-a{padding:1.5rem 0 0;}
+  .t-a .hero-a .wrap{position:relative;gap:1rem;}   /* column-reverse は style.css を継承 */
+  /* h1は画像左の壁に絶対配置。行=最大6文字・フォント5.6vwなので人物（右半分）に届かない。
+     文字はテーマのインク色＋金アクセントのまま、白のグロウで壁から浮かせて可読性を確保 */
+  .t-a .hero-copy h1{
+    position:absolute;top:1.9rem;left:2.1rem;z-index:2;margin:0;
+    font-size:clamp(1.05rem,5.6vw,1.5rem);line-height:1.66;letter-spacing:.04em;
+    text-shadow:0 1px 2px rgba(250,248,245,.95),0 2px 16px rgba(250,248,245,.9);
+  }
+  /* eyebrow（小さい文字）は画像の下・通常フロー（下線スタイルのまま） */
+  .t-a .hero-copy .h1-wrap .eyebrow{font-size:.72rem;letter-spacing:.12em;margin-bottom:.6rem;}
+  .t-a .hero-copy .lead{font-size:.92rem;}
+  /* CTA2本は縦積みで同じ幅に。信頼項目はSVG線画チェック付きの左揃え（ブロックごと中央配置） */
+  .cta-under .hero-cta{flex-direction:column;align-items:center;gap:.7rem;}
+  .cta-under .btn-primary,.cta-under .btn-outline{width:min(100%,24rem);}
+  .cta-under .pills{flex-direction:column;align-items:flex-start;gap:.55rem;width:max-content;max-width:100%;margin:0 auto;}
+  .cta-under .pills .pill{padding:0;font-size:.84rem;}
+  .cta-under .pills .pill:not(:first-child){border-left:none;padding:0;}
+  .pill-check{display:inline-block;width:15px;height:15px;flex:none;
+    stroke:var(--accent);stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+}
+</style>
+</head>
+<body class="t-a">
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="brand">
+      <span class="name">hair atelier Sora</span>
+      <span class="en">HAIR ATELIER SORA</span>
+    </div>
+    <div class="header-cta">
+      <a href="#contact" class="btn-primary">ご予約はこちら</a>
+    </div>
+  </div>
+</header>
+
+<!-- ============ FV：A案v3＝左右分割はそのまま・スマホはh1を絵の中に組み込む ============ -->
+<!-- 画像ライブラリ設計どおり「被写体右・左に余白」構図。画像の配置・サイズはsample1と同一 -->
+<section class="hero-a">
+  <div class="wrap">
+    <div class="hero-copy">
+      <div class="h1-wrap">
+        <span class="eyebrow">千葉県〇〇市・完全予約制ヘアサロン（デモ）</span>
+        <h1>髪質から、<br class="br-sp2">変える。<br>大人の毎日に<br class="br-sp"><span class="accent">品よく映える</span><br class="br-sp2">髪へ。</h1>
+      </div>
+      <p class="lead">似合わせカットと髪質改善を、経験豊富なスタイリストがマンツーマンで。騒がしくない、落ち着いた空間で「任せてよかった」を実感してください。</p>
+    </div>
+    <div class="hero-media">
+      <!-- 社内ライブラリ: beauty-fv-light-01（FV用・明るいトーン） -->
+      <img src="https://kazuki4no.github.io/lp-assets/beauty/beauty-fv-light-01.jpg" alt="明るいサロンでのグレージュボブのスタイル">
+    </div>
+  </div>
+</section>
+
+<!-- CTA・信頼ピル（test版と同じくFV直下に独立配置） -->
+<section class="cta-under">
+  <div class="wrap">
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">初回カウンセリング予約</a>
+      <a href="#menu" class="btn-outline">メニューを見る</a>
+    </div>
+    <div class="pills">
+      <span class="pill"><svg class="pill-check" viewBox="0 0 24 24"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg>完全予約制・マンツーマン</span>
+      <span class="pill"><svg class="pill-check" viewBox="0 0 24 24"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg>30〜40代のお客様が中心</span>
+      <span class="pill"><svg class="pill-check" viewBox="0 0 24 24"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg>駅徒歩5分（サンプル）</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 共感・お悩み ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="en">WORRIES</span>
+      <h2>こんなお悩み、ありませんか</h2>
+    </div>
+    <div class="worries">
+      <div class="worry">
+        <svg class="icon-line" viewBox="0 0 24 24"><path d="M4 20c2-6 6-9 8-9s6 3 8 9"/><path d="M8 6c0-2 2-3 4-3s4 1 4 3-1.5 3-4 3-4-1-4-3z"/></svg>
+        <p>年齢とともに髪のうねり・<br>パサつきが気になってきた</p>
+      </div>
+      <div class="worry">
+        <svg class="icon-line" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        <p>忙しくて、サロン選びに<br>失敗したくない</p>
+      </div>
+      <div class="worry">
+        <svg class="icon-line" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 18 0 9 9 0 0 0-18 0z"/><path d="M9 10h.01M15 10h.01M9.5 15c.8.7 1.7 1 2.5 1s1.7-.3 2.5-1"/></svg>
+        <p>「なんとなく毎回同じ」から<br>そろそろ抜け出したい</p>
+      </div>
+    </div>
+    <p class="worry-note">その髪の悩み、<span class="accent">design=“設計”から</span>解決します。</p>
+  </div>
+</section>
+
+<!-- ============ 選ばれる理由 ============ -->
+<section class="section" style="background:#fff;">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="en">REASON</span>
+      <h2>Soraが選ばれる3つの理由</h2>
+    </div>
+    <div class="reasons">
+      <div class="reason">
+        <div class="img"><img src="https://kazuki4no.github.io/lp-assets/beauty/beauty-sub-01.jpg" alt="カット中の手元アップ"></div>
+        <div class="txt">
+          <span class="num">REASON 01</span>
+          <h3>骨格・髪質から逆算する「似合わせカット」</h3>
+          <p>流行をなぞるのではなく、骨格・毛流・ライフスタイルから一人ひとりに似合う形を設計。乾かすだけで決まる再現性を大切にしています。</p>
+        </div>
+      </div>
+      <div class="reason">
+        <div class="img"><img src="https://kazuki4no.github.io/lp-assets/beauty/beauty-sub-02.jpg" alt="カラー塗布の作業風景"></div>
+        <div class="txt">
+          <span class="num">REASON 02</span>
+          <h3>白髪も活かす、大人のためのカラー設計</h3>
+          <p>肌色・瞳の色に合わせた調合で、伸びても気になりにくいデザインカラーをご提案。ダメージを抑える処理剤を標準でお付けしています。</p>
+        </div>
+      </div>
+      <div class="reason">
+        <div class="img"><img src="https://kazuki4no.github.io/lp-assets/beauty/beauty-sub-04.jpg" alt="カウンセリング風景"></div>
+        <div class="txt">
+          <span class="num">REASON 03</span>
+          <h3>初回30分の丁寧なカウンセリング</h3>
+          <p>なりたいイメージだけでなく、朝のスタイリング時間やお手入れの習慣まで伺ってからご提案。押し売りは一切ありません。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ メニュー・料金 ============ -->
+<section class="section" id="menu">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="en">MENU</span>
+      <h2>メニュー・料金</h2>
+    </div>
+    <table class="menu-table">
+      <tbody>
+        <tr><th>似合わせカット（シャンプー・ブロー込）</th><td>¥6,600</td></tr>
+        <tr><th>カット＋艶カラー</th><td>¥13,200</td></tr>
+        <tr><th>カット＋髪質改善トリートメント</th><td>¥15,400</td></tr>
+        <tr><th>髪質改善ストレート</th><td>¥19,800〜</td></tr>
+      </tbody>
+    </table>
+    <p class="menu-note">※価格はデモ用のサンプルです。すべて税込表記。</p>
+  </div>
+</section>
+
+<!-- ============ 店内 ============ -->
+<section class="section" style="padding-top:0;">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="en">SALON</span>
+      <h2>静かで、明るい。おこもりできる空間</h2>
+    </div>
+    <div class="interior">
+      <!-- 社内ライブラリ: beauty-sub-03（ミニマルなサロン内観） -->
+      <img src="https://kazuki4no.github.io/lp-assets/beauty/beauty-sub-03.jpg" alt="ミニマルで明るいサロン内観">
+    </div>
+  </div>
+</section>
+
+<!-- ============ お客様の声 ============ -->
+<section class="section" style="background:#fff;">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="en">VOICE</span>
+      <h2>お客様の声（サンプル）</h2>
+    </div>
+    <div class="voices">
+      <div class="voice">
+        <div class="stars">★★★★★</div>
+        <p>「乾かすだけでまとまる」が本当でした。朝の支度が10分短くなり、カラーの色味も褒められます。</p>
+        <p class="who">40代・会社員（※内容は差し替え用のサンプルです）</p>
+      </div>
+      <div class="voice">
+        <div class="stars">★★★★★</div>
+        <p>カウンセリングが丁寧で、写真を見せなくても「なりたい感じ」を汲み取ってもらえました。</p>
+        <p class="who">30代・主婦（※内容は差し替え用のサンプルです）</p>
+      </div>
+      <div class="voice">
+        <div class="stars">★★★★★</div>
+        <p>マンツーマンなので周りを気にせず過ごせます。静かな時間そのものが楽しみになりました。</p>
+        <p class="who">50代・自営業（※内容は差し替え用のサンプルです）</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="en">FAQ</span>
+      <h2>よくあるご質問</h2>
+    </div>
+    <dl class="faq">
+      <dt>予約なしでも利用できますか？</dt>
+      <dd>完全予約制です。マンツーマン対応のため、Webまたはお電話でご予約のうえお越しください。</dd>
+      <dt>髪質改善は1回で効果がありますか？</dt>
+      <dd>1回でも手触りの変化を実感いただけますが、髪の状態に合わせて2〜3回の集中ケアをご提案する場合があります。</dd>
+      <dt>子ども連れでも大丈夫ですか？</dt>
+      <dd>お子さま連れ歓迎の時間帯をご用意しています。ご予約時にお申し付けください。</dd>
+    </dl>
+  </div>
+</section>
+
+<!-- ============ 最後のひと押し＋CTA ============ -->
+<section class="section last-push" id="contact">
+  <div class="wrap">
+    <div class="contact-box">
+      <span class="en" style="letter-spacing:.28em;color:var(--accent);">RESERVATION</span>
+      <h2 style="margin:.4rem 0 .8rem;">まずは、初回カウンセリングから</h2>
+      <p>「いきなり施術は不安」という方は、カウンセリングのみのご来店も歓迎です。</p>
+      <p class="tel">TEL 00-0000-0000<span style="font-size:.8rem;font-weight:400;">（サンプル）</span></p>
+      <a href="#" class="btn-primary" onclick="return false;">Web予約はこちら（サンプル）</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>hair atelier Sora｜千葉県〇〇市〇〇 1-2-3（サンプル）｜火曜定休</p>
+    <p class="demo-note">※本ページは社内画像ライブラリ活用検証のためのデモLPです。店舗・人物・実績はすべて架空（AI生成画像）です。</p>
+  </div>
+</footer>
+
+<a href="#contact" class="floating-cta">初回カウンセリング予約</a>
+
+<script src="nav.js"></script>
+</body>
+</html>
