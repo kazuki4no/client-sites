@@ -31,3 +31,22 @@
     dots.forEach(function(d,k){d.addEventListener('click',function(){clearInterval(t);go(k);});});
   });
 })();
+
+// B案：中央拡大の3Dカルーセル（自動送り・ドット操作可）
+(function(){
+  document.querySelectorAll('.coverflow').forEach(function(cf){
+    var slides=[].slice.call(cf.querySelectorAll('.cf-slide')), n=slides.length, cur=0;
+    var dots=[].slice.call((cf.parentNode.querySelector('.cf-dots')||{querySelectorAll:function(){return [];}}).querySelectorAll('.dot'));
+    if(n<2) return;
+    function render(){
+      slides.forEach(function(s,k){
+        var d=(k-cur+n)%n; if(d>n/2) d-=n;
+        s.className='cf-slide '+(d===0?'pos0':(d===1?'pos1':(d===-1?'posm1':'poshide')));
+      });
+      dots.forEach(function(dt,k){dt.classList.toggle('on',k===cur);});
+    }
+    render();
+    var t=setInterval(function(){cur=(cur+1)%n;render();},4000);
+    dots.forEach(function(dt,k){dt.addEventListener('click',function(){clearInterval(t);cur=k;render();});});
+  });
+})();
