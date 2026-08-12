@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>株式会社マタドール｜千葉発、ブラジリアン柔術アカデミー MATADOR</title>
+<style>
+  :root{
+    --main:#1E1B1A;
+    --main-dark:#0E0C0C;
+    --accent:#C3172E;
+    --accent-light:#F8E7E2;
+    --text:#2B2B2B;
+    --sub:#6B6B6B;
+    --bg:#FCFAF8;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.8;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .section{padding:88px 0;}
+  .section-title{
+    font-size:14px;letter-spacing:0.2em;color:var(--accent);font-weight:700;text-align:center;margin-bottom:12px;
+  }
+  .section-heading{
+    font-size:30px;font-weight:700;text-align:center;margin-bottom:16px;letter-spacing:0.03em;color:var(--main-dark);
+  }
+  .section-lead{
+    text-align:center;color:var(--sub);max-width:640px;margin:0 auto 56px;font-size:15px;
+  }
+
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(255,255,255,0.96);
+    border-bottom:1px solid #eee;
+    backdrop-filter:blur(6px);
+  }
+  .header-inner{
+    max-width:1080px;margin:0 auto;padding:14px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .logo{display:flex;flex-direction:column;line-height:1.15;}
+  .logo .en{font-size:20px;font-weight:800;letter-spacing:0.06em;color:var(--main-dark);}
+  .logo .en span{color:var(--accent);}
+  .logo .ja{font-size:10px;letter-spacing:0.18em;color:var(--sub);margin-top:2px;}
+  nav ul{display:flex;gap:28px;list-style:none;}
+  nav a{font-size:14px;font-weight:600;}
+  nav a:hover{color:var(--accent);}
+  .header-cta{display:flex;gap:10px;}
+  .btn{display:inline-block;padding:12px 28px;border-radius:4px;font-size:14px;font-weight:700;text-align:center;}
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-primary:hover{background:#9e1224;}
+  .btn-outline{border:1px solid var(--main);color:var(--main);}
+  .btn-outline:hover{background:var(--accent-light);}
+  .btn-small{padding:9px 18px;font-size:13px;}
+  .menu-toggle{display:none;font-size:26px;background:none;border:none;cursor:pointer;color:var(--main-dark);}
+
+  /* Hero */
+  /* 元画像URL：現サイトTOPメインビジュアル（未取得・自社写真への差し替え前提） / images/hero-main.jpg */
+  .hero{
+    position:relative;min-height:620px;display:flex;align-items:center;
+    background:linear-gradient(120deg, rgba(14,12,12,0.90), rgba(30,27,26,0.68)), url('https://loremflickr.com/1600/900/bjj,grappling,mat') center/cover no-repeat;
+    color:#fff;
+  }
+  .hero-inner{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .hero-tag{
+    display:inline-block;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.5);
+    padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600;letter-spacing:0.05em;margin-bottom:24px;
+  }
+  .hero h1{font-size:38px;font-weight:800;line-height:1.55;margin-bottom:22px;max-width:680px;}
+  .hero p{font-size:15.5px;max-width:580px;margin-bottom:36px;opacity:0.95;}
+  .hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
+  .hero .btn-outline{border-color:#fff;color:#fff;}
+  .hero .btn-outline:hover{background:rgba(255,255,255,0.15);}
+
+  /* News band */
+  .news-band{background:var(--main-dark);color:#fff;padding:40px 0;}
+  .news-inner{display:flex;align-items:center;gap:28px;flex-wrap:wrap;}
+  .news-label{font-size:12px;letter-spacing:0.2em;color:var(--accent);font-weight:800;flex-shrink:0;}
+  .news-list{display:flex;gap:32px;flex-wrap:wrap;flex:1;}
+  .news-item{font-size:13.5px;display:flex;gap:12px;align-items:baseline;color:#e8e3e0;}
+  .news-item .date{color:#9c9491;font-size:12px;}
+  .news-item .tag{background:var(--accent);color:#fff;font-size:11px;padding:2px 8px;border-radius:3px;font-weight:700;}
+
+  /* Vision */
+  .vision-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;}
+  .vision-flow{display:flex;align-items:center;gap:10px;margin-top:32px;flex-wrap:wrap;}
+  .vision-flow .pt{background:var(--accent-light);color:var(--main-dark);padding:10px 18px;border-radius:24px;font-size:13px;font-weight:700;}
+  .vision-flow .arrow{color:var(--accent);font-weight:800;}
+  .vision-text h3{font-size:24px;font-weight:800;color:var(--main-dark);margin-bottom:18px;line-height:1.6;}
+  .vision-text p{font-size:14.5px;color:var(--sub);}
+  .vision-img img{border-radius:10px;height:340px;object-fit:cover;}
+
+  /* Strengths（取り組み） */
+  .cards{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .card{background:var(--white);border:1px solid #ececec;border-radius:10px;padding:28px 22px;transition:transform .2s, box-shadow .2s;}
+  .card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,0.08);}
+  .card-num{font-size:13px;color:var(--accent);font-weight:800;letter-spacing:0.1em;margin-bottom:14px;}
+  .card h3{font-size:16px;font-weight:700;margin-bottom:12px;color:var(--main-dark);}
+  .card p{font-size:13px;color:var(--sub);}
+
+  /* Services */
+  .service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;}
+  .service-card{background:var(--white);border:1px solid #ececec;border-radius:10px;overflow:hidden;}
+  .service-card img{width:100%;height:150px;object-fit:cover;}
+  .service-card-body{padding:20px 20px 24px;}
+  .service-no{font-size:12px;color:var(--accent);font-weight:800;letter-spacing:0.1em;}
+  .service-card-body h3{font-size:15.5px;font-weight:700;margin:8px 0 10px;color:var(--main-dark);}
+  .service-card-body p{font-size:13px;color:var(--sub);}
+
+  /* Company */
+  .company-table{width:100%;border-collapse:collapse;max-width:760px;margin:0 auto;background:#fff;border-radius:10px;overflow:hidden;border:1px solid #ececec;}
+  .company-table th,.company-table td{padding:18px 24px;text-align:left;font-size:14.5px;border-bottom:1px solid #eee;}
+  .company-table th{width:160px;background:var(--accent-light);color:var(--main-dark);font-weight:700;}
+  .company-table tr:last-child th,.company-table tr:last-child td{border-bottom:none;}
+
+  /* FAQ */
+  .faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:14px;}
+  .faq-item{background:var(--white);border:1px solid #ececec;border-radius:10px;padding:22px 26px;}
+  .faq-q{font-size:15px;font-weight:700;color:var(--main-dark);display:flex;gap:10px;margin-bottom:8px;}
+  .faq-q span{color:var(--accent);}
+  .faq-a{font-size:13.5px;color:var(--sub);display:flex;gap:10px;}
+  .faq-a span{color:var(--main);font-weight:700;}
+
+  /* CTA */
+  .cta{background:var(--main-dark);color:#fff;text-align:center;padding:80px 24px;}
+  .cta h2{font-size:26px;font-weight:800;margin-bottom:16px;}
+  .cta p{color:#c9c2bf;margin-bottom:32px;}
+  .cta .btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .cta .btn-primary{background:var(--accent);color:#fff;}
+  .cta .btn-outline{border-color:#fff;color:#fff;}
+
+  footer{background:#0A0808;color:#c6bfbc;padding:48px 24px 24px;font-size:13px;}
+  .footer-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .footer-logo{font-size:17px;font-weight:800;color:#fff;margin-bottom:10px;}
+  .footer-links{display:flex;gap:24px;list-style:none;flex-wrap:wrap;}
+  .copyright{text-align:center;margin-top:32px;color:#766f6c;}
+
+  @media (max-width:900px){
+    .cards{grid-template-columns:1fr 1fr;}
+    .service-grid{grid-template-columns:1fr 1fr;}
+    .vision-grid{grid-template-columns:1fr;}
+    .vision-img img{height:260px;}
+    .news-inner{flex-direction:column;align-items:flex-start;}
+  }
+  @media (max-width:700px){
+    nav,.header-cta{display:none;}
+    .menu-toggle{display:block;}
+    .hero h1{font-size:26px;}
+    .hero{min-height:540px;}
+    .section{padding:60px 0;}
+    .cards{grid-template-columns:1fr;}
+    .service-grid{grid-template-columns:1fr;}
+    .company-table th{width:110px;font-size:13px;padding:14px;}
+    .company-table td{font-size:13px;padding:14px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">
+      <div class="en">MATADOR<span>.</span></div>
+      <div class="ja">株式会社マタドール</div>
+    </div>
+    <nav><ul>
+      <li><a href="#about">私たちについて</a></li>
+      <li><a href="#service">事業内容</a></li>
+      <li><a href="#value">取り組み</a></li>
+      <li><a href="#company">会社概要</a></li>
+      <li><a href="#faq">よくある質問</a></li>
+    </ul></nav>
+    <div class="header-cta">
+      <a href="recruit.html" class="btn btn-outline btn-small">採用情報</a>
+      <a href="#contact" class="btn btn-primary btn-small">お問い合わせ</a>
+    </div>
+    <button class="menu-toggle">≡</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">千葉県船橋市 ブラジリアン柔術アカデミー</span>
+    <h1>フィットネスで<br>未来を創る。</h1>
+    <p>マタドールは、ブラジリアン柔術を通して健康と仲間を届けるブランドです。子どもから大人まで、はじめての一歩から競技の挑戦まで。同じマットで汗を流す日々が、暮らしの当たり前になるように。地域に根ざした柔術文化を、千葉から育てていきます。</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-primary">お問い合わせはこちら</a>
+      <a href="#service" class="btn btn-outline">事業内容を見る</a>
+    </div>
+  </div>
+</section>
+
+<section class="news-band">
+  <div class="container news-inner">
+    <div class="news-label">NEWS</div>
+    <div class="news-list">
+      <div class="news-item"><span class="date">2026.04.01</span><span class="tag">新店舗</span>マタドール柔術 八千代台店をオープンしました。</div>
+      <div class="news-item"><span class="date">2026.01.01</span><span class="tag">新店舗</span>マタドール柔術 高根公団店をオープンしました。</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container">
+    <p class="section-title">ABOUT MATADOR</p>
+    <h2 class="section-heading">健康と、仲間と、柔術と。</h2>
+    <div class="vision-grid">
+      <div class="vision-text">
+        <h3>千葉から、<br>全国へ。</h3>
+        <p>マタドール柔術アカデミーは、地域に根ざしたコミュニティを育みながら、柔術を通じた心身の成長と文化の発展に貢献していきます。初心者から経験者まで、安心して技術を学び、継続できるクラス設計と指導体制を整え、船橋・高根台を拠点に事業所を広げています。</p>
+        <div class="vision-flow">
+          <span class="pt">Chiba</span><span class="arrow">→</span>
+          <span class="pt">Origin</span><span class="arrow">→</span>
+          <span class="pt">Japan</span><span class="arrow">→</span>
+          <span class="pt">Future</span>
+        </div>
+      </div>
+      <div class="vision-img">
+        <img src="https://loremflickr.com/700/700/jiujitsu,academy,training" alt="マタドール柔術アカデミー">
+        <!-- 元画像URL：現サイト道場・トレーニング写真（未取得・自社写真への差し替え前提） / images/vision-photo.jpg -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="value" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">APPROACH</p>
+    <h2 class="section-heading">私たちの取り組み</h2>
+    <p class="section-lead">柔術を安心して長く続けられる環境をつくることを、なにより大切にしています。</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-num">01</div>
+        <h3>安全で質の高い指導</h3>
+        <p>経験豊富なインストラクターによる、初心者から上級者まで安心して学べる環境を提供。正しい技術と礼儀を重視し、長く続けられる指導を行っています。</p>
+      </div>
+      <div class="card">
+        <div class="card-num">02</div>
+        <h3>地域に根ざした運営</h3>
+        <p>子どもから大人まで幅広い世代に開かれた場をつくり、地域社会とのつながりを大切に。イベントや交流を通じて、柔術を中心とした健全なコミュニティを育んでいます。</p>
+      </div>
+      <div class="card">
+        <div class="card-num">03</div>
+        <h3>豊かな成長体験</h3>
+        <p>柔術を通じて体力や技術だけでなく、自信・集中力・挑戦する姿勢を育てます。一人ひとりの成長に寄り添い、人生を豊かにする体験を届けます。</p>
+      </div>
+      <div class="card">
+        <div class="card-num">04</div>
+        <h3>継続できる環境づくり</h3>
+        <p>楽しみながら無理なく続けられるプログラムと、清潔で通いやすい施設づくりを徹底。健康習慣が自然に根づく場所を目指しています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="service">
+  <div class="container">
+    <p class="section-title">BUSINESS</p>
+    <h2 class="section-heading">事業内容</h2>
+    <p class="section-lead">マタドール柔術・こどもの柔術・ギア専門店・フランチャイズを軸に、柔術をより身近で続けやすいライフスタイルへ。</p>
+    <div class="service-grid">
+      <div class="service-card">
+        <img src="https://loremflickr.com/500/380/bjj,sparring,gi" alt="マタドール柔術">
+        <!-- 元画像URL：現サイトmatador-bjj-service-thumb.webp（未取得・自社写真への差し替え前提） / images/service-bjj.jpg -->
+        <div class="service-card-body">
+          <div class="service-no">01</div>
+          <h3>マタドール柔術</h3>
+          <p>初心者から経験者まで、安心して技術を学び、継続できるクラス設計と指導体制を整えます。</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://loremflickr.com/500/380/kids,martial-arts,dojo" alt="こどもの柔術">
+        <!-- 元画像URL：現サイトmatador-kids-service-thumb.webp（未取得・自社写真への差し替え前提） / images/service-kids.jpg -->
+        <div class="service-card-body">
+          <div class="service-no">02</div>
+          <h3>こどもの柔術</h3>
+          <p>礼儀・粘り強さ・自分を守る力を育てるキッズクラス。年齢・体格に合わせた安全な指導を行います。</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://loremflickr.com/500/380/jiujitsu,gi,equipment" alt="ブラジリアン柔術ギア専門店">
+        <!-- 元画像URL：現サイトmatador-gear-shop-service-thumb.webp（未取得・自社写真への差し替え前提） / images/service-gear.jpg -->
+        <div class="service-card-body">
+          <div class="service-no">03</div>
+          <h3>ギア専門店</h3>
+          <p>柔術衣・帯、ラッシュガード、アパレル、関連グッズをオンラインショップで展開し、練習する人の目線で届けます。</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://loremflickr.com/500/380/dojo,interior,japan" alt="マタドールFC">
+        <!-- 元画像URL：現サイトmatador-fc-service-thumb.webp（未取得・自社写真への差し替え前提） / images/service-fc.jpg -->
+        <div class="service-card-body">
+          <div class="service-no">04</div>
+          <h3>マタドールFC</h3>
+          <p>マタドール柔術ジムのブランドと運営ノウハウをパッケージ化し、各地のオーナーとともに新店舗を全国へ広げるフランチャイズ事業です。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="company" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">COMPANY</p>
+    <h2 class="section-heading">会社概要</h2>
+    <table class="company-table">
+      <tr><th>会社名</th><td>株式会社マタドール</td></tr>
+      <tr><th>代表取締役</th><td>髙野内 洋</td></tr>
+      <tr><th>設立</th><td>2025年10月</td></tr>
+      <tr><th>資本金</th><td>1,000万円</td></tr>
+      <tr><th>事業内容</th><td>ブラジリアン柔術アカデミー運営／キッズ柔術教室／柔術ギア専門店／フランチャイズ事業</td></tr>
+      <tr><th>所在地</th><td>〒274-0065　千葉県船橋市高根台1-8-1　高野ビル1F</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="container">
+    <p class="section-title">FAQ</p>
+    <h2 class="section-heading">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q"><span>Q</span>柔術の経験がなくても通えますか？</div>
+        <div class="faq-a"><span>A</span>はい、大丈夫です。初心者から経験者まで安心して技術を学べるクラス設計と指導体制を整えています。まずはお問い合わせフォームよりご相談ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Q</span>子どもから始めることはできますか？</div>
+        <div class="faq-a"><span>A</span>可能です。年齢・体格に合わせたキッズクラスをご用意しており、礼儀や粘り強さ、自分を守る力を育てる指導を行っています。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Q</span>柔術衣（道着）や道具は自分で用意する必要がありますか？</div>
+        <div class="faq-a"><span>A</span>柔術衣・帯・ラッシュガードなど、練習に必要なギアはオンラインショップでも取り扱っています。詳しくはお問い合わせください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Q</span>フランチャイズでの出店に興味があります。相談できますか？</div>
+        <div class="faq-a"><span>A</span>マタドールFCでは、ブランドと運営ノウハウをパッケージ化し、各地のオーナー様とともに新店舗を広げています。お問い合わせフォームよりご連絡ください。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2>柔術の未来を、ともに広げる。</h2>
+  <p>体験・入会のご相談から、フランチャイズ出店のお問い合わせまで、お気軽にご連絡ください。</p>
+  <div class="btns">
+    <a href="https://matador.co.jp/contact" class="btn btn-primary">お問い合わせフォームへ</a>
+    <a href="https://matador.co.jp/" class="btn btn-outline">現在のサイトを見る</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">株式会社マタドール</div>
+      <p>〒274-0065 千葉県船橋市高根台1-8-1 高野ビル1F<br>ブラジリアン柔術アカデミー運営</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#service">事業内容</a></li>
+      <li><a href="#company">会社概要</a></li>
+      <li><a href="recruit.html">採用情報</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </div>
+  <p class="copyright">© 2025 MATADOR inc. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
