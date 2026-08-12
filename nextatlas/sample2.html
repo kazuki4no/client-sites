@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>株式会社NextAtlas（ネクストアトラス）｜採用力×発信力で、企業の未来を支援</title>
+<style>
+  :root{
+    --main:#1B3A6B;
+    --main-dark:#10233F;
+    --accent:#2FBF9F;
+    --accent-light:#E4F7F1;
+    --text:#26272B;
+    --sub:#6B7280;
+    --bg:#FAFBFC;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:var(--text);background:var(--bg);line-height:1.8;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .section{padding:88px 0;}
+  .section-title{font-size:14px;letter-spacing:0.2em;color:var(--accent);font-weight:700;text-align:center;margin-bottom:12px;}
+  .section-heading{font-size:30px;font-weight:700;text-align:center;margin-bottom:16px;letter-spacing:0.03em;color:var(--main-dark);}
+  .section-lead{text-align:center;color:var(--sub);max-width:640px;margin:0 auto 56px;font-size:15px;}
+
+  header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.96);border-bottom:1px solid #eee;backdrop-filter:blur(6px);}
+  .header-inner{max-width:1080px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-size:19px;font-weight:800;color:var(--main-dark);letter-spacing:0.02em;}
+  .logo span{color:var(--accent);}
+  nav ul{display:flex;gap:30px;list-style:none;}
+  nav a{font-size:14px;font-weight:600;}
+  nav a:hover{color:var(--main);}
+  .header-cta{display:flex;gap:10px;}
+  .btn{display:inline-block;padding:12px 28px;border-radius:4px;font-size:14px;font-weight:700;text-align:center;}
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-primary:hover{background:#25a884;}
+  .btn-outline{border:1px solid var(--main);color:var(--main);}
+  .btn-outline:hover{background:var(--accent-light);}
+  .btn-small{padding:9px 18px;font-size:13px;}
+  .menu-toggle{display:none;font-size:26px;background:none;border:none;cursor:pointer;color:var(--main-dark);}
+
+  /* Full-bleed FV */
+  /* 元画像URL：現サイトTOPメインビジュアル（未取得・自社写真への差し替え前提） / images/fv-main.jpg */
+  .fv{
+    position:relative;height:88vh;min-height:560px;display:flex;align-items:flex-end;
+    background:linear-gradient(0deg, rgba(16,35,63,0.94) 10%, rgba(16,35,63,0.4) 60%, rgba(16,35,63,0.15)), url('https://loremflickr.com/1600/1000/office,startup,tokyo') center/cover no-repeat;
+    color:#fff;
+  }
+  .fv-inner{max-width:1080px;margin:0 auto;padding:0 24px 64px;width:100%;}
+  .fv-eyebrow{font-size:13px;letter-spacing:0.25em;opacity:0.85;margin-bottom:18px;}
+  .fv h1{font-size:34px;font-weight:800;line-height:1.6;margin-bottom:24px;max-width:680px;}
+  .fv-btns{display:flex;gap:16px;flex-wrap:wrap;}
+  .fv .btn-outline{border-color:#fff;color:#fff;}
+
+  /* Works band */
+  .works-band{background:var(--main-dark);padding:0;}
+  .works-grid{display:grid;grid-template-columns:repeat(4,1fr);}
+  .works-grid a{overflow:hidden;display:block;position:relative;}
+  .works-grid img{width:100%;height:220px;object-fit:cover;filter:brightness(0.85);transition:transform .3s;}
+  .works-grid a:hover img{transform:scale(1.06);}
+  .works-cap{position:absolute;left:0;bottom:0;right:0;padding:14px 16px;font-size:12.5px;color:#fff;background:linear-gradient(0deg,rgba(0,0,0,0.65),transparent);}
+
+  /* Strength row */
+  .strength-strip{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+  .strength-strip .item{flex:1;min-width:220px;text-align:center;padding:0 12px;}
+  .strength-strip .num{font-size:32px;font-weight:800;color:var(--accent);margin-bottom:10px;}
+  .strength-strip h3{font-size:15.5px;font-weight:700;color:var(--main-dark);margin-bottom:8px;}
+  .strength-strip p{font-size:13px;color:var(--sub);}
+
+  /* Service banners */
+  .banner{display:flex;align-items:center;gap:44px;margin-bottom:56px;}
+  .banner:last-child{margin-bottom:0;}
+  .banner.rev{flex-direction:row-reverse;}
+  .banner img{width:46%;height:300px;object-fit:cover;border-radius:10px;flex-shrink:0;}
+  .banner-body{flex:1;}
+  .banner-no{font-size:12px;color:var(--accent);font-weight:800;letter-spacing:0.15em;margin-bottom:10px;}
+  .banner-body h3{font-size:21px;font-weight:800;color:var(--main-dark);margin-bottom:14px;}
+  .banner-body p{font-size:14px;color:var(--sub);}
+
+  /* Company photo */
+  .company-photo-wrap{display:flex;gap:40px;align-items:center;}
+  .company-photo-wrap img{width:42%;border-radius:10px;object-fit:cover;height:340px;flex-shrink:0;}
+  .company-table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;border:1px solid #ececec;flex:1;}
+  .company-table th,.company-table td{padding:16px 22px;text-align:left;font-size:14px;border-bottom:1px solid #eee;}
+  .company-table th{width:130px;background:var(--accent-light);color:var(--main-dark);font-weight:700;}
+  .company-table tr:last-child th,.company-table tr:last-child td{border-bottom:none;}
+
+  .cta{background:var(--main-dark);color:#fff;text-align:center;padding:80px 24px;}
+  .cta h2{font-size:26px;font-weight:800;margin-bottom:16px;}
+  .cta p{color:#cbd6dd;margin-bottom:32px;}
+  .cta .btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .cta .btn-primary{background:var(--accent);color:#fff;}
+  .cta .btn-outline{border-color:#fff;color:#fff;}
+
+  footer{background:#0A1B30;color:#c6d0d5;padding:48px 24px 24px;font-size:13px;}
+  .footer-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .footer-logo{font-size:17px;font-weight:800;color:#fff;margin-bottom:10px;}
+  .footer-links{display:flex;gap:24px;list-style:none;flex-wrap:wrap;}
+  .copyright{text-align:center;margin-top:32px;color:#7c8990;}
+
+  @media (max-width:900px){
+    .works-grid{grid-template-columns:1fr 1fr;}
+    .strength-strip{flex-direction:column;}
+    .banner,.banner.rev{flex-direction:column;}
+    .banner img{width:100%;height:220px;}
+    .company-photo-wrap{flex-direction:column;}
+    .company-photo-wrap img{width:100%;}
+  }
+  @media (max-width:700px){
+    nav,.header-cta{display:none;}
+    .menu-toggle{display:block;}
+    .fv h1{font-size:24px;}
+    .fv{height:auto;min-height:480px;padding-top:40px;}
+    .section{padding:60px 0;}
+    .works-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">Next<span>Atlas</span></div>
+    <nav><ul>
+      <li><a href="#service">サービス</a></li>
+      <li><a href="#strength">選ばれる理由</a></li>
+      <li><a href="#company">会社概要</a></li>
+    </ul></nav>
+    <div class="header-cta">
+      <a href="recruit.html" class="btn btn-outline btn-small">採用情報</a>
+      <a href="#contact" class="btn btn-primary btn-small">お問い合わせ</a>
+    </div>
+    <button class="menu-toggle">≡</button>
+  </div>
+</header>
+
+<section class="fv">
+  <div class="fv-inner">
+    <p class="fv-eyebrow">採用支援 × デジタルマーケティング</p>
+    <h1>「企業」と共に描く、成長の「未来」。<br>採用力×発信力で、企業の未来を支援します。</h1>
+    <div class="fv-btns">
+      <a href="#contact" class="btn btn-primary">お問い合わせはこちら</a>
+      <a href="#service" class="btn btn-outline">サービスを見る</a>
+    </div>
+  </div>
+</section>
+
+<section class="works-band">
+  <div class="works-grid">
+    <a href="#service"><img src="https://loremflickr.com/500/440/university,student,campus" alt="JobStage">
+      <!-- 元画像URL：現サイトJobStageサービス紹介画像（未取得） / images/works-jobstage.jpg -->
+      <span class="works-cap">JobStage｜大学生向け求人</span></a>
+    <a href="#service"><img src="https://loremflickr.com/500/440/smartphone,chat,app" alt="教育DXソリューション">
+      <!-- 元画像URL：現サイト該当写真なし（未取得） / images/works-edudx.jpg -->
+      <span class="works-cap">教育DXソリューション</span></a>
+    <a href="#service"><img src="https://loremflickr.com/500/440/social,media,phone" alt="SNSマーケティング">
+      <!-- 元画像URL：現サイト該当写真なし（未取得） / images/works-sns.jpg -->
+      <span class="works-cap">SNSマーケティング</span></a>
+    <a href="#service"><img src="https://loremflickr.com/500/440/camera,video,production" alt="動画コンテンツ制作">
+      <!-- 元画像URL：現サイト該当写真なし（未取得） / images/works-video.jpg -->
+      <span class="works-cap">動画コンテンツ制作</span></a>
+  </div>
+</section>
+
+<section class="section" id="strength">
+  <div class="container">
+    <p class="section-title">STRENGTH</p>
+    <h2 class="section-heading">3つの強み</h2>
+    <p class="section-lead">SNSやWebを活用した情報発信力と、現場目線での丁寧なサポートを強みに、成長企業の採用活動を加速させます。</p>
+    <div class="strength-strip">
+      <div class="item"><div class="num">01</div><h3>業種・エリア特化の求人メディア</h3><p>「JobStage」の運営を通じ、精度の高いマッチングを実現。</p></div>
+      <div class="item"><div class="num">02</div><h3>SNS連動の情報発信力</h3><p>Instagram・TikTok等と連動し、潜在層にもアプローチ。</p></div>
+      <div class="item"><div class="num">03</div><h3>現場目線の丁寧なサポート</h3><p>Web制作から教育DXまで、伴走型で寄り添います。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="service" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">SERVICE</p>
+    <h2 class="section-heading">サービス</h2>
+    <p class="section-lead">企業や教育機関の目的に合わせ、Web制作からプロダクト提供、教育現場のDX支援まで対応します。</p>
+
+    <div class="banner">
+      <img src="https://loremflickr.com/560/380/laptop,website,design" alt="Web制作／デジタル戦略">
+      <!-- 元画像URL：現サイト該当写真なし（未取得・自社写真への差し替え前提） / images/banner-web.jpg -->
+      <div class="banner-body">
+        <div class="banner-no">01 ／ Web制作・デジタル戦略</div>
+        <h3>採用・集客・ブランディングまで見据えたWeb構築</h3>
+        <p>企業や教育機関の目的に合わせたホームページ・LPを企画・設計・制作。単なる制作にとどまらず、コーポレートサイト制作、採用LP・集客LP制作、UI/UX設計・改善、運用・改善支援まで一貫して対応します。</p>
+      </div>
+    </div>
+
+    <div class="banner rev">
+      <img src="https://loremflickr.com/560/380/smartphone,chat,app" alt="教育DXソリューション">
+      <!-- 元画像URL：現サイト該当写真なし（未取得・自社写真への差し替え前提） / images/banner-edudx.jpg -->
+      <div class="banner-body">
+        <div class="banner-no">02 ／ 教育DXソリューション</div>
+        <h3>公式LINE×予約システムで、問い合わせ〜面談予約を自動化</h3>
+        <p>保護者・生徒は「LINEで質問→空いている日時をそのまま予約」というシンプルな流れで行動可能に。塾側は電話対応の削減、LINE対応の属人化防止、予約ミスの防止を実現し、指導と面談に集中できます。</p>
+      </div>
+    </div>
+
+    <div class="banner">
+      <img src="https://loremflickr.com/560/380/university,student,campus" alt="JobStage">
+      <!-- 元画像URL：現サイトJobStageサービス紹介画像（未取得） / images/banner-jobstage.jpg -->
+      <div class="banner-body">
+        <div class="banner-no">03 ／ プロダクト「JobStage」</div>
+        <h3>大学生向け業種・エリア特化型求人サイト</h3>
+        <p>業種・エリア特化型の求人掲載とSNS連動による情報拡散、明瞭で低コストな料金体系により、企業と求職者を最適につなぐ求人プラットフォーム。登録者を大学生に限定し、効率的なマッチングを実現します。</p>
+      </div>
+    </div>
+
+    <div class="banner rev">
+      <img src="https://loremflickr.com/560/380/programming,student,laptop" alt="SEC Tokyo運営協力">
+      <!-- 元画像URL：現サイト該当写真なし（未取得） / images/banner-sectokyo.jpg -->
+      <div class="banner-body">
+        <div class="banner-no">04 ／ 運営協力</div>
+        <h3>学生団体「SEC Tokyo」への運営協力</h3>
+        <p>システムエンジニアを志す大学生の大学間交流サークルに対し、教育プログラムの提供・案件の紹介・資金面での協力を実施。次世代エンジニアの育成と産学連携を推進しています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="company">
+  <div class="container">
+    <p class="section-title">COMPANY</p>
+    <h2 class="section-heading">会社概要</h2>
+    <div class="company-photo-wrap">
+      <img src="https://loremflickr.com/700/700/office,team,discussion" alt="株式会社NextAtlas">
+      <!-- 元画像URL：現サイト自社・代表写真（未取得・自社写真への差し替え前提） / images/company-photo.jpg -->
+      <table class="company-table">
+        <tr><th>社名</th><td>株式会社NextAtlas（ネクストアトラス）</td></tr>
+        <tr><th>代表取締役</th><td>CEO　宇賀神 廣／COO・CMO　岩本 拓真</td></tr>
+        <tr><th>取締役</th><td>CSO　林 稜太</td></tr>
+        <tr><th>所在地</th><td>〒274-0813　千葉県船橋市南三咲2-5-3-101</td></tr>
+        <tr><th>事業内容</th><td>求人サイト「JobStage」の企画・開発・運営／SNSマーケティング／動画コンテンツ制作 ほか</td></tr>
+        <tr><th>お問い合わせ</th><td>お問い合わせフォーム／nextatlas.info@gmail.com</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2>まずはお気軽にご相談ください</h2>
+  <p>採用・Web制作・教育DXなど、内容にかかわらずお気軽にお問い合わせください。</p>
+  <div class="btns">
+    <a href="https://nextatlas.co.jp/contact/" class="btn btn-primary">お問い合わせフォームへ</a>
+    <a href="https://nextatlas.co.jp/" class="btn btn-outline">現在のサイトを見る</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">株式会社NextAtlas</div>
+      <p>千葉県船橋市南三咲2-5-3-101<br>採用支援・デジタルマーケティング</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#service">サービス</a></li>
+      <li><a href="recruit.html">採用情報</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </div>
+  <p class="copyright">©株式会社NextAtlas All rights reserved.</p>
+</footer>
+
+</body>
+</html>
