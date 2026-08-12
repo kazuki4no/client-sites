@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>株式会社KS ROOFING｜千葉県船橋市の屋根工事・雨漏り修繕・外壁塗装</title>
+<style>
+  :root{
+    --main:#24506A;
+    --main-dark:#12303F;
+    --accent:#D9531E;
+    --accent-light:#FBEAE1;
+    --text:#2B2B2B;
+    --sub:#6B6B6B;
+    --bg:#FCFCFA;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.8;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .section{padding:88px 0;}
+  .section-title{
+    font-size:14px;letter-spacing:0.2em;color:var(--accent);font-weight:700;text-align:center;margin-bottom:12px;
+  }
+  .section-heading{
+    font-size:30px;font-weight:700;text-align:center;margin-bottom:16px;letter-spacing:0.03em;color:var(--main-dark);
+  }
+  .section-lead{
+    text-align:center;color:var(--sub);max-width:640px;margin:0 auto 56px;font-size:15px;
+  }
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(255,255,255,0.96);
+    border-bottom:1px solid #eee;
+    backdrop-filter:blur(6px);
+  }
+  .header-inner{
+    max-width:1080px;margin:0 auto;padding:16px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .logo{font-size:18px;font-weight:800;color:var(--main-dark);letter-spacing:0.01em;}
+  .logo span{color:var(--accent);}
+  nav ul{display:flex;gap:28px;list-style:none;}
+  nav a{font-size:14px;font-weight:600;}
+  nav a:hover{color:var(--main);}
+  .header-cta{display:flex;gap:10px;}
+  .btn{display:inline-block;padding:12px 28px;border-radius:4px;font-size:14px;font-weight:700;text-align:center;}
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-primary:hover{background:#b8431a;}
+  .btn-outline{border:1px solid var(--main);color:var(--main);}
+  .btn-outline:hover{background:var(--accent-light);}
+  .btn-small{padding:9px 18px;font-size:13px;}
+  .menu-toggle{display:none;font-size:26px;background:none;border:none;cursor:pointer;color:var(--main-dark);}
+
+  /* Hero */
+  /* 元画像URL：現サイトTOPメインビジュアル（未取得・自社施工写真への差し替え前提） / images/hero-main.jpg */
+  .hero{
+    position:relative;min-height:620px;display:flex;align-items:center;
+    background:linear-gradient(120deg, rgba(18,48,63,0.90), rgba(36,80,106,0.74)), url('https://loremflickr.com/1600/900/roof,metalroof,japan') center/cover no-repeat;
+    color:#fff;
+  }
+  .hero-inner{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .hero-tag{
+    display:inline-block;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.5);
+    padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600;letter-spacing:0.04em;margin-bottom:24px;
+  }
+  .hero h1{font-size:34px;font-weight:800;line-height:1.55;margin-bottom:22px;max-width:680px;}
+  .hero p{font-size:15.5px;max-width:580px;margin-bottom:36px;opacity:0.95;}
+  .hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
+  .hero .btn-outline{border-color:#fff;color:#fff;}
+  .hero .btn-outline:hover{background:rgba(255,255,255,0.15);}
+
+  /* Worry list */
+  .worry-band{background:var(--main-dark);color:#fff;padding:56px 0;}
+  .worry-band .section-heading{color:#fff;}
+  .worry-list{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px;}
+  .worry-item{
+    background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);border-radius:8px;
+    padding:18px 20px;font-size:14px;display:flex;gap:10px;align-items:flex-start;
+  }
+  .worry-item::before{content:"!";flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+
+  /* Strengths */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .card{background:var(--white);border:1px solid #ececec;border-radius:10px;padding:32px 24px;transition:transform .2s, box-shadow .2s;}
+  .card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,0.08);}
+  .card-num{font-size:13px;color:var(--accent);font-weight:800;letter-spacing:0.1em;margin-bottom:14px;}
+  .card h3{font-size:17px;font-weight:700;margin-bottom:12px;color:var(--main-dark);}
+  .card p{font-size:13.5px;color:var(--sub);}
+
+  /* Services */
+  .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .service-card{background:var(--white);border:1px solid #ececec;border-radius:10px;overflow:hidden;}
+  .service-card img{width:100%;height:170px;object-fit:cover;}
+  .service-card-body{padding:22px 22px 26px;}
+  .service-no{font-size:12px;color:var(--accent);font-weight:800;letter-spacing:0.1em;}
+  .service-card-body h3{font-size:17px;font-weight:700;margin:8px 0 10px;color:var(--main-dark);}
+  .service-card-body p{font-size:13.5px;color:var(--sub);}
+
+  /* Flow */
+  .flow-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .flow-item{background:var(--white);border:1px solid #ececec;border-radius:10px;padding:26px 22px;position:relative;}
+  .flow-num{
+    width:38px;height:38px;border-radius:50%;background:var(--main);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;margin-bottom:14px;
+  }
+  .flow-item h3{font-size:15px;font-weight:700;margin-bottom:8px;color:var(--main-dark);}
+  .flow-item p{font-size:13px;color:var(--sub);}
+
+  /* FAQ */
+  .faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:14px;}
+  .faq-item{background:var(--white);border:1px solid #ececec;border-radius:10px;padding:22px 26px;}
+  .faq-q{font-size:15px;font-weight:700;color:var(--main-dark);display:flex;gap:10px;margin-bottom:8px;}
+  .faq-q span{color:var(--accent);}
+  .faq-a{font-size:13.5px;color:var(--sub);display:flex;gap:10px;}
+  .faq-a span{color:var(--main);font-weight:700;}
+
+  /* Company */
+  .company-table{width:100%;border-collapse:collapse;max-width:760px;margin:0 auto;background:#fff;border-radius:10px;overflow:hidden;border:1px solid #ececec;}
+  .company-table th,.company-table td{padding:18px 24px;text-align:left;font-size:14.5px;border-bottom:1px solid #eee;}
+  .company-table th{width:160px;background:var(--accent-light);color:var(--main-dark);font-weight:700;}
+  .company-table tr:last-child th,.company-table tr:last-child td{border-bottom:none;}
+
+  /* CTA */
+  .cta{background:var(--main-dark);color:#fff;text-align:center;padding:80px 24px;}
+  .cta h2{font-size:26px;font-weight:800;margin-bottom:16px;}
+  .cta p{color:#cbd6dd;margin-bottom:32px;}
+  .cta .btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .cta .btn-primary{background:var(--accent);color:#fff;}
+  .cta .btn-outline{border-color:#fff;color:#fff;}
+
+  footer{background:#0F2836;color:#c6d0d5;padding:48px 24px 24px;font-size:13px;}
+  .footer-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .footer-logo{font-size:17px;font-weight:800;color:#fff;margin-bottom:10px;}
+  .footer-links{display:flex;gap:24px;list-style:none;flex-wrap:wrap;}
+  .copyright{text-align:center;margin-top:32px;color:#7c8990;}
+
+  @media (max-width:900px){
+    .cards{grid-template-columns:1fr;}
+    .service-grid{grid-template-columns:1fr 1fr;}
+    .worry-list{grid-template-columns:1fr 1fr;}
+    .flow-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:700px){
+    nav,.header-cta{display:none;}
+    .menu-toggle{display:block;}
+    .hero h1{font-size:25px;}
+    .hero{min-height:540px;}
+    .section{padding:60px 0;}
+    .service-grid{grid-template-columns:1fr;}
+    .worry-list{grid-template-columns:1fr;}
+    .flow-grid{grid-template-columns:1fr;}
+    .company-table th{width:110px;font-size:13px;padding:14px;}
+    .company-table td{font-size:13px;padding:14px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">株式会社<span>KS ROOFING</span></div>
+    <nav><ul>
+      <li><a href="#about">当社について</a></li>
+      <li><a href="#service">業務内容</a></li>
+      <li><a href="#flow">施工の流れ</a></li>
+      <li><a href="#faq">よくある質問</a></li>
+      <li><a href="#company">会社概要</a></li>
+    </ul></nav>
+    <div class="header-cta">
+      <a href="recruit.html" class="btn btn-outline btn-small">採用情報</a>
+      <a href="#contact" class="btn btn-primary btn-small">お問い合わせ</a>
+    </div>
+    <button class="menu-toggle">≡</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">千葉県船橋市の屋根工事・板金・防水・塗装</span>
+    <h1>足場工事以外は、すべて自社施工。<br>だから、高品質と適正価格を両立できる。</h1>
+    <p>屋根工事・板金工事・サイディング工事・防水工事／雨樋工事・塗装工事まで、住まいの外まわりをまとめてお任せいただけます。お見積り・現場調査・施工はすべて代表の樋口が対応いたします。</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-primary">無料相談・お見積りはこちら</a>
+      <a href="#service" class="btn btn-outline">業務内容を見る</a>
+    </div>
+  </div>
+</section>
+
+<section class="worry-band">
+  <div class="container">
+    <p class="section-title" style="color:var(--accent);">CHECK</p>
+    <h2 class="section-heading">こんなお困りごとありませんか？</h2>
+    <div class="worry-list">
+      <div class="worry-item">屋根の色あせ・破損が気になる</div>
+      <div class="worry-item">雨漏りが心配・すでに発生している</div>
+      <div class="worry-item">雨樋が詰まっている・破損している</div>
+      <div class="worry-item">外壁のヒビや汚れが目立ってきた</div>
+      <div class="worry-item">屋根と外壁、まとめて相談したい</div>
+      <div class="worry-item">地震に強い、軽い屋根に変えたい</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container">
+    <p class="section-title">STRENGTH</p>
+    <h2 class="section-heading">KS ROOFINGが選ばれる理由</h2>
+    <p class="section-lead">足場工事以外はすべて自社施工。中間マージンを徹底的に削減し、高品質・低価格でのご提供を可能にしています。</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-num">01</div>
+        <h3>業歴の長いスタッフによる確かな技術</h3>
+        <p>長年の経験を積んだスタッフが、お客様のニーズに応じた施工をいたします。専門知識と豊富な実績を活かし、品質に妥協することなく、安心してご利用いただけるサービスを提供します。</p>
+      </div>
+      <div class="card">
+        <div class="card-num">02</div>
+        <h3>自社スタッフ施工で最初から最後まで安心</h3>
+        <p>自社スタッフによる施工はマージン費の削減のみならず、担当が変わらない点もメリットです。打合せ担当と施工担当が別のスタッフで要望が伝わりきっていなかった、というトラブルを防ぎます。</p>
+      </div>
+      <div class="card">
+        <div class="card-num">03</div>
+        <h3>屋根・板金・防水・塗装を幅広くお任せ</h3>
+        <p>屋根は屋根屋さん、塗装は塗装屋さんへと2社に分けて依頼しなくても、当社で一気に施工が可能です。屋根以外にも気になる箇所がある方も、ぜひまとめてご相談ください。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="service" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">SERVICE</p>
+    <h2 class="section-heading">業務内容</h2>
+    <p class="section-lead">屋根工事を中心に、板金工事・サイディング工事・防水工事／雨樋工事・塗装工事まで、住まいの外まわりに関する幅広いご相談に対応しています。</p>
+    <div class="service-grid">
+      <div class="service-card">
+        <img src="https://loremflickr.com/560/380/roof,tile,house" alt="屋根工事">
+        <!-- 元画像URL：現サイト施工事例写真（未取得・自社施工写真への差し替え前提） / images/service-roof.jpg -->
+        <div class="service-card-body">
+          <div class="service-no">01</div>
+          <h3>屋根工事</h3>
+          <p>普段は昇って確認することのない屋根だからこそ、経年劣化や損傷を見逃さず点検・補修し、家の寿命を延ばします。葺き替え・屋根カバー工法に対応します。</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://loremflickr.com/560/380/metalroof,sheetmetal,construction" alt="板金工事">
+        <!-- 元画像URL：現サイト施工事例写真（未取得・自社施工写真への差し替え前提） / images/service-metalwork.jpg -->
+        <div class="service-card-body">
+          <div class="service-no">02</div>
+          <h3>板金工事</h3>
+          <p>ガルバリウム鋼板などの金属屋根・金属サイディングを取りつける板金工事。葺き替え・重ね葺き（カバー工事）の両方に対応しています。</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://loremflickr.com/560/380/houseexterior,siding,japan" alt="サイディング工事">
+        <!-- 元画像URL：現サイト施工事例写真（未取得・自社施工写真への差し替え前提） / images/service-siding.jpg -->
+        <div class="service-card-body">
+          <div class="service-no">03</div>
+          <h3>サイディング工事</h3>
+          <p>外壁材の張り替え・重ね張りに対応。前回の塗装から10年前後、サイディング設置から20年前後が工事の目安です。</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://loremflickr.com/560/380/gutter,rooftop,rain" alt="防水工事・雨樋工事">
+        <!-- 元画像URL：現サイト施工事例写真（未取得・自社施工写真への差し替え前提） / images/service-waterproof.jpg -->
+        <div class="service-card-body">
+          <div class="service-no">04</div>
+          <h3>防水工事・雨樋工事</h3>
+          <p>ベランダ・バルコニー・屋上の防水層は経年劣化するため、10年に一度の新調が目安。雨樋の詰まり・破損もあわせて解消します。</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://loremflickr.com/560/380/housepainting,exteriorwall" alt="塗装工事">
+        <!-- 元画像URL：現サイト施工事例写真（未取得・自社施工写真への差し替え前提） / images/service-painting.jpg -->
+        <div class="service-card-body">
+          <div class="service-no">05</div>
+          <h3>塗装工事</h3>
+          <p>既存の屋根材・外壁材を活かしたまま機能性塗料で上塗り。色あせた外観を蘇らせながら、遮熱・断熱・防水機能をプラスします。</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://loremflickr.com/560/380/craftsman,constructionworker,japan" alt="対応エリア">
+        <!-- 元画像URL：現サイト該当写真なし（未取得） / images/service-area.jpg -->
+        <div class="service-card-body">
+          <div class="service-no">06</div>
+          <h3>対応エリア</h3>
+          <p>千葉県・東京都・茨城県・埼玉県・神奈川県の関東1都4県に対応。千葉県船橋市を拠点に、幅広いエリアでご相談を承っています。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="flow">
+  <div class="container">
+    <p class="section-title">FLOW</p>
+    <h2 class="section-heading">ご依頼の流れ</h2>
+    <p class="section-lead">お問い合わせから施工完了・アフターフォローまで、6つのステップで丁寧に進めます。</p>
+    <div class="flow-grid">
+      <div class="flow-item"><div class="flow-num">1</div><h3>お問い合わせ</h3><p>まずはお電話またはメールフォームからお気軽にお問い合わせください。</p></div>
+      <div class="flow-item"><div class="flow-num">2</div><h3>現場調査・お見積り</h3><p>現場調査後、スピーディーにお見積書を作成します。</p></div>
+      <div class="flow-item"><div class="flow-num">3</div><h3>ご契約</h3><p>お見積書の内容にご納得いただけましたらご契約を進めます。</p></div>
+      <div class="flow-item"><div class="flow-num">4</div><h3>着工</h3><p>いよいよ工事開始です。</p></div>
+      <div class="flow-item"><div class="flow-num">5</div><h3>お引き渡し</h3><p>工事完了後、ご一緒に施工現場を確認してからお客様へお引渡しいたします。</p></div>
+      <div class="flow-item"><div class="flow-num">6</div><h3>アフターフォロー</h3><p>お引き渡し後も、定期点検やアフターフォローを行っています。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">FAQ</p>
+    <h2 class="section-heading">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q"><span>Q</span>お見積りは無料ですか？</div>
+        <div class="faq-a"><span>A</span>もちろん無料です！お気軽にお問い合わせください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Q</span>保証はありますか？</div>
+        <div class="faq-a"><span>A</span>屋根工事に関しては、メーカーからの材料保証と自社の施工保証をつけさせていただきます。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Q</span>見積りを依頼したら必ず工事を依頼しなければいけませんか？</div>
+        <div class="faq-a"><span>A</span>いいえ。見積りをしたからといって必ず工事をご依頼いただく必要はありません。他社様と比較していただいても構いません。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Q</span>工事は何日くらいかかりますか？</div>
+        <div class="faq-a"><span>A</span>一般的な戸建てサイズで、塗装工事は10日前後、屋根工事は4〜6日が目安です。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="company">
+  <div class="container">
+    <p class="section-title">COMPANY</p>
+    <h2 class="section-heading">会社概要</h2>
+    <table class="company-table">
+      <tr><th>社名</th><td>株式会社KS ROOFING（ケーズルーフィング）</td></tr>
+      <tr><th>代表取締役</th><td>樋口 賢太郎</td></tr>
+      <tr><th>設立</th><td>2023年3月設立（2025年8月21日法人化）</td></tr>
+      <tr><th>事業内容</th><td>屋根工事／板金工事／サイディング工事／防水工事／雨樋工事／塗装工事</td></tr>
+      <tr><th>所在地</th><td>〒273-0022 千葉県船橋市海神町2-8-32（本社）<br>〒274-0053 千葉県船橋市豊富町1480-156（資材ヤード）</td></tr>
+      <tr><th>アクセス</th><td>海神駅　徒歩17分</td></tr>
+      <tr><th>電話番号</th><td>0120-519-156（営業時間 8:00〜17:00／日曜定休）</td></tr>
+      <tr><th>対応エリア</th><td>千葉県・東京都・茨城県・埼玉県・神奈川県</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2>まずはお気軽に、無料のお見積りからご相談ください</h2>
+  <p>お電話またはお問い合わせフォームより承っております。営業目的のお電話はご遠慮ください。</p>
+  <div class="btns">
+    <a href="https://www.ksroofing.net/contact" class="btn btn-primary">お問い合わせフォームへ</a>
+    <a href="https://www.ksroofing.net/" class="btn btn-outline">現在のサイトを見る</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">株式会社KS ROOFING</div>
+      <p>千葉県船橋市海神町2-8-32<br>屋根工事・板金工事・サイディング工事・防水工事・塗装工事</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#service">業務内容</a></li>
+      <li><a href="#flow">施工の流れ</a></li>
+      <li><a href="recruit.html">採用情報</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </div>
+  <p class="copyright">©株式会社KS ROOFING All rights reserved.</p>
+</footer>
+
+</body>
+</html>

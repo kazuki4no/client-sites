@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>みせコレ｜全国の頑張るお店を取材する、みんなの名店コレクション</title>
+<style>
+  :root{
+    --main:#0E6B5C;
+    --main-dark:#083F36;
+    --accent:#E8A23D;
+    --accent-light:#FDF1DC;
+    --text:#2B2B2B;
+    --sub:#6B6B6B;
+    --bg:#FCFAF5;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:var(--text);background:var(--bg);line-height:1.8;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .section{padding:88px 0;}
+  .section-title{font-size:14px;letter-spacing:0.2em;color:var(--accent);font-weight:700;text-align:center;margin-bottom:12px;}
+  .section-heading{font-size:30px;font-weight:700;text-align:center;margin-bottom:16px;letter-spacing:0.03em;color:var(--main-dark);}
+  .section-lead{text-align:center;color:var(--sub);max-width:640px;margin:0 auto 56px;font-size:15px;}
+
+  header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.96);border-bottom:1px solid #eee;backdrop-filter:blur(6px);}
+  .header-inner{max-width:1080px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-size:19px;font-weight:800;color:var(--main-dark);letter-spacing:0.02em;}
+  .logo span{color:var(--accent);}
+  nav ul{display:flex;gap:30px;list-style:none;}
+  nav a{font-size:14px;font-weight:600;}
+  nav a:hover{color:var(--main);}
+  .header-cta{display:flex;gap:10px;}
+  .btn{display:inline-block;padding:12px 28px;border-radius:4px;font-size:14px;font-weight:700;text-align:center;}
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-primary:hover{background:#cf8a2a;}
+  .btn-outline{border:1px solid var(--main);color:var(--main);}
+  .btn-outline:hover{background:var(--accent-light);}
+  .btn-small{padding:9px 18px;font-size:13px;}
+  .menu-toggle{display:none;font-size:26px;background:none;border:none;cursor:pointer;color:var(--main-dark);}
+
+  /* Full-bleed FV */
+  /* 元画像URL：現サイトTOPメインビジュアル（未取得・自社写真への差し替え前提） / images/fv-main.jpg */
+  .fv{
+    position:relative;height:88vh;min-height:560px;display:flex;align-items:flex-end;
+    background:linear-gradient(0deg, rgba(8,63,54,0.92) 10%, rgba(8,63,54,0.35) 60%, rgba(8,63,54,0.15)), url('https://loremflickr.com/1600/1000/japan,market,street') center/cover no-repeat;
+    color:#fff;
+  }
+  .fv-inner{max-width:1080px;margin:0 auto;padding:0 24px 64px;width:100%;}
+  .fv-eyebrow{font-size:13px;letter-spacing:0.25em;opacity:0.85;margin-bottom:18px;}
+  .fv h1{font-size:34px;font-weight:800;line-height:1.6;margin-bottom:24px;max-width:680px;}
+  .fv-btns{display:flex;gap:16px;flex-wrap:wrap;}
+  .fv .btn-outline{border-color:#fff;color:#fff;}
+
+  /* Works band（掲載記事ギャラリー） */
+  .works-band{background:var(--main-dark);padding:0;}
+  .works-grid{display:grid;grid-template-columns:repeat(5,1fr);}
+  .works-item{position:relative;overflow:hidden;display:block;}
+  .works-item img{width:100%;height:200px;object-fit:cover;filter:brightness(0.75);transition:transform .3s;}
+  .works-item:hover img{transform:scale(1.06);}
+  .works-cap{position:absolute;left:0;right:0;bottom:0;padding:12px 14px;font-size:11.5px;color:#fff;background:linear-gradient(0deg,rgba(0,0,0,0.75),transparent);line-height:1.5;}
+
+  /* Strength row */
+  .strength-strip{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+  .strength-strip .item{flex:1;min-width:220px;text-align:center;padding:0 12px;}
+  .strength-strip .num{font-size:30px;font-weight:800;color:var(--accent);margin-bottom:10px;}
+  .strength-strip h3{font-size:15.5px;font-weight:700;color:var(--main-dark);margin-bottom:8px;}
+  .strength-strip p{font-size:13px;color:var(--sub);}
+
+  /* Service banners */
+  .banner{display:flex;align-items:center;gap:44px;margin-bottom:56px;}
+  .banner:last-child{margin-bottom:0;}
+  .banner.rev{flex-direction:row-reverse;}
+  .banner img{width:46%;height:300px;object-fit:cover;border-radius:10px;flex-shrink:0;}
+  .banner-body{flex:1;}
+  .banner-no{font-size:12px;color:var(--accent);font-weight:800;letter-spacing:0.15em;margin-bottom:10px;}
+  .banner-body h3{font-size:21px;font-weight:800;color:var(--main-dark);margin-bottom:14px;}
+  .banner-body p{font-size:14px;color:var(--sub);}
+
+  /* Company photo */
+  .company-photo-wrap{display:flex;gap:40px;align-items:center;}
+  .company-photo-wrap img{width:42%;border-radius:10px;object-fit:cover;height:340px;flex-shrink:0;}
+  .company-table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;border:1px solid #ececec;flex:1;}
+  .company-table th,.company-table td{padding:16px 22px;text-align:left;font-size:14px;border-bottom:1px solid #eee;}
+  .company-table th{width:140px;background:var(--accent-light);color:var(--main-dark);font-weight:700;}
+  .company-table tr:last-child th,.company-table tr:last-child td{border-bottom:none;}
+
+  .cta{background:var(--main-dark);color:#fff;text-align:center;padding:80px 24px;}
+  .cta h2{font-size:26px;font-weight:800;margin-bottom:16px;}
+  .cta p{color:#cfe0da;margin-bottom:32px;}
+  .cta .btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .cta .btn-primary{background:var(--accent);color:#fff;}
+  .cta .btn-outline{border-color:#fff;color:#fff;}
+
+  footer{background:#062B24;color:#c3d3ce;padding:48px 24px 24px;font-size:13px;}
+  .footer-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .footer-logo{font-size:17px;font-weight:800;color:#fff;margin-bottom:10px;}
+  .footer-links{display:flex;gap:24px;list-style:none;flex-wrap:wrap;}
+  .copyright{text-align:center;margin-top:32px;color:#7c9089;}
+
+  @media (max-width:900px){
+    .works-grid{grid-template-columns:repeat(3,1fr);}
+    .strength-strip{flex-direction:column;}
+    .banner,.banner.rev{flex-direction:column;}
+    .banner img{width:100%;height:220px;}
+    .company-photo-wrap{flex-direction:column;}
+    .company-photo-wrap img{width:100%;}
+  }
+  @media (max-width:700px){
+    nav,.header-cta{display:none;}
+    .menu-toggle{display:block;}
+    .fv h1{font-size:24px;}
+    .fv{height:auto;min-height:480px;padding-top:40px;}
+    .section{padding:60px 0;}
+    .works-grid{grid-template-columns:repeat(2,1fr);}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">みせ<span>コレ</span></div>
+    <nav><ul>
+      <li><a href="#works">掲載記事</a></li>
+      <li><a href="#strength">選ばれる理由</a></li>
+      <li><a href="#company">運営者情報</a></li>
+    </ul></nav>
+    <div class="header-cta">
+      <a href="recruit.html" class="btn btn-outline btn-small">採用情報</a>
+      <a href="#contact" class="btn btn-primary btn-small">掲載の相談をする</a>
+    </div>
+    <button class="menu-toggle">≡</button>
+  </div>
+</header>
+
+<section class="fv">
+  <div class="fv-inner">
+    <p class="fv-eyebrow">全国の頑張るお店を応援するメディア　みんなの名店コレクション</p>
+    <h1>知る人ぞ知る名店を、<br>もっと多くの人へ。</h1>
+    <div class="fv-btns">
+      <a href="#contact" class="btn btn-primary">掲載について相談する</a>
+      <a href="#works" class="btn btn-outline">掲載記事を見る</a>
+    </div>
+  </div>
+</section>
+
+<section class="works-band" id="works">
+  <div class="works-grid">
+    <a class="works-item" href="https://mise-colle.com/">
+      <img src="https://loremflickr.com/500/500/kamakura,ryokan,japan" alt="神奈川・鎌倉「KIYAZA RESORT 鎌倉」">
+      <!-- 元画像URL：現サイト掲載記事写真「KIYAZA RESORT 鎌倉」（未取得・取材写真への差し替え前提） / images/works-1.jpg -->
+      <span class="works-cap">神奈川・鎌倉<br>KIYAZA RESORT 鎌倉</span>
+    </a>
+    <a class="works-item" href="https://mise-colle.com/">
+      <img src="https://loremflickr.com/500/500/ramen,noodle,japan" alt="奈良・桜井「らぁめん ぐうたら」">
+      <!-- 元画像URL：現サイト掲載記事写真「らぁめん ぐうたら」（未取得・取材写真への差し替え前提） / images/works-2.jpg -->
+      <span class="works-cap">奈良・桜井<br>らぁめん ぐうたら</span>
+    </a>
+    <a class="works-item" href="https://mise-colle.com/">
+      <img src="https://loremflickr.com/500/500/crepe,dessert,tokyo" alt="東京・渋谷「ジラフクレープ代官山店」">
+      <!-- 元画像URL：現サイト掲載記事写真「ジラフクレープ代官山店」（未取得・取材写真への差し替え前提） / images/works-3.jpg -->
+      <span class="works-cap">東京・渋谷<br>ジラフクレープ代官山店</span>
+    </a>
+    <a class="works-item" href="https://mise-colle.com/">
+      <img src="https://loremflickr.com/500/500/bakery,bread,japan" alt="広島・佐伯区「ギリシャキッチン&ベーカリー バクロ」">
+      <!-- 元画像URL：現サイト掲載記事写真「ギリシャキッチン&ベーカリー バクロ」（未取得・取材写真への差し替え前提） / images/works-4.jpg -->
+      <span class="works-cap">広島・佐伯区<br>ギリシャキッチン&ベーカリー バクロ</span>
+    </a>
+    <a class="works-item" href="https://mise-colle.com/">
+      <img src="https://loremflickr.com/500/500/kyoto,restaurant,japan" alt="京都・京都市「いづつ屋 先斗町店」">
+      <!-- 元画像URL：現サイト掲載記事写真「いづつ屋 先斗町店」（未取得・取材写真への差し替え前提） / images/works-5.jpg -->
+      <span class="works-cap">京都・京都市<br>いづつ屋 先斗町店</span>
+    </a>
+  </div>
+</section>
+
+<section class="section" id="strength">
+  <div class="container">
+    <p class="section-title">STRENGTH</p>
+    <h2 class="section-heading">みせコレの取材力</h2>
+    <p class="section-lead">コロナ禍や物価高騰といった厳しい環境の中でも輝くお店を独自取材。店主のこだわりまで掘り下げて記事化しています。</p>
+    <div class="strength-strip">
+      <div class="item"><div class="num">90ページ超</div><h3>店舗インタビュー掲載数</h3><p>グルメから専門士業まで幅広いジャンルで取材を積み重ねています。</p></div>
+      <div class="item"><div class="num">全国対応</div><h3>地域を問わない取材網</h3><p>47都道府県からお店・企業を検索できる仕組みを用意しています。</p></div>
+      <div class="item"><div class="num">6ジャンル</div><h3>対応カテゴリの幅広さ</h3><p>グルメ・美容・レジャー・ライフスタイル・アパレル・通販・その他に対応。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">WHY MISE-COLLE</p>
+    <h2 class="section-heading">みせコレが選ばれる理由</h2>
+
+    <div class="banner">
+      <img src="https://loremflickr.com/560/380/interview,writer,japan" alt="独自取材による深堀り記事">
+      <!-- 元画像URL：現サイト取材風景写真（未取得・自社写真への差し替え前提） / images/banner-interview.jpg -->
+      <div class="banner-body">
+        <div class="banner-no">01 ／ 独自取材</div>
+        <h3>ただの店舗紹介では終わらせない</h3>
+        <p>店主のこだわりや、お店に込められたストーリーまで掘り下げるのがみせコレの取材スタイル。訪れる前から「行きたくなる」記事として届けます。</p>
+      </div>
+    </div>
+
+    <div class="banner rev">
+      <img src="https://loremflickr.com/560/380/japan,map,discovery" alt="思いがけない出会いを生む導線">
+      <!-- 元画像URL：現サイトサービスイメージ（未取得・自社写真への差し替え前提） / images/banner-discovery.jpg -->
+      <div class="banner-body">
+        <div class="banner-no">02 ／ 新しい出会い</div>
+        <h3>「今までの自分」の検索を超えた出会いを演出</h3>
+        <p>Googleマップは自分の好みに基づく検索結果しか出てきません。みせコレはじっくり記事を読む楽しさの中で、思いがけないお店との出会いを届けます。</p>
+      </div>
+    </div>
+
+    <div class="banner">
+      <img src="https://loremflickr.com/560/380/small,business,japan" alt="幅広いジャンルへの対応">
+      <!-- 元画像URL：現サイト掲載記事写真（未取得・取材写真への差し替え前提） / images/banner-category.jpg -->
+      <div class="banner-body">
+        <div class="banner-no">03 ／ 幅広い対応力</div>
+        <h3>飲食・美容から専門サービスまで</h3>
+        <p>グルメや美容だけでなく、士業事務所や専門法人まで、業種を問わず取材を承っています。地域の頑張るお店・企業を幅広く応援しています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="company">
+  <div class="container">
+    <p class="section-title">COMPANY</p>
+    <h2 class="section-heading">運営者情報</h2>
+    <div class="company-photo-wrap">
+      <img src="https://loremflickr.com/700/700/laptop,writing,japan" alt="みせコレ運営事務局">
+      <!-- 元画像URL：現サイト該当写真なし（新規手配） / images/company-photo.jpg -->
+      <table class="company-table">
+        <tr><th>運営</th><td>みせコレ運営事務局</td></tr>
+        <tr><th>運営メディア</th><td>みせコレ ～みんなの名店コレクション～</td></tr>
+        <tr><th>事業内容</th><td>全国の店舗・企業向け取材型Webメディアの運営／記事掲載・PR支援</td></tr>
+        <tr><th>対応カテゴリ</th><td>グルメ／美容／レジャー／ライフスタイル／アパレル／通販／その他</td></tr>
+        <tr><th>定休日</th><td>不定期</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2>まずはお気軽に、掲載のご相談からどうぞ</h2>
+  <p>記事内容についてのご質問、その他のお問い合わせもフォームより承っております。</p>
+  <div class="btns">
+    <a href="https://mise-colle.com/contact/" class="btn btn-primary">お問い合わせフォームへ</a>
+    <a href="https://mise-colle.com/" class="btn btn-outline">現在のサイトを見る</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">みせコレ</div>
+      <p>全国の頑張るお店を応援するメディア<br>みんなの名店コレクション</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#works">掲載記事</a></li>
+      <li><a href="recruit.html">採用情報</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </div>
+  <p class="copyright">©みせコレ運営事務局 All rights reserved.</p>
+</footer>
+
+</body>
+</html>

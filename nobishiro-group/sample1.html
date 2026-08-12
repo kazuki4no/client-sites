@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>株式会社ノビシロ｜属人化を、型と仕組みで超える。営業組織構築コンサルティング</title>
+<style>
+  :root{
+    --main:#1B3358;
+    --main-dark:#0E1F38;
+    --accent:#C89B3C;
+    --accent-light:#FAF3E2;
+    --text:#2B2B2B;
+    --sub:#6B6B6B;
+    --bg:#FCFCFA;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.8;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .section{padding:88px 0;}
+  .section-title{font-size:14px;letter-spacing:0.2em;color:var(--accent);font-weight:700;text-align:center;margin-bottom:12px;}
+  .section-heading{font-size:29px;font-weight:700;text-align:center;margin-bottom:16px;letter-spacing:0.02em;color:var(--main-dark);}
+  .section-lead{text-align:center;color:var(--sub);max-width:660px;margin:0 auto 56px;font-size:15px;}
+
+  header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.96);border-bottom:1px solid #eee;backdrop-filter:blur(6px);}
+  .header-inner{max-width:1080px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-size:18px;font-weight:800;color:var(--main-dark);letter-spacing:0.02em;}
+  .logo span{color:var(--accent);}
+  nav ul{display:flex;gap:26px;list-style:none;}
+  nav a{font-size:13.5px;font-weight:600;}
+  nav a:hover{color:var(--main);}
+  .header-cta{display:flex;gap:10px;}
+  .btn{display:inline-block;padding:12px 28px;border-radius:4px;font-size:14px;font-weight:700;text-align:center;}
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-primary:hover{background:#a97f2c;}
+  .btn-outline{border:1px solid var(--main);color:var(--main);}
+  .btn-outline:hover{background:var(--accent-light);}
+  .btn-small{padding:9px 18px;font-size:13px;}
+  .menu-toggle{display:none;font-size:26px;background:none;border:none;cursor:pointer;color:var(--main-dark);}
+
+  /* Hero */
+  /* 元画像URL：現サイトTOPメインビジュアル（未取得・自社写真への差し替え前提） / images/hero-main.jpg */
+  .hero{
+    position:relative;min-height:620px;display:flex;align-items:center;
+    background:linear-gradient(120deg, rgba(14,31,56,0.92), rgba(27,51,88,0.78)), url('https://loremflickr.com/1600/900/businessmeeting,office,japan') center/cover no-repeat;
+    color:#fff;
+  }
+  .hero-inner{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .hero-tag{
+    display:inline-block;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.5);
+    padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600;letter-spacing:0.03em;margin-bottom:24px;
+  }
+  .hero h1{font-size:36px;font-weight:800;line-height:1.55;margin-bottom:22px;max-width:680px;}
+  .hero p{font-size:15.5px;max-width:600px;margin-bottom:36px;opacity:0.95;}
+  .hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
+  .hero .btn-outline{border-color:#fff;color:#fff;}
+  .hero .btn-outline:hover{background:rgba(255,255,255,0.15);}
+
+  /* Problem cards */
+  .problem-band{background:var(--main-dark);color:#fff;padding:88px 0;}
+  .problem-band .section-heading{color:#fff;}
+  .problem-band .section-lead{color:#c7d0dc;}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .card{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.16);border-radius:10px;padding:30px 26px;}
+  .card-num{font-size:13px;color:var(--accent);font-weight:800;letter-spacing:0.1em;margin-bottom:14px;}
+  .card h3{font-size:16.5px;font-weight:700;margin-bottom:12px;color:#fff;}
+  .card p{font-size:13.5px;color:#c7d0dc;}
+  .card.light{background:var(--white);border:1px solid #ececec;}
+  .card.light h3{color:var(--main-dark);}
+  .card.light p{color:var(--sub);}
+
+  /* Root cause / stats */
+  .stat-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .stat-card{background:var(--white);border:1px solid #ececec;border-radius:10px;padding:32px 28px;}
+  .stat-card .big{font-size:30px;font-weight:800;color:var(--accent);margin-bottom:10px;}
+  .stat-card h3{font-size:15.5px;font-weight:700;color:var(--main-dark);margin-bottom:10px;}
+  .stat-card p{font-size:13px;color:var(--sub);}
+  .stat-card .src{font-size:11.5px;color:#a3a3a3;margin-top:14px;}
+
+  /* Failure patterns */
+  .fail-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+
+  /* Solution */
+  .solution-box{background:linear-gradient(135deg,var(--main),var(--main-dark));border-radius:14px;color:#fff;padding:56px 48px;text-align:center;}
+  .solution-box h2{font-size:26px;font-weight:800;line-height:1.6;margin-bottom:18px;}
+  .solution-box h2 em{color:var(--accent);font-style:normal;}
+  .solution-box p{color:#d6dde6;max-width:600px;margin:0 auto 30px;font-size:14.5px;}
+
+  /* 4-step method */
+  .method-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .method-item{background:var(--white);border:1px solid #ececec;border-radius:10px;padding:26px 22px;position:relative;}
+  .method-num{font-size:12px;color:var(--accent);font-weight:800;letter-spacing:0.1em;margin-bottom:6px;}
+  .method-period{font-size:11.5px;color:var(--sub);margin-bottom:14px;}
+  .method-item h3{font-size:15px;font-weight:700;margin-bottom:8px;color:var(--main-dark);}
+  .method-item p{font-size:12.5px;color:var(--sub);}
+
+  /* Case results */
+  .case-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .case-card{background:var(--white);border:1px solid #ececec;border-radius:10px;padding:26px 20px;text-align:center;}
+  .case-card .tag{display:inline-block;font-size:11px;font-weight:700;color:var(--main);background:var(--accent-light);padding:3px 10px;border-radius:12px;margin-bottom:14px;}
+  .case-card .num{font-size:17px;font-weight:800;color:var(--main-dark);}
+  .case-card .num .arrow{color:var(--accent);margin:0 6px;}
+  .case-note{text-align:center;font-size:12px;color:#a3a3a3;margin-top:20px;}
+
+  /* Why us */
+  .reason-list{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:0;}
+  .reason-list li{list-style:none;display:flex;gap:20px;padding:26px 0;border-bottom:1px solid #eee;}
+  .reason-list li:last-child{border-bottom:none;}
+  .reason-num{font-size:22px;font-weight:800;color:var(--accent);flex-shrink:0;width:44px;}
+  .reason-body h3{font-size:16px;font-weight:700;color:var(--main-dark);margin-bottom:8px;}
+  .reason-body p{font-size:13.5px;color:var(--sub);}
+
+  /* Intro flow */
+  .flow-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .flow-item{background:var(--white);border:1px solid #ececec;border-radius:10px;padding:26px 22px;}
+  .flow-num{width:38px;height:38px;border-radius:50%;background:var(--main);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;margin-bottom:14px;}
+  .flow-item h3{font-size:14.5px;font-weight:700;margin-bottom:8px;color:var(--main-dark);}
+  .flow-item p{font-size:12.5px;color:var(--sub);}
+
+  /* FAQ */
+  .faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:14px;}
+  .faq-item{background:var(--white);border:1px solid #ececec;border-radius:10px;padding:22px 26px;}
+  .faq-q{font-size:15px;font-weight:700;color:var(--main-dark);display:flex;gap:10px;margin-bottom:8px;}
+  .faq-q span{color:var(--accent);}
+  .faq-a{font-size:13.5px;color:var(--sub);display:flex;gap:10px;}
+  .faq-a span{color:var(--main);font-weight:700;}
+
+  /* Founders */
+  .founder-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+  .founder-card{background:var(--white);border:1px solid #ececec;border-radius:10px;overflow:hidden;}
+  .founder-card img{width:100%;height:220px;object-fit:cover;}
+  .founder-body{padding:26px 26px 30px;}
+  .founder-role{font-size:12px;color:var(--accent);font-weight:800;letter-spacing:0.1em;margin-bottom:6px;}
+  .founder-body h3{font-size:18px;font-weight:800;color:var(--main-dark);margin-bottom:4px;}
+  .founder-en{font-size:12px;color:var(--sub);margin-bottom:14px;}
+  .founder-body p{font-size:13px;color:var(--sub);}
+
+  /* Company */
+  .company-table{width:100%;border-collapse:collapse;max-width:760px;margin:0 auto;background:#fff;border-radius:10px;overflow:hidden;border:1px solid #ececec;}
+  .company-table th,.company-table td{padding:18px 24px;text-align:left;font-size:14.5px;border-bottom:1px solid #eee;}
+  .company-table th{width:160px;background:var(--accent-light);color:var(--main-dark);font-weight:700;}
+  .company-table tr:last-child th,.company-table tr:last-child td{border-bottom:none;}
+
+  /* CTA */
+  .cta{background:var(--main-dark);color:#fff;text-align:center;padding:80px 24px;}
+  .cta h2{font-size:26px;font-weight:800;margin-bottom:16px;}
+  .cta p{color:#cbd6dd;margin-bottom:32px;}
+  .cta .btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .cta .btn-primary{background:var(--accent);color:#fff;}
+  .cta .btn-outline{border-color:#fff;color:#fff;}
+
+  footer{background:#0A182C;color:#c6d0d5;padding:48px 24px 24px;font-size:13px;}
+  .footer-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .footer-logo{font-size:17px;font-weight:800;color:#fff;margin-bottom:10px;}
+  .footer-links{display:flex;gap:24px;list-style:none;flex-wrap:wrap;}
+  .copyright{text-align:center;margin-top:32px;color:#7c8990;}
+
+  @media (max-width:900px){
+    .cards{grid-template-columns:1fr;}
+    .stat-grid{grid-template-columns:1fr;}
+    .fail-grid{grid-template-columns:1fr;}
+    .method-grid{grid-template-columns:1fr 1fr;}
+    .case-grid{grid-template-columns:1fr 1fr;}
+    .flow-grid{grid-template-columns:1fr 1fr;}
+    .founder-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:700px){
+    nav,.header-cta{display:none;}
+    .menu-toggle{display:block;}
+    .hero h1{font-size:25px;}
+    .hero{min-height:560px;}
+    .section{padding:60px 0;}
+    .problem-band{padding:60px 0;}
+    .method-grid{grid-template-columns:1fr;}
+    .case-grid{grid-template-columns:1fr 1fr;}
+    .flow-grid{grid-template-columns:1fr;}
+    .solution-box{padding:40px 26px;}
+    .company-table th{width:110px;font-size:13px;padding:14px;}
+    .company-table td{font-size:13px;padding:14px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">株式会社<span>ノビシロ</span></div>
+    <nav><ul>
+      <li><a href="#problem">課題</a></li>
+      <li><a href="#solution">解決策</a></li>
+      <li><a href="#case">実績</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li><a href="#company">会社概要</a></li>
+    </ul></nav>
+    <div class="header-cta">
+      <a href="recruit.html" class="btn btn-outline btn-small">採用情報</a>
+      <a href="#contact" class="btn btn-primary btn-small">無料診断を予約</a>
+    </div>
+    <button class="menu-toggle">≡</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">千葉県船橋市発／従業員10名規模の営業組織専門コンサルティング</span>
+    <h1>属人化を、<br>型と仕組みで超える。</h1>
+    <p>売上の7割を、社長とエース1〜2名で作っている——そんな営業組織の"勝ちパターン"を言語化・型化し、6ヶ月で「10人中10人が売れる」自走組織へ。</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-primary">無料診断（60分）を予約する</a>
+      <a href="#solution" class="btn btn-outline">解決策を見る</a>
+    </div>
+  </div>
+</section>
+
+<section class="problem-band" id="problem">
+  <div class="container">
+    <p class="section-title">PROBLEM</p>
+    <h2 class="section-heading">10名規模の営業組織が直面する3つの問題</h2>
+    <p class="section-lead">業績が伸びるほど、社長・エースへの依存も大きくなっていく——多くの中小企業が抱える共通の壁です。</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-num">01 ／ 型の問題</div>
+        <h3>勝ちパターンが社長・エースの頭の中にしかない</h3>
+        <p>ヒアリング・提案・切り返しが人によってバラバラ。勝率が高い行動が「暗黙知」として個人に貯まり、新人は何を真似していいか分からず自己流で迷走します。</p>
+      </div>
+      <div class="card">
+        <div class="card-num">02 ／ 仕組みの問題</div>
+        <h3>ボトルネックが特定できない</h3>
+        <p>SFAを入れても活用されずExcelで属人管理。KPIが「売上」だけでプロセス指標が無く、打ち手が見えないまま社長が現場を離れた瞬間に数字が崩れます。</p>
+      </div>
+      <div class="card">
+        <div class="card-num">03 ／ 感情の問題</div>
+        <h3>感情の摩擦がある</h3>
+        <p>「やらされ感」で現場のモチベーションが低下。伸び悩むメンバーほど"自分のやり方"を変えたがらず、導入したルールも3ヶ月で形骸化してしまいます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <p class="section-title">ROOT CAUSE</p>
+    <h2 class="section-heading">3つの問題の根本は、属人化です</h2>
+    <p class="section-lead">型・仕組み・感情——一見別々に見える3つの問題は、すべて「属人化」というひとつの根本原因に行き着きます。</p>
+    <div class="stat-grid">
+      <div class="stat-card">
+        <div class="big">5〜6割</div>
+        <h3>の中小企業が、すでに属人化対策に取り組み済み</h3>
+        <p>属人化対策は、もはや中小企業経営の標準になりつつあります。未着手の企業は約4〜5割。取り組まないこと自体が、競合との差を広げるリスクになります。</p>
+        <p class="src">出典：中小企業白書2025年版 第2-1-18図「組織運営の透明化への取組状況」</p>
+      </div>
+      <div class="stat-card">
+        <div class="big">付加価値額が明確に伸びる</div>
+        <h3>属人化対策に取り組む企業は、プラス成長</h3>
+        <p>業務の属人化を防ぐ取組をしている事業者は、ボトルネック工程の削減や業務標準化による効率アップを通じて、付加価値額の伸びにつながる傾向が確認されています（未対策企業は横ばい〜停滞）。</p>
+        <p class="src">出典：中小企業白書2025年版 第2-1-22図「付加価値額の変化率（取組状況別、中央値）」</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">COMMON MISTAKE</p>
+    <h2 class="section-heading">9割の経営者が"良かれ"と思って犯すよくある間違い</h2>
+    <p class="section-lead">属人化を超えようとして、多くの経営者が同じ打ち手に走るものの、そのいずれも属人化をかえって"深める"結果に終わります。</p>
+    <div class="fail-grid">
+      <div class="card light">
+        <div class="card-num">MISTAKE 01</div>
+        <h3>社長が全商談に同席し、トッププレイヤーを兼務し続ける</h3>
+        <p>売上は一時的に安定するが、社長自身がボトルネック化。組織が属人化から抜け出せません。</p>
+      </div>
+      <div class="card light">
+        <div class="card-num">MISTAKE 02</div>
+        <h3>エースの背中を見せるOJTで若手を育成する</h3>
+        <p>教える人によってバラつき、育成がエース1人の稼働と属人性に依存し続けます。</p>
+      </div>
+      <div class="card light">
+        <div class="card-num">MISTAKE 03</div>
+        <h3>SFA・営業管理ツールを導入して"仕組み化"した気になる</h3>
+        <p>箱だけ整っても入力する"型"がないため現場は疲弊し、3ヶ月で形骸化します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="solution">
+  <div class="container">
+    <p class="section-title">OUR SOLUTION</p>
+    <div class="solution-box">
+      <h2>エースの勝ちパターンを<em>型化</em>し、<br>10人中10人が売れる仕組み構築</h2>
+      <p>「うちも属人化しているのかな？」「型化って、何から始めればいい？」——その答えを、まずは60分の無料診断から一緒に見つけませんか。</p>
+      <a href="#contact" class="btn btn-primary">まずは話してみる</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">METHOD</p>
+    <h2 class="section-heading">6ヶ月で"自走組織"を完成させる4つのステップ</h2>
+    <p class="section-lead">現在地の可視化 → 型化 → 現場の定着 → マネジメントの仕組み化まで。御社固有の勝ちパターンを軸に、4つのステップで一貫支援します。</p>
+    <div class="method-grid">
+      <div class="method-item">
+        <div class="method-num">STEP 01</div>
+        <div class="method-period">1ヶ月目</div>
+        <h3>現在地の可視化</h3>
+        <p>営業プロセスを棚卸しし、ボトルネックを特定する</p>
+      </div>
+      <div class="method-item">
+        <div class="method-num">STEP 02</div>
+        <div class="method-period">2〜3ヶ月目</div>
+        <h3>勝ちパターンの型化</h3>
+        <p>エースの暗黙知を、全員が使えるスクリプト・テンプレに変換する</p>
+      </div>
+      <div class="method-item">
+        <div class="method-num">STEP 03</div>
+        <div class="method-period">4〜5ヶ月目</div>
+        <h3>定着の仕組み</h3>
+        <p>KPIと商談フィードバック体制で、型を全員に定着させる</p>
+      </div>
+      <div class="method-item">
+        <div class="method-num">STEP 04</div>
+        <div class="method-period">5〜6ヶ月目</div>
+        <h3>マネジメントの仕組み</h3>
+        <p>営業会議とナレッジ共有を整備し、社長不在でも回る組織にする</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="case">
+  <div class="container">
+    <p class="section-title">RESULTS</p>
+    <h2 class="section-heading">"売れる組織"を構築してきたプロジェクト事例</h2>
+    <p class="section-lead">業界・規模を問わず、属人化に向き合い"自走する売れる組織"を構築してきました。</p>
+    <div class="case-grid">
+      <div class="case-card"><span class="tag">BtoB営業</span><div class="num">700万円<span class="arrow">→</span>6億円</div></div>
+      <div class="case-card"><span class="tag">BtoC営業</span><div class="num">6億円<span class="arrow">→</span>36億円</div></div>
+      <div class="case-card"><span class="tag">BtoB営業</span><div class="num">8億円<span class="arrow">→</span>16億円</div></div>
+      <div class="case-card"><span class="tag">BtoB営業</span><div class="num">2千万円<span class="arrow">→</span>2億円</div></div>
+    </div>
+    <p class="case-note">※過去実施事例（〜2025年）</p>
+  </div>
+</section>
+
+<section class="section" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">WHY NOBISHIRO</p>
+    <h2 class="section-heading">なぜ、ノビシロが選ばれるのか</h2>
+    <ul class="reason-list">
+      <li>
+        <div class="reason-num">01</div>
+        <div class="reason-body"><h3>泥臭く現場に入り、社長と一緒に"型"をつくる伴走力</h3><p>社長やエースの頭の中の勝ちパターンを言語化するノウハウがあります。机上の空論ではなく、現場に入って二人三脚で型を作る、それがノビシロのスタイルです。</p></div>
+      </li>
+      <li>
+        <div class="reason-num">02</div>
+        <div class="reason-body"><h3>抽出から定着、"自走組織"完成まで一気通貫でやり切る力</h3><p>型を作って終わりではありません。社長が現場から解放される「第二創業」のステージまで、設計・実装・定着を一気通貫でやり切ります。</p></div>
+      </li>
+      <li>
+        <div class="reason-num">03</div>
+        <div class="reason-body"><h3>数々の営業組織を"仕組み"で変えてきた2名の実績</h3><p>BtoB・BtoCを問わず、さまざまな営業組織で属人化突破の成果を積み重ねてきました。その原体験を、御社の「属人化からの脱却」に全力で注ぎます。</p></div>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <p class="section-title">FLOW</p>
+    <h2 class="section-heading">導入までの流れ</h2>
+    <div class="flow-grid">
+      <div class="flow-item"><div class="flow-num">1</div><h3>無料診断のお申込み</h3><p>フォームから60秒で無料診断をお申込みください</p></div>
+      <div class="flow-item"><div class="flow-num">2</div><h3>営業組織のノビシロ特定会議</h3><p>営業組織の現状を60分ヒアリングし、改善の方向性をご提案します</p></div>
+      <div class="flow-item"><div class="flow-num">3</div><h3>ご提案・お見積もり</h3><p>ご支援内容と期間をご提示し、合意いただけましたらご契約となります</p></div>
+      <div class="flow-item"><div class="flow-num">4</div><h3>伴走支援開始</h3><p>ノビシロ式4ステップで、自走する売れる組織まで一気通貫で伴走します</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">FAQ</p>
+    <h2 class="section-heading">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-q"><span>Q</span>従業員10名規模でなくても相談できますか？</div><div class="faq-a"><span>A</span>主に従業員10名規模の営業組織を専門としていますが、それ以外の規模でもお気軽にご相談ください。</div></div>
+      <div class="faq-item"><div class="faq-q"><span>Q</span>どんな業界に対応していますか？</div><div class="faq-a"><span>A</span>BtoB・BtoC、業界問わず対応可能です。御社の勝ちパターンを言語化し、売れる営業組織へご支援いたします。</div></div>
+      <div class="faq-item"><div class="faq-q"><span>Q</span>支援期間はどのくらいですか？</div><div class="faq-a"><span>A</span>標準は6ヶ月（現在地の可視化→型化→現場の定着→マネジメントの仕組み化）です。状況により短縮・延長も可能です。</div></div>
+      <div class="faq-item"><div class="faq-q"><span>Q</span>費用はどのくらいかかりますか？</div><div class="faq-a"><span>A</span>御社の課題と支援範囲によって異なります。無料診断（60分）でヒアリング後、最適な支援内容と費用をご提案します。</div></div>
+      <div class="faq-item"><div class="faq-q"><span>Q</span>オンラインのみでも対応できますか？</div><div class="faq-a"><span>A</span>もちろん対応可能です。ただしノビシロは「現場に泥臭く入る伴走スタイル」を強みとしているため、現地訪問と組み合わせたハイブリッド型を推奨しています。</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="founders">
+  <div class="container">
+    <p class="section-title">FOUNDERS</p>
+    <h2 class="section-heading">代表者の紹介</h2>
+    <div class="founder-grid">
+      <div class="founder-card">
+        <img src="https://loremflickr.com/560/440/businessman,portrait,suit" alt="代表取締役 土屋朋彦">
+        <!-- 元画像URL：現サイト代表者写真（未取得・自社写真への差し替え前提） / images/founder-tsuchiya.jpg -->
+        <div class="founder-body">
+          <div class="founder-role">CEO ／ 代表取締役</div>
+          <h3>土屋 朋彦</h3>
+          <div class="founder-en">Tsuchiya Tomohiko</div>
+          <p>TOPPAN株式会社にて約14年間、法人営業の最前線に従事。「売上の大半をエースに依存する組織」の限界を実体験し、トップの暗黙知を誰でも再現可能な「型」へ仕組み化する改革に従事。現場の反発や感情の摩擦を鎮めるべく「SELプラクティショナー」資格も取得。</p>
+        </div>
+      </div>
+      <div class="founder-card">
+        <img src="https://loremflickr.com/560/440/businessman,portrait,office" alt="取締役 今関貴文">
+        <!-- 元画像URL：現サイト代表者写真（未取得・自社写真への差し替え前提） / images/founder-imazeki.jpg -->
+        <div class="founder-body">
+          <div class="founder-role">COO ／ 取締役</div>
+          <h3>今関 貴文</h3>
+          <div class="founder-en">Imazeki Takafumi</div>
+          <p>株式会社ガリバーインターナショナル（現IDOM）で8年、SUV専門ブランドの立ち上げや営業マネージャーを担当し、3店舗・20名から7店舗・60名へ拡大を経験。その後リクルートで6年、HR領域の営業企画・推進を担当。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="company" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">COMPANY</p>
+    <h2 class="section-heading">会社概要</h2>
+    <table class="company-table">
+      <tr><th>会社名</th><td>株式会社ノビシロ</td></tr>
+      <tr><th>設立</th><td>2025年10月</td></tr>
+      <tr><th>資本金</th><td>9,000,000円</td></tr>
+      <tr><th>代表取締役</th><td>土屋 朋彦</td></tr>
+      <tr><th>取締役</th><td>今関 貴文</td></tr>
+      <tr><th>事業内容</th><td>営業の仕組み構築コンサルティング</td></tr>
+      <tr><th>所在地</th><td>〒273-0005 千葉県船橋市本町4-36-19 1102</td></tr>
+      <tr><th>連絡先</th><td>info@nobishiro-group.com</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2>まずは60分の無料診断から、御社の"ノビシロ"を可視化しませんか</h2>
+  <p>売り込みは一切いたしません。営業組織の健康診断としてお使いください。オンライン対応・契約義務なし。</p>
+  <div class="btns">
+    <a href="https://nobishiro-group.com/contact.html" class="btn btn-primary">お問い合わせフォームへ</a>
+    <a href="https://nobishiro-group.com/" class="btn btn-outline">現在のサイトを見る</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">株式会社ノビシロ</div>
+      <p>千葉県船橋市本町4-36-19 1102<br>10名規模の営業組織専門コンサルティング</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#solution">解決策</a></li>
+      <li><a href="#case">実績</a></li>
+      <li><a href="recruit.html">採用情報</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </div>
+  <p class="copyright">©株式会社ノビシロ All rights reserved.</p>
+</footer>
+
+</body>
+</html>

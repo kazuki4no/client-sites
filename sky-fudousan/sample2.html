@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>株式会社SKY不動産｜東京・大阪・千葉の物件情報と不動産サポート</title>
+<style>
+  :root{
+    --main:#1B3A5C;
+    --main-dark:#10253B;
+    --accent:#C9974D;
+    --accent-light:#F5EBD8;
+    --text:#2B2B2B;
+    --sub:#6B6B6B;
+    --bg:#FCFBF8;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:var(--text);background:var(--bg);line-height:1.8;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .section{padding:88px 0;}
+  .section-title{font-size:14px;letter-spacing:0.2em;color:var(--accent);font-weight:700;text-align:center;margin-bottom:12px;}
+  .section-heading{font-size:30px;font-weight:700;text-align:center;margin-bottom:16px;letter-spacing:0.03em;color:var(--main-dark);}
+  .section-lead{text-align:center;color:var(--sub);max-width:640px;margin:0 auto 56px;font-size:15px;}
+
+  header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.96);border-bottom:1px solid #eee;backdrop-filter:blur(6px);}
+  .header-inner{max-width:1080px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-size:18px;font-weight:800;color:var(--main-dark);letter-spacing:0.01em;}
+  .logo span{color:var(--accent);}
+  nav ul{display:flex;gap:26px;list-style:none;}
+  nav a{font-size:13.5px;font-weight:600;}
+  nav a:hover{color:var(--main);}
+  .header-cta{display:flex;gap:10px;}
+  .btn{display:inline-block;padding:12px 28px;border-radius:4px;font-size:14px;font-weight:700;text-align:center;}
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-primary:hover{background:#b3803a;}
+  .btn-outline{border:1px solid var(--main);color:var(--main);}
+  .btn-outline:hover{background:var(--accent-light);}
+  .btn-small{padding:9px 18px;font-size:13px;}
+  .menu-toggle{display:none;font-size:26px;background:none;border:none;cursor:pointer;color:var(--main-dark);}
+
+  /* Full-bleed FV */
+  /* 元画像URL：現サイトTOPメインビジュアル（未取得・自社写真への差し替え前提） / images/fv-main.jpg */
+  .fv{
+    position:relative;height:88vh;min-height:560px;display:flex;align-items:flex-end;
+    background:linear-gradient(0deg, rgba(16,37,59,0.92) 10%, rgba(16,37,59,0.35) 60%, rgba(16,37,59,0.15)), url('https://loremflickr.com/1600/1000/tokyo,skyline,architecture') center/cover no-repeat;
+    color:#fff;
+  }
+  .fv-inner{max-width:1080px;margin:0 auto;padding:0 24px 64px;width:100%;}
+  .fv-eyebrow{font-size:13px;letter-spacing:0.25em;opacity:0.85;margin-bottom:18px;}
+  .fv h1{font-size:34px;font-weight:800;line-height:1.6;margin-bottom:24px;max-width:680px;}
+  .fv-btns{display:flex;gap:16px;flex-wrap:wrap;}
+  .fv .btn-outline{border-color:#fff;color:#fff;}
+
+  /* Property gallery band */
+  .works-band{background:var(--main-dark);padding:0;}
+  .works-grid{display:grid;grid-template-columns:repeat(3,1fr);}
+  .works-grid a{overflow:hidden;display:block;position:relative;}
+  .works-grid img{width:100%;height:220px;object-fit:cover;filter:brightness(0.85);transition:transform .3s;}
+  .works-grid a:hover img{transform:scale(1.06);}
+  .works-cap{position:absolute;left:0;bottom:0;padding:14px 18px;color:#fff;font-size:13.5px;font-weight:700;background:linear-gradient(0deg,rgba(0,0,0,0.55),transparent);width:100%;}
+
+  /* Strength row */
+  .strength-strip{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+  .strength-strip .item{flex:1;min-width:220px;text-align:center;padding:0 12px;}
+  .strength-strip .num{font-size:32px;font-weight:800;color:var(--accent);margin-bottom:10px;}
+  .strength-strip h3{font-size:15.5px;font-weight:700;color:var(--main-dark);margin-bottom:8px;}
+  .strength-strip p{font-size:13px;color:var(--sub);}
+
+  /* Service banners */
+  .banner{display:flex;align-items:center;gap:44px;margin-bottom:56px;}
+  .banner:last-child{margin-bottom:0;}
+  .banner.rev{flex-direction:row-reverse;}
+  .banner img{width:46%;height:300px;object-fit:cover;border-radius:10px;flex-shrink:0;}
+  .banner-body{flex:1;}
+  .banner-no{font-size:12px;color:var(--accent);font-weight:800;letter-spacing:0.15em;margin-bottom:10px;}
+  .banner-body h3{font-size:21px;font-weight:800;color:var(--main-dark);margin-bottom:14px;}
+  .banner-body p{font-size:14px;color:var(--sub);}
+
+  /* Company photo */
+  .company-photo-wrap{display:flex;gap:40px;align-items:center;}
+  .company-photo-wrap img{width:42%;border-radius:10px;object-fit:cover;height:340px;flex-shrink:0;}
+  .company-table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;border:1px solid #ececec;flex:1;}
+  .company-table th,.company-table td{padding:16px 22px;text-align:left;font-size:14px;border-bottom:1px solid #eee;}
+  .company-table th{width:130px;background:var(--accent-light);color:var(--main-dark);font-weight:700;}
+  .company-table tr:last-child th,.company-table tr:last-child td{border-bottom:none;}
+
+  .cta{background:var(--main-dark);color:#fff;text-align:center;padding:80px 24px;}
+  .cta h2{font-size:26px;font-weight:800;margin-bottom:16px;}
+  .cta p{color:#cdd8e2;margin-bottom:32px;}
+  .cta .btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .cta .btn-primary{background:var(--accent);color:#fff;}
+  .cta .btn-outline{border-color:#fff;color:#fff;}
+
+  footer{background:#0C1E30;color:#c6ccd2;padding:48px 24px 24px;font-size:13px;}
+  .footer-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .footer-logo{font-size:17px;font-weight:800;color:#fff;margin-bottom:10px;}
+  .footer-links{display:flex;gap:24px;list-style:none;flex-wrap:wrap;}
+  .copyright{text-align:center;margin-top:32px;color:#7c8792;}
+
+  @media (max-width:900px){
+    .works-grid{grid-template-columns:1fr 1fr;}
+    .strength-strip{flex-direction:column;}
+    .banner,.banner.rev{flex-direction:column;}
+    .banner img{width:100%;height:220px;}
+    .company-photo-wrap{flex-direction:column;}
+    .company-photo-wrap img{width:100%;}
+  }
+  @media (max-width:700px){
+    nav,.header-cta{display:none;}
+    .menu-toggle{display:block;}
+    .fv h1{font-size:24px;}
+    .fv{height:auto;min-height:480px;padding-top:40px;}
+    .section{padding:60px 0;}
+    .works-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">株式会社SKY<span>不動産</span></div>
+    <nav><ul>
+      <li><a href="#property">物件情報</a></li>
+      <li><a href="#service">事業内容</a></li>
+      <li><a href="#company">企業情報</a></li>
+    </ul></nav>
+    <div class="header-cta">
+      <a href="recruit.html" class="btn btn-outline btn-small">採用情報</a>
+      <a href="#contact" class="btn btn-primary btn-small">お問い合わせ</a>
+    </div>
+    <button class="menu-toggle">≡</button>
+  </div>
+</header>
+
+<section class="fv">
+  <div class="fv-inner">
+    <p class="fv-eyebrow">CHIBA / TOKYO / OSAKA　中国語対応の不動産・行政書士サービス</p>
+    <h1>東京・大阪・千葉のお部屋探しから、<br>投資用物件まで。</h1>
+    <div class="fv-btns">
+      <a href="#property" class="btn btn-primary">物件情報を見る</a>
+      <a href="#contact" class="btn btn-outline">お問い合わせ</a>
+    </div>
+  </div>
+</section>
+
+<section class="works-band" id="property">
+  <div class="works-grid">
+    <a href="https://sky-fudousan.co.jp/TOKYO-PROPERTY/">
+      <img src="https://loremflickr.com/560/440/tokyo,apartment,building" alt="東京物件情報">
+      <!-- 元画像URL：現サイト物件情報（未取得・自社写真への差し替え前提） / images/property-tokyo.jpg -->
+      <div class="works-cap">東京物件情報</div>
+    </a>
+    <a href="https://sky-fudousan.co.jp/OSAKA-PROPERTY/">
+      <img src="https://loremflickr.com/560/440/osaka,city,building" alt="大阪物件情報">
+      <!-- 元画像URL：現サイト物件情報（未取得・自社写真への差し替え前提） / images/property-osaka.jpg -->
+      <div class="works-cap">大阪物件情報</div>
+    </a>
+    <a href="https://sky-fudousan.co.jp/TIBA-PROPERTY/">
+      <img src="https://loremflickr.com/560/440/chiba,residential,street" alt="千葉物件情報">
+      <!-- 元画像URL：現サイト物件情報（未取得・自社写真への差し替え前提） / images/property-chiba.jpg -->
+      <div class="works-cap">千葉物件情報</div>
+    </a>
+  </div>
+</section>
+
+<section class="section" id="strength">
+  <div class="container">
+    <p class="section-title">STRENGTH</p>
+    <h2 class="section-heading">3つの強み</h2>
+    <p class="section-lead">代表自身が来日時に感じた「言語の壁」を原点に、外国籍のお客様に寄り添うサービスを提供しています。</p>
+    <div class="strength-strip">
+      <div class="item"><div class="num">01</div><h3>宅地建物取引士による対応</h3><p>代表・取締役ともに宅建士資格を保有。</p></div>
+      <div class="item"><div class="num">02</div><h3>行政書士業務との連携</h3><p>在留資格・契約書チェックまでワンストップ。</p></div>
+      <div class="item"><div class="num">03</div><h3>日本語・中国語対応</h3><p>3ヶ国語対応で、丁寧にご案内します。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="service" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">SERVICE</p>
+    <h2 class="section-heading">事業内容</h2>
+    <p class="section-lead">不動産売買・賃貸仲介から、行政書士業務による各種手続きサポートまで対応しています。</p>
+
+    <div class="banner">
+      <img src="https://loremflickr.com/560/380/tokyo,apartment,realestate" alt="不動産売買">
+      <!-- 元画像URL：現サイト事業内容ページ写真（未取得・自社写真への差し替え前提） / images/banner-baibai.jpg -->
+      <div class="banner-body">
+        <div class="banner-no">01 ／ 不動産売買</div>
+        <h3>中国語対応の安心サポートで、購入をもっと身近に</h3>
+        <p>千葉県船橋市および周辺エリアを中心に、中古住宅・マンション・投資用物件の売買仲介を行っています。日本での資産形成や移住を検討している中国語圏のお客様に、安心して不動産購入を進めていただけます。</p>
+      </div>
+    </div>
+
+    <div class="banner rev">
+      <img src="https://loremflickr.com/560/380/apartment,rental,japan" alt="不動産賃貸">
+      <!-- 元画像URL：現サイト事業内容ページ写真（未取得・自社写真への差し替え前提） / images/banner-chintai.jpg -->
+      <div class="banner-body">
+        <div class="banner-no">02 ／ 不動産賃貸</div>
+        <h3>留学生や就職者の住まい探しを、丁寧にお手伝い</h3>
+        <p>船橋市内および周辺エリアの賃貸物件を中心に、中国人留学生、就労ビザをお持ちの方、短期滞在の方などを対象とした賃貸仲介を行っています。契約手続きから入居後のフォローまで一貫してサポートします。</p>
+      </div>
+    </div>
+
+    <div class="banner">
+      <img src="https://loremflickr.com/560/380/documents,contract,office" alt="行政書士事業">
+      <!-- 元画像URL：現サイト事業内容ページ写真（未取得・自社写真への差し替え前提） / images/banner-gyosei.jpg -->
+      <div class="banner-body">
+        <div class="banner-no">03 ／ 行政書士事業</div>
+        <h3>在留手続きから契約書作成まで、不動産に強い行政書士が対応</h3>
+        <p>行政書士資格を有するスタッフが、不動産取引に関わる各種書類の作成・申請代行を行っています。外国籍のお客様にとって複雑な日本の行政手続きを、わかりやすくスムーズにサポートします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="company">
+  <div class="container">
+    <p class="section-title">COMPANY</p>
+    <h2 class="section-heading">企業情報</h2>
+    <div class="company-photo-wrap">
+      <img src="https://loremflickr.com/700/700/office,meeting,japan" alt="株式会社SKY不動産">
+      <!-- 元画像URL：現サイト自社・代表写真（未取得・自社写真への差し替え前提） / images/company-photo.jpg -->
+      <table class="company-table">
+        <tr><th>社名</th><td>株式会社SKY不動産</td></tr>
+        <tr><th>代表者</th><td>代表取締役 中野光博</td></tr>
+        <tr><th>設立</th><td>2025年4月3日／資本金 4,000,000円</td></tr>
+        <tr><th>事業内容</th><td>不動産売買／不動産賃貸／不動産管理／行政書士業務</td></tr>
+        <tr><th>所在地</th><td>千葉県船橋市芝山5-1-2 三共ビル202（〒274-0816）</td></tr>
+        <tr><th>電話番号</th><td>047-436-8387（FAX：047-436-8397）</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2>まずはお気軽にご相談ください</h2>
+  <p>不動産のご相談も、在留資格・法人設立などの行政書士業務のご相談も、お電話またはお問い合わせフォームより承っております。</p>
+  <div class="btns">
+    <a href="https://sky-fudousan.co.jp/contact/" class="btn btn-primary">お問い合わせフォームへ</a>
+    <a href="https://sky-fudousan.co.jp/" class="btn btn-outline">現在のサイトを見る</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">株式会社SKY不動産</div>
+      <p>千葉県船橋市芝山5-1-2 三共ビル202<br>不動産売買・賃貸・行政書士業務</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#property">物件情報</a></li>
+      <li><a href="#service">事業内容</a></li>
+      <li><a href="recruit.html">採用情報</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </div>
+  <p class="copyright">©株式会社SKY不動産 All rights reserved.</p>
+</footer>
+
+</body>
+</html>

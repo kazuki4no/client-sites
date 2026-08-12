@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REVERSE｜あなたの家に眠るゲーム、正当な価格で買い取ります</title>
+<style>
+  :root{
+    --main:#4A3FA0;
+    --main-dark:#2A2160;
+    --accent:#F2A93B;
+    --accent-light:#FBEFDA;
+    --text:#2B2B2B;
+    --sub:#6B6B6B;
+    --bg:#FCFCFA;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:var(--text);background:var(--bg);line-height:1.8;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .section{padding:88px 0;}
+  .section-title{font-size:14px;letter-spacing:0.2em;color:var(--accent);font-weight:700;text-align:center;margin-bottom:12px;}
+  .section-heading{font-size:30px;font-weight:700;text-align:center;margin-bottom:16px;letter-spacing:0.03em;color:var(--main-dark);}
+  .section-lead{text-align:center;color:var(--sub);max-width:640px;margin:0 auto 56px;font-size:15px;}
+
+  header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.96);border-bottom:1px solid #eee;backdrop-filter:blur(6px);}
+  .header-inner{max-width:1080px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-size:19px;font-weight:800;color:var(--main-dark);letter-spacing:0.02em;}
+  .logo span{color:var(--accent);}
+  nav ul{display:flex;gap:28px;list-style:none;}
+  nav a{font-size:14px;font-weight:600;}
+  nav a:hover{color:var(--main);}
+  .header-cta{display:flex;gap:10px;}
+  .btn{display:inline-block;padding:12px 28px;border-radius:4px;font-size:14px;font-weight:700;text-align:center;}
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-primary:hover{background:#d99327;}
+  .btn-outline{border:1px solid var(--main);color:var(--main);}
+  .btn-outline:hover{background:var(--accent-light);}
+  .btn-small{padding:9px 18px;font-size:13px;}
+  .menu-toggle{display:none;font-size:26px;background:none;border:none;cursor:pointer;color:var(--main-dark);}
+
+  /* Full-bleed FV */
+  /* 元画像URL：現サイトTOPメインビジュアル（未取得・自社写真への差し替え前提） / images/fv-main.jpg */
+  .fv{
+    position:relative;height:88vh;min-height:560px;display:flex;align-items:flex-end;
+    background:linear-gradient(0deg, rgba(42,33,96,0.94) 10%, rgba(42,33,96,0.4) 60%, rgba(42,33,96,0.15)), url('https://loremflickr.com/1600/1000/retro,gaming,arcade') center/cover no-repeat;
+    color:#fff;
+  }
+  .fv-inner{max-width:1080px;margin:0 auto;padding:0 24px 64px;width:100%;}
+  .fv-eyebrow{font-size:13px;letter-spacing:0.25em;opacity:0.85;margin-bottom:18px;}
+  .fv h1{font-size:34px;font-weight:800;line-height:1.6;margin-bottom:24px;max-width:680px;}
+  .fv-btns{display:flex;gap:16px;flex-wrap:wrap;}
+  .fv .btn-outline{border-color:#fff;color:#fff;}
+
+  /* Products gallery band */
+  .works-band{background:var(--main-dark);padding:0;}
+  .works-grid{display:grid;grid-template-columns:repeat(4,1fr);}
+  .works-grid a{overflow:hidden;display:block;position:relative;}
+  .works-grid img{width:100%;height:220px;object-fit:cover;filter:brightness(0.75);transition:transform .3s;}
+  .works-grid a:hover img{transform:scale(1.06);}
+  .works-label{position:absolute;left:0;bottom:0;right:0;padding:16px;color:#fff;font-size:14px;font-weight:700;background:linear-gradient(0deg,rgba(0,0,0,0.6),rgba(0,0,0,0));}
+
+  /* Strength row */
+  .strength-strip{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+  .strength-strip .item{flex:1;min-width:220px;text-align:center;padding:0 12px;}
+  .strength-strip .num{font-size:32px;font-weight:800;color:var(--accent);margin-bottom:10px;}
+  .strength-strip h3{font-size:15.5px;font-weight:700;color:var(--main-dark);margin-bottom:8px;}
+  .strength-strip p{font-size:13px;color:var(--sub);}
+
+  /* Buying method banners */
+  .banner{display:flex;align-items:center;gap:44px;margin-bottom:56px;}
+  .banner:last-child{margin-bottom:0;}
+  .banner.rev{flex-direction:row-reverse;}
+  .banner img{width:46%;height:300px;object-fit:cover;border-radius:10px;flex-shrink:0;}
+  .banner-body{flex:1;}
+  .banner-no{font-size:12px;color:var(--accent);font-weight:800;letter-spacing:0.15em;margin-bottom:10px;}
+  .banner-body h3{font-size:21px;font-weight:800;color:var(--main-dark);margin-bottom:14px;}
+  .banner-body p{font-size:14px;color:var(--sub);}
+
+  /* Results strip */
+  .result-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
+  .result-card{background:var(--white);border:1px solid #ececec;border-radius:10px;padding:22px 20px;}
+  .result-cat{font-size:12px;color:var(--accent);font-weight:800;letter-spacing:0.08em;margin-bottom:8px;}
+  .result-card h3{font-size:14.5px;font-weight:700;color:var(--main-dark);margin-bottom:10px;}
+  .result-price{font-size:20px;font-weight:800;color:var(--main);margin-bottom:10px;}
+  .result-price span{font-size:12px;font-weight:600;color:var(--sub);}
+  .result-comment{font-size:12.5px;color:var(--sub);}
+
+  /* Company photo */
+  .company-photo-wrap{display:flex;gap:40px;align-items:center;}
+  .company-photo-wrap img{width:42%;border-radius:10px;object-fit:cover;height:340px;flex-shrink:0;}
+  .company-table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;border:1px solid #ececec;flex:1;}
+  .company-table th,.company-table td{padding:16px 22px;text-align:left;font-size:14px;border-bottom:1px solid #eee;}
+  .company-table th{width:130px;background:var(--accent-light);color:var(--main-dark);font-weight:700;}
+  .company-table tr:last-child th,.company-table tr:last-child td{border-bottom:none;}
+
+  .cta{background:var(--main-dark);color:#fff;text-align:center;padding:80px 24px;}
+  .cta h2{font-size:26px;font-weight:800;margin-bottom:16px;}
+  .cta p{color:#d3cdef;margin-bottom:32px;}
+  .cta .btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .cta .btn-primary{background:var(--accent);color:#fff;}
+  .cta .btn-outline{border-color:#fff;color:#fff;}
+
+  footer{background:#1C1640;color:#c6c0da;padding:48px 24px 24px;font-size:13px;}
+  .footer-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .footer-logo{font-size:17px;font-weight:800;color:#fff;margin-bottom:10px;}
+  .footer-links{display:flex;gap:24px;list-style:none;flex-wrap:wrap;}
+  .copyright{text-align:center;margin-top:32px;color:#8b83ab;}
+
+  @media (max-width:900px){
+    .works-grid{grid-template-columns:1fr 1fr;}
+    .strength-strip{flex-direction:column;}
+    .banner,.banner.rev{flex-direction:column;}
+    .banner img{width:100%;height:220px;}
+    .company-photo-wrap{flex-direction:column;}
+    .company-photo-wrap img{width:100%;}
+    .result-strip{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:700px){
+    nav,.header-cta{display:none;}
+    .menu-toggle{display:block;}
+    .fv h1{font-size:24px;}
+    .fv{height:auto;min-height:480px;padding-top:40px;}
+    .section{padding:60px 0;}
+    .works-grid{grid-template-columns:1fr 1fr;}
+    .result-strip{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">RE<span>VERSE</span></div>
+    <nav><ul>
+      <li><a href="#products">買取品目</a></li>
+      <li><a href="#strength">選ばれる理由</a></li>
+      <li><a href="#company">会社概要</a></li>
+    </ul></nav>
+    <div class="header-cta">
+      <a href="recruit.html" class="btn btn-outline btn-small">採用情報</a>
+      <a href="#contact" class="btn btn-primary btn-small">買取を申込む</a>
+    </div>
+    <button class="menu-toggle">≡</button>
+  </div>
+</header>
+
+<section class="fv">
+  <div class="fv-inner">
+    <p class="fv-eyebrow">CHIBA / FUNABASHI　家庭用ゲーム機・レトロゲーム買取専門店</p>
+    <h1>あなたの家に眠ってるゲーム、<br>高く買い取ります。</h1>
+    <div class="fv-btns">
+      <a href="#contact" class="btn btn-primary">今すぐ買い取りを申込む</a>
+      <a href="#products" class="btn btn-outline">買取品目を見る</a>
+    </div>
+  </div>
+</section>
+
+<section class="works-band">
+  <div class="works-grid">
+    <a href="#products">
+      <img src="https://loremflickr.com/500/500/playstation,console" alt="ゲーム機本体の買取">
+      <!-- 元画像URL：現サイト製品ギャラリー（未取得） / images/works-console.jpg -->
+      <span class="works-label">ゲーム機本体</span>
+    </a>
+    <a href="#products">
+      <img src="https://loremflickr.com/500/500/arcade,cartridge,vintage" alt="ネオジオの買取">
+      <!-- 元画像URL：現サイト製品ギャラリー（未取得） / images/works-neogeo.jpg -->
+      <span class="works-label">ネオジオ</span>
+    </a>
+    <a href="#products">
+      <img src="https://loremflickr.com/500/500/retro,disc,console" alt="セガサターンの買取">
+      <!-- 元画像URL：現サイト製品ギャラリー（未取得） / images/works-saturn.jpg -->
+      <span class="works-label">セガサターン</span>
+    </a>
+    <a href="#products">
+      <img src="https://loremflickr.com/500/500/handheld,gameboy,retro" alt="ゲームギアの買取">
+      <!-- 元画像URL：現サイト製品ギャラリー（未取得） / images/works-gamegear.jpg -->
+      <span class="works-label">ゲームギア</span>
+    </a>
+  </div>
+</section>
+
+<section class="section" id="strength">
+  <div class="container">
+    <p class="section-title">STRENGTH</p>
+    <h2 class="section-heading">3つの強み</h2>
+    <p class="section-lead">専門スタッフによる丁寧な査定と幅広いジャンルへの対応力で、大切なゲームの価値を正当に見極めます。</p>
+    <div class="strength-strip">
+      <div class="item"><div class="num">01</div><h3>専門スタッフによる丁寧な査定</h3><p>最新の市場価格をもとに一点ずつ査定。</p></div>
+      <div class="item"><div class="num">02</div><h3>幅広いジャンルに対応</h3><p>現行機からレトロゲームまで幅広く買取。</p></div>
+      <div class="item"><div class="num">03</div><h3>古物商許可済みの安心運営</h3><p>千葉県公安委員会の許可を取得して運営。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="products" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">HOW TO SELL</p>
+    <h2 class="section-heading">3つの買取方法</h2>
+    <p class="section-lead">ご都合に合わせて、LINE・宅配・出張の3つの方法からお選びいただけます。</p>
+
+    <div class="banner">
+      <img src="https://loremflickr.com/560/380/smartphone,photography,hand" alt="LINE査定">
+      <!-- 元画像URL：現サイト該当写真（未取得・自社写真への差し替え前提） / images/banner-line.jpg -->
+      <div class="banner-body">
+        <div class="banner-no">01 ／ LINE査定</div>
+        <h3>友だち追加して、写真を送るだけ</h3>
+        <p>『REVERSE』を友だちに追加し、売りたいお品物の写真を撮影して送信いただくだけ。製品名や商品状態と合わせてお送りいただければ、その情報をもとに査定いたします。</p>
+      </div>
+    </div>
+
+    <div class="banner rev">
+      <img src="https://loremflickr.com/560/380/shipping,box,delivery" alt="宅配買取">
+      <!-- 元画像URL：現サイト該当写真（未取得・自社写真への差し替え前提） / images/banner-delivery.jpg -->
+      <div class="banner-body">
+        <div class="banner-no">02 ／ 宅配買取</div>
+        <h3>店舗にお越しいただかなくてもOK</h3>
+        <p>お品物を送っていただくだけで査定が完了。宅配キットは弊社からお送りしますので、届いたら梱包して発送するだけです。</p>
+      </div>
+    </div>
+
+    <div class="banner">
+      <img src="https://loremflickr.com/560/380/home,visit,japan" alt="出張買取">
+      <!-- 元画像URL：現サイト該当写真（未取得・自社写真への差し替え前提） / images/banner-visit.jpg -->
+      <div class="banner-body">
+        <div class="banner-no">03 ／ 出張買取</div>
+        <h3>ご自宅にいながら、その場で買取</h3>
+        <p>弊社スタッフが直接ご自宅に訪問し、売りたいお品物をその場で査定。ご承諾いただければ、その場で買取金額をお支払いします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="results">
+  <div class="container">
+    <p class="section-title">PURCHASE RESULTS</p>
+    <h2 class="section-heading">最新の買取実績</h2>
+    <div class="result-strip">
+      <div class="result-card">
+        <div class="result-cat">ネオジオ</div>
+        <h3>ネオジオ本体・ソフト</h3>
+        <div class="result-price">60,000<span>円（3点）</span></div>
+        <p class="result-comment">ソフトは説明書付属で綺麗な状態でした！</p>
+      </div>
+      <div class="result-card">
+        <div class="result-cat">メガドライブ</div>
+        <h3>メガドライブ本体+ソフト</h3>
+        <div class="result-price">22,000<span>円（24本）</span></div>
+        <p class="result-comment">ソフト大量、本体は不動でも買取保証で対応！</p>
+      </div>
+      <div class="result-card">
+        <div class="result-cat">セガサターン</div>
+        <h3>セガサターンソフト</h3>
+        <div class="result-price">32,000<span>円（47本）</span></div>
+        <p class="result-comment">ソフトは帯ありで大変綺麗な状態でした！</p>
+      </div>
+      <div class="result-card">
+        <div class="result-cat">ゲーム機本体</div>
+        <h3>PSP本体</h3>
+        <div class="result-price">28,000<span>円（3台）</span></div>
+        <p class="result-comment">本体はすべて稼働品できれいな状態でした！</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="company" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">COMPANY</p>
+    <h2 class="section-heading">会社概要</h2>
+    <div class="company-photo-wrap">
+      <img src="https://loremflickr.com/700/700/warehouse,boxes,japan" alt="REVERSE">
+      <!-- 元画像URL：現サイト自社写真（未取得・自社写真への差し替え前提） / images/company-photo.jpg -->
+      <table class="company-table">
+        <tr><th>運営元</th><td>REVERSE</td></tr>
+        <tr><th>古物商許可証</th><td>千葉県公安委員会 第441040002863号</td></tr>
+        <tr><th>所在地</th><td>千葉県船橋市浜町2丁目2番1号</td></tr>
+        <tr><th>電話番号</th><td>080-4923-4783</td></tr>
+        <tr><th>買取方法</th><td>LINE査定／宅配買取／出張買取</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2>まずはお気軽に、査定のご相談から</h2>
+  <p>買取申込み・お問い合わせは、お問い合わせフォームまたはお電話から承っております。</p>
+  <div class="btns">
+    <a href="https://www.kaitori-reverse.com/contact.html" class="btn btn-primary">お問い合わせフォームへ</a>
+    <a href="https://www.kaitori-reverse.com/" class="btn btn-outline">現在のサイトを見る</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">REVERSE</div>
+      <p>千葉県船橋市浜町2丁目2番1号<br>家庭用ゲーム機・レトロゲーム買取専門店</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#products">買取品目</a></li>
+      <li><a href="recruit.html">採用情報</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </div>
+  <p class="copyright">©REVERSE All rights reserved.</p>
+</footer>
+
+</body>
+</html>

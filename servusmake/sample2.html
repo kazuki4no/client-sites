@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>株式会社ServusMake｜千葉県船橋市発、AI・自動化に強い開発パートナー</title>
+<style>
+  :root{
+    --main:#3949AB;
+    --main-dark:#1A237E;
+    --accent:#7C4DFF;
+    --accent-light:#F1ECFF;
+    --text:#24262F;
+    --sub:#666B78;
+    --bg:#F9F9FC;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:var(--text);background:var(--bg);line-height:1.8;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .section{padding:88px 0;}
+  .section-title{font-size:14px;letter-spacing:0.2em;color:var(--accent);font-weight:700;text-align:center;margin-bottom:12px;}
+  .section-heading{font-size:30px;font-weight:700;text-align:center;margin-bottom:16px;letter-spacing:0.03em;color:var(--main-dark);}
+  .section-lead{text-align:center;color:var(--sub);max-width:640px;margin:0 auto 56px;font-size:15px;}
+
+  header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.96);border-bottom:1px solid #eee;backdrop-filter:blur(6px);}
+  .header-inner{max-width:1080px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-size:19px;font-weight:800;color:var(--main-dark);letter-spacing:0.02em;}
+  .logo span{color:var(--accent);}
+  nav ul{display:flex;gap:28px;list-style:none;}
+  nav a{font-size:14px;font-weight:600;}
+  nav a:hover{color:var(--main);}
+  .header-cta{display:flex;gap:10px;}
+  .btn{display:inline-block;padding:12px 28px;border-radius:4px;font-size:14px;font-weight:700;text-align:center;}
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-primary:hover{background:#6636e0;}
+  .btn-outline{border:1px solid var(--main);color:var(--main);}
+  .btn-outline:hover{background:var(--accent-light);}
+  .btn-small{padding:9px 18px;font-size:13px;}
+  .menu-toggle{display:none;font-size:26px;background:none;border:none;cursor:pointer;color:var(--main-dark);}
+
+  /* Full-bleed FV */
+  /* 元画像URL：現サイトTOPメインビジュアル（未取得・自社写真への差し替え前提） / images/fv-main.jpg */
+  .fv{
+    position:relative;height:88vh;min-height:560px;display:flex;align-items:flex-end;
+    background:linear-gradient(0deg, rgba(26,35,126,0.94) 10%, rgba(26,35,126,0.4) 60%, rgba(26,35,126,0.15)), url('https://loremflickr.com/1600/1000/startup,office,team') center/cover no-repeat;
+    color:#fff;
+  }
+  .fv-inner{max-width:1080px;margin:0 auto;padding:0 24px 64px;width:100%;}
+  .fv-eyebrow{font-size:13px;letter-spacing:0.25em;opacity:0.85;margin-bottom:18px;}
+  .fv h1{font-size:34px;font-weight:800;line-height:1.6;margin-bottom:24px;max-width:680px;}
+  .fv-btns{display:flex;gap:16px;flex-wrap:wrap;}
+  .fv .btn-outline{border-color:#fff;color:#fff;}
+
+  /* Works gallery band */
+  .works-band{background:var(--main-dark);padding:0;}
+  .works-grid{display:grid;grid-template-columns:repeat(4,1fr);}
+  .works-grid a{overflow:hidden;display:block;position:relative;}
+  .works-grid img{width:100%;height:220px;object-fit:cover;filter:brightness(0.85);transition:transform .3s;}
+  .works-grid a:hover img{transform:scale(1.06);}
+  .works-cap{position:absolute;left:0;bottom:0;right:0;padding:14px 16px;background:linear-gradient(0deg,rgba(0,0,0,0.7),transparent);color:#fff;font-size:12.5px;font-weight:700;}
+
+  /* Strength row */
+  .strength-strip{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+  .strength-strip .item{flex:1;min-width:220px;text-align:center;padding:0 12px;}
+  .strength-strip .num{font-size:32px;font-weight:800;color:var(--accent);margin-bottom:10px;}
+  .strength-strip h3{font-size:15.5px;font-weight:700;color:var(--main-dark);margin-bottom:8px;}
+  .strength-strip p{font-size:13px;color:var(--sub);}
+
+  /* Service banners */
+  .banner{display:flex;align-items:center;gap:44px;margin-bottom:56px;}
+  .banner:last-child{margin-bottom:0;}
+  .banner.rev{flex-direction:row-reverse;}
+  .banner img{width:46%;height:300px;object-fit:cover;border-radius:10px;flex-shrink:0;}
+  .banner-body{flex:1;}
+  .banner-no{font-size:12px;color:var(--accent);font-weight:800;letter-spacing:0.15em;margin-bottom:10px;}
+  .banner-body h3{font-size:21px;font-weight:800;color:var(--main-dark);margin-bottom:14px;}
+  .banner-body p{font-size:14px;color:var(--sub);margin-bottom:14px;}
+  .banner-body ul{list-style:none;font-size:13px;color:var(--sub);}
+  .banner-body ul li{padding-left:16px;position:relative;margin-bottom:6px;}
+  .banner-body ul li::before{content:"・";position:absolute;left:0;color:var(--accent);}
+
+  /* Company photo */
+  .company-photo-wrap{display:flex;gap:40px;align-items:center;}
+  .company-photo-wrap img{width:42%;border-radius:10px;object-fit:cover;height:340px;flex-shrink:0;}
+  .company-table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;border:1px solid #ececec;flex:1;}
+  .company-table th,.company-table td{padding:16px 22px;text-align:left;font-size:14px;border-bottom:1px solid #eee;}
+  .company-table th{width:130px;background:var(--accent-light);color:var(--main-dark);font-weight:700;}
+  .company-table tr:last-child th,.company-table tr:last-child td{border-bottom:none;}
+
+  .cta{background:var(--main-dark);color:#fff;text-align:center;padding:80px 24px;}
+  .cta h2{font-size:26px;font-weight:800;margin-bottom:16px;}
+  .cta p{color:#c9cdf0;margin-bottom:32px;}
+  .cta .btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .cta .btn-primary{background:var(--accent);color:#fff;}
+  .cta .btn-outline{border-color:#fff;color:#fff;}
+
+  footer{background:#12153B;color:#c6c9e0;padding:48px 24px 24px;font-size:13px;}
+  .footer-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .footer-logo{font-size:17px;font-weight:800;color:#fff;margin-bottom:10px;}
+  .footer-links{display:flex;gap:24px;list-style:none;flex-wrap:wrap;}
+  .copyright{text-align:center;margin-top:32px;color:#7a7ea0;}
+
+  @media (max-width:900px){
+    .works-grid{grid-template-columns:1fr 1fr;}
+    .strength-strip{flex-direction:column;}
+    .banner,.banner.rev{flex-direction:column;}
+    .banner img{width:100%;height:220px;}
+    .company-photo-wrap{flex-direction:column;}
+    .company-photo-wrap img{width:100%;}
+  }
+  @media (max-width:700px){
+    nav,.header-cta{display:none;}
+    .menu-toggle{display:block;}
+    .fv h1{font-size:24px;}
+    .fv{height:auto;min-height:480px;padding-top:40px;}
+    .section{padding:60px 0;}
+    .works-grid{grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">Servus<span>Make</span></div>
+    <nav><ul>
+      <li><a href="#service">サービス</a></li>
+      <li><a href="#strength">選ばれる理由</a></li>
+      <li><a href="#company">会社概要</a></li>
+    </ul></nav>
+    <div class="header-cta">
+      <a href="recruit.html" class="btn btn-outline btn-small">採用情報</a>
+      <a href="#contact" class="btn btn-primary btn-small">お問い合わせ</a>
+    </div>
+    <button class="menu-toggle">≡</button>
+  </div>
+</header>
+
+<section class="fv">
+  <div class="fv-inner">
+    <p class="fv-eyebrow">CHIBA / FUNABASHI　Web開発・AI導入・業務自動化の開発パートナー</p>
+    <h1>ただ作るだけじゃなく、<br>今とその先を見据えて最適な開発を。</h1>
+    <div class="fv-btns">
+      <a href="#contact" class="btn btn-primary">無料相談はこちら</a>
+      <a href="#service" class="btn btn-outline">サービス内容を見る</a>
+    </div>
+  </div>
+</section>
+
+<section class="works-band">
+  <div class="works-grid">
+    <a href="#works">
+      <img src="https://loremflickr.com/500/440/meeting,office,japan" alt="MTG動画から議事録・スライド自動生成">
+      <!-- 元画像URL：現サイト該当写真なし（未取得・自社写真への差し替え前提） / images/works-1.jpg -->
+      <div class="works-cap">議事録・スライド自動生成</div>
+    </a>
+    <a href="#works">
+      <img src="https://loremflickr.com/500/440/server,database,technology" alt="RAGベースの社内ナレッジ検索">
+      <!-- 元画像URL：現サイト該当写真なし（未取得・自社写真への差し替え前提） / images/works-2.jpg -->
+      <div class="works-cap">社内ナレッジ検索システム</div>
+    </a>
+    <a href="#works">
+      <img src="https://loremflickr.com/500/440/chatbot,smartphone,app" alt="LINE公式アカウントのAIチャットボット">
+      <!-- 元画像URL：現サイト該当写真なし（未取得・自社写真への差し替え前提） / images/works-3.jpg -->
+      <div class="works-cap">LINE AIチャットボット</div>
+    </a>
+    <a href="#works">
+      <img src="https://loremflickr.com/500/440/warehouse,inventory,shopping" alt="Shopify連携による在庫管理システム">
+      <!-- 元画像URL：現サイト該当写真なし（未取得・自社写真への差し替え前提） / images/works-4.jpg -->
+      <div class="works-cap">Shopify在庫管理連携</div>
+    </a>
+  </div>
+</section>
+
+<section class="section" id="strength">
+  <div class="container">
+    <p class="section-title">VALUE</p>
+    <h2 class="section-heading">ServusMakeが大切にしていること</h2>
+    <p class="section-lead">システムを「作る」ことを目的とせず、お客様のビジネスの成長を支えるために存在しています。技術とコミュニケーションの両面から価値を提供することを約束します。</p>
+    <div class="strength-strip">
+      <div class="item"><div class="num">01</div><h3>目的から逆算する提案</h3><p>課題と現状を丁寧に整理し、最適な方法で開発を支援します。</p></div>
+      <div class="item"><div class="num">02</div><h3>伴走型のパートナー</h3><p>全てをお任せいただくのではなく、一緒に成長する体制で臨みます。</p></div>
+      <div class="item"><div class="num">03</div><h3>技術とビジネス視点の両立</h3><p>お客様のビジネスを深く理解した上で、技術力で応えます。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="service" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">SERVICE</p>
+    <h2 class="section-heading">サービス内容</h2>
+    <p class="section-lead">Web開発・AI導入・業務自動化の3軸で、ビジネスの仕組みを支える開発を行っています。</p>
+
+    <div class="banner">
+      <img src="https://loremflickr.com/560/380/coding,developer,screen" alt="Webシステム開発">
+      <!-- 元画像URL：現サイト該当写真なし（未取得・自社写真への差し替え前提） / images/banner-web.jpg -->
+      <div class="banner-body">
+        <div class="banner-no">01 ／ Webシステム開発</div>
+        <h3>ビジネスの成長に合わせて、柔軟に育つシステムを</h3>
+        <p>Next.js、Laravel、AWSなどの最新技術スタックを用いて、業務システムやEC連携システムを構築します。スケーラビリティと保守性を考慮した設計で、事業の成長に対応できるシステムを提供します。</p>
+        <ul>
+          <li>Next.js／Reactによるモダンなフロントエンド開発</li>
+          <li>Laravel／PHPによるバックエンドAPI構築</li>
+          <li>AWSを活用したクラウドインフラ設計・構築</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="banner rev">
+      <img src="https://loremflickr.com/560/380/robot,automation,technology" alt="業務自動化・AI導入">
+      <!-- 元画像URL：現サイト該当写真なし（未取得・自社写真への差し替え前提） / images/banner-ai.jpg -->
+      <div class="banner-body">
+        <div class="banner-no">02 ／ 業務自動化・AI導入</div>
+        <h3>日々の定型作業を、AIとワークフローで効率化</h3>
+        <p>n8nやChatGPTを活用した業務プロセスの自動化により、日々の定型作業を効率化します。ナレッジ検索システムの構築や議事録自動生成で、会議後の作業負担も軽減します。</p>
+        <ul>
+          <li>n8nによるワークフロー自動化</li>
+          <li>ChatGPT・RAGを活用したナレッジ検索</li>
+          <li>議事録・要約の自動生成システム</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="banner">
+      <img src="https://loremflickr.com/560/380/smartphone,chat,shopping" alt="LINE・Shopify連携開発">
+      <!-- 元画像URL：現サイト該当写真なし（未取得・自社写真への差し替え前提） / images/banner-line.jpg -->
+      <div class="banner-body">
+        <div class="banner-no">03 ／ LINE・Shopify連携開発</div>
+        <h3>顧客とのつながりと、EC運営の効率化を両立</h3>
+        <p>LINE公式アカウントの拡張機能開発により、顧客とのコミュニケーションを強化。Shopifyと社内管理システムを統合し、EC運営の効率化と売上データの一元管理を実現します。</p>
+        <ul>
+          <li>LINEチャットボット・予約システム構築</li>
+          <li>Shopify連携による商品・在庫管理システム</li>
+          <li>EC売上データの可視化・分析ツール</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="company">
+  <div class="container">
+    <p class="section-title">COMPANY</p>
+    <h2 class="section-heading">会社概要</h2>
+    <div class="company-photo-wrap">
+      <img src="https://loremflickr.com/700/700/office,team,japan" alt="株式会社ServusMake">
+      <!-- 元画像URL：現サイト該当写真なし（未取得・自社写真への差し替え前提） / images/company-photo.jpg -->
+      <table class="company-table">
+        <tr><th>社名</th><td>株式会社ServusMake（サーヴァスメイク）</td></tr>
+        <tr><th>代表</th><td>代表取締役　田口 絢基</td></tr>
+        <tr><th>設立</th><td>2025年09月</td></tr>
+        <tr><th>事業内容</th><td>Webシステム開発／AI・業務自動化ソリューション／LINE・EC連携開発／運用改善支援</td></tr>
+        <tr><th>所在地</th><td>千葉県船橋市印内町564-8　サウスサイドビル4階 No.10</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2>一緒に、最適な「作る」を見つけましょう</h2>
+  <p>「こんなことできるかな？」という段階からお気軽にご連絡ください。初回のご相談は無料です。</p>
+  <div class="btns">
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSel8XK0UT2fqOskX04L444nEu5gmcIQIQmIVCQZqOvj8V8Ogw/viewform" class="btn btn-primary">お問い合わせフォームへ</a>
+    <a href="https://servusmake.com/" class="btn btn-outline">現在のサイトを見る</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">株式会社ServusMake</div>
+      <p>千葉県船橋市印内町564-8　サウスサイドビル4階 No.10<br>Web開発・AI導入・業務自動化の開発パートナー</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#service">サービス</a></li>
+      <li><a href="recruit.html">採用情報</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </div>
+  <p class="copyright">© 2025 ServusMake Inc. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

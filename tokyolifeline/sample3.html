@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>東京生活合同会社｜日本の"良いもの"を、必要としている人に確実に届ける</title>
+<style>
+  :root{
+    --main:#1D3557;
+    --main-dark:#12233A;
+    --accent:#C79A46;
+    --accent-light:#F6EFE0;
+    --text:#2B2B2B;
+    --sub:#6B6B6B;
+    --bg:#FCFBF8;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:var(--text);background:var(--bg);line-height:1.8;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1040px;margin:0 auto;padding:0 24px;}
+  .section{padding:80px 0;}
+  .section-title{font-size:14px;letter-spacing:0.2em;color:var(--accent);font-weight:700;text-align:center;margin-bottom:12px;}
+  .section-heading{font-size:28px;font-weight:700;text-align:center;margin-bottom:16px;letter-spacing:0.03em;color:var(--main-dark);}
+  .section-lead{text-align:center;color:var(--sub);max-width:600px;margin:0 auto 48px;font-size:14.5px;}
+
+  header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.96);border-bottom:1px solid #eee;backdrop-filter:blur(6px);}
+  .header-inner{max-width:1040px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-size:18px;font-weight:800;color:var(--main-dark);}
+  .logo span{color:var(--accent);font-size:12.5px;font-weight:700;margin-left:4px;}
+  .header-cta{display:flex;gap:10px;}
+  .btn{display:inline-block;padding:12px 26px;border-radius:4px;font-size:14px;font-weight:700;text-align:center;}
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-primary:hover{background:#ad823a;}
+  .btn-outline{border:1px solid var(--main);color:var(--main);}
+  .btn-small{padding:8px 16px;font-size:12.5px;}
+  .menu-toggle{display:none;font-size:26px;background:none;border:none;cursor:pointer;color:var(--main-dark);}
+
+  /* Diagnostic-style hero */
+  /* 元画像URL：現サイトTOPメインビジュアル（未取得・自社写真への差し替え前提） / images/hook-hero.jpg */
+  .diag-hero{background:linear-gradient(180deg,#1D3557 0%,#12233A 100%);color:#fff;padding:72px 24px 60px;text-align:center;}
+  .diag-hero .eyebrow{font-size:13px;letter-spacing:0.2em;color:#cdb98a;margin-bottom:18px;}
+  .diag-hero h1{font-size:29px;font-weight:800;line-height:1.65;max-width:720px;margin:0 auto 20px;}
+  .diag-hero h1 em{color:var(--accent);font-style:normal;}
+  .diag-hero p{max-width:580px;margin:0 auto 36px;font-size:14.5px;color:#d8e0ea;}
+
+  .check-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:840px;margin:0 auto;text-align:left;}
+  .check-item{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.2);border-radius:8px;padding:16px 18px;font-size:13.5px;display:flex;gap:10px;align-items:flex-start;}
+  .check-item::before{content:"✓";color:var(--accent);font-weight:800;flex-shrink:0;}
+
+  /* Sign cards */
+  .sign-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  .sign-card{background:var(--white);border-left:4px solid var(--accent);border-radius:6px;padding:26px 26px;box-shadow:0 2px 10px rgba(0,0,0,0.04);}
+  .sign-card h3{font-size:16px;font-weight:700;color:var(--main-dark);margin-bottom:10px;}
+  .sign-card p{font-size:13.5px;color:var(--sub);}
+
+  /* Service compact */
+  .service-compact{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+  .service-pill{background:var(--white);border:1px solid #ececec;border-radius:8px;padding:24px 18px;text-align:center;}
+  .service-pill .icon{width:44px;height:44px;border-radius:50%;background:var(--accent-light);color:var(--accent);font-weight:800;display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-size:13px;}
+  .service-pill h3{font-size:14.5px;font-weight:700;color:var(--main-dark);margin-bottom:6px;}
+  .service-pill p{font-size:12.5px;color:var(--sub);}
+
+  /* Product gallery */
+  .case-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;}
+  .case-card{background:var(--white);border:1px solid #ececec;border-radius:8px;overflow:hidden;}
+  .case-card img{width:100%;height:130px;object-fit:cover;}
+  .case-card .cap{padding:12px 14px;font-size:13px;color:var(--main-dark);font-weight:700;text-align:center;}
+
+  /* FAQ */
+  .faq-list{max-width:720px;margin:0 auto;display:flex;flex-direction:column;gap:10px;}
+  .faq-item{background:var(--white);border:1px solid #ececec;border-radius:8px;padding:18px 22px;}
+  .faq-q{font-size:14.5px;font-weight:700;color:var(--main-dark);display:flex;gap:10px;margin-bottom:6px;}
+  .faq-q span{color:var(--accent);}
+  .faq-a{font-size:13px;color:var(--sub);display:flex;gap:10px;}
+  .faq-a span{color:var(--main);font-weight:700;}
+
+  .cta-strip{background:var(--accent);color:#fff;text-align:center;padding:56px 24px;}
+  .cta-strip h2{font-size:22px;font-weight:800;margin-bottom:14px;}
+  .cta-strip p{margin-bottom:26px;opacity:0.95;font-size:14px;}
+  .cta-strip .btn-primary{background:#fff;color:var(--accent);}
+  .cta-strip .btn-outline{border-color:#fff;color:#fff;}
+  .cta-strip .btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+
+  footer{background:#0E1E30;color:#c6ccd5;padding:40px 24px 22px;font-size:13px;text-align:center;}
+  footer .footer-logo{color:#fff;font-weight:800;font-size:16px;margin-bottom:8px;}
+  footer .footer-links{display:flex;gap:20px;justify-content:center;list-style:none;flex-wrap:wrap;margin:14px 0;}
+  .copyright{margin-top:20px;color:#7c8792;}
+
+  @media (max-width:900px){
+    .check-grid{grid-template-columns:1fr 1fr;}
+    .sign-grid{grid-template-columns:1fr;}
+    .service-compact{grid-template-columns:1fr 1fr;}
+    .case-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:700px){
+    .header-cta a:first-child{display:none;}
+    .diag-hero h1{font-size:22px;}
+    .check-grid{grid-template-columns:1fr;}
+    .section{padding:56px 0;}
+    .service-compact{grid-template-columns:1fr;}
+    .case-grid{grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">東京生活<span>合同会社</span></div>
+    <div class="header-cta">
+      <a href="recruit.html" class="btn btn-outline btn-small">採用情報</a>
+      <a href="#contact" class="btn btn-primary btn-small">お問い合わせ</a>
+    </div>
+    <button class="menu-toggle">≡</button>
+  </div>
+</header>
+
+<section class="diag-hero">
+  <p class="eyebrow">千葉県船橋市発 ／ 国際貿易・EC・実店舗事業</p>
+  <h1>日本の<em>「良いもの」</em>を、<br>必要としている人に、確実に届ける。</h1>
+  <p>東京の上質な商品と洗練されたライフスタイルを世界へ届けることを使命に、日用品から高級商材まで、厳選した商品を安定的に供給しています。</p>
+  <div class="check-grid">
+    <div class="check-item">信頼できる日本の仕入れ先が見つからない</div>
+    <div class="check-item">品質管理された商品を安定的に仕入れたい</div>
+    <div class="check-item">東南アジア向けの輸出ノウハウがない</div>
+    <div class="check-item">小規模からでも継続的な取引をしたい</div>
+    <div class="check-item">日用品から嗜好品まで幅広く相談したい</div>
+    <div class="check-item">実際に商品を確認してから仕入れたい</div>
+  </div>
+  <div style="margin-top:36px;">
+    <a href="#contact" class="btn btn-primary">まずはお問い合わせ</a>
+  </div>
+</section>
+
+<section class="section" id="reason">
+  <div class="container">
+    <p class="section-title">REASON</p>
+    <h2 class="section-heading">東京生活合同会社が選ばれる理由</h2>
+    <p class="section-lead">誠実な取引と品質重視の姿勢を貫き、お客様とともに成長し続けてまいります。</p>
+    <div class="sign-grid">
+      <div class="sign-card"><h3>厳格な品質管理</h3><p>安心・安全な商品を、厳しい品質管理のもとでお届けします。</p></div>
+      <div class="sign-card"><h3>現地ニーズへの対応力</h3><p>現地の市場動向を的確に把握し、魅力ある商品ラインナップを構築します。</p></div>
+      <div class="sign-card"><h3>一貫した供給体制</h3><p>仕入れから物流、販売まで一貫して対応し、安定供給を実現します。</p></div>
+      <div class="sign-card"><h3>迅速かつ柔軟な対応</h3><p>お客様の多様なニーズに、スピード感を持ってお応えします。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">SERVICE</p>
+    <h2 class="section-heading">3つの事業</h2>
+    <div class="service-compact">
+      <div class="service-pill"><div class="icon">EC</div><h3>E-commerce Business</h3><p>東南アジア市場向けEC事業</p></div>
+      <div class="service-pill"><div class="icon">貿易</div><h3>International Trade</h3><p>日本の商品を東南アジアへ輸出</p></div>
+      <div class="service-pill"><div class="icon">店舗</div><h3>Retail Sales</h3><p>実店舗での商品展示・販売</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <p class="section-title">PRODUCTS</p>
+    <h2 class="section-heading">取扱商品</h2>
+    <div class="case-grid">
+      <div class="case-card">
+        <img src="https://loremflickr.com/300/220/japanese,daily,goods" alt="日用品">
+        <!-- 元画像URL：現サイト取扱商品写真（未取得・自社写真への差し替え前提） / images/case-daily.jpg -->
+        <div class="cap">日用品</div>
+      </div>
+      <div class="case-card">
+        <img src="https://loremflickr.com/300/220/luxury,gift,box" alt="高級商材">
+        <!-- 元画像URL：現サイト取扱商品写真（未取得・自社写真への差し替え前提） / images/case-luxury.jpg -->
+        <div class="cap">高級商材</div>
+      </div>
+      <div class="case-card">
+        <img src="https://loremflickr.com/300/220/convenience,store,shelf" alt="嗜好品">
+        <!-- 元画像URL：現サイト取扱商品写真（未取得・自社写真への差し替え前提） / images/case-taste.jpg -->
+        <div class="cap">嗜好品</div>
+      </div>
+      <div class="case-card">
+        <img src="https://loremflickr.com/300/220/japanese,food,products" alt="食品">
+        <!-- 元画像URL：現サイト取扱商品写真（未取得・自社写真への差し替え前提） / images/case-food.jpg -->
+        <div class="cap">食品</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">FAQ</p>
+    <h2 class="section-heading">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-q"><span>Q</span>営業時間を教えてください</div><div class="faq-a"><span>A</span>月曜日〜金曜日 9:00〜18:00で対応しております（土日祝日休み）。</div></div>
+      <div class="faq-item"><div class="faq-q"><span>Q</span>実店舗で商品を見ることはできますか？</div><div class="faq-a"><span>A</span>実店舗にて商品を展示しており、実際に手に取ってご確認いただけます。詳しくはお問い合わせください。</div></div>
+      <div class="faq-item"><div class="faq-q"><span>Q</span>お問い合わせ方法を教えてください</div><div class="faq-a"><span>A</span>お電話・メール・お問い合わせフォームより承っております。</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip" id="contact">
+  <h2>まずはお気軽にご相談ください</h2>
+  <p>取引内容が固まっていない段階でも歓迎です。まずはお話をお聞かせください。</p>
+  <div class="btns">
+    <a href="https://tokyolifeline.jp/contact/" class="btn btn-primary">お問い合わせフォームへ</a>
+    <a href="https://tokyolifeline.jp/" class="btn btn-outline">現在のサイトを見る</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-logo">東京生活合同会社</div>
+  <p>〒273-0865　千葉県船橋市夏見一丁目13-32-1A　047-369-7182（9:00〜18:00）</p>
+  <ul class="footer-links">
+    <li><a href="#reason">選ばれる理由</a></li>
+    <li><a href="recruit.html">採用情報</a></li>
+    <li><a href="#contact">お問い合わせ</a></li>
+  </ul>
+  <p class="copyright">©東京生活合同会社 All rights reserved.</p>
+</footer>
+
+</body>
+</html>
