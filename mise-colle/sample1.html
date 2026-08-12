@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>みせコレ｜全国のお店の魅力を独自取材で届ける、店舗応援メディア</title>
+<style>
+  :root{
+    --main:#0E6B5C;
+    --main-dark:#083F36;
+    --accent:#E8A23D;
+    --accent-light:#FDF1DC;
+    --text:#2B2B2B;
+    --sub:#6B6B6B;
+    --bg:#FCFAF5;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.8;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .section{padding:88px 0;}
+  .section-title{font-size:14px;letter-spacing:0.2em;color:var(--accent);font-weight:700;text-align:center;margin-bottom:12px;}
+  .section-heading{font-size:30px;font-weight:700;text-align:center;margin-bottom:16px;letter-spacing:0.03em;color:var(--main-dark);}
+  .section-lead{text-align:center;color:var(--sub);max-width:640px;margin:0 auto 56px;font-size:15px;}
+
+  header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.96);border-bottom:1px solid #eee;backdrop-filter:blur(6px);}
+  .header-inner{max-width:1080px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-size:19px;font-weight:800;color:var(--main-dark);letter-spacing:0.02em;}
+  .logo span{color:var(--accent);}
+  nav ul{display:flex;gap:28px;list-style:none;}
+  nav a{font-size:14px;font-weight:600;}
+  nav a:hover{color:var(--main);}
+  .header-cta{display:flex;gap:10px;}
+  .btn{display:inline-block;padding:12px 28px;border-radius:4px;font-size:14px;font-weight:700;text-align:center;}
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-primary:hover{background:#cf8a2a;}
+  .btn-outline{border:1px solid var(--main);color:var(--main);}
+  .btn-outline:hover{background:var(--accent-light);}
+  .btn-small{padding:9px 18px;font-size:13px;}
+  .menu-toggle{display:none;font-size:26px;background:none;border:none;cursor:pointer;color:var(--main-dark);}
+
+  /* Hero */
+  /* 元画像URL：現サイトTOPメインビジュアル（未取得・自社写真への差し替え前提） / images/hero-main.jpg */
+  .hero{
+    position:relative;min-height:620px;display:flex;align-items:center;
+    background:linear-gradient(120deg, rgba(8,63,54,0.90), rgba(14,107,92,0.72)), url('https://loremflickr.com/1600/900/japan,shopping,street') center/cover no-repeat;
+    color:#fff;
+  }
+  .hero-inner{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .hero-tag{
+    display:inline-block;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.5);
+    padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600;letter-spacing:0.05em;margin-bottom:24px;
+  }
+  .hero h1{font-size:34px;font-weight:800;line-height:1.55;margin-bottom:22px;max-width:680px;}
+  .hero p{font-size:15.5px;max-width:580px;margin-bottom:36px;opacity:0.95;}
+  .hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
+  .hero .btn-outline{border-color:#fff;color:#fff;}
+  .hero .btn-outline:hover{background:rgba(255,255,255,0.15);}
+
+  /* Worry list */
+  .worry-band{background:var(--main-dark);color:#fff;padding:56px 0;}
+  .worry-band .section-heading{color:#fff;}
+  .worry-list{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px;}
+  .worry-item{
+    background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);border-radius:8px;
+    padding:18px 20px;font-size:14px;display:flex;gap:10px;align-items:flex-start;
+  }
+  .worry-item::before{content:"!";flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+
+  /* Strengths */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .card{background:var(--white);border:1px solid #ececec;border-radius:10px;padding:32px 24px;transition:transform .2s, box-shadow .2s;}
+  .card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,0.08);}
+  .card-num{font-size:13px;color:var(--accent);font-weight:800;letter-spacing:0.1em;margin-bottom:14px;}
+  .card h3{font-size:17px;font-weight:700;margin-bottom:12px;color:var(--main-dark);}
+  .card p{font-size:13.5px;color:var(--sub);}
+
+  /* Category / service grid */
+  .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .service-card{background:var(--white);border:1px solid #ececec;border-radius:10px;overflow:hidden;}
+  .service-card img{width:100%;height:170px;object-fit:cover;}
+  .service-card-body{padding:22px 22px 26px;}
+  .service-no{font-size:12px;color:var(--accent);font-weight:800;letter-spacing:0.1em;}
+  .service-card-body h3{font-size:17px;font-weight:700;margin:8px 0 10px;color:var(--main-dark);}
+  .service-card-body p{font-size:13.5px;color:var(--sub);}
+
+  /* Audience */
+  .audience{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .audience-card{border-radius:12px;padding:36px 32px;color:#fff;position:relative;overflow:hidden;}
+  .audience-card.owner{background:linear-gradient(135deg,var(--main),var(--main-dark));}
+  .audience-card.reader{background:linear-gradient(135deg,var(--accent),#c17f2a);}
+  .audience-card p.tag{font-size:12px;letter-spacing:0.15em;opacity:0.85;margin-bottom:10px;}
+  .audience-card h3{font-size:20px;font-weight:800;margin-bottom:14px;}
+  .audience-card p.desc{font-size:13.5px;opacity:0.95;margin-bottom:22px;}
+
+  /* Flow */
+  .flow-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .flow-item{background:var(--white);border:1px solid #ececec;border-radius:10px;padding:26px 22px;position:relative;}
+  .flow-num{
+    width:38px;height:38px;border-radius:50%;background:var(--main);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;margin-bottom:14px;
+  }
+  .flow-item h3{font-size:15px;font-weight:700;margin-bottom:8px;color:var(--main-dark);}
+  .flow-item p{font-size:13px;color:var(--sub);}
+
+  /* FAQ */
+  .faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:14px;}
+  .faq-item{background:var(--white);border:1px solid #ececec;border-radius:10px;padding:22px 26px;}
+  .faq-q{font-size:15px;font-weight:700;color:var(--main-dark);display:flex;gap:10px;margin-bottom:8px;}
+  .faq-q span{color:var(--accent);}
+  .faq-a{font-size:13.5px;color:var(--sub);display:flex;gap:10px;}
+  .faq-a span{color:var(--main);font-weight:700;}
+
+  /* Company */
+  .company-table{width:100%;border-collapse:collapse;max-width:760px;margin:0 auto;background:#fff;border-radius:10px;overflow:hidden;border:1px solid #ececec;}
+  .company-table th,.company-table td{padding:18px 24px;text-align:left;font-size:14.5px;border-bottom:1px solid #eee;}
+  .company-table th{width:170px;background:var(--accent-light);color:var(--main-dark);font-weight:700;}
+  .company-table tr:last-child th,.company-table tr:last-child td{border-bottom:none;}
+
+  /* CTA */
+  .cta{background:var(--main-dark);color:#fff;text-align:center;padding:80px 24px;}
+  .cta h2{font-size:26px;font-weight:800;margin-bottom:16px;}
+  .cta p{color:#cfe0da;margin-bottom:32px;}
+  .cta .btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .cta .btn-primary{background:var(--accent);color:#fff;}
+  .cta .btn-outline{border-color:#fff;color:#fff;}
+
+  footer{background:#062B24;color:#c3d3ce;padding:48px 24px 24px;font-size:13px;}
+  .footer-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .footer-logo{font-size:17px;font-weight:800;color:#fff;margin-bottom:10px;}
+  .footer-links{display:flex;gap:24px;list-style:none;flex-wrap:wrap;}
+  .copyright{text-align:center;margin-top:32px;color:#7c9089;}
+
+  @media (max-width:900px){
+    .cards{grid-template-columns:1fr;}
+    .service-grid{grid-template-columns:1fr 1fr;}
+    .worry-list{grid-template-columns:1fr 1fr;}
+    .audience{grid-template-columns:1fr;}
+    .flow-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:700px){
+    nav,.header-cta{display:none;}
+    .menu-toggle{display:block;}
+    .hero h1{font-size:25px;}
+    .hero{min-height:540px;}
+    .section{padding:60px 0;}
+    .service-grid{grid-template-columns:1fr;}
+    .worry-list{grid-template-columns:1fr;}
+    .flow-grid{grid-template-columns:1fr;}
+    .company-table th{width:120px;font-size:13px;padding:14px;}
+    .company-table td{font-size:13px;padding:14px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">みせ<span>コレ</span></div>
+    <nav><ul>
+      <li><a href="#about">みせコレとは</a></li>
+      <li><a href="#merit">掲載メリット</a></li>
+      <li><a href="#category">対応カテゴリ</a></li>
+      <li><a href="#flow">掲載の流れ</a></li>
+      <li><a href="#faq">よくある質問</a></li>
+      <li><a href="#company">運営者情報</a></li>
+    </ul></nav>
+    <div class="header-cta">
+      <a href="recruit.html" class="btn btn-outline btn-small">採用情報</a>
+      <a href="#contact" class="btn btn-primary btn-small">掲載の相談をする</a>
+    </div>
+    <button class="menu-toggle">≡</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">全国の店舗・企業様向け　独自取材メディア「みせコレ」</span>
+    <h1>その魅力、まだ届いていないだけ<br>かもしれません。</h1>
+    <p>みせコレ ～みんなの名店コレクション～は、全国の頑張るお店・企業を独自取材で紹介するWebメディアです。店主のこだわりやお店に込められたストーリーまで掘り下げ、訪れる前から「行きたくなる」記事をお届けしています。</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-primary">掲載について相談する</a>
+      <a href="#about" class="btn btn-outline">みせコレとは</a>
+    </div>
+  </div>
+</section>
+
+<section class="worry-band">
+  <div class="container">
+    <p class="section-title" style="color:var(--accent);">CHECK</p>
+    <h2 class="section-heading">こんなお悩みありませんか？</h2>
+    <div class="worry-list">
+      <div class="worry-item">こだわって続けてきたのに、新規のお客様が増えない</div>
+      <div class="worry-item">SNSでの発信だけでは、なかなか広がりが出ない</div>
+      <div class="worry-item">Googleマップの近隣情報にしか出てこない</div>
+      <div class="worry-item">口コミが集まるまで待つしかなく、後手に回りがち</div>
+      <div class="worry-item">お店の想いやこだわりが、うまく伝えきれていない</div>
+      <div class="worry-item">近隣にしか知られておらず、遠方からの来店機会を逃している</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container">
+    <p class="section-title">ABOUT</p>
+    <h2 class="section-heading">みせコレが選ばれる理由</h2>
+    <p class="section-lead">コロナ禍や物価高騰といった厳しい環境の中でも輝くお店を独自取材し、Googleマップの検索だけでは出会えない「思いがけない出会い」を読者に届けています。</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-num">01</div>
+        <h3>店主の想いまで掘り下げる独自取材</h3>
+        <p>ただの店舗紹介ではなく、店主のこだわりやお店に込められたストーリーまで掘り下げて記事化。訪れる前から「行きたくなる」情報をお届けします。</p>
+      </div>
+      <div class="card">
+        <div class="card-num">02</div>
+        <h3>「今までの自分」を超えた出会いを演出</h3>
+        <p>近場や好みに基づく検索とは違い、じっくり記事を読みながら「ここに行ってみたい」を見つける楽しさを大切にした導線を設計しています。</p>
+      </div>
+      <div class="card">
+        <div class="card-num">03</div>
+        <h3>積み上がる取材実績</h3>
+        <p>店舗インタビューの掲載一覧は既に90ページを超える規模に成長。グルメから美容、専門士業まで幅広いジャンルで取材を重ねています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="merit" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">MERIT</p>
+    <h2 class="section-heading">掲載のメリット</h2>
+    <p class="section-lead">「知る人ぞ知る名店」のまま終わらせない。取材記事という形で、お店の魅力を長く読み続けられる資産として残します。</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-num">01</div>
+        <h3>広告色を抑えた読み物として届く</h3>
+        <p>独自取材による記事コンテンツのため、広告然とした発信に抵抗がある読者にも自然に届き、じっくり読んでもらいやすい形で魅力を伝えられます。</p>
+      </div>
+      <div class="card">
+        <div class="card-num">02</div>
+        <h3>公開後も読み続けられる資産に</h3>
+        <p>一過性の広告と異なり、公開後も検索や記事一覧から継続的に読まれる記事として残るため、長期的な認知獲得につながります。</p>
+      </div>
+      <div class="card">
+        <div class="card-num">03</div>
+        <h3>遠方の読者にもリーチできる</h3>
+        <p>近隣エリアの検索だけに頼らず、「ちょっと遠出したくなる」お店を求める全国の読者にもアプローチできます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <p class="section-title">FOR YOU</p>
+    <h2 class="section-heading">掲載店舗様・読者の皆様、それぞれに</h2>
+    <div class="audience">
+      <div class="audience-card owner">
+        <p class="tag">FOR SHOP OWNER</p>
+        <h3>掲載をご検討の店舗・企業様へ</h3>
+        <p class="desc">グルメ、美容、レジャー、ライフスタイルから専門士業まで、業種を問わず取材を承っています。まずはお気軽にご相談ください。</p>
+        <a href="#contact" class="btn btn-outline" style="border-color:#fff;color:#fff;">掲載を相談する</a>
+      </div>
+      <div class="audience-card reader">
+        <p class="tag">FOR READER</p>
+        <h3>お店を探している読者の皆様へ</h3>
+        <p class="desc">全国の頑張るお店を発掘し、旅先や出張先でもまだ知られていない名店に出会える記事をお届けしています。</p>
+        <a href="https://mise-colle.com/" class="btn btn-outline" style="border-color:#fff;color:#fff;">記事を読んでみる</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="category" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">CATEGORY</p>
+    <h2 class="section-heading">対応カテゴリ</h2>
+    <p class="section-lead">グルメを中心に、美容・レジャー・ライフスタイルまで幅広いジャンルの店舗・企業様を取材対象としています。</p>
+    <div class="service-grid">
+      <div class="service-card">
+        <img src="https://loremflickr.com/560/380/restaurant,japan,dining" alt="グルメ">
+        <!-- 元画像URL：現サイト掲載記事写真（未取得・取材写真への差し替え前提） / images/category-gourmet.jpg -->
+        <div class="service-card-body">
+          <div class="service-no">GOURMET</div>
+          <h3>グルメ</h3>
+          <p>ラーメン店から専門料理店まで、こだわりの一皿を独自取材でご紹介します。</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://loremflickr.com/560/380/beauty,salon,japan" alt="美容">
+        <!-- 元画像URL：現サイト掲載記事写真（未取得・取材写真への差し替え前提） / images/category-beauty.jpg -->
+        <div class="service-card-body">
+          <div class="service-no">BEAUTY</div>
+          <h3>美容</h3>
+          <p>サロンや専門店のこだわり施術を、通いたくなる目線で取材します。</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://loremflickr.com/560/380/ryokan,resort,japan" alt="レジャー">
+        <!-- 元画像URL：現サイト掲載記事写真（未取得・取材写真への差し替え前提） / images/category-leisure.jpg -->
+        <div class="service-card-body">
+          <div class="service-no">LEISURE</div>
+          <h3>レジャー</h3>
+          <p>貸別荘や体験施設など、遠出したくなるお出かけ先を紹介します。</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://loremflickr.com/560/380/shop,storefront,japan" alt="ライフスタイル">
+        <!-- 元画像URL：現サイト掲載記事写真（未取得・取材写真への差し替え前提） / images/category-lifestyle.jpg -->
+        <div class="service-card-body">
+          <div class="service-no">LIFESTYLE</div>
+          <h3>ライフスタイル</h3>
+          <p>暮らしに寄り添うお店やサービスを、日常目線で取材します。</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://loremflickr.com/560/380/boutique,apparel,shop" alt="アパレル・通販">
+        <!-- 元画像URL：現サイト掲載記事写真（未取得・取材写真への差し替え前提） / images/category-apparel.jpg -->
+        <div class="service-card-body">
+          <div class="service-no">APPAREL / EC</div>
+          <h3>アパレル・通販</h3>
+          <p>実店舗からオンラインショップまで、こだわりの商品を紹介します。</p>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://loremflickr.com/560/380/office,japan,professional" alt="その他・専門サービス">
+        <!-- 元画像URL：現サイト掲載記事写真（未取得・取材写真への差し替え前提） / images/category-others.jpg -->
+        <div class="service-card-body">
+          <div class="service-no">OTHERS</div>
+          <h3>その他・専門サービス</h3>
+          <p>士業事務所や専門法人など、業種を問わず幅広く取材対象としています。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="flow">
+  <div class="container">
+    <p class="section-title">FLOW</p>
+    <h2 class="section-heading">掲載までの流れ</h2>
+    <p class="section-lead">お問い合わせから記事公開まで、無理なく進められる流れでご案内しています。</p>
+    <div class="flow-grid">
+      <div class="flow-item"><div class="flow-num">1</div><h3>お問い合わせ</h3><p>フォームより「記事掲載希望」を選んでご連絡ください。</p></div>
+      <div class="flow-item"><div class="flow-num">2</div><h3>ヒアリング</h3><p>お店・企業の魅力やこだわりについて詳しくお伺いします。</p></div>
+      <div class="flow-item"><div class="flow-num">3</div><h3>取材・撮影</h3><p>店主様の想いやストーリーを、じっくりお話を伺いながら取材します。</p></div>
+      <div class="flow-item"><div class="flow-num">4</div><h3>記事執筆・公開</h3><p>取材内容をもとに記事を執筆し、内容をご確認いただいた上で公開します。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">FAQ</p>
+    <h2 class="section-heading">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q"><span>Q</span>掲載には費用がかかりますか？</div>
+        <div class="faq-a"><span>A</span>ご希望の内容によって異なります。まずはお問い合わせフォームの「記事掲載希望」よりお気軽にご相談ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Q</span>取材から公開までどのくらいの期間がかかりますか？</div>
+        <div class="faq-a"><span>A</span>内容やスケジュールによって異なります。ヒアリング後に取材日程を調整し、記事執筆・確認を経て公開となります。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Q</span>対応しているジャンルを教えてください。</div>
+        <div class="faq-a"><span>A</span>グルメ・美容・レジャー・ライフスタイル・アパレル・通販・その他専門サービスまで、幅広いジャンルの店舗・企業様に対応しています。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Q</span>全国どこでも取材対象になりますか？</div>
+        <div class="faq-a"><span>A</span>はい。地域を問わず全国のお店・企業様を取材対象としています。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="company">
+  <div class="container">
+    <p class="section-title">COMPANY</p>
+    <h2 class="section-heading">運営者情報</h2>
+    <table class="company-table">
+      <tr><th>運営</th><td>みせコレ運営事務局</td></tr>
+      <tr><th>運営メディア</th><td>みせコレ ～みんなの名店コレクション～</td></tr>
+      <tr><th>サイトURL</th><td>https://mise-colle.com/</td></tr>
+      <tr><th>事業内容</th><td>全国の店舗・企業向け取材型Webメディアの運営／記事掲載・PR支援</td></tr>
+      <tr><th>対応カテゴリ</th><td>グルメ／美容／レジャー／ライフスタイル／アパレル／通販／その他</td></tr>
+      <tr><th>定休日</th><td>不定期</td></tr>
+      <tr><th>お問い合わせ</th><td>専用フォームより受付（お電話でのお問い合わせは行っておりません）</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2>まずはお気軽に、掲載のご相談からどうぞ</h2>
+  <p>記事内容についてのご質問、その他のお問い合わせもフォームより承っております。</p>
+  <div class="btns">
+    <a href="https://mise-colle.com/contact/" class="btn btn-primary">お問い合わせフォームへ</a>
+    <a href="https://mise-colle.com/" class="btn btn-outline">現在のサイトを見る</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">みせコレ</div>
+      <p>全国の頑張るお店を応援するメディア<br>みんなの名店コレクション</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#category">対応カテゴリ</a></li>
+      <li><a href="#flow">掲載の流れ</a></li>
+      <li><a href="recruit.html">採用情報</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </div>
+  <p class="copyright">©みせコレ運営事務局 All rights reserved.</p>
+</footer>
+
+</body>
+</html>
