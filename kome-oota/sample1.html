@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>米工房おおた｜船橋市咲が丘のお米専門店・精米、業務用販売、配達対応</title>
+<style>
+  :root{
+    --main:#7A5230;
+    --main-dark:#4E3319;
+    --accent:#C0392B;
+    --accent-light:#FBEAE3;
+    --text:#2B2B2B;
+    --sub:#6B6B6B;
+    --bg:#FDFBF6;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.8;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .section{padding:88px 0;}
+  .section-title{font-size:14px;letter-spacing:0.2em;color:var(--accent);font-weight:700;text-align:center;margin-bottom:12px;}
+  .section-heading{font-size:30px;font-weight:700;text-align:center;margin-bottom:16px;letter-spacing:0.03em;color:var(--main-dark);}
+  .section-lead{text-align:center;color:var(--sub);max-width:640px;margin:0 auto 56px;font-size:15px;}
+
+  header{position:sticky;top:0;z-index:100;background:rgba(253,251,246,0.96);border-bottom:1px solid #ece4d8;backdrop-filter:blur(6px);}
+  .header-inner{max-width:1080px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-size:19px;font-weight:800;color:var(--main-dark);letter-spacing:0.02em;}
+  .logo span{color:var(--accent);}
+  nav ul{display:flex;gap:28px;list-style:none;}
+  nav a{font-size:14px;font-weight:600;}
+  nav a:hover{color:var(--main);}
+  .header-cta{display:flex;gap:10px;}
+  .btn{display:inline-block;padding:12px 28px;border-radius:4px;font-size:14px;font-weight:700;text-align:center;}
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-primary:hover{background:#a2321f;}
+  .btn-outline{border:1px solid var(--main);color:var(--main);}
+  .btn-outline:hover{background:var(--accent-light);}
+  .btn-small{padding:9px 18px;font-size:13px;}
+  .menu-toggle{display:none;font-size:26px;background:none;border:none;cursor:pointer;color:var(--main-dark);}
+
+  /* Hero */
+  /* 元画像URL：現サイトTOPメインビジュアル（未取得・自社写真への差し替え前提） / images/hero-main.jpg */
+  .hero{
+    position:relative;min-height:620px;display:flex;align-items:center;
+    background:linear-gradient(120deg, rgba(78,51,25,0.88), rgba(122,82,48,0.72)), url('https://loremflickr.com/1600/900/rice,grains,harvest') center/cover no-repeat;
+    color:#fff;
+  }
+  .hero-inner{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .hero-tag{
+    display:inline-block;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.5);
+    padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600;letter-spacing:0.05em;margin-bottom:24px;
+  }
+  .hero h1{font-size:34px;font-weight:800;line-height:1.6;margin-bottom:22px;max-width:660px;}
+  .hero p{font-size:15.5px;max-width:580px;margin-bottom:36px;opacity:0.95;}
+  .hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
+  .hero .btn-outline{border-color:#fff;color:#fff;}
+  .hero .btn-outline:hover{background:rgba(255,255,255,0.15);}
+
+  /* Strengths */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .card{background:var(--white);border:1px solid #ece4d8;border-radius:10px;padding:32px 24px;transition:transform .2s, box-shadow .2s;}
+  .card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(78,51,25,0.08);}
+  .card-num{font-size:13px;color:var(--accent);font-weight:800;letter-spacing:0.1em;margin-bottom:14px;}
+  .card h3{font-size:17px;font-weight:700;margin-bottom:12px;color:var(--main-dark);}
+  .card p{font-size:13.5px;color:var(--sub);}
+
+  /* Products */
+  .product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .product-card{background:var(--white);border:1px solid #ece4d8;border-radius:10px;overflow:hidden;}
+  .product-card img{width:100%;height:170px;object-fit:cover;}
+  .product-card-body{padding:20px 22px 24px;}
+  .product-tag{font-size:11.5px;color:var(--accent);font-weight:800;letter-spacing:0.05em;margin-bottom:6px;}
+  .product-card-body h3{font-size:16px;font-weight:700;margin-bottom:8px;color:var(--main-dark);}
+  .product-price{font-size:15px;font-weight:800;color:var(--main-dark);margin-bottom:10px;}
+  .product-card-body p{font-size:13px;color:var(--sub);}
+  .product-more{text-align:center;margin-top:36px;}
+
+  /* Voice */
+  .voice-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .voice-card{background:var(--accent-light);border-radius:10px;padding:30px 28px;position:relative;}
+  .voice-card p.quote{font-size:14.5px;color:var(--text);margin-bottom:16px;}
+  .voice-card .who{font-size:13px;color:var(--sub);text-align:right;}
+  .voice-card .stars{color:var(--accent);font-size:14px;margin-bottom:10px;letter-spacing:2px;}
+
+  /* Access */
+  .access-wrap{display:flex;gap:40px;align-items:center;}
+  .access-wrap img{width:44%;border-radius:10px;object-fit:cover;height:320px;flex-shrink:0;}
+  .access-body{flex:1;}
+  .access-body h3{font-size:18px;font-weight:700;color:var(--main-dark);margin-bottom:14px;}
+  .access-body p{font-size:14px;color:var(--sub);margin-bottom:10px;}
+
+  /* Company */
+  .company-table{width:100%;border-collapse:collapse;max-width:760px;margin:0 auto;background:#fff;border-radius:10px;overflow:hidden;border:1px solid #ece4d8;}
+  .company-table th,.company-table td{padding:18px 24px;text-align:left;font-size:14.5px;border-bottom:1px solid #f0e9dd;}
+  .company-table th{width:160px;background:var(--accent-light);color:var(--main-dark);font-weight:700;}
+  .company-table tr:last-child th,.company-table tr:last-child td{border-bottom:none;}
+
+  /* CTA */
+  .cta{background:var(--main-dark);color:#fff;text-align:center;padding:80px 24px;}
+  .cta h2{font-size:26px;font-weight:800;margin-bottom:16px;}
+  .cta p{color:#dccbb8;margin-bottom:32px;}
+  .cta .btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .cta .btn-primary{background:var(--accent);color:#fff;}
+  .cta .btn-outline{border-color:#fff;color:#fff;}
+
+  footer{background:#3A2512;color:#d9c9b8;padding:48px 24px 24px;font-size:13px;}
+  .footer-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .footer-logo{font-size:17px;font-weight:800;color:#fff;margin-bottom:10px;}
+  .footer-links{display:flex;gap:24px;list-style:none;flex-wrap:wrap;}
+  .copyright{text-align:center;margin-top:32px;color:#9c8873;}
+
+  @media (max-width:900px){
+    .cards{grid-template-columns:1fr;}
+    .product-grid{grid-template-columns:1fr 1fr;}
+    .voice-grid{grid-template-columns:1fr;}
+    .access-wrap{flex-direction:column;}
+    .access-wrap img{width:100%;}
+  }
+  @media (max-width:700px){
+    nav,.header-cta{display:none;}
+    .menu-toggle{display:block;}
+    .hero h1{font-size:25px;}
+    .hero{min-height:540px;}
+    .section{padding:60px 0;}
+    .product-grid{grid-template-columns:1fr;}
+    .company-table th{width:110px;font-size:13px;padding:14px;}
+    .company-table td{font-size:13px;padding:14px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">米工房<span>おおた</span></div>
+    <nav><ul>
+      <li><a href="#about">当店について</a></li>
+      <li><a href="#service">商品ラインナップ</a></li>
+      <li><a href="#voice">お客様の声</a></li>
+      <li><a href="#access">アクセス</a></li>
+      <li><a href="#company">店舗情報</a></li>
+    </ul></nav>
+    <div class="header-cta">
+      <a href="recruit.html" class="btn btn-outline btn-small">採用情報</a>
+      <a href="#contact" class="btn btn-primary btn-small">お問い合わせ</a>
+    </div>
+    <button class="menu-toggle">≡</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">千葉県船橋市咲が丘のお米専門店</span>
+    <h1>お米のことなら、なんでも。<br>町のお米屋さんが選ぶ、今日のいちばん。</h1>
+    <p>全国の優良生産者・優良集荷業者から直接仕入れたお米を、できるだけ胚芽を残す精米技術（健康まいらいす仕様）で仕立てています。お米マイスターの店主が、ご家庭にも業務用にも合う一品をご提案します。</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-primary">お問い合わせはこちら</a>
+      <a href="#service" class="btn btn-outline">商品ラインナップを見る</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container">
+    <p class="section-title">ABOUT</p>
+    <h2 class="section-heading">米工房おおたが選ばれる理由</h2>
+    <p class="section-lead">当店はお米マイスターのお店です。お米のことお気軽にお尋ねください。店内にはたくさんのお米の品種をご用意しています。</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-num">01</div>
+        <h3>優良生産者から直接仕入れ</h3>
+        <p>古くから付き合いのある生産者・集荷業者のもとへ直接足を運び、目利きで厳選。おおたのお米を見る目を活かした、私たちのプライベートブランド米シリーズです。</p>
+      </div>
+      <div class="card">
+        <div class="card-num">02</div>
+        <h3>胚芽を残す精米技術</h3>
+        <p>上白米のおいしさを保ちながら、できるだけ胚芽を多く残した精米法（健康まいらいす仕様）で仕立てています。お米が持つ自然の活力を活かす工夫です。</p>
+      </div>
+      <div class="card">
+        <div class="card-num">03</div>
+        <h3>お米マイスターに相談できる</h3>
+        <p>数ある品種の中からどれを選べばよいか迷ったときも、お米マイスターの店主が丁寧にご案内。ご家庭用はもちろん、業務用のご相談も承ります。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="service" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">PRODUCT</p>
+    <h2 class="section-heading">お米（商品一覧）</h2>
+    <p class="section-lead">産地・品種ごとに味わいの違う各地のお米を取り揃えています。ご家庭用の少量から、業務用のまとまった量までご相談ください。</p>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="https://loremflickr.com/560/380/rice,grain,closeup" alt="厳選コシヒカリ">
+        <!-- 元画像URL：現サイト商品写真（未取得・自社写真への差し替え前提） / images/product-koshihikari-chiba.jpg -->
+        <div class="product-card-body">
+          <div class="product-tag">千葉県産・令和7年産</div>
+          <h3>厳選コシヒカリ</h3>
+          <div class="product-price">5kg　税込3,680円</div>
+          <p>古くから付き合いのある生産者・集荷業者のもとへ直接足を運び、厳選。農家さんの誠実さが伝わる、こしひかりらしい仕上がりです。</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="https://loremflickr.com/560/380/rice,bag,shop" alt="特別栽培米コシヒカリ">
+        <!-- 元画像URL：現サイト商品写真（未取得・自社写真への差し替え前提） / images/product-koshihikari-niigata.jpg -->
+        <div class="product-card-body">
+          <div class="product-tag">新潟県産・令和7年産</div>
+          <h3>特別栽培米コシヒカリ</h3>
+          <div class="product-price">5kg　税込4,680円</div>
+          <p>日本を代表する銘柄米。当店で人気のお米です。ぜひ一度ご賞味ください。</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="https://loremflickr.com/560/380/rice,bowl,cooked" alt="ゆめぴりか">
+        <!-- 元画像URL：現サイト商品写真（未取得・自社写真への差し替え前提） / images/product-yumepirika.jpg -->
+        <div class="product-card-body">
+          <div class="product-tag">北海道産・令和7年産</div>
+          <h3>ゆめぴりか</h3>
+          <div class="product-price">5kg　税込3,780円</div>
+          <p>ほど良い粘りと甘み、炊きあがりの美しさ。「日本一おいしい米を」という想いから名付けられた品種です。</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="https://loremflickr.com/560/380/rice,field,japan" alt="ひとめぼれ">
+        <!-- 元画像URL：現サイト商品写真（未取得・自社写真への差し替え前提） / images/product-hitomebore.jpg -->
+        <div class="product-card-body">
+          <div class="product-tag">宮城県産・令和7年産</div>
+          <h3>ひとめぼれ</h3>
+          <div class="product-price">5kg　税込3,880円</div>
+          <p>父に「こしひかり」、母に「初星」をもつ銘柄米。豊かな風味は今なお一級品の味わいです。</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="https://loremflickr.com/560/380/rice,sack,market" alt="美健米　金印">
+        <!-- 元画像URL：現サイト商品写真（未取得・自社写真への差し替え前提） / images/product-bikenmai.jpg -->
+        <div class="product-card-body">
+          <div class="product-tag">国内産米</div>
+          <h3>美健米　金印</h3>
+          <div class="product-price">5kg　税込3,080円</div>
+          <p>当店売れ筋NO.1！価格と食味、食感を考えた一番のお買い得商品です。業務店にも大好評。</p>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="https://loremflickr.com/560/380/brown,rice,texture" alt="玄米30kg">
+        <!-- 元画像URL：現サイト商品写真（未取得・自社写真への差し替え前提） / images/product-genmai30kg.jpg -->
+        <div class="product-card-body">
+          <div class="product-tag">農家直送・令和7年産</div>
+          <h3>玄米（未検査米）30kg</h3>
+          <div class="product-price">30kg　税込16,800円</div>
+          <p>店主おすすめの玄米。精米・配達は別途承ります（精米料300円・配達料300円）。</p>
+        </div>
+      </div>
+    </div>
+    <div class="product-more">
+      <a href="#contact" class="btn btn-outline">その他の商品・業務用のご相談はこちら</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="voice">
+  <div class="container">
+    <p class="section-title">VOICE</p>
+    <h2 class="section-heading">お客様の声</h2>
+    <p class="section-lead">ご来店いただいたお客様から寄せられた声の一部をご紹介します。</p>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <p class="quote">「お米不足でスーパーにはどこにも売っておらず困っていたところ、友人にこちらのお米屋さんを教えてもらいました。お米専門店は値段が高いのかと思っていましたが、幅広い種類のお米があり、気さくなお父さんが色々教えてくれて有り難かったです。」</p>
+        <div class="who">ゆ様</div>
+      </div>
+      <div class="voice-card">
+        <p class="quote">「初めて伺いましたが、お母さんと息子さんかな、とても親切な方達で、ほっこりしました。」</p>
+        <div class="who">馬込沢と鎌ヶ谷の中間に住む男様</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="access" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">ACCESS</p>
+    <h2 class="section-heading">アクセス</h2>
+    <div class="access-wrap">
+      <img src="https://loremflickr.com/700/700/grocery,storefront,japan" alt="米工房おおた店舗">
+      <!-- 元画像URL：現サイト店舗外観写真（未取得・自社写真への差し替え前提） / images/store-front.jpg -->
+      <div class="access-body">
+        <h3>鎌ヶ谷大仏駅から徒歩10分ほど、咲が丘にお店があります</h3>
+        <p>鎌ヶ谷大仏の十字路から二和方面へ向かい、オランダ家さんの信号を左に曲がります。200mほどで当店がございます。</p>
+        <p>住所：〒274-0877　千葉県船橋市咲が丘1-21-27</p>
+        <p>駐車場：3台完備</p>
+        <p>営業時間：AM9:30〜PM7:00　／　定休日：毎週水曜日、第３日曜日</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="company">
+  <div class="container">
+    <p class="section-title">COMPANY</p>
+    <h2 class="section-heading">店舗情報</h2>
+    <table class="company-table">
+      <tr><th>屋号</th><td>米工房 おおた｜船橋・鎌ヶ谷のお米販売・業務用販売</td></tr>
+      <tr><th>事業者名</th><td>株式会社米工房おおた</td></tr>
+      <tr><th>所在地</th><td>〒274-0877　千葉県船橋市咲が丘1-21-27</td></tr>
+      <tr><th>電話／FAX</th><td>047-448-1594</td></tr>
+      <tr><th>営業時間</th><td>AM9:30〜PM7:00</td></tr>
+      <tr><th>定休日</th><td>毎週水曜日、第３日曜日</td></tr>
+      <tr><th>駐車場</th><td>3台完備</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2>お米のことなら、お気軽にお問い合わせください</h2>
+  <p>ご家庭用の少量から業務用のまとまった量まで、お米マイスターの店主が丁寧にご案内します。</p>
+  <div class="btns">
+    <a href="https://kome-oota.com/detail/376/contact.html" class="btn btn-primary">お問い合わせフォームへ</a>
+    <a href="https://kome-oota.com/" class="btn btn-outline">現在のサイトを見る</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">米工房おおた</div>
+      <p>千葉県船橋市咲が丘1-21-27<br>お米販売・業務用販売、船橋・鎌ヶ谷・白井・近隣に配達可能</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#service">商品ラインナップ</a></li>
+      <li><a href="#access">アクセス</a></li>
+      <li><a href="recruit.html">採用情報</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </div>
+  <p class="copyright">©株式会社米工房おおた All rights reserved.</p>
+</footer>
+
+</body>
+</html>
