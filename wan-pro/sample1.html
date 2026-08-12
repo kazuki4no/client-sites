@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>株式会社WANDS PROJECT｜想い・情熱・創造性を、事業と仕組みで支える</title>
+<style>
+  :root{
+    --main:#1B2A4A;
+    --main-dark:#10192E;
+    --accent:#C9A227;
+    --accent-light:#F6EFDD;
+    --text:#2B2B2B;
+    --sub:#6B6B6B;
+    --bg:#FCFBF7;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.8;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .section{padding:88px 0;}
+  .section-title{font-size:14px;letter-spacing:0.2em;color:var(--accent);font-weight:700;text-align:center;margin-bottom:12px;}
+  .section-heading{font-size:30px;font-weight:700;text-align:center;margin-bottom:16px;letter-spacing:0.03em;color:var(--main-dark);}
+  .section-lead{text-align:center;color:var(--sub);max-width:660px;margin:0 auto 56px;font-size:15px;}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.96);border-bottom:1px solid #eee;backdrop-filter:blur(6px);}
+  .header-inner{max-width:1080px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-size:18px;font-weight:800;color:var(--main-dark);letter-spacing:0.02em;}
+  .logo span{color:var(--accent);}
+  nav ul{display:flex;gap:28px;list-style:none;}
+  nav a{font-size:14px;font-weight:600;}
+  nav a:hover{color:var(--main);}
+  .header-cta{display:flex;gap:10px;}
+  .btn{display:inline-block;padding:12px 28px;border-radius:4px;font-size:14px;font-weight:700;text-align:center;}
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-primary:hover{background:#ad8a1e;}
+  .btn-outline{border:1px solid var(--main);color:var(--main);}
+  .btn-outline:hover{background:var(--accent-light);}
+  .btn-small{padding:9px 18px;font-size:13px;}
+  .menu-toggle{display:none;font-size:26px;background:none;border:none;cursor:pointer;color:var(--main-dark);}
+
+  /* Hero */
+  /* 元画像URL：現サイトTOPメインビジュアル（未取得・自社写真への差し替え前提） / images/hero-main.jpg */
+  .hero{
+    position:relative;min-height:620px;display:flex;align-items:center;
+    background:linear-gradient(120deg, rgba(16,25,46,0.90), rgba(27,42,74,0.74)), url('https://loremflickr.com/1600/900/office,team,meeting') center/cover no-repeat;
+    color:#fff;
+  }
+  .hero-inner{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .hero-tag{
+    display:inline-block;background:rgba(255,255,255,0.12);border:1px solid rgba(255,255,255,0.5);
+    padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600;letter-spacing:0.05em;margin-bottom:24px;
+  }
+  .hero h1{font-size:34px;font-weight:800;line-height:1.6;margin-bottom:22px;max-width:680px;}
+  .hero p{font-size:15.5px;max-width:580px;margin-bottom:36px;opacity:0.95;}
+  .hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
+  .hero .btn-outline{border-color:#fff;color:#fff;}
+  .hero .btn-outline:hover{background:rgba(255,255,255,0.15);}
+
+  /* Philosophy */
+  .philo-band{background:var(--main-dark);color:#fff;padding:80px 0;}
+  .philo-band .section-heading{color:#fff;}
+  .philo-band .section-lead{color:#cbd0da;}
+  .philo-word{display:flex;justify-content:center;gap:18px;flex-wrap:wrap;margin-bottom:44px;}
+  .philo-word span{
+    background:rgba(201,162,39,0.15);border:1px solid rgba(201,162,39,0.5);color:var(--accent);
+    padding:8px 20px;border-radius:20px;font-size:13.5px;font-weight:700;letter-spacing:0.05em;
+  }
+  .philo-text{max-width:760px;margin:0 auto;font-size:14.5px;color:#d8dbe4;text-align:center;}
+
+  /* Strengths */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .card{background:var(--white);border:1px solid #ececec;border-radius:10px;padding:32px 24px;transition:transform .2s, box-shadow .2s;}
+  .card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,0.08);}
+  .card-num{font-size:13px;color:var(--accent);font-weight:800;letter-spacing:0.1em;margin-bottom:14px;}
+  .card h3{font-size:17px;font-weight:700;margin-bottom:12px;color:var(--main-dark);}
+  .card p{font-size:13.5px;color:var(--sub);}
+
+  /* Services */
+  .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .service-card{background:var(--white);border:1px solid #ececec;border-radius:10px;padding:26px 24px;}
+  .service-no{font-size:12px;color:var(--accent);font-weight:800;letter-spacing:0.1em;}
+  .service-card h3{font-size:16px;font-weight:700;margin:8px 0 10px;color:var(--main-dark);}
+  .service-card p{font-size:13.5px;color:var(--sub);}
+
+  /* Clients */
+  .client-band{background:var(--accent-light);}
+  .client-grid{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;}
+  .client-chip{background:#fff;border:1px solid #e6dbb8;border-radius:6px;padding:14px 22px;font-size:14px;font-weight:700;color:var(--main-dark);}
+
+  /* Flow */
+  .flow-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .flow-item{background:var(--white);border:1px solid #ececec;border-radius:10px;padding:26px 20px;}
+  .flow-num{
+    width:38px;height:38px;border-radius:50%;background:var(--main);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;margin-bottom:14px;
+  }
+  .flow-item h3{font-size:15px;font-weight:700;margin-bottom:8px;color:var(--main-dark);}
+  .flow-item p{font-size:13px;color:var(--sub);}
+
+  /* FAQ */
+  .faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:14px;}
+  .faq-item{background:var(--white);border:1px solid #ececec;border-radius:10px;padding:22px 26px;}
+  .faq-q{font-size:15px;font-weight:700;color:var(--main-dark);display:flex;gap:10px;margin-bottom:8px;}
+  .faq-q span{color:var(--accent);}
+  .faq-a{font-size:13.5px;color:var(--sub);display:flex;gap:10px;}
+  .faq-a span{color:var(--main);font-weight:700;}
+
+  /* Company */
+  .company-table{width:100%;border-collapse:collapse;max-width:760px;margin:0 auto;background:#fff;border-radius:10px;overflow:hidden;border:1px solid #ececec;}
+  .company-table th,.company-table td{padding:18px 24px;text-align:left;font-size:14.5px;border-bottom:1px solid #eee;}
+  .company-table th{width:150px;background:var(--accent-light);color:var(--main-dark);font-weight:700;}
+  .company-table tr:last-child th,.company-table tr:last-child td{border-bottom:none;}
+
+  /* CTA */
+  .cta{background:var(--main-dark);color:#fff;text-align:center;padding:80px 24px;}
+  .cta h2{font-size:26px;font-weight:800;margin-bottom:16px;}
+  .cta p{color:#cbd6dd;margin-bottom:32px;}
+  .cta .btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .cta .btn-primary{background:var(--accent);color:#fff;}
+  .cta .btn-outline{border-color:#fff;color:#fff;}
+
+  footer{background:var(--main-dark);color:#c6ccd6;padding:48px 24px 24px;font-size:13px;}
+  .footer-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .footer-logo{font-size:17px;font-weight:800;color:#fff;margin-bottom:10px;}
+  .footer-links{display:flex;gap:24px;list-style:none;flex-wrap:wrap;}
+  .copyright{text-align:center;margin-top:32px;color:#7c8290;}
+
+  @media (max-width:900px){
+    .cards{grid-template-columns:1fr;}
+    .service-grid{grid-template-columns:1fr 1fr;}
+    .flow-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:700px){
+    nav,.header-cta{display:none;}
+    .menu-toggle{display:block;}
+    .hero h1{font-size:24px;}
+    .hero{min-height:540px;}
+    .section{padding:60px 0;}
+    .service-grid{grid-template-columns:1fr;}
+    .flow-grid{grid-template-columns:1fr;}
+    .company-table th{width:110px;font-size:13px;padding:14px;}
+    .company-table td{font-size:13px;padding:14px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">WANDS<span>PROJECT</span></div>
+    <nav><ul>
+      <li><a href="#philosophy">企業理念</a></li>
+      <li><a href="#service">事業内容</a></li>
+      <li><a href="#client">お取引先企業</a></li>
+      <li><a href="#company">会社情報</a></li>
+    </ul></nav>
+    <div class="header-cta">
+      <a href="recruit.html" class="btn btn-outline btn-small">採用情報</a>
+      <a href="#contact" class="btn btn-primary btn-small">お問い合わせ</a>
+    </div>
+    <button class="menu-toggle">≡</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">千葉県船橋市・東京都品川区／多角的事業を展開する伴走型プロジェクトカンパニー</span>
+    <h1>１人１人の想い・情熱・創造性を、<br>アイデアと実行力で形にする。</h1>
+    <p>TikTok公式エージェンシー事業やLIVEコマース支援、プロモーション、Web・アプリ運営、人材育成コンサルティング、生活支援サービスまで。多くの法人でリスクマネジメント部門の顧問を務めてきた実績をもとに、目的達成までもその後もお客様に寄り添い続けます。</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-primary">お問い合わせはこちら</a>
+      <a href="#service" class="btn btn-outline">事業内容を見る</a>
+    </div>
+  </div>
+</section>
+
+<section class="philo-band" id="philosophy">
+  <div class="container">
+    <p class="section-title" style="color:var(--accent);">PHILOSOPHY</p>
+    <h2 class="section-heading">企業理念</h2>
+    <div class="philo-word">
+      <span>WAND＝情熱・創造性・行動力</span>
+      <span>ONE＝１人１人</span>
+      <span>PROJECT＝目的達成の計画</span>
+    </div>
+    <p class="philo-text">「WANDS PROJECT」は、魔法使いが使う杖であり、タロットカードで「情熱」「創造性」「行動力」を意味する“wand”と、１つを表す“one”を重ねた「WANDS」、そして目的達成のために必要な人材や設備を集め計画する「PROJECT」を組み合わせた造語です。１人では乗り越えられない場面があるからこそ、その想いに寄り添い、アイデアと実行力、そして多くの法人のリスクマネジメント部門の顧問として培ってきた実績で、目的地に到着するまでも、その後活躍される皆さんも支え続けます。</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <p class="section-title">STRENGTH</p>
+    <h2 class="section-heading">WANDS PROJECTが選ばれる理由</h2>
+    <p class="section-lead">エンタメ領域から生活支援、リスクマネジメントまで、性質の異なる事業を横断してきたからこそ提供できる伴走があります。</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-num">01</div>
+        <h3>多角的な事業ドメインでの実行力</h3>
+        <p>TikTok公式エージェンシー、LIVEコマース支援、Web・アプリ運営、人材育成コンサルティング、生活支援サービスなど、幅広い事業を自社で運営してきた実行力があります。</p>
+      </div>
+      <div class="card">
+        <div class="card-num">02</div>
+        <h3>リスクマネジメント顧問としての実績</h3>
+        <p>多くの法人でリスクマネジメント部門の顧問を務め、事業に伴うリスクを排除してきた経験を、新しい挑戦を支えるための知見として活かしています。</p>
+      </div>
+      <div class="card">
+        <div class="card-num">03</div>
+        <h3>目的達成後も伴走し続ける姿勢</h3>
+        <p>目的地に到着するまでの支援だけでなく、その後活躍される皆さんに寄り添い続けることを大切にしています。単発の支援で終わらせません。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="service" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">BUSINESS</p>
+    <h2 class="section-heading">事業内容</h2>
+    <p class="section-lead">エンタメ・プロモーションからコンサルティング、生活支援サービスまで。目的達成のために必要な人材や設備を集め、計画から実行までを担います。</p>
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="service-no">01</div>
+        <h3>TikTok公式エージェンシー</h3>
+        <p>TikTok公式エージェンシーとして「ワンプロ」を運営。クリエイターの活動をサポートします。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-no">02</div>
+        <h3>LIVEコマース支援・業務代行</h3>
+        <p>LIVEコマース事業の支援・業務代行を行い、ライブ配信を通じた販売の立ち上げから運営までをサポートします。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-no">03</div>
+        <h3>プロモーション業務</h3>
+        <p>インターネットを利用した番組映像・音楽の配信・制作・販売、マネジメント及びイベントの企画・運営・販売を含むプロモーション業務を手がけます。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-no">04</div>
+        <h3>Web・アプリの企画運営管理</h3>
+        <p>各種アプリケーション・Webサイトの企画、制作、販売、運営及び管理を行います。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-no">05</div>
+        <h3>人材育成コンサルティング</h3>
+        <p>企業の営業及び人材育成に関するコンサルティング業務で、組織の成長を支援します。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-no">06</div>
+        <h3>生活支援サービス事業</h3>
+        <p>清掃・洗濯・料理・買物代行など家事全般の支援サービスとそのコンサルティング・情報提供、家事関連道具の開発販売を行います。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-no">07</div>
+        <h3>著作権・肖像権の管理</h3>
+        <p>著作権・肖像権の管理業務を通じて、権利者の権益を守ります。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-no">08</div>
+        <h3>タレントマネジメント</h3>
+        <p>プロスポーツ選手・芸能人・芸術家等のマネジメント業務を行います。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-no">09</div>
+        <h3>損害保険代理店業</h3>
+        <p>損害保険代理店として、事業や生活に伴うリスクへの備えをサポートします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section client-band" id="client">
+  <div class="container">
+    <p class="section-title">CLIENT</p>
+    <h2 class="section-heading">お取引先企業</h2>
+    <p class="section-lead">エンタメからフード、生活関連まで、幅広い分野の企業様にお取引いただいています。</p>
+    <div class="client-grid">
+      <span class="client-chip">BIOPLUS様</span>
+      <span class="client-chip">YONEX株式会社様</span>
+      <span class="client-chip">株式会社ジパング</span>
+      <span class="client-chip">フードリレーションズ様</span>
+      <span class="client-chip">株式会社萌木様</span>
+      <span class="client-chip">COTREE様</span>
+      <span class="client-chip">チョロクチョロン様</span>
+      <span class="client-chip">有限会社小西本店様</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="flow">
+  <div class="container">
+    <p class="section-title">FLOW</p>
+    <h2 class="section-heading">ご相談の流れ</h2>
+    <p class="section-lead">まずはお気軽にお問い合わせください。事業内容や状況をお伺いしたうえで、最適な進め方をご提案します。</p>
+    <div class="flow-grid">
+      <div class="flow-item"><div class="flow-num">1</div><h3>お問い合わせ</h3><p>フォームより、ご相談内容を選択のうえご連絡ください。</p></div>
+      <div class="flow-item"><div class="flow-num">2</div><h3>ヒアリング</h3><p>現状の課題や目的をお伺いし、必要な支援の内容を整理します。</p></div>
+      <div class="flow-item"><div class="flow-num">3</div><h3>ご提案</h3><p>事業内容に応じて、最適な体制・進め方をご提案します。</p></div>
+      <div class="flow-item"><div class="flow-num">4</div><h3>実行・伴走</h3><p>実行段階以降も伴走し、目的達成後の活躍まで見据えてサポートします。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">FAQ</p>
+    <h2 class="section-heading">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q"><span>Q</span>どの事業について相談すればよいか分からないのですが。</div>
+        <div class="faq-a"><span>A</span>問題ございません。まずはお問い合わせフォームの「ご相談」からご連絡いただければ、内容をお伺いしたうえで担当領域にお繋ぎします。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Q</span>個人でも相談できますか？法人以外の依頼は可能ですか？</div>
+        <div class="faq-a"><span>A</span>個人のクリエイター様からのご相談も歓迎しています。TikTokエージェンシーやマネジメントに関するご相談はお気軽にお寄せください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Q</span>船橋本社・東京本社どちらに問い合わせればよいですか？</div>
+        <div class="faq-a"><span>A</span>お問い合わせフォームより一括で受け付けております。拠点を指定いただく必要はございません。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="company">
+  <div class="container">
+    <p class="section-title">COMPANY</p>
+    <h2 class="section-heading">会社情報</h2>
+    <table class="company-table">
+      <tr><th>社名</th><td>株式会社WANDS PROJECT（ワンズプロジェクト）</td></tr>
+      <tr><th>代表</th><td>代表取締役　武田勇樹</td></tr>
+      <tr><th>船橋本社</th><td>〒273-0005　千葉県船橋市本町6-2-10　ダイアパレスステーションプラザ船橋 1203</td></tr>
+      <tr><th>東京本社</th><td>〒141-0031　東京都品川区西五反田1丁目26-2　五反田サンハイツ1階</td></tr>
+      <tr><th>事業内容</th><td>TikTok公式エージェンシー／LIVEコマース支援／プロモーション業務／Web・アプリ運営管理／人材育成コンサルティング／生活支援サービス／著作権・肖像権管理／タレントマネジメント／損害保険代理店業</td></tr>
+      <tr><th>お問い合わせ</th><td>お問い合わせフォームより受付</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2>まずはお気軽にご相談ください</h2>
+  <p>ご相談内容は「ご相談」「お問い合わせ」「その他」からお選びいただけます。個人・法人問わずお待ちしております。</p>
+  <div class="btns">
+    <a href="https://wan-pro.co.jp/contact/" class="btn btn-primary">お問い合わせフォームへ</a>
+    <a href="https://wan-pro.co.jp/" class="btn btn-outline">現在のサイトを見る</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">株式会社WANDS PROJECT</div>
+      <p>千葉県船橋市本町6-2-10（船橋本社）／東京都品川区西五反田1-26-2（東京本社）<br>TikTok公式エージェンシー・LIVEコマース支援・プロモーション・生活支援サービス 等</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#service">事業内容</a></li>
+      <li><a href="#company">会社情報</a></li>
+      <li><a href="recruit.html">採用情報</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </div>
+  <p class="copyright">©株式会社WANDS PROJECT All rights reserved.</p>
+</footer>
+
+</body>
+</html>
