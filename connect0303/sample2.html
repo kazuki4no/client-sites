@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>株式会社CONNECT｜5つの事業でつながる、企業の成長パートナー</title>
+<style>
+  :root{
+    --main:#1C6B2A;
+    --main-dark:#0F3D18;
+    --accent:#42BA1A;
+    --accent-light:#EAF7E4;
+    --ink:#101512;
+    --text:#24272A;
+    --sub:#6A7570;
+    --bg:#FFFFFF;
+    --panel:#F3F8F1;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.75;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1120px;margin:0 auto;padding:0 24px;}
+  .section{padding:96px 0;}
+  .eyebrow{font-size:12.5px;letter-spacing:0.25em;color:var(--accent);font-weight:800;margin-bottom:14px;}
+  .heading{font-size:32px;font-weight:800;letter-spacing:0.02em;color:var(--ink);margin-bottom:18px;}
+  .lead{color:var(--sub);font-size:15px;max-width:600px;}
+  .center{text-align:center;margin-left:auto;margin-right:auto;}
+
+  header{position:sticky;top:0;z-index:100;background:var(--ink);}
+  .header-inner{max-width:1120px;margin:0 auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-size:19px;font-weight:800;color:#fff;letter-spacing:0.03em;display:flex;align-items:center;gap:8px;}
+  .logo .dot{width:9px;height:9px;border-radius:50%;background:var(--accent);}
+  nav ul{display:flex;gap:30px;list-style:none;}
+  nav a{font-size:13.5px;font-weight:600;color:#cfd8d1;}
+  nav a:hover{color:#fff;}
+  .header-cta{display:flex;gap:10px;}
+  .btn{display:inline-block;padding:13px 26px;border-radius:2px;font-size:13.5px;font-weight:700;text-align:center;}
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-primary:hover{background:#379e15;}
+  .btn-ghost{border:1px solid rgba(255,255,255,0.4);color:#fff;}
+  .btn-ghost:hover{background:rgba(255,255,255,0.1);}
+  .btn-dark{border:1px solid var(--main);color:var(--main);}
+  .btn-dark:hover{background:var(--accent-light);}
+  .btn-small{padding:9px 18px;font-size:12.5px;}
+  .menu-toggle{display:none;font-size:26px;background:none;border:none;cursor:pointer;color:#fff;}
+
+  /* Hero split */
+  .hero{background:var(--ink);color:#fff;}
+  .hero-grid{display:grid;grid-template-columns:1.05fr 0.95fr;align-items:center;min-height:600px;}
+  .hero-copy{padding:60px 0;}
+  .hero-num{font-size:12.5px;letter-spacing:0.3em;color:var(--accent);font-weight:800;margin-bottom:20px;}
+  .hero h1{font-size:38px;font-weight:800;line-height:1.5;margin-bottom:24px;}
+  .hero h1 em{color:var(--accent);font-style:normal;}
+  .hero p{font-size:14.5px;color:#c3cdc6;max-width:460px;margin-bottom:34px;}
+  .hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+  /* 元画像URL：現サイトTOPメインビジュアル（ストック都市風景）→事業多角性が伝わる写真へ差し替え / images/hero-main.jpg */
+  .hero-photo{height:100%;min-height:600px;background:url('https://loremflickr.com/1000/1200/business,technology,team') center/cover no-repeat;position:relative;}
+  .hero-photo::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(16,21,18,0.05), rgba(16,21,18,0.55));}
+
+  /* Tag strip */
+  .tagstrip{background:var(--accent);color:#fff;padding:16px 0;overflow:hidden;}
+  .tagstrip-inner{display:flex;gap:40px;justify-content:center;flex-wrap:wrap;font-size:13px;font-weight:700;letter-spacing:0.05em;}
+
+  /* Bento service grid */
+  .bento{display:grid;grid-template-columns:repeat(6,1fr);grid-auto-rows:190px;gap:18px;margin-top:52px;}
+  .bento-item{position:relative;border-radius:6px;overflow:hidden;color:#fff;padding:24px;display:flex;flex-direction:column;justify-content:flex-end;background-size:cover;background-position:center;}
+  .bento-item::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,61,24,0.15), rgba(15,61,24,0.88));}
+  .bento-item *{position:relative;z-index:1;}
+  .bento-item .no{font-size:12px;font-weight:800;letter-spacing:0.15em;color:#bff0a8;margin-bottom:8px;}
+  .bento-item h3{font-size:18px;font-weight:800;margin-bottom:8px;}
+  .bento-item p{font-size:12.5px;color:#e2ecdf;}
+  .b1{grid-column:span 3;grid-row:span 2;}
+  .b2{grid-column:span 3;grid-row:span 1;}
+  .b3{grid-column:span 3;grid-row:span 1;}
+  .b4{grid-column:span 2;grid-row:span 1;}
+  .b5{grid-column:span 2;grid-row:span 1;}
+  .b6{grid-column:span 2;grid-row:span 1;}
+
+  /* Stats */
+  .stats-band{background:var(--panel);}
+  .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid #dce8d9;border-radius:8px;overflow:hidden;background:#fff;}
+  .stat{padding:34px 24px;text-align:center;border-right:1px solid #e6efe4;}
+  .stat:last-child{border-right:none;}
+  .stat .n{font-size:30px;font-weight:800;color:var(--main);margin-bottom:6px;}
+  .stat p{font-size:12.5px;color:var(--sub);}
+
+  /* Why cards row */
+  .why-row{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid #e5e5e5;margin-top:50px;}
+  .why-item{padding:34px 28px;border-right:1px solid #e5e5e5;}
+  .why-item:last-child{border-right:none;}
+  .why-item .idx{font-size:26px;font-weight:800;color:#dfe9dc;margin-bottom:14px;}
+  .why-item h3{font-size:16px;font-weight:700;margin-bottom:10px;color:var(--ink);}
+  .why-item p{font-size:13px;color:var(--sub);}
+
+  /* Case-like list */
+  .field-list{display:flex;flex-direction:column;}
+  .field-row{display:grid;grid-template-columns:120px 1fr 1fr;gap:24px;align-items:center;padding:26px 0;border-bottom:1px solid #e5e5e5;}
+  .field-row:first-child{border-top:1px solid #e5e5e5;}
+  .field-row .tag{font-size:12px;font-weight:800;color:var(--accent);letter-spacing:0.1em;}
+  .field-row h3{font-size:16px;font-weight:700;color:var(--ink);}
+  .field-row p{font-size:12.5px;color:var(--sub);}
+
+  /* Quote */
+  .quote-band{background:var(--main-dark);color:#fff;padding:90px 24px;text-align:center;}
+  .quote-band blockquote{font-size:22px;font-weight:700;max-width:760px;margin:0 auto 20px;line-height:1.7;}
+  .quote-band cite{font-size:13px;color:#a9c5ac;font-style:normal;}
+
+  /* Company */
+  .company-table{width:100%;border-collapse:collapse;max-width:800px;background:#fff;border:1px solid #e5e5e5;border-radius:6px;overflow:hidden;}
+  .company-table th,.company-table td{padding:18px 24px;text-align:left;font-size:14px;border-bottom:1px solid #eee;}
+  .company-table th{width:150px;background:var(--panel);color:var(--ink);font-weight:700;}
+  .company-table tr:last-child th,.company-table tr:last-child td{border-bottom:none;}
+
+  /* CTA */
+  .cta{background:linear-gradient(120deg,var(--main-dark),var(--main));color:#fff;text-align:center;padding:90px 24px;}
+  .cta h2{font-size:27px;font-weight:800;margin-bottom:16px;}
+  .cta p{color:#d7ead9;margin-bottom:34px;}
+  .cta .btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+
+  footer{background:var(--ink);color:#9aa89c;padding:48px 24px 24px;font-size:13px;}
+  .footer-inner{max-width:1120px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .footer-logo{font-size:17px;font-weight:800;color:#fff;margin-bottom:10px;}
+  .footer-links{display:flex;gap:24px;list-style:none;flex-wrap:wrap;}
+  .copyright{text-align:center;margin-top:32px;color:#5f6d61;}
+
+  @media (max-width:900px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-photo{min-height:320px;order:-1;}
+    .hero-copy{padding:44px 0;}
+    .bento{grid-template-columns:repeat(2,1fr);grid-auto-rows:170px;}
+    .b1,.b2,.b3,.b4,.b5,.b6{grid-column:span 2;grid-row:span 1;}
+    .b1{grid-row:span 2;}
+    .stats-grid{grid-template-columns:1fr 1fr;}
+    .stat{border-bottom:1px solid #e6efe4;}
+    .why-row{grid-template-columns:1fr;}
+    .why-item{border-right:none;border-bottom:1px solid #e5e5e5;}
+    .field-row{grid-template-columns:1fr;gap:6px;}
+  }
+  @media (max-width:700px){
+    nav,.header-cta{display:none;}
+    .menu-toggle{display:block;}
+    .hero h1{font-size:26px;}
+    .section{padding:64px 0;}
+    .bento{grid-template-columns:1fr;}
+    .b1,.b2,.b3,.b4,.b5,.b6{grid-column:span 1;grid-row:span 1;}
+    .stats-grid{grid-template-columns:1fr;}
+    .stat{border-right:none;border-bottom:1px solid #e6efe4;}
+    .quote-band blockquote{font-size:18px;}
+    .company-table th{width:110px;font-size:12.5px;padding:14px;}
+    .company-table td{font-size:12.5px;padding:14px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo"><span class="dot"></span>CONNECT</div>
+    <nav><ul>
+      <li><a href="#business">事業内容</a></li>
+      <li><a href="#why">選ばれる理由</a></li>
+      <li><a href="#field">対応領域</a></li>
+      <li><a href="#company">会社概要</a></li>
+    </ul></nav>
+    <div class="header-cta">
+      <a href="recruit.html" class="btn btn-ghost btn-small">採用情報</a>
+      <a href="https://connect0303.com/contact/" class="btn btn-primary btn-small">お問い合わせ</a>
+    </div>
+    <button class="menu-toggle">≡</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div class="hero-copy">
+      <p class="hero-num">05 BUSINESS FIELDS / 千葉県船橋市</p>
+      <h1>5つの事業でつながる、<br><em>企業の成長</em>パートナー。</h1>
+      <p>株式会社CONNECTは、IT開発・マーケティング・遊技業界支援・イベント企画・人材サービスの5事業を1社で展開。業種の垣根を越えたつながりで、クライアント企業の課題をワンストップで解決します。</p>
+      <div class="hero-btns">
+        <a href="https://connect0303.com/contact/" class="btn btn-primary">お問い合わせはこちら</a>
+        <a href="#business" class="btn btn-ghost">5つの事業を見る</a>
+      </div>
+    </div>
+    <div class="hero-photo"></div>
+  </div>
+</section>
+
+<div class="tagstrip">
+  <div class="container tagstrip-inner">
+    <span>IT開発</span><span>マーケティング</span><span>遊技業界支援</span><span>イベント企画</span><span>人材サービス</span>
+  </div>
+</div>
+
+<section class="section" id="business">
+  <div class="container">
+    <p class="eyebrow center">BUSINESS</p>
+    <h2 class="heading center">5つの事業でつながる、課題解決のかたち</h2>
+    <p class="lead center">異なる領域の事業を組み合わせることで、単独の会社では対応しきれない複合的な課題にも柔軟にお応えします。</p>
+    <div class="bento">
+      <div class="bento-item b1" style="background-image:url('https://loremflickr.com/700/900/software,code,office')">
+        <!-- 元画像URL：現サイト該当写真なし（未取得） / images/service-it.jpg -->
+        <div class="no">01</div>
+        <h3>IT開発事業</h3>
+        <p>業務システム・Webサービス・アプリケーションの企画から開発・運用まで対応します。</p>
+      </div>
+      <div class="bento-item b2" style="background-image:url('https://loremflickr.com/700/500/marketing,data,analytics')">
+        <!-- 元画像URL：現サイト該当写真なし（未取得） / images/service-marketing.jpg -->
+        <div class="no">02</div>
+        <h3>マーケティング支援事業</h3>
+        <p>データに基づく広告運用・戦略設計・プロモーションを一気通貫で支援。</p>
+      </div>
+      <div class="bento-item b3" style="background-image:url('https://loremflickr.com/700/500/entertainment,neon,arcade')">
+        <!-- 元画像URL：現サイト該当写真なし（未取得） / images/service-amusement.jpg -->
+        <div class="no">03</div>
+        <h3>遊技業界支援事業</h3>
+        <p>業界特有の商習慣を踏まえた販促企画・集客・現場運営をサポート。</p>
+      </div>
+      <div class="bento-item b4" style="background-image:url('https://loremflickr.com/500/400/event,stage,concert')">
+        <!-- 元画像URL：現サイト該当写真なし（未取得） / images/service-event.jpg -->
+        <div class="no">04</div>
+        <h3>イベント企画事業</h3>
+        <p>企画立案から会場手配、当日運営までワンストップ対応。</p>
+      </div>
+      <div class="bento-item b5" style="background-image:url('https://loremflickr.com/500/400/team,people,talent')">
+        <!-- 元画像URL：現サイト該当写真なし（未取得） / images/service-hr.jpg -->
+        <div class="no">05</div>
+        <h3>人材サービス事業</h3>
+        <p>タレント・演者のアテンドや各種人材のマッチング・派遣を提供。</p>
+      </div>
+      <div class="bento-item b6" style="background-image:url('https://loremflickr.com/500/400/handshake,partnership,business')">
+        <!-- 元画像URL：現サイト該当写真なし（未取得） / images/service-partner.jpg -->
+        <div class="no">PARTNER</div>
+        <h3>事業間の連携</h3>
+        <p>複数事業を組み合わせた複合提案も可能です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="stats-band section">
+  <div class="container">
+    <p class="eyebrow center">FACTS</p>
+    <h2 class="heading center">数字で見るCONNECT</h2>
+    <div class="stats-grid">
+      <div class="stat"><div class="n">5</div><p>展開する事業領域</p></div>
+      <div class="stat"><div class="n">2025.3</div><p>設立年月</p></div>
+      <div class="stat"><div class="n">1社</div><p>で完結する体制</p></div>
+      <div class="stat"><div class="n">千葉</div><p>船橋市を拠点に活動</p></div>
+    </div>
+    <div class="why-row">
+      <div class="why-item">
+        <div class="idx">01</div>
+        <h3>ワンストップの実行力</h3>
+        <p>開発・集客・運営・人材までを社内で完結できるため、複数社への発注や連携の手間を省けます。</p>
+      </div>
+      <div class="why-item">
+        <div class="idx">02</div>
+        <h3>データドリブンな設計</h3>
+        <p>広告運用とデータ分析をもとに、成果につながる施策を継続的に検証・改善します。</p>
+      </div>
+      <div class="why-item">
+        <div class="idx">03</div>
+        <h3>現場に強いネットワーク</h3>
+        <p>遊技業界やイベント現場に精通したスタッフとタレントネットワークで、実行段階まで支えます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="field">
+  <div class="container">
+    <p class="eyebrow center">FOR WHOM</p>
+    <h2 class="heading center">こんな企業様にご利用いただいています</h2>
+    <div class="field-list">
+      <div class="field-row">
+        <div class="tag">CASE 01</div>
+        <h3>遊技ホール・アミューズメント事業者様</h3>
+        <p>集客イベントの企画から当日の運営、販促物の制作まで一括してご依頼いただけます。</p>
+      </div>
+      <div class="field-row">
+        <div class="tag">CASE 02</div>
+        <h3>広告運用を見直したい企業様</h3>
+        <p>データに基づく広告設計・運用改善で、費用対効果の高いプロモーションを実現します。</p>
+      </div>
+      <div class="field-row">
+        <div class="tag">CASE 03</div>
+        <h3>業務システムを内製したい企業様</h3>
+        <p>要件整理から開発・運用保守まで、IT開発事業がワンストップで対応します。</p>
+      </div>
+      <div class="field-row">
+        <div class="tag">CASE 04</div>
+        <h3>タレント・演者を探している企業様</h3>
+        <p>各方面のタレント・演者ネットワークから、目的に合った人材をご紹介します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="quote-band">
+  <blockquote>「企業の成長を支え、社会に新たな価値を。」<br>私たちは、業種の垣根を越えたつながりで課題解決に向き合います。</blockquote>
+  <cite>株式会社CONNECT　代表取締役　河合 真吾</cite>
+</section>
+
+<section class="section" id="company">
+  <div class="container">
+    <p class="eyebrow center">COMPANY</p>
+    <h2 class="heading center">会社概要</h2>
+    <table class="company-table" style="margin:0 auto;">
+      <tr><th>社名</th><td>株式会社CONNECT（CONNECT, Inc.）</td></tr>
+      <tr><th>代表取締役</th><td>河合 真吾</td></tr>
+      <tr><th>設立</th><td>2025年3月</td></tr>
+      <tr><th>資本金</th><td>300万円</td></tr>
+      <tr><th>所在地</th><td>〒274-0060　千葉県船橋市坪井東6-5-23</td></tr>
+      <tr><th>電話番号</th><td>047-770-1185</td></tr>
+      <tr><th>事業内容</th><td>IT開発事業／マーケティング支援事業／遊技業界支援事業／イベント企画事業／人材サービス事業</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2>まずはお気軽にご相談ください</h2>
+  <p>1つの事業だけでも、複数の課題をまとめてのご相談でも構いません。</p>
+  <div class="btns">
+    <a href="https://connect0303.com/contact/" class="btn btn-primary">お問い合わせフォームへ</a>
+    <a href="https://connect0303.com/" class="btn btn-ghost">現在のサイトを見る</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">株式会社CONNECT</div>
+      <p>千葉県船橋市坪井東6-5-23<br>IT開発・マーケティング・遊技業界支援・イベント企画・人材サービス</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#business">事業内容</a></li>
+      <li><a href="#company">会社概要</a></li>
+      <li><a href="recruit.html">採用情報</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </div>
+  <p class="copyright">©株式会社CONNECT All rights reserved.</p>
+</footer>
+
+</body>
+</html>
