@@ -1,0 +1,153 @@
+/* NOC Inc. LP — 共通スタイル */
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{max-width:100%;overflow-x:hidden;}
+img{max-width:100%;height:auto;display:block;}
+
+:root{
+  --navy:#1a2b4a;
+  --navy-dark:#0f1c30;
+  --orange:#e07330;
+  --light:#f5f6f8;
+  --line:#ddd;
+  --text:#222;
+  --white:#fff;
+}
+
+body{font-family:'Noto Sans JP',sans-serif;color:var(--text);line-height:1.7;}
+
+/* ヘッダー */
+header{
+  position:sticky;top:0;z-index:100;
+  background:var(--navy);padding:.6rem 1.5rem;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo{color:var(--white);font-weight:700;font-size:1.05rem;text-decoration:none;letter-spacing:.04em;}
+.site-nav{display:flex;gap:1.2rem;align-items:center;}
+.site-nav a{color:rgba(255,255,255,.85);text-decoration:none;font-size:.88rem;}
+.site-nav a:hover{color:var(--orange);}
+.hamburger{display:none;background:none;border:0;cursor:pointer;padding:.4rem;}
+.hamburger span{display:block;width:22px;height:2px;background:var(--white);margin:4px 0;}
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{display:none;flex-direction:column;align-items:flex-start;
+    position:absolute;top:100%;left:0;right:0;z-index:50;
+    background:var(--navy-dark);padding:.5rem 1.5rem 1rem;box-shadow:0 8px 16px rgba(0,0,0,.2);}
+  .site-nav.open{display:flex;}
+}
+
+/* ボタン共通 */
+.btn-primary,.btn-outline,.btn-green{
+  display:inline-block;padding:.8rem 1.8rem;border-radius:6px;
+  font-weight:700;font-size:.95rem;text-decoration:none;cursor:pointer;
+  transition:opacity .2s;text-align:center;border:2px solid transparent;
+}
+.btn-primary{background:var(--orange);color:var(--white);border-color:var(--orange);}
+.btn-outline{background:transparent;border-color:var(--orange);color:var(--orange);}
+.btn-green{background:#2ecc71;color:var(--white);border-color:#2ecc71;}
+.btn-primary:hover,.btn-outline:hover,.btn-green:hover{opacity:.82;}
+
+/* 追従CTA（スマホ） */
+.floating-cta{
+  position:fixed;left:50%;bottom:12px;transform:translateX(-50%);
+  z-index:50;padding:.9rem 1.6rem;border-radius:999px;
+  background:var(--orange);color:var(--white);font-weight:700;
+  box-shadow:0 6px 18px rgba(0,0,0,.25);text-decoration:none;white-space:nowrap;
+  font-size:.95rem;
+}
+@media(min-width:769px){.floating-cta{display:none;}}
+
+/* セクション共通 */
+section{padding:4rem 1.5rem;}
+.container{max-width:1060px;margin:0 auto;}
+.section-title{font-size:clamp(1.4rem,4vw,2rem);font-weight:700;text-align:center;margin-bottom:2.5rem;color:var(--navy);}
+.section-title span{color:var(--orange);}
+.accent{color:var(--orange);}
+
+/* グリッド */
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.grid-2{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;}
+@media(max-width:768px){
+  .grid-3,.grid-2{grid-template-columns:1fr;}
+}
+.card{background:var(--white);border-radius:10px;padding:1.5rem;box-shadow:0 2px 12px rgba(0,0,0,.08);}
+
+/* 強みカード */
+.strength{background:var(--light);}
+.strength-card{text-align:center;}
+.strength-icon{width:56px;height:56px;margin:0 auto .8rem;display:flex;align-items:center;justify-content:center;}
+.strength-icon svg{width:44px;height:44px;stroke:var(--orange);stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round;}
+.strength-card h3{font-size:1.05rem;color:var(--navy);margin-bottom:.4rem;}
+
+/* サービスセクション */
+.service-list{display:flex;flex-direction:column;gap:1.5rem;}
+.service-item{display:flex;gap:1.5rem;align-items:center;background:var(--white);border-radius:10px;box-shadow:0 2px 12px rgba(0,0,0,.08);overflow:hidden;}
+.service-item img{width:220px;height:160px;object-fit:cover;flex-shrink:0;}
+.service-body{padding:1rem 1.2rem;}
+.service-body h3{font-size:1.1rem;margin-bottom:.4rem;color:var(--navy);}
+.service-body p{font-size:.92rem;color:#555;}
+@media(max-width:768px){
+  .service-item{flex-direction:column;}
+  .service-item img{width:100%;height:180px;}
+}
+
+/* 実績セクション */
+.achievement{background:var(--navy);color:var(--white);}
+.achievement .section-title{color:var(--white);}
+.area-list{display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;margin-top:1rem;}
+.area-tag{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);
+  color:var(--white);padding:.4rem .9rem;border-radius:6px;font-size:.88rem;}
+.work-count{font-size:clamp(2.5rem,8vw,5rem);font-weight:700;color:var(--orange);line-height:1;margin-bottom:.3rem;}
+
+/* FAQ */
+.faq{background:var(--light);}
+.faq-list{display:flex;flex-direction:column;gap:1rem;max-width:760px;margin:0 auto;}
+.faq-item{border:1px solid var(--line);border-radius:8px;overflow:hidden;}
+.faq-q{background:var(--navy);color:var(--white);padding:.9rem 1.2rem;font-weight:700;font-size:.95rem;}
+.faq-a{padding:.9rem 1.2rem;font-size:.92rem;}
+
+/* 問い合わせ */
+.contact{background:var(--navy);color:var(--white);text-align:center;}
+.contact .section-title{color:var(--white);}
+.contact-tel{font-size:clamp(1.8rem,5vw,2.8rem);font-weight:700;margin:.5rem 0;color:var(--orange);}
+.contact-note{font-size:.82rem;opacity:.75;margin-top:.4rem;}
+.contact-form{max-width:540px;margin:2rem auto 0;text-align:left;}
+.contact-form label{display:block;font-size:.88rem;margin-bottom:.3rem;opacity:.9;}
+.contact-form input,.contact-form select,.contact-form textarea{
+  width:100%;box-sizing:border-box;padding:.7rem 1rem;margin-bottom:1.1rem;
+  border:1px solid rgba(255,255,255,.3);border-radius:6px;
+  background:rgba(255,255,255,.1);color:var(--white);font-size:.95rem;
+}
+.contact-form textarea{height:130px;resize:vertical;}
+.contact-form ::placeholder{color:rgba(255,255,255,.45);}
+
+/* フッター */
+footer{background:var(--navy-dark);color:rgba(255,255,255,.65);text-align:center;padding:1.5rem;font-size:.82rem;}
+
+/* 信頼ピル */
+.pill-row{display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;}
+.pill{padding:.3rem .9rem;font-size:.82rem;
+  background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.3);
+  border-radius:999px;color:var(--white);}
+
+/* CTA under（A案用） */
+.cta-under{background:var(--light);padding:2rem 1.5rem;text-align:center;}
+.cta-under .btn-row{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.2rem;}
+.cta-under .btn-primary,.cta-under .btn-outline{width:min(100%,22rem);}
+.cta-under .pill-row-text{display:flex;justify-content:center;flex-wrap:wrap;gap:0;font-size:.82rem;color:#555;}
+.cta-under .pill-text+.pill-text{border-left:1px solid var(--line);padding-left:.8rem;margin-left:.8rem;}
+@media(max-width:768px){
+  .cta-under .btn-row{flex-direction:column;align-items:center;}
+  .cta-under .pill-row-text{flex-direction:column;align-items:center;gap:.4rem;}
+  .cta-under .pill-text+.pill-text{border-left:none;padding-left:0;margin-left:0;}
+  .cta-under .pill-check{display:flex;align-items:center;gap:.4rem;}
+}
+
+/* テーブル（スマホ縦積み） */
+table{width:100%;border-collapse:collapse;}
+th,td{border:1px solid var(--line);padding:.7rem 1rem;text-align:left;font-size:.92rem;}
+th{background:var(--navy);color:var(--white);}
+@media(max-width:768px){
+  table,tbody,tr,th,td{display:block;width:100%;}
+  th{border-bottom:0;}
+  td::before{content:attr(data-label);display:block;font-weight:700;font-size:.8rem;color:#777;margin-bottom:.2rem;}
+}
