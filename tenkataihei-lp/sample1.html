@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>松が丘はりねずみ図書館｜本と、静かな居場所。</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700&family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Hallmark · macrostructure: Split Hero (Editorial) · theme: custom "Harinezumi Green A" · anchor hue: 150 (forest green) */
+:root{
+  --color-paper: oklch(97.5% 0.012 95);
+  --color-paper-2: oklch(94% 0.02 95);
+  --color-ink: oklch(24% 0.02 145);
+  --color-ink-soft: oklch(42% 0.03 140);
+  --color-accent: oklch(45% 0.085 150);
+  --color-accent-dark: oklch(33% 0.07 150);
+  --color-accent-soft: oklch(90% 0.045 145);
+  --color-line: oklch(85% 0.02 100);
+  --color-card: oklch(100% 0 0);
+  --font-display: "Shippori Mincho", serif;
+  --font-body: "Zen Kaku Gothic New", sans-serif;
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px;
+  --space-5: 24px; --space-6: 32px; --space-7: 48px; --space-8: 64px; --space-9: 96px;
+  --ease-out: cubic-bezier(.16,1,.3,1);
+  --ease-in-out: cubic-bezier(.65,0,.35,1);
+  --dur-fast: 150ms; --dur-med: 320ms;
+  --radius: 4px;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;overflow-x:clip;}
+html{scroll-behavior:smooth;}
+body{
+  background:var(--color-paper);
+  color:var(--color-ink);
+  font-family:var(--font-body);
+  line-height:1.8;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+h1,h2,h3{font-family:var(--font-display);font-weight:700;font-style:normal;margin:0;line-height:1.4;}
+p{margin:0;}
+a{color:inherit;}
+.wrap{max-width:1120px;margin:0 auto;padding:0 var(--space-5);}
+@media (max-width:600px){.wrap{padding:0 var(--space-4);}}
+
+/* Nav — N1a minimal 2-link, small site */
+.nav{
+  position:sticky;top:0;z-index:50;
+  background:oklch(97.5% 0.012 95 / 0.92);
+  backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--color-line);
+}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;padding:var(--space-4) 0;max-width:1120px;margin:0 auto;padding-left:var(--space-5);padding-right:var(--space-5);}
+.nav-brand{font-family:var(--font-display);font-weight:700;font-size:1.05rem;letter-spacing:.02em;}
+.nav-brand span{color:var(--color-accent);}
+.nav-cta{
+  background:var(--color-accent);color:#fff;text-decoration:none;
+  padding:10px 20px;border-radius:9999px;font-size:.85rem;font-weight:500;
+  white-space:nowrap;transition:background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+  display:inline-block;
+}
+.nav-cta:hover{background:var(--color-accent-dark);transform:translateY(-1px);}
+.nav-cta:focus-visible{outline:3px solid var(--color-accent-soft);outline-offset:2px;}
+
+/* Hero — split */
+.hero{padding:var(--space-8) 0 var(--space-7);}
+.hero-grid{display:grid;grid-template-columns:1.1fr 1fr;gap:var(--space-8);align-items:center;}
+@media (max-width:860px){.hero-grid{grid-template-columns:1fr;gap:var(--space-6);}}
+.eyebrow{
+  display:inline-flex;align-items:center;gap:8px;
+  font-size:.8rem;color:var(--color-accent-dark);font-weight:500;
+  background:var(--color-accent-soft);padding:6px 14px;border-radius:9999px;margin-bottom:var(--space-5);
+}
+.hero h1{
+  font-size:clamp(1.9rem, 1.3rem + 2.6vw, 3.4rem);
+  overflow-wrap:anywhere;min-width:0;
+  color:var(--color-ink);
+}
+.hero h1 em{font-style:normal;color:var(--color-accent);}
+.hero-lead{margin-top:var(--space-5);font-size:1.05rem;color:var(--color-ink-soft);max-width:44ch;}
+.hero-actions{margin-top:var(--space-6);display:flex;flex-wrap:wrap;gap:var(--space-4);}
+.btn-primary{
+  background:var(--color-accent);color:#fff;text-decoration:none;
+  padding:16px 32px;border-radius:9999px;font-weight:700;font-size:1rem;
+  display:inline-block;transition:background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+  box-shadow:0 8px 24px oklch(45% 0.085 150 / 0.25);
+}
+.btn-primary:hover{background:var(--color-accent-dark);transform:translateY(-2px);}
+.btn-primary:focus-visible{outline:3px solid var(--color-accent-soft);outline-offset:3px;}
+.btn-secondary{
+  color:var(--color-accent-dark);text-decoration:none;padding:16px 8px;font-weight:500;
+  border-bottom:1px solid var(--color-accent-dark);display:inline-block;
+}
+.hero-note{margin-top:var(--space-4);font-size:.82rem;color:var(--color-ink-soft);}
+.hero-figure{position:relative;}
+.hero-figure img{border-radius:8px;width:100%;height:420px;object-fit:cover;}
+@media (max-width:860px){.hero-figure img{height:280px;}}
+.hero-figure-tag{
+  position:absolute;bottom:-18px;left:-18px;background:var(--color-card);
+  padding:14px 20px;border-radius:6px;box-shadow:0 12px 30px oklch(24% 0.02 145 / 0.15);
+  font-size:.85rem;max-width:220px;
+}
+@media (max-width:860px){.hero-figure-tag{left:12px;bottom:-16px;}}
+.hero-figure-tag b{color:var(--color-accent-dark);}
+
+/* Section shell */
+section{padding:var(--space-9) 0;}
+.section-head{max-width:640px;margin-bottom:var(--space-7);}
+.section-head h2{font-size:clamp(1.5rem,1.2rem+1.2vw,2.1rem);overflow-wrap:anywhere;min-width:0;}
+.section-head p{margin-top:var(--space-4);color:var(--color-ink-soft);font-size:1rem;}
+.bg-alt{background:var(--color-paper-2);}
+
+/* Empathy */
+.empathy-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-5);}
+@media (max-width:760px){.empathy-grid{grid-template-columns:1fr;}}
+.empathy-card{background:var(--color-card);border:1px solid var(--color-line);border-radius:8px;padding:var(--space-6);}
+.empathy-card .mark{font-family:var(--font-display);font-size:1.6rem;color:var(--color-accent);margin-bottom:var(--space-3);display:block;}
+.empathy-card p{color:var(--color-ink-soft);font-size:.95rem;}
+
+/* Benefits */
+.benefit-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-6);}
+@media (max-width:760px){.benefit-list{grid-template-columns:1fr;}}
+.benefit-item{display:flex;gap:var(--space-4);}
+.benefit-num{
+  flex:none;width:44px;height:44px;border-radius:50%;background:var(--color-accent-soft);
+  color:var(--color-accent-dark);display:flex;align-items:center;justify-content:center;
+  font-family:var(--font-display);font-weight:700;
+}
+.benefit-item h3{font-size:1.1rem;margin-bottom:var(--space-2);}
+.benefit-item p{color:var(--color-ink-soft);font-size:.92rem;}
+
+/* Reasons */
+.reason-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-5);}
+@media (max-width:760px){.reason-grid{grid-template-columns:1fr;}}
+.reason-card{padding:var(--space-6);border-radius:8px;background:var(--color-card);border:1px solid var(--color-line);}
+.reason-card img{border-radius:6px;height:160px;object-fit:cover;margin-bottom:var(--space-4);}
+.reason-card h3{font-size:1.05rem;margin-bottom:var(--space-2);}
+.reason-card p{font-size:.9rem;color:var(--color-ink-soft);}
+
+/* Detail / two program cards */
+.program-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--space-6);}
+@media (max-width:760px){.program-grid{grid-template-columns:1fr;}}
+.program-card{border-radius:10px;overflow:hidden;border:1px solid var(--color-line);background:var(--color-card);}
+.program-card img{height:200px;object-fit:cover;width:100%;}
+.program-card-body{padding:var(--space-6);}
+.program-tag{font-size:.75rem;color:var(--color-accent-dark);font-weight:700;letter-spacing:.05em;}
+.program-card h3{margin-top:var(--space-2);font-size:1.2rem;}
+.program-card p{margin-top:var(--space-3);color:var(--color-ink-soft);font-size:.92rem;}
+.program-card ul{margin:var(--space-4) 0 0;padding-left:1.2em;color:var(--color-ink-soft);font-size:.9rem;}
+.program-card li{margin-bottom:6px;}
+
+/* Voices */
+.voice-note{font-size:.8rem;color:var(--color-ink-soft);margin-bottom:var(--space-6);background:var(--color-accent-soft);padding:10px 16px;border-radius:6px;display:inline-block;}
+.voice-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--space-5);}
+@media (max-width:760px){.voice-grid{grid-template-columns:1fr;}}
+.voice-card{background:var(--color-card);border:1px solid var(--color-line);border-radius:8px;padding:var(--space-6);}
+.voice-card p{font-size:.92rem;color:var(--color-ink-soft);}
+.voice-who{margin-top:var(--space-4);font-size:.82rem;font-weight:700;color:var(--color-accent-dark);}
+
+/* FAQ */
+.faq-item{border-bottom:1px solid var(--color-line);}
+.faq-q{
+  width:100%;text-align:left;background:none;border:none;padding:var(--space-5) 0;
+  font-family:var(--font-body);font-weight:700;font-size:1rem;color:var(--color-ink);
+  display:flex;justify-content:space-between;gap:var(--space-4);cursor:pointer;
+}
+.faq-q .icon{flex:none;color:var(--color-accent);transition:transform var(--dur-med) var(--ease-in-out);}
+.faq-item[open] .faq-q .icon{transform:rotate(45deg);}
+.faq-a{padding:0 0 var(--space-5);color:var(--color-ink-soft);font-size:.92rem;max-width:60ch;}
+.faq-q:focus-visible{outline:3px solid var(--color-accent-soft);outline-offset:2px;}
+
+/* Final push */
+.final{
+  background:var(--color-accent-dark);color:oklch(97% 0.01 145);text-align:center;border-radius:16px;
+  padding:var(--space-8) var(--space-5);
+}
+.final h2{font-size:clamp(1.5rem,1.2rem+1.4vw,2.3rem);color:#fff;overflow-wrap:anywhere;}
+.final p{margin-top:var(--space-4);color:oklch(90% 0.02 145);max-width:48ch;margin-left:auto;margin-right:auto;}
+.final .btn-primary{margin-top:var(--space-6);background:#fff;color:var(--color-accent-dark);box-shadow:none;}
+.final .btn-primary:hover{background:oklch(94% 0.02 145);}
+
+/* Footer — Ft5 statement style */
+footer{padding:var(--space-7) 0 var(--space-8);border-top:1px solid var(--color-line);}
+.footer-grid{display:flex;flex-wrap:wrap;justify-content:space-between;gap:var(--space-6);}
+.footer-brand{font-family:var(--font-display);font-weight:700;font-size:1.1rem;}
+.footer-meta{color:var(--color-ink-soft);font-size:.85rem;margin-top:var(--space-3);max-width:36ch;}
+.footer-links{display:flex;gap:var(--space-6);font-size:.85rem;}
+.footer-links a{text-decoration:none;border-bottom:1px solid transparent;transition:border-color var(--dur-fast);}
+.footer-links a:hover{border-color:currentColor;}
+.footer-copy{margin-top:var(--space-6);font-size:.78rem;color:var(--color-ink-soft);}
+
+/* Floating CTA — mobile */
+.floating-cta{
+  position:fixed;left:0;right:0;bottom:0;z-index:60;
+  background:var(--color-accent-dark);
+  padding:12px var(--space-4);
+  display:none;
+  box-shadow:0 -6px 20px oklch(24% 0.02 145 / 0.2);
+}
+.floating-cta a{
+  display:block;text-align:center;background:#fff;color:var(--color-accent-dark);
+  padding:14px;border-radius:9999px;font-weight:700;text-decoration:none;font-size:.95rem;
+}
+@media (max-width:760px){
+  .floating-cta{display:block;}
+  body{padding-bottom:72px;}
+}
+@media (prefers-reduced-motion: reduce){*{transition-duration:.01ms !important;animation-duration:.01ms !important;}}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="nav-brand">松が丘はりねずみ<span>図書館</span></div>
+    <a class="nav-cta" href="#cta">見学・お問い合わせ</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">千葉県・民間図書館</span>
+      <h1>本と静かに向き合う時間を、<br><em>誰でも、この街で。</em></h1>
+      <p class="hero-lead">木の温もりを感じる机と、使い心地の良い椅子。落ち着いた館内で、勉強にも読書にも集中できる場所です。松が丘はりねずみ図書館は、地域に開かれた民間図書館として運営しています。</p>
+      <div class="hero-actions">
+        <a class="btn-primary" href="#cta">見学・利用のお問い合わせ</a>
+        <a class="btn-secondary" href="#about">図書館について見る</a>
+      </div>
+      <p class="hero-note">お問い合わせはGoogleフォームより承っています。</p>
+    </div>
+    <div class="hero-figure">
+      <!-- 元画像: images/hero-reading-room.jpg（館内・閲覧席の実写に差し替え） -->
+      <img src="https://loremflickr.com/1200/900/library,reading,japan" alt="館内の閲覧スペースのイメージ" loading="eager">
+      <div class="hero-figure-tag"><b>木の温もり</b>を感じる机と椅子を配置</div>
+    </div>
+  </div>
+</header>
+
+<section id="empathy">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>こんな場所を、探していませんか。</h2>
+      <p>近くに落ち着いて過ごせる図書館が少ない。そんな声から、松が丘はりねずみ図書館は生まれました。</p>
+    </div>
+    <div class="empathy-grid">
+      <div class="empathy-card">
+        <span class="mark">01</span>
+        <p>家では集中できないけれど、カフェは長居しづらい。静かに読書や勉強に打ち込める場所が欲しい。</p>
+      </div>
+      <div class="empathy-card">
+        <span class="mark">02</span>
+        <p>公共図書館は混み合っていたり、遠かったりする。近所でふらっと立ち寄れる図書館があれば、と思っている。</p>
+      </div>
+      <div class="empathy-card">
+        <span class="mark">03</span>
+        <p>本に関わる仕事がしたいが、いきなり一般就労は不安。社会とのつながりを感じながら、少しずつ活動したい。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-alt" id="about">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>誰もが、本に関わる仕事で活躍できる社会へ</h2>
+      <p>松が丘はりねずみ図書館は、「誰もが活躍できる民間図書館を作ります」という理念のもと、株式会社天下泰平が運営しています。民間図書館の運営を通じて、就労継続支援B型事業所としての役割も担っています。</p>
+    </div>
+    <div class="benefit-list">
+      <div class="benefit-item">
+        <div class="benefit-num">1</div>
+        <div>
+          <h3>落ち着いた館内で過ごせる</h3>
+          <p>木の温もりを感じる机と、使い心地の良い椅子を備えた学習スペース。静かな環境で、読書や勉強に集中できます。</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-num">2</div>
+        <div>
+          <h3>本の仕事に関われる</h3>
+          <p>本の登録作業やシール貼りなど、図書館運営を支える実務に携わりながら、社会とのつながりを感じられる環境です。</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-num">3</div>
+        <div>
+          <h3>地域に開かれた図書館</h3>
+          <p>誰でも気軽に立ち寄れる、民間ならではの図書館。地域の人と本をつなぐ場所を目指しています。</p>
+        </div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-num">4</div>
+        <div>
+          <h3>共に活動できる仲間がいる</h3>
+          <p>スタッフや利用者と共に、本に関わる仕事で活躍する。一人で抱え込まず、共に活動できる環境を大切にしています。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <h2>松が丘はりねずみ図書館が選ばれる理由</h2>
+    </div>
+    <div class="reason-grid">
+      <div class="reason-card">
+        <!-- 元画像: images/reason-desk.jpg（木の机・椅子の実写） -->
+        <img src="https://loremflickr.com/600/400/wooden,desk,library" alt="木の机と椅子">
+        <h3>木の温もりある学習スペース</h3>
+        <p>木の机と座り心地の良い椅子を配置。長時間でも疲れにくい、落ち着いた空間です。</p>
+      </div>
+      <div class="reason-card">
+        <!-- 元画像: images/reason-books.jpg（蔵書棚の実写） -->
+        <img src="https://loremflickr.com/600/400/bookshelf,books,japan" alt="本棚のイメージ">
+        <h3>民間図書館ならではの蔵書</h3>
+        <p>公共図書館とは異なる視点で選ばれた本との出会いがあります。ふらっと立ち寄って新しい一冊を見つけられます。</p>
+      </div>
+      <div class="reason-card">
+        <!-- 元画像: images/reason-work.jpg（本の登録作業風景の実写） -->
+        <img src="https://loremflickr.com/600/400/library,work,volunteer" alt="本の登録作業の様子">
+        <h3>就労継続支援B型も運営</h3>
+        <p>図書館の実務を通じて、本に関わる仕事で活躍できる場を提供。社会とのつながりを大切にしています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-alt" id="programs">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>図書館利用と、B型事業のご案内</h2>
+      <p>読書・学習の場としても、就労継続支援B型事業所としても、どちらもお気軽にご相談いただけます。</p>
+    </div>
+    <div class="program-grid">
+      <div class="program-card">
+        <!-- 元画像: images/program-library.jpg（図書館全景の実写） -->
+        <img src="https://loremflickr.com/700/500/library,interior,calm" alt="図書館の様子">
+        <div class="program-card-body">
+          <span class="program-tag">図書館利用</span>
+          <h3>読書・学習スペースとして</h3>
+          <p>落ち着いた雰囲気の館内で、読書や学習に集中できます。木の温もりを感じる机と椅子で、ゆったりとお過ごしいただけます。</p>
+          <ul>
+            <li>静かな学習スペース完備</li>
+            <li>ふらっと立ち寄れる民間図書館</li>
+            <li>詳しい利用案内はお問い合わせください</li>
+          </ul>
+        </div>
+      </div>
+      <div class="program-card">
+        <!-- 元画像: images/program-b-type.jpg（B型作業風景の実写） -->
+        <img src="https://loremflickr.com/700/500/office,work,team,support" alt="B型事業の作業の様子">
+        <div class="program-card-body">
+          <span class="program-tag">就労継続支援B型</span>
+          <h3>本に関わる仕事で活躍する</h3>
+          <p>本の登録作業やシール貼りなど、図書館運営を支える作業を通じて、社会とのつながりを感じながら活動できます。</p>
+          <ul>
+            <li>本の登録・シール貼りなどの軽作業</li>
+            <li>共に活動できる環境</li>
+            <li>お申し込みはGoogleフォームから</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="voices">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>はりねずみ図書館の日常</h2>
+      <p>オープンに向けた準備の様子や、館内の日常の一コマをご紹介します。</p>
+    </div>
+    <span class="voice-note">※コメントは制作イメージのサンプルです。実際の内容に差し替えて掲載します。</span>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <!-- 元画像: images/voice-1.jpg -->
+        <p>「木の机が気持ちよくて、気づいたら2時間読書していました。」</p>
+        <div class="voice-who">来館者の声（サンプル）</div>
+      </div>
+      <div class="voice-card">
+        <p>「本の登録作業を通じて、少しずつ自信が持てるようになりました。」</p>
+        <div class="voice-who">利用者の声（サンプル）</div>
+      </div>
+      <div class="voice-card">
+        <p>「地域の方がふらっと立ち寄ってくれる、そんな図書館を目指しています。」</p>
+        <div class="voice-who">スタッフの声（サンプル）</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="bg-alt" id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>よくあるご質問</h2>
+    </div>
+    <div>
+      <details class="faq-item" open>
+        <summary class="faq-q">見学だけでも利用できますか？<span class="icon">＋</span></summary>
+        <div class="faq-a">はい、見学も歓迎しています。まずはGoogleフォームよりお気軽にお問い合わせください。</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">就労継続支援B型の利用にはどんな条件がありますか？<span class="icon">＋</span></summary>
+        <div class="faq-a">受給者証の有無など、詳しい条件についてはお問い合わせフォームよりご相談ください。個別に丁寧にご案内します。</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">開館時間や料金を教えてください。<span class="icon">＋</span></summary>
+        <div class="faq-a">開館時間・ご利用料金など詳細はお問い合わせフォームにてご案内しております。お気軽にご連絡ください。</div>
+      </details>
+      <details class="faq-item">
+        <summary class="faq-q">電話での問い合わせはできますか？<span class="icon">＋</span></summary>
+        <div class="faq-a">現在、お問い合わせはGoogleフォームのみで承っております。フォームより必要事項をご記入のうえご連絡ください。</div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<section id="cta">
+  <div class="wrap">
+    <div class="final">
+      <h2>まずは、見学から始めませんか。</h2>
+      <p>読書・学習の場としても、就労継続支援B型事業所としても。松が丘はりねずみ図書館に、お気軽にお問い合わせください。</p>
+      <a class="btn-primary" href="https://forms.gle/wXBzSJ8bQGP6q8Zc6" target="_blank" rel="noopener">Googleフォームでお問い合わせ</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-grid">
+    <div>
+      <div class="footer-brand">松が丘はりねずみ図書館</div>
+      <p class="footer-meta">運営：株式会社天下泰平<br>誰もが活躍できる民間図書館を作ります。</p>
+    </div>
+    <div class="footer-links">
+      <a href="#about">図書館について</a>
+      <a href="#programs">ご利用案内</a>
+      <a href="https://forms.gle/wXBzSJ8bQGP6q8Zc6" target="_blank" rel="noopener">お問い合わせ</a>
+    </div>
+  </div>
+  <div class="wrap footer-copy">&copy; 株式会社天下泰平 / 松が丘はりねずみ図書館</div>
+</footer>
+
+<div class="floating-cta">
+  <a href="https://forms.gle/wXBzSJ8bQGP6q8Zc6" target="_blank" rel="noopener">Googleフォームでお問い合わせ</a>
+</div>
+
+</body>
+</html>
