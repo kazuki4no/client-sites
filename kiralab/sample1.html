@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>きららぼ | Web制作・AI活用支援（船橋）</title>
+<meta name="description" content="千葉・船橋のWeb制作・AI活用支援会社「きららぼ」。デザインと生成AIで、ビジネスの未来をともに描きます。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;1,9..144,400&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Hallmark · genre: editorial · macrostructure: Letter · theme: Atelier (warm ivory, terracotta accent) · enrichment: none (typography only) · nav: N9 · footer: Ft6
+ * H5 Letter knobs: salutation="Dear X," style · body length=3 paragraphs · signoff=typed name
+ * pre-emit critique: P5 H4 E5 S4 R5 V4
+ */
+
+:root{
+  --color-paper:    oklch(97.5% 0.014 55);
+  --color-paper-2:  oklch(94%   0.018 52);
+  --color-rule:     oklch(82%   0.02  50);
+  --color-neutral:  oklch(52%   0.02  45);
+  --color-muted:    oklch(40%   0.02  42);
+  --color-ink:      oklch(19%   0.018 40);
+  --color-accent:   oklch(52%   0.15  38);
+  --color-accent-2: oklch(62%   0.09  150);
+  --color-focus:    oklch(58%   0.17  38);
+
+  --font-display: "Fraunces", ui-serif, Georgia, serif;
+  --font-body:    "Newsreader", ui-serif, Georgia, serif;
+  --font-outlier: "Geist Mono", ui-monospace, monospace;
+
+  --space-3xs: 0.125rem; --space-2xs: 0.25rem; --space-xs: 0.5rem; --space-sm: 0.75rem;
+  --space-md: 1rem; --space-lg: 1.5rem; --space-xl: 2.5rem; --space-2xl: 4rem;
+  --space-3xl: 6rem; --space-4xl: 9rem;
+
+  --text-sm: 0.875rem; --text-base: 1.0625rem; --text-md: 1.25rem; --text-lg: 1.5625rem;
+  --text-xl: 1.9531rem; --text-2xl: 2.4414rem; --text-display: clamp(2.5rem, 4.2vw + 1rem, 4.6rem);
+
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in: cubic-bezier(0.7, 0, 0.84, 0);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --dur-short: 150ms; --dur-med: 280ms;
+
+  --z-base:1; --z-raised:10; --z-dropdown:100; --z-sticky:200; --z-modal:400; --z-toast:500; --z-tooltip:600;
+}
+
+*{box-sizing:border-box;}
+html{overflow-x:clip; scroll-behavior:smooth;}
+body{overflow-x:clip; margin:0; background:var(--color-paper); color:var(--color-ink); font-family:var(--font-body); font-size:var(--text-base); line-height:1.65; font-weight:400;}
+img{max-width:100%; display:block;}
+a{color:inherit;}
+::selection{background:var(--color-accent); color:var(--color-paper);}
+
+h1,h2,h3{font-family:var(--font-display); font-weight:600; line-height:1.15; letter-spacing:-0.01em; margin:0; font-style:normal;}
+p{margin:0 0 1.1em;}
+.container{max-width:52rem; margin-inline:auto; padding-inline:clamp(1.25rem, 5vw, 2.5rem);}
+
+/* Nav — N9 edge-aligned minimal */
+.nav{display:flex; align-items:center; justify-content:space-between; padding:var(--space-lg) clamp(1.25rem, 5vw, 2.5rem); max-width:52rem; margin-inline:auto;}
+.nav__word{font-family:var(--font-display); font-weight:600; font-size:var(--text-md); letter-spacing:-0.01em;}
+.nav__cta{font-family:var(--font-outlier); font-size:var(--text-sm); border:1px solid var(--color-rule); border-radius:999px; padding:0.5em 1.1em; text-decoration:none; white-space:nowrap; transition:border-color var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out);}
+.nav__cta:hover{border-color:var(--color-accent); color:var(--color-accent);}
+.nav__cta:focus-visible{outline:2px solid var(--color-focus); outline-offset:2px;}
+
+/* Hero letter opening */
+.hero{padding-block: var(--space-2xl) var(--space-xl);}
+.hero__date{font-family:var(--font-outlier); font-size:var(--text-sm); color:var(--color-muted); letter-spacing:0.04em;}
+.hero__salutation{font-size:var(--text-display); margin-top:var(--space-md); max-width:16ch;}
+
+.letter{padding-block: 0 var(--space-2xl);}
+.letter p{max-width:62ch; font-size:var(--text-md); color:var(--color-ink);}
+.letter p.lede{font-size:var(--text-lg); color:var(--color-ink); font-family:var(--font-display); font-weight:400; max-width:34ch;}
+
+.drop{float:left; font-family:var(--font-display); font-size:4.4rem; line-height:0.8; padding:0.06em 0.08em 0 0; font-weight:600; color:var(--color-accent);}
+
+.rule{border:none; border-top:1px solid var(--color-rule); margin:var(--space-2xl) 0;}
+
+/* services as woven list, not icon-tile grid */
+.magic{display:flex; flex-direction:column; gap:var(--space-lg); margin-block:var(--space-xl);}
+.magic__item{display:grid; grid-template-columns: 3.5rem 1fr; gap:var(--space-md); align-items:baseline; padding-block:var(--space-md); border-top:1px solid var(--color-rule);}
+.magic__item:last-child{border-bottom:1px solid var(--color-rule);}
+.magic__mark{font-family:var(--font-outlier); font-size:var(--text-sm); color:var(--color-accent);}
+.magic__body h3{font-size:var(--text-lg); margin-bottom:0.3em;}
+.magic__body p{max-width:56ch; margin-bottom:0;}
+
+/* works — inline list with small logos */
+.works{margin-block:var(--space-2xl);}
+.works__list{display:grid; grid-template-columns:repeat(2,1fr); gap:var(--space-lg) var(--space-xl); margin-top:var(--space-lg);}
+.works__row{display:flex; align-items:center; gap:var(--space-md);}
+.works__row img{height:2.75rem; width:auto; max-width:7.5rem; object-fit:contain; filter:grayscale(1) contrast(1.05); opacity:0.82; transition:opacity var(--dur-short) var(--ease-out), filter var(--dur-short) var(--ease-out);}
+.works__row:hover img{opacity:1; filter:grayscale(0);}
+.works__row div{font-size:var(--text-sm); color:var(--color-muted);}
+.works__row strong{display:block; color:var(--color-ink); font-size:var(--text-base); font-family:var(--font-body); font-style:italic;}
+
+/* voices — quote treatment inline in the letter */
+.voices{display:flex; flex-direction:column; gap:var(--space-lg); margin-block:var(--space-xl);}
+.voice{padding-left:var(--space-lg); border-left:2px solid var(--color-accent);}
+.voice p{font-style:italic; font-size:var(--text-md); font-family:var(--font-display); font-weight:400; max-width:52ch;}
+.voice cite{display:block; font-style:normal; font-family:var(--font-outlier); font-size:var(--text-sm); color:var(--color-muted); margin-top:0.4em;}
+
+.cta-block{margin-block:var(--space-2xl); padding:var(--space-xl) 0; border-top:1px solid var(--color-rule);}
+.cta-block a.btn{display:inline-flex; align-items:center; gap:0.5em; font-family:var(--font-outlier); font-size:var(--text-base); text-decoration:none; color:var(--color-paper); background:var(--color-accent); padding:0.85em 1.6em; border-radius:999px; white-space:nowrap; transition:transform var(--dur-short) var(--ease-out), background var(--dur-short) var(--ease-out);}
+.cta-block a.btn:hover{background:var(--color-ink); transform:translateY(-1px);}
+.cta-block a.btn:focus-visible{outline:2px solid var(--color-focus); outline-offset:3px;}
+.cta-block a.btn:active{transform:translateY(0);}
+
+/* Footer — Ft6 letter close */
+footer.close{padding-block:var(--space-2xl) var(--space-2xl); border-top:1px solid var(--color-rule); margin-top:var(--space-2xl);}
+.close__sign{font-family:var(--font-display); font-style:italic; font-size:var(--text-xl); margin-bottom:var(--space-2xs);}
+.close__ps{max-width:56ch; color:var(--color-muted); font-size:var(--text-sm); margin-top:var(--space-lg);}
+.close__meta{margin-top:var(--space-xl); display:flex; flex-wrap:wrap; gap:var(--space-md) var(--space-xl); font-family:var(--font-outlier); font-size:var(--text-sm); color:var(--color-muted);}
+.close__meta a{text-decoration:none; border-bottom:1px solid var(--color-rule);}
+.close__meta a:hover{border-color:var(--color-accent); color:var(--color-accent);}
+
+@media (max-width: 40rem){
+  .hero__salutation{font-size:clamp(2.1rem, 8vw, 3rem); max-width:none;}
+  .works__list{grid-template-columns:1fr;}
+  .drop{font-size:3.2rem;}
+  .nav__word{font-size:var(--text-base);}
+}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav__word">きららぼ</div>
+  <a class="nav__cta" href="#contact">無料相談を送る →</a>
+</nav>
+
+<main class="container">
+  <section class="hero">
+    <div class="hero__date">To. 船橋で、これから何かをはじめるあなたへ</div>
+    <h1 class="hero__salutation">拝啓、はじめまして。</h1>
+  </section>
+
+  <section class="letter">
+    <p class="lede"><span class="drop">私</span>たちは千葉県船橋市で、Webサイト制作と生成AIの活用支援を行っている、小さな会社「きららぼ」です。</p>
+
+    <p>「ホームページを作りたいけれど、何から頼めばいいのか分からない」「AIって聞くけれど、うちの店でどう使えるのか想像がつかない」——そんな、ちょっとした戸惑いから話を聞かせてもらうことが多くあります。専門用語を並べる前に、まずはあなたのお店や会社が本当は何を届けたいのかを、一緒に言葉にするところから始めます。</p>
+
+    <p>デザインだけを整えても、伝わらなければ意味がありません。だからこそ私たちは、見た目の美しさと同じくらい、載せるべき言葉・写真・導線を考えることを大切にしています。そのうえで、生成AIという新しい道具を、日々の運用が少し軽くなるところまで一緒に育てます。</p>
+
+    <hr class="rule">
+
+    <p style="font-family:var(--font-display); font-style:italic; font-size:var(--text-lg); max-width:44ch;">私たちが実際にできることを、3つの言葉にして並べてみます。</p>
+
+    <div class="magic">
+      <div class="magic__item">
+        <div class="magic__mark">01</div>
+        <div class="magic__body">
+          <h3>つくる魔法</h3>
+          <p>ホームページ・LP・WordPressを、あなたらしい形にします。デザインの見た目だけでなく、はじめて訪れた人が迷わず進める順番まで設計します。</p>
+        </div>
+      </div>
+      <div class="magic__item">
+        <div class="magic__mark">02</div>
+        <div class="magic__body">
+          <h3>整える魔法</h3>
+          <p>言葉・画像・導線を整えて、伝わるページに育てます。ロゴやバナー、印刷物まで、ひと目で「らしさ」が伝わるビジュアルに揃えます。</p>
+        </div>
+      </div>
+      <div class="magic__item">
+        <div class="magic__mark">03</div>
+        <div class="magic__body">
+          <h3>届ける魔法</h3>
+          <p>AIとSEOを使って、必要な人に見つけてもらう仕組みをつくります。ChatGPTやClaudeを、毎日の仕事を少し軽くする道具として使えるようにします。</p>
+        </div>
+      </div>
+    </div>
+
+    <hr class="rule">
+
+    <p>これまで、船橋や千葉のお店・会社の方々と、こんなサイトをご一緒してきました。</p>
+
+    <div class="works">
+      <div class="works__list">
+        <div class="works__row">
+          <img src="https://kiralab.jp/wp-content/uploads/2026/05/alponte.png" alt="リストランテ アルポンテ">
+          <div><strong>リストランテ アルポンテ</strong>本格イタリア料理店のサイト</div>
+        </div>
+        <div class="works__row">
+          <img src="https://kiralab.jp/wp-content/uploads/2026/05/katuzen.png" alt="かつ膳">
+          <div><strong>かつ膳</strong>船橋市金杉の飲食店</div>
+        </div>
+        <div class="works__row">
+          <img src="https://kiralab.jp/wp-content/uploads/2026/05/3311.png" alt="株式会社鈴木食品">
+          <div><strong>株式会社鈴木食品</strong>創業70年超の食品問屋</div>
+        </div>
+        <div class="works__row">
+          <img src="https://kiralab.jp/wp-content/uploads/2026/05/gurunabi.png" alt="ぐるなび 接待の手土産">
+          <div><strong>接待の手土産</strong>ぐるなび運営のギフト選定サイト</div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="rule">
+
+    <p>ご一緒したあとに、こんな言葉をいただいています。</p>
+
+    <div class="voices">
+      <div class="voice">
+        <p>「集客が変わりました。デザインだけでなく、何を載せるべきか・どう書くべきかまで一緒に考えてくださったのが大きかったです。」</p>
+        <cite>士業事務所 経営者 / 30代</cite>
+      </div>
+      <div class="voice">
+        <p>「AIの話を『うちのお店ならどう使う？』で説明してくれて分かりやすい。いまでは予約管理やSNS投稿の下書きに毎日使っています。」</p>
+        <cite>美容室 経営者 / 40代</cite>
+      </div>
+      <div class="voice">
+        <p>「専門用語を使わずに説明してくれるので、何度も聞き返さずに済んだのが何よりありがたかったです。」</p>
+        <cite>飲食店 オーナー / 50代</cite>
+      </div>
+    </div>
+
+    <hr class="rule">
+
+    <p>「サイトを作りたい」「AIを使ってみたい」「今の情報発信を整えたい」——そんな小さな相談からで大丈夫です。あなたの届けたい想いに、どんな魔法をかけられるか、まずは雑談から始めませんか。</p>
+
+    <div class="cta-block" id="contact">
+      <a class="btn" href="mailto:info@kiralab.jp">無料で相談する →</a>
+    </div>
+  </section>
+</main>
+
+<footer class="close container">
+  <div class="close__sign">敬具、きららぼ一同</div>
+  <p class="close__ps">追伸 — ふなばしから世界へ。生成AIの最新情報を、専門用語をほどきながら毎日お届けしています。よろしければ、そちらも覗いてみてください。</p>
+  <div class="close__meta">
+    <span>株式会社きららぼ</span>
+    <span>〒273-0853 千葉県船橋市金杉3-18-12</span>
+    <a href="tel:0503690295">050-3690-2959</a>
+    <a href="mailto:info@kiralab.jp">info@kiralab.jp</a>
+  </div>
+</footer>
+
+</body>
+</html>
