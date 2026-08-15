@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>株式会社GATE｜人と現場をつなぐ販売代行</title>
+<style>
+/* Hallmark · macrostructure: Bento Grid · theme: Garden (olive/green organic)
+ * paper: oklch(97% 0.014 122) · accent: oklch(50% 0.09 132) olive-green + oklch(58% 0.12 68) mustard · display: rounded-sans humanist
+ * nav: N5 floating-pill · footer: Ft3 four-column
+ * audience: アパレル/雑貨/家具ブランドの店舗開発・運営責任者 / use: お問い合わせ導線 / tone: 親しみ・あたたかさ(soft/organic)
+ */
+:root{
+  --color-paper: oklch(97% 0.014 122);
+  --color-paper-2: oklch(93% 0.02 120);
+  --color-ink: oklch(24% 0.03 130);
+  --color-ink-soft: oklch(42% 0.03 128);
+  --color-accent: oklch(50% 0.1 132);
+  --color-accent-2: oklch(60% 0.12 68);
+  --color-line: oklch(85% 0.02 120);
+  --color-focus: oklch(50% 0.1 132);
+
+  --font-display: "Hiragino Kaku Gothic ProN","Yu Gothic",-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --font-body: "Hiragino Kaku Gothic ProN","Yu Gothic",-apple-system,"Helvetica Neue",Arial,sans-serif;
+
+  --space-3xs:4px; --space-2xs:8px; --space-xs:12px; --space-sm:16px;
+  --space-md:24px; --space-lg:40px; --space-xl:64px; --space-2xl:96px;
+
+  --text-display: clamp(2.3rem, 4.6vw, 4rem);
+  --text-2xl: clamp(1.6rem, 2.4vw, 2.2rem);
+  --text-lg: 1.2rem;
+  --text-md: 1.02rem;
+  --text-sm: 0.88rem;
+
+  --radius-lg: 28px;
+  --radius-md: 18px;
+  --radius-sm: 12px;
+
+  --ease-out: cubic-bezier(.16,1,.3,1);
+  --dur-fast:150ms; --dur-med:280ms;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html,body{overflow-x:clip;}
+body{ background:var(--color-paper); color:var(--color-ink); font-family:var(--font-body); line-height:1.75; font-size:16px; -webkit-font-smoothing:antialiased; }
+img,svg{max-width:100%; display:block;}
+a{ color:inherit; text-decoration:none; }
+.wrap{ max-width:1180px; margin:0 auto; padding:0 var(--space-md); }
+@media (max-width:600px){ .wrap{ padding:0 var(--space-sm); } }
+a:focus-visible, button:focus-visible{ outline:2px solid var(--color-focus); outline-offset:3px; border-radius:4px; }
+
+/* NAV — N5 floating pill */
+.nav-spacer{ height: calc(64px + var(--space-md)); }
+header.pill-nav{
+  position:fixed; top:var(--space-sm); left:50%; transform:translateX(-50%); z-index:50;
+  width:min(920px, calc(100% - 24px));
+  background:oklch(99% 0.006 120 / 0.9); backdrop-filter:blur(10px);
+  border:1px solid var(--color-line); border-radius:999px;
+  padding:8px 8px 8px 20px;
+  display:flex; align-items:center; justify-content:space-between; gap:var(--space-sm);
+  box-shadow:0 6px 24px oklch(24% 0.03 130 / 0.08);
+}
+.pill-brand{ display:flex; align-items:center; gap:8px; font-weight:800; font-size:1rem; white-space:nowrap; }
+.pill-brand img{ width:26px; height:26px; }
+nav.primary{ display:flex; align-items:center; gap:var(--space-md); }
+nav.primary a{ font-size:var(--text-sm); color:var(--color-ink-soft); transition:color var(--dur-fast) var(--ease-out); }
+nav.primary a:hover{ color:var(--color-accent); }
+.pill-cta{
+  background:var(--color-accent); color:oklch(99% 0.006 120);
+  padding:10px 20px; border-radius:999px; font-size:var(--text-sm); font-weight:700; white-space:nowrap;
+  transition:background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+}
+.pill-cta:hover{ background:var(--color-accent-2); transform:translateY(-1px); }
+.nav-toggle{ display:none; background:var(--color-paper-2); border:1px solid var(--color-line); border-radius:999px; width:38px; height:38px; align-items:center; justify-content:center; cursor:pointer; }
+.nav-toggle span, .nav-toggle span::before, .nav-toggle span::after{ content:""; display:block; width:16px; height:2px; background:var(--color-ink); position:relative; }
+.nav-toggle span::before{ position:absolute; top:-5px; }
+.nav-toggle span::after{ position:absolute; top:5px; }
+@media (max-width:760px){
+  header.pill-nav{ border-radius:24px; padding:10px 10px 10px 16px; flex-wrap:wrap; }
+  nav.primary{
+    order:3; width:100%; flex-direction:column; align-items:flex-start; gap:0;
+    max-height:0; overflow:hidden; transition:max-height var(--dur-med) var(--ease-out);
+  }
+  nav.primary.open{ max-height:300px; margin-top:var(--space-sm); }
+  nav.primary a{ width:100%; padding:var(--space-xs) 0; border-top:1px solid var(--color-line); }
+  .nav-toggle{ display:flex; }
+}
+
+/* HERO */
+.hero{ padding:var(--space-xl) 0 var(--space-lg); }
+.hero-eyebrow{ display:inline-block; background:var(--color-paper-2); color:var(--color-accent); font-size:var(--text-sm); font-weight:700; padding:6px 14px; border-radius:999px; margin-bottom:var(--space-md); }
+.hero h1{ font-family:var(--font-display); font-size:var(--text-display); font-weight:800; line-height:1.3; max-width:16ch; overflow-wrap:anywhere; min-width:0; }
+.hero p.lead{ margin-top:var(--space-md); font-size:var(--text-lg); color:var(--color-ink-soft); max-width:46ch; }
+.hero-actions{ display:flex; gap:var(--space-sm); margin-top:var(--space-lg); flex-wrap:wrap; }
+.btn{ display:inline-flex; align-items:center; gap:8px; padding:14px 26px; border-radius:999px; font-size:var(--text-md); font-weight:700; cursor:pointer; transition:transform var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out); border:1px solid transparent; }
+.btn-primary{ background:var(--color-accent); color:oklch(99% 0.006 120); }
+.btn-primary:hover{ background:var(--color-accent-2); transform:translateY(-2px); box-shadow:0 10px 20px oklch(50% 0.1 132 / 0.25); }
+.btn-ghost{ border-color:var(--color-line); color:var(--color-ink); background:var(--color-paper-2); }
+.btn-ghost:hover{ border-color:var(--color-accent); }
+
+/* BENTO GRID */
+.bento{ display:grid; grid-template-columns:repeat(6, minmax(0,1fr)); gap:var(--space-md); margin-top:var(--space-xl); }
+.bento-card{ background:var(--color-paper-2); border:1px solid var(--color-line); border-radius:var(--radius-lg); padding:var(--space-lg); transition:transform var(--dur-med) var(--ease-out), box-shadow var(--dur-med) var(--ease-out); }
+.bento-card:hover{ transform:translateY(-4px); box-shadow:0 12px 26px oklch(24% 0.03 130 / 0.1); }
+.bento-card.span-4{ grid-column:span 4; }
+.bento-card.span-2{ grid-column:span 2; }
+.bento-card.span-3{ grid-column:span 3; }
+.bento-card.span-6{ grid-column:span 6; }
+.bento-card.accent{ background:var(--color-accent); color:oklch(99% 0.006 120); }
+.bento-card img.fill{ width:100%; border-radius:var(--radius-md); margin-bottom:var(--space-sm); }
+.bento-card h3{ font-family:var(--font-display); font-size:var(--text-lg); font-weight:800; }
+.bento-card p{ margin-top:var(--space-2xs); color:var(--color-ink-soft); font-size:var(--text-md); }
+.bento-card.accent p{ color:oklch(94% 0.02 120); }
+.bento-card .stat-num{ font-family:var(--font-display); font-size:2.4rem; font-weight:800; }
+@media (max-width:900px){
+  .bento-card.span-4, .bento-card.span-3{ grid-column:span 6; }
+  .bento-card.span-2{ grid-column:span 3; }
+}
+@media (max-width:600px){
+  .bento{ grid-template-columns:1fr; }
+  .bento-card, .bento-card.span-2, .bento-card.span-3, .bento-card.span-4, .bento-card.span-6{ grid-column:span 1; }
+}
+
+/* SECTIONS */
+.section{ padding:var(--space-2xl) 0; }
+.section-head{ max-width:56ch; margin-bottom:var(--space-md); }
+.section-head h2{ font-family:var(--font-display); font-size:var(--text-2xl); font-weight:800; overflow-wrap:anywhere; min-width:0; }
+.section-head p{ margin-top:var(--space-sm); color:var(--color-ink-soft); }
+
+/* flow as pills */
+.flow-pills{ display:flex; flex-wrap:wrap; gap:var(--space-md); margin-top:var(--space-xl); }
+.flow-pill{ flex:1 1 220px; background:var(--color-paper-2); border-radius:var(--radius-lg); padding:var(--space-lg); border:1px solid var(--color-line); }
+.flow-pill .badge{ display:inline-flex; align-items:center; justify-content:center; width:36px; height:36px; border-radius:50%; background:var(--color-accent); color:#fff; font-weight:800; margin-bottom:var(--space-sm); }
+.flow-pill h4{ font-size:var(--text-md); font-weight:700; }
+.flow-pill p{ font-size:var(--text-sm); color:var(--color-ink-soft); margin-top:4px; }
+
+/* company */
+.company-grid{ display:grid; grid-template-columns:1fr 1fr; gap:var(--space-xl); margin-top:var(--space-xl); }
+table.company-table{ width:100%; border-collapse:collapse; }
+table.company-table th, table.company-table td{ text-align:left; padding:var(--space-sm) 0; border-top:1px solid var(--color-line); font-size:var(--text-md); vertical-align:top; }
+table.company-table th{ width:9em; color:var(--color-ink-soft); font-weight:600; }
+table.company-table tr:last-child td, table.company-table tr:last-child th{ border-bottom:1px solid var(--color-line); }
+@media (max-width:760px){ .company-grid{ grid-template-columns:1fr; gap:var(--space-lg); } }
+
+/* CTA */
+.cta{ background:var(--color-accent); color:oklch(99% 0.006 120); border-radius:var(--radius-lg); padding:var(--space-2xl) var(--space-lg); margin:0 var(--space-md); text-align:center; }
+.cta h2{ font-family:var(--font-display); font-size:var(--text-2xl); font-weight:800; overflow-wrap:anywhere; min-width:0; }
+.cta p{ margin-top:var(--space-xs); color:oklch(94% 0.02 120); }
+.cta .btn-primary{ background:oklch(99% 0.006 120); color:var(--color-accent); margin-top:var(--space-lg); }
+.cta .btn-primary:hover{ background:var(--color-paper-2); }
+
+/* FOOTER — Ft3 four-column */
+footer.site-footer{ padding:var(--space-2xl) 0 var(--space-lg); margin-top:var(--space-2xl); }
+.footer-cols{ display:grid; grid-template-columns:1.4fr 1fr 1fr 1fr; gap:var(--space-lg); }
+.footer-brand{ display:flex; align-items:center; gap:8px; font-weight:800; font-size:1.1rem; }
+.footer-brand img{ width:28px; height:28px; }
+.footer-tag{ margin-top:var(--space-sm); color:var(--color-ink-soft); font-size:var(--text-sm); max-width:26ch; }
+.footer-cols h5{ font-size:var(--text-sm); color:var(--color-ink-soft); margin-bottom:var(--space-sm); }
+.footer-cols nav a{ display:block; font-size:var(--text-sm); padding:4px 0; color:var(--color-ink-soft); transition:color var(--dur-fast) var(--ease-out); }
+.footer-cols nav a:hover{ color:var(--color-accent); }
+.footer-cols address{ font-style:normal; font-size:var(--text-sm); line-height:1.9; color:var(--color-ink-soft); }
+.footer-bottom{ margin-top:var(--space-xl); padding-top:var(--space-md); border-top:1px solid var(--color-line); font-size:var(--text-sm); color:var(--color-ink-soft); display:flex; justify-content:space-between; flex-wrap:wrap; gap:var(--space-sm); }
+@media (max-width:760px){ .footer-cols{ grid-template-columns:1fr 1fr; } }
+@media (max-width:480px){ .footer-cols{ grid-template-columns:1fr; } }
+
+@media (prefers-reduced-motion:reduce){ *{ transition-duration:0.01ms !important; animation-duration:0.01ms !important; } }
+</style>
+</head>
+<body>
+
+<header class="pill-nav">
+  <a class="pill-brand" href="sample3.html"><img src="images/mark-green.svg" alt="">GATE</a>
+  <nav class="primary" id="primaryNav">
+    <a href="#service">サービス</a>
+    <a href="#why">選ばれる理由</a>
+    <a href="#company">会社概要</a>
+    <a href="recruit.html">採用</a>
+  </nav>
+  <a class="pill-cta" href="https://ga-te.jp/お問い合わせ/">お問い合わせ</a>
+  <button class="nav-toggle" id="navToggle" aria-label="メニュー" aria-expanded="false"><span></span></button>
+</header>
+<div class="nav-spacer"></div>
+
+<section class="hero">
+  <div class="wrap">
+    <span class="hero-eyebrow">人は宝、を合言葉に。</span>
+    <h1>そのショップの販売、プロにお任せください。</h1>
+    <p class="lead">アパレル・雑貨・家具の店舗運営を一括代行。ブランドに合う人を、ブランドに合う場所へ。最短1ヶ月で新規オープンを実現します。</p>
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="https://ga-te.jp/お問い合わせ/">無料相談してみる</a>
+      <a class="btn btn-ghost" href="#service">サービスを見る</a>
+    </div>
+
+    <div class="bento" id="service">
+      <div class="bento-card span-4">
+        <img class="fill" src="images/pattern-bloom.svg" alt="育成と配置のイメージ図">
+        <h3>アパレル業界出身のスタッフが多数</h3>
+        <p>現場を知るスタッフだからこそ、ブランドの世界観を汲んだ接客ができます。</p>
+      </div>
+      <div class="bento-card span-2 accent">
+        <div class="stat-num">1ヶ月〜</div>
+        <p>最短オープン期間</p>
+      </div>
+      <div class="bento-card span-2">
+        <h3>アパレルショップ</h3>
+        <p>ブランドイメージに合った売場と接客を実現。</p>
+      </div>
+      <div class="bento-card span-2">
+        <h3>家具・雑貨販売</h3>
+        <p>商材知識のある人材で単価の高い商材も安心。</p>
+      </div>
+      <div class="bento-card span-2">
+        <h3>モール出店</h3>
+        <p>立ち上げから安定運営まで一貫代行。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="pain">
+  <div class="wrap">
+    <div class="section-head"><h2>こんな事でお悩みではないですか？</h2></div>
+    <div class="bento">
+      <div class="bento-card span-2"><h3>人材が足りない</h3><p>ブランドに合う販売スタッフをすぐに確保できない。</p></div>
+      <div class="bento-card span-2"><h3>現場とのズレ</h3><p>本部と店舗現場の情報にズレがあり、売上に結びつかない。</p></div>
+      <div class="bento-card span-2"><h3>コストが心配</h3><p>採用・教育コストをかけず売上を伸ばしたい。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="why">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>GATEが選ばれる理由</h2>
+      <p>「ただ売上を追いかけるのではなく、質の高いサービスを」。人材育成に愛情を込める、それがGATEの流儀です。</p>
+    </div>
+    <div class="bento">
+      <div class="bento-card span-3"><h3>ブランドに合う人材配置</h3><p>イメージに合わせて人材を厳選し、最適な場所に配置します。</p></div>
+      <div class="bento-card span-3"><h3>即戦力での対応</h3><p>スピーディーな立ち上げと、安定した現場運営を両立します。</p></div>
+      <div class="bento-card span-6 accent"><h3>人件費と売上の両立</h3><p>効率的な運営体制で、コスト最適化と売上増加を同時に実現。「人は宝」という言葉のもと、愛情を込めて人材を育成しています。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="flow-section">
+  <div class="wrap">
+    <div class="section-head"><h2>ご利用の流れ</h2></div>
+    <div class="flow-pills">
+      <div class="flow-pill"><div class="badge">1</div><h4>業務依頼</h4><p>ブランドイメージ・出店エリア・予算をヒアリング。</p></div>
+      <div class="flow-pill"><div class="badge">2</div><h4>打ち合わせ・契約</h4><p>人員配置と販売戦略をご提案し、契約締結。</p></div>
+      <div class="flow-pill"><div class="badge">3</div><h4>面接・研修</h4><p>適切な人材を確保し、研修を実施します。</p></div>
+      <div class="flow-pill"><div class="badge">4</div><h4>運営スタート</h4><p>PDCAサイクルで継続的に売上向上に取り組みます。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="company">
+  <div class="wrap">
+    <div class="section-head"><h2>会社概要</h2></div>
+    <div class="company-grid">
+      <table class="company-table">
+        <tr><th>会社名</th><td>株式会社ゲート（GATE Inc.）</td></tr>
+        <tr><th>代表取締役</th><td>吉田 明広</td></tr>
+        <tr><th>事業内容</th><td>販売代行事業・FC事業</td></tr>
+        <tr><th>従業員数</th><td>100名</td></tr>
+        <tr><th>本社</th><td>〒273-0864 千葉県船橋市北本町2-6-1-607</td></tr>
+        <tr><th>東京オフィス</th><td>〒160-0023 東京都新宿区西新宿7-1-12 クロスオフィス2階</td></tr>
+        <tr><th>TEL / FAX</th><td>047-750-1334 / 047-419-9789</td></tr>
+      </table>
+      <div class="bento-card" style="align-self:start;">
+        <img class="fill" src="images/mark-green.svg" alt="株式会社GATEのシンボルイメージ" style="max-width:200px; margin:0 auto var(--space-sm);">
+        <p style="text-align:center;">人は宝。<br>人材の育成は愛情を込めて。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2>まずはお気軽にご相談ください。</h2>
+  <p>店舗運営のお悩み、出店計画のご相談を承ります。</p>
+  <a class="btn btn-primary" href="https://ga-te.jp/お問い合わせ/">お問い合わせフォームへ</a>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-cols">
+      <div>
+        <div class="footer-brand"><img src="images/mark-green.svg" alt="">株式会社GATE</div>
+        <p class="footer-tag">アパレル・雑貨・家具の販売代行。人は宝、を合言葉に。</p>
+      </div>
+      <div>
+        <h5>メニュー</h5>
+        <nav>
+          <a href="#service">サービス</a>
+          <a href="#company">会社概要</a>
+          <a href="recruit.html">採用情報</a>
+        </nav>
+      </div>
+      <div>
+        <h5>お問い合わせ</h5>
+        <nav>
+          <a href="https://ga-te.jp/お問い合わせ/">お問い合わせフォーム</a>
+        </nav>
+        <address style="margin-top:var(--space-sm);">TEL：047-750-1334<br>FAX：047-419-9789</address>
+      </div>
+      <div>
+        <h5>所在地</h5>
+        <address>
+          本社：千葉県船橋市北本町2-6-1-607<br>
+          東京オフィス：東京都新宿区西新宿7-1-12<br>クロスオフィス2階
+        </address>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 GATE Inc.</span>
+      <span>アパレル・雑貨・家具の販売代行なら株式会社GATE</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var t = document.getElementById('navToggle');
+  var n = document.getElementById('primaryNav');
+  if(t){
+    t.addEventListener('click', function(){
+      var open = n.classList.toggle('open');
+      t.setAttribute('aria-expanded', open ? 'true':'false');
+    });
+  }
+</script>
+</body>
+</html>

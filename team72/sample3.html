@@ -1,0 +1,222 @@
+<title>株式会社Seven two｜C案</title>
+<!--
+Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V4
+Hallmark · macrostructure: Bento Grid · genre: modern-minimal · theme: Cobalt (white × cobalt, grotesk-sans)
+Nav: N5 floating pill · Footer: Ft6 compact-bar
+Differs from sample2 on: paper band (light stays, but neutral not warm), display style (roman-serif→grotesk-sans), accent hue (indigo/朱→cobalt cool-chromatic)
+-->
+<style>
+:root{
+  --color-paper:oklch(99% 0.002 250);
+  --color-paper-2:oklch(96% 0.005 250);
+  --color-ink:oklch(20% 0.01 250);
+  --color-ink-dim:oklch(46% 0.01 250);
+  --color-accent:oklch(52% 0.19 258);
+  --color-accent-ink:oklch(99% 0.002 250);
+  --color-line:oklch(90% 0.005 250);
+  --color-focus:oklch(52% 0.19 258);
+
+  --font-display:"Space Grotesk","Zen Kaku Gothic New",sans-serif;
+  --font-body:"Zen Kaku Gothic New","Hiragino Kaku Gothic ProN",sans-serif;
+
+  --space-2xs:.25rem;--space-xs:.5rem;--space-sm:.75rem;--space-md:1.25rem;
+  --space-lg:2rem;--space-xl:3.5rem;--space-2xl:5.5rem;--space-3xl:8rem;
+
+  --text-display:clamp(2.6rem,5vw + 1rem,5.2rem);
+  --text-display-s:clamp(2rem,3vw + 1rem,3.2rem);
+  --text-xl:clamp(1.4rem,1.4vw + 1rem,1.9rem);
+  --text-lg:1.2rem;--text-md:1.02rem;--text-sm:.9rem;--text-xs:.78rem;
+
+  --ease-out:cubic-bezier(.16,1,.3,1);
+  --ease-in:cubic-bezier(.7,0,.84,0);
+  --ease-in-out:cubic-bezier(.65,0,.35,1);
+  --dur-fast:120ms;--dur-med:220ms;--dur-slow:420ms;
+  --radius-sm:6px;--radius-md:14px;--radius-lg:22px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+html,body{overflow-x:clip;}
+html{background:var(--color-paper);}
+body{font-family:var(--font-body);background:var(--color-paper);color:var(--color-ink);line-height:1.7;font-size:var(--text-md);}
+img,svg{max-width:100%;display:block;}
+a{color:inherit;}
+.wrap{max-width:1200px;margin-inline:auto;padding-inline:var(--space-lg);}
+h1,h2,h3{font-family:var(--font-display);font-weight:700;line-height:1.1;font-style:normal;overflow-wrap:anywhere;min-width:0;letter-spacing:-.01em;}
+a:focus-visible,button:focus-visible{outline:2px solid var(--color-focus);outline-offset:3px;}
+.eyebrow{font-family:var(--font-display);font-size:var(--text-sm);color:var(--color-accent);text-transform:uppercase;letter-spacing:.1em;}
+
+/* ===== Nav: floating pill ===== */
+.pill-nav-holder{position:sticky;top:var(--space-md);z-index:40;display:flex;justify-content:center;padding-inline:var(--space-lg);}
+.pill-nav{width:100%;max-width:1100px;display:flex;align-items:center;justify-content:space-between;background:oklch(99% 0.002 250 / .85);backdrop-filter:blur(10px);border:1px solid var(--color-line);border-radius:999px;padding:.6em .7em .6em 1.4em;box-shadow:0 8px 30px -12px oklch(20% 0.01 250 / .15);}
+.brand{font-family:var(--font-display);font-weight:700;font-size:1.1rem;}
+.pill-links{display:flex;gap:var(--space-md);list-style:none;font-size:var(--text-sm);}
+.pill-links a{text-decoration:none;padding:.4em .8em;border-radius:999px;transition:background var(--dur-fast) var(--ease-out);}
+.pill-links a:hover{background:var(--color-paper-2);}
+.pill-cta{background:var(--color-accent);color:var(--color-accent-ink);font-size:var(--text-sm);font-weight:700;padding:.7em 1.4em;border-radius:999px;text-decoration:none;transition:transform var(--dur-fast) var(--ease-out);}
+.pill-cta:hover{transform:translateY(-1px);}
+.menu-btn{display:none;background:none;border:1px solid var(--color-line);border-radius:999px;padding:.5em .9em;font-size:var(--text-sm);}
+
+/* ===== Hero ===== */
+.hero{padding-block:var(--space-3xl) var(--space-2xl);text-align:center;}
+.hero h1{font-size:var(--text-display);max-width:16ch;margin-inline:auto;margin-block:var(--space-lg);}
+.hero p{color:var(--color-ink-dim);max-width:48ch;margin-inline:auto;font-size:var(--text-lg);}
+.hero-actions{display:flex;gap:var(--space-md);justify-content:center;margin-top:var(--space-xl);flex-wrap:wrap;}
+.btn{display:inline-flex;align-items:center;gap:.5em;font-weight:700;font-size:var(--text-sm);padding:.9em 1.7em;border-radius:999px;text-decoration:none;transition:transform var(--dur-fast) var(--ease-out),background var(--dur-fast) var(--ease-out);}
+.btn-primary{background:var(--color-accent);color:var(--color-accent-ink);}
+.btn-primary:hover{transform:translateY(-2px);}
+.btn-ghost{border:1px solid var(--color-line);color:var(--color-ink);}
+.btn-ghost:hover{border-color:var(--color-accent);color:var(--color-accent);}
+
+/* ===== Bento grid ===== */
+.section{padding-block:var(--space-2xl);}
+.section-head{max-width:56ch;margin-inline:auto;text-align:center;margin-bottom:var(--space-xl);}
+.section-head h2{font-size:var(--text-display-s);margin-top:var(--space-xs);}
+.bento{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:minmax(160px,auto);gap:var(--space-md);}
+.bcard{background:var(--color-paper-2);border:1px solid var(--color-line);border-radius:var(--radius-lg);padding:var(--space-lg);display:flex;flex-direction:column;justify-content:flex-end;transition:transform var(--dur-med) var(--ease-out),border-color var(--dur-med) var(--ease-out);position:relative;overflow:hidden;}
+.bcard:hover{transform:translateY(-4px);border-color:var(--color-accent);}
+.bcard h3{font-size:var(--text-xl);margin-bottom:var(--space-xs);}
+.bcard p{color:var(--color-ink-dim);font-size:var(--text-sm);}
+.bcard.b-lg{grid-column:span 2;grid-row:span 2;}
+.bcard.b-md{grid-column:span 2;}
+.bcard.b-sm{grid-column:span 1;}
+.bcard.accent{background:var(--color-accent);color:var(--color-accent-ink);}
+.bcard.accent p{color:oklch(99% 0.002 250 / .8);}
+.bcard .mark{position:absolute;top:var(--space-md);left:var(--space-md);font-size:var(--text-xs);letter-spacing:.1em;color:var(--color-accent);}
+.bcard.accent .mark{color:oklch(99% 0.002 250 / .7);}
+@media (max-width:900px){
+  .bento{grid-template-columns:repeat(2,minmax(0,1fr));}
+  .bcard.b-lg{grid-column:span 2;grid-row:span 1;}
+}
+@media (max-width:520px){
+  .bento{grid-template-columns:1fr;}
+  .bcard.b-lg,.bcard.b-md,.bcard.b-sm{grid-column:1/-1;}
+}
+
+/* ===== Stat row ===== */
+.stat-row{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--space-lg);border-top:1px solid var(--color-line);border-bottom:1px solid var(--color-line);padding-block:var(--space-xl);}
+.stat-row .item{text-align:center;}
+.stat-row .n{font-family:var(--font-display);font-size:2.4rem;color:var(--color-accent);}
+.stat-row .l{font-size:var(--text-xs);color:var(--color-ink-dim);margin-top:var(--space-2xs);}
+@media (max-width:640px){.stat-row{grid-template-columns:repeat(2,1fr);}}
+
+/* area chips */
+.chips{display:flex;flex-wrap:wrap;gap:var(--space-sm);justify-content:center;}
+.chips span{border:1px solid var(--color-line);padding:.5em 1.1em;border-radius:999px;font-size:var(--text-sm);}
+
+/* CTA */
+.cta{text-align:center;background:var(--color-paper-2);border-radius:var(--radius-lg);margin-inline:var(--space-lg);padding:var(--space-2xl) var(--space-lg);}
+.cta h2{font-size:var(--text-display-s);margin-bottom:var(--space-md);}
+
+/* footer compact bar */
+footer{padding-block:var(--space-2xl);}
+.footer-bar{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:var(--space-md);border-top:1px solid var(--color-line);padding-top:var(--space-lg);font-size:var(--text-sm);color:var(--color-ink-dim);}
+.footer-bar a{text-decoration:none;}
+.footer-bar a:hover{color:var(--color-accent);}
+.footer-brand{font-family:var(--font-display);font-weight:700;color:var(--color-ink);}
+
+@media (max-width:900px){.pill-links{display:none;}.menu-btn{display:inline-block;}}
+@media (prefers-reduced-motion:reduce){*{transition-duration:1ms !important;animation-duration:1ms !important;}}
+</style>
+
+<div class="pill-nav-holder">
+  <nav class="pill-nav">
+    <div class="brand">Seven two</div>
+    <ul class="pill-links">
+      <li><a href="#services">事業内容</a></li>
+      <li><a href="#area">対応エリア</a></li>
+      <li><a href="#company">会社概要</a></li>
+    </ul>
+    <a href="#contact" class="pill-cta">お問い合わせ</a>
+    <button class="menu-btn" aria-label="メニュー">MENU</button>
+  </nav>
+</div>
+
+<main>
+  <section class="hero wrap">
+    <p class="eyebrow">Chiba · Funabashi</p>
+    <h1>太陽光から産廃まで、<br>一社で完結する施工力。</h1>
+    <p>株式会社Seven twoは、電気通信・太陽光・産業廃棄物収集運搬・足場・パチンコ島工事を手がける複合施工会社です。</p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn btn-primary">お問い合わせフォームへ</a>
+      <a href="#services" class="btn btn-ghost">事業内容を見る</a>
+    </div>
+  </section>
+
+  <section class="section" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Services</p>
+        <h2>6つの事業ドメイン</h2>
+      </div>
+      <div class="bento">
+        <div class="bcard b-lg accent">
+          <span class="mark">01</span>
+          <h3>太陽光パネル設置</h3>
+          <p>住宅・事業用太陽光発電を設計から施工まで一貫対応。</p>
+        </div>
+        <div class="bcard b-md">
+          <span class="mark">02</span>
+          <h3>電気通信工事</h3>
+          <p>千葉県知事登録。防犯カメラ設置も対応。</p>
+        </div>
+        <div class="bcard b-sm">
+          <span class="mark">03</span>
+          <h3>産廃収集運搬</h3>
+          <p>関東6県対応。</p>
+        </div>
+        <div class="bcard b-sm">
+          <span class="mark">04</span>
+          <h3>足場施工</h3>
+          <p>建築現場の組立・解体。</p>
+        </div>
+        <div class="bcard b-md">
+          <span class="mark">05</span>
+          <h3>パチンコ島工事</h3>
+          <p>店舗の島設備工事、害虫駆除。</p>
+        </div>
+        <div class="bcard b-md">
+          <span class="mark">06</span>
+          <h3>屋台村・居酒屋</h3>
+          <p>飲食事業を自社運営し、地域の交流拠点をつくる。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap">
+    <div class="stat-row">
+      <div class="item"><div class="n">2017</div><div class="l">設立</div></div>
+      <div class="item"><div class="n">360万円</div><div class="l">資本金</div></div>
+      <div class="item"><div class="n">6県</div><div class="l">産廃収集運搬対応エリア</div></div>
+      <div class="item"><div class="n">6</div><div class="l">事業ドメイン</div></div>
+    </div>
+  </section>
+
+  <section class="section" id="area">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="eyebrow">Coverage</p>
+        <h2>対応エリア</h2>
+      </div>
+      <div class="chips">
+        <span>千葉県</span><span>東京都</span><span>神奈川県</span><span>埼玉県</span><span>茨城県</span><span>群馬県</span><span>栃木県</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="contact">
+    <div class="cta">
+      <h2>まずはお気軽にご相談ください。</h2>
+      <p style="color:var(--color-ink-dim);max-width:44ch;margin-inline:auto;margin-bottom:var(--space-lg);">お見積り・お問い合わせはメール、またはサイト内フォームで承っています。TEL 047-401-0712（平日9:00-18:00）</p>
+      <a href="#" class="btn btn-primary">お問い合わせフォームへ</a>
+    </div>
+  </section>
+</main>
+
+<footer id="company" class="wrap">
+  <div class="footer-bar">
+    <span class="footer-brand">Seven two</span>
+    <span>株式会社Seven two｜千葉県船橋市｜設立2017年｜資本金360万円</span>
+    <a href="recruit.html">採用情報</a>
+    <span>&copy; 2026 Seven two Co., Ltd.</span>
+  </div>
+</footer>

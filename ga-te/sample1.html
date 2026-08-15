@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>株式会社GATE｜販売代行・店舗運営のプロフェッショナル</title>
+<style>
+/* Hallmark · macrostructure: Stat-Led (adapted) · theme: Cobalt (navy/blue corporate) · genre: modern-minimal
+ * paper: oklch(98% 0.004 250) · accent: oklch(46% 0.11 250) cool-blue · display: grotesk-sans
+ * nav: N1b canonical-three-section · footer: Ft5 statement
+ * audience: アパレル/雑貨/家具ブランドの店舗開発・運営責任者 / use: お問い合わせ導線 / tone: 信頼・専門性(utilitarian-corporate)
+ */
+:root{
+  --color-paper: oklch(98% 0.004 250);
+  --color-paper-2: oklch(95% 0.006 250);
+  --color-ink: oklch(22% 0.03 255);
+  --color-ink-soft: oklch(42% 0.02 255);
+  --color-accent: oklch(46% 0.11 250);
+  --color-accent-dark: oklch(24% 0.045 255);
+  --color-line: oklch(88% 0.008 250);
+  --color-focus: oklch(60% 0.15 250);
+
+  --font-display: "Hiragino Kaku Gothic ProN","Yu Gothic",-apple-system,"Helvetica Neue",Arial,sans-serif;
+  --font-body: "Hiragino Kaku Gothic ProN","Yu Gothic",-apple-system,"Helvetica Neue",Arial,sans-serif;
+
+  --space-3xs: 4px; --space-2xs: 8px; --space-xs: 12px; --space-sm: 16px;
+  --space-md: 24px; --space-lg: 40px; --space-xl: 64px; --space-2xl: 96px; --space-3xl: 144px;
+
+  --text-display: clamp(2.4rem, 4.6vw, 4.4rem);
+  --text-display-s: clamp(2rem, 3.4vw, 3rem);
+  --text-2xl: clamp(1.6rem, 2.4vw, 2.2rem);
+  --text-lg: 1.25rem;
+  --text-md: 1.05rem;
+  --text-sm: 0.9rem;
+
+  --ease-out: cubic-bezier(.16,1,.3,1);
+  --ease-in: cubic-bezier(.7,0,.84,0);
+  --ease-in-out: cubic-bezier(.65,0,.35,1);
+  --dur-fast: 150ms; --dur-med: 260ms;
+  --radius-sm: 3px; --radius-md: 6px;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html,body{overflow-x:clip;}
+body{
+  background:var(--color-paper);
+  color:var(--color-ink);
+  font-family:var(--font-body);
+  line-height:1.7;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+img,svg{max-width:100%; display:block;}
+a{color:inherit; text-decoration:none;}
+.wrap{max-width:1180px; margin:0 auto; padding:0 var(--space-md);}
+@media (max-width:600px){ .wrap{padding:0 var(--space-sm);} }
+
+/* focus */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible{
+  outline:2px solid var(--color-focus); outline-offset:2px;
+}
+
+/* NAV — N1b canonical three-section */
+header.site-nav{
+  position:sticky; top:0; z-index:50;
+  background:oklch(98% 0.004 250 / 0.92);
+  backdrop-filter: blur(8px);
+  border-bottom:1px solid var(--color-line);
+}
+.nav-row{
+  display:flex; align-items:center; justify-content:space-between;
+  padding:var(--space-sm) 0;
+}
+.brand{ display:flex; align-items:center; gap:var(--space-2xs); font-weight:700; letter-spacing:0.06em; font-size:1.1rem; }
+.brand img{width:34px; height:34px;}
+nav.primary{ display:flex; align-items:center; gap:var(--space-lg); }
+nav.primary a{ font-size:var(--text-sm); color:var(--color-ink-soft); position:relative; padding:4px 0; transition: color var(--dur-fast) var(--ease-out); }
+nav.primary a:hover{ color:var(--color-ink); }
+nav.primary a::after{
+  content:""; position:absolute; left:0; right:0; bottom:-2px; height:2px; background:var(--color-accent);
+  transform:scaleX(0); transform-origin:left; transition:transform var(--dur-med) var(--ease-out);
+}
+nav.primary a:hover::after{ transform:scaleX(1); }
+.nav-cta{
+  background:var(--color-accent-dark); color:oklch(98% 0.005 250);
+  padding:10px 20px; border-radius:var(--radius-sm); font-size:var(--text-sm); font-weight:600;
+  transition: background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);
+  white-space:nowrap;
+}
+.nav-cta:hover{ background:var(--color-accent); transform:translateY(-1px); }
+.nav-toggle{ display:none; background:none; border:1px solid var(--color-line); border-radius:var(--radius-sm); width:40px; height:36px; align-items:center; justify-content:center; cursor:pointer; }
+.nav-toggle span, .nav-toggle span::before, .nav-toggle span::after{
+  content:""; display:block; width:18px; height:2px; background:var(--color-ink); position:relative; transition:transform var(--dur-fast) var(--ease-out);
+}
+.nav-toggle span::before{ position:absolute; top:-6px; }
+.nav-toggle span::after{ position:absolute; top:6px; }
+@media (max-width: 860px){
+  nav.primary{
+    position:absolute; top:100%; left:0; right:0; background:var(--color-paper);
+    flex-direction:column; align-items:flex-start; gap:0; border-bottom:1px solid var(--color-line);
+    max-height:0; overflow:hidden; transition:max-height var(--dur-med) var(--ease-out);
+  }
+  nav.primary.open{ max-height:400px; }
+  nav.primary a{ width:100%; padding:var(--space-sm) var(--space-md); border-top:1px solid var(--color-line); }
+  nav.primary a::after{ display:none; }
+  .nav-cta{ margin:var(--space-sm) var(--space-md); }
+  .nav-toggle{ display:flex; }
+}
+
+/* HERO */
+.hero{ padding:var(--space-3xl) 0 var(--space-2xl); border-bottom:1px solid var(--color-line); }
+.hero-grid{ display:grid; grid-template-columns: 1.3fr 1fr; gap:var(--space-2xl); align-items:end; }
+.hero-eyebrow{ font-size:var(--text-sm); color:var(--color-accent); font-weight:700; letter-spacing:0.08em; margin-bottom:var(--space-sm); }
+.hero h1{
+  font-family:var(--font-display); font-size:var(--text-display); font-weight:800; line-height:1.25;
+  overflow-wrap:anywhere; min-width:0; letter-spacing:-0.01em;
+}
+.hero h1 .accent{ color:var(--color-accent); }
+.hero p.lead{ margin-top:var(--space-md); font-size:var(--text-lg); color:var(--color-ink-soft); max-width:44ch; }
+.hero-actions{ display:flex; gap:var(--space-sm); margin-top:var(--space-lg); flex-wrap:wrap; }
+.btn{
+  display:inline-flex; align-items:center; gap:8px; padding:14px 26px; border-radius:var(--radius-sm);
+  font-size:var(--text-md); font-weight:700; transition:transform var(--dur-fast) var(--ease-out), background var(--dur-fast) var(--ease-out), box-shadow var(--dur-fast) var(--ease-out);
+  cursor:pointer; border:1px solid transparent;
+}
+.btn-primary{ background:var(--color-accent-dark); color:oklch(98% 0.005 250); }
+.btn-primary:hover{ background:var(--color-accent); transform:translateY(-2px); box-shadow:0 8px 18px oklch(46% 0.11 250 / 0.25); }
+.btn-primary:active{ transform:translateY(0); }
+.btn-ghost{ border-color:var(--color-line); color:var(--color-ink); }
+.btn-ghost:hover{ border-color:var(--color-accent-dark); }
+.hero-figure{ border:1px solid var(--color-line); border-radius:var(--radius-md); overflow:hidden; background:var(--color-paper-2); }
+.hero-figure img{ width:100%; height:auto; }
+.hero-stats{ display:flex; gap:var(--space-lg); margin-top:var(--space-xl); flex-wrap:wrap; }
+.stat{ min-width:120px; }
+.stat .num{ font-family:var(--font-display); font-size:2.4rem; font-weight:800; color:var(--color-accent-dark); }
+.stat .label{ font-size:var(--text-sm); color:var(--color-ink-soft); margin-top:4px; }
+
+@media (max-width:860px){
+  .hero-grid{ grid-template-columns:1fr; }
+}
+
+/* PAIN POINTS */
+.section{ padding:var(--space-2xl) 0; border-bottom:1px solid var(--color-line); }
+.section-head{ max-width:56ch; margin-bottom:var(--space-xl); }
+.section-head h2{ font-family:var(--font-display); font-size:var(--text-2xl); font-weight:800; overflow-wrap:anywhere; min-width:0; }
+.section-head p{ margin-top:var(--space-sm); color:var(--color-ink-soft); }
+
+.pain-grid{ display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:var(--space-md); }
+.pain-card{ background:var(--color-paper-2); border:1px solid var(--color-line); border-radius:var(--radius-md); padding:var(--space-lg); transition:transform var(--dur-med) var(--ease-out), border-color var(--dur-med) var(--ease-out); }
+.pain-card:hover{ transform:translateY(-4px); border-color:var(--color-accent); }
+.pain-card .q{ font-size:var(--text-sm); color:var(--color-accent); font-weight:700; margin-bottom:var(--space-xs); }
+.pain-card p{ font-size:var(--text-md); }
+@media (max-width:760px){ .pain-grid{ grid-template-columns:1fr; } }
+
+/* SERVICES */
+.service-list{ display:flex; flex-direction:column; gap:0; }
+.service-row{
+  display:grid; grid-template-columns: 90px 1fr 1fr; gap:var(--space-lg); padding:var(--space-lg) 0;
+  border-top:1px solid var(--color-line); align-items:start;
+}
+.service-row:last-child{ border-bottom:1px solid var(--color-line); }
+.service-num{ font-family:var(--font-display); font-size:1.6rem; font-weight:800; color:var(--color-line); }
+.service-row h3{ font-family:var(--font-display); font-size:var(--text-lg); font-weight:700; }
+.service-row p{ color:var(--color-ink-soft); font-size:var(--text-md); margin-top:var(--space-2xs); }
+@media (max-width:760px){
+  .service-row{ grid-template-columns:1fr; gap:var(--space-2xs); }
+  .service-num{ font-size:1.2rem; }
+}
+
+/* WHY / STRENGTHS */
+.why-grid{ display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:var(--space-md); }
+.why-card{ padding:var(--space-md) 0; border-top:2px solid var(--color-accent-dark); }
+.why-card .n{ font-family:var(--font-display); font-size:var(--text-sm); font-weight:700; color:var(--color-accent); }
+.why-card h4{ font-size:var(--text-md); font-weight:700; margin-top:var(--space-xs); }
+.why-card p{ font-size:var(--text-sm); color:var(--color-ink-soft); margin-top:var(--space-2xs); }
+@media (max-width:860px){ .why-grid{ grid-template-columns:repeat(2, minmax(0,1fr)); } }
+@media (max-width:480px){ .why-grid{ grid-template-columns:1fr; } }
+
+/* FLOW */
+.flow{ display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); gap:var(--space-md); position:relative; }
+.flow::before{ content:""; position:absolute; top:22px; left:5%; right:5%; height:1px; background:var(--color-line); z-index:0; }
+.flow-step{ position:relative; z-index:1; }
+.flow-step .dot{ width:44px; height:44px; border-radius:50%; background:var(--color-accent-dark); color:#fff; display:flex; align-items:center; justify-content:center; font-family:var(--font-display); font-weight:800; margin-bottom:var(--space-sm); }
+.flow-step h4{ font-size:var(--text-md); font-weight:700; }
+.flow-step p{ font-size:var(--text-sm); color:var(--color-ink-soft); margin-top:4px; }
+@media (max-width:760px){
+  .flow{ grid-template-columns:1fr; }
+  .flow::before{ display:none; }
+}
+
+/* COMPANY */
+.company-grid{ display:grid; grid-template-columns:1fr 1fr; gap:var(--space-2xl); }
+table.company-table{ width:100%; border-collapse:collapse; }
+table.company-table th, table.company-table td{ text-align:left; padding:var(--space-sm) 0; border-top:1px solid var(--color-line); font-size:var(--text-md); vertical-align:top; }
+table.company-table th{ width:9em; color:var(--color-ink-soft); font-weight:600; }
+table.company-table tr:last-child td, table.company-table tr:last-child th{ border-bottom:1px solid var(--color-line); }
+@media (max-width:760px){ .company-grid{ grid-template-columns:1fr; gap:var(--space-lg); } }
+
+/* CTA */
+.cta{ background:var(--color-accent-dark); color:oklch(98% 0.005 250); padding:var(--space-2xl) 0; }
+.cta-inner{ display:flex; align-items:center; justify-content:space-between; gap:var(--space-lg); flex-wrap:wrap; }
+.cta h2{ font-family:var(--font-display); font-size:var(--text-2xl); font-weight:800; overflow-wrap:anywhere; min-width:0; }
+.cta p{ color:oklch(90% 0.01 250); margin-top:var(--space-2xs); }
+.cta .btn-primary{ background:var(--color-accent); }
+.cta .btn-primary:hover{ background:oklch(56% 0.13 250); }
+
+/* FOOTER — Ft5 statement */
+footer.site-footer{ padding:var(--space-2xl) 0 var(--space-lg); }
+.footer-statement{ font-family:var(--font-display); font-size:var(--text-2xl); font-weight:800; max-width:20ch; overflow-wrap:anywhere; min-width:0; }
+.footer-cols{ display:grid; grid-template-columns:1fr 1fr 1fr; gap:var(--space-lg); margin-top:var(--space-xl); }
+.footer-cols h5{ font-size:var(--text-sm); color:var(--color-ink-soft); margin-bottom:var(--space-sm); }
+.footer-cols address{ font-style:normal; font-size:var(--text-sm); line-height:1.9; }
+.footer-cols nav a{ display:block; font-size:var(--text-sm); padding:4px 0; color:var(--color-ink-soft); transition:color var(--dur-fast) var(--ease-out); }
+.footer-cols nav a:hover{ color:var(--color-ink); }
+.footer-bottom{ margin-top:var(--space-xl); padding-top:var(--space-md); border-top:1px solid var(--color-line); font-size:var(--text-sm); color:var(--color-ink-soft); display:flex; justify-content:space-between; flex-wrap:wrap; gap:var(--space-sm); }
+@media (max-width:760px){ .footer-cols{ grid-template-columns:1fr; } }
+
+@media (prefers-reduced-motion:reduce){
+  *{ transition-duration:0.01ms !important; animation-duration:0.01ms !important; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-nav">
+  <div class="wrap nav-row">
+    <a class="brand" href="sample1.html"><img src="images/mark-cool.svg" alt=""><span>株式会社GATE</span></a>
+    <nav class="primary" id="primaryNav">
+      <a href="#service">販売代行事業について</a>
+      <a href="#company">会社概要</a>
+      <a href="#recruit">求人情報</a>
+      <a class="nav-cta" href="https://ga-te.jp/お問い合わせ/">お問い合わせ</a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="メニュー" aria-expanded="false"><span></span></button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="hero-eyebrow">SALES OUTSOURCING PARTNER</div>
+      <h1>そのショップの販売、<br><span class="accent">プロにお任せください。</span></h1>
+      <p class="lead">アパレル・雑貨・家具の店舗運営を一括代行。ブランドイメージに合った即戦力人材を配置し、最短1ヶ月で新規オープンを実現します。</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://ga-te.jp/お問い合わせ/">無料で相談する →</a>
+        <a class="btn btn-ghost" href="#service">サービス内容を見る</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="num">3</div><div class="label">事業分野<br>アパレル／雑貨家具／モール</div></div>
+        <div class="stat"><div class="num">100</div><div class="label">従業員数（名）</div></div>
+        <div class="stat"><div class="num">1ヶ月〜</div><div class="label">最短オープン期間</div></div>
+      </div>
+    </div>
+    <figure class="hero-figure">
+      <img src="images/pattern-grid.svg" alt="店舗配置と人材アサインのイメージ図">
+    </figure>
+  </div>
+</section>
+
+<section class="section" id="pain">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>こんな事で<br>お悩みではないですか？</h2>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card"><div class="q">Q. 人材</div><p>新規出店したいが、ブランドに合う販売スタッフをすぐに確保できない。</p></div>
+      <div class="pain-card"><div class="q">Q. 運営</div><p>本部と店舗現場の情報にズレがあり、売上に結びつかない。</p></div>
+      <div class="pain-card"><div class="q">Q. コスト</div><p>採用・教育コストをかけずに、売上を伸ばす方法を探している。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="service">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>GATEの販売代行サービス</h2>
+      <p>業務依頼から運営スタートまで一括対応。店舗戦略の立案・実行、人材配置、日々の販売促進までをワンストップで支援します。</p>
+    </div>
+    <div class="service-list">
+      <div class="service-row">
+        <div class="service-num">01</div>
+        <h3>アパレルショップ</h3>
+        <p>アパレル業界出身のスタッフを中心に、ブランドの世界観に合った接客・売場づくりを実現します。</p>
+      </div>
+      <div class="service-row">
+        <div class="service-num">02</div>
+        <h3>家具・雑貨販売</h3>
+        <p>商材知識を持つ人材配置と丁寧な接客で、単価の高い商材の販売もしっかりサポートします。</p>
+      </div>
+      <div class="service-row">
+        <div class="service-num">03</div>
+        <h3>ショッピングモール出店</h3>
+        <p>モール出店特有の運営ノウハウを活かし、立ち上げから安定運営までを一貫して代行します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="why">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>GATEが選ばれる理由</h2>
+      <p>「ただ売上を追いかけるのではなく、質の高いサービスを」。人材育成に愛情を込める、それがGATEの流儀です。</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card"><div class="n">01</div><h4>アパレル業界出身者が多数</h4><p>現場を知るスタッフが、ブランドの意図を汲んだ接客を行います。</p></div>
+      <div class="why-card"><div class="n">02</div><h4>ブランドに合う人材配置</h4><p>イメージに合わせて人材を厳選し、最適な場所に配置します。</p></div>
+      <div class="why-card"><div class="n">03</div><h4>即戦力での対応</h4><p>スピーディーな立ち上げと、安定した現場運営を両立します。</p></div>
+      <div class="why-card"><div class="n">04</div><h4>人件費と売上の両立</h4><p>効率的な運営体制で、コスト最適化と売上増加を同時に実現します。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="flow">
+  <div class="wrap">
+    <div class="section-head">
+      <h2>ご利用の流れ</h2>
+    </div>
+    <div class="flow">
+      <div class="flow-step"><div class="dot">1</div><h4>業務依頼</h4><p>ブランドイメージ・出店エリア・予算をヒアリング。</p></div>
+      <div class="flow-step"><div class="dot">2</div><h4>打ち合わせ・契約</h4><p>人員配置と販売戦略をご提案し、契約締結。</p></div>
+      <div class="flow-step"><div class="dot">3</div><h4>面接・研修</h4><p>適切な人材を確保し、研修を実施します。</p></div>
+      <div class="flow-step"><div class="dot">4</div><h4>運営スタート</h4><p>PDCAサイクルで継続的に売上向上に取り組みます。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="company">
+  <div class="wrap company-grid">
+    <div>
+      <div class="section-head" style="margin-bottom:var(--space-md);">
+        <h2>会社概要</h2>
+      </div>
+      <table class="company-table">
+        <tr><th>会社名</th><td>株式会社ゲート（GATE Inc.）</td></tr>
+        <tr><th>代表取締役</th><td>吉田 明広</td></tr>
+        <tr><th>事業内容</th><td>販売代行事業・FC事業</td></tr>
+        <tr><th>従業員数</th><td>100名</td></tr>
+        <tr><th>本社</th><td>〒273-0864<br>千葉県船橋市北本町2-6-1-607</td></tr>
+        <tr><th>東京オフィス</th><td>〒160-0023<br>東京都新宿区西新宿7-1-12 クロスオフィス2階</td></tr>
+        <tr><th>TEL / FAX</th><td>047-750-1334 / 047-419-9789</td></tr>
+      </table>
+    </div>
+    <figure class="hero-figure" style="height:fit-content;">
+      <img src="images/mark-cool.svg" alt="株式会社GATEのシンボルイメージ" style="padding:var(--space-2xl); background:var(--color-paper-2);">
+    </figure>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <div class="wrap cta-inner">
+    <div>
+      <h2>まずはお気軽にご相談ください。</h2>
+      <p>店舗運営のお悩み、出店計画のご相談を承ります。</p>
+    </div>
+    <a class="btn btn-primary" href="https://ga-te.jp/お問い合わせ/">お問い合わせフォームへ →</a>
+  </div>
+</section>
+
+<footer class="site-footer" id="recruit">
+  <div class="wrap">
+    <div class="footer-statement">人は宝。<br>人材の育成は<br>愛情を込めて。</div>
+    <div class="footer-cols">
+      <div>
+        <h5>お問い合わせ</h5>
+        <address>
+          TEL：047-750-1334<br>
+          FAX：047-419-9789<br>
+          <a href="https://ga-te.jp/お問い合わせ/">お問い合わせフォーム →</a>
+        </address>
+      </div>
+      <div>
+        <h5>所在地</h5>
+        <address>
+          本社：千葉県船橋市北本町2-6-1-607<br>
+          東京オフィス：東京都新宿区西新宿7-1-12<br>クロスオフィス2階
+        </address>
+      </div>
+      <div>
+        <h5>メニュー</h5>
+        <nav>
+          <a href="#service">販売代行事業について</a>
+          <a href="#company">会社概要</a>
+          <a href="recruit.html">求人情報</a>
+          <a href="https://ga-te.jp/お問い合わせ/">お問い合わせ</a>
+        </nav>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 GATE Inc.</span>
+      <span>アパレル・雑貨・家具の販売代行なら株式会社GATE</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  var t = document.getElementById('navToggle');
+  var n = document.getElementById('primaryNav');
+  if(t){
+    t.addEventListener('click', function(){
+      var open = n.classList.toggle('open');
+      t.setAttribute('aria-expanded', open ? 'true':'false');
+    });
+  }
+</script>
+</body>
+</html>
