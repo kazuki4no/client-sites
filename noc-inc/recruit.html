@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>採用情報 | 株式会社NOC（千葉市若葉区・土木工事）</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* ===== 採用LP 固有スタイル ===== */
+
+/* FV */
+.hero-r{
+  position:relative;min-height:78vh;
+  display:flex;align-items:center;overflow:hidden;
+}
+@media(max-width:768px){.hero-r{min-height:70vh;}}
+.hero-r .hero-bg{
+  position:absolute;inset:0;
+  background-image:url('https://kazuki4no.github.io/lp-assets/construction/construction-staff-01.jpg');
+  background-size:cover;background-position:center;
+}
+.hero-r .hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(to right, rgba(15,28,48,.78) 50%, rgba(15,28,48,.2));
+}
+@media(max-width:768px){
+  .hero-r .hero-overlay{background:rgba(15,28,48,.7);}
+}
+.hero-r .hero-content{
+  position:relative;z-index:1;
+  max-width:1060px;margin:0 auto;padding:4.5rem 1.5rem;width:100%;
+}
+.recruit-badge{
+  display:inline-block;background:var(--orange);color:var(--white);
+  padding:.3rem .8rem;border-radius:4px;font-size:.78rem;font-weight:700;margin-bottom:.9rem;
+}
+.hero-r h1{
+  font-size:clamp(1.8rem,5.5vw,3.4rem);font-weight:700;color:var(--white);
+  line-height:1.3;letter-spacing:.04em;margin-bottom:.8rem;
+}
+.hero-r h1 .accent{color:var(--orange);}
+.hero-r .hero-sub{color:rgba(255,255,255,.88);font-size:.98rem;margin-bottom:1.8rem;line-height:1.8;max-width:480px;}
+.hero-r .cta-group{display:flex;gap:1rem;flex-wrap:wrap;}
+.btn-recruit-main{
+  display:inline-block;background:var(--orange);color:var(--white);
+  padding:.9rem 2rem;border-radius:6px;font-weight:700;text-decoration:none;
+  font-size:1rem;transition:opacity .2s;border:2px solid var(--orange);
+  min-width:200px;text-align:center;
+}
+.btn-recruit-main:hover{opacity:.84;}
+.btn-recruit-outline{
+  display:inline-block;background:transparent;color:var(--white);
+  padding:.9rem 2rem;border-radius:6px;font-weight:700;text-decoration:none;
+  font-size:1rem;border:2px solid rgba(255,255,255,.7);
+  min-width:200px;text-align:center;transition:opacity .2s;
+}
+.btn-recruit-outline:hover{opacity:.8;}
+
+/* 募集職種ピル */
+.job-pills{display:flex;flex-wrap:wrap;gap:.6rem;margin-top:1rem;}
+.job-pill{
+  background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.4);
+  color:var(--white);padding:.4rem .9rem;border-radius:999px;font-size:.82rem;
+}
+
+/* 働く魅力 */
+.appeal{background:var(--light);}
+.appeal-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+@media(max-width:768px){.appeal-grid{grid-template-columns:1fr;}}
+.appeal-card{background:var(--white);border-radius:12px;padding:1.6rem;text-align:center;box-shadow:0 2px 12px rgba(0,0,0,.08);}
+.appeal-icon{width:56px;height:56px;margin:0 auto .8rem;display:flex;align-items:center;justify-content:center;}
+.appeal-icon svg{width:42px;height:42px;stroke:var(--orange);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;}
+.appeal-card h3{font-size:1rem;color:var(--navy);font-weight:700;margin-bottom:.4rem;}
+.appeal-card p{font-size:.88rem;color:#555;line-height:1.7;}
+
+/* 先輩の声 */
+.voice{background:var(--white);}
+.voice-card{
+  display:flex;gap:1.8rem;align-items:flex-start;
+  background:var(--light);border-radius:12px;padding:1.5rem;
+  margin-bottom:1.2rem;
+}
+.voice-photo{width:80px;height:80px;border-radius:50%;object-fit:cover;flex-shrink:0;background:var(--line);}
+.voice-body h3{font-size:.92rem;font-weight:700;color:var(--navy);margin-bottom:.3rem;}
+.voice-body blockquote{font-size:.9rem;line-height:1.75;color:#444;border-left:3px solid var(--orange);padding-left:.8rem;}
+.voice-body .voice-note{font-size:.78rem;color:#888;margin-top:.4rem;}
+@media(max-width:768px){.voice-card{flex-direction:column;gap:1rem;}}
+
+/* 募集要項テーブル */
+.requirements{background:var(--light);}
+.requirements table th{width:30%;}
+
+/* 応募CTA */
+.cta-recruit{background:var(--navy);padding:4rem 1.5rem;text-align:center;color:var(--white);}
+.cta-recruit h2{font-size:clamp(1.4rem,4vw,2rem);margin-bottom:.8rem;font-weight:700;}
+.cta-recruit p{opacity:.85;margin-bottom:1.8rem;}
+</style>
+</head>
+<body>
+
+<!-- 追従CTA -->
+<a href="#apply" class="floating-cta">応募する（無料）</a>
+
+<!-- ヘッダー -->
+<header>
+  <a href="#" class="logo">株式会社NOC 採用情報</a>
+  <button class="hamburger" aria-expanded="false" aria-label="メニューを開く">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="site-nav">
+    <a href="#appeal">働く魅力</a>
+    <a href="#requirements">募集要項</a>
+    <a href="#apply">応募する</a>
+    <a href="#apply" class="btn-primary" style="padding:.45rem 1rem;font-size:.85rem;">今すぐ応募</a>
+  </nav>
+</header>
+
+<!-- FV -->
+<section class="hero-r">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="recruit-badge">土木施工・作業スタッフ 募集中</span>
+    <h1>地盤をつくる仕事で、<br><span class="accent">千葉の未来</span>を動かす。</h1>
+    <p class="hero-sub">
+      造成・道路・排水・擁壁工事を手がける株式会社NOCで一緒に働きませんか。<br>
+      経験・未経験問わず歓迎。技術と仲間が育つ環境でお待ちしています。
+    </p>
+    <div class="job-pills">
+      <span class="job-pill">土木施工管理</span>
+      <span class="job-pill">重機オペレーター</span>
+      <span class="job-pill">現場作業員</span>
+      <span class="job-pill">未経験可</span>
+    </div>
+    <div class="cta-group" style="margin-top:1.5rem;">
+      <a href="#apply" class="btn-recruit-main">応募する（無料）</a>
+      <a href="#requirements" class="btn-recruit-outline">募集要項を見る</a>
+    </div>
+  </div>
+</section>
+
+<!-- 実績バー -->
+<div style="background:var(--orange);padding:1rem 1.5rem;">
+  <div style="max-width:1060px;margin:0 auto;display:flex;justify-content:center;gap:3rem;flex-wrap:wrap;color:#fff;text-align:center;">
+    <div><span style="font-size:1.5rem;font-weight:700;">千葉市</span><br><span style="font-size:.78rem;opacity:.9;">若葉区 拠点</span></div>
+    <div><span style="font-size:1.5rem;font-weight:700;">4工種</span><br><span style="font-size:.78rem;opacity:.9;">ワンストップ対応</span></div>
+    <div><span style="font-size:1.5rem;font-weight:700;">経験・未経験</span><br><span style="font-size:.78rem;opacity:.9;">どちらも歓迎</span></div>
+  </div>
+</div>
+
+<!-- 働く魅力 -->
+<section class="appeal" id="appeal">
+  <div class="container">
+    <h2 class="section-title">NOCで<span>働く魅力</span></h2>
+    <div class="appeal-grid">
+      <div class="appeal-card">
+        <div class="appeal-icon">
+          <svg viewBox="0 0 24 24"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+        </div>
+        <h3>未経験者も安心の研修体制</h3>
+        <p>先輩スタッフが丁寧にサポート。土木工事の基礎から現場の動き方まで、しっかり教えます。</p>
+      </div>
+      <div class="appeal-card">
+        <div class="appeal-icon">
+          <svg viewBox="0 0 24 24"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <h3>地道に積み上がる技術と資格</h3>
+        <p>造成・道路・排水・擁壁の現場を通じて多様な技術が身につきます。資格取得のバックアップも行っています。</p>
+      </div>
+      <div class="appeal-card">
+        <div class="appeal-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>少人数チームで連携しやすい</h3>
+        <p>チームのコミュニケーションを大切にした職場環境。意見が言いやすく、改善が反映されやすい会社です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 先輩スタッフの声 -->
+<section class="voice">
+  <div class="container">
+    <h2 class="section-title">先輩スタッフの<span>声</span></h2>
+    <p style="text-align:center;font-size:.82rem;color:#888;margin-bottom:1.5rem;">※ 以下の内容は差し替え用のサンプルです。実際のスタッフコメントに変更してください。</p>
+    <div class="voice-card">
+      <div class="voice-photo" style="background:var(--line);display:flex;align-items:center;justify-content:center;">
+        <svg width="36" height="36" viewBox="0 0 24 24" stroke="#bbb" fill="none" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <div class="voice-body">
+        <h3>現場作業員（入社3年目・30代）</h3>
+        <blockquote>「入社前は土木の経験がゼロでした。でも先輩が基礎から教えてくれて、今では独立して現場を担当しています。体を動かす仕事が好きな方には向いていると思います。」</blockquote>
+        <p class="voice-note">※実際のコメントに差し替えてください</p>
+      </div>
+    </div>
+    <div class="voice-card">
+      <div class="voice-photo" style="background:var(--line);display:flex;align-items:center;justify-content:center;">
+        <svg width="36" height="36" viewBox="0 0 24 24" stroke="#bbb" fill="none" stroke-width="1.5"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+      </div>
+      <div class="voice-body">
+        <h3>土木施工管理（入社2年目・20代）</h3>
+        <blockquote>「図面から完工まで、一つの現場を最後まで担当できるのがやりがいです。千葉の街に自分が関わった道路や造成地があると思うと、誇らしい気持ちになります。」</blockquote>
+        <p class="voice-note">※実際のコメントに差し替えてください</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 募集要項 -->
+<section class="requirements" id="requirements">
+  <div class="container">
+    <h2 class="section-title">募集<span>要項</span></h2>
+    <p style="text-align:center;font-size:.82rem;color:#888;margin-bottom:1.2rem;">※ 以下は差し替え用のサンプルです。実際の募集条件に変更してください。</p>
+    <table>
+      <tbody>
+        <tr>
+          <th data-label="項目">職種</th>
+          <td data-label="内容">土木施工管理・現場作業員・重機オペレーター</td>
+        </tr>
+        <tr>
+          <th data-label="項目">雇用形態</th>
+          <td data-label="内容">正社員（試用期間あり）</td>
+        </tr>
+        <tr>
+          <th data-label="項目">勤務地</th>
+          <td data-label="内容">千葉市若葉区貝塚町565-4（千葉県内の各現場）</td>
+        </tr>
+        <tr>
+          <th data-label="項目">給与</th>
+          <td data-label="内容">月給〇〇万円〜（経験・スキルにより優遇）※詳細はお問い合わせください</td>
+        </tr>
+        <tr>
+          <th data-label="項目">勤務時間</th>
+          <td data-label="内容">〇:00〜〇:00（現場による）</td>
+        </tr>
+        <tr>
+          <th data-label="項目">休日・休暇</th>
+          <td data-label="内容">〇〇制（詳細はお問い合わせください）</td>
+        </tr>
+        <tr>
+          <th data-label="項目">応募資格</th>
+          <td data-label="内容">経験・未経験問わず歓迎。普通自動車免許（AT可）</td>
+        </tr>
+        <tr>
+          <th data-label="項目">待遇・福利厚生</th>
+          <td data-label="内容">社会保険完備・資格取得支援・〇〇（詳細はお問い合わせください）</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 応募CTA -->
+<section class="cta-recruit" id="apply">
+  <div class="container">
+    <h2>一緒に千葉の未来を<span style="color:var(--orange);">つくりましょう</span></h2>
+    <p>ご質問・ご相談だけでも歓迎です。まずはお気軽にご連絡ください。</p>
+    <a href="https://noc-inc.com/contact/" class="btn-recruit-main" style="font-size:1.05rem;padding:1rem 2.5rem;">採用に応募する / お問い合わせ</a>
+    <p style="margin-top:1.2rem;opacity:.85;font-size:.92rem;">
+      お電話: <a href="tel:043-312-7827" style="color:var(--orange);font-weight:700;font-size:1.1rem;text-decoration:none;">043-312-7827</a>
+    </p>
+    <div class="pill-row" style="margin-top:1.5rem;">
+      <span class="pill">経験・未経験 歓迎</span>
+      <span class="pill">千葉市若葉区 拠点</span>
+      <span class="pill">資格取得支援あり</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>〒264-0023 千葉市若葉区貝塚町565-4　TEL: 043-312-7827</p>
+  <p style="margin-top:.3rem;">© 株式会社NOC All Rights Reserved.</p>
+</footer>
+
+<script src="nav.js"></script>
+</body>
+</html>
