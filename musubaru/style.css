@@ -35,6 +35,23 @@ ul{list-style:none;}
 .pills{display:flex;flex-wrap:wrap;gap:.6rem;}
 .pill{display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .95rem;border-radius:999px;font-size:.82rem;font-weight:500;}
 
+/* ---- ハンバーガーナビ共通（2026-08-21追加）----
+   HTMLに .hamburger ボタンと .site-nav があるのに style.css 側の指定が1つも無く、
+   PC表示で未装飾のボタンが白い四角として現れていた（確認担当の指摘・gakuya-qedと同型）。
+   あわせて .site-nav に display:flex が無く、ナビ項目が縦積みになる不具合も解消する。 */
+.site-header .wrap{position:relative;}
+.hamburger{display:none;background:none;border:0;font-size:1.7rem;line-height:1;cursor:pointer;padding:0;color:inherit;}
+.site-nav{display:flex;gap:1.2rem;align-items:center;}
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{display:none;flex-direction:column;align-items:flex-start;gap:.2rem;
+    position:absolute;top:100%;left:0;right:0;z-index:50;padding:.8rem 1rem;
+    background:var(--base);box-shadow:0 8px 16px rgba(0,0,0,.18);}
+  .site-nav.open{display:flex;}
+  .site-nav li{width:100%;}
+  .site-nav a{display:block;padding:.55rem 0;width:100%;}
+}
+
 /* =====================================================
    A案 t-a 信頼・王道（アイボリー×ゴールド・Noto Serif JP）
    ===================================================== */
