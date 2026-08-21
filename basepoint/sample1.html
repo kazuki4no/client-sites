@@ -17,12 +17,14 @@
 /* PC・タブレット共通（769px〜）：h1を画像の左上に絶対配置 */
 @media(min-width:769px){
   .t-a .hero-a .wrap{position:relative;align-items:flex-end;}
-  .h1-wrap{position:absolute;top:0;left:1.2rem;z-index:2;}
-  .t-a .hero-copy h1{text-shadow:0 1px 12px rgba(250,247,240,.9);}
+  /* 2026-08-21 修正: h1が絶対配置のまま画像の「空」の範囲を超えて伸び、
+     屋根・外壁の上に文字が乗って崩れて見えていた（確認担当「A案 表示崩れ」）。
+     幅の上限を決めて必ず空の範囲で折り返すようにし、文字サイズも上限を下げる。 */
+  .h1-wrap{position:absolute;top:0;left:1.2rem;z-index:2;max-width:min(62%,40rem);}
+  .t-a .hero-copy h1{font-size:clamp(1.7rem,3.3vw,2.75rem);text-shadow:0 1px 12px rgba(250,247,240,.9);}
 }
-/* タブレット：h1フォント絞り＋リード文との重なり防止 */
+/* タブレット：リード文との重なり防止 */
 @media(min-width:769px) and (max-width:1024px){
-  .t-a .hero-copy h1{font-size:clamp(1.6rem,4.6vw,3rem);}
   .t-a .hero-copy{padding-top:calc(4rem + 14vw);}
 }
 /* スマホ：h1だけを画像左の余白（空の部分）に絶対配置 */

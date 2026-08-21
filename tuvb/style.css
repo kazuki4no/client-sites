@@ -104,7 +104,11 @@ ul{list-style:none;}
 
 .t-a .class-table{width:100%;border-collapse:collapse;background:#fff;border:1px solid var(--line);}
 .t-a .class-table th,.t-a .class-table td{padding:1rem 1.2rem;border-bottom:1px solid var(--line);text-align:left;vertical-align:top;}
-.t-a .class-table th{background:#fff7f0;font-weight:700;width:32%;}
+.t-a .class-table th{background:#fff7f0;font-weight:700;}
+.t-a .class-table tbody th{width:32%;}
+/* 2026-08-21: 見出し行の「月謝」だけ td で書かれており背景色が付いていなかった指摘への対応。
+   th化に合わせて、右寄せ・アクセント色は price セル共通で当てる */
+.t-a .class-table th.price{width:auto;text-align:right;color:var(--accent-deep);white-space:nowrap;}
 .t-a .class-table td.target{font-size:.9rem;color:#6d5840;}
 .t-a .class-table td.price{font-weight:700;color:var(--accent-deep);white-space:nowrap;text-align:right;}
 @media(max-width:768px){
@@ -234,6 +238,12 @@ ul{list-style:none;}
 
 .t-c .hero-c{position:relative;min-height:88vh;display:flex;align-items:center;}
 .t-c .hero-bg{position:absolute;inset:0;background-size:cover;background-position:center right;}
+/* 2026-08-21: C案FVをバレーボール写真へ差し替えた際、体育館・観客席が明るく
+   白の見出しが読めなくなったため、PCでも左側にグラデーションを敷く
+   （従来は768px以下だけに ::after があった） */
+.t-c .hero-c::after{content:"";position:absolute;inset:0;z-index:0;
+  background:linear-gradient(100deg,rgba(14,17,26,.88) 0%,rgba(14,17,26,.72) 38%,rgba(14,17,26,.30) 64%,rgba(14,17,26,.10) 100%);}
+.t-c .hero-content h1,.t-c .hero-sub,.t-c .offer-pills{text-shadow:0 1px 14px rgba(10,12,20,.75);}
 .t-c .hero-content{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:4.5rem 1.2rem;width:100%;}
 .t-c .offer-pills{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1.4rem;}
 .t-c .offer-pills .pill{background:rgba(255,133,0,.14);border:1px solid var(--line);color:var(--gold);letter-spacing:.04em;}
@@ -245,8 +255,7 @@ ul{list-style:none;}
   .t-c .hero-bg{background-position:68% center;}
   .t-c .hero-content{padding-top:3.2rem;padding-right:2.8rem;}
   .t-c .hero-content h1,.t-c .hero-sub,.t-c .offer-pills{text-shadow:0 1px 14px rgba(10,12,20,.9);}
-  .t-c .hero-c::after{content:"";position:absolute;inset:0;z-index:0;
-    background:linear-gradient(100deg,rgba(18,22,34,.72) 0%,rgba(18,22,34,.36) 52%,rgba(18,22,34,0) 76%);}
+  .t-c .hero-c::after{background:linear-gradient(100deg,rgba(14,17,26,.92) 0%,rgba(14,17,26,.74) 46%,rgba(14,17,26,.34) 78%);}
 }
 
 .t-c .section-head .en{color:var(--accent);opacity:1;letter-spacing:.35em;}
