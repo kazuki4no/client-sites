@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ラビットフォックス（RABIT FOX）｜臨床診断研究センター株式会社</title>
+<meta name="description" content="複合検索対応型のWEB症候学辞典「ラビットフォックス」。症状所見を最大8つまで同時検索し、関連する疾患病態と検査情報を提示します。2026年8月後半、実証試験開始予定。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* =====================================================
+   臨床診断研究センター株式会社 — B案：ビジュアル主役型
+   FV＝全面背景画像＋左からのグラデーション＋大きなキャッチ
+   ベース＝ホワイト×ティール（技術・クリア）／ゴシック
+   ===================================================== */
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{max-width:100%;overflow-x:hidden;}
+img{max-width:100%;height:auto;display:block;}
+a{text-decoration:none;color:inherit;}
+ul{list-style:none;}
+
+body{--base:#ffffff;--soft:#f1f6f7;--ink:#152a2e;--sub:#54686d;--teal:#0f7a76;--teal-deep:#0b5c59;--line:#dce8e8;
+  font-family:'Noto Sans JP',sans-serif;font-size:16px;line-height:1.85;background:var(--base);color:var(--ink);}
+.wrap{max-width:1080px;margin:0 auto;padding:0 1.2rem;}
+.section{padding:4.5rem 0;}
+.section-head{text-align:center;margin-bottom:2.6rem;}
+.section-head .en{display:block;font-size:.76rem;letter-spacing:.32em;text-transform:uppercase;color:var(--teal);margin-bottom:.5rem;font-weight:700;}
+.section-head h2{font-size:clamp(1.5rem,4.5vw,2.2rem);line-height:1.5;font-weight:700;}
+.section-head p{margin-top:.9rem;color:var(--sub);font-size:.97rem;}
+.accent{color:var(--teal);}
+.icon-line{width:40px;height:40px;stroke-width:1.5;fill:none;stroke:currentColor;stroke-linecap:round;stroke-linejoin:round;}
+
+.btn-primary,.btn-outline{display:inline-block;padding:.95rem 2.1rem;border-radius:999px;font-weight:700;text-align:center;transition:opacity .2s,transform .2s;}
+.btn-primary:hover,.btn-outline:hover{opacity:.88;transform:translateY(-1px);}
+.btn-primary{background:var(--teal);color:#fff;}
+.btn-outline{border:1.5px solid var(--teal-deep);color:var(--teal-deep);}
+
+.floating-cta{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);z-index:50;
+  padding:.9rem 2rem;border-radius:999px;background:var(--teal);color:#fff;font-weight:700;white-space:nowrap;
+  box-shadow:0 6px 18px rgba(15,122,118,.32);}
+@media(min-width:769px){.floating-cta{display:none;}}
+@media(max-width:768px){body{padding-bottom:80px;}}
+
+.pills{display:flex;flex-wrap:wrap;gap:.6rem;}
+.pill{display:inline-flex;align-items:center;gap:.4rem;padding:.35rem .95rem;border-radius:999px;font-size:.82rem;font-weight:500;
+  background:rgba(255,255,255,.86);border:1px solid var(--line);color:var(--sub);}
+
+/* ---- FV：3層構造 ---- */
+.hero-b{position:relative;min-height:84vh;display:flex;align-items:center;}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center right;}
+.hero-overlay{position:absolute;inset:0;
+  background:linear-gradient(100deg,rgba(255,255,255,.93) 0%,rgba(255,255,255,.62) 44%,rgba(255,255,255,0) 72%);}
+.hero-content{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:4rem 1.2rem;width:100%;}
+.hero-eyebrow{font-size:.82rem;letter-spacing:.28em;color:var(--teal-deep);margin-bottom:1rem;font-weight:700;}
+.hero-content h1{font-size:clamp(2rem,6vw,3.4rem);line-height:1.42;margin-bottom:1.1rem;font-weight:900;letter-spacing:-.01em;}
+/* 文字は画像左の余白側に収める（被写体に重ねない） */
+.hero-sub{font-size:1.02rem;color:var(--sub);max-width:27em;margin-bottom:1.5rem;}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.9rem;margin-bottom:1.3rem;}
+@media(max-width:768px){
+  .hero-b{min-height:72vh;}
+  .hero-bg{background-position:center;}
+  .hero-overlay{background:linear-gradient(180deg,rgba(255,255,255,.94) 0%,rgba(255,255,255,.7) 52%,rgba(255,255,255,.2) 100%);}
+  .hero-cta{flex-direction:column;}
+  .hero-cta .btn-primary,.hero-cta .btn-outline{width:min(100%,24rem);}
+}
+
+/* ---- 実績バー ---- */
+.stat-bar{background:var(--teal-deep);color:#fff;}
+.stat-bar .wrap{display:flex;flex-wrap:wrap;padding-top:1.8rem;padding-bottom:1.8rem;gap:1rem;}
+.stat{flex:1 1 200px;text-align:center;}
+.stat .v{font-size:1.9rem;font-weight:900;line-height:1.2;}
+.stat .v small{font-size:.85rem;font-weight:500;}
+.stat .k{font-size:.82rem;opacity:.85;}
+
+/* ---- ステートメント ---- */
+.statement{text-align:center;max-width:760px;margin:0 auto;}
+.statement h2{font-size:clamp(1.4rem,4vw,2rem);line-height:1.6;margin-bottom:1.2rem;font-weight:700;}
+.statement p{color:var(--sub);}
+
+/* ---- 機能カード ---- */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+@media(max-width:768px){.cards{grid-template-columns:1fr;}}
+.card{background:var(--soft);border-radius:12px;padding:1.9rem 1.5rem;}
+.card .icon-line{color:var(--teal);margin-bottom:.9rem;}
+.card h3{font-size:1.1rem;margin-bottom:.6rem;font-weight:700;}
+.card p{font-size:.93rem;color:var(--sub);}
+
+/* ---- ステップ ---- */
+.steps{display:flex;flex-wrap:wrap;gap:1rem;counter-reset:s;}
+.step{flex:1 1 240px;background:#fff;border:1px solid var(--line);border-radius:12px;padding:1.6rem 1.4rem;position:relative;}
+.step .n{display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;
+  background:var(--teal);color:#fff;font-weight:700;font-size:.95rem;margin-bottom:.7rem;}
+.step h3{font-size:1.03rem;margin-bottom:.4rem;font-weight:700;}
+.step p{font-size:.9rem;color:var(--sub);}
+
+/* ---- 画像帯 ---- */
+.showcase{display:grid;grid-template-columns:1.15fr .85fr;gap:1.2rem;align-items:stretch;}
+@media(max-width:768px){.showcase{grid-template-columns:1fr;}}
+.showcase img{width:100%;height:100%;object-fit:cover;border-radius:12px;aspect-ratio:4/3;}
+.showcase .txt{background:var(--soft);border-radius:12px;padding:2rem 1.7rem;display:flex;flex-direction:column;justify-content:center;}
+.showcase .txt h3{font-size:1.25rem;margin-bottom:.8rem;font-weight:700;line-height:1.5;}
+.showcase .txt p{font-size:.95rem;color:var(--sub);}
+
+/* ---- 品質リスト ---- */
+.quality{max-width:800px;margin:0 auto;display:flex;flex-direction:column;gap:.9rem;}
+.q-item{display:flex;gap:1rem;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:10px;padding:1.2rem 1.3rem;}
+.q-item svg{width:22px;height:22px;flex:none;stroke:var(--teal);stroke-width:2.2;fill:none;stroke-linecap:round;stroke-linejoin:round;margin-top:.35rem;}
+.q-item h3{font-size:1rem;font-weight:700;margin-bottom:.2rem;}
+.q-item p{font-size:.92rem;color:var(--sub);}
+
+/* ---- CTAバナー ---- */
+.cta-banner{position:relative;padding:5rem 0;text-align:center;color:#fff;}
+.cta-banner .bg{position:absolute;inset:0;background-size:cover;background-position:center;}
+.cta-banner .ov{position:absolute;inset:0;background:rgba(11,92,89,.78);}
+.cta-banner .inner{position:relative;z-index:1;}
+.cta-banner h2{font-size:clamp(1.5rem,4.5vw,2.2rem);margin-bottom:1rem;font-weight:700;}
+.cta-banner p{margin-bottom:1.6rem;opacity:.92;}
+.cta-banner .btn-primary{background:#fff;color:var(--teal-deep);}
+
+.site-footer{padding:2.2rem 0 2.6rem;text-align:center;font-size:.85rem;color:#7d9296;background:var(--soft);}
+.site-footer .note{font-size:.78rem;margin-top:.6rem;}
+</style>
+</head>
+<body>
+
+<!-- ============ FV：全面ビジュアル（it-fv-light-01＝被写体右・左に余白） ============ -->
+<section class="hero-b">
+  <!-- 社内ライブラリ: it-fv-light-01 -->
+  <div class="hero-bg" style="background-image:url('https://kazuki4no.github.io/lp-assets/it/it-fv-light-01.jpg');"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">RABIT FOX ／ 疾患臨床像データベース</p>
+    <h1>740疾患を、<br><span class="accent">ひと続きの検索</span>に。</h1>
+    <p class="hero-sub">症状・所見を入れるだけ。複合検索対応型のWEB症候学辞典が、関連する疾患病態と診断に必要な検査情報を並べて示します。最短時間・最小負担で確定診断にたどり着くために。</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">実証試験に申し込む</a>
+      <a href="#function" class="btn-outline">できることを見る</a>
+    </div>
+    <div class="pills">
+      <span class="pill">2026年8月後半 実証試験開始予定</span>
+      <span class="pill">パソコン・タブレット対応</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 実績バー ============ -->
+<section class="stat-bar">
+  <div class="wrap">
+    <div class="stat"><div class="v">740<small> 疾患</small></div><div class="k">初期収載疾患数</div></div>
+    <div class="stat"><div class="v">8<small> つまで</small></div><div class="k">同時検索できる症状所見</div></div>
+    <div class="stat"><div class="v">2<small> 件</small></div><div class="k">取得済みの関連特許</div></div>
+    <div class="stat"><div class="v">3<small> 段階</small></div><div class="k">収載情報のチェック体制</div></div>
+  </div>
+</section>
+
+<!-- ============ ステートメント ============ -->
+<section class="section">
+  <div class="wrap statement">
+    <h2>誤診・遅診を減らすことは、<br>医療者を守り、患者様を守ること。</h2>
+    <p>私たちは「最短時間・最小負担で確定診断にたどり着く医療の実現」を掲げ、現場で奮闘する医療者へより実効性のある後方支援を届けるために生まれた会社です。診断に費やす時間とコストを減らし、医療者と患者様の双方の負担を軽くしていきます。</p>
+  </div>
+</section>
+
+<!-- ============ 機能 ============ -->
+<section class="section" id="function" style="background:var(--soft);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="en">Function</span>
+      <h2>ラビットフォックスでできること</h2>
+      <p>症候から疾患へ。検索の起点を、現場の観察そのものに置きました。</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <svg class="icon-line" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M16.5 16.5L21 21"/></svg>
+        <h3>症状所見から疾患を検索</h3>
+        <p>観察した症状・所見を入力すると、関連する疾患病態名と関連情報を提示します。最大8つの所見を同時に検索できます。</p>
+      </div>
+      <div class="card">
+        <svg class="icon-line" viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h6"/><circle cx="19" cy="17" r="3"/></svg>
+        <h3>リスク情報で絞り込む</h3>
+        <p>基礎疾患・既往歴、生活歴や職業、海外渡航歴、手術歴、薬剤使用など、背景情報から候補を絞り込めます。</p>
+      </div>
+      <div class="card">
+        <svg class="icon-line" viewBox="0 0 24 24"><path d="M6 3h9l4 4v14H6z"/><path d="M15 3v4h4"/><path d="M9 13h6M9 17h4"/></svg>
+        <h3>結果を持ち出す</h3>
+        <p>検索結果は二次元バーコードでの出力と印刷出力に対応。カンファレンスや記録への引き継ぎに使えます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 使い方の流れ ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="en">Flow</span>
+      <h2>検索の流れ</h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <span class="n">1</span>
+        <h3>症状・所見を入力</h3>
+        <p>観察した症状所見を入力します。複数ある場合は最大8つまでまとめて指定できます。</p>
+      </div>
+      <div class="step">
+        <span class="n">2</span>
+        <h3>候補を絞り込む</h3>
+        <p>既往歴・生活歴・渡航歴・薬剤使用などのリスク情報で、鑑別の候補を絞り込みます。</p>
+      </div>
+      <div class="step">
+        <span class="n">3</span>
+        <h3>詳細と根拠を確認</h3>
+        <p>診断に必要な検査情報の補足を確認し、必要に応じて構築に使ったエビデンス文献を疾患別に辿ります。</p>
+      </div>
+      <div class="step">
+        <span class="n">4</span>
+        <h3>結果を出力</h3>
+        <p>検索結果を二次元バーコードまたは印刷で出力し、記録・共有に活かします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 技術 ============ -->
+<section class="section" style="background:var(--soft);">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="en">Technology</span>
+      <h2>検索を支える技術</h2>
+    </div>
+    <div class="showcase">
+      <img src="https://kazuki4no.github.io/lp-assets/it/it-sub-04.jpg" alt="検索技術を表すテクノロジーのイメージ">
+      <div class="txt">
+        <h3>症例報告論文を構造化し、<br>順位づけて返す</h3>
+        <p>臨床情報の一元化処理と処理速度の高速化、症例報告論文のデータ構造化処理、医学的な言語表現の多様性に対応した大規模言語処理、そして数学的手法による鑑別疾患の順位付けアルゴリズム。鑑別疾患検索システム（特許第7651226号）と鑑別疾患想起支援システム（特許第7165371号）として特許を取得しています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ データ品質 ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="en">Quality</span>
+      <h2>収載情報の品質について</h2>
+    </div>
+    <div class="quality">
+      <div class="q-item">
+        <svg viewBox="0 0 24 24"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg>
+        <div><h3>一次情報からガイドラインまで参照</h3><p>国内の症例報告論文から症状所見を抽出し、各疾患の詳細情報を網羅的に参照して収載しています。</p></div>
+      </div>
+      <div class="q-item">
+        <svg viewBox="0 0 24 24"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg>
+        <div><h3>常勤医師によるダブルチェック</h3><p>抽出した内容は社内の常勤医師が確認し、必要に応じて外部医師による三次チェックを行っています。</p></div>
+      </div>
+      <div class="q-item">
+        <svg viewBox="0 0 24 24"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg>
+        <div><h3>エビデンス文献をたどれる</h3><p>データベース構築に使用した文献は疾患別に検索でき、根拠にさかのぼって確認できます。</p></div>
+      </div>
+      <div class="q-item">
+        <svg viewBox="0 0 24 24"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg>
+        <div><h3>随時更新・定期追加</h3><p>各疾患は随時更新し、収載疾患の定期追加を予定。追加の予定と時期は収載状況の確認画面でご覧いただけます。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTAバナー ============ -->
+<section class="cta-banner" id="contact">
+  <div class="bg" style="background-image:url('https://kazuki4no.github.io/lp-assets/medical/medical-sub-03.jpg');"></div>
+  <div class="ov"></div>
+  <div class="inner wrap">
+    <h2>実証試験モデル、2026年8月後半 開始予定</h2>
+    <p>診断学・臨床推論に携わる医療者の方へ。詳細説明書もご用意しています。</p>
+    <a href="#" class="btn-primary" onclick="return false;">お問い合わせフォームへ（サンプル）</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>臨床診断研究センター株式会社｜〒261-0023 千葉県千葉市美浜区中瀬1丁目6 m BAY POINT幕張 低層棟2F</p>
+    <p>代表者 加藤 開一郎／創立 2025年4月10日／資本金 500万円／事業 診断支援に関するWEB情報サービス</p>
+    <p class="note">※本ページはご提案用のサンプルです。掲載写真はイメージで、実在の人物・施設ではありません。</p>
+  </div>
+</footer>
+
+<a href="#contact" class="floating-cta">実証試験に申し込む</a>
+
+</body>
+</html>
