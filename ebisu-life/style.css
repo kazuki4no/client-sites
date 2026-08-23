@@ -82,6 +82,27 @@ body.t-b .site-header{border-bottom:2px solid var(--line);}
   .hero-a h1{font-size:clamp(1.6rem,4.6vw,3rem);}
   .hero-a .hero-copy{padding-top:calc(4rem + 14vw);}
 }
+/* 2026-08-23 修正（確認担当「A案：『REFORM SPECIALIST』文字かぶり」）:
+   h1-wrap を絶対配置して画像に重ねる作りなのに、その高さ分をリード文の上へ確保する
+   padding-top が max-width:1024px にしか無く、**1025px以上では確保ゼロ**。さらに1024px以下でも
+   h1が3行になると確保量(4rem+14vw)を超えるため、どちらの幅でも見出しがリード文・CTA・
+   次セクションの見出しにまで重なっていた（重なり検出で最大 ratio=1.0）。
+   ①769px以上を1つの指定にまとめ、確保量を固定値で十分に取る
+   ②.h1-wrap に幅の上限（無いと見出しが右のFV画像へはみ出す）
+   ③h1の上限を4rem→2.7remへ。4remは3行で260px超になり確保量を押し上げていた */
+@media(min-width:769px){
+  /* .h1-wrap の基準は position:relative の .hero-copy（＝FVの左半分）。
+     64%だと「安心のリフォームへ。」が入りきらず「へ。」だけ次行に落ちるため、
+     画像に少しかかる程度まで広げる（画像左端までの余白は実測で確認済み） */
+  .hero-a .h1-wrap{max-width:min(96%,32rem);}
+  .hero-a h1{font-size:clamp(1.7rem,2.9vw,2.4rem);}
+  .hero-a .hero-copy{padding-top:calc(5rem + 16vw);}
+  /* 見出しの改行位置を固定する。br-sp は既定で1024px以下しか効かないため、
+     1025px以上では「土浦から始まる安/心のリフォーム」のように語の途中で折れていた。
+     FVの見出しは画像の左余白に収める必要があり1行には収まらないので、
+     意図した位置（土浦から始まる／安心のリフォームへ。）で改行させる */
+  .hero-a h1 .br-sp{display:inline;}
+}
 @media(max-width:768px){
   .hero-a .wrap{flex-direction:column;gap:0;min-height:auto;align-items:stretch;}
   .hero-a .hero-media img{aspect-ratio:4/3;border-radius:0;}
