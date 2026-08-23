@@ -91,15 +91,22 @@ ul{list-style:none;}
 .cta-under .pills .pill:not(:first-child){border-left:1px solid var(--line);}
 .pill-check{display:none;}
 
-/* PC・タブレット共通（769px〜）：h1を画像左余白に重ねる */
+/* PC・タブレット共通（769px〜）：h1を画像左余白に重ねる
+   2026-08-23 修正（確認担当「A案：『届けるべき人へ、』文字かぶり」）:
+   ①絶対配置したh1の高さ分をリード文の上に確保する padding-top が 1024px以下にしか
+     効いておらず、1025px以上で h1 がリード文の上に重なっていた → 769px以上に広げる
+   ②.h1-wrap に幅の上限が無く、見出しが右のFV画像まではみ出していた → max-width を付与
+   ③文字サイズの上限も下げて、画像の余白内で折り返るようにする */
 @media(min-width:769px){
   .t-a .hero-a .wrap{position:relative;align-items:flex-end;}
-  .h1-wrap{position:absolute;top:0;left:1.2rem;z-index:2;}
-  .t-a .hero-copy h1{text-shadow:0 1px 12px rgba(250,248,243,.9);}
-}
-@media(min-width:769px) and (max-width:1024px){
-  .t-a .hero-copy h1{font-size:clamp(1.6rem,4.6vw,3rem);}
+  .h1-wrap{position:absolute;top:0;left:1.2rem;z-index:2;max-width:min(62%,40rem);}
+  .t-a .hero-copy h1{font-size:clamp(1.7rem,3.3vw,2.75rem);
+    text-shadow:0 1px 12px rgba(250,248,243,.9);}
   .t-a .hero-copy{padding-top:calc(4rem + 14vw);}
+}
+/* 画面が広いと 14vw が効きすぎて余白が空きすぎるので固定値へ切り替える */
+@media(min-width:1200px){
+  .t-a .hero-copy{padding-top:14rem;}
 }
 /* スマホ：h1を画像左余白に絶対配置 */
 @media(max-width:768px){
