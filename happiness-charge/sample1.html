@@ -19,14 +19,19 @@
 .cta-under .pills .pill{background:none;border:none;border-radius:0;padding:0 1.2rem;font-size:.82rem;color:#5c6975;}
 .cta-under .pills .pill:not(:first-child){border-left:1px solid var(--line);}
 .pill-check{display:none;}
+/* 2026-08-23 修正（確認担当「A案：全体的に表示崩れ」）:
+   「h1オーバーレイ型」で h1 を absolute(top:0)、.wrap を align-items:flex-end に
+   していたため、①見出しが右のFV画像に114〜130px food い込む ②リード文が画像の
+   下端に貼り付き、見出しとの間が常時88px空く（間延び）という状態だった。
+   ⚠️このレイアウトでは .hero-copy への padding-top は効かない
+   （h1が絶対配置で流れから外れ、.hero-copy の中身はリード文だけ。下揃えのため
+     padding-top を足しても上へ伸びるだけでリード文の位置は動かない）。
+   そのため**絶対配置をやめて通常の流れに戻し、上下中央揃えにする**。
+   820〜1920pxの8幅で「見出し下〜リード上=16px・画像へのはみ出し0」を実測。 */
 @media(min-width:769px){
-  .t-a .hero-a .wrap{position:relative;align-items:flex-end;}
-  .h1-wrap{position:absolute;top:0;left:1.2rem;z-index:2;}
-  .t-a .hero-copy h1{text-shadow:0 1px 12px rgba(245,249,251,.92);}
-}
-@media(min-width:769px) and (max-width:1024px){
-  .t-a .hero-copy h1{font-size:clamp(1.6rem,4.6vw,3rem);}
-  .t-a .hero-copy{padding-top:calc(4rem + 14vw);}
+  .t-a .hero-a .wrap{position:relative;align-items:center;}
+  .h1-wrap{position:static;}
+  .t-a .hero-copy h1{font-size:clamp(1.6rem,2.7vw,2.2rem);}
 }
 @media(max-width:768px){
   .br-sp,.br-sp2{display:inline;}
