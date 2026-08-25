@@ -208,6 +208,20 @@ footer{background:var(--ink);color:#9aaabb;padding:3rem 0;}
 }
 @media(min-width:769px){.floating-cta{display:none!important;}}
 
+/* 2026-08-25 修正（確認担当 lp:108「A案：TOP表示崩れ」）:
+   h1を絶対配置(top:0)＋.wrap を align-items:flex-end にしていたため、
+   1025px以上では h1 の高さ分の余白が確保されず（padding-top は max-width:1024px にしかない）、
+   さらに .hero-copy が flex:0 0 auto で潰れ、見出しと本文が写真の下端に散る状態だった。
+   ⚠️下揃えのレイアウトでは .hero-copy への padding-top は効かない
+   （happiness-charge・bellwood-lt で実測済み）。絶対配置をやめて通常の流れに戻す。 */
+@media(min-width:769px){
+  .hero .wrap{align-items:center;gap:2.2rem;}
+  .hero-copy{flex:1 1 46%;min-width:0;}
+  .hero-media{flex:1 1 54%;}
+  .h1-wrap{position:static;}
+  .hero h1{font-size:clamp(1.55rem,2.7vw,2.25rem);}
+}
+
 /* Responsive */
 @media(max-width:1024px){
   .hero .wrap{align-items:flex-end;}
@@ -293,7 +307,7 @@ footer{background:var(--ink);color:#9aaabb;padding:3rem 0;}
     <div class="hero-media">
       <!-- 既存サイトの施工実績写真があれば差し替え推奨（画像はAI生成のイメージです） -->
       <img
-        src="https://kazuki4no.github.io/lp-assets/construction/construction-fv-light-01.jpg"
+        src="https://images.unsplash.com/photo-1693019108329-1889fb170f2e?w=1672&h=941&fit=crop&q=80"
         alt="Yatsurugi Works 施工実績"
         loading="eager"
       >
@@ -421,14 +435,14 @@ footer{background:var(--ink);color:#9aaabb;padding:3rem 0;}
     <div class="services-grid">
       <div class="service-card">
         <!-- 施工現場写真があれば差し替え推奨（画像はAI生成のイメージです） -->
-        <img src="https://kazuki4no.github.io/lp-assets/construction/construction-sub-02.jpg" alt="道路舗装工事" class="service-img">
+        <img src="https://images.unsplash.com/photo-1503708928676-1cb796a0891e?w=1536&h=1024&fit=crop&q=80" alt="道路舗装工事" class="service-img">
         <div class="service-body">
           <h3>道路舗装工事</h3>
           <p>アスファルト舗装・コンクリート舗装など、各種道路舗装に対応。劣化した路面の補修・打ち替えから、新規の舗装工事まで幅広く請け負います。</p>
         </div>
       </div>
       <div class="service-card">
-        <img src="https://kazuki4no.github.io/lp-assets/construction/construction-sub-04.jpg" alt="外構工事" class="service-img">
+        <img src="https://images.unsplash.com/photo-1595734939818-f4e0d44957df?w=1536&h=1024&fit=crop&q=80" alt="外構工事" class="service-img">
         <div class="service-body">
           <h3>外構工事</h3>
           <p>駐車場・フェンス・ブロック塀・カーポートなど、建物まわりの外構工事全般に対応。お客様のご要望に合わせた外構づくりをご提案します。</p>
@@ -456,7 +470,7 @@ footer{background:var(--ink);color:#9aaabb;padding:3rem 0;}
 <section class="photo-section section">
   <div class="container">
     <div class="photo-grid">
-      <img src="https://kazuki4no.github.io/lp-assets/construction/construction-staff-01.jpg" alt="Yatsurugi Works チーム（※イメージ画像）">
+      <img src="https://kazuki4no.github.io/lp-assets/demolition/demolition-staff-01.jpg" alt="Yatsurugi Works チーム（※イメージ画像）">
       <div class="photo-text">
         <h2>地域と<br>ともに歩む<br><span class="accent">施工会社</span></h2>
         <p>千葉市中央区を拠点に、地域の皆さまの生活を支えるインフラ整備に取り組んでいます。道路・外構・土木のプロとして、一つひとつの現場に誠実に向き合うことが、私たちの使命です。</p>
