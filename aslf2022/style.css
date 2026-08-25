@@ -409,3 +409,17 @@ ul{list-style:none;}
   .site-nav.open{display:flex;}
   .site-nav a{padding:.5rem 0;border-bottom:1px solid #eee;font-size:.9rem;width:100%;}
 }
+
+/* 2026-08-25 修正（確認担当 lp:123「文字色が背景と近い」）:
+   FVの写真の上に置く .btn-outline は、色を写真に依存させると明暗で沈む。
+   B案は白抜き（.t-b .btn-outline は color:#fff）→明るい室内写真で消える、
+   採用案はアクセント緑（.t-r .btn-outline）→暗い写真で沈む、という逆方向の失敗だった。
+   写真に依存しないよう、FV内だけ白地＋濃色文字の面ボタンにする。 */
+.t-b .hero-b .btn-outline,
+.t-r .hero-r .btn-outline{
+  background:rgba(255,255,255,.94);
+  color:var(--ink);
+  border-color:rgba(255,255,255,.94);
+}
+.t-b .hero-b .btn-outline:hover,
+.t-r .hero-r .btn-outline:hover{background:#fff;border-color:#fff;}
