@@ -107,6 +107,21 @@
 }
 .cta-mid .btn-outline{color:var(--white);}
 </style>
+<style>
+/* 2026-08-26 修正（確認担当指摘: A案FVの文字かぶり／文字ズレ）
+   原因: .h1-wrap を position:absolute で画像に重ねているが、その高さ分が
+   .hero-copy に確保されておらず（予約paddingの適用幅が狭い／詳細度で負ける／そもそも無い）、
+   リード文・CTAと重なっていた。絶対配置をやめて通常フローに戻し、
+   横方向にだけ画像へはみ出させることで、どの幅でも重なりが起きない構造にする。 */
+@media(min-width:769px){
+  body .h1-wrap{
+    position:relative !important; top:auto !important; left:auto !important;
+    z-index:3; width:calc(100% + 44%); max-width:calc(100vw - 3rem);
+  }
+  body .hero-copy{padding-top:2.4rem !important;}
+  body .t-a .hero-a .hero-copy,body.t-a .hero-copy,body .hero-a .hero-copy{padding-top:2.4rem !important;}
+}
+</style>
 </head>
 <body class="t-a">
 
@@ -139,7 +154,7 @@
       <p class="lead">造成工事・道路工事・排水工事・擁壁工事をワンストップで。<br>現地調査からお見積りまで、まずはご相談ください。</p>
     </div>
     <div class="hero-media">
-      <img src="https://kazuki4no.github.io/lp-assets/construction/construction-fv-light-01.jpg"
+      <img src="https://kazuki4no.github.io/lp-assets/demolition/demolition-fv-light-01.jpg"
            alt="施工イメージ（画像はAI生成のイメージです）" loading="eager">
     </div>
   </div>
@@ -237,7 +252,7 @@
         </div>
       </div>
       <div class="service-item">
-        <img src="https://kazuki4no.github.io/lp-assets/construction/construction-sub-01.jpg"
+        <img src="https://kazuki4no.github.io/lp-assets/demolition/demolition-sub-01.jpg"
              alt="道路工事イメージ（AI生成のイメージです）">
         <div class="service-body">
           <h3>道路工事</h3>
@@ -245,7 +260,7 @@
         </div>
       </div>
       <div class="service-item">
-        <img src="https://kazuki4no.github.io/lp-assets/construction/construction-sub-02.jpg"
+        <img src="https://kazuki4no.github.io/lp-assets/demolition/demolition-sub-04.jpg"
              alt="排水工事イメージ（AI生成のイメージです）">
         <div class="service-body">
           <h3>排水工事</h3>

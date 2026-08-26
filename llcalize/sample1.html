@@ -40,6 +40,21 @@
     stroke: var(--accent); stroke-width: 2.2; fill: none; stroke-linecap: round; stroke-linejoin: round; }
 }
 </style>
+<style>
+/* 2026-08-26 修正（確認担当指摘: A案FVの文字かぶり／文字ズレ）
+   原因: .h1-wrap を position:absolute で画像に重ねているが、その高さ分が
+   .hero-copy に確保されておらず（予約paddingの適用幅が狭い／詳細度で負ける／そもそも無い）、
+   リード文・CTAと重なっていた。絶対配置をやめて通常フローに戻し、
+   横方向にだけ画像へはみ出させることで、どの幅でも重なりが起きない構造にする。 */
+@media(min-width:769px){
+  body .h1-wrap{
+    position:relative !important; top:auto !important; left:auto !important;
+    z-index:3; width:calc(100% + 44%); max-width:calc(100vw - 3rem);
+  }
+  body .hero-copy{padding-top:2.4rem !important;}
+  body .t-a .hero-a .hero-copy,body.t-a .hero-copy,body .hero-a .hero-copy{padding-top:2.4rem !important;}
+}
+</style>
 </head>
 <body class="t-a">
 
