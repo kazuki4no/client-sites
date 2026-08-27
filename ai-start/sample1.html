@@ -88,9 +88,12 @@ body.t-a{--accent:#f97316;}
   .hero-media{width:50% !important;flex:1 1 50%;}
   /* h1が4行になって最終行が「で。」だけ孤立するので、少し詰めて3行に収める */
   .hero-copy .h1-wrap h1{font-size:clamp(1.6rem,3.1vw,2.35rem) !important;}
-  /* CTAまでの空きが大きすぎるため詰める */
-  .hero,.hero-a{padding-bottom:1.5rem !important;}
-  .hero .wrap,.hero-a .wrap{align-items:flex-start;}
+  /* 2026-08-27 追補（確認担当指摘: FV画像の下に大きな余白）
+     .hero-a には min-height:72vh・.wrap には min-height:calc(72vh - 68px) が入っている。
+     元は .hero-copy が絶対配置で、画像を flex-end に落として72vhを埋める作りだった。
+     通常フローに戻した結果、余った高さがそのまま下の空白になっていたので min-height を解除する。 */
+  .hero,.hero-a{padding-bottom:2.6rem !important;min-height:0 !important;}
+  .hero .wrap,.hero-a .wrap{align-items:center;min-height:0 !important;}
 }
 </style>
 </head>
