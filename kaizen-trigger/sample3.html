@@ -9,6 +9,16 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<style>
+/* 2026-08-27 修正（確認担当指摘: C案「Price」下だけ囲い線の太さが違う→仕様？）
+   3枚目の .panel-card だけ枠が不透明 rgb(201,146,46)、他2枚は 22% 透過で、
+   同じ1pxでも太さが違って見えていた。加えてカード左端が小数座標（290.41 / 649.59）に
+   落ちるためアンチエイリアスも不均一だった。枠を内側描画にそろえて位置差の影響を消す。 */
+.panel-card{border:0 !important;box-shadow:inset 0 0 0 1px rgba(201,146,46,.34);}
+.panel-card.featured,.panel-card.is-recommended{
+  box-shadow:inset 0 0 0 1px rgba(201,146,46,.34), 0 6px 22px rgba(201,146,46,.20);
+}
+</style>
 </head>
 <body class="t-c">
 

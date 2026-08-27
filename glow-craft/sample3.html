@@ -7,6 +7,21 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<style>
+/* 2026-08-27 修正（確認担当指摘: C案「WHY CHOOSE US」レイアウト崩れ）
+   このセクションは .flow に インラインで display:flex; flex-wrap:wrap を書いて
+   3カラムにするつもりだったが、style.css の .t-c .flow{flex-direction:column;max-width:720px}
+   のほうが詳細度で勝ち、1列の縦積み＋各カードに余白が空く状態になっていた。
+   このセクション（#reason 相当）だけ横並びに戻す。 */
+.t-c section:has(> .wrap > .section-head span.en) .flow.is-cards,
+.t-c .flow.is-cards{
+  flex-direction:row !important;
+  flex-wrap:wrap !important;
+  max-width:1080px !important;
+  justify-content:center;
+}
+.t-c .flow.is-cards .step{flex:1 1 280px;max-width:340px;}
+</style>
 </head>
 <body class="t-c">
 
@@ -87,7 +102,7 @@
       <span class="en">WHY CHOOSE US</span>
       <h2>グロークラフトが選ばれる理由</h2>
     </div>
-    <div class="flow" style="max-width:100%;display:flex;flex-wrap:wrap;gap:1.2rem;justify-content:center;">
+    <div class="flow is-cards" style="gap:1.2rem;">
       <div class="step" style="flex:1 1 280px;max-width:340px;">
         <div class="n">1</div>
         <div>

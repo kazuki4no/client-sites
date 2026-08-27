@@ -69,6 +69,30 @@ body.t-a{--accent:#f97316;}
 .lead-section{text-align:center;max-width:700px;margin:0 auto;}
 .lead-section p{color:var(--text-mid);margin-top:1rem;font-size:.98rem;}
 </style>
+<style>
+/* 2026-08-27 追加: br-sp / br-sp2 にCSSが1行も無く、本来モバイル専用の改行が
+   PCでも効いて見出しが不必要に多行になっていた（lp:182 AI START のFV崩れの指摘で発覚）。
+   他ページと同じ配管（PCでは非表示・768px以下で有効）を補う。 */
+.br-sp,.br-sp2{display:none;}
+@media(max-width:1024px){.br-sp{display:inline;}}
+@media(max-width:768px){.br-sp,.br-sp2{display:inline;}}
+</style>
+<style>
+/* 2026-08-27 修正（確認担当指摘: A案 FV文字が隠れている）
+   .hero-copy が position:absolute・max-width:52% で、h1が長くなると
+   右隣の .hero-media（z-index:1）の下に潜り込み、文字が画像に隠れていた。
+   絶対配置をやめて通常フローに戻し、重なりが構造的に起きないようにする。 */
+@media(min-width:769px){
+  .hero-copy{position:relative !important;top:auto !important;left:auto !important;
+    z-index:3;max-width:none !important;flex:1 1 50%;padding-top:1.6rem !important;}
+  .hero-media{width:50% !important;flex:1 1 50%;}
+  /* h1が4行になって最終行が「で。」だけ孤立するので、少し詰めて3行に収める */
+  .hero-copy .h1-wrap h1{font-size:clamp(1.6rem,3.1vw,2.35rem) !important;}
+  /* CTAまでの空きが大きすぎるため詰める */
+  .hero,.hero-a{padding-bottom:1.5rem !important;}
+  .hero .wrap,.hero-a .wrap{align-items:flex-start;}
+}
+</style>
 </head>
 <body class="t-a">
 <link rel="preconnect" href="https://fonts.googleapis.com">
