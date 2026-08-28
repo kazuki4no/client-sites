@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>コラム | アイ・プランニング一級建築士事務所</title>
+<meta name="description" content="アイ・プランニング一級建築士事務所のコラム「建築徒然草」。建築設計の考え方や日々の出来事を綴っています。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="t-a">
+
+<!-- ヘッダー -->
+<header class="site-header">
+  <div class="wrap nav-inner">
+    <div class="brand">
+      <span class="logo">i-planning</span>
+      <span class="sub">アイ・プランニング一級建築士事務所</span>
+    </div>
+    <nav>
+      <ul class="nav-menu">
+        <li><a href="index.html">トップページ</a></li>
+        <li><a href="consulting.html">コンサルティング</a></li>
+        <li><a href="works.html">実績</a></li>
+        <li><a href="column.html">コラム</a></li>
+        <li><a href="index.html#contact" class="nav-cta">お問い合わせ</a></li>
+      </ul>
+      <button class="nav-toggle" aria-label="メニュー">
+        <span></span><span></span><span></span>
+      </button>
+    </nav>
+  </div>
+</header>
+
+<!-- ページヒーロー -->
+<section class="page-hero">
+  <div class="wrap">
+    <p class="en">Column</p>
+    <h1>コラム ─ 建築徒然草</h1>
+    <p>建築設計の考え方や、日々の出来事を綴っています。新しい記事から順に表示されます。</p>
+  </div>
+</section>
+
+<div class="wrap breadcrumb"><a href="index.html">HOME</a> &gt; コラム</div>
+
+<!-- 記事一覧（column-data.js から自動描画） -->
+<section class="section">
+  <div class="wrap">
+    <!-- カテゴリ絞り込み -->
+    <div id="col-filter" style="text-align:center;margin-bottom:2.2rem;"></div>
+    <div class="col-list" id="col-list">
+      <p class="col-empty">記事を読み込んでいます…</p>
+    </div>
+    <noscript><p class="col-empty">コラムの表示にはJavaScriptを有効にしてください。</p></noscript>
+  </div>
+</section>
+
+<!-- フッター -->
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <p class="logo">i-planning</p>
+        <p>アイ・プランニング一級建築士事務所<br>建築設計・コンサルティング</p>
+      </div>
+      <div class="footer-info">
+        <strong>所在地・連絡先</strong><br>
+        〒267-0061 千葉県千葉市緑区土気町1574番地22号<br>
+        E-mail：<a href="mailto:s_isobe@ip-archi.jp" style="color:#8aa0be;">s_isobe@ip-archi.jp</a>
+      </div>
+      <div class="footer-info">
+        <strong>メニュー</strong><br>
+        <a href="index.html" style="color:#8aa0be;">トップページ</a> / <a href="consulting.html" style="color:#8aa0be;">コンサルティング</a><br>
+        <a href="works.html" style="color:#8aa0be;">実績</a> / <a href="column.html" style="color:#8aa0be;">コラム</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 i-planning. All Rights Reserved.
+    </div>
+  </div>
+</footer>
+
+<script src="column-data.js"></script>
+<script>
+// column-data.js の COLUMN_POSTS を日記形式で描画（配列の先頭＝最新）
+(function () {
+  var list = document.getElementById('col-list');
+  var filterBox = document.getElementById('col-filter');
+  var posts = window.COLUMN_POSTS || [];
+
+  if (!posts.length) {
+    list.innerHTML = '<p class="col-empty">まだ記事がありません。</p>';
+    return;
+  }
+
+  // カテゴリ一覧を集めて絞り込みボタンを作成
+  var cats = [];
+  posts.forEach(function (p) {
+    if (p.category && cats.indexOf(p.category) === -1) cats.push(p.category);
+  });
+  var current = 'すべて';
+
+  function renderFilter() {
+    var html = '';
+    ['すべて'].concat(cats).forEach(function (c) {
+      var active = (c === current);
+      html += '<button type="button" data-cat="' + c + '" style="' +
+        'margin:.25rem;padding:.45em 1.2em;border-radius:999px;cursor:pointer;font-size:.85rem;font-weight:700;' +
+        'border:1px solid ' + (active ? 'var(--gold)' : 'var(--line)') + ';' +
+        'background:' + (active ? 'var(--gold)' : '#fff') + ';' +
+        'color:' + (active ? '#fff' : 'var(--muted)') + ';">' + c + '</button>';
+    });
+    filterBox.innerHTML = html;
+  }
+
+  function esc(s) {
+    return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+  }
+
+  function renderList() {
+    var shown = posts.filter(function (p) {
+      return current === 'すべて' || p.category === current;
+    });
+    if (!shown.length) {
+      list.innerHTML = '<p class="col-empty">このカテゴリの記事はまだありません。</p>';
+      return;
+    }
+    var html = '';
+    shown.forEach(function (p) {
+      var badgeClass = (p.category === 'プライベート') ? 'badge private' : 'badge';
+      html += '<article class="col-post">';
+      html += '<div class="meta">';
+      if (p.date) html += '<span class="date">' + esc(p.date) + '</span>';
+      if (p.category) html += '<span class="' + badgeClass + '">' + esc(p.category) + '</span>';
+      html += '</div>';
+      html += '<h3>' + esc(p.title) + '</h3>';
+      if (p.image) html += '<img src="' + esc(p.image) + '" alt="' + esc(p.title) + '" loading="lazy">';
+      html += '<div class="body">';
+      (p.body || []).forEach(function (para) { html += '<p>' + esc(para) + '</p>'; });
+      html += '</div></article>';
+    });
+    list.innerHTML = html;
+  }
+
+  filterBox.addEventListener('click', function (e) {
+    var btn = e.target.closest('button[data-cat]');
+    if (!btn) return;
+    current = btn.getAttribute('data-cat');
+    renderFilter();
+    renderList();
+  });
+
+  renderFilter();
+  renderList();
+})();
+</script>
+<script src="nav.js"></script>
+</body>
+</html>
