@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>株式会社OMGデザイン｜千葉県船橋市のキャラクター制作・広告デザイン専門会社</title>
+<style>
+  :root{
+    --main:#E8546F;
+    --main-dark:#4A2545;
+    --accent:#FFC94A;
+    --accent-light:#FFF6DF;
+    --text:#2B2B2B;
+    --sub:#6B6B6B;
+    --bg:#FFFBF7;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.8;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .section{padding:88px 0;}
+  .section-title{font-size:14px;letter-spacing:0.2em;color:var(--main);font-weight:700;text-align:center;margin-bottom:12px;}
+  .section-heading{font-size:30px;font-weight:700;text-align:center;margin-bottom:16px;letter-spacing:0.03em;color:var(--main-dark);}
+  .section-lead{text-align:center;color:var(--sub);max-width:640px;margin:0 auto 56px;font-size:15px;}
+
+  header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.96);border-bottom:1px solid #eee;backdrop-filter:blur(6px);}
+  .header-inner{max-width:1080px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-size:19px;font-weight:800;color:var(--main-dark);letter-spacing:0.02em;}
+  .logo span{color:var(--main);}
+  nav ul{display:flex;gap:26px;list-style:none;}
+  nav a{font-size:14px;font-weight:600;}
+  nav a:hover{color:var(--main);}
+  .header-cta{display:flex;gap:10px;}
+  .btn{display:inline-block;padding:12px 28px;border-radius:24px;font-size:14px;font-weight:700;text-align:center;}
+  .btn-primary{background:var(--main);color:#fff;}
+  .btn-primary:hover{background:#cf3f5b;}
+  .btn-outline{border:1px solid var(--main);color:var(--main);}
+  .btn-outline:hover{background:var(--accent-light);}
+  .btn-small{padding:9px 18px;font-size:13px;}
+  .menu-toggle{display:none;font-size:26px;background:none;border:none;cursor:pointer;color:var(--main-dark);}
+
+  /* Hero */
+  /* 元画像URL：現サイトTOPスライダー画像（未取得・自社写真への差し替え前提） / images/hero-main.jpg */
+  .hero{
+    position:relative;min-height:600px;display:flex;align-items:center;
+    background:linear-gradient(120deg, rgba(74,37,69,0.90), rgba(232,84,111,0.70)), url('https://loremflickr.com/1600/900/illustration,workspace,designer') center/cover no-repeat;
+    color:#fff;
+  }
+  .hero-inner{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .hero-tag{
+    display:inline-block;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.5);
+    padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600;letter-spacing:0.05em;margin-bottom:24px;
+  }
+  .hero h1{font-size:34px;font-weight:800;line-height:1.55;margin-bottom:22px;max-width:680px;}
+  .hero p{font-size:15.5px;max-width:580px;margin-bottom:36px;opacity:0.95;}
+  .hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
+  .hero .btn-outline{border-color:#fff;color:#fff;}
+  .hero .btn-outline:hover{background:rgba(255,255,255,0.15);}
+
+  /* Strengths */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .card{background:var(--white);border:1px solid #f0e6e6;border-radius:10px;padding:32px 24px;transition:transform .2s, box-shadow .2s;}
+  .card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(74,37,69,0.10);}
+  .card-num{font-size:13px;color:var(--main);font-weight:800;letter-spacing:0.1em;margin-bottom:14px;}
+  .card h3{font-size:17px;font-weight:700;margin-bottom:12px;color:var(--main-dark);}
+  .card p{font-size:13.5px;color:var(--sub);}
+
+  /* Services */
+  .service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .service-card{background:var(--white);border:1px solid #f0e6e6;border-radius:10px;overflow:hidden;}
+  .service-card img{width:100%;height:170px;object-fit:cover;}
+  .service-card-body{padding:22px 22px 26px;}
+  .service-no{font-size:12px;color:var(--main);font-weight:800;letter-spacing:0.1em;}
+  .service-card-body h3{font-size:17px;font-weight:700;margin:8px 0 10px;color:var(--main-dark);}
+  .service-card-body p{font-size:13.5px;color:var(--sub);}
+  .price-row{display:flex;justify-content:space-between;font-size:12.5px;color:var(--sub);border-top:1px solid #f0e6e6;padding-top:8px;margin-top:12px;}
+  .price-row + .price-row{margin-top:6px;padding-top:6px;border-top:none;}
+  .price-row b{color:var(--main-dark);}
+
+  /* EC */
+  .ec-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .ec-card{border-radius:12px;padding:36px 32px;color:#fff;position:relative;overflow:hidden;}
+  .ec-card.shop{background:linear-gradient(135deg,var(--main),#a63552);}
+  .ec-card.line{background:linear-gradient(135deg,#3AC15A,#1E8E3C);}
+  .ec-card p.tag{font-size:12px;letter-spacing:0.15em;opacity:0.85;margin-bottom:10px;}
+  .ec-card h3{font-size:20px;font-weight:800;margin-bottom:14px;}
+  .ec-card p.desc{font-size:13.5px;opacity:0.95;margin-bottom:22px;}
+
+  /* Flow */
+  .flow-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .flow-item{background:var(--white);border:1px solid #f0e6e6;border-radius:10px;padding:26px 22px;position:relative;}
+  .flow-num{
+    width:38px;height:38px;border-radius:50%;background:var(--main);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;margin-bottom:14px;
+  }
+  .flow-item h3{font-size:15px;font-weight:700;margin-bottom:8px;color:var(--main-dark);}
+  .flow-item p{font-size:13px;color:var(--sub);}
+
+  /* FAQ */
+  .faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:14px;}
+  .faq-item{background:var(--white);border:1px solid #f0e6e6;border-radius:10px;padding:22px 26px;}
+  .faq-q{font-size:15px;font-weight:700;color:var(--main-dark);display:flex;gap:10px;margin-bottom:8px;}
+  .faq-q span{color:var(--main);}
+  .faq-a{font-size:13.5px;color:var(--sub);display:flex;gap:10px;}
+  .faq-a span{color:var(--main-dark);font-weight:700;}
+
+  /* Company */
+  .company-table{width:100%;border-collapse:collapse;max-width:760px;margin:0 auto;background:#fff;border-radius:10px;overflow:hidden;border:1px solid #f0e6e6;}
+  .company-table th,.company-table td{padding:18px 24px;text-align:left;font-size:14.5px;border-bottom:1px solid #f5eaea;}
+  .company-table th{width:160px;background:var(--accent-light);color:var(--main-dark);font-weight:700;}
+  .company-table tr:last-child th,.company-table tr:last-child td{border-bottom:none;}
+
+  /* CTA */
+  .cta{background:var(--main-dark);color:#fff;text-align:center;padding:80px 24px;}
+  .cta h2{font-size:26px;font-weight:800;margin-bottom:16px;}
+  .cta p{color:#e6d3df;margin-bottom:32px;}
+  .cta .btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .cta .btn-primary{background:var(--main);color:#fff;}
+  .cta .btn-outline{border-color:#fff;color:#fff;}
+
+  footer{background:#301A2C;color:#d9c9d4;padding:48px 24px 24px;font-size:13px;}
+  .footer-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .footer-logo{font-size:17px;font-weight:800;color:#fff;margin-bottom:10px;}
+  .footer-links{display:flex;gap:24px;list-style:none;flex-wrap:wrap;}
+  .copyright{text-align:center;margin-top:32px;color:#8f7c8a;}
+
+  @media (max-width:900px){
+    .cards{grid-template-columns:1fr;}
+    .service-grid{grid-template-columns:1fr 1fr;}
+    .ec-grid{grid-template-columns:1fr;}
+    .flow-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:700px){
+    nav,.header-cta{display:none;}
+    .menu-toggle{display:block;}
+    .hero h1{font-size:25px;}
+    .hero{min-height:540px;}
+    .section{padding:60px 0;}
+    .service-grid{grid-template-columns:1fr;}
+    .flow-grid{grid-template-columns:1fr;}
+    .company-table th{width:110px;font-size:13px;padding:14px;}
+    .company-table td{font-size:13px;padding:14px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">株式会社<span>OMGデザイン</span></div>
+    <nav><ul>
+      <li><a href="#about">OMGとは</a></li>
+      <li><a href="#service">Service</a></li>
+      <li><a href="#ec">EC</a></li>
+      <li><a href="#flow">ご依頼の流れ</a></li>
+      <li><a href="#faq">よくある質問</a></li>
+      <li><a href="#company">会社概要</a></li>
+    </ul></nav>
+    <div class="header-cta">
+      <a href="recruit.html" class="btn btn-outline btn-small">採用情報</a>
+      <a href="#contact" class="btn btn-primary btn-small">お問い合わせ</a>
+    </div>
+    <button class="menu-toggle">≡</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">千葉県船橋市 発 / 広告デザイン・キャラクター制作</span>
+    <h1>「伝えたいこと」を、<br>かたちにするデザイン会社。</h1>
+    <p>ロゴ・名刺・パンフレット・ポスターといった販促物から、オリジナルキャラクターやLINEスタンプの制作まで。ひとつひとつのご依頼に向き合い、想いをかたちにするお手伝いをしています。</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-primary">お問い合わせはこちら</a>
+      <a href="#service" class="btn btn-outline">制作実績を見る</a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container">
+    <p class="section-title">ABOUT</p>
+    <h2 class="section-heading">OMGデザインについて</h2>
+    <p class="section-lead">広告デザイン・エディトリアルデザイン・イベント企画・キャラクター制作など、幅広いジャンルのデザインをワンストップで承っています。</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-num">01</div>
+        <h3>キャラクター制作が得意</h3>
+        <p>企業や店舗のマスコットから、SNS・LINEスタンプ用のオリジナルキャラクターまで。愛着の持てるキャラクターづくりを得意としています。</p>
+      </div>
+      <div class="card">
+        <div class="card-num">02</div>
+        <h3>名刺からパンフレットまで一括対応</h3>
+        <p>ロゴ・名刺・チラシ・パンフレットなど、事業に必要な販促物をまとめて相談できます。デザインの一貫性を保ったご提案が可能です。</p>
+      </div>
+      <div class="card">
+        <div class="card-num">03</div>
+        <h3>制作から販売まで対応</h3>
+        <p>デザイン制作だけでなく、STORESでのオンライン販売やLINEスタンプの申請・販売まで、形にした後の展開までサポートします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="service" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">SERVICE</p>
+    <h2 class="section-heading">Service</h2>
+    <p class="section-lead">キャラクター制作からロゴ・名刺・ポスターまで、内容に応じた製作期間・費用の目安です。まずはお気軽にご相談ください。</p>
+    <div class="service-grid">
+      <div class="service-card">
+        <img src="https://loremflickr.com/560/380/character,illustration,mascot" alt="キャラクター制作">
+        <!-- 元画像URL：現サイトservice1.jpg（未取得・自社実績への差し替え前提） / images/service-character.jpg -->
+        <div class="service-card-body">
+          <div class="service-no">01</div>
+          <h3>キャラクター制作</h3>
+          <p>企業・店舗のマスコットやSNS用オリジナルキャラクターをデザインします。</p>
+          <div class="price-row"><span>製作期間</span><b>打合せ終了から1ヶ月程度</b></div>
+          <div class="price-row"><span>製作費用</span><b>～30万円</b></div>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://loremflickr.com/560/380/brochure,pamphlet,print" alt="パンフレット制作">
+        <!-- 元画像URL：現サイトservice2.jpg（未取得・自社実績への差し替え前提） / images/service-pamphlet.jpg -->
+        <div class="service-card-body">
+          <div class="service-no">02</div>
+          <h3>パンフレット制作</h3>
+          <p>会社案内や商品カタログなど、伝わる構成と誌面デザインをご提案します。</p>
+          <div class="price-row"><span>製作期間</span><b>打合せ終了から1ヶ月程度</b></div>
+          <div class="price-row"><span>製作費用</span><b>～50万円</b></div>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://loremflickr.com/560/380/promotional,merchandise,design" alt="販促物制作">
+        <!-- 元画像URL：現サイトservice3.jpg（未取得・自社実績への差し替え前提） / images/service-promo.jpg -->
+        <div class="service-card-body">
+          <div class="service-no">03</div>
+          <h3>販促物</h3>
+          <p>ノベルティやPOPなど、目的に合わせた販促ツールを制作します。</p>
+          <div class="price-row"><span>製作期間</span><b>1ヶ月〜2ヶ月程度</b></div>
+          <div class="price-row"><span>製作費用</span><b>商品により異なります</b></div>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://loremflickr.com/560/380/business,card,design" alt="名刺デザイン">
+        <!-- 元画像URL：現サイトservice4.jpg（未取得・自社実績への差し替え前提） / images/service-card.jpg -->
+        <div class="service-card-body">
+          <div class="service-no">04</div>
+          <h3>名刺</h3>
+          <p>第一印象を左右する名刺を、業種やお人柄に合わせてデザインします。</p>
+          <div class="price-row"><span>製作期間</span><b>打合せ終了から2週間程度</b></div>
+          <div class="price-row"><span>製作費用</span><b>3万円</b></div>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://loremflickr.com/560/380/poster,flyer,design" alt="ポスター・チラシ制作">
+        <!-- 元画像URL：現サイトservice5.jpg（未取得・自社実績への差し替え前提） / images/service-poster.jpg -->
+        <div class="service-card-body">
+          <div class="service-no">05</div>
+          <h3>ポスター・チラシ制作</h3>
+          <p>イベント告知や集客用のポスター・チラシを目を引くデザインで制作します。</p>
+          <div class="price-row"><span>製作期間</span><b>1ヶ月程度で納品</b></div>
+          <div class="price-row"><span>製作費用</span><b>～50万円</b></div>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://loremflickr.com/560/380/logo,branding,design" alt="ロゴ制作">
+        <!-- 元画像URL：現サイトservice6.jpg（未取得・自社実績への差し替え前提） / images/service-logo.jpg -->
+        <div class="service-card-body">
+          <div class="service-no">06</div>
+          <h3>ロゴ制作</h3>
+          <p>会社・店舗・ブランドの顔となるロゴを、想いをヒアリングした上でデザインします。</p>
+          <div class="price-row"><span>製作期間</span><b>打合せ終了から1ヶ月程度</b></div>
+          <div class="price-row"><span>製作費用</span><b>～20万円</b></div>
+        </div>
+      </div>
+      <div class="service-card">
+        <img src="https://loremflickr.com/560/380/sticker,character,cute" alt="LINEスタンプ制作">
+        <!-- 元画像URL：現サイトservice7.jpg（未取得・自社実績への差し替え前提） / images/service-linestamp.jpg -->
+        <div class="service-card-body">
+          <div class="service-no">07</div>
+          <h3>LINEスタンプ制作</h3>
+          <p>オリジナルキャラクターのLINEスタンプを、申請までサポートして制作します。</p>
+          <div class="price-row"><span>製作期間</span><b>打合せ終了から1ヶ月程度</b></div>
+          <div class="price-row"><span>製作費用</span><b>～10万円</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="ec">
+  <div class="container">
+    <p class="section-title">EC</p>
+    <h2 class="section-heading">オンラインショップ</h2>
+    <p class="section-lead">制作したグッズやキャラクターは、オンラインでもお楽しみいただけます。</p>
+    <div class="ec-grid">
+      <div class="ec-card shop">
+        <p class="tag">ONLINE SHOP</p>
+        <h3>OMGデザイン STORES店</h3>
+        <p class="desc">オリジナルグッズなどをオンラインショップ「STORES」にて販売しています。</p>
+        <a href="https://omginc.stores.jp" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="border-color:#fff;color:#fff;">ショップを見る</a>
+      </div>
+      <div class="ec-card line">
+        <p class="tag">LINE STAMP</p>
+        <h3>LINEスタンプ</h3>
+        <p class="desc">OMGデザインが手がけたオリジナルキャラクターのLINEスタンプを販売中です。</p>
+        <a href="https://store.line.me/stickershop/product/31079357/ja" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="border-color:#fff;color:#fff;">スタンプを見る</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="flow" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">FLOW</p>
+    <h2 class="section-heading">ご依頼の流れ</h2>
+    <p class="section-lead">お問い合わせから納品まで、丁寧にヒアリングしながら進めます。</p>
+    <div class="flow-grid">
+      <div class="flow-item"><div class="flow-num">1</div><h3>お問い合わせ</h3><p>お問い合わせフォームより、ご相談内容をお送りください。</p></div>
+      <div class="flow-item"><div class="flow-num">2</div><h3>ヒアリング・お見積り</h3><p>ご要望や目的を伺い、内容に応じたお見積りをご提示します。</p></div>
+      <div class="flow-item"><div class="flow-num">3</div><h3>制作</h3><p>ヒアリング内容をもとにデザイン制作を進め、ご確認いただきます。</p></div>
+      <div class="flow-item"><div class="flow-num">4</div><h3>納品</h3><p>内容にご納得いただいた上で、データや印刷物を納品します。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="container">
+    <p class="section-title">FAQ</p>
+    <h2 class="section-heading">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q"><span>Q</span>納期はどれくらいですか？</div>
+        <div class="faq-a"><span>A</span>内容により異なりますが、名刺は打合せ終了から2週間程度、ロゴやパンフレットは1ヶ月程度が目安です。お急ぎの場合はご相談ください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Q</span>料金の目安を教えてください。</div>
+        <div class="faq-a"><span>A</span>名刺3万円〜、ロゴ制作～20万円、LINEスタンプ制作～10万円など、内容によって幅があります。詳しくはお問い合わせください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Q</span>制作したグッズの販売もお願いできますか？</div>
+        <div class="faq-a"><span>A</span>はい。オンラインショップ「STORES」での販売や、LINEスタンプの申請・販売までサポートしています。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="company" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">COMPANY</p>
+    <h2 class="section-heading">会社概要</h2>
+    <table class="company-table">
+      <tr><th>名称</th><td>株式会社OMGデザイン</td></tr>
+      <tr><th>代表</th><td>城築 絵理</td></tr>
+      <tr><th>事業内容</th><td>広告デザイン／エディトリアルデザイン／イベント企画／キャラクター制作 等</td></tr>
+      <tr><th>所在地</th><td>千葉県船橋市前貝塚町535番10号　ハイムルーエ101</td></tr>
+      <tr><th>お問い合わせ</th><td>お問い合わせフォームより承っております</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2>まずはお気軽にご相談ください</h2>
+  <p>ロゴ1点から、パンフレットのような大きな案件まで。お問い合わせフォームより承っております。</p>
+  <div class="btns">
+    <a href="https://omginc.co.jp/?page_id=56" class="btn btn-primary">お問い合わせフォームへ</a>
+    <a href="https://omginc.co.jp/" class="btn btn-outline">現在のサイトを見る</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">株式会社OMGデザイン</div>
+      <p>千葉県船橋市前貝塚町535番10号　ハイムルーエ101<br>広告デザイン・キャラクター制作</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#service">Service</a></li>
+      <li><a href="#ec">EC</a></li>
+      <li><a href="recruit.html">採用情報</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </div>
+  <p class="copyright">©株式会社OMGデザイン All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>実装ラインの自動化・省人化｜ＫｎＫ Ｅｄｕｃａｔｉｏｎ株式会社（KnKグループ）</title>
+<meta name="description" content="計数・挿入・搬送・検査。実装と組立の現場を、装置でつなぐ。X線チップカウンター、部品自動挿入機、SMT搬送装置、マガジンラック用昇降AMR、X線検査装置。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+/* =====================================================
+   ＫｎＫ Ｅｄｕｃａｔｉｏｎ株式会社（KnKグループ） — B案：ビジュアル主役型
+   FV＝装置が並ぶダークな全面背景
+   ベース＝チャコール×アンバー／ゴシック
+   ===================================================== */
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{max-width:100%;overflow-x:hidden;}
+img{max-width:100%;height:auto;display:block;}
+a{text-decoration:none;color:inherit;}
+ul{list-style:none;}
+
+body{--base:#12141a;--panel:#1c2028;--ink:#eef1f5;--sub:#a2aab8;--amber:#f0a441;--amber-soft:#f7c684;--line:rgba(240,164,65,.24);
+  font-family:'Noto Sans JP',sans-serif;font-size:16px;line-height:1.88;background:var(--base);color:var(--ink);}
+.wrap{max-width:1080px;margin:0 auto;padding:0 1.2rem;}
+.section{padding:5rem 0;}
+.section-head{text-align:center;margin-bottom:2.8rem;}
+.section-head .en{display:block;font-size:.74rem;letter-spacing:.36em;text-transform:uppercase;color:var(--amber);margin-bottom:.6rem;font-weight:700;}
+.section-head h2{font-size:clamp(1.5rem,4.5vw,2.2rem);line-height:1.5;font-weight:900;}
+.section-head p{margin-top:1rem;color:var(--sub);font-size:.97rem;}
+.accent{color:var(--amber);}
+
+.btn-primary,.btn-outline{display:inline-block;padding:1rem 2.3rem;border-radius:2px;font-weight:700;text-align:center;transition:opacity .2s,transform .2s;letter-spacing:.03em;}
+.btn-primary:hover,.btn-outline:hover{opacity:.9;transform:translateY(-1px);}
+.btn-primary{background:var(--amber);color:#191308;}
+.btn-outline{border:1px solid var(--amber);color:var(--amber-soft);}
+
+.floating-cta{position:fixed;left:50%;bottom:12px;transform:translateX(-50%);z-index:50;
+  padding:.9rem 2rem;border-radius:999px;background:var(--amber);color:#191308;font-weight:700;white-space:nowrap;
+  box-shadow:0 6px 20px rgba(0,0,0,.5);}
+@media(min-width:769px){.floating-cta{display:none;}}
+@media(max-width:768px){body{padding-bottom:80px;}}
+
+.pills{display:flex;flex-wrap:wrap;gap:.6rem;}
+.pill{display:inline-flex;align-items:center;padding:.35rem 1rem;border-radius:2px;font-size:.82rem;font-weight:500;
+  background:rgba(240,164,65,.12);border:1px solid var(--line);color:var(--amber-soft);}
+
+/* ---- FV ---- */
+.hero-b{position:relative;min-height:88vh;display:flex;align-items:center;}
+.hero-bg{position:absolute;inset:0;background-size:cover;background-position:center right;}
+.hero-overlay{position:absolute;inset:0;
+  background:linear-gradient(100deg,rgba(18,20,26,.9) 0%,rgba(18,20,26,.52) 46%,rgba(18,20,26,0) 74%);}
+.hero-content{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:4rem 1.2rem;width:100%;}
+.hero-eyebrow{font-size:.78rem;letter-spacing:.34em;color:var(--amber);margin-bottom:1.2rem;font-weight:700;}
+.hero-content h1{font-size:clamp(2rem,6vw,3.5rem);line-height:1.45;margin-bottom:1.2rem;font-weight:900;}
+.hero-sub{font-size:1rem;color:var(--sub);max-width:25em;margin-bottom:1.8rem;}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.9rem;margin-bottom:1.4rem;}
+@media(max-width:768px){
+  .hero-b{min-height:74vh;}
+  .hero-bg{background-position:66% center;}
+  .hero-overlay{background:linear-gradient(180deg,rgba(18,20,26,.92) 0%,rgba(18,20,26,.64) 54%,rgba(18,20,26,.3) 100%);}
+  .hero-cta{flex-direction:column;}
+  .hero-cta .btn-primary,.hero-cta .btn-outline{width:min(100%,24rem);}
+}
+
+/* ---- 工程バー ---- */
+.stat-bar{background:var(--panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+.stat-bar .wrap{display:flex;flex-wrap:wrap;padding-top:1.8rem;padding-bottom:1.8rem;gap:1rem;}
+.stat{flex:1 1 200px;text-align:center;}
+.stat .v{font-size:1.5rem;font-weight:900;line-height:1.3;color:var(--amber-soft);}
+.stat .k{font-size:.82rem;color:var(--sub);}
+
+/* ---- ステートメント ---- */
+.statement{text-align:center;max-width:740px;margin:0 auto;}
+.statement h2{font-size:clamp(1.4rem,4vw,2rem);line-height:1.7;margin-bottom:1.3rem;font-weight:900;}
+.statement p{color:var(--sub);}
+
+/* ---- 製品ブロック ---- */
+.blocks{display:flex;flex-direction:column;gap:0;}
+.block{display:flex;align-items:stretch;min-height:320px;}
+.block:nth-child(even){flex-direction:row-reverse;}
+.block .visual{flex:1 1 50%;overflow:hidden;}
+.block .visual img{width:100%;height:100%;object-fit:cover;}
+.block .txt{flex:1 1 50%;background:var(--panel);padding:3rem 2.6rem;display:flex;flex-direction:column;justify-content:center;}
+.block .txt .no{font-size:.76rem;letter-spacing:.3em;color:var(--amber);font-weight:700;margin-bottom:.6rem;}
+.block .txt h3{font-size:1.4rem;margin-bottom:.9rem;line-height:1.5;font-weight:900;}
+.block .txt li{position:relative;padding-left:1.3rem;color:var(--sub);font-size:.95rem;margin-bottom:.35rem;}
+.block .txt li::before{content:"";position:absolute;left:0;top:.72em;width:6px;height:6px;border-radius:50%;background:var(--amber);}
+@media(max-width:768px){
+  .block,.block:nth-child(even){flex-direction:column;}
+  .block .visual,.block .txt{flex:1 1 100%;width:100%;}
+  .block .visual img{aspect-ratio:16/10;}
+  .block .txt{padding:2rem 1.4rem;}
+}
+
+/* ---- 製品カード ---- */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+@media(max-width:900px){.cards{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:600px){.cards{grid-template-columns:1fr;}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:1.7rem 1.4rem;}
+.card h3{font-size:1.05rem;margin-bottom:.6rem;font-weight:700;color:var(--amber-soft);}
+.card p{font-size:.92rem;color:var(--sub);}
+
+/* ---- CTAバナー ---- */
+.cta-banner{position:relative;padding:5.5rem 0;text-align:center;}
+.cta-banner .bg{position:absolute;inset:0;background-size:cover;background-position:center;}
+.cta-banner .ov{position:absolute;inset:0;background:rgba(14,16,21,.76);}
+.cta-banner .inner{position:relative;z-index:1;}
+.cta-banner h2{font-size:clamp(1.5rem,4.5vw,2.2rem);margin-bottom:1rem;font-weight:900;}
+.cta-banner p{margin-bottom:1.8rem;color:var(--sub);}
+
+.site-footer{padding:2.4rem 0 2.8rem;text-align:center;font-size:.85rem;color:#8d95a3;border-top:1px solid var(--line);}
+.site-footer .note{font-size:.78rem;margin-top:.6rem;line-height:1.8;}
+</style>
+</head>
+<body>
+
+<!-- ============ FV：全面ビジュアル（it-fv-dark-02＝被写体右・左に暗い余白） ============ -->
+<section class="hero-b">
+  <!-- 社内ライブラリ: it-fv-dark-02 -->
+  <div class="hero-bg" style="background-image:url('https://kazuki4no.github.io/lp-assets/it/it-fv-dark-02.jpg');"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <p class="hero-eyebrow">KnK GROUP ／ FACTORY AUTOMATION</p>
+    <h1>数える、挿す、運ぶ、<br><span class="accent">視る</span>。</h1>
+    <p class="hero-sub">実装と組立の現場で人が担ってきた工程を、装置に引き受けさせる。あなたのモノ創りを全力でサポートします。</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn-primary">見積り・デモのご相談</a>
+      <a href="#product" class="btn-outline">製品を見る</a>
+    </div>
+    <div class="pills">
+      <span class="pill">挿入精度 0.01mm</span>
+      <span class="pill">カスタマイズ・短納期対応</span>
+      <span class="pill">IEC規格の放射線防護</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 工程バー ============ -->
+<section class="stat-bar">
+  <div class="wrap">
+    <div class="stat"><div class="v">計数</div><div class="k">X線チップカウンター</div></div>
+    <div class="stat"><div class="v">挿入</div><div class="k">部品自動挿入機</div></div>
+    <div class="stat"><div class="v">搬送</div><div class="k">SMT搬送装置・昇降AMR</div></div>
+    <div class="stat"><div class="v">検査</div><div class="k">X線装置</div></div>
+  </div>
+</section>
+
+<!-- ============ ステートメント ============ -->
+<section class="section">
+  <div class="wrap statement">
+    <h2>工程ごとに、別の会社へ<br>問い合わせなくていい。</h2>
+    <p>チップを数えるのはこの会社、基板を運ぶのは別の会社、検査はまた別の会社。そのたびにラインの前後を説明し直すことになります。KnKグループは計数・挿入・搬送・検査を一社で扱っているため、工程のつながりを踏まえたご提案ができます。2017年のコンベア製造販売を機に、X線装置、自動挿入機など多岐にわたり展開してきました。</p>
+  </div>
+</section>
+
+<!-- ============ 製品ブロック ============ -->
+<section id="product">
+  <div class="blocks">
+    <div class="block">
+      <div class="visual"><img src="https://kazuki4no.github.io/lp-assets/it/it-sub-04.jpg" alt="実装基板のディテール"></div>
+      <div class="txt">
+        <span class="no">PRODUCT 01</span>
+        <h3>X線チップカウンター</h3>
+        <ul>
+          <li>誰でも簡単操作</li>
+          <li>スピーディーな計測</li>
+          <li>ヒューマンエラーの削減</li>
+        </ul>
+      </div>
+    </div>
+    <div class="block">
+      <div class="visual"><img src="https://kazuki4no.github.io/lp-assets/it/it-sub-01.jpg" alt="装置の操作イメージ"></div>
+      <div class="txt">
+        <span class="no">PRODUCT 02</span>
+        <h3>部品自動挿入機</h3>
+        <ul>
+          <li>挿入精度 0.01mm</li>
+          <li>コンパクトモデル</li>
+          <li>高速かつ正確な自動化を実現</li>
+        </ul>
+      </div>
+    </div>
+    <div class="block">
+      <div class="visual"><img src="https://kazuki4no.github.io/lp-assets/it/it-sub-03.jpg" alt="ライン構成の打ち合わせ"></div>
+      <div class="txt">
+        <span class="no">PRODUCT 03</span>
+        <h3>SMT搬送装置／マガジンラック用昇降AMR</h3>
+        <ul>
+          <li>各種カスタマイズ対応可能・デュアル対応可能・短納期</li>
+          <li>マガジンラックをAMRで自動搬送</li>
+          <li>昇降機能付きで上下段の乗り移りがスムーズ・走行ルートを簡単に設定</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ X線装置 ============ -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="en">Inspection</span>
+      <h2>X線装置（Techvalley Co.,Ltd.）</h2>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <h3>AIによる検査精度</h3>
+        <p>最先端のAIソリューションにより、高い検査精度を実現します。</p>
+      </div>
+      <div class="card">
+        <h3>豊富なラインナップ</h3>
+        <p>検査対象と設置環境に合わせて、機種をお選びいただけます。</p>
+      </div>
+      <div class="card">
+        <h3>放射線防護規格に対応</h3>
+        <p>放射線漏れをリアルタイムに測定する、放射線防護規格（IEC規格）製品です。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTAバナー ============ -->
+<section class="cta-banner" id="contact">
+  <div class="bg" style="background-image:url('https://kazuki4no.github.io/lp-assets/it/it-fv-light-01.jpg');"></div>
+  <div class="ov"></div>
+  <div class="inner wrap">
+    <h2>実機をご覧いただけます</h2>
+    <p>ネプコン ジャパン、実装・組立プロセス技術展などに出展しています。<br>デモのご依頼、お見積りのご相談もお気軽にどうぞ。</p>
+    <a href="#" class="btn-primary" onclick="return false;">お問い合わせフォームへ（サンプル）</a>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>ＫｎＫ　Ｅｄｕｃａｔｉｏｎ株式会社｜〒264-0028 千葉県千葉市若葉区桜木6-20-5｜TEL 043-310-5887</p>
+    <p class="note">※本ページはご提案用のサンプルです。貴社単独のWebサイトが見当たらなかったため、<strong>KnKグループ（KnK株式会社）の公開情報をもとに構成</strong>しています。掲載写真はイメージで、実在の設備・人物ではありません。貴社の事業内容に合わせた差し替えを前提としています。</p>
+  </div>
+</footer>
+
+<a href="#contact" class="floating-cta">見積り・デモのご相談</a>
+
+</body>
+</html>

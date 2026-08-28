@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>株式会社ネット集客ラボ｜工務店専門のホームページ制作・SEO対策・AIブログ運用</title>
+<style>
+  :root{
+    --main:#16425B;
+    --main-dark:#0D2A3B;
+    --accent:#E8A33D;
+    --accent-light:#FDF1DC;
+    --text:#2B2B2B;
+    --sub:#6B6B6B;
+    --bg:#FCFBF8;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.8;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .section{padding:88px 0;}
+  .section-title{
+    font-size:14px;letter-spacing:0.2em;color:var(--accent);font-weight:700;text-align:center;margin-bottom:12px;
+  }
+  .section-heading{
+    font-size:30px;font-weight:700;text-align:center;margin-bottom:16px;letter-spacing:0.03em;color:var(--main-dark);
+  }
+  .section-lead{
+    text-align:center;color:var(--sub);max-width:640px;margin:0 auto 56px;font-size:15px;
+  }
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:100;
+    background:rgba(255,255,255,0.96);
+    border-bottom:1px solid #eee;
+    backdrop-filter:blur(6px);
+  }
+  .header-inner{
+    max-width:1080px;margin:0 auto;padding:16px 24px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .logo{font-size:18px;font-weight:800;color:var(--main-dark);letter-spacing:0.02em;}
+  .logo span{color:var(--accent);}
+  nav ul{display:flex;gap:28px;list-style:none;}
+  nav a{font-size:14px;font-weight:600;}
+  nav a:hover{color:var(--main);}
+  .header-cta{display:flex;gap:10px;}
+  .btn{display:inline-block;padding:12px 28px;border-radius:4px;font-size:14px;font-weight:700;text-align:center;}
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-primary:hover{background:#cf8a26;}
+  .btn-outline{border:1px solid var(--main);color:var(--main);}
+  .btn-outline:hover{background:var(--accent-light);}
+  .btn-small{padding:9px 18px;font-size:13px;}
+  .menu-toggle{display:none;font-size:26px;background:none;border:none;cursor:pointer;color:var(--main-dark);}
+
+  /* Hero */
+  /* 元画像URL：現サイトTOPメインビジュアル（未取得・自社写真への差し替え前提） / images/hero-main.jpg */
+  .hero{
+    position:relative;min-height:620px;display:flex;align-items:center;
+    background:linear-gradient(120deg, rgba(13,42,59,0.90), rgba(22,66,91,0.74)), url('https://loremflickr.com/1600/900/office,laptop,consulting') center/cover no-repeat;
+    color:#fff;
+  }
+  .hero-inner{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .hero-tag{
+    display:inline-block;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.5);
+    padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600;letter-spacing:0.05em;margin-bottom:24px;
+  }
+  .hero h1{font-size:35px;font-weight:800;line-height:1.55;margin-bottom:22px;max-width:680px;}
+  .hero p{font-size:15.5px;max-width:580px;margin-bottom:36px;opacity:0.95;}
+  .hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
+  .hero .btn-outline{border-color:#fff;color:#fff;}
+  .hero .btn-outline:hover{background:rgba(255,255,255,0.15);}
+
+  /* Worry list */
+  .worry-band{background:var(--main-dark);color:#fff;padding:56px 0;}
+  .worry-band .section-heading{color:#fff;}
+  .worry-list{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px;}
+  .worry-item{
+    background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);border-radius:8px;
+    padding:18px 20px;font-size:14px;display:flex;gap:10px;align-items:flex-start;
+  }
+  .worry-item::before{content:"!";flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+
+  /* Strengths */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .card{background:var(--white);border:1px solid #ececec;border-radius:10px;padding:32px 24px;transition:transform .2s, box-shadow .2s;}
+  .card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,0.08);}
+  .card-num{font-size:13px;color:var(--accent);font-weight:800;letter-spacing:0.1em;margin-bottom:14px;}
+  .card h3{font-size:17px;font-weight:700;margin-bottom:12px;color:var(--main-dark);}
+  .card p{font-size:13.5px;color:var(--sub);}
+
+  /* Services */
+  .service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .service-card{background:var(--white);border:1px solid #ececec;border-radius:10px;padding:26px 22px;}
+  .service-no{font-size:12px;color:var(--accent);font-weight:800;letter-spacing:0.1em;}
+  .service-card h3{font-size:15.5px;font-weight:700;margin:8px 0 10px;color:var(--main-dark);}
+  .service-card p{font-size:13px;color:var(--sub);}
+
+  /* Flow */
+  .flow-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .flow-item{background:var(--white);border:1px solid #ececec;border-radius:10px;padding:26px 22px;position:relative;}
+  .flow-num{
+    width:38px;height:38px;border-radius:50%;background:var(--main);color:#fff;
+    display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;margin-bottom:14px;
+  }
+  .flow-item h3{font-size:15px;font-weight:700;margin-bottom:8px;color:var(--main-dark);}
+  .flow-item p{font-size:13px;color:var(--sub);}
+
+  /* FAQ */
+  .faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:14px;}
+  .faq-item{background:var(--white);border:1px solid #ececec;border-radius:10px;padding:22px 26px;}
+  .faq-q{font-size:15px;font-weight:700;color:var(--main-dark);display:flex;gap:10px;margin-bottom:8px;}
+  .faq-q span{color:var(--accent);}
+  .faq-a{font-size:13.5px;color:var(--sub);display:flex;gap:10px;}
+  .faq-a span{color:var(--main);font-weight:700;}
+
+  /* Company */
+  .company-table{width:100%;border-collapse:collapse;max-width:760px;margin:0 auto;background:#fff;border-radius:10px;overflow:hidden;border:1px solid #ececec;}
+  .company-table th,.company-table td{padding:18px 24px;text-align:left;font-size:14.5px;border-bottom:1px solid #eee;}
+  .company-table th{width:160px;background:var(--accent-light);color:var(--main-dark);font-weight:700;}
+  .company-table tr:last-child th,.company-table tr:last-child td{border-bottom:none;}
+
+  /* CTA */
+  .cta{background:var(--main-dark);color:#fff;text-align:center;padding:80px 24px;}
+  .cta h2{font-size:26px;font-weight:800;margin-bottom:16px;}
+  .cta p{color:#cbd6dd;margin-bottom:32px;}
+  .cta .btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .cta .btn-primary{background:var(--accent);color:#fff;}
+  .cta .btn-outline{border-color:#fff;color:#fff;}
+
+  footer{background:#0A2131;color:#c6d0d5;padding:48px 24px 24px;font-size:13px;}
+  .footer-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .footer-logo{font-size:17px;font-weight:800;color:#fff;margin-bottom:10px;}
+  .footer-links{display:flex;gap:24px;list-style:none;flex-wrap:wrap;}
+  .copyright{text-align:center;margin-top:32px;color:#7c8990;}
+
+  @media (max-width:900px){
+    .cards{grid-template-columns:1fr;}
+    .service-grid{grid-template-columns:1fr 1fr;}
+    .worry-list{grid-template-columns:1fr 1fr;}
+    .flow-grid{grid-template-columns:1fr 1fr;}
+  }
+  @media (max-width:700px){
+    nav,.header-cta{display:none;}
+    .menu-toggle{display:block;}
+    .hero h1{font-size:25px;}
+    .hero{min-height:560px;}
+    .section{padding:60px 0;}
+    .service-grid{grid-template-columns:1fr;}
+    .worry-list{grid-template-columns:1fr;}
+    .flow-grid{grid-template-columns:1fr;}
+    .company-table th{width:110px;font-size:13px;padding:14px;}
+    .company-table td{font-size:13px;padding:14px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">ネット集客<span>ラボ</span></div>
+    <nav><ul>
+      <li><a href="#about">当社について</a></li>
+      <li><a href="#service">サービス</a></li>
+      <li><a href="#flow">ご相談の流れ</a></li>
+      <li><a href="#faq">よくある質問</a></li>
+      <li><a href="#company">会社概要</a></li>
+    </ul></nav>
+    <div class="header-cta">
+      <a href="recruit.html" class="btn btn-outline btn-small">採用情報</a>
+      <a href="#contact" class="btn btn-primary btn-small">お問い合わせ</a>
+    </div>
+    <button class="menu-toggle">≡</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">千葉県船橋市／工務店専門 Web集客コンサルティング</span>
+    <h1>ホームページから、<br>問い合わせは来ていますか？</h1>
+    <p>当社は中小工務店様のネット集客を専門に支援する会社です。工務店様の集客ターゲットをお聞きし、そのターゲットに刺さるSEO対策を設計。お問い合わせを獲得するために、工務店様の「No.1」をコンテンツに落とし込んでホームページを作ります。</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-primary">無料ホームページ診断を申し込む</a>
+      <a href="#service" class="btn btn-outline">サービスを見る</a>
+    </div>
+  </div>
+</section>
+
+<section class="worry-band">
+  <div class="container">
+    <p class="section-title" style="color:var(--accent);">CHECK</p>
+    <h2 class="section-heading">こんなお悩みありませんか？</h2>
+    <div class="worry-list">
+      <div class="worry-item">ホームページを作ったのに問い合わせが増えない</div>
+      <div class="worry-item">何からSEO対策すればいいのか分からない</div>
+      <div class="worry-item">自社の強みをうまく言葉にできていない</div>
+      <div class="worry-item">ブログや施工事例を書く時間・人手が足りない</div>
+      <div class="worry-item">制作会社に任せたきり、更新が止まっている</div>
+      <div class="worry-item">近隣の同業他社との違いが伝わらない</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container">
+    <p class="section-title">STRENGTH</p>
+    <h2 class="section-heading">ネット集客ラボが選ばれる理由</h2>
+    <p class="section-lead">SEO対策とブランディングを掛け合わせ、工務店様の集客力を最大化するために日夜考えています。</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-num">01</div>
+        <h3>20年以上・1000社以上の支援実績</h3>
+        <p>代表コンサルタントが2004年から積み重ねてきたSEOの実践的ノウハウをベースに、工務店様の事業内容に合わせたWeb戦略を企画・提案しています。</p>
+      </div>
+      <div class="card">
+        <div class="card-num">02</div>
+        <h3>SEO×ブランディング＝集客力</h3>
+        <p>どんなに立派なホームページを作っても、見てもらえなければ意味がありません。集客ターゲットに刺さるSEO設計と、自社の強みを分かりやすく伝えるブランディングを両輪で組み立てます。</p>
+      </div>
+      <div class="card">
+        <div class="card-num">03</div>
+        <h3>毎月3社限定の無料ホームページ診断</h3>
+        <p>年間100回以上のホームページ集客分析を行ってきた知見をもとに、御社サイトの課題を無料で診断。まずは現状を知ることから始められます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="service" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">SERVICE</p>
+    <h2 class="section-heading">サービス一覧</h2>
+    <p class="section-lead">工務店様の集客課題に合わせて、必要なサービスを組み合わせてご提案します。詳細は下記よりお問い合わせください。</p>
+    <div class="service-grid">
+      <div class="service-card">
+        <div class="service-no">01</div>
+        <h3>無料ホームページ診断</h3>
+        <p>現状のサイトのSEO・ブランディング面の課題を無料で診断します。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-no">02</div>
+        <h3>コンサルティング</h3>
+        <p>集客ターゲットの整理からSEO戦略まで、伴走型でご支援します。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-no">03</div>
+        <h3>ホームページ制作</h3>
+        <p>工務店様の「No.1」をコンテンツに落とし込んだサイトを制作します。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-no">04</div>
+        <h3>ホームページ運用代行</h3>
+        <p>作って終わりにせず、公開後の更新・運用まで代行します。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-no">05</div>
+        <h3>AIコンテンツSEO</h3>
+        <p>AIを活用し、ブログ・施工事例の更新を効率よく継続します。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-no">06</div>
+        <h3>広告集客</h3>
+        <p>SEOに加え、Web広告を活用した集客もあわせてご提案します。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-no">07</div>
+        <h3>セミナー・研修</h3>
+        <p>木耐協様など各種団体様とのコラボセミナー実績があります。</p>
+      </div>
+      <div class="service-card">
+        <div class="service-no">08</div>
+        <h3>新規事業立上げ支援</h3>
+        <p>新規事業のWeb集客設計についてもご相談いただけます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="flow">
+  <div class="container">
+    <p class="section-title">FLOW</p>
+    <h2 class="section-heading">無料体験コンサルティングの流れ</h2>
+    <p class="section-lead">毎月3社限定・申込み順のご案内です。まずはお気軽にお申し込みください。</p>
+    <div class="flow-grid">
+      <div class="flow-item"><div class="flow-num">1</div><h3>無料体験コンサルティングを申込み</h3><p>お問い合わせフォームよりお申し込みください。</p></div>
+      <div class="flow-item"><div class="flow-num">2</div><h3>メールにて日程調整</h3><p>担当より折り返しご連絡し、日程を調整します。</p></div>
+      <div class="flow-item"><div class="flow-num">3</div><h3>コンサルティング資料の作成</h3><p>御社サイトを分析し、当日ご説明する資料を準備します。</p></div>
+      <div class="flow-item"><div class="flow-num">4</div><h3>Zoomによる無料体験コンサルを実施</h3><p>オンラインで実際のコンサルティングを体験いただきます。</p></div>
+      <div class="flow-item"><div class="flow-num">5</div><h3>体験アンケート回答</h3><p>コンサル内容についてアンケートにご回答いただきます。</p></div>
+      <div class="flow-item"><div class="flow-num">6</div><h3>終了</h3><p>継続支援をご希望の場合は、あらためてご提案します。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">FAQ</p>
+    <h2 class="section-heading">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q"><span>Q</span>無料体験コンサルティングは本当に無料ですか？</div>
+        <div class="faq-a"><span>A</span>はい、無料です。毎月3社限定で募集しており、申込み順のご案内となります。ご希望の方はお早めにお申し込みください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Q</span>対応エリアはどこまでですか？</div>
+        <div class="faq-a"><span>A</span>千葉県船橋市を拠点に、千葉・東京・埼玉・神奈川全域に対応しています。ご相談はオンライン（Zoom）でも承っています。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Q</span>ホームページ制作だけ、SEOだけ、といった部分的な依頼も可能ですか？</div>
+        <div class="faq-a"><span>A</span>可能です。ホームページ制作・運用代行・AIコンテンツSEO・広告集客など、御社の課題に合わせて必要なサービスを組み合わせてご提案します。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Q</span>メルマガの配信は受けられますか？</div>
+        <div class="faq-a"><span>A</span>お問い合わせの際、お問合せ内容欄に「メルマガ希望」とご記入いただくことで登録可能です。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="company">
+  <div class="container">
+    <p class="section-title">COMPANY</p>
+    <h2 class="section-heading">会社概要</h2>
+    <table class="company-table">
+      <tr><th>社名</th><td>株式会社ネット集客ラボ</td></tr>
+      <tr><th>代表</th><td>山本 美和子</td></tr>
+      <tr><th>事業内容</th><td>ホームページ制作／SEO対策／AIコンテンツ運用／Web集客コンサルティング　ほか</td></tr>
+      <tr><th>所在地</th><td>〒273-027　千葉県船橋市海神町西1-1193-1　508号</td></tr>
+      <tr><th>設立</th><td>2025年10月10日</td></tr>
+      <tr><th>資本金</th><td>990,000円</td></tr>
+      <tr><th>営業時間</th><td>10:00〜17:00（土日祝休み）</td></tr>
+      <tr><th>所属団体</th><td>日本木造住宅耐震補強事業者協同組合／Gハウス経営革真研究会</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2>まずは無料ホームページ診断から</h2>
+  <p>協力会社様の応募も受け付けています。お問い合わせフォームよりお気軽にご連絡ください。</p>
+  <div class="btns">
+    <a href="https://netlab.works/#contact" class="btn btn-primary">お問い合わせフォームへ</a>
+    <a href="https://netlab.works/" class="btn btn-outline">現在のサイトを見る</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">株式会社ネット集客ラボ</div>
+      <p>千葉県船橋市海神町西1-1193-1<br>工務店専門のホームページ制作・SEO対策・AIブログ運用</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#service">サービス</a></li>
+      <li><a href="#flow">ご相談の流れ</a></li>
+      <li><a href="recruit.html">採用情報</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </div>
+  <p class="copyright">©株式会社ネット集客ラボ All rights reserved.</p>
+</footer>
+
+</body>
+</html>

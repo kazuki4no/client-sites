@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>株式会社WANDS PROJECT｜TikTok・LIVEコマースから生活支援まで、多角的にサポート</title>
+<style>
+  :root{
+    --main:#1B2A4A;
+    --main-dark:#10192E;
+    --accent:#C9A227;
+    --accent-light:#F6EFDD;
+    --text:#2B2B2B;
+    --sub:#6B6B6B;
+    --bg:#FCFBF7;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:var(--text);background:var(--bg);line-height:1.8;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .section{padding:88px 0;}
+  .section-title{font-size:14px;letter-spacing:0.2em;color:var(--accent);font-weight:700;text-align:center;margin-bottom:12px;}
+  .section-heading{font-size:30px;font-weight:700;text-align:center;margin-bottom:16px;letter-spacing:0.03em;color:var(--main-dark);}
+  .section-lead{text-align:center;color:var(--sub);max-width:660px;margin:0 auto 56px;font-size:15px;}
+
+  header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.96);border-bottom:1px solid #eee;backdrop-filter:blur(6px);}
+  .header-inner{max-width:1080px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-size:18px;font-weight:800;color:var(--main-dark);letter-spacing:0.02em;}
+  .logo span{color:var(--accent);}
+  nav ul{display:flex;gap:28px;list-style:none;}
+  nav a{font-size:14px;font-weight:600;}
+  nav a:hover{color:var(--main);}
+  .header-cta{display:flex;gap:10px;}
+  .btn{display:inline-block;padding:12px 28px;border-radius:4px;font-size:14px;font-weight:700;text-align:center;}
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-primary:hover{background:#ad8a1e;}
+  .btn-outline{border:1px solid var(--main);color:var(--main);}
+  .btn-outline:hover{background:var(--accent-light);}
+  .btn-small{padding:9px 18px;font-size:13px;}
+  .menu-toggle{display:none;font-size:26px;background:none;border:none;cursor:pointer;color:var(--main-dark);}
+
+  /* Full-bleed FV */
+  /* 元画像URL：現サイトTOPメインビジュアル（未取得・自社写真への差し替え前提） / images/fv-main.jpg */
+  .fv{
+    position:relative;height:88vh;min-height:560px;display:flex;align-items:flex-end;
+    background:linear-gradient(0deg, rgba(16,25,46,0.94) 10%, rgba(16,25,46,0.4) 60%, rgba(16,25,46,0.15)), url('https://loremflickr.com/1600/1000/livestream,studio,tokyo') center/cover no-repeat;
+    color:#fff;
+  }
+  .fv-inner{max-width:1080px;margin:0 auto;padding:0 24px 64px;width:100%;}
+  .fv-eyebrow{font-size:13px;letter-spacing:0.25em;opacity:0.85;margin-bottom:18px;}
+  .fv h1{font-size:33px;font-weight:800;line-height:1.6;margin-bottom:24px;max-width:700px;}
+  .fv-btns{display:flex;gap:16px;flex-wrap:wrap;}
+  .fv .btn-outline{border-color:#fff;color:#fff;}
+
+  /* Works band */
+  .works-band{background:var(--main-dark);padding:0;}
+  .works-grid{display:grid;grid-template-columns:repeat(4,1fr);}
+  .works-grid img{width:100%;height:190px;object-fit:cover;filter:brightness(0.9);transition:transform .3s;}
+  .works-grid a{overflow:hidden;display:block;}
+  .works-grid a:hover img{transform:scale(1.06);}
+
+  /* Strength row */
+  .strength-strip{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+  .strength-strip .item{flex:1;min-width:220px;text-align:center;padding:0 12px;}
+  .strength-strip .num{font-size:32px;font-weight:800;color:var(--accent);margin-bottom:10px;}
+  .strength-strip h3{font-size:15.5px;font-weight:700;color:var(--main-dark);margin-bottom:8px;}
+  .strength-strip p{font-size:13px;color:var(--sub);}
+
+  /* Service banners */
+  .banner{display:flex;align-items:center;gap:44px;margin-bottom:56px;}
+  .banner:last-child{margin-bottom:0;}
+  .banner.rev{flex-direction:row-reverse;}
+  .banner img{width:46%;height:300px;object-fit:cover;border-radius:10px;flex-shrink:0;}
+  .banner-body{flex:1;}
+  .banner-no{font-size:12px;color:var(--accent);font-weight:800;letter-spacing:0.15em;margin-bottom:10px;}
+  .banner-body h3{font-size:21px;font-weight:800;color:var(--main-dark);margin-bottom:14px;}
+  .banner-body p{font-size:14px;color:var(--sub);}
+
+  /* Client badges */
+  .client-grid{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;}
+  .client-chip{background:#fff;border:1px solid #e6dbb8;border-radius:6px;padding:14px 22px;font-size:14px;font-weight:700;color:var(--main-dark);}
+
+  /* Company photo */
+  .company-photo-wrap{display:flex;gap:40px;align-items:center;}
+  .company-photo-wrap img{width:42%;border-radius:10px;object-fit:cover;height:360px;flex-shrink:0;}
+  .company-table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;border:1px solid #ececec;flex:1;}
+  .company-table th,.company-table td{padding:16px 22px;text-align:left;font-size:14px;border-bottom:1px solid #eee;}
+  .company-table th{width:120px;background:var(--accent-light);color:var(--main-dark);font-weight:700;}
+  .company-table tr:last-child th,.company-table tr:last-child td{border-bottom:none;}
+
+  .cta{background:var(--main-dark);color:#fff;text-align:center;padding:80px 24px;}
+  .cta h2{font-size:26px;font-weight:800;margin-bottom:16px;}
+  .cta p{color:#cbd6dd;margin-bottom:32px;}
+  .cta .btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .cta .btn-primary{background:var(--accent);color:#fff;}
+  .cta .btn-outline{border-color:#fff;color:#fff;}
+
+  footer{background:var(--main-dark);color:#c6ccd6;padding:48px 24px 24px;font-size:13px;}
+  .footer-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .footer-logo{font-size:17px;font-weight:800;color:#fff;margin-bottom:10px;}
+  .footer-links{display:flex;gap:24px;list-style:none;flex-wrap:wrap;}
+  .copyright{text-align:center;margin-top:32px;color:#7c8290;}
+
+  @media (max-width:900px){
+    .works-grid{grid-template-columns:1fr 1fr;}
+    .strength-strip{flex-direction:column;}
+    .banner,.banner.rev{flex-direction:column;}
+    .banner img{width:100%;height:220px;}
+    .company-photo-wrap{flex-direction:column;}
+    .company-photo-wrap img{width:100%;}
+  }
+  @media (max-width:700px){
+    nav,.header-cta{display:none;}
+    .menu-toggle{display:block;}
+    .fv h1{font-size:23px;}
+    .fv{height:auto;min-height:480px;padding-top:40px;}
+    .section{padding:60px 0;}
+    .works-grid{grid-template-columns:1fr 1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">WANDS<span>PROJECT</span></div>
+    <nav><ul>
+      <li><a href="#service">事業内容</a></li>
+      <li><a href="#strength">選ばれる理由</a></li>
+      <li><a href="#company">会社情報</a></li>
+    </ul></nav>
+    <div class="header-cta">
+      <a href="recruit.html" class="btn btn-outline btn-small">採用情報</a>
+      <a href="#contact" class="btn btn-primary btn-small">お問い合わせ</a>
+    </div>
+    <button class="menu-toggle">≡</button>
+  </div>
+</header>
+
+<section class="fv">
+  <div class="fv-inner">
+    <p class="fv-eyebrow">CHIBA / TOKYO　多角的事業を展開するプロジェクトカンパニー</p>
+    <h1>想いを、情熱を、創造性を。<br>WANDS PROJECTが、形にする実行力になる。</h1>
+    <div class="fv-btns">
+      <a href="#contact" class="btn btn-primary">お問い合わせはこちら</a>
+      <a href="#service" class="btn btn-outline">事業内容を見る</a>
+    </div>
+  </div>
+</section>
+
+<section class="works-band">
+  <div class="works-grid">
+    <a href="#service"><img src="https://loremflickr.com/500/440/tiktok,creator,phone" alt="TikTokエージェンシー事業">
+      <!-- 元画像URL：現サイト事業紹介写真（未取得・自社写真への差し替え前提） / images/works-1.jpg --></a>
+    <a href="#service"><img src="https://loremflickr.com/500/440/livestream,shopping,studio" alt="LIVEコマース事業">
+      <!-- 元画像URL：現サイト事業紹介写真（未取得・自社写真への差し替え前提） / images/works-2.jpg --></a>
+    <a href="#service"><img src="https://loremflickr.com/500/440/event,stage,production" alt="プロモーション業務">
+      <!-- 元画像URL：現サイト事業紹介写真（未取得・自社写真への差し替え前提） / images/works-3.jpg --></a>
+    <a href="#service"><img src="https://loremflickr.com/500/440/housework,cleaning,home" alt="生活支援サービス事業">
+      <!-- 元画像URL：現サイト事業紹介写真（未取得・自社写真への差し替え前提） / images/works-4.jpg --></a>
+  </div>
+</section>
+
+<section class="section" id="strength">
+  <div class="container">
+    <p class="section-title">STRENGTH</p>
+    <h2 class="section-heading">3つの強み</h2>
+    <p class="section-lead">性質の異なる事業を自社で運営してきたからこそ、幅広いご相談に対応できます。</p>
+    <div class="strength-strip">
+      <div class="item"><div class="num">01</div><h3>多角的な事業ドメイン</h3><p>エンタメから生活支援まで自社運営で培った実行力。</p></div>
+      <div class="item"><div class="num">02</div><h3>リスクマネジメント顧問の実績</h3><p>多くの法人でリスク排除を担ってきた経験。</p></div>
+      <div class="item"><div class="num">03</div><h3>目的達成後も続く伴走</h3><p>単発で終わらず、その後の活躍まで支え続けます。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="service" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">SERVICE</p>
+    <h2 class="section-heading">事業内容</h2>
+    <p class="section-lead">TikTok公式エージェンシー「ワンプロ」の運営を中心に、LIVEコマース、プロモーション、生活支援サービスまで幅広く手がけています。</p>
+
+    <div class="banner">
+      <img src="https://loremflickr.com/560/380/tiktok,shortvideo,creator" alt="TikTok公式エージェンシー">
+      <!-- 元画像URL：現サイト事業紹介写真（未取得・自社写真への差し替え前提） / images/banner-tiktok.jpg -->
+      <div class="banner-body">
+        <div class="banner-no">01 ／ TikTok公式エージェンシー・LIVEコマース支援</div>
+        <h3>TikTok公式エージェンシー「ワンプロ」を運営</h3>
+        <p>TikTok公式エージェンシーとして「ワンプロ」を運営するほか、LIVEコマース事業の支援・業務代行も行っています。配信を通じた発信・販売の立ち上げから運営まで、実行力を持って伴走します。</p>
+      </div>
+    </div>
+
+    <div class="banner rev">
+      <img src="https://loremflickr.com/560/380/concert,event,production" alt="プロモーション・タレントマネジメント">
+      <!-- 元画像URL：現サイト事業紹介写真（未取得・自社写真への差し替え前提） / images/banner-promotion.jpg -->
+      <div class="banner-body">
+        <div class="banner-no">02 ／ プロモーション・マネジメント</div>
+        <h3>配信・イベントの企画から、著作権・肖像権管理まで</h3>
+        <p>インターネットを利用した番組映像・音楽の配信・制作・販売、イベントの企画・運営・販売、プロスポーツ選手・芸能人・芸術家等のマネジメント、著作権・肖像権の管理まで一貫して対応します。</p>
+      </div>
+    </div>
+
+    <div class="banner">
+      <img src="https://loremflickr.com/560/380/housekeeping,laundry,cleaning" alt="生活支援サービス事業">
+      <!-- 元画像URL：現サイト事業紹介写真（未取得・自社写真への差し替え前提） / images/banner-lifesupport.jpg -->
+      <div class="banner-body">
+        <div class="banner-no">03 ／ 生活支援サービス</div>
+        <h3>清掃・洗濯・料理・買物代行まで、暮らしを支える</h3>
+        <p>家事全般に関する支援サービスと、そのコンサルティング業務・情報提供、家事関連道具の開発販売まで手がけています。忙しい方の日常に寄り添うサービスです。</p>
+      </div>
+    </div>
+
+    <div class="banner rev">
+      <img src="https://loremflickr.com/560/380/consulting,office,meeting" alt="人材育成コンサルティング・保険代理店">
+      <!-- 元画像URL：現サイト事業紹介写真（未取得・自社写真への差し替え前提） / images/banner-consulting.jpg -->
+      <div class="banner-body">
+        <div class="banner-no">04 ／ 人材育成コンサルティング・損害保険代理店</div>
+        <h3>企業の営業・人材育成から、リスクへの備えまで</h3>
+        <p>企業の営業及び人材育成に関するコンサルティング業務のほか、損害保険代理店業も展開。事業運営に伴うリスクへの備えまでサポートします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="client">
+  <div class="container">
+    <p class="section-title">CLIENT</p>
+    <h2 class="section-heading">お取引先企業</h2>
+    <div class="client-grid">
+      <span class="client-chip">BIOPLUS様</span>
+      <span class="client-chip">YONEX株式会社様</span>
+      <span class="client-chip">株式会社ジパング</span>
+      <span class="client-chip">フードリレーションズ様</span>
+      <span class="client-chip">株式会社萌木様</span>
+      <span class="client-chip">COTREE様</span>
+      <span class="client-chip">チョロクチョロン様</span>
+      <span class="client-chip">有限会社小西本店様</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="company" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">COMPANY</p>
+    <h2 class="section-heading">会社情報</h2>
+    <div class="company-photo-wrap">
+      <img src="https://loremflickr.com/700/700/tokyo,office,building" alt="株式会社WANDS PROJECT">
+      <!-- 元画像URL：現サイト自社・代表写真（未取得・自社写真への差し替え前提） / images/company-photo.jpg -->
+      <table class="company-table">
+        <tr><th>社名</th><td>株式会社WANDS PROJECT（ワンズプロジェクト）</td></tr>
+        <tr><th>代表</th><td>代表取締役　武田勇樹</td></tr>
+        <tr><th>船橋本社</th><td>〒273-0005　千葉県船橋市本町6-2-10<br>ダイアパレスステーションプラザ船橋 1203</td></tr>
+        <tr><th>東京本社</th><td>〒141-0031　東京都品川区西五反田1丁目26-2<br>五反田サンハイツ1階</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2>まずはお気軽にご相談ください</h2>
+  <p>個人・法人問わず、想いを形にするご相談をお待ちしております。</p>
+  <div class="btns">
+    <a href="https://wan-pro.co.jp/contact/" class="btn btn-primary">お問い合わせフォームへ</a>
+    <a href="https://wan-pro.co.jp/" class="btn btn-outline">現在のサイトを見る</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">株式会社WANDS PROJECT</div>
+      <p>千葉県船橋市本町6-2-10（船橋本社）／東京都品川区西五反田1-26-2（東京本社）</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#service">事業内容</a></li>
+      <li><a href="recruit.html">採用情報</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </div>
+  <p class="copyright">©株式会社WANDS PROJECT All rights reserved.</p>
+</footer>
+
+</body>
+</html>

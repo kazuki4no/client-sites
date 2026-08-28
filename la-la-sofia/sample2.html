@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>合同会社LA LA SOFIA｜外国人材紹介・特定技能サポート</title>
+<style>
+  :root{
+    --main:#1E4E8C;
+    --main-dark:#12315C;
+    --accent:#2FAE66;
+    --accent-light:#EAF7EF;
+    --text:#26272B;
+    --sub:#6B7280;
+    --bg:#FFFFFF;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.85;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1140px;margin:0 auto;padding:0 24px;}
+  .section{padding:100px 0;}
+  .section-title{font-size:13px;letter-spacing:0.25em;color:var(--accent);font-weight:800;margin-bottom:14px;}
+  .section-title.center{text-align:center;}
+  .section-heading{font-size:32px;font-weight:800;margin-bottom:18px;letter-spacing:0.02em;color:var(--main-dark);}
+  .section-heading.center{text-align:center;}
+  .section-lead{color:var(--sub);max-width:640px;font-size:15px;}
+  .section-lead.center{text-align:center;margin:0 auto 60px;}
+
+  header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.97);border-bottom:1px solid #eee;backdrop-filter:blur(6px);}
+  .header-inner{max-width:1140px;margin:0 auto;padding:18px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-size:19px;font-weight:800;color:var(--main-dark);}
+  .logo span{color:var(--accent);}
+  nav ul{display:flex;gap:28px;list-style:none;}
+  nav a{font-size:14px;font-weight:600;}
+  nav a:hover{color:var(--main);}
+  .header-cta{display:flex;gap:10px;}
+  .btn{display:inline-block;padding:13px 30px;border-radius:30px;font-size:14px;font-weight:700;text-align:center;}
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-primary:hover{background:#248f54;}
+  .btn-outline{border:1.5px solid var(--main);color:var(--main);}
+  .btn-outline:hover{background:var(--accent-light);}
+  .btn-small{padding:9px 20px;font-size:13px;}
+  .menu-toggle{display:none;font-size:26px;background:none;border:none;cursor:pointer;color:var(--main-dark);}
+
+  /* Hero: split layout */
+  .hero{padding:80px 0 0;overflow:hidden;}
+  .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;align-items:center;}
+  .hero-copy{padding:20px 60px 100px 0;}
+  .hero-tag{display:inline-flex;align-items:center;gap:8px;background:var(--accent-light);color:var(--accent);border-radius:20px;padding:7px 18px;font-size:12.5px;font-weight:800;letter-spacing:0.05em;margin-bottom:26px;}
+  .hero h1{font-size:38px;font-weight:800;line-height:1.55;margin-bottom:24px;color:var(--main-dark);}
+  .hero h1 em{font-style:normal;color:var(--accent);}
+  .hero p{font-size:15px;color:var(--sub);margin-bottom:36px;max-width:460px;}
+  .hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
+  .hero-img-wrap{position:relative;height:640px;}
+  .hero-img-wrap img{width:100%;height:100%;object-fit:cover;}
+  .hero-stat-float{position:absolute;bottom:36px;left:-40px;background:#fff;border-radius:14px;box-shadow:0 20px 50px rgba(18,49,92,0.18);padding:22px 28px;display:flex;gap:24px;}
+  .hero-stat-float .item{text-align:center;}
+  .hero-stat-float .item .n{font-size:24px;font-weight:800;color:var(--main);}
+  .hero-stat-float .item .l{font-size:11px;color:var(--sub);margin-top:2px;}
+
+  /* Worry: image band */
+  .worry-band{background:var(--main-dark);color:#fff;padding:70px 0;position:relative;}
+  .worry-band .section-title{color:var(--accent);}
+  .worry-band .section-heading{color:#fff;}
+  .worry-list{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px;}
+  .worry-item{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);border-radius:12px;padding:22px;font-size:14px;}
+  .worry-item .icon{width:32px;height:32px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:800;margin-bottom:14px;}
+
+  /* Feature: alternating image rows */
+  .feature-row{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;margin-bottom:90px;}
+  .feature-row:last-child{margin-bottom:0;}
+  .feature-row.reverse .feature-img{order:2;}
+  .feature-row.reverse .feature-copy{order:1;}
+  .feature-img{border-radius:16px;overflow:hidden;height:340px;}
+  .feature-img img{width:100%;height:100%;object-fit:cover;}
+  .feature-copy .num-badge{display:inline-block;background:var(--accent-light);color:var(--accent);font-weight:800;font-size:13px;padding:6px 14px;border-radius:20px;margin-bottom:18px;}
+  .feature-copy h3{font-size:22px;font-weight:800;color:var(--main-dark);margin-bottom:16px;}
+  .feature-copy p{font-size:14px;color:var(--sub);margin-bottom:10px;}
+
+  /* Service cards visual */
+  .service-visual-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;}
+  .service-visual-card{position:relative;border-radius:16px;overflow:hidden;height:380px;color:#fff;}
+  .service-visual-card img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;z-index:0;}
+  .service-visual-card::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg, rgba(18,49,92,0.92) 10%, rgba(18,49,92,0.15) 65%);z-index:1;}
+  .service-visual-body{position:relative;z-index:2;height:100%;display:flex;flex-direction:column;justify-content:flex-end;padding:32px;}
+  .service-visual-body .tag{font-size:12px;letter-spacing:0.1em;color:var(--accent);font-weight:800;margin-bottom:10px;}
+  .service-visual-body h3{font-size:20px;font-weight:800;margin-bottom:12px;}
+  .service-visual-body p{font-size:13.5px;opacity:0.92;}
+
+  /* Numbers band */
+  .numbers-band{background:linear-gradient(120deg,var(--main),var(--main-dark));color:#fff;padding:70px 0;}
+  .numbers{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;text-align:center;}
+  .number-item .num{font-size:42px;font-weight:800;}
+  .number-item .num span{font-size:18px;font-weight:700;}
+  .number-item .label{font-size:13px;opacity:0.85;margin-top:8px;}
+
+  /* Voice visual */
+  .voice-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .voice-card{border-radius:14px;overflow:hidden;background:#fff;border:1px solid #ececec;}
+  .voice-card img{width:100%;height:160px;object-fit:cover;}
+  .voice-card-body{padding:24px;}
+  .voice-card-body .quote{font-size:13.5px;color:var(--text);margin-bottom:14px;}
+  .voice-card-body .name{font-size:13px;font-weight:800;color:var(--main-dark);}
+  .voice-card-body .role{font-size:11.5px;color:var(--sub);}
+
+  /* Company */
+  .company-table{width:100%;border-collapse:collapse;max-width:760px;margin:0 auto;background:#fff;border-radius:14px;overflow:hidden;border:1px solid #ececec;}
+  .company-table th,.company-table td{padding:20px 26px;text-align:left;font-size:14.5px;border-bottom:1px solid #eee;}
+  .company-table th{width:160px;background:var(--accent-light);color:var(--main-dark);font-weight:700;}
+  .company-table tr:last-child th,.company-table tr:last-child td{border-bottom:none;}
+
+  /* CTA */
+  .cta{position:relative;text-align:center;padding:110px 24px;color:#fff;background:linear-gradient(120deg, rgba(18,49,92,0.92), rgba(30,78,140,0.85)), url('https://loremflickr.com/1600/700/handshake,business,asia') center/cover no-repeat;}
+  .cta h2{font-size:28px;font-weight:800;margin-bottom:16px;}
+  .cta p{color:#dbe4ea;margin-bottom:34px;}
+  .cta .btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .cta .btn-outline{border-color:#fff;color:#fff;}
+
+  footer{background:#0E2340;color:#c6d0d5;padding:52px 24px 24px;font-size:13px;}
+  .footer-inner{max-width:1140px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .footer-logo{font-size:17px;font-weight:800;color:#fff;margin-bottom:10px;}
+  .footer-links{display:flex;gap:24px;list-style:none;flex-wrap:wrap;}
+  .copyright{text-align:center;margin-top:36px;color:#7c8990;}
+
+  @media (max-width:960px){
+    .hero-grid{grid-template-columns:1fr;}
+    .hero-copy{padding:20px 0 40px;}
+    .hero-img-wrap{height:420px;}
+    .hero-stat-float{left:16px;bottom:16px;}
+    .worry-list{grid-template-columns:1fr 1fr;}
+    .feature-row{grid-template-columns:1fr;gap:24px;}
+    .feature-row.reverse .feature-img{order:1;}
+    .feature-row.reverse .feature-copy{order:2;}
+    .service-visual-grid{grid-template-columns:1fr;}
+    .numbers{grid-template-columns:1fr 1fr;}
+    .voice-grid{grid-template-columns:1fr;}
+  }
+  @media (max-width:700px){
+    nav,.header-cta{display:none;}
+    .menu-toggle{display:block;}
+    .hero h1{font-size:26px;}
+    .section{padding:64px 0;}
+    .worry-list{grid-template-columns:1fr;}
+    .numbers{grid-template-columns:1fr 1fr;}
+    .company-table th{width:110px;font-size:13px;padding:14px;}
+    .company-table td{font-size:13px;padding:14px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">LA LA <span>SOFIA</span></div>
+    <nav><ul>
+      <li><a href="#about">私たちについて</a></li>
+      <li><a href="#service">サービス</a></li>
+      <li><a href="#voice">お客様の声</a></li>
+      <li><a href="#company">会社概要</a></li>
+    </ul></nav>
+    <div class="header-cta">
+      <a href="recruit.html" class="btn btn-outline btn-small">採用情報</a>
+      <a href="https://www.la-la-sofia.com/contact/" class="btn btn-primary btn-small">お問い合わせ</a>
+    </div>
+    <button class="menu-toggle">≡</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="hero-tag">● 外国人材紹介 × 生活サポート</span>
+        <h1>ミャンマー・タイの現場から、<br><em>「働ける人」</em>を育て、届ける。</h1>
+        <p>合同会社LA LA SOFIAは、自社の日本語学校で人材を育成し、日本の企業・教育機関へつなぐ人材紹介会社です。入国後の生活サポートまで一貫して担うことで、長く安心して活躍できる人材紹介を実現しています。</p>
+        <div class="hero-btns">
+          <a href="https://www.la-la-sofia.com/contact/" class="btn btn-primary">お問い合わせはこちら</a>
+          <a href="#service" class="btn btn-outline">サービスを見る</a>
+        </div>
+      </div>
+      <div class="hero-img-wrap">
+        <img src="https://loremflickr.com/900/1200/asia,students,school" alt="日本語学校で学ぶ学生">
+        <div class="hero-stat-float">
+          <div class="item"><div class="n">2017</div><div class="l">創業</div></div>
+          <div class="item"><div class="n">2ヶ国</div><div class="l">現地拠点</div></div>
+          <div class="item"><div class="n">24h</div><div class="l">生活サポート</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="worry-band">
+  <div class="container">
+    <p class="section-title center">CHECK</p>
+    <h2 class="section-heading center">こんなお悩みありませんか？</h2>
+    <div class="worry-list">
+      <div class="worry-item"><div class="icon">!</div>介護・製造・建設現場の人手不足が深刻化している</div>
+      <div class="worry-item"><div class="icon">!</div>特定技能人材を採用したいが、相談先が分からない</div>
+      <div class="worry-item"><div class="icon">!</div>紹介後のフォローが薄く、定着せず離職してしまう</div>
+      <div class="worry-item"><div class="icon">!</div>現場での日本語コミュニケーションに不安がある</div>
+      <div class="worry-item"><div class="icon">!</div>信頼できる海外の送り出し機関を探している</div>
+      <div class="worry-item"><div class="icon">!</div>外国人スタッフの生活トラブル対応に手が回らない</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container">
+    <p class="section-title center">ABOUT US</p>
+    <h2 class="section-heading center">LA LA SOFIAが選ばれる理由</h2>
+    <p class="section-lead center">2017年にミャンマーで日本語学校を開校して以来、東南アジアと日本を人材の面でつなぐ事業を続けてきました。</p>
+
+    <div class="feature-row">
+      <div class="feature-img"><img src="https://loremflickr.com/700/500/classroom,teacher,asia" alt="自社日本語学校"></div>
+      <div class="feature-copy">
+        <span class="num-badge">01</span>
+        <h3>自社日本語学校での事前教育</h3>
+        <p>ミャンマー・タイの自社日本語学校で、入国前にN3～N4レベルの日本語力を養成。現場で最低限のコミュニケーションが取れる状態で来日するため、受け入れ企業様の負担を軽減します。</p>
+      </div>
+    </div>
+
+    <div class="feature-row reverse">
+      <div class="feature-img"><img src="https://loremflickr.com/700/500/counseling,support,phone" alt="生活サポート"></div>
+      <div class="feature-copy">
+        <span class="num-badge">02</span>
+        <h3>24時間の生活サポート体制</h3>
+        <p>入国後も、生活面の悩み相談や病院受診の同行・通訳まで24時間対応。日本留学経験のあるスタッフが、本人と同じ目線でサポートにあたります。</p>
+      </div>
+    </div>
+
+    <div class="feature-row">
+      <div class="feature-img"><img src="https://loremflickr.com/700/500/family,video,call" alt="定期面談"></div>
+      <div class="feature-copy">
+        <span class="num-badge">03</span>
+        <h3>4ヶ月ごとの定期面談と家族への共有</h3>
+        <p>就労後も定期的に面談を実施し、本人の状況を母国のご家族にも共有。早期離職の防止と、本人・企業双方にとっての安心につなげています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="service" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title center">SERVICE</p>
+    <h2 class="section-heading center">サービス</h2>
+    <p class="section-lead center">留学生の紹介から特定技能人材の紹介まで、目的に応じた人材紹介サービスをご提供しています。</p>
+    <div class="service-visual-grid">
+      <div class="service-visual-card">
+        <img src="https://loremflickr.com/700/800/japanese,school,students" alt="留学生紹介事業">
+        <div class="service-visual-body">
+          <div class="tag">01 ／ 留学生紹介事業</div>
+          <h3>日本語学校・専門学校への留学生紹介</h3>
+          <p>自社日本語学校で学ぶ学生を、日本全国の日本語学校・専門学校へご紹介。ビザ申請から入国手続きまでサポートします。</p>
+        </div>
+      </div>
+      <div class="service-visual-card">
+        <img src="https://loremflickr.com/700/800/factory,worker,asia" alt="特定技能人材紹介">
+        <div class="service-visual-body">
+          <div class="tag">02 ／ 特定技能人材紹介</div>
+          <h3>特定技能外国人材の紹介・生活サポート</h3>
+          <p>東南アジア各国から、貴社のニーズに合わせた人材をご紹介。入国後の生活サポートまで責任を持って対応します。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="numbers-band">
+  <div class="container">
+    <div class="numbers">
+      <div class="number-item"><div class="num">2017</div><div class="label">創業年（ミャンマー日本語学校開校）</div></div>
+      <div class="number-item"><div class="num">2<span>ヶ国</span></div><div class="label">ミャンマー・タイに自社拠点</div></div>
+      <div class="number-item"><div class="num">17<span>名</span></div><div class="label">2026年4月 特定技能人材入国実績</div></div>
+      <div class="number-item"><div class="num">24<span>時間</span></div><div class="label">生活相談・サポート対応</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="voice">
+  <div class="container">
+    <p class="section-title center">VOICE</p>
+    <h2 class="section-heading center">お客様の声</h2>
+    <div class="voice-grid">
+      <div class="voice-card">
+        <img src="https://loremflickr.com/500/320/nursing,care,facility" alt="介護施設">
+        <div class="voice-card-body">
+          <p class="quote">「入国前にしっかり日本語教育を受けてきてくれるので、現場での指示がスムーズに通ります。」</p>
+          <div class="name">介護施設 採用ご担当者様</div>
+          <div class="role">特定技能人材を受け入れ</div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <img src="https://loremflickr.com/500/320/factory,manufacturing,japan" alt="製造業">
+        <div class="voice-card-body">
+          <p class="quote">「入国後のトラブルにも夜間問わず対応してもらえるのが心強いです。」</p>
+          <div class="name">製造業 人事ご担当者様</div>
+          <div class="role">特定技能人材を受け入れ</div>
+        </div>
+      </div>
+      <div class="voice-card">
+        <img src="https://loremflickr.com/500/320/language,school,japan" alt="日本語学校">
+        <div class="voice-card-body">
+          <p class="quote">「ミャンマーの学校の頃から知っているスタッフが相談に乗ってくれるので、留学生も安心できています。」</p>
+          <div class="name">日本語学校 ご担当者様</div>
+          <div class="role">留学生の受け入れ</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="company" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title center">COMPANY</p>
+    <h2 class="section-heading center">会社概要</h2>
+    <table class="company-table">
+      <tr><th>社名</th><td>合同会社LA LA SOFIA</td></tr>
+      <tr><th>所在地</th><td>千葉県船橋市栄町1-21-10-2</td></tr>
+      <tr><th>電話番号</th><td>047-419-8421 ／ 080-4052-7083</td></tr>
+      <tr><th>設立</th><td>2017年（ミャンマーにて日本語学校開校）</td></tr>
+      <tr><th>事業内容</th><td>日本語学校運営（ミャンマー・タイ）／留学生紹介事業／特定技能外国人材紹介事業／入国後生活サポート事業</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>まずはお気軽にご相談ください</h2>
+  <p>人材採用に関するご相談、留学生の受け入れに関するご相談など、内容にかかわらずお気軽にお問い合わせください。</p>
+  <div class="btns">
+    <a href="https://www.la-la-sofia.com/contact/" class="btn btn-primary">お問い合わせフォームへ</a>
+    <a href="https://www.la-la-sofia.com/" class="btn btn-outline">現在のサイトを見る</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">合同会社LA LA SOFIA</div>
+      <p>千葉県船橋市栄町1-21-10-2<br>外国人材紹介・生活サポート事業</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#service">サービス</a></li>
+      <li><a href="#voice">お客様の声</a></li>
+      <li><a href="recruit.html">採用情報</a></li>
+      <li><a href="https://www.la-la-sofia.com/contact/">お問い合わせ</a></li>
+    </ul>
+  </div>
+  <p class="copyright">©合同会社LA LA SOFIA All rights reserved.</p>
+</footer>
+
+</body>
+</html>

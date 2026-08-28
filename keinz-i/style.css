@@ -1,0 +1,136 @@
+/* keinz-i — 税理士法人ケインズアイ LP
+   A案 t-a: 信頼・王道（ネイビー×アイボリー×ゴールド）
+   B案 t-b: ビジュアル主役（全面navy×ゴールド）
+   C案 t-c: オファー獲得（ダーク×ゴールド）
+   採用 t-r: 採用LP */
+
+/* ===== リセット・基盤 ===== */
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{max-width:100%;overflow-x:hidden;}
+img{max-width:100%;height:auto;display:block;}
+
+:root{
+  --navy:#0d2349;
+  --navy-mid:#1a3660;
+  --navy-light:#e8eef8;
+  --gold:#b8912a;
+  --gold-lt:#d4aa44;
+  --bg:#f4f6fb;
+  --white:#fff;
+  --text:#1a1a2e;
+  --sub:#5a6480;
+  --line:#d8dce8;
+}
+
+body{font-family:'Noto Serif JP',serif;color:var(--text);background:var(--bg);line-height:1.75;}
+a{text-decoration:none;color:inherit;}
+
+/* ===== ヘッダー ===== */
+.site-header{
+  position:sticky;top:0;z-index:100;
+  background:rgba(13,35,73,.96);backdrop-filter:blur(6px);
+  padding:.65rem 1.4rem;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo{color:#fff;font-weight:700;font-size:.92rem;line-height:1.3;}
+.logo span{display:block;font-size:.66rem;font-weight:400;opacity:.7;font-family:'Noto Sans JP',sans-serif;}
+.site-nav{display:flex;gap:1.4rem;align-items:center;}
+.site-nav a{color:rgba(255,255,255,.82);font-size:.8rem;font-family:'Noto Sans JP',sans-serif;transition:color .15s;}
+.site-nav a:hover{color:#fff;}
+.nav-cta{background:var(--gold);color:#fff !important;padding:.38rem .9rem;border-radius:4px;font-weight:700;}
+.hamburger{display:none;background:none;border:0;color:#fff;font-size:1.55rem;cursor:pointer;padding:.2rem .3rem;line-height:1;}
+
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{display:none;flex-direction:column;gap:0;position:absolute;top:100%;left:0;right:0;
+    z-index:50;background:var(--navy);box-shadow:0 8px 20px rgba(0,0,0,.2);padding:.5rem 1.2rem;}
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.65rem 0;border-bottom:1px solid rgba(255,255,255,.1);width:100%;}
+  .nav-cta{margin:.5rem 0;text-align:center;padding:.5rem;}
+}
+
+/* ===== ボタン（btn-primary / btn-outline / btn-green 共通ルール） ===== */
+.btn-primary,.btn-outline,.btn-green{
+  display:inline-block;
+  font-family:'Noto Sans JP',sans-serif;font-weight:700;font-size:1rem;
+  border-radius:6px;padding:.85rem 2rem;
+  transition:background .2s,color .2s,border-color .2s;
+  cursor:pointer;text-align:center;line-height:1.4;
+}
+.btn-primary{background:var(--gold);color:#fff;border:2px solid var(--gold);}
+.btn-primary:hover{background:var(--gold-lt);border-color:var(--gold-lt);}
+.btn-outline{background:transparent;color:var(--navy);border:2px solid var(--navy);}
+.btn-outline:hover{background:var(--navy);color:#fff;}
+.btn-green{background:#2a8a4a;color:#fff;border:2px solid #2a8a4a;}
+.btn-green:hover{background:#1e6e3a;border-color:#1e6e3a;}
+
+/* ===== セクション共通 ===== */
+.section{padding:4rem 1.4rem;}
+.section-inner{max-width:900px;margin:0 auto;}
+.section-title{font-size:clamp(1.35rem,3.8vw,2rem);color:var(--navy);text-align:center;margin-bottom:2.5rem;line-height:1.45;}
+.section-title .accent{color:var(--gold);}
+
+/* ===== カード ===== */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;}
+.card{background:#fff;border-radius:10px;padding:1.6rem;box-shadow:0 2px 12px rgba(0,0,0,.07);}
+.card-icon{width:42px;height:42px;margin-bottom:.9rem;}
+.card-title{font-size:.95rem;font-weight:700;color:var(--navy);margin-bottom:.5rem;line-height:1.4;}
+.card-body{font-size:.86rem;color:var(--sub);line-height:1.65;}
+@media(max-width:768px){.cards{grid-template-columns:1fr;}}
+
+/* ===== 実績バー ===== */
+.stats{display:flex;gap:2.5rem;justify-content:center;flex-wrap:wrap;padding:1.5rem 0;}
+.stat-item{text-align:center;}
+.stat-num{font-size:clamp(1.7rem,5.5vw,2.6rem);font-weight:700;color:var(--navy);line-height:1.1;}
+.stat-num .accent{color:var(--gold);}
+.stat-label{font-size:.75rem;color:var(--sub);font-family:'Noto Sans JP',sans-serif;margin-top:.3rem;}
+
+/* ===== ステップ ===== */
+.steps{counter-reset:step;display:flex;flex-direction:column;gap:1.1rem;max-width:660px;margin:0 auto;}
+.step{display:flex;gap:1rem;align-items:flex-start;background:#fff;border-radius:10px;
+  padding:1.2rem 1.4rem;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+.step::before{
+  counter-increment:step;content:counter(step);
+  min-width:2rem;height:2rem;border-radius:50%;
+  background:var(--gold);color:#fff;font-weight:700;font-size:.85rem;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:.1rem;
+}
+.step-body{font-size:.9rem;line-height:1.65;}
+.step-body strong{color:var(--navy);display:block;margin-bottom:.25rem;}
+
+/* ===== FAQ ===== */
+.faq{display:flex;flex-direction:column;gap:1rem;max-width:760px;margin:0 auto;}
+.faq-item{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.06);}
+.faq-q{display:flex;gap:.75rem;align-items:flex-start;padding:1.1rem 1.3rem;font-weight:700;color:var(--navy);line-height:1.5;}
+.faq-q::before{content:"Q";background:var(--navy);color:#fff;font-size:.76rem;padding:.12rem .42rem;
+  border-radius:3px;flex-shrink:0;margin-top:.18rem;font-family:'Noto Sans JP',sans-serif;}
+.faq-a{padding:.9rem 1.3rem;font-size:.86rem;color:var(--sub);border-top:1px solid var(--line);line-height:1.7;}
+.faq-a::before{content:"A ｜ ";}
+
+/* ===== テーブル（スマホで縦積み） ===== */
+.info-table{width:100%;border-collapse:collapse;}
+.info-table th,.info-table td{padding:.75rem 1rem;border:1px solid var(--line);text-align:left;font-size:.86rem;line-height:1.6;}
+.info-table th{background:var(--navy-light);color:var(--navy);font-weight:700;width:32%;font-family:'Noto Sans JP',sans-serif;}
+@media(max-width:768px){
+  .info-table,.info-table tbody,.info-table tr,.info-table th,.info-table td{display:block;width:100%;}
+  .info-table th{border-bottom:0;padding-bottom:.35rem;}
+  .info-table td{padding-top:.35rem;border-top:0;}
+  .info-table tr+tr{margin-top:.6rem;}
+}
+
+/* ===== 追従CTA（スマホのみ） ===== */
+.floating-cta{
+  position:fixed;left:50%;bottom:12px;transform:translateX(-50%);
+  z-index:50;padding:.85rem 1.8rem;border-radius:999px;
+  background:var(--gold);color:#fff;font-weight:700;font-size:.9rem;
+  box-shadow:0 6px 20px rgba(0,0,0,.25);font-family:'Noto Sans JP',sans-serif;white-space:nowrap;
+}
+.floating-cta:hover{background:var(--gold-lt);}
+@media(min-width:769px){.floating-cta{display:none;}}
+
+/* ===== フッター ===== */
+.site-footer{
+  background:var(--navy);color:rgba(255,255,255,.7);text-align:center;
+  padding:2rem 1.4rem;font-size:.78rem;font-family:'Noto Sans JP',sans-serif;line-height:1.8;
+}
+.site-footer strong{color:#fff;}

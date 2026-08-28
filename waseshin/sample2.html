@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>早稲田進学ゼミナール｜生徒2人にひとりの先生。1対2個別指導</title>
+<style>
+  :root{
+    --main:#2456A8;
+    --main-dark:#12305F;
+    --accent:#E8483A;
+    --accent-light:#FFECEA;
+    --sunny:#FFC93C;
+    --blue-light:#EFF5FF;
+    --text:#2B2B2E;
+    --sub:#6E7480;
+    --bg:#FFFDF9;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Hiragino Maru Gothic ProN","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.85;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1100px;margin:0 auto;padding:0 24px;}
+  .section{padding:84px 0;}
+  .section-title{display:inline-block;font-size:13px;letter-spacing:0.15em;color:#fff;background:var(--accent);font-weight:700;text-align:center;margin-bottom:16px;padding:5px 16px;border-radius:20px;}
+  .title-wrap{text-align:center;margin-bottom:48px;}
+  .section-heading{font-size:29px;font-weight:800;text-align:center;margin-bottom:14px;letter-spacing:0.02em;color:var(--main-dark);}
+  .section-lead{text-align:center;color:var(--sub);max-width:640px;margin:0 auto;font-size:15px;}
+
+  header{position:sticky;top:0;z-index:100;background:rgba(255,253,249,0.97);border-bottom:2px solid var(--sunny);}
+  .header-inner{max-width:1100px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-size:18px;font-weight:800;color:var(--main-dark);}
+  .logo span{color:var(--accent);}
+  nav ul{display:flex;gap:22px;list-style:none;}
+  nav a{font-size:13.5px;font-weight:700;white-space:nowrap;}
+  nav a:hover{color:var(--accent);}
+  .header-cta{display:flex;gap:10px;flex-shrink:0;}
+  .btn{display:inline-block;padding:13px 26px;border-radius:30px;font-size:14px;font-weight:800;text-align:center;}
+  .btn-primary{background:var(--accent);color:#fff;box-shadow:0 6px 16px rgba(232,72,58,0.3);}
+  .btn-primary:hover{background:#cf3a2d;}
+  .btn-outline{border:2px solid var(--main);color:var(--main);}
+  .btn-outline:hover{background:var(--blue-light);}
+  .btn-small{padding:9px 18px;font-size:12.5px;}
+  .menu-toggle{display:none;font-size:26px;background:none;border:none;cursor:pointer;color:var(--main-dark);}
+
+  /* Hero */
+  .hero{padding:64px 0 76px;background:linear-gradient(180deg,var(--blue-light),var(--bg));}
+  .hero-flex{display:flex;align-items:center;gap:48px;}
+  .hero-text{flex:1;}
+  .hero-tag{display:inline-flex;align-items:center;gap:6px;background:var(--sunny);color:var(--main-dark);padding:7px 18px;border-radius:20px;font-size:13px;font-weight:800;margin-bottom:22px;}
+  .hero h1{font-size:33px;font-weight:800;line-height:1.65;margin-bottom:20px;color:var(--main-dark);}
+  .hero h1 em{font-style:normal;color:var(--accent);}
+  .hero p{font-size:15px;color:var(--sub);max-width:480px;margin-bottom:32px;}
+  .hero-btns{display:flex;gap:14px;flex-wrap:wrap;}
+  .hero-img{flex:1;position:relative;}
+  .hero-img img{width:100%;height:400px;object-fit:cover;border-radius:24px;box-shadow:0 20px 40px rgba(18,48,95,0.18);}
+  .hero-badge{position:absolute;bottom:-18px;left:-18px;background:#fff;border-radius:16px;padding:16px 22px;box-shadow:0 10px 26px rgba(0,0,0,0.12);}
+  .hero-badge .n{font-size:22px;font-weight:800;color:var(--accent);}
+  .hero-badge .l{font-size:11.5px;color:var(--sub);}
+
+  /* worry - sticky notes style */
+  .worry-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+  .worry-note{background:#fff;border-radius:16px;padding:24px 22px;box-shadow:0 8px 20px rgba(18,48,95,0.06);border-top:4px solid var(--accent);font-size:14px;}
+  .worry-note .mark{font-size:22px;margin-bottom:10px;}
+
+  /* Features - icon rows */
+  .feature-list{display:flex;flex-direction:column;gap:0;max-width:820px;margin:0 auto;}
+  .feature-row{display:flex;gap:28px;align-items:flex-start;padding:30px 0;border-bottom:1px dashed #d8dfe8;}
+  .feature-row:last-child{border-bottom:none;}
+  .feature-icon{flex-shrink:0;width:60px;height:60px;border-radius:50%;background:var(--blue-light);display:flex;align-items:center;justify-content:center;font-size:26px;font-weight:800;color:var(--main);}
+  .feature-body h3{font-size:17px;font-weight:800;color:var(--main-dark);margin-bottom:8px;}
+  .feature-body p{font-size:13.5px;color:var(--sub);}
+
+  /* Schools - pill cards */
+  .school-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
+  .school-pill{background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 8px 22px rgba(18,48,95,0.08);}
+  .school-pill img{width:100%;height:160px;object-fit:cover;}
+  .school-pill-body{padding:22px;}
+  .school-pill .pin{display:inline-block;background:var(--accent-light);color:var(--accent);font-size:11.5px;font-weight:800;padding:4px 12px;border-radius:12px;margin-bottom:10px;}
+  .school-pill h3{font-size:16.5px;font-weight:800;color:var(--main-dark);margin-bottom:8px;}
+  .school-pill p{font-size:13px;color:var(--sub);}
+
+  /* Overseas card */
+  .overseas-card{background:linear-gradient(135deg,var(--main),var(--main-dark));border-radius:24px;padding:44px;color:#fff;display:flex;gap:40px;align-items:center;}
+  .overseas-card img{width:280px;height:210px;object-fit:cover;border-radius:16px;flex-shrink:0;}
+  .overseas-card .tag{display:inline-block;background:var(--sunny);color:var(--main-dark);padding:5px 14px;border-radius:14px;font-size:12px;font-weight:800;margin-bottom:16px;}
+  .overseas-card h3{font-size:21px;font-weight:800;margin-bottom:14px;}
+  .overseas-card p{font-size:13.5px;opacity:0.95;margin-bottom:8px;}
+
+  /* voice */
+  .voice-scroll{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;}
+  .voice-bubble{background:#fff;border-radius:20px;padding:26px 24px;box-shadow:0 8px 20px rgba(18,48,95,0.06);position:relative;}
+  .voice-bubble .stars{color:var(--sunny);font-size:14px;margin-bottom:10px;}
+  .voice-bubble p{font-size:13.5px;color:var(--text);margin-bottom:14px;}
+  .voice-who{font-size:12px;color:var(--sub);font-weight:700;}
+
+  /* company */
+  .company-table{width:100%;border-collapse:separate;border-spacing:0 10px;max-width:760px;margin:0 auto;}
+  .company-table th,.company-table td{padding:16px 24px;text-align:left;font-size:14px;background:#fff;}
+  .company-table th{width:150px;color:var(--main-dark);font-weight:800;border-radius:10px 0 0 10px;}
+  .company-table td{border-radius:0 10px 10px 0;color:var(--sub);}
+
+  .cta{background:var(--main-dark);color:#fff;text-align:center;padding:76px 24px;border-radius:0;position:relative;overflow:hidden;}
+  .cta h2{font-size:26px;font-weight:800;margin-bottom:16px;}
+  .cta p{color:#cbd6dd;margin-bottom:32px;}
+  .cta .btns{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+  .cta .btn-outline{border-color:#fff;color:#fff;}
+
+  footer{background:#12305F;color:#c6d0d5;padding:44px 24px 22px;font-size:13px;}
+  .footer-inner{max-width:1100px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .footer-logo{font-size:17px;font-weight:800;color:#fff;margin-bottom:10px;}
+  .footer-links{display:flex;gap:22px;list-style:none;flex-wrap:wrap;}
+  .copyright{text-align:center;margin-top:28px;color:#8b96a3;}
+
+  @media (max-width:900px){
+    .hero-flex{flex-direction:column;}
+    .hero-img{width:100%;}
+    .worry-grid{grid-template-columns:1fr 1fr;}
+    .school-strip{grid-template-columns:1fr;}
+    .overseas-card{flex-direction:column;}
+    .overseas-card img{width:100%;height:220px;}
+    .voice-scroll{grid-template-columns:1fr;}
+  }
+  @media (max-width:700px){
+    nav,.header-cta{display:none;}
+    .menu-toggle{display:block;}
+    .hero h1{font-size:24px;}
+    .section{padding:56px 0;}
+    .worry-grid{grid-template-columns:1fr;}
+    .feature-row{flex-direction:column;gap:14px;}
+    .company-table th{width:auto;display:block;padding-bottom:4px;font-size:12.5px;}
+    .company-table td{display:block;border-radius:10px;margin-bottom:4px;}
+    .hero-badge{position:static;margin-top:16px;display:inline-block;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">早稲田進学<span>ゼミ</span></div>
+    <nav><ul>
+      <li><a href="#feature">特徴</a></li>
+      <li><a href="#schools">教室</a></li>
+      <li><a href="#overseas">ハノイ校</a></li>
+      <li><a href="#voice">声</a></li>
+    </ul></nav>
+    <div class="header-cta">
+      <a href="recruit.html" class="btn btn-outline btn-small">採用情報</a>
+      <a href="https://www.waseshin.jp/contact/" class="btn btn-primary btn-small">体験申込み</a>
+    </div>
+    <button class="menu-toggle">≡</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-flex">
+    <div class="hero-text">
+      <span class="hero-tag">👦👧 生徒2人にひとりの先生</span>
+      <h1>「わかった！」の顔が見たいから、<br><em>1対2</em>の個別指導にこだわる。</h1>
+      <p>早稲田進学ゼミナールは、南船橋・イオン長沼・イオンおゆみ野の3教室と、海外のハノイ校で1対2の個別指導を行っている学習塾です。ひとりで悩ませない距離感で、勉強を「できる」に変えていきます。</p>
+      <div class="hero-btns">
+        <a href="https://www.waseshin.jp/contact/" class="btn btn-primary">無料体験を予約する</a>
+        <a href="#schools" class="btn btn-outline">教室を見てみる</a>
+      </div>
+    </div>
+    <div class="hero-img">
+      <img src="https://loremflickr.com/700/560/student,study,smile" alt="生徒と講師">
+      <div class="hero-badge"><div class="n">1：2</div><div class="l">講師と生徒の比率</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="title-wrap">
+      <span class="section-title">こんなことで悩んでいませんか？</span>
+      <h2 class="section-heading">よくあるお悩み</h2>
+    </div>
+    <div class="worry-grid">
+      <div class="worry-note"><div class="mark">🙋</div>集団授業だと質問するタイミングを逃してしまう</div>
+      <div class="worry-note"><div class="mark">📚</div>周りのペースに合わせて苦手が積み重なっている</div>
+      <div class="worry-note"><div class="mark">💸</div>個別指導は費用が高くて続けられるか不安</div>
+      <div class="worry-note"><div class="mark">⏰</div>家庭学習の習慣がなかなか身につかない</div>
+      <div class="worry-note"><div class="mark">🎯</div>志望校対策で何を優先すべきか分からない</div>
+      <div class="worry-note"><div class="mark">🤝</div>子どもに合う先生と長く続けられるか心配</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="feature" style="background:var(--blue-light);">
+  <div class="container">
+    <div class="title-wrap">
+      <span class="section-title">早稲田進学ゼミナールの特徴</span>
+      <h2 class="section-heading">選ばれる3つの理由</h2>
+    </div>
+    <div class="feature-list">
+      <div class="feature-row">
+        <div class="feature-icon">1</div>
+        <div class="feature-body">
+          <h3>ちょうどいい距離感の1対2指導</h3>
+          <p>先生1人に生徒2人。1対1ほど緊張せず、集団授業のように埋もれることもない、ちょうどいい距離感で質問しやすい環境をつくっています。</p>
+        </div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-icon">2</div>
+        <div class="feature-body">
+          <h3>千葉県内3教室、通いやすさもポイント</h3>
+          <p>南船橋校・イオン長沼校・イオンおゆみ野校。イオン内の教室はお買い物ついでの送迎もしやすく、忙しいご家庭にも好評です。</p>
+        </div>
+      </div>
+      <div class="feature-row">
+        <div class="feature-icon">🌏</div>
+        <div class="feature-body">
+          <h3>海外赴任でも安心のハノイ校</h3>
+          <p>海外赴任・帯同が決まっても、ハノイ校で同じスタイルの授業を継続できます。帰国後の学習ブランクの不安を減らします。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="schools">
+  <div class="container">
+    <div class="title-wrap">
+      <span class="section-title">SCHOOLS</span>
+      <h2 class="section-heading">教室案内</h2>
+    </div>
+    <div class="school-strip">
+      <div class="school-pill">
+        <img src="https://loremflickr.com/460/320/tutor,desk,japan" alt="南船橋校">
+        <div class="school-pill-body">
+          <span class="pin">📍南船橋</span>
+          <h3>南船橋校</h3>
+          <p>本部教室。小学生から高校生まで幅広く対応し、地域密着で長く通っていただいています。</p>
+        </div>
+      </div>
+      <div class="school-pill">
+        <img src="https://loremflickr.com/460/320/classroom,child,learning" alt="イオン長沼校">
+        <div class="school-pill-body">
+          <span class="pin">📍イオン長沼</span>
+          <h3>イオン長沼校</h3>
+          <p>イオン長沼内の教室。お買い物のついでに送迎がしやすいと保護者様にご好評です。</p>
+        </div>
+      </div>
+      <div class="school-pill">
+        <img src="https://loremflickr.com/460/320/library,teen,homework" alt="イオンおゆみ野校">
+        <div class="school-pill-body">
+          <span class="pin">📍イオンおゆみ野</span>
+          <h3>イオンおゆみ野校</h3>
+          <p>落ち着いた学習環境で、中学受験から定期テスト対策まで対応しています。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="overseas" style="background:var(--blue-light);">
+  <div class="container">
+    <div class="title-wrap">
+      <span class="section-title">HANOI SCHOOL</span>
+      <h2 class="section-heading">海外校について</h2>
+    </div>
+    <div class="overseas-card">
+      <img src="https://loremflickr.com/560/440/vietnam,hanoi,street" alt="ハノイ校">
+      <div>
+        <span class="tag">🇻🇳 ベトナム・ハノイ</span>
+        <h3>海外に引っ越しても、同じ先生・同じスタイルで学べる</h3>
+        <p>海外赴任・海外帯同で日本を離れるお子様のために、ハノイに教室を設けています。日本の教育カリキュラムに沿った1対2指導を、そのまま海外でも受けられます。</p>
+        <p>帰国子女入試・編入試験を見据えた対策にも対応しているので、「帰国後についていけるか」という心配を減らせます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="voice">
+  <div class="container">
+    <div class="title-wrap">
+      <span class="section-title">VOICE</span>
+      <h2 class="section-heading">保護者の声</h2>
+    </div>
+    <div class="voice-scroll">
+      <div class="voice-bubble">
+        <div class="stars">★★★★★</div>
+        <p>集団塾では質問できずにいた息子が、「わからないところをその場で聞ける」と話すようになりました。理解できた実感が自信につながっているようです。</p>
+        <div class="voice-who">南船橋校／中2 保護者様</div>
+      </div>
+      <div class="voice-bubble">
+        <div class="stars">★★★★★</div>
+        <p>イオン長沼校は買い物のついでに送迎ができて本当に助かっています。授業の様子を毎回細かく共有してもらえるのも安心です。</p>
+        <div class="voice-who">イオン長沼校／小6 保護者様</div>
+      </div>
+      <div class="voice-bubble">
+        <div class="stars">★★★★★</div>
+        <p>夫の海外赴任でハノイへ。同じスタイルの授業を続けられたおかげで、帰国後の学習ブランクを心配せずに済みました。</p>
+        <div class="voice-who">ハノイ校／中3 保護者様</div>
+      </div>
+      <div class="voice-bubble">
+        <div class="stars">★★★★★</div>
+        <p>おゆみ野校は教室が静かで集中しやすい環境。娘に合わせてカリキュラムを組んでもらえて、無理なく成績が上がってきました。</p>
+        <div class="voice-who">イオンおゆみ野校／高1 保護者様</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--blue-light);">
+  <div class="container">
+    <div class="title-wrap">
+      <span class="section-title">COMPANY</span>
+      <h2 class="section-heading">会社概要</h2>
+    </div>
+    <table class="company-table">
+      <tr><th>塾名</th><td>早稲田進学ゼミナール</td></tr>
+      <tr><th>指導形式</th><td>個別指導（講師1人：生徒2人）</td></tr>
+      <tr><th>対応学年</th><td>小学生・中学生・高校生</td></tr>
+      <tr><th>教室</th><td>南船橋校／イオン長沼校／イオンおゆみ野校（千葉県）／ハノイ校（ベトナム）</td></tr>
+      <tr><th>お問い合わせ</th><td>お問い合わせフォームより承っております</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2>まずは無料体験授業から</h2>
+  <p>「わかった！」の顔が見られるように。お気軽にお問い合わせください。</p>
+  <div class="btns">
+    <a href="https://www.waseshin.jp/contact/" class="btn btn-primary">お問い合わせフォームへ</a>
+    <a href="https://www.waseshin.jp/" class="btn btn-outline">現在のサイトを見る</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">早稲田進学ゼミナール</div>
+      <p>千葉県内3教室（南船橋・イオン長沼・イオンおゆみ野）＋海外ハノイ校<br>1対2の個別指導学習塾</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#schools">教室案内</a></li>
+      <li><a href="#voice">保護者の声</a></li>
+      <li><a href="recruit.html">採用情報</a></li>
+      <li><a href="https://www.waseshin.jp/contact/">お問い合わせ</a></li>
+    </ul>
+  </div>
+  <p class="copyright">©早稲田進学ゼミナール All rights reserved.</p>
+</footer>
+
+</body>
+</html>

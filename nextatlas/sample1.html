@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>株式会社NextAtlas（ネクストアトラス）｜採用とデジタル戦略のパートナー</title>
+<style>
+  :root{
+    --main:#1B3A6B;
+    --main-dark:#10233F;
+    --accent:#2FBF9F;
+    --accent-light:#E4F7F1;
+    --text:#26272B;
+    --sub:#6B7280;
+    --bg:#FAFBFC;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;
+    color:var(--text);
+    background:var(--bg);
+    line-height:1.8;
+  }
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .section{padding:88px 0;}
+  .section-title{font-size:14px;letter-spacing:0.2em;color:var(--accent);font-weight:700;text-align:center;margin-bottom:12px;}
+  .section-heading{font-size:30px;font-weight:700;text-align:center;margin-bottom:16px;letter-spacing:0.03em;color:var(--main-dark);}
+  .section-lead{text-align:center;color:var(--sub);max-width:640px;margin:0 auto 56px;font-size:15px;}
+
+  header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.96);border-bottom:1px solid #eee;backdrop-filter:blur(6px);}
+  .header-inner{max-width:1080px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-size:19px;font-weight:800;color:var(--main-dark);letter-spacing:0.02em;}
+  .logo span{color:var(--accent);}
+  nav ul{display:flex;gap:28px;list-style:none;}
+  nav a{font-size:14px;font-weight:600;}
+  nav a:hover{color:var(--main);}
+  .header-cta{display:flex;gap:10px;}
+  .btn{display:inline-block;padding:12px 28px;border-radius:4px;font-size:14px;font-weight:700;text-align:center;}
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-primary:hover{background:#25a884;}
+  .btn-outline{border:1px solid var(--main);color:var(--main);}
+  .btn-outline:hover{background:var(--accent-light);}
+  .btn-small{padding:9px 18px;font-size:13px;}
+  .menu-toggle{display:none;font-size:26px;background:none;border:none;cursor:pointer;color:var(--main-dark);}
+
+  /* Hero */
+  /* 元画像URL：現サイトTOPメインビジュアル（未取得・自社写真への差し替え前提） / images/hero-main.jpg */
+  .hero{
+    position:relative;min-height:620px;display:flex;align-items:center;
+    background:linear-gradient(120deg, rgba(16,35,63,0.90), rgba(27,58,107,0.74)), url('https://loremflickr.com/1600/900/office,team,meeting') center/cover no-repeat;
+    color:#fff;
+  }
+  .hero-inner{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .hero-tag{display:inline-block;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.5);padding:6px 16px;border-radius:20px;font-size:13px;font-weight:600;letter-spacing:0.05em;margin-bottom:24px;}
+  .hero h1{font-size:36px;font-weight:800;line-height:1.55;margin-bottom:22px;max-width:680px;}
+  .hero p{font-size:15.5px;max-width:580px;margin-bottom:36px;opacity:0.95;}
+  .hero-btns{display:flex;gap:16px;flex-wrap:wrap;}
+  .hero .btn-outline{border-color:#fff;color:#fff;}
+  .hero .btn-outline:hover{background:rgba(255,255,255,0.15);}
+
+  /* Worry list */
+  .worry-band{background:var(--main-dark);color:#fff;padding:56px 0;}
+  .worry-band .section-heading{color:#fff;}
+  .worry-list{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:36px;}
+  .worry-item{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.18);border-radius:8px;padding:18px 20px;font-size:14px;display:flex;gap:10px;align-items:flex-start;}
+  .worry-item::before{content:"!";flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;font-size:13px;display:flex;align-items:center;justify-content:center;}
+
+  /* Strengths */
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .card{background:var(--white);border:1px solid #ececec;border-radius:10px;padding:32px 24px;transition:transform .2s, box-shadow .2s;}
+  .card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(0,0,0,0.08);}
+  .card-num{font-size:13px;color:var(--accent);font-weight:800;letter-spacing:0.1em;margin-bottom:14px;}
+  .card h3{font-size:17px;font-weight:700;margin-bottom:12px;color:var(--main-dark);}
+  .card p{font-size:13.5px;color:var(--sub);}
+
+  /* Service (large 2-card) */
+  .service-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .service-card2{background:var(--white);border:1px solid #ececec;border-radius:10px;overflow:hidden;}
+  .service-card2 img{width:100%;height:190px;object-fit:cover;}
+  .service-card2-body{padding:26px 26px 30px;}
+  .service-no{font-size:12px;color:var(--accent);font-weight:800;letter-spacing:0.1em;}
+  .service-card2-body h3{font-size:18px;font-weight:700;margin:8px 0 12px;color:var(--main-dark);}
+  .service-card2-body p{font-size:13.5px;color:var(--sub);margin-bottom:14px;}
+  .service-card2-body ul{list-style:none;font-size:13px;color:var(--main-dark);}
+  .service-card2-body li{padding:6px 0;border-top:1px solid #f0f0f0;}
+  .service-card2-body li::before{content:"― ";color:var(--accent);font-weight:700;}
+
+  /* Product */
+  .product-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .product-card{background:var(--white);border:1px solid #ececec;border-radius:10px;overflow:hidden;}
+  .product-card img{width:100%;height:170px;object-fit:cover;}
+  .product-card-body{padding:22px 22px 26px;}
+  .product-card-body h3{font-size:17px;font-weight:700;margin:4px 0 10px;color:var(--main-dark);}
+  .product-card-body p{font-size:13.5px;color:var(--sub);margin-bottom:12px;}
+  .product-card-body ul{list-style:none;font-size:13px;color:var(--main-dark);}
+  .product-card-body li{padding:5px 0;}
+  .product-card-body li::before{content:"✓ ";color:var(--accent);font-weight:700;}
+
+  /* Audience */
+  .audience{display:grid;grid-template-columns:1fr 1fr;gap:24px;}
+  .audience-card{border-radius:12px;padding:36px 32px;color:#fff;position:relative;overflow:hidden;}
+  .audience-card.company{background:linear-gradient(135deg,var(--main),var(--main-dark));}
+  .audience-card.juku{background:linear-gradient(135deg,var(--accent),#1f8f74);}
+  .audience-card p.tag{font-size:12px;letter-spacing:0.15em;opacity:0.85;margin-bottom:10px;}
+  .audience-card h3{font-size:20px;font-weight:800;margin-bottom:14px;}
+  .audience-card p.desc{font-size:13.5px;opacity:0.95;margin-bottom:22px;}
+
+  /* Flow */
+  .flow-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;}
+  .flow-item{background:var(--white);border:1px solid #ececec;border-radius:10px;padding:22px 18px;position:relative;}
+  .flow-num{width:34px;height:34px;border-radius:50%;background:var(--main);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;margin-bottom:12px;}
+  .flow-item h3{font-size:14px;font-weight:700;margin-bottom:6px;color:var(--main-dark);}
+  .flow-item p{font-size:12px;color:var(--sub);}
+
+  /* Support */
+  .support-box{display:flex;gap:40px;align-items:center;background:var(--white);border:1px solid #ececec;border-radius:12px;padding:36px;}
+  .support-box img{width:38%;height:240px;object-fit:cover;border-radius:8px;flex-shrink:0;}
+  .support-body h3{font-size:19px;font-weight:800;color:var(--main-dark);margin-bottom:14px;}
+  .support-body p{font-size:13.5px;color:var(--sub);margin-bottom:8px;}
+
+  /* FAQ */
+  .faq-list{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:14px;}
+  .faq-item{background:var(--white);border:1px solid #ececec;border-radius:10px;padding:22px 26px;}
+  .faq-q{font-size:15px;font-weight:700;color:var(--main-dark);display:flex;gap:10px;margin-bottom:8px;}
+  .faq-q span{color:var(--accent);}
+  .faq-a{font-size:13.5px;color:var(--sub);display:flex;gap:10px;}
+  .faq-a span{color:var(--main);font-weight:700;}
+
+  /* Company */
+  .company-table{width:100%;border-collapse:collapse;max-width:760px;margin:0 auto;background:#fff;border-radius:10px;overflow:hidden;border:1px solid #ececec;}
+  .company-table th,.company-table td{padding:18px 24px;text-align:left;font-size:14.5px;border-bottom:1px solid #eee;}
+  .company-table th{width:160px;background:var(--accent-light);color:var(--main-dark);font-weight:700;}
+  .company-table tr:last-child th,.company-table tr:last-child td{border-bottom:none;}
+
+  /* CTA */
+  .cta{background:var(--main-dark);color:#fff;text-align:center;padding:80px 24px;}
+  .cta h2{font-size:26px;font-weight:800;margin-bottom:16px;}
+  .cta p{color:#cbd6dd;margin-bottom:32px;}
+  .cta .btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .cta .btn-primary{background:var(--accent);color:#fff;}
+  .cta .btn-outline{border-color:#fff;color:#fff;}
+
+  footer{background:#0A1B30;color:#c6d0d5;padding:48px 24px 24px;font-size:13px;}
+  .footer-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .footer-logo{font-size:17px;font-weight:800;color:#fff;margin-bottom:10px;}
+  .footer-links{display:flex;gap:24px;list-style:none;flex-wrap:wrap;}
+  .copyright{text-align:center;margin-top:32px;color:#7c8990;}
+
+  @media (max-width:900px){
+    .cards{grid-template-columns:1fr;}
+    .worry-list{grid-template-columns:1fr 1fr;}
+    .service-grid-2{grid-template-columns:1fr;}
+    .product-grid{grid-template-columns:1fr;}
+    .audience{grid-template-columns:1fr;}
+    .flow-grid{grid-template-columns:1fr 1fr;}
+    .support-box{flex-direction:column;}
+    .support-box img{width:100%;}
+  }
+  @media (max-width:700px){
+    nav,.header-cta{display:none;}
+    .menu-toggle{display:block;}
+    .hero h1{font-size:25px;}
+    .hero{min-height:540px;}
+    .section{padding:60px 0;}
+    .worry-list{grid-template-columns:1fr;}
+    .flow-grid{grid-template-columns:1fr;}
+    .company-table th{width:110px;font-size:13px;padding:14px;}
+    .company-table td{font-size:13px;padding:14px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">Next<span>Atlas</span></div>
+    <nav><ul>
+      <li><a href="#about">当社について</a></li>
+      <li><a href="#service">サービス</a></li>
+      <li><a href="#product">プロダクト</a></li>
+      <li><a href="#company">会社概要</a></li>
+    </ul></nav>
+    <div class="header-cta">
+      <a href="recruit.html" class="btn btn-outline btn-small">採用情報</a>
+      <a href="#contact" class="btn btn-primary btn-small">お問い合わせ</a>
+    </div>
+    <button class="menu-toggle">≡</button>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">採用支援 × デジタルマーケティング</span>
+    <h1>「企業」と共に描く、<br>成長の「未来」。</h1>
+    <p>NextAtlasは、採用力×発信力で企業の未来を支援する、採用とデジタル戦略のパートナーです。地域・業種に特化した求人メディア「JobStage」の運営を通じて、企業の人材確保とブランド強化をサポートします。</p>
+    <div class="hero-btns">
+      <a href="#contact" class="btn btn-primary">お問い合わせはこちら</a>
+      <a href="#service" class="btn btn-outline">サービスを見る</a>
+    </div>
+  </div>
+</section>
+
+<section class="worry-band">
+  <div class="container">
+    <p class="section-title" style="color:var(--accent);">CHECK</p>
+    <h2 class="section-heading">こんなお悩みありませんか？</h2>
+    <div class="worry-list">
+      <div class="worry-item">求人を出しても学生からの応募が集まらない</div>
+      <div class="worry-item">ホームページが古く、会社の魅力が伝わっていない</div>
+      <div class="worry-item">SNSでの情報発信まで手が回っていない</div>
+      <div class="worry-item">学習塾の電話・LINE対応に追われている</div>
+      <div class="worry-item">体験授業や面談の日程調整に時間がかかる</div>
+      <div class="worry-item">採用・広報を任せられる社内リソースがない</div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="about">
+  <div class="container">
+    <p class="section-title">ABOUT US</p>
+    <h2 class="section-heading">NextAtlasが選ばれる理由</h2>
+    <p class="section-lead">NextAtlas（ネクストアトラス）は、採用支援とデジタルマーケティングを専門とする企業です。SNSやWebを活用した情報発信力と、現場目線での丁寧なサポートを強みとしています。</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-num">01</div>
+        <h3>地域・業種特化の求人メディア「JobStage」</h3>
+        <p>業種・エリアに特化した求人掲載とSNS連動による情報拡散、明瞭で低コストな料金体系で、企業と大学生求職者を最適につなぎます。</p>
+      </div>
+      <div class="card">
+        <div class="card-num">02</div>
+        <h3>SNSを活用した情報発信力</h3>
+        <p>Instagram・TikTokなど各種SNSと連動した情報拡散により、従来の検索型求人サイトではリーチできなかった層にもアプローチします。</p>
+      </div>
+      <div class="card">
+        <div class="card-num">03</div>
+        <h3>現場目線の丁寧なサポート</h3>
+        <p>Web制作・採用支援から学習塾向けの教育DXまで、企業や教育機関一社一社の「未来の地図」を共に描くパートナーでありたいと考えています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="service" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">SERVICE</p>
+    <h2 class="section-heading">サービス</h2>
+    <p class="section-lead">企業や教育機関の目的に合わせて、Web制作からデジタル戦略、教育現場のDX支援まで幅広くご提案します。</p>
+    <div class="service-grid-2">
+      <div class="service-card2">
+        <img src="https://loremflickr.com/560/380/laptop,website,design" alt="Web制作／デジタル戦略">
+        <!-- 元画像URL：現サイト該当写真なし（未取得・自社写真への差し替え前提） / images/service-web.jpg -->
+        <div class="service-card2-body">
+          <div class="service-no">01 ／ WEB制作・デジタル戦略</div>
+          <h3>Web制作 / デジタル戦略</h3>
+          <p>企業や教育機関の目的に合わせたホームページ・LPを企画・設計・制作。単なる制作にとどまらず、採用・集客・ブランディングまでを見据えた戦略的なWeb構築を行います。</p>
+          <ul>
+            <li>コーポレートサイト制作</li>
+            <li>採用LP・集客LP制作</li>
+            <li>UI/UX設計・改善</li>
+            <li>運用・改善支援</li>
+          </ul>
+        </div>
+      </div>
+      <div class="service-card2">
+        <img src="https://loremflickr.com/560/380/smartphone,chat,app" alt="教育DXソリューション">
+        <!-- 元画像URL：現サイト該当写真なし（未取得・自社写真への差し替え前提） / images/service-edudx.jpg -->
+        <div class="service-card2-body">
+          <div class="service-no">02 ／ 教育DXソリューション</div>
+          <h3>教育DXソリューション（学習塾向け）</h3>
+          <p>学習塾へのお問い合わせ対応や、体験授業・初回面談の日程調整を公式LINEと予約システムでまとめて自動化。電話対応の削減、LINE対応の属人化防止、予約ミスの防止を実現します。</p>
+          <ul>
+            <li>公式LINEアカウント初期設定</li>
+            <li>自動応答メッセージ作成</li>
+            <li>予約システムの導入・連携</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="product">
+  <div class="container">
+    <p class="section-title">PRODUCT</p>
+    <h2 class="section-heading">プロダクト</h2>
+    <p class="section-lead">自社開発のプラットフォームで、求人・学習支援それぞれの課題を解決します。</p>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="https://loremflickr.com/560/360/university,student,campus" alt="JobStage">
+        <!-- 元画像URL：現サイトJobStageサービス紹介画像（未取得） / images/product-jobstage.jpg -->
+        <div class="product-card-body">
+          <h3>JobStage（ジョブステ）｜大学生向け業種・エリア特化型求人サイト</h3>
+          <p>業種・エリア特化型の求人掲載とSNS連動による情報拡散、明瞭で低コストな料金体系により、企業と求職者を最適につなぐ求人プラットフォーム。登録者を大学生に限定し、効率的なマッチングを実現します。</p>
+          <ul>
+            <li>業種・エリア特化型カテゴリー</li>
+            <li>SNS連動による情報拡散</li>
+            <li>月額固定・明瞭な料金体系</li>
+          </ul>
+        </div>
+      </div>
+      <div class="product-card">
+        <img src="https://loremflickr.com/560/360/tutor,classroom,study" alt="Q-Link">
+        <!-- 元画像URL：現サイトQ-Linkサービス紹介画像（未取得） / images/product-qlink.jpg -->
+        <div class="product-card-body">
+          <h3>Q-Link｜学習塾向け質問対応サービス</h3>
+          <p>学習塾向けに設計された質問対応支援サービス。生徒の質問をオンラインで受け付け、学習機会の最大化と指導効率の向上を実現します。</p>
+          <ul>
+            <li>生徒の質問受付・管理</li>
+            <li>指導履歴の可視化</li>
+            <li>学習データの蓄積・分析</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">FOR YOU</p>
+    <h2 class="section-heading">企業のご担当者様・学習塾を経営されている方へ</h2>
+    <div class="audience">
+      <div class="audience-card company">
+        <p class="tag">FOR COMPANY</p>
+        <h3>採用・広報にお悩みの企業様へ</h3>
+        <p class="desc">求人掲載やSNS発信、ホームページのリニューアルまで、採用力と発信力の両面から企業の成長をご支援します。</p>
+        <a href="#contact" class="btn btn-outline" style="border-color:#fff;color:#fff;">相談してみる</a>
+      </div>
+      <div class="audience-card juku">
+        <p class="tag">FOR 学習塾</p>
+        <h3>学習塾を経営されている方へ</h3>
+        <p class="desc">お問い合わせ対応や面談予約の手間を、公式LINEと予約システムで自動化。指導と面談に集中できる環境を整えます。</p>
+        <a href="#contact" class="btn btn-outline" style="border-color:#fff;color:#fff;">相談してみる</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="flow">
+  <div class="container">
+    <p class="section-title">FLOW</p>
+    <h2 class="section-heading">教育DXソリューション導入の流れ</h2>
+    <p class="section-lead">ご契約から最短1週間で運用開始。導入実績：完全予約制数学特化型個別指導塾「個別指導学院マナVIVA」</p>
+    <div class="flow-grid">
+      <div class="flow-item"><div class="flow-num">1</div><h3>お問合せ</h3><p>フォームまたはお電話にてご連絡ください。</p></div>
+      <div class="flow-item"><div class="flow-num">2</div><h3>ヒアリング</h3><p>現在の問い合わせ方法や希望イメージを確認します。</p></div>
+      <div class="flow-item"><div class="flow-num">3</div><h3>設計・設定</h3><p>公式LINEと予約システムの設定・連携を行います。</p></div>
+      <div class="flow-item"><div class="flow-num">4</div><h3>動作確認・微調整</h3><p>実際の予約導線を確認し、必要に応じて修正します。</p></div>
+      <div class="flow-item"><div class="flow-num">5</div><h3>運用開始</h3><p>案内文・運用マニュアルをご提供し、導入後すぐに使えます。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">SUPPORT</p>
+    <h2 class="section-heading">運営協力</h2>
+    <div class="support-box">
+      <img src="https://loremflickr.com/500/480/programming,student,laptop" alt="SEC Tokyo">
+      <!-- 元画像URL：現サイト該当写真なし（未取得） / images/support-sectokyo.jpg -->
+      <div class="support-body">
+        <h3>学生団体「SEC Tokyo」への運営協力</h3>
+        <p>SEC Tokyo（System Engineering Community Tokyo）は、システムエンジニアを志す大学生が主体となり活動する大学間交流型サークルです。</p>
+        <p>当社は次世代エンジニアの育成と産学連携の推進を目的に、教育プログラムの提供・案件の紹介・資金面での協力を行っています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq">
+  <div class="container">
+    <p class="section-title">FAQ</p>
+    <h2 class="section-heading">よくある質問</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q"><span>Q</span>Web制作だけの依頼も可能ですか？</div>
+        <div class="faq-a"><span>A</span>可能です。コーポレートサイトや採用LP・集客LPなど、目的に応じて制作のみのご依頼も承っております。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Q</span>JobStageへの求人掲載は、どのような業種でも可能ですか？</div>
+        <div class="faq-a"><span>A</span>大学生アルバイトの採用を検討している企業様であれば、業種を問わずご相談いただけます。まずはお問い合わせください。</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q"><span>Q</span>教育DXソリューションはどのくらいで導入できますか？</div>
+        <div class="faq-a"><span>A</span>ご契約から最短1週間で運用を開始できます。塾の運営スタイルに合わせてカスタマイズいたします。</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="company" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">COMPANY</p>
+    <h2 class="section-heading">会社概要</h2>
+    <table class="company-table">
+      <tr><th>社名</th><td>株式会社NextAtlas（ネクストアトラス）</td></tr>
+      <tr><th>代表取締役</th><td>CEO　宇賀神 廣<br>COO・CMO　岩本 拓真</td></tr>
+      <tr><th>取締役</th><td>CSO　林 稜太</td></tr>
+      <tr><th>所在地</th><td>〒274-0813　千葉県船橋市南三咲2-5-3-101</td></tr>
+      <tr><th>事業内容</th><td>大学生向け求人サイト「JobStage」の企画・開発・運営／求人掲載代行・コンテンツ制作支援／求職者と企業のマッチング支援／SNSマーケティングの企画・運用代行／採用・企業プロモーション向け動画コンテンツ制作</td></tr>
+      <tr><th>お問い合わせ</th><td>お問い合わせフォーム／nextatlas.info@gmail.com</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2>まずはお気軽にご相談ください</h2>
+  <p>採用・Web制作・教育DXなど、内容にかかわらずお気軽にお問い合わせください。</p>
+  <div class="btns">
+    <a href="https://nextatlas.co.jp/contact/" class="btn btn-primary">お問い合わせフォームへ</a>
+    <a href="https://nextatlas.co.jp/" class="btn btn-outline">現在のサイトを見る</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">株式会社NextAtlas</div>
+      <p>千葉県船橋市南三咲2-5-3-101<br>採用支援・デジタルマーケティング</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#service">サービス</a></li>
+      <li><a href="#product">プロダクト</a></li>
+      <li><a href="recruit.html">採用情報</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </div>
+  <p class="copyright">©株式会社NextAtlas All rights reserved.</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>きららぼ | Webの魔法をかけてあげる</title>
+<meta name="description" content="千葉・船橋のWeb制作・AI活用支援会社「きららぼ」。デザインと生成AIで、あなたのビジネスの未来をともに描きます。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,700;12..96,800&family=Zen+Maru+Gothic:wght@400;500&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* Hallmark · genre: playful · macrostructure: Marquee Hero · theme: Hum (warm cream paper, plum accent, rounded-sans) · enrichment: Tier A CSS art (hand-drawn spark marks) · nav: N5 · footer: Ft8
+ * H1 Marquee knobs: size=xl, alignment=left-bias, underlay=none
+ * pre-emit critique: P4 H4 E4 S4 R4 V5
+ */
+:root{
+  --color-paper:    oklch(97%   0.02  75);
+  --color-paper-2:  oklch(93%   0.03  70);
+  --color-card:     oklch(99%   0.012 75);
+  --color-rule:     oklch(85%   0.03  70);
+  --color-neutral:  oklch(48%   0.02  60);
+  --color-muted:    oklch(38%   0.02  55);
+  --color-ink:      oklch(21%   0.02  50);
+  --color-accent:   oklch(52%   0.16  340);
+  --color-accent-2: oklch(68%   0.14  55);
+  --color-focus:    oklch(58%   0.18  340);
+
+  --font-display: "Bricolage Grotesque", ui-sans-serif, system-ui, sans-serif;
+  --font-body:    "Zen Maru Gothic", ui-sans-serif, system-ui, sans-serif;
+  --font-outlier: "Space Mono", ui-monospace, monospace;
+
+  --space-3xs:0.125rem; --space-2xs:0.25rem; --space-xs:0.5rem; --space-sm:0.75rem;
+  --space-md:1rem; --space-lg:1.5rem; --space-xl:2.5rem; --space-2xl:4rem; --space-3xl:6rem;
+
+  --text-sm:0.875rem; --text-base:1rem; --text-md:1.2rem; --text-lg:1.5rem;
+  --text-xl:2rem; --text-2xl:2.6rem; --text-display: clamp(2.6rem, 5vw + 1rem, 4.6rem);
+
+  --ease-out: cubic-bezier(0.16,1,0.3,1);
+  --dur-short:150ms; --dur-med:280ms;
+  --radius:1.25rem;
+
+  --z-base:1; --z-raised:10; --z-dropdown:100; --z-sticky:200; --z-modal:400; --z-toast:500; --z-tooltip:600;
+}
+*{box-sizing:border-box;}
+html{overflow-x:clip;}
+body{overflow-x:clip; margin:0; background:var(--color-paper); color:var(--color-ink); font-family:var(--font-body); font-size:var(--text-base); line-height:1.65;}
+img{max-width:100%; display:block;}
+a{color:inherit;}
+::selection{background:var(--color-accent); color:var(--color-paper);}
+h1,h2,h3{font-family:var(--font-display); font-weight:700; line-height:1.1; letter-spacing:-0.015em; margin:0; font-style:normal;}
+p{margin:0;}
+.wrap{max-width:70rem; margin-inline:auto; padding-inline:clamp(1.25rem, 5vw, 2.5rem);}
+
+@media (prefers-reduced-motion: no-preference){
+  .spark{animation: spin 14s linear infinite;}
+}
+@keyframes spin{ to { transform:rotate(360deg); } }
+
+/* Nav — N5 floating pill */
+.navwrap{position:sticky; top:var(--space-md); z-index:var(--z-sticky); display:flex; justify-content:center; padding-inline:var(--space-md);}
+.pill{display:flex; align-items:center; gap:var(--space-lg); background:oklch(99% 0.01 75 / 0.82); backdrop-filter:blur(10px) saturate(1.4); border:1px solid var(--color-rule); border-radius:999px; padding:0.6em 0.6em 0.6em 1.25em; box-shadow:0 1px 2px oklch(20% 0.02 60 / 0.06);}
+.pill__word{font-family:var(--font-display); font-weight:800; font-size:var(--text-md);}
+.pill__cta{font-family:var(--font-outlier); font-size:var(--text-sm); background:var(--color-accent); color:var(--color-paper); padding:0.55em 1.1em; border-radius:999px; white-space:nowrap; text-decoration:none; transition:transform var(--dur-short) var(--ease-out);}
+.pill__cta:hover{transform:translateY(-1px);}
+.pill__cta:focus-visible{outline:2px solid var(--color-focus); outline-offset:3px;}
+.pill__cta:active{transform:translateY(0);}
+
+/* Marquee hero — fills the fold, left-biased */
+.hero{min-height:auto; padding-block:var(--space-3xl) var(--space-2xl); position:relative;}
+.hero__eyebrow{font-family:var(--font-outlier); font-size:var(--text-sm); color:var(--color-accent); margin-bottom:var(--space-md); display:inline-block;}
+.hero h1{font-size:var(--text-display); max-width:15ch;}
+.hero h1 .u{text-decoration:underline; text-decoration-color:var(--color-accent-2); text-decoration-thickness:0.08em; text-underline-offset:0.08em;}
+.hero p{margin-top:var(--space-lg); max-width:42ch; font-size:var(--text-lg); color:var(--color-neutral);}
+
+.spark{position:absolute; right:6%; top:12%; width:5.5rem; height:5.5rem; color:var(--color-accent-2); opacity:0.85;}
+
+.hero__cta{margin-top:var(--space-xl); display:flex; gap:var(--space-md); flex-wrap:wrap;}
+.btn{font-family:var(--font-outlier); font-size:var(--text-base); padding:0.9em 1.7em; border-radius:999px; white-space:nowrap; text-decoration:none; transition:transform var(--dur-short) var(--ease-out), background var(--dur-short) var(--ease-out);}
+.btn--fill{background:var(--color-ink); color:var(--color-paper);}
+.btn--fill:hover{background:var(--color-accent); transform:translateY(-2px);}
+.btn--fill:active{transform:translateY(0);}
+.btn--fill:focus-visible{outline:2px solid var(--color-focus); outline-offset:3px;}
+.btn--ghost{border:1.5px solid var(--color-ink); color:var(--color-ink);}
+.btn--ghost:hover{border-color:var(--color-accent); color:var(--color-accent);}
+.btn--ghost:focus-visible{outline:2px solid var(--color-focus); outline-offset:3px;}
+
+/* below the fold becomes something else — a playful list of three "spells" */
+.spells{padding-block:var(--space-2xl); display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:var(--space-lg);}
+.spell{background:var(--color-card); border-radius:var(--radius); padding:var(--space-xl) var(--space-lg); border:1px solid var(--color-rule); transform:rotate(var(--r,0deg));}
+.spell:nth-child(1){--r:-1.2deg;}
+.spell:nth-child(2){--r:0.8deg; margin-top:var(--space-lg);}
+.spell:nth-child(3){--r:-0.6deg;}
+.spell__mark{font-family:var(--font-outlier); font-size:var(--text-sm); color:var(--color-accent);}
+.spell h3{font-size:var(--text-lg); margin-block:0.4em 0.3em;}
+.spell p{color:var(--color-neutral); font-size:var(--text-base);}
+
+/* AI column strip — ticker-like but static, list format */
+.column{padding-block:var(--space-2xl); border-top:1px dashed var(--color-rule); border-bottom:1px dashed var(--color-rule);}
+.column__head{display:flex; align-items:baseline; justify-content:space-between; gap:var(--space-md); margin-bottom:var(--space-lg); flex-wrap:wrap;}
+.column__head h2{font-size:var(--text-xl); max-width:20ch;}
+.column__list{display:flex; flex-direction:column; gap:var(--space-md);}
+.column__row{display:grid; grid-template-columns:6.5rem 1fr; gap:var(--space-md); padding-block:var(--space-sm); border-top:1px solid var(--color-rule);}
+.column__row:first-child{border-top:none;}
+.column__row time{font-family:var(--font-outlier); font-size:var(--text-sm); color:var(--color-muted);}
+.column__row p{font-size:var(--text-base);}
+
+/* works — playful card row */
+.works{padding-block:var(--space-2xl);}
+.works h2{font-size:var(--text-xl); margin-bottom:var(--space-lg); max-width:20ch;}
+.works__grid{display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:var(--space-md);}
+.works__card{background:var(--color-card); border:1px solid var(--color-rule); border-radius:var(--radius); padding:var(--space-lg); display:flex; flex-direction:column; gap:var(--space-sm);}
+.works__card img{height:2.5rem; width:auto; max-width:8rem; object-fit:contain; filter:grayscale(0.5);}
+.works__card span{font-size:var(--text-sm); color:var(--color-muted);}
+
+/* voices */
+.voices{padding-block:var(--space-2xl); display:grid; grid-template-columns:repeat(3, minmax(0,1fr)); gap:var(--space-lg);}
+.voice{background:var(--color-paper-2); border-radius:var(--radius); padding:var(--space-lg);}
+.voice p{font-size:var(--text-base);}
+.voice cite{display:block; font-style:normal; font-family:var(--font-outlier); font-size:var(--text-sm); color:var(--color-muted); margin-top:var(--space-sm);}
+
+.cta-strip{padding-block:var(--space-2xl); text-align:left;}
+.cta-strip h2{font-size:var(--text-2xl); max-width:16ch;}
+.cta-strip .hero__cta{margin-top:var(--space-lg);}
+
+/* Footer — Ft8 marquee scroll */
+footer.marquee-footer{border-top:2px solid var(--color-ink); padding-block:var(--space-lg) 0; overflow:hidden;}
+.marquee-track{display:flex; white-space:nowrap; gap:1.5rem; font-family:var(--font-outlier); font-size:var(--text-md); padding-block:var(--space-md);}
+@media (prefers-reduced-motion: no-preference){
+  .marquee-track{animation: scroll 32s linear infinite;}
+}
+@keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+.marquee-track span{padding-right:1.5rem;}
+.footer-meta{display:flex; flex-wrap:wrap; gap:var(--space-md) var(--space-xl); padding-block:var(--space-lg) var(--space-xl); font-size:var(--text-sm); color:var(--color-muted); border-top:1px solid var(--color-rule);}
+.footer-meta a{text-decoration:none; border-bottom:1px solid var(--color-rule);}
+.footer-meta a:hover{color:var(--color-accent); border-color:var(--color-accent);}
+
+@media (max-width:64rem){
+  .spells{grid-template-columns:repeat(2, minmax(0,1fr));}
+  .works__grid{grid-template-columns:repeat(2, minmax(0,1fr));}
+  .voices{grid-template-columns:repeat(2, minmax(0,1fr));}
+  .spark{display:none;}
+}
+@media (max-width:40rem){
+  .spells{grid-template-columns:1fr;}
+  .works__grid{grid-template-columns:1fr;}
+  .voices{grid-template-columns:1fr;}
+  .spell{transform:none; margin-top:0 !important;}
+  .column__row{grid-template-columns:1fr;}
+  .pill{gap:var(--space-md); padding-inline:1em;}
+}
+</style>
+</head>
+<body>
+
+<div class="navwrap">
+  <nav class="pill">
+    <div class="pill__word">きららぼ</div>
+    <a class="pill__cta" href="#contact">相談する</a>
+  </nav>
+</div>
+
+<main>
+  <section class="hero wrap">
+    <svg class="spark" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path d="M50 4 L58 40 L96 50 L58 60 L50 96 L42 60 L4 50 L42 40 Z" fill="currentColor"/>
+    </svg>
+    <span class="hero__eyebrow">FUNABASHI · WEB & AI STUDIO</span>
+    <h1>Webの魔法を、<span class="u">かけてあげる。</span></h1>
+    <p>届けたい想いを、WebとAIの魔法で形に。ふなばしから世界へ。やさしく、丁寧に整えます。</p>
+    <div class="hero__cta">
+      <a class="btn btn--fill" href="mailto:info@kiralab.jp">無料で相談する →</a>
+      <a class="btn btn--ghost" href="#spells">サービスを見る</a>
+    </div>
+  </section>
+
+  <section class="spells wrap" id="spells">
+    <div class="spell">
+      <span class="spell__mark">SPELL 01</span>
+      <h3>つくる魔法</h3>
+      <p>ホームページ・LP・WordPressを、あなたらしく形にします。</p>
+    </div>
+    <div class="spell">
+      <span class="spell__mark">SPELL 02</span>
+      <h3>整える魔法</h3>
+      <p>言葉・画像・導線を整えて、伝わるページに育てます。</p>
+    </div>
+    <div class="spell">
+      <span class="spell__mark">SPELL 03</span>
+      <h3>届ける魔法</h3>
+      <p>AIとSEOを使って、必要な人に見つけてもらう仕組みをつくります。</p>
+    </div>
+  </section>
+
+  <section class="column wrap">
+    <div class="column__head">
+      <h2>毎日届く、AIの小さな魔法。</h2>
+      <span class="pill__cta" style="background:var(--color-accent-2); color:var(--color-ink); text-decoration:none;">AIコラムを読む →</span>
+    </div>
+    <div class="column__list">
+      <div class="column__row"><time>08.14</time><p>工場に「AI社長」がやってきた——勘と経験の世界はどう変わったのか</p></div>
+      <div class="column__row"><time>08.13</time><p>銀行員の「あれ、どのルールだっけ？」が消える——生成AIで規定もマニュアルも一瞬</p></div>
+      <div class="column__row"><time>08.12</time><p>コード検査のAIが急成長——1年で評価額10倍に</p></div>
+    </div>
+  </section>
+
+  <section class="works wrap">
+    <h2>お店、会社、それぞれの「らしさ」を形にしてきました。</h2>
+    <div class="works__grid">
+      <div class="works__card"><img src="https://kiralab.jp/wp-content/uploads/2026/05/alponte.png" alt="アルポンテ"><span>リストランテ アルポンテ — レストランサイト</span></div>
+      <div class="works__card"><img src="https://kiralab.jp/wp-content/uploads/2026/05/katuzen.png" alt="かつ膳"><span>かつ膳 — 飲食店サイト</span></div>
+      <div class="works__card"><img src="https://kiralab.jp/wp-content/uploads/2026/05/3311.png" alt="鈴木食品"><span>株式会社鈴木食品 — コーポレートサイト</span></div>
+    </div>
+  </section>
+
+  <section class="voices wrap">
+    <div class="voice">
+      <p>「集客が変わりました。お願いして良かったです。」</p>
+      <cite>士業事務所 / 30代</cite>
+    </div>
+    <div class="voice">
+      <p>「AIの話を『うちのお店ならどう使う？』で説明してくれて分かりやすい。」</p>
+      <cite>美容室経営 / 40代</cite>
+    </div>
+    <div class="voice">
+      <p>「専門用語を使わずに説明してくれるので、何度も聞き返さずに済みました。」</p>
+      <cite>飲食店オーナー / 50代</cite>
+    </div>
+  </section>
+
+  <section class="cta-strip wrap" id="contact">
+    <h2>まずは、雑談からはじめませんか？</h2>
+    <div class="hero__cta">
+      <a class="btn btn--fill" href="mailto:info@kiralab.jp">無料で相談する →</a>
+      <a class="btn btn--ghost" href="tel:0503690295">050-3690-2959</a>
+    </div>
+  </section>
+</main>
+
+<footer class="marquee-footer">
+  <div class="marquee-track" aria-hidden="true">
+    <span>きららぼ · WEBの魔法をかけてあげる · きららぼ · WEBの魔法をかけてあげる · きららぼ · WEBの魔法をかけてあげる · きららぼ · WEBの魔法をかけてあげる ·</span>
+    <span>きららぼ · WEBの魔法をかけてあげる · きららぼ · WEBの魔法をかけてあげる · きららぼ · WEBの魔法をかけてあげる · きららぼ · WEBの魔法をかけてあげる ·</span>
+  </div>
+  <div class="wrap footer-meta">
+    <span>株式会社きららぼ</span>
+    <span>〒273-0853 千葉県船橋市金杉3-18-12</span>
+    <a href="tel:0503690295">050-3690-2959</a>
+    <a href="mailto:info@kiralab.jp">info@kiralab.jp</a>
+    <span>© 2026 Kiralab Inc.</span>
+  </div>
+</footer>
+
+</body>
+</html>

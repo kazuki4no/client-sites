@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SAMURAI COOKING TOKYO 104 | Hands-On Sushi Class, Tokyo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Hallmark · pre-emit critique: P4 H4 E4 S4 R4 V4 */
+/* Hallmark · macrostructure: Marquee Hero · tone: visual-led / atmospheric-warm · anchor hue: warm red (24) */
+:root{
+  --color-paper:oklch(16% 0.015 40);
+  --color-paper-2:oklch(21% 0.02 40);
+  --color-ink:oklch(95% 0.01 70);
+  --color-ink-soft:oklch(75% 0.02 60);
+  --color-accent:oklch(62% 0.19 25);
+  --color-accent-2:oklch(70% 0.16 60);
+  --color-line:oklch(35% 0.02 50);
+  --color-focus:oklch(75% 0.18 60);
+
+  --font-display:'Zen Kaku Gothic New', 'Space Grotesk', sans-serif;
+  --font-mono:'Space Grotesk', monospace;
+  --font-body:'Zen Kaku Gothic New', sans-serif;
+
+  --space-2xs:0.25rem; --space-xs:0.5rem; --space-sm:0.75rem; --space-md:1.25rem;
+  --space-lg:2rem; --space-xl:3.5rem; --space-2xl:5.5rem; --space-3xl:9rem;
+
+  --text-xs:0.78rem; --text-sm:0.92rem; --text-base:1.05rem; --text-lg:1.3rem;
+  --text-xl:1.9rem; --text-2xl:2.5rem; --text-display:clamp(2.6rem,7vw,5.4rem);
+
+  --ease-out:cubic-bezier(.16,1,.3,1); --dur-fast:150ms; --dur-med:280ms;
+  --radius-sm:3px; --radius-md:6px; --radius-lg:14px;
+}
+*{box-sizing:border-box; margin:0; padding:0;}
+html,body{overflow-x:clip;}
+html{scroll-behavior:smooth;}
+body{background:var(--color-paper); color:var(--color-ink); font-family:var(--font-body); line-height:1.65; -webkit-font-smoothing:antialiased;}
+img{max-width:100%; display:block;}
+a{color:inherit; text-decoration:none;}
+h1,h2,h3{font-family:var(--font-display); font-weight:700; font-style:normal; line-height:1.15;}
+.wrap{max-width:1220px; margin:0 auto; padding:0 var(--space-lg);}
+@media (max-width:640px){ .wrap{padding:0 var(--space-md);} }
+a:focus-visible, button:focus-visible{outline:3px solid var(--color-focus); outline-offset:3px;}
+
+/* ===== Nav: N5 floating pill ===== */
+.nav-wrap{position:sticky; top:var(--space-md); z-index:50; display:flex; justify-content:center; padding:0 var(--space-md);}
+.nav{display:flex; align-items:center; justify-content:space-between; gap:var(--space-lg); background:oklch(21% 0.02 40 / 0.85); backdrop-filter:blur(10px); border:1px solid var(--color-line); border-radius:999px; padding:var(--space-xs) var(--space-xs) var(--space-xs) var(--space-lg); width:100%; max-width:920px;}
+.brand{font-weight:700; font-size:0.95rem; letter-spacing:0.02em;}
+.nav-links{display:flex; gap:var(--space-lg); font-size:var(--text-sm); color:var(--color-ink-soft);}
+.nav-links a:hover{color:var(--color-ink);}
+.nav-cta{background:var(--color-accent); color:oklch(98% 0.01 70); padding:var(--space-xs) var(--space-md); border-radius:999px; font-size:var(--text-sm); font-weight:600; transition:background var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out);}
+.nav-cta:hover{background:var(--color-accent-2); transform:translateY(-1px);}
+@media (max-width:760px){ .nav-links{display:none;} }
+
+/* ===== Hero: full-bleed background image ===== */
+.hero{position:relative; min-height:92vh; display:flex; align-items:flex-end; padding:var(--space-2xl) 0 var(--space-3xl); margin-top:calc(-1 * var(--space-md) - 60px);}
+.hero-bg{position:absolute; inset:0; z-index:0;}
+.hero-bg img{width:100%; height:100%; object-fit:cover;}
+.hero-bg::after{content:''; position:absolute; inset:0; background:linear-gradient(180deg, oklch(16% 0.02 40 / 0.55) 0%, oklch(16% 0.02 40 / 0.35) 40%, oklch(16% 0.015 40 / 0.96) 96%);}
+.hero-content{position:relative; z-index:1;}
+.hero-tag{display:inline-block; font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:0.14em; text-transform:uppercase; color:var(--color-accent-2); border:1px solid var(--color-accent-2); border-radius:999px; padding:4px 14px; margin-bottom:var(--space-lg);}
+.hero h1{font-size:var(--text-display); max-width:14ch; overflow-wrap:anywhere; min-width:0;}
+.hero-sub{margin-top:var(--space-lg); font-size:var(--text-lg); color:var(--color-ink-soft); max-width:36ch;}
+.hero-actions{margin-top:var(--space-xl); display:flex; gap:var(--space-md); flex-wrap:wrap;}
+.btn{display:inline-block; padding:var(--space-sm) var(--space-lg); border-radius:999px; font-size:var(--text-sm); font-weight:600; transition:background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out), transform var(--dur-fast) var(--ease-out), border-color var(--dur-fast) var(--ease-out);}
+.btn-primary{background:var(--color-accent); color:oklch(98% 0.01 70);}
+.btn-primary:hover{background:var(--color-accent-2); transform:translateY(-2px);}
+.btn-outline{border:1px solid var(--color-ink-soft); color:var(--color-ink);}
+.btn-outline:hover{border-color:var(--color-ink); background:oklch(95% 0.01 70 / 0.08);}
+
+/* ===== Gallery strip ===== */
+.section{padding:var(--space-2xl) 0;}
+.section-head{max-width:44ch; margin-bottom:var(--space-xl);}
+.section-head span{font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:0.14em; text-transform:uppercase; color:var(--color-accent-2);}
+.section-head h2{font-size:var(--text-2xl); margin-top:var(--space-sm); overflow-wrap:anywhere; min-width:0;}
+.section-head p{color:var(--color-ink-soft); margin-top:var(--space-sm);}
+
+.gallery{display:grid; grid-template-columns:1.3fr 1fr 1fr; grid-template-rows:repeat(2,180px); gap:var(--space-sm);}
+.gallery a:nth-child(1){grid-row:1 / 3;}
+.gallery img{width:100%; height:100%; object-fit:cover; border-radius:var(--radius-md);}
+@media (max-width:760px){
+  .gallery{grid-template-columns:repeat(2,minmax(0,1fr)); grid-template-rows:repeat(3,140px);}
+  .gallery a:nth-child(1){grid-row:auto; grid-column:1 / 3; height:220px;}
+}
+
+/* ===== Courses (card row) ===== */
+.course-row{display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:var(--space-lg);}
+@media (max-width:760px){ .course-row{grid-template-columns:minmax(0,1fr);} }
+.course-card{background:var(--color-paper-2); border:1px solid var(--color-line); border-radius:var(--radius-lg); padding:var(--space-lg); transition:transform var(--dur-med) var(--ease-out), border-color var(--dur-med) var(--ease-out);}
+.course-card:hover{transform:translateY(-4px); border-color:var(--color-accent-2);}
+.course-card h3{font-size:var(--text-lg);}
+.course-card p{color:var(--color-ink-soft); margin-top:var(--space-sm); font-size:var(--text-sm);}
+.course-price{font-family:var(--font-mono); color:var(--color-accent-2); font-size:var(--text-xl); margin-top:var(--space-md);}
+.course-tags{display:flex; gap:var(--space-xs); flex-wrap:wrap; margin-top:var(--space-md);}
+.tag{font-family:var(--font-mono); font-size:0.72rem; border:1px solid var(--color-line); border-radius:999px; padding:2px 10px; color:var(--color-ink-soft);}
+
+/* ===== Instructor split ===== */
+.split{display:grid; grid-template-columns:1fr 1fr; gap:var(--space-2xl); align-items:center;}
+@media (max-width:760px){ .split{grid-template-columns:minmax(0,1fr);} }
+.split img{border-radius:var(--radius-lg); width:100%; height:380px; object-fit:cover;}
+
+/* ===== Access panel ===== */
+.panel{background:var(--color-paper-2); border:1px solid var(--color-line); border-radius:var(--radius-lg); padding:var(--space-xl); display:grid; grid-template-columns:1fr 1fr; gap:var(--space-xl);}
+@media (max-width:760px){ .panel{grid-template-columns:minmax(0,1fr);} }
+.panel dl{display:grid; grid-template-columns:auto 1fr; gap:var(--space-sm) var(--space-lg); font-size:var(--text-sm);}
+.panel dt{font-family:var(--font-mono); text-transform:uppercase; font-size:0.72rem; color:var(--color-ink-soft); padding-top:2px;}
+.panel dd{padding-bottom:var(--space-sm); border-bottom:1px solid var(--color-line);}
+
+/* ===== Footer: Ft8 minimal ===== */
+footer{border-top:1px solid var(--color-line); padding:var(--space-2xl) 0 var(--space-xl); text-align:center;}
+footer h2{font-size:var(--text-2xl); max-width:20ch; margin:0 auto; overflow-wrap:anywhere;}
+footer .hero-actions{justify-content:center; margin-top:var(--space-xl);}
+.footer-meta{margin-top:var(--space-2xl); display:flex; justify-content:center; gap:var(--space-lg); flex-wrap:wrap; font-size:var(--text-xs); color:var(--color-ink-soft); font-family:var(--font-mono);}
+</style>
+</head>
+<body>
+
+<div class="nav-wrap">
+  <nav class="nav">
+    <div class="brand">SAMURAI COOKING 104</div>
+    <div class="nav-links">
+      <a href="#courses">Courses</a>
+      <a href="#instructor">Instructor</a>
+      <a href="#access">Access</a>
+    </div>
+    <a href="mailto:info@samuraicooking104.com" class="nav-cta">Book Now</a>
+  </nav>
+</div>
+
+<header class="hero">
+  <div class="hero-bg">
+    <!-- 元画像: images/hero-fullbleed.jpg（寿司握りの手元アップ、全面背景用） -->
+    <img src="https://loremflickr.com/1920/1400/sushi,chef,hands" alt="Close-up of hands shaping nigiri sushi during class">
+  </div>
+  <div class="wrap hero-content">
+    <span class="hero-tag">Tokyo, Sumida &middot; 2.5-hour class</span>
+    <h1>Make sushi with your own hands, in a real Tokyo kitchen.</h1>
+    <p class="hero-sub">Small groups, clear English instruction, and a recipe sheet to take the technique home with you.</p>
+    <div class="hero-actions">
+      <a href="mailto:info@samuraicooking104.com" class="btn btn-primary">Book by Email</a>
+      <a href="#courses" class="btn btn-outline">View Courses &mdash; &yen;14,000</a>
+    </div>
+  </div>
+</header>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <span>The Class</span>
+      <h2>From knife work to the finished plate</h2>
+      <p>A look inside a typical session &mdash; every guest cooks, nobody just watches.</p>
+    </div>
+    <div class="gallery">
+      <!-- 元画像: images/gallery-1.jpg（寿司飯を仕込む様子） -->
+      <a href="#courses"><img src="https://loremflickr.com/900/1000/sushi,rice,japan" alt="Preparing vinegared sushi rice"></a>
+      <!-- 元画像: images/gallery-2.jpg（うどん生地を伸ばす様子） -->
+      <a href="#courses"><img src="https://loremflickr.com/700/500/udon,dough" alt="Rolling out fresh udon dough"></a>
+      <!-- 元画像: images/gallery-3.jpg（完成した巻き寿司） -->
+      <a href="#courses"><img src="https://loremflickr.com/700/500/maki,sushi,roll" alt="Finished maki rolls ready to eat"></a>
+      <!-- 元画像: images/gallery-4.jpg（味噌汁を仕上げる様子） -->
+      <a href="#courses"><img src="https://loremflickr.com/700/500/miso,soup,japan" alt="Finishing a bowl of miso soup"></a>
+      <!-- 元画像: images/gallery-5.jpg（親子丼の盛り付け） -->
+      <a href="#courses"><img src="https://loremflickr.com/700/500/oyakodon,japan" alt="Plating oyakodon, chicken and egg rice bowl"></a>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="courses">
+  <div class="wrap">
+    <div class="section-head">
+      <span>Choose Your Course</span>
+      <h2>Two hands-on menus, one price</h2>
+    </div>
+    <div class="course-row">
+      <div class="course-card">
+        <h3>Sushi Making Course</h3>
+        <p>Nigiri, maki, miso soup and two sides. You learn the rice, the cuts, and the shaping.</p>
+        <div class="course-price">&yen;14,000</div>
+        <div class="course-tags"><span class="tag">2.5 hrs</span><span class="tag">English OK</span><span class="tag">Beginner-friendly</span></div>
+      </div>
+      <div class="course-card">
+        <h3>Udon Making Course</h3>
+        <p>Udon noodles made from scratch, oyakodon, and a side dish.</p>
+        <div class="course-price">&yen;14,000</div>
+        <div class="course-tags"><span class="tag">2.5 hrs</span><span class="tag">English OK</span><span class="tag">Beginner-friendly</span></div>
+      </div>
+    </div>
+    <div class="course-tags" style="margin-top:var(--space-lg);">
+      <span class="tag">+ Sake tasting &yen;2,000</span>
+      <span class="tag">+ Matcha experience &yen;2,000</span>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="instructor">
+  <div class="wrap">
+    <div class="split">
+      <!-- 元画像: images/instructor-portrait.jpg（講師Toshieさんの調理中ポートレート） -->
+      <img src="https://loremflickr.com/900/1000/chef,portrait,japan" alt="Toshie, the instructor, preparing ingredients">
+      <div>
+        <span style="font-family:var(--font-mono); font-size:var(--text-xs); letter-spacing:0.14em; text-transform:uppercase; color:var(--color-accent-2);">Your Instructor</span>
+        <h2 style="font-size:var(--text-2xl); margin-top:var(--space-sm);">Taught by Toshie</h2>
+        <p style="margin-top:var(--space-md); color:var(--color-ink-soft);">Guests consistently note how patient and clear the instruction is &mdash; everything explained step by step in English, with no prior cooking experience required.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="access">
+  <div class="wrap">
+    <div class="section-head">
+      <span>Plan Your Visit</span>
+      <h2>Access &amp; cancellation policy</h2>
+    </div>
+    <div class="panel">
+      <dl>
+        <dt>Address</dt><dd>2-10-6 Honjo, Sumida City, Tokyo</dd>
+        <dt>Station</dt><dd>About 8&ndash;9 min walk</dd>
+        <dt>Duration</dt><dd>2.5 hours</dd>
+        <dt>Groups</dt><dd>Private groups by request</dd>
+      </dl>
+      <dl>
+        <dt>14+ days</dt><dd>Full refund</dd>
+        <dt>7&ndash;13 days</dt><dd>50% refund</dd>
+        <dt>2&ndash;6 days</dt><dd>30% refund</dd>
+        <dt>&lt;1 day</dt><dd>No refund</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <h2>Ready to cook?</h2>
+    <div class="hero-actions">
+      <a href="mailto:info@samuraicooking104.com" class="btn btn-primary">info@samuraicooking104.com</a>
+    </div>
+    <div class="footer-meta">
+      <span>SAMURAI COOKING TOKYO 104</span>
+      <span>2-10-6 Honjo, Sumida, Tokyo</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

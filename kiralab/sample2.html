@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>きららぼ | Web × AI活用支援スタジオ</title>
+<meta name="description" content="千葉・船橋のWeb制作・AI活用支援会社「きららぼ」。デザインと生成AIで、ビジネスの未来をともに描きます。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans+JP:wght@400;500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Hallmark · genre: editorial · macrostructure: Bento Grid · theme: Studio (cool teal, geometric-sans) · enrichment: none (typography only) · nav: N6 · footer: Ft4
+ * F1 Bento knobs: tiles=9, spans=irregular, accent=corner-only
+ * pre-emit critique: P5 H4 E4 S4 R4 V5
+ */
+:root{
+  --color-paper:    oklch(97%   0.008 195);
+  --color-paper-2:  oklch(93.5% 0.014 195);
+  --color-tile:     oklch(99%   0.004 195);
+  --color-rule:     oklch(84%   0.014 195);
+  --color-neutral:  oklch(54%   0.012 195);
+  --color-muted:    oklch(42%   0.012 195);
+  --color-ink:      oklch(20%   0.012 210);
+  --color-accent:   oklch(52%   0.11  185);
+  --color-accent-2: oklch(64%   0.13  40);
+  --color-focus:    oklch(58%   0.13  185);
+
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body:    "IBM Plex Sans JP", "IBM Plex Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-outlier: "JetBrains Mono", ui-monospace, monospace;
+
+  --space-3xs:0.125rem; --space-2xs:0.25rem; --space-xs:0.5rem; --space-sm:0.75rem;
+  --space-md:1rem; --space-lg:1.5rem; --space-xl:2.5rem; --space-2xl:4rem; --space-3xl:6rem;
+
+  --text-sm:0.85rem; --text-base:1rem; --text-md:1.2rem; --text-lg:1.5rem;
+  --text-xl:1.95rem; --text-2xl:2.6rem; --text-display: clamp(2.4rem, 4vw + 1rem, 4.2rem);
+
+  --ease-out: cubic-bezier(0.16,1,0.3,1);
+  --dur-short:150ms; --dur-med:280ms;
+  --radius:0.75rem;
+
+  --z-base:1; --z-raised:10; --z-dropdown:100; --z-sticky:200; --z-modal:400; --z-toast:500; --z-tooltip:600;
+}
+*{box-sizing:border-box;}
+html{overflow-x:clip;}
+body{overflow-x:clip; margin:0; background:var(--color-paper-2); color:var(--color-ink); font-family:var(--font-body); font-size:var(--text-base); line-height:1.6;}
+img{max-width:100%; display:block;}
+a{color:inherit; text-decoration:none;}
+::selection{background:var(--color-accent); color:var(--color-tile);}
+h1,h2,h3{font-family:var(--font-display); font-weight:600; line-height:1.1; letter-spacing:-0.02em; margin:0; font-style:normal;}
+p{margin:0;}
+.wrap{max-width:75rem; margin-inline:auto; padding-inline:clamp(1.25rem, 4vw, 2.5rem);}
+
+/* Nav N6 masthead */
+.masthead{padding-block:var(--space-md); border-bottom:2px solid var(--color-ink);}
+.masthead__row{display:flex; justify-content:center; align-items:center; gap:var(--space-md); position:relative;}
+.masthead__word{font-family:var(--font-display); font-weight:700; font-size:var(--text-xl); letter-spacing:-0.02em;}
+.masthead__issue{text-align:center; font-family:var(--font-outlier); font-size:var(--text-sm); color:var(--color-muted); letter-spacing:0.08em; text-transform:uppercase; margin-bottom:var(--space-2xs);}
+.masthead__cta{position:absolute; right:0; font-family:var(--font-outlier); font-size:var(--text-sm); border:1px solid var(--color-ink); border-radius:999px; padding:0.5em 1.1em; white-space:nowrap; transition:background var(--dur-short) var(--ease-out), color var(--dur-short) var(--ease-out);}
+.masthead__cta:hover{background:var(--color-ink); color:var(--color-paper);}
+.masthead__cta:focus-visible{outline:2px solid var(--color-focus); outline-offset:2px;}
+
+/* Bento grid */
+.bento{display:grid; grid-template-columns:repeat(6, minmax(0,1fr)); gap:var(--space-md); padding-block:var(--space-xl);}
+.tile{background:var(--color-tile); border-radius:var(--radius); padding:var(--space-lg); position:relative; box-shadow:0 0 0 1px var(--color-rule);}
+.tile--hero{grid-column:span 4; padding:var(--space-2xl) var(--space-xl); display:flex; flex-direction:column; justify-content:flex-end; min-height:20rem;}
+.tile--stat{grid-column:span 2; display:flex; flex-direction:column; justify-content:center; gap:var(--space-2xs);}
+.tile--wide{grid-column:span 3;}
+.tile--tall{grid-column:span 2; grid-row:span 2;}
+.tile--service{grid-column:span 2;}
+.tile--voice{grid-column:span 3;}
+.tile--cta{grid-column:span 6; background:var(--color-ink); color:var(--color-paper); display:flex; align-items:center; justify-content:space-between; gap:var(--space-md); flex-wrap:wrap;}
+
+.tag{font-family:var(--font-outlier); font-size:var(--text-sm); color:var(--color-accent); letter-spacing:0.02em;}
+.tile--hero h1{font-size:var(--text-display); max-width:20ch; margin-block:var(--space-sm);}
+.tile--hero p{max-width:44ch; color:var(--color-neutral); font-size:var(--text-md);}
+.tile--stat .num{font-family:var(--font-outlier); font-size:var(--text-2xl); font-variant-numeric:tabular-nums; color:var(--color-accent-2);}
+.tile--stat .lbl{font-size:var(--text-sm); color:var(--color-muted);}
+
+.tile--wide h3, .tile--tall h3, .tile--service h3{font-size:var(--text-lg); margin-bottom:0.4em;}
+.tile--wide p, .tile--tall p, .tile--service p{color:var(--color-neutral); font-size:var(--text-base);}
+.tile--tall{display:flex; flex-direction:column;}
+.tile--tall img{margin-top:var(--space-md); border-radius:0.4rem; width:100%; height:9rem; object-fit:contain; background:var(--color-paper); padding:var(--space-md); filter:grayscale(0.4);}
+
+.tile--voice p{font-size:var(--text-md); font-style:normal;}
+.tile--voice cite{display:block; font-style:normal; font-family:var(--font-outlier); font-size:var(--text-sm); color:var(--color-muted); margin-top:var(--space-sm);}
+
+.works-strip{display:flex; align-items:center; gap:var(--space-lg); flex-wrap:wrap; margin-top:var(--space-md);}
+.works-strip img{height:2rem; width:auto; max-width:6rem; object-fit:contain; filter:grayscale(1); opacity:0.75;}
+
+.tile--cta h2{font-size:var(--text-lg); color:var(--color-paper);}
+.tile--cta a.btn{font-family:var(--font-outlier); font-size:var(--text-base); background:var(--color-accent-2); color:var(--color-ink); padding:0.85em 1.6em; border-radius:999px; white-space:nowrap; transition:transform var(--dur-short) var(--ease-out);}
+.tile--cta a.btn:hover{transform:translateY(-2px);}
+.tile--cta a.btn:focus-visible{outline:2px solid var(--color-paper); outline-offset:3px;}
+.tile--cta a.btn:active{transform:translateY(0);}
+
+/* Footer Ft4 dense colophon */
+footer.colophon{border-top:2px solid var(--color-ink); padding-block:var(--space-xl); font-family:var(--font-outlier); font-size:var(--text-sm); color:var(--color-muted); line-height:1.9;}
+footer.colophon strong{color:var(--color-ink);}
+footer.colophon a{border-bottom:1px solid var(--color-rule);}
+footer.colophon a:hover{color:var(--color-accent); border-color:var(--color-accent);}
+
+@media (max-width:64rem){
+  .bento{grid-template-columns:repeat(4, minmax(0,1fr));}
+  .tile--hero{grid-column:span 4;}
+  .tile--wide{grid-column:span 2;}
+  .tile--tall{grid-column:span 2; grid-row:auto;}
+  .tile--service{grid-column:span 2;}
+  .tile--voice{grid-column:span 4;}
+  .tile--cta{grid-column:span 4;}
+}
+@media (max-width:40rem){
+  .bento{grid-template-columns:repeat(2, minmax(0,1fr)); gap:var(--space-sm);}
+  .tile--hero,.tile--wide,.tile--tall,.tile--service,.tile--voice,.tile--cta{grid-column:span 2;}
+  .masthead__cta{position:static; margin-top:var(--space-sm);}
+  .masthead__row{flex-direction:column;}
+  .tile--cta{flex-direction:column; align-items:flex-start;}
+}
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="masthead__issue">FUNABASHI, CHIBA · WEB & AI STUDIO</div>
+    <div class="masthead__row">
+      <div class="masthead__word">きららぼ</div>
+      <a class="masthead__cta" href="#contact">相談する →</a>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="bento">
+
+    <div class="tile tile--hero">
+      <span class="tag">KIRALAB INC.</span>
+      <h1>Webの魔法を、かけてあげる。</h1>
+      <p>デザインと生成AIをかけ合わせて、船橋から中小企業・個人店のビジネスの未来を形にするスタジオです。</p>
+    </div>
+
+    <div class="tile tile--stat">
+      <span class="num">4</span>
+      <span class="lbl">つのサービス領域<br>Web / グラフィック / コンテンツ / AI</span>
+    </div>
+
+    <div class="tile tile--service">
+      <h3>🎨 Webデザイン</h3>
+      <p>見た目の美しさだけでなく、伝わる順番まで設計します。</p>
+    </div>
+    <div class="tile tile--service">
+      <h3>✏️ グラフィックデザイン</h3>
+      <p>ロゴ・バナー・印刷物まで、「らしさ」が伝わるビジュアルを整えます。</p>
+    </div>
+
+    <div class="tile tile--tall">
+      <span class="tag">WORKS</span>
+      <h3>制作実績</h3>
+      <p>ぐるなびグループの「接待の手土産」「ウエディング HOWTO」をはじめ、地域の飲食店・企業サイトを手がけています。</p>
+      <img src="https://kiralab.jp/wp-content/uploads/2026/05/gurunabi.png" alt="接待の手土産">
+    </div>
+
+    <div class="tile tile--wide">
+      <h3>📝 コンテンツ制作</h3>
+      <p>何を、どんな順番で、どんな言葉で伝えるか。読み手に届く文章と構成を一緒に考えます。</p>
+    </div>
+    <div class="tile tile--wide">
+      <h3>🤖 AI活用支援</h3>
+      <p>ChatGPTやClaudeを、毎日の仕事を少し軽くする道具として使えるようにします。</p>
+    </div>
+
+    <div class="tile tile--voice">
+      <span class="tag">CUSTOMER VOICE</span>
+      <p>「AIの話を『うちのお店ならどう使う？』で説明してくれて分かりやすい。いまでは予約管理やSNS投稿の下書きに毎日使っています。」</p>
+      <cite>美容室経営 / 40代</cite>
+    </div>
+
+    <div class="tile tile--wide">
+      <span class="tag">AI COLUMN</span>
+      <h3>毎日届く、AIの小さな魔法</h3>
+      <p>生成AIのニュースを、専門用語をほどきながらやさしくお届けするコラムを毎日更新しています。</p>
+    </div>
+
+    <div class="tile tile--voice">
+      <span class="tag">CLIENTS</span>
+      <div class="works-strip">
+        <img src="https://kiralab.jp/wp-content/uploads/2026/05/alponte.png" alt="アルポンテ">
+        <img src="https://kiralab.jp/wp-content/uploads/2026/05/katuzen.png" alt="かつ膳">
+        <img src="https://kiralab.jp/wp-content/uploads/2026/05/3311.png" alt="鈴木食品">
+      </div>
+    </div>
+
+    <div class="tile tile--cta" id="contact">
+      <h2>まずは、雑談からはじめませんか？</h2>
+      <a class="btn" href="mailto:info@kiralab.jp">無料で相談する →</a>
+    </div>
+
+  </div>
+</main>
+
+<footer class="colophon">
+  <div class="wrap">
+    <strong>株式会社きららぼ</strong> — 〒273-0853 千葉県船橋市金杉3-18-12 ·
+    <a href="tel:0503690295">050-3690-2959</a> ·
+    <a href="mailto:info@kiralab.jp">info@kiralab.jp</a><br>
+    受付 月〜金 09:00–18:00 · © 2026 Kiralab Inc.
+  </div>
+</footer>
+
+</body>
+</html>

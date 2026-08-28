@@ -1,0 +1,595 @@
+/* ================================================================
+   LAVIE — DOG CAT VILLAGE LP 共通スタイル
+   3案 + 採用LP共通。body class (.t-a / .t-b / .t-c / .page-recruit)
+   ================================================================ */
+
+/* ---- Reset ---- */
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{max-width:100%;overflow-x:hidden;}
+img{max-width:100%;height:auto;display:block;}
+
+/* ---- Design Tokens ---- */
+:root{
+  --bg:#fdf9f4;
+  --white:#ffffff;
+  --ink:#2c1a0e;
+  --muted:#7a5f48;
+  --accent:#d97b3c;
+  --accent-dark:#b85a1e;
+  --line:#e8d4c0;
+  --card:#f5ebe0;
+  --gold:#c4870a;
+  --dark-bg:#1a0d05;
+  --radius:8px;
+  --shadow:0 4px 20px rgba(44,26,14,.1);
+}
+
+/* ---- Typography ---- */
+body{
+  font-family:'Noto Serif JP',serif;
+  background:var(--bg);
+  color:var(--ink);
+  line-height:1.8;
+}
+h2{font-size:clamp(1.4rem,4vw,2rem);line-height:1.4;margin-bottom:1rem;}
+h3{font-size:clamp(1.05rem,2.8vw,1.3rem);line-height:1.5;margin-bottom:.6rem;}
+p{margin-bottom:.8rem;}
+.accent{color:var(--accent);}
+
+/* ---- Layout ---- */
+.container{max-width:980px;margin:0 auto;padding:0 1.2rem;}
+section{padding:4rem 0;}
+
+/* ---- Section Label / Heading ---- */
+.section-label{
+  display:inline-block;
+  font-size:.78rem;letter-spacing:.16em;
+  color:var(--accent);font-weight:600;
+  text-transform:uppercase;margin-bottom:.5rem;
+}
+.section-heading{text-align:center;margin-bottom:2.8rem;}
+
+/* ================================================================
+   Header / Nav
+   ================================================================ */
+.site-header{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(253,249,244,.95);backdrop-filter:blur(6px);
+  border-bottom:1px solid var(--line);
+  padding:.7rem 1.4rem;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.logo{font-size:.95rem;font-weight:700;color:var(--ink);text-decoration:none;letter-spacing:.08em;}
+.logo .logo-accent{color:var(--accent);}
+.site-nav{display:flex;gap:1.4rem;align-items:center;}
+.site-nav a{text-decoration:none;color:var(--muted);font-size:.83rem;letter-spacing:.05em;transition:color .2s;}
+.site-nav a:hover{color:var(--accent);}
+.nav-cta{
+  background:var(--accent);color:var(--white) !important;
+  padding:.35rem 1rem;border-radius:var(--radius);
+  font-size:.83rem;font-weight:700;
+}
+.nav-cta:hover{background:var(--accent-dark) !important;}
+.hamburger{display:none;background:none;border:0;font-size:1.7rem;cursor:pointer;color:var(--ink);}
+@media(max-width:768px){
+  .hamburger{display:block;}
+  .site-nav{
+    display:none;flex-direction:column;gap:.5rem;
+    position:absolute;top:100%;left:0;right:0;
+    z-index:50;background:var(--bg);
+    box-shadow:0 8px 16px rgba(0,0,0,.1);
+    padding:.8rem 1.4rem;
+  }
+  .site-nav.open{display:flex;}
+}
+
+/* ================================================================
+   Buttons — .btn-primary / .btn-outline / .btn-green は全案で使用
+   ================================================================ */
+.btn-primary,.btn-outline,.btn-green{
+  display:inline-block;
+  padding:.8rem 2rem;
+  border-radius:var(--radius);
+  font-weight:700;font-size:.93rem;
+  text-decoration:none;text-align:center;
+  transition:all .22s;cursor:pointer;
+  border:2px solid transparent;
+  letter-spacing:.04em;
+}
+.btn-primary{background:var(--accent);color:var(--white);border-color:var(--accent);}
+.btn-primary:hover{background:var(--accent-dark);border-color:var(--accent-dark);}
+.btn-outline{background:transparent;color:var(--accent);border-color:var(--accent);}
+.btn-outline:hover{background:var(--accent);color:var(--white);}
+.btn-green{background:#e6f0e6;color:#2d5a2d;border-color:#2d5a2d;}
+.btn-green:hover{background:#2d5a2d;color:var(--white);}
+
+/* ================================================================
+   Floating CTA（スマホのみ）
+   ================================================================ */
+.floating-cta{
+  position:fixed;left:50%;bottom:14px;transform:translateX(-50%);
+  z-index:50;padding:.85rem 1.8rem;border-radius:999px;
+  background:var(--accent);color:var(--white);
+  font-weight:700;font-size:.88rem;
+  box-shadow:0 6px 18px rgba(0,0,0,.22);
+  text-decoration:none;white-space:nowrap;
+}
+@media(min-width:769px){.floating-cta{display:none;}}
+
+/* ================================================================
+   Trust Pills
+   ================================================================ */
+.trust-pills{
+  display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center;
+  margin-top:1rem;
+}
+.pill{
+  display:flex;align-items:center;gap:.3rem;
+  font-size:.78rem;color:var(--muted);
+  padding:.15rem .55rem;
+}
+.pill svg{width:14px;height:14px;stroke:var(--accent);fill:none;stroke-width:1.5;flex-shrink:0;}
+@media(min-width:769px){
+  .pill+.pill{border-left:1px solid var(--line);}
+}
+@media(max-width:768px){
+  .trust-pills{flex-direction:column;align-items:flex-start;width:fit-content;margin:1rem auto 0;}
+  .pill{padding:.2rem 0;}
+}
+
+/* ================================================================
+   Services グリッド
+   ================================================================ */
+.service-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
+.service-card{
+  background:var(--white);border-radius:12px;
+  padding:1.5rem 1.1rem;text-align:center;
+  box-shadow:var(--shadow);
+}
+.service-icon{
+  width:52px;height:52px;
+  border:1.5px solid var(--accent);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 1rem;
+}
+.service-icon svg{width:24px;height:24px;stroke:var(--accent);fill:none;stroke-width:1.5;}
+.service-img{width:100%;height:120px;object-fit:cover;border-radius:8px;margin-bottom:.9rem;}
+.service-card h3{color:var(--ink);font-size:1rem;}
+.service-card p{font-size:.83rem;color:var(--muted);margin-bottom:0;}
+
+/* ================================================================
+   Strengths 2カラム
+   ================================================================ */
+.strengths-wrap{
+  display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center;
+}
+.strength-img{border-radius:12px;width:100%;object-fit:cover;aspect-ratio:4/3;}
+.strength-list{list-style:none;}
+.strength-list li{
+  display:flex;align-items:flex-start;gap:.8rem;
+  padding:1rem 0;border-bottom:1px solid var(--line);
+}
+.strength-list li:last-child{border-bottom:0;}
+.strength-num{
+  font-size:1.5rem;font-weight:700;color:var(--accent);
+  min-width:2rem;line-height:1;margin-top:.1rem;
+}
+.strength-text h4{font-size:.95rem;font-weight:700;margin-bottom:.2rem;}
+.strength-text p{font-size:.85rem;color:var(--muted);margin:0;}
+
+/* Gallery */
+.gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;}
+.gallery-img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;}
+
+/* ================================================================
+   FAQ
+   ================================================================ */
+.faq-list{list-style:none;}
+.faq-item{border-bottom:1px solid var(--line);padding:1.2rem 0;}
+.faq-q{
+  font-weight:700;color:var(--ink);
+  margin-bottom:.5rem;display:flex;gap:.7rem;
+}
+.faq-q::before{content:"Q";color:var(--accent);font-weight:700;min-width:1.2rem;}
+.faq-a{
+  padding-left:1.9rem;color:var(--muted);
+  font-size:.88rem;line-height:1.8;
+}
+
+/* ================================================================
+   Contact Box
+   ================================================================ */
+.contact-box{
+  background:var(--card);border-radius:16px;
+  padding:3rem 2rem;text-align:center;
+  max-width:640px;margin:0 auto;
+}
+.contact-box h2{margin-bottom:.6rem;}
+.contact-box p{color:var(--muted);font-size:.9rem;}
+.tel-num{font-size:1.5rem;font-weight:700;color:var(--accent);margin:.5rem 0;}
+.cta-buttons{
+  display:flex;flex-wrap:wrap;gap:.8rem;justify-content:center;
+  margin-top:1.6rem;
+}
+.contact-form{max-width:440px;margin:1.5rem auto 0;text-align:left;}
+.contact-form label{display:block;font-size:.82rem;color:var(--muted);margin-bottom:.25rem;margin-top:.8rem;}
+.contact-form input,.contact-form select,.contact-form textarea{
+  width:100%;padding:.65rem .85rem;border:1px solid var(--line);
+  border-radius:6px;font-size:.88rem;font-family:inherit;
+  background:var(--white);color:var(--ink);
+  box-sizing:border-box;
+}
+.contact-form textarea{height:90px;resize:vertical;}
+
+/* ================================================================
+   Footer
+   ================================================================ */
+.site-footer{
+  background:var(--ink);color:rgba(255,255,255,.75);
+  padding:2rem 1.4rem;text-align:center;font-size:.8rem;
+  line-height:1.9;
+}
+.site-footer a{color:var(--accent);text-decoration:none;}
+
+/* ================================================================
+   Responsive common
+   ================================================================ */
+@media(max-width:768px){
+  section{padding:2.8rem 0;}
+  .service-grid{grid-template-columns:1fr 1fr;}
+  .gallery-grid{grid-template-columns:1fr 1fr;}
+  .strengths-wrap{grid-template-columns:1fr;}
+  .cta-buttons{flex-direction:column;align-items:center;}
+  .cta-buttons a{width:min(100%,24rem);}
+}
+@media(max-width:480px){
+  .service-grid{grid-template-columns:1fr;}
+}
+
+/* ================================================================
+   A案 (.t-a) — 信頼/王道・h1オーバーレイ型
+   FV画像: pet-fv-light-01.jpg (被写体右・左余白)
+   ================================================================ */
+.t-a .hero-wrap{
+  position:relative;
+  display:flex;align-items:flex-end;
+  min-height:82vh;
+  padding-top:56px;
+  overflow:hidden;
+}
+.t-a .h1-wrap{
+  position:absolute;top:76px;left:1.4rem;z-index:2;
+  max-width:46%;
+}
+.t-a .eyebrow{
+  font-size:.75rem;letter-spacing:.16em;
+  color:var(--accent);font-weight:600;
+  text-transform:uppercase;margin-bottom:.6rem;
+}
+.t-a .eyebrow-sp{display:none;}
+.t-a .hero-h1{
+  font-size:clamp(2rem,5.8vw,3.6rem);
+  font-weight:700;line-height:1.42;
+  color:var(--ink);
+  text-shadow:0 1px 14px rgba(253,249,244,.95);
+  letter-spacing:.04em;
+}
+.t-a .hero-h1 .br-sp{display:none;}
+.t-a .hero-h1 .br-sp2{display:none;}
+.t-a .hero-copy{
+  flex:0 0 44%;
+  padding:0 1.4rem 3rem;
+  position:relative;z-index:1;
+}
+.t-a .hero-lead{
+  margin-top:auto;
+  font-size:.88rem;color:var(--muted);line-height:1.8;
+  padding-top:2rem;
+}
+.t-a .hero-media{
+  flex:1;align-self:stretch;overflow:hidden;
+}
+.t-a .hero-media img{
+  width:100%;height:100%;
+  object-fit:cover;object-position:right center;
+  aspect-ratio:4/3;
+  border-radius:16px 0 0 16px;
+}
+.t-a .cta-under{
+  background:var(--white);padding:1.6rem 0;
+  border-bottom:1px solid var(--line);
+}
+.t-a .cta-under-inner{
+  max-width:980px;margin:0 auto;padding:0 1.2rem;
+  display:flex;flex-wrap:wrap;align-items:center;
+  gap:1rem;justify-content:center;
+}
+.t-a .cta-under-inner .btn-primary,
+.t-a .cta-under-inner .btn-outline{min-width:200px;}
+@media(min-width:769px) and (max-width:1024px){
+  .t-a .hero-h1{font-size:clamp(1.6rem,4.6vw,3rem);}
+  .t-a .hero-copy{padding-top:calc(4rem + 14vw);}
+  .t-a .h1-wrap{max-width:50%;}
+}
+@media(max-width:768px){
+  .t-a .hero-wrap{flex-direction:column;align-items:stretch;min-height:auto;}
+  .t-a .hero-media{order:1;position:relative;}
+  .t-a .hero-media img{border-radius:0;aspect-ratio:4/3;height:auto;}
+  .t-a .h1-wrap{
+    position:absolute;top:calc(56px + 1.9rem);left:2.1rem;
+    z-index:2;max-width:none;
+  }
+  .t-a .hero-h1{
+    font-size:clamp(1.05rem,5.6vw,1.5rem);
+    line-height:1.66;letter-spacing:.04em;
+  }
+  .t-a .hero-h1 .br-sp{display:block;}
+  .t-a .hero-h1 .br-sp2{display:block;}
+  .t-a .eyebrow{display:none;}
+  .t-a .eyebrow-sp{
+    display:block;font-size:.72rem;letter-spacing:.12em;
+    color:var(--accent);font-weight:600;
+    margin-bottom:.4rem;text-transform:uppercase;
+  }
+  .t-a .hero-copy{order:2;width:100%;padding:1.2rem 1.2rem 2rem;flex:none;}
+  .t-a .hero-lead{padding-top:0;}
+  .t-a .cta-under-inner{flex-direction:column;}
+  .t-a .cta-under-inner .btn-primary,
+  .t-a .cta-under-inner .btn-outline{width:min(100%,24rem);}
+}
+
+/* ================================================================
+   B案 (.t-b) — ビジュアル主役型
+   FV画像: pet-fv-light-02.jpg
+   ================================================================ */
+.t-b{font-family:'Noto Sans JP',sans-serif;}
+.t-b .hero{
+  position:relative;
+  min-height:80vh;
+  display:flex;align-items:center;
+  overflow:hidden;
+}
+.t-b .hero-bg{
+  position:absolute;inset:0;
+  background-image:url('https://kazuki4no.github.io/lp-assets/pet/pet-fv-light-02.jpg');
+  background-size:cover;background-position:62% center;
+}
+.t-b .hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(90deg,
+    rgba(253,249,244,.86) 0%,
+    rgba(253,249,244,.55) 50%,
+    rgba(253,249,244,.05) 100%);
+}
+.t-b .hero-content{
+  position:relative;z-index:1;
+  max-width:560px;
+  padding:6rem 2rem 3rem;
+  text-align:left;
+}
+.t-b .hero-eyebrow{
+  font-size:.77rem;letter-spacing:.18em;
+  color:var(--accent);font-weight:600;
+  text-transform:uppercase;margin-bottom:.5rem;
+}
+.t-b .hero-h1{
+  font-size:clamp(2rem,6vw,3.8rem);
+  font-weight:700;line-height:1.3;
+  color:var(--ink);margin-bottom:.9rem;
+}
+.t-b .hero-sub{
+  font-size:.95rem;color:var(--muted);
+  line-height:1.85;margin-bottom:1.4rem;
+}
+.t-b .hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;}
+.t-b .trust-bar{
+  background:var(--white);border-bottom:1px solid var(--line);
+  padding:1rem 0;
+}
+.t-b .trust-bar-inner{
+  max-width:980px;margin:0 auto;padding:0 1.2rem;
+  display:flex;flex-wrap:wrap;gap:.4rem;justify-content:center;align-items:center;
+}
+@media(max-width:768px){
+  .t-b .hero-bg{background-position:68% center;}
+  .t-b .hero-overlay{
+    background:linear-gradient(180deg,rgba(253,249,244,.90) 0%,rgba(253,249,244,.72) 100%);
+  }
+  .t-b .hero-content{padding:5rem 1.2rem 2.5rem;}
+  .t-b .hero-h1{font-size:clamp(1.8rem,7vw,2.4rem);}
+  .t-b .hero-cta{flex-direction:column;}
+  .t-b .hero-cta a{width:min(100%,22rem);}
+}
+
+/* ================================================================
+   C案 (.t-c) — オファー/行動喚起型 (ダーク×アンバーゴールド)
+   FV画像: pet-fv-dark-01.jpg
+   ================================================================ */
+.t-c{background:var(--dark-bg);color:#f5ede2;}
+.t-c .site-header{background:rgba(26,13,5,.96);}
+.t-c .logo{color:#f5ede2;}
+.t-c .site-nav a{color:rgba(245,237,226,.65);}
+.t-c .site-nav a:hover{color:var(--gold);}
+.t-c .nav-cta{background:var(--gold) !important;color:var(--dark-bg) !important;}
+.t-c .hamburger{color:#f5ede2;}
+.t-c .site-nav{background:var(--dark-bg);}
+.t-c .hero{
+  position:relative;min-height:84vh;
+  display:flex;align-items:center;
+  overflow:hidden;
+}
+.t-c .hero-bg{
+  position:absolute;inset:0;
+  background-image:url('https://kazuki4no.github.io/lp-assets/pet/pet-fv-dark-01.jpg');
+  background-size:cover;background-position:right center;
+  opacity:.78;
+}
+.t-c .hero-content{
+  position:relative;z-index:1;
+  padding:6rem 2rem 4rem;max-width:580px;
+}
+.t-c .badge-row{display:flex;flex-wrap:wrap;gap:.4rem;margin-bottom:1rem;}
+.t-c .badge{
+  font-size:.7rem;letter-spacing:.1em;
+  background:rgba(196,135,10,.18);
+  border:1px solid rgba(196,135,10,.4);
+  color:var(--gold);padding:.2rem .7rem;border-radius:99px;
+}
+.t-c .hero-eyebrow{
+  font-size:.76rem;letter-spacing:.18em;
+  color:var(--gold);font-weight:600;margin-bottom:.5rem;
+}
+.t-c .hero-h1{
+  font-size:clamp(1.9rem,5.6vw,3.4rem);
+  font-weight:700;line-height:1.35;
+  color:#f5ede2;margin-bottom:.8rem;
+}
+.t-c .hero-h1 .accent{color:var(--gold);}
+.t-c .hero-sub{
+  font-size:.93rem;color:rgba(245,237,226,.78);
+  line-height:1.85;margin-bottom:1.4rem;
+}
+.t-c .hero-cta{display:flex;flex-wrap:wrap;gap:.8rem;}
+.t-c .btn-c-main{
+  background:var(--gold);color:var(--dark-bg);
+  padding:.85rem 2.2rem;border-radius:var(--radius);
+  font-weight:700;font-size:.93rem;text-decoration:none;
+  border:2px solid var(--gold);transition:all .22s;display:inline-block;
+}
+.t-c .btn-c-main:hover{background:transparent;color:var(--gold);}
+.t-c .btn-c-outline{
+  background:transparent;color:var(--gold);
+  border:2px solid rgba(196,135,10,.5);
+  padding:.85rem 2.2rem;border-radius:var(--radius);
+  font-weight:700;font-size:.93rem;text-decoration:none;
+  transition:all .22s;display:inline-block;
+}
+.t-c .btn-c-outline:hover{border-color:var(--gold);}
+/* Hero inline form */
+.t-c .hero-form{
+  background:rgba(26,13,5,.82);border:1px solid rgba(196,135,10,.32);
+  border-radius:12px;padding:1.3rem 1.4rem;margin-top:1.4rem;max-width:400px;
+}
+.t-c .hero-form p{font-size:.8rem;color:var(--gold);font-weight:700;margin-bottom:.7rem;}
+.t-c .hero-form label{font-size:.75rem;color:rgba(245,237,226,.68);display:block;margin-bottom:.18rem;margin-top:.65rem;}
+.t-c .hero-form input,.t-c .hero-form select{
+  width:100%;padding:.52rem .72rem;border:1px solid rgba(196,135,10,.3);
+  border-radius:5px;font-size:.83rem;background:#1a0d05;color:#f5ede2;
+  box-sizing:border-box;font-family:inherit;
+}
+.t-c .hero-form .form-btn{
+  margin-top:1rem;width:100%;
+  background:var(--gold);color:var(--dark-bg);
+  border:0;border-radius:5px;padding:.72rem;
+  font-weight:700;font-size:.88rem;cursor:pointer;
+  font-family:inherit;
+}
+/* Dark theme overrides */
+.t-c section{background:var(--dark-bg);color:#f5ede2;}
+.t-c .section-label{color:var(--gold);}
+.t-c h2,.t-c h3{color:#f5ede2;}
+.t-c .accent{color:var(--gold);}
+.t-c .service-card{background:#271008;border:1px solid rgba(196,135,10,.14);box-shadow:none;}
+.t-c .service-card h3{color:#f5ede2;}
+.t-c .service-card p{color:rgba(245,237,226,.62);}
+.t-c .service-icon{border-color:var(--gold);}
+.t-c .service-icon svg{stroke:var(--gold);}
+.t-c .strength-list li{border-bottom-color:rgba(196,135,10,.15);}
+.t-c .strength-num{color:var(--gold);}
+.t-c .strength-text h4{color:#f5ede2;}
+.t-c .strength-text p{color:rgba(245,237,226,.65);}
+.t-c .faq-item{border-bottom-color:rgba(196,135,10,.15);}
+.t-c .faq-q{color:#f5ede2;}
+.t-c .faq-q::before{color:var(--gold);}
+.t-c .faq-a{color:rgba(245,237,226,.65);}
+.t-c .contact-box{background:#271008;border:1px solid rgba(196,135,10,.18);}
+.t-c .contact-box h2{color:#f5ede2;}
+.t-c .contact-box p{color:rgba(245,237,226,.75);}
+.t-c .tel-num{color:var(--gold);}
+.t-c .contact-form input,.t-c .contact-form select,.t-c .contact-form textarea{
+  background:var(--dark-bg);border-color:rgba(196,135,10,.25);color:#f5ede2;
+}
+.t-c .trust-pills .pill{color:rgba(245,237,226,.7);}
+.t-c .trust-pills .pill svg{stroke:var(--gold);}
+.t-c .floating-cta{background:var(--gold);color:var(--dark-bg);}
+.t-c .site-footer{background:#0e0702;}
+.t-c .bg-alt{background:#21100a !important;}
+.t-c .gallery-img{border-radius:10px;}
+@media(max-width:768px){
+  .t-c .hero-bg{background-position:65% center;}
+  .t-c .hero-content{padding:5rem 1.2rem 3rem;}
+  .t-c .hero-cta{flex-direction:column;}
+  .t-c .hero-cta a{width:min(100%,22rem);}
+}
+
+/* ================================================================
+   Recruit (.page-recruit)
+   FV画像: pet-staff-01.jpg
+   ================================================================ */
+.page-recruit .hero{
+  position:relative;min-height:70vh;
+  display:flex;align-items:center;overflow:hidden;
+}
+.page-recruit .hero-bg{
+  position:absolute;inset:0;
+  background-image:url('https://kazuki4no.github.io/lp-assets/pet/pet-staff-01.jpg');
+  background-size:cover;background-position:center;
+}
+.page-recruit .hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(253,249,244,.86) 40%,rgba(253,249,244,.15) 100%);
+}
+.page-recruit .hero-content{
+  position:relative;z-index:1;
+  padding:5.5rem 2rem 3rem;max-width:520px;
+}
+.page-recruit .hero-eyebrow{
+  font-size:.76rem;letter-spacing:.15em;
+  color:var(--accent);font-weight:600;margin-bottom:.5rem;
+}
+.page-recruit .hero-h1{
+  font-size:clamp(1.8rem,5.5vw,3rem);
+  font-weight:700;line-height:1.4;color:var(--ink);margin-bottom:.8rem;
+}
+.page-recruit .hero-sub{font-size:.93rem;color:var(--muted);margin-bottom:1.3rem;}
+.recruit-appeal{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+.appeal-card{
+  background:var(--white);border-radius:12px;
+  padding:1.5rem 1.2rem;text-align:center;box-shadow:var(--shadow);
+}
+.appeal-icon{
+  width:44px;height:44px;
+  border:1.5px solid var(--accent);border-radius:50%;
+  display:flex;align-items:center;justify-content:center;margin:0 auto .8rem;
+}
+.appeal-icon svg{width:20px;height:20px;stroke:var(--accent);fill:none;stroke-width:1.5;}
+.appeal-card h3{color:var(--accent);font-size:.95rem;margin-bottom:.4rem;}
+.appeal-card p{font-size:.83rem;color:var(--muted);margin:0;}
+.voice-box{
+  background:var(--card);border-radius:12px;
+  padding:1.5rem 1.8rem;margin-bottom:1rem;
+}
+.voice-box p{font-size:.9rem;color:var(--muted);margin-bottom:.5rem;}
+.voice-name{font-size:.76rem;color:var(--accent);font-weight:600;}
+.requirements-table{width:100%;border-collapse:collapse;}
+.requirements-table th,.requirements-table td{
+  padding:.85rem 1.1rem;border:1px solid var(--line);
+  font-size:.87rem;vertical-align:top;text-align:left;
+}
+.requirements-table th{background:var(--card);font-weight:700;color:var(--ink);width:32%;}
+@media(max-width:768px){
+  .recruit-appeal{grid-template-columns:1fr;}
+  .requirements-table,.requirements-table tbody,
+  .requirements-table tr,.requirements-table th,.requirements-table td{
+    display:block;width:100%;
+  }
+  .requirements-table th{border-bottom:0;}
+  .requirements-table td{border-top:0;padding-bottom:1rem;}
+  .page-recruit .hero-bg{background-position:60% center;}
+  .page-recruit .hero-content{padding:5rem 1.2rem 2.5rem;}
+}
+
+/* ================================================================
+   bg-alt（偶数セクションの背景）
+   ================================================================ */
+.bg-alt{background:var(--card);}

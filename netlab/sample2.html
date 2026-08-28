@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>株式会社ネット集客ラボ｜船橋発、工務店の集客力を最大化するWebパートナー</title>
+<style>
+  :root{
+    --main:#16425B;
+    --main-dark:#0D2A3B;
+    --accent:#E8A33D;
+    --accent-light:#FDF1DC;
+    --text:#2B2B2B;
+    --sub:#6B6B6B;
+    --bg:#FCFBF8;
+    --white:#FFFFFF;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;color:var(--text);background:var(--bg);line-height:1.8;}
+  img{max-width:100%;display:block;}
+  a{color:inherit;text-decoration:none;}
+  .container{max-width:1080px;margin:0 auto;padding:0 24px;}
+  .section{padding:88px 0;}
+  .section-title{font-size:14px;letter-spacing:0.2em;color:var(--accent);font-weight:700;text-align:center;margin-bottom:12px;}
+  .section-heading{font-size:30px;font-weight:700;text-align:center;margin-bottom:16px;letter-spacing:0.03em;color:var(--main-dark);}
+  .section-lead{text-align:center;color:var(--sub);max-width:640px;margin:0 auto 56px;font-size:15px;}
+
+  header{position:sticky;top:0;z-index:100;background:rgba(255,255,255,0.96);border-bottom:1px solid #eee;backdrop-filter:blur(6px);}
+  .header-inner{max-width:1080px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;}
+  .logo{font-size:18px;font-weight:800;color:var(--main-dark);letter-spacing:0.02em;}
+  .logo span{color:var(--accent);}
+  nav ul{display:flex;gap:28px;list-style:none;}
+  nav a{font-size:14px;font-weight:600;}
+  nav a:hover{color:var(--main);}
+  .header-cta{display:flex;gap:10px;}
+  .btn{display:inline-block;padding:12px 28px;border-radius:4px;font-size:14px;font-weight:700;text-align:center;}
+  .btn-primary{background:var(--accent);color:#fff;}
+  .btn-primary:hover{background:#cf8a26;}
+  .btn-outline{border:1px solid var(--main);color:var(--main);}
+  .btn-outline:hover{background:var(--accent-light);}
+  .btn-small{padding:9px 18px;font-size:13px;}
+  .menu-toggle{display:none;font-size:26px;background:none;border:none;cursor:pointer;color:var(--main-dark);}
+
+  /* Full-bleed FV */
+  /* 元画像URL：現サイトTOPメインビジュアル（未取得・自社写真への差し替え前提） / images/fv-main.jpg */
+  .fv{
+    position:relative;height:88vh;min-height:560px;display:flex;align-items:flex-end;
+    background:linear-gradient(0deg, rgba(13,42,59,0.94) 10%, rgba(13,42,59,0.4) 60%, rgba(13,42,59,0.15)), url('https://loremflickr.com/1600/1000/webdesign,laptop,office') center/cover no-repeat;
+    color:#fff;
+  }
+  .fv-inner{max-width:1080px;margin:0 auto;padding:0 24px 64px;width:100%;}
+  .fv-eyebrow{font-size:13px;letter-spacing:0.25em;opacity:0.85;margin-bottom:18px;}
+  .fv h1{font-size:34px;font-weight:800;line-height:1.6;margin-bottom:24px;max-width:680px;}
+  .fv-btns{display:flex;gap:16px;flex-wrap:wrap;}
+  .fv .btn-outline{border-color:#fff;color:#fff;}
+
+  /* Works band */
+  .works-band{background:var(--main-dark);padding:0;}
+  .works-grid{display:grid;grid-template-columns:repeat(3,1fr);}
+  .works-item{position:relative;overflow:hidden;display:block;}
+  .works-item img{width:100%;height:240px;object-fit:cover;filter:brightness(0.85);transition:transform .3s;}
+  .works-item:hover img{transform:scale(1.06);}
+  .works-cap{position:absolute;left:0;right:0;bottom:0;padding:18px 20px;background:linear-gradient(0deg,rgba(0,0,0,0.75),rgba(0,0,0,0));color:#fff;}
+  .works-cap .tag{font-size:11px;color:var(--accent);font-weight:800;letter-spacing:0.1em;margin-bottom:4px;}
+  .works-cap .ttl{font-size:13.5px;font-weight:700;}
+
+  /* Strength row */
+  .strength-strip{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;}
+  .strength-strip .item{flex:1;min-width:220px;text-align:center;padding:0 12px;}
+  .strength-strip .num{font-size:32px;font-weight:800;color:var(--accent);margin-bottom:10px;}
+  .strength-strip h3{font-size:15.5px;font-weight:700;color:var(--main-dark);margin-bottom:8px;}
+  .strength-strip p{font-size:13px;color:var(--sub);}
+
+  /* Service banners */
+  .banner{display:flex;align-items:center;gap:44px;margin-bottom:56px;}
+  .banner:last-child{margin-bottom:0;}
+  .banner.rev{flex-direction:row-reverse;}
+  .banner img{width:46%;height:300px;object-fit:cover;border-radius:10px;flex-shrink:0;}
+  .banner-body{flex:1;}
+  .banner-no{font-size:12px;color:var(--accent);font-weight:800;letter-spacing:0.15em;margin-bottom:10px;}
+  .banner-body h3{font-size:21px;font-weight:800;color:var(--main-dark);margin-bottom:14px;}
+  .banner-body p{font-size:14px;color:var(--sub);}
+
+  /* Company photo */
+  .company-photo-wrap{display:flex;gap:40px;align-items:center;}
+  .company-photo-wrap img{width:42%;border-radius:10px;object-fit:cover;height:340px;flex-shrink:0;}
+  .company-table{width:100%;border-collapse:collapse;background:#fff;border-radius:10px;overflow:hidden;border:1px solid #ececec;flex:1;}
+  .company-table th,.company-table td{padding:16px 22px;text-align:left;font-size:14px;border-bottom:1px solid #eee;}
+  .company-table th{width:130px;background:var(--accent-light);color:var(--main-dark);font-weight:700;}
+  .company-table tr:last-child th,.company-table tr:last-child td{border-bottom:none;}
+
+  .cta{background:var(--main-dark);color:#fff;text-align:center;padding:80px 24px;}
+  .cta h2{font-size:26px;font-weight:800;margin-bottom:16px;}
+  .cta p{color:#cbd6dd;margin-bottom:32px;}
+  .cta .btns{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
+  .cta .btn-primary{background:var(--accent);color:#fff;}
+  .cta .btn-outline{border-color:#fff;color:#fff;}
+
+  footer{background:#0A2131;color:#c6d0d5;padding:48px 24px 24px;font-size:13px;}
+  .footer-inner{max-width:1080px;margin:0 auto;display:flex;justify-content:space-between;flex-wrap:wrap;gap:24px;}
+  .footer-logo{font-size:17px;font-weight:800;color:#fff;margin-bottom:10px;}
+  .footer-links{display:flex;gap:24px;list-style:none;flex-wrap:wrap;}
+  .copyright{text-align:center;margin-top:32px;color:#7c8990;}
+
+  @media (max-width:900px){
+    .works-grid{grid-template-columns:1fr 1fr;}
+    .strength-strip{flex-direction:column;}
+    .banner,.banner.rev{flex-direction:column;}
+    .banner img{width:100%;height:220px;}
+    .company-photo-wrap{flex-direction:column;}
+    .company-photo-wrap img{width:100%;}
+  }
+  @media (max-width:700px){
+    nav,.header-cta{display:none;}
+    .menu-toggle{display:block;}
+    .fv h1{font-size:24px;}
+    .fv{height:auto;min-height:480px;padding-top:40px;}
+    .section{padding:60px 0;}
+    .works-grid{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="logo">ネット集客<span>ラボ</span></div>
+    <nav><ul>
+      <li><a href="#works">実績</a></li>
+      <li><a href="#service">サービス</a></li>
+      <li><a href="#company">会社概要</a></li>
+    </ul></nav>
+    <div class="header-cta">
+      <a href="recruit.html" class="btn btn-outline btn-small">採用情報</a>
+      <a href="#contact" class="btn btn-primary btn-small">お問い合わせ</a>
+    </div>
+    <button class="menu-toggle">≡</button>
+  </div>
+</header>
+
+<section class="fv">
+  <div class="fv-inner">
+    <p class="fv-eyebrow">CHIBA / FUNABASHI　工務店専門 Web集客パートナー</p>
+    <h1>工務店の集客力を、<br>ホームページから最大化する。</h1>
+    <div class="fv-btns">
+      <a href="#contact" class="btn btn-primary">無料ホームページ診断を申し込む</a>
+      <a href="#service" class="btn btn-outline">サービスを見る</a>
+    </div>
+  </div>
+</section>
+
+<section class="works-band" id="works">
+  <div class="works-grid">
+    <a class="works-item" href="#service">
+      <img src="https://loremflickr.com/560/440/house,architecture,japan" alt="熊本のシアーズホーム様の平屋専用サイト">
+      <!-- 元画像URL：現サイト実例一覧「熊本のシアーズホーム様の平屋専用サイト」（未取得） / images/works-1.jpg -->
+      <div class="works-cap"><div class="tag">ホームページ制作</div><div class="ttl">熊本のシアーズホーム様の平屋専用サイト</div></div>
+    </a>
+    <a class="works-item" href="#service">
+      <img src="https://loremflickr.com/560/440/house,blueprint,architect" alt="市川市のDAISHU様の平屋専用サイト">
+      <!-- 元画像URL：現サイト実例一覧「市川市のDAISHUさまの平屋専用サイト」（未取得） / images/works-2.jpg -->
+      <div class="works-cap"><div class="tag">ホームページ制作</div><div class="ttl">市川市のDAISHU様の平屋専用サイト</div></div>
+    </a>
+    <a class="works-item" href="#service">
+      <img src="https://loremflickr.com/560/440/consulting,meeting,office" alt="福岡市の工務店様の無料診断">
+      <!-- 元画像URL：現サイト実例一覧「福岡市の工務店様の無料診断」（未取得） / images/works-3.jpg -->
+      <div class="works-cap"><div class="tag">無料診断</div><div class="ttl">福岡市の工務店様の無料診断</div></div>
+    </a>
+  </div>
+</section>
+
+<section class="section" id="strength">
+  <div class="container">
+    <p class="section-title">STRENGTH</p>
+    <h2 class="section-heading">3つの強み</h2>
+    <p class="section-lead">SEO対策とブランディングを掛け合わせ、工務店様の集客力を最大化するために日夜考えています。</p>
+    <div class="strength-strip">
+      <div class="item"><div class="num">01</div><h3>20年以上・1000社以上の実績</h3><p>2004年からのSEO実践ノウハウを蓄積。</p></div>
+      <div class="item"><div class="num">02</div><h3>SEO×ブランディング設計</h3><p>ターゲットに刺さる集客力を構築。</p></div>
+      <div class="item"><div class="num">03</div><h3>毎月3社限定の無料診断</h3><p>年100回以上のサイト分析実績。</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="service" style="background:var(--accent-light);">
+  <div class="container">
+    <p class="section-title">SERVICE</p>
+    <h2 class="section-heading">サービス</h2>
+    <p class="section-lead">工務店様の集客課題に合わせて、必要なサービスを組み合わせてご提案します。</p>
+
+    <div class="banner">
+      <img src="https://loremflickr.com/560/380/house,architecture,blueprint" alt="ホームページ制作">
+      <!-- 元画像URL：現サイト施工事例・実例写真（未取得・自社写真への差し替え前提） / images/banner-website.jpg -->
+      <div class="banner-body">
+        <div class="banner-no">01 ／ ホームページ制作</div>
+        <h3>工務店様の「No.1」をコンテンツに</h3>
+        <p>集客ターゲットをお聞きし、そのターゲットを集客するためのSEO対策を考え、お問い合わせを獲得するために工務店様の強み・No.1をコンテンツに落とし込んでホームページを作ります。</p>
+      </div>
+    </div>
+
+    <div class="banner rev">
+      <img src="https://loremflickr.com/560/380/blog,writing,laptop" alt="AIコンテンツSEO">
+      <!-- 元画像URL：現サイト実例・ブログ写真（未取得・自社写真への差し替え前提） / images/banner-ai.jpg -->
+      <div class="banner-body">
+        <div class="banner-no">02 ／ AIコンテンツSEO</div>
+        <h3>AIを活用し、ブログ・施工事例を止めない</h3>
+        <p>「作って終わり」にせず、AIを活用したブログ運用・施工事例の更新まで継続的にサポート。人手が足りない工務店様でも情報発信を止めません。</p>
+      </div>
+    </div>
+
+    <div class="banner">
+      <img src="https://loremflickr.com/560/380/business,handshake,meeting" alt="コンサルティング・広告集客">
+      <!-- 元画像URL：現サイトコンサルティング風景写真（未取得・自社写真への差し替え前提） / images/banner-consulting.jpg -->
+      <div class="banner-body">
+        <div class="banner-no">03 ／ コンサルティング・広告集客</div>
+        <h3>SEOと広告、両輪での集客設計</h3>
+        <p>ホームページの土台となるSEO戦略に加え、必要に応じて広告集客もご提案。工務店様の状況に合わせた無理のない集客プランを一緒に考えます。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="company">
+  <div class="container">
+    <p class="section-title">COMPANY</p>
+    <h2 class="section-heading">会社概要</h2>
+    <div class="company-photo-wrap">
+      <img src="https://loremflickr.com/700/700/office,consulting,japan" alt="株式会社ネット集客ラボ">
+      <!-- 元画像URL：現サイト代表・オフィス写真（未取得・自社写真への差し替え前提） / images/company-photo.jpg -->
+      <table class="company-table">
+        <tr><th>社名</th><td>株式会社ネット集客ラボ</td></tr>
+        <tr><th>代表</th><td>山本 美和子</td></tr>
+        <tr><th>事業内容</th><td>ホームページ制作／SEO対策／AIコンテンツ運用／Web集客コンサルティング　ほか</td></tr>
+        <tr><th>所在地</th><td>〒273-027　千葉県船橋市海神町西1-1193-1　508号</td></tr>
+        <tr><th>設立</th><td>2025年10月10日</td></tr>
+        <tr><th>営業時間</th><td>10:00〜17:00（土日祝休み）</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="contact">
+  <h2>まずは無料ホームページ診断から</h2>
+  <p>協力会社様の応募も受け付けています。お問い合わせフォームよりお気軽にご連絡ください。</p>
+  <div class="btns">
+    <a href="https://netlab.works/#contact" class="btn btn-primary">お問い合わせフォームへ</a>
+    <a href="https://netlab.works/" class="btn btn-outline">現在のサイトを見る</a>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">株式会社ネット集客ラボ</div>
+      <p>千葉県船橋市海神町西1-1193-1<br>工務店専門のホームページ制作・SEO対策・AIブログ運用</p>
+    </div>
+    <ul class="footer-links">
+      <li><a href="#service">サービス</a></li>
+      <li><a href="recruit.html">採用情報</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </div>
+  <p class="copyright">©株式会社ネット集客ラボ All rights reserved.</p>
+</footer>
+
+</body>
+</html>
