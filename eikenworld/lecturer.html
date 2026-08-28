@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ｅｉｋｅｎわーるど合同会社｜認定パートナー講師紹介｜あなたに合う講師を選べます</title>
+<meta name="description" content="英検・TOEICオンラインスクールの認定パートナー講師紹介ページ。英検面接委員経験者を含む講師陣から、あなたに合う講師を選んで体験レッスンをお申し込みいただけます。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<style>
+/* =====================================================
+   講師紹介ページ専用スタイル（A案 t-a のトーンを継承）
+   ※ style.css は変更せず、このページ内で追加定義しています
+   ===================================================== */
+
+/* --- ページ上部リード --- */
+.t-a .lect-hero{padding:3.2rem 0 2.4rem;text-align:center;}
+.t-a .lect-hero .eyebrow{display:inline-block;font-size:.82rem;letter-spacing:.24em;color:var(--accent);
+  border-bottom:1px solid var(--accent);padding-bottom:.25rem;margin-bottom:1rem;}
+.t-a .lect-hero h1{font-size:clamp(1.6rem,4.8vw,2.4rem);line-height:1.5;margin-bottom:.9rem;}
+.t-a .lect-hero .lead{color:#4d6660;max-width:38em;margin:0 auto 1.4rem;font-size:.98rem;text-align:left;}
+@media(min-width:600px){.t-a .lect-hero .lead{text-align:center;}}
+.t-a .lect-hero .pills{justify-content:center;}
+.t-a .lect-hero .pill{background:#fff;border:1px solid var(--line);color:#4d6660;}
+
+/* --- 体験申込みの流れ（3ステップ・横並び簡易版） --- */
+.t-a .howto{display:flex;flex-wrap:wrap;gap:.9rem;justify-content:center;max-width:880px;margin:0 auto;}
+.t-a .howto .hstep{flex:1 1 240px;max-width:280px;background:#fff;border:1px solid var(--line);border-radius:8px;
+  padding:1.1rem 1.2rem;display:flex;gap:.8rem;align-items:flex-start;text-align:left;}
+.t-a .howto .n{flex:0 0 auto;width:32px;height:32px;border-radius:50%;background:var(--accent);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.95rem;font-family:'Noto Sans JP',sans-serif;}
+.t-a .howto h3{font-size:.95rem;margin-bottom:.15rem;color:var(--accent-2);}
+.t-a .howto p{font-size:.82rem;color:#4d6660;line-height:1.6;}
+
+/* --- 絞り込みピル --- */
+.t-a .filter-bar{display:flex;flex-wrap:wrap;gap:.5rem;justify-content:center;margin-bottom:2rem;}
+.t-a .filter-btn{font-family:'Noto Sans JP',sans-serif;font-size:.85rem;font-weight:500;cursor:pointer;
+  padding:.42rem 1.15rem;border-radius:999px;border:1px solid var(--line);background:#fff;color:#4d6660;
+  transition:background .2s,color .2s,border-color .2s;}
+.t-a .filter-btn:hover{border-color:var(--accent);color:var(--accent);}
+.t-a .filter-btn.active{background:var(--accent);border-color:var(--accent);color:#fff;}
+
+/* --- 講師グリッド：PC 3列 × 6行 --- */
+.t-a .teacher-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+@media(max-width:900px){.t-a .teacher-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:520px){.t-a .teacher-grid{grid-template-columns:1fr;}}
+
+.t-a .teacher-card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:1.5rem 1.2rem 1.3rem;
+  text-align:center;cursor:pointer;position:relative;transition:box-shadow .25s,transform .25s,border-color .25s;}
+.t-a .teacher-card:hover,.t-a .teacher-card:focus-visible{border-color:var(--accent);
+  box-shadow:0 12px 28px rgba(13,112,86,.13);transform:translateY(-3px);outline:none;}
+.t-a .teacher-card:focus-visible{box-shadow:0 0 0 3px rgba(13,112,86,.35);}
+
+/* 面接委員経験者バッジ（ゴールド） */
+.t-a .badge-examiner{position:absolute;top:.85rem;left:.85rem;font-family:'Noto Sans JP',sans-serif;
+  font-size:.68rem;font-weight:700;letter-spacing:.05em;color:#fff;background:var(--gold);
+  padding:.18rem .6rem;border-radius:4px;}
+
+/* 写真枠（差し替え前提のプレースホルダー） */
+.t-a .teacher-photo{width:110px;height:110px;border-radius:50%;margin:0 auto .9rem;overflow:hidden;
+  border:2px solid var(--line);background:#e4f0eb;display:flex;align-items:center;justify-content:center;}
+.t-a .teacher-photo img{width:100%;height:100%;object-fit:cover;}
+.t-a .teacher-photo .ph-initial{font-family:'Noto Serif JP',serif;font-size:2rem;color:var(--accent);font-weight:600;}
+
+.t-a .teacher-card .t-name{font-size:1.12rem;font-weight:700;color:var(--ink);}
+.t-a .teacher-card .t-en{display:block;font-family:'Noto Sans JP',sans-serif;font-size:.68rem;
+  letter-spacing:.22em;color:var(--accent);text-transform:uppercase;margin:.1rem 0 .6rem;}
+.t-a .teacher-card .t-fields{display:flex;flex-wrap:wrap;gap:.35rem;justify-content:center;margin-bottom:.7rem;}
+.t-a .teacher-card .t-field{font-family:'Noto Sans JP',sans-serif;font-size:.72rem;font-weight:500;
+  color:var(--accent-2);background:#e4f0eb;padding:.14rem .6rem;border-radius:999px;}
+.t-a .teacher-card .t-strength{font-size:.86rem;color:#4d6660;line-height:1.65;min-height:2.8em;}
+.t-a .teacher-card .t-more{display:inline-block;margin-top:.8rem;font-family:'Noto Sans JP',sans-serif;
+  font-size:.8rem;font-weight:700;color:var(--accent);}
+.t-a .teacher-card .t-more::after{content:" ▸";}
+
+/* --- プロフィールモーダル --- */
+.t-a .modal-overlay{position:fixed;inset:0;background:rgba(26,40,56,.55);z-index:100;
+  display:none;align-items:flex-start;justify-content:center;padding:2.5rem 1rem;overflow-y:auto;}
+.t-a .modal-overlay.open{display:flex;}
+.t-a .modal{background:var(--base);border-radius:12px;max-width:640px;width:100%;position:relative;
+  box-shadow:0 24px 60px rgba(0,0,0,.25);animation:modalIn .25s ease;}
+@keyframes modalIn{from{opacity:0;transform:translateY(14px);}to{opacity:1;transform:none;}}
+@media(prefers-reduced-motion:reduce){.t-a .modal{animation:none;}}
+.t-a .modal-close{position:absolute;top:.8rem;right:.8rem;width:38px;height:38px;border-radius:50%;
+  border:1px solid var(--line);background:#fff;cursor:pointer;font-size:1.1rem;color:#4d6660;line-height:1;z-index:1;}
+.t-a .modal-close:hover{color:var(--accent);border-color:var(--accent);}
+.t-a .modal-head{display:flex;gap:1.3rem;align-items:center;padding:1.8rem 1.8rem 1.2rem;border-bottom:1px solid var(--line);}
+.t-a .modal-head .teacher-photo{width:96px;height:96px;margin:0;flex:0 0 auto;}
+.t-a .modal-head .m-name{font-size:1.35rem;font-weight:700;}
+.t-a .modal-head .m-en{display:block;font-family:'Noto Sans JP',sans-serif;font-size:.7rem;letter-spacing:.22em;
+  color:var(--accent);text-transform:uppercase;margin:.05rem 0 .45rem;}
+.t-a .modal-head .m-badges{display:flex;flex-wrap:wrap;gap:.35rem;}
+.t-a .modal-head .m-badge{font-family:'Noto Sans JP',sans-serif;font-size:.72rem;font-weight:700;
+  color:#fff;background:var(--gold);padding:.16rem .65rem;border-radius:4px;}
+.t-a .modal-body{padding:1.4rem 1.8rem 1.8rem;}
+.t-a .modal-body h3{font-size:.85rem;letter-spacing:.18em;color:var(--accent);margin:1.2rem 0 .45rem;
+  font-family:'Noto Sans JP',sans-serif;font-weight:700;}
+.t-a .modal-body h3:first-child{margin-top:0;}
+.t-a .m-fields{display:flex;flex-wrap:wrap;gap:.4rem;}
+.t-a .m-fields .t-field{font-family:'Noto Sans JP',sans-serif;font-size:.78rem;font-weight:500;
+  color:var(--accent-2);background:#e4f0eb;padding:.2rem .75rem;border-radius:999px;}
+.t-a .m-quals{padding-left:0;}
+.t-a .m-quals li{font-size:.92rem;color:#4d6660;padding:.18rem 0 .18rem 1.3em;position:relative;}
+.t-a .m-quals li::before{content:"◆";position:absolute;left:0;color:var(--gold);font-size:.7rem;top:.42em;}
+.t-a .m-message{font-size:.94rem;color:#4d6660;line-height:1.85;}
+.t-a .m-cta{margin-top:1.6rem;text-align:center;background:#fff;border:1px solid var(--line);border-radius:10px;padding:1.4rem 1.2rem;}
+.t-a .m-cta p{font-size:.86rem;color:#4d6660;margin-bottom:.8rem;}
+.t-a .btn-line{display:inline-block;padding:.95rem 2.2rem;border-radius:6px;font-weight:700;
+  background:#06c755;color:#fff;transition:opacity .2s,transform .2s;font-family:'Noto Sans JP',sans-serif;}
+.t-a .btn-line:hover{opacity:.85;transform:translateY(-1px);}
+.t-a .m-cta small{display:block;margin-top:.6rem;font-size:.75rem;color:#6a8178;}
+@media(max-width:520px){
+  .t-a .modal-head{flex-direction:column;text-align:center;padding:2.2rem 1.2rem 1.1rem;}
+  .t-a .modal-head .m-badges{justify-content:center;}
+  .t-a .modal-body{padding:1.2rem 1.2rem 1.5rem;}
+}
+
+/* --- 迷ったら事務局へ --- */
+.t-a .undecided{max-width:680px;margin:3.2rem auto 0;text-align:center;background:#fff;
+  border:1px solid var(--line);border-radius:10px;padding:2rem 1.4rem;}
+.t-a .undecided h2{font-size:1.15rem;margin-bottom:.5rem;color:var(--accent-2);}
+.t-a .undecided p{font-size:.92rem;color:#4d6660;margin-bottom:1.1rem;}
+</style>
+</head>
+<body class="t-a">
+
+<header class="site-header">
+  <div class="wrap">
+    <div class="brand">
+      <span class="name">Ｅｉｋｅｎわーるど</span>
+      <span class="en">ONLINE ENGLISH SCHOOL</span>
+    </div>
+    <nav class="site-nav" id="site-nav">
+      <a href="sample1.html">トップ</a>
+      <a href="#teachers">講師一覧</a>
+      <a href="#howto">体験までの流れ</a>
+      <a href="https://eikenworld.com/contact/" class="btn-primary">事務局に問い合わせる</a>
+    </nav>
+    <button class="hamburger" aria-label="メニューを開く" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- リード -->
+<section class="lect-hero">
+  <div class="wrap">
+    <span class="eyebrow">CERTIFIED PARTNER TEACHERS</span>
+    <h1>認定パートナー講師のご紹介</h1>
+    <p class="lead">Ｅｉｋｅｎわーるどでは、英検面接委員経験者・現役教員経験者・海外在住講師など、経験豊富な認定パートナー講師が在籍しています。気になる講師のプロフィールをご覧いただき、その講師のLINEから直接、体験レッスンをお申し込みいただけます。</p>
+    <div class="pills">
+      <span class="pill">英検準1級〜3級</span>
+      <span class="pill">TOEIC・S-CBT</span>
+      <span class="pill">二次面接対策</span>
+      <span class="pill">海外在住の方も対応</span>
+    </div>
+  </div>
+</section>
+
+<!-- 体験までの流れ -->
+<section class="section" id="howto" style="padding-top:1rem;padding-bottom:2.6rem;">
+  <div class="wrap">
+    <div class="howto">
+      <div class="hstep">
+        <div class="n">1</div>
+        <div><h3>講師を選ぶ</h3><p>一覧から気になる講師をクリックして、プロフィールを確認します。</p></div>
+      </div>
+      <div class="hstep">
+        <div class="n">2</div>
+        <div><h3>LINEで申し込む</h3><p>講師ページの「体験レッスンを申し込む」から、その講師のLINEに直接ご連絡いただけます。</p></div>
+      </div>
+      <div class="hstep">
+        <div class="n">3</div>
+        <div><h3>日程を決めて体験</h3><p>講師と直接、指導日枠・クラスを確認して体験レッスンを受講します。</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 講師一覧 -->
+<section class="section" id="teachers" style="background:#fff;padding-top:3.2rem;">
+  <div class="wrap">
+    <div class="section-head">
+      <span class="en">TEACHERS</span>
+      <h2>講師一覧<span style="display:block;font-size:.55em;color:#6a8178;margin-top:.4rem;font-family:'Noto Sans JP',sans-serif;font-weight:400;">（※講師名・プロフィールはすべてサンプルです。実データに差し替えてご確認ください）</span></h2>
+    </div>
+
+    <!-- 指導分野での絞り込み -->
+    <div class="filter-bar" id="filter-bar" role="group" aria-label="指導分野で絞り込み">
+      <button class="filter-btn active" data-filter="all">すべて</button>
+      <button class="filter-btn" data-filter="英検上位級">英検1級・準1級</button>
+      <button class="filter-btn" data-filter="英検基礎級">英検2級〜3級</button>
+      <button class="filter-btn" data-filter="TOEIC">TOEIC</button>
+      <button class="filter-btn" data-filter="二次面接">二次面接対策</button>
+      <button class="filter-btn" data-filter="海外対応">海外在住対応</button>
+    </div>
+
+    <div class="teacher-grid" id="teacher-grid">
+      <!-- 講師カードはJSで生成されます（データは下部の TEACHERS 配列） -->
+    </div>
+
+    <!-- 迷ったら事務局へ -->
+    <div class="undecided">
+      <h2>どの講師にするか迷ったら</h2>
+      <p>目標級や学習状況をお伺いして、事務局が最適な講師をご提案します。従来どおり事務局へのお申し込みも可能です。</p>
+      <a href="https://eikenworld.com/contact/" class="btn-outline">事務局に相談する</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <p>© 2024 Ｅｉｋｅｎわーるど合同会社　茨城県守谷市松ケ丘1丁目</p>
+  </div>
+</footer>
+
+<!-- プロフィールモーダル -->
+<div class="modal-overlay" id="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-name">
+  <div class="modal">
+    <button class="modal-close" id="modal-close" aria-label="閉じる">✕</button>
+    <div class="modal-head">
+      <div class="teacher-photo" id="modal-photo"></div>
+      <div>
+        <div class="m-name" id="modal-name"></div>
+        <span class="m-en" id="modal-en"></span>
+        <div class="m-badges" id="modal-badges"></div>
+      </div>
+    </div>
+    <div class="modal-body">
+      <h3>指導可能分野</h3>
+      <div class="m-fields" id="modal-fields"></div>
+      <h3>資格・経歴</h3>
+      <ul class="m-quals" id="modal-quals"></ul>
+      <h3>講師からのメッセージ</h3>
+      <p class="m-message" id="modal-message"></p>
+      <div class="m-cta">
+        <p id="modal-cta-lead"></p>
+        <a href="#" class="btn-line" id="modal-line-btn" target="_blank" rel="noopener">この講師に体験レッスンを申し込む</a>
+        <small>LINEの友だち追加画面が開きます。日程・クラスは講師と直接ご相談いただけます。</small>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="nav.js"></script>
+<script>
+/* =====================================================
+   講師データ
+   ─────────────────────────────────────
+   ・講師の追加／削除／編集は、この配列だけ触ればOKです
+   ・photo: 写真URL（空文字 "" ならイニシャル表示になります）
+   ・line : その講師の公式LINE URL（https://lin.ee/XXXX に差し替え）
+   ・examiner: true で「英検面接委員経験」ゴールドバッジ表示
+   ・filters: 絞り込み用タグ
+       "英検上位級"（1級・準1級）/ "英検基礎級"（2〜3級）/
+       "TOEIC" / "二次面接" / "海外対応"
+   ※以下18名は全員ダミーデータです。実際の講師情報に差し替えてください。
+   ===================================================== */
+const TEACHERS = [
+  {name:"佐藤 先生", en:"SATO", photo:"", line:"https://lin.ee/SAMPLE01", examiner:true,
+   fields:["英検1級","英検準1級","二次面接"], filters:["英検上位級","二次面接"],
+   strength:"英検面接委員の経験を活かした、本番同様の二次対策が強みです。",
+   quals:["英検1級","英検面接委員 経験","英語指導歴20年"],
+   message:"面接室で数多くの受験者を見てきた経験から、「合格する解答の組み立て方」を具体的にお伝えします。準1級・1級の壁を一緒に越えましょう。"},
+  {name:"鈴木 先生", en:"SUZUKI", photo:"", line:"https://lin.ee/SAMPLE02", examiner:false,
+   fields:["TOEIC","ビジネス英語"], filters:["TOEIC"],
+   strength:"TOEIC985点。スコアが伸び悩む社会人の学習設計が得意です。",
+   quals:["TOEIC 985点","英検準1級","企業研修講師 経験"],
+   message:"「勉強しているのにスコアが上がらない」には必ず理由があります。現状分析から逆算した学習プランで、目標スコア達成まで伴走します。"},
+  {name:"高橋 先生", en:"TAKAHASHI", photo:"", line:"https://lin.ee/SAMPLE03", examiner:false,
+   fields:["英検2級","英検準2級"], filters:["英検基礎級"],
+   strength:"元高校教諭。定期テストと両立できる英検指導を行います。",
+   quals:["英検準1級","元公立高校英語科教諭","指導歴15年"],
+   message:"高校の授業・定期テストと英検対策は、実は同じ土台の上にあります。学校の学習と無理なく両立できるペース配分でサポートします。"},
+  {name:"田中 先生", en:"TANAKA", photo:"", line:"https://lin.ee/SAMPLE04", examiner:false,
+   fields:["英検準1級","ライティング","海外在住OK"], filters:["英検上位級","海外対応"],
+   strength:"海外在住。時差に合わせた受講とライティング添削が強みです。",
+   quals:["英検1級","海外在住10年","翻訳業 経験"],
+   message:"私自身が海外からの英検受験を経験しています。時差のある地域の方も受講しやすい時間帯で、特にライティングを徹底的に鍛えます。"},
+  {name:"伊藤 先生", en:"ITO", photo:"", line:"https://lin.ee/SAMPLE05", examiner:false,
+   fields:["英検準1級","英作文添削"], filters:["英検上位級"],
+   strength:"大学非常勤講師。論理的な英作文の「型」を指導します。",
+   quals:["英検1級","大学非常勤講師","英語学修士"],
+   message:"英作文は才能ではなく「型」です。大学で教えている論理展開の技術を、英検のライティング・スピーキングに落とし込んで指導します。"},
+  {name:"渡辺 先生", en:"WATANABE", photo:"", line:"https://lin.ee/SAMPLE06", examiner:true,
+   fields:["二次面接","スピーキング"], filters:["二次面接","英検基礎級"],
+   strength:"二次面接対策専門。緊張しやすい方の指導経験が豊富です。",
+   quals:["英検1級","英検面接委員 経験","スピーチ指導歴12年"],
+   message:"「本番で頭が真っ白になる」方こそ、練習の仕方で変わります。面接委員の視点から、緊張しても崩れない解答の練習を繰り返します。"},
+  {name:"山本 先生", en:"YAMAMOTO", photo:"", line:"https://lin.ee/SAMPLE07", examiner:false,
+   fields:["英検3級","英検準2級","はじめての英検"], filters:["英検基礎級"],
+   strength:"児童英語出身。英検がはじめてのお子さまも安心です。",
+   quals:["英検準1級","児童英語講師 経験","小学生指導歴10年"],
+   message:"はじめての英検は「楽しかった」で終わることが一番大切です。お子さまの性格に合わせて、笑顔で続けられるレッスンを心がけています。"},
+  {name:"中村 先生", en:"NAKAMURA", photo:"", line:"https://lin.ee/SAMPLE08", examiner:false,
+   fields:["スピーキング","二次面接","英検2級"], filters:["二次面接","英検基礎級"],
+   strength:"全国通訳案内士。「伝わる英語」を話す練習を重ねます。",
+   quals:["英検1級","全国通訳案内士","海外添乗 経験"],
+   message:"通訳ガイドとして培った「相手に伝わる話し方」を、二次面接の解答に活かします。暗記ではない、自分の言葉で話す力を育てます。"},
+  {name:"小林 先生", en:"KOBAYASHI", photo:"", line:"https://lin.ee/SAMPLE09", examiner:false,
+   fields:["発音","リスニング","英検準2級"], filters:["英検基礎級"],
+   strength:"帰国子女。発音とリスニングの底上げから指導します。",
+   quals:["英検1級","帰国子女（米国8年）","発音指導 資格"],
+   message:"リスニングが苦手な方の多くは「自分が発音できない音」を聞き取れていません。発音から鍛えることで、リスニングは大きく変わります。"},
+  {name:"加藤 先生", en:"KATO", photo:"", line:"https://lin.ee/SAMPLE10", examiner:false,
+   fields:["TOEFL","IELTS","英検準1級"], filters:["英検上位級","海外対応"],
+   strength:"留学対策も対応。TOEFL・IELTSと英検の併願をサポート。",
+   quals:["英検1級","TOEFL iBT 105点","留学カウンセラー 経験"],
+   message:"留学を見据えた英語学習は、試験ごとの対策を別々にやるより「共通する力」を鍛える方が近道です。併願プランもお任せください。"},
+  {name:"吉田 先生", en:"YOSHIDA", photo:"", line:"https://lin.ee/SAMPLE11", examiner:false,
+   fields:["社会人・学び直し","英検2級"], filters:["英検基礎級","TOEIC"],
+   strength:"医療現場での英語使用経験あり。社会人の学び直しに強い。",
+   quals:["英検1級","医療通訳 経験","社会人指導歴8年"],
+   message:"仕事や家庭と両立しながらの学び直しは、続けられる仕組みづくりが9割です。限られた時間で成果が出る学習法をご提案します。"},
+  {name:"山田 先生", en:"YAMADA", photo:"", line:"https://lin.ee/SAMPLE12", examiner:false,
+   fields:["英検1級","語彙対策"], filters:["英検上位級"],
+   strength:"1級の壁になる語彙・読解を、暗記に頼らず攻略します。",
+   quals:["英検1級（優秀賞）","語彙指導教材 執筆","指導歴14年"],
+   message:"1級の語彙は闇雲に覚えても定着しません。語源とテーマ別のネットワークで覚える方法で、読解スピードごと引き上げます。"},
+  {name:"佐々木 先生", en:"SASAKI", photo:"", line:"https://lin.ee/SAMPLE13", examiner:false,
+   fields:["英検3級","基礎文法"], filters:["英検基礎級"],
+   strength:"元中学教諭。文法の基礎固めから丁寧に積み上げます。",
+   quals:["英検準1級","元公立中学校教諭","指導歴18年"],
+   message:"英語が苦手になった時期まで戻って、つまずきの原因から解消します。「わかった」を積み重ねれば、英検は必ず突破できます。"},
+  {name:"松本 先生", en:"MATSUMOTO", photo:"", line:"https://lin.ee/SAMPLE14", examiner:false,
+   fields:["リスニング","英検2級","S-CBT"], filters:["英検基礎級"],
+   strength:"リスニング特化。S-CBTの形式対策も対応します。",
+   quals:["英検1級","TOEIC LR 満点（L）","音声学 専攻"],
+   message:"リスニングは「たくさん聞く」だけでは伸びません。音の変化のルールを知り、正しい手順で練習すれば、短期間でも変化を実感できます。"},
+  {name:"井上 先生", en:"INOUE", photo:"", line:"https://lin.ee/SAMPLE15", examiner:false,
+   fields:["英検準1級","大学受験"], filters:["英検上位級"],
+   strength:"大学受験英語と英検準1級を一体で対策できます。",
+   quals:["英検1級","予備校講師 経験","難関大合格者多数"],
+   message:"英検準1級は大学入試でも大きな武器になります。受験スケジュールから逆算して、入試対策と英検を一体で進めましょう。"},
+  {name:"木村 先生", en:"KIMURA", photo:"", line:"https://lin.ee/SAMPLE16", examiner:false,
+   fields:["TOEIC","ビジネス英語"], filters:["TOEIC"],
+   strength:"外資系企業出身。実務に直結するTOEIC対策が得意です。",
+   quals:["TOEIC 970点","外資系企業勤務 経験","ビジネス英語研修 講師"],
+   message:"TOEICのスコアアップと、実際に仕事で使える英語は両立できます。外資系での実務経験をもとに、実践的なレッスンを行います。"},
+  {name:"林 先生", en:"HAYASHI", photo:"", line:"https://lin.ee/SAMPLE17", examiner:false,
+   fields:["社会人・学び直し","英検準2級"], filters:["英検基礎級","海外対応"],
+   strength:"シニアの学び直しを応援。ゆっくり確実に力をつけます。",
+   quals:["英検準1級","生涯学習講座 講師","シニア指導歴10年"],
+   message:"学び直しに遅すぎることはありません。おひとりおひとりのペースを大切に、「もう一度挑戦してよかった」と思えるレッスンをお届けします。"},
+  {name:"清水 先生", en:"SHIMIZU", photo:"", line:"https://lin.ee/SAMPLE18", examiner:true,
+   fields:["英検S-CBT","二次面接","英検2級"], filters:["二次面接","英検基礎級"],
+   strength:"S-CBT対策に精通。画面越しの面接練習も本番仕様です。",
+   quals:["英検1級","英検面接委員 経験","S-CBT指導実績多数"],
+   message:"S-CBTは従来型と対策のポイントが異なります。パソコン画面での解答に慣れる練習も含め、本番形式でトレーニングします。"}
+];
+
+/* ===================================================== */
+/* 以下は表示ロジック（通常は編集不要です）                  */
+/* ===================================================== */
+(function(){
+  const grid = document.getElementById('teacher-grid');
+  const overlay = document.getElementById('modal-overlay');
+  const closeBtn = document.getElementById('modal-close');
+  let lastFocused = null;
+
+  function photoHTML(t){
+    if(t.photo){
+      return '<img src="'+t.photo+'" alt="'+t.name+'の写真">';
+    }
+    // 写真未設定時はイニシャル表示（実写真に差し替え前提）
+    return '<span class="ph-initial">'+t.en.charAt(0)+'</span>';
+  }
+
+  function render(filter){
+    grid.innerHTML = '';
+    TEACHERS.forEach(function(t, i){
+      if(filter !== 'all' && t.filters.indexOf(filter) === -1) return;
+      const card = document.createElement('div');
+      card.className = 'teacher-card';
+      card.setAttribute('tabindex','0');
+      card.setAttribute('role','button');
+      card.setAttribute('aria-label', t.name + 'のプロフィールを見る');
+      card.innerHTML =
+        (t.examiner ? '<span class="badge-examiner">英検面接委員経験</span>' : '') +
+        '<div class="teacher-photo">'+photoHTML(t)+'</div>' +
+        '<div class="t-name">'+t.name+'</div>' +
+        '<span class="t-en">'+t.en+'</span>' +
+        '<div class="t-fields">'+ t.fields.slice(0,3).map(function(f){return '<span class="t-field">'+f+'</span>';}).join('') +'</div>' +
+        '<p class="t-strength">'+t.strength+'</p>' +
+        '<span class="t-more">プロフィールを見る</span>';
+      card.addEventListener('click', function(){ openModal(i); });
+      card.addEventListener('keydown', function(e){
+        if(e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openModal(i); }
+      });
+      grid.appendChild(card);
+    });
+  }
+
+  function openModal(i){
+    const t = TEACHERS[i];
+    lastFocused = document.activeElement;
+    document.getElementById('modal-photo').innerHTML = photoHTML(t);
+    document.getElementById('modal-name').textContent = t.name;
+    document.getElementById('modal-en').textContent = t.en;
+    document.getElementById('modal-badges').innerHTML =
+      t.examiner ? '<span class="m-badge">英検面接委員経験</span>' : '';
+    document.getElementById('modal-fields').innerHTML =
+      t.fields.map(function(f){return '<span class="t-field">'+f+'</span>';}).join('');
+    document.getElementById('modal-quals').innerHTML =
+      t.quals.map(function(q){return '<li>'+q+'</li>';}).join('');
+    document.getElementById('modal-message').textContent = t.message;
+    document.getElementById('modal-cta-lead').textContent =
+      t.name + 'の指導日枠・クラスの確認、体験レッスンのお申し込みはこちらから';
+    document.getElementById('modal-line-btn').href = t.line;
+    overlay.classList.add('open');
+    document.body.style.overflow = 'hidden';
+    closeBtn.focus();
+  }
+
+  function closeModal(){
+    overlay.classList.remove('open');
+    document.body.style.overflow = '';
+    if(lastFocused) lastFocused.focus();
+  }
+
+  closeBtn.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e){ if(e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function(e){
+    if(e.key === 'Escape' && overlay.classList.contains('open')) closeModal();
+  });
+
+  // 絞り込み
+  document.getElementById('filter-bar').addEventListener('click', function(e){
+    const btn = e.target.closest('.filter-btn');
+    if(!btn) return;
+    document.querySelectorAll('.filter-btn').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    render(btn.dataset.filter);
+  });
+
+  render('all');
+})();
+</script>
+</body>
+</html>
