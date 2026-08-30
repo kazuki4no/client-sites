@@ -369,3 +369,46 @@ a { color: inherit; text-decoration: none; }
 @media (prefers-reduced-motion: reduce) {
   .reveal { opacity: 1; transform: none; transition: none; }
 }
+
+/* =====================================================================
+   強調演出：マーカー線がスルッと引かれる＋アイコンの動き
+   ===================================================================== */
+/* 本文中の重要フレーズ：画面に入るとマーカー線が左から引かれる */
+.uline {
+  background-image: linear-gradient(transparent 62%, rgba(198, 40, 40, .38) 62%, rgba(198, 40, 40, .38) 92%, transparent 92%);
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  transition: background-size .9s cubic-bezier(.25, .8, .3, 1) .35s; /* 表示後ワンテンポ置いて引く */
+  padding: 0 .1em;
+}
+.uline.is-visible { background-size: 100% 100%; }
+/* ゴールド版（ブランド色で引きたい箇所用） */
+.uline.gold { background-image: linear-gradient(transparent 62%, rgba(197, 160, 89, .5) 62%, rgba(197, 160, 89, .5) 92%, transparent 92%); }
+
+/* ヒーローの .mark も同じ演出（ページ読込後に自動で引かれる） */
+.t-a .hero-a h1 .mark, .t-r .rec-hero h1 .mark {
+  background-image: linear-gradient(transparent 60%, rgba(198, 40, 40, .45) 60%, rgba(198, 40, 40, .45) 94%, transparent 94%);
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  transition: background-size 1s cubic-bezier(.25, .8, .3, 1) .6s;
+}
+body.loaded .hero-a h1 .mark, body.loaded .rec-hero h1 .mark { background-size: 100% 100%; }
+
+/* アイコン：表示時にポンと弾んで、その後ゆったり浮遊 */
+@keyframes ico-pop {
+  0% { transform: scale(.4); opacity: 0; }
+  60% { transform: scale(1.15); opacity: 1; }
+  100% { transform: scale(1); }
+}
+@keyframes ico-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+.reveal.is-visible .ico {
+  animation: ico-pop .55s cubic-bezier(.34, 1.56, .64, 1) both,
+             ico-float 3.2s ease-in-out 1.2s infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .uline, .hero-a h1 .mark, .rec-hero h1 .mark { background-size: 100% 100%; transition: none; }
+  .reveal.is-visible .ico { animation: none; }
+}
