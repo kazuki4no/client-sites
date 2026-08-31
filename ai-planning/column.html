@@ -42,6 +42,7 @@
     <p class="en">Column</p>
     <h1>コラム ─ 建築徒然草</h1>
     <p>建築設計の考え方や、日々の出来事を綴っています。新しい記事から順に表示されます。</p>
+    <p id="col-updated" style="font-size:.82rem;color:var(--gold-l);letter-spacing:.06em;margin-top:.6rem;"></p>
   </div>
 </section>
 
@@ -84,10 +85,21 @@
   </div>
 </footer>
 
-<script src="column-data.js"></script>
+<script>
+// 記事データを常に最新の状態で読み込む（管理画面の更新を即時反映させるためのキャッシュ回避）
+(function () {
+  var sc = document.createElement('script');
+  sc.src = 'column-data.js?v=' + Date.now();
+  sc.onload = function () { window.renderColumn && window.renderColumn(); };
+  sc.onerror = function () {
+    document.getElementById('col-list').innerHTML = '<p class="col-empty">記事データを読み込めませんでした。</p>';
+  };
+  document.head.appendChild(sc);
+})();
+</script>
 <script>
 // column-data.js の COLUMN_POSTS を日記形式で描画（配列の先頭＝最新）
-(function () {
+window.renderColumn = function () {
   var list = document.getElementById('col-list');
   var filterBox = document.getElementById('col-filter');
   var posts = window.COLUMN_POSTS || [];
@@ -134,7 +146,12 @@
       var badgeClass = (p.category === 'プライベート') ? 'badge private' : 'badge';
       html += '<article class="col-post">';
       html += '<div class="meta">';
-      if (p.date) html += '<span class="date">' + esc(p.date) + '</span>';
+      if (p.date) {
+        html += '<span class="date">' + esc(p.date).replace(/-/g, '.') + '</span>';
+        // 30日以内の記事にはNEWマークを付ける
+        var days = (Date.now() - new Date(p.date).getTime()) / 86400000;
+        if (days >= 0 && days <= 30) html += '<span class="new-badge">NEW</span>';
+      }
       if (p.category) html += '<span class="' + badgeClass + '">' + esc(p.category) + '</span>';
       html += '</div>';
       html += '<h3>' + esc(p.title) + '</h3>';
@@ -154,9 +171,16 @@
     renderList();
   });
 
+  // 最終更新日（日付つき記事の最新日を自動表示）
+  var dates = posts.map(function (p) { return p.date; }).filter(Boolean).sort();
+  if (dates.length) {
+    var el = document.getElementById('col-updated');
+    if (el) el.textContent = '最終更新：' + dates[dates.length - 1].replace(/-/g, '.');
+  }
+
   renderFilter();
   renderList();
-})();
+};
 </script>
 <script src="scroll.js"></script>
 <script src="nav.js"></script>
