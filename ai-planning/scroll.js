@@ -15,7 +15,7 @@
   );
   reveals.forEach(function (el, i) {
     el.classList.add('reveal');
-    el.style.transitionDelay = (i % 4) * 0.08 + 's';
+    el.style.transitionDelay = (i % 4) * 0.04 + 's'; // 横並びカードのわずかな時間差
   });
 
   // マーカー線対象（.uline）は個別に監視（フェードとは独立して線が引かれる）
@@ -34,6 +34,6 @@
         io.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  }, { threshold: 0.05, rootMargin: '0px 0px 40px 0px' } // 画面下端に少し入る手前で発火);
   all.forEach(function (el) { io.observe(el); });
 })();
