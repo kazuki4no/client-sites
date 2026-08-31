@@ -156,14 +156,18 @@ p{line-height:1.8;}
    ========================================================= */
 /* 🔴2026-08-31：依頼主指示でTOPから「最後の方」へ移動。
    FVの直下ではなく、FAQ・最後のひと押しを読んだ後の位置に置く。 */
-.topform-wrap{padding:0 1.2rem 5rem;background:var(--bg);}
+/* ⚠️padding-top を0にすると直前の .cta-final と5pxしか離れず詰まって見える（実測）。 */
+.topform-wrap{padding:4rem 1.2rem 5rem;background:var(--bg);}
 .topform{
   max-width:860px;margin:0 auto;background:var(--card);border:1px solid var(--line);
   border-radius:12px;box-shadow:0 14px 40px rgba(58,45,32,.1);
   padding:2.2rem 2rem;
 }
 .topform-head{text-align:center;margin-bottom:1.6rem;}
-.topform-eyebrow{
+/* 🔴このピルは <p> なので、後段の「.topform-head p{color:var(--muted)}」に
+   詳細度で負けて文字が濃茶（#5c5148）になっていた＝金色背景にコントラスト1.9で読めない。
+   セレクタを p 込みにして白を確実に勝たせる。 */
+.topform-head p.topform-eyebrow{
   display:inline-block;font-size:.75rem;letter-spacing:.14em;color:#fff;background:var(--accent);
   padding:.25rem .9rem;border-radius:999px;margin-bottom:.8rem;font-family:'Noto Sans JP',sans-serif;
 }

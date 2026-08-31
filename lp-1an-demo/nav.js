@@ -49,51 +49,98 @@
     }
   }
 
-  /* ---------- ③ 全幅はみ出しスライダー ----------
-     中央のスライドを画面中央に寄せ、左右の隣スライドを覗かせる（peek）。
-     トラックの左右パディングが (100% - スライド幅)/2 なので、
-     1枚目・最終枚でも端に不自然な余白が出ない。
-     位置は実測（offsetLeft / offsetWidth）から出すため、
-     スライド幅やgapをCSS側で変えてもJSの修正は要らない。 */
+  /* ---------- ③ 全幅はみ出しスライダー（無限ループ） ----------
+     中央のスライドを画面中央に寄せ、左右の隣を覗かせる（peek）。
+     🔴端で余白が出ないよう、実スライドの前後に「複製セット」を1組ずつ足して
+     見た目を途切れさせない。端に達したらアニメーション無しで中央セットへ戻す（誰にも見えない）。
+     位置は実測（offsetLeft / offsetWidth）で出すので、CSSでスライド幅やgapを変えてもJSは直さなくてよい。 */
   var track = document.getElementById('sliderTrack');
   var dotsBox = document.getElementById('sliderDots');
   if (!track) return;
 
   var viewport = track.parentElement;
-  var slides = Array.prototype.slice.call(track.children);
-  var total = slides.length;
-  if (total < 2) return;
+  var real = Array.prototype.slice.call(track.children);
+  var N = real.length;
+  if (N < 2) return;
 
-  var index = 0;
+  // 前後に複製セットを足す（複製は支援技術から隠す）
+  real.slice().reverse().forEach(function (s) {
+    var c = s.cloneNode(true);
+    c.setAttribute('aria-hidden', 'true');
+    c.removeAttribute('role');
+    track.insertBefore(c, track.firstChild);
+  });
+  real.forEach(function (s) {
+    var c = s.cloneNode(true);
+    c.setAttribute('aria-hidden', 'true');
+    c.removeAttribute('role');
+    track.appendChild(c);
+  });
+
+  var all = Array.prototype.slice.call(track.children); // 3N枚
+  var pos = N;          // 中央セットの先頭＝実スライド0枚目
   var timer = null;
   var INTERVAL = 5000;
+  var snapping = false;
 
   var dots = [];
   if (dotsBox) {
-    slides.forEach(function (_, k) {
+    real.forEach(function (_, k) {
       var d = document.createElement('button');
       d.type = 'button';
       d.setAttribute('aria-label', (k + 1) + '枚目を表示');
-      d.addEventListener('click', function () { go(k); restart(); });
+      d.addEventListener('click', function () { goReal(k); restart(); });
       dotsBox.appendChild(d);
       dots.push(d);
     });
   }
 
-  function go(n) {
-    index = (n + total) % total;
-    var s = slides[index];
-    // スライドの中心を viewport の中心に合わせる
+  function place(animate) {
+    var s = all[pos];
     var x = s.offsetLeft + s.offsetWidth / 2 - viewport.clientWidth / 2;
+    if (!animate) track.style.transition = 'none';
     track.style.transform = 'translateX(' + (-x) + 'px)';
-    slides.forEach(function (el, i) { el.classList.toggle('is-current', i === index); });
+    if (!animate) { void track.offsetWidth; track.style.transition = ''; }
+    var r = ((pos % N) + N) % N;
+    all.forEach(function (el, i) { el.classList.toggle('is-current', i === pos); });
     dots.forEach(function (el, i) {
-      el.classList.toggle('active', i === index);
-      el.setAttribute('aria-current', i === index ? 'true' : 'false');
+      el.classList.toggle('active', i === r);
+      el.setAttribute('aria-current', i === r ? 'true' : 'false');
     });
   }
-  function next() { go(index + 1); }
-  function prev() { go(index - 1); }
+
+  // 端まで来たら、見た目が同じ中央セットの位置へ静かに戻す
+  track.addEventListener('transitionend', function (e) {
+    if (e.target !== track || e.propertyName !== 'transform') return;
+    if (pos >= 2 * N) { pos -= N; place(false); }
+    else if (pos < N) { pos += N; place(false); }
+    snapping = false;
+  });
+
+  function step(d) {
+    if (snapping) return;      // 連打で位置がずれないようにする
+    snapping = true;
+    pos += d;
+    place(true);
+    // transitionend が来ない環境（transitionが無効等）でも詰まらないための保険
+    setTimeout(function () { snapping = false; }, 900);
+  }
+  function next() { step(1); }
+  function prev() { step(-1); }
+
+  // ドットから実インデックスへ移動（いまの位置から最短で回る）
+  function goReal(k) {
+    var cur = ((pos % N) + N) % N;
+    var d = k - cur;
+    if (d > N / 2) d -= N;
+    if (d < -N / 2) d += N;
+    if (d === 0) return;
+    if (snapping) return;
+    snapping = true;
+    pos += d;
+    place(true);
+    setTimeout(function () { snapping = false; }, 900);
+  }
 
   function start() { if (!reduce && !timer) timer = setInterval(next, INTERVAL); }
   function stop() { if (timer) { clearInterval(timer); timer = null; } }
@@ -130,22 +177,16 @@
     document.hidden ? stop() : start();
   });
 
-  // 幅が変わるとスライド幅（vw基準）も変わるので、位置を測り直す
+  // 幅が変わるとスライド幅（vw基準）も変わるので測り直す
   var rt = null;
   window.addEventListener('resize', function () {
     clearTimeout(rt);
-    rt = setTimeout(function () {
-      var keep = track.style.transition;
-      track.style.transition = 'none';   // リサイズ中はアニメーションさせない
-      go(index);
-      void track.offsetWidth;            // 反映させてから transition を戻す
-      track.style.transition = keep;
-    }, 150);
+    rt = setTimeout(function () { place(false); }, 150);
   });
 
   // 画像の読み込みで幅が確定してからもう一度合わせる
-  window.addEventListener('load', function () { go(index); });
+  window.addEventListener('load', function () { place(false); });
 
-  go(0);
+  place(false);
   start();
 })();
