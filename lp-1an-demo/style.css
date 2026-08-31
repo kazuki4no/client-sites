@@ -22,7 +22,15 @@ img{max-width:100%;height:auto;display:block;}
 @media(max-width:1024px){.br-sp{display:block;}}
 @media(max-width:768px){.br-sp2{display:block;}}
 
-/* ===== Theme variables（木と生成りの色） ===== */
+/* =========================================================
+   🔴会社ごとに変えるのは下の3か所だけ。それ以外はそのまま流用してよい。
+     ①body.t-1 のカラー変数（業種別のベースカラー表に従う）
+     ②body.t-1 の font-family（上品・信頼系＝明朝／元気・親しみ系＝ゴシック）
+     ③.fullbleed::before と .cta-final::before の rgba（--bg と同じ色にする）
+   画像URLはCSSに書かない（HTML側のインラインstyleで指定する）＝この2か所以外に
+   会社依存の値を持たせないため。
+   ========================================================= */
+/* ===== ① Theme variables（木と生成りの色） ===== */
 body.t-1{
   --base:#3a2d20; --base-light:#5b4832; --accent:#a5762f; --accent-soft:#c19243;
   --text:#2b231b; --bg:#f8f4ec; --card:#fff; --btn-text:#fff;
@@ -30,6 +38,7 @@ body.t-1{
 }
 
 /* ===== Base ===== */
+/* ===== ② 本文フォント ===== */
 body.t-1{font-family:'Noto Serif JP',serif;color:var(--text);background:var(--bg);}
 a{text-decoration:none;color:inherit;}
 h2{font-size:clamp(1.5rem,3.5vw,2.2rem);line-height:1.35;}
@@ -226,10 +235,12 @@ p{line-height:1.8;}
 .fullbleed{
   position:relative;width:100%;min-height:clamp(380px,60vh,560px);
   display:flex;align-items:center;
-  background-image:url('https://kazuki4no.github.io/lp-assets/realestate/realestate-fv-light-02.jpg');
+  /* 画像はHTML側の style="background-image:url(...)" で指定する */
+  background-color:var(--bg);
   background-size:cover;background-position:70% center;background-repeat:no-repeat;
   overflow:hidden;
 }
+/* ③ この rgba は --bg と同じ色にする */
 .fullbleed::before{
   content:"";position:absolute;inset:0;
   background:linear-gradient(100deg,rgba(248,244,236,.95) 0%,rgba(248,244,236,.86) 34%,rgba(248,244,236,.35) 62%,rgba(248,244,236,0) 88%);
@@ -395,10 +406,16 @@ p{line-height:1.8;}
 
 /* ===== 最後のひと押し ===== */
 .cta-final{
-  position:relative;padding:5rem 1.2rem;text-align:center;
-  background:linear-gradient(rgba(248,244,236,.9),rgba(248,244,236,.94)),
-    url('https://kazuki4no.github.io/lp-assets/construction/construction-sub-01.jpg') center/cover;
+  position:relative;padding:5rem 1.2rem;text-align:center;overflow:hidden;
+  /* 画像はHTML側の style="background-image:url(...)" で指定する */
+  background-color:var(--bg);background-size:cover;background-position:center;
 }
+/* ③ この rgba は --bg と同じ色にする */
+.cta-final::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(rgba(248,244,236,.9),rgba(248,244,236,.94));
+}
+.cta-final .inner{position:relative;z-index:1;}
 .cta-final h2{margin-bottom:1rem;color:var(--base);}
 .cta-final p{margin-bottom:2rem;color:var(--muted);}
 
