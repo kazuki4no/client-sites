@@ -1,6 +1,6 @@
 /* =========================================================
-   1案統合版LP 共通JS
-   ①ハンバーガー開閉 ②スクロール連動アニメーション ③スライダー
+   1案統合版LP 共通JS（第2版）
+   ①ハンバーガー開閉 ②スクロール連動アニメーション ③全幅はみ出しスライダー
    外部ライブラリ不使用。いずれも失敗しても内容が消えないよう組んでいる。
    ========================================================= */
 (function () {
@@ -10,8 +10,7 @@
     window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ---------- ① ハンバーガー ----------
-     開閉クラス名 .open は style.css の .site-nav.open と一致させること。
-     ズレると押しても無反応になる（LP制作ルールの必須不変条件）。 */
+     開閉クラス名 .open は style.css の .site-nav.open と一致させること。 */
   var btn = document.querySelector('.hamburger');
   var nav = document.querySelector('.site-nav');
   if (btn && nav) {
@@ -19,7 +18,6 @@
       var open = nav.classList.toggle('open');
       btn.setAttribute('aria-expanded', open);
     });
-    // アンカーを押したらメニューを閉じる（1枚もののLPなので必須）
     nav.addEventListener('click', function (e) {
       if (e.target.tagName === 'A') {
         nav.classList.remove('open');
@@ -28,8 +26,7 @@
     });
   }
 
-  /* ---------- ② スクロール連動アニメーション ----------
-     IntersectionObserver 非対応・例外時は全要素を可視にして終わる。 */
+  /* ---------- ② スクロール連動アニメーション ---------- */
   var targets = document.querySelectorAll('.reveal');
   function showAll() {
     for (var i = 0; i < targets.length; i++) targets[i].classList.add('is-in');
@@ -52,12 +49,18 @@
     }
   }
 
-  /* ---------- ③ スライダー ---------- */
+  /* ---------- ③ 全幅はみ出しスライダー ----------
+     中央のスライドを画面中央に寄せ、左右の隣スライドを覗かせる（peek）。
+     トラックの左右パディングが (100% - スライド幅)/2 なので、
+     1枚目・最終枚でも端に不自然な余白が出ない。
+     位置は実測（offsetLeft / offsetWidth）から出すため、
+     スライド幅やgapをCSS側で変えてもJSの修正は要らない。 */
   var track = document.getElementById('sliderTrack');
   var dotsBox = document.getElementById('sliderDots');
   if (!track) return;
 
-  var slides = track.children;
+  var viewport = track.parentElement;
+  var slides = Array.prototype.slice.call(track.children);
   var total = slides.length;
   if (total < 2) return;
 
@@ -65,28 +68,29 @@
   var timer = null;
   var INTERVAL = 5000;
 
-  // ドットを枚数ぶん生成
   var dots = [];
   if (dotsBox) {
-    for (var k = 0; k < total; k++) {
+    slides.forEach(function (_, k) {
       var d = document.createElement('button');
       d.type = 'button';
       d.setAttribute('aria-label', (k + 1) + '枚目を表示');
-      (function (n) {
-        d.addEventListener('click', function () { go(n); restart(); });
-      })(k);
+      d.addEventListener('click', function () { go(k); restart(); });
       dotsBox.appendChild(d);
       dots.push(d);
-    }
+    });
   }
 
   function go(n) {
     index = (n + total) % total;
-    track.style.transform = 'translateX(' + (-index * 100) + '%)';
-    for (var i = 0; i < dots.length; i++) {
-      dots[i].classList.toggle('active', i === index);
-      dots[i].setAttribute('aria-current', i === index ? 'true' : 'false');
-    }
+    var s = slides[index];
+    // スライドの中心を viewport の中心に合わせる
+    var x = s.offsetLeft + s.offsetWidth / 2 - viewport.clientWidth / 2;
+    track.style.transform = 'translateX(' + (-x) + 'px)';
+    slides.forEach(function (el, i) { el.classList.toggle('is-current', i === index); });
+    dots.forEach(function (el, i) {
+      el.classList.toggle('active', i === index);
+      el.setAttribute('aria-current', i === index ? 'true' : 'false');
+    });
   }
   function next() { go(index + 1); }
   function prev() { go(index - 1); }
@@ -100,7 +104,6 @@
   if (btnPrev) btnPrev.addEventListener('click', function () { prev(); restart(); });
   if (btnNext) btnNext.addEventListener('click', function () { next(); restart(); });
 
-  // マウス・キーボード操作中は自動送りを止める
   var slider = document.querySelector('.slider');
   if (slider) {
     slider.addEventListener('mouseenter', stop);
@@ -123,10 +126,25 @@
     start();
   }, { passive: true });
 
-  // タブを離れている間は動かさない
   document.addEventListener('visibilitychange', function () {
     document.hidden ? stop() : start();
   });
+
+  // 幅が変わるとスライド幅（vw基準）も変わるので、位置を測り直す
+  var rt = null;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () {
+      var keep = track.style.transition;
+      track.style.transition = 'none';   // リサイズ中はアニメーションさせない
+      go(index);
+      void track.offsetWidth;            // 反映させてから transition を戻す
+      track.style.transition = keep;
+    }, 150);
+  });
+
+  // 画像の読み込みで幅が確定してからもう一度合わせる
+  window.addEventListener('load', function () { go(index); });
 
   go(0);
   start();

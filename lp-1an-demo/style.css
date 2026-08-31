@@ -1,8 +1,10 @@
 /* =========================================================
-   1案統合版LP スタイル（2026-08-31 デモ）
+   1案統合版LP スタイル（2026-08-31 デモ・第2版）
    A案（h1オーバーレイ型FV）をベースに、B案の全幅ビジュアル・沿革、
-   C案の課題チェック・4ステップ・信頼バッジを統合した単一案テンプレート。
-   テーマクラスは body.t-1 の1つだけ（3案の t-a/t-b/t-c を廃止）。
+   C案のフォーム／課題／4ステップを統合した単一案テンプレート。
+   テーマクラスは body.t-1 の1つだけ。
+   第2版の変更：①TOPに問い合わせフォーム ②スライダーを全幅はみ出し型へ
+   ③全幅帯を暗い職人写真→明るい木の家へ（トーン統一） ④古民家再生に特化
    ========================================================= */
 
 /* ===== Reset ===== */
@@ -16,12 +18,10 @@ img{max-width:100%;height:auto;display:block;}
 @media(max-width:1024px){.br-sp{display:block;}}
 @media(max-width:768px){.br-sp2{display:block;}}
 
-/* ===== Theme variables（墨と木の伝統建築カラー） =====
-   社寺建築・古民家再生の会社。墨色（焦茶）をベースに古色の金茶を差し色。
-   背景は生成り（未晒しの和紙）で木と土の質感に寄せる。 */
+/* ===== Theme variables（木と生成りの色） ===== */
 body.t-1{
-  --base:#2f241a; --base-light:#4a3927; --accent:#a5762f; --accent-soft:#c19243;
-  --text:#241d16; --bg:#f7f3ea; --card:#fff; --btn-text:#fff;
+  --base:#3a2d20; --base-light:#5b4832; --accent:#a5762f; --accent-soft:#c19243;
+  --text:#2b231b; --bg:#f8f4ec; --card:#fff; --btn-text:#fff;
   --line:rgba(0,0,0,.1); --muted:#5c5148;
 }
 
@@ -35,7 +35,6 @@ p{line-height:1.8;}
 .section{padding:5rem 1.2rem;}
 .section-alt{background:#fff;}
 .inner{max-width:900px;margin:0 auto;}
-.inner-wide{max-width:1080px;margin:0 auto;}
 .section-title{text-align:center;margin-bottom:2.5rem;}
 .section-title small{
   display:block;font-size:.8rem;letter-spacing:.15em;color:var(--accent);
@@ -43,16 +42,16 @@ p{line-height:1.8;}
 }
 
 /* ===== Buttons =====
-   ⚠️.btn-green を共通ルールに必ず含める（流用元の既知バグ・eco-life案件で発覚） */
+   ⚠️.btn-green を共通ルールに必ず含める（流用元の既知バグ） */
 .btn-primary,.btn-outline,.btn-green{
   display:inline-block;padding:.85rem 2rem;border-radius:6px;
   font-size:1rem;font-weight:700;text-align:center;cursor:pointer;
   transition:opacity .2s,transform .2s;text-decoration:none;
-  font-family:'Noto Sans JP',sans-serif;
+  font-family:'Noto Sans JP',sans-serif;border:2px solid transparent;
 }
-.btn-primary{background:var(--accent);color:var(--btn-text);border:2px solid var(--accent);}
-.btn-outline{background:transparent;color:var(--accent);border:2px solid var(--accent);}
-.btn-green{background:#22c55e;color:#fff;border:2px solid #22c55e;}
+.btn-primary{background:var(--accent);color:var(--btn-text);border-color:var(--accent);}
+.btn-outline{background:transparent;color:var(--accent);border-color:var(--accent);}
+.btn-green{background:#22c55e;color:#fff;border-color:#22c55e;}
 .btn-primary:hover,.btn-outline:hover,.btn-green:hover{opacity:.85;transform:translateY(-2px);}
 
 /* ===== Header ===== */
@@ -67,7 +66,10 @@ p{line-height:1.8;}
 .hamburger{display:none;background:none;border:0;font-size:1.7rem;cursor:pointer;color:#fff;line-height:1;}
 .site-nav{display:flex;gap:1.2rem;align-items:center;}
 .site-nav a{color:#fff;font-size:.9rem;font-family:'Noto Sans JP',sans-serif;}
-@media(max-width:768px){
+/* ⚠️ハンバーガーへの切替は1024px（FVの768pxとは別に取る）。
+   1案版はナビが5項目に増えたため、769〜1024pxの帯で
+   ロゴ・電話・ナビ・ボタンが収まらず2段に折り返して崩れる（820pxで実測）。 */
+@media(max-width:1024px){
   .hamburger{display:block;}
   .site-nav{display:none;flex-direction:column;position:absolute;top:100%;left:0;right:0;
     z-index:50;background:var(--base);box-shadow:0 8px 16px rgba(0,0,0,.2);padding:.5rem 1rem;}
@@ -87,8 +89,6 @@ p{line-height:1.8;}
 
 /* =========================================================
    FV：h1オーバーレイ型（A案 2026-08-26/27修正版を継承）
-   PC・タブレット(769px〜)は通常フローのまま横方向だけ画像へはみ出させる。
-   スマホ(〜768px)のみ画像左余白への絶対配置。
    ========================================================= */
 .t-1 .hero-section{padding:0;background:var(--bg);overflow:hidden;}
 .t-1 .hero-wrap{position:relative;display:flex;align-items:center;max-width:1100px;margin:0 auto;}
@@ -106,11 +106,10 @@ p{line-height:1.8;}
 }
 .t-1 h1{
   font-size:clamp(2rem,4.5vw,3.4rem);line-height:1.28;color:var(--base);
-  text-shadow:0 1px 14px rgba(247,243,234,.96);
+  text-shadow:0 1px 14px rgba(248,244,236,.96);
 }
 .t-1 .hero-lead{margin-top:1.4rem;font-size:.98rem;color:#444;line-height:1.85;max-width:34ch;}
-/* スマホ用eyebrowの既定値。⚠️必ず768pxメディアクエリより「前」に置く。
-   メディアクエリは詳細度を上げないため、後ろに書くとスマホでeyebrowが永久に出ない。 */
+/* スマホ用eyebrowの既定値。⚠️必ず768pxメディアクエリより「前」に置く。 */
 .t-1 .eyebrow-mob{display:none;}
 @media(max-width:1024px){
   .t-1 h1{font-size:clamp(1.6rem,4.6vw,3rem);}
@@ -126,8 +125,7 @@ p{line-height:1.8;}
     color:var(--base);text-shadow:0 1px 8px rgba(255,255,255,.92);
   }
   .t-1 .eyebrow{display:none;}
-  /* PC側の .hero-copy{position:relative} を明示的に打ち消す。
-     忘れるとh1-wrapの絶対配置の基準がhero-copy自身になり、直下のリード文と重なる。 */
+  /* PC側の .hero-copy{position:relative} を明示的に打ち消す。 */
   .t-1 .hero-copy{order:2;position:static;padding:1.2rem 1.2rem 1.5rem;}
   .t-1 .eyebrow-mob{
     display:block;font-size:.78rem;letter-spacing:.13em;color:var(--base);
@@ -137,32 +135,67 @@ p{line-height:1.8;}
   .t-1 .hero-lead{max-width:100%;font-size:.95rem;}
 }
 
-/* ===== FVの遅延アニメーション（2026-08-31 依頼主要望） ===== */
+/* ===== FVの遅延アニメーション ===== */
 @keyframes fvUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:none;}}
 @keyframes fvImg{from{opacity:0;transform:scale(1.06);}to{opacity:1;transform:none;}}
-.js .t-1 .eyebrow    {animation:fvUp .85s .15s both cubic-bezier(.22,.7,.28,1);}
-.js .t-1 h1          {animation:fvUp .95s .34s both cubic-bezier(.22,.7,.28,1);}
-.js .t-1 .eyebrow-mob{animation:fvUp .85s .15s both cubic-bezier(.22,.7,.28,1);}
-.js .t-1 .hero-lead  {animation:fvUp .95s .58s both cubic-bezier(.22,.7,.28,1);}
+.js .t-1 .eyebrow      {animation:fvUp .85s .15s both cubic-bezier(.22,.7,.28,1);}
+.js .t-1 h1            {animation:fvUp .95s .34s both cubic-bezier(.22,.7,.28,1);}
+.js .t-1 .eyebrow-mob  {animation:fvUp .85s .15s both cubic-bezier(.22,.7,.28,1);}
+.js .t-1 .hero-lead    {animation:fvUp .95s .58s both cubic-bezier(.22,.7,.28,1);}
 .js .t-1 .hero-media img{animation:fvImg 1.4s .05s both cubic-bezier(.22,.7,.28,1);}
-.js .t-1 .cta-under-inner{animation:fvUp .95s .8s both cubic-bezier(.22,.7,.28,1);}
+.js .t-1 .topform      {animation:fvUp 1s .8s both cubic-bezier(.22,.7,.28,1);}
 
-/* ===== CTA under hero ===== */
-.cta-under{padding:1.8rem 1.2rem 2.5rem;background:var(--bg);}
-.cta-under-inner{max-width:640px;margin:0 auto;text-align:center;}
-.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-bottom:1.2rem;}
-.cta-btns a{min-width:200px;}
+/* =========================================================
+   TOPのお問い合わせフォーム（2026-08-31 依頼主要望で追加）
+   FV直下に置き、最初の画面で行動できるようにする。
+   ========================================================= */
+.topform-wrap{padding:0 1.2rem 3.2rem;background:var(--bg);}
+.topform{
+  max-width:860px;margin:0 auto;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;box-shadow:0 14px 40px rgba(58,45,32,.1);
+  padding:2.2rem 2rem;
+}
+.topform-head{text-align:center;margin-bottom:1.6rem;}
+.topform-eyebrow{
+  display:inline-block;font-size:.75rem;letter-spacing:.14em;color:#fff;background:var(--accent);
+  padding:.25rem .9rem;border-radius:999px;margin-bottom:.8rem;font-family:'Noto Sans JP',sans-serif;
+}
+.topform-head h2{font-size:clamp(1.15rem,2.6vw,1.6rem);margin-bottom:.6rem;color:var(--base);}
+.topform-head p{font-size:.9rem;color:var(--muted);}
+.topform-body{display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.2rem;}
+.field{display:flex;flex-direction:column;gap:.35rem;}
+.field-full{grid-column:1 / -1;}
+.field label{font-size:.82rem;font-weight:700;color:var(--base);font-family:'Noto Sans JP',sans-serif;}
+.field input,.field select,.field textarea{
+  width:100%;box-sizing:border-box;padding:.7rem .8rem;font-size:.95rem;
+  border:1px solid rgba(0,0,0,.18);border-radius:6px;background:#fdfcf9;
+  font-family:'Noto Sans JP',sans-serif;color:var(--text);
+}
+.field textarea{resize:vertical;}
+.field input:focus,.field select:focus,.field textarea:focus{
+  outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent);
+}
+.topform-submit{grid-column:1 / -1;text-align:center;margin-top:.4rem;}
+.topform-submit .btn-primary{width:min(100%,22rem);}
+.topform-note{grid-column:1 / -1;text-align:center;font-size:.78rem;color:var(--muted);
+  font-family:'Noto Sans JP',sans-serif;}
+@media(max-width:768px){
+  .topform{padding:1.6rem 1.1rem;}
+  .topform-body{grid-template-columns:1fr;}
+}
+
+/* ===== 信頼ピル ===== */
+.cta-under{padding:0 1.2rem 3.2rem;background:var(--bg);}
+.cta-under-inner{max-width:660px;margin:0 auto;text-align:center;}
 .trust-pills{display:flex;gap:0 1.5rem;justify-content:center;flex-wrap:wrap;
   font-size:.85rem;color:var(--muted);font-family:'Noto Sans JP',sans-serif;}
 .pill{display:flex;align-items:center;gap:.4rem;padding:.15rem 0;}
 @media(min-width:769px){.pill+.pill{border-left:1px solid var(--line);padding-left:1.5rem;}}
 @media(max-width:768px){
-  .cta-btns{flex-direction:column;align-items:center;}
-  .cta-btns a{width:min(100%,24rem);}
   .trust-pills{flex-direction:column;align-items:flex-start;width:max-content;margin:0 auto;gap:.5rem;}
 }
 
-/* ===== 課題カード（C案の「こんな方は」＋A案の課題を統合） ===== */
+/* ===== 課題カード ===== */
 .issues-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
 .issue-card{background:var(--card);border:1px solid var(--line);border-radius:10px;
   padding:2rem 1.5rem;text-align:center;transition:transform .3s,box-shadow .3s;}
@@ -173,36 +206,38 @@ p{line-height:1.8;}
 @media(max-width:768px){.issues-grid{grid-template-columns:1fr;}}
 
 /* =========================================================
-   全幅ビジュアル帯（B案の迫力をここへ集約・2026-08-31依頼主要望）
-   「どこか一箇所は横幅いっぱいの画像」の担当セクション。
+   全幅ビジュアル帯（.fullbleed）
+   ⚠️第2版で「暗い職人写真」→「明るい木の家」へ差し替えた。
+   依頼主指摘「そこだけ急に古めかしい」＝ページ全体のトーンから浮いていたため。
+   背景が明るくなったので、白文字ではなく濃い文字＋薄い白幕にしている。
    ========================================================= */
 .fullbleed{
-  position:relative;width:100%;min-height:clamp(360px,58vh,540px);
+  position:relative;width:100%;min-height:clamp(380px,60vh,560px);
   display:flex;align-items:center;
-  background-image:url('https://kazuki4no.github.io/lp-assets/construction/construction-fv-dark-02.jpg');
-  background-size:cover;background-position:72% center;background-repeat:no-repeat;
+  background-image:url('https://kazuki4no.github.io/lp-assets/realestate/realestate-fv-light-02.jpg');
+  background-size:cover;background-position:70% center;background-repeat:no-repeat;
   overflow:hidden;
 }
 .fullbleed::before{
   content:"";position:absolute;inset:0;
-  background:linear-gradient(100deg,rgba(20,14,8,.88) 0%,rgba(20,14,8,.62) 42%,rgba(20,14,8,.15) 72%,rgba(20,14,8,0) 100%);
+  background:linear-gradient(100deg,rgba(248,244,236,.95) 0%,rgba(248,244,236,.86) 34%,rgba(248,244,236,.35) 62%,rgba(248,244,236,0) 88%);
 }
 .fullbleed-inner{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:4rem 1.5rem;width:100%;}
-.fullbleed-copy{max-width:30rem;color:#fff;}
+.fullbleed-copy{max-width:30rem;}
 .fullbleed small{
-  display:block;font-size:.78rem;letter-spacing:.18em;color:var(--accent-soft);
+  display:block;font-size:.78rem;letter-spacing:.18em;color:var(--accent);
   margin-bottom:1rem;font-family:'Noto Sans JP',sans-serif;
 }
-.fullbleed h2{color:#fff;margin-bottom:1.2rem;}
-.fullbleed p{color:rgba(255,255,255,.9);font-size:.98rem;}
+.fullbleed h2{color:var(--base);margin-bottom:1.2rem;}
+.fullbleed p{color:var(--muted);font-size:.98rem;}
 @media(max-width:768px){
-  .fullbleed{min-height:0;background-position:68% center;}
-  .fullbleed::before{background:linear-gradient(180deg,rgba(20,14,8,.86) 0%,rgba(20,14,8,.72) 60%,rgba(20,14,8,.8) 100%);}
+  .fullbleed{min-height:0;background-position:64% center;}
+  .fullbleed::before{background:linear-gradient(180deg,rgba(248,244,236,.93) 0%,rgba(248,244,236,.88) 55%,rgba(248,244,236,.95) 100%);}
   .fullbleed-inner{padding:3.2rem 1.2rem;}
   .fullbleed-copy{max-width:100%;}
 }
 
-/* ===== 選ばれる理由（A案の左右交互リスト） ===== */
+/* ===== 選ばれる理由（左右交互） ===== */
 .strength-list{display:flex;flex-direction:column;gap:3rem;}
 .strength-row{display:flex;align-items:center;gap:2.2rem;}
 .strength-row:nth-child(even){flex-direction:row-reverse;}
@@ -223,76 +258,79 @@ p{line-height:1.8;}
 }
 
 /* =========================================================
-   スライダー（2026-08-31依頼主要望「スライダー表示」）
-   外部ライブラリ不使用。JSが無効でも1枚目が見える設計。
+   スライダー：全幅・はみ出し型（2026-08-31 依頼主要望）
+   画面いっぱいに広げ、左右の隣スライドを覗かせる（peek）。
+   トラックに左右パディング＝(100vw - スライド幅)/2 を持たせることで、
+   1枚目と最終枚も中央に収まり、端に不自然な余白が出ない。
    ========================================================= */
-.slider{position:relative;max-width:1080px;margin:0 auto;}
-.slider-viewport{overflow:hidden;border-radius:12px;box-shadow:0 14px 40px rgba(0,0,0,.14);}
-.slider-track{display:flex;transition:transform .7s cubic-bezier(.4,.02,.2,1);}
-.slide{flex:0 0 100%;position:relative;}
+.section-slider{padding-left:0;padding-right:0;}
+.section-slider .inner{padding:0 1.2rem;}
+.slider{position:relative;width:100%;}
+.slider-viewport{overflow:hidden;}
+.slider-track{
+  --slide-w:66vw; --slide-gap:1.4rem;
+  position:relative;display:flex;gap:var(--slide-gap);
+  padding:0 calc((100% - var(--slide-w)) / 2);
+  transition:transform .75s cubic-bezier(.4,.02,.2,1);
+  will-change:transform;
+}
+.slide{flex:0 0 var(--slide-w);position:relative;border-radius:12px;overflow:hidden;
+  box-shadow:0 14px 40px rgba(58,45,32,.18);
+  opacity:.45;transition:opacity .6s ease;}
+.slide.is-current{opacity:1;}
 .slide img{width:100%;aspect-ratio:16/9;object-fit:cover;}
 .slide-cap{
-  position:absolute;left:0;right:0;bottom:0;padding:2.5rem 1.6rem 1.4rem;color:#fff;
-  background:linear-gradient(rgba(0,0,0,0),rgba(20,14,8,.82));
+  position:absolute;left:0;right:0;bottom:0;padding:3rem 1.8rem 1.5rem;color:#fff;
+  background:linear-gradient(rgba(0,0,0,0),rgba(30,22,14,.85));
 }
-.slide-cap strong{display:block;font-size:1.05rem;margin-bottom:.25rem;}
-.slide-cap span{font-size:.88rem;color:rgba(255,255,255,.85);font-family:'Noto Sans JP',sans-serif;}
+.slide-cap strong{display:block;font-size:1.1rem;margin-bottom:.25rem;}
+.slide-cap span{font-size:.9rem;color:rgba(255,255,255,.88);font-family:'Noto Sans JP',sans-serif;}
 .slider-btn{
   position:absolute;top:50%;transform:translateY(-50%);z-index:3;
-  width:44px;height:44px;border-radius:50%;border:0;cursor:pointer;
-  background:rgba(255,255,255,.9);box-shadow:0 4px 14px rgba(0,0,0,.2);
+  width:46px;height:46px;border-radius:50%;border:0;cursor:pointer;
+  background:rgba(255,255,255,.94);box-shadow:0 4px 16px rgba(0,0,0,.22);
   display:flex;align-items:center;justify-content:center;transition:background .2s;
 }
 .slider-btn:hover{background:#fff;}
-.slider-btn.prev{left:14px;}
-.slider-btn.next{right:14px;}
-.slider-dots{display:flex;gap:.6rem;justify-content:center;margin-top:1.2rem;}
+.slider-btn.prev{left:18px;}
+.slider-btn.next{right:18px;}
+.slider-dots{display:flex;gap:.6rem;justify-content:center;margin-top:1.4rem;}
 .slider-dots button{
   width:9px;height:9px;padding:0;border-radius:50%;border:0;cursor:pointer;
-  background:rgba(47,36,26,.24);transition:background .25s,transform .25s;
+  background:rgba(58,45,32,.24);transition:background .25s,transform .25s;
 }
 .slider-dots button.active{background:var(--accent);transform:scale(1.35);}
 @media(max-width:768px){
-  /* スマホは16:9だと画像が浅くなりキャプションが画面の半分を占める。
-     4:3にして絵を見せ、矢印はキャプションに重ならない高さ(32%)へ逃がす。 */
+  /* スマホは16:9だと画像が浅くキャプションが半分を占めるので4:3。
+     矢印はキャプション見出しに重ならない高さ(32%)へ逃がす。 */
+  .slider-track{--slide-w:84vw; --slide-gap:.8rem;}
   .slide img{aspect-ratio:4/3;}
   .slider-btn{width:36px;height:36px;top:32%;}
-  .slider-btn.prev{left:8px;} .slider-btn.next{right:8px;}
-  .slide-cap{padding:2rem 1.1rem 1rem;}
-  .slide-cap strong{font-size:.95rem;}
-  .slide-cap span{font-size:.8rem;}
+  .slider-btn.prev{left:6px;} .slider-btn.next{right:6px;}
+  .slide-cap{padding:2.2rem 1.1rem 1.1rem;}
+  .slide-cap strong{font-size:.98rem;}
+  .slide-cap span{font-size:.82rem;}
 }
 
-/* ===== 対応する工事 ===== */
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
-.service-card{background:var(--card);border-radius:10px;overflow:hidden;
-  border:1px solid var(--line);transition:transform .3s,box-shadow .3s;}
-.service-card:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,.1);}
-.service-card img{width:100%;aspect-ratio:4/3;object-fit:cover;}
-.service-body{padding:1.4rem 1.2rem 1.6rem;}
-.service-body h3{margin-bottom:.6rem;color:var(--base);}
-.service-body p{font-size:.9rem;color:var(--muted);}
+/* ===== 注記ボックス ===== */
 .note-box{margin-top:2rem;padding:1.1rem 1.3rem;background:rgba(165,118,47,.08);
   border-left:3px solid var(--accent);font-size:.9rem;color:var(--muted);border-radius:0 6px 6px 0;}
-@media(max-width:768px){.services-grid{grid-template-columns:1fr;}}
 
-/* ===== 沿革タイムライン（B案から。position:absoluteの手計算は使わない） ===== */
-.history{display:flex;flex-direction:column;border-left:2px solid var(--line);padding-left:0;margin-left:.5rem;}
+/* ===== 沿革タイムライン（position:absoluteの手計算は使わない） ===== */
+.history{display:flex;flex-direction:column;border-left:2px solid var(--line);margin-left:.5rem;}
 .history-item{position:relative;padding:0 0 2.2rem 2rem;}
 .history-item:last-child{padding-bottom:0;}
 .history-item::before{
   content:"";position:absolute;left:-7px;top:.45rem;width:12px;height:12px;
   border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--bg);
 }
-.history-year{
-  font-size:.85rem;letter-spacing:.1em;color:var(--accent);font-weight:700;
-  font-family:'Noto Sans JP',sans-serif;margin-bottom:.3rem;
-}
+.history-year{font-size:.85rem;letter-spacing:.1em;color:var(--accent);font-weight:700;
+  font-family:'Noto Sans JP',sans-serif;margin-bottom:.3rem;}
 .history-item h3{font-size:1.02rem;margin-bottom:.35rem;color:var(--base);}
 .history-item p{font-size:.92rem;color:var(--muted);}
 .section-alt .history-item::before{box-shadow:0 0 0 4px #fff;}
 
-/* ===== ご相談の流れ ===== */
+/* ===== 流れ ===== */
 .flow-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
 .flow-step{position:relative;background:var(--card);border:1px solid var(--line);
   border-radius:10px;padding:1.8rem 1.1rem;text-align:center;}
@@ -314,6 +352,12 @@ p{line-height:1.8;}
 .cta-mid{background:var(--base);color:#fff;text-align:center;padding:3.5rem 1.2rem;}
 .cta-mid h2{color:#fff;margin-bottom:.8rem;}
 .cta-mid p{color:rgba(255,255,255,.85);margin-bottom:1.8rem;font-size:.95rem;}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.cta-btns a{min-width:200px;}
+@media(max-width:768px){
+  .cta-btns{flex-direction:column;align-items:center;}
+  .cta-btns a{width:min(100%,24rem);}
+}
 
 /* ===== FAQ ===== */
 .faq-list{display:flex;flex-direction:column;gap:1rem;}
@@ -329,7 +373,7 @@ p{line-height:1.8;}
 /* ===== 最後のひと押し ===== */
 .cta-final{
   position:relative;padding:5rem 1.2rem;text-align:center;
-  background:linear-gradient(rgba(247,243,234,.9),rgba(247,243,234,.94)),
+  background:linear-gradient(rgba(248,244,236,.9),rgba(248,244,236,.94)),
     url('https://kazuki4no.github.io/lp-assets/construction/construction-sub-01.jpg') center/cover;
 }
 .cta-final h2{margin-bottom:1rem;color:var(--base);}
@@ -341,11 +385,13 @@ p{line-height:1.8;}
 .footer-inner{max-width:900px;margin:0 auto;display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:space-between;}
 .site-footer strong{display:block;color:#fff;font-size:1rem;margin-bottom:.6rem;}
 .site-footer p{line-height:1.9;font-size:.85rem;}
+.footer-note{max-width:900px;margin:2rem auto 0;padding-top:1.2rem;
+  border-top:1px solid rgba(255,255,255,.14);font-size:.78rem;color:rgba(255,255,255,.65);}
 @media(min-width:769px){.site-footer{padding-bottom:2.5rem;}}
 
-/* ===== スクロール連動アニメーション（2026-08-31 依頼主要望） =====
-   JSが動く環境でだけ初期状態を隠す（.js クラスは<head>のインラインscriptが付与）。
-   JS無効・エラー時は .reveal が常に見えるので、内容が消えることはない。 */
+/* ===== スクロール連動アニメーション =====
+   JSが動く環境でだけ初期状態を隠す（.js は<head>のインラインscriptが付与）。
+   JS無効・エラー時は .reveal が常に見えるので内容が消えることはない。 */
 .js .reveal{
   opacity:0;transform:translateY(26px);
   transition:opacity .85s cubic-bezier(.22,.7,.28,1),transform .85s cubic-bezier(.22,.7,.28,1);
@@ -357,7 +403,8 @@ p{line-height:1.8;}
 @media (prefers-reduced-motion: reduce){
   .js .reveal{opacity:1!important;transform:none!important;transition:none!important;}
   .js .t-1 .eyebrow,.js .t-1 h1,.js .t-1 .eyebrow-mob,
-  .js .t-1 .hero-lead,.js .t-1 .hero-media img,.js .t-1 .cta-under-inner{animation:none!important;}
+  .js .t-1 .hero-lead,.js .t-1 .hero-media img,.js .t-1 .topform{animation:none!important;}
   .slider-track{transition:none!important;}
-  .issue-card:hover,.service-card:hover,.btn-primary:hover,.btn-outline:hover,.btn-green:hover{transform:none;}
+  .slide{opacity:1!important;}
+  .issue-card:hover,.btn-primary:hover,.btn-outline:hover,.btn-green:hover{transform:none;}
 }
