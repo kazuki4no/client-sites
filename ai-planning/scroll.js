@@ -34,6 +34,6 @@
         io.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.05, rootMargin: '0px 0px 40px 0px' } // 画面下端に少し入る手前で発火);
+  }, { threshold: 0.05, rootMargin: '0px 0px 40px 0px' }); // 画面下端に少し入る手前で発火
   all.forEach(function (el) { io.observe(el); });
 })();
