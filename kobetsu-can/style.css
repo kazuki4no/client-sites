@@ -58,8 +58,8 @@ p{line-height:1.9;}
 }
 /* 手描き風の黄色スウォッシュ（全セクション見出し共通） */
 .section-title h2::after{
-  content:"";display:block;width:96px;height:12px;margin:.7rem auto 0;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 96 12'%3E%3Cpath d='M2 8c14-6 26 4 40-2s26 2 40-3 12 2 12 2' fill='none' stroke='%23F5C518' stroke-width='3.4' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/contain;
+  content:"";display:block;width:100px;height:12px;margin:.75rem auto 0;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 12'%3E%3Ccircle cx='14' cy='6' r='5' fill='%23F5C518'/%3E%3Ccircle cx='38' cy='6' r='5' fill='none' stroke='%233AA6CC' stroke-width='2.2'/%3E%3Ccircle cx='62' cy='6' r='5' fill='%23F5C518'/%3E%3Ccircle cx='86' cy='6' r='5' fill='none' stroke='%233AA6CC' stroke-width='2.2'/%3E%3C/svg%3E") no-repeat center/contain;
 }
 .lead{text-align:center;color:var(--muted);margin-top:-1.2rem;margin-bottom:2.2rem;font-size:.95rem;}
 .note{font-size:.78rem;color:var(--muted);line-height:1.7;}
@@ -117,8 +117,15 @@ p{line-height:1.9;}
 }
 .site-logo{font-weight:900;font-size:1.05rem;line-height:1.25;color:var(--base-dark);}
 .site-logo span{display:block;font-size:.66rem;font-weight:500;color:var(--muted);letter-spacing:.04em;}
-.site-nav{display:flex;align-items:center;gap:1.15rem;font-size:.86rem;font-weight:700;color:var(--base-dark);}
+.site-nav{display:flex;align-items:center;gap:1.9rem;font-size:.85rem;font-weight:700;color:var(--base-dark);margin-left:auto;margin-right:1.4rem;}
+.site-nav a{position:relative;padding:.25rem 0;}
 .site-nav a:hover{color:var(--base);}
+.site-nav a::after{
+  content:"";position:absolute;left:0;right:0;bottom:-3px;height:3px;border-radius:3px;
+  background:var(--accent);transform:scaleX(0);transform-origin:left center;transition:transform .25s ease;
+}
+.site-nav a:hover::after,.site-nav a.active::after{transform:scaleX(1);}
+@media(max-width:1240px){.header-tel{display:none;}}
 .header-right{display:flex;align-items:center;gap:.7rem;}
 .header-tel{display:flex;align-items:center;gap:.35rem;font-weight:700;color:var(--base-dark);font-size:.95rem;white-space:nowrap;}
 .header-cta{
@@ -133,13 +140,15 @@ p{line-height:1.9;}
 }
 @media(max-width:1024px){
   .site-nav{
-    display:none;position:absolute;top:100%;left:0;right:0;
+    margin:0;display:none;position:absolute;top:100%;left:0;right:0;
     background:#fff;border-bottom:1px solid var(--line);
     flex-direction:column;align-items:stretch;gap:0;padding:.4rem 0;
     box-shadow:0 12px 24px rgba(18,127,166,.12);
   }
   .site-nav.open{display:flex;}
   .site-nav a{padding:.85rem 1.4rem;border-top:1px solid var(--line);}
+  .site-nav a::after{display:none;}
+  .site-nav a.active{background:var(--tint);}
   .site-nav a:first-child{border-top:none;}
   .hamburger{display:block;}
 }
@@ -183,10 +192,10 @@ p{line-height:1.9;}
   padding:.3rem .8rem;border-radius:999px;margin-bottom:1rem;
 }
 .hero-copy h1{
-  font-size:clamp(1.9rem,4.6vw,3.3rem);font-weight:900;line-height:1.3;
+  font-size:clamp(2.1rem,5.2vw,3.7rem);font-weight:900;line-height:1.32;
   color:var(--base-dark);margin-bottom:1.1rem;
 }
-.hero-lead{font-size:clamp(.9rem,1.6vw,1.02rem);line-height:1.95;font-weight:500;}
+.hero-lead{font-size:clamp(.98rem,1.8vw,1.14rem);line-height:2;font-weight:700;color:var(--text);}
 .js .hero-copy .eyebrow,.js .hero-copy h1,.js .hero-copy .hero-lead{
   opacity:0;transform:translateY(14px);animation:fvUp .8s cubic-bezier(.2,.7,.3,1) forwards;
 }
@@ -198,7 +207,7 @@ p{line-height:1.9;}
   .hero-section{min-height:74vh;align-items:flex-end;}
   .hero-overlay{background:linear-gradient(180deg,rgba(255,255,255,.1) 0%,rgba(255,255,255,.55) 45%,rgba(255,255,255,.95) 78%,#fff 100%);}
   .hero-copy{padding-bottom:1.2rem;}
-  .hero-copy h1{font-size:clamp(1.7rem,7.4vw,2.1rem);}
+  .hero-copy h1{font-size:clamp(1.85rem,8vw,2.3rem);}
   .hero-slides img{object-position:center 32%;}
   .hero-section{background-position:center 32%;}
   .hero-overlay{background:linear-gradient(180deg,rgba(255,255,255,0) 0%,rgba(255,255,255,.45) 42%,rgba(255,255,255,.94) 72%,#fff 100%);}
@@ -309,8 +318,8 @@ p{line-height:1.9;}
 }
 .bigquote .qmark{position:absolute;top:1rem;left:1.2rem;color:var(--accent);}
 .bigquote::after{
-  content:"";position:absolute;right:1.2rem;bottom:.9rem;width:56px;height:14px;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 56 14'%3E%3Cpath d='M2 10c9-7 16 3 26-3s18 1 26-4' fill='none' stroke='%23F5C518' stroke-width='3' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/contain;
+  content:"";position:absolute;right:1.3rem;bottom:1rem;width:44px;height:10px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 10'%3E%3Ccircle cx='6' cy='5' r='4' fill='%23F5C518'/%3E%3Ccircle cx='22' cy='5' r='4' fill='none' stroke='%233AA6CC' stroke-width='2'/%3E%3Ccircle cx='38' cy='5' r='4' fill='%23F5C518'/%3E%3C/svg%3E") no-repeat center/contain;
 }
 .story-close{
   text-align:center;font-weight:900;font-size:clamp(1.05rem,2.6vw,1.3rem);
@@ -673,3 +682,50 @@ p{line-height:1.9;}
   .hero-slides img:nth-child(2){object-position:42% 30%;}
   .hero-slides img:nth-child(3){object-position:60% 30%;}
 }
+
+/* =========================================================
+   第3版追加（2026-09-02）：伸びた子カード＋一筆書き風イラスト
+   ========================================================= */
+/* --- 定期テストで伸びた子：人物線画＋数字強調 --- */
+.score-title{
+  text-align:center;margin-bottom:1.6rem;color:var(--base-dark);
+  font-size:clamp(1.15rem,2.8vw,1.5rem);
+}
+.score-list{grid-template-columns:repeat(3,1fr);gap:1.1rem;}
+.score{
+  position:relative;background:#fff;border-radius:20px;padding:1.4rem 1rem 1.2rem;
+  text-align:center;box-shadow:var(--shadow);
+}
+.score-fig{color:var(--base-light);margin:0 auto .4rem;display:block;}
+.score-nums{display:flex;align-items:baseline;justify-content:center;gap:.45rem;flex-wrap:wrap;}
+.score-nums .before{font-size:.88rem;font-weight:700;color:var(--muted);}
+.score-nums .arr{color:var(--base-light);align-self:center;display:flex;}
+.score-nums .after{
+  font-family:'Zen Kaku Gothic New','Noto Sans JP',sans-serif;
+  font-size:clamp(1.7rem,4.4vw,2.1rem);font-weight:900;color:var(--base-dark);line-height:1.1;
+}
+.score-nums .after b{font-size:.9rem;font-weight:700;}
+.up-badge{
+  display:inline-block;margin-top:.55rem;padding:.3rem 1rem;
+  background:var(--accent);color:var(--text);font-weight:900;font-size:.95rem;
+  border-radius:999px;transform:rotate(-2deg);position:relative;
+}
+.up-badge::before,.up-badge::after{
+  content:"";position:absolute;width:14px;height:14px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 14'%3E%3Cpath d='M7 1v4M7 9v4M1 7h4M9 7h4' stroke='%23F5C518' stroke-width='2' stroke-linecap='round'/%3E%3C/svg%3E") no-repeat center/contain;
+}
+.up-badge::before{left:-18px;top:-8px;}
+.up-badge::after{right:-16px;bottom:-8px;width:10px;height:10px;}
+.score small{display:block;font-size:.72rem;color:var(--muted);font-weight:500;margin-top:.5rem;}
+
+/* --- 一筆書き風の線画イラスト --- */
+.lineart{color:var(--text);display:block;}
+.lineart .la-accent{color:var(--accent);}
+.price-art{
+  position:absolute;right:clamp(0px,3vw,30px);top:-1.6rem;width:clamp(150px,17vw,210px);z-index:0;
+  transform:rotate(2deg);
+}
+@media(max-width:768px){
+  .price-art{position:static;transform:none;width:190px;margin:0 auto 1.4rem;}
+}
+.flow-art{width:clamp(190px,24vw,250px);margin:-0.6rem auto 2rem;}

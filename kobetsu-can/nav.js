@@ -245,3 +245,37 @@
     for (var k = 0; k < graphs.length; k++) graphs[k].classList.add('is-in');
   }
 })();
+
+/* =========================================================
+   ⑤ ヘッダーのスクロール連動（現在地の下線・2026-09-02追加）
+   ナビの href="#id" とセクションを突き合わせ、画面中央付近にある
+   セクションのリンクへ .active を付ける。失敗しても飾りが消えるだけ。
+   ========================================================= */
+(function () {
+  'use strict';
+  var links = document.querySelectorAll('.site-nav a[href^="#"]');
+  if (!links.length || !('IntersectionObserver' in window)) return;
+  var map = {};
+  var sections = [];
+  links.forEach(function (a) {
+    var id = a.getAttribute('href').slice(1);
+    var sec = document.getElementById(id);
+    if (sec) { map[id] = a; sections.push(sec); }
+  });
+  if (!sections.length) return;
+  function setActive(id) {
+    links.forEach(function (a) { a.classList.remove('active'); });
+    if (id && map[id]) map[id].classList.add('active');
+  }
+  try {
+    var inview = {};
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) { inview[e.target.id] = e.isIntersecting; });
+      // いま帯に入っているものが無ければ下線を消す（最上部で前回の下線が残る問題の対策）
+      var current = null;
+      sections.forEach(function (s) { if (inview[s.id]) current = current || s.id; });
+      setActive(current);
+    }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+    sections.forEach(function (s) { spy.observe(s); });
+  } catch (err) { /* 飾りなので何もしない */ }
+})();
