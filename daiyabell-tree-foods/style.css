@@ -1,0 +1,556 @@
+/* =========================================================
+   1案統合版LP スタイル（2026-08-31 デモ・第2版）
+   A案（h1オーバーレイ型FV）をベースに、B案の全幅ビジュアル・沿革、
+   C案のフォーム／課題／4ステップを統合した単一案テンプレート。
+   テーマクラスは body.t-1 の1つだけ。
+   第2版の変更：①TOPに問い合わせフォーム ②スライダーを全幅はみ出し型へ
+   ③全幅帯を明るい写真でトーン統一 ④カット野菜製造（ダイヤベルツリーフーズ様）向け
+   ========================================================= */
+
+/* ===== Reset ===== */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+/* 🔴overflow-x は hidden ではなく clip。
+   hidden はスクロールコンテナを作るため、中の position:sticky が effectively 無効になり
+   ヘッダーが追従しなくなる（2026-08-31に実測。既存LPも全社この状態だった）。
+   clip は同じく横スクロールを止めるが、スクロールコンテナを作らないので sticky が生きる。 */
+html,body{max-width:100%;overflow-x:clip;}
+img{max-width:100%;height:auto;display:block;}
+
+/* ===== Responsive break helpers ===== */
+.br-sp{display:none;}
+.br-sp2{display:none;}
+@media(max-width:1024px){.br-sp{display:block;}}
+@media(max-width:768px){.br-sp2{display:block;}}
+
+/* =========================================================
+   🔴会社ごとに変えるのは下の3か所だけ。それ以外はそのまま流用してよい。
+     ①body.t-1 のカラー変数（業種別のベースカラー表に従う）
+     ②body.t-1 の font-family（上品・信頼系＝明朝／元気・親しみ系＝ゴシック）
+     ③.fullbleed::before と .cta-final::before の rgba（--bg と同じ色にする）
+   画像URLはCSSに書かない（HTML側のインラインstyleで指定する）＝この2か所以外に
+   会社依存の値を持たせないため。
+   ========================================================= */
+/* ===== ① Theme variables（木と生成りの色） ===== */
+body.t-1{
+  --base:#15512e; --base-light:#2b7145; --accent:#e0801c; --accent-soft:#f0a349;
+  --text:#243021; --bg:#f5f8f1; --card:#fff; --btn-text:#fff;
+  --line:rgba(0,0,0,.1); --muted:#54604e;
+}
+
+/* ===== Base ===== */
+/* ===== ② 本文フォント ===== */
+body.t-1{font-family:'Noto Sans JP',sans-serif;color:var(--text);background:var(--bg);}
+a{text-decoration:none;color:inherit;}
+h2{font-size:clamp(1.5rem,3.5vw,2.2rem);line-height:1.35;}
+h3{font-size:clamp(1rem,2.2vw,1.3rem);}
+p{line-height:1.8;}
+.accent{color:var(--accent);}
+.section{padding:5rem 1.2rem;}
+.section-alt{background:#fff;}
+.inner{max-width:900px;margin:0 auto;}
+.section-title{text-align:center;margin-bottom:2.5rem;}
+.section-title small{
+  display:block;font-size:.8rem;letter-spacing:.15em;color:var(--accent);
+  text-transform:uppercase;margin-bottom:.5rem;font-family:'Noto Sans JP',sans-serif;
+}
+
+/* ===== Buttons =====
+   ⚠️.btn-green を共通ルールに必ず含める（流用元の既知バグ） */
+.btn-primary,.btn-outline,.btn-green{
+  display:inline-block;padding:.85rem 2rem;border-radius:6px;
+  font-size:1rem;font-weight:700;text-align:center;cursor:pointer;
+  transition:opacity .2s,transform .2s;text-decoration:none;
+  font-family:'Noto Sans JP',sans-serif;border:2px solid transparent;
+}
+.btn-primary{background:var(--accent);color:var(--btn-text);border-color:var(--accent);}
+.btn-outline{background:transparent;color:var(--accent);border-color:var(--accent);}
+.btn-green{background:#22c55e;color:#fff;border-color:#22c55e;}
+.btn-primary:hover,.btn-outline:hover,.btn-green:hover{opacity:.85;transform:translateY(-2px);}
+
+/* ===== Header ===== */
+.site-header{
+  position:sticky;top:0;z-index:100;background:var(--base);color:#fff;
+  /* 上のoverflow-x:clipとセットで初めて追従する */
+  padding:.75rem 1.2rem;display:flex;align-items:center;justify-content:space-between;
+  box-shadow:0 2px 8px rgba(0,0,0,.2);
+}
+.site-logo{font-size:.9rem;font-weight:700;color:#fff;line-height:1.35;}
+.header-contact{display:flex;align-items:center;gap:1rem;}
+.header-tel{font-size:.95rem;color:#fff;font-weight:700;}
+.hamburger{display:none;background:none;border:0;font-size:1.7rem;cursor:pointer;color:#fff;line-height:1;}
+.site-nav{display:flex;gap:1.2rem;align-items:center;}
+.site-nav a{color:#fff;font-size:.9rem;font-family:'Noto Sans JP',sans-serif;}
+/* ⚠️ハンバーガーへの切替は1024px（FVの768pxとは別に取る）。
+   1案版はナビが5項目に増えたため、769〜1024pxの帯で
+   ロゴ・電話・ナビ・ボタンが収まらず2段に折り返して崩れる（820pxで実測）。 */
+@media(max-width:1024px){
+  .hamburger{display:block;}
+  .site-nav{display:none;flex-direction:column;position:absolute;top:100%;left:0;right:0;
+    z-index:50;background:var(--base);box-shadow:0 8px 16px rgba(0,0,0,.2);padding:.5rem 1rem;}
+  .site-nav.open{display:flex;}
+  .site-nav a{padding:.5rem 0;border-bottom:1px solid rgba(255,255,255,.1);}
+}
+
+/* ===== Floating CTA ===== */
+.floating-cta{
+  position:fixed;left:50%;bottom:14px;transform:translateX(-50%);
+  z-index:60;padding:.85rem 2.2rem;border-radius:999px;
+  background:var(--accent);color:var(--btn-text);font-weight:700;font-size:.95rem;
+  box-shadow:0 6px 20px rgba(0,0,0,.28);white-space:nowrap;
+  font-family:'Noto Sans JP',sans-serif;
+}
+@media(min-width:769px){.floating-cta{display:none;}}
+
+/* =========================================================
+   FV：h1オーバーレイ型（A案 2026-08-26/27修正版を継承）
+   ========================================================= */
+.t-1 .hero-section{padding:0;background:var(--bg);overflow:hidden;}
+.t-1 .hero-wrap{position:relative;display:flex;align-items:center;max-width:1100px;margin:0 auto;}
+.t-1 .hero-copy{position:relative;flex:1;padding:2.4rem 1.5rem 3rem;}
+.t-1 .hero-media{flex:0 0 56%;max-width:56%;}
+.t-1 .hero-media img{
+  width:100%;aspect-ratio:4/3;object-fit:cover;object-position:right center;
+  border-radius:10px;box-shadow:0 12px 36px rgba(0,0,0,.15);
+}
+.t-1 .h1-wrap{position:relative;z-index:2;width:calc(100% + 44%);max-width:calc(100vw - 3rem);}
+.t-1 .eyebrow{
+  font-size:.78rem;letter-spacing:.15em;color:var(--base);
+  border-bottom:2px solid var(--accent);padding-bottom:.3rem;margin-bottom:.8rem;
+  font-family:'Noto Sans JP',sans-serif;
+}
+.t-1 h1{
+  font-size:clamp(2rem,4.5vw,3.4rem);line-height:1.28;color:var(--base);
+  text-shadow:0 1px 14px rgba(245,248,241,.96);
+}
+.t-1 .hero-lead{margin-top:1.4rem;font-size:.98rem;color:#444;line-height:1.85;max-width:34ch;}
+/* スマホ用eyebrowの既定値。⚠️必ず768pxメディアクエリより「前」に置く。 */
+.t-1 .eyebrow-mob{display:none;}
+@media(max-width:1024px){
+  .t-1 h1{font-size:clamp(1.6rem,4.6vw,3rem);}
+  .t-1 .hero-lead{margin-top:1rem;}
+}
+@media(max-width:768px){
+  .t-1 .hero-wrap{flex-direction:column;}
+  .t-1 .hero-media{flex:none;max-width:100%;width:100%;order:-1;position:relative;}
+  .t-1 .hero-media img{border-radius:0;aspect-ratio:16/10;object-position:right top;}
+  .t-1 .h1-wrap{position:absolute;top:1.9rem;left:2.1rem;z-index:2;width:auto;max-width:none;}
+  .t-1 h1{
+    font-size:clamp(1.05rem,5.6vw,1.5rem);line-height:1.66;letter-spacing:.04em;
+    color:var(--base);text-shadow:0 1px 8px rgba(255,255,255,.92);
+  }
+  .t-1 .eyebrow{display:none;}
+  /* PC側の .hero-copy{position:relative} を明示的に打ち消す。 */
+  .t-1 .hero-copy{order:2;position:static;padding:1.2rem 1.2rem 1.5rem;}
+  .t-1 .eyebrow-mob{
+    display:block;font-size:.78rem;letter-spacing:.13em;color:var(--base);
+    border-bottom:2px solid var(--accent);padding-bottom:.3rem;margin-bottom:.6rem;
+    font-family:'Noto Sans JP',sans-serif;
+  }
+  .t-1 .hero-lead{max-width:100%;font-size:.95rem;}
+}
+
+/* ===== FVの遅延アニメーション ===== */
+@keyframes fvUp{from{opacity:0;transform:translateY(22px);}to{opacity:1;transform:none;}}
+@keyframes fvImg{from{opacity:0;transform:scale(1.06);}to{opacity:1;transform:none;}}
+.js .t-1 .eyebrow      {animation:fvUp .85s .15s both cubic-bezier(.22,.7,.28,1);}
+.js .t-1 h1            {animation:fvUp .95s .34s both cubic-bezier(.22,.7,.28,1);}
+.js .t-1 .eyebrow-mob  {animation:fvUp .85s .15s both cubic-bezier(.22,.7,.28,1);}
+.js .t-1 .hero-lead    {animation:fvUp .95s .58s both cubic-bezier(.22,.7,.28,1);}
+.js .t-1 .hero-media img{animation:fvImg 1.4s .05s both cubic-bezier(.22,.7,.28,1);}
+.js .t-1 .cta-under-inner{animation:fvUp 1s .8s both cubic-bezier(.22,.7,.28,1);}
+
+/* =========================================================
+   TOPのお問い合わせフォーム（2026-08-31 依頼主要望で追加）
+   FV直下に置き、最初の画面で行動できるようにする。
+   ========================================================= */
+/* 🔴2026-08-31：依頼主指示でTOPから「最後の方」へ移動。
+   FVの直下ではなく、FAQ・最後のひと押しを読んだ後の位置に置く。 */
+/* ⚠️padding-top を0にすると直前の .cta-final と5pxしか離れず詰まって見える（実測）。 */
+.topform-wrap{padding:4rem 1.2rem 5rem;background:var(--bg);}
+.topform{
+  max-width:860px;margin:0 auto;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;box-shadow:0 14px 40px rgba(21,81,46,.1);
+  padding:2.2rem 2rem;
+}
+.topform-head{text-align:center;margin-bottom:1.6rem;}
+/* 🔴このピルは <p> なので、後段の「.topform-head p{color:var(--muted)}」に
+   詳細度で負けて文字が濃茶（#5c5148）になっていた＝金色背景にコントラスト1.9で読めない。
+   セレクタを p 込みにして白を確実に勝たせる。 */
+.topform-head p.topform-eyebrow{
+  display:inline-block;font-size:.75rem;letter-spacing:.14em;color:#fff;background:var(--accent);
+  padding:.25rem .9rem;border-radius:999px;margin-bottom:.8rem;font-family:'Noto Sans JP',sans-serif;
+}
+.topform-head h2{font-size:clamp(1.15rem,2.6vw,1.6rem);margin-bottom:.6rem;color:var(--base);}
+.topform-head p{font-size:.9rem;color:var(--muted);}
+.topform-body{display:grid;grid-template-columns:1fr 1fr;gap:1rem 1.2rem;}
+.field{display:flex;flex-direction:column;gap:.35rem;}
+.field-full{grid-column:1 / -1;}
+.field label{font-size:.82rem;font-weight:700;color:var(--base);font-family:'Noto Sans JP',sans-serif;}
+.field input,.field select,.field textarea{
+  width:100%;box-sizing:border-box;padding:.7rem .8rem;font-size:.95rem;
+  border:1px solid rgba(0,0,0,.18);border-radius:6px;background:#fdfcf9;
+  font-family:'Noto Sans JP',sans-serif;color:var(--text);
+}
+.field textarea{resize:vertical;}
+.field input:focus,.field select:focus,.field textarea:focus{
+  outline:2px solid var(--accent);outline-offset:1px;border-color:var(--accent);
+}
+.topform-submit{grid-column:1 / -1;text-align:center;margin-top:.4rem;}
+.topform-submit .btn-primary{width:min(100%,22rem);}
+.topform-note{grid-column:1 / -1;text-align:center;font-size:.78rem;color:var(--muted);
+  font-family:'Noto Sans JP',sans-serif;}
+@media(max-width:768px){
+  .topform{padding:1.6rem 1.1rem;}
+  .topform-body{grid-template-columns:1fr;}
+}
+
+/* ===== 信頼ピル ===== */
+.cta-under{padding:1.8rem 1.2rem 3.2rem;background:var(--bg);}
+.cta-under-inner{max-width:660px;margin:0 auto;text-align:center;}
+.cta-under .cta-btns{margin-bottom:1.3rem;}
+.trust-pills{display:flex;gap:0 1.5rem;justify-content:center;flex-wrap:wrap;
+  font-size:.85rem;color:var(--muted);font-family:'Noto Sans JP',sans-serif;}
+.pill{display:flex;align-items:center;gap:.4rem;padding:.15rem 0;}
+@media(min-width:769px){.pill+.pill{border-left:1px solid var(--line);padding-left:1.5rem;}}
+@media(max-width:768px){
+  .trust-pills{flex-direction:column;align-items:flex-start;width:max-content;margin:0 auto;gap:.5rem;}
+}
+
+/* ===== 課題カード ===== */
+.issues-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.issue-card{background:var(--card);border:1px solid var(--line);border-radius:10px;
+  padding:2rem 1.5rem;text-align:center;transition:transform .3s,box-shadow .3s;}
+.issue-card:hover{transform:translateY(-4px);box-shadow:0 10px 28px rgba(0,0,0,.08);}
+.issue-icon{display:flex;justify-content:center;margin-bottom:1rem;}
+.issue-card h3{margin-bottom:.7rem;color:var(--base);}
+.issue-card p{font-size:.92rem;color:var(--muted);}
+@media(max-width:768px){.issues-grid{grid-template-columns:1fr;}}
+
+/* =========================================================
+   全幅ビジュアル帯（.fullbleed）
+   ⚠️第2版で「暗い職人写真」→「明るい木の家」へ差し替えた。
+   依頼主指摘「そこだけ急に古めかしい」＝ページ全体のトーンから浮いていたため。
+   背景が明るくなったので、白文字ではなく濃い文字＋薄い白幕にしている。
+   ========================================================= */
+.fullbleed{
+  position:relative;width:100%;min-height:clamp(380px,60vh,560px);
+  display:flex;align-items:center;
+  /* 画像はHTML側の style="background-image:url(...)" で指定する */
+  background-color:var(--bg);
+  background-size:cover;background-position:70% center;background-repeat:no-repeat;
+  overflow:hidden;
+}
+/* ③ この rgba は --bg と同じ色にする */
+.fullbleed::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(100deg,rgba(245,248,241,.95) 0%,rgba(245,248,241,.86) 34%,rgba(245,248,241,.35) 62%,rgba(245,248,241,0) 88%);
+}
+.fullbleed-inner{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:4rem 1.5rem;width:100%;}
+.fullbleed-copy{max-width:30rem;}
+.fullbleed small{
+  display:block;font-size:.78rem;letter-spacing:.18em;color:var(--accent);
+  margin-bottom:1rem;font-family:'Noto Sans JP',sans-serif;
+}
+.fullbleed h2{color:var(--base);margin-bottom:1.2rem;}
+.fullbleed p{color:var(--muted);font-size:.98rem;}
+@media(max-width:768px){
+  .fullbleed{min-height:0;background-position:64% center;}
+  .fullbleed::before{background:linear-gradient(180deg,rgba(245,248,241,.93) 0%,rgba(245,248,241,.88) 55%,rgba(245,248,241,.95) 100%);}
+  .fullbleed-inner{padding:3.2rem 1.2rem;}
+  .fullbleed-copy{max-width:100%;}
+}
+
+/* ===== 選ばれる理由（左右交互） ===== */
+.strength-list{display:flex;flex-direction:column;gap:3rem;}
+.strength-row{display:flex;align-items:center;gap:2.2rem;}
+.strength-row:nth-child(even){flex-direction:row-reverse;}
+.strength-media{flex:0 0 44%;max-width:44%;}
+.strength-media img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;
+  box-shadow:0 10px 30px rgba(0,0,0,.12);}
+.strength-body{flex:1;}
+.strength-num{
+  display:inline-block;font-size:.8rem;letter-spacing:.12em;color:var(--accent);
+  border:1px solid var(--accent);border-radius:3px;padding:.15rem .6rem;margin-bottom:.8rem;
+  font-family:'Noto Sans JP',sans-serif;
+}
+.strength-body h3{margin-bottom:.7rem;color:var(--base);}
+.strength-body p{font-size:.95rem;color:var(--muted);}
+@media(max-width:768px){
+  .strength-row,.strength-row:nth-child(even){flex-direction:column;gap:1.2rem;}
+  .strength-media{flex:none;max-width:100%;width:100%;}
+}
+
+/* =========================================================
+   スライダー：全幅・はみ出し型（2026-08-31 依頼主要望）
+   画面いっぱいに広げ、左右の隣スライドを覗かせる（peek）。
+   トラックに左右パディング＝(100vw - スライド幅)/2 を持たせることで、
+   1枚目と最終枚も中央に収まり、端に不自然な余白が出ない。
+   ========================================================= */
+.section-slider{padding-left:0;padding-right:0;}
+.section-slider .inner{padding:0 1.2rem;}
+.slider{position:relative;width:100%;}
+.slider-viewport{overflow:hidden;}
+/* 🔴2026-08-31：依頼主指示「3枚だと大きすぎる→5枚」。
+   1枚あたりを 66vw → 18vw に縮め、画面内に5枚が並ぶようにした。
+   小さくなるとオーバーレイのキャプションが読めないので、キャプションは画像の下に出す。 */
+.slider-track{
+  --slide-w:18vw; --slide-gap:1.1rem;
+  position:relative;display:flex;gap:var(--slide-gap);
+  padding:0 calc((100% - var(--slide-w)) / 2);
+  transition:transform .75s cubic-bezier(.4,.02,.2,1);
+  will-change:transform;
+}
+.slide{flex:0 0 var(--slide-w);position:relative;border-radius:10px;overflow:hidden;
+  background:var(--card);box-shadow:0 10px 28px rgba(21,81,46,.14);}
+.slide img{width:100%;aspect-ratio:4/3;object-fit:cover;}
+.slide-cap{padding:.9rem .9rem 1.1rem;}
+.slide-cap strong{display:block;font-size:.92rem;color:var(--base);margin-bottom:.3rem;line-height:1.5;}
+.slide-cap span{font-size:.78rem;color:var(--muted);line-height:1.7;display:block;
+  font-family:'Noto Sans JP',sans-serif;}
+.slider-btn{
+  position:absolute;top:50%;transform:translateY(-50%);z-index:3;
+  width:46px;height:46px;border-radius:50%;border:0;cursor:pointer;
+  background:rgba(255,255,255,.94);box-shadow:0 4px 16px rgba(0,0,0,.22);
+  display:flex;align-items:center;justify-content:center;transition:background .2s;
+}
+.slider-btn:hover{background:#fff;}
+.slider-btn.prev{left:18px;}
+.slider-btn.next{right:18px;}
+.slider-dots{display:flex;gap:.6rem;justify-content:center;margin-top:1.4rem;}
+.slider-dots button{
+  width:9px;height:9px;padding:0;border-radius:50%;border:0;cursor:pointer;
+  background:rgba(21,81,46,.24);transition:background .25s,transform .25s;
+}
+.slider-dots button.active{background:var(--accent);transform:scale(1.35);}
+/* 画面が狭いほど1枚を大きく（PC5枚→タブレット3枚→スマホ1.5枚） */
+@media(max-width:1024px){ .slider-track{--slide-w:30vw;} }
+@media(max-width:768px){
+  .slider-track{--slide-w:62vw; --slide-gap:.8rem;}
+  .slider-btn{width:36px;height:36px;top:34%;}
+  .slider-btn.prev{left:6px;} .slider-btn.next{right:6px;}
+  .slide-cap strong{font-size:.9rem;}
+}
+
+/* ===== 注記ボックス ===== */
+.note-box{margin-top:2rem;padding:1.1rem 1.3rem;background:rgba(224,128,28,.08);
+  border-left:3px solid var(--accent);font-size:.9rem;color:var(--muted);border-radius:0 6px 6px 0;}
+
+/* ===== 沿革タイムライン（position:absoluteの手計算は使わない） ===== */
+.history{display:flex;flex-direction:column;border-left:2px solid var(--line);margin-left:.5rem;}
+.history-item{position:relative;padding:0 0 2.2rem 2rem;}
+.history-item:last-child{padding-bottom:0;}
+.history-item::before{
+  content:"";position:absolute;left:-7px;top:.45rem;width:12px;height:12px;
+  border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--bg);
+}
+.history-year{font-size:.85rem;letter-spacing:.1em;color:var(--accent);font-weight:700;
+  font-family:'Noto Sans JP',sans-serif;margin-bottom:.3rem;}
+.history-item h3{font-size:1.02rem;margin-bottom:.35rem;color:var(--base);}
+.history-item p{font-size:.92rem;color:var(--muted);}
+.section-alt .history-item::before{box-shadow:0 0 0 4px #fff;}
+
+/* ===== 流れ ===== */
+.flow-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
+.flow-step{position:relative;background:var(--card);border:1px solid var(--line);
+  border-radius:10px;padding:1.8rem 1.1rem;text-align:center;}
+.flow-step-num{
+  width:40px;height:40px;margin:0 auto .8rem;border-radius:50%;
+  background:var(--accent);color:#fff;display:flex;align-items:center;justify-content:center;
+  font-weight:700;font-size:1.05rem;font-family:'Noto Sans JP',sans-serif;
+}
+.flow-step h3{font-size:1rem;margin-bottom:.5rem;color:var(--base);}
+.flow-step p{font-size:.86rem;color:var(--muted);}
+.flow-arrow{position:absolute;right:-.95rem;top:50%;transform:translateY(-50%);
+  color:var(--accent);font-size:1.5rem;line-height:1;z-index:2;}
+@media(max-width:768px){
+  .flow-steps{grid-template-columns:1fr;}
+  .flow-arrow{right:50%;top:auto;bottom:-1.15rem;transform:translateX(50%) rotate(90deg);}
+}
+
+/* ===== CTA帯 ===== */
+.cta-mid{background:var(--base);color:#fff;text-align:center;padding:3.5rem 1.2rem;}
+.cta-mid h2{color:#fff;margin-bottom:.8rem;}
+.cta-mid p{color:rgba(255,255,255,.85);margin-bottom:1.8rem;font-size:.95rem;}
+.cta-btns{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;}
+.cta-btns a{min-width:200px;}
+@media(max-width:768px){
+  .cta-btns{flex-direction:column;align-items:center;}
+  .cta-btns a{width:min(100%,24rem);}
+}
+
+/* ===== FAQ ===== */
+/* FAQ：details/summary によるアコーディオン（2026-08-31 依頼主指示）。
+   JSを足さずネイティブ要素で開閉する＝JSが失敗しても必ず読める。 */
+.faq-list{display:flex;flex-direction:column;gap:.9rem;}
+.faq-item{background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;}
+.faq-item summary{
+  list-style:none;cursor:pointer;display:flex;gap:.7rem;align-items:center;
+  padding:1.15rem 1.3rem;font-weight:700;color:var(--base);
+  transition:background .2s;
+}
+.faq-item summary::-webkit-details-marker{display:none;}
+.faq-item summary:hover{background:rgba(224,128,28,.05);}
+.faq-item summary:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;}
+.faq-q-badge{
+  flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:var(--accent);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-size:.8rem;
+  font-family:'Noto Sans JP',sans-serif;
+}
+.faq-q-text{flex:1;font-size:.98rem;line-height:1.6;}
+.faq-chevron{flex:0 0 auto;transition:transform .3s ease;}
+.faq-item[open] .faq-chevron{transform:rotate(180deg);}
+.faq-a{font-size:.92rem;color:var(--muted);padding:0 1.3rem 1.3rem 3.4rem;}
+@keyframes faqOpen{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:none;}}
+.faq-item[open] .faq-a{animation:faqOpen .32s ease both;}
+@media(max-width:768px){ .faq-a{padding-left:1.3rem;} }
+
+/* ===== 最後のひと押し ===== */
+.cta-final{
+  position:relative;padding:5rem 1.2rem;text-align:center;overflow:hidden;
+  /* 画像はHTML側の style="background-image:url(...)" で指定する */
+  background-color:var(--bg);background-size:cover;background-position:center;
+}
+/* ③ この rgba は --bg と同じ色にする */
+.cta-final::before{
+  content:"";position:absolute;inset:0;
+  background:linear-gradient(rgba(245,248,241,.9),rgba(245,248,241,.94));
+}
+.cta-final .inner{position:relative;z-index:1;}
+.cta-final h2{margin-bottom:1rem;color:var(--base);}
+.cta-final p{margin-bottom:2rem;color:var(--muted);}
+
+/* ===== Footer ===== */
+.site-footer{background:var(--base);color:rgba(255,255,255,.8);padding:2.5rem 1.2rem 5.5rem;
+  font-size:.85rem;font-family:'Noto Sans JP',sans-serif;}
+.footer-inner{max-width:900px;margin:0 auto;display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:space-between;}
+.site-footer strong{display:block;color:#fff;font-size:1rem;margin-bottom:.6rem;}
+.site-footer p{line-height:1.9;font-size:.85rem;}
+.footer-note{max-width:900px;margin:2rem auto 0;padding-top:1.2rem;
+  border-top:1px solid rgba(255,255,255,.14);font-size:.78rem;color:rgba(255,255,255,.65);}
+@media(min-width:769px){.site-footer{padding-bottom:2.5rem;}}
+
+/* ===== スクロール連動アニメーション =====
+   JSが動く環境でだけ初期状態を隠す（.js は<head>のインラインscriptが付与）。
+   JS無効・エラー時は .reveal が常に見えるので内容が消えることはない。 */
+.js .reveal{
+  opacity:0;transform:translateY(26px);
+  transition:opacity .85s cubic-bezier(.22,.7,.28,1),transform .85s cubic-bezier(.22,.7,.28,1);
+  transition-delay:var(--d,0s);
+}
+.js .reveal.is-in{opacity:1;transform:none;}
+
+/* ===== モーション低減の環境ではアニメーションを止める ===== */
+@media (prefers-reduced-motion: reduce){
+  .js .reveal{opacity:1!important;transform:none!important;transition:none!important;}
+  .js .t-1 .eyebrow,.js .t-1 h1,.js .t-1 .eyebrow-mob,
+  .js .t-1 .hero-lead,.js .t-1 .hero-media img,.js .t-1 .cta-under-inner{animation:none!important;}
+  .faq-item[open] .faq-a{animation:none!important;}
+  .faq-chevron{transition:none!important;}
+  .slider-track{transition:none!important;}
+  .issue-card:hover,.btn-primary:hover,.btn-outline:hover,.btn-green:hover{transform:none;}
+}
+
+/* =========================================================
+   案件固有の追加セクション（ダイヤベルツリーフーズ様）
+   既存サイトの掲載内容を全部のせるために足したもの。
+   ・.spec-*    製品紹介ページの「カット規格7分類」
+   ・.area-*    契約産地ページ（産地一覧＋生産システム図）
+   ・.company-* 会社概要ページの一覧
+   ・.recruit-* トップの採用情報
+   ・.access-*  アクセスページ
+   配管の作法は既存に合わせる（768pxで1カラム／box-sizing／clampのみ）。
+   ========================================================= */
+
+/* ===== カット規格 ===== */
+.spec-list{display:grid;grid-template-columns:repeat(2,1fr);gap:1.1rem;}
+.spec-item{display:flex;gap:1rem;background:var(--bg);border:1px solid var(--line);
+  border-radius:10px;padding:1.3rem 1.4rem;}
+.section-alt .spec-item{background:var(--bg);}
+.spec-num{flex:0 0 32px;height:32px;border-radius:50%;background:var(--accent);color:#fff;
+  display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.95rem;
+  font-family:'Noto Sans JP',sans-serif;}
+.spec-item h3{font-size:1rem;margin-bottom:.4rem;color:var(--base);}
+.spec-item p{font-size:.9rem;color:var(--muted);}
+@media(max-width:768px){.spec-list{grid-template-columns:1fr;}}
+
+/* ===== 契約産地 ===== */
+.area-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-bottom:2.4rem;}
+.area-card{background:var(--card);border:1px solid var(--line);border-radius:10px;
+  padding:1.3rem 1.3rem;border-top:3px solid var(--accent);}
+.area-card h3{font-size:1rem;margin-bottom:.4rem;color:var(--base);}
+.area-card p{font-size:.88rem;color:var(--muted);}
+.area-chart{display:grid;grid-template-columns:minmax(0,42%) minmax(0,1fr);gap:1.8rem;
+  align-items:center;background:var(--card);border:1px solid var(--line);
+  border-radius:12px;padding:1.8rem;}
+.area-chart img{width:100%;border-radius:8px;}
+.area-chart-body h3{font-size:1.1rem;margin-bottom:.6rem;color:var(--base);}
+.area-chart-body p{font-size:.92rem;color:var(--muted);}
+.area-chart-note{margin-top:.9rem;padding-top:.9rem;border-top:1px solid var(--line);
+  font-size:.85rem;color:var(--base);font-weight:700;}
+@media(max-width:768px){
+  .area-grid{grid-template-columns:1fr;}
+  .area-chart{grid-template-columns:1fr;padding:1.3rem;gap:1.2rem;}
+}
+
+/* ===== 会社概要 ===== */
+.company-table{background:var(--card);border:1px solid var(--line);border-radius:12px;
+  overflow:hidden;}
+.company-table dl{display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr);
+  border-bottom:1px solid var(--line);}
+.company-table dl:last-child{border-bottom:none;}
+.company-table dt{padding:1rem 1.3rem;background:var(--bg);font-size:.9rem;font-weight:700;
+  color:var(--base);}
+.company-table dd{padding:1rem 1.3rem;font-size:.92rem;color:var(--muted);line-height:1.9;}
+/* 🔴スマホはテーブルを縦積みにする（横スクロールを出さない） */
+@media(max-width:768px){
+  .company-table dl{grid-template-columns:1fr;}
+  .company-table dt{padding:.7rem 1.1rem;}
+  .company-table dd{padding:.8rem 1.1rem 1.1rem;}
+}
+
+/* ===== 採用情報 ===== */
+.recruit-box{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,44%);gap:2rem;
+  align-items:center;background:var(--bg);border:1px solid var(--line);
+  border-radius:12px;padding:2rem;}
+.recruit-body p{font-size:.94rem;color:var(--muted);margin-bottom:.8rem;}
+.recruit-addr{font-weight:700;color:var(--base)!important;}
+.recruit-note{font-size:.86rem!important;}
+.recruit-media img{width:100%;border-radius:10px;}
+@media(max-width:768px){
+  .recruit-box{grid-template-columns:1fr;padding:1.4rem;gap:1.3rem;}
+  .recruit-media{order:-1;}
+}
+
+/* ===== アクセス ===== */
+.access-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.4rem;}
+.access-card{background:var(--card);border:1px solid var(--line);border-radius:10px;
+  padding:1.7rem 1.6rem;}
+.access-card h3{font-size:1.05rem;margin-bottom:.7rem;color:var(--base);}
+.access-card p{font-size:.92rem;color:var(--muted);margin-bottom:.5rem;}
+.access-card strong{color:var(--base);}
+@media(max-width:768px){.access-grid{grid-template-columns:1fr;}}
+
+/* ===== ヘッダー：社名が長いのでスマホで縮める ===== */
+@media(max-width:560px){
+  .site-logo{font-size:.74rem;}
+  .header-tel{font-size:.85rem;white-space:nowrap;}
+  .header-contact{gap:.7rem;}
+}
+
+/* ===== スマホFV：h1が緑の斜面に重なって沈むので薄い白幕を敷く =====
+   PCではh1が画像の外（生成り地）から始まるので不要。左→右のグラデにして
+   建物（右側）の写りは残す。h1は .h1-wrap の z-index:2 で常にこの上に来る。 */
+@media(max-width:768px){
+  .t-1 .hero-media::after{
+    content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(100deg,
+      rgba(245,248,241,.90) 0%,rgba(245,248,241,.78) 40%,
+      rgba(245,248,241,.30) 70%,rgba(245,248,241,0) 92%);
+  }
+}
+
+/* ===== 最後のひと押し：白幕が既定(.90/.94)だと畑の写真がほぼ消えるので薄くする =====
+   文字は濃緑(--base #15512e)なので、この濃度でも読める。実描画で確認済み。 */
+.cta-final::before{
+  background:linear-gradient(rgba(245,248,241,.72),rgba(245,248,241,.85));
+}
