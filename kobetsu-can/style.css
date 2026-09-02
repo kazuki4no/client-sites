@@ -718,3 +718,72 @@ p{line-height:1.9;}
 .up-badge::after{right:-16px;bottom:-8px;width:10px;height:10px;}
 .score small{display:block;font-size:.72rem;color:var(--muted);font-weight:500;margin-top:.5rem;}
 
+
+/* =========================================================
+   追加①：6月定期テスト結果の画像（実績セクション内）
+   ========================================================= */
+.result-sheet{
+  margin-top:3rem;background:#fff;border-radius:22px;
+  box-shadow:var(--shadow);padding:2rem 1.5rem;
+}
+.result-sheet h3{
+  color:var(--base-dark);text-align:center;
+  font-size:clamp(1.15rem,3vw,1.5rem);margin-bottom:.5rem;
+}
+.result-lead{
+  text-align:center;color:var(--muted);font-size:.9rem;
+  max-width:640px;margin:0 auto 1.4rem;
+}
+.result-fig{
+  border:1px solid var(--line);border-radius:12px;overflow:hidden;
+  background:#fff;
+}
+.result-fig img{width:100%;height:auto;}
+
+/* =========================================================
+   追加②：卒業生からの手紙（独立セクション）
+   ========================================================= */
+.letters{background:var(--bg);}
+.letter-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.2rem,3vw,2.2rem);
+  max-width:900px;margin:0 auto;align-items:start;
+}
+@media(max-width:768px){
+  .letter-grid{grid-template-columns:1fr;gap:2rem;max-width:520px;}
+}
+.letter-card{position:relative;}
+.letter-card::before{ /* 黄色のオフセット下敷き（storyのブロブと同系統） */
+  content:"";position:absolute;inset:-10px -10px 14px 10px;z-index:-1;
+  background:var(--accent-soft);border-radius:18px;transform:rotate(-1deg);
+}
+.letter-card.tilt-r::before{transform:rotate(1.2deg);background:var(--tint);}
+.letter-card a{display:block;border-radius:12px;overflow:hidden;box-shadow:var(--shadow);}
+.letter-card img{
+  width:100%;height:auto;display:block;
+  transition:transform .4s cubic-bezier(.2,.7,.3,1);
+}
+.letter-card a:hover img,.letter-card a:focus-visible img{transform:scale(1.02);}
+.letter-card figcaption{
+  text-align:center;font-size:.82rem;color:var(--muted);
+  font-weight:700;margin-top:.9rem;
+}
+.letter-note{
+  text-align:center;font-size:.78rem;color:var(--muted);
+  margin-top:1.8rem;line-height:1.7;
+}
+
+/* =========================================================
+   追加③：みんなの声（横スクロール→一覧グリッド）
+   ========================================================= */
+.voice-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:clamp(1rem,2.2vw,1.4rem);align-items:start;
+}
+@media(max-width:860px){.voice-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:560px){.voice-grid{grid-template-columns:1fr;}}
+.voice-grid .voice-card{
+  /* スライダー前提の幅固定・半透明・縮小を打ち消して一覧化 */
+  width:auto;flex:initial;opacity:1;transform:none;
+  padding:1.9rem 1.3rem 1.5rem;box-shadow:var(--shadow);height:100%;
+}
+/* 引用符マーク（元の .voice-card::before）はそのまま活かす */
