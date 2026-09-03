@@ -279,3 +279,84 @@
     sections.forEach(function (s) { spy.observe(s); });
   } catch (err) { /* 飾りなので何もしない */ }
 })();
+
+/* =========================================================
+   ⑥ 手紙の拡大表示（ライトボックス・2026-09-03追加）
+   [data-lightbox] のリンクを、別タブでなく同ページ上で大きく表示する。
+   背景クリック・×・Escで閉じ、すぐ元のページに戻れる。
+   JSが落ちても <a href="画像"> のままなので、内容は失われない。
+   ========================================================= */
+(function () {
+  'use strict';
+  var box = document.getElementById('lightbox');
+  var img = document.getElementById('lightboxImg');
+  if (!box || !img) return;
+
+  var closeBtn = box.querySelector('.lightbox-close');
+  var triggers = document.querySelectorAll('a[data-lightbox]');
+  if (!triggers.length) return;
+
+  var lastFocus = null;
+
+  function open(href, alt) {
+    lastFocus = document.activeElement;
+    // 開いた時点のスクロール位置を記録し、フォーカス移動などで動いても必ず戻す
+    var keepY = window.scrollY || window.pageYOffset;
+    img.setAttribute('src', href);
+    img.setAttribute('alt', alt || '');
+    box.classList.add('is-open');
+    box.setAttribute('aria-hidden', 'false');
+    // 背景スクロールだけ止める（位置は動かさない）
+    var sw = window.innerWidth - document.documentElement.clientWidth; // スクロールバー幅
+    document.documentElement.style.overflow = 'hidden';
+    if (sw > 0) document.body.style.paddingRight = sw + 'px'; // バー消失のガタつき防止
+    if (closeBtn) { try { closeBtn.focus({ preventScroll: true }); } catch (e) {} }
+    // フォーカス移動等で位置がずれた場合に備え、記録位置へ戻す
+    if ((window.scrollY || window.pageYOffset) !== keepY) window.scrollTo(0, keepY);
+    requestAnimationFrame(function () {
+      if (box.classList.contains('is-open') &&
+          (window.scrollY || window.pageYOffset) !== keepY) window.scrollTo(0, keepY);
+    });
+  }
+
+  function close() {
+    var keepY = window.scrollY || window.pageYOffset;
+    box.classList.remove('is-open');
+    box.setAttribute('aria-hidden', 'true');
+    // 背景スクロールを再開（位置はそのまま）
+    document.documentElement.style.overflow = '';
+    document.body.style.paddingRight = '';
+    // src は少し置いてから空に（閉じアニメ中の画像消失を防ぐ）
+    setTimeout(function () {
+      if (!box.classList.contains('is-open')) img.setAttribute('src', '');
+    }, 300);
+    // 元のリンクへフォーカスを戻す（位置はずらさない）
+    if (lastFocus && lastFocus.focus) {
+      try { lastFocus.focus({ preventScroll: true }); } catch (e) {}
+    }
+    if ((window.scrollY || window.pageYOffset) !== keepY) window.scrollTo(0, keepY);
+  }
+
+  for (var i = 0; i < triggers.length; i++) {
+    triggers[i].addEventListener('click', function (e) {
+      e.preventDefault();
+      var a = e.currentTarget;
+      var inner = a.querySelector('img');
+      open(a.getAttribute('href'), inner ? inner.getAttribute('alt') : '');
+    });
+  }
+
+  if (closeBtn) closeBtn.addEventListener('click', close);
+
+  // 背景（画像以外）クリックで閉じる
+  box.addEventListener('click', function (e) {
+    if (e.target !== img) close();
+  });
+
+  // Escで閉じる
+  document.addEventListener('keydown', function (e) {
+    if ((e.key === 'Escape' || e.key === 'Esc') && box.classList.contains('is-open')) {
+      close();
+    }
+  });
+})();
