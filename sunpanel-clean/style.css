@@ -30,11 +30,11 @@ img{max-width:100%;height:auto;display:block;}
    画像URLはCSSに書かない（HTML側のインラインstyleで指定する）＝この2か所以外に
    会社依存の値を持たせないため。
    ========================================================= */
-/* ===== ① Theme variables（木と生成りの色） ===== */
+/* ===== ① Theme variables（太陽光・エコ＝深緑×サンゴールド） ===== */
 body.t-1{
-  --base:#2d4a31; --base-light:#4a7249; --accent:#c6a35d; --accent-soft:#d4b678;
-  --text:#1f2e22; --bg:#f7f4ef; --card:#fff; --btn-text:#fff;
-  --line:rgba(0,0,0,.1); --muted:#5a7460;
+  --base:#1e4536; --base-light:#3b6b54; --accent:#e2a63c; --accent-soft:#eec174;
+  --text:#17251d; --bg:#f6f5ef; --card:#fff; --btn-text:#fff;
+  --line:rgba(0,0,0,.1); --muted:#52685c;
 }
 
 /* ===== Base ===== */
@@ -100,6 +100,11 @@ p{line-height:1.8;}
   font-family:'Noto Sans JP',sans-serif;
 }
 @media(min-width:769px){.floating-cta{display:none;}}
+/* ⚠️社名14文字で375px幅のヘッダーが2段に折り返す（実測済みの既知パターン） */
+@media(max-width:560px){
+  .site-logo{font-size:.74rem;}
+  .header-tel{white-space:nowrap;}
+}
 
 /* =========================================================
    FV：h1オーバーレイ型（A案 2026-08-26/27修正版を継承）
@@ -120,7 +125,7 @@ p{line-height:1.8;}
 }
 .t-1 h1{
   font-size:clamp(2rem,4.5vw,3.4rem);line-height:1.28;color:var(--base);
-  text-shadow:0 1px 14px rgba(247,244,239,.96);
+  text-shadow:0 1px 14px rgba(246,245,239,.96);
 }
 .t-1 .hero-lead{margin-top:1.4rem;font-size:.98rem;color:#444;line-height:1.85;max-width:34ch;}
 /* スマホ用eyebrowの既定値。⚠️必ず768pxメディアクエリより「前」に置く。 */
@@ -169,13 +174,12 @@ p{line-height:1.8;}
 .topform-wrap{padding:4rem 1.2rem 5rem;background:var(--bg);}
 .topform{
   max-width:860px;margin:0 auto;background:var(--card);border:1px solid var(--line);
-  border-radius:12px;box-shadow:0 14px 40px rgba(45,74,49,.1);
+  border-radius:12px;box-shadow:0 14px 40px rgba(30,69,54,.1);
   padding:2.2rem 2rem;
 }
 .topform-head{text-align:center;margin-bottom:1.6rem;}
 /* 🔴このピルは <p> なので、後段の「.topform-head p{color:var(--muted)}」に
-   詳細度で負けて文字が濃茶（#5c5148）になっていた＝金色背景にコントラスト1.9で読めない。
-   セレクタを p 込みにして白を確実に勝たせる。 */
+   詳細度で負けて文字が濃茶になっていた事故がある＝セレクタを p 込みにして白を確実に勝たせる。 */
 .topform-head p.topform-eyebrow{
   display:inline-block;font-size:.75rem;letter-spacing:.14em;color:#fff;background:var(--accent);
   padding:.25rem .9rem;border-radius:999px;margin-bottom:.8rem;font-family:'Noto Sans JP',sans-serif;
@@ -243,7 +247,7 @@ p{line-height:1.8;}
 /* ③ この rgba は --bg と同じ色にする */
 .fullbleed::before{
   content:"";position:absolute;inset:0;
-  background:linear-gradient(100deg,rgba(247,244,239,.95) 0%,rgba(247,244,239,.86) 34%,rgba(247,244,239,.35) 62%,rgba(247,244,239,0) 88%);
+  background:linear-gradient(100deg,rgba(246,245,239,.95) 0%,rgba(246,245,239,.86) 34%,rgba(246,245,239,.35) 62%,rgba(246,245,239,0) 88%);
 }
 .fullbleed-inner{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:4rem 1.5rem;width:100%;}
 .fullbleed-copy{max-width:30rem;}
@@ -255,7 +259,7 @@ p{line-height:1.8;}
 .fullbleed p{color:var(--muted);font-size:.98rem;}
 @media(max-width:768px){
   .fullbleed{min-height:0;background-position:64% center;}
-  .fullbleed::before{background:linear-gradient(180deg,rgba(247,244,239,.93) 0%,rgba(247,244,239,.88) 55%,rgba(247,244,239,.95) 100%);}
+  .fullbleed::before{background:linear-gradient(180deg,rgba(246,245,239,.93) 0%,rgba(246,245,239,.88) 55%,rgba(246,245,239,.95) 100%);}
   .fullbleed-inner{padding:3.2rem 1.2rem;}
   .fullbleed-copy{max-width:100%;}
 }
@@ -301,7 +305,7 @@ p{line-height:1.8;}
   will-change:transform;
 }
 .slide{flex:0 0 var(--slide-w);position:relative;border-radius:10px;overflow:hidden;
-  background:var(--card);box-shadow:0 10px 28px rgba(45,74,49,.14);}
+  background:var(--card);box-shadow:0 10px 28px rgba(30,69,54,.14);}
 .slide img{width:100%;aspect-ratio:4/3;object-fit:cover;}
 .slide-cap{padding:.9rem .9rem 1.1rem;}
 .slide-cap strong{display:block;font-size:.92rem;color:var(--base);margin-bottom:.3rem;line-height:1.5;}
@@ -319,7 +323,7 @@ p{line-height:1.8;}
 .slider-dots{display:flex;gap:.6rem;justify-content:center;margin-top:1.4rem;}
 .slider-dots button{
   width:9px;height:9px;padding:0;border-radius:50%;border:0;cursor:pointer;
-  background:rgba(45,74,49,.24);transition:background .25s,transform .25s;
+  background:rgba(30,69,54,.24);transition:background .25s,transform .25s;
 }
 .slider-dots button.active{background:var(--accent);transform:scale(1.35);}
 /* 画面が狭いほど1枚を大きく（PC5枚→タブレット3枚→スマホ1.5枚） */
@@ -332,7 +336,7 @@ p{line-height:1.8;}
 }
 
 /* ===== 注記ボックス ===== */
-.note-box{margin-top:2rem;padding:1.1rem 1.3rem;background:rgba(198,163,93,.08);
+.note-box{margin-top:2rem;padding:1.1rem 1.3rem;background:rgba(226,166,60,.08);
   border-left:3px solid var(--accent);font-size:.9rem;color:var(--muted);border-radius:0 6px 6px 0;}
 
 /* ===== 沿革タイムライン（position:absoluteの手計算は使わない） ===== */
@@ -389,7 +393,7 @@ p{line-height:1.8;}
   transition:background .2s;
 }
 .faq-item summary::-webkit-details-marker{display:none;}
-.faq-item summary:hover{background:rgba(198,163,93,.05);}
+.faq-item summary:hover{background:rgba(226,166,60,.05);}
 .faq-item summary:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;}
 .faq-q-badge{
   flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:var(--accent);color:#fff;
@@ -410,10 +414,10 @@ p{line-height:1.8;}
   /* 画像はHTML側の style="background-image:url(...)" で指定する */
   background-color:var(--bg);background-size:cover;background-position:center;
 }
-/* ③ この rgba は --bg と同じ色にする */
+/* ③ この rgba は --bg と同じ色にする（明るい写真を使うため.90/.94ではなく.74/.85まで薄める） */
 .cta-final::before{
   content:"";position:absolute;inset:0;
-  background:linear-gradient(rgba(247,244,239,.72),rgba(247,244,239,.85));
+  background:linear-gradient(rgba(246,245,239,.74),rgba(246,245,239,.85));
 }
 .cta-final .inner{position:relative;z-index:1;}
 .cta-final h2{margin-bottom:1rem;color:var(--base);}
@@ -428,6 +432,33 @@ p{line-height:1.8;}
 .footer-note{max-width:900px;margin:2rem auto 0;padding-top:1.2rem;
   border-top:1px solid rgba(255,255,255,.14);font-size:.78rem;color:rgba(255,255,255,.65);}
 @media(min-width:769px){.site-footer{padding-bottom:2.5rem;}}
+
+/* =========================================================
+   サービス（.service-grid）・フッター（.site-footer-bottom）
+   9セクション構成に「対応するサービス」「フッター」を追加するための拡張ブロック。
+   ========================================================= */
+.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
+.service-card{background:var(--card);border-radius:10px;border-top:4px solid var(--accent);
+  padding:2rem 1.5rem;box-shadow:0 6px 20px rgba(0,0,0,.06);}
+.service-icon{width:64px;height:64px;border-radius:50%;background:rgba(226,166,60,.14);
+  display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;}
+.service-card h3{font-size:1.08rem;margin-bottom:.6rem;color:var(--base);}
+.service-card p{font-size:.92rem;color:var(--muted);line-height:1.85;}
+@media(max-width:1024px){.service-grid{grid-template-columns:1fr 1fr;}}
+@media(max-width:768px){.service-grid{grid-template-columns:1fr;}}
+
+.site-footer-bottom{background:var(--base);color:rgba(255,255,255,.8);padding:2.5rem 1.2rem 5.5rem;
+  font-size:.85rem;font-family:'Noto Sans JP',sans-serif;}
+.site-footer-bottom .footer-inner{align-items:flex-start;}
+.footer-logo{color:#fff;font-size:1.05rem;font-weight:700;letter-spacing:.04em;flex-basis:100%;}
+.footer-addr{font-style:normal;line-height:1.9;}
+.footer-addr a{color:#fff;}
+.footer-nav{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;}
+.footer-nav a{color:rgba(255,255,255,.85);text-decoration:none;}
+.footer-nav a:hover{color:var(--accent-soft);}
+.footer-copy{flex-basis:100%;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.14);
+  font-size:.78rem;color:rgba(255,255,255,.55);}
+@media(min-width:769px){.site-footer-bottom{padding-bottom:2.5rem;}}
 
 /* ===== スクロール連動アニメーション =====
    JSが動く環境でだけ初期状態を隠す（.js は<head>のインラインscriptが付与）。
@@ -449,29 +480,3 @@ p{line-height:1.8;}
   .slider-track{transition:none!important;}
   .issue-card:hover,.btn-primary:hover,.btn-outline:hover,.btn-green:hover{transform:none;}
 }
-
-/* ===== サービス（.service-grid）・フッター（.site-footer-bottom） =====
-   2026-09-14追記: HTML側で使っていたのに定義が無く、無装飾で表示されていた。
-   課題カード（中央寄せ・枠線）と見た目が続かないよう、左寄せ＋上辺アクセント線にしている。 */
-.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
-.service-card{background:var(--card);border-radius:10px;border-top:4px solid var(--accent);
-  padding:2rem 1.6rem;box-shadow:0 6px 22px rgba(0,0,0,.06);text-align:left;}
-.service-icon{width:64px;height:64px;border-radius:50%;background:rgba(198,163,93,.14);
-  display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;}
-.service-card h3{font-size:1.08rem;margin-bottom:.6rem;color:var(--base);}
-.service-card p{font-size:.92rem;color:var(--muted);line-height:1.85;}
-@media(max-width:1024px){.service-grid{grid-template-columns:1fr 1fr;}}
-@media(max-width:768px){.service-grid{grid-template-columns:1fr;}}
-
-.site-footer-bottom{background:var(--base);color:rgba(255,255,255,.8);padding:2.5rem 1.2rem 5.5rem;
-  font-size:.85rem;font-family:'Noto Sans JP',sans-serif;}
-.site-footer-bottom .footer-inner{align-items:flex-start;}
-.footer-logo{color:#fff;font-size:1.05rem;font-weight:700;letter-spacing:.04em;flex-basis:100%;}
-.footer-addr{font-style:normal;line-height:1.9;}
-.footer-addr a{color:#fff;}
-.footer-nav{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;}
-.footer-nav a{color:rgba(255,255,255,.85);text-decoration:none;}
-.footer-nav a:hover{color:var(--accent-soft);}
-.footer-copy{flex-basis:100%;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.14);
-  font-size:.78rem;color:rgba(255,255,255,.65);}
-@media(min-width:769px){.site-footer-bottom{padding-bottom:2.5rem;}}

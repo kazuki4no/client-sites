@@ -1,10 +1,8 @@
 /* =========================================================
-   1案統合版LP スタイル（2026-08-31 デモ・第2版）
-   A案（h1オーバーレイ型FV）をベースに、B案の全幅ビジュアル・沿革、
+   1案統合版LP スタイル（株式会社都賀装建）
+   A案（h1オーバーレイ型FV）をベースに、B案の全幅ビジュアル、
    C案のフォーム／課題／4ステップを統合した単一案テンプレート。
    テーマクラスは body.t-1 の1つだけ。
-   第2版の変更：①TOPに問い合わせフォーム ②スライダーを全幅はみ出し型へ
-   ③全幅帯を暗い職人写真→明るい木の家へ（トーン統一） ④古民家再生に特化
    ========================================================= */
 
 /* ===== Reset ===== */
@@ -30,16 +28,16 @@ img{max-width:100%;height:auto;display:block;}
    画像URLはCSSに書かない（HTML側のインラインstyleで指定する）＝この2か所以外に
    会社依存の値を持たせないため。
    ========================================================= */
-/* ===== ① Theme variables（木と生成りの色） ===== */
+/* ===== ① Theme variables（建設・製造＝濃紺＋オレンジの差し色） ===== */
 body.t-1{
-  --base:#2d4a31; --base-light:#4a7249; --accent:#c6a35d; --accent-soft:#d4b678;
-  --text:#1f2e22; --bg:#f7f4ef; --card:#fff; --btn-text:#fff;
-  --line:rgba(0,0,0,.1); --muted:#5a7460;
+  --base:#16233a; --base-light:#2c4463; --accent:#d98a2b; --accent-soft:#e8a855;
+  --text:#20242b; --bg:#f7f4ee; --card:#fff; --btn-text:#fff;
+  --line:rgba(0,0,0,.1); --muted:#5b6470;
 }
 
 /* ===== Base ===== */
 /* ===== ② 本文フォント ===== */
-body.t-1{font-family:'Noto Serif JP',serif;color:var(--text);background:var(--bg);}
+body.t-1{font-family:'Noto Sans JP',sans-serif;color:var(--text);background:var(--bg);}
 a{text-decoration:none;color:inherit;}
 h2{font-size:clamp(1.5rem,3.5vw,2.2rem);line-height:1.35;}
 h3{font-size:clamp(1rem,2.2vw,1.3rem);}
@@ -120,7 +118,7 @@ p{line-height:1.8;}
 }
 .t-1 h1{
   font-size:clamp(2rem,4.5vw,3.4rem);line-height:1.28;color:var(--base);
-  text-shadow:0 1px 14px rgba(247,244,239,.96);
+  text-shadow:0 1px 14px rgba(247,244,238,.96);
 }
 .t-1 .hero-lead{margin-top:1.4rem;font-size:.98rem;color:#444;line-height:1.85;max-width:34ch;}
 /* スマホ用eyebrowの既定値。⚠️必ず768pxメディアクエリより「前」に置く。 */
@@ -160,22 +158,20 @@ p{line-height:1.8;}
 .js .t-1 .cta-under-inner{animation:fvUp 1s .8s both cubic-bezier(.22,.7,.28,1);}
 
 /* =========================================================
-   TOPのお問い合わせフォーム（2026-08-31 依頼主要望で追加）
-   FV直下に置き、最初の画面で行動できるようにする。
+   TOPのお問い合わせフォーム
+   🔴依頼主指示でTOPから「最後の方」へ移動済み。
+   FV直下ではなく、最後のひと押しを読んだ後の位置に置く。
    ========================================================= */
-/* 🔴2026-08-31：依頼主指示でTOPから「最後の方」へ移動。
-   FVの直下ではなく、FAQ・最後のひと押しを読んだ後の位置に置く。 */
 /* ⚠️padding-top を0にすると直前の .cta-final と5pxしか離れず詰まって見える（実測）。 */
 .topform-wrap{padding:4rem 1.2rem 5rem;background:var(--bg);}
 .topform{
   max-width:860px;margin:0 auto;background:var(--card);border:1px solid var(--line);
-  border-radius:12px;box-shadow:0 14px 40px rgba(45,74,49,.1);
+  border-radius:12px;box-shadow:0 14px 40px rgba(22,35,58,.1);
   padding:2.2rem 2rem;
 }
 .topform-head{text-align:center;margin-bottom:1.6rem;}
 /* 🔴このピルは <p> なので、後段の「.topform-head p{color:var(--muted)}」に
-   詳細度で負けて文字が濃茶（#5c5148）になっていた＝金色背景にコントラスト1.9で読めない。
-   セレクタを p 込みにして白を確実に勝たせる。 */
+   詳細度で負けて文字色が反転しないよう、p込みのセレクタで確実に白を勝たせる。 */
 .topform-head p.topform-eyebrow{
   display:inline-block;font-size:.75rem;letter-spacing:.14em;color:#fff;background:var(--accent);
   padding:.25rem .9rem;border-radius:999px;margin-bottom:.8rem;font-family:'Noto Sans JP',sans-serif;
@@ -228,9 +224,7 @@ p{line-height:1.8;}
 
 /* =========================================================
    全幅ビジュアル帯（.fullbleed）
-   ⚠️第2版で「暗い職人写真」→「明るい木の家」へ差し替えた。
-   依頼主指摘「そこだけ急に古めかしい」＝ページ全体のトーンから浮いていたため。
-   背景が明るくなったので、白文字ではなく濃い文字＋薄い白幕にしている。
+   明るい写真を使い、文字は濃色＋薄い白幕（--bgと同色のグラデ）にする。
    ========================================================= */
 .fullbleed{
   position:relative;width:100%;min-height:clamp(380px,60vh,560px);
@@ -243,7 +237,7 @@ p{line-height:1.8;}
 /* ③ この rgba は --bg と同じ色にする */
 .fullbleed::before{
   content:"";position:absolute;inset:0;
-  background:linear-gradient(100deg,rgba(247,244,239,.95) 0%,rgba(247,244,239,.86) 34%,rgba(247,244,239,.35) 62%,rgba(247,244,239,0) 88%);
+  background:linear-gradient(100deg,rgba(247,244,238,.95) 0%,rgba(247,244,238,.86) 34%,rgba(247,244,238,.35) 62%,rgba(247,244,238,0) 88%);
 }
 .fullbleed-inner{position:relative;z-index:1;max-width:1080px;margin:0 auto;padding:4rem 1.5rem;width:100%;}
 .fullbleed-copy{max-width:30rem;}
@@ -255,7 +249,7 @@ p{line-height:1.8;}
 .fullbleed p{color:var(--muted);font-size:.98rem;}
 @media(max-width:768px){
   .fullbleed{min-height:0;background-position:64% center;}
-  .fullbleed::before{background:linear-gradient(180deg,rgba(247,244,239,.93) 0%,rgba(247,244,239,.88) 55%,rgba(247,244,239,.95) 100%);}
+  .fullbleed::before{background:linear-gradient(180deg,rgba(247,244,238,.93) 0%,rgba(247,244,238,.88) 55%,rgba(247,244,238,.95) 100%);}
   .fullbleed-inner{padding:3.2rem 1.2rem;}
   .fullbleed-copy{max-width:100%;}
 }
@@ -281,7 +275,7 @@ p{line-height:1.8;}
 }
 
 /* =========================================================
-   スライダー：全幅・はみ出し型（2026-08-31 依頼主要望）
+   スライダー：全幅・はみ出し型
    画面いっぱいに広げ、左右の隣スライドを覗かせる（peek）。
    トラックに左右パディング＝(100vw - スライド幅)/2 を持たせることで、
    1枚目と最終枚も中央に収まり、端に不自然な余白が出ない。
@@ -290,9 +284,6 @@ p{line-height:1.8;}
 .section-slider .inner{padding:0 1.2rem;}
 .slider{position:relative;width:100%;}
 .slider-viewport{overflow:hidden;}
-/* 🔴2026-08-31：依頼主指示「3枚だと大きすぎる→5枚」。
-   1枚あたりを 66vw → 18vw に縮め、画面内に5枚が並ぶようにした。
-   小さくなるとオーバーレイのキャプションが読めないので、キャプションは画像の下に出す。 */
 .slider-track{
   --slide-w:18vw; --slide-gap:1.1rem;
   position:relative;display:flex;gap:var(--slide-gap);
@@ -301,7 +292,7 @@ p{line-height:1.8;}
   will-change:transform;
 }
 .slide{flex:0 0 var(--slide-w);position:relative;border-radius:10px;overflow:hidden;
-  background:var(--card);box-shadow:0 10px 28px rgba(45,74,49,.14);}
+  background:var(--card);box-shadow:0 10px 28px rgba(22,35,58,.14);}
 .slide img{width:100%;aspect-ratio:4/3;object-fit:cover;}
 .slide-cap{padding:.9rem .9rem 1.1rem;}
 .slide-cap strong{display:block;font-size:.92rem;color:var(--base);margin-bottom:.3rem;line-height:1.5;}
@@ -319,7 +310,7 @@ p{line-height:1.8;}
 .slider-dots{display:flex;gap:.6rem;justify-content:center;margin-top:1.4rem;}
 .slider-dots button{
   width:9px;height:9px;padding:0;border-radius:50%;border:0;cursor:pointer;
-  background:rgba(45,74,49,.24);transition:background .25s,transform .25s;
+  background:rgba(22,35,58,.24);transition:background .25s,transform .25s;
 }
 .slider-dots button.active{background:var(--accent);transform:scale(1.35);}
 /* 画面が狭いほど1枚を大きく（PC5枚→タブレット3枚→スマホ1.5枚） */
@@ -332,22 +323,8 @@ p{line-height:1.8;}
 }
 
 /* ===== 注記ボックス ===== */
-.note-box{margin-top:2rem;padding:1.1rem 1.3rem;background:rgba(198,163,93,.08);
+.note-box{margin-top:2rem;padding:1.1rem 1.3rem;background:rgba(217,138,43,.08);
   border-left:3px solid var(--accent);font-size:.9rem;color:var(--muted);border-radius:0 6px 6px 0;}
-
-/* ===== 沿革タイムライン（position:absoluteの手計算は使わない） ===== */
-.history{display:flex;flex-direction:column;border-left:2px solid var(--line);margin-left:.5rem;}
-.history-item{position:relative;padding:0 0 2.2rem 2rem;}
-.history-item:last-child{padding-bottom:0;}
-.history-item::before{
-  content:"";position:absolute;left:-7px;top:.45rem;width:12px;height:12px;
-  border-radius:50%;background:var(--accent);box-shadow:0 0 0 4px var(--bg);
-}
-.history-year{font-size:.85rem;letter-spacing:.1em;color:var(--accent);font-weight:700;
-  font-family:'Noto Sans JP',sans-serif;margin-bottom:.3rem;}
-.history-item h3{font-size:1.02rem;margin-bottom:.35rem;color:var(--base);}
-.history-item p{font-size:.92rem;color:var(--muted);}
-.section-alt .history-item::before{box-shadow:0 0 0 4px #fff;}
 
 /* ===== 流れ ===== */
 .flow-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.2rem;}
@@ -379,7 +356,7 @@ p{line-height:1.8;}
 }
 
 /* ===== FAQ ===== */
-/* FAQ：details/summary によるアコーディオン（2026-08-31 依頼主指示）。
+/* FAQ：details/summary によるアコーディオン。
    JSを足さずネイティブ要素で開閉する＝JSが失敗しても必ず読める。 */
 .faq-list{display:flex;flex-direction:column;gap:.9rem;}
 .faq-item{background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden;}
@@ -389,7 +366,7 @@ p{line-height:1.8;}
   transition:background .2s;
 }
 .faq-item summary::-webkit-details-marker{display:none;}
-.faq-item summary:hover{background:rgba(198,163,93,.05);}
+.faq-item summary:hover{background:rgba(217,138,43,.05);}
 .faq-item summary:focus-visible{outline:2px solid var(--accent);outline-offset:-2px;}
 .faq-q-badge{
   flex:0 0 auto;width:24px;height:24px;border-radius:50%;background:var(--accent);color:#fff;
@@ -413,7 +390,7 @@ p{line-height:1.8;}
 /* ③ この rgba は --bg と同じ色にする */
 .cta-final::before{
   content:"";position:absolute;inset:0;
-  background:linear-gradient(rgba(247,244,239,.72),rgba(247,244,239,.85));
+  background:linear-gradient(rgba(247,244,238,.9),rgba(247,244,238,.94));
 }
 .cta-final .inner{position:relative;z-index:1;}
 .cta-final h2{margin-bottom:1rem;color:var(--base);}
@@ -449,29 +426,3 @@ p{line-height:1.8;}
   .slider-track{transition:none!important;}
   .issue-card:hover,.btn-primary:hover,.btn-outline:hover,.btn-green:hover{transform:none;}
 }
-
-/* ===== サービス（.service-grid）・フッター（.site-footer-bottom） =====
-   2026-09-14追記: HTML側で使っていたのに定義が無く、無装飾で表示されていた。
-   課題カード（中央寄せ・枠線）と見た目が続かないよう、左寄せ＋上辺アクセント線にしている。 */
-.service-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;}
-.service-card{background:var(--card);border-radius:10px;border-top:4px solid var(--accent);
-  padding:2rem 1.6rem;box-shadow:0 6px 22px rgba(0,0,0,.06);text-align:left;}
-.service-icon{width:64px;height:64px;border-radius:50%;background:rgba(198,163,93,.14);
-  display:flex;align-items:center;justify-content:center;margin-bottom:1.1rem;}
-.service-card h3{font-size:1.08rem;margin-bottom:.6rem;color:var(--base);}
-.service-card p{font-size:.92rem;color:var(--muted);line-height:1.85;}
-@media(max-width:1024px){.service-grid{grid-template-columns:1fr 1fr;}}
-@media(max-width:768px){.service-grid{grid-template-columns:1fr;}}
-
-.site-footer-bottom{background:var(--base);color:rgba(255,255,255,.8);padding:2.5rem 1.2rem 5.5rem;
-  font-size:.85rem;font-family:'Noto Sans JP',sans-serif;}
-.site-footer-bottom .footer-inner{align-items:flex-start;}
-.footer-logo{color:#fff;font-size:1.05rem;font-weight:700;letter-spacing:.04em;flex-basis:100%;}
-.footer-addr{font-style:normal;line-height:1.9;}
-.footer-addr a{color:#fff;}
-.footer-nav{display:flex;flex-wrap:wrap;gap:.4rem 1.2rem;}
-.footer-nav a{color:rgba(255,255,255,.85);text-decoration:none;}
-.footer-nav a:hover{color:var(--accent-soft);}
-.footer-copy{flex-basis:100%;padding-top:1.2rem;border-top:1px solid rgba(255,255,255,.14);
-  font-size:.78rem;color:rgba(255,255,255,.65);}
-@media(min-width:769px){.site-footer-bottom{padding-bottom:2.5rem;}}
