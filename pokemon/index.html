@@ -12,19 +12,46 @@
         #modal.open { display: flex; }
         th.sortable { cursor: pointer; user-select: none; }
         th.sortable:hover { background: #e5e7eb; }
+        /* ===== スマホ表示（幅768px未満はカード表示） ===== */
+        #card-list { display: none; }
+        .card-head { display: flex; align-items: center; gap: 12px; margin-bottom: 8px; }
+        .card-head > div { min-width: 0; flex: 1; }
+        .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; }
+        .cell { border-radius: 8px; padding: 6px 8px; background: #f9fafb; }
+        .cell .lbl { font-size: 11px; color: #6b7280; }
+        .cell .val { font-size: 15px; font-weight: 600; }
+        .cell.win-shisui { background: #fee2e2; color: #b91c1c; }
+        .cell.win-mito { background: #fef08a; color: #854d0e; }
+        .cell.win-snkr { background: #dbeafe; color: #1d4ed8; }
+        @media (max-width: 767px) {
+            body { padding: 0 !important; }
+            #app { border-radius: 0 !important; }
+            #table-wrap { display: none; }
+            #card-list { display: block; }
+            #hero { padding: 16px !important; }
+            #hero h1 { font-size: 18px !important; }
+            #hero p { font-size: 11px !important; }
+            #toolbar { padding: 10px 12px !important; }
+            #toolbar .hint { display: none; }
+            #toolbar label, #toolbar select { width: 100%; }
+            #toolbar .btns { margin-left: 0 !important; width: 100%; }
+            #toolbar .btns button { flex: 1; font-size: 12px; }
+            #modal .p-6 { padding: 16px; }
+            #modal .flex.justify-between { flex-wrap: wrap; }
+        }
         #dropzone.drag { background: #dbeafe; border-color: #3b82f6; }
     </style>
 </head>
 <body class="bg-gray-100 p-4 md:p-8 font-sans text-gray-800">
 
-<div class="max-w-7xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
-    <div class="bg-blue-700 text-white p-6">
+<div id="app" class="max-w-7xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
+    <div id="hero" class="bg-blue-700 text-white p-6">
         <h1 class="text-2xl font-bold">ポケモンカードBOX 価格比較表（水戸・酒々井・スニダン）</h1>
         <p class="text-sm mt-2 opacity-90">※スニダン実質手取り = (販売相場 × 0.9) - 送料1,000円 で計算。<br>※一番手元に残る金額が大きいマスがハイライトされます。</p>
     </div>
 
-    <div class="flex flex-wrap items-center gap-3 px-6 py-3 bg-blue-50 border-b border-blue-100 text-sm">
-        <span>📷 <b>画像はアイコンをクリック</b>すると、URL貼り付け・画像ドラッグ＆ドロップで設定できます（このブラウザに自動保存）。</span>
+    <div id="toolbar" class="flex flex-wrap items-center gap-3 px-6 py-3 bg-blue-50 border-b border-blue-100 text-sm">
+        <span class="hint">📷 <b>画像はアイコンをクリック</b>すると、URL貼り付け・画像ドラッグ＆ドロップで設定できます（このブラウザに自動保存）。</span>
         <span id="missing-count" class="text-gray-500"></span>
         <label class="flex items-center gap-2">並び順
             <select id="sort-select" class="border border-gray-300 rounded px-2 py-1 bg-white">
@@ -40,13 +67,13 @@
                 <option value="mito:asc">水戸 買取（安い順）</option>
             </select>
         </label>
-        <div class="ml-auto flex gap-2">
+        <div class="btns ml-auto flex gap-2">
             <button id="btn-export" class="px-3 py-1.5 bg-blue-600 text-white rounded hover:bg-blue-700">データをコピー（バックアップ）</button>
             <button id="btn-reset" class="px-3 py-1.5 bg-white border border-gray-300 rounded hover:bg-gray-50">画像設定をリセット</button>
         </div>
     </div>
 
-    <div class="overflow-x-auto">
+    <div id="table-wrap" class="overflow-x-auto">
         <table class="w-full text-left border-collapse text-sm">
             <thead>
                 <tr class="bg-gray-50 border-b border-gray-200 text-gray-600">
@@ -62,6 +89,7 @@
             <tbody id="table-body" class="divide-y divide-gray-200"></tbody>
         </table>
     </div>
+    <div id="card-list" class="divide-y divide-gray-200"></div>
 </div>
 
 <!-- 画像設定ダイアログ -->
@@ -170,6 +198,8 @@
 
     function render() {
         tbody.innerHTML = "";
+        const cardList = document.getElementById("card-list");
+        cardList.innerHTML = "";
         let missing = 0;
         const [key, dir] = sortState;
         const real = b => b.snkr ? Math.floor(b.snkr * 0.9 - 1000) : null;
@@ -224,6 +254,34 @@
             img.src = src || placeholder(box.name);
             img.onclick = () => openModal(i);
             tbody.appendChild(tr);
+
+            // --- スマホ用カード ---
+            const card = document.createElement("div");
+            card.className = "p-3 " + (best === "shisui" ? "bg-red-50" : best === "mito" ? "bg-yellow-50" : best === "snkr" ? "bg-blue-50" : "bg-white");
+            const cell = (label, v, key, sub) => `
+                <div class="cell ${best === key && !sub ? "win-" + key : ""}">
+                    <div class="lbl">${label}</div><div class="val">${formatPrice(v)}</div>
+                </div>`;
+            card.innerHTML = `
+                <div class="card-head flex items-center gap-3 mb-2">
+                    <img class="thumb shrink-0 bg-white border border-gray-200 rounded p-1" style="width:72px;height:72px" referrerpolicy="no-referrer" loading="lazy" alt="">
+                    <div class="min-w-0 flex-1">
+                        <div class="font-bold leading-snug">${box.name}</div>
+                        <div class="text-xs text-gray-500 mt-0.5">発売日 ${box.release ? box.release.replace(/-/g, "/") : "-"}</div>
+                        <div class="mt-1">${badge}</div>
+                    </div>
+                </div>
+                <div class="card-grid">
+                    ${cell("酒々井 買取", box.shisui, "shisui")}
+                    ${cell("水戸 買取", box.mito, "mito")}
+                    ${cell("スニダン 相場", box.snkr, "snkr", true)}
+                    ${cell("スニダン 実質", snkrReal, "snkr")}
+                </div>`;
+            const cimg = card.querySelector("img");
+            cimg.onerror = () => { cimg.onerror = null; cimg.src = placeholder(box.name); };
+            cimg.src = src || placeholder(box.name);
+            cimg.onclick = () => openModal(i);
+            cardList.appendChild(card);
         });
         document.getElementById("missing-count").textContent = missing ? `（画像未設定：${missing}件）` : "（全BOX画像設定済み）";
     }
