@@ -3,12 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ポケモンカードBOX 買取・販売 価格比較表（完全版）</title>
+    <title>ポケモンカードBOX 買取・販売 価格比較表</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .best-shisui { background-color: #fee2e2; } /* 薄い赤 */
-        .best-mito { background-color: #fef08a; } /* 薄い黄色 */
-        .best-snkr { background-color: #dbeafe; } /* 薄い青 */
+        .thumb { width: 48px; height: 48px; object-fit: contain; cursor: pointer; transition: transform .1s; }
+        .thumb:hover { transform: scale(1.08); box-shadow: 0 0 0 2px #3b82f6; }
+        #modal { display: none; }
+        #modal.open { display: flex; }
+        #dropzone.drag { background: #dbeafe; border-color: #3b82f6; }
     </style>
 </head>
 <body class="bg-gray-100 p-4 md:p-8 font-sans text-gray-800">
@@ -17,6 +19,15 @@
     <div class="bg-blue-700 text-white p-6">
         <h1 class="text-2xl font-bold">ポケモンカードBOX 価格比較表（水戸・酒々井・スニダン）</h1>
         <p class="text-sm mt-2 opacity-90">※スニダン実質手取り = (販売相場 × 0.9) - 送料1,000円 で計算。<br>※一番手元に残る金額が大きいマスがハイライトされます。</p>
+    </div>
+
+    <div class="flex flex-wrap items-center gap-3 px-6 py-3 bg-blue-50 border-b border-blue-100 text-sm">
+        <span>📷 <b>画像はアイコンをクリック</b>すると、URL貼り付け・画像ドラッグ＆ドロップで設定できます（このブラウザに自動保存）。</span>
+        <span id="missing-count" class="text-gray-500"></span>
+        <div class="ml-auto flex gap-2">
+            <button id="btn-export" class="px-3 py-1.5 bg-blue-600 text-white rounded hover:bg-blue-700">データをコピー（バックアップ）</button>
+            <button id="btn-reset" class="px-3 py-1.5 bg-white border border-gray-300 rounded hover:bg-gray-50">画像設定をリセット</button>
+        </div>
     </div>
 
     <div class="overflow-x-auto">
@@ -31,40 +42,67 @@
                     <th class="p-3 font-semibold text-center whitespace-nowrap">おすすめ</th>
                 </tr>
             </thead>
-            <tbody id="table-body" class="divide-y divide-gray-200">
-                <!-- JavaScriptでデータがここに挿入されます -->
-            </tbody>
+            <tbody id="table-body" class="divide-y divide-gray-200"></tbody>
         </table>
     </div>
 </div>
 
-<script>
-    // デフォルトのポケモンカード裏面/モンスターボール画像（画像がないBOX用）
-    const defaultImg = "https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Pok%C3%A9_Ball_icon.svg/512px-Pok%C3%A9_Ball_icon.svg.png";
+<!-- 画像設定ダイアログ -->
+<div id="modal" class="fixed inset-0 bg-black/50 items-center justify-center p-4 z-50">
+    <div class="bg-white rounded-xl shadow-xl w-full max-w-lg p-6">
+        <h2 class="text-lg font-bold mb-1">画像を設定</h2>
+        <p id="modal-name" class="text-blue-700 font-medium mb-4"></p>
 
-    // 抽出・指定された全BOXデータ
+        <label class="block text-sm font-semibold mb-1">① 画像URLを貼り付け</label>
+        <input id="url-input" type="text" placeholder="https://cdn.snkrdunk.com/upload_bg_removed/....webp" class="w-full border border-gray-300 rounded px-3 py-2 text-sm mb-1">
+        <p class="text-xs text-gray-500 mb-4">スニダンの商品画像を右クリック（スマホは長押し）→「画像アドレスをコピー」</p>
+
+        <label class="block text-sm font-semibold mb-1">② または画像ファイルをドロップ / 選択</label>
+        <div id="dropzone" class="border-2 border-dashed border-gray-300 rounded p-4 text-center text-sm text-gray-500 mb-4">
+            ここに画像をドラッグ＆ドロップ（ブラウザから画像を直接ドラッグしてもOK）<br>
+            <input id="file-input" type="file" accept="image/*" class="mt-2 text-xs">
+        </div>
+
+        <div class="flex items-center gap-3 mb-4">
+            <img id="preview" class="w-16 h-16 object-contain border border-gray-200 rounded p-1 bg-white" alt="">
+            <span id="preview-msg" class="text-xs text-gray-500"></span>
+        </div>
+
+        <div class="flex justify-between gap-2">
+            <a id="search-link" target="_blank" rel="noopener" class="px-3 py-2 text-sm text-blue-600 hover:underline">スニダンで探す ↗</a>
+            <div class="flex gap-2">
+                <button id="btn-clear" class="px-3 py-2 text-sm border border-gray-300 rounded hover:bg-gray-50">画像を外す</button>
+                <button id="btn-cancel" class="px-3 py-2 text-sm border border-gray-300 rounded hover:bg-gray-50">キャンセル</button>
+                <button id="btn-save" class="px-4 py-2 text-sm bg-blue-600 text-white rounded hover:bg-blue-700">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // ===== BOXデータ（価格はここを編集） =====
     const boxData = [
-        { name: "イーブイヒーローズ", shisui: null, mito: null, snkr: 130000, img: null },
-        { name: "シャイニースターV", shisui: null, mito: 16000, snkr: 18500, img: null },
-        { name: "拡張パック フュージョンアーツ", shisui: null, mito: 42000, snkr: 45000, img: null },
-        { name: "拡張パック スターバース", shisui: null, mito: 16000, snkr: 19800, img: null },
-        { name: "蒼空ストリーム", shisui: null, mito: null, snkr: 50000, img: null },
-        { name: "拡張パック 摩天パーフェクト", shisui: null, mito: null, snkr: 19999, img: null },
-        { name: "25th アニバーサリー", shisui: null, mito: 45000, snkr: 48000, img: null },
-        { name: "25th ゴールデンボックス", shisui: null, mito: null, snkr: 216000, img: null },
-        { name: "スペースジャグラー", shisui: null, mito: 11000, snkr: 13000, img: null },
-        { name: "拡張パック タイムゲイザー", shisui: null, mito: 14000, snkr: 17200, img: null },
+        { name: "イーブイヒーローズ", shisui: null, mito: null, snkr: 130000, img: "https://cdn.snkrdunk.com/upload_bg_removed/30bf69e9-8131-4dcc-b8b6-a69d47926ad8.webp?size=l" },
+        { name: "シャイニースターV", shisui: null, mito: 16000, snkr: 18500, img: "https://cdn.snkrdunk.com/upload_bg_removed/aca39073-2696-43b7-b1b3-ebde881fac30.webp?size=l" },
+        { name: "拡張パック フュージョンアーツ", shisui: null, mito: 42000, snkr: 45000, img: "https://cdn.snkrdunk.com/upload_bg_removed/e855cc3c-3be6-447a-ba4b-42a498952304.webp?size=l" },
+        { name: "拡張パック スターバース", shisui: null, mito: 16000, snkr: 19800, img: "https://cdn.snkrdunk.com/upload_bg_removed/964d742e-a32c-4f99-aa4d-77b4e37dc2f8.webp?size=l" },
+        { name: "蒼空ストリーム", shisui: null, mito: null, snkr: 50000, img: "https://cdn.snkrdunk.com/upload_bg_removed/91043c11-68f5-496f-ab4b-eccb56df2a14.webp?size=l" },
+        { name: "拡張パック 摩天パーフェクト", shisui: null, mito: null, snkr: 19999, img: "https://cdn.snkrdunk.com/upload_bg_removed/758a7680-4b3f-4019-9d1c-2262ec918599.webp?size=l" },
+        { name: "25th アニバーサリー", shisui: null, mito: 45000, snkr: 48000, img: "https://cdn.snkrdunk.com/upload_bg_removed/6a9b51a8-2561-432f-b770-d4a105b3758f.webp?size=l" },
+        { name: "25th ゴールデンボックス", shisui: null, mito: null, snkr: 216000, img: "https://cdn.snkrdunk.com/upload_bg_removed/0c011609-a5c3-4ad7-a3d3-2ea28ea63d2f.webp?size=l" },
+        { name: "スペースジャグラー", shisui: null, mito: 11000, snkr: 13000, img: "https://cdn.snkrdunk.com/upload_bg_removed/5d85eb64-73ab-491a-b2f1-c8ccd30d0f5e.webp?size=l" },
+        { name: "拡張パック タイムゲイザー", shisui: null, mito: 14000, snkr: 17200, img: "https://cdn.snkrdunk.com/upload_bg_removed/d1b56de6-644e-44bd-af63-d128e5cb083f.webp?size=l" },
         { name: "強化拡張 ポケモン GO ボックス", shisui: null, mito: 19000, snkr: 23000, img: "https://cdn.snkrdunk.com/upload_bg_removed/8e3f3dd5-6d71-4e03-b564-586d8815af72.webp?size=m" },
         { name: "拡張パック 仰天のボルテッカー", shisui: null, mito: null, snkr: 46797, img: "https://cdn.snkrdunk.com/upload_bg_removed/720b3f52-f7df-430a-9dcc-6cf86c95360a.webp?size=m" },
-        { name: "強化拡張パック ダークファンタズマ", shisui: null, mito: 19000, snkr: 26000, img: null },
-        { name: "VSTARユニバース", shisui: 20000, mito: 22000, snkr: 27700, img: null },
+        { name: "強化拡張パック ダークファンタズマ", shisui: null, mito: 19000, snkr: 26000, img: "https://cdn.snkrdunk.com/upload_bg_removed/f8dea1b7-0f0e-45fe-a8cd-3c4bbc590baa.webp?size=l" },
+        { name: "VSTARユニバース", shisui: 20000, mito: 22000, snkr: 27700, img: "https://cdn.snkrdunk.com/upload_bg_removed/75981c60-8ce3-4d25-9014-e391a1b01b2f.webp?size=l" },
         { name: "スタートデッキ100", shisui: 850, mito: null, snkr: 1000, img: "https://cdn.snkrdunk.com/upload_bg_removed/3c75b4b6-47c3-457e-95ee-da2c4ab7442b.webp?size=m" },
-        { name: "スカーレットex", shisui: 11000, mito: 10500, snkr: null, img: null },
+        { name: "スカーレットex", shisui: 11000, mito: 10500, snkr: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/09f02ace-bb13-4200-ab89-1efbeda27e63.webp?size=l" },
         { name: "スノーハザード", shisui: 9000, mito: 10000, snkr: 9997, img: "https://cdn.snkrdunk.com/upload_bg_removed/d64a2c5a-fe3c-4f4b-ba7d-36aeb71aebb6.webp?size=m" },
-        { name: "クレイバースト", shisui: 9000, mito: 9000, snkr: null, img: null },
-        { name: "ポケモンカード151", shisui: 40000, mito: 37000, snkr: 46000, img: null },
+        { name: "クレイバースト", shisui: 9000, mito: 9000, snkr: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/4433e457-c737-4c10-85b0-9b7f3b01b55f.webp?size=l" },
+        { name: "ポケモンカード151", shisui: 40000, mito: 37000, snkr: 46000, img: "https://cdn.snkrdunk.com/upload_bg_removed/c57a9747-845c-4b27-b2bd-4a3ebb368edc.webp?size=l" },
         { name: "黒炎の支配者", shisui: 13000, mito: 13000, snkr: 13800, img: "https://cdn.snkrdunk.com/upload_bg_removed/c5504938-3ba8-4d57-847d-01e2b2856f67.webp?size=m" },
-        { name: "Yu NAGABA イーブイ", shisui: null, mito: null, snkr: 22000, img: null },
+        { name: "Yu NAGABA イーブイ", shisui: null, mito: null, snkr: 22000, img: "https://cdn.snkrdunk.com/upload_bg_removed/5724a138-96b6-43d6-b027-ff617805b05b.webp?size=l" },
         { name: "強化拡張パック レイジングサーフ", shisui: 11000, mito: 12000, snkr: 13400, img: "https://cdn.snkrdunk.com/upload_bg_removed/cd5054ea-22f1-460c-a3ca-e052bb366afb.webp?size=m" },
         { name: "拡張パック 古代の咆哮", shisui: 8000, mito: 9000, snkr: 9700, img: "https://cdn.snkrdunk.com/upload_bg_removed/67b6b6ab-e2ee-4165-9a81-8782ded42163.webp?size=m" },
         { name: "拡張パック 未来の一閃", shisui: 9000, mito: 8500, snkr: 9400, img: "https://cdn.snkrdunk.com/upload_bg_removed/23a87890-7e5e-41ca-b86f-b4a224c69f21.webp?size=m" },
@@ -72,12 +110,12 @@
         { name: "古代の咆哮(開封済)", shisui: 0, mito: 0, snkr: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/67b6b6ab-e2ee-4165-9a81-8782ded42163.webp?size=m" },
         { name: "クリムゾンヘイズ", shisui: null, mito: 10000, snkr: 11999, img: "https://cdn.snkrdunk.com/upload_bg_removed/52e5fc6f-fa1d-4c58-8558-0430a030f44e.webp?size=m" },
         { name: "熱風のアリーナ", shisui: 12000, mito: 15000, snkr: 17000, img: "https://cdn.snkrdunk.com/upload_bg_removed/f03c84f7-9c59-4905-a58b-b3a5c9f9f0da.webp?size=m" },
-        { name: "ロケット団の栄光", shisui: 16000, mito: 18000, snkr: null, img: null },
+        { name: "ロケット団の栄光", shisui: 16000, mito: 18000, snkr: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/75096a7f-0672-47fa-8fc5-e4025f634d3d.webp?size=l" },
         { name: "ワイルドフォース", shisui: 9000, mito: 9500, snkr: 10100, img: "https://cdn.snkrdunk.com/upload_bg_removed/3e8ae867-e5ac-4952-ac6e-9cf6f286c6f8.webp?size=m" },
-        { name: "バトルパートナーズ", shisui: 9000, mito: 8000, snkr: null, img: null },
+        { name: "バトルパートナーズ", shisui: 9000, mito: 8000, snkr: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/4ae031c1-2e77-4de8-8060-fe677dc82f67.webp?size=l" },
         { name: "ブラックボルト", shisui: 17000, mito: 17000, snkr: 21998, img: "https://cdn.snkrdunk.com/upload_bg_removed/013524c4-0b78-4564-b38e-b0bb63693033.webp?size=m" },
         { name: "ホワイトフレア", shisui: 17000, mito: 17000, snkr: 22000, img: "https://cdn.snkrdunk.com/upload_bg_removed/02455d85-cd47-4d48-8fa0-d46b50a74079.webp?size=m" },
-        { name: "トウホク スペシャルBOX", shisui: null, mito: 9000, snkr: 12700, img: null },
+        { name: "トウホク スペシャルBOX", shisui: null, mito: 9000, snkr: 12700, img: "https://cdn.snkrdunk.com/upload_bg_removed/d723f585-3b3c-4ec5-a2fb-9a8d1d1e7cbd.webp?size=l" },
         { name: "シャイニートレジャーex", shisui: 11000, mito: 12000, snkr: 14900, img: "https://cdn.snkrdunk.com/upload_bg_removed/b3044f08-f9bd-466c-b199-56ce8069ff2b.webp?size=m" },
         { name: "テラスタルフェスex", shisui: 12000, mito: 14000, snkr: 16999, img: "https://cdn.snkrdunk.com/upload_bg_removed/277458ab-f9f5-4611-a022-0b9884cb5c6a.webp?size=m" },
         { name: "M6 ストームエメラルダ", shisui: 6500, mito: 8000, snkr: 11899, img: "https://cdn.snkrdunk.com/upload_bg_removed/c08dfabc-735b-4487-8231-06f565c5014c.webp?size=m" },
@@ -86,65 +124,168 @@
         { name: "ロストアビス", shisui: null, mito: 38000, snkr: 48380, img: "https://cdn.snkrdunk.com/upload_bg_removed/dfc67cf9-b661-4601-ad63-8e18dcac30d5.webp?size=m" }
     ];
 
+    // ===== 画像の保存（このブラウザ内に保存） =====
+    const STORE_KEY = "pokeca-box-images-v1";
+    let saved = {};
+    try { saved = JSON.parse(localStorage.getItem(STORE_KEY) || "{}"); } catch (e) { saved = {}; }
+    const persist = () => { try { localStorage.setItem(STORE_KEY, JSON.stringify(saved)); } catch (e) { alert("保存できませんでした（画像ファイルが大きすぎる可能性があります）"); } };
+    const imgOf = (box) => saved[box.name] !== undefined ? saved[box.name] : box.img;
+
+    // ===== 画像がないBOX用：名前入りの自動アイコン（外部画像に頼らないので必ず表示される） =====
+    const palette = ["#ef4444","#f59e0b","#10b981","#3b82f6","#8b5cf6","#ec4899","#14b8a6","#6366f1"];
+    function placeholder(name) {
+        const clean = name.replace(/^(拡張パック|強化拡張パック|強化拡張)\s*/, "");
+        let h = 0; for (const c of clean) h = (h * 31 + c.charCodeAt(0)) >>> 0;
+        const color = palette[h % palette.length];
+        const t1 = clean.slice(0, 4), t2 = clean.slice(4, 8);
+        const svg = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+            <rect x="4" y="10" width="56" height="44" rx="6" fill="${color}"/>
+            <rect x="4" y="10" width="56" height="10" rx="6" fill="#000" opacity=".18"/>
+            <text x="32" y="36" font-size="11" font-weight="bold" text-anchor="middle" fill="#fff" font-family="sans-serif">${t1}</text>
+            <text x="32" y="49" font-size="11" font-weight="bold" text-anchor="middle" fill="#fff" font-family="sans-serif">${t2}</text>
+        </svg>`;
+        return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+    }
+
+    // ===== 表の描画 =====
     const tbody = document.getElementById("table-body");
+    const formatPrice = (p) => p === null || p === 0 ? "-" : p.toLocaleString() + "円";
 
-    // 通貨フォーマット用
-    const formatPrice = (price) => price === null || price === 0 ? "-" : price.toLocaleString() + "円";
+    function render() {
+        tbody.innerHTML = "";
+        let missing = 0;
+        boxData.forEach((box, i) => {
+            const snkrReal = box.snkr ? Math.floor(box.snkr * 0.9 - 1000) : null;
+            const vals = { shisui: box.shisui || -1, mito: box.mito || -1, snkr: snkrReal || -1 };
+            let best = "none", maxVal = -1;
+            for (const k of ["shisui", "mito", "snkr"]) if (vals[k] > maxVal) { maxVal = vals[k]; best = k; }
 
-    boxData.forEach(box => {
-        // スニダンの実質価格を計算 ((相場 * 0.9) - 送料1000)
-        let snkrReal = null;
-        if (box.snkr) snkrReal = Math.floor((box.snkr * 0.9) - 1000);
+            let badge = "-", rowClass = "hover:bg-gray-100 ";
+            if (best === "shisui") { badge = `<span class="px-2 py-1 bg-red-500 text-white text-xs font-bold rounded shadow">酒々井がお得</span>`; rowClass += "bg-red-50"; }
+            if (best === "mito")   { badge = `<span class="px-2 py-1 bg-yellow-400 text-yellow-900 text-xs font-bold rounded shadow">水戸がお得</span>`; rowClass += "bg-yellow-50"; }
+            if (best === "snkr")   { badge = `<span class="px-2 py-1 bg-blue-500 text-white text-xs font-bold rounded shadow">スニダンがお得</span>`; rowClass += "bg-blue-50"; }
 
-        // 一番高い売却先を判定
-        let maxVal = -Infinity;
-        let best = "";
-        
-        const vals = {
-            shisui: box.shisui || -1,
-            mito: box.mito || -1,
-            snkr: snkrReal || -1
+            const src = imgOf(box);
+            if (!src) missing++;
+
+            const tr = document.createElement("tr");
+            tr.className = rowClass;
+            tr.innerHTML = `
+                <td class="p-3">
+                    <div class="flex items-center gap-3">
+                        <img data-i="${i}" class="thumb w-12 h-12 object-contain bg-white border border-gray-200 rounded p-1 shrink-0"
+                             referrerpolicy="no-referrer" loading="lazy" title="クリックで画像を設定" alt="">
+                        <span class="font-medium">${box.name}</span>
+                    </div>
+                </td>
+                <td class="p-3 text-right ${best === 'shisui' ? 'font-bold text-red-600' : ''}">${formatPrice(box.shisui)}</td>
+                <td class="p-3 text-right ${best === 'mito' ? 'font-bold text-yellow-600' : ''}">${formatPrice(box.mito)}</td>
+                <td class="p-3 text-right text-gray-500">${formatPrice(box.snkr)}</td>
+                <td class="p-3 text-right ${best === 'snkr' ? 'font-bold text-blue-600 text-lg' : 'font-medium'}">${formatPrice(snkrReal)}</td>
+                <td class="p-3 text-center">${badge}</td>`;
+            const img = tr.querySelector("img");
+            // 読み込み失敗（リンク切れ・直リンク禁止など）でも自動アイコンに切り替える
+            img.onerror = () => { img.onerror = null; img.src = placeholder(box.name); };
+            img.src = src || placeholder(box.name);
+            img.onclick = () => openModal(i);
+            tbody.appendChild(tr);
+        });
+        document.getElementById("missing-count").textContent = missing ? `（画像未設定：${missing}件）` : "（全BOX画像設定済み）";
+    }
+
+    // ===== 画像設定ダイアログ =====
+    const modal = document.getElementById("modal");
+    const urlInput = document.getElementById("url-input");
+    const preview = document.getElementById("preview");
+    const previewMsg = document.getElementById("preview-msg");
+    let current = -1, pending = null;
+
+    function setPending(src) {
+        pending = src;
+        if (!src) { preview.removeAttribute("src"); previewMsg.textContent = ""; return; }
+        previewMsg.textContent = "読み込み中…";
+        preview.onload = () => previewMsg.textContent = "✅ 表示OK";
+        preview.onerror = () => previewMsg.textContent = "⚠️ この画像は表示できません。別のURLか、画像ファイルのドロップを試してください";
+        preview.src = src;
+    }
+    function openModal(i) {
+        current = i;
+        const box = boxData[i];
+        document.getElementById("modal-name").textContent = box.name;
+        document.getElementById("search-link").href = "https://snkrdunk.com/search?keywords=" + encodeURIComponent(box.name.replace(/^(拡張パック|強化拡張パック|強化拡張)\s*/, "") + " BOX");
+        const src = imgOf(box);
+        urlInput.value = src && !src.startsWith("data:") ? src : "";
+        setPending(src);
+        modal.classList.add("open");
+        setTimeout(() => urlInput.focus(), 50);
+    }
+    const closeModal = () => { modal.classList.remove("open"); current = -1; };
+
+    urlInput.addEventListener("input", () => setPending(urlInput.value.trim() || null));
+
+    // 画像ファイル → 64pxに縮小してブラウザに保存（容量節約）
+    function loadFile(file) {
+        if (!file || !file.type.startsWith("image/")) return;
+        const reader = new FileReader();
+        reader.onload = () => {
+            const im = new Image();
+            im.onload = () => {
+                const s = 128, c = document.createElement("canvas");
+                const r = Math.min(s / im.width, s / im.height, 1);
+                c.width = Math.round(im.width * r); c.height = Math.round(im.height * r);
+                c.getContext("2d").drawImage(im, 0, 0, c.width, c.height);
+                urlInput.value = "";
+                setPending(c.toDataURL("image/webp", 0.85));
+            };
+            im.src = reader.result;
         };
-
-        if (vals.shisui > maxVal) { maxVal = vals.shisui; best = "shisui"; }
-        if (vals.mito > maxVal) { maxVal = vals.mito; best = "mito"; }
-        if (vals.snkr > maxVal) { maxVal = vals.snkr; best = "snkr"; }
-        if (maxVal === -1) best = "none"; // 価格データなしの場合
-
-        // 行のHTMLを生成
-        const tr = document.createElement("tr");
-        
-        // 色付けロジック
-        let bestBadge = "-";
-        let rowClass = "hover:bg-gray-100 ";
-        
-        if (best === "shisui") {
-            bestBadge = `<span class="px-2 py-1 bg-red-500 text-white text-xs font-bold rounded shadow">酒々井がお得</span>`;
-            rowClass += "bg-red-50";
-        } else if (best === "mito") {
-            bestBadge = `<span class="px-2 py-1 bg-yellow-400 text-yellow-900 text-xs font-bold rounded shadow">水戸がお得</span>`;
-            rowClass += "bg-yellow-50";
-        } else if (best === "snkr") {
-            bestBadge = `<span class="px-2 py-1 bg-blue-500 text-white text-xs font-bold rounded shadow">スニダンがお得</span>`;
-            rowClass += "bg-blue-50";
-        }
-
-        tr.className = rowClass;
-
-        tr.innerHTML = `
-            <td class="p-3 flex items-center gap-3">
-                <img src="${box.img ? box.img : defaultImg}" class="w-12 h-12 object-contain bg-white border border-gray-200 rounded p-1" alt="${box.name}">
-                <span class="font-medium">${box.name}</span>
-            </td>
-            <td class="p-3 text-right ${best === 'shisui' ? 'font-bold text-red-600' : ''}">${formatPrice(box.shisui)}</td>
-            <td class="p-3 text-right ${best === 'mito' ? 'font-bold text-yellow-600' : ''}">${formatPrice(box.mito)}</td>
-            <td class="p-3 text-right text-gray-500">${formatPrice(box.snkr)}</td>
-            <td class="p-3 text-right ${best === 'snkr' ? 'font-bold text-blue-600 text-lg' : 'font-medium'}">${formatPrice(snkrReal)}</td>
-            <td class="p-3 text-center">${bestBadge}</td>
-        `;
-        tbody.appendChild(tr);
+        reader.readAsDataURL(file);
+    }
+    document.getElementById("file-input").addEventListener("change", e => loadFile(e.target.files[0]));
+    const dz = document.getElementById("dropzone");
+    dz.addEventListener("dragover", e => { e.preventDefault(); dz.classList.add("drag"); });
+    dz.addEventListener("dragleave", () => dz.classList.remove("drag"));
+    dz.addEventListener("drop", e => {
+        e.preventDefault(); dz.classList.remove("drag");
+        if (e.dataTransfer.files.length) return loadFile(e.dataTransfer.files[0]);
+        // 別タブのスニダンから画像を直接ドラッグした場合はURLを取り出す
+        const html = e.dataTransfer.getData("text/html");
+        const m = html && html.match(/src="([^"]+)"/);
+        const url = m ? m[1] : e.dataTransfer.getData("text/uri-list") || e.dataTransfer.getData("text/plain");
+        if (url) { urlInput.value = url.trim(); setPending(url.trim()); }
     });
-</script>
+    // Ctrl+V / ⌘V で画像そのものを貼り付けてもOK
+    document.addEventListener("paste", e => {
+        if (!modal.classList.contains("open")) return;
+        const item = [...(e.clipboardData?.items || [])].find(it => it.type.startsWith("image/"));
+        if (item) { e.preventDefault(); loadFile(item.getAsFile()); }
+    });
 
+    document.getElementById("btn-save").onclick = () => {
+        if (current < 0) return;
+        saved[boxData[current].name] = pending || null;
+        persist(); closeModal(); render();
+    };
+    document.getElementById("btn-clear").onclick = () => { urlInput.value = ""; setPending(null); };
+    document.getElementById("btn-cancel").onclick = closeModal;
+    modal.addEventListener("click", e => { if (e.target === modal) closeModal(); });
+    document.addEventListener("keydown", e => { if (e.key === "Escape") closeModal(); if (e.key === "Enter" && modal.classList.contains("open")) document.getElementById("btn-save").click(); });
+
+    // ===== 画像込みのデータをコピー（HTMLのboxDataに貼り付ければ他の端末でも同じ表示に） =====
+    document.getElementById("btn-export").onclick = async () => {
+        const lines = boxData.map(b => {
+            const img = imgOf(b);
+            return `        { name: ${JSON.stringify(b.name)}, shisui: ${b.shisui}, mito: ${b.mito}, snkr: ${b.snkr}, img: ${img ? JSON.stringify(img) : "null"} }`;
+        });
+        const text = "    const boxData = [\n" + lines.join(",\n") + "\n    ];";
+        try { await navigator.clipboard.writeText(text); alert("コピーしました。HTMLファイル内の const boxData = [ ... ]; と置き換えると、画像が固定されます。"); }
+        catch (e) { prompt("以下をコピーしてください", text); }
+    };
+    document.getElementById("btn-reset").onclick = () => {
+        if (confirm("このブラウザで設定した画像をすべて消しますか？")) { saved = {}; persist(); render(); }
+    };
+
+    render();
+</script>
 </body>
 </html>
