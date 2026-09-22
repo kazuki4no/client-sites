@@ -6,10 +6,12 @@
     <title>ポケモンカードBOX 買取・販売 価格比較表</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        .thumb { width: 48px; height: 48px; object-fit: contain; cursor: pointer; transition: transform .1s; }
+        .thumb { width: 64px; height: 64px; object-fit: contain; cursor: pointer; transition: transform .1s; }
         .thumb:hover { transform: scale(1.08); box-shadow: 0 0 0 2px #3b82f6; }
         #modal { display: none; }
         #modal.open { display: flex; }
+        th.sortable { cursor: pointer; user-select: none; }
+        th.sortable:hover { background: #e5e7eb; }
         #dropzone.drag { background: #dbeafe; border-color: #3b82f6; }
     </style>
 </head>
@@ -24,6 +26,20 @@
     <div class="flex flex-wrap items-center gap-3 px-6 py-3 bg-blue-50 border-b border-blue-100 text-sm">
         <span>📷 <b>画像はアイコンをクリック</b>すると、URL貼り付け・画像ドラッグ＆ドロップで設定できます（このブラウザに自動保存）。</span>
         <span id="missing-count" class="text-gray-500"></span>
+        <label class="flex items-center gap-2">並び順
+            <select id="sort-select" class="border border-gray-300 rounded px-2 py-1 bg-white">
+                <option value="release:asc">発売日（古い順）</option>
+                <option value="release:desc">発売日（新しい順）</option>
+                <option value="best:desc">一番高く売れる金額（高い順）</option>
+                <option value="best:asc">一番高く売れる金額（安い順）</option>
+                <option value="snkr:desc">スニダン相場（高い順）</option>
+                <option value="snkr:asc">スニダン相場（安い順）</option>
+                <option value="shisui:desc">酒々井 買取（高い順）</option>
+                <option value="shisui:asc">酒々井 買取（安い順）</option>
+                <option value="mito:desc">水戸 買取（高い順）</option>
+                <option value="mito:asc">水戸 買取（安い順）</option>
+            </select>
+        </label>
         <div class="ml-auto flex gap-2">
             <button id="btn-export" class="px-3 py-1.5 bg-blue-600 text-white rounded hover:bg-blue-700">データをコピー（バックアップ）</button>
             <button id="btn-reset" class="px-3 py-1.5 bg-white border border-gray-300 rounded hover:bg-gray-50">画像設定をリセット</button>
@@ -35,10 +51,11 @@
             <thead>
                 <tr class="bg-gray-50 border-b border-gray-200 text-gray-600">
                     <th class="p-3 font-semibold whitespace-nowrap">画像 / BOX名</th>
-                    <th class="p-3 font-semibold text-right whitespace-nowrap">酒々井 買取</th>
-                    <th class="p-3 font-semibold text-right whitespace-nowrap">水戸 買取</th>
-                    <th class="p-3 font-semibold text-right whitespace-nowrap text-gray-400">スニダン 相場</th>
-                    <th class="p-3 font-semibold text-right whitespace-nowrap text-blue-600">スニダン 実質</th>
+                    <th class="p-3 font-semibold whitespace-nowrap sortable" data-key="release">発売日<span class="arrow"></span></th>
+                    <th class="p-3 font-semibold text-right whitespace-nowrap sortable" data-key="shisui">酒々井 買取<span class="arrow"></span></th>
+                    <th class="p-3 font-semibold text-right whitespace-nowrap sortable" data-key="mito">水戸 買取<span class="arrow"></span></th>
+                    <th class="p-3 font-semibold text-right whitespace-nowrap text-gray-400 sortable" data-key="snkr">スニダン 相場<span class="arrow"></span></th>
+                    <th class="p-3 font-semibold text-right whitespace-nowrap text-blue-600 sortable" data-key="snkr">スニダン 実質<span class="arrow"></span></th>
                     <th class="p-3 font-semibold text-center whitespace-nowrap">おすすめ</th>
                 </tr>
             </thead>
@@ -82,46 +99,46 @@
 <script>
     // ===== BOXデータ（価格はここを編集） =====
     const boxData = [
-        { name: "イーブイヒーローズ", shisui: null, mito: null, snkr: 130000, img: "https://cdn.snkrdunk.com/upload_bg_removed/30bf69e9-8131-4dcc-b8b6-a69d47926ad8.webp?size=l" },
-        { name: "シャイニースターV", shisui: null, mito: 16000, snkr: 18500, img: "https://cdn.snkrdunk.com/upload_bg_removed/aca39073-2696-43b7-b1b3-ebde881fac30.webp?size=l" },
-        { name: "拡張パック フュージョンアーツ", shisui: null, mito: 42000, snkr: 45000, img: "https://cdn.snkrdunk.com/upload_bg_removed/e855cc3c-3be6-447a-ba4b-42a498952304.webp?size=l" },
-        { name: "拡張パック スターバース", shisui: null, mito: 16000, snkr: 19800, img: "https://cdn.snkrdunk.com/upload_bg_removed/964d742e-a32c-4f99-aa4d-77b4e37dc2f8.webp?size=l" },
-        { name: "蒼空ストリーム", shisui: null, mito: null, snkr: 50000, img: "https://cdn.snkrdunk.com/upload_bg_removed/91043c11-68f5-496f-ab4b-eccb56df2a14.webp?size=l" },
-        { name: "拡張パック 摩天パーフェクト", shisui: null, mito: null, snkr: 19999, img: "https://cdn.snkrdunk.com/upload_bg_removed/758a7680-4b3f-4019-9d1c-2262ec918599.webp?size=l" },
-        { name: "25th アニバーサリー", shisui: null, mito: 45000, snkr: 48000, img: "https://cdn.snkrdunk.com/upload_bg_removed/6a9b51a8-2561-432f-b770-d4a105b3758f.webp?size=l" },
-        { name: "25th ゴールデンボックス", shisui: null, mito: null, snkr: 216000, img: "https://cdn.snkrdunk.com/upload_bg_removed/0c011609-a5c3-4ad7-a3d3-2ea28ea63d2f.webp?size=l" },
-        { name: "スペースジャグラー", shisui: null, mito: 11000, snkr: 13000, img: "https://cdn.snkrdunk.com/upload_bg_removed/5d85eb64-73ab-491a-b2f1-c8ccd30d0f5e.webp?size=l" },
-        { name: "拡張パック タイムゲイザー", shisui: null, mito: 14000, snkr: 17200, img: "https://cdn.snkrdunk.com/upload_bg_removed/d1b56de6-644e-44bd-af63-d128e5cb083f.webp?size=l" },
-        { name: "強化拡張 ポケモン GO ボックス", shisui: null, mito: 19000, snkr: 23000, img: "https://cdn.snkrdunk.com/upload_bg_removed/8e3f3dd5-6d71-4e03-b564-586d8815af72.webp?size=m" },
-        { name: "拡張パック 仰天のボルテッカー", shisui: null, mito: null, snkr: 46797, img: "https://cdn.snkrdunk.com/upload_bg_removed/720b3f52-f7df-430a-9dcc-6cf86c95360a.webp?size=m" },
-        { name: "強化拡張パック ダークファンタズマ", shisui: null, mito: 19000, snkr: 26000, img: "https://cdn.snkrdunk.com/upload_bg_removed/f8dea1b7-0f0e-45fe-a8cd-3c4bbc590baa.webp?size=l" },
-        { name: "VSTARユニバース", shisui: 20000, mito: 22000, snkr: 27700, img: "https://cdn.snkrdunk.com/upload_bg_removed/75981c60-8ce3-4d25-9014-e391a1b01b2f.webp?size=l" },
-        { name: "スタートデッキ100", shisui: 850, mito: null, snkr: 1000, img: "https://cdn.snkrdunk.com/upload_bg_removed/3c75b4b6-47c3-457e-95ee-da2c4ab7442b.webp?size=m" },
-        { name: "スカーレットex", shisui: 11000, mito: 10500, snkr: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/09f02ace-bb13-4200-ab89-1efbeda27e63.webp?size=l" },
-        { name: "スノーハザード", shisui: 9000, mito: 10000, snkr: 9997, img: "https://cdn.snkrdunk.com/upload_bg_removed/d64a2c5a-fe3c-4f4b-ba7d-36aeb71aebb6.webp?size=m" },
-        { name: "クレイバースト", shisui: 9000, mito: 9000, snkr: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/4433e457-c737-4c10-85b0-9b7f3b01b55f.webp?size=l" },
-        { name: "ポケモンカード151", shisui: 40000, mito: 37000, snkr: 46000, img: "https://cdn.snkrdunk.com/upload_bg_removed/c57a9747-845c-4b27-b2bd-4a3ebb368edc.webp?size=l" },
-        { name: "黒炎の支配者", shisui: 13000, mito: 13000, snkr: 13800, img: "https://cdn.snkrdunk.com/upload_bg_removed/c5504938-3ba8-4d57-847d-01e2b2856f67.webp?size=m" },
-        { name: "Yu NAGABA イーブイ", shisui: null, mito: null, snkr: 22000, img: "https://cdn.snkrdunk.com/upload_bg_removed/5724a138-96b6-43d6-b027-ff617805b05b.webp?size=l" },
-        { name: "強化拡張パック レイジングサーフ", shisui: 11000, mito: 12000, snkr: 13400, img: "https://cdn.snkrdunk.com/upload_bg_removed/cd5054ea-22f1-460c-a3ca-e052bb366afb.webp?size=m" },
-        { name: "拡張パック 古代の咆哮", shisui: 8000, mito: 9000, snkr: 9700, img: "https://cdn.snkrdunk.com/upload_bg_removed/67b6b6ab-e2ee-4165-9a81-8782ded42163.webp?size=m" },
-        { name: "拡張パック 未来の一閃", shisui: 9000, mito: 8500, snkr: 9400, img: "https://cdn.snkrdunk.com/upload_bg_removed/23a87890-7e5e-41ca-b86f-b4a224c69f21.webp?size=m" },
-        { name: "メガシンフォニア", shisui: 6000, mito: 6000, snkr: 6100, img: "https://cdn.snkrdunk.com/upload_bg_removed/fe0052fe-c1e5-4b42-812a-0a11f00d7a55.webp?size=m" },
-        { name: "古代の咆哮(開封済)", shisui: 0, mito: 0, snkr: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/67b6b6ab-e2ee-4165-9a81-8782ded42163.webp?size=m" },
-        { name: "クリムゾンヘイズ", shisui: null, mito: 10000, snkr: 11999, img: "https://cdn.snkrdunk.com/upload_bg_removed/52e5fc6f-fa1d-4c58-8558-0430a030f44e.webp?size=m" },
-        { name: "熱風のアリーナ", shisui: 12000, mito: 15000, snkr: 17000, img: "https://cdn.snkrdunk.com/upload_bg_removed/f03c84f7-9c59-4905-a58b-b3a5c9f9f0da.webp?size=m" },
-        { name: "ロケット団の栄光", shisui: 16000, mito: 18000, snkr: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/75096a7f-0672-47fa-8fc5-e4025f634d3d.webp?size=l" },
-        { name: "ワイルドフォース", shisui: 9000, mito: 9500, snkr: 10100, img: "https://cdn.snkrdunk.com/upload_bg_removed/3e8ae867-e5ac-4952-ac6e-9cf6f286c6f8.webp?size=m" },
-        { name: "バトルパートナーズ", shisui: 9000, mito: 8000, snkr: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/4ae031c1-2e77-4de8-8060-fe677dc82f67.webp?size=l" },
-        { name: "ブラックボルト", shisui: 17000, mito: 17000, snkr: 21998, img: "https://cdn.snkrdunk.com/upload_bg_removed/013524c4-0b78-4564-b38e-b0bb63693033.webp?size=m" },
-        { name: "ホワイトフレア", shisui: 17000, mito: 17000, snkr: 22000, img: "https://cdn.snkrdunk.com/upload_bg_removed/02455d85-cd47-4d48-8fa0-d46b50a74079.webp?size=m" },
-        { name: "トウホク スペシャルBOX", shisui: null, mito: 9000, snkr: 12700, img: "https://cdn.snkrdunk.com/upload_bg_removed/d723f585-3b3c-4ec5-a2fb-9a8d1d1e7cbd.webp?size=l" },
-        { name: "シャイニートレジャーex", shisui: 11000, mito: 12000, snkr: 14900, img: "https://cdn.snkrdunk.com/upload_bg_removed/b3044f08-f9bd-466c-b199-56ce8069ff2b.webp?size=m" },
-        { name: "テラスタルフェスex", shisui: 12000, mito: 14000, snkr: 16999, img: "https://cdn.snkrdunk.com/upload_bg_removed/277458ab-f9f5-4611-a022-0b9884cb5c6a.webp?size=m" },
-        { name: "M6 ストームエメラルダ", shisui: 6500, mito: 8000, snkr: 11899, img: "https://cdn.snkrdunk.com/upload_bg_removed/c08dfabc-735b-4487-8231-06f565c5014c.webp?size=m" },
-        { name: "変幻の仮面", shisui: 9000, mito: 10500, snkr: 11800, img: "https://cdn.snkrdunk.com/upload_bg_removed/15c6d89c-51d0-4691-bc1e-1ba1876633a1.webp?size=m" },
-        { name: "ステラミラクル", shisui: 8000, mito: 9000, snkr: 9700, img: "https://cdn.snkrdunk.com/upload_bg_removed/76a6228b-5221-4c6a-8ba7-8af875a613a2.webp?size=m" },
-        { name: "ロストアビス", shisui: null, mito: 38000, snkr: 48380, img: "https://cdn.snkrdunk.com/upload_bg_removed/dfc67cf9-b661-4601-ad63-8e18dcac30d5.webp?size=m" }
+        { name: "イーブイヒーローズ", release: "2021-05-28", shisui: null, mito: null, snkr: 130000, img: "https://cdn.snkrdunk.com/upload_bg_removed/30bf69e9-8131-4dcc-b8b6-a69d47926ad8.webp?size=l" },
+        { name: "シャイニースターV", release: "2020-11-20", shisui: null, mito: 16000, snkr: 18500, img: "https://cdn.snkrdunk.com/upload_bg_removed/aca39073-2696-43b7-b1b3-ebde881fac30.webp?size=l" },
+        { name: "拡張パック フュージョンアーツ", release: "2021-09-24", shisui: null, mito: 42000, snkr: 45000, img: "https://cdn.snkrdunk.com/upload_bg_removed/e855cc3c-3be6-447a-ba4b-42a498952304.webp?size=l" },
+        { name: "拡張パック スターバース", release: "2022-01-14", shisui: null, mito: 16000, snkr: 19800, img: "https://cdn.snkrdunk.com/upload_bg_removed/964d742e-a32c-4f99-aa4d-77b4e37dc2f8.webp?size=l" },
+        { name: "蒼空ストリーム", release: "2021-07-09", shisui: null, mito: null, snkr: 50000, img: "https://cdn.snkrdunk.com/upload_bg_removed/91043c11-68f5-496f-ab4b-eccb56df2a14.webp?size=l" },
+        { name: "拡張パック 摩天パーフェクト", release: "2021-07-09", shisui: null, mito: null, snkr: 19999, img: "https://cdn.snkrdunk.com/upload_bg_removed/758a7680-4b3f-4019-9d1c-2262ec918599.webp?size=l" },
+        { name: "25th アニバーサリー", release: "2021-10-22", shisui: null, mito: 45000, snkr: 48000, img: "https://cdn.snkrdunk.com/upload_bg_removed/6a9b51a8-2561-432f-b770-d4a105b3758f.webp?size=l" },
+        { name: "25th ゴールデンボックス", release: "2021-10-22", shisui: null, mito: null, snkr: 216000, img: "https://cdn.snkrdunk.com/upload_bg_removed/0c011609-a5c3-4ad7-a3d3-2ea28ea63d2f.webp?size=l" },
+        { name: "スペースジャグラー", release: "2022-04-08", shisui: null, mito: 11000, snkr: 13000, img: "https://cdn.snkrdunk.com/upload_bg_removed/5d85eb64-73ab-491a-b2f1-c8ccd30d0f5e.webp?size=l" },
+        { name: "拡張パック タイムゲイザー", release: "2022-04-08", shisui: null, mito: 14000, snkr: 17200, img: "https://cdn.snkrdunk.com/upload_bg_removed/d1b56de6-644e-44bd-af63-d128e5cb083f.webp?size=l" },
+        { name: "強化拡張 ポケモン GO ボックス", release: "2022-06-17", shisui: null, mito: 19000, snkr: 23000, img: "https://cdn.snkrdunk.com/upload_bg_removed/8e3f3dd5-6d71-4e03-b564-586d8815af72.webp?size=m" },
+        { name: "拡張パック 仰天のボルテッカー", release: "2020-06-19", shisui: null, mito: null, snkr: 46797, img: "https://cdn.snkrdunk.com/upload_bg_removed/720b3f52-f7df-430a-9dcc-6cf86c95360a.webp?size=m" },
+        { name: "強化拡張パック ダークファンタズマ", release: "2022-05-13", shisui: null, mito: 19000, snkr: 26000, img: "https://cdn.snkrdunk.com/upload_bg_removed/f8dea1b7-0f0e-45fe-a8cd-3c4bbc590baa.webp?size=l" },
+        { name: "VSTARユニバース", release: "2022-12-02", shisui: 20000, mito: 22000, snkr: 27700, img: "https://cdn.snkrdunk.com/upload_bg_removed/75981c60-8ce3-4d25-9014-e391a1b01b2f.webp?size=l" },
+        { name: "スタートデッキ100", release: "2021-12-17", shisui: 850, mito: null, snkr: 1000, img: "https://cdn.snkrdunk.com/upload_bg_removed/3c75b4b6-47c3-457e-95ee-da2c4ab7442b.webp?size=m" },
+        { name: "スカーレットex", release: "2023-01-20", shisui: 11000, mito: 10500, snkr: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/09f02ace-bb13-4200-ab89-1efbeda27e63.webp?size=l" },
+        { name: "スノーハザード", release: "2023-04-14", shisui: 9000, mito: 10000, snkr: 9997, img: "https://cdn.snkrdunk.com/upload_bg_removed/d64a2c5a-fe3c-4f4b-ba7d-36aeb71aebb6.webp?size=m" },
+        { name: "クレイバースト", release: "2023-04-14", shisui: 9000, mito: 9000, snkr: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/4433e457-c737-4c10-85b0-9b7f3b01b55f.webp?size=l" },
+        { name: "ポケモンカード151", release: "2023-06-16", shisui: 40000, mito: 37000, snkr: 46000, img: "https://cdn.snkrdunk.com/upload_bg_removed/c57a9747-845c-4b27-b2bd-4a3ebb368edc.webp?size=l" },
+        { name: "黒炎の支配者", release: "2023-07-28", shisui: 13000, mito: 13000, snkr: 13800, img: "https://cdn.snkrdunk.com/upload_bg_removed/c5504938-3ba8-4d57-847d-01e2b2856f67.webp?size=m" },
+        { name: "Yu NAGABA イーブイ", release: "2023-05-24", shisui: null, mito: null, snkr: 22000, img: "https://cdn.snkrdunk.com/upload_bg_removed/5724a138-96b6-43d6-b027-ff617805b05b.webp?size=l" },
+        { name: "強化拡張パック レイジングサーフ", release: "2023-09-22", shisui: 11000, mito: 12000, snkr: 13400, img: "https://cdn.snkrdunk.com/upload_bg_removed/cd5054ea-22f1-460c-a3ca-e052bb366afb.webp?size=m" },
+        { name: "拡張パック 古代の咆哮", release: "2023-10-27", shisui: 8000, mito: 9000, snkr: 9700, img: "https://cdn.snkrdunk.com/upload_bg_removed/67b6b6ab-e2ee-4165-9a81-8782ded42163.webp?size=m" },
+        { name: "拡張パック 未来の一閃", release: "2023-10-27", shisui: 9000, mito: 8500, snkr: 9400, img: "https://cdn.snkrdunk.com/upload_bg_removed/23a87890-7e5e-41ca-b86f-b4a224c69f21.webp?size=m" },
+        { name: "メガシンフォニア", release: "2025-08-01", shisui: 6000, mito: 6000, snkr: 6100, img: "https://cdn.snkrdunk.com/upload_bg_removed/fe0052fe-c1e5-4b42-812a-0a11f00d7a55.webp?size=m" },
+        { name: "古代の咆哮(開封済)", release: "2023-10-27", shisui: 0, mito: 0, snkr: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/67b6b6ab-e2ee-4165-9a81-8782ded42163.webp?size=m" },
+        { name: "クリムゾンヘイズ", release: "2024-03-22", shisui: null, mito: 10000, snkr: 11999, img: "https://cdn.snkrdunk.com/upload_bg_removed/52e5fc6f-fa1d-4c58-8558-0430a030f44e.webp?size=m" },
+        { name: "熱風のアリーナ", release: "2025-03-14", shisui: 12000, mito: 15000, snkr: 17000, img: "https://cdn.snkrdunk.com/upload_bg_removed/f03c84f7-9c59-4905-a58b-b3a5c9f9f0da.webp?size=m" },
+        { name: "ロケット団の栄光", release: "2025-04-18", shisui: 16000, mito: 18000, snkr: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/75096a7f-0672-47fa-8fc5-e4025f634d3d.webp?size=l" },
+        { name: "ワイルドフォース", release: "2024-01-26", shisui: 9000, mito: 9500, snkr: 10100, img: "https://cdn.snkrdunk.com/upload_bg_removed/3e8ae867-e5ac-4952-ac6e-9cf6f286c6f8.webp?size=m" },
+        { name: "バトルパートナーズ", release: "2025-01-24", shisui: 9000, mito: 8000, snkr: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/4ae031c1-2e77-4de8-8060-fe677dc82f67.webp?size=l" },
+        { name: "ブラックボルト", release: "2025-06-06", shisui: 17000, mito: 17000, snkr: 21998, img: "https://cdn.snkrdunk.com/upload_bg_removed/013524c4-0b78-4564-b38e-b0bb63693033.webp?size=m" },
+        { name: "ホワイトフレア", release: "2025-06-06", shisui: 17000, mito: 17000, snkr: 22000, img: "https://cdn.snkrdunk.com/upload_bg_removed/02455d85-cd47-4d48-8fa0-d46b50a74079.webp?size=m" },
+        { name: "トウホク スペシャルBOX", release: "2025-06-13", shisui: null, mito: 9000, snkr: 12700, img: "https://cdn.snkrdunk.com/upload_bg_removed/d723f585-3b3c-4ec5-a2fb-9a8d1d1e7cbd.webp?size=l" },
+        { name: "シャイニートレジャーex", release: "2023-12-01", shisui: 11000, mito: 12000, snkr: 14900, img: "https://cdn.snkrdunk.com/upload_bg_removed/b3044f08-f9bd-466c-b199-56ce8069ff2b.webp?size=m" },
+        { name: "テラスタルフェスex", release: "2024-12-06", shisui: 12000, mito: 14000, snkr: 16999, img: "https://cdn.snkrdunk.com/upload_bg_removed/277458ab-f9f5-4611-a022-0b9884cb5c6a.webp?size=m" },
+        { name: "M6 ストームエメラルダ", release: "2026-07-31", shisui: 6500, mito: 8000, snkr: 11899, img: "https://cdn.snkrdunk.com/upload_bg_removed/c08dfabc-735b-4487-8231-06f565c5014c.webp?size=m" },
+        { name: "変幻の仮面", release: "2024-04-26", shisui: 9000, mito: 10500, snkr: 11800, img: "https://cdn.snkrdunk.com/upload_bg_removed/15c6d89c-51d0-4691-bc1e-1ba1876633a1.webp?size=m" },
+        { name: "ステラミラクル", release: "2024-07-19", shisui: 8000, mito: 9000, snkr: 9700, img: "https://cdn.snkrdunk.com/upload_bg_removed/76a6228b-5221-4c6a-8ba7-8af875a613a2.webp?size=m" },
+        { name: "ロストアビス", release: "2022-07-15", shisui: null, mito: 38000, snkr: 48380, img: "https://cdn.snkrdunk.com/upload_bg_removed/dfc67cf9-b661-4601-ad63-8e18dcac30d5.webp?size=m" }
     ];
 
     // ===== 画像の保存（このブラウザ内に保存） =====
@@ -154,8 +171,25 @@
     function render() {
         tbody.innerHTML = "";
         let missing = 0;
-        boxData.forEach((box, i) => {
-            const snkrReal = box.snkr ? Math.floor(box.snkr * 0.9 - 1000) : null;
+        const [key, dir] = sortState;
+        const real = b => b.snkr ? Math.floor(b.snkr * 0.9 - 1000) : null;
+        const valOf = b => key === "release" ? b.release
+            : key === "best" ? (Math.max(b.shisui || 0, b.mito || 0, real(b) || 0) || null)
+            : (b[key] || null);
+        const rows = boxData.map((b, i) => ({ b, i }));
+        rows.sort((x, y) => {
+            const a = valOf(x.b), c = valOf(y.b);
+            if (a === c) return x.i - y.i;
+            if (a === null) return 1;          // 価格なしは常に一番下
+            if (c === null) return -1;
+            return (a < c ? -1 : 1) * (dir === "asc" ? 1 : -1);
+        });
+        document.getElementById("sort-select").value = key + ":" + dir;
+        document.querySelectorAll("th.sortable").forEach(th => {
+            th.querySelector(".arrow").textContent = th.dataset.key === key ? (dir === "asc" ? " ▲" : " ▼") : "";
+        });
+        rows.forEach(({ b: box, i }) => {
+            const snkrReal = real(box);
             const vals = { shisui: box.shisui || -1, mito: box.mito || -1, snkr: snkrReal || -1 };
             let best = "none", maxVal = -1;
             for (const k of ["shisui", "mito", "snkr"]) if (vals[k] > maxVal) { maxVal = vals[k]; best = k; }
@@ -173,11 +207,12 @@
             tr.innerHTML = `
                 <td class="p-3">
                     <div class="flex items-center gap-3">
-                        <img data-i="${i}" class="thumb w-12 h-12 object-contain bg-white border border-gray-200 rounded p-1 shrink-0"
+                        <img data-i="${i}" class="thumb w-16 h-16 object-contain bg-white border border-gray-200 rounded p-1 shrink-0"
                              referrerpolicy="no-referrer" loading="lazy" title="クリックで画像を設定" alt="">
                         <span class="font-medium">${box.name}</span>
                     </div>
                 </td>
+                <td class="p-3 whitespace-nowrap text-gray-600">${box.release ? box.release.replace(/-/g, "/") : "-"}</td>
                 <td class="p-3 text-right ${best === 'shisui' ? 'font-bold text-red-600' : ''}">${formatPrice(box.shisui)}</td>
                 <td class="p-3 text-right ${best === 'mito' ? 'font-bold text-yellow-600' : ''}">${formatPrice(box.mito)}</td>
                 <td class="p-3 text-right text-gray-500">${formatPrice(box.snkr)}</td>
@@ -275,7 +310,7 @@
     document.getElementById("btn-export").onclick = async () => {
         const lines = boxData.map(b => {
             const img = imgOf(b);
-            return `        { name: ${JSON.stringify(b.name)}, shisui: ${b.shisui}, mito: ${b.mito}, snkr: ${b.snkr}, img: ${img ? JSON.stringify(img) : "null"} }`;
+            return `        { name: ${JSON.stringify(b.name)}, release: ${JSON.stringify(b.release || null)}, shisui: ${b.shisui}, mito: ${b.mito}, snkr: ${b.snkr}, img: ${img ? JSON.stringify(img) : "null"} }`;
         });
         const text = "    const boxData = [\n" + lines.join(",\n") + "\n    ];";
         try { await navigator.clipboard.writeText(text); alert("コピーしました。HTMLファイル内の const boxData = [ ... ]; と置き換えると、画像が固定されます。"); }
@@ -284,6 +319,22 @@
     document.getElementById("btn-reset").onclick = () => {
         if (confirm("このブラウザで設定した画像をすべて消しますか？")) { saved = {}; persist(); render(); }
     };
+
+    // ===== 並べ替え =====
+    let sortState = ["release", "asc"];
+    try { const s = JSON.parse(localStorage.getItem("pokeca-box-sort") || "null"); if (Array.isArray(s)) sortState = s; } catch (e) {}
+    function setSort(key, dir) {
+        sortState = [key, dir];
+        try { localStorage.setItem("pokeca-box-sort", JSON.stringify(sortState)); } catch (e) {}
+        render();
+    }
+    document.getElementById("sort-select").onchange = e => { const [k, d] = e.target.value.split(":"); setSort(k, d); };
+    // 見出しクリックで切り替え（価格は最初「高い順」、発売日は最初「古い順」）
+    document.querySelectorAll("th.sortable").forEach(th => th.onclick = () => {
+        const k = th.dataset.key;
+        const first = k === "release" ? "asc" : "desc";
+        setSort(k, sortState[0] === k ? (sortState[1] === "asc" ? "desc" : "asc") : first);
+    });
 
     render();
 </script>
