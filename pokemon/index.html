@@ -50,7 +50,7 @@
 <div id="app" class="max-w-7xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
     <div id="hero" class="bg-blue-700 text-white p-6">
         <h1 class="text-2xl font-bold">ポケモンカードBOX 価格比較表（水戸・酒々井・スニダン）</h1>
-        <p class="text-sm mt-2 opacity-90">※スニダン実質手取り = (販売相場 × 0.9) - 送料1,000円 で計算。<br>※一番手元に残る金額が大きいマスがハイライトされます。<br>※ホムラの買取額はシュリンク有り／無しを上のボタンで切り替えられます（公式サイト掲載・2026/09/24時点）。</p>
+        <p class="text-sm mt-2 opacity-90">※スニダン実質手取り = (販売相場 × 0.9) - 送料1,000円 で計算。<br>※一番手元に残る金額が大きいマスがハイライトされます。<br>※ホムラ買取・スニダン相場はシュリンク有り／無しを上のボタンで切り替えられます（2026/09/24時点）。</p>
     </div>
 
     <div id="toolbar" class="flex flex-wrap items-center gap-3 px-6 py-3 bg-blue-50 border-b border-blue-100 text-sm">
@@ -77,6 +77,7 @@
             </select>
         </label>
         <div class="btns ml-auto flex gap-2">
+            <button id="btn-import" class="px-3 py-1.5 bg-green-600 text-white rounded hover:bg-green-700">スニダン相場を貼り付け</button>
             <button id="btn-export" class="px-3 py-1.5 bg-blue-600 text-white rounded hover:bg-blue-700">データをコピー（バックアップ）</button>
             <button id="btn-reset" class="px-3 py-1.5 bg-white border border-gray-300 rounded hover:bg-gray-50">画像設定をリセット</button>
         </div>
@@ -91,8 +92,8 @@
                     <th class="p-3 font-semibold text-right whitespace-nowrap sortable" data-key="shisui">酒々井 買取<span class="arrow"></span></th>
                     <th class="p-3 font-semibold text-right whitespace-nowrap sortable" data-key="mito">水戸 買取<span class="arrow"></span></th>
                     <th class="p-3 font-semibold text-right whitespace-nowrap text-green-700 sortable" data-key="homura"><span id="homura-head">ホムラ 買取</span><span class="arrow"></span></th>
-                    <th class="p-3 font-semibold text-right whitespace-nowrap text-gray-400 sortable" data-key="snkr">スニダン 相場<span class="arrow"></span></th>
-                    <th class="p-3 font-semibold text-right whitespace-nowrap text-blue-600 sortable" data-key="snkr">スニダン 実質<span class="arrow"></span></th>
+                    <th class="p-3 font-semibold text-right whitespace-nowrap text-gray-400 sortable" data-key="snkr"><span class="snkr-head">スニダン 相場</span><span class="arrow"></span></th>
+                    <th class="p-3 font-semibold text-right whitespace-nowrap text-blue-600 sortable" data-key="snkr"><span class="snkr-head2">スニダン 実質</span><span class="arrow"></span></th>
                     <th class="p-3 font-semibold text-center whitespace-nowrap">おすすめ</th>
                 </tr>
             </thead>
@@ -100,6 +101,26 @@
         </table>
     </div>
     <div id="card-list" class="divide-y divide-gray-200"></div>
+</div>
+
+<!-- スニダン相場の貼り付けダイアログ -->
+<div id="imp" class="fixed inset-0 bg-black/50 items-center justify-center p-4 z-50" style="display:none">
+    <div class="bg-white rounded-xl shadow-xl w-full max-w-2xl p-6 max-h-[90vh] overflow-y-auto">
+        <h2 class="text-lg font-bold mb-1">スニダンの相場を貼り付けて取り込む</h2>
+        <p class="text-sm text-gray-600 mb-3">
+            スニダンの検索結果ページを開いて全選択（Ctrl+A / ⌘A）→ コピー（Ctrl+C / ⌘C）し、下の枠に貼り付けて「読み取る」を押してください。ページごとに繰り返せます。
+        </p>
+        <div class="flex items-center gap-4 mb-3 text-sm">
+            <label class="flex items-center gap-1"><input type="radio" name="imp-target" value="snkr" checked> シュリンク有りの相場に入れる</label>
+            <label class="flex items-center gap-1"><input type="radio" name="imp-target" value="snkrNo"> シュリンクなしの相場に入れる</label>
+        </div>
+        <textarea id="imp-text" rows="6" class="w-full border border-gray-300 rounded px-3 py-2 text-xs font-mono" placeholder="ここに貼り付け"></textarea>
+        <div class="flex gap-2 mt-3">
+            <button id="imp-parse" class="px-4 py-2 text-sm bg-blue-600 text-white rounded hover:bg-blue-700">読み取る</button>
+            <button id="imp-close" class="px-3 py-2 text-sm border border-gray-300 rounded hover:bg-gray-50">閉じる</button>
+        </div>
+        <div id="imp-result" class="mt-4 text-sm"></div>
+    </div>
 </div>
 
 <!-- 画像設定ダイアログ -->
@@ -137,46 +158,46 @@
 <script>
     // ===== BOXデータ（価格はここを編集） =====
     const boxData = [
-        { name: "イーブイヒーローズ", release: "2021-05-28", shisui: null, homura: 120000, homuraNo: null, mito: null, snkr: 130000, img: "https://cdn.snkrdunk.com/upload_bg_removed/30bf69e9-8131-4dcc-b8b6-a69d47926ad8.webp?size=l" },
-        { name: "シャイニースターV", release: "2020-11-20", shisui: null, homura: 18000, homuraNo: null, mito: 16000, snkr: 18500, img: "https://cdn.snkrdunk.com/upload_bg_removed/aca39073-2696-43b7-b1b3-ebde881fac30.webp?size=l" },
-        { name: "拡張パック フュージョンアーツ", release: "2021-09-24", shisui: null, homura: 48000, homuraNo: null, mito: 42000, snkr: 45000, img: "https://cdn.snkrdunk.com/upload_bg_removed/e855cc3c-3be6-447a-ba4b-42a498952304.webp?size=l" },
-        { name: "拡張パック スターバース", release: "2022-01-14", shisui: null, homura: 19800, homuraNo: null, mito: 16000, snkr: 19800, img: "https://cdn.snkrdunk.com/upload_bg_removed/964d742e-a32c-4f99-aa4d-77b4e37dc2f8.webp?size=l" },
-        { name: "蒼空ストリーム", release: "2021-07-09", shisui: null, homura: 240000, homuraNo: null, mito: null, snkr: 50000, img: "https://cdn.snkrdunk.com/upload_bg_removed/91043c11-68f5-496f-ab4b-eccb56df2a14.webp?size=l" },
-        { name: "拡張パック 摩天パーフェクト", release: "2021-07-09", shisui: null, homura: 18000, homuraNo: null, mito: null, snkr: 19999, img: "https://cdn.snkrdunk.com/upload_bg_removed/758a7680-4b3f-4019-9d1c-2262ec918599.webp?size=l" },
-        { name: "25th アニバーサリー", release: "2021-10-22", shisui: null, homura: 57000, homuraNo: null, mito: 45000, snkr: 48000, img: "https://cdn.snkrdunk.com/upload_bg_removed/6a9b51a8-2561-432f-b770-d4a105b3758f.webp?size=l" },
-        { name: "25th ゴールデンボックス", release: "2021-10-22", shisui: null, homura: null, homuraNo: null, mito: null, snkr: 216000, img: "https://cdn.snkrdunk.com/upload_bg_removed/0c011609-a5c3-4ad7-a3d3-2ea28ea63d2f.webp?size=l" },
-        { name: "スペースジャグラー", release: "2022-04-08", shisui: null, homura: 12500, homuraNo: null, mito: 11000, snkr: 13000, img: "https://cdn.snkrdunk.com/upload_bg_removed/5d85eb64-73ab-491a-b2f1-c8ccd30d0f5e.webp?size=l" },
-        { name: "拡張パック タイムゲイザー", release: "2022-04-08", shisui: null, homura: 16000, homuraNo: null, mito: 14000, snkr: 17200, img: "https://cdn.snkrdunk.com/upload_bg_removed/d1b56de6-644e-44bd-af63-d128e5cb083f.webp?size=l" },
-        { name: "強化拡張 ポケモン GO ボックス", release: "2022-06-17", shisui: null, homura: null, homuraNo: null, mito: 19000, snkr: 23000, img: "https://cdn.snkrdunk.com/upload_bg_removed/8e3f3dd5-6d71-4e03-b564-586d8815af72.webp?size=m" },
-        { name: "拡張パック 仰天のボルテッカー", release: "2020-06-19", shisui: null, homura: 43000, homuraNo: null, mito: null, snkr: 46797, img: "https://cdn.snkrdunk.com/upload_bg_removed/720b3f52-f7df-430a-9dcc-6cf86c95360a.webp?size=m" },
-        { name: "強化拡張パック ダークファンタズマ", release: "2022-05-13", shisui: null, homura: 26000, homuraNo: null, mito: 19000, snkr: 26000, img: "https://cdn.snkrdunk.com/upload_bg_removed/f8dea1b7-0f0e-45fe-a8cd-3c4bbc590baa.webp?size=l" },
-        { name: "VSTARユニバース", release: "2022-12-02", shisui: 20000, homura: 23200, homuraNo: 22000, mito: 22000, snkr: 27700, img: "https://cdn.snkrdunk.com/upload_bg_removed/75981c60-8ce3-4d25-9014-e391a1b01b2f.webp?size=l" },
-        { name: "スタートデッキ100", release: "2021-12-17", shisui: 850, homura: null, homuraNo: null, mito: null, snkr: 1000, img: "https://cdn.snkrdunk.com/upload_bg_removed/3c75b4b6-47c3-457e-95ee-da2c4ab7442b.webp?size=m" },
-        { name: "スカーレットex", release: "2023-01-20", shisui: 11000, homura: 11800, homuraNo: 11000, mito: 10500, snkr: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/09f02ace-bb13-4200-ab89-1efbeda27e63.webp?size=l" },
-        { name: "スノーハザード", release: "2023-04-14", shisui: 9000, homura: 10800, homuraNo: 10000, mito: 10000, snkr: 9997, img: "https://cdn.snkrdunk.com/upload_bg_removed/d64a2c5a-fe3c-4f4b-ba7d-36aeb71aebb6.webp?size=m" },
-        { name: "クレイバースト", release: "2023-04-14", shisui: 9000, homura: 9500, homuraNo: 8800, mito: 9000, snkr: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/4433e457-c737-4c10-85b0-9b7f3b01b55f.webp?size=l" },
-        { name: "ポケモンカード151", release: "2023-06-16", shisui: 40000, homura: 32000, homuraNo: 25000, mito: 37000, snkr: 46000, img: "https://cdn.snkrdunk.com/upload_bg_removed/c57a9747-845c-4b27-b2bd-4a3ebb368edc.webp?size=l" },
-        { name: "黒炎の支配者", release: "2023-07-28", shisui: 13000, homura: 14000, homuraNo: 13000, mito: 13000, snkr: 13800, img: "https://cdn.snkrdunk.com/upload_bg_removed/c5504938-3ba8-4d57-847d-01e2b2856f67.webp?size=m" },
-        { name: "Yu NAGABA イーブイ", release: "2023-05-24", shisui: null, homura: null, homuraNo: null, mito: null, snkr: 22000, img: "https://cdn.snkrdunk.com/upload_bg_removed/5724a138-96b6-43d6-b027-ff617805b05b.webp?size=l" },
-        { name: "強化拡張パック レイジングサーフ", release: "2023-09-22", shisui: 11000, homura: 13500, homuraNo: 12000, mito: 12000, snkr: 13400, img: "https://cdn.snkrdunk.com/upload_bg_removed/cd5054ea-22f1-460c-a3ca-e052bb366afb.webp?size=m" },
-        { name: "拡張パック 古代の咆哮", release: "2023-10-27", shisui: 8000, homura: 9700, homuraNo: 9200, mito: 9000, snkr: 9700, img: "https://cdn.snkrdunk.com/upload_bg_removed/67b6b6ab-e2ee-4165-9a81-8782ded42163.webp?size=m" },
-        { name: "拡張パック 未来の一閃", release: "2023-10-27", shisui: 9000, homura: 8300, homuraNo: 8000, mito: 8500, snkr: 9400, img: "https://cdn.snkrdunk.com/upload_bg_removed/23a87890-7e5e-41ca-b86f-b4a224c69f21.webp?size=m" },
-        { name: "メガシンフォニア", release: "2025-08-01", shisui: 6000, homura: 7000, homuraNo: 6500, mito: 6000, snkr: 6100, img: "https://cdn.snkrdunk.com/upload_bg_removed/fe0052fe-c1e5-4b42-812a-0a11f00d7a55.webp?size=m" },
-        { name: "古代の咆哮(開封済)", release: "2023-10-27", shisui: 0, homura: null, homuraNo: null, mito: 0, snkr: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/67b6b6ab-e2ee-4165-9a81-8782ded42163.webp?size=m" },
-        { name: "クリムゾンヘイズ", release: "2024-03-22", shisui: null, homura: 10000, homuraNo: 10000, mito: 10000, snkr: 11999, img: "https://cdn.snkrdunk.com/upload_bg_removed/52e5fc6f-fa1d-4c58-8558-0430a030f44e.webp?size=m" },
-        { name: "熱風のアリーナ", release: "2025-03-14", shisui: 12000, homura: 15000, homuraNo: 14000, mito: 15000, snkr: 17000, img: "https://cdn.snkrdunk.com/upload_bg_removed/f03c84f7-9c59-4905-a58b-b3a5c9f9f0da.webp?size=m" },
-        { name: "ロケット団の栄光", release: "2025-04-18", shisui: 16000, homura: 18500, homuraNo: 17500, mito: 18000, snkr: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/75096a7f-0672-47fa-8fc5-e4025f634d3d.webp?size=l" },
-        { name: "ワイルドフォース", release: "2024-01-26", shisui: 9000, homura: 9800, homuraNo: 9700, mito: 9500, snkr: 10100, img: "https://cdn.snkrdunk.com/upload_bg_removed/3e8ae867-e5ac-4952-ac6e-9cf6f286c6f8.webp?size=m" },
-        { name: "バトルパートナーズ", release: "2025-01-24", shisui: 9000, homura: 9400, homuraNo: 8000, mito: 8000, snkr: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/4ae031c1-2e77-4de8-8060-fe677dc82f67.webp?size=l" },
-        { name: "ブラックボルト", release: "2025-06-06", shisui: 17000, homura: 18000, homuraNo: 17500, mito: 17000, snkr: 21998, img: "https://cdn.snkrdunk.com/upload_bg_removed/013524c4-0b78-4564-b38e-b0bb63693033.webp?size=m" },
-        { name: "ホワイトフレア", release: "2025-06-06", shisui: 17000, homura: 17000, homuraNo: 16500, mito: 17000, snkr: 22000, img: "https://cdn.snkrdunk.com/upload_bg_removed/02455d85-cd47-4d48-8fa0-d46b50a74079.webp?size=m" },
-        { name: "トウホク スペシャルBOX", release: "2025-06-13", shisui: null, homura: null, homuraNo: null, mito: 9000, snkr: 12700, img: "https://cdn.snkrdunk.com/upload_bg_removed/d723f585-3b3c-4ec5-a2fb-9a8d1d1e7cbd.webp?size=l" },
-        { name: "シャイニートレジャーex", release: "2023-12-01", shisui: 11000, homura: 13500, homuraNo: 13000, mito: 12000, snkr: 14900, img: "https://cdn.snkrdunk.com/upload_bg_removed/b3044f08-f9bd-466c-b199-56ce8069ff2b.webp?size=m" },
-        { name: "テラスタルフェスex", release: "2024-12-06", shisui: 12000, homura: 15000, homuraNo: 12000, mito: 14000, snkr: 16999, img: "https://cdn.snkrdunk.com/upload_bg_removed/277458ab-f9f5-4611-a022-0b9884cb5c6a.webp?size=m" },
-        { name: "M6 ストームエメラルダ", release: "2026-07-31", shisui: 6500, homura: 11000, homuraNo: 7400, mito: 8000, snkr: 11899, img: "https://cdn.snkrdunk.com/upload_bg_removed/c08dfabc-735b-4487-8231-06f565c5014c.webp?size=m" },
-        { name: "変幻の仮面", release: "2024-04-26", shisui: 9000, homura: 10000, homuraNo: 10000, mito: 10500, snkr: 11800, img: "https://cdn.snkrdunk.com/upload_bg_removed/15c6d89c-51d0-4691-bc1e-1ba1876633a1.webp?size=m" },
-        { name: "ステラミラクル", release: "2024-07-19", shisui: 8000, homura: 10000, homuraNo: 9100, mito: 9000, snkr: 9700, img: "https://cdn.snkrdunk.com/upload_bg_removed/76a6228b-5221-4c6a-8ba7-8af875a613a2.webp?size=m" },
-        { name: "ロストアビス", release: "2022-07-15", shisui: null, homura: 41500, homuraNo: 32000, mito: 38000, snkr: 48380, img: "https://cdn.snkrdunk.com/upload_bg_removed/dfc67cf9-b661-4601-ad63-8e18dcac30d5.webp?size=m" }
+        { name: "イーブイヒーローズ", release: "2021-05-28", shisui: null, homura: 120000, homuraNo: null, mito: null, snkr: 121000, snkrNo: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/30bf69e9-8131-4dcc-b8b6-a69d47926ad8.webp?size=l" },
+        { name: "シャイニースターV", release: "2020-11-20", shisui: null, homura: 18000, homuraNo: null, mito: 16000, snkr: 18999, snkrNo: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/aca39073-2696-43b7-b1b3-ebde881fac30.webp?size=l" },
+        { name: "拡張パック フュージョンアーツ", release: "2021-09-24", shisui: null, homura: 48000, homuraNo: null, mito: 42000, snkr: 51900, snkrNo: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/e855cc3c-3be6-447a-ba4b-42a498952304.webp?size=l" },
+        { name: "拡張パック スターバース", release: "2022-01-14", shisui: null, homura: 19800, homuraNo: null, mito: 16000, snkr: 19500, snkrNo: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/964d742e-a32c-4f99-aa4d-77b4e37dc2f8.webp?size=l" },
+        { name: "蒼空ストリーム", release: "2021-07-09", shisui: null, homura: 240000, homuraNo: null, mito: null, snkr: 233900, snkrNo: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/91043c11-68f5-496f-ab4b-eccb56df2a14.webp?size=l" },
+        { name: "拡張パック 摩天パーフェクト", release: "2021-07-09", shisui: null, homura: 18000, homuraNo: null, mito: null, snkr: 19400, snkrNo: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/758a7680-4b3f-4019-9d1c-2262ec918599.webp?size=l" },
+        { name: "25th アニバーサリー", release: "2021-10-22", shisui: null, homura: 57000, homuraNo: null, mito: 45000, snkr: 57900, snkrNo: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/6a9b51a8-2561-432f-b770-d4a105b3758f.webp?size=l" },
+        { name: "25th ゴールデンボックス", release: "2021-10-22", shisui: null, homura: null, homuraNo: null, mito: null, snkr: 210500, snkrNo: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/0c011609-a5c3-4ad7-a3d3-2ea28ea63d2f.webp?size=l" },
+        { name: "スペースジャグラー", release: "2022-04-08", shisui: null, homura: 12500, homuraNo: null, mito: 11000, snkr: 13499, snkrNo: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/5d85eb64-73ab-491a-b2f1-c8ccd30d0f5e.webp?size=l" },
+        { name: "拡張パック タイムゲイザー", release: "2022-04-08", shisui: null, homura: 16000, homuraNo: null, mito: 14000, snkr: 17999, snkrNo: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/d1b56de6-644e-44bd-af63-d128e5cb083f.webp?size=l" },
+        { name: "強化拡張 ポケモン GO ボックス", release: "2022-06-17", shisui: null, homura: null, homuraNo: null, mito: 19000, snkr: 21999, snkrNo: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/8e3f3dd5-6d71-4e03-b564-586d8815af72.webp?size=m" },
+        { name: "拡張パック 仰天のボルテッカー", release: "2020-06-19", shisui: null, homura: 43000, homuraNo: null, mito: null, snkr: 47000, snkrNo: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/720b3f52-f7df-430a-9dcc-6cf86c95360a.webp?size=m" },
+        { name: "強化拡張パック ダークファンタズマ", release: "2022-05-13", shisui: null, homura: 26000, homuraNo: null, mito: 19000, snkr: 22300, snkrNo: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/f8dea1b7-0f0e-45fe-a8cd-3c4bbc590baa.webp?size=l" },
+        { name: "VSTARユニバース", release: "2022-12-02", shisui: 20000, homura: 23200, homuraNo: 22000, mito: 22000, snkr: 25450, snkrNo: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/75981c60-8ce3-4d25-9014-e391a1b01b2f.webp?size=l" },
+        { name: "スタートデッキ100", release: "2021-12-17", shisui: 850, homura: null, homuraNo: null, mito: null, snkr: 1000, snkrNo: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/3c75b4b6-47c3-457e-95ee-da2c4ab7442b.webp?size=m" },
+        { name: "スカーレットex", release: "2023-01-20", shisui: 11000, homura: 11800, homuraNo: 11000, mito: 10500, snkr: 11900, snkrNo: 9998, img: "https://cdn.snkrdunk.com/upload_bg_removed/09f02ace-bb13-4200-ab89-1efbeda27e63.webp?size=l" },
+        { name: "スノーハザード", release: "2023-04-14", shisui: 9000, homura: 10800, homuraNo: 10000, mito: 10000, snkr: 10998, snkrNo: 9997, img: "https://cdn.snkrdunk.com/upload_bg_removed/d64a2c5a-fe3c-4f4b-ba7d-36aeb71aebb6.webp?size=m" },
+        { name: "クレイバースト", release: "2023-04-14", shisui: 9000, homura: 9500, homuraNo: 8800, mito: 9000, snkr: 9600, snkrNo: 8500, img: "https://cdn.snkrdunk.com/upload_bg_removed/4433e457-c737-4c10-85b0-9b7f3b01b55f.webp?size=l" },
+        { name: "ポケモンカード151", release: "2023-06-16", shisui: 40000, homura: 32000, homuraNo: 25000, mito: 37000, snkr: 46000, snkrNo: 41500, img: "https://cdn.snkrdunk.com/upload_bg_removed/c57a9747-845c-4b27-b2bd-4a3ebb368edc.webp?size=l" },
+        { name: "黒炎の支配者", release: "2023-07-28", shisui: 13000, homura: 14000, homuraNo: 13000, mito: 13000, snkr: 15250, snkrNo: 13800, img: "https://cdn.snkrdunk.com/upload_bg_removed/c5504938-3ba8-4d57-847d-01e2b2856f67.webp?size=m" },
+        { name: "Yu NAGABA イーブイ", release: "2023-05-24", shisui: null, homura: null, homuraNo: null, mito: null, snkr: 21999, snkrNo: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/5724a138-96b6-43d6-b027-ff617805b05b.webp?size=l" },
+        { name: "強化拡張パック レイジングサーフ", release: "2023-09-22", shisui: 11000, homura: 13500, homuraNo: 12000, mito: 12000, snkr: 13000, snkrNo: 11490, img: "https://cdn.snkrdunk.com/upload_bg_removed/cd5054ea-22f1-460c-a3ca-e052bb366afb.webp?size=m" },
+        { name: "拡張パック 古代の咆哮", release: "2023-10-27", shisui: 8000, homura: 9700, homuraNo: 9200, mito: 9000, snkr: 9800, snkrNo: 9999, img: "https://cdn.snkrdunk.com/upload_bg_removed/67b6b6ab-e2ee-4165-9a81-8782ded42163.webp?size=m" },
+        { name: "拡張パック 未来の一閃", release: "2023-10-27", shisui: 9000, homura: 8300, homuraNo: 8000, mito: 8500, snkr: 7900, snkrNo: 9400, img: "https://cdn.snkrdunk.com/upload_bg_removed/23a87890-7e5e-41ca-b86f-b4a224c69f21.webp?size=m" },
+        { name: "メガシンフォニア", release: "2025-08-01", shisui: 6000, homura: 7000, homuraNo: 6500, mito: 6000, snkr: 7100, snkrNo: 6250, img: "https://cdn.snkrdunk.com/upload_bg_removed/fe0052fe-c1e5-4b42-812a-0a11f00d7a55.webp?size=m" },
+        { name: "古代の咆哮(開封済)", release: "2023-10-27", shisui: 0, homura: null, homuraNo: null, mito: 0, snkr: null, snkrNo: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/67b6b6ab-e2ee-4165-9a81-8782ded42163.webp?size=m" },
+        { name: "クリムゾンヘイズ", release: "2024-03-22", shisui: null, homura: 10000, homuraNo: 10000, mito: 10000, snkr: 11000, snkrNo: 11999, img: "https://cdn.snkrdunk.com/upload_bg_removed/52e5fc6f-fa1d-4c58-8558-0430a030f44e.webp?size=m" },
+        { name: "熱風のアリーナ", release: "2025-03-14", shisui: 12000, homura: 15000, homuraNo: 14000, mito: 15000, snkr: 18000, snkrNo: 17000, img: "https://cdn.snkrdunk.com/upload_bg_removed/f03c84f7-9c59-4905-a58b-b3a5c9f9f0da.webp?size=m" },
+        { name: "ロケット団の栄光", release: "2025-04-18", shisui: 16000, homura: 18500, homuraNo: 17500, mito: 18000, snkr: 23200, snkrNo: 19000, img: "https://cdn.snkrdunk.com/upload_bg_removed/75096a7f-0672-47fa-8fc5-e4025f634d3d.webp?size=l" },
+        { name: "ワイルドフォース", release: "2024-01-26", shisui: 9000, homura: 9800, homuraNo: 9700, mito: 9500, snkr: 10399, snkrNo: 8777, img: "https://cdn.snkrdunk.com/upload_bg_removed/3e8ae867-e5ac-4952-ac6e-9cf6f286c6f8.webp?size=m" },
+        { name: "バトルパートナーズ", release: "2025-01-24", shisui: 9000, homura: 9400, homuraNo: 8000, mito: 8000, snkr: 9700, snkrNo: 9600, img: "https://cdn.snkrdunk.com/upload_bg_removed/4ae031c1-2e77-4de8-8060-fe677dc82f67.webp?size=l" },
+        { name: "ブラックボルト", release: "2025-06-06", shisui: 17000, homura: 18000, homuraNo: 17500, mito: 17000, snkr: 20700, snkrNo: 16300, img: "https://cdn.snkrdunk.com/upload_bg_removed/013524c4-0b78-4564-b38e-b0bb63693033.webp?size=m" },
+        { name: "ホワイトフレア", release: "2025-06-06", shisui: 17000, homura: 17000, homuraNo: 16500, mito: 17000, snkr: 19200, snkrNo: 16000, img: "https://cdn.snkrdunk.com/upload_bg_removed/02455d85-cd47-4d48-8fa0-d46b50a74079.webp?size=m" },
+        { name: "トウホク スペシャルBOX", release: "2025-06-13", shisui: null, homura: null, homuraNo: null, mito: 9000, snkr: 12999, snkrNo: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/d723f585-3b3c-4ec5-a2fb-9a8d1d1e7cbd.webp?size=l" },
+        { name: "シャイニートレジャーex", release: "2023-12-01", shisui: 11000, homura: 13500, homuraNo: 13000, mito: 12000, snkr: 15100, snkrNo: 15200, img: "https://cdn.snkrdunk.com/upload_bg_removed/b3044f08-f9bd-466c-b199-56ce8069ff2b.webp?size=m" },
+        { name: "テラスタルフェスex", release: "2024-12-06", shisui: 12000, homura: 15000, homuraNo: 12000, mito: 14000, snkr: 17000, snkrNo: 16999, img: "https://cdn.snkrdunk.com/upload_bg_removed/277458ab-f9f5-4611-a022-0b9884cb5c6a.webp?size=m" },
+        { name: "M6 ストームエメラルダ", release: "2026-07-31", shisui: 6500, homura: 11000, homuraNo: 7400, mito: 8000, snkr: 11000, snkrNo: 8650, img: "https://cdn.snkrdunk.com/upload_bg_removed/c08dfabc-735b-4487-8231-06f565c5014c.webp?size=m" },
+        { name: "変幻の仮面", release: "2024-04-26", shisui: 9000, homura: 10000, homuraNo: 10000, mito: 10500, snkr: 12000, snkrNo: 10600, img: "https://cdn.snkrdunk.com/upload_bg_removed/15c6d89c-51d0-4691-bc1e-1ba1876633a1.webp?size=m" },
+        { name: "ステラミラクル", release: "2024-07-19", shisui: 8000, homura: 10000, homuraNo: 9100, mito: 9000, snkr: 10400, snkrNo: 9100, img: "https://cdn.snkrdunk.com/upload_bg_removed/76a6228b-5221-4c6a-8ba7-8af875a613a2.webp?size=m" },
+        { name: "ロストアビス", release: "2022-07-15", shisui: null, homura: 41500, homuraNo: 32000, mito: 38000, snkr: 48380, snkrNo: null, img: "https://cdn.snkrdunk.com/upload_bg_removed/dfc67cf9-b661-4601-ad63-8e18dcac30d5.webp?size=m" }
     ];
 
     // ===== 画像の保存（このブラウザ内に保存） =====
@@ -206,7 +227,12 @@
     let shrink = "yes";
     try { const s = localStorage.getItem("pokeca-box-shrink"); if (s === "yes" || s === "no") shrink = s; } catch (e) {}
     const homuraOf = (b) => shrink === "yes" ? b.homura : b.homuraNo;
+    const snkrOf = (b) => { const v = shrink === "yes" ? b.snkr : (savedSnkrNo[b.name] !== undefined ? savedSnkrNo[b.name] : b.snkrNo); return v || null; };
+    const snkrSub = (b) => { const v = shrink === "yes" ? (savedSnkrNo[b.name] !== undefined ? savedSnkrNo[b.name] : b.snkrNo) : b.snkr; return v || null; };
     const homuraSub = (b) => shrink === "yes" ? b.homuraNo : b.homura;
+    // 貼り付けで取り込んだ「シュリンクなし」相場
+    let savedSnkrNo = {};
+    try { savedSnkrNo = JSON.parse(localStorage.getItem("pokeca-box-snkrno") || "{}"); } catch (e) { savedSnkrNo = {}; }
 
     // ===== 表の描画 =====
     const tbody = document.getElementById("table-body");
@@ -218,10 +244,11 @@
         cardList.innerHTML = "";
         let missing = 0;
         const [key, dir] = sortState;
-        const real = b => b.snkr ? Math.floor(b.snkr * 0.9 - 1000) : null;
+        const real = b => snkrOf(b) ? Math.floor(snkrOf(b) * 0.9 - 1000) : null;
         const valOf = b => key === "release" ? b.release
             : key === "best" ? (Math.max(b.shisui || 0, b.mito || 0, homuraOf(b) || 0, real(b) || 0) || null)
             : key === "homura" ? (homuraOf(b) || null)
+            : key === "snkr" ? snkrOf(b)
             : (b[key] || null);
         const rows = boxData.map((b, i) => ({ b, i }));
         rows.sort((x, y) => {
@@ -232,7 +259,10 @@
             return (a < c ? -1 : 1) * (dir === "asc" ? 1 : -1);
         });
         document.getElementById("sort-select").value = key + ":" + dir;
-        document.getElementById("homura-head").textContent = "ホムラ 買取（シュリンク" + (shrink === "yes" ? "有" : "無") + "）";
+        const sh = shrink === "yes" ? "有" : "無";
+        document.getElementById("homura-head").textContent = "ホムラ 買取（シュリンク" + sh + "）";
+        document.querySelector(".snkr-head").textContent = "スニダン 相場（シュリンク" + sh + "）";
+        document.querySelector(".snkr-head2").textContent = "スニダン 実質（シュリンク" + sh + "）";
         document.querySelectorAll(".shrink-btn").forEach(b => b.classList.toggle("on", b.dataset.shrink === shrink));
         document.querySelectorAll("th.sortable").forEach(th => {
             th.querySelector(".arrow").textContent = th.dataset.key === key ? (dir === "asc" ? " ▲" : " ▼") : "";
@@ -244,10 +274,10 @@
             for (const k of ["shisui", "mito", "homura", "snkr"]) if (vals[k] > maxVal) { maxVal = vals[k]; best = k; }
 
             let badge = "-", rowClass = "hover:bg-gray-100 ";
-            if (best === "shisui") { badge = `<span class="px-2 py-1 bg-red-500 text-white text-xs font-bold rounded shadow">酒々井がお得</span>`; rowClass += "bg-red-50"; }
-            if (best === "mito")   { badge = `<span class="px-2 py-1 bg-yellow-400 text-yellow-900 text-xs font-bold rounded shadow">水戸がお得</span>`; rowClass += "bg-yellow-50"; }
-            if (best === "homura") { badge = `<span class="px-2 py-1 bg-green-600 text-white text-xs font-bold rounded shadow">ホムラがお得</span>`; rowClass += "bg-green-50"; }
-            if (best === "snkr")   { badge = `<span class="px-2 py-1 bg-blue-500 text-white text-xs font-bold rounded shadow">スニダンがお得</span>`; rowClass += "bg-blue-50"; }
+            if (best === "shisui") { badge = `<span class="whitespace-nowrap inline-block px-2 py-1 bg-red-500 text-white text-xs font-bold rounded shadow">酒々井</span>`; rowClass += "bg-red-50"; }
+            if (best === "mito")   { badge = `<span class="whitespace-nowrap inline-block px-2 py-1 bg-yellow-400 text-yellow-900 text-xs font-bold rounded shadow">水戸</span>`; rowClass += "bg-yellow-50"; }
+            if (best === "homura") { badge = `<span class="whitespace-nowrap inline-block px-2 py-1 bg-green-600 text-white text-xs font-bold rounded shadow">ホムラ</span>`; rowClass += "bg-green-50"; }
+            if (best === "snkr")   { badge = `<span class="whitespace-nowrap inline-block px-2 py-1 bg-blue-500 text-white text-xs font-bold rounded shadow">スニダン</span>`; rowClass += "bg-blue-50"; }
 
             const src = imgOf(box);
             if (!src) missing++;
@@ -266,7 +296,7 @@
                 <td class="p-3 text-right ${best === 'shisui' ? 'font-bold text-red-600' : ''}">${formatPrice(box.shisui)}</td>
                 <td class="p-3 text-right ${best === 'mito' ? 'font-bold text-yellow-600' : ''}">${formatPrice(box.mito)}</td>
                 <td class="p-3 text-right whitespace-nowrap ${best === 'homura' ? 'font-bold text-green-700' : ''}">${formatPrice(homuraOf(box))}${homuraSub(box) ? `<span class="block text-xs font-normal text-gray-400">${shrink === "yes" ? "無し" : "有り"} ${homuraSub(box).toLocaleString()}円</span>` : ""}</td>
-                <td class="p-3 text-right text-gray-500">${formatPrice(box.snkr)}</td>
+                <td class="p-3 text-right text-gray-500 whitespace-nowrap">${formatPrice(snkrOf(box))}${snkrSub(box) ? `<span class="block text-xs text-gray-400">${shrink === "yes" ? "無し" : "有り"} ${snkrSub(box).toLocaleString()}円</span>` : ""}</td>
                 <td class="p-3 text-right ${best === 'snkr' ? 'font-bold text-blue-600 text-lg' : 'font-medium'}">${formatPrice(snkrReal)}</td>
                 <td class="p-3 text-center">${badge}</td>`;
             const img = tr.querySelector("img");
@@ -297,7 +327,7 @@
                     ${cell("水戸 買取", box.mito, "mito")}
                     ${cell(`ホムラ 買取（シュリンク${shrink === "yes" ? "有" : "無"}）`, homuraOf(box), "homura")}
                     ${cell("スニダン 実質", snkrReal, "snkr")}
-                    <div class="cell span2"><div class="lbl">スニダン 相場（手数料・送料を引く前）</div><div class="val text-gray-500">${formatPrice(box.snkr)}</div></div>
+                    <div class="cell span2"><div class="lbl">スニダン 相場（シュリンク${shrink === "yes" ? "有" : "無"}・手数料と送料を引く前）</div><div class="val text-gray-500">${formatPrice(snkrOf(box))}</div></div>
                 </div>`;
             const cimg = card.querySelector("img");
             cimg.onerror = () => { cimg.onerror = null; cimg.src = placeholder(box.name); };
@@ -390,7 +420,7 @@
     document.getElementById("btn-export").onclick = async () => {
         const lines = boxData.map(b => {
             const img = imgOf(b);
-            return `        { name: ${JSON.stringify(b.name)}, release: ${JSON.stringify(b.release || null)}, shisui: ${b.shisui}, homura: ${b.homura}, homuraNo: ${b.homuraNo}, mito: ${b.mito}, snkr: ${b.snkr}, img: ${img ? JSON.stringify(img) : "null"} }`;
+            return `        { name: ${JSON.stringify(b.name)}, release: ${JSON.stringify(b.release || null)}, shisui: ${b.shisui}, homura: ${b.homura}, homuraNo: ${b.homuraNo}, mito: ${b.mito}, snkr: ${b.snkr}, snkrNo: ${(savedSnkrNo[b.name] !== undefined ? savedSnkrNo[b.name] : b.snkrNo) ?? null}, img: ${img ? JSON.stringify(img) : "null"} }`;
         });
         const text = "    const boxData = [\n" + lines.join(",\n") + "\n    ];";
         try { await navigator.clipboard.writeText(text); alert("コピーしました。HTMLファイル内の const boxData = [ ... ]; と置き換えると、画像が固定されます。"); }
@@ -420,6 +450,92 @@
         const first = k === "release" ? "asc" : "desc";
         setSort(k, sortState[0] === k ? (sortState[1] === "asc" ? "desc" : "asc") : first);
     });
+
+
+    // ===== スニダンのページを貼り付けて相場を取り込む =====
+    const impModal = document.getElementById("imp");
+    const impResult = document.getElementById("imp-result");
+    document.getElementById("btn-import").onclick = () => { impModal.style.display = "flex"; setTimeout(() => document.getElementById("imp-text").focus(), 50); };
+    document.getElementById("imp-close").onclick = () => { impModal.style.display = "none"; };
+    impModal.addEventListener("click", e => { if (e.target === impModal) impModal.style.display = "none"; });
+
+    // 表記ゆれ（全角・ひらがな・記号・BOX表記など）を吸収して比較用の文字列にする
+    const norm = (s) => s
+        .replace(/[Ａ-Ｚａ-ｚ０-９]/g, c => String.fromCharCode(c.charCodeAt(0) - 0xFEE0))
+        .replace(/[ぁ-ゖ]/g, c => String.fromCharCode(c.charCodeAt(0) + 0x60))
+        .toLowerCase()
+        .replace(/ポケモンカードゲーム|ポケモンカード|ポケカ/g, "")
+        .replace(/拡張パック|強化拡張パック|強化拡張|ハイクラスパック/g, "")
+        .replace(/シュリンク付き|シュリンクなし|シュリンク無し|シュリンク有り|未開封|box|ボックス|トレカ/gi, "")
+        .replace(/[\s　・\-–—_（）()「」【】『』\[\],、。:：!！?？'"＆&]/g, "");
+
+    let pendingImport = null;
+
+    document.getElementById("imp-parse").onclick = () => {
+        const target = document.querySelector('input[name="imp-target"]:checked').value;
+        const text = document.getElementById("imp-text").value;
+        const lines = text.split("\n").map(s => s.trim()).filter(s => s);
+
+        // 「商品名」の近くにある「¥12,345」を拾う
+        const items = [];
+        for (let i = 0; i < lines.length; i++) {
+            const m = lines[i].match(/^[¥￥]\s*([0-9,]{3,})/) || lines[i].match(/([0-9,]{3,})\s*円$/);
+            if (!m) continue;
+            const price = parseInt(m[1].replace(/,/g, ""), 10);
+            if (!price || price < 300 || price > 3000000) continue;
+            // 直前のいちばん近い「商品名らしい行」を探す
+            let name = "";
+            for (let j = i - 1; j >= 0 && j >= i - 6; j--) {
+                const l = lines[j];
+                if (/^[¥￥]/.test(l) || /^[0-9,]+円?$/.test(l)) continue;
+                if (/^(最安値|即購入|販売|購入|出品|人気|新着|検索|並び替え|絞り込み|もっと見る|価格|サイズ|送料|お気に入り|件)/.test(l)) continue;
+                if (l.length < 4) continue;
+                name = l; break;
+            }
+            if (name) items.push({ name, price });
+        }
+
+        // BOX名と突き合わせる（いちばん長く一致するBOXを採用）
+        const matches = [], unmatched = [];
+        items.forEach(it => {
+            const n = norm(it.name);
+            let bestBox = null, bestLen = 0;
+            boxData.forEach(b => {
+                const key = norm(b.name);
+                if (key.length >= 4 && n.includes(key) && key.length > bestLen) { bestBox = b; bestLen = key.length; }
+            });
+            if (bestBox) {
+                const prev = matches.find(m => m.box === bestBox);
+                if (!prev) matches.push({ box: bestBox, name: it.name, price: it.price });
+            } else unmatched.push(it);
+        });
+
+        pendingImport = { target, matches };
+        const label = target === "snkr" ? "シュリンク有りの相場" : "シュリンクなしの相場";
+        if (!matches.length) {
+            impResult.innerHTML = `<div class="p-3 bg-red-50 text-red-700 rounded">価格を読み取れませんでした（検出 ${items.length} 件）。ページ全体をコピーできているか確認してください。</div>`;
+            return;
+        }
+        impResult.innerHTML = `
+            <div class="mb-2">${label}に入れます。<b>${matches.length}件</b>が一致しました${unmatched.length ? `（リストにない商品 ${unmatched.length}件は無視します）` : ""}。</div>
+            <div class="border border-gray-200 rounded divide-y max-h-64 overflow-y-auto">
+                ${matches.map(m => `<div class="flex justify-between gap-3 px-3 py-1.5">
+                    <span class="font-medium">${m.box.name}</span>
+                    <span class="text-gray-500 text-xs truncate flex-1">${m.name}</span>
+                    <span class="font-bold whitespace-nowrap">${m.price.toLocaleString()}円</span></div>`).join("")}
+            </div>
+            <button id="imp-apply" class="mt-3 px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700">この内容で反映する</button>`;
+        document.getElementById("imp-apply").onclick = () => {
+            pendingImport.matches.forEach(m => {
+                if (pendingImport.target === "snkrNo") savedSnkrNo[m.box.name] = m.price;
+                else m.box.snkr = m.price;
+            });
+            try { localStorage.setItem("pokeca-box-snkrno", JSON.stringify(savedSnkrNo)); } catch (e) {}
+            document.getElementById("imp-text").value = "";
+            impResult.innerHTML = `<div class="p-3 bg-green-50 text-green-700 rounded">${pendingImport.matches.length}件を反映しました。次のページを貼り付けられます。</div>`;
+            render();
+        };
+    };
 
     render();
 </script>
