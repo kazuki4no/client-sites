@@ -52,7 +52,7 @@
 
 <div id="app" class="max-w-7xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
     <div id="hero" class="bg-blue-700 text-white p-6">
-        <h1 class="text-2xl font-bold">ポケモンカードBOX 価格比較表（酒々井・水戸・ホムラ・シンソク・スニダン）</h1>
+        <h1 class="text-2xl font-bold">ポケモンカードBOX 価格比較表（水戸・ホムラ・シンソク・スニダン）</h1>
         <p class="text-sm mt-2 opacity-90">※スニダン実質手取り = (販売相場 × 0.9) - 送料1,000円 で計算。<br>※一番手元に残る金額が大きいマスがハイライトされます。<br>※ホムラ買取・スニダン相場はシュリンク有り／無しを上のボタンで切り替えられます（2026/09/24時点）。シンソクはシュリンク有りの価格のみ（2026/10/07時点）。</p>
     </div>
 
@@ -69,10 +69,8 @@
                 <option value="release:desc">発売日（新しい順）</option>
                 <option value="best:desc">一番高く売れる金額（高い順）</option>
                 <option value="best:asc">一番高く売れる金額（安い順）</option>
-                <option value="snkr:desc">スニダン相場（高い順）</option>
-                <option value="snkr:asc">スニダン相場（安い順）</option>
-                <option value="shisui:desc">酒々井 買取（高い順）</option>
-                <option value="shisui:asc">酒々井 買取（安い順）</option>
+                <option value="snkr:desc">スニダン実質（高い順）</option>
+                <option value="snkr:asc">スニダン実質（安い順）</option>
                 <option value="mito:desc">水戸 買取（高い順）</option>
                 <option value="mito:asc">水戸 買取（安い順）</option>
                 <option value="homura:desc">ホムラ 買取（高い順）</option>
@@ -94,11 +92,9 @@
                 <tr class="bg-gray-50 border-b border-gray-200 text-gray-600">
                     <th class="p-3 font-semibold whitespace-nowrap">画像 / BOX名</th>
                     <th class="p-3 font-semibold whitespace-nowrap sortable" data-key="release">発売日<span class="arrow"></span></th>
-                    <th class="p-3 font-semibold text-right whitespace-nowrap sortable" data-key="shisui">酒々井 買取<span class="arrow"></span></th>
                     <th class="p-3 font-semibold text-right whitespace-nowrap sortable" data-key="mito">水戸 買取<span class="arrow"></span></th>
                     <th class="p-3 font-semibold text-right whitespace-nowrap text-green-700 sortable" data-key="homura"><span id="homura-head">ホムラ 買取</span><span class="arrow"></span></th>
                     <th class="p-3 font-semibold text-right whitespace-nowrap text-purple-700 sortable" data-key="shinsoku"><span id="shinsoku-head">シンソク 買取</span><span class="arrow"></span></th>
-                    <th class="p-3 font-semibold text-right whitespace-nowrap text-gray-400 sortable" data-key="snkr"><span class="snkr-head">スニダン 相場</span><span class="arrow"></span></th>
                     <th class="p-3 font-semibold text-right whitespace-nowrap text-blue-600 sortable" data-key="snkr"><span class="snkr-head2">スニダン 実質</span><span class="arrow"></span></th>
                     <th class="p-3 font-semibold text-center whitespace-nowrap">おすすめ</th>
                 </tr>
@@ -254,7 +250,7 @@
         const [key, dir] = sortState;
         const real = b => snkrOf(b) ? Math.floor(snkrOf(b) * 0.9 - 1000) : null;
         const valOf = b => key === "release" ? b.release
-            : key === "best" ? (Math.max(b.shisui || 0, b.mito || 0, homuraOf(b) || 0, shinsokuOf(b) || 0, real(b) || 0) || null)
+            : key === "best" ? (Math.max(b.mito || 0, homuraOf(b) || 0, shinsokuOf(b) || 0, real(b) || 0) || null)
             : key === "homura" ? (homuraOf(b) || null)
             : key === "shinsoku" ? (shinsokuOf(b) || null)
             : key === "snkr" ? snkrOf(b)
@@ -271,7 +267,6 @@
         const sh = shrink === "yes" ? "有" : "無";
         document.getElementById("homura-head").textContent = "ホムラ 買取（シュリンク" + sh + "）";
         document.getElementById("shinsoku-head").textContent = "シンソク 買取（シュリンク" + sh + "）";
-        document.querySelector(".snkr-head").textContent = "スニダン 相場（シュリンク" + sh + "）";
         document.querySelector(".snkr-head2").textContent = "スニダン 実質（シュリンク" + sh + "）";
         document.querySelectorAll(".shrink-btn").forEach(b => b.classList.toggle("on", b.dataset.shrink === shrink));
         document.querySelectorAll("th.sortable").forEach(th => {
@@ -279,9 +274,9 @@
         });
         rows.forEach(({ b: box, i }) => {
             const snkrReal = real(box);
-            const vals = { shisui: box.shisui || -1, mito: box.mito || -1, homura: homuraOf(box) || -1, shinsoku: shinsokuOf(box) || -1, snkr: snkrReal || -1 };
+            const vals = { mito: box.mito || -1, homura: homuraOf(box) || -1, shinsoku: shinsokuOf(box) || -1, snkr: snkrReal || -1 };
             let best = "none", maxVal = -1;
-            for (const k of ["shisui", "mito", "homura", "shinsoku", "snkr"]) if (vals[k] > maxVal) { maxVal = vals[k]; best = k; }
+            for (const k of ["mito", "homura", "shinsoku", "snkr"]) if (vals[k] > maxVal) { maxVal = vals[k]; best = k; }
 
             let badge = "-", rowClass = "hover:bg-gray-100 ";
             if (best === "shisui") { badge = `<span class="whitespace-nowrap inline-block px-2 py-1 bg-red-500 text-white text-xs font-bold rounded shadow">酒々井</span>`; rowClass += "bg-red-50"; }
@@ -304,11 +299,9 @@
                     </div>
                 </td>
                 <td class="p-3 whitespace-nowrap text-gray-600">${box.release ? box.release.replace(/-/g, "/") : "-"}</td>
-                <td class="p-3 text-right ${best === 'shisui' ? 'font-bold text-red-600' : ''}">${formatPrice(box.shisui)}</td>
                 <td class="p-3 text-right ${best === 'mito' ? 'font-bold text-yellow-600' : ''}">${formatPrice(box.mito)}</td>
                 <td class="p-3 text-right whitespace-nowrap ${best === 'homura' ? 'font-bold text-green-700' : ''}">${formatPrice(homuraOf(box))}${homuraSub(box) ? `<span class="block text-xs font-normal text-gray-400">${shrink === "yes" ? "無し" : "有り"} ${homuraSub(box).toLocaleString()}円</span>` : ""}</td>
                 <td class="p-3 text-right whitespace-nowrap ${best === 'shinsoku' ? 'font-bold text-purple-700' : ''}">${formatPrice(shinsokuOf(box))}</td>
-                <td class="p-3 text-right text-gray-500 whitespace-nowrap">${formatPrice(snkrOf(box))}${snkrSub(box) ? `<span class="block text-xs text-gray-400">${shrink === "yes" ? "無し" : "有り"} ${snkrSub(box).toLocaleString()}円</span>` : ""}</td>
                 <td class="p-3 text-right ${best === 'snkr' ? 'font-bold text-blue-600 text-lg' : 'font-medium'}">${formatPrice(snkrReal)}</td>
                 <td class="p-3 text-center">${badge}</td>`;
             const img = tr.querySelector("img");
@@ -335,12 +328,11 @@
                     </div>
                 </div>
                 <div class="card-grid">
-                    ${cell("酒々井 買取", box.shisui, "shisui")}
                     ${cell("水戸 買取", box.mito, "mito")}
                     ${cell(`ホムラ 買取（シュリンク${shrink === "yes" ? "有" : "無"}）`, homuraOf(box), "homura")}
                     ${cell(`シンソク 買取（シュリンク${shrink === "yes" ? "有" : "無"}）`, shinsokuOf(box), "shinsoku")}
                     ${cell("スニダン 実質", snkrReal, "snkr")}
-                    <div class="cell"><div class="lbl">スニダン 相場（引く前）</div><div class="val text-gray-500">${formatPrice(snkrOf(box))}</div></div>
+
                 </div>`;
             const cimg = card.querySelector("img");
             cimg.onerror = () => { cimg.onerror = null; cimg.src = placeholder(box.name); };
