@@ -112,6 +112,30 @@ header{position:sticky;top:0;z-index:100;background:var(--navy);color:#fff;}
 .day-video h3{font-size:1.15rem;font-weight:800;margin-bottom:.4rem;}
 .day-video p{font-size:.9rem;opacity:.92;}
 .day-video .tag{display:inline-block;background:var(--yellow);color:var(--navy);font-size:.75rem;font-weight:800;padding:.1rem .7rem;border-radius:4px;margin-bottom:.5rem;}
+/* salary simulation */
+.salary{max-width:900px;margin:0 auto 2.5rem;background:#fff;border-radius:18px;padding:1.8rem 1.6rem;border:2px solid var(--orange);}
+.salary h3{font-size:1.2rem;font-weight:900;color:var(--navy);text-align:center;margin-bottom:.3rem;}
+.salary h3 span{display:block;font-size:.75rem;color:var(--orange);letter-spacing:.25em;}
+.salary .lead{text-align:center;font-size:.9rem;color:var(--muted);margin-bottom:1.4rem;}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;position:relative;}
+.step{background:var(--sky);border-radius:12px;padding:1.1rem .9rem;text-align:center;position:relative;}
+.step .yr{font-size:.78rem;font-weight:800;color:var(--navy);background:#fff;display:inline-block;padding:.1rem .7rem;border-radius:999px;margin-bottom:.4rem;}
+.step .amt{font-size:1.5rem;font-weight:900;color:var(--navy);line-height:1.2;white-space:nowrap;}
+.step .amt .pre{font-size:.8rem;display:block;font-weight:700;}
+.step .amt small{font-size:.8rem;}
+.step .amt b{color:var(--orange);}
+.step .note{font-size:.76rem;color:#44505c;margin-top:.4rem;line-height:1.5;}
+.step.hl{background:var(--navy);color:#fff;}
+.step.hl .yr{background:var(--yellow);color:var(--navy);}
+.step.hl .amt,.step.hl .note{color:#fff;}
+.step.hl .amt b{color:var(--yellow);}
+.step .badge{position:absolute;top:-10px;left:50%;transform:translateX(-50%);background:var(--orange);color:#fff;font-size:.7rem;font-weight:800;padding:.1rem .7rem;border-radius:999px;white-space:nowrap;}
+.step:not(:last-child)::after{content:"▶";position:absolute;right:-.75rem;top:50%;transform:translateY(-50%);color:var(--orange);font-size:.8rem;z-index:1;}
+.bonus{margin-top:1.2rem;display:flex;flex-wrap:wrap;gap:.8rem;align-items:center;justify-content:center;background:#fff7e6;border:1px dashed #f5c76a;border-radius:12px;padding:.9rem 1.2rem;}
+.bonus .bl{font-weight:800;color:var(--navy);font-size:.95rem;}
+.bonus .bv{font-size:1.5rem;font-weight:900;color:var(--orange);line-height:1.1;}
+.bonus .bv small{font-size:.8rem;color:var(--navy);}
+.bonus .bn{flex-basis:100%;text-align:center;font-size:.76rem;color:var(--muted);}
 /* community */
 .community{background:#fff;padding:3.5rem 0;}
 .community .box{display:grid;grid-template-columns:1fr 1.2fr;gap:1.5rem;align-items:center;background:var(--sky);border-radius:18px;padding:1.5rem;}
@@ -225,6 +249,10 @@ footer p{opacity:.8;}
   .numbers li{flex:1 1 42%;}
   .check{grid-template-columns:1fr;}
   .job-grid,.vgrid,.env-grid{grid-template-columns:1fr;}
+  .salary{padding:1.3rem 1rem;}
+  .steps{grid-template-columns:1fr 1fr;gap:.8rem;}
+  .step:not(:last-child)::after{display:none;}
+  .step .amt{font-size:1.45rem;}
   .job-photos{grid-template-columns:1fr 1fr;}
   .tl{grid-template-columns:1fr;gap:.5rem;}
   .tl li{display:flex;gap:1rem;align-items:flex-start;text-align:left;}
@@ -411,8 +439,24 @@ footer p{opacity:.8;}
 <section class="env">
   <div class="container">
     <h2 class="ttl"><span>ENVIRONMENT</span>働く環境・待遇</h2>
+    <!-- ▼給与シミュレーション：お客様提供の目安（できる作業・資格取得状況により変動） -->
+    <div class="salary">
+      <h3><span>SALARY MODEL</span>未経験入社からの給与イメージ</h3>
+      <p class="lead">月給22万円は「スタート時」の金額です。できる作業と資格取得に応じて、このように上がっていきます。</p>
+      <div class="steps">
+        <div class="step"><div class="yr">入社時</div><div class="amt"><span class="pre">月給</span><b>22</b><small>万円〜</small></div><div class="note">未経験・無資格OK。先輩とペアでOJT</div></div>
+        <div class="step"><div class="yr">入社〜1年</div><div class="amt"><span class="pre">月給</span><b>24</b><small>万円〜</small></div><div class="note">できる作業に応じて変動あり</div></div>
+        <div class="step hl"><div class="badge">資格取得</div><div class="yr">1〜2年</div><div class="amt"><span class="pre">月給</span><b>30</b><small>万円〜</small></div><div class="note">液化石油ガス設備士 取得後</div></div>
+        <div class="step"><div class="yr">3年目以降</div><div class="amt"><span class="pre">月給</span><b>30〜40</b><small>万円</small></div><div class="note">経験者と同じ給与体系へ。経験・資格に応じて昇給</div></div>
+      </div>
+      <div class="bonus">
+        <span class="bl">＋ 決算賞与（年1回・4月／会社業績による）</span>
+        <span class="bv">985,000<small>円</small></span>
+        <span class="bn">※昨年までの経験者平均賞与実績。入社年数・業績により変動します</span>
+      </div>
+    </div>
     <div class="env-grid">
-      <div class="env-item"><div class="ic">¥</div><div><h3>経験者（有資格者※液化石油ガス設備士）月給30万〜40万円</h3><p>未経験者は月給22万円〜。経験・資格に応じて昇給。</p></div></div>
+      <div class="env-item"><div class="ic">¥</div><div><h3>経験者（有資格者※液化石油ガス設備士）月給30万〜40万円</h3><p>未経験者は月給22万円〜スタート。資格取得後は経験者と同じ給与体系になります（上記シミュレーション参照）。</p></div></div>
       <div class="env-item"><div class="ic">資</div><div><h3>資格取得支援制度</h3><p>液化石油ガス設備士・GSS・電気工事士・他など、OJTと会社支援で取得。</p></div></div>
       <div class="env-item"><div class="ic">時</div><div><h3>残業月平均20時間以内（繁忙期を除く）</h3><p>安全を最優先に作業するため基本夜間作業は行わないため、18時までに退社が基本です。</p></div></div>
       <div class="env-item"><div class="ic">車</div><div><h3>社用車あり</h3><p>現場までは社用車で移動。工具・台車も会社で用意。（車両・工具持ち込みでも可。その際は別途手当支給します）</p></div></div>
@@ -491,7 +535,8 @@ footer p{opacity:.8;}
       <tr><th>雇用形態</th><td>正社員（雇用期間の定めなし）</td></tr>
       <tr><th>仕事内容</th><td>ガス機器設置（給湯器、ビルトインコンロ）／住設機器設置（レンジフード、水回り、エアコン他）／LPガス配管工事（新設、小変更）／作業に伴う軽度な事務処理　※社用車の運転あり　※変更範囲：変更なし</td></tr>
       <tr><th>給与</th><td>月給 220,000円〜400,000円<br><span style="font-size:.85rem;color:var(--muted);">未経験者：220,000円〜／資格保持経験者：300,000円〜400,000円</span></td></tr>
-      <tr><th>手当・賞与</th><td>資格手当あり／会社業績に応じ決算賞与あり（年1回・4月）</td></tr>
+      <tr><th>手当・賞与</th><td>資格手当あり／会社業績に応じ決算賞与あり（年1回・4月）<br><span style="font-size:.85rem;color:var(--muted);">※昨年までの経験者平均賞与実績 985,000円</span></td></tr>
+      <tr><th>昇給の目安</th><td>入社時 220,000円〜 → 入社〜1年 240,000円〜（できる作業に応じ変動あり）→ 資格取得後（1〜2年）300,000円〜 → 以降は経験者と同じ給与体系</td></tr>
       <tr><th>勤務地</th><td>千葉県成田市下福田285-4（JR成田駅 車10分）／転勤なし</td></tr>
       <tr><th>勤務時間</th><td>8:30〜17:30（休憩60分）</td></tr>
       <tr><th>残業</th><td>月平均20時間以内（繁忙期を除く）、18時までに退社が基本</td></tr>
